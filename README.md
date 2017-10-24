@@ -10,7 +10,31 @@
 
 ![screen shot 2017-10-24 at 1 47 17 pm](https://user-images.githubusercontent.com/16400144/31926581-fbe1debc-b8c1-11e7-93e7-ab08ce97ea61.png)
 
+相对作者原主题主要有一下方面改动：
 
+- 调整卡片阴影细节以及增加卡片的动画效果。
+- 博文列表将作者的多列布局改为单列布局。
+- 使用了 [fontawesome](http://fontawesome.io) 图标。
+- 优化了颜色搭配，方便更换主题色。
+- 一些UI细节，如调整搜索框长度使之与右边卡片等宽、优化了在手机端的显示效果。
+- 增加对来必力评论系统的支持（虽然我用的是Disqus）。
+
+
+
+### 评论
+
+在博客主目录的`_config.yml`文件中添加以下代码即可：
+
+```
+# disqus评论
+disqus_shortname: xaoxuu
+# 来必力评论
+# livere_shortname: xaoxuu
+```
+
+
+
+### 更多图片预览
 
 ![screen shot 2017-10-24 at 2 05 33 pm](https://user-images.githubusercontent.com/16400144/31926974-7932afca-b8c4-11e7-997f-3d9d28b5a08b.png)
 
