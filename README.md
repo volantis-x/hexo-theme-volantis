@@ -1,12 +1,12 @@
 # Material Flow
 
-**⚠️版权声明：此主题是基于 [stkevintan/hexo-theme-material-flow](https://github.com/stkevintan/hexo-theme-material-flow) 改编**。
+> **⚠️版权声明：此主题是基于 [stkevintan/hexo-theme-material-flow](https://github.com/stkevintan/hexo-theme-material-flow) 改编**。
+>
+> 由于原作者已经将博客迁移至Hugo，作者的主题只进行bug修复，详见作者的 [README](https://github.com/stkevintan/hexo-theme-material-flow) 。
 
-由于原作者已经将博客迁移至Hugo，作者的主题只进行bug修复，详见作者的 [README](https://github.com/stkevintan/hexo-theme-material-flow) 。
 
 
-
-我使用作者的主题已经半年时间，也将继续使用和更新下去。最新demo：[https://blog.xaoxuu.com](https://blog.xaoxuu.com)
+本主题将持续更新和维护，最新**Demo**：[https://blog.xaoxuu.com](https://blog.xaoxuu.com)
 
 ![screen shot 2017-10-24 at 1 47 17 pm](https://user-images.githubusercontent.com/16400144/31926581-fbe1debc-b8c1-11e7-93e7-ab08ce97ea61.png)
 
