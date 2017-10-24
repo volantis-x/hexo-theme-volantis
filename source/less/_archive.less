@@ -1,0 +1,40 @@
+#archive-page {
+    margin-bottom: @gap * 2;
+    .archive {
+        position: relative;
+        .archive-year {
+            font-size: @base-font-size;
+            margin: 1em 0;
+            a {
+                color: @text-color;
+                text-decoration: none;
+            }
+        }
+        .archive-post {
+            a {
+                width: 100%;
+                display: inline-flex;
+                flex-flow: row nowrap;
+                justify-content: flex-start;
+                align-items: flex-start;
+                text-decoration: none;
+            }
+            time {
+                color: @text-color;
+                flex: none;
+                font-size: @small-font-size;
+                // padding-right: 10px;
+                padding: .5em .5em .5em 3em;
+                @media (max-width: @on-phone) {
+                  padding: .5em .5em .5em 0;
+                }
+            }
+            .title {
+                flex: auto;
+                padding: .5em;
+                font-size: @small-font-size;
+                color: fade(@text-color,80%);
+            }
+        }
+    }
+}

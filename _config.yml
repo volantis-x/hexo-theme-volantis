@@ -1,0 +1,97 @@
+# Search
+search:
+  enable: true
+  service: hexo # google/hexo/algolia/azure/baidu
+  # google
+  google_api_key:
+  google_engine_id:
+  # algolia
+  algolia_app_id:
+  algolia_api_key:
+  algolia_index_name:
+  # azure
+  azure_service_name:
+  azure_index_name:
+  azure_query_key:
+  # baidu
+  baidu_api_id:
+
+# friends link
+links:
+  
+# navigation menu
+menu:
+  - name: blogs
+    slug: home
+    fa:   rss
+    url: /
+  - name: archives
+    slug: archives
+    fa:   archive
+    url: /archives
+  - name: projects
+    slug: projects
+    fa:   cube
+    url: http://xaoxuu.com/index.html#proj
+  # - name: DOWNLOADS
+  #   slug: download
+  #   fa:   download
+  #   url: http://download.xaoxuu.com
+  # - name: 留言
+  #   slug: comments
+  #   url: http://xaoxuu.com/index.html#disqus
+  - name: about
+    slug: about
+    fa:   user
+    url: http://xaoxuu.com
+  # - name: 后台
+  #   slug: login
+  #   fa:   lock
+  #   url: /admin
+# widgets
+widgets:
+  - about
+  # - links
+  - categories
+  - tagcloud
+  - socials
+
+# Less
+less:
+  compress: true
+
+
+
+# use url, not username
+social:
+- slug: rss
+  url: /atom.xml
+- slug: github
+  url: https://github.com/xaoxuu
+- slug: instagram
+  url: https://www.instagram.com/xaoxuu
+- slug: dribbble
+  url: https://www.dribbble.com/xaoxuu
+- slug: google-plus
+  url: https://plus.google.com/u/0/105328339611794285997
+- slug: twitter
+  url: https://twitter.com/xaoxuu
+
+
+
+contacts:
+- name: Email
+  badget: me@xaoxuu.com
+  url: mailto:me@xaoxuu.com
+- name: RSS
+  badget: subscribe me
+  url: /atom.xml
+- name: GitHub
+  badget: "@xaoxuu"
+  url: https://github.com/xaoxuu
+- name: Instagram
+  badget: "@xaoxuu"
+  url: https://www.instagram.com/xaoxuu
+- name: Twitter
+  badget: "@xaoxuu"
+  url: https://www.twitter.com/xaoxuu

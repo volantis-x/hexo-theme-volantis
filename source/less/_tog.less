@@ -1,0 +1,40 @@
+.tog{
+  position:fixed;
+  top: @header-height + @gap * 2;
+  right: ~"calc((100% - @{container-width})/2)";
+  .enable-trans();
+  @media(max-width: @container-width){
+    right: 0;
+  }
+  @media(max-width: @on-phone){
+    right: -@side-width;
+    &.active{
+      transform: translateX(-@side-width);
+    }
+  }
+  width: @side-width + 6px;
+  z-index:3;
+  &:extend(.z-depth-2);
+  padding: @gap;
+  border-left: 6px solid @primary-color;
+  background: @text-color-inside-theme;
+  a {
+    display: inline-block;
+    &:hover,&:active,&.active{
+      color: @accent-color;
+    }
+  }
+  ol{
+    &.toc-child{
+      padding-left: @gap;
+    }
+    li{
+      list-style:none;
+      width: auto;
+      &:extend(.txt-ellipsis);
+    }
+  }
+  &:empty{
+    display:none;
+  }
+}

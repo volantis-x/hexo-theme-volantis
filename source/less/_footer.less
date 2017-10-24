@@ -1,0 +1,48 @@
+#footer {
+  position: relative;
+  padding: 40px 10px;
+  width: 100%;
+	color: fade(@text-color, 80%);
+  margin: 0px auto;
+  font-size: @small-font-size;
+  overflow: hidden;
+  text-align: center;
+  font-family: @title-font-family;
+	.codename {
+		color: @material-light-green;
+	}
+	.social-wrapper {
+		padding-top: 20px;
+	}
+  a {
+    color: fade(@text-color,80%);
+    &:hover {
+      // background: fade(@accent-color, 10%);
+      color: @accent-color;
+    }
+    &.social {
+	    position: relative;
+	    display: inline-block;
+	    text-align: center;
+	    font-size: 16px;
+	    margin: 0px 5px;
+
+	  	&:hover {
+		  	background: transparent;
+		  	color: @accent-color;
+	  	}
+	  	// &.github:hover {
+		  // 	color: @github-color;
+	  	// }
+	  	// &.google:hover {
+		  // 	color: @google-color;
+	  	// }
+	  	// &.twitter:hover {
+		  // 	color: @twitter-color;
+	  	// }
+	  	// &.weibo:hover {
+		  // 	color: @weibo-color;
+	  	// }
+    }
+  }
+}

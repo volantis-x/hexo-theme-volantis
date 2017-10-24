@@ -1,0 +1,12 @@
+<section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    <% (theme.links||[]).forEach(function(item){ %>
+        <li><a class="flat-box" target="_blank" href="<%= url_for(item.url) %>">
+            <div class='name'><%= item.name %></div>
+        </a></li>
+    <% }); %>
+    </ul>
+</div>
+</section>

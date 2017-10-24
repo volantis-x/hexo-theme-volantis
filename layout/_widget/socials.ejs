@@ -1,0 +1,13 @@
+<section class='m_widget socials'>
+<div class='header'>CONTACTS</div>
+<div class='content'>
+    <ul class="entry">
+      <% (theme.contacts||[]).forEach(function(item){ %>
+        <li><a class="flat-box" target="_blank" href="<%= url_for(item.url) %>">
+          <div class='name'><%= item.name %></div>
+          <div class='badget'><%= item.badget %></div>
+        </a></li>
+      <% }); %>
+    </ul>
+</div>
+</section>

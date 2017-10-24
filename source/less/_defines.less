@@ -1,0 +1,137 @@
+// Font families
+@fallback-font-family: Monaco, Menlo, 'Ubuntu', Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, "Microsoft YaHei", Arial, sans-serif;
+@base-font-family: 'Ubuntu', Monaco, Menlo, 'Titillium Web', @fallback-font-family;
+@code-font-family: Monaco, Menlo, 'Ubuntu', "Roboto Mono",Consolas, monospace, sans-serif, @fallback-font-family;
+@title-font-family: 'Ubuntu', Monaco, Menlo, "Roboto Mono",Consolas, monospace, sans-serif, @fallback-font-family;
+// Font configuration
+@base-font-size:   16px;
+@small-font-size:  @base-font-size * 0.875;
+@base-line-height: 1.7;
+
+
+@font-size-h1: @base-font-size * 1.5;
+@font-size-h2: @base-font-size * 1.4;
+@font-size-h3: @base-font-size * 1.2;
+@font-size-h4: @base-font-size * 1;
+@font-size-h5: @base-font-size * 1;
+@font-size-h6: @small-font-size;
+
+
+// Spacing
+@spacing-unit:     30px;
+@gap:              20px;
+
+// Material color scheme
+@material-red: #f44336;
+@material-pink: #E91E63;
+@material-purple: #9c27b0;
+@material-deep-purple: #673ab7;
+@material-indigo: #3f51b5;
+@material-light-blue: #4BA7EE;
+@material-blue: #2196f3;
+@material-deep-blue: #3367d6;
+@material-teal: #009688;
+@material-green: #4caf50;
+@material-light-green: #8bc34a;
+@material-orange: #ff9800;
+@material-deep-orange: #ff5722;
+@material-brown: #795548;
+@material-blue-grey: #607d8b;
+@material-grey: #9e9e9e;
+@material-light-grey:#e0e0e0;
+@material-yellow: #FCEC60;
+@material-amber: #F6C344;
+
+@material-ax-red: #F05153;
+@material-ax-blue: #2CA3FF;
+
+// Social Networks Brand color
+@github-color:     #467cc2;
+@twitter-color:    #55acee;
+@facebook-color:   #3765a3;
+@google-color:     #db4437;
+@pinterest-color:  #bc1725;
+@dribbble-color:   #ed699c;
+@weibo-color:      #f8712a;
+@tumblr-color:     #35465c;
+@instagram-color:  #3f729b;
+@linkedin-color:   #0077B5;
+@behance-color:    #1769FF;
+@tixora-color:     #33475A;
+
+// Colors
+// 基本不变的黑白灰
+@black: #444444;
+@grey-color: #828282;
+@white: #ffffff;
+@dark:  #555555;
+@text-color:       fade(@black, 85%);
+@background-color: #EFEFEF;
+
+// 主题色
+@primary-color:    @material-ax-blue;
+// 强调色 -- 按钮的高亮颜色
+@accent-color:		 @material-deep-orange;
+
+
+// 变种
+// 主题色的文本（主题色加深）
+@text-color-theme: darken(@primary-color, 10%);
+// 在主题色中显示的文本（白或深灰）
+// @text-color-inside-theme: @text-color;
+@text-color-inside-theme: white;
+
+// 引用部分和代码块的背景色
+@qoute-background-color: fade(@background-color, 80%);
+
+
+// Responsive limits
+@modal-threshold:  680px;
+@on-phone:         820px;
+@on-laptop:        990px;
+@on-desktop:       1200px;
+
+@item-height: 36px;
+
+//container
+@container-width:  1200px;
+//neader
+@header-height:   54px;
+@header-logo-font-size: 1.3em;
+@header-switcher-font-size: 1.3em;
+@header-font-size: 1em;
+
+@banner-height: 300px;
+
+@border-radius-width: 8px;
+
+//side
+@side-width: 250px;
+@tog-width: 200px;
+//search
+@search-height: 36px;
+@search-width: 250px;
+
+//post
+@post-max-width: 980px;
+//article
+@article-title-size: @font-size-h1 * 1.2;
+@article-title-size-phone: @font-size-h2;
+
+//transition
+.enable-trans(@time: 0.2s){
+  transition: all @time ease;
+  -moz-transition: all @time ease;
+  -webkit-transition: all @time ease;
+  -o-transition: all @time ease;
+}
+// .set-placeholder({
+// 	color: @white;
+// 	font-weight: 300;
+// })
+.set-placeholder(@rules){
+  &::-webkit-input-placeholder {@rules();}
+  &:-moz-placeholder {@rules();}
+	&::-moz-placeholder {@rules();}
+	&:-ms-input-placeholder {@rules();}
+}

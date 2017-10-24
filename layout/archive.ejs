@@ -1,0 +1,117 @@
+<% if (page.year || page.month) { %>
+	<%- partial('_partial/archive') %>
+<% } else { %>
+  <article id="archive-page" class="post article white-box">
+    <section class='meta'>
+      <h2 class="title">
+        <a href="javascript:void(0)">
+          archives
+        </a>
+      </h2>
+    </section>
+    <section class="archive">
+      <%
+        var year = -1, postid = -1;
+        site.posts.sort('date', -1).each(function(post) {
+          post.year = date(post.date, 'YYYY');
+          if (post.year && post.year !== year) {
+            year = post.year;
+      %>
+			<div class="archive-item archive-year mark">
+				<a id="archive-year-<%= year %>" href='<%= url_for("/archives/" + year + "/") %>' >
+					<%= year %>
+				</a>
+			</div>
+
+      <%  } %>
+
+          <div class="flat-box archive-item archive-post mark">
+						<% post.categories.each(function(item){ %>
+							<a href="<%= url_for(post.path) %>">
+								<time><%= date(post.date, 'MM-DD') %></time>
+								<span class="title"><span>
+									<% if (item.name == "worklog") { %>
+											   worklog：<%= post.title %>
+										<% } else { %>
+											<% if(post.title){ %>
+												<%= post.title %>
+											<% } else if (post.date) { %>
+												<%= date(post.date, 'dddd') %> worklog
+											<% } %>
+									<% } %>
+								</span></span>
+							</a>
+						<%})%>
+
+          </div>
+      <% }); %>
+    </section>
+  </article>
+	<!-- <article id="archive-page" class="post article white-box">
+    <section class='meta'>
+      <h2 class="title">
+        <a href="javascript:void(0)">
+          worklogs
+        </a>
+      </h2>
+    </section>
+    <section class="archive">
+      <%
+        var year = -1, postid = -1;
+        site.posts.sort('date', -1).each(function(post) {
+          post.year = date(post.date, 'YYYY');
+          if (post.year && post.year !== year) {
+            year = post.year;
+      %>
+			<% post.categories.each(function(item){ %>
+				<% if (item.name == "worklog") { %>
+					<div class="archive-item archive-year mark">
+						<a id="archive-year-<%= year %>" href='<%= url_for("/archives/" + year + "/") %>' >
+							<%= year %>
+						</a>
+					</div>
+				<% } else { %>
+				<% } %>
+			<%})%>
+
+      <%  } %>
+
+          <div class="flat-box archive-item archive-post mark">
+						<% post.categories.each(function(item){ %>
+							<% if (item.name == "worklog") { %>
+									<a href="<%= url_for(post.path) %>">
+										<time><%= date(post.date, 'MM-DD') %></time>
+										<span class="title"><span>
+											<% if(post.title){ %>
+												<%= post.title %>
+											<% } else if (post.date) { %>
+												<%= date(post.date, 'dddd') %> worklog
+											<% } %>
+										</span></span>
+			            </a>
+							<% } else { %>
+							<% } %>
+						<%})%>
+          </div>
+      <% }); %>
+    </section>
+  </article> -->
+  <!--
+  <% if (page.total > 1) { %>
+    <nav id="page-nav">
+      <% if (page.prev != 0) { %>
+      <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
+        <span class="icon icon-chevron-left"></span>
+        <span class="text">Previous</span>
+      </a>
+      <% } %>
+      <% if (page.next != 0) { %>
+      <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
+        <span class="text">Next</span>
+        <span class="icon icon-chevron-right"></span>
+      </a>
+      <% } %>
+    </nav>
+  <% } %>
+    -->
+<% } %>

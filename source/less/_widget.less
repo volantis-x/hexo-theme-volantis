@@ -1,0 +1,111 @@
+.m_widget{
+    &:extend(.z-depth-main);
+    background: white;
+    margin-bottom: @gap;
+    border-radius: @border-radius-width;
+    @media(max-width: @on-phone) {
+        border-radius: 0;
+    }
+    // .header,.content{
+    //     padding: 0 @gap;
+    // }
+    .enable-trans();
+    &:hover {
+      &:extend(.z-depth-main-raised);
+    }
+    &:active {
+      // box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    }
+    .header{
+        border-top-left-radius: @border-radius-width;
+        border-top-right-radius: @border-radius-width;
+        @media(max-width: @on-phone) {
+            border-radius: 0;
+        }
+        background-color: fade(@primary-color,90%);
+        color: @text-color-inside-theme;
+        font-size: @base-font-size;
+        line-height: 1.8em;
+        padding: 8px @gap;
+      	// letter-spacing: .08em;
+
+    }
+    .content{
+        // border-top: 1px solid fade(@black,10%);
+        padding: @gap/2 0;
+    }
+     ul.entry > li > a{
+        padding: 0 @gap;
+        line-height:@item-height;
+        height: @item-height;
+        font-size: @base-font-size;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        border-left: 0px solid @primary-color;
+        .enable-trans();
+        .name{
+            flex:auto;
+            &:extend(.txt-ellipsis);
+            color: fade(@text-color,70%);
+        }
+        .badget{
+            flex:none;
+            font-size: @small-font-size;
+            color: fade(@text-color, 50%);
+        }
+        &:hover{
+            border-left: 3px solid @primary-color;
+            background:darken(white, 5%);
+        }
+    }
+}
+.m_widget.about{
+    .waves-effect,img{
+        width: 100%;
+        display: block;
+        border-radius: @border-radius-width;
+    }
+    @media(max-width: @on-phone){
+        display:none;
+    }
+    .content{
+        padding:0;
+        .desc{
+            position: relative;
+            padding: @gap;
+            background:@qoute-background-color;
+            .enable-trans(.15s);
+            line-height: 1.2em;
+            font-style: italic;
+            &:before{
+                // content:'#';
+                position: absolute;
+                left:0;
+                top:0;
+                width:2px;
+                height:100%;
+                background:@primary-color;
+            }
+            &:empty{
+                padding:0;
+                height: 0;
+            }
+        }
+    }
+}
+.m_widget.tagcloud{
+    .content{
+        padding: 10px 20px;
+        a{
+            display:inline-block;
+            .enable-trans(.1s);
+            line-height: 1.6em;
+            &:hover{
+                color: @accent-color !important; //to cover inline style.
+                text-decoration: underline
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	<% if (theme.social) { %>
+      <% theme.social.forEach(function(value, key) {
+           if (value.url && value.slug) { %>
+        <a href="<%= value.url %>" class="social <%= value.slug %>"
+          target="_blank" rel="external">
+					<i class="fa fa-<%= value.slug %>"></i>
+        </a>
+      <% } }); %>
+    <% } %>
+  </div>
+  <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+  <div>Theme <a href="https://github.com/xaoxuu/hexo-theme-material-flow" target="_blank" class="codename">MaterialFlow</a> designed by <a href="http://blog.xaoxuu.com" target="_blank" class="codename">xaoxuu</a>.</div>
+
+</footer>

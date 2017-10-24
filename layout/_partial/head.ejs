@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <%
+    var title = page.title;
+    if (is_archive()) {
+      title = 'Archives';
+      if (is_month())
+        title += ': ' + page.year + '/' + page.month;
+      else if (is_year())
+        title += ': ' + page.year;
+    }
+    else if (is_category())
+      title = 'Category: ' + page.category;
+    else if (is_tag())
+      title = 'Tag: ' + page.tag;
+  %>
+  <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
+  <meta name="description" content="<%= config.description %>" />
+  <meta name="keywords" content="<%=(config.keywords||[]).join(',') %>" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <%- favicon_tag(config.favicon) %>
+  <%- feed_tag(config.feed.path, {title: config.title}) %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%- open_graph({
+    twitter_id: theme.twitter,
+    google_plus: theme.google_plus,
+    fb_admins: theme.fb_admins,
+    fb_app_id: theme.fb_app_id}) %>
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <%- css('style.css') %>
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>

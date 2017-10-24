@@ -1,0 +1,45 @@
+<% if (is_tag()) { %>
+  <script>
+    window.subData= { title:'tag : <%= page.tag %>'}
+  </script>
+<% } else if (is_archive()) { %>
+  <script>
+    window.subData= { title:'year : <%= page.year %><%= page.month ? '.' + page.month : '' %>'}
+  </script>
+<% } else if (is_category()) { %>
+  <script>
+    window.subData= { title:'category : <%= page.category %>'}
+  </script>
+<% } %>
+<section class="post-list">
+	<% page.posts.each(function(post){ %>
+    <% post.categories.each(function(item){ %>
+      <% if (item.name !== "worklog" || is_category()) { %>
+        <div class='post-wrapper'>
+          <%- partial('post', {post: post}) %>
+        </div>
+      <% } %>
+    <%})%>
+  <% }) %>
+</section>
+
+<% if (page.total > 1) { %>
+  <nav id="page-nav">
+    <% if (page.prev != 0) { %>
+    <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">PREVIOUS</span>
+    </a>
+    <% } %>
+    <% if (page.next != 0) { %>
+    <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
+      <span class="text">NEXT</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    <% } %>
+  </nav>
+
+<% } %>
+<footer id="footer" class="clearfix">
+  Hosted by <a href="https://pages.coding.me">Coding Pages</a>
+</footer>
