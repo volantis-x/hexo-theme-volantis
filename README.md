@@ -10,6 +10,16 @@
 
 
 
+![screen shot 2017-10-24 at 2 05 33 pm](https://user-images.githubusercontent.com/16400144/31926974-7932afca-b8c4-11e7-997f-3d9d28b5a08b.png)
+
+
+
+![screen shot 2017-10-24 at 2 02 52 pm](https://user-images.githubusercontent.com/16400144/31927078-f7c74f26-b8c4-11e7-98c6-ac2987abd2fd.png)
+
+![screen shot 2017-10-24 at 2 04 22 pm](https://user-images.githubusercontent.com/16400144/31927076-f47fb4d4-b8c4-11e7-9cbd-158e2c31d9e0.png)
+
+
+
 ## Installation
 ```bash
 # change to work dir
