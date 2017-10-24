@@ -6,9 +6,9 @@
 
 此主题最新demo（持续维护）：[https://blog.xaoxuu.com](https://blog.xaoxuu.com)
 
-<div>
-<img width="1680" alt="screen shot 2017-10-24 at 11 51 57 am" src="https://user-images.githubusercontent.com/16400144/31924422-98c29398-b8b3-11e7-9d4c-d23ca4c11e81.png">
-</div>
+![screen shot 2017-10-24 at 1 47 17 pm](https://user-images.githubusercontent.com/16400144/31926581-fbe1debc-b8c1-11e7-93e7-ab08ce97ea61.png)
+
+
 
 ## Installation
 ```bash
