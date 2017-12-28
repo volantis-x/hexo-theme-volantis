@@ -317,19 +317,19 @@ ul.h-list {
  */
 
 #loading-bar-wrapper {
-    position: absolute;
-    width: 100%;
-    top: 0;
+    position: fixed;
+    top: @header-height - 2;
     left: 0;
-    overflow: visible;
+    width: 100%;
+    // overflow: scroll;
     z-index: 99999;
 }
 
 #loading-bar {
-    position: relative;
+    position: fixed;
     width: 0;
     height: 2px;
-    background-color: fade(@white, 60%);
+    background-color: fade(@white, 100%);
     .enable-trans();
 }
 

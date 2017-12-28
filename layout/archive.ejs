@@ -2,13 +2,13 @@
 	<%- partial('_partial/archive') %>
 <% } else { %>
   <article id="archive-page" class="post article white-box">
-    <section class='meta'>
+    <!-- <section class='meta'>
       <h2 class="title">
         <a href="javascript:void(0)">
           archives
         </a>
       </h2>
-    </section>
+    </section> -->
     <section class="archive">
       <%
         var year = -1, postid = -1;
@@ -18,9 +18,14 @@
             year = post.year;
       %>
 			<div class="archive-item archive-year mark">
-				<a id="archive-year-<%= year %>" href='<%= url_for("/archives/" + year + "/") %>' >
+
+				<h2>
+					<!-- <a id="archive-year-<%= year %>" href='<%= url_for("/archives/" + year + "/") %>' >
+
+					</a> -->
 					<%= year %>
-				</a>
+	      </h2>
+				<hr>
 			</div>
 
       <%  } %>
@@ -44,7 +49,9 @@
 						<%})%>
 
           </div>
+
       <% }); %>
+
     </section>
   </article>
 	<!-- <article id="archive-page" class="post article white-box">

@@ -418,7 +418,22 @@ optgroup {
 
 table {
   border-collapse: collapse;
-  border-spacing: 0;
+  width: 100%;
+  th {
+    background-color: lighten(@background-color, 1%);
+  }
+  td,
+  th {
+      padding: 4px 8px;
+      border: 1px solid darken(@background-color, 5%);
+  }
+  tr {
+      // border-bottom: 2px solid #eee;
+      // background-color: @qoute-background-color;
+  }
+  &>thead>th {
+      // border-bottom-width: 2px;
+  }
 }
 
 td,

@@ -18,33 +18,34 @@ search:
 
 # friends link
 links:
-  
+
 # navigation menu
 menu:
-  - name: blogs
+  - name: 主页
+    slug: about
+    fa:   home
+    url: https://xaoxuu.com
+  - name: 博客
     slug: home
     fa:   rss
     url: /
-  - name: archives
+  - name: 归档
     slug: archives
     fa:   archive
     url: /archives
-  - name: projects
+  - name: 项目
     slug: projects
     fa:   cube
-    url: http://xaoxuu.com/index.html#proj
-  # - name: DOWNLOADS
-  #   slug: download
-  #   fa:   download
-  #   url: http://download.xaoxuu.com
+    url: https://xaoxuu.com/proj
+  - name: 下载
+    slug: download
+    fa:   download
+    url: https://xaoxuu.com/dl
   # - name: 留言
   #   slug: comments
   #   url: http://xaoxuu.com/index.html#disqus
-  - name: about
-    slug: about
-    fa:   user
-    url: http://xaoxuu.com
-  # - name: 后台
+
+  # - name: admin
   #   slug: login
   #   fa:   lock
   #   url: /admin
@@ -64,18 +65,19 @@ less:
 
 # use url, not username
 social:
-- slug: rss
-  url: /atom.xml
+- slug: envelope
+  url: mailto:me@xaoxuu.com
 - slug: github
   url: https://github.com/xaoxuu
 - slug: instagram
   url: https://www.instagram.com/xaoxuu
-- slug: dribbble
-  url: https://www.dribbble.com/xaoxuu
 - slug: google-plus
   url: https://plus.google.com/u/0/105328339611794285997
 - slug: twitter
   url: https://twitter.com/xaoxuu
+- slug: music
+  url: https://music.163.com/#/user/home?id=63035382
+
 
 
 
@@ -83,15 +85,12 @@ contacts:
 - name: Email
   badget: me@xaoxuu.com
   url: mailto:me@xaoxuu.com
-- name: RSS
-  badget: subscribe me
-  url: /atom.xml
 - name: GitHub
   badget: "@xaoxuu"
   url: https://github.com/xaoxuu
-- name: Instagram
-  badget: "@xaoxuu"
-  url: https://www.instagram.com/xaoxuu
-- name: Twitter
-  badget: "@xaoxuu"
-  url: https://www.twitter.com/xaoxuu
+# - name: Instagram
+#   badget: "@xaoxuu"
+#   url: https://www.instagram.com/xaoxuu
+# - name: Twitter
+#   badget: "@xaoxuu"
+#   url: https://www.twitter.com/xaoxuu
