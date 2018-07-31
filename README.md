@@ -1,6 +1,6 @@
-# Material Flow
+# Material X
 
-> **⚠️版权声明：此主题是基于 [stkevintan/hexo-theme-material-flow](https://github.com/stkevintan/hexo-theme-material-flow) 改编**。
+> **⚠️声明：此主题是基于 [stkevintan/hexo-theme-material-flow](https://github.com/stkevintan/hexo-theme-material-flow) 改编**。
 >
 > 由于原作者已经将博客迁移至Hugo，作者的主题只进行bug修复，详见作者的 [README](https://github.com/stkevintan/hexo-theme-material-flow) 。
 
@@ -46,20 +46,20 @@ disqus_shortname: xaoxuu
 
 
 
-## Installation
+## 安装
 ```bash
 # change to work dir
 cd /your_blog_dir/
 # install dependencies
 npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autoprefixer hexo-generator-json-content
 # download source
-git clone https://github.com/stkevintan/hexo-theme-material-flow themes/material-flow
+git clone https://github.com/xaoxuu/hexo-theme-material-x themes/material-x
 ```
 
-## Configuration
+## 配置
 1. Change the value of `theme` to `material-flow` in `_config.yml`.
 2. Put your avatar && favicon  images to `source/images/`.
-3. Edit `_config.yml` and `themes/material-flow/_config.yml` for your needs.  
+3. Edit `_config.yml` and `themes/material-x/_config.yml` for your needs.  
 
 
 Here are some examples: 
