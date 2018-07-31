@@ -41,8 +41,14 @@
     }
     p {
         // margin: 20px 0px;
+        color: fade(@text-color,75%);
         margin-top: .5em;
         margin-bottom: 1em;
+        strong{
+          color: @text-color;
+          padding-left: 2px;
+          padding-right: 2px;
+        }
     }
     ul,
     ol {
@@ -83,7 +89,8 @@
         position: relative;
         font-family: @base-font-family;
         font-weight: normal;
-        margin-top: .5em;
+        margin-top: 1.5em;
+        margin-bottom: 1em;
         &.title {
             left: 0;
             &:before {
@@ -93,8 +100,7 @@
     }
 
     h1, h2 {
-      margin-top: 1.5em;
-      margin-bottom: .5em;
+    margin-top: 2em;
       color: @text-color-theme;
     }
     h1, h2, h3 {
@@ -107,9 +113,8 @@
       font-size: @font-size-h2;
     }
     h3 {
-      // font-weight: bold;
       font-size: @font-size-h3;
-      color: darken(@text-color, 20%);
+      color: @text-color-darken;
     }
     h4 {
       font-weight: bold;
@@ -117,11 +122,14 @@
     }
     h5 {
       font-weight: bold;
-      color: fade(@text-color, 60%);
+      color: @text-color;
+      // color: fade(@text-color, 60%);
       font-size: @font-size-h5;
+
     }
     h6 {
-      color: fade(@text-color, 60%);
+
+      color: fade(@text-color, 75%);
       font-size: @font-size-h6;
     }
 
@@ -137,7 +145,6 @@
         position: relative;
         width: 100%;
         font-size: @small-font-size;
-        // background: @qoute-background-color;
         background: fade(@primary-color, 10%);
         margin: 1em 0;
         padding: 1.5em 1.5em .9em 1.5em;
@@ -155,15 +162,16 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         font-family: @code-font-family;
+        color: fade(@text-color, 75%);
     }
     code {
         font-family: @code-font-family;
-        color: darken(@text-color-theme, 15%);
         padding: 2px 4px 0px 4px;
         margin: 0px 2px;
-        border-radius: 2px;
+        border-radius: 3px;
+        border: 1px solid darken(@qoute-background-color, 10%);
         font-size: @base-font-size * .8;
-        background: fade(@primary-color, 12%);
+        background: @qoute-background-color;
         @media(max-width: @on-phone){
           font-size: @base-font-size * .8 * .95;
         }
@@ -227,6 +235,7 @@
 
     table:not('.highlight table') {
         width: 100%;
+
         td,
         th {
             padding: 12px 24px;

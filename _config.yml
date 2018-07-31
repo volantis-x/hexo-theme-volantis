@@ -37,18 +37,8 @@ menu:
     slug: projects
     fa:   cube
     url: https://xaoxuu.com/proj
-  - name: 下载
-    slug: download
-    fa:   download
-    url: https://xaoxuu.com/dl
-  # - name: 留言
-  #   slug: comments
-  #   url: http://xaoxuu.com/index.html#disqus
 
-  # - name: admin
-  #   slug: login
-  #   fa:   lock
-  #   url: /admin
+
 # widgets
 widgets:
   - about
@@ -56,6 +46,7 @@ widgets:
   - categories
   - tagcloud
   - socials
+  - music
 
 # Less
 less:
