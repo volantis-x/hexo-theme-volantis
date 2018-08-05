@@ -6,6 +6,14 @@
 
 
 
+## 依赖库
+
+```bash
+npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autoprefixer hexo-generator-json-content
+```
+
+
+
 本主题将持续更新和维护，最新**Demo**：[https://blog.xaoxuu.com](https://blog.xaoxuu.com)
 
 ![screen shot 2017-10-24 at 1 47 17 pm](https://user-images.githubusercontent.com/16400144/31926581-fbe1debc-b8c1-11e7-93e7-ab08ce97ea61.png)
