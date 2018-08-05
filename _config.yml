@@ -42,11 +42,10 @@ menu:
 # widgets
 widgets:
   - about
-  # - links
   - categories
   - tagcloud
-  - socials
-  - music
+  # - socials
+  # - music
 
 # Less
 less:
