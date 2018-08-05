@@ -70,14 +70,17 @@
       }
     }
     a {
-        color: darken(@accent-color, 2%);
+        &:before{
+            display: none;
+        }
+        color: darken(@href-color, 5%);
         .enable-trans();
         &:hover {
-            color: darken(@accent-color, 20%);
+            color: darken(@href-color, 20%);
             text-decoration: underline;
         }
         &:active {
-            color: darken(@accent-color, 50%);
+            color: darken(@href-color, 50%);
         }
     }
     h1,

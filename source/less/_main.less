@@ -148,11 +148,19 @@
                     content: '';
                     border-top: @border-width/2 solid transparent;
                     border-bottom: @border-width/2 solid transparent;
-                    border-left: @border-width solid darken(@text-color-theme, 0%);
+                    border-left: @border-width solid darken(@accent-color, 0%);
                 }
                 a {
                     font-weight: bold;
-                    color: darken(@text-color-theme, 0%);
+                        color: darken(@accent-color, 0%);
+                        .enable-trans();
+                        &:hover {
+                            color: darken(@accent-color, 20%);
+                            text-decoration: underline;
+                        }
+                        &:active {
+                            color: darken(@accent-color, 50%);
+                        }
                 }
 
             }
