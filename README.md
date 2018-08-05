@@ -25,7 +25,7 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 - 使用了 [fontawesome](http://fontawesome.io) 图标。
 - 优化了颜色搭配，方便更换主题色。
 - 一些UI细节，如调整搜索框长度使之与右边卡片等宽、优化了在手机端的显示效果。
-- 增加对来必力评论系统的支持（虽然我用的是Disqus）。
+- 增加对来必力评论系统的支持。
 
 
 
