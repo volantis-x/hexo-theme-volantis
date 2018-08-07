@@ -9,7 +9,7 @@
 ## 依赖库
 
 ```bash
-npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autoprefixer hexo-generator-json-content
+npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autoprefixer hexo-generator-json-content hexo-recommended-posts
 ```
 
 
@@ -26,6 +26,7 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 - 优化了颜色搭配，方便更换主题色。
 - 一些UI细节，如调整搜索框长度使之与右边卡片等宽、优化了在手机端的显示效果。
 - 增加对来必力评论系统的支持。
+- 增加了推荐文章列表，增加流量。
 
 
 
@@ -59,7 +60,7 @@ disqus_shortname: xaoxuu
 # change to work dir
 cd /your_blog_dir/
 # install dependencies
-npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autoprefixer hexo-generator-json-content
+npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autoprefixer hexo-generator-json-content hexo-recommended-posts
 # download source
 git clone https://github.com/xaoxuu/hexo-theme-material-x themes/material-x
 ```

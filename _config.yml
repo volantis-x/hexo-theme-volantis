@@ -84,3 +84,7 @@ contacts:
 # - name: Twitter
 #   badget: "@xaoxuu"
 #   url: https://www.twitter.com/xaoxuu
+
+# 推荐文章 npm install hexo-recommended-posts --save
+recommended_posts:
+    enabled: true # 根目录的_config.yml中的recommended_posts/autoDisplay: 要设置为false
