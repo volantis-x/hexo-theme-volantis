@@ -1,7 +1,7 @@
 # Search
 search:
   enable: true
-  service: hexo # google/hexo/algolia/azure/baidu
+  service: hexo
   # google
   google_api_key:
   google_engine_id:
@@ -21,22 +21,22 @@ links:
 
 # navigation menu
 menu:
-  - name: 主页
-    slug: about
-    fa:   home
-    url: https://xaoxuu.com
-  - name: 博客
-    slug: home
-    fa:   rss
-    url: /
-  - name: 归档
-    slug: archives
-    fa:   archive
-    url: /archives
-  - name: 项目
-    slug: projects
-    fa:   cube
-    url: https://xaoxuu.com/proj
+- name: 主页
+  slug: about
+  fa:   home
+  url: https://xaoxuu.com
+- name: 博客
+  slug: home
+  fa:   rss
+  url: /
+- name: 归档
+  slug: archives
+  fa:   archive
+  url: /archives
+- name: 项目
+  slug: projects
+  fa:   cube
+  url: https://xaoxuu.com/proj
 
 
 # widgets
@@ -87,4 +87,4 @@ contacts:
 
 # 推荐文章 npm install hexo-recommended-posts --save
 recommended_posts:
-    enabled: true # 根目录的_config.yml中的recommended_posts/autoDisplay: 要设置为false
+  enabled: true # 根目录的_config.yml中的recommended_posts/autoDisplay: 要设置为false
