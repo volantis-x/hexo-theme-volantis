@@ -25,6 +25,10 @@ menu:
   slug: about
   fa:   home
   url: https://xaoxuu.com
+- name: 项目
+  slug: projects
+  fa:   cube
+  url: https://xaoxuu.com/proj
 - name: 博客
   slug: home
   fa:   rss
@@ -33,10 +37,6 @@ menu:
   slug: archives
   fa:   archive
   url: /archives
-- name: 项目
-  slug: projects
-  fa:   cube
-  url: https://xaoxuu.com/proj
 
 
 # widgets
@@ -62,7 +62,7 @@ social:
 - slug: instagram
   url: https://www.instagram.com/xaoxuu
 - slug: google-plus
-  url: 
+  url:
 - slug: twitter
   url: https://twitter.com/xaoxuu
 - slug: music
