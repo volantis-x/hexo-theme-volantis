@@ -170,12 +170,17 @@
     }
     code {
         font-family: @code-font-family;
-        padding: 2px 4px 0px 4px;
+        padding: 3px 3px 0px 3px;
         margin: 0px 2px;
-        border-radius: 3px;
-        border: 1px solid darken(@qoute-background-color, 10%);
+        // margin-bottom: 5px;
+        vertical-align: center;
+        border-radius: 2px;
+        // border: 1px solid darken(@qoute-background-color, 10%);
+        border: 1px solid fade(@primary-color, 30%);
         font-size: @base-font-size * .8;
-        background: @qoute-background-color;
+        // background: @qoute-background-color;
+
+        background: fade(@primary-color, 10%);
         @media(max-width: @on-phone){
           font-size: @base-font-size * .8 * .95;
         }
@@ -252,30 +257,9 @@
         }
     }
     @media (max-width: @on-phone) {
-        h1 {
-          font-size: @font-size-h1 * .95;
-        }
-        h2 {
-          font-size: @font-size-h2 * .95;
-        }
-        h3 {
-          font-size: @font-size-h3 * .95;
-        }
-        h4 {
-          font-size: @font-size-h4 * .95;
-        }
-        h5 {
-          font-size: @font-size-h5 * .95;
-        }
-        h6 {
-          font-size: @font-size-h6 * .95;
-        }
-        p {
-          font-size: @base-font-size * .95;
-        }
         ul,
         ol {
-            font-size: @base-font-size * .95 * .95;
+            font-size: @base-font-size * .95;
         }
         figure {
             font-size: 13px;
