@@ -1,37 +1,34 @@
 <article class="post reveal<%= (post.title) ? "" : "no-title" %>">
-  <section class="meta">
+    <section class="meta">
+        <h2 class="title">
+            <a href="<%- url_for(post.path) %>">
+                <% if(post.title){ %>
+                    <%= post.title %>
+                <% } else if (post.date) { %>
+                    <%= date(post.date, 'YYYY-MM-DD dddd') %>
+                <% } %>
+            </a>
+        </h2>
+        <time>
+            <%= date(post.date, 'YYYY-MM-DD dddd') %>
+        </time>
+        <%- partial('categories',{post:post}) %>
+    </section>
 
-    <h2 class="title">
-      <a href="<%- url_for(post.path) %>">
-        <% if(post.title){ %>
-      		<%= post.title %>
-      	<% } else if (post.date) { %>
-          <%= date(post.date, 'YYYY-MM-DD dddd') %>
+    <section class="article typo">
+        <%- post.excerpt || post.content %>
+        <% if (post.excerpt) { %>
+            <div class="readmore">
+                <a href="<%- url_for(post.path) %>" class="flat-box">READ MORE</a>
+            </div>
         <% } %>
-      </a>
-    </h2>
 
-    <time>
-      <%= date(post.date, 'YYYY-MM-DD dddd') %>
-    </time>
-		<%- partial('categories',{post:post}) %>
-  </section>
-  <section class="article typo">
-	  <%- post.excerpt || post.content %>
-    <!-- <%- post.excerpt %> -->
-
-    <% if (post.excerpt) { %>
-	  <div class="readmore">
-      <a href="<%- url_for(post.path) %>" class="flat-box">READ MORE</a>
-    </div>
-    <% } %>
-
-    <% if (post.tags && post.tags.length) { %>
-	  <div class="full-width auto-padding tags">
-      <% post.tags.each(function(item){ %>
-        <a href="<%- url_for(item.path) %>"><i class="fa fa-tag"></i> <%=item.name %></a>
-      <%})%>
-	  </div>
-    <% } %>
-  </section>
+        <% if (post.tags && post.tags.length) { %>
+            <div class="full-width auto-padding tags">
+                <% post.tags.each(function(item){ %>
+                    <a href="<%- url_for(item.path) %>"><i class="fa fa-tag"></i> <%=item.name %></a>
+                <%})%>
+            </div>
+        <% } %>
+    </section>
 </article>
