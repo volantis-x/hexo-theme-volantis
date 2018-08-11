@@ -32,7 +32,7 @@
 curl -O 'https://raw.githubusercontent.com/xaoxuu/hexo.sh/master/hexo.sh' && chmod 777 hexo.sh && . hexo.sh m x
 ```
 
-如果你选择了脚本安装，现在可以直接往下看 [配置项](# 博客配置项_config.yml) 啦~
+如果你选择了脚本安装，现在可以直接往下看配置项啦~
 
 ### B. 手动安装
 
@@ -50,7 +50,7 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 
 
 
-## 博客配置项 `_config.yml`
+## 博客配置项 
 
 这一部分属于博客配置，要修改的文件是博客主目录的`_config.yml`文件。
 
@@ -81,22 +81,23 @@ livere_shortname: #你的disqus的shortname#
 ```yaml
 # 推荐文章
 recommended_posts:
-  server: https://api.truelaurel.com #后端推荐服务器地址
-  timeoutInMillis: 10000 #服务时长，超过此时长，则使用离线推荐模式
-  internalLinks: 3 #内部文章数量
-  externalLinks: 2 #外部文章数量
-  fixedNumber: false
-  autoDisplay: false #自动在文章底部显示推荐文章
+  autoDisplay: false # 自动在文章底部显示推荐文章，如果你使用Material-X主题，这里要设置为false。
+  server: https://api.truelaurel.com # 后端推荐服务器地址
+  timeoutInMillis: 10000 # 服务时长，超过此时长，则使用离线推荐模式
   excludePattern: []
   titleHtml: <h3>推荐文章</h3> #自定义标题
-
+  internalLinks: 3 # 内部文章数量
+  externalLinks: 2 # 外部文章数量
+  fixedNumber: false
 ```
 
+> 注意：autoDisplay: false 这一项不要修改，因为显示效果不佳，我已经在主题里给它设置显示位置了。
 
 
-## 主题配置项 `themes/material-x/_config.yml`
 
-这个才是主题的配置项，别搞错了哦。
+## 主题配置项
+
+`themes/material-x/_config.yml` 这个才是主题的配置项，别搞错了哦。
 
 
 

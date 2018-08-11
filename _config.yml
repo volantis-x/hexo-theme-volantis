@@ -1,3 +1,67 @@
+# 导航栏
+
+menu:
+- name: 主页
+  slug: about
+  fa:   home
+  url: https://xaoxuu.com
+- name: 项目
+  slug: projects
+  fa:   cube
+  url: https://xaoxuu.com/proj
+- name: 博客
+  slug: home
+  fa:   rss
+  url: /
+- name: 归档
+  slug: archives
+  fa:   archive
+  url: /archives
+
+# 右边的小窗口
+widgets:
+  - about # 目前只显示个人头像，如果注释掉这一行就不显示
+  - categories # 显示分类
+  - tagcloud # 显示tags
+  # - socials # 显示自己的社交信息
+  # - music # 显示自己的网易云歌单
+
+# 右边的联系信息小窗口
+contacts:
+- name: Email
+  badget: me@xaoxuu.com
+  url: mailto:me@xaoxuu.com
+- name: GitHub
+  badget: "@xaoxuu"
+  url: https://github.com/xaoxuu
+# - name: Instagram
+#   badget: "@xaoxuu"
+#   url: https://www.instagram.com/xaoxuu
+# - name: Twitter
+#   badget: "@xaoxuu"
+#   url: https://www.twitter.com/xaoxuu
+
+
+# 页面底部的社交信息
+social:
+- slug: envelope
+  url: mailto:me@xaoxuu.com
+- slug: github
+  url: https://github.com/xaoxuu
+- slug: instagram
+  url: https://www.instagram.com/xaoxuu
+- slug: google-plus
+  url:
+- slug: twitter
+  url: https://twitter.com/xaoxuu
+- slug: music
+  url: https://music.163.com/#/user/home?id=63035382
+
+
+# 推荐文章 npm install hexo-recommended-posts --save
+recommended_posts:
+  enabled: true 
+
 # Search
 search:
   enable: true
@@ -19,72 +83,11 @@ search:
 # friends link
 links:
 
-# navigation menu
-menu:
-- name: 主页
-  slug: about
-  fa:   home
-  url: https://xaoxuu.com
-- name: 项目
-  slug: projects
-  fa:   cube
-  url: https://xaoxuu.com/proj
-- name: 博客
-  slug: home
-  fa:   rss
-  url: /
-- name: 归档
-  slug: archives
-  fa:   archive
-  url: /archives
 
 
-# widgets
-widgets:
-  - about
-  - categories
-  - tagcloud
-  # - socials
-  # - music
 
 # Less
 less:
   compress: true
 
 
-
-# use url, not username
-social:
-- slug: envelope
-  url: mailto:me@xaoxuu.com
-- slug: github
-  url: https://github.com/xaoxuu
-- slug: instagram
-  url: https://www.instagram.com/xaoxuu
-- slug: google-plus
-  url:
-- slug: twitter
-  url: https://twitter.com/xaoxuu
-- slug: music
-  url: https://music.163.com/#/user/home?id=63035382
-
-
-
-
-contacts:
-- name: Email
-  badget: me@xaoxuu.com
-  url: mailto:me@xaoxuu.com
-- name: GitHub
-  badget: "@xaoxuu"
-  url: https://github.com/xaoxuu
-# - name: Instagram
-#   badget: "@xaoxuu"
-#   url: https://www.instagram.com/xaoxuu
-# - name: Twitter
-#   badget: "@xaoxuu"
-#   url: https://www.twitter.com/xaoxuu
-
-# 推荐文章 npm install hexo-recommended-posts --save
-recommended_posts:
-  enabled: true # 根目录的_config.yml中的recommended_posts/autoDisplay: 要设置为false
