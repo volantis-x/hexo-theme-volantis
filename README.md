@@ -29,7 +29,7 @@
 首先打开终端，`cd`到你博客的路径，如果你想省事，复制下面这行脚本到终端中执行，全程自动化操作。
 
 ```bash
-curl -O 'https://raw.githubusercontent.com/xaoxuu/hexo.sh/master/hexo.sh' && chmod 777 hexo.sh && . hexo.sh m x
+curl -O 'https://raw.githubusercontent.com/xaoxuu/hexo.sh/master/hexo.sh' -# && chmod 777 hexo.sh && . hexo.sh m x
 ```
 
 如果你选择了脚本安装，现在可以直接往下看配置项啦~
