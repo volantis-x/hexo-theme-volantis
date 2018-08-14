@@ -1,134 +1,112 @@
-<article id="<%= post.layout %>-<%= post.slug %>"
-  class="post white-box article-type-<%= post.layout %>"
-  itemscope itemprop="blogPost">
-	<section class='meta'>
-	<h2 class="title">
-  	<a href="<%- url_for(post.path) %>">
-      <% if(post.title){ %>
-    		<%= post.title %>
-    	<% } else if (post.date) { %>
-        <%= date(post.date, 'YYYY-MM-DD dddd') %>
-      <% } %>
-    </a>
-  </h2>
-	<time>
-	  <%= date(post.date, 'YYYY-MM-DD dddd') %>
-      ，阅读量 <span id="busuanzi_value_page_pv"><i class="fa spinner fa-spin"></i></span> 次
-	</time>
-	<%- partial('categories',{post:post}) %>
-	</section>
-	<% if(post.toc!==false){ %>
-		<section class="toc-wrapper"><%- toc(post.content, {list_number: false}) %></section>
-	<% } %>
-
-	<section class="article typo">
-
-  	<div class="article-entry" itemprop="articleBody">
-    	<%- post.content %>
-  	</div>
-
-	  <% if (post.tags && post.tags.length) { %>
-	  <div class="article-tags tags">
-      <% post.tags.each(function(item){ %>
-        <a href="<%- url_for(item.path) %>"><i class="fa fa-tag"></i> <%=item.name %></a>
-      <%})%>
-	  </div>
+<article id="<%= post.layout %>-<%= post.slug %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h2 class="title">
+            <a href="<%- url_for(post.path) %>">
+                <% if(post.title){ %>
+                    <%= post.title %>
+                <% } else if (post.date) { %>
+                    <%= date(post.date, 'YYYY-MM-DD dddd') %>
+                <% } %>
+            </a>
+        </h2>
+        <time>
+            <%= date(post.date, 'YYYY-MM-DD dddd') %>&nbsp;&nbsp;
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        <%- partial('categories',{post:post}) %>
+    </section>
+    <% if(post.toc!==false){ %>
+        <section class="toc-wrapper"><%- toc(post.content, {list_number: false}) %></section>
     <% } %>
 
+    <section class="article typo">
 
-	<% if(post.prev || post.next){ %>
-		<div class="art-item-footer">
-				<% if(post.prev){ %>
-					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="<%=url_for(post.prev.path)%>" rel="prev"  title="<%=post.prev.title%>">
-						<%= post.prev.title %>
-					</a></span>
-				<% } %>
-				<% if(post.next){ %>
-					<span class="art-item-right">next：<a href="<%=url_for(post.next.path) %>" rel="next"  title="<%=post.next.title %>">
-						<%=post.next.title  %>
-					</a><i class="icon icon-chevron-thin-right"></i></span>
-				<%} %>
-		</div>
-	<%} %>
+        <div class="article-entry" itemprop="articleBody">
+            <%- post.content %>
+        </div>
 
-	</section>
+        <% if (post.tags && post.tags.length) { %>
+            <div class="article-tags tags">
+                <% post.tags.each(function(item){ %>
+                    <a href="<%- url_for(item.path) %>"><i class="fa fa-tag"></i>&nbsp;&nbsp;<%=item.name %></a>
+                <%})%>
+            </div>
+        <% } %>
 
+        <% if(post.prev || post.next){ %>
+            <div class="art-item-footer">
+                <% if(post.prev){ %>
+                    <span class="art-item-left">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
+                            <%= post.prev.title %>
+                        </a>
+                    </span>
+                <% } %>
+                <% if(post.next){ %>
+                    <span class="art-item-right">
+                        <a href="<%=url_for(post.next.path) %>" rel="next" title="<%=post.next.title %>">
+                            <%=post.next.title  %>
+                        </a>&nbsp;
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </span>
+                <%} %>
+            </div>
+        <%} %>
+
+    </section>
 
 </article>
 
 <br>
 
-<article class="post white-box article-type-<%= post.layout %>>">
-    <section class="article typo">
+<!-- 显示推荐文章和评论 -->
+<% if (post && ((theme.recommended_posts.enabled && post.recommended_posts != false) || post.comments )) { %>
+    <article class="post white-box article-type-<%= post.layout %>>">
+        <section class="article typo">
 
-        <% if (post.comments) { %>
-            <% if (config.livere_shortname){ %>
-                <section id="comments">
-                    <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTU4Ny82MTU1">
-                        <script type="text/javascript">
-                            (function(d, s) {
-                                var j, e = d.getElementsByTagName(s)[0];
-                                if (typeof LivereTower === 'function') { return; }
-                                j = d.createElement(s);
-                                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                                j.async = true;
-                                e.parentNode.insertBefore(j, e);
-                            })(document, 'script');
-                        </script>
-                        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-                    </div>
-                </section>
+            <% if (post && theme.recommended_posts.enabled && post.recommended_posts != false) { %>
+                <%- partial('post/recommended_posts', {page: post, site: site}) %>
             <% } %>
 
-            <% if (config.disqus_shortname) { %>
-                <section id="comments">
-                    <div id="disqus_thread">
-                        ⚠️  无法加载评论系统，请确保您的网络能够正常访问 <a href="https://disqus.com">Disqus</a> 。
-                    </div>
-                </section>
-            <% } %>
-            <% if (config.valine){ %>
-                <% if (config.valine.enable && config.valine.appId && config.valine.appKey){ %>
+            <% if (post.comments) { %>
+                <% if (config.livere_shortname || config.valine){ %>
+                    <h4>评论</h4>
+                <% } %>
+                <% if (config.livere_shortname){ %>
                     <section id="comments">
-                    <div id="valine_container" class="valine_thread"></div>
-                    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-                    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-                    <script>
-                        var GUEST_INFO = ['nick','mail','link'];
-                        var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){
-                            return GUEST_INFO.indexOf(item) > -1
-                        });
-                        var notify = '<%= config.valine.notify %>' == true;
-                        var verify = '<%= config.valine.verify %>' == true;
-                        var valine = new Valine();
-                        valine.init({
-                            el: '#valine_container',
-                            notify: notify,
-                            verify: verify,
-                            guest_info: guest_info,
-                            appId: "<%= config.valine.appId %>",
-                            appKey: "<%= config.valine.appKey %>",
-                            placeholder: "<%= config.valine.placeholder %>",
-                            pageSize:'<%= config.valine.pageSize %>',
-                            avatar:'<%= config.valine.avatar %>',
-                            lang:'<%= config.valine.lang %>'
-                        })
-                    </script>
+                        <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTU4Ny82MTU1">
+                            <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+                        </div>
                     </section>
                 <% } %>
-            <% } %>
-        <% } %>
-        <% if (post && theme.recommended_posts.enabled) { %>
-            <%- partial('post/recommended_posts', {page: post, site: site}) %>
-        <% } %>
 
-    </section>
-</article>
+                <% if (config.disqus_shortname) { %>
+                    <section id="comments">
+                        <div id="disqus_thread">
+                            ⚠️  无法加载评论系统，请确保您的网络能够正常访问 <a href="https://disqus.com">Disqus</a> 。
+                        </div>
+                    </section>
+                <% } %>
+
+                <% if (config.valine){ %>
+                    <% if (config.valine.enable && config.valine.appId && config.valine.appKey){ %>
+                        <section id="comments">
+                            <div id="valine_container" class="valine_thread">
+                                </i><i class="fa fa-spinner fa-spin fa-fw"></i>
+                            </div>
+                        </section>
+                    <% } %>
+                <% } %>
+            <% } %>
+
+        </section>
+    </article>
+<% } %>
 
 <script>
-	window.subData = {
-		title: '<%= post.title %>',
-		tools: true
-	}
+    window.subData = {
+        title: '<%= post.title %>',
+        tools: true
+    }
 </script>
-<!-- recommended posts -->

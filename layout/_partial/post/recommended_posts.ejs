@@ -1,7 +1,7 @@
 <% var post_list = recommended_posts(page, site) %>
 <% if(post_list.length > 0) { %>
     <div class="recommended_posts">
-        <h3>推荐文章</h3>
+        <h4>你可能感兴趣的文章</h4> 
         <ul>
             <% post_list.forEach(function(link) { %>
                 <li><a href="<%= link.permalink %>"><%= link.title %></a></li>

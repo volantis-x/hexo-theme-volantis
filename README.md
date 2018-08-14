@@ -166,7 +166,30 @@ menu:
 @primary-color: @xiaowenwen-green;
 // 强调色
 @accent-color: @material-orange;
+// ...
 ```
+
+
+
+## 文章配置项
+
+某一篇文章不想开启评论
+
+```
+---
+comments: false
+---
+```
+
+某一篇文章不想在底部显示推荐文章
+
+```
+---
+recommended_posts: false
+---
+```
+
+
 
 
 
