@@ -1,8 +1,8 @@
-# Material-X
+# Material X
 
 > 一个简约卡片式的Hexo博客主题
 
-Material-X 是我基于 [Material Flow](https://github.com/stkevintan/hexo-theme-material-flow) 改编的一个Hexo主题，相对作者原主题主要有一下方面改动：
+**Material X** 是我基于 [Material Flow](https://github.com/stkevintan/hexo-theme-material-flow) 改编的一个Hexo主题，相对作者原主题主要有一下方面改动：
 
 - 调整卡片阴影细节以及增加卡片的动画效果。
 - 博文列表将作者的多列布局改为单列布局。
