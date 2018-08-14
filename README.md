@@ -1,20 +1,19 @@
 # Material-X
 
-> **⚠️声明：此主题是基于 [stkevintan/hexo-theme-material-flow](https://github.com/stkevintan/hexo-theme-material-flow) 改编**。
->
-> 由于原作者已经将博客迁移至Hugo，作者的主题只进行bug修复。
+> 一个简约卡片式的Hexo博客主题
 
-本主题将持续更新和维护，你可以在这里查看主题的效果：👉 [https://blog.xaoxuu.com](https://blog.xaoxuu.com) 👈
-
-相对作者原主题主要有一下方面改动：
+Material-X 是我基于 [Material Flow](https://github.com/stkevintan/hexo-theme-material-flow) 改编的一个Hexo主题，相对作者原主题主要有一下方面改动：
 
 - 调整卡片阴影细节以及增加卡片的动画效果。
 - 博文列表将作者的多列布局改为单列布局。
-- 使用了 [fontawesome](http://fontawesome.io) 图标。
-- 优化了颜色搭配，方便更换主题色。
+- 使用 [fontawesome](http://fontawesome.io) 图标。
+- 优化了颜色搭配，方便在defines中更换主题色。
 - 一些UI细节，如调整搜索框长度使之与右边卡片等宽、优化了在手机端的显示效果。
-- 增加对来必力评论系统和Valine评论系统的支持。
-- 增加了推荐文章列表，增加流量。
+- 可以显示网易云音乐歌单。
+- 支持3种评论系统：Disqus、来必力和Valine。
+- 增加了推荐文章列表，增加博客流量。
+
+本主题将持续更新和维护，你可以在这里查看主题的实际效果：👉 [https://blog.xaoxuu.com](https://blog.xaoxuu.com) 👈
 
 
 
@@ -58,14 +57,14 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 
 ### 头像
 
-如果你没有设置头像，将会显示默认头像，如果你不想显示任何头像，请自己修改主题配置项。
+如果你没有设置头像，将会显示默认头像，如果你不想显示任何头像，请修改主题的配置项。
 
 ```yaml
 avatar: "https://xaoxuu.com/assets/img/avatar.jpg"
 ```
 ### 评论
 
-提供3种可选，建议一次只使用一种评论系统。如果你使用其他的评论系统，请自己修改主题。
+提供3种可选，如果你使用其他的评论系统，请自己修改主题。
 
 #### Disqus
 
@@ -105,7 +104,7 @@ valine:
 
 ### 推荐文章
 
-如果你不想显示推荐文章，请卸载 `hexo-recommended-posts` 这个依赖包。
+如果你不想显示推荐文章，可以卸载 `hexo-recommended-posts` 这个依赖包。
 
 ```yaml
 # 推荐文章
@@ -120,7 +119,7 @@ recommended_posts:
   fixedNumber: false
 ```
 
-> 注意：autoDisplay: false 这一项不要修改，因为显示效果不佳，我已经在主题里给它设置显示位置了。
+> 注意：autoDisplay: false 这一项不要修改，因为自动显示效果不佳，我已经在主题里给它设置显示位置了。
 
 
 
@@ -160,7 +159,7 @@ menu:
 
 ### 自定样式
 
-打开 `themes/material-x/source/less/_definess.less` 这个文件，修改下面这些内容为你需要的即可：
+打开 `themes/material-x/source/less/_defines.less` 这个文件，修改下面这些内容为你需要的即可：
 
 ```yaml
 // 主题色
