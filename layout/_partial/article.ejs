@@ -56,32 +56,65 @@
 </article>
 
 <br>
+
 <article class="post white-box article-type-<%= post.layout %>>">
     <section class="article typo">
-        <% if (post.comments && config.livere_shortname){ %>
-              <section id="comments">
-            <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTU4Ny82MTU1">
-              <script type="text/javascript">
-               (function(d, s) {
-                   var j, e = d.getElementsByTagName(s)[0];
+        <% if (post.comments) { %>
+            <% if (config.livere_shortname){ %>
+                <section id="comments">
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTU4Ny82MTU1">
+                        <script type="text/javascript">
+                            (function(d, s) {
+                                var j, e = d.getElementsByTagName(s)[0];
+                                if (typeof LivereTower === 'function') { return; }
+                                j = d.createElement(s);
+                                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                                j.async = true;
+                                e.parentNode.insertBefore(j, e);
+                            })(document, 'script');
+                        </script>
+                        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+                </section>
+            <% } %>
 
-                   if (typeof LivereTower === 'function') { return; }
+            <% if (config.disqus_shortname) { %>
+                <section id="comments">
+                    <div id="disqus_thread">
+                        ⚠️  无法加载评论系统，请确保您的网络能够正常访问 <a href="https://disqus.com">Disqus</a> 。
+                    </div>
+                </section>
+            <% } %>
 
-                   j = d.createElement(s);
-                   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                   j.async = true;
-
-                   e.parentNode.insertBefore(j, e);
-               })(document, 'script');
-              </script>
-            <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-            </div>
-              </section>
-          <% } %>
-        <% if (post.comments && config.disqus_shortname){ %>
-          <section id="comments">
-            <div id="disqus_thread">⚠️无法加载评论系统，请确保您的网络能够正常访问 <a href="https://disqus.com">Disqus</a> 。</div>
-          </section>
+            <% if (config.valine.enable && config.valine.appId && config.valine.appKey){ %>
+                <section id="comments">
+                <div id="valine_container" class="valine_thread"></div>
+                <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+                <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+                <script>
+                    var GUEST_INFO = ['nick','mail','link'];
+                    var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){
+                        return GUEST_INFO.indexOf(item) > -1
+                    });
+                    var notify = '<%= config.valine.notify %>' == true;
+                    var verify = '<%= config.valine.verify %>' == true;
+                    var valine = new Valine();
+                    valine.init({
+                        el: '#valine_container',
+                        notify: notify,
+                        verify: verify,
+                        guest_info: guest_info,
+                        appId: "<%= config.valine.appId %>",
+                        appKey: "<%= config.valine.appKey %>",
+                        placeholder: "<%= config.valine.placeholder %>",
+                        pageSize:'<%= config.valine.pageSize %>',
+                        avatar:'<%= config.valine.avatar %>',
+                        lang:'<%= config.valine.lang %>'
+                    })
+                </script>
+                </section>
+            <% } %>
+            
         <% } %>
         <% if (post && theme.recommended_posts.enabled) { %>
             <%- partial('post/recommended_posts', {page: post, site: site}) %>

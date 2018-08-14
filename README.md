@@ -65,13 +65,42 @@ avatar: "https://xaoxuu.com/assets/img/avatar.jpg"
 ```
 ### 评论
 
-如果你使用其他的评论系统，请自己修改主题。
+提供3种可选，建议一次只使用一种评论系统。如果你使用其他的评论系统，请自己修改主题。
+
+#### Disqus
+
+官网： [http://disqus.com/](http://disqus.com/)
 
 ```yaml
 # disqus评论
 disqus_shortname: #你的disqus的shortname#
+```
+
+#### Livere 来必力
+
+官网： [http://www.laibili.com.cn/](http://www.laibili.com.cn/)
+
+```yaml
 # 来必力评论
 livere_shortname: #你的disqus的shortname#
+```
+#### Valine
+
+官网： [https://valine.js.org](https://valine.js.org) 
+
+```yaml
+# valine
+valine:
+  enable: true # 如果你想用Valine评论系统，请设置enable为true
+  appId:  
+  appKey:  
+  guest_info: nick,mail #valine comment header info
+  placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
+  avatar: mp # gravatar style https://valine.js.org/avatar
+  pageSize: 10 # comment list page size
+  verify: false # valine verify code (true/false)
+  notify: false # valine mail notify (true/false)
+  lang: zh-cn
 ```
 
 ### 推荐文章
