@@ -2,7 +2,7 @@
 
 > **⚠️声明：此主题是基于 [stkevintan/hexo-theme-material-flow](https://github.com/stkevintan/hexo-theme-material-flow) 改编**。
 >
-> 由于原作者已经将博客迁移至Hugo，作者的主题只进行bug修复，详见作者的 [README](https://github.com/stkevintan/hexo-theme-material-flow) 。
+> 由于原作者已经将博客迁移至Hugo，作者的主题只进行bug修复。
 
 本主题将持续更新和维护，你可以在这里查看主题的效果：👉 [https://blog.xaoxuu.com](https://blog.xaoxuu.com) 👈
 
@@ -13,7 +13,7 @@
 - 使用了 [fontawesome](http://fontawesome.io) 图标。
 - 优化了颜色搭配，方便更换主题色。
 - 一些UI细节，如调整搜索框长度使之与右边卡片等宽、优化了在手机端的显示效果。
-- 增加对来必力评论系统的支持。
+- 增加对来必力评论系统和Valine评论系统的支持。
 - 增加了推荐文章列表，增加流量。
 
 
@@ -50,7 +50,7 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 
 
 
-## 博客配置项 
+## 博客配置项
 
 这一部分属于博客配置，要修改的文件是博客主目录的`_config.yml`文件。
 
@@ -58,7 +58,7 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 
 ### 头像
 
-如果你没有设置头像，将会显示我的博客的头像作为默认头像，如果你不想显示任何头像，请自己修改主题。
+如果你没有设置头像，将会显示默认头像，如果你不想显示任何头像，请自己修改主题配置项。
 
 ```yaml
 avatar: "https://xaoxuu.com/assets/img/avatar.jpg"
@@ -86,7 +86,7 @@ livere_shortname: #你的disqus的shortname#
 ```
 #### Valine
 
-官网： [https://valine.js.org](https://valine.js.org) 
+官网： [https://valine.js.org](https://valine.js.org)
 
 ```yaml
 # valine
