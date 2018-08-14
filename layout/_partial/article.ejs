@@ -13,6 +13,7 @@
   </h2>
 	<time>
 	  <%= date(post.date, 'YYYY-MM-DD dddd') %>
+      ，阅读量 <span id="busuanzi_value_page_pv"><i class="fa spinner fa-spin"></i></span> 次
 	</time>
 	<%- partial('categories',{post:post}) %>
 	</section>
@@ -59,6 +60,7 @@
 
 <article class="post white-box article-type-<%= post.layout %>>">
     <section class="article typo">
+
         <% if (post.comments) { %>
             <% if (config.livere_shortname){ %>
                 <section id="comments">
@@ -119,6 +121,7 @@
         <% if (post && theme.recommended_posts.enabled) { %>
             <%- partial('post/recommended_posts', {page: post, site: site}) %>
         <% } %>
+
     </section>
 </article>
 
