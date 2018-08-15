@@ -61,11 +61,11 @@
 <br>
 
 <!-- 显示推荐文章和评论 -->
-<% if (post && ((theme.recommended_posts.enabled && post.recommended_posts != false) || post.comments )) { %>
+<% if (post && ((config.recommended_posts.autoDisplay == false && post.recommended_posts != false) || post.comments )) { %>
     <article class="post white-box article-type-<%= post.layout %>>">
         <section class="article typo">
 
-            <% if (post && theme.recommended_posts.enabled && post.recommended_posts != false) { %>
+            <% if (post && config.recommended_posts.autoDisplay == false && post.recommended_posts != false) { %>
                 <%- partial('post/recommended_posts', {page: post, site: site}) %>
             <% } %>
 

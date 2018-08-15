@@ -1,55 +1,66 @@
 # 导航栏
+materialx:
+  # 导航栏
+  nav_menu:
+    - name: 主页
+      slug: about
+      fa:   home
+      url: /
+    - name: 项目
+      slug: projects
+      fa:   cube
+      url: https://xaoxuu.com/proj
+    - name: 博客
+      slug: home
+      fa:   rss
+      url: /
+    - name: 归档
+      slug: archives
+      fa:   archive
+      url: /archives
+  # 右边的小窗口
+  widgets:
+    - avatar # 显示个人头像，如果注释掉这一行就不显示
+    - categories # 显示分类
+    - tagcloud # 显示tags
+    - contacts # 显示自己的联系信息
+    - music # 显示自己的网易云歌单
+    - links # 显示友链
+  # 网易云音乐歌单id
+  widgets_musicid:
+  # 侧边栏的友链
+  widgets_links:
+  - name: xaoxuu
+    url: https://xaoxuu.com
+  # 右边的联系信息小窗口
+  widgets_contacts:
+  - name: GitHub
+    desc: xaoxuu
+    url: https://github.com/xaoxuu
+  - name: 10086
+    desc: 测试打电话
+    url: tel:10086
+  # 页脚
+  footer_social:
+  - slug: envelope
+    url: mailto:me@xaoxuu.com
+  - slug: github
+    url: https://github.com/xaoxuu
+  - slug: instagram
+    url:
+  - slug: google-plus
+    url:
+  - slug: twitter
+    url:
+  - slug: music
+    url:
 
-menu:
-- name: 主页
-  slug: about
-  fa:   home
-  url: https://xaoxuu.com
-- name: 项目
-  slug: projects
-  fa:   cube
-  url: https://xaoxuu.com/proj
-- name: 博客
-  slug: home
-  fa:   rss
-  url: /
-- name: 归档
-  slug: archives
-  fa:   archive
-  url: /archives
-
-# 右边的小窗口
-widgets:
-  - avatar # 显示个人头像，如果注释掉这一行就不显示
-  - categories # 显示分类
-  - tagcloud # 显示tags
-  - contacts # 显示自己的联系信息
-  - music # 显示自己的网易云歌单
-  - links # 显示友链
 
 
-# 页面底部的社交信息
-social:
-- slug: envelope
-  url: mailto:me@xaoxuu.com
-- slug: github
-  url: https://github.com/xaoxuu
-- slug: instagram
-  url: https://www.instagram.com/xaoxuu
-- slug: google-plus
-  url:
-- slug: twitter
-  url: https://twitter.com/xaoxuu
-- slug: music
-  url: https://music.163.com/#/user/home?id=63035382
 
-
-# 推荐文章 npm install hexo-recommended-posts --save
-recommended_posts:
-  enabled: true
 
 # Search
-search:
+nav_search:
   enable: true
   service: hexo
   # google
@@ -65,8 +76,6 @@ search:
   azure_query_key:
   # baidu
   baidu_api_id:
-
-
 
 # Less
 less:

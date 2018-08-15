@@ -1,17 +1,15 @@
-<% if (config.materialx.links){ %>
-    <section class='m_widget links'>
-        <div class='header'><i class="fa fa-link" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
-        <div class='content'>
-            <ul class="entry" id="links">
-                <% (config.materialx.links||[]).forEach(function(item){ %>
-                    <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="<%= url_for(item.url) %>">
-                        <div class='name'>
-                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                            &nbsp;&nbsp;<%= item.name %>
-                        </div>
-                    </a></li>
-                <% }); %>
-            </ul>
-        </div>
-    </section>
-<% } %>
+<section class='m_widget links'>
+    <div class='header'><i class="fa fa-link" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+    <div class='content'>
+        <ul class="entry" id="links">
+            <% ((config.materialx && (config.materialx.widgets_links||[])) || (theme.materialx.widgets_links||[])).forEach(function(item){ %>
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="<%= url_for(item.url) %>">
+                    <div class='name'>
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        &nbsp;&nbsp;<%= item.name %>
+                    </div>
+                </a></li>
+            <% }) %>
+        </ul>
+    </div>
+</section>

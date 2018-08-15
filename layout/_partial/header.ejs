@@ -5,20 +5,22 @@
 				<!-- <i class="fa fa-home"></i> -->
 				<%- config.title %>
 			</a>
-			<div class='menu'>
-				<ul class='h-list'>
-					<% (theme.menu||[]).forEach(function(value){ %>
-						<li>
-							<a class='flat-box nav-<%=value.slug%>' href='<%=url_for(value.url)%>'>
-								<i class="fa fa-<%=value.fa%>"></i>
-								<%=value.name%>
-							</a>
-						</li>
-					<%})%>
-				</ul>
-				<div class='underline'></div>
-			</div>
-			<% if (theme.search.enable === true) { %>
+
+				<div class='menu'>
+					<ul class='h-list'>
+						<% (config.materialx && config.materialx.nav_menu && (config.materialx.nav_menu||[]) || (theme.materialx.nav_menu||[])).forEach(function(value){ %>
+							<li>
+								<a class='flat-box nav-<%=value.slug%>' href='<%=url_for(value.url)%>'>
+									<i class="fa fa-<%=value.fa%>"></i>
+									<%=value.name%>
+								</a>
+							</li>
+						<%})%>
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			<% if (theme.nav_search.enable === true) { %>
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
 						<input type="text" class="input u-search-input" placeholder="Search" />
@@ -27,7 +29,7 @@
 				</div>
 			<% } %>
 			<ul class='switcher h-list'>
-				<% if (theme.search.enable === true) { %>
+				<% if (theme.nav_search.enable === true) { %>
 					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search flat-box"></i></span></a></li>
 				<% } %>
 				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon flat-box"></i></a></li>
@@ -47,14 +49,14 @@
 		</div>
 	</div>
 </header>
-<aside class="menu-phone">
-	<nav>
-		<% (theme.menu||[]).forEach(function(value, key) {
-					if (value.url && value.slug && value.name) { %>
-			<a href="<%= url_for(value.url) %>" class="nav-<%= value.slug %> nav">
-				<i class="fa fa-<%=value.fa%>"></i>
-				<%= value.name %>
-			</a>
-		<% } }); %>
-	</nav>
-</aside>
+	<aside class="menu-phone">
+		<nav>
+			<% (config.materialx && config.materialx.nav_menu && (config.materialx.nav_menu||[]) || (theme.materialx.nav_menu||[])).forEach(function(value, key) {
+						if (value.url && value.slug && value.name) { %>
+				<a href="<%= url_for(value.url) %>" class="nav-<%= value.slug %> nav">
+					<i class="fa fa-<%=value.fa%>"></i>
+					<%= value.name %>
+				</a>
+			<% } }); %>
+		</nav>
+	</aside>

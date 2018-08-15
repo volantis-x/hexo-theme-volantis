@@ -49,19 +49,154 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 
 
 
-## 博客配置项
+## 主题配置
 
-这一部分属于博客配置，要修改的文件是博客主目录的`_config.yml`文件。
+把 `themes/material-x/_config.yml` 中的 `materialx:` 相关的内容复制到博客主目录的 `_config.yml` 文件中，根据自己的需要填写和修改。
+
+这样做的好处是：更新主题的时候你修改过的配置就不会被覆盖了。
+
+以下这些配置如果没有特殊说明，都指的是博客主目录的 `_config.yml` 文件。
 
 
 
-### 头像
+### 导航栏
 
-如果你没有设置头像，将会显示默认头像，如果你不想显示任何头像，请修改主题的配置项。
+你可以 `materialx:` 下面找到类似这一段，把它改为你需要的：
 
 ```yaml
-avatar: "https://xaoxuu.com/assets/img/avatar.jpg"
+materialx:
+  # 导航栏
+  nav_menu:
+    - name: 主页
+      slug: about
+      fa:   home
+      url: /
+    - name: 项目
+      slug: projects
+      fa:   cube
+      url: https://xaoxuu.com/proj
+    - name: 博客
+      slug: home
+      fa:   rss
+      url: /
+    - name: 归档
+      slug: archives
+      fa:   archive
+      url: /archives
 ```
+
+其中 `fa` 是 `font-awesome` 图标名，你要显示什么图标，去 [font-awesome](https://fontawesome.com/icons?d=gallery) 找就可以了。
+
+
+
+### 侧边栏
+
+右边的小窗口，可以根据需要显示。
+
+#### 头像
+
+如果你没有设置头像，将会显示默认头像。
+
+```yaml
+avatar: "https://xaoxuu.com/assets/img/avatar.jpg" # 如果没有设置头像 url 将会显示默认头像。
+
+# 主题配置
+materialx:
+  widgets:
+  - avatar # 把这一项注释掉就不显示头像了
+```
+
+
+#### 分类
+
+```yaml
+# 主题配置
+materialx:
+  widgets:
+  - categories # 把这一项注释掉就不显示了
+```
+
+
+
+#### 标签
+
+```yaml
+# 主题配置
+materialx:
+  widgets:
+  - tagcloud # 把这一项注释掉就不显示了
+```
+
+
+
+#### 网易云音乐歌单
+
+```yaml
+# 主题配置
+materialx:
+  widgets:
+  - music # 把这一项注释掉就不显示了
+  # 网易云音乐歌单id
+  widgets_musicid: 746319661
+```
+
+
+
+#### 联系信息
+
+```yaml
+# 主题配置
+materialx:
+  widgets:
+  - contacts # 把这一项注释掉就不显示了
+  # 右边的联系信息小窗口
+  widgets_contacts:
+  - name: GitHub
+    desc: xaoxuu
+    url: https://github.com/xaoxuu
+  - name: 10086
+    desc: 测试打电话
+    url: tel:10086
+```
+
+
+
+#### 友链
+
+```yaml
+# 主题配置
+materialx:
+  widgets:
+  - links # 把这一项注释掉就不显示了
+  # 侧边栏的友链
+  widgets_links:
+  - name: xaoxuu
+    url: https://xaoxuu.com
+```
+
+
+
+### 推荐文章
+
+如果你不想显示推荐文章，可以卸载 `hexo-recommended-posts` 这个依赖包。
+
+```yaml
+# 推荐文章
+recommended_posts:
+  autoDisplay: false # 自动在文章底部显示推荐文章，如果你使用Material-X主题，这里要设置为false。
+  server: https://api.truelaurel.com # 后端推荐服务器地址
+  timeoutInMillis: 10000 # 服务时长，超过此时长，则使用离线推荐模式
+  excludePattern: []
+  titleHtml: <h3>推荐文章</h3> #自定义标题
+  internalLinks: 3 # 内部文章数量
+  externalLinks: 2 # 外部文章数量
+  fixedNumber: false
+```
+
+> 注意：autoDisplay: false 这一项不要修改，因为自动显示效果不佳，我已经在主题里给它设置显示位置了。
+
+
+
 ### 评论
 
 提供3种可选，如果你使用其他的评论系统，请自己修改主题。
@@ -91,8 +226,8 @@ livere_shortname: #你的disqus的shortname#
 # valine
 valine:
   enable: true # 如果你想用Valine评论系统，请设置enable为true
-  appId:  
-  appKey:  
+  appId:  # 必填
+  appKey:  # 必填
   guest_info: nick,mail #valine comment header info
   placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
   avatar: mp # gravatar style https://valine.js.org/avatar
@@ -102,76 +237,34 @@ valine:
   lang: zh-cn
 ```
 
-### 推荐文章
-
-如果你不想显示推荐文章，可以卸载 `hexo-recommended-posts` 这个依赖包。
-
-```yaml
-# 推荐文章
-recommended_posts:
-  autoDisplay: false # 自动在文章底部显示推荐文章，如果你使用Material-X主题，这里要设置为false。
-  server: https://api.truelaurel.com # 后端推荐服务器地址
-  timeoutInMillis: 10000 # 服务时长，超过此时长，则使用离线推荐模式
-  excludePattern: []
-  titleHtml: <h3>推荐文章</h3> #自定义标题
-  internalLinks: 3 # 内部文章数量
-  externalLinks: 2 # 外部文章数量
-  fixedNumber: false
-```
-
-> 注意：autoDisplay: false 这一项不要修改，因为自动显示效果不佳，我已经在主题里给它设置显示位置了。
 
 
-
-## 主题配置项
-
-`themes/material-x/_config.yml` 这个才是主题的配置项，别搞错了哦。
-
-
-
-### 导航栏
-
-你可以找到类似这一段，把它改为你需要的：
+### 页脚
 
 ```yaml
-menu:
-- name: 主页
-  slug: about
-  fa:   home
-  url: https://xaoxuu.com
-- name: 项目
-  slug: projects
-  fa:   cube
-  url: https://xaoxuu.com/proj
-- name: 博客
-  slug: home
-  fa:   rss
-  url: /
-- name: 归档
-  slug: archives
-  fa:   archive
-  url: /archives
-```
-
-其中 `fa` 是 `font-awesome` 图标名，你要显示什么图标，去 [font-awesome](https://fontawesome.com/icons?d=gallery) 找就可以了。
-
-
-
-### 自定样式
-
-打开 `themes/material-x/source/less/_defines.less` 这个文件，修改下面这些内容为你需要的即可：
-
-```yaml
-// 主题色
-@primary-color: @xiaowenwen-green;
-// 强调色
-@accent-color: @material-orange;
-// ...
+# 主题配置
+materialx:
+  # 页脚
+  footer_social:
+  - slug: envelope
+    url: mailto:me@xaoxuu.com
+  - slug: github
+    url: https://github.com/xaoxuu
+  - slug: instagram
+    url:
+  - slug: google-plus
+    url:
+  - slug: twitter
+    url:
+  - slug: music
+    url:
 ```
 
 
 
-## 文章配置项
+
+
+## 单篇文章的配置
 
 某一篇文章不想开启评论
 
@@ -190,6 +283,18 @@ recommended_posts: false
 ```
 
 
+
+## 主题色和其他样式
+
+打开 `themes/material-x/source/less/_defines.less` 这个文件，修改下面这些内容为你需要的即可：
+
+```yaml
+// 主题色
+@primary-color: @xiaowenwen-green;
+// 强调色
+@accent-color: @material-orange;
+// ...
+```
 
 
 

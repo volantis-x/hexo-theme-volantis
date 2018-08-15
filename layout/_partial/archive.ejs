@@ -13,9 +13,16 @@
 <% } %>
 
 <section class="post-list">
+    <% if(!config.materialx){ %>
+        <div class='post-wrapper'>
+            <article class="post revealno-title">
+                <iframe frameborder="no" width=100% height=600 src="https://xaoxuu.com/docs/material-x/#/?id=主题配置"></iframe>
+            </article>
+        </div>
+    <% } %>
     <% page.posts.each(function(post){ %>
         <div class='post-wrapper'>
-        <%- partial('post', {post: post}) %>
+    <%- partial('post', {post: post}) %>
         </div>
     <% }) %>
 </section>
