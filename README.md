@@ -51,11 +51,9 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 
 ## 主题配置
 
-把 `themes/material-x/_config.yml` 中的 `materialx:` 相关的内容复制到博客主目录的 `_config.yml` 文件中，根据自己的需要填写和修改。
+把 `themes/material-x/_config.yml` 中的 `materialx:` 相关的内容复制到博客主目录的 `_config.yml` 文件中，根据自己的需要填写和修改。这样做的好处是：更新主题的时候你修改过的配置就不会被覆盖了。
 
-这样做的好处是：更新主题的时候你修改过的配置就不会被覆盖了。
-
-以下这些配置如果没有特殊说明，都指的是博客主目录的 `_config.yml` 文件。
+> 以下这些配置如果没有特殊说明，都指的是博客主目录的 `_config.yml` 文件。
 
 
 
