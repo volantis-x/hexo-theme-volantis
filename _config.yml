@@ -24,7 +24,8 @@ widgets:
   - categories # 显示分类
   - tagcloud # 显示tags
   # - socials # 显示自己的社交信息
-  # - music # 显示自己的网易云歌单
+  - music # 显示自己的网易云歌单
+  - links # 显示友链
 
 # 右边的联系信息小窗口
 contacts:
@@ -40,6 +41,13 @@ contacts:
 # - name: Twitter
 #   badget: "@xaoxuu"
 #   url: https://www.twitter.com/xaoxuu
+
+# 侧边栏的友链
+links:
+- name: Jarvis Wu
+  url: https://changwenwu.github.io
+- name: Justin Yang
+  url: http://lifestyle1.cn/
 
 
 # 页面底部的社交信息
@@ -60,7 +68,7 @@ social:
 
 # 推荐文章 npm install hexo-recommended-posts --save
 recommended_posts:
-  enabled: true 
+  enabled: true
 
 # Search
 search:
@@ -80,14 +88,8 @@ search:
   # baidu
   baidu_api_id:
 
-# friends link
-links:
-
-
 
 
 # Less
 less:
   compress: true
-
-

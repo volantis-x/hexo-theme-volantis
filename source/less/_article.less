@@ -95,10 +95,6 @@
         font-weight: normal;
         margin-top: 1.5em;
         margin-bottom: 1em;
-        &:first-child{
-            margin-top: 0;
-            padding-top: 0;
-        }
         &.title {
             left: 0;
             &:before {
@@ -109,13 +105,12 @@
     h1, h2 {
       color: @text-color-theme;
       margin-top: 2em;
-      &:first-child{
-          margin-top: 0;
-          padding-top: 0;
-      }
     }
-    h1, h2, h3 {
-
+    h3, h4, h5, h6 {
+        &:first-child{
+            margin-top: 0;
+            padding-top: 0;
+        }
     }
     h1 {
       font-size: @font-size-h1;

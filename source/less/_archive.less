@@ -4,9 +4,14 @@
         position: relative;
         .archive-year {
             font-size: @base-font-size;
-            margin: 1em 0;
+            margin-top: 4em;
+            margin-bottom: 1em;
+            &:first-child{
+                margin-top: 0em;
+                padding-top: 0;
+            }
             h2 {
-              
+                margin-top: 1em;
             }
             a {
                 color: @text-color;
@@ -26,7 +31,6 @@
                 color: @text-color;
                 flex: none;
                 font-size: @small-font-size;
-                // padding-right: 10px;
                 padding: .5em .5em .5em 3em;
                 @media (max-width: @on-phone) {
                   padding: .5em .5em .5em 0;
