@@ -1,6 +1,6 @@
 .m_widget{
     &:extend(.z-depth-main);
-    background: white;
+    background: @theme-bg-card;
     margin-bottom: @gap;
     border-radius: @border-radius-width;
     @media(max-width: @on-phone) {
@@ -19,8 +19,8 @@
         @media(max-width: @on-phone) {
             border-radius: 0;
         }
-        background-color: fade(@primary-color,90%);
-        color: @text-color-inside-theme;
+        background-color: fade(@theme-bg-header,90%);
+        color: @theme-text-in-header;
         font-size: @base-font-size;
         line-height: 1.8em;
         padding: 8px @gap;
@@ -38,7 +38,7 @@
         display: flex;
         justify-content: space-between;
         align-content: center;
-        border-left: 0px solid @primary-color;
+        border-left: 2px solid transparent;
         .enable-trans();
         .name{
             flex:auto;
@@ -51,8 +51,8 @@
             color: fade(@text-color, 50%);
         }
         &:hover{
-            border-left: 3px solid @primary-color;
-            background:darken(white, 5%);
+            border-left: 4px solid @theme-bg-quote;
+            background: fade(@theme-bg-quote, 10%);
         }
     }
 }
@@ -70,7 +70,6 @@
         .desc{
             position: relative;
             padding: @gap;
-            background:@qoute-background-color;
             .enable-trans(.15s);
             line-height: 1.2em;
             font-style: italic;
@@ -81,7 +80,6 @@
                 top:0;
                 width:2px;
                 height:100%;
-                background:@primary-color;
             }
             &:empty{
                 padding:0;
@@ -98,7 +96,7 @@
             .enable-trans(.1s);
             line-height: 1.6em;
             &:hover{
-                color: @accent-color !important; //to cover inline style.
+                color: @theme-text-highlight !important; //to cover inline style.
                 text-decoration: underline
             }
         }

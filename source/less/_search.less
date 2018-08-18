@@ -47,7 +47,7 @@
       position: relative;
       width: 100%;
       height: @header-height;
-      background-color: @primary-color;
+      background-color: @theme-bg-header;
       z-index: 3;
       border-top-left-radius: @border-radius-width;
       border-top-right-radius: @border-radius-width;
@@ -70,7 +70,7 @@
         height: @header-height;
         top: 0;
         right: 0;
-        color: @text-color-inside-theme;
+        color: @theme-text-in-header;
         cursor: pointer;
         text-align: center;
         line-height: @header-height;
@@ -114,7 +114,7 @@
           font-size: @base-font-size;
           line-height: @base-line-height;
           vertical-align: middle;
-          color: @text-color-inside-theme;
+          color: @theme-text-in-header;
           border: none;
           background: transparent;
           .enable-trans();
@@ -140,7 +140,7 @@
         height: @header-height;
         vertical-align: middle;
         font-size: @header-switcher-font-size;
-        color: @text-color-inside-theme;
+        color: @theme-text-in-header;
         z-index: 2;
       }
     }
@@ -255,7 +255,7 @@
               // color: @black;
             }
             .title {
-              color: @text-color-theme;
+              color: @theme-text-highlight;
             }
           }
           .title {

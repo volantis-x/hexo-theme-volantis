@@ -37,15 +37,17 @@
     background: white;
     a {
         padding-left: 8px;
-        border-left: 3px solid fade(@primary-color, 0);
         color: fade(@text-color, 60%);
         font-size: @small-font-size;
         display: inline-block;
+        border-left: 2px solid transparent;
         &:hover,&:active,&.active{
-            color: darken(@text-color-theme, 00%);
-            font-weight: bold;
-            border-left: 3px solid @primary-color;
-            background:darken(white, 5%);
+            border-left: 4px solid @theme-bg-quote;
+            background: fade(@theme-bg-quote, 10%);
+        }
+        &:hover{
+            border-left: 4px solid @theme-bg-quote;
+            background: fade(@theme-bg-quote, 10%);
         }
     }
     ol{

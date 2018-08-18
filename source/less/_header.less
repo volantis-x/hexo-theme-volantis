@@ -19,11 +19,11 @@
 	.nav--main,.nav-sub{
 		height: @header-height;
 	}
-	background: @primary-color;
+	background: @theme-bg-header;
 	// padding: 0 @gap;
 	&, a{
 		.txt-ellipsis;
-		color: @text-color-inside-theme;
+		color: @theme-text-in-header;
 	}
 	&:extend(.z-depth-nav);
 		.enable-trans();
@@ -53,10 +53,10 @@
 			.enable-trans();
 			display: block;
 			font-size: @header-font-size * .95;
-			color: fade(@text-color-inside-theme,60%);
+			color: fade(@theme-text-in-header,60%);
 			padding: 0 @gap / 2;
 			&:hover,&.active{
-				color: @text-color-inside-theme;
+				color: @theme-text-in-header;
 			}
 		}
 		@media(max-width: @on-laptop){
@@ -69,7 +69,7 @@
 		.underline{
 			.enable-trans();
 			position: absolute;
-			background: @text-color-inside-theme;
+			background: @theme-text-in-header;
 			left: 0;
 			bottom: 0;
 			width: 0;
@@ -147,14 +147,14 @@
 		line-height: @search-height - 10px;
 		margin: 0;
 		width: 100%;
-		color: @text-color-inside-theme;
+		color: @theme-text-in-header;
 		padding: 5px 10px 5px 40px;
 		height: @search-height;
 		line-height: @search-height;
 		font-family: @base-font-family;
 		border: none;
 		border-radius: 3px;
-		background:fade(@text-color-inside-theme,15%);
+		background:fade(@theme-text-in-header,15%);
 		box-sizing: border-box;
 		-webkit-appearance: none;
 		box-shadow: none;
@@ -169,7 +169,7 @@
 		&:focus ~ .icon{
 			color: @black;
 		}
-		.set-placeholder({color: @text-color-inside-theme});
+		.set-placeholder({color: @theme-text-in-header});
 	}
 
 }
@@ -203,11 +203,11 @@
 			color: @black;
 			font-size: 0.8125em;
 			padding: 2px 20px;
-			border-left: 0px solid @primary-color;
-			&:hover {
-				background: darken(white, 4%);
-				border-left: 3px solid @primary-color;
-			}
+            border-left: 2px solid transparent;
+            &:hover{
+                border-left: 4px solid @theme-bg-quote;
+                background: fade(@theme-bg-quote, 10%);
+            }
 		}
   	}
 }

@@ -420,16 +420,16 @@ table {
   border-collapse: collapse;
   width: 100%;
   th {
-    background-color: lighten(@background-color, 1%);
+    background-color: lighten(@theme-bg-main, 1%);
   }
   td,
   th {
       padding: 4px 8px;
-      border: 1px solid darken(@background-color, 5%);
+      border: 1px solid @theme-bg-main;
   }
   tr {
       // border-bottom: 2px solid #eee;
-      // background-color: @qoute-background-color;
+      // background-color: @theme-bg-quote;
   }
   &>thead>th {
       // border-bottom-width: 2px;

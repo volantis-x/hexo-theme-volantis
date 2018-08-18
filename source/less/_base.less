@@ -25,7 +25,7 @@ html {
 }
 
 body {
-    background-color: @background-color;
+    background-color: @theme-bg-main;
     &.modal-active {
         overflow: hidden;
         @media (max-width: @modal-threshold) {
@@ -130,12 +130,12 @@ body {
 }
 
 ::-moz-selection {
-    background: fade(lighten(@primary-color, 5%), 25%);
+    background: fade(lighten(@theme-text-link, 5%), 25%);
     // color: @black;
 }
 
 ::selection {
-    background: fade(lighten(@primary-color, 5%), 25%);
+    background: fade(lighten(@theme-text-link, 5%), 25%);
     // color: @black;
 }
 
@@ -293,12 +293,15 @@ li {
         display: inline-block;
         padding: 0 8px;
         color: @black;
-        border-left: 3px solid transparent;
+        border-left: 2px solid transparent;
         background: transparent;
         .enable-trans();
         &:hover {
-            border-left-color: @primary-color;
-            background: lighten(@background-color, 2%);
+            border-left: 4px solid @theme-bg-quote;
+            border-right: 4px solid @theme-bg-quote;
+            border-radius: 8px;
+            padding: 8px;
+            background: fade(@theme-bg-quote, 10%);
         }
     }
 }

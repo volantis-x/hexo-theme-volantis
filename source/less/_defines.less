@@ -58,25 +58,28 @@
 @dark:  #555555;
 @text-color:       fade(@black, 85%);
 @text-color-darken:       darken(@text-color, 20%);
-@background-color: #EFEFEF;
-
-// 主题色
-@primary-color:    @xiaowenwen-green;
-// 强调色
-@accent-color:		 @material-orange;
 
 
-// 变种
-// 主题色的文本（主题色加深）
-@text-color-theme: darken(@primary-color, 5%);
+// 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 网页背景
+@theme-bg-main: #EFEFEF;
+// 导航栏背景
+@theme-bg-header: @xiaowenwen-green;
+// 卡片背景
+@theme-bg-card: #FFF;
+// 代码块的背景色
+@theme-bg-code: #EFEFEF;
+// 引用的颜色 和 分类、归档的 hover 时颜色
+@theme-bg-quote: @theme-bg-header;
+// 标题文字颜色（h1/h2）
+@theme-text-header: darken(@theme-bg-header, 0%);
+// 链接颜色
+@theme-text-link: @ax-blue;
+// 链接高亮颜色
+@theme-text-highlight: @material-orange;
 // 在主题色中显示的文本（白或深灰）
-// @text-color-inside-theme: @text-color;
-@text-color-inside-theme: white;
-
-@href-color: @ax-blue;
-
-// 引用部分和代码块的背景色
-@qoute-background-color: fade(@background-color, 80%);
+@theme-text-in-header: white;
+// 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 // Responsive limits

@@ -74,14 +74,14 @@
         &:before{
             display: none;
         }
-        color: darken(@href-color, 5%);
+        color: @theme-text-link;
         .enable-trans();
         &:hover {
-            color: darken(@href-color, 20%);
+            color: @theme-text-highlight;
             text-decoration: underline;
         }
         &:active {
-            color: darken(@href-color, 50%);
+            color: darken(@theme-text-highlight, 25%);
         }
     }
     h1,
@@ -103,7 +103,7 @@
         }
     }
     h1, h2 {
-      color: @text-color-theme;
+      color: @theme-text-header;
       margin-top: 2em;
     }
     h3, h4, h5, h6 {
@@ -148,15 +148,17 @@
         }
     }
     blockquote {
+
         position: relative;
         width: 100%;
         font-size: @small-font-size;
-        background: fade(@primary-color, 10%);
+        background: fade(@theme-bg-quote, 10%);
         margin: 1em 0;
         padding: 1.5em 1.5em .9em 1.5em;
-        border-left: 4px solid @primary-color;
+        border-left: 4px solid @theme-bg-quote;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
+
         footer {
             strong {
                 margin-right: 7px;
@@ -174,15 +176,12 @@
         font-family: @code-font-family;
         padding: 3px 3px 0px 3px;
         margin: 0px 2px;
-        // margin-bottom: 5px;
         vertical-align: center;
         border-radius: 2px;
-        // border: 1px solid darken(@qoute-background-color, 10%);
-        border: 1px solid fade(@primary-color, 30%);
+        border: 1px solid fade(@theme-bg-header, 30%);
         font-size: @base-font-size * .8;
-        // background: @qoute-background-color;
 
-        background: fade(@primary-color, 10%);
+        background: fade(@theme-bg-header, 10%);
         @media(max-width: @on-phone){
           font-size: @base-font-size * .8 * .95;
         }
@@ -198,16 +197,16 @@
             display: inline-block;
             vertical-align: middle;
             line-height: 2rem;
-            background-color: fade(@primary-color, 90%);
+            background-color: fade(@theme-bg-header, 90%);
             padding: .2em 2.4em;
-            color: @text-color-inside-theme;
+            color: @theme-text-in-header;
             border-radius: 3px;
             .enable-trans();
             &:hover {
-              background: darken(@primary-color, 10%);
+              background: darken(@theme-bg-header, 10%);
             }
             &:active {
-              background: lighten(@primary-color, 20%);
+              background: lighten(@theme-bg-header, 20%);
             }
         }
 
@@ -235,7 +234,7 @@
             .enable-trans();
             color: @grey-color;
             &:hover {
-                color: @accent-color;
+                color: @theme-text-highlight;
                 background: transparent;
             }
             &::before {
@@ -312,7 +311,7 @@
   display: block;
   // background: #2d2d2d;
   // background: fade(@material-blue, 8%);
-  background: @qoute-background-color;
+  background: @theme-bg-code;
   // color: #cccccc;
   font-size: @small-font-size * .95;
   font-family:@code-font-family;
@@ -327,13 +326,13 @@
     border-radius: 8px;
     text-align: right;
     border-width: 0;
-    background-color: darken(@background-color, 5%);
+    background-color: darken(@theme-bg-main, 5%);
   }
   .code{
       padding-left: 8px;
       padding-right: 16px;
       vertical-align: top;
-      border: 0px solid darken(@background-color, 5%);
+      border: 0px solid darken(@theme-bg-main, 5%);
   }
 
   &::-webkit-scrollbar {

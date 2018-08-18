@@ -16,12 +16,12 @@
   z-index:3;
   &:extend(.z-depth-2);
   padding: @gap;
-  border-left: 6px solid @primary-color;
-  background: @text-color-inside-theme;
+  border-left: 6px solid @theme-bg-header;
+  background: @theme-text-in-header;
   a {
     display: inline-block;
     &:hover,&:active,&.active{
-      color: @accent-color;
+      color: @theme-text-highlight;
     }
   }
   ol{
