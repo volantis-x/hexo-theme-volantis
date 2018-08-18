@@ -17,12 +17,13 @@
     @media(max-width: @container-width){
         right: 0;
         margin-right:0;
+        width: @side-width;
     }
 
     @media(max-width: @on-phone){
         top: @header-height + @gap;
         right: 0px - @side-width;
-        border-radius: 0;
+        // border-radius: 0;
         margin-right:0;
         &.active{
             transform: translateX(-@side-width - 10px);
@@ -45,7 +46,7 @@
     .content{
         overflow: auto;
         padding: @gap/2 0;
-        max-height: ~"calc(100% - @{header-height} + 0.5 * @{gap})";
+        max-height: ~"calc(100% - @{header-height} - 2.5 * @{gap})";
     }
     width: @side-width;
     z-index:3;
