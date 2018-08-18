@@ -58,11 +58,14 @@
         font-size: @small-font-size;
         display: inline-block;
         border-left: 2px solid transparent;
-        &:hover,&:active,&.active{
-            border-left: 4px solid @theme-bg-quote;
-            background: fade(@theme-bg-quote, 10%);
-        }
+
         &:hover{
+            border-left: 4px solid @theme-bg-quote;
+        }
+        &:active{
+            border-left: 8px solid @theme-bg-quote;
+        }
+        &.active{
             border-left: 4px solid @theme-bg-quote;
             background: fade(@theme-bg-quote, 10%);
         }

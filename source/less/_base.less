@@ -298,10 +298,11 @@ li {
         .enable-trans();
         &:hover {
             border-left: 4px solid @theme-bg-quote;
-            border-right: 4px solid @theme-bg-quote;
-            border-radius: 8px;
             padding: 8px;
             background: fade(@theme-bg-quote, 10%);
+        }
+        &:active {
+            border-left: 8px solid @theme-bg-quote;
         }
     }
 }
