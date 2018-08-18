@@ -175,28 +175,36 @@
 }
 
 .menu-phone{
+    .header{
+        border-top-left-radius: @border-radius-width;
+        border-top-right-radius: @border-radius-width;
+        background-color: fade(@theme-bg-header,90%);
+        color: @theme-text-in-header;
+        font-size: @base-font-size;
+        line-height: 1.8em;
+        padding: 8px @gap;
+    }
+    width: @side-width;
 	position: fixed;
 	top: @header-height + @gap;
 	right: 0;
-	width: 180px;
+    width: @side-width;
 	z-index:9999 + 1;
-	padding: @gap/2 0px;
 	line-height: 2 * @gap;
 	background: white;
-	// border: 1px solid #e6e7e6;
 	border-right: 0;
-	&:extend(.z-depth-main);
+	&:extend(.z-depth-main-raised);
 	border-radius: @border-radius-width;
-	transform: translate3d(180px, -0, 0);
+	transform: translate3d(@side-width, -0, 0);
 	.enable-trans();
 	&:hover {
 		&:extend(.z-depth-main-raised);
 	}
 	&:active {
-		// box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
 		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
 	}
 	nav {
+    	padding: @gap/2 0px;
 		.nav {
 			position: relative;
 			display: block;

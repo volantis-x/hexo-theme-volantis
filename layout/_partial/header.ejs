@@ -50,6 +50,7 @@
 	</div>
 </header>
 	<aside class="menu-phone">
+        <div class="header"><%=config.title%></div>
 		<nav>
 			<% (config.materialx && config.materialx.nav_menu && (config.materialx.nav_menu||[]) || (theme.materialx.nav_menu||[])).forEach(function(value, key) {
 						if (value.url && value.slug && value.name) { %>
