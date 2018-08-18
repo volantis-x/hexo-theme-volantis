@@ -1,22 +1,25 @@
 <article id="<%= post.layout %>-<%= post.slug %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
     <section class='meta'>
-        <h2 class="title">
-            <a href="<%- url_for(post.path) %>">
-                <% if(post.title){ %>
-                    <%= post.title %>
-                <% } else if (post.date) { %>
-                    <%= date(post.date, 'YYYY-MM-DD dddd') %>
-                <% } %>
-            </a>
-        </h2>
+        <h1 class="title">
+            <% if(post.title){ %>
+                <%= post.title %>
+            <% } else if (post.date) { %>
+                <%= date(post.date, 'YYYY-MM-DD dddd') %>
+            <% } %>
+        </h1>
         <time>
             <%= date(post.date, 'YYYY-MM-DD dddd') %>&nbsp;&nbsp;
             <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         <%- partial('categories',{post:post}) %>
     </section>
-    <% if(post.toc!==false){ %>
-        <section class="toc-wrapper"><%- toc(post.content, {list_number: false}) %></section>
+    <% if(post.toc!==false && toc(post.content).length > 0){ %>
+        <section class="toc-wrapper">
+            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
+            <div class='content'>
+                <%- toc(post.content, {list_number: true}) %>
+            </div>
+        </section>
     <% } %>
 
     <section class="article typo">

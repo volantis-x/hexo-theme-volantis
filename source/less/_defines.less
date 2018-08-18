@@ -57,16 +57,18 @@
 @white: #ffffff;
 @dark:  #555555;
 @text-color:       fade(@black, 85%);
-@text-color-darken:       darken(@text-color, 20%);
+
 
 
 // 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 网页背景
 @theme-bg-main: #EFEFEF;
-// 导航栏背景
+// @theme-bg-main: #444;
+// 导航栏背景（主题色）
 @theme-bg-header: @xiaowenwen-green;
 // 卡片背景
 @theme-bg-card: #FFF;
+// @theme-bg-card: lighten(@theme-bg-main, 10%);
 // 代码块的背景色
 @theme-bg-code: #EFEFEF;
 // 引用的颜色 和 分类、归档的 hover 时颜色
@@ -79,6 +81,8 @@
 @theme-text-highlight: @material-orange;
 // 在主题色中显示的文本（白或深灰）
 @theme-text-in-header: white;
+@theme-text-main: @text-color;
+// @theme-text-main: white;
 // 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 

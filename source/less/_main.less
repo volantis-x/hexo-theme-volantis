@@ -98,13 +98,18 @@
         @media(max-width: @on-phone) {
             border-radius: 0;
         }
+        h1{
+            font-weight: normal;
+            font-size: @article-title-size;
+            line-height: @base-line-height;
+            color: @theme-text-main;
+        }
         &:extend(.z-depth-main);
         .enable-trans();
         &:hover {
           &:extend(.z-depth-main-raised);
         }
         &:active {
-          // box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
           box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
         }
         .meta {
@@ -122,7 +127,7 @@
                     display: inline;
                     line-height: @base-line-height;
                     font-weight: normal;
-                    color: @text-color;
+                    color: @theme-text-main;
                     text-decoration: none;
                     font-size: @article-title-size;
                     @media(max-width: @on-phone) {

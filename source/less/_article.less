@@ -1,5 +1,5 @@
 .article {
-    color: @text-color;
+    color: fade(@theme-text-main,75%);
     font-size: @base-font-size;
     line-height: @base-line-height;
     word-break: break-all;
@@ -41,12 +41,11 @@
     }
     p {
         // margin: 20px 0px;
-        color: fade(@text-color,75%);
         margin-top: .5em;
         margin-bottom: 1em;
         text-align: justify;
         strong{
-          color: @text-color;
+          color: @theme-text-main;
           padding-left: 2px;
           padding-right: 2px;
         }
@@ -120,7 +119,7 @@
     }
     h3 {
       font-size: @font-size-h3;
-      color: @text-color-darken;
+      color: darken(@theme-text-main, 20%);
     }
     h4 {
       font-weight: bold;
@@ -128,14 +127,14 @@
     }
     h5 {
       font-weight: bold;
-      color: @text-color;
-      // color: fade(@text-color, 60%);
+      color: @theme-text-main;
+      // color: fade(@theme-text-main, 60%);
       font-size: @font-size-h5;
 
     }
     h6 {
 
-      color: fade(@text-color, 75%);
+      color: fade(@theme-text-main, 75%);
       font-size: @font-size-h6;
     }
 
@@ -170,7 +169,7 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         font-family: @code-font-family;
-        color: fade(@text-color, 75%);
+        color: fade(@theme-text-main, 75%);
     }
     code {
         font-family: @code-font-family;
