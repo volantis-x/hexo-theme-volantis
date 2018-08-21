@@ -1,4 +1,4 @@
-# 请把这一段复制到博客主目录的【_config.yml】中 ↓↓↓↓↓↓↓↓ ↓↓↓↓↓↓↓↓
+# >> copy_start 请把这一段复制到博客主目录的【_config.yml】中 ↓↓↓↓↓↓↓↓ ↓↓↓↓↓↓↓↓
 
 # 主题配置
 materialx:
@@ -57,7 +57,19 @@ materialx:
   - slug: music
     url:
 
-# 到这里为止，下面的就不要复制了。 ↑↑↑↑↑↑↑↑ ↑↑↑↑↑↑↑↑
+
+# 推荐文章
+recommended_posts:
+  autoDisplay: false # 自动在文章底部显示推荐文章，如果你使用Material-X主题，这里要设置为false。
+  server: https://api.truelaurel.com # 后端推荐服务器地址
+  timeoutInMillis: 10000 # 服务时长，超过此时长，则使用离线推荐模式
+  excludePattern: []
+  titleHtml: <h4>推荐文章</h4> #自定义标题
+  internalLinks: 3 # 内部文章数量
+  externalLinks: 2 # 外部文章数量
+  fixedNumber: false
+
+# >> copy_end 到这里为止，下面的就不要复制了。 ↑↑↑↑↑↑↑↑ ↑↑↑↑↑↑↑↑
 
 
 
