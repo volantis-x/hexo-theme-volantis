@@ -31,10 +31,12 @@
 首先打开终端，`cd`到你博客的路径，如果你想省事，复制下面这行脚本到终端中执行，全程自动化操作。
 
 ```bash
-curl -O 'https://raw.githubusercontent.com/xaoxuu/hexo.sh/master/hexo.sh' -# && chmod 777 hexo.sh && . hexo.sh m x
+curl -O 'https://raw.githubusercontent.com/xaoxuu/hexo.sh/master/hexo.sh' -# && chmod 777 hexo.sh && . hexo.sh -i i x
 ```
 
 如果你选择了脚本安装，现在可以直接往下看配置项啦~
+
+
 
 ### B. 手动安装
 
@@ -312,13 +314,7 @@ recommended_posts: false
 
 ## 单元测试
 
-如果你发现无法使用或者效果与 [示例](https://blog.xaoxuu.com) 有较大区别，可以使用hexo官方提供的用于单元测试的博客应用本主题查看样式，脚本代码如下：
-
-```bash
-curl -O 'https://raw.githubusercontent.com/xaoxuu/hexo.sh/master/hexo.sh' -# && chmod 777 hexo.sh && . hexo.sh m try
-```
-
-`cd` 到一个临时的目录，执行这行命令，过一会就可以看到效果了。
+如果你发现无法使用或者效果与 [示例](https://blog.xaoxuu.com) 有较大区别，可以使用hexo官方提供的用于单元测试的博客应用本主题查看样式。hexo.sh 脚本提供了方便的指令，详情见 hexo.sh 的 [文档](https://xaoxuu.com/docs/hexo.sh)  。
 
 
 
