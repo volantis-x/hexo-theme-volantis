@@ -2,7 +2,7 @@
 
 > 一个简约卡片式的Hexo博客主题
 
-**Material X** 是我基于 [Material Flow](https://github.com/stkevintan/hexo-theme-material-flow) 改编的一个Hexo主题，相对作者原主题主要有一下方面改动：
+**Material X** 是我基于 [Material Flow](https://github.com/stkevintan/hexo-theme-material-flow)（已停止维护） 改编的一个Hexo主题，相对作者原主题主要有一下方面改动：
 
 - 调整卡片阴影细节以及增加卡片的动画效果。
 - 博文列表将作者的多列布局改为单列布局。
@@ -12,6 +12,9 @@
 - 可以显示网易云音乐歌单。
 - 支持3种评论系统：Disqus、来必力和Valine。
 - 增加了推荐文章列表，增加博客流量。
+- 增加了阅读统计。
+
+
 
 本主题将持续更新和维护，你可以在这里查看主题的实际效果：👉 [https://blog.xaoxuu.com](https://blog.xaoxuu.com) 👈
 
@@ -51,7 +54,18 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 
 ## 主题配置
 
-把 `themes/material-x/_config.yml` 中的 `materialx:` 相关的内容复制到博客主目录的 `_config.yml` 文件中，根据自己的需要填写和修改。这样做的好处是：更新主题的时候你修改过的配置就不会被覆盖了。
+把 `themes/material-x/_config.yml` 中的这部分内容复制到博客主目录的 `_config.yml` 文件中：
+
+```yml
+# >> copy_start 请把这一段复制到博客主目录的【_config.yml】中 ↓↓↓↓↓↓↓↓ ↓↓↓↓↓↓↓↓
+
+{中间这部分是要复制的内容}
+
+# >> copy_end 到这里为止，下面的就不要复制了。 ↑↑↑↑↑↑↑↑ ↑↑↑↑↑↑↑↑
+...
+```
+
+复制到博客主目录的 `_config.yml` 文件之后根据自己的需要填写和修改。这样做的好处是：更新主题的时候你修改过的配置就不会被覆盖了。
 
 > 以下这些配置如果没有特殊说明，都指的是博客主目录的 `_config.yml` 文件。
 
@@ -293,6 +307,18 @@ recommended_posts: false
 @accent-color: @material-orange;
 // ...
 ```
+
+
+
+## 单元测试
+
+如果你发现无法使用或者效果与 [示例](https://blog.xaoxuu.com) 有较大区别，可以使用hexo官方提供的用于单元测试的博客应用本主题查看样式，脚本代码如下：
+
+```bash
+curl -O 'https://raw.githubusercontent.com/xaoxuu/hexo.sh/master/hexo.sh' -# && chmod 777 hexo.sh && . hexo.sh m try
+```
+
+`cd` 到一个临时的目录，执行这行命令，过一会就可以看到效果了。
 
 
 
