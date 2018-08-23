@@ -54,21 +54,23 @@
     background: @theme-bg-card;
     a {
         padding-left: 8px;
-        color: @theme-text-main;
+        color: fade(@theme-text-main, 60%);
         font-size: @small-font-size;
         display: inline-block;
-        border-left: 2px solid transparent;
-
+        border-left: 4px solid transparent;
         &:hover{
+            color: fade(@theme-text-main, 100%);
             border-left: 4px solid @theme-bg-quote;
         }
         &:active{
             border-left: 8px solid @theme-bg-quote;
         }
         &.active{
+            color: fade(@theme-text-main, 100%);
             border-left: 4px solid @theme-bg-quote;
             background: fade(@theme-bg-quote, 10%);
         }
+
     }
     ol{
         .toc-item.toc-level-1 {
