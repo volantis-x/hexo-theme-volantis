@@ -303,11 +303,27 @@ recommended_posts: false
 打开 `themes/material-x/source/less/_defines.less` 这个文件，修改下面这些内容为你需要的即可：
 
 ```yaml
-// 主题色
-@primary-color: @xiaowenwen-green;
-// 强调色
-@accent-color: @material-orange;
-// ...
+// 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 网页背景
+@theme-bg-main: #EFEFEF;
+// 导航栏背景（主题色）
+@theme-bg-header: @xiaowenwen-green;
+// 卡片背景
+@theme-bg-card: #FFF;
+// 代码块的背景色
+@theme-bg-code: #F5F5F5;
+// 引用的颜色 和 分类、归档的 hover 时颜色
+@theme-bg-quote: @theme-bg-header;
+// 标题文字颜色（h1/h2）
+@theme-text-header: darken(@theme-bg-header, 0%);
+// 链接颜色
+@theme-text-link: @ax-blue;
+// 链接高亮颜色
+@theme-text-highlight: @material-orange;
+// 在主题色中显示的文本（白或深灰）
+@theme-text-in-header: white;
+@theme-text-main: @dark;
+// 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 
