@@ -293,19 +293,26 @@ li {
         display: inline-block;
         padding: 0 8px;
         color: @black;
-        border-left: 2px solid transparent;
+        border-left: 4px solid transparent;
         background: transparent;
+        border-right: 1px solid transparent;
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+        border-radius: 4px;
         .enable-trans();
         &:hover {
             border-left: 4px solid @theme-bg-quote;
             padding: 8px;
-            border-radius: 4px;
             background: fade(@theme-bg-quote, 10%);
         }
         &:active {
             border-radius: 8px;
             border-left: 8px solid @theme-bg-quote;
+            border-right: 1px solid fade(@theme-bg-quote, 50%);
+            border-top: 1px solid fade(@theme-bg-quote, 50%);
+            border-bottom: 1px solid fade(@theme-bg-quote, 50%);
         }
+
     }
 }
 
