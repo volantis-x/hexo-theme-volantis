@@ -177,7 +177,7 @@
                 margin-right: 7px;
             }
         }
-        
+
     }
     pre {
         display: block;
@@ -333,6 +333,12 @@
   padding: 1.5em 0;
   border-radius: 8px;
 
+  border: 1px solid transparent;
+  .enable-trans();
+  &:hover{
+      border: 1px solid fade(@theme-bg-quote, 50%);
+  }
+  
   .gutter{
     color: #999999;
     width: 24px;
@@ -341,6 +347,10 @@
     text-align: right;
     border-width: 0;
     background-color: darken(@theme-bg-main, 5%);
+
+    &:hover{
+
+    }
   }
   .code{
       padding-left: 8px;
