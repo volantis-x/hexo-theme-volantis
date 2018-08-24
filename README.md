@@ -14,6 +14,7 @@
 - 增加了推荐文章列表，增加博客流量。
 - 增加了阅读统计。
 - 文末可以显示GitHub仓库卡片。
+- 支持渲染MathJax数学公式。
 
 
 
@@ -302,6 +303,13 @@ recommended_posts: false
 ```
 ---
 repo: xaoxuu/hexo-theme-material-x
+---
+```
+
+开启渲染MathJax数学公式
+```
+---
+mathjax: true
 ---
 ```
 
