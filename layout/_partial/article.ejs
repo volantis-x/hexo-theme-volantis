@@ -26,6 +26,9 @@
 
         <div class="article-entry" itemprop="articleBody">
             <%- post.content %>
+            <% if (post.repo) { %>
+                <div class="github-card" data-github="<%= post.repo %>"></div>
+            <% } %>
         </div>
 
         <% if (post.tags && post.tags.length) { %>
