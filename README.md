@@ -282,7 +282,7 @@ materialx:
 
 ## 单篇文章的配置
 
-某一篇文章不想开启评论
+### 某一篇文章不想开启评论
 
 ```
 ---
@@ -290,7 +290,7 @@ comments: false
 ---
 ```
 
-某一篇文章不想在底部显示推荐文章
+### 某一篇文章不想在底部显示推荐文章
 
 ```
 ---
@@ -298,7 +298,7 @@ recommended_posts: false
 ---
 ```
 
-显示相关GitHub仓库卡片
+### 显示相关GitHub仓库卡片
 
 ```
 ---
@@ -306,7 +306,8 @@ repo: xaoxuu/hexo-theme-material-x
 ---
 ```
 
-开启渲染MathJax数学公式
+### 开启渲染MathJax数学公式
+
 ```
 ---
 mathjax: true
