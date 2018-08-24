@@ -171,7 +171,6 @@
             border-top: 1px solid fade(@theme-bg-quote, 50%);
             border-bottom: 1px solid fade(@theme-bg-quote, 50%);
         }
-
         footer {
             strong {
                 margin-right: 7px;
@@ -338,7 +337,7 @@
   &:hover{
       border: 1px solid fade(@theme-bg-quote, 50%);
   }
-  
+
   .gutter{
     color: #999999;
     width: 24px;
@@ -362,26 +361,25 @@
   &::-webkit-scrollbar {
     height: 6px;
     width: 6px;
-    border-radius: 6px;
   }
   // /* Track */
 
   &::-webkit-scrollbar-track-piece {
-  background: transparent;
+      background: transparent;
   }
 
 
 /* Handle */
 
   &::-webkit-scrollbar-thumb {
-    background: #ddd;
+    background: darken(@theme-bg-code, 5%);
     cursor: pointer;
+    border-radius: 3px;
     .enable-trans();
     &:hover {
-      background: darken(#ddd, 15%);
+      background: darken(@theme-bg-code, 12%);
     }
   }
-
 
 }
 
