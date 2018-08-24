@@ -30,9 +30,12 @@
                 border-style: dashed;
                 .enable-trans();
                 &:hover{
-                    border: 1px solid fade(@theme-bg-quote, 70%);
+                    border: 1px dashed fade(@theme-bg-quote, 100%);
                 }
-
+                .vedit .vctrl span {
+                    padding: 0;
+                    margin: 10px;
+                }
             }
             button{
                 border: none;
@@ -65,12 +68,12 @@
                     border-left: 8px solid @theme-bg-quote;
                     border-top-left-radius: 8px;
                     border-bottom-left-radius: 8px;
-                    border-right: 1px solid fade(@theme-bg-quote, 50%);
-                    border-top: 1px solid fade(@theme-bg-quote, 50%);
-                    border-bottom: 1px solid fade(@theme-bg-quote, 50%);
+                    border-right: 1px solid fade(@theme-bg-quote, 30%);
+                    border-top: 1px solid fade(@theme-bg-quote, 30%);
+                    border-bottom: 1px solid fade(@theme-bg-quote, 30%);
                 }
             }
-            a{
+            a, .vemoji-btn, .vpreview-btn{
                 color: @theme-text-link;
                 .enable-trans();
                 &:hover {
