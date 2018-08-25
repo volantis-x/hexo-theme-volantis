@@ -17,7 +17,7 @@
         <section class="toc-wrapper">
             <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
             <div class='content'>
-                <%- toc(post.content, {list_number: true}) %>
+                <%- toc(post.content, {list_number: false}) %>
             </div>
         </section>
     <% } %>
@@ -26,9 +26,6 @@
 
         <div class="article-entry" itemprop="articleBody">
             <%- post.content %>
-            <% if (post.repo) { %>
-                <div class="github-card" data-github="<%= post.repo %>"></div>
-            <% } %>
         </div>
 
         <% if (post.tags && post.tags.length) { %>
