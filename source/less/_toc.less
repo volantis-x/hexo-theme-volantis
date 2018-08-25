@@ -1,57 +1,32 @@
-.toc-wrapper{
-    position:fixed;
-    top: @header-height + @gap * 2;
-    right: 50%;
-    margin-right: -@container-width/2;
+.m_widget.toc-wrapper{
+    overflow: auto;
     border-radius: @border-radius-width;
-    .enable-trans();
-    &:extend(.z-depth-main);
-    &:hover {
-        &:extend(.z-depth-main-raised);
+    position: fixed;
+    top: @header-height + @gap;
+    display: none;
+    &.active{
+        display: block;
     }
-    &:active {
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-    }
-
-    max-height: ~"calc(100% - @{header-height} - 4 * @{gap})";
     @media(max-width: @container-width){
-        right: 0;
-        margin-right:0;
-        width: @side-width;
+        // right: 0;
+        // margin-right:0;
+        // width: @side-width;
     }
 
     @media(max-width: @on-phone){
+        width: 100% - 0.5 * @gap;
         top: @header-height + @gap;
-        right: 0px - @side-width;
-        // border-radius: 0;
-        margin-right:0;
+        left: @gap;
+        width: "calc(100% - 0.3 * @{gap})";
+        display: none;
         &.active{
-            transform: translateX(-@side-width - 10px);
+            display: block;
+            position: fixed;
+            box-shadow: @box-shadow-card-raised;
         }
-    }
-    .header{
-        border-top-left-radius: @border-radius-width;
-        border-top-right-radius: @border-radius-width;
-        @media(max-width: @on-phone) {
-            border-radius: 0;
-        }
-        background-color: fade(@theme-bg-header,90%);
-        color: @theme-text-in-header;
-        font-size: @base-font-size;
-        line-height: 1.8em;
-        padding: 8px @gap;
 
     }
-    overflow: auto;
-    .content{
-        overflow: auto;
-        padding: @gap/2 0;
-        max-height: ~"calc(100% - @{header-height} - 2.5 * @{gap})";
-    }
-    width: @side-width;
-    z-index:3;
-    &:extend(.z-depth-2);
-    background: @theme-bg-card;
+    
     a {
         padding-left: 8px;
         color: fade(@theme-text-main, 50%);
@@ -102,6 +77,7 @@
                 padding: 0 @gap/2 0 (@gap - 5px);
                 font-weight: bold;
                 width: 100%;
+
             }
             width: auto;
             // &:extend(.txt-ellipsis);

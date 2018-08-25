@@ -13,14 +13,6 @@
         </time>
         <%- partial('categories',{post:post}) %>
     </section>
-    <% if(post.toc!==false && toc(post.content).length > 0){ %>
-        <section class="toc-wrapper">
-            <div class="header"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
-            <div class='content'>
-                <%- toc(post.content, {list_number: false}) %>
-            </div>
-        </section>
-    <% } %>
 
     <section class="article typo">
 
@@ -100,6 +92,7 @@
                                 </i><i class="fa fa-spinner fa-spin fa-fw"></i>
                             </div>
                         </section>
+                        <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
                     <% } %>
                 <% } %>
             <% } %>

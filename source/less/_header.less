@@ -109,15 +109,17 @@
 			overflow: hidden;
 			position: absolute;
 			.enable-trans();
-			right: 10px;
+            left: @gap/2;
+			// right: @gap;
+            // width: 100% - 2*@gap;
 			top:(@header-height - @search-height)/2;
 		}
 		&.z_search-open{
 			.logo,.switcher{
-				opacity:0;
+				// opacity:0;
 			}
 			.m_search{
-				width: 50%;
+				width: 100% - 1.7*@gap;
 			}
 		}
 	}
@@ -205,7 +207,7 @@
 		&:extend(.z-depth-main-raised);
 	}
 	&:active {
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+		box-shadow: @box-shadow-card-normal;
 	}
 	nav {
     	padding: @gap/2 0px;

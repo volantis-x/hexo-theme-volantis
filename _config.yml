@@ -28,6 +28,7 @@ materialx:
     - contacts # 显示自己的联系信息
     - music # 显示自己的网易云歌单
     - links # 显示友链
+    - toc # 显示目录
   # 网易云音乐歌单id
   widgets_musicid:
   # 侧边栏的友链

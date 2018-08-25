@@ -75,17 +75,15 @@ body {
     box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.24), 0 3px 6px 0px rgba(0, 0, 0, 0.1);
 }
 .z-depth-nav-raised {
-    // box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.12), 0 4px 8px 0px rgba(0, 0, 0, 0.12), 0 8px 16px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.12), 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 16px 0px rgba(0, 0, 0, 0.12), 0 16px 32px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: @box-shadow-card-raised;
 }
 
 .z-depth-main {
-    // box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.12), 0 3px 6px 0 rgba(0, 0, 0, 0.08);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: @box-shadow-card-normal;
 }
 
 .z-depth-main-raised {
-    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.12), 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 16px 0px rgba(0, 0, 0, 0.12), 0 16px 32px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: @box-shadow-card-raised;
 }
 
 .z-depth-0 {

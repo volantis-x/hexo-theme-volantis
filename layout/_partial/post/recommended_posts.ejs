@@ -1,11 +1,12 @@
 <% var post_list = recommended_posts(page, site) %>
 <% if(post_list.length > 0) { %>
     <div class="recommended_posts">
-        <h4><i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;你可能感兴趣的文章</h4> 
+        <h4><i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;你可能感兴趣的文章</h4>
         <ul>
             <% post_list.forEach(function(link) { %>
                 <li><a href="<%= link.permalink %>"><%= link.title %></a></li>
             <% }) %>
         </ul>
     </div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <% } %>
