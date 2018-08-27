@@ -13,7 +13,6 @@
 - 支持3种评论系统：Disqus、来必力和Valine。
 - 增加了推荐文章列表，增加博客流量。
 - 增加了阅读统计。
-- 文末可以显示GitHub仓库卡片。
 - 支持渲染MathJax数学公式。
 
 
@@ -295,14 +294,6 @@ comments: false
 ```
 ---
 recommended_posts: false
----
-```
-
-### 显示相关GitHub仓库卡片
-
-```
----
-repo: xaoxuu/hexo-theme-material-x
 ---
 ```
 
