@@ -5,15 +5,16 @@
     border-radius: @border-radius-width;
     @media(max-width: @on-phone) {
         border-radius: 0;
+        width: 100%;
     }
     width: @side-width;
     max-height: ~"calc(100% - @{header-height} - 4 * @{gap})";
     .enable-trans();
     &:hover {
-      &:extend(.z-depth-main-raised);
+        &:extend(.z-depth-main-raised);
     }
     &:active {
-      box-shadow: @box-shadow-card-normal;
+        box-shadow: @box-shadow-card-normal;
     }
     .header{
         position: -webkit-sticky;
