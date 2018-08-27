@@ -84,11 +84,14 @@
 		padding: 0 @gap;
 		display: none;
 		font-size: @header-switcher-font-size;
+        line-height: @header-height - 1*@gap;
+
 		& > li{
+            border-radius: @header-height;
 			margin-left: @gap;
 			.enable-trans();
 			svg{
-				margin-top:16px;
+				// margin-top:16px;
 			}
 		}
 		// & > li.s-menu.active {

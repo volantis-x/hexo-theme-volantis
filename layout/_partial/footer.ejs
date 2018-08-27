@@ -2,7 +2,7 @@
     <div class="social-wrapper">
       <% (config.materialx && config.materialx.footer_social && (config.materialx.footer_social||[]) || (theme.materialx.footer_social||[])).forEach(function(value){ %>
         <% if (value.url && value.slug) { %>
-            <a href="<%= value.url %>" class="social <%= value.slug %>"
+            <a href="<%= value.url %>" class="social <%= value.slug %> flat-box"
                 target="_blank" rel="external">
             <i class="fa fa-<%= value.slug %> fa-fw"></i>
             </a>
