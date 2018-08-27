@@ -26,7 +26,7 @@
         <% if (post.tags && post.tags.length) { %>
             <div class="full-width auto-padding tags">
                 <% post.tags.each(function(item){ %>
-                    <a href="<%- url_for(item.path) %>"><i class="fa fa-tag"></i>&nbsp;&nbsp;<%=item.name %></a>
+                    <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw"></i>&nbsp;<%=item.name %></a>
                 <%})%>
             </div>
         <% } %>

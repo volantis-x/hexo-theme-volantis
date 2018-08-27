@@ -9,7 +9,7 @@
         </h1>
         <time>
             <%= date(post.date, 'YYYY-MM-DD dddd') %>&nbsp;&nbsp;
-            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         <%- partial('categories',{post:post}) %>
     </section>
@@ -23,7 +23,7 @@
         <% if (post.tags && post.tags.length) { %>
             <div class="article-tags tags">
                 <% post.tags.each(function(item){ %>
-                    <a href="<%- url_for(item.path) %>"><i class="fa fa-tag"></i>&nbsp;&nbsp;<%=item.name %></a>
+                    <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%=item.name %></a>
                 <%})%>
             </div>
         <% } %>
@@ -32,18 +32,18 @@
             <div class="art-item-footer">
                 <% if(post.prev){ %>
                     <span class="art-item-left">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;
+                        <i class="fa fa-chevron-left fa-fw" aria-hidden="true"></i>&nbsp;
                         <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
                             <%= post.prev.title %>
                         </a>
                     </span>
                 <% } %>
                 <% if(post.next){ %>
-                    <span class="art-item-right">
+                    <span class="art-item-right" aria-hidden="true">
                         <a href="<%=url_for(post.next.path) %>" rel="next" title="<%=post.next.title %>">
                             <%=post.next.title  %>
                         </a>&nbsp;
-                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        <i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i>
                     </span>
                 <%} %>
             </div>
@@ -67,7 +67,7 @@
             <% if (post.comments) { %>
 
                 <% if (config.disqus_shortname) { %>
-                    <h4><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Disqus评论</h4>
+                    <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Disqus评论</h4>
                     <section id="comments">
                         <div id="disqus_thread">
                             ⚠️  无法加载评论系统，请确保您的网络能够正常访问 <a href="https://disqus.com">Disqus</a> 。
@@ -76,7 +76,7 @@
                 <% } %>
 
                 <% if (config.livere_shortname){ %>
-                    <h4><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;LiveRe评论</h4>
+                    <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;LiveRe评论</h4>
                     <section id="comments">
                         <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTU4Ny82MTU1">
                             <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
@@ -86,7 +86,7 @@
 
                 <% if (config.valine){ %>
                     <% if (config.valine.enable && config.valine.appId && config.valine.appKey){ %>
-                        <h4><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Valine评论</h4>
+                        <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Valine评论</h4>
                         <section id="comments">
                             <div id="valine_container" class="valine_thread">
                                 </i><i class="fa fa-spinner fa-spin fa-fw"></i>
