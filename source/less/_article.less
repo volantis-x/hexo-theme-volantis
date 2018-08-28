@@ -286,6 +286,51 @@
             line-height: 1.6em;
         }
     }
+    .prev-next{
+        display: flex;
+        justify-content: space-around;
+        section{
+            width: 50%;
+            padding: @gap/2;
+            background-color: @theme-bg-code-block;
+            border-radius: @border-radius-width;
+            p{
+                font-size: @base-font-size;
+                line-height: @base-line-height;
+                margin: 0;
+            }
+            h4{
+                margin-top: @gap/2;
+                margin-bottom: @gap/2;
+                position: relative;
+                font-family: @base-font-family;
+                font-weight: bold;
+                font-size: @font-size-h4;
+                // a{
+                // color: @theme-text-main;
+                // }
+            }
+            .enable-trans();
+            border: 1px solid transparent;
+            &:hover{
+                border: 1px solid fade(@theme-bg-quote, 40%);
+            }
+            .tags{
+                background: transparent;
+                padding: 0;
+                    margin-top: @gap/2;
+                    margin-bottom: 0;
+            }
+        }
+        .prev{
+            text-align: left;
+            margin-right: @gap/2;
+        }
+        .next{
+            text-align: right;
+            margin-left: @gap/2;
+        }
+    }
 }
 /* Tomorrow Night Eighties Theme */
 /* Original theme - https://github.com/chriskempson/tomorrow-theme */

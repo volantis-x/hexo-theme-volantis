@@ -29,22 +29,45 @@
         <% } %>
 
         <% if(post.prev || post.next){ %>
-            <div class="art-item-footer">
+            <div class="prev-next">
                 <% if(post.prev){ %>
-                    <span class="art-item-left">
-                        <i class="fa fa-chevron-left fa-fw" aria-hidden="true"></i>&nbsp;
-                        <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
-                            <%= post.prev.title %>
-                        </a>
-                    </span>
+                    <section class="prev" >
+                        <span class="art-item-left">
+                            <i class="fa fa-chevron-left fa-fw" aria-hidden="true"></i>&nbsp;上一篇
+                            <h4>
+                                <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
+                                    <%= post.prev.title %>
+                                </a>
+                            </h4>
+                            <% if (post.prev.tags && post.prev.tags.length) { %>
+                                <div class="tags">
+                                    <% post.prev.tags.each(function(item){ %>
+                                        <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw"></i>&nbsp;<%=item.name %></a>
+                                    <%})%>
+                                </div>
+                            <% } %>
+                        </span>
+                    </section>
                 <% } %>
                 <% if(post.next){ %>
-                    <span class="art-item-right" aria-hidden="true">
-                        <a href="<%=url_for(post.next.path) %>" rel="next" title="<%=post.next.title %>">
-                            <%=post.next.title  %>
-                        </a>&nbsp;
-                        <i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i>
-                    </span>
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            下一篇&nbsp;<i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i>
+                            <h4>
+                                <a href="<%=url_for(post.next.path)%>" rel="prev" title="<%=post.next.title%>">
+                                    <%= post.next.title %>
+                                </a>
+                            </h4>
+                            <% if (post.next.tags && post.next.tags.length) { %>
+                                <div class="tags">
+                                    <% post.next.tags.each(function(item){ %>
+                                        <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw"></i>&nbsp;<%=item.name %></a>
+                                    <%})%>
+                                    &nbsp;
+                                </div>
+                            <% } %>
+                        </span>
+                    </section>
                 <%} %>
             </div>
         <%} %>
@@ -57,7 +80,7 @@
 
 <!-- 显示推荐文章和评论 -->
 <% if (post && ((config.recommended_posts && config.recommended_posts.autoDisplay == false && post.recommended_posts != false) || (post.comments && (config.disqus_shortname || config.livere_shortname || config.valine)) )) { %>
-    <article class="post white-box article-type-<%= post.layout %>>">
+    <article class="post white-box comments">
         <section class="article typo">
 
             <% if (config.recommended_posts && config.recommended_posts.autoDisplay == false && post.recommended_posts != false) { %>
