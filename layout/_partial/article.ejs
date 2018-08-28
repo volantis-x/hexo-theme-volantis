@@ -42,7 +42,7 @@
                             <% if (post.prev.tags && post.prev.tags.length) { %>
                                 <div class="tags">
                                     <% post.prev.tags.each(function(item){ %>
-                                        <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw"></i>&nbsp;<%=item.name %></a>
+                                        <i class="fa fa-tag fa-fw"></i><%=item.name %>
                                     <%})%>
                                 </div>
                             <% } %>
@@ -61,9 +61,8 @@
                             <% if (post.next.tags && post.next.tags.length) { %>
                                 <div class="tags">
                                     <% post.next.tags.each(function(item){ %>
-                                        <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw"></i>&nbsp;<%=item.name %></a>
+                                        <i class="fa fa-tag fa-fw"></i><%=item.name %>
                                     <%})%>
-                                    &nbsp;
                                 </div>
                             <% } %>
                         </span>
