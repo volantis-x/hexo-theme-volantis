@@ -48,13 +48,13 @@
 		flex: 1 0 auto;
 		height: @header-height;
 		.enable-trans();
-		margin:0 28px;
+		margin:0 @gap;
 		ul > li > a{
 			.enable-trans();
 			display: block;
 			font-size: @header-font-size * .95;
 			color: fade(@theme-text-in-header,60%);
-			padding: 0 @gap / 2;
+			padding: 0 8px;
 			&:hover,&.active{
 				color: @theme-text-in-header;
 			}
@@ -88,7 +88,7 @@
 
 		& > li{
             border-radius: @header-height;
-			margin-left: @gap;
+			margin-left: 4px;
 			.enable-trans();
 			svg{
 				// margin-top:16px;
