@@ -31,20 +31,13 @@ materialx:
   widgets_about:
     title:
     motto: 永远不要忘了自己是谁，因为这个世界就不会。
+    social: true
   # 网易云音乐歌单id
   widgets_musicid:
   # 侧边栏的友链
   widgets_links:
   - name: xaoxuu
     url: https://xaoxuu.com
-  # 右边的联系信息小窗口
-  widgets_contacts:
-  - name: GitHub
-    desc: xaoxuu
-    url: https://github.com/xaoxuu
-  - name: 10086
-    desc: 测试打电话
-    url: tel:10086
   # 页脚
   footer_social:
   - slug: envelope
