@@ -22,13 +22,15 @@ materialx:
       url: /archives
   # 右边的小窗口
   widgets:
-    - avatar # 显示个人头像，如果注释掉这一行就不显示
+    - about # 显示个人头像、格言、社交信息等，如果注释掉这一行就不显示
     - categories # 显示分类
     - tagcloud # 显示tags
-    - contacts # 显示自己的联系信息
     - music # 显示自己的网易云歌单
     - links # 显示友链
     - toc # 显示目录
+  widgets_about:
+    title:
+    motto: 永远不要忘了自己是谁，因为这个世界就不会。
   # 网易云音乐歌单id
   widgets_musicid:
   # 侧边栏的友链

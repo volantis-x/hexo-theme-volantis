@@ -17,31 +17,29 @@
         box-shadow: @box-shadow-card-normal;
     }
     .header{
-        position: -webkit-sticky;
-    	position: -moz-sticky;
-    	position: -ms-sticky;
-    	position: sticky;
-        top: 0;
+
         border-top-left-radius: @border-radius-width;
         border-top-right-radius: @border-radius-width;
         @media(max-width: @on-phone) {
             border-radius: 0;
         }
-        background-color: @theme-bg-header;
+        background-color: @theme-bg-card-header;
         color: @theme-text-in-header;
         font-size: @base-font-size;
         line-height: 1.8em;
-        padding: 8px @gap;
+        padding: 8px @gap/2;
       	// letter-spacing: .08em;
 
     }
     .content{
+        text-align: justify;
         overflow: auto;
-        padding: @gap/2 0;
+        padding: @gap/2;
         max-height: ~"calc(100% - @{header-height} - 2.5 * @{gap})";
     }
+
      ul.entry > li > a{
-        padding: 0 @gap;
+        padding: 0 @gap/2;
         line-height:@item-height;
         height: @item-height;
         font-size: @base-font-size;
@@ -70,41 +68,100 @@
     }
 }
 .m_widget.about{
-    .waves-effect,img{
-        width: 100%;
-        display: block;
-        border-radius: @border-radius-width;
+    .enable-trans();
+    h2{
+        text-align: center;
+        // color: @theme-text-header;
     }
-    @media(max-width: @on-phone){
-        display:none;
+    .header{
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        @media(max-width: @on-phone){
+            padding: @gap/2;
+        }
+    }
+    img{
+        width: @side-width;
+        height: @side-width;
+        @media(max-width: @on-phone){
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+        }
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
     }
     .content{
-        padding:0;
-        .desc{
-            position: relative;
-            padding: @gap;
-            .enable-trans(.15s);
-            line-height: 1.2em;
-            font-style: italic;
-            &:before{
-                content:'#';
-                position: absolute;
-                left:0;
-                top:0;
-                width:2px;
-                height:100%;
+        // margin-top: 0;
+        // padding: @gap/2 @gap;
+        font-weight: bold;
+    }
+    .social-wrapper{
+        display: flex;
+        justify-content: center;
+        padding-top: 0;
+        padding-bottom: @gap/2;
+        a {
+            color: fade(@theme-text-main, 70%);
+            .enable-trans();
+            &:hover {
+                color: @theme-text-highlight;
             }
-            &:empty{
-                padding:0;
-                height: 0;
+            &.social {
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                width: 32px;
+                height: 32px;
+                padding: 4px 2px;
+                margin: 4px;
+                border-radius: 100px;
+                background: darken(@theme-bg-card, 5%);
+                &:hover {
+                    background: darken(@theme-bg-card, 20%);
+                    color: @theme-text-highlight;
+                }
             }
         }
     }
 }
+// .m_widget.avatar{
+//
+//     .content{
+//         // padding:0;
+//         .desc{
+//             position: relative;
+//             padding: @gap;
+//             .enable-trans(.15s);
+//             line-height: 1.2em;
+//             font-style: italic;
+//             &:before{
+//                 content:'#';
+//                 position: absolute;
+//                 left:0;
+//                 top:0;
+//                 width:2px;
+//                 height:100%;
+//             }
+//             &:empty{
+//                 padding:0;
+//                 height: 0;
+//             }
+//         }
+//     }
+// }
+.m_widget.categories{
+    .content{
+        padding: @gap/2 0;
+    }
+}
+
 .m_widget.tagcloud{
     .content{
         text-align: justify;
-        padding: @gap/2 @gap;
+        // padding: @gap/2 @gap;
         a{
             display:inline-block;
             .enable-trans(.1s);
@@ -116,8 +173,18 @@
         }
     }
 }
+.m_widget.contacts{
+    .content{
+        padding: @gap/2 0;
+    }
+}
 .m_widget.music{
     .content{
-        padding: @gap/2;
+        padding: @gap/2 2px;
+    }
+}
+.m_widget.links{
+    .content{
+        padding: @gap/2 0;
     }
 }

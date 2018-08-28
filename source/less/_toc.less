@@ -4,6 +4,9 @@
     position: fixed;
     top: @header-height + @gap;
     display: none;
+    .content{
+        padding: @gap/2 0;
+    }
     &.active{
         display: block;
     }
@@ -26,7 +29,7 @@
         }
 
     }
-    
+
     a {
         padding-left: 8px;
         color: fade(@theme-text-main, 50%);

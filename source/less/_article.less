@@ -173,9 +173,9 @@
             border-left: 8px solid @theme-bg-quote;
             border-top-left-radius: 8px;
             border-bottom-left-radius: 8px;
-            border-right: 1px solid fade(@theme-bg-quote, 30%);
-            border-top: 1px solid fade(@theme-bg-quote, 30%);
-            border-bottom: 1px solid fade(@theme-bg-quote, 30%);
+            border-right: 1px solid fade(@theme-bg-quote, 40%);
+            border-top: 1px solid fade(@theme-bg-quote, 40%);
+            border-bottom: 1px solid fade(@theme-bg-quote, 40%);
         }
         footer {
             strong {
@@ -197,10 +197,10 @@
         margin: 0px 2px;
         vertical-align: center;
         border-radius: 2px;
-        border: 1px solid fade(@theme-bg-header, 30%);
+        border: 1px solid fade(@theme-bg-code, 30%);
         font-size: @base-font-size * .8;
 
-        background: fade(@theme-bg-header, 10%);
+        background: fade(@theme-bg-code, 10%);
         @media(max-width: @on-phone){
           font-size: @base-font-size * .8 * .95;
         }
@@ -216,16 +216,16 @@
             display: inline-block;
             vertical-align: middle;
             line-height: 2rem;
-            background-color: fade(@theme-bg-header, 90%);
+            background-color: fade(@theme-bg-button, 90%);
             padding: .2em 2.4em;
             color: @theme-text-in-header;
             border-radius: @border-radius-width/2;
             .enable-trans();
             &:hover {
-              background: darken(@theme-bg-header, 10%);
+              background: darken(@theme-bg-button, 10%);
             }
             &:active {
-              background: lighten(@theme-bg-header, 20%);
+              background: lighten(@theme-bg-button, 20%);
             }
         }
 
@@ -330,7 +330,7 @@
   display: block;
   // background: #2d2d2d;
   // background: fade(@material-blue, 8%);
-  background: @theme-bg-code;
+  background: @theme-bg-code-block;
   // color: #cccccc;
   font-size: @small-font-size * .95;
   font-family:@code-font-family;
@@ -341,7 +341,7 @@
   border: 1px solid transparent;
   .enable-trans();
   &:hover{
-      border: 1px solid fade(@theme-bg-quote, 30%);
+      border: 1px solid fade(@theme-bg-quote, 40%);
   }
 
   .gutter{
@@ -378,12 +378,12 @@
 /* Handle */
 
   &::-webkit-scrollbar-thumb {
-    background: darken(@theme-bg-code, 5%);
+    background: darken(@theme-bg-code-block, 5%);
     cursor: pointer;
     border-radius: 3px;
     .enable-trans();
     &:hover {
-      background: darken(@theme-bg-code, 12%);
+      background: darken(@theme-bg-code-block, 12%);
     }
   }
 

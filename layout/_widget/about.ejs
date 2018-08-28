@@ -1,0 +1,30 @@
+<section class='m_widget about'>
+    <div class='header'>
+        <% if(config.avatar) { %>
+            <img class='avatar' src='<%= url_for(config.avatar) %>' />
+        <% } else { %>
+            <img class='avatar waves-image' src='https://xaoxuu.com/assets/img/avatar.jpg' />
+        <%} %>
+    </div>
+    <div class='content'>
+        <% if (config.materialx && (config.materialx.widgets_about.title)){ %>
+            <h2><%= config.materialx.widgets_about.title %></h2>
+        <% } %>
+        <div>
+            <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+            <% if (config.materialx && (config.materialx.widgets_about.motto)){ %>
+                <%= config.materialx.widgets_about.motto %>
+            <% } %>
+        </div>
+    </div>
+    <div class="social-wrapper">
+      <% (config.materialx && config.materialx.footer_social && (config.materialx.footer_social||[]) || (theme.materialx.footer_social||[])).forEach(function(value){ %>
+        <% if (value.url && value.slug) { %>
+            <a href="<%= value.url %>" class="social <%= value.slug %>"
+                target="_blank" rel="external">
+            <i class="fa fa-<%= value.slug %> fa-fw"></i>
+            </a>
+        <%}%>
+      <%})%>
+    </div>
+</section>

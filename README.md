@@ -312,24 +312,36 @@ mathjax: true
 
 ```yaml
 // 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 定义颜色
+@theme-base-main: #EEE;
+@theme-base-tint: @ax-red;
+
 // 网页背景
 @theme-bg-main: #EFEFEF;
-// 导航栏背景（主题色）
-@theme-bg-header: @xiaowenwen-green;
+// 导航栏背景
+@theme-bg-nav-header: #FFF;
+// 卡片标题背景
+@theme-bg-card-header: #E3E3E3;
+// 按钮背景
+@theme-bg-button: @theme-bg-card-header;
 // 卡片背景
 @theme-bg-card: #FFF;
+// 代码的背景色
+@theme-bg-code: @theme-base-tint;
 // 代码块的背景色
-@theme-bg-code: #F5F5F5;
+@theme-bg-code-block: #F5F5F5;
 // 引用的颜色 和 分类、归档的 hover 时颜色
-@theme-bg-quote: @theme-bg-header;
+@theme-bg-quote: @theme-base-tint;
+
 // 标题文字颜色（h1/h2）
-@theme-text-header: darken(@theme-bg-header, 0%);
+@theme-text-header: @theme-base-tint;
 // 链接颜色
 @theme-text-link: @ax-blue;
 // 链接高亮颜色
-@theme-text-highlight: @material-orange;
+@theme-text-highlight: @theme-base-tint;
 // 在主题色中显示的文本（白或深灰）
-@theme-text-in-header: white;
+@theme-text-in-header: @dark;
+// 正文文字颜色
 @theme-text-main: @dark;
 // 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
