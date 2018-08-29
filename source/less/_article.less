@@ -287,6 +287,7 @@
         }
     }
     .prev-next{
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-content: flex-start;
@@ -330,15 +331,22 @@
         }
         .prev{
             text-align: left;
+            margin-left: 0;
             margin-right: @gap/2;
+            border-top-right-radius: @border-radius-width;
+            border-bottom-right-radius: @border-radius-width;
         }
         .next{
             text-align: right;
             margin-left: @gap/2;
+            margin-right: 0;
+            border-top-left-radius: @border-radius-width;
+            border-bottom-left-radius: @border-radius-width;
         }
 
     }
 }
+
 /* Tomorrow Night Eighties Theme */
 /* Original theme - https://github.com/chriskempson/tomorrow-theme */
 /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */

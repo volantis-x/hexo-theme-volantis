@@ -31,24 +31,34 @@
     <% } %>
     <% page.posts.each(function(post){ %>
         <div class='post-wrapper'>
-    <%- partial('post', {post: post}) %>
+            <%- partial('post', {post: post}) %>
         </div>
     <% }) %>
 </section>
 
 <% if (page.total > 1) { %>
-    <nav id="page-nav">
-        <% if (page.prev != 0) { %>
-            <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
-                <span class="icon icon-chevron-left"></span>
-                <span class="text">PREVIOUS</span>
-            </a>
-        <% } %>
-        <% if (page.next != 0) { %>
-            <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
-                <span class="text">NEXT</span>
-                <span class="icon icon-chevron-right"></span>
-            </a>
-        <% } %>
-    </nav>
+    <br>
+    <div class="prev-next">
+        <div class="prev-next">
+            <% if (page.prev != 0) { %>
+                <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
+                    <section class="post prev" >
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
+                    </section>
+                </a>
+            <% } %>
+            <p class="current">
+                <%= page.current%> / <%= page.total%>
+            </p>
+            <% if (page.next != 0) { %>
+                <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
+                    <section class="post next">
+                        &nbsp;下一页&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </section>
+                </a>
+            <% } %>
+
+        </div>
+    </div>
+
 <% } %>
