@@ -273,19 +273,19 @@
         justify-content: space-between;
         align-items: baseline;
         color: fade(@theme-text-main, 50%);
+        margin: 0;
         .prev{
             text-align: left;
-            margin-left: 0;
-            margin-right: @gap/2;
             border-top-right-radius: 32px;
             border-bottom-right-radius: 32px;
         }
         .next{
             text-align: right;
-            margin-left: @gap/2;
-            margin-right: 0;
             border-top-left-radius: 32px;
             border-bottom-left-radius: 32px;
+        }
+        p{
+            margin: @gap;
         }
         section{
             color: fade(@theme-text-main, 80%);
