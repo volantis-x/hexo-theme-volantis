@@ -33,7 +33,7 @@
                 <% if(post.prev){ %>
                     <section class="prev" >
                         <span class="art-item-left">
-                            <i class="fa fa-chevron-left fa-fw" aria-hidden="true"></i>&nbsp;上一篇
+                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
                             <h4>
                                 <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
                                     <%= post.prev.title %>
@@ -52,7 +52,7 @@
                 <% if(post.next){ %>
                     <section class="next">
                         <span class="art-item-right" aria-hidden="true">
-                            下一篇&nbsp;<i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i>
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
                                 <a href="<%=url_for(post.next.path)%>" rel="prev" title="<%=post.next.title%>">
                                     <%= post.next.title %>

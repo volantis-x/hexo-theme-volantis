@@ -27,7 +27,7 @@
         color: @theme-text-in-header;
         font-size: @base-font-size;
         line-height: 1.8em;
-        padding: 8px @gap/2;
+        padding: 8px @gap;
       	// letter-spacing: .08em;
 
     }
@@ -39,7 +39,7 @@
     }
 
      ul.entry > li > a{
-        padding: 0 @gap/2;
+        padding: 0 @gap;
         line-height:@item-height;
         height: @item-height;
         font-size: @base-font-size;
@@ -78,6 +78,7 @@
         margin: 0;
         display: flex;
         justify-content: center;
+        background-color: transparent;
         @media(max-width: @on-phone){
             padding: @gap/2;
         }
@@ -89,6 +90,7 @@
             width: 80px;
             height: 80px;
             border-radius: 100%;
+            margin-top: @gap/2;
         }
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
@@ -161,7 +163,7 @@
 .m_widget.tagcloud{
     .content{
         text-align: justify;
-        // padding: @gap/2 @gap;
+        padding: @gap/2 @gap;
         a{
             display:inline-block;
             .enable-trans(.1s);
@@ -180,7 +182,7 @@
 }
 .m_widget.music{
     .content{
-        padding: @gap/2 2px;
+        padding: @gap/2;
     }
 }
 .m_widget.links{

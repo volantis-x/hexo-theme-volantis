@@ -289,6 +289,7 @@
     .prev-next{
         display: flex;
         justify-content: space-between;
+        align-content: flex-start;
         section{
             width: 100%;
             padding: @gap/2;
@@ -307,7 +308,9 @@
                 font-family: @base-font-family;
                 font-weight: bold;
                 font-size: @font-size-h4;
-                
+            }
+            h6{
+                margin: 0;
             }
             .enable-trans();
             border: 1px solid transparent;
@@ -315,23 +318,25 @@
                 border: 1px solid fade(@theme-bg-quote, 40%);
             }
             .tags{
-
                 background: transparent;
                 padding: 0;
                     margin-top: @gap/2;
                     margin-bottom: 0;
             }
+            &:first-child{
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
         .prev{
-            align-self: flex-start;
             text-align: left;
             margin-right: @gap/2;
         }
         .next{
-            align-self: flex-end;
             text-align: right;
             margin-left: @gap/2;
         }
+
     }
 }
 /* Tomorrow Night Eighties Theme */

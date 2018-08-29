@@ -148,7 +148,10 @@
 		width: @search-height;
 		line-height: @search-height;
 		top: 0;
-		left: @gap/2;
+		left: @gap;
+        @media(max-width: @on-phone){
+            left: @gap/2;
+        }
 	}
 	.input {
 		display:block;
@@ -157,7 +160,10 @@
 		margin: 0;
 		width: 100%;
 		color: fade(@theme-text-in-header, 60%);
-		padding: 5px 10px 5px 38px;
+		padding: 5px 10px 5px 48px;
+        @media(max-width: @on-phone){
+            padding: 5px 10px 5px 38px;
+        }
 		height: @search-height;
 		line-height: @search-height/2;
 		font-family: @base-font-family;
