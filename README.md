@@ -392,6 +392,10 @@ mathjax: true
 // 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
+对应的效果如图所示：
+
+![](http://pcpw4brqf.bkt.clouddn.com/hexo-theme-material-x/083101.png-origin)
+
 
 
 ## 单元测试
