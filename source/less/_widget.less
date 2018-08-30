@@ -96,9 +96,10 @@
         border-top-right-radius: 8px;
     }
     .content{
-        // margin-top: 0;
-        // padding: @gap/2 @gap;
         font-weight: bold;
+        @media(max-width: @on-phone){
+            padding: @gap/2 @gap;
+        }
     }
     .social-wrapper{
         display: flex;
