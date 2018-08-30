@@ -57,50 +57,36 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 
 ## 主题配置
 
-把 `themes/material-x/_config.yml` 中的这部分内容复制到博客主目录的 `_config.yml` 文件中：
-
-```yml
-# >> copy_start 请把这一段复制到博客主目录的【_config.yml】中 ↓↓↓↓↓↓↓↓ ↓↓↓↓↓↓↓↓
-
-{中间这部分是要复制的内容}
-
-# >> copy_end 到这里为止，下面的就不要复制了。 ↑↑↑↑↑↑↑↑ ↑↑↑↑↑↑↑↑
-...
-```
-
-复制到博客主目录的 `_config.yml` 文件之后根据自己的需要填写和修改。这样做的好处是：更新主题的时候你修改过的配置就不会被覆盖了。
+把 `themes/material-x/_config.yml` 中的**所有**内容复制到博客主目录的 `_config.yml` 文件中，然后根据自己的需要填写和修改。这样做的好处是：更新主题的时候你修改过的配置就不会被覆盖了。
 
 > 以下这些配置如果没有特殊说明，都指的是博客主目录的 `_config.yml` 文件。
 
-
-
 ### 导航栏
 
-你可以 `materialx:` 下面找到类似这一段，把它改为你需要的：
+你可以找到类似这一段，把它改为你需要的：
 
 ```yaml
-materialx:
-  # 导航栏
-  nav_menu:
-    - name: 主页
-      slug: about
-      fa:   home
-      url: /
-    - name: 项目
-      slug: projects
-      fa:   cube
-      url: https://xaoxuu.com/proj
-    - name: 博客
-      slug: home
-      fa:   rss
-      url: /
-    - name: 归档
-      slug: archives
-      fa:   archive
-      url: /archives
+# 导航栏
+nav_menu:
+  - name: 主页
+    slug: about
+    icon: fa-home
+    url: /
+  - name: 项目
+    slug: projects
+    icon: fa-cube
+    url: https://xaoxuu.com/proj
+  - name: 博客
+    slug: home
+    icon: fa-rss
+    url: /
+  - name: 归档
+    slug: archives
+    icon: fa-archive
+    url: /archives
 ```
 
-其中 `fa` 是 `font-awesome` 图标名，你要显示什么图标，去 [font-awesome](https://fontawesome.com/icons?d=gallery) 找就可以了。
+其中 icon 是 `font-awesome` 图标名，你要显示什么图标，去 [font-awesome](https://fontawesome.com/icons?d=gallery) 找就可以了。
 
 
 
@@ -108,27 +94,55 @@ materialx:
 
 右边的小窗口，可以根据需要显示。
 
-#### 头像
+```yaml
+# 右边的小窗口，不想显示哪一项的注释掉对应的即可
+widgets:
+  # 博主信息，显示个人头像、格言、社交信息等
+  author:
+    enable: true
+    avatar: # 头像，如果config中已经设置avatar了，这里可以不用写
+    title: # 博客名、头衔等等，居中显示
+    motto: 永远不要忘了自己是谁，因为这个世界就不会。 # 格言座右铭等等
+    social: true # 是否显示社交信息
+  # 显示文章分类
+  categories: true
+  # 显示文章标签
+  tagcloud: true
+  # 显示网易云歌单id
+  musicid: 746319661
+  # 显示友链
+  links:
+  - name: xaoxuu
+    url: https://xaoxuu.com
+  # 显示目录（在文章中设置toc:false可以隐藏单篇文章的目录）
+  toc: true		
+```
 
-如果你没有设置头像，将会显示默认头像。
+
+
+#### 博主（头像/头衔/格言/社交信息）
 
 ```yaml
-avatar: "https://xaoxuu.com/assets/img/avatar.jpg" # 如果没有设置头像 url 将会显示默认头像。
-
-# 主题配置
-materialx:
-  widgets:
-  - avatar # 把这一项注释掉就不显示头像了
+# 右边的小窗口，不想显示哪一项的注释掉对应的即可
+widgets:
+  # 博主信息，显示个人头像、格言、社交信息等
+  author:
+    enable: true
+    avatar: # 头像，如果config中已经设置avatar了，这里可以不用写
+    title: # 博客名、头衔等等，居中显示
+    motto: 永远不要忘了自己是谁，因为这个世界就不会。 # 格言座右铭等等
+    social: true # 是否显示社交信息（内容同页脚的社交信息）
 ```
 
 
 #### 分类
 
 ```yaml
-# 主题配置
-materialx:
-  widgets:
-  - categories # 把这一项注释掉就不显示了
+# 右边的小窗口，不想显示哪一项的注释掉对应的即可
+widgets:
+  ...
+  # 显示文章分类
+  categories: true	
 ```
 
 
@@ -136,10 +150,11 @@ materialx:
 #### 标签
 
 ```yaml
-# 主题配置
-materialx:
-  widgets:
-  - tagcloud # 把这一项注释掉就不显示了
+# 右边的小窗口，不想显示哪一项的注释掉对应的即可
+widgets:
+  ...
+  # 显示文章标签
+  tagcloud: true
 ```
 
 
@@ -147,31 +162,11 @@ materialx:
 #### 网易云音乐歌单
 
 ```yaml
-# 主题配置
-materialx:
-  widgets:
-  - music # 把这一项注释掉就不显示了
-  # 网易云音乐歌单id
-  widgets_musicid: 746319661
-```
-
-
-
-#### 联系信息
-
-```yaml
-# 主题配置
-materialx:
-  widgets:
-  - contacts # 把这一项注释掉就不显示了
-  # 右边的联系信息小窗口
-  widgets_contacts:
-  - name: GitHub
-    desc: xaoxuu
-    url: https://github.com/xaoxuu
-  - name: 10086
-    desc: 测试打电话
-    url: tel:10086
+# 右边的小窗口，不想显示哪一项的注释掉对应的即可
+widgets:
+  ...
+  # 显示网易云歌单id
+  musicid: 746319661
 ```
 
 
@@ -179,14 +174,25 @@ materialx:
 #### 友链
 
 ```yaml
-# 主题配置
-materialx:
-  widgets:
-  - links # 把这一项注释掉就不显示了
-  # 侧边栏的友链
-  widgets_links:
+# 右边的小窗口，不想显示哪一项的注释掉对应的即可
+widgets:
+  ...
+  # 显示友链
+  links:
   - name: xaoxuu
     url: https://xaoxuu.com
+```
+
+
+
+#### 显示目录（TOC）
+
+```yaml
+# 右边的小窗口，不想显示哪一项的注释掉对应的即可
+widgets:
+  ...
+  # 显示目录（在文章中设置toc:false可以隐藏单篇文章的目录）
+  toc: true		
 ```
 
 
@@ -202,7 +208,7 @@ recommended_posts:
   server: https://api.truelaurel.com # 后端推荐服务器地址
   timeoutInMillis: 10000 # 服务时长，超过此时长，则使用离线推荐模式
   excludePattern: []
-  titleHtml: <h3>推荐文章</h3> #自定义标题
+  titleHtml: <h4>推荐文章</h4> #自定义标题
   internalLinks: 3 # 内部文章数量
   externalLinks: 2 # 外部文章数量
   fixedNumber: false
@@ -257,21 +263,45 @@ valine:
 ### 页脚
 
 ```yaml
-# 主题配置
-materialx:
-  # 页脚
-  footer_social:
-  - slug: envelope
+# 页脚社交信息
+social:
+  - icon: fa-envelope
     url: mailto:me@xaoxuu.com
-  - slug: github
+  - icon: fa-github
     url: https://github.com/xaoxuu
-  - slug: instagram
+  - icon: fa-instagram
+    url: https://www.instagram.com/xaoxuu
+  - icon: fa-google-plus
+    url: 
+  - icon: fa-twitter
+    url: https://twitter.com/xaoxuu
+  - icon: fa-music
+    url: https://music.163.com/#/user/home?id=63035382
+  - icon: fa-rss
+    url: atom
+  - icon: fa-telegram
     url:
-  - slug: google-plus
+  - icon: fa-vimeo
     url:
-  - slug: twitter
+  - icon: fa-gitlab
     url:
-  - slug: music
+  - icon: fa-linkedin
+    url:
+  - icon: fa-snapchat
+    url:
+  - icon: fa-steam
+    url:
+  - icon: fa-spotify
+    url:
+  - icon: fa-tumblr
+    url:
+  - icon: fa-youtube
+    url:
+  - icon: fa-weibo
+    url:
+  - icon: fa-weixin
+    url:
+  - icon: fa-qq
     url:
 ```
 
@@ -308,18 +338,33 @@ mathjax: true
 
 ## 主题色和其他样式
 
-打开 `themes/material-x/source/less/_defines.less` 这个文件，修改下面这些内容为你需要的即可：
+找到 `themes/material-x/source/less/_defines.less` 这个文件。
+
+### 如果你比较懒，可以只修改整体的主题色：
 
 ```yaml
 // 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-// 定义颜色
+// 如果你比较懒，就只改这两行就可以了：
 @theme-base-main: #EEE;
 @theme-base-tint: @ax-red;
 
+// 如果你想更深层次DIY，可以更改下面这些：
+...
+// 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+```
+
+### 如果你想更深层次DIY，可以修改下面这些：
+
+```yaml
+// 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 如果你比较懒，就只改这两行就可以了：
+...
+
+// 如果你想更深层次DIY，可以更改下面这些：
 // 网页背景
 @theme-bg-main: #EFEFEF;
 // 导航栏背景
-@theme-bg-nav-header: #FFF;
+@theme-bg-nav-header: #EFEFEF;
 // 卡片标题背景
 @theme-bg-card-header: #E3E3E3;
 // 按钮背景
@@ -330,7 +375,7 @@ mathjax: true
 @theme-bg-code: @theme-base-tint;
 // 代码块的背景色
 @theme-bg-code-block: #F5F5F5;
-// 引用的颜色 和 分类、归档的 hover 时颜色
+// 引用的颜色以及分类、归档的 hover 时颜色
 @theme-bg-quote: @theme-base-tint;
 
 // 标题文字颜色（h1/h2）
@@ -343,6 +388,7 @@ mathjax: true
 @theme-text-in-header: @dark;
 // 正文文字颜色
 @theme-text-main: @dark;
+
 // 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 

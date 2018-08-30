@@ -25,11 +25,6 @@
   <%- favicon_tag(config.favicon) %>
   <%- feed_tag(config.feed.path, {title: config.title}) %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <%- open_graph({
-    twitter_id: theme.twitter,
-    google_plus: theme.google_plus,
-    fb_admins: theme.fb_admins,
-    fb_app_id: theme.fb_app_id}) %>
 
   <link rel="shortcut icon" href="<%= config.shortcut_icon %>" />
   <link rel="icon" href="<%= config.favicon %>" />

@@ -1,56 +1,84 @@
-# >> copy_start 请把这一段复制到博客主目录的【_config.yml】中 ↓↓↓↓↓↓↓↓ ↓↓↓↓↓↓↓↓
+# >> 主题配置 ---------------------------------------------------------------------
+# 导航栏
+nav_menu:
+  - name: 主页
+    slug: about
+    icon: fa-home
+    url: /
+  - name: 项目
+    slug: projects
+    icon: fa-cube
+    url: https://xaoxuu.com/proj
+  - name: 博客
+    slug: home
+    icon: fa-rss
+    url: /
+  - name: 归档
+    slug: archives
+    icon: fa-archive
+    url: /archives
 
-# 主题配置
-materialx:
-  # 导航栏
-  nav_menu:
-    - name: 主页
-      slug: about
-      fa:   home
-      url: /
-    - name: 项目
-      slug: projects
-      fa:   cube
-      url: https://xaoxuu.com/proj
-    - name: 博客
-      slug: home
-      fa:   rss
-      url: /
-    - name: 归档
-      slug: archives
-      fa:   archive
-      url: /archives
-  # 右边的小窗口
-  widgets:
-    - about # 显示个人头像、格言、社交信息等，如果注释掉这一行就不显示
-    - categories # 显示分类
-    - tagcloud # 显示tags
-    - music # 显示自己的网易云歌单
-    - links # 显示友链
-    - toc # 显示目录
-  widgets_about:
-    title:
-    motto: 永远不要忘了自己是谁，因为这个世界就不会。
-    social: true
-  # 网易云音乐歌单id
-  widgets_musicid:
-  # 侧边栏的友链
-  widgets_links:
+# 右边的小窗口，不想显示哪一项的注释掉对应的即可
+widgets:
+  # 博主信息，显示个人头像、格言、社交信息等
+  author:
+    enable: true
+    avatar: # 头像，如果config中已经设置avatar了，这里可以不用写
+    title: # 博客名、头衔等等，居中显示
+    motto: 永远不要忘了自己是谁，因为这个世界就不会。 # 格言座右铭等等
+    social: true # 是否显示社交信息（内容同页脚的社交信息）
+  # 显示文章分类
+  categories: true
+  # 显示文章标签
+  tagcloud: true
+  # 显示网易云歌单id
+  musicid: 746319661
+  # 显示友链
+  links:
   - name: xaoxuu
     url: https://xaoxuu.com
-  # 页脚
-  footer_social:
-  - slug: envelope
+  # 显示目录（在文章中设置toc:false可以隐藏单篇文章的目录）
+  toc: true
+
+# 页脚社交信息
+social:
+  - icon: fa-envelope
     url: mailto:me@xaoxuu.com
-  - slug: github
+  - icon: fa-github
     url: https://github.com/xaoxuu
-  - slug: instagram
+  - icon: fa-instagram
     url:
-  - slug: google-plus
+  - icon: fa-google-plus
     url:
-  - slug: twitter
+  - icon: fa-twitter
     url:
-  - slug: music
+  - icon: fa-music
+    url: https://music.163.com/#/user/home?id=63035382
+  - icon: fa-rss
+    url: atom
+  - icon: fa-telegram
+    url:
+  - icon: fa-vimeo
+    url:
+  - icon: fa-gitlab
+    url:
+  - icon: fa-linkedin
+    url:
+  - icon: fa-snapchat
+    url:
+  - icon: fa-steam
+    url:
+  - icon: fa-spotify
+    url:
+  - icon: fa-tumblr
+    url:
+  - icon: fa-youtube
+    url:
+  - icon: fa-weibo
+    url:
+  - icon: fa-weixin
+    url:
+  - icon: fa-qq
     url:
 
 
@@ -65,12 +93,9 @@ recommended_posts:
   externalLinks: 2 # 外部文章数量
   fixedNumber: false
 
-# >> copy_end 到这里为止，下面的就不要复制了。 ↑↑↑↑↑↑↑↑ ↑↑↑↑↑↑↑↑
-
-
 
 # Search
-nav_search:
+search:
   enable: true
   service: hexo
   # google
@@ -90,3 +115,4 @@ nav_search:
 # Less
 less:
   compress: true
+# >> 主题配置 ---------------------------------------------------------------------

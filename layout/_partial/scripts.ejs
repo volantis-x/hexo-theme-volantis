@@ -6,20 +6,22 @@
 
 
 <%- js('js/jquery.fitvids.js') %>
-<script>
-var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.nav_search.google_api_key %>";
-var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.nav_search.google_engine_id %>";
-var ALGOLIA_API_KEY = "<%- theme.nav_search.algolia_api_key %>";
-var ALGOLIA_APP_ID = "<%- theme.nav_search.algolia_app_id %>";
-var ALGOLIA_INDEX_NAME = "<%- theme.nav_search.algolia_index_name %>";
-var AZURE_SERVICE_NAME = "<%- theme.nav_search.azure_service_name %>";
-var AZURE_INDEX_NAME = "<%- theme.nav_search.azure_index_name %>";
-var AZURE_QUERY_KEY = "<%- theme.nav_search.azure_query_key %>";
-var BAIDU_API_ID = "<%- theme.nav_search.baidu_api_id %>";
-var SEARCH_SERVICE = "<%- theme.nav_search.service %>";
-var ROOT = "<%- config.root %>"||"/";
-if(!ROOT.endsWith('/'))ROOT += '/';
-</script>
+<% if (config.search && config.search.enable) { %>
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- config.search.google_api_key %>";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- config.search.google_engine_id %>";
+        var ALGOLIA_API_KEY = "<%- config.search.algolia_api_key %>";
+        var ALGOLIA_APP_ID = "<%- config.search.algolia_app_id %>";
+        var ALGOLIA_INDEX_NAME = "<%- config.search.algolia_index_name %>";
+        var AZURE_SERVICE_NAME = "<%- config.search.azure_service_name %>";
+        var AZURE_INDEX_NAME = "<%- config.search.azure_index_name %>";
+        var AZURE_QUERY_KEY = "<%- config.search.azure_query_key %>";
+        var BAIDU_API_ID = "<%- config.search.baidu_api_id %>";
+        var SEARCH_SERVICE = "<%- config.search.service%>" || "hexo";
+        var ROOT = "<%- config.root %>"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
+    </script>
+<% } %>
 <%- js('js/search.js') %>
 <%- js('js/app.js') %>
 

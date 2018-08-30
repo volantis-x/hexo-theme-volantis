@@ -1,3 +1,20 @@
-<% (config.materialx && config.materialx.widgets && (config.materialx.widgets||[]) || (theme.materialx.widgets||[])).forEach(function(name){ %>
-  <%- partial('../_widget/'+name) %>
-<% }) %>
+<% if (config.widgets){ %>
+    <% if (config.widgets.author){ %>
+        <%- partial('../_widget/author') %>
+    <% } %>
+    <% if (config.widgets.categories){ %>
+        <%- partial('../_widget/categories') %>
+    <% } %>
+    <% if (config.widgets.tagcloud){ %>
+        <%- partial('../_widget/tagcloud') %>
+    <% } %>
+    <% if (config.widgets.musicid){ %>
+        <%- partial('../_widget/music') %>
+    <% } %>
+    <% if (config.widgets.links){ %>
+        <%- partial('../_widget/links') %>
+    <% } %>
+    <% if (config.widgets.toc){ %>
+        <%- partial('../_widget/toc') %>
+    <% } %>
+<% } %>

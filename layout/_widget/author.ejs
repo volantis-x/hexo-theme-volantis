@@ -1,0 +1,29 @@
+<% if(config.widgets.author.enable != false) { %>
+    <section class='m_widget author'>
+        <% if(config.widgets.author.avatar || config.avatar) { %>
+            <div class='header'>
+                <img class='avatar' src='<%= url_for(config.widgets.author.avatar || config.avatar) %>' />
+            </div>
+        <%} %>
+        <div class='content'>
+            <% if (config.widgets.author.title){ %>
+                <h2><%= config.widgets.author.title %></h2>
+            <% } %>
+            <% if (config.widgets.author.motto){ %>
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    <%= config.widgets.author.motto %>
+                </div>
+            <% } %>
+        </div>
+        <% if (config.widgets.author.social){ %>
+            <div class="social-wrapper">
+              <% (config.social||[]).forEach(function(value){ %>
+                <% if (value.url && value.icon) { %>
+                    <a href="<%= value.url %>" class="social flat-box" target="_blank" rel="external"><i class="social fa <%= value.icon %>" aria-hidden="true"></i></a>
+                <%}%>
+              <%})%>
+            </div>
+        <% } %>
+    </section>
+<% } %>

@@ -17,7 +17,9 @@
         text-decoration: underline;
     }
     .social-wrapper {
-        // padding-top: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
     }
     a {
         color: fade(@theme-text-main, 70%);
@@ -29,12 +31,13 @@
             position: relative;
             display: inline-block;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 32px;
             height: 32px;
-            padding: 4px 2px;
             margin: 4px;
             border-radius: 100px;
-            background: darken(@theme-bg-main, 5%);
             &:hover {
                 background: darken(@theme-bg-main, 20%);
                 color: @theme-text-highlight;

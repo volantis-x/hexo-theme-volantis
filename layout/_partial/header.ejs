@@ -8,19 +8,20 @@
 
 				<div class='menu'>
 					<ul class='h-list'>
-						<% (config.materialx && config.materialx.nav_menu && (config.materialx.nav_menu||[]) || (theme.materialx.nav_menu||[])).forEach(function(value){ %>
-							<li>
-								<a class='flat-box nav-<%=value.slug%>' href='<%=url_for(value.url)%>'>
-									<i class="fa fa-<%=value.fa%> fa-fw"></i>
-									<%=value.name%>
-								</a>
-							</li>
-						<%})%>
+              <% if (config.nav_menu) { %>
+    						<% (config.nav_menu || []).forEach(function(value){ %>
+    							<li>
+    								<a class='flat-box nav-<%=value.slug%> fa <%=value.icon%>' href='<%=url_for(value.url)%>'>
+    									<%=value.name%>
+    								</a>
+    							</li>
+    						<%})%>
+        			 <% } %>
 					</ul>
 					<div class='underline'></div>
 				</div>
 
-			<% if (theme.nav_search.enable === true) { %>
+			<% if (config.search.enable === true) { %>
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
 						<input type="text" class="input u-search-input" placeholder="Search" />
@@ -29,7 +30,7 @@
 				</div>
 			<% } %>
 			<ul class='switcher h-list'>
-				<% if (theme.nav_search.enable === true) { %>
+				<% if (config.search.enable === true) { %>
 					<li class='s-search'><a href='javascript:void(0)'><i class="fa fa-search fa-fw"></i></span></a></li>
 				<% } %>
 				<li class='s-menu'><a href='javascript:void(0)'><i class="fa fa-navicon fa-fw"></i></a></li>
@@ -52,12 +53,14 @@
 	<aside class="menu-phone">
         <div class="header"><%=config.title%></div>
 		<nav>
-			<% (config.materialx && config.materialx.nav_menu && (config.materialx.nav_menu||[]) || (theme.materialx.nav_menu||[])).forEach(function(value, key) {
+            <% if (config.nav_menu) { %>
+			<% (config.nav_menu || []).forEach(function(value, key) {
 						if (value.url && value.slug && value.name) { %>
-				<a href="<%= url_for(value.url) %>" class="nav-<%= value.slug %> nav">
-					<i class="fa fa-<%=value.fa%>"></i>
+				<a href="<%= url_for(value.url) %>" class="nav-<%= value.slug %> fa <%=value.icon%> nav flat-box">
 					<%= value.name %>
 				</a>
 			<% } }); %>
+
+        <% } %>
 		</nav>
 	</aside>

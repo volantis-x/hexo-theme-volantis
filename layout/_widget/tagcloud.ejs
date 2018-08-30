@@ -1,14 +1,14 @@
 <% if (site.tags.length){ %>
-<section class="m_widget tagcloud">
-    <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
-    <div class='content'>
-        <%- tagcloud(site.tags, {
-            min_font: 14,
-            max_font: 24,
-            color: true,
-            start_color: '#999',
-            end_color: '#555',
-        }) %>
-    </div>
-</section>
+    <section class="m_widget tagcloud">
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <%- tagcloud(site.tags, {
+                min_font: 14,
+                max_font: 24,
+                color: true,
+                start_color: '#999',
+                end_color: '#555',
+            }) %>
+        </div>
+    </section>
 <% } %>

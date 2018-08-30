@@ -132,13 +132,20 @@ var customSearch;
 	function setTocToggle() {
 		const $toc = $('.toc-wrapper');
 		if ($toc.length === 0) return;
-		$toc.click((e) => { e.stopPropagation(); $toc.addClass('active'); });
+		$toc.click((e) => {
+            e.stopPropagation();
+            $toc.addClass('active');
+        });
 		$(document).click(() => $toc.removeClass('active'));
 
 		$toc.on('click', 'a', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
-			scrolltoElement(e.target.tagName.toLowerCase === 'a' ? e.target : e.target.parentElement);
+			if (e.target.tagName === 'A') {
+                scrolltoElement(e.target);
+            } else if (e.target.tagName === 'SPAN') {
+                scrolltoElement(e.target.parentElement);
+            }
 		});
 
 		const liElements = Array.from($toc.find('li a'));
