@@ -1,5 +1,6 @@
 # Material X
 
+
 > 一个简约卡片式的Hexo博客主题
 
 **Material X** 是我基于 [Material Flow](https://github.com/stkevintan/hexo-theme-material-flow)（已停止维护） 改编的一个Hexo主题，相对作者原主题主要有一下方面改动：
@@ -17,7 +18,15 @@
 
 
 
+## 在线示例
+
 本主题将持续更新和维护，你可以在这里查看主题的实际效果：👉 [https://blog.xaoxuu.com](https://blog.xaoxuu.com) 👈
+
+> 如果你使用了 **Material X** 主题，欢迎提PR到下面这里告诉大家~
+
+**更多定制效果演示：**
+
+- xxx的博客：http://xxx.com
 
 
 
@@ -52,6 +61,12 @@ git clone https://github.com/xaoxuu/hexo-theme-material-x themes/material-x
 ```bash
 npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autoprefixer hexo-generator-json-content hexo-recommended-posts
 ```
+
+
+
+## 文档
+
+https://xaoxuu.com/docs/material-x
 
 
 
