@@ -291,12 +291,16 @@
             color: fade(@theme-text-main, 80%);
             padding: @gap;
             border-radius: @border-radius-width;
+            &:hover {
+                color: @theme-text-highlight;
+            }
         }
         @media(max-width:@on-phone) {
             section{
                 border-radius: 0;
             }
         }
+
     }
 
 }

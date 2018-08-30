@@ -40,11 +40,11 @@
                                 </a>
                             </h4>
                             <% if (post.prev.tags && post.prev.tags.length) { %>
-                                <div class="tags">
+                                <h6 class="tags">
                                     <% post.prev.tags.each(function(item){ %>
                                         <i class="fa fa-tag fa-fw"></i><%=item.name %>
                                     <%})%>
-                                </div>
+                                </h6>
                             <% } %>
                         </span>
                     </section>
@@ -59,11 +59,11 @@
                                 </a>
                             </h4>
                             <% if (post.next.tags && post.next.tags.length) { %>
-                                <div class="tags">
+                                <h6 class="tags">
                                     <% post.next.tags.each(function(item){ %>
                                         <i class="fa fa-tag fa-fw"></i><%=item.name %>
                                     <%})%>
-                                </div>
+                                </h6>
                             <% } %>
                         </span>
                     </section>
