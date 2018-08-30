@@ -66,25 +66,25 @@
 
 
 // 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-// 如果你比较懒，就只改这两行就可以了：
-@theme-base-main: #EEE;
+// 如果你比较懒，就只改 theme-base-xxx 这些就可以了：
+@theme-base-main: #EFEFEF;
 @theme-base-tint: @ax-red;
 
 // 如果你想更深层次DIY，可以更改下面这些：
 // 网页背景
-@theme-bg-main: #EFEFEF;
+@theme-bg-main: @theme-base-main;
 // 导航栏背景
-@theme-bg-nav-header: #EFEFEF;
-// 卡片标题背景
-@theme-bg-card-header: #E3E3E3;
-// 按钮背景
-@theme-bg-button: @theme-bg-card-header;
+@theme-bg-nav-header: @theme-base-main;
 // 卡片背景
-@theme-bg-card: #FFF;
-// 代码的背景色
+@theme-bg-card: white;
+// 卡片标题栏背景
+@theme-bg-card-header: @theme-base-main;
+// 按钮背景
+@theme-bg-button: @theme-base-main;
+// 代码的背景色 `code`
 @theme-bg-code: @theme-base-tint;
-// 代码块的背景色
-@theme-bg-code-block: #F5F5F5;
+// 代码块的背景色 ```codeblock```
+@theme-bg-code-block: fade(@theme-base-main, 70%);
 // 引用的颜色以及分类、归档的 hover 时颜色
 @theme-bg-quote: @theme-base-tint;
 
@@ -94,16 +94,12 @@
 @theme-text-link: @ax-blue;
 // 链接高亮颜色
 @theme-text-highlight: @theme-base-tint;
-// 在主题色中显示的文本（白或深灰）
+// 在主题色中显示的文本（一般为白或深灰）
 @theme-text-in-header: @dark;
 // 正文文字颜色
 @theme-text-main: @dark;
 
 // 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-@box-shadow-card-raised: 0 2px 4px 0px rgba(0, 0, 0, 0.12), 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 16px 0px rgba(0, 0, 0, 0.12), 0 16px 32px 0px rgba(0, 0, 0, 0.12);
-@box-shadow-card-normal: 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-
 
 // Responsive limits
 @modal-threshold:  680px;
@@ -155,3 +151,9 @@
 	&::-moz-placeholder {@rules();}
 	&:-ms-input-placeholder {@rules();}
 }
+
+
+// 卡片正常状态的阴影
+@box-shadow-card-normal: 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+// 卡片漂浮起来时的阴影
+@box-shadow-card-raised: 0 2px 4px 0px rgba(0, 0, 0, 0.12), 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 16px 0px rgba(0, 0, 0, 0.12), 0 16px 32px 0px rgba(0, 0, 0, 0.12);
