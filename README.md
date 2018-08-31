@@ -375,9 +375,9 @@ mathjax: true
 @theme-bg-card-header: darken(@theme-base-main, 3%);
 // 按钮背景
 @theme-bg-button: @theme-base-main;
-// 代码的背景色 `code`
+// 代码的背景色
 @theme-bg-code: @theme-base-tint;
-// 代码块的背景色 ```codeblock```
+// 代码块的背景色
 @theme-bg-code-block: fade(@theme-base-main, 70%);
 // 引用的颜色以及分类、归档的 hover 时颜色
 @theme-bg-quote: @theme-base-tint;
