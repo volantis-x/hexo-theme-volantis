@@ -115,16 +115,16 @@ widgets:
   # 博主信息，显示个人头像、格言、社交信息等
   author:
     enable: true
-    avatar: # 头像，如果config中已经设置avatar了，这里可以不用写
-    title: # 博客名、头衔等等，居中显示
-    motto: 永远不要忘了自己是谁，因为这个世界就不会。 # 格言座右铭等等
-    social: true # 是否显示社交信息
+    avatar: https://xaoxuu.com/assets/img/avatar.jpg # 头像，如果config中已经设置avatar了，这里可以不用写
+    title: 某知名博主 # 博客名、头衔等等，居中显示
+    motto: 某知名博主的座右铭啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈。 # 格言座右铭等等
+    social: true # 是否显示社交信息（内容同页脚的社交信息）
   # 显示文章分类
   categories: true
   # 显示文章标签
   tagcloud: true
-  # 显示网易云歌单id
-  musicid: 746319661
+  # 显示网易云歌单
+  musicid: 746319661 # 歌单id
   # 显示友链
   links:
   - name: xaoxuu
@@ -143,9 +143,9 @@ widgets:
   # 博主信息，显示个人头像、格言、社交信息等
   author:
     enable: true
-    avatar: # 头像，如果config中已经设置avatar了，这里可以不用写
-    title: # 博客名、头衔等等，居中显示
-    motto: 永远不要忘了自己是谁，因为这个世界就不会。 # 格言座右铭等等
+    avatar: https://xaoxuu.com/assets/img/avatar.jpg # 头像，如果config中已经设置avatar了，这里可以不用写
+    title: 某知名博主 # 博客名、头衔等等，居中显示
+    motto: 某知名博主的座右铭啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈。 # 格言座右铭等等
     social: true # 是否显示社交信息（内容同页脚的社交信息）
 ```
 
@@ -157,7 +157,7 @@ widgets:
 widgets:
   ...
   # 显示文章分类
-  categories: true	
+  categories: true
 ```
 
 
@@ -180,8 +180,8 @@ widgets:
 # 右边的小窗口，不想显示哪一项的注释掉对应的即可
 widgets:
   ...
-  # 显示网易云歌单id
-  musicid: 746319661
+  # 显示网易云歌单
+  musicid: 746319661 # 歌单id
 ```
 
 
@@ -287,7 +287,7 @@ social:
   - icon: fa-instagram
     url: https://www.instagram.com/xaoxuu
   - icon: fa-google-plus
-    url: 
+    url:
   - icon: fa-twitter
     url: https://twitter.com/xaoxuu
   - icon: fa-music
@@ -355,41 +355,30 @@ mathjax: true
 
 找到 `themes/material-x/source/less/_defines.less` 这个文件。
 
-### 如果你比较懒，可以只修改整体的主题色：
+### 如果你比较懒，可以只修改theme-base-xxx：
 
 ```yaml
-// 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-// 如果你比较懒，就只改这两行就可以了：
-@theme-base-main: #EEE;
+@theme-base-main: #EFEFEF;
 @theme-base-tint: @ax-red;
-
-// 如果你想更深层次DIY，可以更改下面这些：
-...
-// 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 ### 如果你想更深层次DIY，可以修改下面这些：
 
 ```yaml
-// 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-// 如果你比较懒，就只改这两行就可以了：
-...
-
-// 如果你想更深层次DIY，可以更改下面这些：
 // 网页背景
-@theme-bg-main: #EFEFEF;
+@theme-bg-main: @theme-base-main;
 // 导航栏背景
-@theme-bg-nav-header: #EFEFEF;
-// 卡片标题背景
-@theme-bg-card-header: #E3E3E3;
-// 按钮背景
-@theme-bg-button: @theme-bg-card-header;
+@theme-bg-nav-header: darken(@theme-base-main, 3%);
 // 卡片背景
-@theme-bg-card: #FFF;
-// 代码的背景色
+@theme-bg-card: white;
+// 卡片标题栏背景
+@theme-bg-card-header: darken(@theme-base-main, 3%);
+// 按钮背景
+@theme-bg-button: @theme-base-main;
+// 代码的背景色 `code`
 @theme-bg-code: @theme-base-tint;
-// 代码块的背景色
-@theme-bg-code-block: #F5F5F5;
+// 代码块的背景色 ```codeblock```
+@theme-bg-code-block: fade(@theme-base-main, 70%);
 // 引用的颜色以及分类、归档的 hover 时颜色
 @theme-bg-quote: @theme-base-tint;
 
@@ -399,12 +388,10 @@ mathjax: true
 @theme-text-link: @ax-blue;
 // 链接高亮颜色
 @theme-text-highlight: @theme-base-tint;
-// 在主题色中显示的文本（白或深灰）
+// 在主题色中显示的文本（一般为白或深灰）
 @theme-text-in-header: @dark;
 // 正文文字颜色
 @theme-text-main: @dark;
-
-// 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 对应的效果如图所示：
@@ -417,6 +404,7 @@ mathjax: true
 
 如果你发现无法使用或者效果与 [示例](https://blog.xaoxuu.com) 有较大区别，可以使用hexo官方提供的用于单元测试的博客应用本主题查看样式。hexo.sh 脚本提供了方便的指令，详情见 hexo.sh 的 [文档](https://xaoxuu.com/docs/hexo.sh)  。
 
+如果你的电脑是不是mac，则无法使用脚本，可以手动下载单元测试博客： [https://github.com/hexojs/hexo-theme-unit-test.git](https://github.com/hexojs/hexo-theme-unit-test.git)，然后下载并应用本主题，查看效果。
 
 
 其他的暂时不想写了，自己摸索吧~

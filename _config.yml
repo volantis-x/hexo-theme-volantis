@@ -23,16 +23,16 @@ widgets:
   # 博主信息，显示个人头像、格言、社交信息等
   author:
     enable: true
-    avatar: # 头像，如果config中已经设置avatar了，这里可以不用写
-    title: # 博客名、头衔等等，居中显示
-    motto: 永远不要忘了自己是谁，因为这个世界就不会。 # 格言座右铭等等
+    avatar: https://xaoxuu.com/assets/img/avatar.jpg # 头像，如果config中已经设置avatar了，这里可以不用写
+    title: 某知名博主 # 博客名、头衔等等，居中显示
+    motto: 某知名博主的座右铭啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈。 # 格言座右铭等等
     social: true # 是否显示社交信息（内容同页脚的社交信息）
   # 显示文章分类
   categories: true
   # 显示文章标签
   tagcloud: true
-  # 显示网易云歌单id
-  musicid: 746319661
+  # 显示网易云歌单
+  musicid: 746319661 # 歌单id
   # 显示友链
   links:
   - name: xaoxuu
@@ -94,7 +94,7 @@ recommended_posts:
   fixedNumber: false
 
 
-# Search
+# Search 确保_config中只有一个search，否则会冲突。
 search:
   enable: true
   service: hexo
