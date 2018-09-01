@@ -22,10 +22,10 @@ var customSearch;
 		$(document, window).scroll(() => {
 			const scrollTop = $(window).scrollTop();
 			const del = scrollTop - pos;
-			if (del >= 20) {
+			if (del >= 80 && scrollTop > 100) {
 				pos = scrollTop;
 				$wrapper.addClass('sub');
-			} else if (del <= -20) {
+			} else if (del <= -80) {
 				pos = scrollTop;
 				$wrapper.removeClass('sub');
 			}
