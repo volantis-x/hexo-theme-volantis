@@ -19,15 +19,17 @@
 
 
 
-## 在线示例
+## Demo
 
-本主题将持续更新和维护，你可以在这里查看主题的实际效果：👉 [https://blog.xaoxuu.com](https://blog.xaoxuu.com) 👈
+本主题将持续更新和维护，你可以在这里查看主题最新的实际效果：👉 [https://blog.xaoxuu.com](https://blog.xaoxuu.com) 👈
 
-> 如果你使用了 **Material X** 主题，欢迎提PR到下面这里告诉大家~
+**以及其他使用 Material X 主题的博主：**
 
-**更多定制效果演示：**
+| 博客         | 链接                 |
+| ------------ | -------------------- |
+| MicDZ's blog | https://www.micdz.cn |
 
-- xxx的博客：http://xxx.com
+> 如果你使用了 **Material X** 主题，欢迎提PR到这里告诉大家~
 
 
 
