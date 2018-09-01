@@ -153,33 +153,35 @@
         }
     }
     blockquote {
-
         p{
             text-align: left;
             word-wrap: normal;
+            margin: 0;
+            font-size: @small-font-size;
+            line-height: @small-font-size * 1.5;
         }
         position: relative;
         width: 100%;
         font-size: @small-font-size;
         background: fade(@theme-bg-quote, 10%);
         margin: 1em 0;
-        padding: 1.5em 1.5em .9em 1.5em;
-        border-left: 4px solid @theme-bg-quote;
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
+        padding: @gap;
+        border-left: @border-left-radius solid @theme-bg-quote;
+        border-top-right-radius: @border-radius;
+        border-bottom-right-radius: @border-radius;
+        border-top-left-radius: @border-left-radius;
+        border-bottom-left-radius: @border-left-radius;
         border-right: 1px solid transparent;
         border-top: 1px solid transparent;
         border-bottom: 1px solid transparent;
         .enable-trans();
         &:hover{
-            border-left: 8px solid @theme-bg-quote;
-            border-top-left-radius: 8px;
-            border-bottom-left-radius: 8px;
-            border-right: 1px solid fade(@theme-bg-quote, 40%);
-            border-top: 1px solid fade(@theme-bg-quote, 40%);
-            border-bottom: 1px solid fade(@theme-bg-quote, 40%);
+            border-left: @border-radius solid @theme-bg-quote;
+            border-top-left-radius: @border-radius;
+            border-bottom-left-radius: @border-radius;
+            border-right: 1px solid fade(@theme-bg-quote, 30%);
+            border-top: 1px solid fade(@theme-bg-quote, 30%);
+            border-bottom: 1px solid fade(@theme-bg-quote, 30%);
         }
         footer {
             strong {
@@ -223,7 +225,7 @@
             background-color: fade(@theme-bg-button, 90%);
             padding: .2em 2.4em;
             color: @theme-text-in-header;
-            border-radius: @border-radius-width/2;
+            border-radius: @border-radius/2;
             .enable-trans();
             &:hover {
               background: darken(@theme-bg-button, 10%);
@@ -300,7 +302,7 @@
             padding: @gap/2;
             color: fade(@theme-text-main, 70%);
             background-color: @theme-bg-code-block;
-            border-radius: @border-radius-width;
+            border-radius: @border-radius;
             p{
                 font-size: @base-font-size;
                 line-height: @base-line-height;
@@ -320,7 +322,7 @@
             .enable-trans();
             border: 1px solid transparent;
             &:hover{
-                border: 1px solid fade(@theme-bg-quote, 40%);
+                border: 1px solid fade(@theme-bg-quote, 30%);
             }
             .tags{
                 background: transparent;
@@ -337,15 +339,15 @@
             text-align: left;
             margin-left: 0;
             margin-right: @gap/2;
-            border-top-right-radius: @border-radius-width;
-            border-bottom-right-radius: @border-radius-width;
+            border-top-right-radius: @border-radius;
+            border-bottom-right-radius: @border-radius;
         }
         .next{
             text-align: right;
             margin-left: @gap/2;
             margin-right: 0;
-            border-top-left-radius: @border-radius-width;
-            border-bottom-left-radius: @border-radius-width;
+            border-top-left-radius: @border-radius;
+            border-bottom-left-radius: @border-radius;
         }
 
     }
@@ -392,40 +394,39 @@
   margin-bottom: 1.2em;
   overflow: auto;
   display: block;
-  // background: #2d2d2d;
-  // background: fade(@material-blue, 8%);
   background: @theme-bg-code-block;
-  // color: #cccccc;
   font-size: @small-font-size * .95;
   font-family:@code-font-family;
   line-height: @base-line-height;
-  padding: 1.5em 0;
-  border-radius: 8px;
-
+  border-radius: @border-radius;
   border: 1px solid transparent;
   .enable-trans();
   &:hover{
-      border: 1px solid fade(@theme-bg-quote, 40%);
+      border: 1px solid fade(@theme-bg-quote, 30%);
   }
-
+  table{
+    td,th{
+      padding: 0;
+    }
+  }
   .gutter{
-    color: #999999;
     width: 24px;
-    padding: 0 8px;
-    border-radius: 8px;
+    padding: 0 @gap/2;
     text-align: right;
     border-width: 0;
-    background-color: darken(@theme-bg-main, 5%);
-
+    margin-left: 0;
+    background-color: darken(@theme-bg-code-block, 5%);
+    pre{
+        color: fade(@theme-text-main, 25%);
+    }
     &:hover{
 
     }
   }
   .code{
-      padding-left: 8px;
-      padding-right: 16px;
+      padding: @gap;
       vertical-align: top;
-      border: 0px solid darken(@theme-bg-main, 5%);
+      border: 0px solid darken(@theme-bg-main, 2%);
   }
 
   &::-webkit-scrollbar {

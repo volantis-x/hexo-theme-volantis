@@ -43,33 +43,6 @@ body {
     }
 }
 
-// //reset ::-webkit-scrollbar
-
-// /* Let's get this party started */
-
-// ::-webkit-scrollbar {
-//     width: 8px;
-//     height: 8px;
-// }
-
-
-// /* Track */
-
-// ::-webkit-scrollbar-track-piece {
-//     background: transparent;
-// }
-
-
-// /* Handle */
-
-// ::-webkit-scrollbar-thumb {
-//     background: #c1c1c1;
-//     cursor: pointer;
-//     .enable-trans();
-//     &:hover {
-//         background: darken(#c1c1c1, 10%);
-//     }
-// }
 
 .z-depth-nav {
     box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.24), 0 3px 6px 0px rgba(0, 0, 0, 0.1);
@@ -136,6 +109,21 @@ body {
     background: fade(lighten(@theme-text-link, 5%), 25%);
     // color: @black;
 }
+// transition
+.enable-trans(@time: 0.2s){
+  transition: all @time ease;
+  -moz-transition: all @time ease;
+  -webkit-transition: all @time ease;
+  -o-transition: all @time ease;
+}
+
+.set-placeholder(@rules){
+  &::-webkit-input-placeholder {@rules();}
+  &:-moz-placeholder {@rules();}
+	&::-moz-placeholder {@rules();}
+	&:-ms-input-placeholder {@rules();}
+}
+
 
 h1,
 h2,
@@ -291,24 +279,24 @@ li {
         display: inline-block;
         padding: 0 8px;
         color: @black;
-        border-left: 4px solid transparent;
+        border-left: @border-left-radius solid transparent;
         background: transparent;
         border-right: 1px solid transparent;
         border-top: 1px solid transparent;
         border-bottom: 1px solid transparent;
-        border-radius: 4px;
+        border-radius: @border-left-radius;
         .enable-trans();
         &:hover {
-            border-left: 4px solid @theme-bg-quote;
+            border-left: @border-left-radius solid @theme-bg-quote;
             padding: 8px;
             background: fade(@theme-bg-quote, 10%);
         }
         &:active {
-            border-radius: 8px;
-            border-left: 8px solid @theme-bg-quote;
-            border-right: 1px solid fade(@theme-bg-quote, 40%);
-            border-top: 1px solid fade(@theme-bg-quote, 40%);
-            border-bottom: 1px solid fade(@theme-bg-quote, 40%);
+            border-radius: @border-radius;
+            border-left: max(@border-radius, @border-left-radius) solid @theme-bg-quote;
+            border-right: 1px solid fade(@theme-bg-quote, 30%);
+            border-top: 1px solid fade(@theme-bg-quote, 30%);
+            border-bottom: 1px solid fade(@theme-bg-quote, 30%);
         }
 
     }

@@ -1,28 +1,6 @@
-// Font families
-@fallback-font-family: Menlo, Monaco, 'Ubuntu', Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, "Microsoft YaHei", Arial, sans-serif;
-@base-font-family: 'Ubuntu', Menlo, Monaco, @fallback-font-family;
-@code-font-family: Menlo, Monaco, 'Ubuntu', Helvetica, Consolas, monospace, sans-serif, @fallback-font-family;
-@title-font-family: 'Ubuntu', Menlo, Monaco, Helvetica, Consolas, monospace, sans-serif, @fallback-font-family;
-// Font configuration
-@base-font-size:   16px;
-@small-font-size:  @base-font-size * 0.875;
-@base-line-height: 1.7;
-
-
-@font-size-h1: @base-font-size * 1.5;
-@font-size-h2: @base-font-size * 1.4;
-@font-size-h3: @base-font-size * 1.2;
-@font-size-h4: @base-font-size * 1.1;
-@font-size-h5: @base-font-size * 1;
-@font-size-h6: @small-font-size;
-
-
-// Spacing
-@spacing-unit:     30px;
-@gap:              20px;
-
-
-// Colors
+// start: 预定义 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 这里面的东西只有这一页用到
+// 颜色
 // Material color scheme
 @material-red: #f44336;
 @material-pink: #E91E63;
@@ -43,42 +21,124 @@
 @material-light-grey:#e0e0e0;
 @material-yellow: #FCEC60;
 @material-amber: #F6C344;
-
 // 基本不变的黑白灰
 @black: #444444;
 @grey-color: #828282;
 @white: #ffffff;
 @light: #eeeeee;
 @dark:  #666666;
-
+// mac
 @mac-maximize: #3DC550;
 @mac-minimize: #FFBD2B;
 @mac-close: #FE5F58;
-
-
+// xx
 @xiaowenwen-green: #5CC281;
-
+// ax
 @ax-light-pink: #E7BED0;
 @ax-light-red: #FF8485;
 @ax-red: #F24E32;
 @ax-blue: #52A1F8;
-
-
-
-// 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-// 如果你比较懒，就只改 theme-base-xxx 这些就可以了：
+// 主题色
 @theme-base-main: #EFEFEF;
 @theme-base-tint: @ax-red;
+// 阴影
+@base-box-shadow-1: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
+@base-box-shadow-2: 0 2px 4px 0px rgba(0, 0, 0, 0.1);
+@base-box-shadow-4: 0 4px 8px 0px rgba(0, 0, 0, 0.1);
+@base-box-shadow-8: 0 8px 16px 0px rgba(0, 0, 0, 0.1);
+@base-box-shadow-16: 0 16px 32px 0px rgba(0, 0, 0, 0.1);
+// end: 预定义 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-// 如果你想更深层次DIY，可以更改下面这些：
+
+
+
+// start: 字体 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+@fallback-font-family: Menlo, Monaco, 'Ubuntu', Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, "Microsoft YaHei", Arial, sans-serif;
+@base-font-family: 'Ubuntu', Menlo, Monaco, @fallback-font-family;
+@code-font-family: Menlo, Monaco, 'Ubuntu', Helvetica, Consolas, monospace, sans-serif, @fallback-font-family;
+@title-font-family: 'Ubuntu', Menlo, Monaco, Helvetica, Consolas, monospace, sans-serif, @fallback-font-family;
+// end: 字体 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+
+// start: 字号 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// base
+@base-font-size:   16px;
+@small-font-size:  @base-font-size * 0.875;
+@base-line-height: 1.7;
+// title
+@font-size-h1: @base-font-size * 1.5;
+@font-size-h2: @base-font-size * 1.4;
+@font-size-h3: @base-font-size * 1.2;
+@font-size-h4: @base-font-size * 1.1;
+@font-size-h5: @base-font-size * 1;
+@font-size-h6: @small-font-size;
+// article
+@article-title-size: @font-size-h1 * 1.2;
+@article-title-size-phone: @font-size-h2;
+// end: 字号 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+
+// start: 布局尺寸 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+@modal-threshold:  680px;
+@on-phone:         820px;
+@on-laptop:        990px;
+@on-desktop:       1200px;
+// container
+@container-width:  1200px;
+// post
+@post-max-width: 980px;
+// 侧边栏宽度
+@side-width: 250px;
+// 搜索框的宽度，建议和侧边栏宽度保持一致
+@search-width: @side-width;
+// 一个cell的高度
+@item-height: 36px;
+// end: 布局尺寸 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+
+// start: 导航栏 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 导航栏高度
+@header-height: 54px;
+@header-logo-font-size: 1.3em;
+@header-switcher-font-size: 1.3em;
+@header-font-size: 1em;
+// end: 导航栏 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+
+// start: 间距 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+@gap: 20px;
+// end: 间距 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+
+// start: 圆角 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 圆角半径，可以根据心情随时调整风格
+@border-radius: 8px; // 0px: 极端，2px：硬朗，4px：常规，8px：温柔，16px：圆润
+@border-left-radius: 4px; // 左边的竖线的宽度
+// end: 圆角 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+
+// start: 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 背景色 ----------------
 // 网页背景
 @theme-bg-main: @theme-base-main;
 // 导航栏背景
-@theme-bg-nav-header: darken(@theme-base-main, 3%);
+@theme-bg-nav-header: darken(@theme-base-main, 4%);
 // 卡片背景
 @theme-bg-card: white;
 // 卡片标题栏背景
-@theme-bg-card-header: darken(@theme-base-main, 3%);
+@theme-bg-card-header: darken(@theme-base-main, 4%);
 // 按钮背景
 @theme-bg-button: @theme-base-main;
 // 代码的背景色
@@ -87,7 +147,7 @@
 @theme-bg-code-block: fade(@theme-base-main, 70%);
 // 引用的颜色以及分类、归档的 hover 时颜色
 @theme-bg-quote: @theme-base-tint;
-
+// 文字颜色 ----------------
 // 标题文字颜色（h1/h2）
 @theme-text-header: @theme-base-tint;
 // 链接颜色
@@ -98,62 +158,14 @@
 @theme-text-in-header: @dark;
 // 正文文字颜色
 @theme-text-main: @dark;
-
-// 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-// Responsive limits
-@modal-threshold:  680px;
-@on-phone:         820px;
-@on-laptop:        990px;
-@on-desktop:       1200px;
-
-@item-height: 36px;
-
-//container
-@container-width:  1200px;
-//neader
-@header-height:   54px;
-@header-logo-font-size: 1.3em;
-@header-switcher-font-size: 1.3em;
-@header-font-size: 1em;
-
-@banner-height: 300px;
-
-@border-radius-width: 8px;
-
-//side
-@side-width: 250px;
-@tog-width: 200px;
-//search
-@search-height: 36px;
-@search-width: 250px;
-
-//post
-@post-max-width: 980px;
-//article
-@article-title-size: @font-size-h1 * 1.2;
-@article-title-size-phone: @font-size-h2;
-
-//transition
-.enable-trans(@time: 0.2s){
-  transition: all @time ease;
-  -moz-transition: all @time ease;
-  -webkit-transition: all @time ease;
-  -o-transition: all @time ease;
-}
-// .set-placeholder({
-// 	color: @white;
-// 	font-weight: 300;
-// })
-.set-placeholder(@rules){
-  &::-webkit-input-placeholder {@rules();}
-  &:-moz-placeholder {@rules();}
-	&::-moz-placeholder {@rules();}
-	&:-ms-input-placeholder {@rules();}
-}
+// end: 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
+
+
+// start: 阴影 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 卡片正常状态的阴影
-@box-shadow-card-normal: 0 1px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+@box-shadow-card-normal: @base-box-shadow-1, @base-box-shadow-2;
 // 卡片漂浮起来时的阴影
-@box-shadow-card-raised: 0 2px 4px 0px rgba(0, 0, 0, 0.12), 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 8px 16px 0px rgba(0, 0, 0, 0.12), 0 16px 32px 0px rgba(0, 0, 0, 0.12);
+@box-shadow-card-raised: @base-box-shadow-2, @base-box-shadow-4, @base-box-shadow-8, @base-box-shadow-16;
+// end: 阴影 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

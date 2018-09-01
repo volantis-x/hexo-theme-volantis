@@ -114,10 +114,7 @@
 			overflow: hidden;
 			position: absolute;
 			.enable-trans();
-            left: @gap/2;
-			// right: @gap;
-            // width: 100% - 2*@gap;
-			top:(@header-height - @search-height)/2;
+      margin: 0 @gap/2;
 		}
 		&.z_search-open{
 			.logo{
@@ -131,9 +128,11 @@
 }
 .m_search {
 	position: relative;
-	height: @search-height;
-	width: @search-width;
-	line-height: @search-height;
+	height: @header-height - @gap;
+	width: @side-width;
+	line-height: @header-height - @gap;
+  margin-top: @gap/2;
+  margin-bottom: @gap/2;
 	vertical-align: middle;
 	.form {
 		position: relative;
@@ -146,9 +145,9 @@
 	.icon {
 		position: absolute;
 		display:block;
-		height: @search-height;
-		width: @search-height;
-		line-height: @search-height;
+		height: @header-height - @gap;
+		width: @header-height - @gap;
+		line-height: @header-height - @gap;
 		top: 0;
 		left: @gap;
         @media(max-width: @on-phone){
@@ -158,19 +157,19 @@
 	.input {
 		display:block;
 		font-size: 14px;
-		line-height: @search-height - 10px;
+		line-height: @header-height - @gap;
 		margin: 0;
 		width: 100%;
 		color: fade(@theme-text-in-header, 60%);
 		padding: 5px 10px 5px 48px;
-        @media(max-width: @on-phone){
-            padding: 5px 10px 5px 38px;
-        }
-		height: @search-height;
-		line-height: @search-height/2;
+    @media(max-width: @on-phone){
+        padding: 5px 10px 5px 38px;
+    }
+		height: @header-height - @gap;
+		line-height: @header-height - @gap;
 		font-family: @base-font-family;
 		border: none;
-		border-radius: 100px;
+		border-radius: @border-radius;
 		background: fade(@theme-text-in-header,15%);
 		box-sizing: border-box;
 		-webkit-appearance: none;
@@ -201,8 +200,8 @@
 
 .menu-phone{
     .header{
-        border-top-left-radius: @border-radius-width;
-        border-top-right-radius: @border-radius-width;
+        border-top-left-radius: @border-radius;
+        border-top-right-radius: @border-radius;
         background-color: fade(@theme-bg-nav-header,90%);
         color: @theme-text-in-header;
         font-size: @base-font-size;
@@ -219,7 +218,7 @@
 	background: white;
 	border-right: 0;
 	&:extend(.z-depth-main-raised);
-	border-radius: @border-radius-width;
+	border-radius: @border-radius;
 	transform: translate3d(@side-width, -0, 0);
 	.enable-trans();
 	&:hover {
