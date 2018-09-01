@@ -496,7 +496,7 @@ mathjax: true
 
 对应的效果如图所示：
 
-![](https://segmentfault.com/img/bVbgg3u?w=3674&h=1796)
+![](https://img.vim-cn.com/70/5620af391b12439452a1e03413574fb3a1208c.png )
 
 
 
