@@ -368,7 +368,6 @@ mathjax: true
 调整这些字体的顺序：
 
 ```yaml
-// start: 字体 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 @fallback-font-family: Menlo, Monaco, 'Ubuntu', Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, "Microsoft YaHei", Arial, sans-serif;
 // 大部分文字字体
 @base-font-family: 'Ubuntu', Menlo, Monaco, @fallback-font-family;
@@ -376,12 +375,11 @@ mathjax: true
 @code-font-family: Menlo, Monaco, 'Ubuntu', Helvetica, Consolas, monospace, sans-serif, @fallback-font-family;
 // 标题字体
 @title-font-family: 'Ubuntu', Menlo, Monaco, Helvetica, Consolas, monospace, sans-serif, @fallback-font-family;
-// end: 字体 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 默认的字体 `Ubuntu` 使用的是GoogleFontsAPI：
 
-```js
+```html
 <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 ```
 
@@ -392,7 +390,6 @@ mathjax: true
 ### 字号
 
 ```yaml
-// start: 字号 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // base
 @base-font-size:   16px;
 @small-font-size:  @base-font-size * 0.875;
@@ -407,7 +404,6 @@ mathjax: true
 // article
 @article-title-size: @font-size-h1 * 1.2;
 @article-title-size-phone: @font-size-h2;
-// end: 字号 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 
@@ -415,7 +411,6 @@ mathjax: true
 ### 布局尺寸
 
 ```yaml
-// start: 布局尺寸 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 @modal-threshold:  680px;
 @on-phone:         820px;
 @on-laptop:        990px;
@@ -430,7 +425,6 @@ mathjax: true
 @search-width: @side-width;
 // 一个cell的高度
 @item-height: 36px;
-// end: 布局尺寸 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 
@@ -438,13 +432,11 @@ mathjax: true
 ### 导航栏
 
 ```yaml
-// start: 导航栏 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 导航栏高度
 @header-height: 54px;
 @header-logo-font-size: 1.3em;
 @header-switcher-font-size: 1.3em;
 @header-font-size: 1em;
-// end: 导航栏 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 
@@ -454,9 +446,7 @@ mathjax: true
 目前很多地方的间距都是依据这个值：
 
 ```yaml
-// start: 间距 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 @gap: 20px;
-// end: 间距 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 
@@ -464,11 +454,9 @@ mathjax: true
 ### 圆角
 
 ```yaml
-// start: 圆角 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 圆角半径，可以根据心情随时调整风格
 @border-radius: 8px; // 0px: 极端，2px：硬朗，4px：常规，8px：温柔，16px：圆润
 @border-left-radius: 4px; // 左边的竖线的宽度
-// end: 圆角 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 
@@ -476,7 +464,6 @@ mathjax: true
 ### 配色
 
 ```yaml
-// start: 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 背景色 ----------------
 // 网页背景
 @theme-bg-main: @theme-base-main;
@@ -505,7 +492,6 @@ mathjax: true
 @theme-text-in-header: @dark;
 // 正文文字颜色
 @theme-text-main: @dark;
-// end: 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 对应的效果如图所示：
@@ -517,12 +503,10 @@ mathjax: true
 ### 阴影
 
 ```yaml
-// start: 阴影 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 卡片正常状态的阴影
 @box-shadow-card-normal: @base-box-shadow-1, @base-box-shadow-2;
 // 卡片漂浮起来时的阴影
 @box-shadow-card-raised: @base-box-shadow-2, @base-box-shadow-4, @base-box-shadow-8, @base-box-shadow-16;
-// end: 阴影 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 
