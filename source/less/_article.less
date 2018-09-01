@@ -399,11 +399,8 @@
   font-family:@code-font-family;
   line-height: @base-line-height;
   border-radius: @border-radius;
-  border: 1px solid transparent;
   .enable-trans();
-  &:hover{
-      border: 1px solid fade(@theme-bg-quote, 30%);
-  }
+
   table{
     td,th{
       padding: 0;
@@ -415,9 +412,9 @@
     text-align: right;
     border-width: 0;
     margin-left: 0;
-    background-color: darken(@theme-bg-code-block, 5%);
+    background-color: darken(@theme-bg-code-block, 3%);
     pre{
-        color: fade(@theme-text-main, 25%);
+        color: fade(@theme-text-main, 35%);
     }
     &:hover{
 
@@ -430,8 +427,8 @@
   }
 
   &::-webkit-scrollbar {
-    height: 6px;
-    width: 6px;
+    height: 8px;
+    width: 8px;
   }
   // /* Track */
 
@@ -445,7 +442,7 @@
   &::-webkit-scrollbar-thumb {
     background: darken(@theme-bg-code-block, 5%);
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: @border-radius;
     .enable-trans();
     &:hover {
       background: darken(@theme-bg-code-block, 12%);

@@ -354,28 +354,138 @@ mathjax: true
 ```
 
 
-## 主题色和其他样式
+
+## 样式自定义
 
 找到 `themes/material-x/source/less/_defines.less` 这个文件。
 
-### 如果你比较懒，可以只修改theme-base-xxx：
+> 由于这个文件在 `themes/material-x` 中，所以更新主题的时候先备份一下 `_defines.less` 这个文件，更新之后对比改动自行修改。
+
+
+
+### 字体
+
+调整这些字体的顺序：
 
 ```yaml
-@theme-base-main: #EFEFEF;
-@theme-base-tint: @ax-red;
+// start: 字体 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+@fallback-font-family: Menlo, Monaco, 'Ubuntu', Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, "Microsoft YaHei", Arial, sans-serif;
+// 大部分文字字体
+@base-font-family: 'Ubuntu', Menlo, Monaco, @fallback-font-family;
+// 代码字体
+@code-font-family: Menlo, Monaco, 'Ubuntu', Helvetica, Consolas, monospace, sans-serif, @fallback-font-family;
+// 标题字体
+@title-font-family: 'Ubuntu', Menlo, Monaco, Helvetica, Consolas, monospace, sans-serif, @fallback-font-family;
+// end: 字体 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
-### 如果你想更深层次DIY，可以修改下面这些：
+默认的字体 `Ubuntu` 使用的是GoogleFontsAPI：
+
+```js
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+```
+
+你想使用其他字体，可以自己去 [https://fonts.google.com](https://fonts.google.com/) 找，然后将代码添加到 `themes/material-x/layout/_partial/head.ejs` 中，然后把字体名添加到 `@xxx-font-family` 第一位。
+
+
+
+### 字号
 
 ```yaml
+// start: 字号 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// base
+@base-font-size:   16px;
+@small-font-size:  @base-font-size * 0.875;
+@base-line-height: 1.7;
+// title
+@font-size-h1: @base-font-size * 1.5;
+@font-size-h2: @base-font-size * 1.4;
+@font-size-h3: @base-font-size * 1.2;
+@font-size-h4: @base-font-size * 1.1;
+@font-size-h5: @base-font-size * 1;
+@font-size-h6: @small-font-size;
+// article
+@article-title-size: @font-size-h1 * 1.2;
+@article-title-size-phone: @font-size-h2;
+// end: 字号 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+```
+
+
+
+### 布局尺寸
+
+```yaml
+// start: 布局尺寸 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+@modal-threshold:  680px;
+@on-phone:         820px;
+@on-laptop:        990px;
+@on-desktop:       1200px;
+// container
+@container-width:  1200px;
+// post
+@post-max-width: 980px;
+// 侧边栏宽度
+@side-width: 250px;
+// 搜索框的宽度，建议和侧边栏宽度保持一致
+@search-width: @side-width;
+// 一个cell的高度
+@item-height: 36px;
+// end: 布局尺寸 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+```
+
+
+
+### 导航栏
+
+```yaml
+// start: 导航栏 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 导航栏高度
+@header-height: 54px;
+@header-logo-font-size: 1.3em;
+@header-switcher-font-size: 1.3em;
+@header-font-size: 1em;
+// end: 导航栏 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+```
+
+
+
+### 间距
+
+目前很多地方的间距都是依据这个值：
+
+```yaml
+// start: 间距 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+@gap: 20px;
+// end: 间距 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+```
+
+
+
+### 圆角
+
+```yaml
+// start: 圆角 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 圆角半径，可以根据心情随时调整风格
+@border-radius: 8px; // 0px: 极端，2px：硬朗，4px：常规，8px：温柔，16px：圆润
+@border-left-radius: 4px; // 左边的竖线的宽度
+// end: 圆角 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+```
+
+
+
+### 配色
+
+```yaml
+// start: 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 背景色 ----------------
 // 网页背景
 @theme-bg-main: @theme-base-main;
 // 导航栏背景
-@theme-bg-nav-header: darken(@theme-base-main, 3%);
+@theme-bg-nav-header: darken(@theme-base-main, 4%);
 // 卡片背景
 @theme-bg-card: white;
 // 卡片标题栏背景
-@theme-bg-card-header: darken(@theme-base-main, 3%);
+@theme-bg-card-header: darken(@theme-base-main, 4%);
 // 按钮背景
 @theme-bg-button: @theme-base-main;
 // 代码的背景色
@@ -384,7 +494,7 @@ mathjax: true
 @theme-bg-code-block: fade(@theme-base-main, 70%);
 // 引用的颜色以及分类、归档的 hover 时颜色
 @theme-bg-quote: @theme-base-tint;
-
+// 文字颜色 ----------------
 // 标题文字颜色（h1/h2）
 @theme-text-header: @theme-base-tint;
 // 链接颜色
@@ -395,11 +505,25 @@ mathjax: true
 @theme-text-in-header: @dark;
 // 正文文字颜色
 @theme-text-main: @dark;
+// end: 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ```
 
 对应的效果如图所示：
 
 ![](https://segmentfault.com/img/bVbgg3u?w=3674&h=1796)
+
+
+
+### 阴影
+
+```yaml
+// start: 阴影 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 卡片正常状态的阴影
+@box-shadow-card-normal: @base-box-shadow-1, @base-box-shadow-2;
+// 卡片漂浮起来时的阴影
+@box-shadow-card-raised: @base-box-shadow-2, @base-box-shadow-4, @base-box-shadow-8, @base-box-shadow-16;
+// end: 阴影 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+```
 
 
 
