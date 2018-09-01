@@ -3,7 +3,7 @@
 
 > 一个简约卡片式的Hexo博客主题
 
-**Material X** 是我基于 [Material Flow](https://github.com/stkevintan/hexo-theme-material-flow)（已停止维护） 改编的一个Hexo主题，相对作者原主题主要有一下方面改动：
+**Material X** 是我基于 [Material Flow](https://github.com/stkevintan/hexo-theme-material-flow)（已停止维护） 改编的一个Hexo主题，相对作者原主题主要有以下方面改动：
 
 - 调整卡片阴影细节以及增加卡片的动画效果。
 - 博文列表将作者的多列布局改为单列布局。
@@ -15,6 +15,7 @@
 - 增加了推荐文章列表，增加博客流量。
 - 增加了阅读统计。
 - 支持渲染MathJax数学公式。
+- 修复了目录有时无法定位的BUG。
 
 
 
@@ -72,7 +73,7 @@ https://xaoxuu.com/docs/material-x
 
 ## 主题配置
 
-把 `themes/material-x/_config.yml` 中的**所有**内容复制到博客主目录的 `_config.yml` 文件中，然后根据自己的需要填写和修改。这样做的好处是：更新主题的时候你修改过的配置就不会被覆盖了。
+把 `themes/material-x/_config.yml` 中的 **所有** 内容复制到博客主目录的 `_config.yml` 文件中，然后根据自己的需要填写和修改。这样做的好处是：更新主题的时候你修改过的配置就不会被覆盖了。
 
 > 以下这些配置如果没有特殊说明，都指的是博客主目录的 `_config.yml` 文件。
 
@@ -396,7 +397,7 @@ mathjax: true
 
 对应的效果如图所示：
 
-![](http://pcpw4brqf.bkt.clouddn.com/hexo-theme-material-x/083101.png-origin)
+![](https://segmentfault.com/img/bVbgg3u?w=3674&h=1796)
 
 
 
