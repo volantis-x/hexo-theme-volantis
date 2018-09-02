@@ -146,6 +146,7 @@ var customSearch;
             } else if (e.target.tagName === 'SPAN') {
                 scrolltoElement(e.target.parentElement);
             }
+            $toc.removeClass('active');
 		});
 
 		const liElements = Array.from($toc.find('li a'));

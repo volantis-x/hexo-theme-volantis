@@ -1,35 +1,31 @@
 .m_widget.toc-wrapper{
     overflow: auto;
     border-radius: @border-radius;
-    position: fixed;
-    top: @header-height + 2*@gap;
-    display: none;
+    position: sticky;
+    top: @header-height + 1*@gap;
+    .enable-trans();
     .content{
         padding: @gap/2 0;
     }
     &.active{
-        display: block;
+        position: fixed;
+        box-shadow: @box-shadow-card-raised;
     }
-    @media(max-width: @container-width){
-        // right: 0;
-        // margin-right:0;
-        // width: @side-width;
-    }
+    
     .header{
         position: sticky;
         width: 100%;
         top: 0;
     }
     @media(max-width: @on-phone){
+        position: fixed;
         width: 100% - 0.5 * @gap;
         top: @header-height + @gap;
         left: @gap;
-        width: "calc(100% - 0.3 * @{gap})";
+        box-shadow: @box-shadow-card-raised;
         display: none;
         &.active{
             display: block;
-            position: fixed;
-            box-shadow: @box-shadow-card-raised;
         }
 
     }

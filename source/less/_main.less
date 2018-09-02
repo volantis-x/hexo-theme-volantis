@@ -1,6 +1,6 @@
 .l_main {
-    width: 100%;
-    padding-right: @side-width + @gap;
+    width: ~"calc(100% - 1 * @{side-width})";
+    padding-right: @gap;
     float: left;
     .post-list {
         position: relative;
@@ -256,6 +256,9 @@
     }
     @media(max-width:@on-phone) {
         padding-right: 0;
+        @media(max-width: @on-phone) {
+            width: 100%;
+        }
         .mobile-post();
     }
 

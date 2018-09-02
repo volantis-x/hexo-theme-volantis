@@ -199,7 +199,12 @@ img {
         clear: both;
     }
 }
-
+.container.clearfix{
+    display: flex;
+    @media(max-width: @on-phone) {
+        display: inherit;
+    }
+}
 .hidden {
     text-indent: -9999px;
     visibility: hidden;
@@ -281,10 +286,7 @@ li {
         color: @black;
         border-left: @border-left-radius solid transparent;
         background: transparent;
-        border-right: 1px solid transparent;
-        border-top: 1px solid transparent;
-        border-bottom: 1px solid transparent;
-        border-radius: @border-left-radius;
+        border-radius: @border-code-block;
         .enable-trans();
         &:hover {
             border-left: @border-left-radius solid @theme-bg-quote;
@@ -294,9 +296,6 @@ li {
         &:active {
             border-radius: @border-radius;
             border-left: max(@border-radius, @border-left-radius) solid @theme-bg-quote;
-            border-right: 1px solid fade(@theme-bg-quote, 30%);
-            border-top: 1px solid fade(@theme-bg-quote, 30%);
-            border-bottom: 1px solid fade(@theme-bg-quote, 30%);
         }
 
     }

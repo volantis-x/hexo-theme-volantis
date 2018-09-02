@@ -1,7 +1,11 @@
 .m_widget{
     &:extend(.z-depth-main);
     background: @theme-bg-card;
-    margin-bottom: @gap;
+    margin-top: @gap;
+    &:first-child{
+        margin-top: 0;
+    }
+    // margin-left: @gap;
     border-radius: @border-radius;
     .enable-trans();
     &:hover {
@@ -10,6 +14,7 @@
     &:active {
         box-shadow: @box-shadow-card-normal;
     }
+    // height: 100%;
     @media(max-width: @on-phone) {
         border-radius: 0;
         width: 100%;
@@ -20,7 +25,6 @@
     width: @side-width;
     max-height: ~"calc(100% - @{header-height} - 4 * @{gap})";
     .header{
-
         border-top-left-radius: @border-radius;
         border-top-right-radius: @border-radius;
         @media(max-width: @on-phone) {
