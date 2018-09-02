@@ -3,19 +3,22 @@
     background: @theme-bg-card;
     margin-bottom: @gap;
     border-radius: @border-radius;
-    @media(max-width: @on-phone) {
-        border-radius: 0;
-        width: 100%;
-    }
-    width: @side-width;
-    max-height: ~"calc(100% - @{header-height} - 4 * @{gap})";
     .enable-trans();
     &:hover {
-        &:extend(.z-depth-main-raised);
+        box-shadow: @box-shadow-card-raised;
     }
     &:active {
         box-shadow: @box-shadow-card-normal;
     }
+    @media(max-width: @on-phone) {
+        border-radius: 0;
+        width: 100%;
+        &:hover {
+            box-shadow: @box-shadow-card-normal;
+        }
+    }
+    width: @side-width;
+    max-height: ~"calc(100% - @{header-height} - 4 * @{gap})";
     .header{
 
         border-top-left-radius: @border-radius;

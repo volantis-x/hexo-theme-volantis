@@ -164,9 +164,6 @@
         //max-width: 768px;
         background: @theme-bg-card;
         border-radius: @border-radius;
-        @media(max-width: @on-phone) {
-            border-radius: 0;
-        }
         h1{
             font-weight: normal;
             font-size: @article-title-size;
@@ -176,10 +173,16 @@
         &:extend(.z-depth-main);
         .enable-trans();
         &:hover {
-          &:extend(.z-depth-main-raised);
+          box-shadow: @box-shadow-card-raised;
         }
         &:active {
           box-shadow: @box-shadow-card-normal;
+        }
+        @media(max-width: @on-phone) {
+            border-radius: 0;
+            &:hover {
+              box-shadow: @box-shadow-card-normal;
+            }
         }
         .meta {
             margin-bottom: 2*@gap;

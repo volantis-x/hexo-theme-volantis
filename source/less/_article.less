@@ -195,7 +195,7 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         font-family: @code-font-family;
-        color: fade(@theme-text-main, 75%);
+        color: fade(@theme-text-main, 90%);
     }
     code {
         font-family: @code-font-family;
@@ -398,7 +398,7 @@
   font-size: @small-font-size * .95;
   font-family:@code-font-family;
   line-height: @base-line-height;
-  border-radius: @border-radius;
+  border-radius: @border-code-block;
   .enable-trans();
 
   table{
@@ -427,8 +427,8 @@
   }
 
   &::-webkit-scrollbar {
-    height: 8px;
-    width: 8px;
+    height: @border-code-block;
+    width: @border-code-block;
   }
   // /* Track */
 
@@ -442,7 +442,7 @@
   &::-webkit-scrollbar-thumb {
     background: darken(@theme-bg-code-block, 5%);
     cursor: pointer;
-    border-radius: @border-radius;
+    border-radius: @border-code-block;
     .enable-trans();
     &:hover {
       background: darken(@theme-bg-code-block, 12%);
