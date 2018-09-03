@@ -14,7 +14,7 @@ html {
     width: 100%;
     height: 100%;
     padding-top: @header-height;
-    font-family: @base-font-family;
+    font-family: @fontfamily_base;
     font-size: @base-font-size;
     line-height: 1.5rem;
     color: @theme-text-main;
@@ -244,7 +244,7 @@ img {
     border: 1px solid black;
     padding: 0px 15px;
     font-size: 13px;
-    font-family: @base-font-family;
+    font-family: @fontfamily_base;
     text-align: center;
     color: lighten(#8f8f8f, 20%);
     &:hover {
@@ -286,7 +286,7 @@ li {
         color: @black;
         border-left: @border-left-radius solid transparent;
         background: transparent;
-        border-radius: @border-code-block;
+        // border-radius: @border-code-block;
         .enable-trans();
         &:hover {
             border-left: @border-left-radius solid @theme-bg-quote;
@@ -294,7 +294,7 @@ li {
             background: fade(@theme-bg-quote, 10%);
         }
         &:active {
-            border-radius: @border-radius;
+            // border-radius: @border-radius;
             border-left: max(@border-radius, @border-left-radius) solid @theme-bg-quote;
         }
 
@@ -319,7 +319,8 @@ ul.h-list {
 
 #loading-bar-wrapper {
     position: fixed;
-    top: @header-height - 2;
+    top: @header-height - 8;
+    top: 0;
     left: 0;
     width: 100%;
     // overflow: scroll;
@@ -329,8 +330,9 @@ ul.h-list {
 #loading-bar {
     position: fixed;
     width: 0;
-    height: 2px;
-    background-color: fade(@white, 100%);
+    height: 8px;
+    height: @header-height;
+    background-color: fade(@theme-text-in-header, 20%);
     .enable-trans();
 }
 

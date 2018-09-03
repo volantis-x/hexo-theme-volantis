@@ -97,7 +97,7 @@
     h5,
     h6 {
         position: relative;
-        font-family: @base-font-family;
+        font-family: @fontfamily_base;
         font-weight: normal;
         margin-top: 1.5em;
         margin-bottom: 1em;
@@ -167,7 +167,7 @@
         margin: 1em 0;
         padding: @gap;
         border-left: @border-left-radius solid @theme-bg-quote;
-        border-radius: @border-code-block;
+        // border-radius: @border-code-block;
         .enable-trans();
         // &:hover{
         //     border-left: @border-radius solid @theme-bg-quote;
@@ -184,11 +184,11 @@
         display: block;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        font-family: @code-font-family;
+        font-family: @fontfamily_code;
         color: fade(@theme-text-main, 90%);
     }
     code {
-        font-family: @code-font-family;
+        font-family: @fontfamily_code;
         padding: 3px 3px 0px 3px;
         margin: 0px 2px;
         vertical-align: center;
@@ -203,7 +203,7 @@
     }
     .readmore {
         // display: none; // howtodesign?
-        font-family: @title-font-family;
+        font-family: @fontfamily_base;
         font-size: .8em;
         letter-spacing: .1em;
         margin-top: @gap;
@@ -212,16 +212,16 @@
             display: inline-block;
             vertical-align: middle;
             line-height: 2rem;
-            background-color: fade(@theme-bg-button, 90%);
+            background-color: fade(@theme-bg-nav-header, 90%);
             padding: .2em 2.4em;
             color: @theme-text-in-header;
             border-radius: @border-radius/2;
             .enable-trans();
             &:hover {
-              background: darken(@theme-bg-button, 10%);
+              background: darken(@theme-bg-nav-header, 10%);
             }
             &:active {
-              background: lighten(@theme-bg-button, 20%);
+              // background: darken(@theme-bg-nav-header, 20%);
             }
         }
 
@@ -291,7 +291,7 @@
             width: 100%;
             padding: @gap/2;
             color: fade(@theme-text-main, 70%);
-            background-color: @theme-bg-code-block;
+            background-color: fade(@theme-bg-main, 50%);
             border-radius: @border-radius;
             p{
                 font-size: @base-font-size;
@@ -302,7 +302,7 @@
                 margin-top: @gap/2;
                 margin-bottom: @gap/2;
                 position: relative;
-                font-family: @base-font-family;
+                font-family: @fontfamily_base;
                 font-weight: bold;
                 font-size: @font-size-h4;
             }
@@ -386,7 +386,7 @@
   display: block;
   background: @theme-bg-code-block;
   font-size: @small-font-size * .95;
-  font-family:@code-font-family;
+  font-family:@fontfamily_code;
   line-height: @base-line-height;
   border-radius: @border-code-block;
   .enable-trans();

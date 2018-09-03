@@ -368,13 +368,12 @@ mathjax: true
 调整这些字体的顺序：
 
 ```yaml
-@fallback-font-family: Menlo, Monaco, 'Ubuntu', Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, "Microsoft YaHei", Arial, sans-serif;
 // 大部分文字字体
-@base-font-family: 'Ubuntu', Menlo, Monaco, @fallback-font-family;
+@fontfamily_base: 'Ubuntu', Menlo, Monaco, Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, "Microsoft YaHei", Arial, sans-serif;
 // 代码字体
-@code-font-family: Menlo, Monaco, 'Ubuntu', Helvetica, Consolas, monospace, sans-serif, @fallback-font-family;
-// 标题字体
-@title-font-family: 'Ubuntu', Menlo, Monaco, Helvetica, Consolas, monospace, sans-serif, @fallback-font-family;
+@fontfamily_code: Menlo, Monaco, @fontfamily_base;
+// LOGO字体
+@fontfamily_logo: @fontfamily_base;
 ```
 
 默认的字体 `Ubuntu` 使用的是GoogleFontsAPI：
@@ -473,13 +472,11 @@ mathjax: true
 // 卡片背景
 @theme-bg-card: white;
 // 卡片标题栏背景
-@theme-bg-card-header: darken(@theme-base-main, 4%);
-// 按钮背景
-@theme-bg-button: @theme-base-main;
+@theme-bg-card-header: @theme-bg-nav-header;
 // 代码的背景色
-@theme-bg-code: @theme-base-tint;
+@theme-bg-code: fade(@mac-maximize, 6%);
 // 代码块的背景色
-@theme-bg-code-block: fade(@theme-base-main, 70%);
+@theme-bg-code-block: @theme-bg-code;
 // 引用的颜色以及分类、归档的 hover 时颜色
 @theme-bg-quote: @theme-base-tint;
 // 文字颜色 ----------------

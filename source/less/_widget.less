@@ -2,6 +2,8 @@
     &:extend(.z-depth-main);
     background: @theme-bg-card;
     margin-top: @gap;
+    font-family: @fontfamily_base;
+    font-size: @base-font-size;
     &:first-child{
         margin-top: 0;
     }
@@ -32,7 +34,7 @@
         }
         background-color: @theme-bg-card-header;
         color: @theme-text-in-header;
-        font-size: @base-font-size;
+        font-weight: bold;
         line-height: 1.8em;
         padding: 8px @gap;
       	// letter-spacing: .08em;
@@ -40,7 +42,6 @@
     }
     .content{
         text-align: justify;
-        overflow: auto;
         padding: @gap/2;
         max-height: ~"calc(100% - @{header-height} - 2.5 * @{gap})";
     }
@@ -49,7 +50,6 @@
         padding: 0 @gap;
         line-height:@item-height;
         height: @item-height;
-        font-size: @base-font-size;
         display: flex;
         justify-content: space-between;
         align-content: center;

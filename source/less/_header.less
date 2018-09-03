@@ -8,7 +8,7 @@
 	line-height: @header-height;
 	height: @header-height;
 	overflow: hidden;
-	font-family: @title-font-family;
+    font-family: @fontfamily_base;
 	.wrapper{
         padding: auto @gap;
 		.enable-trans();
@@ -45,6 +45,7 @@
 	.logo {
         padding: 0 @gap;
 		font-size: @base-font-size * 1.2;
+    	font-family: @fontfamily_logo;
 		@media(max-width: @on-phone){
 			flex: auto;
 		}
@@ -59,10 +60,6 @@
 			.enable-trans();
 			display: block;
 			font-size: @base-font-size * .95;
-            font-weight: bold;
-            &::before{
-                font-weight: lighter;
-            }
 			color: fade(@theme-text-in-header,60%);
 			padding: 0 8px;
 			&:hover,&.active{
@@ -185,7 +182,7 @@
         }
 		height: @header-height - @gap;
 		line-height: @header-height - @gap;
-		font-family: @base-font-family;
+		font-family: @fontfamily_base;
 		border: none;
 		border-radius: @border-radius;
 		background: fade(@theme-text-in-header,15%);
