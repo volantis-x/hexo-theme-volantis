@@ -4,9 +4,9 @@
 	top:0;
 	left:0;
 	width:100%;
-	font-size: @base-font-size;
-	line-height: @header-height;
-	height: @header-height;
+	font-size: @fontsize_base;
+	line-height: @height_navbar;
+	height: @height_navbar;
 	overflow: hidden;
     font-family: @fontfamily_base;
 	.wrapper{
@@ -14,25 +14,25 @@
 		.enable-trans();
 	}
 	.wrapper.sub{
-		transform: translateY(-@header-height);
+		transform: translateY(-@height_navbar);
         .logo{
             // padding-left: 0;
-            @media(max-width: @on-phone){
+            @media(max-width: @on_phone){
                 padding-left: @gap;
                 padding-right: @gap/2;
-            	font-size: @base-font-size;
+            	font-size: @fontsize_base;
     		}
         }
 	}
 	.nav--main,.nav-sub{
-		height: @header-height;
+		height: @height_navbar;
 	}
-	background: @theme-bg-nav-header;
+	background: @theme_bg_navbar;
 	&, a{
 		.txt-ellipsis;
-        height: @header-height;
-        line-height: @header-height;
-		color: @theme-text-in-header;
+        height: @height_navbar;
+        line-height: @height_navbar;
+		color: @theme_text_in_header;
 	}
 	&:extend(.z-depth-nav);
 		.enable-trans();
@@ -44,36 +44,36 @@
 	}
 	.logo {
         padding: 0 @gap;
-		font-size: @base-font-size * 1.2;
+		font-size: @fontsize_base * 1.2;
     	font-family: @fontfamily_logo;
-		@media(max-width: @on-phone){
+		@media(max-width: @on_phone){
 			flex: auto;
 		}
 	}
 	.menu{
 		position:relative;
 		flex: 1 0 auto;
-		height: @header-height;
+		height: @height_navbar;
 		.enable-trans();
 		margin:0 @gap;
 		ul > li > a{
 			.enable-trans();
 			display: block;
-			font-size: @base-font-size * .95;
-			color: fade(@theme-text-in-header,60%);
+			font-size: @fontsize_base * .95;
+			color: fade(@theme_text_in_header,60%);
 			padding: 0 8px;
 			&:hover,&.active{
-				color: @theme-text-in-header;
+				color: @theme_text_in_header;
 			}
 		}
-		@media(max-width: @on-phone){
+		@media(max-width: @on_phone){
 			display:none;
 		}
 
 		.underline{
 			.enable-trans();
 			position: absolute;
-			background: @theme-text-in-header;
+			background: @theme_text_in_header;
 			left: 0;
 			bottom: 0;
 			width: 0;
@@ -86,36 +86,36 @@
 	}
 	.switcher{
 		display: none;
-		font-size: @base-font-size;
-        line-height: @header-height;
+		font-size: @fontsize_base;
+        line-height: @height_navbar;
 
 		& > li{
-            height: @header-height - @gap;
+            height: @height_navbar - @gap;
 			.enable-trans();
             margin: 0;
-            @media(max-width: @on-phone){
-            width: @header-height - 1.5*@gap;
-            height: @header-height - 1.5*@gap;
+            @media(max-width: @on_phone){
+            width: @height_navbar - 1.5*@gap;
+            height: @height_navbar - 1.5*@gap;
             }
             a{
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: @header-height - @gap;
-                height: @header-height - @gap;
+                width: @height_navbar - @gap;
+                height: @height_navbar - @gap;
                 border-radius: 100px;
                 .enable-trans();
                 &:hover {
-                    background: darken(@theme-bg-nav-header, 10%);
-                    // color: @theme-bg-quote;
+                    background: darken(@theme_bg_navbar, 10%);
+                    // color: @theme_bg_quote;
                 }
-                @media(max-width: @on-phone){
-                    width: @header-height - 1.5*@gap;
-                    height: @header-height - 1.5*@gap;
+                @media(max-width: @on_phone){
+                    width: @height_navbar - 1.5*@gap;
+                    height: @height_navbar - 1.5*@gap;
                 }
             }
 		}
-		@media(max-width: @on-phone){
+		@media(max-width: @on_phone){
 			display: flex;
             padding-right: @gap;
 		}
@@ -124,7 +124,7 @@
 		display: flex;
 	}
 
-	@media (max-width: @on-phone)  {
+	@media (max-width: @on_phone)  {
 		.m_search{
 			width:0;
 			overflow: hidden;
@@ -144,9 +144,9 @@
 }
 .m_search {
 	position: relative;
-	height: @header-height - @gap;
-	width: @side-width;
-	line-height: @header-height - @gap;
+	height: @height_navbar - @gap;
+	width: @width_sidebar;
+	line-height: @height_navbar - @gap;
     margin-top: @gap/2;
     margin-bottom: @gap/2;
 	vertical-align: middle;
@@ -161,46 +161,46 @@
 	.icon {
 		position: absolute;
 		display:block;
-		height: @header-height - @gap;
-		width: @header-height - @gap;
-		line-height: @header-height - @gap;
+		height: @height_navbar - @gap;
+		width: @height_navbar - @gap;
+		line-height: @height_navbar - @gap;
 		top: 0;
 		left: @gap/2;
-        font-size: @small-font-size;
+        font-size: @fontsize_small;
 
 	}
 	.input {
 		display:block;
-		font-size: @small-font-size;
-		line-height: @header-height - @gap;
+		font-size: @fontsize_small;
+		line-height: @height_navbar - @gap;
 		margin: 0;
 		width: 100%;
-		color: fade(@theme-text-in-header, 60%);
-        padding-left: @base-font-size + @gap - 2px;
-        @media(max-width: @on-phone){
-            padding-left: @base-font-size + @gap - 2px;
+		color: fade(@theme_text_in_header, 60%);
+        padding-left: @fontsize_base + @gap - 2px;
+        @media(max-width: @on_phone){
+            padding-left: @fontsize_base + @gap - 2px;
         }
-		height: @header-height - @gap;
-		line-height: @header-height - @gap;
+		height: @height_navbar - @gap;
+		line-height: @height_navbar - @gap;
 		font-family: @fontfamily_base;
 		border: none;
-		border-radius: @border-radius;
-		background: fade(@theme-text-in-header,15%);
+		border-radius: @border_radius;
+		background: fade(@theme_text_in_header,15%);
 		box-sizing: border-box;
 		-webkit-appearance: none;
 		box-shadow: none;
         border: 1px dashed transparent;
         .enable-trans();
         ~ .icon{
-			color: fade(@theme-text-in-header, 60%);
+			color: fade(@theme_text_in_header, 60%);
 		}
-		.set-placeholder({color: fade(@theme-text-in-header, 60%)});
+		.set-placeholder({color: fade(@theme_text_in_header, 60%)});
 		&:hover{
-            border: 1px dashed fade(@theme-text-in-header, 60%);
+            border: 1px dashed fade(@theme_text_in_header, 60%);
 		}
 		&:focus {
 			color:@black;
-            border: 1px solid fade(@theme-text-in-header, 60%);
+            border: 1px solid fade(@theme_text_in_header, 60%);
 			.set-placeholder({color: @black});
 		}
 		&:focus ~ .icon{
@@ -212,38 +212,38 @@
 
 .menu-phone{
     .header{
-        border-top-left-radius: @border-radius;
-        border-top-right-radius: @border-radius;
-        background-color: fade(@theme-bg-nav-header,90%);
-        color: @theme-text-in-header;
-        font-size: @base-font-size;
+        border-top-left-radius: @border_radius;
+        border-top-right-radius: @border_radius;
+        background-color: fade(@theme_bg_navbar,90%);
+        color: @theme_text_in_header;
+        font-size: @fontsize_base;
         line-height: 1.8em;
         padding: 8px @gap;
     }
-    width: @side-width;
+    width: @width_sidebar;
 	position: fixed;
-	top: @header-height + @gap;
+	top: @height_navbar + @gap;
 	right: 0;
-    width: @side-width;
+    width: @width_sidebar;
 	z-index:9999 + 1;
 	line-height: 2 * @gap;
 	background: white;
 	border-right: 0;
 	&:extend(.z-depth-main-raised);
-	border-radius: @border-radius;
-	transform: translate3d(@side-width, -0, 0);
+	border-radius: @border_radius;
+	transform: translate3d(@width_sidebar, -0, 0);
 	.enable-trans();
 	&:hover {
 		&:extend(.z-depth-main-raised);
 	}
 	&:active {
-		box-shadow: @box-shadow-card-normal;
+		box-shadow: @boxshadow_card_normal;
 	}
 	nav {
     	padding: @gap/2 0px;
 		.nav {
-            height: @item-height;
-            line-height: @item-height;
+            height: @height_cell;
+            line-height: @height_cell;
 			position: relative;
 			display: block;
 			color: @black;
@@ -251,8 +251,8 @@
 			padding: 2px 20px;
             border-left: 2px solid transparent;
             &:hover{
-                border-left: 4px solid @theme-bg-quote;
-                background: fade(@theme-bg-quote, 10%);
+                border-left: 4px solid @theme_bg_quote;
+                background: fade(@theme_bg_quote, 10%);
             }
 		}
   	}

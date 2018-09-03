@@ -8,7 +8,7 @@
   padding: 60px 20px;
   z-index: 999999;
 
-  @media (max-width: @modal-threshold) {
+  @media (max-width: @on_modal_threshold) {
 		padding: 0px;
 	}
   .modal {
@@ -22,8 +22,8 @@
     background: #fff;
     box-shadow: 0 7px 8px -4px rgba(0,0,0,.2),0 13px 19px 2px rgba(0,0,0,.14),0 5px 24px 4px rgba(0,0,0,.12);
     z-index: 3;
-    border-radius: @border-radius;
-    @media (max-width: @modal-threshold) {
+    border-radius: @border_radius;
+    @media (max-width: @on_modal_threshold) {
   		box-shadow: none;
       max-width: none;
       top: 0;
@@ -46,12 +46,12 @@
     .modal-header {
       position: relative;
       width: 100%;
-      height: @header-height;
-      background-color: @theme-bg-nav-header;
+      height: @height_navbar;
+      background-color: @theme_bg_navbar;
       z-index: 3;
-      border-top-left-radius: @border-radius;
-      border-top-right-radius: @border-radius;
-      @media (max-width: @modal-threshold) {
+      border-top-left-radius: @border_radius;
+      border-top-right-radius: @border_radius;
+      @media (max-width: @on_modal_threshold) {
     		padding: 0px;
         border-radius: 0;
     	}
@@ -67,15 +67,15 @@
         display: block;
         position: absolute;
         width: 50px + 5px;
-        height: @header-height;
+        height: @height_navbar;
         top: 0;
         right: 0;
-        color: @theme-text-in-header;
+        color: @theme_text_in_header;
         cursor: pointer;
         text-align: center;
-        line-height: @header-height;
+        line-height: @height_navbar;
         vertical-align: middle;
-        font-size: @header-switcher-font-size;
+        font-size: @fontsize_header_switcher;
         .enable-trans();
         z-index: 2;
 
@@ -110,11 +110,11 @@
         #u-search-modal-input {
           width: 100%;
           padding: 0px 50px;
-          height: @header-height;
-          font-size: @base-font-size;
-          line-height: @base-line-height;
+          height: @height_navbar;
+          font-size: @fontsize_base;
+          line-height: @lineheight_base;
           vertical-align: middle;
-          color: @theme-text-in-header;
+          color: @theme_text_in_header;
           border: none;
           background: transparent;
           .enable-trans();
@@ -123,8 +123,8 @@
           box-shadow: none;
 
           &:focus {
-            border-top-left-radius: @border-radius;
-            border-top-right-radius: @border-radius;
+            border-top-left-radius: @border_radius;
+            border-top-right-radius: @border_radius;
           }
         }
       }
@@ -137,10 +137,10 @@
         background: transparent;
         border: none;
         width: 50px;
-        height: @header-height;
+        height: @height_navbar;
         vertical-align: middle;
-        font-size: @header-switcher-font-size;
-        color: @theme-text-in-header;
+        font-size: @fontsize_header_switcher;
+        color: @theme_text_in_header;
         z-index: 2;
       }
     }
@@ -206,7 +206,7 @@
         font-size: 13px;
         font-weight: 500;
         line-height: 50px;
-        color: @grey-color;
+        color: @color_grey;
         cursor: pointer;
         z-index: 1;
 
@@ -231,7 +231,7 @@
       overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
 
-      @media (max-width: @modal-threshold) {
+      @media (max-width: @on_modal_threshold) {
         padding: 60px 20px 80px 20px;
     	}
       .modal-results {
@@ -255,18 +255,18 @@
               // color: @black;
             }
             .title {
-              color: @theme-text-highlight;
+              color: @theme_text_highlight;
             }
           }
           .title {
             display: inline-block;
             max-width: 100%;
-            color: lighten(@theme-text-main, 10%);
-            font-size: @base-font-size;
+            color: lighten(@theme_text_main, 10%);
+            font-size: @fontsize_base;
             font-weight: bold;
             padding: 1px;
             margin-bottom: 2px;
-            line-height: @base-line-height;
+            line-height: @lineheight_base;
             white-space: normal;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -276,9 +276,9 @@
             white-space: pre-wrap;
             overflow: scroll;
             text-overflow: ellipsis;
-            font-size: @small-font-size;
-            line-height: @base-line-height;
-            color: lighten(@theme-text-main, 30%);
+            font-size: @fontsize_small;
+            line-height: @lineheight_base;
+            color: lighten(@theme_text_main, 30%);
             .enable-trans();
             em {
               // font-weight: bold;
@@ -290,7 +290,7 @@
             right: 0;
             margin-top: -4px;
             font-size: 11px;
-            color: @grey-color;
+            color: @color_grey;
           }
         }
       }

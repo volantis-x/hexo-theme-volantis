@@ -3,7 +3,7 @@
     .archive {
         position: relative;
         .archive-year {
-            font-size: @base-font-size;
+            font-size: @fontsize_base;
             margin-top: 4em;
             margin-bottom: 1em;
             &:first-child{
@@ -14,7 +14,7 @@
                 margin-top: 1em;
             }
             a {
-                color: @theme-text-main;
+                color: @theme_text_main;
                 text-decoration: none;
             }
         }
@@ -28,19 +28,19 @@
                 text-decoration: none;
             }
             time {
-                color: @theme-text-main;
+                color: @theme_text_main;
                 flex: none;
-                font-size: @small-font-size;
+                font-size: @fontsize_small;
                 padding: .5em .5em .5em 3em;
-                @media (max-width: @on-phone) {
+                @media (max-width: @on_phone) {
                   padding: .5em .5em .5em 0;
                 }
             }
             .title {
                 flex: auto;
                 padding: .5em;
-                font-size: @small-font-size;
-                color: fade(@theme-text-main,80%);
+                font-size: @fontsize_small;
+                color: fade(@theme_text_main,80%);
             }
         }
     }

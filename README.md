@@ -390,19 +390,19 @@ mathjax: true
 
 ```yaml
 // base
-@base-font-size:   16px;
-@small-font-size:  @base-font-size * 0.875;
-@base-line-height: 1.7;
+@fontsize_base:   16px;
+@fontsize_small:  @fontsize_base * 0.875;
+@lineheight_base: 1.7;
 // title
-@font-size-h1: @base-font-size * 1.5;
-@font-size-h2: @base-font-size * 1.4;
-@font-size-h3: @base-font-size * 1.2;
-@font-size-h4: @base-font-size * 1.1;
-@font-size-h5: @base-font-size * 1;
-@font-size-h6: @small-font-size;
+@fontsize_h1: @fontsize_base * 1.5;
+@fontsize_h2: @fontsize_base * 1.4;
+@fontsize_h3: @fontsize_base * 1.2;
+@fontsize_h4: @fontsize_base * 1.1;
+@fontsize_h5: @fontsize_base * 1;
+@fontsize_h6: @fontsize_small;
 // article
-@article-title-size: @font-size-h1 * 1.2;
-@article-title-size-phone: @font-size-h2;
+@fontsize_article_title: @fontsize_h1 * 1.2;
+@fontsize_article_title_phone: @fontsize_h2;
 ```
 
 
@@ -410,20 +410,20 @@ mathjax: true
 ### 布局尺寸
 
 ```yaml
-@modal-threshold:  680px;
-@on-phone:         820px;
-@on-laptop:        990px;
-@on-desktop:       1200px;
+@on_modal_threshold:  680px;
+@on_phone:         820px;
+@on_laptop:        990px;
+@on_desktop:       1200px;
 // container
-@container-width:  1200px;
+@width_container:  1200px;
 // post
-@post-max-width: 980px;
+@width_post_max: 980px;
 // 侧边栏宽度
-@side-width: 250px;
+@width_sidebar: 250px;
 // 搜索框的宽度，建议和侧边栏宽度保持一致
-@search-width: @side-width;
+@width_searchbar: @width_sidebar;
 // 一个cell的高度
-@item-height: 36px;
+@height_cell: 36px;
 ```
 
 
@@ -432,10 +432,10 @@ mathjax: true
 
 ```yaml
 // 导航栏高度
-@header-height: 54px;
-@header-logo-font-size: 1.3em;
-@header-switcher-font-size: 1.3em;
-@header-font-size: 1em;
+@height_navbar: 54px;
+@fontsize_logo: 1.3em;
+@fontsize_header_switcher: 1.3em;
+@fontsize_header: 1em;
 ```
 
 
@@ -454,9 +454,9 @@ mathjax: true
 
 ```yaml
 // 0px: 极端，2px：硬朗，4px：常规，8px：圆润，16px：温柔
-@border-radius: 8px; // 圆角半径，可以根据心情随时调整风格
-@border-left-radius: 4px; // 左边的竖线的宽度
-@border-code-block: 4px; // 代码块的圆角及其滚动条的宽度
+@border_radius: 8px; // 圆角半径，可以根据心情随时调整风格
+@border_radius_left_line: 4px; // 左边的竖线的宽度
+@border_radius_code_block: 4px; // 代码块的圆角及其滚动条的宽度
 ```
 
 
@@ -466,30 +466,30 @@ mathjax: true
 ```yaml
 // 背景色 ----------------
 // 网页背景
-@theme-bg-main: @theme-base-main;
+@theme_bg_main: @theme_base_main;
 // 导航栏背景
-@theme-bg-nav-header: darken(@theme-base-main, 4%);
+@theme_bg_navbar: darken(@theme_base_main, 4%);
 // 卡片背景
-@theme-bg-card: white;
+@theme_bg_card: white;
 // 卡片标题栏背景
-@theme-bg-card-header: @theme-bg-nav-header;
+@theme_bg_card_header: @theme_bg_navbar;
 // 代码的背景色
-@theme-bg-code: fade(@mac-maximize, 6%);
+@theme_bg_code: fade(@color_mac_maximize, 6%);
 // 代码块的背景色
-@theme-bg-code-block: @theme-bg-code;
+@theme_bg_code_block: @theme_bg_code;
 // 引用的颜色以及分类、归档的 hover 时颜色
-@theme-bg-quote: @theme-base-tint;
+@theme_bg_quote: @theme_base_tint;
 // 文字颜色 ----------------
 // 标题文字颜色（h1/h2）
-@theme-text-header: @theme-base-tint;
+@theme_text_header: @theme_base_tint;
 // 链接颜色
-@theme-text-link: @ax-blue;
+@theme_text_link: @color_ax_blue;
 // 链接高亮颜色
-@theme-text-highlight: @theme-base-tint;
+@theme_text_highlight: @theme_base_tint;
 // 在主题色中显示的文本（一般为白或深灰）
-@theme-text-in-header: @dark;
+@theme_text_in_header: @dark;
 // 正文文字颜色
-@theme-text-main: @dark;
+@theme_text_main: @dark;
 ```
 
 对应的效果如图所示：
@@ -502,9 +502,9 @@ mathjax: true
 
 ```yaml
 // 卡片正常状态的阴影
-@box-shadow-card-normal: @base-box-shadow-1, @base-box-shadow-2;
+@boxshadow_card_normal: @boxshadow_base_1, @boxshadow_base_2;
 // 卡片漂浮起来时的阴影
-@box-shadow-card-raised: @base-box-shadow-2, @base-box-shadow-4, @base-box-shadow-8, @base-box-shadow-16;
+@boxshadow_card_raised: @boxshadow_base_2, @boxshadow_base_4, @boxshadow_base_8, @boxshadow_base_16;
 ```
 
 

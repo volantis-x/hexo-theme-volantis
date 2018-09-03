@@ -13,11 +13,11 @@
 html {
     width: 100%;
     height: 100%;
-    padding-top: @header-height;
+    padding-top: @height_navbar;
     font-family: @fontfamily_base;
-    font-size: @base-font-size;
+    font-size: @fontsize_base;
     line-height: 1.5rem;
-    color: @theme-text-main;
+    color: @theme_text_main;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -25,10 +25,10 @@ html {
 }
 
 body {
-    background-color: @theme-bg-main;
+    background-color: @theme_bg_main;
     &.modal-active {
         overflow: hidden;
-        @media (max-width: @modal-threshold) {
+        @media (max-width: @on_modal_threshold) {
             position: fixed;
             top: 0;
             right: 0;
@@ -48,15 +48,15 @@ body {
     box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.24), 0 3px 6px 0px rgba(0, 0, 0, 0.1);
 }
 .z-depth-nav-raised {
-    box-shadow: @box-shadow-card-raised;
+    box-shadow: @boxshadow_card_raised;
 }
 
 .z-depth-main {
-    box-shadow: @box-shadow-card-normal;
+    box-shadow: @boxshadow_card_normal;
 }
 
 .z-depth-main-raised {
-    box-shadow: @box-shadow-card-raised;
+    box-shadow: @boxshadow_card_raised;
 }
 
 .z-depth-0 {
@@ -101,12 +101,12 @@ body {
 }
 
 ::-moz-selection {
-    background: fade(lighten(@theme-text-link, 5%), 25%);
+    background: fade(lighten(@theme_text_link, 5%), 25%);
     // color: @black;
 }
 
 ::selection {
-    background: fade(lighten(@theme-text-link, 5%), 25%);
+    background: fade(lighten(@theme_text_link, 5%), 25%);
     // color: @black;
 }
 // transition
@@ -139,27 +139,27 @@ h6 {
 }
 
 h1 {
-    font-size: @font-size-h1;
+    font-size: @fontsize_h1;
 }
 
 h2 {
-    font-size: @font-size-h2;
+    font-size: @fontsize_h2;
 }
 
 h3 {
-    font-size: @font-size-h3;
+    font-size: @fontsize_h3;
 }
 
 h4 {
-    font-size: @font-size-h4;
+    font-size: @fontsize_h4;
 }
 
 h5 {
-    font-size: @font-size-h5;
+    font-size: @fontsize_h5;
 }
 
 h6 {
-    font-size: @font-size-h6;
+    font-size: @fontsize_h6;
 }
 
 a {
@@ -201,7 +201,7 @@ img {
 }
 .container.clearfix{
     display: flex;
-    @media(max-width: @on-phone) {
+    @media(max-width: @on_phone) {
         display: inherit;
     }
 }
@@ -284,18 +284,18 @@ li {
         display: inline-block;
         padding: 0 8px;
         color: @black;
-        border-left: @border-left-radius solid transparent;
+        border-left: @border_radius_left_line solid transparent;
         background: transparent;
-        // border-radius: @border-code-block;
+        // border-radius: @border_radius_code_block;
         .enable-trans();
         &:hover {
-            border-left: @border-left-radius solid @theme-bg-quote;
+            border-left: @border_radius_left_line solid @theme_bg_quote;
             padding: 8px;
-            background: fade(@theme-bg-quote, 10%);
+            background: fade(@theme_bg_quote, 10%);
         }
         &:active {
-            // border-radius: @border-radius;
-            border-left: max(@border-radius, @border-left-radius) solid @theme-bg-quote;
+            // border-radius: @border_radius;
+            border-left: max(@border_radius, @border_radius_left_line) solid @theme_bg_quote;
         }
 
     }
@@ -319,7 +319,7 @@ ul.h-list {
 
 #loading-bar-wrapper {
     position: fixed;
-    top: @header-height - 8;
+    top: @height_navbar - 8;
     top: 0;
     left: 0;
     width: 100%;
@@ -331,15 +331,15 @@ ul.h-list {
     position: fixed;
     width: 0;
     height: 8px;
-    height: @header-height;
-    background-color: fade(@theme-text-in-header, 20%);
+    height: @height_navbar;
+    background-color: fade(@theme_text_in_header, 20%);
     .enable-trans();
 }
 
 .container {
     position: relative;
     width: 100%;
-    max-width: @container-width;
+    max-width: @width_container;
     margin: 0 auto;
 }
 
@@ -353,7 +353,7 @@ ul.h-list {
 .l_body {
     position: relative;
     padding: 2 * @gap 0 @gap;
-    @media(max-width: @on-phone) {
+    @media(max-width: @on_phone) {
         // padding: @gap @gap/2 @gap/2;
         border-radius: 0;
     }
