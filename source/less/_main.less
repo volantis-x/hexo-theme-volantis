@@ -85,12 +85,21 @@
                 }
             }
             .vhead{
-                .vnick{
-                    color: fade(@theme_text_main, 90%);
-                    a{
-                        color: @color_vue;
+                span{
+                    &.vnick{
+                        color: fade(@theme_text_main, 90%);
                     }
                 }
+                a{
+                    &.vnick{
+                        color: @color_vue;
+                        &:hover {
+                            color: @theme_text_highlight;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
             }
             .vmeta{
                 .vat{
