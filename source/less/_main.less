@@ -65,7 +65,10 @@
                     line-height: @fontsize_small * 1.5;
                 }
             }
-            pre{
+            pre code{
+                border: none;
+            }
+            code{
                 font-family: @fontfamily_code;
                 font-size: @fontsize_base * .8;
                 color: fade(@theme_text_main, 90%);
@@ -83,7 +86,7 @@
             }
             .vhead{
                 span{
-                    color: fade(@theme_text_main, 80%);
+                    color: fade(@theme_text_main, 90%);
                 }
                 a{
                     color: @color_vue;
