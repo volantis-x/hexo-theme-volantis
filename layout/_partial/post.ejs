@@ -5,12 +5,12 @@
                 <% if(post.title){ %>
                     <%= post.title %>
                 <% } else if (post.date) { %>
-                    <%= date(post.date, 'YYYY-MM-DD dddd') %>
+                    <%= date(post.date, config.date_format) %>
                 <% } %>
             </a>
         </h2>
         <time>
-            <%= date(post.date, 'YYYY-MM-DD dddd') %>
+            <%= date(post.date, config.date_format) %>
         </time>
         <%- partial('categories',{post:post}) %>
     </section>

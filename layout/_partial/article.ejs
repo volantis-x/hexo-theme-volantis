@@ -4,11 +4,11 @@
             <% if(post.title){ %>
                 <%= post.title %>
             <% } else if (post.date) { %>
-                <%= date(post.date, 'YYYY-MM-DD dddd') %>
+                <%= date(post.date, config.date_format) %>
             <% } %>
         </h1>
         <time>
-            <%= date(post.date, 'YYYY-MM-DD dddd') %>&nbsp;&nbsp;
+            <%= date(post.date, config.date_format) %>&nbsp;&nbsp;
             <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         <%- partial('categories',{post:post}) %>
@@ -20,7 +20,7 @@
             <%- post.content %>
         </div>
 
-        <% if (post.tags && post.tags.length) { %>
+        <% if (post.tags && post.tags && post.tags.each) { %>
             <div class="article-tags tags">
                 <% post.tags.each(function(item){ %>
                     <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;<%=item.name %></a>
@@ -36,7 +36,11 @@
                             <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
                             <h4>
                                 <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
-                                    <%= post.prev.title %>
+                                  <% if(post.prev.title){ %>
+                                      <%= post.prev.title %>
+                                  <% } else if (post.prev.date) { %>
+                                      <%= date(post.prev.date, config.date_format) %>
+                                  <% } %>
                                 </a>
                             </h4>
                             <% if (post.prev.tags && post.prev.tags.length) { %>
@@ -55,7 +59,11 @@
                             <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
                                 <a href="<%=url_for(post.next.path)%>" rel="prev" title="<%=post.next.title%>">
-                                    <%= post.next.title %>
+                                    <% if(post.next.title){ %>
+                                        <%= post.next.title %>
+                                    <% } else if (post.next.date) { %>
+                                        <%= date(post.next.date, config.date_format) %>
+                                    <% } %>
                                 </a>
                             </h4>
                             <% if (post.next.tags && post.next.tags.length) { %>

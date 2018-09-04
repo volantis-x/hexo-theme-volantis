@@ -1,4 +1,4 @@
-<% if (post.categories && post.categories.length){ %>
+<% if (post.categories && post.categories && post.categories.forEach){ %>
     <%
     var cats = [];
     post.categories.forEach(function(cat){
