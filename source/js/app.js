@@ -132,10 +132,10 @@ var customSearch;
 	function setTocToggle() {
 		const $toc = $('.toc-wrapper');
 		if ($toc.length === 0) return;
-		$toc.click((e) => {
-            e.stopPropagation();
-            $toc.addClass('active');
-        });
+		// $toc.click((e) => {
+        //     e.stopPropagation();
+        //     $toc.addClass('active');
+        // });
 		$(document).click(() => $toc.removeClass('active'));
 
 		$toc.on('click', 'a', (e) => {
