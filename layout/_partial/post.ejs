@@ -1,4 +1,4 @@
-<article class="post reveal<%= (post.title) ? "" : "no-title" %>">
+<article class="post reveal <%= (post.title) ? "" : "no-title" %>">
     <section class="meta">
         <h2 class="title">
             <a href="<%- url_for(post.path) %>">

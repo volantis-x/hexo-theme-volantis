@@ -12,7 +12,7 @@
     						<% (config.nav_menu || []).forEach(function(value){ %>
     							<li>
     								<a class='nav-<%=value.slug%> flat-box' href='<%=url_for(value.url)%>'>
-    									<i class='fa <%=value.icon%>'></i>&nbsp;<%=value.name%>
+    									<i class='fa <%=value.icon%> fa-'></i>&nbsp;<%=value.name%>
     								</a>
     							</li>
     						<%})%>
@@ -53,14 +53,14 @@
 	<aside class="menu-phone">
         <div class="header"><%=config.title%></div>
 		<nav>
-            <% if (config.nav_menu) { %>
-			<% (config.nav_menu || []).forEach(function(value, key) {
-						if (value.url && value.slug && value.name) { %>
-				<a href="<%= url_for(value.url) %>" class="nav-<%= value.slug %> fa <%=value.icon%> nav flat-box">
-					<%= value.name %>
-				</a>
-			<% } }); %>
-
-        <% } %>
+            <ul>
+                <% if (config.nav_menu) { %>
+                    <% (config.nav_menu || []).forEach(function(value){ %>
+                        <li>
+                            <a class='nav-<%=value.slug%> flat-box nav flat-box' href='<%=url_for(value.url)%>'><i class='fa <%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%></a>
+                        </li>
+                    <%})%>
+             <% } %>
+            </ul>
 		</nav>
 	</aside>
