@@ -267,7 +267,7 @@ valine:
   enable: true # 如果你想用Valine评论系统，请设置enable为true
   appId:  # 必填
   appKey:  # 必填
-  guest_info: nick,mail #valine comment header info
+  guest_info: nick,mail,link #valine comment header info
   placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
   avatar: mp # gravatar style https://valine.js.org/avatar
   pageSize: 10 # comment list page size
