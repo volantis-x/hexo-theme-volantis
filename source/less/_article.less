@@ -379,6 +379,7 @@
 }
 
 .highlight {
+    position: relative;
   width: 100%;
   margin-top: 1em;
   margin-bottom: 1.2em;
@@ -413,6 +414,49 @@
       padding: @gap;
       vertical-align: top;
       border: 0px solid darken(@theme_bg_main, 2%);
+      &:before{
+          position: absolute;
+          top: 0;
+          right: 0;
+          color: fade(@theme_text_main, 40%);
+          font-size: @fontsize_footnote;
+          padding: 4px 8px 0;
+          line-height: @lineheight_base;
+      }
+  }
+
+  &.html .code:before{
+      content: "html";
+  }
+  &.js .code:before{
+      content: "js";
+  }
+  &.bash .code:before{
+      content: "bash";
+  }
+  &.shell .code:before{
+      content: "shell";
+  }
+  &.css .code:before{
+      content: "css";
+  }
+  &.less .code:before{
+      content: "less";
+  }
+  &.swift .code:before{
+      content: "swift";
+  }
+  &.objc .code:before{
+      content: "objc";
+  }
+  &.c .code:before{
+      content: "c";
+  }
+  &.java .code:before{
+      content: "java";
+  }
+  &.python .code:before{
+      content: "python";
   }
 
   &::-webkit-scrollbar {
