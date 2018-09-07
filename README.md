@@ -69,7 +69,7 @@ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autop
 
 ## 文档
 
-https://xaoxuu.com/docs/material-x
+https://xaoxuu.com/wiki/material-x
 
 
 
@@ -511,7 +511,7 @@ mathjax: true
 
 ## 单元测试
 
-如果你发现无法使用或者效果与 [示例](https://blog.xaoxuu.com) 有较大区别，可以使用hexo官方提供的用于单元测试的博客应用本主题查看样式。hexo.sh 脚本提供了方便的指令，详情见 hexo.sh 的 [文档](https://xaoxuu.com/docs/hexo.sh)  。
+如果你发现无法使用或者效果与 [示例](https://blog.xaoxuu.com) 有较大区别，可以使用hexo官方提供的用于单元测试的博客应用本主题查看样式。hexo.sh 脚本提供了方便的指令，详情见 hexo.sh 的 [文档](https://xaoxuu.com/wiki/hexo.sh)  。
 
 如果你的电脑是不是mac，则无法使用脚本，可以手动下载单元测试博客： [https://github.com/hexojs/hexo-theme-unit-test.git](https://github.com/hexojs/hexo-theme-unit-test.git)，然后下载并应用本主题，查看效果。
 
