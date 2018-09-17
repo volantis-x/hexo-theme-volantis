@@ -415,6 +415,7 @@
       vertical-align: top;
       border: 0px solid darken(@theme_bg_main, 2%);
       &:before{
+          content: "";
           position: absolute;
           top: 0;
           right: 0;
@@ -457,6 +458,9 @@
   }
   &.python .code:before{
       content: "python";
+  }
+  &.plain .code:before{
+      content: "";
   }
 
   &::-webkit-scrollbar {
