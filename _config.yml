@@ -8,7 +8,7 @@ nav_menu:
   - name: 项目
     slug: projects
     icon: fa-cube
-    url: https://xaoxuu.com/proj
+    url: https://www.qdfuns.com/u/32286.html
   - name: 博客
     slug: home
     icon: fa-rss
@@ -17,35 +17,64 @@ nav_menu:
     slug: archives
     icon: fa-archive
     url: /archives
-
+  - name: 收藏夹
+    slug: favorite
+    icon: fa-address-book
+    url: http://collect.w3ctrain.com/
+  - name: 分享
+    slug: juejin
+    icon: fa-share-alt-square 
+    url: https://juejin.im/user/58b67dd58fd9c50061238e38/shares
+  - name: 摄影
+    slug: photo
+    icon: fa-camera-retro
+    url: https://tuchong.com/2763959/
+  - name: 简书
+    slug: book
+    icon: fa-book
+    url: https://www.jianshu.com/u/c6b5715f3016
 # 右边的小窗口，不想显示哪一项的注释掉对应的即可
 widgets:
   # 博主信息，显示个人头像、格言、社交信息等
   author:
     enable: true
-    avatar: https://xaoxuu.com/assets/img/avatar.jpg # 头像，如果config中已经设置avatar了，这里可以不用写
-    title: 某知名博主 # 博客名、头衔等等，居中显示
-    motto: 某知名博主的座右铭啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈。 # 格言座右铭等等
+    avatar: /img/me-lg.jpg # 头像，如果config中已经设置avatar了，这里可以不用写
+    title: 大涛子 # 博客名、头衔等等，居中显示
+    motto: 温度不迷茫，方向不倔强 # 格言座右铭等等
     social: true # 是否显示社交信息（内容同页脚的社交信息）
   # 显示文章分类
   categories: true
   # 显示文章标签
   tagcloud: true
   # 显示网易云歌单
-  musicid: 746319661 # 歌单id
+  musicid: 282751852 # 歌单id
   # 显示友链
   links:
+  - name: 大雷子
+    url: https://isliulei.com/
+  - name: 贵姥姥
+    url: hhttps://zguii.com/
   - name: xaoxuu
     url: https://xaoxuu.com
+  - name: 张鑫旭
+    url: http://www.zhangxinxu.com/
+  - name: 廖雪峰的官方网站
+    url: https://www.liaoxuefeng.com/
+  - name: 阮一峰的网络日志
+    url: http://www.ruanyifeng.com/blog/
+  - name: Cherry’s blog
+    url: https://cherryblog.site/
+  - name: 草依山的Javascript世界
+    url: http://jser.me/about.html
   # 显示目录（在文章中设置toc:false可以隐藏单篇文章的目录）
   toc: true
 
 # 页脚社交信息
 social:
   - icon: fa-envelope
-    url: mailto:me@xaoxuu.com
+    url: mailto:yangtaobanner@foxmail.com
   - icon: fa-github
-    url: https://github.com/xaoxuu
+    url: https://github.com/yangtao2o
   - icon: fa-instagram
     url:
   - icon: fa-google-plus
@@ -53,9 +82,9 @@ social:
   - icon: fa-twitter
     url:
   - icon: fa-music
-    url: https://music.163.com/#/user/home?id=63035382
+    url: https://music.163.com/#/user/home?id=282751852
   - icon: fa-rss
-    url: atom
+    url: 
   - icon: fa-telegram
     url:
   - icon: fa-vimeo
@@ -63,7 +92,7 @@ social:
   - icon: fa-gitlab
     url:
   - icon: fa-linkedin
-    url:
+    url: http://www.linkedin.com/in/%E6%B6%9B-%E6%9D%A8-06a70212b/
   - icon: fa-snapchat
     url:
   - icon: fa-steam
@@ -75,9 +104,9 @@ social:
   - icon: fa-youtube
     url:
   - icon: fa-weibo
-    url:
+    url: http://weibo.com/taoboy0208
   - icon: fa-weixin
-    url:
+    url: /img/wx.png
   - icon: fa-qq
     url:
 
@@ -115,4 +144,17 @@ search:
 # Less
 less:
   compress: true
+
+# valine
+valine:
+  enable: true # 如果你想用Valine评论系统，请设置enable为true
+  appId: BXbRzdRWKuKAzooJu0Gin1mO-gzGzoHsz
+  appKey: WEzG2CMtkcbmqrmqMkgIGIRL
+  guest_info: nick,mail,link #valine comment header info
+  placeholder: 你不想说些什么麽~ # valine comment input placeholder(like: Please leave your footprints )
+  avatar: mp # gravatar style https://valine.js.org/avatar
+  pageSize: 10 # comment list page size
+  verify: false # valine verify code (true/false)
+  notify: false # valine mail notify (true/false)
+  lang: zh-cn
 # >> 主题配置 ---------------------------------------------------------------------
