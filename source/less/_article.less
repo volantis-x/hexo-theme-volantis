@@ -513,10 +513,10 @@ pre{
   .comment, .title{
     color: fade(@theme_text_main, 50%);
   }
-  .keyword, .javascript .function, .tag {
+  .keyword, .javascript .function, .attr {
     color: @hl_keyword;
   }
-  .type, .built_in{
+  .type, .built_in, .tag .name{
     color: @hl_blue;
   }
   .variable, .attribute, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo {
@@ -539,8 +539,8 @@ pre{
   }
 
 }
-.json{
-  .attr{
-    color: @hl_keyword;
+.html{
+  .tag .name{
+    color: @hl_red;
   }
 }
