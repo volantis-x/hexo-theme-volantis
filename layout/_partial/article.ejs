@@ -105,10 +105,10 @@
                     </section>
                 <% } %>
 
-                <% if (config.livere_shortname){ %>
+                <% if (config.livere_uid){ %>
                     <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;LiveRe评论</h4>
                     <section id="comments">
-                        <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTU4Ny82MTU1">
+                        <div id="lv-container" data-id="city" data-uid="<%= config.livere_uid %>">
                             <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
                         </div>
                     </section>
