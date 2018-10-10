@@ -5,17 +5,19 @@
                 <img class='avatar' src='<%= url_for(config.widgets.author.avatar || config.avatar) %>' />
             </div>
         <%} %>
-        <div class='content'>
-            <% if (config.widgets.author.title){ %>
-                <h2><%= config.widgets.author.title %></h2>
-            <% } %>
-            <% if (config.widgets.author.motto){ %>
-                <div>
-                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
-                    <%= config.widgets.author.motto %>
-                </div>
-            <% } %>
-        </div>
+        <% if (config.widgets.author.title || config.widgets.author.motto){ %>
+            <div class='content'>
+                <% if (config.widgets.author.title){ %>
+                    <h2><%= config.widgets.author.title %></h2>
+                <% } %>
+                <% if (config.widgets.author.motto){ %>
+                    <div>
+                        <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                        <%= config.widgets.author.motto %>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
         <% if (config.widgets.author.social){ %>
             <div class="social-wrapper">
               <% (config.social||[]).forEach(function(value){ %>

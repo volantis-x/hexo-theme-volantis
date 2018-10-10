@@ -104,6 +104,7 @@
     }
     .content{
         font-weight: bold;
+        padding-bottom: 0;
         @media(max-width: @on_phone){
             padding: @gap/2 @gap;
         }
@@ -112,7 +113,7 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        padding-top: 0;
+        padding-top: @gap/2;
         padding-bottom: @gap/2;
         a {
             color: fade(@theme_text_main, 70%);
