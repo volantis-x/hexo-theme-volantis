@@ -35,8 +35,8 @@ widgets:
   musicid: 746319661 # 歌单id
   # 显示友链
   links:
-  - name: xaoxuu
-    url: https://xaoxuu.com
+  - name: xaoxuu's blog
+    url: https://blog.xaoxuu.com
   # 显示目录（在文章中设置toc:false可以隐藏单篇文章的目录）
   toc: true
 
