@@ -8,15 +8,15 @@
 
 				<div class='menu'>
 					<ul class='h-list'>
-                        <% if (config.nav_menu) { %>
-    						<% (config.nav_menu || []).forEach(function(value){ %>
-    							<li>
-    								<a class='nav-<%=value.slug%> flat-box' href='<%=url_for(value.url)%>'>
-    									<i class='fa <%=value.icon%> fa-'></i>&nbsp;<%=value.name%>
-    								</a>
-    							</li>
-    						<%})%>
-        			 <% } %>
+            <% if (config.nav_menu) { %>
+    					<% (config.nav_menu || []).forEach(function(value){ %>
+    						<li>
+    							<a class='nav-<%=value.slug%> flat-box' href='<%=url_for(value.url)%>'>
+    								<i class='fa <%=value.icon%> fa-'></i>&nbsp;<%=value.name%>
+  								</a>
+  							</li>
+        			<%})%>
+        		<% } %>
 					</ul>
 					<div class='underline'></div>
 				</div>
@@ -54,7 +54,8 @@
                 <% if (config.nav_menu) { %>
                     <% (config.nav_menu || []).forEach(function(value){ %>
                         <li>
-                            <a class='nav-<%=value.slug%> flat-box nav flat-box' href='<%=url_for(value.url)%>'><i class='fa <%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%></a>
+                            <a class='nav-<%=value.slug%> flat-box nav flat-box' href='<%=url_for(value.url)%>'>
+                            <i class='fa <%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%></a>
                         </li>
                     <%})%>
              <% } %>
