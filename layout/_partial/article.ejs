@@ -27,6 +27,12 @@
                 <%})%>
             </div>
         <% } %>
+        <section class='meta'>
+          <time itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
+            <i class="fa fa-pencil-square fa-fw" aria-hidden="true"></i>
+            本文最后更新于：<%- date(post.updated, config.date_format) %>
+          </time>
+        </section>
 
         <% if(post.prev || post.next){ %>
             <div class="prev-next">
