@@ -36,7 +36,8 @@
         color: @theme_text_in_header;
         font-weight: bold;
         line-height: 1.5em;
-        padding: 8px @gap;
+        // padding: 8px @gap; // 适合深色导航栏背景
+        padding: 14px @gap 2px @gap; // 适合白色导航栏背景
       	// letter-spacing: .08em;
 
     }
@@ -111,10 +112,9 @@
     }
     .social-wrapper{
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         flex-wrap: wrap;
-        padding-top: @gap/2;
-        padding-bottom: @gap/2;
+        padding: 4px @gap/2;
         a {
             color: fade(@theme_text_main, 70%);
             .enable-trans();
