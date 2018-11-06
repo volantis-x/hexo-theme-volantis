@@ -364,7 +364,7 @@
     margin-left: 0;
     background-color: darken(@theme_bg_code_block, 3%);
     pre{
-        color: fade(@theme_text_main, 35%);
+        color: fade(@theme_text_main, 80%);
     }
     &:hover{
 
@@ -379,7 +379,7 @@
           position: absolute;
           top: 0;
           right: 0;
-          color: fade(@theme_text_main, 60%);
+          color: fade(@theme_text_main, 80%);
           font-size: @fontsize_footnote;
           padding: 4px 8px 0;
           line-height: @lineheight_base;
@@ -387,37 +387,37 @@
   }
 
   &.html .code:before{
-      content: "html";
+      content: "HTML";
   }
   &.js .code:before{
-      content: "js";
+      content: "JS";
   }
   &.bash .code:before{
-      content: "bash";
+      content: "BASH";
   }
   &.shell .code:before{
-      content: "shell";
+      content: "SHELL";
   }
   &.css .code:before{
-      content: "css";
+      content: "CSS";
   }
   &.less .code:before{
-      content: "less";
+      content: "LESS";
   }
   &.swift .code:before{
-      content: "swift";
+      content: "SWIFT";
   }
   &.objc .code:before{
-      content: "objc";
+      content: "OBJC";
   }
   &.c .code:before{
-      content: "c";
+      content: "C";
   }
   &.java .code:before{
-      content: "java";
+      content: "JAVA";
   }
   &.python .code:before{
-      content: "python";
+      content: "PYTHON";
   }
   &.plain .code:before{
       content: "";
@@ -501,13 +501,13 @@ pre{
   }
   // 注释
   .comment, .title{
-    color: fade(@theme_text_main, 50%);
+    color: fade(@theme_text_main, 60%);
   }
   .keyword, .javascript .function, .attr {
     color: @hl_keyword;
   }
   .type, .built_in, .tag .name{
-    color: @hl_blue;
+    color: #e96900;
   }
   .variable, .attribute, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo {
     color: @hl_amber;
