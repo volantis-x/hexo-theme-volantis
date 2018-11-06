@@ -127,8 +127,8 @@
 // start: 圆角 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // 0px: 极端，2px：硬朗，4px：常规，8px：圆润，16px：温柔
 @border_radius: 8px; // 圆角半径，可以根据心情随时调整风格
-@border_radius_left_line: 4px; // 左边的竖线的宽度
-@border_radius_code_block: 4px; // 代码块的圆角及其滚动条的宽度
+@border_radius_line: 4px; // 线的宽度和滚动条的宽度
+@border_radius_code_block: 8px; // 代码块的圆角
 // end: 圆角 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
@@ -145,9 +145,9 @@
 // 卡片标题栏背景
 @theme_bg_card_header: @theme_bg_navbar;
 // 代码的背景色
-@theme_bg_code: fade(@color_mac_minimize, 6%);
+@theme_bg_code: fade(@color_mac_minimize, 10%);
 // 代码块的背景色
-@theme_bg_code_block: fade(@color_mac_minimize, 8%);
+@theme_bg_code_block: fade(@color_mac_minimize, 10%);
 // 引用的颜色以及分类、归档的 hover 时颜色
 @theme_bg_quote: @theme_base_tint;
 // 文字颜色 ----------------

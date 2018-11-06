@@ -156,7 +156,8 @@
         background: fade(@theme_bg_quote, 10%);
         margin: 1em 0;
         padding: @gap;
-        border-left: @border_radius_left_line solid @theme_bg_quote;
+        border-left: @border_radius solid @theme_bg_quote;
+        border-radius: @border_radius;
         .enable-trans();
         footer {
             strong {
@@ -425,8 +426,8 @@
   }
 
   &::-webkit-scrollbar {
-    height: @border_radius_code_block;
-    width: @border_radius_code_block;
+    height: @border_radius_line;
+    width: @border_radius_line;
   }
   // /* Track */
 

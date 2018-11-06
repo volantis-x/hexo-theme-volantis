@@ -284,18 +284,18 @@ li {
         display: inline-block;
         padding: 0 8px;
         color: @black;
-        border-left: @border_radius_left_line solid transparent;
+        border-left: @border_radius_line solid transparent;
         background: transparent;
-        // border-radius: @border_radius_code_block;
+        border-radius: @border_radius_code_block;
         .enable-trans();
         &:hover {
-            border-left: @border_radius_left_line solid @theme_bg_quote;
+            border-left: @border_radius_line solid @theme_bg_quote;
             padding: 8px;
             background: fade(@theme_bg_quote, 10%);
         }
         &:active {
             // border-radius: @border_radius;
-            border-left: max(@border_radius, @border_radius_left_line) solid @theme_bg_quote;
+            border-left: max(@border_radius, @border_radius_line) solid @theme_bg_quote;
         }
 
     }

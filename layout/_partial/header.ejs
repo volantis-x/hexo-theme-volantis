@@ -48,17 +48,16 @@
 	</div>
 </header>
 	<aside class="menu-phone">
-        <div class="header"><%=config.title%></div>
 		<nav>
-            <ul>
-                <% if (config.nav_menu) { %>
-                    <% (config.nav_menu || []).forEach(function(value){ %>
-                        <li>
-                            <a class='nav-<%=value.slug%> flat-box nav flat-box' href='<%=url_for(value.url)%>'>
-                            <i class='fa <%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%></a>
-                        </li>
-                    <%})%>
-             <% } %>
-            </ul>
+      <ul>
+          <% if (config.nav_menu) { %>
+              <% (config.nav_menu || []).forEach(function(value){ %>
+                  <li>
+                      <a class='nav-<%=value.slug%> flat-box nav flat-box' href='<%=url_for(value.url)%>'>
+                      <i class='fa <%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%></a>
+                  </li>
+              <%})%>
+       <% } %>
+      </ul>
 		</nav>
 	</aside>
