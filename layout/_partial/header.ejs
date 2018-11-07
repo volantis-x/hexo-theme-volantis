@@ -12,7 +12,7 @@
     					<% (config.nav_menu || []).forEach(function(value){ %>
     						<li>
     							<a class='nav-<%=value.slug%> flat-box' href='<%=url_for(value.url)%>'>
-    								<i class='fa <%=value.icon%> fa-'></i>&nbsp;<%=value.name%>
+    								<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
   								</a>
   							</li>
         			<%})%>
@@ -33,7 +33,7 @@
 				<% if (config.search.enable === true) { %>
 					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
 				<% } %>
-				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-menu'><a class="fa fa-bars fa-fw" href='javascript:void(0)'></a></li>
 			</ul>
 		</div>
 
@@ -54,7 +54,7 @@
               <% (config.nav_menu || []).forEach(function(value){ %>
                   <li>
                       <a class='nav-<%=value.slug%> flat-box nav flat-box' href='<%=url_for(value.url)%>'>
-                      <i class='fa <%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%></a>
+                      <i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%></a>
                   </li>
               <%})%>
        <% } %>

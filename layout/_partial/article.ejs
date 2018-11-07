@@ -8,7 +8,7 @@
             <% } %>
         </h1>
         <time>
-            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>&nbsp;&nbsp;
+            <i class="fa fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>&nbsp;&nbsp;
             <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         <%- partial('categories',{post:post}) %>
@@ -29,7 +29,7 @@
         <% } %>
         <section class='meta'>
           <time itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
-            <i class="fa fa-pencil-square fa-fw" aria-hidden="true"></i>
+            <i class="fa fa-edit fa-fw" aria-hidden="true"></i>
             本文最后更新于：<%- date(post.updated, config.date_format) %>
           </time>
         </section>
