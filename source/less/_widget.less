@@ -170,6 +170,16 @@
     }
 }
 .m_widget.links{
+    .header{
+      display: flex;
+      justify-content: space-between;
+        .addlink{
+          color: @theme_text_in_header;
+          &:hover {
+              color: darken(@theme_text_highlight, 25%);
+          }
+        }
+    }
     .content{
         padding: @gap/2 0;
         .name{
