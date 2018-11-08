@@ -1,12 +1,10 @@
 <article id="<%= post.layout %>-<%= post.slug %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
     <section class='meta'>
-        <h1 class="title">
-            <% if(post.title){ %>
-                <%= post.title %>
-            <% } else if (post.date) { %>
-                <%= date(post.date, config.date_format) %>
-            <% } %>
-        </h1>
+        <% if(post.title){ %>
+            <h1 class="title"><%= post.title %></h1>
+        <% } else if (post.date) { %>
+            <h1 class="title"><%= date(post.date, config.date_format) %></h1>
+        <% } %>
         <time class="time">
             <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
             <%= date(post.date, config.date_format) %>
@@ -25,7 +23,7 @@
 
         <section class='meta'>
             <time class="time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
-                <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
                 本文最后更新于：<%- date(post.updated, config.date_format) %>
             </time>
             <% if (post.tags && post.tags.length && post.tags.each) { %>
@@ -35,7 +33,7 @@
                     items.push('<a class="tag" href="'+url_for(item.path)+'">' + item.name + '</a>');
                 });
                 %>
-                <div class="article-tags tags">
+                <div class="tags">
                     <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
                     <%- items.join(', ') %>
                 </div>
