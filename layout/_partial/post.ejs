@@ -19,7 +19,10 @@
         <%- post.excerpt || post.content %>
         <% if (post.excerpt) { %>
             <div class="readmore">
-                <a href="<%- url_for(post.path) %>" class="flat-box">READ MORE</a>
+                <a href="<%- url_for(post.path) %>" class="flat-box">
+                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+                    阅读全文
+                </a>
             </div>
         <% } %>
 
