@@ -28,7 +28,7 @@
                 <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
                 本文最后更新于：<%- date(post.updated, config.date_format) %>
             </time>
-            <% if (post.tags && post.tags && post.tags.each) { %>
+            <% if (post.tags && post.tags.length && post.tags.each) { %>
                 <%
                 var items = [];
                 post.tags.each(function(item){
@@ -57,7 +57,7 @@
                                   <% } %>
                                 </a>
                             </h4>
-                            <% if (post.prev.tags && post.prev.tags && post.prev.tags.each) { %>
+                            <% if (post.prev.tags && post.prev.tags.length && post.prev.tags.each) { %>
                                 <%
                                 var items = [];
                                 post.prev.tags.each(function(item){
@@ -85,7 +85,7 @@
                                     <% } %>
                                 </a>
                             </h4>
-                            <% if (post.next.tags && post.next.tags && post.next.tags.each) { %>
+                            <% if (post.next.tags && post.next.tags.length && post.next.tags.each) { %>
                                 <%
                                 var items = [];
                                 post.next.tags.each(function(item){
