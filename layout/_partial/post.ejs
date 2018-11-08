@@ -10,7 +10,7 @@
             </a>
         </h2>
         <time class="time">
-            <i class="fa fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>
         </time>
         <%- partial('categories',{post:post}) %>
     </section>
@@ -26,7 +26,7 @@
         <% if (post.tags && post.tags.length) { %>
             <div class="full-width auto-padding tags">
                 <% post.tags.each(function(item){ %>
-                    <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw"></i>&nbsp;<%=item.name %></a>
+                    <a href="<%- url_for(item.path) %>"><i class="fas fa-tag fa-fw"></i>&nbsp;<%=item.name %></a>
                 <%})%>
             </div>
         <% } %>
