@@ -9,7 +9,7 @@
                 <% } %>
             </a>
         </h2>
-        <time>
+        <time class="time">
             <i class="fa fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>
         </time>
         <%- partial('categories',{post:post}) %>
