@@ -1,25 +1,50 @@
 .m_widget.toc-wrapper{
+    z-index: 1;
     overflow: auto;
     border-radius: @border_radius;
     position: sticky;
     top: @height_navbar + 1*@gap;
+    // bottom: @gap;
+    // max-height: ~"calc(100% - 2 * @{gap} - @{height_navbar})";
+    // max-height: 600px;
     .enable-trans();
-    .content{
-        padding: @gap/2 0;
-    }
-    &.active{
-        position: fixed;
-        box-shadow: @boxshadow_card_raised;
-    }
-
     .header{
         position: sticky;
         width: 100%;
         top: 0;
     }
+    .content{
+        padding: @gap/2 0;
+        padding-top: 0; // 适合白色导航栏背景
+        a {
+            border-left: 4px solid transparent;
+            &:hover{
+                color: fade(@theme_text_main, 100%);
+                border-left: 4px solid @theme_bg_quote;
+            }
+            &:active{
+                border-left: 8px solid @theme_bg_quote;
+            }
+            &.active{
+                color: fade(@theme_text_main, 100%);
+                border-left: 4px solid @theme_bg_quote;
+                background: fade(@theme_bg_quote, 10%);
+            }
+        }
+    }
+    &.active{
+        position: fixed;
+        box-shadow: @boxshadow_card_raised;
+        .header{
+            .s-toc{
+              display: none;
+            }
+        }
+    }
+
     @media(max-width: @on_phone){
         position: fixed;
-        width: 100% - 0.5 * @gap;
+        width: ~"calc(100% - 2 * @{gap})";
         top: @height_navbar + @gap;
         left: @gap;
         box-shadow: @boxshadow_card_raised;
@@ -35,20 +60,6 @@
         color: fade(@theme_text_main, 60%);
         font-size: @fontsize_small;
         display: inline-block;
-        border-left: 4px solid transparent;
-        &:hover{
-            color: fade(@theme_text_main, 100%);
-            border-left: 4px solid @theme_bg_quote;
-        }
-        &:active{
-            border-left: 8px solid @theme_bg_quote;
-        }
-        &.active{
-            color: fade(@theme_text_main, 100%);
-            border-left: 4px solid @theme_bg_quote;
-            background: fade(@theme_bg_quote, 10%);
-        }
-
     }
     ol{
         .toc-item.toc-level-1 {

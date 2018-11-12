@@ -2,7 +2,7 @@
     <section class='m_widget author'>
         <% if(config.widgets.author.avatar || config.avatar) { %>
             <div class='header'>
-                <img class='avatar' src='<%= url_for(config.widgets.author.avatar || config.avatar) %>' />
+                <img class='avatar' src='<%= url_for(config.widgets.author.avatar || config.avatar) %>'/>
             </div>
         <%} %>
         <% if (config.widgets.author.title || config.widgets.author.motto){ %>
@@ -11,10 +11,7 @@
                     <h2><%= config.widgets.author.title %></h2>
                 <% } %>
                 <% if (config.widgets.author.motto){ %>
-                    <div>
-                        <i class="fas fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
-                        <%= config.widgets.author.motto %>
-                    </div>
+                    <p><%= config.widgets.author.motto %></p>
                 <% } %>
             </div>
         <% } %>
