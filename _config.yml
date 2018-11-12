@@ -1,4 +1,7 @@
 # >> 主题配置 ---------------------------------------------------------------------
+# 字体 在这里选好你需要的字体：https://fonts.google.com，然后在_defines.less中修改font_family。
+google_fonts: 'Ubuntu|Ubuntu+Mono'
+
 # 导航栏
 nav_menu:
   - name: 主页
