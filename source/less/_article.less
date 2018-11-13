@@ -156,8 +156,8 @@
         background: fade(@theme_bg_quote, 10%);
         margin: 1em 0;
         padding: @gap;
-        border-left: @border_radius solid @theme_bg_quote;
-        border-radius: @border_radius;
+        border-left: @border_radius_code_block solid @theme_bg_quote;
+        border-radius: @border_radius_code_block;
         .enable-trans();
         footer {
             strong {
@@ -184,10 +184,9 @@
         margin: 0px 2px;
         vertical-align: center;
         border-radius: 2px;
-        border: 1px solid fade(@theme_bg_code, 30%);
+        border: 1px solid fade(@theme_bg_code, 50%);
         font-size: @fontsize_base * .8;
-
-        background: fade(@theme_bg_code, 10%);
+        background: @theme_bg_code;
         @media(max-width: @on_phone){
           font-size: @fontsize_base * .8 * .95;
         }
@@ -210,10 +209,10 @@
             border-radius: @border_radius/2;
             .enable-trans();
             &:hover {
-              background: darken(@theme_bg_navbar, 10%);
+              background: darken(@theme_bg_quote, 10%);
             }
             &:active {
-              // background: darken(@theme_bg_navbar, 20%);
+              // background: darken(@theme_bg_quote, 20%);
             }
         }
 
@@ -227,10 +226,12 @@
         margin-top: @gap;
         background: darken(fade(@theme_bg_main, 50%), 5%);
         &.article-tags {
-            background: transparent;
+            // padding-top: 2*@gap;
+            // background: transparent;
         }
         word-spacing: @gap;
         a {
+          color: @theme_text_main;
             position: relative;
             display: inline-block;
             word-spacing: 0;
@@ -239,7 +240,6 @@
             //   margin-left: @gap/2;
             // }
             .enable-trans();
-            color: @color_grey;
             &:hover {
                 color: @theme_text_highlight;
                 background: transparent;
@@ -300,6 +300,7 @@
             }
             h6{
                 margin: 0;
+                word-spacing: normal;
             }
             .enable-trans();
             // border: 1px solid transparent;
@@ -309,8 +310,8 @@
             .tags{
                 background: transparent;
                 padding: 0;
-                    margin-top: @gap/2;
-                    margin-bottom: 0;
+                margin-top: @gap/2;
+                margin-bottom: 0;
             }
             &:first-child{
                 margin-left: 0;
@@ -360,7 +361,7 @@
   }
   .gutter{
     width: 24px;
-    padding: 0 @gap/2;
+    padding: 0 12px;
     text-align: right;
     border-width: 0;
     margin-left: 0;
@@ -410,7 +411,7 @@
       content: "SWIFT";
   }
   &.objc .code:before{
-      content: "OBJC";
+      content: "OBJECTIVE-C";
   }
   &.c .code:before{
       content: "C";

@@ -1,22 +1,25 @@
 # >> 主题配置 ---------------------------------------------------------------------
+# 字体 在这里选好你需要的字体：https://fonts.google.com，然后在_defines.less中修改font_family。
+google_fonts: 'Ubuntu|Ubuntu+Mono'
+
 # 导航栏
 nav_menu:
   - name: 主页
-    slug: about
-    icon: fa-home
-    url: /
+    slug:
+    icon: fas fa-home
+    url: https://xaoxuu.com/
   - name: 项目
-    slug: projects
-    icon: fa-cube
-    url: https://xaoxuu.com/proj
+    slug:
+    icon: fas fa-flask
+    url: https://xaoxuu.com/projects/
   - name: 博客
     slug: home
-    icon: fa-rss
+    icon: fas fa-rss
     url: /
   - name: 归档
     slug: archives
-    icon: fa-archive
-    url: /archives
+    icon: fas fa-archive
+    url: /archives/
 
 # 右边的小窗口，不想显示哪一项的注释掉对应的即可
 widgets:
@@ -24,8 +27,8 @@ widgets:
   author:
     enable: true
     avatar: https://xaoxuu.com/assets/img/avatar.jpg # 头像，如果config中已经设置avatar了，这里可以不用写
-    title: 某知名博主 # 博客名、头衔等等，居中显示
-    motto: 某知名博主的座右铭啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈。 # 格言座右铭等等
+    title: # 博客名、头衔等等，居中显示
+    motto: # 格言座右铭等等
     social: true # 是否显示社交信息（内容同页脚的社交信息）
   # 显示文章分类
   categories: true
@@ -36,50 +39,23 @@ widgets:
   # 显示友链
   links:
   - name: xaoxuu's blog
+    avatar: https://xaoxuu.com/assets/img/avatar.jpg
     url: https://blog.xaoxuu.com
   # 显示目录（在文章中设置toc:false可以隐藏单篇文章的目录）
   toc: true
 
 # 页脚社交信息
 social:
-  - icon: fa-envelope
+  - icon: fas fa-envelope
     url: mailto:me@xaoxuu.com
-  - icon: fa-github
+  - icon: fab fa-github
     url: https://github.com/xaoxuu
-  - icon: fa-instagram
+  - icon: fab fa-instagram
     url:
-  - icon: fa-google-plus
+  - icon: fab fa-twitter
     url:
-  - icon: fa-twitter
-    url:
-  - icon: fa-music
+  - icon: fas fa-music
     url: https://music.163.com/#/user/home?id=63035382
-  - icon: fa-rss
-    url: atom
-  - icon: fa-telegram
-    url:
-  - icon: fa-vimeo
-    url:
-  - icon: fa-gitlab
-    url:
-  - icon: fa-linkedin
-    url:
-  - icon: fa-snapchat
-    url:
-  - icon: fa-steam
-    url:
-  - icon: fa-spotify
-    url:
-  - icon: fa-tumblr
-    url:
-  - icon: fa-youtube
-    url:
-  - icon: fa-weibo
-    url:
-  - icon: fa-weixin
-    url:
-  - icon: fa-qq
-    url:
 
 
 # 推荐文章

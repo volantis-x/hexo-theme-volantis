@@ -18,7 +18,7 @@
             <article class="post revealno-title">
                 <section class="meta">
                     <h2 class="title" style="color:#EF503A">
-                        <span class="fa fa-exclamation-triangle"></span>
+                        <span class="fas fa-exclamation-triangle"></span>
                         还剩最后一步就成功了
                     </h2>
                     <p>
@@ -43,7 +43,7 @@
             <% if (page.prev != 0) { %>
                 <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
                     <section class="post prev" >
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
                     </section>
                 </a>
             <% } %>
@@ -53,7 +53,7 @@
             <% if (page.next != 0) { %>
                 <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
                     <section class="post next">
-                        &nbsp;下一页&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
                     </section>
                 </a>
             <% } %>

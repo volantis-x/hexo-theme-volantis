@@ -9,8 +9,8 @@
                 <% } %>
             </a>
         </h2>
-        <time>
-            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>
         </time>
         <%- partial('categories',{post:post}) %>
     </section>
@@ -19,14 +19,17 @@
         <%- post.excerpt || post.content %>
         <% if (post.excerpt) { %>
             <div class="readmore">
-                <a href="<%- url_for(post.path) %>" class="flat-box">READ MORE</a>
+                <a href="<%- url_for(post.path) %>" class="flat-box">
+                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+                    阅读全文
+                </a>
             </div>
         <% } %>
 
         <% if (post.tags && post.tags.length) { %>
             <div class="full-width auto-padding tags">
                 <% post.tags.each(function(item){ %>
-                    <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw"></i>&nbsp;<%=item.name %></a>
+                    <a href="<%- url_for(item.path) %>"><i class="fas fa-tag fa-fw"></i>&nbsp;<%=item.name %></a>
                 <%})%>
             </div>
         <% } %>

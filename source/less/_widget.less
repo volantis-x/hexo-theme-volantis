@@ -1,4 +1,5 @@
 .m_widget{
+    z-index: 0;
     &:extend(.z-depth-main);
     background: @theme_bg_card;
     margin-top: @gap;
@@ -27,6 +28,8 @@
     width: @width_sidebar;
     max-height: ~"calc(100% - @{height_navbar} - 4 * @{gap})";
     .header{
+        display: flex;
+        justify-content: space-between;
         border-top-left-radius: @border_radius;
         border-top-right-radius: @border_radius;
         @media(max-width: @on_phone) {
@@ -36,44 +39,51 @@
         color: @theme_text_in_header;
         font-weight: bold;
         line-height: 1.5em;
-        // padding: 8px @gap; // 适合深色导航栏背景
-        padding: 14px @gap 2px @gap; // 适合白色导航栏背景
-      	// letter-spacing: .08em;
-
+        padding: 8px @gap;
+        padding-top: 14px; // 适合白色导航栏背景
+        padding-bottom: 14px; // 适合白色导航栏背景
+        .rightBtn{
+          color: @theme_text_in_header;
+          &:hover {
+              color: darken(@theme_text_highlight, 25%);
+          }
+        }
     }
     .content{
         text-align: justify;
         padding: @gap/2;
-        max-height: ~"calc(100% - @{height_navbar} - 2.5 * @{gap})";
+        // padding-top: 0; // 适合白色导航栏背景
+        max-height: ~"calc(100% - @{height_navbar} - 12.5 * @{gap})";
+        ul.entry > li > a{
+           padding: 0 @gap;
+           line-height:@height_cell;
+           height: @height_cell;
+           display: flex;
+           justify-content: space-between;
+           align-content: center;
+           border-left: 2px solid transparent;
+           .enable-trans();
+           .name{
+               flex:auto;
+               &:extend(.txt-ellipsis);
+               color: fade(@theme_text_main,70%);
+           }
+           .badge{
+               flex:none;
+               font-size: @fontsize_small;
+               color: fade(@theme_text_main, 50%);
+           }
+           &:hover{
+               border-left: 4px solid @theme_bg_quote;
+               background: fade(@theme_bg_quote, 10%);
+           }
+           &:active{
+               border-left: 8px solid @theme_bg_quote;
+           }
+       }
     }
 
-     ul.entry > li > a{
-        padding: 0 @gap;
-        line-height:@height_cell;
-        height: @height_cell;
-        display: flex;
-        justify-content: space-between;
-        align-content: center;
-        border-left: 2px solid transparent;
-        .enable-trans();
-        .name{
-            flex:auto;
-            &:extend(.txt-ellipsis);
-            color: fade(@theme_text_main,70%);
-        }
-        .badge{
-            flex:none;
-            font-size: @fontsize_small;
-            color: fade(@theme_text_main, 50%);
-        }
-        &:hover{
-            border-left: 4px solid @theme_bg_quote;
-            background: fade(@theme_bg_quote, 10%);
-        }
-        &:active{
-            border-left: 8px solid @theme_bg_quote;
-        }
-    }
+
 }
 .m_widget.author{
     .enable-trans();
@@ -104,8 +114,14 @@
         border-top-right-radius: @border_radius;
     }
     .content{
+      p{
+        font-size: @fontsize_base;
+        text-align: center;
+      }
+        text-align: center;
         font-weight: bold;
         padding-bottom: 0;
+        padding: @gap/2 @gap 0 @gap;
         @media(max-width: @on_phone){
             padding: @gap/2 @gap;
         }
@@ -141,6 +157,7 @@
 .m_widget.categories{
     .content{
         padding: @gap/2 0;
+        padding-top: 0; // 适合白色导航栏背景
     }
 }
 
@@ -148,6 +165,7 @@
     .content{
         text-align: justify;
         padding: @gap/2 @gap;
+        padding-top: 0; // 适合白色导航栏背景
         a{
             display:inline-block;
             .enable-trans(.1s);
@@ -162,15 +180,31 @@
 .m_widget.contacts{
     .content{
         padding: @gap/2 0;
+        padding-top: 0; // 适合白色导航栏背景
     }
 }
 .m_widget.music{
+    .header{
+        padding-bottom: @gap/4; // 适合白色导航栏背景
+    }
     .content{
         padding: @gap/2;
+        padding-top: 0; // 适合白色导航栏背景
     }
 }
 .m_widget.links{
     .content{
         padding: @gap/2 0;
+        padding-top: 0; // 适合白色导航栏背景
+        .name{
+          img{
+            display: inline;
+            border-radius: 100%;
+            vertical-align: middle;
+            height: 18px;
+            width: 18px;
+            margin-bottom: 4px;
+          }
+        }
     }
 }

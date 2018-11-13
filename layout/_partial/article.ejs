@@ -1,16 +1,17 @@
 <article id="<%= post.layout %>-<%= post.slug %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
     <section class='meta'>
-        <h1 class="title">
-            <% if(post.title){ %>
-                <%= post.title %>
-            <% } else if (post.date) { %>
-                <%= date(post.date, config.date_format) %>
-            <% } %>
-        </h1>
-        <time>
-            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>&nbsp;&nbsp;
-            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        <% if(post.title){ %>
+            <h1 class="title"><%= post.title %></h1>
+        <% } else if (post.date) { %>
+            <h1 class="title"><%= date(post.date, config.date_format) %></h1>
+        <% } %>
+        <time class="time">
+            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+            <%= date(post.date, config.date_format) %>
         </time>
+        <div class="browse"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </div>
         <%- partial('categories',{post:post}) %>
     </section>
 
@@ -20,26 +21,31 @@
             <%- post.content %>
         </div>
 
-        <% if (post.tags && post.tags && post.tags.each) { %>
-            <div class="article-tags tags">
-                <% post.tags.each(function(item){ %>
-                    <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;<%=item.name %></a>
-                <%})%>
-            </div>
-        <% } %>
         <section class='meta'>
-          <time itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
-            <i class="fa fa-pencil-square fa-fw" aria-hidden="true"></i>
-            本文最后更新于：<%- date(post.updated, config.date_format) %>
-          </time>
+            <time class="time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
+                本文最后更新于：<%- date(post.updated, config.date_format) %>
+            </time>
+            <% if (post.tags && post.tags.length && post.tags.each) { %>
+                <%
+                var items = [];
+                post.tags.each(function(item){
+                    items.push('<a class="tag" href="'+url_for(item.path)+'">' + item.name + '</a>');
+                });
+                %>
+                <div class="tags">
+                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                    <%- items.join(', ') %>
+                </div>
+            <% } %>
         </section>
 
         <% if(post.prev || post.next){ %>
             <div class="prev-next">
                 <% if(post.prev){ %>
-                    <section class="prev" >
+                    <section class="prev">
                         <span class="art-item-left">
-                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
                             <h4>
                                 <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
                                   <% if(post.prev.title){ %>
@@ -49,11 +55,16 @@
                                   <% } %>
                                 </a>
                             </h4>
-                            <% if (post.prev.tags && post.prev.tags.length) { %>
+                            <% if (post.prev.tags && post.prev.tags.length && post.prev.tags.each) { %>
+                                <%
+                                var items = [];
+                                post.prev.tags.each(function(item){
+                                    items.push('<a class="tag" href="'+url_for(item.path)+'">' + item.name + '</a>');
+                                });
+                                %>
                                 <h6 class="tags">
-                                    <% post.prev.tags.each(function(item){ %>
-                                        <i class="fa fa-tag fa-fw"></i><%=item.name %>
-                                    <%})%>
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <%- items.join(', ') %>
                                 </h6>
                             <% } %>
                         </span>
@@ -62,7 +73,7 @@
                 <% if(post.next){ %>
                     <section class="next">
                         <span class="art-item-right" aria-hidden="true">
-                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h6>下一篇&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
                                 <a href="<%=url_for(post.next.path)%>" rel="prev" title="<%=post.next.title%>">
                                     <% if(post.next.title){ %>
@@ -72,11 +83,16 @@
                                     <% } %>
                                 </a>
                             </h4>
-                            <% if (post.next.tags && post.next.tags.length) { %>
+                            <% if (post.next.tags && post.next.tags.length && post.next.tags.each) { %>
+                                <%
+                                var items = [];
+                                post.next.tags.each(function(item){
+                                    items.push('<a class="tag" href="'+url_for(item.path)+'">' + item.name + '</a>');
+                                });
+                                %>
                                 <h6 class="tags">
-                                    <% post.next.tags.each(function(item){ %>
-                                        <i class="fa fa-tag fa-fw"></i><%=item.name %>
-                                    <%})%>
+                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
+                                    <%- items.join(', ') %>
                                 </h6>
                             <% } %>
                         </span>
@@ -103,7 +119,7 @@
             <% if (post.comments) { %>
 
                 <% if (config.disqus_shortname) { %>
-                    <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Disqus评论</h4>
+                    <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Disqus评论</h4>
                     <section id="comments">
                         <div id="disqus_thread">
                             ⚠️  无法加载评论系统，请确保您的网络能够正常访问 <a href="https://disqus.com">Disqus</a> 。
@@ -112,7 +128,7 @@
                 <% } %>
 
                 <% if (config.livere_uid){ %>
-                    <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;LiveRe评论</h4>
+                    <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;LiveRe评论</h4>
                     <section id="comments">
                         <div id="lv-container" data-id="city" data-uid="<%= config.livere_uid %>">
                             <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
@@ -122,18 +138,13 @@
 
                 <% if (config.valine){ %>
                     <% if (config.valine.enable && config.valine.appId && config.valine.appKey){ %>
-                        <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Valine评论</h4>
+                        <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Valine评论</h4>
                         <div class="subtitle">
-                          <h6><b>文明评论，请勿灌水。</b>为了便于区分，请您在留言时至少填写一下 <b>昵称</b> 啊。<br>
-                          与主题相关的内容及评论测试请到 <a href="https://xaoxuu.com/wiki/material-x/">https://xaoxuu.com/wiki/material-x/</a> 留言，
-                          <% if (config.about_url){ %>
-                              其它想要对作者说的话可以到 <a href="<%= config.about_url %>"><%= config.about_url %></a> 留言。
-                          <% } %>
-                          留言时填写邮箱可以在被回复时收到邮件提醒，也可以显示Gravatar头像，网址填写个人主页或者博客的作用是别人点击你的昵称会跳转到你的博客，为你增加访问量。</h6>
+                          <h6><b>文明评论，请勿灌水。</b>为了便于区分和接收回复提醒，请您在留言时填写一下<b>昵称</b>和<b>邮箱</b>。</h6>
                         <div>
                         <section id="comments">
                             <div id="valine_container" class="valine_thread">
-                                </i><i class="fa fa-spinner fa-spin fa-fw"></i>
+                                </i><i class="fas fa-spinner fa-spin fa-fw"></i>
                             </div>
                         </section>
                         <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>

@@ -15,10 +15,12 @@
         .enable-trans();
     }
     .wrapper.sub{
+        .enable-trans();
         transform: translateY(-@height_navbar);
         .logo{
             // padding-left: 0;
             @media(max-width: @on_phone){
+                .enable-trans();
                 padding-left: @gap;
                 padding-right: 0;
                 font-size: @fontsize_base;
@@ -223,18 +225,17 @@
         line-height: 1.8em;
         padding: 8px @gap+6px;
     }
-    width: @width_sidebar;
     position: fixed;
-    top: @height_navbar + @gap;
+    top: @height_navbar + 2*@gap;
     right: 0;
-    width: @width_sidebar;
+    width: ~"calc(100% - 2*@{gap})";
     z-index:9999 + 1;
     line-height: 2 * @gap;
     background: white;
     border-right: 0;
     box-shadow: @boxshadow_card_raised;
     border-radius: @border_radius;
-    transform: translate3d(@width_sidebar, -0, 0);
+    transform: translate3d(~"calc(100% + 2*@{gap})", -0, 0);
     .enable-trans();
     &:hover {
         box-shadow: @boxshadow_card_raised;
