@@ -1,6 +1,41 @@
+#####################################
+##      Material X                 ##
+##      version: 1.0 beta1         ##
+##      updated: 2018-11-16        ##
+#####################################
+
+# >> 主题配置写法示例 ---------------------------------------------------------------------
+# ⚠️ 注意：这里的内容需要复制到主目录到config中才有效，写在这里是为了提供参考
+
+# 友链的写法示例
+links:
+- name: xaoxuu's blog
+  avatar: https://xaoxuu.com/assets/img/avatar.jpg
+  url: https://blog.xaoxuu.com
+
+# 页脚社交信息的写法示例
+social:
+  - icon: fas fa-envelope
+    url: mailto:me@xaoxuu.com
+  - icon: fab fa-github
+    url: https://github.com/xaoxuu
+  - icon: fas fa-music
+    url: https://music.163.com/#/user/home?id=63035382
+
+# 博主信息的写法示例
+avatar: https://xaoxuu.com/assets/img/avatar.jpg
+title: 博客名称
+motto: 这是我的座右铭
+
+
 # >> 主题配置 ---------------------------------------------------------------------
+# ✅ 这里的内容直接在下面进行修改
+
 # 字体 在这里选好你需要的字体：https://fonts.google.com，然后在_defines.less中修改font_family。
-google_fonts: 'Ubuntu|Ubuntu+Mono'
+google_fonts: 'Ubuntu|Ubuntu+Mono' # 多个字体中间用英文竖线隔开
+
+# style: material    # 导航栏和标题栏背景是主题色
+style: pure        # 导航栏和标题栏背景是白色
 
 # 导航栏
 nav_menu:
@@ -23,39 +58,40 @@ nav_menu:
 
 # 右边的小窗口，不想显示哪一项的注释掉对应的即可
 widgets:
-  # 博主信息，显示个人头像、格言、社交信息等
+  # 博主信息区，是否显示个人头像、格言、社交信息等
   author:
     enable: true
-    avatar: https://xaoxuu.com/assets/img/avatar.jpg # 头像，如果config中已经设置avatar了，这里可以不用写
-    title: # 博客名、头衔等等，居中显示
-    motto: # 格言座右铭等等
-    social: true # 是否显示社交信息（内容同页脚的社交信息）
+    avatar: true # 是否显示头像，如果是，需要在主目录的config中写avatar的URL
+    title: false # 是否显示博客名、头衔等等。如果是，需要在主目录的config中写title
+    motto: false # 是否显示格言座右铭等等。如果是，需要在主目录的config中写motto
+    social: true # 是否显示社交信息（内容同页脚的社交信息）如果是，需要在主目录的config中写social，支持icon和URL
   # 显示文章分类
-  categories: true
+  categories:
+    enable: true
+    icon: fas fa-folder-open
+    title: "分类"
   # 显示文章标签
-  tagcloud: true
+  tagcloud:
+    enable: true
+    icon: fas fa-tags
+    title: "标签"
   # 显示网易云歌单
-  musicid: 746319661 # 歌单id
-  # 显示友链
+  music:
+    enable: true
+    icon: fas fa-headphones-alt
+    title: "音乐"
+    playlist_id: 746319661 # 歌单id
+  # 显示友链，友链的内容写在主目录的config中
   links:
-  - name: xaoxuu's blog
-    avatar: https://xaoxuu.com/assets/img/avatar.jpg
-    url: https://blog.xaoxuu.com
+    enable: true
+    icon: fas fa-handshake
+    title: "友链"
+    mailto: "me@xaoxuu.com" # 右边显示➕ ，点击给这个地址发送邮件添加友链
   # 显示目录（在文章中设置toc:false可以隐藏单篇文章的目录）
-  toc: true
-
-# 页脚社交信息
-social:
-  - icon: fas fa-envelope
-    url: mailto:me@xaoxuu.com
-  - icon: fab fa-github
-    url: https://github.com/xaoxuu
-  - icon: fab fa-instagram
-    url:
-  - icon: fab fa-twitter
-    url:
-  - icon: fas fa-music
-    url: https://music.163.com/#/user/home?id=63035382
+  toc:
+    enable: true
+    icon: fas fa-list
+    title: "目录"
 
 
 # 推荐文章
@@ -70,7 +106,7 @@ recommended_posts:
   fixedNumber: false
 
 
-# Search 确保_config中只有一个search，否则会冲突。
+# Search
 search:
   enable: true
   service: hexo
@@ -91,4 +127,3 @@ search:
 # Less
 less:
   compress: true
-# >> 主题配置 ---------------------------------------------------------------------

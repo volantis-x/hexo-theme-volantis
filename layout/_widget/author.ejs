@@ -1,21 +1,21 @@
-<% if(config.widgets.author.enable != false) { %>
+<% if(theme.widgets.author.enable != false) { %>
     <section class='m_widget author'>
-        <% if(config.widgets.author.avatar || config.avatar) { %>
+        <% if(theme.widgets.author.avatar == true && config.avatar.length) { %>
             <div class='header'>
-                <img class='avatar' src='<%= url_for(config.widgets.author.avatar || config.avatar) %>'/>
+                <img class='avatar' src='<%= url_for(config.avatar) %>'/>
             </div>
         <%} %>
-        <% if (config.widgets.author.title || config.widgets.author.motto){ %>
+        <% if (theme.widgets.author.title == true || theme.widgets.author.motto == true){ %>
             <div class='content'>
-                <% if (config.widgets.author.title){ %>
-                    <h2><%= config.widgets.author.title %></h2>
+                <% if (theme.widgets.author.title == true){ %>
+                    <h2><%= config.title %></h2>
                 <% } %>
-                <% if (config.widgets.author.motto){ %>
-                    <p><%= config.widgets.author.motto %></p>
+                <% if (theme.widgets.author.motto){ %>
+                    <p><%= config.motto %></p>
                 <% } %>
             </div>
         <% } %>
-        <% if (config.widgets.author.social){ %>
+        <% if (theme.widgets.author.social == true && config.social.length){ %>
             <div class="social-wrapper">
               <% (config.social||[]).forEach(function(value){ %>
                 <% if (value.url && value.icon) { %>

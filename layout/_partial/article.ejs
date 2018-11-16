@@ -108,11 +108,11 @@
 <br>
 
 <!-- 显示推荐文章和评论 -->
-<% if (post && ((config.recommended_posts && config.recommended_posts.autoDisplay == false && post.recommended_posts != false) || (post.comments && (config.disqus_shortname || config.livere_shortname || config.valine)) )) { %>
+<% if (post && ((theme.recommended_posts && theme.recommended_posts.autoDisplay == false && post.recommended_posts != false) || (post.comments && (config.disqus_shortname || config.livere_shortname || config.valine)) )) { %>
     <article class="post white-box comments">
         <section class="article typo">
 
-            <% if (config.recommended_posts && config.recommended_posts.autoDisplay == false && post.recommended_posts != false) { %>
+            <% if (theme.recommended_posts && theme.recommended_posts.autoDisplay == false && post.recommended_posts != false) { %>
                 <%- partial('post/recommended_posts', {page: post, site: site}) %>
             <% } %>
 

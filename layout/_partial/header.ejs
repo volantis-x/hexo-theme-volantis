@@ -1,11 +1,11 @@
-<header class="l_header <%= config.style %>">
+<header class="l_header <%= theme.style %>">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
 			<a class="logo flat-box" href='<%= url_for("/") %>' ><%- config.title %></a>
 				<div class='menu'>
 					<ul class='h-list'>
-            <% if (config.nav_menu) { %>
-    					<% (config.nav_menu || []).forEach(function(value){ %>
+            <% if (theme.nav_menu) { %>
+    					<% (theme.nav_menu || []).forEach(function(value){ %>
     						<li>
     							<a class='nav-<%=value.slug%> flat-box' href='<%=url_for(value.url)%>'>
     								<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
@@ -17,7 +17,7 @@
 					<div class='underline'></div>
 				</div>
 
-			<% if (config.search.enable === true) { %>
+			<% if (theme.search.enable === true) { %>
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
 						<input type="text" class="input u-search-input" placeholder="Search" />
@@ -26,7 +26,7 @@
 				</div>
 			<% } %>
 			<ul class='switcher h-list'>
-				<% if (config.search.enable === true) { %>
+				<% if (theme.search.enable === true) { %>
 					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></span></a></li>
 				<% } %>
 				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
@@ -46,8 +46,8 @@
 	<aside class="menu-phone">
 		<nav>
       <ul>
-          <% if (config.nav_menu) { %>
-              <% (config.nav_menu || []).forEach(function(value){ %>
+          <% if (theme.nav_menu) { %>
+              <% (theme.nav_menu || []).forEach(function(value){ %>
                   <li>
                       <a class='nav-<%=value.slug%> flat-box nav flat-box' href='<%=url_for(value.url)%>'>
                       <i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%></a>

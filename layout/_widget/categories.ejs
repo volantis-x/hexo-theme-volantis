@@ -1,8 +1,8 @@
 <section class='m_widget categories'>
-    <header class='header <%= config.style %>'>
-        <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    <header class='header <%= theme.style %>'>
+        <div><i class="<%= theme.widgets.categories.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= theme.widgets.categories.title %></div>
     </header>
-    <div class='content <%= config.style %>'>
+    <div class='content <%= theme.style %>'>
         <% if (site.categories.length){ %>
             <ul class="entry">
                 <% site.categories.sort('name').each(function(item){ %>

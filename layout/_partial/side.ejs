@@ -1,20 +1,20 @@
-<% if (config.widgets){ %>
-    <% if (config.widgets.author){ %>
+<% if (theme.widgets){ %>
+    <% if (theme.widgets.author.enable){ %>
         <%- partial('../_widget/author') %>
     <% } %>
-    <% if (config.widgets.categories){ %>
+    <% if (theme.widgets.categories.enable){ %>
         <%- partial('../_widget/categories') %>
     <% } %>
-    <% if (config.widgets.tagcloud){ %>
+    <% if (theme.widgets.tagcloud.enable){ %>
         <%- partial('../_widget/tagcloud') %>
     <% } %>
-    <% if (config.widgets.toc){ %>
+    <% if (theme.widgets.toc.enable){ %>
         <%- partial('../_widget/toc') %>
     <% } %>
-    <% if (config.widgets.musicid){ %>
+    <% if (theme.widgets.music.enable){ %>
         <%- partial('../_widget/music') %>
     <% } %>
-    <% if (config.widgets.links){ %>
+    <% if (theme.widgets.links.enable){ %>
         <%- partial('../_widget/links') %>
     <% } %>
 <% } %>
