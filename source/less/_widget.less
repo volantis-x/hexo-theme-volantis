@@ -40,19 +40,28 @@
         font-weight: bold;
         line-height: 1.5em;
         padding: 8px @gap;
-        padding-top: 14px; // 适合白色导航栏背景
-        padding-bottom: 14px; // 适合白色导航栏背景
         .rightBtn{
           color: @theme_text_in_header;
           &:hover {
               color: darken(@theme_text_highlight, 25%);
           }
         }
+        &.pure{
+          background-color: @theme_bg_card;
+          color: @theme_base_tint;
+          padding-top: 14px; // 适合白色导航栏背景
+          padding-bottom: 14px; // 适合白色导航栏背景
+          .rightBtn{
+            color: @theme_base_tint;
+            &:hover {
+                color: darken(@theme_text_highlight, 25%);
+            }
+          }
+        }
     }
     .content{
         text-align: justify;
         padding: @gap/2;
-        // padding-top: 0; // 适合白色导航栏背景
         max-height: ~"calc(100% - @{height_navbar} - 12.5 * @{gap})";
         ul.entry > li > a{
            padding: 0 @gap;
@@ -157,7 +166,9 @@
 .m_widget.categories{
     .content{
         padding: @gap/2 0;
-        padding-top: 0; // 适合白色导航栏背景
+        &.pure{
+          padding-top: 0; // 适合白色导航栏背景
+        }
     }
 }
 
@@ -165,7 +176,9 @@
     .content{
         text-align: justify;
         padding: @gap/2 @gap;
-        padding-top: 0; // 适合白色导航栏背景
+        &.pure{
+          padding-top: 0; // 适合白色导航栏背景
+        }
         a{
             display:inline-block;
             .enable-trans(.1s);
@@ -180,22 +193,31 @@
 .m_widget.contacts{
     .content{
         padding: @gap/2 0;
-        padding-top: 0; // 适合白色导航栏背景
+        &.pure{
+          padding-top: 0; // 适合白色导航栏背景
+        }
+
     }
 }
 .m_widget.music{
     .header{
+      &.pure{
         padding-bottom: @gap/4; // 适合白色导航栏背景
+      }
     }
     .content{
         padding: @gap/2;
-        padding-top: 0; // 适合白色导航栏背景
+        &.pure{
+          padding-top: @gap/4; // 适合白色导航栏背景
+        }
     }
 }
 .m_widget.links{
     .content{
         padding: @gap/2 0;
-        padding-top: 0; // 适合白色导航栏背景
+        &.pure{
+          padding-top: 0; // 适合白色导航栏背景
+        }
         .name{
           img{
             display: inline;

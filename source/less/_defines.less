@@ -39,9 +39,6 @@
 @color_ax_light_red: #FF6868;
 @color_ax_red: #F24E32;
 @color_ax_blue: #52A1F8;
-// 主题色
-@theme_base_main: #EFEFEF;
-@theme_base_tint: @color_mac_maximize;
 // 阴影
 @boxshadow_base_1: 0 1px 2px 0px rgba(0, 0, 0, 0.1);
 @boxshadow_base_2: 0 2px 4px 0px rgba(0, 0, 0, 0.1);
@@ -136,11 +133,18 @@
 
 
 // start: 自定义主题色 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// 如果你只想简单地换个风格，可以只改这里的几项：
+// 主题色
+@theme_base_main: #EFEFEF;
+@theme_base_tint: @color_mac_maximize;
+@theme_base_bg: #efefef;
+@theme_base_card_bg: white;
+
 // 背景色 ----------------
 // 网页背景
 @theme_bg_main: @theme_base_main;
 // 导航栏背景
-@theme_bg_navbar: white;
+@theme_bg_navbar: @color_mac_maximize;
 // 卡片背景
 @theme_bg_card: white;
 // 卡片标题栏背景
@@ -159,7 +163,7 @@
 // 链接高亮颜色
 @theme_text_highlight: @theme_base_tint;
 // 在主题色中显示的文本（一般为白或深灰）
-@theme_text_in_header: @theme_base_tint;
+@theme_text_in_header: white;
 // 正文文字颜色
 @theme_text_main: @dark;
 // end: 自定义主题色 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

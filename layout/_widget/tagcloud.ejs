@@ -1,9 +1,9 @@
 <% if (site.tags.length){ %>
     <section class='m_widget tagcloud'>
-        <header class="header">
+        <header class="header <%= config.style %>">
             <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         </header>
-        <div class='content'>
+        <div class='content <%= config.style %>'>
             <%- tagcloud(site.tags, {
                 min_font: 14,
                 max_font: 24,

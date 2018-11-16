@@ -11,17 +11,17 @@
 /* My Base */
 
 html {
+    color: @theme_text_main;
     width: 100%;
     height: 100%;
     padding-top: @height_navbar;
     font-family: @fontfamily_base;
     font-size: @fontsize_base;
     line-height: 1.5rem;
-    color: @theme_text_main;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-rendering: optimizelegibility;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -102,12 +102,10 @@ body {
 
 ::-moz-selection {
     background: fade(lighten(@theme_text_link, 5%), 25%);
-    // color: @black;
 }
 
 ::selection {
     background: fade(lighten(@theme_text_link, 5%), 25%);
-    // color: @black;
 }
 // transition
 .enable-trans(@time: 0.25s){
@@ -234,33 +232,7 @@ img {
 .disable-trans {
     -moz-transition: none !important;
     -webkit-transition: none !important;
-    -o-transition: color 0 ease-in !important;
     transition: none !important;
-}
-
-.dark-btn {
-    display: inline-block;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid black;
-    padding: 0px 15px;
-    font-size: 13px;
-    font-family: @fontfamily_base;
-    text-align: center;
-    color: lighten(#8f8f8f, 20%);
-    &:hover {
-        color: lighten(#8f8f8f, 40%);
-        // background-color: @brand-color;
-    }
-    .icon {
-        margin-right: 5px;
-        font-size: 16px;
-        vertical-align: middle;
-        line-height: 44px;
-    }
-    .text {
-        vertical-align: middle;
-        line-height: 44px;
-    }
 }
 
 .txt-ellipsis {
@@ -281,20 +253,20 @@ li {
 .mark {
     position: relative;
     a {
+        color: @black;
+        background: transparent;
         display: inline-block;
         padding: 0 8px;
-        color: @black;
         border-left: @border_radius_line solid transparent;
         background: transparent;
         border-radius: @border_radius_code_block;
         .enable-trans();
         &:hover {
+            background: fade(@theme_bg_quote, 10%);
             border-left: @border_radius_line solid @theme_bg_quote;
             padding: 8px;
-            background: fade(@theme_bg_quote, 10%);
         }
         &:active {
-            // border-radius: @border_radius;
             border-left: max(@border_radius, @border_radius_line) solid @theme_bg_quote;
         }
 
@@ -332,8 +304,11 @@ ul.h-list {
     width: 0;
     height: 8px;
     height: @height_navbar;
-    background-color: fade(@theme_text_in_header, 20%);
     .enable-trans();
+    background-color: fade(white, 30%);
+    &.pure{
+      background-color: fade(@theme_base_tint, 30%);
+    }
 }
 
 .container {

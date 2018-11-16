@@ -15,7 +15,9 @@
     }
     .content{
         padding: @gap/2 0;
-        padding-top: 0; // 适合白色导航栏背景
+        &.pure{
+          padding-top: 0; // 适合白色导航栏背景
+        }
         a {
             border-left: 4px solid transparent;
             &:hover{

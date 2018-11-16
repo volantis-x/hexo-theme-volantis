@@ -1,11 +1,11 @@
 <section class='m_widget links'>
-    <header class='header'>
+    <header class='header <%= config.style %>'>
         <div><i class="fas fa-handshake fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
         <% if(config.email) { %>
             <a class="rightBtn" title="联系博主添加友链" target="_blank" rel="external nofollow noopener noreferrer" href="mailto:<%= config.email %>?subject=交换友链&body=你好，我想和你交换友链，我已经将【<%= config.title %>】添加到我的博客的友链中。我的博客链接是："><i class="fas fa-plus fa-fw"></i></a>
         <%} %>
     </header>
-    <div class='content'>
+    <div class='content <%= config.style %>'>
         <ul class="entry" id="links">
             <% (config.widgets.links||[]).forEach(function(item){ %>
                 <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="<%= url_for(item.url) %>">
