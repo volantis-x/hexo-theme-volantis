@@ -1,6 +1,6 @@
 <% if(theme.widgets.author.enable != false) { %>
     <section class='m_widget author'>
-        <% if(theme.widgets.author.avatar == true && config.avatar.length) { %>
+        <% if(theme.widgets.author.avatar == true && config.avatar) { %>
             <div class='header'>
                 <img class='avatar' src='<%= url_for(config.avatar) %>'/>
             </div>
@@ -15,7 +15,7 @@
                 <% } %>
             </div>
         <% } %>
-        <% if (theme.widgets.author.social == true && config.social.length){ %>
+        <% if (theme.widgets.author.social == true && config.social){ %>
             <div class="social-wrapper">
               <% (config.social||[]).forEach(function(value){ %>
                 <% if (value.url && value.icon) { %>
