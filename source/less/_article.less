@@ -164,9 +164,13 @@
                 margin-right: 7px;
             }
         }
-        &.right{
-          p{
-            text-align: right;
+        &.pullquote{
+          &.right{
+            border-left: none;
+            border-right: @border_radius_code_block solid @theme_bg_quote;
+            p{
+              text-align: right;
+            }
           }
         }
     }
