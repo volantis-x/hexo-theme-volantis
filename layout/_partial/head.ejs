@@ -18,6 +18,12 @@
       title = 'Tag: ' + page.tag;
   %>
   <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
+  <% if (page.keywords){ %>
+	<meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>">
+	<% } else if (config.keywords){ %>
+	<meta name="keywords" content="<%= config.keywords %>">
+	<%} 
+  %>
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <%- favicon_tag(config.favicon) %>
