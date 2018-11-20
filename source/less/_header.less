@@ -112,8 +112,7 @@
                 border-radius: 100px;
                 .enable-trans();
                 &:hover {
-                    background: darken(@theme_bg_navbar, 10%);
-                    // color: @theme_bg_quote;
+                    background: fade(@theme_base_card_bg, 30%);
                 }
                 @media(max-width: @on_phone){
                     width: @height;
@@ -172,7 +171,7 @@
             font-family: @fontfamily_base;
             border: none;
             border-radius: @border_radius;
-            background: fade(@theme_text_in_header,15%);
+            background: fade(@theme_base_card_bg, 15%);
             box-sizing: border-box;
             -webkit-appearance: none;
             box-shadow: none;
@@ -212,10 +211,19 @@
               background: @theme_base_tint;
           }
       }
+      .switcher{
+          & > li{
+              a{
+                  &:hover {
+                      background: fade(@theme_base_tint, 15%);
+                  }
+              }
+          }
+      }
       .m_search {
         .input {
             color: fade(@theme_base_tint, 60%);
-            background: fade(@theme_base_tint,15%);
+            background: fade(@theme_base_tint, 15%);
             ~ .icon{
                 color: fade(@theme_base_tint, 60%);
             }
