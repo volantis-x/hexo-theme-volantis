@@ -18,12 +18,13 @@
       title = 'Tag: ' + page.tag;
   %>
   <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
-  <% if (page.keywords){ %>
-	<meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>">
-	<% } else if (config.keywords){ %>
-	<meta name="keywords" content="<%= config.keywords %>">
-	<%} 
-  %>
+  <% if (page.keywords && config.keywords){ %>
+  <meta name="keywords" content="<%= page.keywords %>, <%= config.keywords %>">
+  <% } else if (page.keywords) { %>
+  <meta name="keywords" content="<%= page.keywords %>">
+  <% } else if (config.keywords) { %>
+  <meta name="keywords" content="<%= config.keywords %>">
+  <% } %>
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <%- favicon_tag(config.favicon) %>
@@ -33,9 +34,9 @@
   <link rel="shortcut icon" href="<%= config.shortcut_icon %>" />
   <link rel="icon" href="<%= config.favicon %>" />
   <% if (theme.google_fonts){ %>
-    <link href="https://fonts.googleapis.com/css?family=<%= theme.google_fonts %>" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=<%= theme.google_fonts %>" rel="stylesheet">
   <% } else { %>
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <% } %>
   <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
