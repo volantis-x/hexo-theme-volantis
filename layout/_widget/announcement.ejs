@@ -1,0 +1,10 @@
+<% if(theme.widgets.announcement.enable == true && config.announcement) { %>
+  <section class='m_widget announcement'>
+    <header class='header <%= theme.style %>'>
+        <div><i class="<%= theme.widgets.announcement.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= theme.widgets.announcement.title %></div>
+    </header>
+    <div class='content <%= theme.style %>'>
+      <%- config.announcement %>
+    </div>
+  </section>
+<% } %>

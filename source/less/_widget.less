@@ -163,6 +163,21 @@
     }
 }
 
+.m_widget.announcement{
+  .content{
+      word-break: break-all;
+      padding: @gap/2 @gap;
+      &.pure{
+        padding: 0 @gap @gap @gap; // 适合白色导航栏背景
+      }
+      a{
+        color: @theme_base_tint;
+        &:hover {
+            color: darken(@theme_text_highlight, 25%);
+        }
+      }
+  }
+}
 .m_widget.categories{
     .content{
         padding: @gap/2 0;

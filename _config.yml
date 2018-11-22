@@ -65,6 +65,10 @@ widgets:
     title: false # 是否显示博客名、头衔等等。如果是，需要在主目录的config中写title
     motto: false # 是否显示格言座右铭等等。如果是，需要在主目录的config中写motto
     social: true # 是否显示社交信息（内容同页脚的社交信息）如果是，需要在主目录的config中写social，支持icon和URL
+  announcement:
+    enable: true
+    icon: fas fa-bullhorn
+    title: "公告"
   # 显示文章分类
   categories:
     enable: true
