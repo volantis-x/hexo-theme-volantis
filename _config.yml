@@ -1,11 +1,32 @@
 #####################################
 ##      Material X                 ##
-##      version: 1.0 beta1         ##
-##      updated: 2018-11-16        ##
+##      version: 1.0 beta2         ##
+##      updated: 2018-11-22        ##
 #####################################
 
 # >> 主题配置写法示例 ---------------------------------------------------------------------
 # ⚠️ 注意：这里的内容需要复制到主目录到config中才有效，写在这里是为了提供参考
+
+# 导航栏
+nav_menu:
+  - name: 主页
+    icon: fas fa-home
+    url: https://xaoxuu.com/
+  - name: 博客
+    icon: fas fa-rss
+    url: /
+  - name: 归档
+    icon: fas fa-archive
+    url: archives/
+  - name: 项目
+    icon: fas fa-flask
+    url: https://xaoxuu.com/projects/
+  - name: 关于
+    icon: fas fa-user
+    url: https://xaoxuu.com/about/
+
+# 公告的写法示例
+announcement: '本站使用 <b><a href="https://xaoxuu.com/wiki/material-x/">Material X</a></b> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦。'
 
 # 友链的写法示例
 links:
@@ -37,24 +58,6 @@ google_fonts: 'Ubuntu|Ubuntu+Mono' # 多个字体中间用英文竖线隔开
 # style: material    # 导航栏和标题栏背景是主题色
 style: pure        # 导航栏和标题栏背景是白色
 
-# 导航栏
-nav_menu:
-  - name: 主页
-    slug:
-    icon: fas fa-home
-    url: https://xaoxuu.com/
-  - name: 项目
-    slug:
-    icon: fas fa-flask
-    url: https://xaoxuu.com/projects/
-  - name: 博客
-    slug: home
-    icon: fas fa-rss
-    url: /
-  - name: 归档
-    slug: archives
-    icon: fas fa-archive
-    url: /archives/
 
 # 右边的小窗口，不想显示哪一项的注释掉对应的即可
 widgets:
@@ -65,6 +68,7 @@ widgets:
     title: false # 是否显示博客名、头衔等等。如果是，需要在主目录的config中写title
     motto: false # 是否显示格言座右铭等等。如果是，需要在主目录的config中写motto
     social: true # 是否显示社交信息（内容同页脚的社交信息）如果是，需要在主目录的config中写social，支持icon和URL
+  # 公告，内容写在主目录的config中
   announcement:
     enable: true
     icon: fas fa-bullhorn

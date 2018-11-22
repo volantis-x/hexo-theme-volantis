@@ -67,27 +67,32 @@
             font-size: @fontsize_base;
             color: fade(@theme_text_in_header,60%);
             padding: 0 8px;
-            &:hover,&.active{
+            &:hover{
                 color: @theme_text_in_header;
+                border-bottom: 4px solid @theme_text_header;
+                background: fade(@theme_text_header, 10%);
+            }
+            &.current{
+              border-bottom: 4px solid @theme_text_header;
             }
         }
         @media(max-width: @on_phone){
             display:none;
         }
 
-        .underline{
-            .enable-trans();
-            position: absolute;
-            background: @theme_text_in_header;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 4px;
-            border-radius: 4px;
-            &:hover{
-                height: 8px;
-            }
-        }
+        // .underline{
+        //     .enable-trans();
+        //     position: absolute;
+        //     background: @theme_text_in_header;
+        //     left: 0;
+        //     bottom: 0;
+        //     width: 0;
+        //     height: 4px;
+        //     border-radius: 4px;
+        //     &:hover{
+        //         height: 8px;
+        //     }
+        // }
     }
     .switcher{
         display: none;
@@ -300,6 +305,9 @@
             &:hover{
                 border-left: 4px solid @theme_bg_quote;
                 background: fade(@theme_bg_quote, 10%);
+            }
+            &.current{
+              border-left: 4px solid @theme_bg_quote;
             }
         }
     }

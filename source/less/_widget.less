@@ -165,14 +165,21 @@
 
 .m_widget.announcement{
   .content{
+      font-size: @fontsize_small;
+      font-weight: bold;
       word-break: break-all;
       padding: @gap/2 @gap;
       &.pure{
         padding: 0 @gap @gap @gap; // 适合白色导航栏背景
       }
       a{
-        color: @theme_base_tint;
+        color: @theme_text_link;
+        .enable-trans();
         &:hover {
+            color: @theme_text_highlight;
+            text-decoration: underline;
+        }
+        &:active {
             color: darken(@theme_text_highlight, 25%);
         }
       }
