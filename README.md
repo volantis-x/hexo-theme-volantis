@@ -6,17 +6,23 @@
 
 ## 示例
 
-[https://blog.xaoxuu.com](https://blog.xaoxuu.com)
+[![](https://img.shields.io/badge/示例博客-https://xaoxuu.com/blog/-green.svg?colorA=888&colorB=52A1F8&longCache=true&style=popout-square)](https://xaoxuu.com/blog/)
 
 
 
 ## 文档
 
-https://xaoxuu.com/wiki/material-x
+[![](https://img.shields.io/badge/文档-https://xaoxuu.com/wiki/material--x/-green.svg?colorA=888&colorB=52A1F8&longCache=true&style=popout-square)](https://xaoxuu.com/wiki/material-x/)
 
 
 
 ## 图片预览
+
+![](https://img.vim-cn.com/c6/349a2633dbfb842ea62ff9d810ca9b4a8dbb33.png)
+![](https://img.vim-cn.com/8e/9ae699a4d7c8a7fa5a3007fc37e0b61b5b55bd.png)
+![](https://img.vim-cn.com/bb/d3f01cd009b11025b453c697173855649d01a0.png)
+![](https://img.vim-cn.com/6d/7a9f2a9360f6c8a4da9e00f5e1e8500ddbb223.png)
+![](https://img.vim-cn.com/1e/fffd5955330a5d55c55401539da4bac77d5438.png)
 
 ![](https://img.vim-cn.com/71/f1e49674aac39f50c6a229c3d20225fc04af38.png)
 
