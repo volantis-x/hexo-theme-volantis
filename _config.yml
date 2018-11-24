@@ -7,20 +7,20 @@
 # >> 主题配置写法示例 ---------------------------------------------------------------------
 # ⚠️ 注意：这里的内容需要复制到主目录到config中才有效，写在这里是为了提供参考
 
-# 导航栏
+# 导航栏，url必须以 "/" 结尾
 nav_menu:
   - name: 主页
     icon: fas fa-home
     url: https://xaoxuu.com/
+  - name: 项目
+    icon: fas fa-flask
+    url: https://xaoxuu.com/projects/
   - name: 博客
     icon: fas fa-rss
     url: /
   - name: 归档
     icon: fas fa-archive
     url: archives/
-  - name: 项目
-    icon: fas fa-flask
-    url: https://xaoxuu.com/projects/
   - name: 关于
     icon: fas fa-user
     url: https://xaoxuu.com/about/
