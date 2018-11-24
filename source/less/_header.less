@@ -49,10 +49,17 @@
     }
     .logo {
         padding: 0 @gap;
+        line-height: @height_navbar;
         font-size: @fontsize_logo;
         font-family: @fontfamily_logo;
         @media(max-width: @on_phone){
             flex: auto;
+        }
+    }
+    .nav-sub{
+        .logo {
+            font-size: @fontsize_base;
+            font-family: @fontfamily_base;
         }
     }
     .menu{
