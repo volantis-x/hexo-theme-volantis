@@ -7,7 +7,7 @@
             <% if (config.nav_menu) { %>
     					<% (config.nav_menu || []).forEach(function(value){ %>
     						<li>
-    							<a class="nav<%- url_for(path).substring(0, url_for(path).lastIndexOf('/') + 1) == url_for(value.url) ? ' current' : '' %> flat-box" href="<%= url_for(value.url) %>">
+    							<a class="nav <%- page.path.replace('index.html', '').replace("/", "") == value.url.replace("/", "") ? 'current' : '' %> flat-box" href="<%= url_for(value.url) %>">
     								<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
   								</a>
   							</li>
