@@ -1,28 +1,31 @@
 #####################################
 ##      Material X                 ##
 ##      version: 1.0 beta2         ##
-##      updated: 2018-11-22        ##
+##      updated: 2018-11-25        ##
 #####################################
 
 # >> 主题配置写法示例 ---------------------------------------------------------------------
 # ⚠️ 注意：这里的内容需要复制到主目录到config中才有效，写在这里是为了提供参考
 
-# 导航栏
+# 导航栏，url必须以 "/" 结尾
 nav_menu:
   - name: 主页
     icon: fas fa-home
+    url: https://xaoxuu.com/
+  - name: 项目
+    icon: fas fa-flask
+    url: https://xaoxuu.com/projects/
+  - name: 博客
+    icon: fas fa-rss
     url: /
   - name: 归档
     icon: fas fa-archive
     url: archives/
-  - name: 项目
-    icon: fas fa-flask
-    url: https://xaoxuu.com/projects/
   - name: 关于
     icon: fas fa-user
     url: https://xaoxuu.com/about/
 
-# 公告的写法示例
+# 公告的写法示例，这只是个例子哦，需要显示公告的时候写在主目录的config中，不需要的时候注释掉就可以，如果你十分喜欢这个主题，可以把这个公告copy到你那里😄
 announcement: '本站使用 <b><a href="https://xaoxuu.com/wiki/material-x/">Material X</a></b> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦。'
 
 # 友链的写法示例
@@ -56,7 +59,7 @@ google_fonts: 'Ubuntu|Ubuntu+Mono' # 多个字体中间用英文竖线隔开
 style: pure        # 导航栏和标题栏背景是白色
 
 
-# 右边的小窗口，不想显示哪一项的注释掉对应的即可
+# 右边的小窗口，不想显示哪一项的把enable设置为false即可
 widgets:
   # 博主信息区，是否显示个人头像、格言、社交信息等
   author:
@@ -94,7 +97,7 @@ widgets:
     mailto: "me@xaoxuu.com" # 右边显示➕ ，点击给这个地址发送邮件添加友链
   # 显示目录（在文章中设置toc:false可以隐藏单篇文章的目录）
   toc:
-    enable: false
+    enable: true
     icon: fas fa-list
     title: "目录"
 
