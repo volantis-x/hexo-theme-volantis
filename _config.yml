@@ -50,9 +50,10 @@ motto: 这是我的座右铭
 
 # 百度统计key
 baidu_analytics_key: xxx
-
-
-
+# leancloud统计
+leancloud_analytics:
+  appId: xxx
+  appKey: xxx
 
 
 # >> 主题配置 ---------------------------------------------------------------------
