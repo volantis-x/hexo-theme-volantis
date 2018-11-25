@@ -1,7 +1,7 @@
 <footer id="footer" class="clearfix">
-    <% if (config.social) { %>
+    <% if (theme.social) { %>
         <div class="social-wrapper">
-          <% (config.social||[]).forEach(function(value){ %>
+          <% (theme.social||[]).forEach(function(value){ %>
               <% if (value.url && value.icon) { %>
                   <a href="<%= value.url %>" class="social <%- value.icon %> flat-box" target="_blank" rel="external"></a>
               <%}%>

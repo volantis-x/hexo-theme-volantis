@@ -11,9 +11,6 @@
 nav_menu:
   - name: 主页
     icon: fas fa-home
-    url: https://xaoxuu.com/
-  - name: 博客
-    icon: fas fa-rss
     url: /
   - name: 归档
     icon: fas fa-archive
@@ -97,7 +94,7 @@ widgets:
     mailto: "me@xaoxuu.com" # 右边显示➕ ，点击给这个地址发送邮件添加友链
   # 显示目录（在文章中设置toc:false可以隐藏单篇文章的目录）
   toc:
-    enable: true
+    enable: false
     icon: fas fa-list
     title: "目录"
 
