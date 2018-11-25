@@ -9,15 +9,18 @@
             <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
             <%= date(post.date, config.date_format) %>
         </time>
-        <div class="browse"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-          <% if (config.leancloud_analytics && config.leancloud_analytics.appId && config.leancloud_analytics.appKey) { %>
+        <% if (config.leancloud_analytics && config.leancloud_analytics.appId && config.leancloud_analytics.appKey) { %>
+          <div class="browse leancloud_analytics"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
             <span id="<%= url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%= post.title %>">
                <span class="leancloud-visitors-count"></span>
             </span>
-          <% } else { %>
+          </div>
+        <% } else { %>
+          <div class="browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
             <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-          <% } %>
-        </div>
+          </div>
+        <% } %>
+
         <%- partial('categories',{post:post}) %>
     </section>
 
