@@ -48,6 +48,12 @@ avatar: https://xaoxuu.com/assets/img/avatar.jpg
 title: 博客名称
 motto: 这是我的座右铭
 
+# 百度统计key
+baidu_analytics_key: xxx
+
+
+
+
 
 # >> 主题配置 ---------------------------------------------------------------------
 # ✅ 这里的内容直接在下面进行修改
