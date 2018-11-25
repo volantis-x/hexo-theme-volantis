@@ -1,6 +1,6 @@
 <% if (is_tag()) { %>
     <script>
-        window.subData= { title:'<%= theme.widgets.tagcloud.title %> : <%= page.tag %>'}
+        window.subData= { title:'tag : <%= page.tag %>'}
     </script>
 <% } else if (is_archive()) { %>
     <script>
@@ -8,7 +8,7 @@
     </script>
 <% } else if (is_category()) { %>
     <script>
-        window.subData= { title:'<%= theme.widgets.categories.title %> : <%= page.category %>'}
+        window.subData= { title:'category : <%= page.category %>'}
     </script>
 <% } %>
 
