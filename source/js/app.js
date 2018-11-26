@@ -72,12 +72,12 @@ var customSearch;
 				setTimeout(function () { $underline.removeClass('disable-trans') }, 0);//get into the queue.
 			}
 		}
-		$headerMenu.on('mouseenter', 'li', function (e) {
-			setUnderline($(e.currentTarget));
-		});
-		$headerMenu.on('mouseout', function () {
-			setUnderline();
-		});
+		// $headerMenu.on('mouseenter', 'li', function (e) {
+		// 	setUnderline($(e.currentTarget));
+		// });
+		// $headerMenu.on('mouseout', function () {
+		// 	setUnderline();
+		// });
 		//set current active nav
 		var $active_link = null;
 		if (location.pathname === '/' || location.pathname.startsWith('/page/')) {

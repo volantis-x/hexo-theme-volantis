@@ -74,13 +74,13 @@
             font-size: @fontsize_base;
             color: fade(@theme_text_in_header,60%);
             padding: 0 8px;
+            &.current{
+              border-bottom: 4px solid fade(@theme_base_card_bg, 80%);
+            }
             &:hover{
                 color: @theme_text_in_header;
-                border-bottom: 4px solid @theme_text_header;
-                background: fade(@theme_text_header, 10%);
-            }
-            &.current{
-              border-bottom: 4px solid @theme_text_header;
+                border-bottom: 4px solid @theme_base_card_bg;
+                background: fade(@theme_base_card_bg, 10%);
             }
         }
         @media(max-width: @on_phone){
@@ -215,12 +215,18 @@
       .menu{
           ul > li > a{
               color: fade(@theme_base_tint,60%);
-              &:hover,&.active{
+              &.current{
+                border-bottom: 4px solid fade(@theme_base_tint, 80%);
+              }
+              &:hover{
                   color: @theme_base_tint;
+                  border-bottom: 4px solid @theme_base_tint;
+                  background: fade(@theme_base_tint, 10%);
               }
           }
           .underline{
-              background: @theme_base_tint;
+              // background: @theme_base_tint;
+              background: transparent;
           }
       }
       .switcher{
