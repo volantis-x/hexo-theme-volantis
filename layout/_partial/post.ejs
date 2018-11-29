@@ -16,8 +16,8 @@
     </section>
 
     <section class="article typo">
-        <%- post.excerpt || post.content %>
-        <% if (post.excerpt) { %>
+        <%- post.excerpt || post.description || post.content %>
+        <% if (post.excerpt || post.description) { %>
             <div class="readmore">
                 <a href="<%- url_for(post.path) %>" class="flat-box">
                     <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
