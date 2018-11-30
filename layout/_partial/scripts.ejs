@@ -54,7 +54,7 @@
         </script>
     <% } %>
     <% if (config.valine){ %>
-        <% if (config.valine.enable && config.valine.appId && config.valine.appKey){ %>
+        <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
             <script>
             var GUEST_INFO = ['nick','mail','link'];
             var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){
@@ -68,8 +68,8 @@
                 notify: notify,
                 verify: verify,
                 guest_info: guest_info,
-                appId: "<%= config.valine.appId %>",
-                appKey: "<%= config.valine.appKey %>",
+                appId: "<%= config.valine.app_id %>",
+                appKey: "<%= config.valine.app_key %>",
                 placeholder: "<%= config.valine.placeholder %>",
                 pageSize:'<%= config.valine.pageSize %>',
                 avatar:'<%= config.valine.avatar %>',
@@ -84,7 +84,7 @@
 
 <% if (config.leancloud_analytics) { %>
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("<%= config.leancloud_analytics.appId %>", "<%= config.leancloud_analytics.appKey %>");</script>
+  <script>AV.initialize("<%= config.leancloud_analytics.app_id %>", "<%= config.leancloud_analytics.app_key %>");</script>
   <script>
   function showTime(Counter) {
     var query = new AV.Query(Counter);

@@ -248,7 +248,7 @@ var AlgoliaSearch;
   AlgoliaSearch = function(options) {
     SearchService.apply(this, arguments);
     var self = this;
-    var endpoint = "https://" +self.config.appId+ "-dsn.algolia.net/1/indexes/" +self.config.indexName;
+    var endpoint = "https://" +self.config.app_id+ "-dsn.algolia.net/1/indexes/" +self.config.indexName;
     self.addLogo('algolia');
 
     /**
@@ -315,7 +315,7 @@ var AlgoliaSearch;
         query: queryText,
         page: page-1,
         hitsPerPage: self.config.per_page,
-        "x-algolia-application-id": self.config.appId,
+        "x-algolia-application-id": self.config.app_id,
         "x-algolia-api-key": self.config.apiKey
       }, function(data, status) {
         if (status === 'success' && data.hits && data.hits.length > 0) {
