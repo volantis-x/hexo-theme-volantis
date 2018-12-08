@@ -7,9 +7,10 @@
             <% if (config.nav_menu) { %>
     					<% (config.nav_menu || []).forEach(function(value){ %>
     						<li>
-    							<a class="nav<%- url_for(path).substring(0, url_for(path).lastIndexOf('/') + 1) == url_for(value.url) ? ' current' : '' %> flat-box" href="<%= url_for(value.url) %>">
-    								<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
-  								</a>
+									<a id="<%= is_current(value.url) ? 'is_current' : 'not_current' %>"
+									 class="nav<%= is_current(value.url) ? ' current ' : ' ' %>flat-box" href="<%= url_for(value.url) %>">
+										<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
+									</a>
   							</li>
         			<%})%>
         		<% } %>
