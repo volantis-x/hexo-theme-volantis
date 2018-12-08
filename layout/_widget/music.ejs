@@ -1,9 +1,15 @@
 <section class='m_widget music'>
-    <header class='header <%= theme.style %>'>
-        <div><i class="<%= theme.widgets.music.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= theme.widgets.music.title %></div>
-        <a class="rightBtn" title="打开博主的网易云音乐主页" target="_blank" rel="external nofollow noopener noreferrer" href="https://music.163.com/#/playlist?id=<%= theme.widgets.music.playlist_id %>"><i class="fas fa-external-link-square-alt fa-fw"></i></a>
-    </header>
-    <div class='content <%= theme.style %>'>
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=<%= theme.widgets.music.playlist_id %>&auto=0&height=450"></iframe>
-    </div>
+  <header class='header <%= theme.style %>'>
+    <div><i class="<%= theme.widgets.music.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= theme.widgets.music.title %></div>
+    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="<%= theme.widgets.music.link %>"><i class="far fa-heart fa-fw"></i></a>
+  </header>
+  <div class='content <%= theme.style %>'>
+    <div class="aplayer" data-theme="<%= theme.widgets.music.color %>"
+      data-mode="<%= theme.widgets.music.mode %>"
+      data-autoplay="<%= theme.widgets.music.autoplay %>"
+      data-server="<%= theme.widgets.music.server %>"
+      data-type="<%= theme.widgets.music.type %>"
+      data-id="<%= theme.widgets.music.id %>"
+      data-volume="<%= theme.widgets.music.volume %>"></div>
+  </div>
 </section>
