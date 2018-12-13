@@ -215,13 +215,24 @@
         }
         .meta {
             color: fade(@theme_text_main, 70%);
-            margin-top: 2*@gap;
-            margin-bottom: 0.5*@gap;
-            font-size: @fontsize_small * .95;
-            &:first-child{
-                margin-top: 0;
-                margin-bottom: 1*@gap;
+            &#header-meta{
+              margin-top: 0;
+              margin-bottom: 1*@gap;
             }
+            &#footer-meta{
+              margin-top: 2*@gap;
+              margin-bottom: 0.5*@gap;
+            }
+            font-size: @fontsize_small * .95;
+            .aplayer{
+              width: 65px;
+              height: 65px;
+              border-radius: 100px;
+              float: right;
+              margin: 4px;
+
+            }
+
             .title {
                 left: 0;
                 font-size: @fontsize_article_title;

@@ -1,5 +1,14 @@
 <article id="<%= post.layout %>-<%= post.slug %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
     <section class='meta'>
+      <% if(post.music){ %>
+        <div class="aplayer" data-mini=true
+          data-mode="circulation" data-volume="0.5"
+          data-server="<%= post.music.server %>"
+          data-type="<%= post.music.type %>"
+          data-id="<%= post.music.id %>">
+        </div>
+      <% } %>
+      <div class="meta" id="header-meta">
         <% if(post.title){ %>
             <h1 class="title"><%= post.title %></h1>
         <% } else if (post.date) { %>
@@ -22,6 +31,7 @@
         <% } %>
 
         <%- partial('categories',{post:post}) %>
+      </div>
     </section>
 
     <section class="article typo">
@@ -30,7 +40,7 @@
             <%- post.content %>
         </div>
 
-        <section class='meta'>
+        <section class='meta' id="footer-meta">
             <time class="time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
                 <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
                 本文最后更新于：<%- date(post.updated, config.date_format) %>
@@ -151,7 +161,7 @@
                         <div>
                         <section id="comments">
                             <div id="valine_container" class="valine_thread">
-                                </i><i class="fas fa-spinner fa-spin fa-fw"></i>
+                                <i class="fas fa-spinner fa-spin fa-fw"></i>
                             </div>
                         </section>
                         <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
