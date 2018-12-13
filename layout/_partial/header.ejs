@@ -8,7 +8,7 @@
     					<% (config.nav_menu || []).forEach(function(value){ %>
     						<li>
 									<a id="<%= is_current(value.url) ? 'is_current' : 'not_current' %>"
-									 class="nav<%= is_current(value.url) ? ' current ' : ' ' %>flat-box" href="<%= url_for(value.url) %>">
+									 class="nav<%= is_current(value.url) ? ' current2 ' : ' ' %>flat-box" href="<%= url_for(value.url) %>">
 										<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
 									</a>
   							</li>
