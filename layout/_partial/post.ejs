@@ -43,3 +43,7 @@
         <% } %>
     </section>
 </article>
+<!-- 在摘要部分加载 MathJax 数学公式js -->
+<% if (theme.abstract_mathjax){ %>
+    <%- partial('mathjax') %>
+<% } %>
