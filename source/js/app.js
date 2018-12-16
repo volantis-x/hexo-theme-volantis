@@ -59,8 +59,12 @@ var customSearch;
 		}
 		//set current active nav
 		var $active_link = null;
-    $active_link = $('#' + location.pathname.replace(/\//g, ""), $headerMenu);
-		setUnderline($active_link, false);
+    var idname = location.pathname.replace(/\//g, "");
+    if (idname.length == 0) {
+      idname = "home";
+    }
+    $active_link = $('#' + idname, $headerMenu);
+    setUnderline($active_link, false);
 	}
 
 	function setHeaderMenuPhone() {
