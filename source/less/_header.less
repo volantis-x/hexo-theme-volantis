@@ -74,15 +74,12 @@
             font-size: @fontsize_base;
             color: fade(@theme_text_in_header, 70%);
             padding: 0 8px;
-            &.current{
-              border-bottom: 4px solid fade(@theme_base_card_bg, 80%);
-            }
             &:hover{
                 color: @theme_text_in_header;
                 border-bottom: 4px solid @theme_base_card_bg;
                 background: fade(@theme_base_card_bg, 10%);
             }
-            &.active{
+            &:active,&.active{
                 color: @theme_text_in_header;
                 border-bottom: 4px solid @theme_base_card_bg;
             }
@@ -90,20 +87,6 @@
         @media(max-width: @on_phone){
             display:none;
         }
-
-        // .underline{
-        //     .enable-trans();
-        //     position: absolute;
-        //     background: @theme_text_in_header;
-        //     left: 0;
-        //     bottom: 0;
-        //     width: 0;
-        //     height: 4px;
-        //     border-radius: 4px;
-        //     &:hover{
-        //         height: 8px;
-        //     }
-        // }
     }
     .switcher{
         display: none;
@@ -218,6 +201,7 @@
       box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
       .menu{
           ul > li > a{
+              .enable-trans();
               color: fade(@theme_base_tint, 70%);
               &.current{
                 border-bottom: 4px solid fade(@theme_base_tint, 80%);
@@ -227,10 +211,10 @@
                   border-bottom: 4px solid @theme_base_tint;
                   background: fade(@theme_base_tint, 10%);
               }
-          }
-          .underline{
-              // background: @theme_base_tint;
-              background: transparent;
+              &:active,&.active{
+                  color: @theme_base_tint;
+                  border-bottom: 4px solid @theme_base_tint;
+              }
           }
       }
       .switcher{
@@ -323,7 +307,7 @@
                 border-left: 4px solid @theme_bg_quote;
                 background: fade(@theme_bg_quote, 10%);
             }
-            &.current{
+            &.active{
               border-left: 4px solid @theme_bg_quote;
             }
         }

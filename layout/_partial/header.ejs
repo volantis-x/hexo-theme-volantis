@@ -7,15 +7,15 @@
             <% if (config.nav_menu) { %>
     					<% (config.nav_menu || []).forEach(function(value){ %>
     						<li>
-									<a id="<%= is_current(value.url) ? 'is_current' : 'not_current' %>"
-									 class="nav<%= is_current(value.url) ? ' current2 ' : ' ' %>flat-box" href="<%= url_for(value.url) %>">
+									<a id="<%= url_for(value.url).replace(/\//g, "") %>"
+									 class="nav flat-box" href="<%= url_for(value.url) %>">
 										<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
 									</a>
   							</li>
         			<%})%>
         		<% } %>
 					</ul>
-					<div class='underline'></div>
+					
 				</div>
 
 			<% if (theme.search.enable === true) { %>
@@ -45,12 +45,13 @@
 	</div>
 </header>
 	<aside class="menu-phone">
-		<nav>
+    <header>
+		<nav class="menu">
       <ul>
           <% if (config.nav_menu) { %>
               <% (config.nav_menu || []).forEach(function(value){ %>
                   <li>
-										<a class="nav <%- page.path.replace('index.html', '').replace("/", "") == value.url.replace("/", "") ? 'current' : '' %> flat-box" href="<%= url_for(value.url) %>">
+										<a id="<%= url_for(value.url).replace(/\//g, "") %>" class="nav flat-box" href="<%= url_for(value.url) %>">
 											<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
 										</a>
                   </li>
@@ -58,4 +59,5 @@
        <% } %>
       </ul>
 		</nav>
+    </header>
 	</aside>
