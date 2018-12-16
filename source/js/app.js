@@ -9,31 +9,6 @@ var customSearch;
 		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
 		$('html, body').animate({ 'scrollTop': $elem.offset().top - correction }, 400);
 	};
-  document.onkeydown = function() {
-    if (event.keyCode == 9) {
-      return false;
-    } else {
-			var isie = (document.all) ? true: false;
-			var key;
-			var ev;
-			if (isie) { //IE浏览器
-					key = window.event.keyCode;
-					ev = window.event;
-			} else { //火狐浏览器
-					key = e.which;
-					ev = e;
-			}
-			if (key == 9) { //IE浏览器
-					if (isie) {
-							ev.keyCode = 0;
-							ev.returnValue = false;
-					} else { //火狐浏览器
-							ev.which = 0;
-							ev.preventDefault();
-					}
-			}
-    }
-  }
 
 	function setHeader() {
 		if (!window.subData) return;
@@ -55,6 +30,7 @@ var customSearch;
 				$wrapper.removeClass('sub');
 			}
 		});
+
 		// bind events to every btn
 		const $commentTarget = $('#comments');
 		if ($commentTarget.length) {
@@ -69,6 +45,7 @@ var customSearch;
 		$top.click(()=>scrolltoElement(document.body));
 
 	}
+
 	// function setHeaderMenu() {
 	// 	var $headerMenu = $('header .menu');
 	// 	var $underline = $headerMenu.find('.underline');
@@ -110,6 +87,7 @@ var customSearch;
 	// 	}
 	// 	setUnderline($active_link, false);
 	// }
+
 	function setHeaderMenuPhone() {
 		var $switcher = $('.l_header .switcher .s-menu');
 		$switcher.click(function (e) {
@@ -122,6 +100,7 @@ var customSearch;
 			$switcher.removeClass('active');
 		});
 	}
+
 	function setHeaderSearch() {
 		var $switcher = $('.l_header .switcher .s-search');
 		var $header = $('.l_header');
@@ -137,8 +116,36 @@ var customSearch;
 		});
 		$search.click(function (e) {
 			e.stopPropagation();
-		})
+		});
+    $header.ready(function () {
+      $header.bind('keydown', function (event) {
+        if (event.keyCode == 9) {
+          return false;
+        } else {
+          var isie = (document.all) ? true: false;
+          var key;
+          var ev;
+          if (isie) { //IE浏览器
+            key = window.event.keyCode;
+            ev = window.event;
+          } else { //火狐浏览器
+            key = e.which;
+            ev = e;
+          }
+          if (key == 9) { //IE浏览器
+            if (isie) {
+              ev.keyCode = 0;
+              ev.returnValue = false;
+            } else { //火狐浏览器
+              ev.which = 0;
+              ev.preventDefault();
+            }
+          }
+        }
+      });
+    });
 	}
+
 	function setWaves() {
 		Waves.attach('.flat-btn', ['waves-button']);
 		Waves.attach('.float-btn', ['waves-button', 'waves-float']);
@@ -167,11 +174,11 @@ var customSearch;
 			e.preventDefault();
 			e.stopPropagation();
 			if (e.target.tagName === 'A') {
-                scrolltoElement(e.target);
-            } else if (e.target.tagName === 'SPAN') {
-                scrolltoElement(e.target.parentElement);
-            }
-            $toc.removeClass('active');
+        scrolltoElement(e.target);
+      } else if (e.target.tagName === 'SPAN') {
+        scrolltoElement(e.target.parentElement);
+      }
+      $toc.removeClass('active');
 		});
 
 		const liElements = Array.from($toc.find('li a'));
@@ -203,33 +210,6 @@ var customSearch;
 		scrollListener();
 	}
 
-	// function getPicture() {
-	// 	const $banner = $('.banner');
-	// 	if ($banner.length === 0) return;
-	// 	const url = ROOT + 'js/lovewallpaper.json';
-	// 	$.get(url).done(res => {
-	// 		if (res.data.length > 0) {
-	// 			const index = Math.floor(Math.random() * res.data.length);
-	// 			$banner.css('background-image', 'url(' + res.data[index].big + ')');
-	// 		}
-	// 	})
-	// }
-
-	// function getHitokoto() {
-	// 	const $hitokoto = $('#hitokoto');
-	// 	if($hitokoto.length === 0) return;
-	// 	const url = 'http://api.hitokoto.us/rand?length=80&encode=jsc&fun=handlerHitokoto';
-	// 	$('body').append('<script	src="%s"></script>'.replace('%s',url));
-	// 	window.handlerHitokoto = (data) => {
-	// 		$hitokoto
-	// 			.css('color','transparent')
-	// 			.text(data.hitokoto)
-	// 		if(data.source) $hitokoto.append('<cite> ——  %s</cite>'.replace('%s',data.source));
-	// 		else if(data.author) $hitokoto.append('<cite> ——  %s</cite>'.replace('%s',data.author));
-	// 		$hitokoto.css('color','white');
-	// 	}
-	// }
-
 
 	$(function () {
 		//set header
@@ -240,9 +220,6 @@ var customSearch;
 		setWaves();
 		setScrollReveal();
 		setTocToggle();
-		// getHitokoto();
-		// getPicture();
-
 
 		$(".article .video-container").fitVids();
 
