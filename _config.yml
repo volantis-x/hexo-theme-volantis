@@ -66,10 +66,6 @@ google_fonts: 'Ubuntu|Ubuntu+Mono' # 多个字体中间用英文竖线隔开
 # style: material    # 导航栏和标题栏背景是主题色
 style: pure        # 导航栏和标题栏背景是白色
 
-# 是否在archive（主页、分类、归档和标签页）中针对摘要部分的MathJax公式加载mathjax.js文件
-# 对网站加载速度略有影响，如果你确定不会在阅“读全文之”前放置数学公式，请将此选项设置为false。
-abstract_mathjax: false
-
 # 右边的小窗口，不想显示哪一项的把enable设置为false即可
 widgets:
   # 博主信息区，是否显示个人头像、格言、社交信息等

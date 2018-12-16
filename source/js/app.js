@@ -61,7 +61,6 @@ var customSearch;
 		var $active_link = null;
     $active_link = $('#' + location.pathname.replace(/\//g, ""), $headerMenu);
 		setUnderline($active_link, false);
-    console.log($active_link);
 	}
 
 	function setHeaderMenuPhone() {
