@@ -59,7 +59,7 @@ var customSearch;
 		}
 		//set current active nav
 		var $active_link = null;
-    var idname = location.pathname.replace(/\//g, "");
+    var idname = location.pathname.replace(/\/|%/g, "");
     if (idname.length == 0) {
       idname = "home";
     }
