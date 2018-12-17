@@ -291,8 +291,8 @@ ul.h-list {
 
 #loading-bar-wrapper {
     position: fixed;
-    top: @height_navbar - 8;
-    top: 0;
+    top: @height_navbar - 4;
+    // top: 0;
     left: 0;
     width: 100%;
     // overflow: scroll;
@@ -302,12 +302,12 @@ ul.h-list {
 #loading-bar {
     position: fixed;
     width: 0;
-    height: 8px;
-    height: @height_navbar;
+    height: 4px;
+    // height: @height_navbar;
     .enable-trans();
-    background-color: fade(white, 10%);
+    background-color: fade(white, 50%);
     &.pure{
-      background-color: fade(@theme_base_tint, 10%);
+      background-color: fade(@theme_base_tint, 50%);
     }
 }
 
