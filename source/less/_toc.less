@@ -21,16 +21,16 @@
         a {
             border-left: 4px solid transparent;
             &:hover{
-                color: fade(@theme_text_main, 100%);
-                border-left: 4px solid @theme_bg_quote;
+                color: fade(@color_text_main, 100%);
+                border-left: 4px solid @color_bg_quote;
             }
             &:active{
-                border-left: 8px solid @theme_bg_quote;
+                border-left: 8px solid @color_bg_quote;
             }
             &.active{
-                color: fade(@theme_text_main, 100%);
-                border-left: 4px solid @theme_bg_quote;
-                background: fade(@theme_bg_quote, 10%);
+                color: fade(@color_text_main, 100%);
+                border-left: 4px solid @color_bg_quote;
+                background: fade(@color_bg_quote, 10%);
             }
         }
     }
@@ -59,7 +59,7 @@
 
     a {
         padding-left: 8px;
-        color: fade(@theme_text_main, 60%);
+        color: fade(@color_text_main, 60%);
         font-size: @fontsize_small;
         display: inline-block;
     }

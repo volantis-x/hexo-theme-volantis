@@ -30,7 +30,7 @@
                 border-style: dashed;
                 .enable-trans();
                 &:hover{
-                    border: 1px dashed fade(@theme_bg_quote, 100%);
+                    border: 1px dashed fade(@color_bg_quote, 100%);
                 }
                 .vedit .vctrl span {
                     padding: 0;
@@ -42,20 +42,20 @@
                 padding-left: 2.4em;
                 padding-right: 2.4em;
                 font-weight: bold;
-                background-color: @theme_bg_quote;
+                background-color: @color_bg_quote;
                 color: white;
                 border-radius: @border_radius/2;
                 .enable-trans();
                 &:hover {
-                  background: darken(@theme_bg_quote, 10%);
+                  background: darken(@color_bg_quote, 10%);
                 }
                 &:active {
-                  // background: lighten(@theme_bg_quote, 20%);
+                  // background: lighten(@color_bg_quote, 20%);
                 }
             }
             blockquote{
                 padding: @gap;
-                border-left: @border_radius_line solid @theme_bg_quote;
+                border-left: @border_radius_line solid @color_bg_quote;
                 // border-radius: @border_radius_code_block;
                 .enable-trans();
                 p{
@@ -72,23 +72,23 @@
             code{
                 font-family: @fontfamily_code;
                 font-size: @fontsize_base * .8;
-                color: fade(@theme_text_main, 90%);
+                color: fade(@color_text_main, 90%);
             }
             a, .vemoji-btn, .vpreview-btn{
-                color: @theme_text_link;
+                color: @color_text_link;
                 .enable-trans();
                 &:hover {
-                    color: @theme_text_highlight;
+                    color: @color_text_highlight;
                     text-decoration: underline;
                 }
                 &:active {
-                    color: darken(@theme_text_highlight, 25%);
+                    color: darken(@color_text_highlight, 25%);
                 }
             }
             .vhead{
                 span{
                     &.vnick{
-                        color: fade(@theme_text_main, 90%);
+                        color: fade(@color_text_main, 90%);
                     }
                 }
                 a{
@@ -96,7 +96,7 @@
                         color: #ff9800;
                         font-weight: bold;
                         &:hover {
-                            color: @theme_text_highlight;
+                            color: @color_text_highlight;
                             text-decoration: underline;
                         }
                     }
@@ -105,14 +105,14 @@
             }
             .vmeta{
                 .vat{
-                    color: @theme_text_link;
+                    color: @color_text_link;
                     .enable-trans();
                     &:hover {
-                        color: @theme_text_highlight;
+                        color: @color_text_highlight;
                         text-decoration: underline;
                     }
                     &:active {
-                        color: darken(@theme_text_highlight, 25%);
+                        color: darken(@color_text_highlight, 25%);
                     }
                 }
             }
@@ -188,13 +188,13 @@
         margin: 0 auto;
         padding: 2 * @gap 1.5*@gap;
         //max-width: 768px;
-        background: @theme_bg_card;
+        background: @theme_cardbg;
         border-radius: @border_radius;
         h1{
             font-weight: normal;
             font-size: @fontsize_article_title;
             line-height: @lineheight_base;
-            color: @theme_text_main;
+            color: @color_text_main;
         }
         &:extend(.z-depth-main);
         .enable-trans();
@@ -211,10 +211,10 @@
             }
         }
         .tags a{
-          color: fade(@theme_text_main, 70%);
+          color: fade(@color_text_main, 70%);
         }
         .meta {
-            color: fade(@theme_text_main, 70%);
+            color: fade(@color_text_main, 70%);
             &#header-meta{
               margin-top: 0;
               margin-bottom: 1*@gap;
@@ -246,14 +246,14 @@
                     display: inline;
                     line-height: @lineheight_base;
                     font-weight: normal;
-                    color: @theme_text_main;
+                    color: @color_text_main;
                     text-decoration: none;
                     font-size: @fontsize_article_title;
                     @media(max-width: @on_phone) {
                         font-size: @fontsize_article_title_phone;
                     }
                     &:hover {
-                        color: @theme_text_highlight;
+                        color: @color_text_highlight;
                     }
                 }
             }
@@ -268,45 +268,45 @@
             .tags {
                 font-size: @fontsize_small * .95;
                 line-height: 24px;
-                color: fade(@theme_text_main, 70%);
+                color: fade(@color_text_main, 70%);
                 display: inline-block;
-                background: fade(@theme_bg_quote, 10%);
+                background: fade(@color_bg_quote, 10%);
                 margin: 0 4px 8px 0px;
                 padding: 2px 8px 2px 6px;
                 border-radius: 0.5*@border_radius_code_block;
-                border-left: 0.5*@border_radius_code_block solid @theme_bg_quote;
+                border-left: 0.5*@border_radius_code_block solid @color_bg_quote;
                 a{
-                    color: fade(@theme_text_main, 70%);
+                    color: fade(@color_text_main, 70%);
                     .enable-trans();
                     &:hover {
-                        color: @theme_text_highlight;
+                        color: @color_text_highlight;
                         text-decoration: underline;
                     }
                     &:active {
-                        color: darken(@theme_text_highlight, 25%);
+                        color: darken(@color_text_highlight, 25%);
                     }
                 }
                 .categories {
                     font-weight: normal;
-                    color: fade(@theme_text_main, 70%);
-                    // color: @theme_text_link;
+                    color: fade(@color_text_main, 70%);
+                    // color: @color_text_link;
                 }
                 .tag{
-                    color: fade(@theme_text_main, 70%);
+                    color: fade(@color_text_main, 70%);
                 }
 
             }
             .cats {
                 a {
                     font-weight: bold;
-                    color: @theme_text_link;
+                    color: @color_text_link;
                     .enable-trans();
                     &:hover {
-                        color: @theme_text_highlight;
+                        color: @color_text_highlight;
                         text-decoration: underline;
                     }
                     &:active {
-                        color: darken(@theme_text_highlight, 25%);
+                        color: darken(@color_text_highlight, 25%);
                     }
                 }
 
@@ -337,7 +337,7 @@
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        color: fade(@theme_text_main, 50%);
+        color: fade(@color_text_main, 50%);
         margin: 0;
         .prev{
             text-align: left;
@@ -353,11 +353,11 @@
             margin: @gap;
         }
         section{
-            color: fade(@theme_text_main, 80%);
+            color: fade(@color_text_main, 80%);
             padding: @gap;
             border-radius: @border_radius;
             &:hover {
-                color: @theme_text_highlight;
+                color: @color_text_highlight;
             }
         }
         @media(max-width:@on_phone) {

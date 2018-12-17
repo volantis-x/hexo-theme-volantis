@@ -30,13 +30,13 @@
     .nav--main,.nav-sub{
         height: @height_navbar;
     }
-    background: @theme_bg_navbar;
+    background: @color_bg_navbar;
 
     &, a{
         .txt-ellipsis;
         height: @height_navbar;
         line-height: @height_navbar;
-        color: @theme_text_in_header;
+        color: @color_text_in_header;
     }
     &:extend(.z-depth-nav); // 适合深色导航栏背景
 
@@ -72,16 +72,16 @@
             .enable-trans();
             display: block;
             font-size: @fontsize_base;
-            color: fade(@theme_text_in_header, 70%);
+            color: fade(@color_text_in_header, 70%);
             padding: 0 8px;
             &:hover{
-                color: @theme_text_in_header;
-                border-bottom: 4px solid @theme_base_card_bg;
-                background: fade(@theme_base_card_bg, 10%);
+                color: @color_text_in_header;
+                border-bottom: 4px solid @theme_cardbg;
+                background: fade(@theme_cardbg, 10%);
             }
             &:active,&.active{
-                color: @theme_text_in_header;
-                border-bottom: 4px solid @theme_base_card_bg;
+                color: @color_text_in_header;
+                border-bottom: 4px solid @theme_cardbg;
             }
         }
         @media(max-width: @on_phone){
@@ -111,7 +111,7 @@
                 border-radius: 100px;
                 .enable-trans();
                 &:hover {
-                    background: fade(@theme_base_card_bg, 30%);
+                    background: fade(@theme_cardbg, 30%);
                 }
                 @media(max-width: @on_phone){
                     width: @height;
@@ -160,7 +160,7 @@
             line-height: @height_navbar - @gap;
             margin: 0;
             width: 100%;
-            color: fade(@theme_text_in_header, 60%);
+            color: fade(@color_text_in_header, 60%);
             padding-left: @fontsize_base + @gap - 2px;
             @media(max-width: @on_phone){
                 padding-left: @fontsize_base + @gap - 2px;
@@ -170,22 +170,22 @@
             font-family: @fontfamily_base;
             border: none;
             border-radius: @border_radius;
-            background: fade(@theme_base_card_bg, 15%);
+            background: fade(@theme_cardbg, 15%);
             box-sizing: border-box;
             -webkit-appearance: none;
             box-shadow: none;
             border: 1px dashed transparent;
             .enable-trans();
             ~ .icon{
-                color: fade(@theme_text_in_header, 60%);
+                color: fade(@color_text_in_header, 60%);
             }
-            .set-placeholder({color: fade(@theme_text_in_header, 60%)});
+            .set-placeholder({color: fade(@color_text_in_header, 60%)});
             &:hover{
-                border: 1px dashed fade(@theme_text_in_header, 60%);
+                border: 1px dashed fade(@color_text_in_header, 60%);
             }
             &:focus {
                 // color:@black;
-                border: 1px solid fade(@theme_text_in_header, 60%);
+                border: 1px solid fade(@color_text_in_header, 60%);
                 // .set-placeholder({color: @black});
             }
             &:focus ~ .icon{
@@ -194,26 +194,26 @@
         }
     }
     &.pure{
-      background: @theme_base_card_bg;
+      background: @theme_cardbg;
       &, a{
-        color: @theme_base_tint;
+        color: @theme_main;
       }
       box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
       .menu{
           ul > li > a{
               .enable-trans();
-              color: fade(@theme_base_tint, 70%);
+              color: fade(@theme_main, 70%);
               &.current{
-                border-bottom: 4px solid fade(@theme_base_tint, 80%);
+                border-bottom: 4px solid fade(@theme_main, 80%);
               }
               &:hover{
-                  color: @theme_base_tint;
-                  border-bottom: 4px solid @theme_base_tint;
-                  background: fade(@theme_base_tint, 10%);
+                  color: @theme_main;
+                  border-bottom: 4px solid @theme_main;
+                  background: fade(@theme_main, 10%);
               }
               &:active,&.active{
-                  color: @theme_base_tint;
-                  border-bottom: 4px solid @theme_base_tint;
+                  color: @theme_main;
+                  border-bottom: 4px solid @theme_main;
               }
           }
       }
@@ -221,24 +221,24 @@
           & > li{
               a{
                   &:hover {
-                      background: fade(@theme_base_tint, 15%);
+                      background: fade(@theme_main, 15%);
                   }
               }
           }
       }
       .m_search {
         .input {
-            color: fade(@theme_base_tint, 60%);
-            background: fade(@theme_base_tint, 15%);
+            color: fade(@theme_main, 60%);
+            background: fade(@theme_main, 15%);
             ~ .icon{
-                color: fade(@theme_base_tint, 60%);
+                color: fade(@theme_main, 60%);
             }
-            .set-placeholder({color: fade(@theme_base_tint, 60%)});
+            .set-placeholder({color: fade(@theme_main, 60%)});
             &:hover{
-                border: 1px dashed fade(@theme_base_tint, 60%);
+                border: 1px dashed fade(@theme_main, 60%);
             }
             &:focus {
-                border: 1px solid fade(@theme_base_tint, 60%);
+                border: 1px solid fade(@theme_main, 60%);
             }
         }
       }
@@ -268,8 +268,8 @@
     .header{
         border-top-left-radius: @border_radius;
         border-top-right-radius: @border_radius;
-        background-color: fade(@theme_bg_navbar,90%);
-        color: @theme_text_in_header;
+        background-color: fade(@color_bg_navbar,90%);
+        color: @color_text_in_header;
         font-size: @fontsize_base;
         line-height: 1.8em;
         padding: 8px @gap+6px;
@@ -304,11 +304,11 @@
             padding: 2px 20px;
             border-left: 2px solid transparent;
             &:hover{
-                border-left: 4px solid @theme_bg_quote;
-                background: fade(@theme_bg_quote, 10%);
+                border-left: 4px solid @color_bg_quote;
+                background: fade(@color_bg_quote, 10%);
             }
             &.active{
-              border-left: 4px solid @theme_bg_quote;
+              border-left: 4px solid @color_bg_quote;
             }
         }
     }

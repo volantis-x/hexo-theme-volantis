@@ -2,14 +2,14 @@
     position: relative;
     padding: 40px 10px 120px 10px;
     width: 100%;
-    color: fade(@theme_text_main, 50%);
+    color: fade(@color_text_main, 50%);
     margin: 0px auto;
     font-size: @fontsize_small;
     overflow: hidden;
     text-align: center;
     font-family: @fontfamily_base;
     .licenses {
-        color: fade(@theme_text_main, 50%);
+        color: fade(@color_text_main, 50%);
         text-decoration: underline;
     }
     .codename {
@@ -22,10 +22,10 @@
         flex-wrap: wrap;
     }
     a {
-        color: fade(@theme_text_main, 70%);
+        color: fade(@color_text_main, 70%);
         .enable-trans();
         &:hover {
-            color: @theme_text_highlight;
+            color: @color_text_highlight;
         }
         &.social {
             position: relative;
@@ -39,8 +39,8 @@
             margin: 4px;
             border-radius: 100px;
             &:hover {
-                background: fade(@theme_bg_quote, 10%);
-                color: @theme_bg_quote;
+                background: fade(@color_bg_quote, 10%);
+                color: @color_bg_quote;
             }
         }
     }

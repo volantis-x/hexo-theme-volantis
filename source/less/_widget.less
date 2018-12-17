@@ -1,7 +1,7 @@
 .m_widget{
     z-index: 0;
     &:extend(.z-depth-main);
-    background: @theme_bg_card;
+    background: @theme_cardbg;
     margin-top: @gap;
     font-family: @fontfamily_base;
     font-size: @fontsize_base;
@@ -35,26 +35,26 @@
         @media(max-width: @on_phone) {
             border-radius: 0;
         }
-        background-color: @theme_bg_card_header;
-        color: @theme_text_in_header;
+        background-color: @color_bg_navbar;
+        color: @color_text_in_header;
         font-weight: bold;
         line-height: 1.5em;
         padding: 8px @gap;
         .rightBtn{
-          color: @theme_text_in_header;
+          color: @color_text_in_header;
           &:hover {
-              color: darken(@theme_text_highlight, 25%);
+              color: darken(@color_text_highlight, 25%);
           }
         }
         &.pure{
-          background-color: @theme_bg_card;
-          color: @theme_base_tint;
+          background-color: @theme_cardbg;
+          color: @theme_main;
           padding-top: 14px; // 适合白色导航栏背景
           padding-bottom: 14px; // 适合白色导航栏背景
           .rightBtn{
-            color: @theme_base_tint;
+            color: @theme_main;
             &:hover {
-                color: darken(@theme_text_highlight, 25%);
+                color: darken(@color_text_highlight, 25%);
             }
           }
         }
@@ -75,19 +75,19 @@
            .name{
                flex:auto;
                &:extend(.txt-ellipsis);
-               color: fade(@theme_text_main,70%);
+               color: fade(@color_text_main,70%);
            }
            .badge{
                flex:none;
                font-size: @fontsize_small;
-               color: fade(@theme_text_main, 50%);
+               color: fade(@color_text_main, 50%);
            }
            &:hover{
-               border-left: 4px solid @theme_bg_quote;
-               background: fade(@theme_bg_quote, 10%);
+               border-left: 4px solid @color_bg_quote;
+               background: fade(@color_bg_quote, 10%);
            }
            &:active{
-               border-left: 8px solid @theme_bg_quote;
+               border-left: 8px solid @color_bg_quote;
            }
        }
     }
@@ -98,7 +98,7 @@
     .enable-trans();
     h2{
         text-align: center;
-        // color: @theme_text_header;
+        // color: @color_text_header;
     }
     .header{
         padding: 0;
@@ -141,10 +141,10 @@
         flex-wrap: wrap;
         padding: 4px @gap/2;
         a {
-            color: fade(@theme_text_main, 70%);
+            color: fade(@color_text_main, 70%);
             .enable-trans();
             &:hover {
-                color: @theme_text_highlight;
+                color: @color_text_highlight;
             }
             &.social {
                 display: flex;
@@ -155,8 +155,8 @@
                 margin: 4px;
                 border-radius: 100px;
                 &:hover {
-                    background: fade(@theme_bg_quote, 10%);
-                    color: @theme_bg_quote;
+                    background: fade(@color_bg_quote, 10%);
+                    color: @color_bg_quote;
                 }
             }
         }
@@ -173,14 +173,14 @@
         padding: 0 @gap @gap @gap; // 适合白色导航栏背景
       }
       a{
-        color: @theme_text_link;
+        color: @color_text_link;
         .enable-trans();
         &:hover {
-            color: @theme_text_highlight;
+            color: @color_text_highlight;
             text-decoration: underline;
         }
         &:active {
-            color: darken(@theme_text_highlight, 25%);
+            color: darken(@color_text_highlight, 25%);
         }
       }
   }
@@ -206,7 +206,7 @@
             .enable-trans(.1s);
             line-height: 1.6em;
             &:hover{
-                color: @theme_text_highlight !important; //to cover inline style.
+                color: @color_text_highlight !important; //to cover inline style.
                 text-decoration: underline
             }
         }

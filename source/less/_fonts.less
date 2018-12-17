@@ -1,109 +1,27 @@
-@font-face {
-  font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?7jyvbf');
-  src:  url('fonts/icomoon.eot?7jyvbf#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?7jyvbf') format('truetype'),
-    url('fonts/icomoon.woff?7jyvbf') format('woff'),
-    url('fonts/icomoon.svg?7jyvbf#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+// 大部分文字字体
+@fontfamily_base: 'Ubuntu', "Source Sans Pro", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Menlo, Monaco, Source Han Sans CN Regular, WenQuanYi Micro Hei, "Microsoft YaHei", Arial, sans-serif;
+// 代码字体
+// mac自带Menlo字体，windows用户需要在config中添加以下字段来加载在线字体：google_fonts: 'Ubuntu|Ubuntu+Mono'
+@fontfamily_code: Menlo, 'Ubuntu Mono', Monaco, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu', monospace;
+// LOGO字体
+@fontfamily_logo: @fontfamily_base;
 
-[class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
 
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-.icon-arrow_upward:before {
-  content: "\e5d8";
-}
-.icon-chat_bubble_outline:before {
-  content: "\e0cb";
-}
-.icon-format_list_bulleted:before {
-  content: "\e241";
-}
-.icon-format_list_numbered:before {
-  content: "\e242";
-}
 
-.icon-close:before {
-  content: "\e5cd";
-}
-.icon-search:before {
-  content: "\e8b6";
-}
-.icon-chevron-down:before {
-  content: "\e900";
-}
-.icon-chevron-left:before {
-  content: "\e901";
-}
-.icon-chevron-right:before {
-  content: "\e902";
-}
-.icon-chevron-thin-down:before {
-  content: "\e903";
-}
-.icon-chevron-thin-left:before {
-  content: "\e904";
-}
-.icon-chevron-thin-right:before {
-  content: "\e905";
-}
-.icon-chevron-thin-up:before {
-  content: "\e906";
-}
-.icon-chevron-up:before {
-  content: "\e907";
-}
-.icon-mail:before {
-  content: "\e90d";
-}
-.icon-menu:before {
-  content: "\e908";
-}
-.icon-rss:before {
-  content: "\e90a";
-}
-.icon-user:before {
-  content: "\e90b";
-}
-.icon-vcard:before {
-  content: "\e909";
-}
-.icon-sina-weibo:before {
-  content: "\e90e";
-}
-.icon-facebook:before {
-  content: "\e90f";
-}
-.icon-github:before {
-  content: "\e910";
-}
-.icon-google:before {
-  content: "\e911";
-}
-.icon-instagram:before {
-  content: "\e912";
-}
-.icon-pinterest:before {
-  content: "\e913";
-}
-.icon-tumblr:before {
-  content: "\e914";
-}
-.icon-twitter:before {
-  content: "\e915";
-}
-
+// 字号
+// base
+@fontsize_base:   16px;
+@fontsize_small:  @fontsize_base * 0.875;
+@fontsize_footnote:  @fontsize_base * 0.7;
+@lineheight_base: 1.7;
+// title
+@fontsize_h1: @fontsize_base * 1.5;
+@fontsize_h2: @fontsize_base * 1.4;
+@fontsize_h3: @fontsize_base * 1.2;
+@fontsize_h4: @fontsize_base * 1.1;
+@fontsize_h5: @fontsize_base * 1;
+@fontsize_h6: @fontsize_small;
+// article
+@fontsize_article_title: @fontsize_h1 * 1.2;
+@fontsize_article_title_phone: @fontsize_h2;

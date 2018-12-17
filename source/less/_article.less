@@ -1,5 +1,5 @@
 .article {
-    color: @theme_text_main;
+    color: @color_text_main;
     font-size: @fontsize_base;
     line-height: @lineheight_base;
     word-break: break-all;
@@ -39,7 +39,7 @@
         margin-bottom: 1em;
         text-align: justify;
         strong{
-          color: @theme_text_main;
+          color: @color_text_main;
           padding-left: 2px;
           padding-right: 2px;
         }
@@ -67,14 +67,14 @@
         &:before{
             display: none;
         }
-        color: @theme_text_link;
+        color: @color_text_link;
         .enable-trans();
         &:hover {
-            color: @theme_text_highlight;
+            color: @color_text_highlight;
             text-decoration: underline;
         }
         &:active {
-            color: darken(@theme_text_highlight, 25%);
+            color: darken(@color_text_highlight, 25%);
         }
     }
     h1,
@@ -96,7 +96,7 @@
         }
     }
     h1, h2 {
-      color: @theme_text_header;
+      color: @color_text_header;
       margin-top: 2em;
     }
     h3, h4, h5, h6 {
@@ -113,7 +113,7 @@
     }
     h3 {
       font-size: @fontsize_h3;
-      color: darken(@theme_text_main, 20%);
+      color: darken(@color_text_main, 20%);
     }
     h4 {
       font-weight: bold;
@@ -121,17 +121,17 @@
     }
     h5 {
       font-weight: bold;
-      color: @theme_text_main;
+      color: @color_text_main;
       font-size: @fontsize_h5;
 
     }
     h6 {
-      color: fade(@theme_text_main, 75%);
+      color: fade(@color_text_main, 75%);
       font-size: @fontsize_h6;
     }
     .subtitle{
       h6 {
-        color: fade(@theme_text_main, 90%);
+        color: fade(@color_text_main, 90%);
       }
     }
     figure {
@@ -153,10 +153,10 @@
         position: relative;
         width: 100%;
         font-size: @fontsize_small;
-        background: fade(@theme_bg_quote, 10%);
+        background: fade(@color_bg_quote, 10%);
         margin: 1em 0;
         padding: @gap;
-        border-left: @border_radius_code_block solid @theme_bg_quote;
+        border-left: @border_radius_code_block solid @color_bg_quote;
         border-radius: @border_radius_code_block;
         .enable-trans();
         footer {
@@ -167,7 +167,7 @@
         &.pullquote{
           &.right{
             border-left: none;
-            border-right: @border_radius_code_block solid @theme_bg_quote;
+            border-right: @border_radius_code_block solid @color_bg_quote;
             p{
               text-align: right;
             }
@@ -180,7 +180,7 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         font-family: @fontfamily_code;
-        color: @theme_text_main;
+        color: @color_text_main;
     }
     code {
         font-family: @fontfamily_code;
@@ -188,9 +188,9 @@
         margin: 0px 2px;
         vertical-align: center;
         border-radius: 2px;
-        border: 1px solid fade(@theme_bg_code, 50%);
+        border: 1px solid fade(@color_bg_code, 50%);
         font-size: @fontsize_base * .8;
-        background: @theme_bg_code;
+        background: @color_bg_code;
         @media(max-width: @on_phone){
           font-size: @fontsize_base * .8 * .95;
         }
@@ -207,16 +207,16 @@
             vertical-align: middle;
             line-height: 2rem;
             font-weight: bold;
-            background-color: @theme_bg_quote;
+            background-color: @color_bg_quote;
             padding: .2em 2.4em;
             color: white;
             border-radius: @border_radius/2;
             .enable-trans();
             &:hover {
-              background: darken(@theme_bg_quote, 10%);
+              background: darken(@color_bg_quote, 10%);
             }
             &:active {
-              // background: darken(@theme_bg_quote, 20%);
+              // background: darken(@color_bg_quote, 20%);
             }
         }
 
@@ -228,14 +228,14 @@
         font-size: @fontsize_small;
         line-height: @lineheight_base;
         margin-top: @gap;
-        background: darken(fade(@theme_bg_main, 50%), 5%);
+        background: darken(fade(@theme_background, 50%), 5%);
         &.article-tags {
             // padding-top: 2*@gap;
             // background: transparent;
         }
         word-spacing: @gap;
         a {
-          color: @theme_text_main;
+          color: @color_text_main;
             position: relative;
             display: inline-block;
             word-spacing: 0;
@@ -245,7 +245,7 @@
             // }
             .enable-trans();
             &:hover {
-                color: @theme_text_highlight;
+                color: @color_text_highlight;
                 background: transparent;
             }
             &::before {
@@ -286,8 +286,8 @@
         section{
             width: 100%;
             padding: @gap/2;
-            color: fade(@theme_text_main, 70%);
-            background-color: fade(@theme_bg_main, 50%);
+            color: fade(@color_text_main, 70%);
+            background-color: fade(@theme_background, 50%);
             border-radius: @border_radius;
             p{
                 font-size: @fontsize_base;
@@ -309,7 +309,7 @@
             .enable-trans();
             // border: 1px solid transparent;
             // &:hover{
-            //     border: 1px solid fade(@theme_bg_quote, 30%);
+            //     border: 1px solid fade(@color_bg_quote, 30%);
             // }
             .tags{
                 background: transparent;
@@ -348,7 +348,7 @@
   margin-bottom: 1.2em;
   overflow: auto;
   display: block;
-  background: @theme_bg_code_block;
+  background: @color_bg_code_block;
   font-size: @fontsize_small * .95;
   font-family:@fontfamily_code;
   line-height: @lineheight_base;
@@ -356,7 +356,7 @@
   .enable-trans();
   figcaption{
     padding: @gap/4 @gap/2;
-    background-color: darken(@theme_bg_code_block, 3%);
+    background-color: darken(@color_bg_code_block, 3%);
   }
   table{
     td,th{
@@ -369,9 +369,9 @@
     text-align: right;
     border-width: 0;
     margin-left: 0;
-    background-color: darken(@theme_bg_code_block, 3%);
+    background-color: darken(@color_bg_code_block, 3%);
     pre{
-        color: fade(@theme_text_main, 80%);
+        color: fade(@color_text_main, 80%);
     }
     &:hover{
 
@@ -380,13 +380,13 @@
   .code{
       padding: @gap;
       vertical-align: top;
-      border: 0px solid darken(@theme_bg_main, 2%);
+      border: 0px solid darken(@theme_background, 2%);
       &:before{
           content: "";
           position: absolute;
           top: 0;
           right: 0;
-          color: fade(@theme_text_main, 80%);
+          color: fade(@color_text_main, 80%);
           font-size: @fontsize_footnote;
           padding: 4px 8px 0;
           line-height: @lineheight_base;
@@ -444,12 +444,12 @@
 /* Handle */
 
   &::-webkit-scrollbar-thumb {
-    background: darken(@theme_bg_code_block, 5%);
+    background: darken(@color_bg_code_block, 5%);
     cursor: pointer;
     border-radius: @border_radius_code_block;
     .enable-trans();
     &:hover {
-      background: darken(@theme_bg_code_block, 12%);
+      background: darken(@color_bg_code_block, 12%);
     }
   }
 
@@ -508,7 +508,7 @@ pre{
   }
   // 注释
   .comment, .title{
-    color: fade(@theme_text_main, 60%);
+    color: fade(@color_text_main, 60%);
   }
   .keyword, .javascript .function, .attr {
     color: @hl_keyword;
