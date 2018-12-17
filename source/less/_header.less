@@ -169,7 +169,7 @@
             line-height: @height_navbar - @gap;
             font-family: @fontfamily_base;
             border: none;
-            border-radius: @border_radius;
+            border-radius: @border_radius_searchbar;
             background: fade(@theme_cardbg, 15%);
             box-sizing: border-box;
             -webkit-appearance: none;
@@ -184,12 +184,12 @@
                 border: 1px dashed fade(@color_text_in_header, 60%);
             }
             &:focus {
-                // color:@black;
-                border: 1px solid fade(@color_text_in_header, 60%);
+              ~ .icon{
+                  color: @color_text_in_header;
+              }
+              color: @color_text_in_header;
+              border: 1px solid fade(@color_text_in_header, 60%);
                 // .set-placeholder({color: @black});
-            }
-            &:focus ~ .icon{
-                // color: @black;
             }
         }
     }
@@ -204,16 +204,16 @@
               .enable-trans();
               color: fade(@theme_main, 70%);
               &.current{
-                border-bottom: 4px solid fade(@theme_main, 80%);
+                border-bottom: @loading_height solid fade(@theme_main, 80%);
               }
               &:hover{
                   color: @theme_main;
-                  border-bottom: 4px solid @theme_main;
+                  border-bottom: @loading_height solid @theme_main;
                   background: fade(@theme_main, 10%);
               }
               &:active,&.active{
                   color: @theme_main;
-                  border-bottom: 4px solid @theme_main;
+                  border-bottom: @loading_height solid @theme_main;
               }
           }
       }
@@ -229,7 +229,7 @@
       .m_search {
         .input {
             color: fade(@theme_main, 60%);
-            background: fade(@theme_main, 15%);
+            background: @theme_background;
             ~ .icon{
                 color: fade(@theme_main, 60%);
             }
@@ -238,7 +238,12 @@
                 border: 1px dashed fade(@theme_main, 60%);
             }
             &:focus {
-                border: 1px solid fade(@theme_main, 60%);
+              ~ .icon{
+                  color: @theme_main;
+              }
+              color: @theme_main;
+              background: fade(@theme_main, 15%);
+              border: 1px solid fade(@theme_main, 60%);
             }
         }
       }

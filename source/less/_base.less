@@ -291,7 +291,7 @@ ul.h-list {
 
 #loading-bar-wrapper {
     position: fixed;
-    top: @height_navbar - 4;
+    top: @height_navbar - @loading_height;
     // top: 0;
     left: 0;
     width: 100%;
@@ -302,7 +302,7 @@ ul.h-list {
 #loading-bar {
     position: fixed;
     width: 0;
-    height: 4px;
+    height: @loading_height;
     // height: @height_navbar;
     .enable-trans();
     background-color: fade(white, 50%);
