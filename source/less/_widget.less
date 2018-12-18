@@ -83,11 +83,11 @@
                color: fade(@color_text_main, 50%);
            }
            &:hover{
-               border-left: 4px solid @color_bg_quote;
-               background: fade(@color_bg_quote, 10%);
+               border-left: 4px solid @theme_main;
+               background: fade(@theme_main, 10%);
            }
            &:active{
-               border-left: 8px solid @color_bg_quote;
+               border-left: 8px solid @theme_main;
            }
        }
     }
@@ -155,8 +155,8 @@
                 margin: 4px;
                 border-radius: 100px;
                 &:hover {
-                    background: fade(@color_bg_quote, 10%);
-                    color: @color_bg_quote;
+                    background: fade(@theme_main, 10%);
+                    color: @theme_main;
                 }
             }
         }

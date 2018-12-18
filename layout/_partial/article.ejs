@@ -42,20 +42,16 @@
 
         <section class='meta' id="footer-meta">
             <time class="time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
-                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>
-                本文最后更新于：<%- date(post.updated, config.date_format) %>
+                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>&nbsp;本文最后更新于：<%- date(post.updated, config.date_format) %>
             </time>
             <% if (post.tags && post.tags.length && post.tags.each) { %>
                 <%
                 var items = [];
                 post.tags.each(function(item){
-                    items.push('<a class="tag" href="'+url_for(item.path)+'">' + item.name + '</a>');
+                    items.push('<div class="tags"><a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;' + item.name + '</a></div>');
                 });
                 %>
-                <div class="tags">
-                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
-                    <%- items.join(', ') %>
-                </div>
+                <%- items.join(' ') %>
             <% } %>
         </section>
 
@@ -78,12 +74,11 @@
                                 <%
                                 var items = [];
                                 post.prev.tags.each(function(item){
-                                    items.push('<a class="tag" href="'+url_for(item.path)+'">' + item.name + '</a>');
+                                    items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>' + item.name + '</a>');
                                 });
                                 %>
                                 <h6 class="tags">
-                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
-                                    <%- items.join(', ') %>
+                                    <%- items.join(' ') %>
                                 </h6>
                             <% } %>
                         </span>
@@ -106,12 +101,11 @@
                                 <%
                                 var items = [];
                                 post.next.tags.each(function(item){
-                                    items.push('<a class="tag" href="'+url_for(item.path)+'">' + item.name + '</a>');
+                                    items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>' + item.name + '</a>');
                                 });
                                 %>
                                 <h6 class="tags">
-                                    <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
-                                    <%- items.join(', ') %>
+                                    <%- items.join(' ') %>
                                 </h6>
                             <% } %>
                         </span>

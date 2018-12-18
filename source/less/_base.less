@@ -101,11 +101,11 @@ body {
 }
 
 ::-moz-selection {
-    background: fade(lighten(@color_text_link, 5%), 25%);
+    background: @color_bg_selection;
 }
 
 ::selection {
-    background: fade(lighten(@color_text_link, 5%), 25%);
+    background: @color_bg_selection;
 }
 // transition
 .enable-trans(@time: 0.25s){
@@ -262,12 +262,12 @@ li {
         border-radius: @border_radius_code_block;
         .enable-trans();
         &:hover {
-            background: fade(@color_bg_quote, 10%);
-            border-left: @border_radius_line solid @color_bg_quote;
+            background: fade(@theme_main, 10%);
+            border-left: @border_radius_line solid @theme_main;
             padding: 8px;
         }
         &:active {
-            border-left: max(@border_radius, @border_radius_line) solid @color_bg_quote;
+            border-left: max(@border_radius, @border_radius_line) solid @theme_main;
         }
 
     }
