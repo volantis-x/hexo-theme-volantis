@@ -19,7 +19,7 @@
       <div class="social-wrapper">
         <% (config.social||[]).forEach(function(value){ %>
           <% if (value.url && value.icon) { %>
-            <a href="<%= value.url %>" class="social flat-box" target="_blank" rel="external"><i class="social <%= value.icon %>" aria-hidden="true"></i></a>
+            <a href="<%= value.url %>" class="social flat-btn" target="_blank" rel="external"><i class="social <%= value.icon %>" aria-hidden="true"></i></a>
           <%}%>
         <%})%>
       </div>

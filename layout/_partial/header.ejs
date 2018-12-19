@@ -37,9 +37,9 @@
 		<div class='nav-sub container container--flex'>
 			<a class="logo flat-box"></a>
 			<ul class='switcher h-list'>
-				<li class='s-comment'><a class="fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
-				<li class='s-top'><a class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a></li>
-				<li class='s-toc'><a class="fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="flat-btn fas fa-arrow-up fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
 			</ul>
 		</div>
 	</div>
@@ -51,7 +51,7 @@
           <% if (config.nav_menu) { %>
               <% (config.nav_menu || []).forEach(function(value){ %>
                   <li>
-										<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>" class="nav flat-box" href="<%= url_for(value.url) %>">
+										<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>" class="nav flat-btn" href="<%= url_for(value.url) %>">
 											<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
 										</a>
                   </li>
