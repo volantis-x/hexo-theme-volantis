@@ -1,4 +1,4 @@
-<% if(page.content && page.toc!==false && toc(page.content).length > 0){ %>
+<% if(page.layout == 'post' && page.content && page.toc!==false && toc(page.content).length > 0){ %>
     <section class='m_widget toc-wrapper'>
         <header class="header <%= theme.style %>">
             <div><i class="<%= theme.widgets.toc.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= theme.widgets.toc.title %></div>
