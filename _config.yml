@@ -25,8 +25,12 @@ nav_menu:
     icon: fas fa-user
     url: https://xaoxuu.com/about/
 
-# 公告的写法示例，这只是个例子哦，需要显示公告的时候写在主目录的config中，不需要的时候注释掉就可以，如果你十分喜欢这个主题，可以把这个公告copy到你那里😄
-announcement: '本站使用 <b><a href="https://xaoxuu.com/wiki/material-x/">Material X</a></b> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦。'
+# 可以添加自定义侧边栏控件，支持的参数如下：
+# widgets:
+#   - icon: fas fa-bullhorn
+#     title: 注意啦
+#     body: '本站使用 <b><a href="https://xaoxuu.com/wiki/material-x/">Material X</a></b> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦。超喜欢的话还可以安利给身边的朋友哦。'
+#     url: https://xaoxuu.com/wiki/material-x/
 
 # 友链的写法示例
 links:
@@ -75,11 +79,6 @@ widgets:
     title: false # 是否显示博客名、头衔等等。如果是，需要在主目录的config中写title
     motto: false # 是否显示格言座右铭等等。如果是，需要在主目录的config中写motto
     social: true # 是否显示社交信息（内容同页脚的社交信息）如果是，需要在主目录的config中写social，支持icon和URL
-  # 公告，内容写在主目录的config中
-  announcement:
-    enable: true
-    icon: fas fa-bullhorn
-    title: "公告"
   # 显示文章分类
   categories:
     enable: true

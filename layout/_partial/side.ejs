@@ -2,8 +2,20 @@
     <% if (theme.widgets.author.enable){ %>
         <%- partial('../_widget/author') %>
     <% } %>
-    <% if (theme.widgets.categories.enable){ %>
-        <%- partial('../_widget/announcement') %>
+    <% if (config.widgets){ %>
+      <% (config.widgets||[]).forEach(function(item){ %>
+        <section class='m_widget mywidgets'>
+            <header class='header <%= theme.style %>'>
+                <div><i class="<%= item.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= item.title %></div>
+                <% if(item.url) { %>
+                    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="<%= item.url %>"><i class="fas fa-question-circle fa-fw"></i></a>
+                <%} %>
+            </header>
+            <div class='content <%= theme.style %>'>
+              <%- item.body %>
+            </div>
+        </section>
+      <% }) %>
     <% } %>
     <% if (theme.widgets.categories.enable){ %>
         <%- partial('../_widget/categories') %>
