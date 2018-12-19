@@ -4,13 +4,16 @@
     <% } %>
     <% if (config.widgets){ %>
       <% (config.widgets||[]).forEach(function(item){ %>
-        <section class='m_widget mywidgets'>
+        <section class='m_widget' id='mywidget'>
+          <% if(item.icon && item.title) { %>
             <header class='header <%= theme.style %>'>
                 <div><i class="<%= item.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= item.title %></div>
-                <% if(item.url) { %>
-                    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="<%= item.url %>"><i class="fas fa-question-circle fa-fw"></i></a>
+                <% if(item.more && item.more.url) { %>
+                    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="<%= item.more.url %>">
+                      <i class="<%= item.more.icon?item.more.icon:'fas fa-question-circle' %> fa-fw"></i></a>
                 <%} %>
             </header>
+            <%} %>
             <div class='content <%= theme.style %>'>
               <%- item.body %>
             </div>

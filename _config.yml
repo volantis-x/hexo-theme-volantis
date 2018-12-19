@@ -29,8 +29,10 @@ nav_menu:
 # widgets:
 #   - icon: fas fa-bullhorn
 #     title: 注意啦
-#     body: '本站使用 <b><a href="https://xaoxuu.com/wiki/material-x/">Material X</a></b> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦。超喜欢的话还可以安利给身边的朋友哦。'
-#     url: https://xaoxuu.com/wiki/material-x/
+#     body: '本站使用 <b><a href="https://xaoxuu.com/wiki/material-x/">Material X</a></b> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～'
+#     more: # 可选，默认为空
+#       icon: fas fa-question-circle  # 可选，默认为“fas fa-question-circle”
+#       url: https://xaoxuu.com/wiki/material-x/
 
 # 友链的写法示例
 links:
