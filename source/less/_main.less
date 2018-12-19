@@ -295,17 +295,17 @@
             .tags {
                 .enable-trans();
                 font-size: @fontsize_small * .95;
-                line-height: 24px;
+                line-height: 25px;
                 color: fade(@color_text_main, 70%);
                 display: inline-block;
                 background: @theme_background;
                 margin: 4px 4px 4px 0px;
-                padding: 1.5px 8px 0px 6px;
+                padding: 0px 8px 0px 2px;
                 border-radius: 0.5*@border_radius_code_block;
                 border-left: 25px solid lighten(@theme_main, 10%);
-                padding-left: 2px;
+                padding-top: 1px;
                 @media(max-width: @on_phone) {
-                    padding: 0px 8px 0px 6px;
+                    padding-bottom: 1px;
                 }
                 &:hover {
                   background: lighten(@theme_main, 10%);
@@ -313,11 +313,15 @@
                   a{
                     color: @color_text_in_header;
                   }
+                  .fa-spinner{
+                    color: @color_text_in_header;
+                  }
                 }
                 i{
-                  width: 28px;
+                  width: 24px;
+                  line-height: 24px;
                   color: @color_text_in_header;
-                  margin-left: -28px;
+                  margin-left: -26px;
                 }
                 a{
                     color: fade(@color_text_main, 70%);
@@ -338,7 +342,10 @@
                 .tag{
                     color: fade(@color_text_main, 70%);
                 }
-
+                .fa-spinner{
+                  color: fade(@color_text_main, 70%);
+                  margin-left: 2px;
+                }
             }
             // .cats {
             //     a {
@@ -354,6 +361,7 @@
             //     }
             //
             // }
+
         }
         .full-width,.highlight{
             margin-left: 0*@gap;

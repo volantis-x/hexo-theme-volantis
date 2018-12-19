@@ -301,7 +301,11 @@
                 position: relative;
                 font-family: @fontfamily_base;
                 font-weight: bold;
-                font-size: @fontsize_h4;
+                font-size: @fontsize_h5;
+                @media(max-width:@on_phone) {
+                    letter-spacing: -1px;
+                }
+
             }
             h6{
                 margin: 0;
