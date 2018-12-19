@@ -14,6 +14,7 @@
         <% } else if (post.date) { %>
             <h1 class="title"><%= date(post.date, config.date_format) %></h1>
         <% } %>
+
         <time class="time">
             <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
             <%= date(post.date, config.date_format) %>
@@ -39,21 +40,22 @@
         <div class="article-entry" itemprop="articleBody">
             <%- post.content %>
         </div>
-
-        <section class='meta' id="footer-meta">
-            <time class="time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
-                <i class="fas fa-pen fa-fw" aria-hidden="true"></i>&nbsp;本文最后更新于：<%- date(post.updated, config.date_format) %>
-            </time>
-            <% if (post.tags && post.tags.length && post.tags.each) { %>
-                <%
-                var items = [];
-                post.tags.each(function(item){
-                    items.push('<div class="tags"><a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;' + item.name + '</a></div>');
-                });
-                %>
-                <%- items.join(' ') %>
-            <% } %>
-        </section>
+        <% if(post.layout == 'post'){ %>
+          <section class='meta' id="footer-meta">
+              <time class="time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
+                  <i class="fas fa-pen fa-fw" aria-hidden="true"></i>&nbsp;本文最后更新于：<%- date(post.updated, config.date_format) %>
+              </time>
+              <% if (post.tags && post.tags.length && post.tags.each) { %>
+                  <%
+                  var items = [];
+                  post.tags.each(function(item){
+                      items.push('<div class="tags"><a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;' + item.name + '</a></div>');
+                  });
+                  %>
+                  <%- items.join(' ') %>
+              <% } %>
+          </section>
+        <% } %>
 
         <% if(post.prev || post.next){ %>
             <div class="prev-next">
