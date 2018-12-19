@@ -300,23 +300,31 @@
                 display: inline-block;
                 background: @theme_background;
                 margin: 4px 4px 4px 0px;
-                padding: 4px 8px 2px 6px;
+                padding: 1.5px 8px 0px 6px;
                 border-radius: 0.5*@border_radius_code_block;
-                border-left: 30px solid fade(@theme_main, 80%);
+                border-left: 25px solid lighten(@theme_main, 10%);
                 padding-left: 2px;
+                @media(max-width: @on_phone) {
+                    padding: 0px 8px 0px 6px;
+                }
                 &:hover {
-                  // background: fade(@theme_main, 20%);
+                  background: lighten(@theme_main, 10%);
+                  color: @color_text_in_header;
+                  a{
+                    color: @color_text_in_header;
+                  }
                 }
                 i{
-                  width: 30px;
+                  width: 28px;
                   color: @color_text_in_header;
-                  margin-left: -30px;
+                  margin-left: -28px;
                 }
                 a{
                     color: fade(@color_text_main, 70%);
                     .enable-trans();
                     &:hover {
                         color: @color_text_highlight;
+                        color: @color_text_in_header;
                     }
                     &:active {
                         color: darken(@color_text_highlight, 25%);
@@ -332,20 +340,20 @@
                 }
 
             }
-            .cats {
-                a {
-                    font-weight: bold;
-                    color: @color_text_link;
-                    .enable-trans();
-                    &:hover {
-                        color: @color_text_highlight;
-                    }
-                    &:active {
-                        color: darken(@color_text_highlight, 25%);
-                    }
-                }
-
-            }
+            // .cats {
+            //     a {
+            //         font-weight: bold;
+            //         color: @color_text_link;
+            //         .enable-trans();
+            //         &:hover {
+            //             color: @color_text_highlight;
+            //         }
+            //         &:active {
+            //             color: darken(@color_text_highlight, 25%);
+            //         }
+            //     }
+            //
+            // }
         }
         .full-width,.highlight{
             margin-left: 0*@gap;
@@ -356,7 +364,7 @@
         img {
             display: block;
             max-width: 100%;
-            border-radius: @border_radius;
+            border-radius: 4px;
         }
     }
     @media(max-width:@on_phone) {
