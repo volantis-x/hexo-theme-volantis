@@ -1,40 +1,5 @@
-<article id="<%= post.layout %>-<%= post.slug %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
-    <section class='meta'>
-      <% if(post.music){ %>
-        <div class="aplayer" data-mini=true
-          data-mode="circulation" data-volume="0.5"
-          data-server="<%= post.music.server %>"
-          data-type="<%= post.music.type %>"
-          data-id="<%= post.music.id %>">
-        </div>
-      <% } %>
-      <div class="meta" id="header-meta">
-        <% if(post.title){ %>
-            <h1 class="title"><%= post.title %></h1>
-        <% } else if (post.date) { %>
-            <h1 class="title"><%= date(post.date, config.date_format) %></h1>
-        <% } %>
-
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-            <%= date(post.date, config.date_format) %>
-        </time>
-        <% if (config.leancloud && config.leancloud.app_id && config.leancloud.app_key) { %>
-          <div class="browse leancloud"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-            <span id="<%= url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%= post.title %>">
-               <span class="leancloud-visitors-count"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-            </span>
-          </div>
-        <% } else { %>
-          <div class="browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-            <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-          </div>
-        <% } %>
-
-        <%- partial('categories',{post:post}) %>
-      </div>
-    </section>
-
+<article id="<%= post.layout %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+  <%- partial('meta',{post:post}) %>
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
@@ -127,53 +92,7 @@
 
 <br>
 
-<!-- 显示推荐文章和评论 -->
-<% if (post && ((theme.recommended_posts && theme.recommended_posts.autoDisplay == false && post.recommended_posts != false) || (post.comments && (config.disqus_shortname || config.livere_shortname || config.valine)) )) { %>
-    <article class="post white-box comments">
-        <section class="article typo">
-
-            <% if (theme.recommended_posts && theme.recommended_posts.autoDisplay == false && post.recommended_posts != false) { %>
-                <%- partial('post/recommended_posts', {page: post, site: site}) %>
-            <% } %>
-
-            <% if (post.comments) { %>
-
-                <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
-                <% if (config.disqus_shortname) { %>
-                    <section id="comments">
-                        <div id="disqus_thread">
-                            ⚠️  无法加载评论系统，请确保您的网络能够正常访问 <a href="https://disqus.com">Disqus</a> 。
-                        </div>
-                    </section>
-                <% } %>
-
-                <% if (config.livere_uid){ %>
-                    <section id="comments">
-                        <div id="lv-container" data-id="city" data-uid="<%= config.livere_uid %>">
-                            <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-                        </div>
-                    </section>
-                <% } %>
-
-                <% if (config.valine){ %>
-                    <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
-                        <div class="subtitle">
-                          <h6><b>文明评论，请勿灌水。</b>为了便于区分和接收回复提醒，请您在留言时填写一下<b>昵称</b>和<b>邮箱</b>。</h6>
-                        <div>
-                        <section id="comments">
-                            <div id="valine_container" class="valine_thread">
-                                <i class="fas fa-spinner fa-spin fa-fw"></i>
-                            </div>
-                        </section>
-                        <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-                        <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-                    <% } %>
-                <% } %>
-            <% } %>
-
-        </section>
-    </article>
-<% } %>
+<%- partial('comments') %>
 
 <script>
     window.subData = {

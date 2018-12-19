@@ -1,31 +1,35 @@
-<% if (page.links){ %>
-  <% (page.links||[]).forEach(function(group){ %>
-    <% if(group.items) { %>
-      <section class='m_widgets' id='mywidgset'>
-        <% if(group.type) { %>
-          <% if (group.icon) { %>
-            <i class="<%= group.icon %> fa-fw" aria-hidden="true"></i><h2 class='header'><%= group.type %></h2>
-          <%} else {%>
-            <h2 class='header'><%= group.type %></h2>
-          <%} %>
-        <%} %>
-        <% (group.items||[]).forEach(function(item){ %>
-          <div class='friend-wrapper'>
-            <div class='friend-left'>
-              <img class='avatar' src='<%= url_for(item.avatar ? item.avatar : "https://img.vim-cn.com/a4/87a96e2e01b1180bba1e76e190df5220378c1a.png") %>'/>
-            </div>
-            <div class='friend-right'>
-              <h3><%= item.name %></h3>
-              <p><%= item.desc %></p>
-              <div class='friend-tags-wrapper'>
-              <% (item.tags||[]).forEach(function(tag){ %>
-                <a class="tags"><%= tag %></a>
+<article id="<%= page.layout %>" class="post white-box article-type-<%= page.layout %>" itemscope itemprop="blogPost">
+  <%- partial('_partial/meta',{post:page}) %>
+    <section class="article typo">
+      <% if (page.links){ %>
+        <% (page.links||[]).forEach(function(group){ %>
+          <% if(group.items) { %>
+            <section class='m_widgets' id='mywidgset'>
+              <% if(group.type) { %>
+                <% if (group.icon) { %>
+                  <i class="<%= group.icon %> fa-fw" aria-hidden="true"></i><h2 class='header'><%= group.type %></h2>
+                <%} else {%>
+                  <h2 class='header'><%= group.type %></h2>
+                <%} %>
+              <%} %>
+              <% (group.items||[]).forEach(function(item){ %>
+                <div class='friend-wrapper'>
+                  <div class='friend-left'>
+                    <img class='avatar' src='<%= url_for(item.avatar ? item.avatar : "https://img.vim-cn.com/a4/87a96e2e01b1180bba1e76e190df5220378c1a.png") %>'/>
+                  </div>
+                  <div class='friend-right'>
+                    <h3><%= item.name %></h3>
+                    <p><%= item.desc %></p>
+                    <div class='friend-tags-wrapper'>
+                    <% (item.tags||[]).forEach(function(tag){ %>
+                      <a class="tags"><%= tag %></a>
+                    <% }) %>
+                  </div>
+                </div>
               <% }) %>
-            </div>
-          </div>
+            </section>
+          <%} %>
         <% }) %>
-      </section>
-    <%} %>
-  <% }) %>
-<% } %>
-<%- partial('_partial/article', {post: page, index: false}) %>
+      <% } %>
+    </section>
+</article>

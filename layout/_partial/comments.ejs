@@ -1,0 +1,47 @@
+<!-- 显示推荐文章和评论 -->
+<% if (page && ((theme.recommended_posts && theme.recommended_posts.autoDisplay == false && page.recommended_posts != false) || (page.comments && (config.disqus_shortname || config.livere_shortname || config.valine)) )) { %>
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            <% if (theme.recommended_posts && theme.recommended_posts.autoDisplay == false && page.recommended_posts != false) { %>
+                <%- partial('recommended_posts', {page: page, site: site}) %>
+            <% } %>
+
+            <% if (page.comments) { %>
+
+                <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+                <% if (config.disqus_shortname) { %>
+                    <section id="comments">
+                        <div id="disqus_thread">
+                            ⚠️  无法加载评论系统，请确保您的网络能够正常访问 <a href="https://disqus.com">Disqus</a> 。
+                        </div>
+                    </section>
+                <% } %>
+
+                <% if (config.livere_uid){ %>
+                    <section id="comments">
+                        <div id="lv-container" data-id="city" data-uid="<%= config.livere_uid %>">
+                            <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+                        </div>
+                    </section>
+                <% } %>
+
+                <% if (config.valine){ %>
+                    <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
+                        <div class="subtitle">
+                          <h6><b>文明评论，请勿灌水。</b>为了便于区分和接收回复提醒，请您在留言时填写一下<b>昵称</b>和<b>邮箱</b>。</h6>
+                        <div>
+                        <section id="comments">
+                            <div id="valine_container" class="valine_thread">
+                                <i class="fas fa-spinner fa-spin fa-fw"></i>
+                            </div>
+                        </section>
+                        <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+                        <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+                    <% } %>
+                <% } %>
+            <% } %>
+
+        </section>
+    </article>
+<% } %>

@@ -1,28 +1,5 @@
 <article class="post reveal <%= (post.title) ? "" : "no-title" %>">
-    <section class="meta">
-      <% if(post.music && !post.music.internal){ %>
-        <div class="aplayer" data-mini=true
-          data-mode="circulation" data-volume="0.5"
-          data-server="<%= post.music.server %>"
-          data-type="<%= post.music.type %>"
-          data-id="<%= post.music.id %>">
-        </div>
-      <% } %>
-        <h2 class="title">
-            <a href="<%- url_for(post.path) %>">
-                <% if(post.title){ %>
-                    <%= post.title %>
-                <% } else if (post.date) { %>
-                    <%= date(post.date, config.date_format) %>
-                <% } %>
-            </a>
-        </h2>
-        <time class="time">
-            <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>
-        </time>
-        <%- partial('categories',{post:post}) %>
-    </section>
-
+    <%- partial('meta',{post:post}) %>
     <section class="article typo">
         <%- post.excerpt || post.description || post.content %>
         <% if (post.readmore != false && (post.excerpt || post.description)) { %>
