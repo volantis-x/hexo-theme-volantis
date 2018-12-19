@@ -10,6 +10,7 @@
     overflow: hidden;
     font-family: @fontfamily_base;
     font-weight: bold;
+    padding: 0 @gap;
     .wrapper{
         padding: auto @gap;
         .enable-trans();
@@ -60,6 +61,11 @@
         .logo {
             font-size: @fontsize_base;
             font-family: @fontfamily_base;
+            @media(max-width: @on_phone){
+                letter-spacing: -0.5px;
+                padding-top: 1px;
+            }
+
         }
     }
     .menu{
@@ -249,6 +255,7 @@
       }
     }
     @media (max-width: @on_phone)  {
+        padding: 0;
         .m_search{
             width:0;
             overflow: hidden;
