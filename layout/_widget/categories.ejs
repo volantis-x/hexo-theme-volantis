@@ -6,7 +6,7 @@
         <% if (site.categories.length){ %>
             <ul class="entry">
                 <% site.categories.sort('name').each(function(item){ %>
-                    <li><a class="flat-box" href="<%= url_for(item.path) %>"><div class='name'><%= item.name %></div><div class='badge'><%= item.posts.length %></div></a></li>
+                    <li><a class="flat-box" href="<%= url_for(item.path) %>"><div class='name'><%= item.name %></div><div class='badge'>(共<%= item.posts.length %>篇)</div></a></li>
                 <% }); %>
             </ul>
         <% } %>

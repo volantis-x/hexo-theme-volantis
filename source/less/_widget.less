@@ -95,10 +95,6 @@
 
     &#author{
         .enable-trans();
-        @media(max-width: @on_phone){
-          box-shadow: none;
-          background: @theme_background;
-        }
         h2{
             text-align: center;
             // color: @color_text_header;
@@ -163,6 +159,13 @@
                     }
                 }
             }
+        }
+        @media(max-width: @on_phone){
+          box-shadow: none;
+          background: @theme_background;
+          .social-wrapper{
+              justify-content: center;
+          }
         }
     }
 
