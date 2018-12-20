@@ -82,9 +82,9 @@
 <% } %>
 
 
-<% if (config.leancloud) { %>
+<% if (config.leancloud_visitors && config.leancloud_visitors.app_id && config.leancloud_visitors.app_key) { %>
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("<%= config.leancloud.app_id %>", "<%= config.leancloud.app_key %>");</script>
+  <script>AV.initialize("<%= config.leancloud_visitors.app_id %>", "<%= config.leancloud_visitors.app_key %>");</script>
   <script>
   function showTime(Counter) {
     var query = new AV.Query(Counter);

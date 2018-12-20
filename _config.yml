@@ -57,11 +57,6 @@ motto: 这是我的座右铭
 # 百度统计key
 baidu_analytics_key: xxx
 
-# 如果你用了leancloud的服务，在博客主目录的config中提供app_id和app_key
-leancloud:
-  app_id: xxx
-  app_key: xxx
-
 
 # >> 主题配置 ---------------------------------------------------------------------
 # ✅ 这里的内容直接在下面进行修改
