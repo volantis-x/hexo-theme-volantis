@@ -85,12 +85,12 @@ widgets:
   categories:
     enable: true
     icon: fas fa-folder-open
-    title: "文章分类"
+    title: "博文分类"
   # 显示文章标签
   tagcloud:
     enable: true
     icon: fas fa-tags
-    title: "文章标签"
+    title: "热门标签"
   # 显示音乐播放器
   music:
     enable: true

@@ -21,6 +21,10 @@
         @media(max-width: @on_phone){
           width: 100%;
         }
+        &.float-btn{
+          padding: @gap/2;
+          text-align: left;
+        }
         &:hover{
           text-decoration: none;
           box-shadow: @boxshadow_card_raised, 0 32px 64px 0px rgba(0, 0, 0, 0.1);
@@ -40,7 +44,7 @@
         }
         .friend-right{
           flex: 1;
-          margin: @gap @gap @gap 0;
+          margin: @gap @gap @gap 6px;
           display: flex;
           flex-direction: column;
           justify-content: space-around;
