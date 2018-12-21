@@ -138,6 +138,9 @@
         position: relative;
         height: @height_navbar - @gap;
         width: @width_sidebar;
+        @media(max-width: @on_laptop){
+            width: @width_sidebar_m;
+        }
         line-height: @height_navbar - @gap;
         margin-top: @gap/2;
         margin-bottom: @gap/2;

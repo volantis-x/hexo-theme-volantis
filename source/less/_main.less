@@ -1,5 +1,11 @@
 .l_main {
     width: ~"calc(100% - 1 * @{width_sidebar})";
+    @media(max-width: @on_laptop) {
+        width: ~"calc(100% - 1 * @{width_sidebar_m})";
+    }
+    @media(max-width: @on_pad) {
+        width: 100%;
+    }
     padding-right: @gap;
     float: left;
     .post-list {
@@ -376,7 +382,7 @@
             border-radius: 4px;
         }
     }
-    @media(max-width:@on_phone) {
+    @media(max-width:@on_pad) {
         padding-right: 0;
         @media(max-width: @on_phone) {
             width: 100%;
