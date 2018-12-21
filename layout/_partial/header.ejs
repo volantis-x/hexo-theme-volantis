@@ -1,22 +1,27 @@
 <header class="l_header <%= theme.style %>">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
-			<a class="logo flat-box" href='<%= url_for("/") %>' ><%- config.title %></a>
-				<div class='menu'>
-					<ul class='h-list'>
-            <% if (config.nav_menu) { %>
-    					<% (config.nav_menu || []).forEach(function(value){ %>
-    						<li>
-									<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
-									 class="nav flat-box" href="<%= url_for(value.url) %>">
-										<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
-									</a>
-  							</li>
-        			<%})%>
-        		<% } %>
-					</ul>
-
-				</div>
+      <a class="logo flat-box" href='<%= url_for("/") %>' >
+        <% if (config.logo) { %>
+          <img class='logo' src='<%- url_for(config.logo) %>'/>
+        <% } else { %>
+          <%- config.title %>
+        <% } %>
+      </a>
+			<div class='menu'>
+				<ul class='h-list'>
+          <% if (config.nav_menu) { %>
+  					<% (config.nav_menu || []).forEach(function(value){ %>
+  						<li>
+								<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
+								 class="nav flat-box" href="<%= url_for(value.url) %>">
+									<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
+								</a>
+							</li>
+      			<%})%>
+      		<% } %>
+				</ul>
+			</div>
 
 			<% if (theme.search.enable === true) { %>
 				<div class="m_search">

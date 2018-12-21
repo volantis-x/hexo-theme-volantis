@@ -1,11 +1,14 @@
 #####################################
 ##      Material X                 ##
-##      version: 1.0 beta3         ##
-##      updated: 2018-12-11        ##
+##      version: 1.0 beta7         ##
+##      updated: 2018-12-22        ##
 #####################################
 
 # >> 主题配置写法示例 ---------------------------------------------------------------------
 # ⚠️ 注意：这里的内容需要复制到主目录到config中才有效，写在这里是为了提供参考
+
+# 支持google字体 在这里选好你需要的字体：https://fonts.google.com，然后在_defines.less中修改font_family。
+google_fonts: 'Skranji|Ubuntu' # 多个字体中间用英文竖线隔开
 
 # 导航栏，url必须以 "/" 结尾
 nav_menu:
@@ -61,8 +64,6 @@ baidu_analytics_key: xxx
 # >> 主题配置 ---------------------------------------------------------------------
 # ✅ 这里的内容直接在下面进行修改
 
-# 字体 在这里选好你需要的字体：https://fonts.google.com，然后在_defines.less中修改font_family。
-google_fonts: 'Ubuntu|Ubuntu+Mono' # 多个字体中间用英文竖线隔开
 
 # style: material    # 导航栏和标题栏背景是主题色
 style: pure        # 导航栏和标题栏背景是白色
