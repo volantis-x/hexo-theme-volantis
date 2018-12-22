@@ -1,9 +1,15 @@
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
 <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
 <!-- 访问统计 -->
 <script async src="//cdn.jsdelivr.net/gh/xaoxuu/cdn@master/js/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
+<!-- fastclick -->
+<script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    FastClick.attach(document.body)
+  }, false)
+</script>
 
 <% if (theme.search && theme.search.enable) { %>
     <script>
@@ -24,15 +30,17 @@
 
 
 <% if (config.import && config.import.js == true) { %>
-  <%- js('https://cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-material-x@master/source/js/search.js') %>
-  <%- js('https://cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-material-x@master/source/js/app.js') %>
+  <%- js('//cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-material-x@master/source/js/app.js') %>
+  <%- js('//cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-material-x@master/source/js/search.js') %>
+  <%- js('//cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-material-x@master/source/js/jquery.fitvids.js') %>
 <% } else if (config.import && config.import.js && config.import.js.length > 0) { %>
   <% (config.usecdn||[]).forEach(function(cdn_url){ %>
     <%- js(cdn_url) %>
   <% }) %>
 <% } else { %>
-  <%- js('js/search.js') %>
   <%- js('js/app.js') %>
+  <%- js('js/search.js') %>
+  <%- js('js/jquery.fitvids.js') %>
 <% } %>
 
 
@@ -93,6 +101,8 @@
 <% } %>
 
 
+
+<!-- leancloud_visitors -->
 <% if (config.leancloud_visitors && config.leancloud_visitors.app_id && config.leancloud_visitors.app_key) { %>
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("<%= config.leancloud_visitors.app_id %>", "<%= config.leancloud_visitors.app_key %>");</script>
