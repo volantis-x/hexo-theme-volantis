@@ -4,7 +4,7 @@
   var isPostList = false;
 } %>
 <section class='meta'>
-  <% if((!isPostList && post.music) || (isPostList && post.music && post.music.enable == true)){ %>
+  <% if((!isPostList && post.music && post.music.enable) || (isPostList && post.music && post.music.enable == true)){ %>
     <div class="aplayer" data-mini=true
       data-mode="circulation" data-volume="0.7"
       data-server="<%= post.music.server %>"

@@ -90,6 +90,14 @@ widgets:
   # 显示音乐播放器
   music:
     enable: true
+    display:           # 批量控制哪一类页面显示
+      home: false      # 在主页是否显示
+      tag: false       # 在标签页面是否显示
+      category: false  # 在分类页面是否显示
+      archive: false   # 在归档页面是否显示
+      page: false      # layout: page 的页面是否显示
+      links: true      # layout: links 的页面是否显示
+      post: true       # layout: post 的页面是否显示
     icon: fas fa-compact-disc
     title: "最近在听"
     link: 'https://music.163.com/#/user/home?id=63035382'
