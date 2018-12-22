@@ -47,11 +47,11 @@ var customSearch;
 	}
 
 	function setHeaderMenu() {
-		var $headerMenu = $('header .menu');
+    var $headerMenu = $('header .menu');
+    // 先把已经激活的取消激活
+    $headerMenu.find('li a.active').removeClass('active');
 		// var $underline = $headerMenu.find('.underline');
-		function setUnderline($item, transition) {
-			$item = $item || $headerMenu.find('li a.active');//get instant
-			transition = transition === undefined ? true : !!transition;
+		function setUnderline($item) {
 			// if (!transition) $underline.addClass('disable-trans');
 			if ($item && $item.length) {
 				$item.addClass('active').siblings().removeClass('active');
@@ -64,7 +64,7 @@ var customSearch;
       idname = "home";
     }
     $active_link = $('#' + idname, $headerMenu);
-    setUnderline($active_link, false);
+    setUnderline($active_link);
 	}
 
 	function setHeaderMenuPhone() {
