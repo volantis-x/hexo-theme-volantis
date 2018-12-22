@@ -1,11 +1,10 @@
-<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
 <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
 <!-- 访问统计 -->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//cdn.jsdelivr.net/gh/xaoxuu/cdn@master/js/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
-<%- js('js/jquery.fitvids.js') %>
 <% if (theme.search && theme.search.enable) { %>
     <script>
         var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google_api_key %>";
@@ -22,8 +21,20 @@
         if(!ROOT.endsWith('/'))ROOT += '/';
     </script>
 <% } %>
-<%- js('js/search.js') %>
-<%- js('js/app.js') %>
+
+
+<% if (config.import && config.import.js == true) { %>
+  <%- js('https://cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-material-x@master/source/js/search.js') %>
+  <%- js('https://cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-material-x@master/source/js/app.js') %>
+<% } else if (config.import && config.import.js && config.import.js.length > 0) { %>
+  <% (config.usecdn||[]).forEach(function(cdn_url){ %>
+    <%- js(cdn_url) %>
+  <% }) %>
+<% } else { %>
+  <%- js('js/search.js') %>
+  <%- js('js/app.js') %>
+<% } %>
+
 
 <% if (page.comments) { %>
     <% if (config.disqus_shortname){ %>

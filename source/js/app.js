@@ -200,7 +200,7 @@ var customSearch;
 		setScrollReveal();
 		setTocToggle();
 
-		$(".article .video-container").fitVids();
+		// $(".article .video-container").fitVids();
 
 		setTimeout(function () {
 			$('#loading-bar-wrapper').fadeOut(500);
