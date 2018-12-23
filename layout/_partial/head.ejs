@@ -37,7 +37,7 @@
 
   <!-- style.css -->
   <% if (config.import && config.import.style == true) { %>
-    <%- css('//cdn.jsdelivr.net/gh/xaoxuu/blog@gh-pages/style.css') %>
+    <%- css(theme.themecdn + 'css/hexo-theme-material-x/style.min.css') %>
   <% } else if (config.import && config.import.style && config.import.style.length > 0){ %>
     <%- css(config.import.style) %>
   <% } else { %>
@@ -46,7 +46,7 @@
 
   <!-- fontawesome -->
   <% if (config.import && config.import.fontawesome == true) { %>
-    <%- css('//cdn.jsdelivr.net/gh/xaoxuu/cdn@master/fontawesome/5.6.3/css/all.min.css') %>
+    <%- css(theme.themecdn + 'fontawesome/5.6.3/css/all.min.css') %>
   <% } else if (config.import && config.import.fontawesome && config.import.fontawesome.length > 0){ %>
     <%- css(config.import.fontawesome) %>
   <% } else { %>

@@ -153,3 +153,5 @@ search:
 # Less
 less:
   compress: true
+
+themecdn: //cdn.jsdelivr.net/gh/xaoxuu/cdn@18.12.23.2/

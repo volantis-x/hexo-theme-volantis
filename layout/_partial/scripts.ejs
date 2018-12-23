@@ -2,7 +2,7 @@
 <script src='https://cdn.jsdelivr.net/npm/node-waves@0.7.5/dist/waves.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
 <!-- 访问统计 -->
-<script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn@master/js/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="<%= theme.themecdn %>js/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <!-- fastclick -->
 <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
 <script>
@@ -30,8 +30,8 @@
 
 
 <% if (config.import && config.import.js == true) { %>
-  <%- js('//cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-material-x@master/source/js/app.js') %>
-  <%- js('//cdn.jsdelivr.net/gh/xaoxuu/hexo-theme-material-x@master/source/js/search.js') %>
+  <%- js(theme.themecdn + 'js/hexo-theme-material-x/app.js') %>
+  <%- js(theme.themecdn + 'js/hexo-theme-material-x/search.js') %>
 <% } else if (config.import && config.import.js && config.import.js.length > 0) { %>
   <% (config.usecdn||[]).forEach(function(cdn_url){ %>
     <%- js(cdn_url) %>
@@ -102,7 +102,7 @@
 
 <!-- leancloud_visitors -->
 <% if (config.leancloud_visitors && config.leancloud_visitors.app_id && config.leancloud_visitors.app_key) { %>
-  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn@1.1/js/leancloud/av-core-mini-0.6.4.js"></script>
+  <script src="<%= theme.themecdn %>js/leancloud/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("<%= config.leancloud_visitors.app_id %>", "<%= config.leancloud_visitors.app_key %>");</script>
   <script>
   function showTime(Counter) {
