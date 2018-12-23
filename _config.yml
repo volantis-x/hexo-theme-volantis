@@ -50,7 +50,7 @@ social:
   - icon: fab fa-github
     url: https://github.com/xaoxuu
   - icon: fas fa-music
-    url: https://music.163.com/#/user/home?id=63035382
+    url: https://music.163.com/#/user/home?id=389370925
 
 # 博主信息的写法示例
 avatar: https://xaoxuu.com/assets/img/avatar.jpg
@@ -65,8 +65,8 @@ baidu_analytics_key: xxx
 # ✅ 这里的内容直接在下面进行修改
 
 
-# style: material    # 导航栏和标题栏背景是主题色
-style: pure        # 导航栏和标题栏背景是白色
+style: material    # 导航栏和标题栏背景是主题色
+# style: pure        # 导航栏和标题栏背景是白色
 
 # 右边的小窗口，不想显示哪一项的把enable设置为false即可
 widgets:
@@ -75,7 +75,7 @@ widgets:
     enable: true
     avatar: true # 是否显示头像，如果是，需要在主目录的config中写avatar的URL
     title: false # 是否显示博客名、头衔等等。如果是，需要在主目录的config中写title
-    motto: false # 是否显示格言座右铭等等。如果是，需要在主目录的config中写motto
+    motto: true # 是否显示格言座右铭等等。如果是，需要在主目录的config中写motto
     social: true # 是否显示社交信息（内容同页脚的社交信息）如果是，需要在主目录的config中写social，支持icon和URL
   # 显示文章分类
   categories:
@@ -91,7 +91,7 @@ widgets:
   music:
     enable: true
     display:           # 批量控制哪一类页面显示
-      home: false      # 在主页是否显示
+      home: true      # 在主页是否显示
       tag: false       # 在标签页面是否显示
       category: false  # 在分类页面是否显示
       archive: false   # 在归档页面是否显示
@@ -100,19 +100,19 @@ widgets:
       post: true       # layout: post 的页面是否显示
     icon: fas fa-compact-disc
     title: "最近在听"
-    link: 'https://music.163.com/#/user/home?id=63035382'
+    link: 'https://music.163.com/#/user/home?id=389370925'
     color: '#3DC550'  # 主题色
     volume: 0.5       # 默认音量大小（0~1之间）
     mode: circulation # random （随机） single （单曲） circulation （列表循环） order （列表）
     server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
     type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
-    id: 746319661     # 歌曲/专辑/歌单 ID
+    id: 389370925     # 歌曲/专辑/歌单 ID
   # 显示友链，友链的内容写在主目录的config中
   links:
-    enable: false
+    enable: true
     icon: fas fa-handshake
     title: "友链"
-    mailto: "me@xaoxuu.com" # 右边显示➕ ，点击给这个地址发送邮件添加友链
+    mailto: "yangtaobanner@foxmail.com" # 右边显示➕ ，点击给这个地址发送邮件添加友链
   # 显示目录（在文章中设置toc:false可以隐藏单篇文章的目录）
   toc:
     enable: true
