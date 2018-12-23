@@ -65,8 +65,8 @@ baidu_analytics_key: xxx
 # ✅ 这里的内容直接在下面进行修改
 
 
-style: material    # 导航栏和标题栏背景是主题色
-# style: pure        # 导航栏和标题栏背景是白色
+# style: material    # 导航栏和标题栏背景是主题色
+style: pure        # 导航栏和标题栏背景是白色
 
 # 右边的小窗口，不想显示哪一项的把enable设置为false即可
 widgets:
@@ -77,16 +77,16 @@ widgets:
     title: false # 是否显示博客名、头衔等等。如果是，需要在主目录的config中写title
     motto: true # 是否显示格言座右铭等等。如果是，需要在主目录的config中写motto
     social: true # 是否显示社交信息（内容同页脚的社交信息）如果是，需要在主目录的config中写social，支持icon和URL
-  # 显示文章分类
-  categories:
-    enable: true
-    icon: fas fa-folder-open
-    title: "博文分类"
   # 显示文章标签
   tagcloud:
     enable: true
     icon: fas fa-tags
     title: "热门标签"
+  # 显示文章分类
+  categories:
+    enable: true
+    icon: fas fa-folder-open
+    title: "博文分类"
   # 显示音乐播放器
   music:
     enable: true
