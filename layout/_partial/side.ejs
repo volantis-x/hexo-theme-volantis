@@ -4,7 +4,7 @@
     <% } %>
     <% if (config.widgets){ %>
       <% (config.widgets||[]).forEach(function(item){ %>
-        <section class='m_widget' id='mywidget'>
+        <section class='mywidget' id='<%- item.type ? item.type : '' %>'>
           <% if(item.icon && item.title) { %>
             <header class='header <%= theme.style %>'>
                 <div><i class="<%= item.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= item.title %></div>
@@ -15,7 +15,15 @@
             </header>
             <%} %>
             <div class='content <%= theme.style %>'>
-              <%- item.body %>
+              <% if(item.type == 'list') { %>
+                <ul class="entry">
+                  <% (item.rows||[]).forEach(function(row){ %>
+                    <li><a class="flat-box" href="<%= url_for(row.url) %>"><i class="<%= row.icon %> fa-fw"></i><div class='name'><%= row.name %></div></a>
+                  <% }) %>
+                </ul>
+              <% } else { %>
+                <%- item.body %>
+              <% } %>
             </div>
         </section>
       <% }) %>
