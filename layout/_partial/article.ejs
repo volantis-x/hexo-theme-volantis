@@ -8,7 +8,7 @@
         <% if(post.layout == 'post'){ %>
           <section class='meta' id="footer-meta">
               <time class="time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
-                  <i class="fas fa-pen fa-fw" aria-hidden="true"></i>&nbsp;本文最后更新于：<%- date(post.updated, config.date_format) %>
+                  <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;本文最后更新于：<%- date(post.updated, config.date_format) %>
               </time>
               <% if (post.tags && post.tags.length && post.tags.each) { %>
                   <%

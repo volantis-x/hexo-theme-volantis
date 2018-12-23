@@ -42,7 +42,7 @@ if (theme.widgets.music && theme.widgets.music.display) {
   <section class='music'>
     <header class='header <%= theme.style %>'>
       <div><i class="<%= theme.widgets.music.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= theme.widgets.music.title %></div>
-      <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="<%= theme.widgets.music.link %>"><i class="far fa-heart fa-fw"></i></a>
+      <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="<%= url_for(theme.widgets.music.link) %>"><i class="far fa-heart fa-fw"></i></a>
     </header>
     <div class='content <%= theme.style %>'>
       <div class="aplayer" data-theme="<%= theme.widgets.music.color %>"

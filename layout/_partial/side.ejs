@@ -9,7 +9,7 @@
             <header class='header <%= theme.style %>'>
                 <div><i class="<%= item.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= item.title %></div>
                 <% if(item.more && item.more.url) { %>
-                    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="<%= item.more.url %>">
+                    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="<%= url_for(item.more.url) %>">
                       <i class="<%= item.more.icon?item.more.icon:'fas fa-question-circle' %> fa-fw"></i></a>
                 <%} %>
             </header>
