@@ -63,6 +63,11 @@ var customSearch;
     if (idname.length == 0) {
       idname = "home";
     }
+		var page = idname.match(/page\d{0,}$/g);
+		if (page) {
+			page = page[0];
+			idname = idname.split(page)[0];
+		}
     $active_link = $('#' + idname, $headerMenu);
     setUnderline($active_link);
 	}
