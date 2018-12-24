@@ -155,4 +155,4 @@ less:
   compress: true
 
 # 主题的CDN地址
-themecdn: //cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@18.12.24/
+themecdn: //cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@18.12.26/

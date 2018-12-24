@@ -30,15 +30,11 @@
 
 
 <% if (config.import && config.import.js == true) { %>
-  <%- js(theme.themecdn + 'js/app.js') %>
-  <%- js(theme.themecdn + 'js/search.js') %>
+  <%- js([theme.themecdn + 'js/app.js', theme.themecdn + 'js/search.js']) %>
 <% } else if (config.import && config.import.js && config.import.js.length > 0) { %>
-  <% (config.usecdn||[]).forEach(function(cdn_url){ %>
-    <%- js(cdn_url) %>
-  <% }) %>
+  <%- js(config.import.js) %>
 <% } else { %>
-  <%- js('js/app.js') %>
-  <%- js('js/search.js') %>
+  <%- js(['js/app.js', 'js/search.js']) %>
 <% } %>
 
 
