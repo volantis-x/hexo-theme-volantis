@@ -62,7 +62,7 @@
 
   <!-- fontawesome -->
   <% if (config.import && config.import.fontawesome == true) { %>
-  <%- css('//cdn.jsdelivr.net/gh/xaoxuu/cdn-fontawesome@5.6.3/css/all.min.css') %>
+  <%- css('https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fontawesome@5.6.3/css/all.min.css') %>
   <% } else if (config.import && config.import.fontawesome && config.import.fontawesome.length > 0){ %>
   <%- css(config.import.fontawesome) %>
   <% } else { %>
@@ -74,7 +74,7 @@
   <link href="<%= config.import.google_fonts %>" rel="stylesheet">
   <% } %>
 
-  <link href='//cdn.jsdelivr.net/npm/node-waves@0.7.5/dist/waves.min.css' rel='stylesheet'>
+  <link href='https://cdn.jsdelivr.net/npm/node-waves@0.7.5/dist/waves.min.css' rel='stylesheet'>
 
   <script>
     function setLoadingBarProgress(num) {
