@@ -5,12 +5,12 @@
         <% (page.links||[]).forEach(function(group){ %>
           <% if(group.items) { %>
             <div class='friends-group'>
-              <% if(group.type) { %>
+              <% if(group.group) { %>
                 <h2 class='friend-header'>
                   <% if (group.icon) { %>
                     <i class="<%= group.icon %> fa-fw" aria-hidden="true"></i>
                   <%} %>
-                  <%= group.type %>
+                  <%= group.group %>
                 </h2>
               <%} %>
               <div class='friend-content'>
