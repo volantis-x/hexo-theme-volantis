@@ -40,12 +40,12 @@ if (theme.widgets.music && theme.widgets.music.display) {
 
 <% if (needDisplay == true) { %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
-  <div class="aplayer" data-theme="<%= theme.widgets.music.color %>"
-    data-mode="<%= theme.widgets.music.mode %>"
-    data-server="<%= theme.widgets.music.server %>"
-    data-type="<%= theme.widgets.music.type %>"
-    data-id="<%= theme.widgets.music.id %>"
-    data-volume="<%= theme.widgets.music.volume %>">
+  <div class="aplayer" data-theme="<%= item.color %>"
+    data-mode="<%= item.mode %>"
+    data-server="<%= item.server %>"
+    data-type="<%= item.type %>"
+    data-id="<%= item.id %>"
+    data-volume="<%= item.volume %>">
   </div>
   <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
