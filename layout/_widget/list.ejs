@@ -1,0 +1,19 @@
+<ul class="entry">
+  <% (item.rows||[]).forEach(function(row){ %>
+    <li><a class="flat-box" title="<%- row.url %>" href="<%= url_for(row.url) %>">
+      <div class='name'>
+        <% if(row.img) { %>
+          <img src="<%- row.img %>">
+        <% } else if(row.avatar) { %>
+          <img src="<%- row.avatar %>" id="round">
+        <% } else { %>
+          <i class="<%= row.icon %>" aria-hidden="true"></i>
+        <% } %>
+        &nbsp;&nbsp;<%- row.name %>
+      </div>
+      <% if(row.desc) { %>
+        <div class='badge'>(<%- row.desc %>)</div>
+      <% } %>
+    </a></li>
+  <% }) %>
+</ul>

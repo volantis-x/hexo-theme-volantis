@@ -1,46 +1,44 @@
-<% if (theme.widgets){ %>
-    <% if (theme.widgets.author.enable){ %>
-        <%- partial('../_widget/author') %>
-    <% } %>
-    <% if (config.widgets){ %>
-      <% (config.widgets||[]).forEach(function(item){ %>
-        <section class='mywidget' id='<%- item.type ? item.type : '' %>'>
-          <% if(item.icon && item.title) { %>
-            <header class='header <%= theme.style %>'>
-                <div><i class="<%= item.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= item.title %></div>
-                <% if(item.more && item.more.url) { %>
-                    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="<%= url_for(item.more.url) %>">
-                      <i class="<%= item.more.icon?item.more.icon:'fas fa-question-circle' %> fa-fw"></i></a>
-                <%} %>
-            </header>
-            <%} %>
-            <div class='content <%= theme.style %>'>
-              <% if(item.type == 'list') { %>
-                <ul class="entry">
-                  <% (item.rows||[]).forEach(function(row){ %>
-                    <li><a class="flat-box" href="<%= url_for(row.url) %>"><i class="<%= row.icon %> fa-fw"></i><div class='name'><%= row.name %></div></a>
-                  <% }) %>
-                </ul>
-              <% } else { %>
-                <%- item.body %>
+<% if (config.widgets){ %>
+  <% (config.widgets||[]).forEach(function(item){ %>
+    <% if (item.enable != false){ %>
+      <%
+      let widget_name = item.widget ? item.widget : 'plain';
+      var needDisplay = true;
+      if (needDisplay == true && widget_name == 'toc') {
+        if (page.layout != 'post' || !page.content || page.toc == false || toc(page.content).length == 0) {
+          needDisplay = false;
+        }
+      }
+      if (needDisplay == true && widget_name == 'music') {
+        if (page.layout != 'post' || !page.content || page.toc == false || toc(page.content).length == 0) {
+          needDisplay = false;
+        }
+      }
+      if (needDisplay) {
+        needDisplay = ((widget_name != 'toc') || (page.layout == 'post' && page.content && page.toc!==false && toc(page.content).length > 0));
+      }
+      %>
+      <% if (needDisplay){ %>
+        <section class='<%- widget_name == 'toc' ? 'toc-wrapper' : widget_name %>'>
+          <% if (widget_name != 'author'){ %>
+            <header class='<%= theme.style %>'>
+              <div><i class="<%- item.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%- item.title %></div>
+              <% if (widget_name == 'toc') { %>
+                <div class='wrapper'><a class="s-toc rightBtn" title="固定到顶部" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+              <% } else if(item.more && item.more.url) { %>
+                <a class="rightBtn<%- item.more.animation ? ' ' + item.more.animation : '' %>" target="_blank"
+                rel="external nofollow noopener noreferrer"
+                href="<%- url_for(item.more.url) %>"
+                title="<%- item.more.url %>">
+                <i class="<%- item.more.icon?item.more.icon:'fas fa-question-circle' %> fa-fw"></i></a>
               <% } %>
-            </div>
+            </header>
+          <% } %>
+          <div class='content <%= theme.style %>'>
+            <%- partial('../_widget/' + widget_name, {item: item}) %>
+          </div>
         </section>
-      <% }) %>
+      <% } %>
     <% } %>
-    <% if (theme.widgets.categories.enable){ %>
-        <%- partial('../_widget/categories') %>
-    <% } %>
-    <% if (theme.widgets.tagcloud.enable){ %>
-        <%- partial('../_widget/tagcloud') %>
-    <% } %>
-    <% if (theme.widgets.toc.enable){ %>
-        <%- partial('../_widget/toc') %>
-    <% } %>
-    <% if (theme.widgets.music.enable){ %>
-        <%- partial('../_widget/music') %>
-    <% } %>
-    <% if (theme.widgets.links.enable){ %>
-        <%- partial('../_widget/links') %>
-    <% } %>
+  <% }) %>
 <% } %>

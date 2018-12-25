@@ -1,16 +1,7 @@
-<% if (site.tags.length){ %>
-    <section class='tagcloud'>
-        <header class="header <%= theme.style %>">
-            <div><i class="<%= theme.widgets.tagcloud.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= theme.widgets.tagcloud.title %></div>
-        </header>
-        <div class='content <%= theme.style %>'>
-            <%- tagcloud(site.tags, {
-                min_font: 14,
-                max_font: 24,
-                color: true,
-                start_color: '#999',
-                end_color: '#555',
-            }) %>
-        </div>
-    </section>
-<% } %>
+<%- tagcloud(site.tags, {
+    min_font: 14,
+    max_font: 24,
+    color: true,
+    start_color: '#999',
+    end_color: '#555',
+}) %>

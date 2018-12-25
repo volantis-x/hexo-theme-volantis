@@ -68,6 +68,11 @@ var customSearch;
 			page = page[0];
 			idname = idname.split(page)[0];
 		}
+    var index = idname.match(/index.html/);
+    if (index) {
+      index = index[0];
+      idname = idname.split(index)[0];
+    }
     $active_link = $('#' + idname, $headerMenu);
     setUnderline($active_link);
 	}

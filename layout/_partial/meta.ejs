@@ -5,13 +5,13 @@
 } %>
 <section class='meta'>
   <% if((!isPostList && post.music && post.music.enable) || (isPostList && post.music && post.music.enable == true)){ %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
     <div class="aplayer" data-mini=true
       data-mode="circulation" data-volume="0.7"
       data-server="<%= post.music.server %>"
       data-type="<%= post.music.type %>"
       data-id="<%= post.music.id %>">
     </div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
     <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
   <% } %>

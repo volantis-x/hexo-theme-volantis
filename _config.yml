@@ -1,72 +1,20 @@
-#####################################
-##      Material X                 ##
-##      version: 1.0 beta7         ##
-##      updated: 2018-12-22        ##
-#####################################
-
-# >> 主题配置写法示例 ---------------------------------------------------------------------
-# ⚠️ 注意：这里的内容需要复制到主目录到config中才有效，写在这里是为了提供参考
-
-# 支持google字体 在这里选好你需要的字体：https://fonts.google.com，然后在_defines.less中修改font_family。
-google_fonts: 'Skranji|Ubuntu' # 多个字体中间用英文竖线隔开
-
-# 导航栏，url必须以 "/" 结尾
-nav_menu:
-  - name: 主页
-    icon: fas fa-home
-    url: https://xaoxuu.com/
-  - name: 项目
-    icon: fas fa-flask
-    url: https://xaoxuu.com/projects/
-  - name: 博客
-    icon: fas fa-rss
-    url: /
-  - name: 归档
-    icon: fas fa-archive
-    url: archives/
-  - name: 关于
-    icon: fas fa-user
-    url: https://xaoxuu.com/about/
-
-# 可以添加自定义侧边栏控件，支持的参数如下：
-# widgets:
-#   - icon: fas fa-bullhorn
-#     title: 注意啦
-#     body: '本站使用 <b><a href="https://xaoxuu.com/wiki/material-x/">Material X</a></b> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～'
-#     more: # 可选，默认为空
-#       icon: fas fa-question-circle  # 可选，默认为“fas fa-question-circle”
-#       url: https://xaoxuu.com/wiki/material-x/
-
-# 友链的写法示例
-links:
-- name:
-  avatar:
-  url:
-
-# 页脚社交信息的写法示例
-social:
-  - icon: fas fa-envelope
-    url: mailto:me@xaoxuu.com
-  - icon: fab fa-github
-    url: https://github.com/xaoxuu
-  - icon: fas fa-music
-    url: https://music.163.com/#/user/home?id=63035382
-
-# 博主信息的写法示例
-avatar: https://xaoxuu.com/assets/img/avatar.jpg
-title: 博客名称
-motto: 这是我的座右铭
-
-# 百度统计key
-baidu_analytics_key: xxx
-
-
-# >> 主题配置 ---------------------------------------------------------------------
-# ✅ 这里的内容直接在下面进行修改
+##########################################################################
+############################## 主题基本信息 ################################
+theme_info:
+  name: Material X
+  version: 1.0-beta10
+  docs: https://xaoxuu.com/wiki/material-x/
+  # 主题的CDN地址，如果你的源码托管到国内CDN可以更改此链接。如需启用CDN，请在主目录的config中设置import，详见文档。
+  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@18.12.29/
+##########################################################################
+# 请务必阅读官方文档！！！
+# 请务必阅读官方文档！！！
+# 请务必阅读官方文档！！！
 
 
 # style: material    # 导航栏和标题栏背景是主题色
 style: pure        # 导航栏和标题栏背景是白色
+
 
 # 右边的小窗口，不想显示哪一项的把enable设置为false即可
 widgets:
@@ -74,8 +22,8 @@ widgets:
   author:
     enable: true
     avatar: true # 是否显示头像，如果是，需要在主目录的config中写avatar的URL
-    title: false # 是否显示博客名、头衔等等。如果是，需要在主目录的config中写title
-    motto: false # 是否显示格言座右铭等等。如果是，需要在主目录的config中写motto
+    title: true # 是否显示博客名、头衔等等。如果是，需要在主目录的config中写title
+    motto: true # 是否显示格言座右铭等等。如果是，需要在主目录的config中写motto
     social: true # 是否显示社交信息（内容同页脚的社交信息）如果是，需要在主目录的config中写social，支持icon和URL
   # 显示文章分类
   categories:
@@ -86,7 +34,7 @@ widgets:
   tagcloud:
     enable: true
     icon: fas fa-tags
-    title: "热门标签"
+    title: "热门话题"
   # 显示音乐播放器
   music:
     enable: true
@@ -153,6 +101,3 @@ search:
 # Less
 less:
   compress: true
-
-# 主题的CDN地址
-themecdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@18.12.29/

@@ -30,7 +30,7 @@
 
 
 <% if (config.import && config.import.js == true) { %>
-  <%- js([theme.themecdn + 'js/app.js', theme.themecdn + 'js/search.js']) %>
+  <%- js([theme.theme_info.cdn + 'js/app.js', theme.theme_info.cdn + 'js/search.js']) %>
 <% } else if (config.import && config.import.js && config.import.js.length > 0) { %>
   <%- js(config.import.js) %>
 <% } else { %>
