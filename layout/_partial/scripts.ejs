@@ -69,7 +69,12 @@
     <% if (config.valine){ %>
         <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
             <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-            <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/js/volantis.js"></script>
+            <% if (config.import && config.import.js == true) { %>
+              <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta3/js/volantis.min.js"></script>
+            <% } else { %>
+              <%- js('js/volantis.js') %>
+            <% } %>
+
             <script>
             var GUEST_INFO = ['nick','mail','link'];
             var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){

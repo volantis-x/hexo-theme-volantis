@@ -4,9 +4,6 @@
     border-radius: @border_radius;
     position: sticky;
     top: @height_navbar + 1*@gap;
-    // bottom: @gap;
-    // max-height: ~"calc(100% - 2 * @{gap} - @{height_navbar})";
-    // max-height: 600px;
     .enable-trans();
     header{
         position: sticky;
@@ -43,18 +40,22 @@
             }
         }
     }
-
+    .enable-trans();
     @media(max-width: @on_phone){
         position: fixed;
-        width: ~"calc(100% - 2 * @{gap})";
+        // width: ~"calc(100% - 2 * @{gap})";
         top: @height_navbar;
-        left: @gap;
         box-shadow: @boxshadow_card_raised;
-        display: none;
-        &.active{
-            display: block;
+        visibility: hidden;
+        .rightBtn{
+          display: none;
         }
-
+        transform: scale(0,0);
+        transform-origin: right top;
+        &.active{
+            visibility: visible;
+            transform: scale(1,1);
+        }
     }
 
     a {

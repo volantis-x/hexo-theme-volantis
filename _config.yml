@@ -5,7 +5,7 @@ theme_info:
   version: 1.0-beta10
   docs: https://xaoxuu.com/wiki/material-x/
   # 主题的CDN地址，如果你的源码托管到国内CDN可以更改此链接。如需启用CDN，请在主目录的config中设置import，详见文档。
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@18.12.30/
+  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@18.12.31/
 ##########################################################################
 # 请务必阅读官方文档！！！
 # 请务必阅读官方文档！！！

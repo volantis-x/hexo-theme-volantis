@@ -301,14 +301,14 @@
     position: fixed;
     top: @height_navbar + @gap;
     right: 0;
-    width: ~"calc(100% - 2*@{gap})";
     z-index:9999 + 1;
     line-height: 2 * @gap;
     background: white;
     border-right: 0;
     box-shadow: @boxshadow_card_raised;
     border-radius: @border_radius;
-    transform: translate3d(~"calc(100% + 2*@{gap})", -0, 0);
+    transform: translate3d(-40px, -40px, 0) scale(0,0);
+    transform-origin: right top;
     .enable-trans();
     &:hover {
         box-shadow: @boxshadow_card_raised;
@@ -324,15 +324,11 @@
             position: relative;
             display: block;
             color: @black;
-            // font-size: 0.8125em;
             padding: 2px 20px;
-            border-left: 2px solid transparent;
-            &:hover{
+            border-left: 4px solid transparent;
+            &:hover,&.active{
                 border-left: 4px solid @theme_main;
                 background: fade(@theme_main, 10%);
-            }
-            &.active{
-              border-left: 4px solid @theme_main;
             }
         }
     }
