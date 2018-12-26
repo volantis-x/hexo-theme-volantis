@@ -5,13 +5,17 @@
         <img class='avatar' src='<%- url_for(item.avatar) %>'/>
       </div>
     <%} %>
-    <% if (item.title || item.body) { %>
+    <% if (item.title || item.body || item.jinrishici) { %>
       <div class='text'>
         <% if (item.title){ %>
           <h2><%- item.title %></h2>
         <% } %>
         <% if (item.body){ %>
           <%- markdown(item.body) %>
+        <% } %>
+        <% if (item.jinrishici){ %>
+          <p><span id="jinrishici-sentence"><%- config.title %></span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
         <% } %>
       </div>
     <% } %>
@@ -25,5 +29,4 @@
       </div>
     <% } %>
   </div>
-
 </section>
