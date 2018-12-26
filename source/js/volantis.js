@@ -678,10 +678,6 @@ function(e, t) {
 						alert('请输入昵称！');
 						return void _.nick.focus();
 					}
-					if (h.mail == "") {
-						alert('请输入邮箱！');
-						return void _.mail.focus();
-					}
 					if ("" == h.comment) {
 						alert('请输入内容！');
 						return void _.comment.focus();
@@ -1779,44 +1775,61 @@ function(e, t) {
 		}
 		e.exports = n
 	}, function(e, t) {
+    function aru(index){
+      return "<img class='emoji aru' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/aru/" + index + ".png'>";
+    }
+    function tieba(str){
+      return "<img class='emoji tieba' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/tieba/" + str + ".png'>";
+    }
+    function qq(str) {
+      return "<img class='emoji qq' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/qq/" + str + ".gif'>";
+    }
 		e.exports = {
-			aru1: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/1.png'>",
-			aru3: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/3.png'>",
-			aru7: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/7.png'>",
-			aru9: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/9.png'>",
-			aru12: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/12.png'>",
-			aru15: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/15.png'>",
-			aru19: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/19.png'>",
-			aru22: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/22.png'>",
-			aru39: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/39.png'>",
-			aru40: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/40.png'>",
-			aru46: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/46.png'>",
-			aru51: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/51.png'>",
-			aru53: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/53.png'>",
-			aru59: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/59.png'>",
-			aru77: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/77.png'>",
-			aru151: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/aru/151.png'>",
-      贴吧捂嘴笑: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/tieba/捂嘴笑.png'>",
-      贴吧乖: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/tieba/乖.png'>",
-      贴吧OK: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/tieba/OK.png'>",
-      贴吧太开心: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/tieba/太开心.png'>",
-      贴吧滑稽: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/tieba/滑稽.png'>",
-      贴吧泪: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/tieba/泪.png'>",
-      贴吧真棒: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/tieba/真棒.png'>",
-      贴吧喷: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/tieba/喷.png'>",
-			贴吧疑问: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/tieba/疑问.png'>",
-			贴吧胜利: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/tieba/胜利.png'>",
-			qqOK: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/OK.gif'>",
-			qq嗅大了: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/嗅大了.gif'>",
-			qq尴尬: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/尴尬.gif'>",
-			qq强: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/强.gif'>",
-			qq得意: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/得意.gif'>",
-			qq憨笑: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/憨笑.gif'>",
-			qq抱拳: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/抱拳.gif'>",
-			qq握手: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/握手.gif'>",
-			qq疑问: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/疑问.gif'>",
-			qq阴险: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/阴险.gif'>",
-			qq鼓掌: "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0-beta2/img/qq/鼓掌.gif'>",
+      aru151: aru(151),
+      贴吧what: tieba('what'),
+      贴吧乖: tieba('乖'),
+      贴吧喷: tieba('喷'),
+      贴吧太开心: tieba('太开心'),
+      贴吧委屈: tieba('委屈'),
+      贴吧小乖: tieba('小乖'),
+      贴吧捂嘴笑: tieba('捂嘴笑'),
+      贴吧泪: tieba('泪'),
+      贴吧滑稽: tieba('滑稽'),
+      贴吧爱心: tieba('爱心'),
+      贴吧玫瑰: tieba('玫瑰'),
+      贴吧真棒: tieba('真棒'),
+			贴吧疑问: tieba('疑问'),
+			qqOK: qq('OK'),
+			qq亲亲: qq('亲亲'),
+			qq便便: qq('便便'),
+			qq偷笑: qq('偷笑'),
+			qq冷汗: qq('冷汗'),
+			qq发呆: qq('发呆'),
+			qq发怒: qq('发怒'),
+			qq可怜: qq('可怜'),
+			qq可爱: qq('可爱'),
+			qq左哼哼: qq('左哼哼'),
+			qq右哼哼: qq('右哼哼'),
+			qq吓: qq('吓'),
+			qq呲牙: qq('呲牙'),
+			qq嗅大了: qq('嗅大了'),
+			qq坏笑: qq('坏笑'),
+			qq奋斗: qq('奋斗'),
+			qq委屈: qq('委屈'),
+			qq害羞: qq('害羞'),
+			qq尴尬: qq('尴尬'),
+			qq强: qq('强'),
+			qq得意: qq('得意'),
+			qq快哭了: qq('快哭了'),
+			qq惊恐: qq('惊恐'),
+			qq憨笑: qq('憨笑'),
+			qq抓狂: qq('抓狂'),
+			qq抱拳: qq('抱拳'),
+			qq握手: qq('握手'),
+			qq晕: qq('晕'),
+			qq疑问: qq('疑问'),
+			qq阴险: qq('阴险'),
+			qq鼓掌: qq('鼓掌'),
 
 			grinning: "😀",
 			smiley: "😃",

@@ -2,6 +2,8 @@
 
 一个简约的卡片式Hexo博客主题。
 
+[![](https://data.jsdelivr.com/v1/package/gh/xaoxuu/cdn-material-x/badge)](https://www.jsdelivr.com/package/gh/xaoxuu/cdn-material-x)
+
 
 
 ## 示例

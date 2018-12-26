@@ -60,21 +60,13 @@
   <%- css('style.css') %>
   <% } %>
 
-  <!-- fontawesome -->
-  <% if (config.import && config.import.fontawesome == true) { %>
-  <%- css('https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fontawesome@5.6.3/css/all.min.css') %>
-  <% } else if (config.import && config.import.fontawesome && config.import.fontawesome.length > 0){ %>
-  <%- css(config.import.fontawesome) %>
-  <% } else { %>
-  <%- css('fontawesome-free-5.6.3-web/css/all.min.css') %>
-  <% } %>
-
   <% if (config.import && config.import.google_fonts && config.import.google_fonts.length > 0){ %>
   <!-- google_fonts -->
   <link href="<%= config.import.google_fonts %>" rel="stylesheet">
   <% } %>
 
-  <link href='https://cdn.jsdelivr.net/npm/node-waves@0.7.5/dist/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
   <script>
     function setLoadingBarProgress(num) {
