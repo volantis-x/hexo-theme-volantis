@@ -1,7 +1,14 @@
-<%- tagcloud(site.tags, {
-    min_font: 14,
-    max_font: 24,
-    color: true,
-    start_color: '#999',
-    end_color: '#555',
-}) %>
+<% if (site.tags.length){ %>
+  <section class='<%- item.widget %>'>
+    <%- partial('header', {item: item, defIcon: theme.widgets.tagcloud.icon, defTitle: theme.widgets.tagcloud.title}) %>
+    <div class='content <%= theme.style %>'>
+      <%- tagcloud(site.tags, {
+          min_font: 14,
+          max_font: 24,
+          color: true,
+          start_color: '#999',
+          end_color: '#555',
+      }) %>
+    </div>
+  </section>
+<% } %>

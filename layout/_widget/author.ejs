@@ -1,24 +1,29 @@
-<% if(item.avatar) { %>
-  <div class='avatar'>
-    <img class='avatar' src='<%- url_for(item.avatar) %>'/>
-  </div>
-<%} %>
-<% if (item.title || item.body) { %>
-  <div class='text'>
-    <% if (item.title){ %>
-      <h2><%- item.title %></h2>
+<section class='<%- item.widget %>'>
+  <div class='content <%= theme.style %>'>
+    <% if(item.avatar) { %>
+      <div class='avatar'>
+        <img class='avatar' src='<%- url_for(item.avatar) %>'/>
+      </div>
+    <%} %>
+    <% if (item.title || item.body) { %>
+      <div class='text'>
+        <% if (item.title){ %>
+          <h2><%- item.title %></h2>
+        <% } %>
+        <% if (item.body){ %>
+          <%- markdown(item.body) %>
+        <% } %>
+      </div>
     <% } %>
-    <% if (item.body){ %>
-      <%- markdown(item.body) %>
+    <% if (item.social == true && config.social) { %>
+      <div class="social-wrapper">
+        <% (config.social||[]).forEach(function(value){ %>
+          <% if (value.url && value.icon) { %>
+            <a href="<%- url_for(value.url) %>" class="social flat-btn" target="_blank" rel="external"><i class="social <%- value.icon %>" aria-hidden="true"></i></a>
+          <%}%>
+        <%})%>
+      </div>
     <% } %>
   </div>
-<% } %>
-<% if (item.social == true && config.social) { %>
-  <div class="social-wrapper">
-    <% (config.social||[]).forEach(function(value){ %>
-      <% if (value.url && value.icon) { %>
-        <a href="<%- url_for(value.url) %>" class="social flat-btn" target="_blank" rel="external"><i class="social <%- value.icon %>" aria-hidden="true"></i></a>
-      <%}%>
-    <%})%>
-  </div>
-<% } %>
+
+</section>

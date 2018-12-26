@@ -5,15 +5,10 @@
 } %>
 <section class='meta'>
   <% if((!isPostList && post.music && post.music.enable) || (isPostList && post.music && post.music.enable == true)){ %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
-    <div class="aplayer" data-mini=true
-      data-mode="circulation" data-volume="0.7"
-      data-server="<%= post.music.server %>"
-      data-type="<%= post.music.type %>"
-      data-id="<%= post.music.id %>">
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+    <%- partial('../_third-party/aplayer',
+    {aplayer_theme: '', aplayer_mini: true, aplayer_mode: 'circulation',
+    aplayer_server: post.music.server, aplayer_type: post.music.type, aplayer_id: post.music.id,
+    aplayer_volume: '0.7', aplayer_autoplay: false }) %>
   <% } %>
   <div class="meta" id="header-meta">
     <% if(isPostList){ %>

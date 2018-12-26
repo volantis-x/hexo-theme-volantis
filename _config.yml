@@ -23,7 +23,7 @@ widgets:
     title: "博文分类"
   # 文章标签的默认配置
   tagcloud:
-    icon: fas fa-tags
+    icon: fas fa-fire
     title: "热门话题"
   # 文章目录的默认配置
   toc:

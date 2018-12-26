@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+<div class="aplayer"
+  data-theme="<%- aplayer_theme %>"
+  <%if(aplayer_mini){%>data-mini=true <%}%>
+  <%if(aplayer_autoplay){%>data-autoplay=true <%}%>
+  data-mode="<%- aplayer_mode %>"
+  data-server="<%= aplayer_server %>"
+  data-type="<%= aplayer_type %>"
+  data-id="<%= aplayer_id %>"
+  data-volume="<%= aplayer_volume %>">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>

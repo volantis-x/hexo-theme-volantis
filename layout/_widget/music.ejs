@@ -39,14 +39,13 @@ if (theme.widgets.music && theme.widgets.music.display) {
 %>
 
 <% if (needDisplay == true) { %>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
-  <div class="aplayer" data-theme="<%= item.color %>"
-    data-mode="<%= item.mode %>"
-    data-server="<%= item.server %>"
-    data-type="<%= item.type %>"
-    data-id="<%= item.id %>"
-    data-volume="<%= item.volume %>">
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+  <section class='<%- item.widget %>'>
+    <%- partial('header', {item: item, defIcon: '', defTitle: ''}) %>
+    <div class='content <%= theme.style %>'>
+      <%- partial('../_third-party/aplayer',
+      {aplayer_theme: item.color, aplayer_mini: false, aplayer_mode: item.mode,
+      aplayer_server: item.server, aplayer_type: item.type, aplayer_id: item.id,
+      aplayer_volume: item.volume, aplayer_autoplay: item.autoplay?item.autoplay:false }) %>
+    </div>
+  </section>
 <% } %>

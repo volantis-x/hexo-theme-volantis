@@ -1,43 +1,12 @@
 <% if (config.widgets){ %>
+  <%
+  let supportWidgets = ['author', 'category', 'list', 'music', 'tagcloud', 'toc', 'plain'];
+  %>
   <% (config.widgets||[]).forEach(function(item){ %>
     <% if (item.enable != false){ %>
-      <%
-      let widget_name = item.widget ? item.widget : 'plain';
-      var needDisplay = true;
-      if (needDisplay == true && widget_name == 'toc') {
-        if (page.layout != 'post' || !page.content || page.toc == false || toc(page.content).length == 0) {
-          needDisplay = false;
-        }
-      }
-      if (needDisplay == true && widget_name == 'music') {
-        if (page.layout != 'post' || !page.content || page.toc == false || toc(page.content).length == 0) {
-          needDisplay = false;
-        }
-      }
-      if (needDisplay) {
-        needDisplay = ((widget_name != 'toc') || (page.layout == 'post' && page.content && page.toc!==false && toc(page.content).length > 0));
-      }
-      %>
-      <% if (needDisplay){ %>
-        <section class='<%- widget_name == 'toc' ? 'toc-wrapper' : widget_name %>'>
-          <% if (widget_name != 'author'){ %>
-            <header class='<%= theme.style %>'>
-              <div><i class="<%- item.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%- item.title %></div>
-              <% if (widget_name == 'toc') { %>
-                <div class='wrapper'><a class="s-toc rightBtn" title="固定到顶部" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
-              <% } else if(item.more && item.more.url) { %>
-                <a class="rightBtn<%- item.more.animate ? ' ' + item.more.animate : '' %>" target="_blank"
-                rel="external nofollow noopener noreferrer"
-                href="<%- url_for(item.more.url) %>"
-                title="<%- item.more.url %>">
-                <i class="<%- item.more.icon?item.more.icon:'fas fa-question-circle' %> fa-fw"></i></a>
-              <% } %>
-            </header>
-          <% } %>
-          <div class='content <%= theme.style %>'>
-            <%- partial('../_widget/' + widget_name, {item: item}) %>
-          </div>
-        </section>
+      <% let widget_name = item.widget ? item.widget : 'plain'; %>
+      <% if (supportWidgets.indexOf(widget_name) > -1){ %>
+        <%- partial('../_widget/' + item.widget, {item: item}) %>
       <% } %>
     <% } %>
   <% }) %>

@@ -1,7 +1,12 @@
 <% if (site.categories.length){ %>
-  <ul class="entry">
-    <% site.categories.sort('name').each(function(category){ %>
-      <li><a class="flat-box" title="<%- url_for(category.path) %>" href="<%- url_for(category.path) %>"><div class='name'><%- category.name %></div><div class='badge'>(共<%- category.posts.length %>篇)</div></a></li>
-    <% }) %>
-  </ul>
+  <section class='<%- item.widget %>'>
+    <%- partial('header', {item: item, defIcon: theme.widgets.category.icon, defTitle: theme.widgets.category.title}) %>
+    <div class='content <%= theme.style %>'>
+      <ul class="entry">
+        <% site.categories.sort('name').each(function(category){ %>
+          <li><a class="flat-box" title="<%- url_for(category.path) %>" href="<%- url_for(category.path) %>"><div class='name'><%- category.name %></div><div class='badge'>(共<%- category.posts.length %>篇)</div></a></li>
+        <% }) %>
+      </ul>
+    </div>
+  </section>
 <% } %>

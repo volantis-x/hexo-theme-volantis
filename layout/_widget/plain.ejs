@@ -1,1 +1,6 @@
-<%- markdown(item.body) %>
+<section class='<%- item.widget?item.widget:'plain' %>'>
+  <%- partial('header', {item: item, defIcon: '', defTitle: ''}) %>
+  <div class='content <%= theme.style %>'>
+    <%- markdown(item.body) %>
+  </div>
+</section>
