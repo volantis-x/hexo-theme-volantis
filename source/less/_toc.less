@@ -1,6 +1,6 @@
 .l_side .toc-wrapper{
     z-index: 1;
-    overflow: auto;
+    overflow: hidden;
     border-radius: @border_radius;
     position: sticky;
     top: @height_navbar + 1*@gap;
@@ -12,6 +12,8 @@
     }
     .content{
         padding: @gap/2 0;
+        max-height: 500px;
+        overflow: auto;
         &.pure{
           padding-top: 0; // 适合白色导航栏背景
         }
@@ -43,6 +45,7 @@
     .enable-trans();
     @media(max-width: @on_phone){
         position: fixed;
+        max-height: 1000px;
         // width: ~"calc(100% - 2 * @{gap})";
         top: @height_navbar;
         box-shadow: @boxshadow_card_raised;
@@ -97,6 +100,7 @@
 
             }
             width: auto;
+            text-align: left;
             // &:extend(.txt-ellipsis);
         }
     }
