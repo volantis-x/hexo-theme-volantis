@@ -53,6 +53,11 @@
       }, false)
     </script>
   <% } %>
+  <% if (theme.services.share == true && config.mob && config.mob.appkey) { %>
+    <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=<%- config.mob.appkey %>"></script>
+  <% } %>
+
+
   <% if (theme.services.leancloud_visitors == true) { %>
     <!-- leancloud_visitors -->
     <% if (config.leancloud_visitors && config.leancloud_visitors.app_id && config.leancloud_visitors.app_key) { %>
