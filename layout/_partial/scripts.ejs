@@ -11,24 +11,6 @@
   }, false)
 </script>
 
-<% if (theme.search && theme.search.enable) { %>
-    <script>
-        var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google_api_key %>";
-        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google_engine_id %>";
-        var ALGOLIA_API_KEY = "<%- theme.search.algolia_api_key %>";
-        var ALGOLIA_APP_ID = "<%- theme.search.algolia_app_id %>";
-        var ALGOLIA_INDEX_NAME = "<%- theme.search.algolia_index_name %>";
-        var AZURE_SERVICE_NAME = "<%- theme.search.azure_service_name %>";
-        var AZURE_INDEX_NAME = "<%- theme.search.azure_index_name %>";
-        var AZURE_QUERY_KEY = "<%- theme.search.azure_query_key %>";
-        var BAIDU_API_ID = "<%- theme.search.baidu_api_id %>";
-        var SEARCH_SERVICE = "<%- theme.search.service%>" || "hexo";
-        var ROOT = "<%- config.root %>"||"/";
-        if(!ROOT.endsWith('/'))ROOT += '/';
-    </script>
-<% } %>
-
-
 <% if (config.import && config.import.js == true) { %>
   <%- js([theme.theme_info.cdn + 'js/app.js', theme.theme_info.cdn + 'js/search.js']) %>
 <% } else if (config.import && config.import.js && config.import.js.length > 0) { %>
@@ -37,71 +19,84 @@
   <%- js(['js/app.js', 'js/search.js']) %>
 <% } %>
 
-
-<% if (page.comments) { %>
-    <% if (config.disqus_shortname){ %>
-        <script>
-            var disqus_shortname = '<%= config.disqus_shortname %>';
-            <% if (page.permalink){ %>
-                var disqus_url = '<%= page.permalink %>';
-            <% } %>
-            (function(){
-                var dsq = document.createElement('script');
-                dsq.type = 'text/javascript';
-                dsq.async = true;
-                dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-    <% } %>
-    <% if (config.livere_uid){ %>
-        <script type="text/javascript">
-           (function(d, s) {
-               var j, e = d.getElementsByTagName(s)[0];
-               if (typeof LivereTower === 'function') { return; }
-               j = d.createElement(s);
-               j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-               j.async = true;
-               e.parentNode.insertBefore(j, e);
-           })(document, 'script');
-        </script>
-    <% } %>
-    <% if (config.valine){ %>
-        <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
-            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-            <% if (config.import && config.import.js == true) { %>
-              <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/js/volantis.min.js"></script>
-            <% } else { %>
-              <%- js('js/volantis.js') %>
-            <% } %>
-            <script>
-            var GUEST_INFO = ['nick','mail','link'];
-            var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){
-                return GUEST_INFO.indexOf(item) > -1
-            });
-            var notify = '<%= config.valine.notify %>' == true;
-            var verify = '<%= config.valine.verify %>' == true;
-            var valine = new Valine();
-            valine.init({
-                el: '#valine_container',
-                notify: notify,
-                verify: verify,
-                guest_info: guest_info,
-                appId: "<%= config.valine.app_id %>",
-                appKey: "<%= config.valine.app_key %>",
-                placeholder: "<%= config.valine.placeholder %>",
-                pageSize:'<%= config.valine.pageSize %>',
-                avatar:'<%= config.valine.avatar %>',
-                lang:'<%= config.valine.lang %>',
-                highlight:'<%= config.valine.highlight %>'
-            })
-            </script>
-
-        <% } %>
-    <% } %>
+<% if (theme.search && theme.search.enable) { %>
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google_api_key %>";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google_engine_id %>";
+    var ALGOLIA_API_KEY = "<%- theme.search.algolia_api_key %>";
+    var ALGOLIA_APP_ID = "<%- theme.search.algolia_app_id %>";
+    var ALGOLIA_INDEX_NAME = "<%- theme.search.algolia_index_name %>";
+    var AZURE_SERVICE_NAME = "<%- theme.search.azure_service_name %>";
+    var AZURE_INDEX_NAME = "<%- theme.search.azure_index_name %>";
+    var AZURE_QUERY_KEY = "<%- theme.search.azure_query_key %>";
+    var BAIDU_API_ID = "<%- theme.search.baidu_api_id %>";
+    var SEARCH_SERVICE = "<%- theme.search.service%>" || "hexo";
+    var ROOT = "<%- config.root %>"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
 <% } %>
 
-
+<% if ((page.layout == 'post' && page.comments != false) || page.comments == true) { %>
+  <% if (config.disqus_shortname){ %>
+    <script>
+      var disqus_shortname = '<%= config.disqus_shortname %>';
+      <% if (page.permalink){ %>
+        var disqus_url = '<%= page.permalink %>';
+      <% } %>
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  <% } %>
+  <% if (config.livere_uid){ %>
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  <% } %>
+  <% if (config.valine){ %>
+    <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
+      <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+      <% if (config.import && config.import.js == true) { %>
+        <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/js/volantis.min.js"></script>
+      <% } else { %>
+        <%- js('js/volantis.js') %>
+      <% } %>
+      <script>
+      var GUEST_INFO = ['nick','mail','link'];
+      var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){
+        return GUEST_INFO.indexOf(item) > -1
+      });
+      var notify = '<%= config.valine.notify %>' == true;
+      var verify = '<%= config.valine.verify %>' == true;
+      var valine = new Valine();
+      valine.init({
+        el: '#valine_container',
+        notify: notify,
+        verify: verify,
+        guest_info: guest_info,
+        appId: "<%= config.valine.app_id %>",
+        appKey: "<%= config.valine.app_key %>",
+        placeholder: "<%= config.valine.placeholder %>",
+        pageSize:'<%= config.valine.pageSize %>',
+        avatar:'<%= config.valine.avatar %>',
+        lang:'<%= config.valine.lang %>',
+        highlight:'<%= config.valine.highlight %>'
+      })
+      </script>
+    <% } %>
+  <% } %>
+<% } %>
 
 <!-- leancloud_visitors -->
 <% if (config.leancloud_visitors && config.leancloud_visitors.app_id && config.leancloud_visitors.app_key) { %>

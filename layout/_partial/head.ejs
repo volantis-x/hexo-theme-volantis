@@ -36,18 +36,21 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <!-- link -->
-  <% if (config.import && config.import.link){ %>
-  <% (config.import.link||[]).forEach(function(item){ %>
-  <link rel="<%= item.rel %>" <% if (item.type){ %>type="<%= item.type %>"<% } %> <% if (item.sizes){ %>sizes="<%= item.sizes %>"<% } %> href="<%- item.href %>" <% if (item.color){ %>color="<%= item.color %>"<% } %>>
-  <% }) %>
-  <% } %>
-
   <!-- meta -->
   <% if (config.import && config.import.meta){ %>
   <% (config.import.meta||[]).forEach(function(item){ %>
-  <meta name="<%= item.name %>" href="<%- item.content %>">
+  <meta name="<%= item.name %>" content="<%- item.content %>">
+  <% }) %>
+  <% } %>
+  <!-- link -->
+  <% if (config.import && config.import.link){ %>
+  <% (config.import.link||[]).forEach(function(item){ %>
+  <link rel="<%= item.rel %>" href="<%- item.href %>"
+  <% if (item.type){ %> type="<%= item.type %>"<% } %>
+  <% if (item.sizes){ %> sizes="<%= item.sizes %>"<% } %>
+  <% if (item.media){ %> media="<%= item.media %>"<% } %>
+  <% if (item.hreflang){ %> hreflang="<%= item.hreflang %>"<% } %>
+  <% if (item.color){ %> color="<%= item.color %>"<% } %>>
   <% }) %>
   <% } %>
 
@@ -58,11 +61,6 @@
   <%- css(config.import.style) %>
   <% } else { %>
   <%- css('style.css') %>
-  <% } %>
-
-  <% if (config.import && config.import.google_fonts && config.import.google_fonts.length > 0){ %>
-  <!-- google_fonts -->
-  <link href="<%= config.import.google_fonts %>" rel="stylesheet">
   <% } %>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
