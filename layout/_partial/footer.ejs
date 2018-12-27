@@ -1,16 +1,15 @@
 <footer id="footer" class="clearfix">
-    <% if (config.social) { %>
-        <div class="social-wrapper">
-          <% (config.social||[]).forEach(function(value){ %>
-              <% if (value.url && value.icon) { %>
-                  <a href="<%= url_for(value.url) %>" class="social <%- value.icon %> flat-btn" target="_blank" rel="external"></a>
-              <%}%>
-          <%})%>
-        </div>
-    <%}%>
-    <br>
-    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
-    <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，
-		总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  <% if (config.social) { %>
+    <div class="social-wrapper">
+      <% (config.social||[]).forEach(function(value){ %>
+        <% if (value.url && value.icon) { %>
+          <a href="<%= url_for(value.url) %>" class="social <%- value.icon %> flat-btn" target="_blank" rel="external"></a>
+        <%}%>
+      <%})%>
     </div>
+  <%}%>
+  <br>
+  <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题<% if (theme.services && theme.services.busuanzi == true) { %>，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次<% } %>。
+  </div>
 </footer>

@@ -1,24 +1,4 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
-<!-- 访问统计 -->
-<script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
-<!-- fastclick -->
-<script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    FastClick.attach(document.body)
-  }, false)
-</script>
-
-<% if (config.import && config.import.js == true) { %>
-  <%- js([theme.theme_info.cdn + 'js/app.js', theme.theme_info.cdn + 'js/search.js']) %>
-<% } else if (config.import && config.import.js && config.import.js.length > 0) { %>
-  <%- js(config.import.js) %>
-<% } else { %>
-  <%- js(['js/app.js', 'js/search.js']) %>
-<% } %>
-
 <% if (theme.search && theme.search.enable) { %>
   <script>
     var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google_api_key %>";
@@ -35,172 +15,230 @@
     if(!ROOT.endsWith('/'))ROOT += '/';
   </script>
 <% } %>
-
-<% if ((page.layout == 'post' && page.comments != false) || page.comments == true) { %>
-  <% if (config.disqus_shortname){ %>
-    <script>
-      var disqus_shortname = '<%= config.disqus_shortname %>';
-      <% if (page.permalink){ %>
-        var disqus_url = '<%= page.permalink %>';
-      <% } %>
-      (function(){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-    </script>
-  <% } %>
-  <% if (config.livere_uid){ %>
+<% if (theme.services) { %>
+  <% if (theme.services.scrollreveal == true) { %>
+    <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
     <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
     </script>
   <% } %>
-  <% if (config.valine){ %>
-    <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
-      <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-      <% if (config.import && config.import.js == true) { %>
-        <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/js/volantis.min.js"></script>
-      <% } else { %>
-        <%- js('js/volantis.js') %>
-      <% } %>
-      <script>
-      var GUEST_INFO = ['nick','mail','link'];
-      var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){
-        return GUEST_INFO.indexOf(item) > -1
+  <% if (theme.services.nodewaves == true) { %>
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
       });
-      var notify = '<%= config.valine.notify %>' == true;
-      var verify = '<%= config.valine.verify %>' == true;
-      var valine = new Valine();
-      valine.init({
-        el: '#valine_container',
-        notify: notify,
-        verify: verify,
-        guest_info: guest_info,
-        appId: "<%= config.valine.app_id %>",
-        appKey: "<%= config.valine.app_key %>",
-        placeholder: "<%= config.valine.placeholder %>",
-        pageSize:'<%= config.valine.pageSize %>',
-        avatar:'<%= config.valine.avatar %>',
-        lang:'<%= config.valine.lang %>',
-        highlight:'<%= config.valine.highlight %>'
-      })
-      </script>
+    </script>
+  <% } %>
+  <% if (theme.services.busuanzi == true) { %>
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  <% } %>
+  <% if (theme.services.fastclick == true) { %>
+    <!-- fastclick -->
+    <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body)
+      }, false)
+    </script>
+  <% } %>
+  <% if (theme.services.leancloud_visitors == true) { %>
+    <!-- leancloud_visitors -->
+    <% if (config.leancloud_visitors && config.leancloud_visitors.app_id && config.leancloud_visitors.app_key) { %>
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-leancloud@18.12.24/js/av-core-mini-0.6.4.js"></script>
+      <script>AV.initialize("<%= config.leancloud_visitors.app_id %>", "<%= config.leancloud_visitors.app_key %>");</script>
+      <script>
+      function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        var entries = [];
+        var $visitors = $(".leancloud_visitors");
+
+        $visitors.each(function () {
+          entries.push( $(this).attr("id").trim() );
+        });
+
+        query.containedIn('url', entries);
+        query.find()
+          .done(function (results) {
+            var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+            if (results.length === 0) {
+              $visitors.find(COUNT_CONTAINER_REF).text(0);
+              return;
+            }
+
+            for (var i = 0; i < results.length; i++) {
+              var item = results[i];
+              var url = item.get('url');
+              var time = item.get('time');
+              var element = document.getElementById(url);
+
+              $(element).find(COUNT_CONTAINER_REF).text(time);
+            }
+            for(var i = 0; i < entries.length; i++) {
+              var url = entries[i];
+              var element = document.getElementById(url);
+              var countSpan = $(element).find(COUNT_CONTAINER_REF);
+              if( countSpan.text() == '') {
+                countSpan.text(0);
+              }
+            }
+          })
+          .fail(function (object, error) {
+            console.log("Error: " + error.code + " " + error.message);
+          });
+      }
+
+      function addCount(Counter) {
+        var $visitors = $(".leancloud_visitors");
+        var url = $visitors.attr('id').trim();
+        var title = $visitors.attr('data-flag-title').trim();
+        var query = new AV.Query(Counter);
+
+        query.equalTo("url", url);
+        query.find({
+          success: function(results) {
+            if (results.length > 0) {
+              var counter = results[0];
+              counter.fetchWhenSave(true);
+              counter.increment("time");
+              counter.save(null, {
+                success: function(counter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                },
+                error: function(counter, error) {
+                  console.log('Failed to save Visitor num, with error message: ' + error.message);
+                }
+              });
+            } else {
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            }
+          },
+          error: function(error) {
+            console.log('Error:' + error.code + " " + error.message);
+          }
+        });
+      }
+
+      $(function() {
+        var Counter = AV.Object.extend("Counter");
+        if ($('.leancloud_visitors').length == 1) {
+          addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+          showTime(Counter);
+        }
+      });
+    </script>
     <% } %>
+  <% } %>
+  <%
+    var displayComments = false;
+    if (page && theme.services) {
+      if ((config.disqus_shortname || config.livere_shortname || config.valine) && theme.services.comments == true && page.comments != false) {
+        displayComments = true;
+      }
+    }
+  %>
+  <% if (displayComments == true) { %>
+    <% if ((page.layout == 'post' && page.comments != false) || page.comments == true) { %>
+      <% if (config.disqus_shortname){ %>
+        <script>
+          var disqus_shortname = '<%= config.disqus_shortname %>';
+          <% if (page.permalink){ %>
+            var disqus_url = '<%= page.permalink %>';
+          <% } %>
+          (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+      <% } %>
+      <% if (config.livere_uid){ %>
+        <script type="text/javascript">
+          (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+            if (typeof LivereTower === 'function') { return; }
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+            e.parentNode.insertBefore(j, e);
+          })(document, 'script');
+        </script>
+      <% } %>
+      <% if (config.valine){ %>
+        <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <% if (theme.services && theme.services.cdn == true) { %>
+            <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/js/volantis.min.js"></script>
+          <% } else { %>
+            <%- js('js/volantis.js') %>
+          <% } %>
+          <script>
+          var GUEST_INFO = ['nick','mail','link'];
+          var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+          });
+          var notify = '<%= config.valine.notify %>' == true;
+          var verify = '<%= config.valine.verify %>' == true;
+          var valine = new Valine();
+          valine.init({
+            el: '#valine_container',
+            notify: notify,
+            verify: verify,
+            guest_info: guest_info,
+            appId: "<%= config.valine.app_id %>",
+            appKey: "<%= config.valine.app_key %>",
+            placeholder: "<%= config.valine.placeholder %>",
+            pageSize:'<%= config.valine.pageSize %>',
+            avatar:'<%= config.valine.avatar %>',
+            lang:'<%= config.valine.lang %>',
+            highlight:'<%= config.valine.highlight %>'
+          })
+          </script>
+        <% } %>
+      <% } %>
+    <% } %>
+  <% } %>
+  <% if (theme.services.cdn == true) { %>
+    <%- js([theme.info.cdn + 'js/app.js', theme.info.cdn + 'js/search.js']) %>
+  <% } else { %>
+    <%- js(['js/app.js', 'js/search.js']) %>
   <% } %>
 <% } %>
 
-<!-- leancloud_visitors -->
-<% if (config.leancloud_visitors && config.leancloud_visitors.app_id && config.leancloud_visitors.app_key) { %>
-  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-leancloud@18.12.24/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("<%= config.leancloud_visitors.app_id %>", "<%= config.leancloud_visitors.app_key %>");</script>
-  <script>
-  function showTime(Counter) {
-    var query = new AV.Query(Counter);
-    var entries = [];
-    var $visitors = $(".leancloud_visitors");
-
-    $visitors.each(function () {
-      entries.push( $(this).attr("id").trim() );
-    });
-
-    query.containedIn('url', entries);
-    query.find()
-      .done(function (results) {
-        var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-        if (results.length === 0) {
-          $visitors.find(COUNT_CONTAINER_REF).text(0);
-          return;
-        }
-
-        for (var i = 0; i < results.length; i++) {
-          var item = results[i];
-          var url = item.get('url');
-          var time = item.get('time');
-          var element = document.getElementById(url);
-
-          $(element).find(COUNT_CONTAINER_REF).text(time);
-        }
-        for(var i = 0; i < entries.length; i++) {
-          var url = entries[i];
-          var element = document.getElementById(url);
-          var countSpan = $(element).find(COUNT_CONTAINER_REF);
-          if( countSpan.text() == '') {
-            countSpan.text(0);
-          }
-        }
-      })
-      .fail(function (object, error) {
-        console.log("Error: " + error.code + " " + error.message);
-      });
-  }
-
-  function addCount(Counter) {
-    var $visitors = $(".leancloud_visitors");
-    var url = $visitors.attr('id').trim();
-    var title = $visitors.attr('data-flag-title').trim();
-    var query = new AV.Query(Counter);
-
-    query.equalTo("url", url);
-    query.find({
-      success: function(results) {
-        if (results.length > 0) {
-          var counter = results[0];
-          counter.fetchWhenSave(true);
-          counter.increment("time");
-          counter.save(null, {
-            success: function(counter) {
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text(counter.get('time'));
-            },
-            error: function(counter, error) {
-              console.log('Failed to save Visitor num, with error message: ' + error.message);
-            }
-          });
-        } else {
-          var newcounter = new Counter();
-          /* Set ACL */
-          var acl = new AV.ACL();
-          acl.setPublicReadAccess(true);
-          acl.setPublicWriteAccess(true);
-          newcounter.setACL(acl);
-          /* End Set ACL */
-          newcounter.set("title", title);
-          newcounter.set("url", url);
-          newcounter.set("time", 1);
-          newcounter.save(null, {
-            success: function(newcounter) {
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-            },
-            error: function(newcounter, error) {
-              console.log('Failed to create');
-            }
-          });
-        }
-      },
-      error: function(error) {
-        console.log('Error:' + error.code + " " + error.message);
-      }
-    });
-  }
-
-  $(function() {
-    var Counter = AV.Object.extend("Counter");
-    if ($('.leancloud_visitors').length == 1) {
-      addCount(Counter);
-    } else if ($('.post-title-link').length > 1) {
-      showTime(Counter);
-    }
-  });
-</script>
+<% if (config.import && config.import.js && config.import.js.length > 0) { %>
+  <%- js(config.import.js) %>
 <% } %>

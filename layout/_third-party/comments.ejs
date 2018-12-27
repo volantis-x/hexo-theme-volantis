@@ -1,14 +1,26 @@
 <!-- 显示推荐文章和评论 -->
-<% if (page && ((theme.recommended_posts && theme.recommended_posts.autoDisplay == false && page.recommended_posts != false) || (page.comments && (config.disqus_shortname || config.livere_shortname || config.valine)) )) { %>
+<%
+  var displayRecommentedPosts = false;
+  var displayComments = false;
+  if (page && theme.services) {
+    if (theme.services.recommended_posts == true && theme.recommended_posts && theme.recommended_posts.autoDisplay == false && page.layout == 'post' && page.recommended_posts != false) {
+      displayRecommentedPosts = true;
+    }
+    if ((config.disqus_shortname || config.livere_shortname || config.valine) && theme.services.comments == true && page.comments != false) {
+      displayComments = true;
+    }
+  }
+%>
+
+<% if (displayRecommentedPosts || displayComments) { %>
   <article class="post white-box comments">
     <section class="article typo">
 
-      <% if (theme.recommended_posts && theme.recommended_posts.autoDisplay == false && page.recommended_posts != false) { %>
+      <% if (displayRecommentedPosts) { %>
         <%- partial('recommended_posts', {page: page, site: site}) %>
       <% } %>
 
-      <% if (page.comments) { %>
-
+      <% if (displayComments) { %>
         <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
         <% if (config.disqus_shortname) { %>
           <section id="comments">
@@ -17,7 +29,6 @@
             </div>
           </section>
         <% } %>
-
         <% if (config.livere_uid){ %>
           <section id="comments">
             <div id="lv-container" data-id="city" data-uid="<%= config.livere_uid %>">
@@ -25,7 +36,6 @@
             </div>
           </section>
         <% } %>
-
         <% if (config.valine){ %>
           <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
             <div class="subtitle">

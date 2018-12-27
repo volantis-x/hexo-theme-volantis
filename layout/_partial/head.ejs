@@ -43,6 +43,11 @@
   <% }) %>
   <% } %>
   <!-- link -->
+  <% if (theme.services && theme.services.nodewaves == true) { %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  <% } %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+
   <% if (config.import && config.import.link){ %>
   <% (config.import.link||[]).forEach(function(item){ %>
   <link rel="<%= item.rel %>" href="<%- item.href %>"
@@ -54,17 +59,17 @@
   <% }) %>
   <% } %>
 
-  <!-- style.css -->
-  <% if (config.import && config.import.style == true) { %>
-  <%- css(theme.theme_info.cdn + 'css/style.css') %>
-  <% } else if (config.import && config.import.style && config.import.style.length > 0){ %>
-  <%- css(config.import.style) %>
+  <% if (theme.services && theme.services.cdn == true) { %>
+  <%- css(theme.info.cdn + 'css/style.css') %>
   <% } else { %>
   <%- css('style.css') %>
   <% } %>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  <% if (config.import && config.import.css && config.import.css.length > 0) { %>
+  <%- css(config.import.css) %>
+  <% } %>
+
+
 
   <script>
     function setLoadingBarProgress(num) {

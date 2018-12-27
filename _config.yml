@@ -1,20 +1,39 @@
-##########################################################################
-############################## 主题基本信息 ################################
-theme_info:
+# 这一页的内容可以修改值，但是不要删除行。初次使用主题请务必阅读官方文档！！！
+# 这一页的内容可以修改值，但是不要删除行。初次使用主题请务必阅读官方文档！！！
+# 这一页的内容可以修改值，但是不要删除行。初次使用主题请务必阅读官方文档！！！
+
+
+############################### 基本信息 ###############################
+info:
   name: Material X
   version: 1.0-beta11
   docs: https://xaoxuu.com/wiki/material-x/
-  # 主题的CDN地址，如果你的源码托管到国内CDN可以更改此链接。如需启用CDN，请在主目录的config中设置import，详见文档。
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@18.12.36/
-##########################################################################
-# 请务必阅读官方文档！！！
-# 请务必阅读官方文档！！！
-# 请务必阅读官方文档！！！
+  # 主题的CDN地址。如需启用CDN，请在主目录的config中设置，详见文档。
+  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@18.12.37/
 
 
-# style: material    # 导航栏和标题栏背景是主题色
-style: pure        # 导航栏和标题栏背景是白色
+############################### 主题样式 ###############################
+# style: material    # material: 导航栏和标题栏背景是主题色
+style: pure        # pure: 导航栏和标题栏背景是白色
 
+
+############################### 服务开关 ###############################
+# 服务开关，如果你想禁用某些功能，直接设置为false或者注释掉，相关的js脚本就不会加载。
+# 有些服务这里打开了也未必会生效，还需要额外的配置，详见文档。
+services:
+  cdn: true
+  scrollreveal: true
+  nodewaves: true
+  busuanzi: true
+  # fastclick: true
+  leancloud_visitors: true
+  recommended_posts: true   # 需要安装"hexo-recommended-posts": "^1.0.3",
+  comments: true
+  music: true
+
+
+
+############################### 杂项 ###############################
 # 这里的widgets字段是对widget的默认设置，如需修改请参照文档在主目录的config中写。
 widgets:
   # 文章分类的默认配置
@@ -39,6 +58,7 @@ widgets:
       page: false      # layout: page 的页面是否显示
       links: true      # layout: links 的页面是否显示
       post: true       # layout: post 的页面是否显示
+
 
 
 # 推荐文章

@@ -38,7 +38,7 @@ if (theme.widgets.music && theme.widgets.music.display) {
 }
 %>
 
-<% if (needDisplay == true) { %>
+<% if (theme.services && theme.services.music == true && needDisplay == true) { %>
   <section class='<%- item.widget %>'>
     <%- partial('header', {item: item, defIcon: '', defTitle: ''}) %>
     <div class='content <%= theme.style %>'>
