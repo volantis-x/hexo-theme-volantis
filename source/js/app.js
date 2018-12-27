@@ -10,12 +10,33 @@ var customSearch;
 		$('html, body').animate({ 'scrollTop': $elem.offset().top - correction }, 400);
 	};
 
+  function setBackToTop(){
+    const $top = $('.s-top', '.l_body');
+    let pos = document.body.scrollTop;
+		$(document, window).scroll(() => {
+			const scrollTop = $(window).scrollTop();
+			const del = scrollTop - pos;
+			if (scrollTop > 150) {
+				pos = scrollTop;
+				$top.addClass('show');
+        if (del > 0) {
+          $top.removeClass('hl');
+        } else {
+          $top.addClass('hl');
+        }
+			} else {
+				pos = scrollTop;
+				$top.removeClass('show').removeClass('hl');
+			}
+		});
+    $top.click(()=>scrolltoElement(document.body));
+  }
+
 	function setHeader() {
 		if (!window.subData) return;
 		const $wrapper = $('header .wrapper');
 		const $comment = $('.s-comment', $wrapper);
 		const $toc = $('.s-toc', $wrapper);
-		const $top = $('.s-top', $wrapper);
 
 		$wrapper.find('.nav-sub .logo').text(window.subData.title);
 		let pos = document.body.scrollTop;
@@ -41,8 +62,6 @@ var customSearch;
 		if ($tocTarget.length && $tocTarget.children().length) {
 			$toc.click((e) => { e.stopPropagation(); $tocTarget.toggleClass('active'); });
 		} else $toc.remove();
-
-		$top.click(()=>scrolltoElement(document.body));
 
 	}
 
@@ -193,7 +212,7 @@ var customSearch;
 		setHeaderSearch();
 
 		setTocToggle();
-
+    setBackToTop();
 		// $(".article .video-container").fitVids();
 
 		setTimeout(function () {

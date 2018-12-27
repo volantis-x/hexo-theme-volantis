@@ -332,6 +332,42 @@ ul.h-list {
         padding: @gap 0 @gap;
         border-radius: 0;
     }
+    .s-top{
+      .enable-trans(0.6s);
+      z-index: 9;
+      position: fixed;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      border-radius: 100%;
+      bottom: @gap*2;
+      right: @gap*2;
+      transform: translateY(100px) scale(0);
+      transform-origin: bottom;
+      @media(max-width: @on_pad) {
+          right: @gap;
+      }
+      &.show{
+        transform: translateY(0) scale(1);
+        &.hl{
+          background: @theme_main;
+          color: @theme_cardbg;
+          box-shadow: @boxshadow_card_normal;
+        }
+      }
+      @media(min-width: @on_pad) {
+        &:hover{
+          transform: scale(1.2);
+          border-radius: 25%;
+          background: @theme_main;
+          color: @theme_cardbg;
+          box-shadow: @boxshadow_card_raised;
+          &.hl{
+            box-shadow: @boxshadow_card_raised;
+          }
+        }
+      }
+    }
 }
 
 .reveal {
