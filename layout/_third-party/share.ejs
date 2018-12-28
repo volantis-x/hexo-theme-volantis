@@ -4,10 +4,10 @@
     <div class="-mob-share-list share-body">
       <% (config.mob.list||[]).forEach(function(item){ %>
         <a class="-mob-share-<%- item.id %>" title="<%- item.name %>">
-          <% if (item.icon){ %>
-            <i class="<%- item.icon %> fa-fw"></i>
-          <% } else if (item.img){ %>
+          <% if (item.img){ %>
             <img src="<%- item.img %>">
+          <% } else if (item.icon){ %>
+            <i class="<%- item.icon %> fa-fw"></i>
           <% } %>
         </a>
       <% }) %>
