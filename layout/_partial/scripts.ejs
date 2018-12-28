@@ -54,7 +54,9 @@
     </script>
   <% } %>
   <% if (theme.services.share == true && config.mob && config.mob.appkey) { %>
-    <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=<%- config.mob.appkey %>"></script>
+    <% if (page.layout == 'post' && page.share != false) { %>
+      <script id="-mob-share" src="//f1.webshare.mob.com/code/mob-share.js?appkey=<%- config.mob.appkey %>"></script>
+    <% } %>
   <% } %>
 
 

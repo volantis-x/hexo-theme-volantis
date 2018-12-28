@@ -9,7 +9,7 @@ info:
   version: 1.0-beta11
   docs: https://xaoxuu.com/wiki/material-x/
   # 主题的CDN地址。如需启用CDN，请在主目录的config中设置，详见文档。
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@18.12.38/
+  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@18.12.39/
 
 
 ############################### 主题样式 ###############################
