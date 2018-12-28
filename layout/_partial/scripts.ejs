@@ -243,8 +243,12 @@
       <% } %>
     <% } %>
   <% } %>
-  <% if (theme.services.cdn == true) { %>
+  <% if (theme.services.cdn == true && config.theme_cdn) { %>
+    <% if (config.theme_cdn == true) { %>
     <%- js([theme.info.cdn + 'js/app.js', theme.info.cdn + 'js/search.js']) %>
+    <% } else if (config.theme_cdn.length > 0) { %>
+    <%- js([config.theme_cdn + 'js/app.js', config.theme_cdn + 'js/search.js']) %>
+    <% } %>
   <% } else { %>
     <%- js(['js/app.js', 'js/search.js']) %>
   <% } %>

@@ -1,23 +1,26 @@
 <article id="<%= post.layout %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
   <%- partial('meta',{post:post}) %>
     <section class="article typo">
-
-        <div class="article-entry" itemprop="articleBody">
-            <%- post.content %>
-        </div>
+      <div class="article-entry" itemprop="articleBody">
+        <%- post.content %>
+      </div>
         <% if(post.layout == 'post'){ %>
           <section class='meta' id="footer-meta">
-              <time class="metatag time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;本文最后更新于：<%- date(post.updated, config.date_format) %></time>
-              <% if (post.tags && post.tags.length && post.tags.each) { %>
-                  <%
-                  var items = [];
-                  post.tags.each(function(item){
-                      items.push('<div class="metatag tags"><a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;' + item.name + '</a></div>');
-                  });
-                  %>
-                  <%- items.join(' ') %>
-              <% } %>
+            <time class="metatag time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+              &nbsp;本文最后更新于：<%- date(post.updated, config.date_format) %>
+            </time>
+            <% if (post.tags && post.tags.length) { %>
+                <%
+                var items = [];
+                post.tags.each(function(item){
+                    items.push('<div class="metatag tags"><a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;' + item.name + '</a></div>');
+                });
+                %>
+                <%- items.join(' ') %>
+            <% } %>
+            <% if (theme.services && theme.services.share == true && config.mob && config.mob.app_key && config.mob.list && page.share != false) { %>
               <%- partial('../_third-party/share') %>
+            <% } %>
           </section>
         <% } %>
 
