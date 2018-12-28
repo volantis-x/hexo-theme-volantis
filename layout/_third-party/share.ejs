@@ -1,9 +1,9 @@
-<% if (theme.services && theme.services.share == true && config.mob && config.mob.appkey && config.mob.list && page.layout == 'post' && page.share != false) { %>
+<% if (theme.services && theme.services.share == true && config.mob && config.mob.app_key && config.mob.list && page.layout == 'post' && page.share != false) { %>
   <div class='metatag share -mob-share-list'>
     <i class="left fas fa-share-alt fa-fw" aria-hidden="true"></i>
     <div class="-mob-share-list share-body">
       <% (config.mob.list||[]).forEach(function(item){ %>
-        <a class="-mob-share-<%- item.key %>" title="<%- item.name %>">
+        <a class="-mob-share-<%- item.id %>" title="<%- item.name %>">
           <% if (item.icon){ %>
             <i class="<%- item.icon %> fa-fw"></i>
           <% } else if (item.img){ %>

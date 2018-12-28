@@ -53,9 +53,9 @@
       }, false)
     </script>
   <% } %>
-  <% if (theme.services.share == true && config.mob && config.mob.appkey) { %>
+  <% if (theme.services.share == true && config.mob && config.mob.app_key) { %>
     <% if (page.layout == 'post' && page.share != false) { %>
-      <script id="-mob-share" src="//f1.webshare.mob.com/code/mob-share.js?appkey=<%- config.mob.appkey %>"></script>
+      <script id="-mob-share" src="//f1.webshare.mob.com/code/mob-share.js?appkey=<%- config.mob.app_key %>"></script>
     <% } %>
   <% } %>
 
@@ -208,10 +208,14 @@
       <% if (config.valine){ %>
         <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <% if (theme.services && theme.services.cdn == true) { %>
-            <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/js/volantis.min.js"></script>
+          <% if (theme.services.volantis == true) { %>
+            <% if (theme.services && theme.services.cdn == true) { %>
+              <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/js/volantis.min.js"></script>
+            <% } else { %>
+              <%- js('js/volantis.js') %>
+            <% } %>
           <% } else { %>
-            <%- js('js/volantis.js') %>
+            <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-valine@1.3.4/js/valine.min.js"></script>
           <% } %>
           <script>
           var GUEST_INFO = ['nick','mail','link'];

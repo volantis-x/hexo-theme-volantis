@@ -29,6 +29,7 @@ services:
   # leancloud_visitors: true
   recommended_posts: true   # 需要安装"hexo-recommended-posts": "^1.0.3",
   comments: true
+  volantis: true
   music: true
   share: true
 
