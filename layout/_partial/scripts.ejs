@@ -210,7 +210,7 @@
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
           <% if (theme.services.volantis == true) { %>
             <% if (theme.services && theme.services.cdn == true) { %>
-              <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/js/volantis.min.js"></script>
+              <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
             <% } else { %>
               <%- js('js/volantis.js') %>
             <% } %>
@@ -230,9 +230,12 @@
             notify: notify,
             verify: verify,
             guest_info: guest_info,
+            <% if(page.valine && page.valine.path) { %>
+              path: "<%= page.valine.path %>",
+            <% } %>
             appId: "<%= config.valine.app_id %>",
             appKey: "<%= config.valine.app_key %>",
-            placeholder: "<%= config.valine.placeholder %>",
+            placeholder: "<%= (page.valine && page.valine.placeholder) ? page.valine.placeholder : config.valine.placeholder %>",
             pageSize:'<%= config.valine.pageSize %>',
             avatar:'<%= config.valine.avatar %>',
             lang:'<%= config.valine.lang %>',

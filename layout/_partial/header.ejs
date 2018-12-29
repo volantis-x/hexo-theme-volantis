@@ -56,7 +56,7 @@
               <% (config.nav_menu || []).forEach(function(value){ %>
                   <li>
 										<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>" class="nav flat-box" href="<%= url_for(value.url) %>">
-											<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
+											<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) %>
 										</a>
                   </li>
               <%})%>

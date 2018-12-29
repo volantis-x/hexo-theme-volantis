@@ -19,7 +19,7 @@ post:
     license_title: Copyright Notice
     license_content: "All articles in this blog are licensed under %s unless stating additionally."
 footer:
-  license: 'Blog content follows the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)'
+  license: 'Blog content follows the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)'
   use: Use
   theme: as theme
   total_views: total visits
