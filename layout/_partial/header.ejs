@@ -15,7 +15,7 @@
   						<li>
 								<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
 								 class="nav flat-box" href="<%= url_for(value.url) %>">
-									<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
+									<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) %>
 								</a>
 							</li>
       			<%})%>
@@ -26,7 +26,7 @@
 			<% if (theme.search.enable === true) { %>
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<input type="text" class="input u-search-input" placeholder="<%- __('search.placeholder') %>" />
 						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
 					</form>
 				</div>

@@ -1,0 +1,41 @@
+sidebar:
+  category: 所有分類
+  tagcloud: 熱門標籤
+  toc: 文章目錄
+post:
+  read_more: 閱讀全文
+  sticky: 置頂
+  comments: 評論
+  comments_placeholder: 無法加載評論系統，請確保您的網絡能夠正常訪問
+  related_posts: 相關文章
+  copy_button: 複製
+  copy_success: 複製成功
+  copy_failure: 複製失敗
+  prev_page: 上一頁
+  next_page: 下一頁
+  copyright:
+    author: 本文作者
+    link: 文章連結
+    license_title: 版權聲明
+    license_content: "本網誌所有文章除特別聲明外，均採用 %s 許可協議。轉載請註明出處！"
+footer:
+  license: '博客內容遵循 [姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW)'
+  use: 本站使用
+  theme: 作為主題
+  total_views: 總訪問量為
+  total_visitors: 總訪客量為
+  times: 次
+search:
+  placeholder: 搜尋
+symbol:
+  comma: "，"
+  period: "。"
+  colon: "："
+  brackets_l: "（"
+  brackets_r: "）"
+# 下面這是博主相關的
+navbar:
+  home: 主頁
+  blogs: 博客
+  archives: 歸檔
+  friends: 朋友

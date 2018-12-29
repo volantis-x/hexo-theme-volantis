@@ -1,14 +1,14 @@
 <% if (theme.services && theme.services.music == true) { %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
   <div class="aplayer"
-    data-theme="<%- aplayer_theme %>"
+    data-theme="<%- aplayer_theme != undefined ? aplayer_theme : theme.music.color %>"
     <%if(aplayer_mini){%>data-mini=true <%}%>
-    <%if(aplayer_autoplay){%>data-autoplay=true <%}%>
-    data-mode="<%- aplayer_mode %>"
-    data-server="<%= aplayer_server %>"
-    data-type="<%= aplayer_type %>"
-    data-id="<%= aplayer_id %>"
-    data-volume="<%= aplayer_volume %>">
+    <%if(aplayer_autoplay != undefined ? aplayer_autoplay : theme.music.autoplay){%>data-autoplay=true <%}%>
+    data-mode="<%- aplayer_mode != undefined ? aplayer_mode : theme.music.mode %>"
+    data-server="<%= aplayer_server != undefined ? aplayer_server : theme.music.server %>"
+    data-type="<%= aplayer_type != undefined ? aplayer_type : theme.music.type %>"
+    data-id="<%= aplayer_id != undefined ? aplayer_id : theme.music.id %>"
+    data-volume="<%= aplayer_volume != undefined ? aplayer_volume : theme.music.volume %>">
   </div>
   <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>

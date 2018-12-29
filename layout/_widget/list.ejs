@@ -15,7 +15,7 @@
             &nbsp;&nbsp;<%- row.name %>
           </div>
           <% if(row.desc) { %>
-            <div class='badge'>(<%- row.desc %>)</div>
+            <div class='badge'><%- __('symbol.brackets_l') %><%- row.desc %><%- __('symbol.brackets_r') %></div>
           <% } %>
         </a></li>
       <% }) %>

@@ -34,32 +34,23 @@ services:
 
 
 ############################### 杂项 ###############################
-# 这里的widgets字段是对widget的默认设置，如需修改请参照文档在主目录的config中写。
-widgets:
-  # 文章分类的默认配置
-  category:
-    icon: fas fa-folder-open
-    title: "博文分类"
-  # 文章标签的默认配置
-  tagcloud:
-    icon: fas fa-fire
-    title: "热门话题"
-  # 文章目录的默认配置
-  toc:
-    icon: fas fa-list
-    title: "目录"
-  # 音乐控件的默认配置
-  music:
-    display:           # 批量控制哪一类页面显示
-      home: false      # 在主页是否显示
-      tag: false       # 在标签页面是否显示
-      category: false  # 在分类页面是否显示
-      archive: false   # 在归档页面是否显示
-      page: false      # layout: page 的页面是否显示
-      links: true      # layout: links 的页面是否显示
-      post: true       # layout: post 的页面是否显示
-
-
+# 音乐控件的默认配置，如果sidebar或者page里没有提供，就取这里的参数
+music:
+  color: '#1BCDFC'  # 主题色
+  mode: circulation # random （随机） single （单曲） circulation （列表循环） order （列表）
+  server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
+  type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
+  id: 746319661     # 歌曲/专辑/歌单 ID
+  volume: 0.7       # 音量, 0~1
+  autoplay: false   # 自动播放
+  display:           # 批量控制哪一类页面显示
+    home: false      # 在主页是否显示
+    tag: false       # 在标签页面是否显示
+    category: false  # 在分类页面是否显示
+    archive: false   # 在归档页面是否显示
+    page: false      # layout: page 的页面是否显示
+    links: true      # layout: links 的页面是否显示
+    post: true       # layout: post 的页面是否显示
 
 # 推荐文章
 recommended_posts:

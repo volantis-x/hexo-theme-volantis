@@ -1,10 +1,10 @@
 <% if (site.categories.length){ %>
   <section class='<%- item.widget %>'>
-    <%- partial('header', {item: item, defIcon: theme.widgets.category.icon, defTitle: theme.widgets.category.title}) %>
+    <%- partial('header', {item: item, defIcon: 'fas fa-folder-open', defTitle: __('sidebar.category')}) %>
     <div class='content <%= theme.style %>'>
       <ul class="entry">
         <% site.categories.sort('name').each(function(category){ %>
-          <li><a class="flat-box" title="<%- url_for(category.path) %>" href="<%- url_for(category.path) %>"><div class='name'><%- category.name %></div><div class='badge'>(共<%- category.posts.length %>篇)</div></a></li>
+          <li><a class="flat-box" title="<%- url_for(category.path) %>" href="<%- url_for(category.path) %>"><div class='name'><%- category.name %></div><div class='badge'><%- __('symbol.brackets_l') %><%- category.posts.length %><%- __('symbol.brackets_r') %></div></a></li>
         <% }) %>
       </ul>
     </div>

@@ -7,7 +7,7 @@
         <% if(post.layout == 'post'){ %>
           <section class='meta' id="footer-meta">
             <time class="metatag time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-              &nbsp;本文最后更新于：<%- date(post.updated, config.date_format) %>
+              &nbsp;<%- date(post.updated, config.date_format) %>
             </time>
             <% if (post.tags && post.tags.length) { %>
                 <%
@@ -29,7 +29,7 @@
                 <% if(post.prev){ %>
                     <section class="prev">
                         <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %></h6>
                             <h4>
                                 <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
                                   <% if(post.prev.title){ %>
@@ -56,7 +56,7 @@
                 <% if(post.next){ %>
                     <section class="next">
                         <span class="art-item-right" aria-hidden="true">
-                            <h6>下一篇&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h6><%- __('post.next_page') %>&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
                                 <a href="<%=url_for(post.next.path)%>" rel="prev" title="<%=post.next.title%>">
                                     <% if(post.next.title){ %>

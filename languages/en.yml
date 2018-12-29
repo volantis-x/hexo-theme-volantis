@@ -1,0 +1,41 @@
+sidebar:
+  category: Categories
+  tagcloud: Tag Cloud
+  toc: Table of Contents
+post:
+  read_more: Read more
+  sticky: Sticky
+  comments: Comments
+  comments_placeholder: Unable to load comment system, please make sure your network can access
+  related_posts: Related Posts
+  copy_button: Copy
+  copy_success: Copied
+  copy_failure: Copy failed
+  prev_page: Previous
+  next_page: Next
+  copyright:
+    author: Post author
+    link: Post link
+    license_title: Copyright Notice
+    license_content: "All articles in this blog are licensed under %s unless stating additionally."
+footer:
+  license: 'Blog content follows the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)'
+  use: Use
+  theme: as theme
+  total_views: total visits
+  total_visitors: total visitors
+  times: times
+search:
+  placeholder: Search
+symbol:
+  comma: ", "
+  period: ". "
+  colon: ": "
+  brackets_l: "("
+  brackets_r: ")"
+# 下面这是博主相关的
+navbar:
+  home: Home
+  blogs: Blogs
+  archives: Archives
+  friends: Friends

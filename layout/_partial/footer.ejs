@@ -9,7 +9,7 @@
     </div>
   <%}%>
   <br>
-  <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
-  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题<% if (theme.services && theme.services.busuanzi == true) { %>，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次<% } %>。
+  <div><%- markdown(__('footer.license')) %></div>
+  <div><%- __('footer.use') %> <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> <%- __('footer.theme') %><% if (theme.services && theme.services.busuanzi == true) { %><%- __('symbol.comma') %><%- __('footer.total_views') %> <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> <%- __('footer.times') %><% } %><%- __('symbol.period') %>
   </div>
 </footer>

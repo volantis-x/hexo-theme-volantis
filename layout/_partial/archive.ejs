@@ -1,6 +1,6 @@
 <% if (is_tag()) { %>
     <script>
-        window.subData= { title:'<%= theme.widgets.tagcloud.title %> : <%= page.tag %>'}
+        window.subData= { title:'<%- __('sidebar.tagcloud') %> : <%= page.tag %>'}
     </script>
 <% } else if (is_archive()) { %>
     <script>
@@ -8,7 +8,7 @@
     </script>
 <% } else if (is_category()) { %>
     <script>
-        window.subData= { title:'<%= theme.widgets.category.title %> : <%= page.category %>'}
+        window.subData= { title:'<%- __('sidebar.category') %> : <%= page.category %>'}
     </script>
 <% } %>
 
@@ -27,7 +27,7 @@
             <% if (page.prev != 0) { %>
                 <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
                     <section class="post prev" >
-                        <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %>&nbsp;
                     </section>
                 </a>
             <% } %>
@@ -37,7 +37,7 @@
             <% if (page.next != 0) { %>
                 <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
                     <section class="post next">
-                        &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        &nbsp;<%- __('post.next_page') %>&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
                     </section>
                 </a>
             <% } %>
