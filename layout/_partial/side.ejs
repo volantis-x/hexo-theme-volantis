@@ -1,8 +1,8 @@
-<% if (config.widgets){ %>
+<% if (config.widgets && config.widgets.length){ %>
   <%
   let supportWidgets = ['author', 'category', 'list', 'music', 'tagcloud', 'toc', 'plain'];
   %>
-  <% (config.widgets||[]).forEach(function(item){ %>
+  <% config.widgets.forEach(function(item){ %>
     <% if (item.enable != false){ %>
       <% let widget_name = item.widget ? item.widget : 'plain'; %>
       <% if (supportWidgets.indexOf(widget_name) > -1){ %>
