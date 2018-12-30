@@ -53,5 +53,11 @@
       <% } %>
     <% } %>
 
+    <% if(theme.top_post && isPostList && post.top == true){ %>
+      <div class="metatag top">
+        <i class="<%- theme.top_post.icon %> fa-fw" aria-hidden="true"></i>&nbsp;<%- theme.top_post.text %>
+      </div>
+    <% } %>
+
   </div>
 </section>
