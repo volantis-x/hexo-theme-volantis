@@ -6,10 +6,12 @@
       </div>
         <% if(post.layout == 'post'){ %>
           <section class='meta' id="footer-meta">
-            <time class="metatag time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-              &nbsp;<%- date(post.updated, config.date_format) %>
-            </time>
-            <% if (post.tags && post.tags.length) { %>
+            <% if(!page.meta || page.meta.updated != false){ %>
+              <time class="metatag time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;<%- date(post.updated, config.date_format) %>
+              </time>
+            <% } %>
+            <% if (post.tags && post.tags.length && (!page.meta || page.meta.tags != false)) { %>
                 <%
                 var items = [];
                 post.tags.each(function(item){
@@ -18,7 +20,7 @@
                 %>
                 <%- items.join(' ') %>
             <% } %>
-            <% if (theme.services && theme.services.share == true && config.mob && config.mob.app_key && config.mob.list && page.share != false) { %>
+            <% if (theme.services && theme.services.share == true && config.mob && config.mob.app_key && config.mob.list && (!page.meta || page.meta.share != false)) { %>
               <%- partial('../_third-party/share') %>
             <% } %>
           </section>

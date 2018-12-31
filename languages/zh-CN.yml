@@ -3,6 +3,7 @@ sidebar:
   tagcloud: 热门标签
   toc: 文章目录
 post:
+  top: 置顶
   read_more: 阅读全文
   sticky: 置顶
   comments: 评论

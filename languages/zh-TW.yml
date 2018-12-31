@@ -3,6 +3,7 @@ sidebar:
   tagcloud: 熱門標籤
   toc: 文章目錄
 post:
+  top: 置頂
   read_more: 閱讀全文
   sticky: 置頂
   comments: 評論

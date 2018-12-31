@@ -1,8 +1,9 @@
 sidebar:
   category: Categories
-  tagcloud: Tag Cloud
+  tagcloud: Hot Tags
   toc: Table of Contents
 post:
+  top: Top
   read_more: Read More
   sticky: Sticky
   comments: Comments

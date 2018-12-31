@@ -14,7 +14,7 @@
           <%- markdown(item.body) %>
         <% } %>
         <% if (item.jinrishici){ %>
-          <p><span id="jinrishici-sentence"><%- config.title %></span></p>
+          <p><span id="jinrishici-sentence"><%- item.jinrishici != true ? item.jinrishici : config.title %></span></p>
           <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
         <% } %>
       </div>
