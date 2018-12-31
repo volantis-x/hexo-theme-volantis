@@ -29,17 +29,17 @@
       <% } %>
     <% } %>
 
-    <% if(post.date && (!page.meta || page.meta.date != false)){ %>
+    <% if(post.date && (!post.meta || post.meta.date != false)){ %>
       <time class="metatag time">
         <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<%= date(post.date, config.date_format) %>
       </time>
     <% } %>
 
-    <% if(post.categories && (!page.meta || page.meta.categories != false)){ %>
+    <% if(post.categories && (!post.meta || post.meta.categories != false)){ %>
       <%- partial('categories',{post:post}) %>
     <% } %>
 
-    <% if(!isPostList && theme.services && (!page.meta || page.meta.counter != false)){ %>
+    <% if(!isPostList && theme.services && (!post.meta || post.meta.counter != false)){ %>
       <% if (theme.services.leancloud_visitors == true && config.leancloud_visitors && config.leancloud_visitors.app_id && config.leancloud_visitors.app_key) { %>
         <div class="metatag browse leancloud"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
           <span id="<%= url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%= page.title %>">
@@ -53,7 +53,7 @@
       <% } %>
     <% } %>
 
-    <% if(isPostList && post.top == true){ %>
+    <% if(isPostList && post.top == true && (!post.meta || post.meta.top != false)){ %>
       <div class="metatag top">
         <i class="fas fa-angle-double-up fa-fw" aria-hidden="true"></i>&nbsp;<%- __('post.top') %>
       </div>
