@@ -53,9 +53,9 @@
       <% } %>
     <% } %>
 
-    <% if(isPostList && post.top == true && (!post.meta || post.meta.top != false)){ %>
+    <% if(isPostList && post.top && (!post.meta || post.meta.top != false)){ %>
       <div class="metatag top">
-        <i class="fas fa-angle-double-up fa-fw" aria-hidden="true"></i>&nbsp;<%- __('post.top') %>
+        <i class="fas fa-angle-double-up fa-fw" aria-hidden="true"></i>&nbsp;<%- post.top != true ? post.top : __('post.top') %>
       </div>
     <% } %>
 
