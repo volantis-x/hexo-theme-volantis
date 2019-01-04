@@ -369,17 +369,18 @@
 
             }
             .share{
-              // border-color: @color_md_orange;
-              // &:hover {
-              //   background: @color_md_orange;
-              // }
+              &:hover {
+                background: @theme_background;
+              }
               .share-body{
                 display: flex;
                 a{
+                  margin-left: 4px;
                   img{
-                    margin: 2px;
+                    margin: 2px 0;
                     height: @cellH - 4px;
                     width: auto;
+                    background: transparent;
                   }
                   i{
                     display: inline-block;
