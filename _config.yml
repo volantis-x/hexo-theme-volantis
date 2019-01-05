@@ -52,6 +52,8 @@ music:
     links: true      # layout: links 的页面是否显示
     post: true       # layout: post 的页面是否显示
 
+# 友链页头像占位图
+loading_img: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/qq/亲亲.gif
 
 # 推荐文章
 recommended_posts:
