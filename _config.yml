@@ -24,7 +24,7 @@ services:
   scrollreveal: true
   nodewaves: true
   busuanzi: true
-  fastclick: true
+  # fastclick: true
   # leancloud_visitors: true
   recommended_posts: true   # 需要安装"hexo-recommended-posts": "^1.0.3",
   comments: true
