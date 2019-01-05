@@ -20,7 +20,7 @@
                 %>
                 <%- items.join(' ') %>
             <% } %>
-            <% if (theme.services && theme.services.share == true && config.mob && config.mob.app_key && config.mob.list && (!page.meta || page.meta.share != false)) { %>
+            <% if (theme.services && theme.services.share == true && (config.share || config.mob) && (!page.meta || page.meta.share != false)) { %>
               <%- partial('../_third-party/share') %>
             <% } %>
           </section>
