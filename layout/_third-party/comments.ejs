@@ -6,7 +6,7 @@
     if (theme.services.recommended_posts == true && theme.recommended_posts && theme.recommended_posts.autoDisplay == false && page.layout == 'post' && page.recommended_posts != false) {
       displayRecommentedPosts = true;
     }
-    if ((config.disqus_shortname || config.livere_shortname || config.valine) && theme.services.comments == true && page.comments != false) {
+    if ((config.disqus_shortname || config.livere_uid || config.valine) && theme.services.comments == true && page.comments != false) {
       displayComments = true;
     }
   }
