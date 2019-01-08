@@ -25,14 +25,14 @@
         <% if (config.disqus_shortname) { %>
           <section id="comments">
             <div id="disqus_thread">
-              ⚠️  <%- __(post.comments_placeholder) %> <a href="https://disqus.com">Disqus</a> 。
+              ⚠️  <%- __('post.comments_placeholder') %> <a href="https://disqus.com">Disqus</a> 。
             </div>
           </section>
         <% } %>
         <% if (config.livere_uid){ %>
           <section id="comments">
             <div id="lv-container" data-id="city" data-uid="<%= config.livere_uid %>">
-              <noscript>⚠️  <%- __(post.comments_placeholder) %></noscript>
+              <noscript>⚠️  <%- __('post.comments_placeholder') %></noscript>
             </div>
           </section>
         <% } %>
