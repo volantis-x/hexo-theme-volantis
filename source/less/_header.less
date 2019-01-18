@@ -1,336 +1,336 @@
 .l_header {
-    position:fixed;
-    z-index: 9999;
-    top:0;
-    left:0;
-    width:100%;
+  position:fixed;
+  z-index: 9999;
+  top:0;
+  left:0;
+  width:100%;
+  font-size: @fontsize_base;
+  line-height: @height_navbar;
+  height: @height_navbar;
+  overflow: hidden;
+  font-family: @fontfamily_base;
+  font-weight: bold;
+  padding: 0 @gap;
+  .wrapper{
+    padding: auto @gap;
+    .enable-trans();
+  }
+  .wrapper.sub{
+    .enable-trans();
+    transform: translateY(-@height_navbar);
+    .logo{
+      // padding-left: 0;
+      @media(max-width: @on_phone){
+        .enable-trans();
+        padding-left: @gap;
+        padding-right: 0;
+        font-size: @fontsize_base;
+      }
+    }
+  }
+  .nav--main,.nav-sub{
+    height: @height_navbar;
+  }
+  background: @color_bg_navbar;
+
+  &, a{
+    .txt-ellipsis;
+    height: @height_navbar;
+    line-height: @height_navbar;
+    color: @color_text_in_header;
+  }
+  &:extend(.z-depth-nav); // 适合深色导航栏背景
+
+  .enable-trans();
+  &:hover {
+    // &:extend(.z-depth-nav-raised);
+  }
+  &:active {
+
+  }
+  .logo {
+    padding: 0 @gap;
+    line-height: @height_navbar;
+    font-size: @fontsize_logo;
+    font-family: @fontfamily_logo;
+    @media(max-width: @on_phone){
+      flex: auto;
+    }
+    &.img{
+      padding: 0 @gap 0 0;
+    }
+    img{
+      padding: 0;
+      height: 100%;
+    }
+    letter-spacing: 0;
+  }
+
+  .nav-sub{
+    .logo {
+      font-size: @fontsize_base;
+      font-family: @fontfamily_base;
+      @media(max-width: @on_phone){
+        letter-spacing: -0.5px;
+        padding-top: 1px;
+      }
+
+    }
+  }
+  .menu{
+    position:relative;
+    flex: 1 0 auto;
+    height: @height_navbar;
+    .enable-trans();
+    margin:0 @gap;
+    ul > li > a{
+      .enable-trans();
+      display: block;
+      font-size: @fontsize_base;
+      color: fade(@color_text_in_header, 70%);
+      padding: 0 8px;
+      &:hover{
+        color: @color_text_in_header;
+        border-bottom: @loading_height solid @theme_cardbg;
+        background: fade(@theme_cardbg, 10%);
+      }
+      &:active,&.active{
+        color: @color_text_in_header;
+        border-bottom: @loading_height solid @theme_cardbg;
+      }
+    }
+    @media(max-width: @on_phone){
+      display:none;
+    }
+  }
+  .switcher{
+    display: none;
     font-size: @fontsize_base;
     line-height: @height_navbar;
-    height: @height_navbar;
-    overflow: hidden;
-    font-family: @fontfamily_base;
-    font-weight: bold;
-    padding: 0 @gap;
-    .wrapper{
-        padding: auto @gap;
-        .enable-trans();
-    }
-    .wrapper.sub{
-        .enable-trans();
-        transform: translateY(-@height_navbar);
-        .logo{
-            // padding-left: 0;
-            @media(max-width: @on_phone){
-                .enable-trans();
-                padding-left: @gap;
-                padding-right: 0;
-                font-size: @fontsize_base;
-            }
-        }
-    }
-    .nav--main,.nav-sub{
-        height: @height_navbar;
-    }
-    background: @color_bg_navbar;
 
-    &, a{
-        .txt-ellipsis;
-        height: @height_navbar;
-        line-height: @height_navbar;
+    & > li{
+      height: @height_navbar - @gap;
+      .enable-trans();
+      margin: 2px;
+      @height: @height_navbar - @gap;
+      @media(max-width: @on_phone){
+        width: @height;
+        height: @height;
+      }
+      a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: @height;
+        height: @height;
+        border-radius: 100px;
+        .enable-trans();
+        &:hover {
+          background: fade(@theme_cardbg, 30%);
+        }
+        @media(max-width: @on_phone){
+          width: @height;
+          height: @height;
+        }
+      }
+    }
+    @media(max-width: @on_phone){
+      display: flex;
+      padding-left: @gap/2;
+      padding-right: @gap - 6px;
+    }
+  }
+  .nav-sub .switcher{
+    display: flex;
+  }
+  .m_search {
+    position: relative;
+    height: @height_navbar - @gap;
+    width: @width_sidebar;
+    @media(max-width: @on_laptop){
+      width: @width_sidebar_m;
+    }
+    line-height: @height_navbar - @gap;
+    margin-top: @gap/2;
+    margin-bottom: @gap/2;
+    vertical-align: middle;
+    .form {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+    .icon,.input{
+      .enable-trans(.1s);
+    }
+    .icon {
+      position: absolute;
+      display:block;
+      height: @height_navbar - @gap;
+      width: @height_navbar - @gap;
+      line-height: @height_navbar - @gap;
+      top: 0;
+      left: @gap/2;
+      font-size: @fontsize_small;
+    }
+    .input {
+      display:block;
+      font-size: @fontsize_small;
+      line-height: @height_navbar - @gap;
+      margin: 0;
+      width: 100%;
+      color: fade(@color_text_in_header, 60%);
+      padding-left: @fontsize_base + @gap - 2px;
+      @media(max-width: @on_phone){
+        padding-left: @fontsize_base + @gap - 2px;
+      }
+      height: @height_navbar - @gap;
+      line-height: @height_navbar - @gap;
+      font-family: @fontfamily_base;
+      border: none;
+      border-radius: @border_radius_searchbar;
+      background: fade(@theme_cardbg, 15%);
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      box-shadow: none;
+      border: 1px dashed transparent;
+      .enable-trans();
+      ~ .icon{
+        color: fade(@color_text_in_header, 60%);
+      }
+      .set-placeholder({color: fade(@color_text_in_header, 60%)});
+      &:hover{
+        border: 1px dashed fade(@color_text_in_header, 60%);
+      }
+      &:focus {
+        ~ .icon{
+          color: @color_text_in_header;
+        }
         color: @color_text_in_header;
+        border: 1px solid fade(@color_text_in_header, 60%);
+        // .set-placeholder({color: @black});
+      }
     }
-    &:extend(.z-depth-nav); // 适合深色导航栏背景
-
-    .enable-trans();
-    &:hover {
-        // &:extend(.z-depth-nav-raised);
+  }
+  &.pure{
+    background: @theme_cardbg;
+    &, a{
+      color: @theme_main;
     }
-    &:active {
-
-    }
-    .logo {
-        padding: 0 @gap;
-        line-height: @height_navbar;
-        font-size: @fontsize_logo;
-        font-family: @fontfamily_logo;
-        @media(max-width: @on_phone){
-            flex: auto;
-        }
-        &.img{
-          padding: 0 @gap 0 0;
-        }
-        img{
-          padding: 0;
-          height: 100%;
-        }
-        letter-spacing: 0;
-    }
-
-    .nav-sub{
-        .logo {
-            font-size: @fontsize_base;
-            font-family: @fontfamily_base;
-            @media(max-width: @on_phone){
-                letter-spacing: -0.5px;
-                padding-top: 1px;
-            }
-
-        }
-    }
+    box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
     .menu{
-        position:relative;
-        flex: 1 0 auto;
-        height: @height_navbar;
+      ul > li > a{
         .enable-trans();
-        margin:0 @gap;
-        ul > li > a{
-            .enable-trans();
-            display: block;
-            font-size: @fontsize_base;
-            color: fade(@color_text_in_header, 70%);
-            padding: 0 8px;
-            &:hover{
-                color: @color_text_in_header;
-                border-bottom: @loading_height solid @theme_cardbg;
-                background: fade(@theme_cardbg, 10%);
-            }
-            &:active,&.active{
-                color: @color_text_in_header;
-                border-bottom: @loading_height solid @theme_cardbg;
-            }
+        color: fade(@theme_main, 70%);
+        &.current{
+          border-bottom: @loading_height solid fade(@theme_main, 80%);
         }
-        @media(max-width: @on_phone){
-            display:none;
+        &:hover{
+          color: @theme_main;
+          border-bottom: @loading_height solid @theme_main;
+          background: fade(@theme_main, 10%);
         }
+        &:active,&.active{
+          color: @theme_main;
+          border-bottom: @loading_height solid @theme_main;
+        }
+      }
     }
     .switcher{
-        display: none;
-        font-size: @fontsize_base;
-        line-height: @height_navbar;
-
-        & > li{
-            height: @height_navbar - @gap;
-            .enable-trans();
-            margin: 2px;
-            @height: @height_navbar - @gap;
-            @media(max-width: @on_phone){
-                width: @height;
-                height: @height;
-            }
-            a{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: @height;
-                height: @height;
-                border-radius: 100px;
-                .enable-trans();
-                &:hover {
-                    background: fade(@theme_cardbg, 30%);
-                }
-                @media(max-width: @on_phone){
-                    width: @height;
-                    height: @height;
-                }
-            }
+      & > li{
+        a{
+          &:hover {
+            background: fade(@theme_main, 15%);
+          }
         }
-        @media(max-width: @on_phone){
-            display: flex;
-            padding-left: @gap/2;
-            padding-right: @gap - 6px;
-        }
-    }
-    .nav-sub .switcher{
-        display: flex;
+      }
     }
     .m_search {
-        position: relative;
-        height: @height_navbar - @gap;
-        width: @width_sidebar;
-        @media(max-width: @on_laptop){
-            width: @width_sidebar_m;
+      .input {
+        color: fade(@theme_main, 60%);
+        background: @theme_background;
+        ~ .icon{
+          color: fade(@theme_main, 60%);
         }
-        line-height: @height_navbar - @gap;
-        margin-top: @gap/2;
-        margin-bottom: @gap/2;
-        vertical-align: middle;
-        .form {
-            position: relative;
-            display: block;
-            width: 100%;
+        .set-placeholder({color: fade(@theme_main, 60%)});
+        &:hover{
+          border: 1px dashed fade(@theme_main, 60%);
         }
-        .icon,.input{
-            .enable-trans(.1s);
-        }
-        .icon {
-            position: absolute;
-            display:block;
-            height: @height_navbar - @gap;
-            width: @height_navbar - @gap;
-            line-height: @height_navbar - @gap;
-            top: 0;
-            left: @gap/2;
-            font-size: @fontsize_small;
-        }
-        .input {
-            display:block;
-            font-size: @fontsize_small;
-            line-height: @height_navbar - @gap;
-            margin: 0;
-            width: 100%;
-            color: fade(@color_text_in_header, 60%);
-            padding-left: @fontsize_base + @gap - 2px;
-            @media(max-width: @on_phone){
-                padding-left: @fontsize_base + @gap - 2px;
-            }
-            height: @height_navbar - @gap;
-            line-height: @height_navbar - @gap;
-            font-family: @fontfamily_base;
-            border: none;
-            border-radius: @border_radius_searchbar;
-            background: fade(@theme_cardbg, 15%);
-            box-sizing: border-box;
-            -webkit-appearance: none;
-            box-shadow: none;
-            border: 1px dashed transparent;
-            .enable-trans();
-            ~ .icon{
-                color: fade(@color_text_in_header, 60%);
-            }
-            .set-placeholder({color: fade(@color_text_in_header, 60%)});
-            &:hover{
-                border: 1px dashed fade(@color_text_in_header, 60%);
-            }
-            &:focus {
-              ~ .icon{
-                  color: @color_text_in_header;
-              }
-              color: @color_text_in_header;
-              border: 1px solid fade(@color_text_in_header, 60%);
-                // .set-placeholder({color: @black});
-            }
-        }
-    }
-    &.pure{
-      background: @theme_cardbg;
-      &, a{
-        color: @theme_main;
-      }
-      box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
-      .menu{
-          ul > li > a{
-              .enable-trans();
-              color: fade(@theme_main, 70%);
-              &.current{
-                border-bottom: @loading_height solid fade(@theme_main, 80%);
-              }
-              &:hover{
-                  color: @theme_main;
-                  border-bottom: @loading_height solid @theme_main;
-                  background: fade(@theme_main, 10%);
-              }
-              &:active,&.active{
-                  color: @theme_main;
-                  border-bottom: @loading_height solid @theme_main;
-              }
+        &:focus {
+          ~ .icon{
+            color: @theme_main;
           }
-      }
-      .switcher{
-          & > li{
-              a{
-                  &:hover {
-                      background: fade(@theme_main, 15%);
-                  }
-              }
-          }
-      }
-      .m_search {
-        .input {
-            color: fade(@theme_main, 60%);
-            background: @theme_background;
-            ~ .icon{
-                color: fade(@theme_main, 60%);
-            }
-            .set-placeholder({color: fade(@theme_main, 60%)});
-            &:hover{
-                border: 1px dashed fade(@theme_main, 60%);
-            }
-            &:focus {
-              ~ .icon{
-                  color: @theme_main;
-              }
-              color: @theme_main;
-              background: fade(@theme_main, 15%);
-              border: 1px solid fade(@theme_main, 60%);
-            }
+          color: @theme_main;
+          background: fade(@theme_main, 15%);
+          border: 1px solid fade(@theme_main, 60%);
         }
       }
     }
-    @media (max-width: @on_phone)  {
-        padding: 0;
-        .m_search{
-            width:0;
-            overflow: hidden;
-            position: absolute;
-            .enable-trans();
-            margin: 0 @gap/2;
-        }
-        &.z_search-open{
-            .logo{
-                opacity:0;
-            }
-            .m_search{
-                width: 100% - 1.5*@gap;
-            }
-        }
+  }
+  @media (max-width: @on_phone)  {
+    padding: 0;
+    .m_search{
+      width:0;
+      overflow: hidden;
+      position: absolute;
+      .enable-trans();
+      margin: 0 @gap/2;
     }
+    &.z_search-open{
+      .logo{
+        opacity:0;
+      }
+      .m_search{
+        width: 100% - 1.5*@gap;
+      }
+    }
+  }
 }
 
 
 
 .menu-phone{
-    .header{
-        border-top-left-radius: @border_radius;
-        border-top-right-radius: @border_radius;
-        background-color: fade(@color_bg_navbar,90%);
-        color: @color_text_in_header;
-        font-size: @fontsize_base;
-        line-height: 1.8em;
-        padding: 8px @gap+6px;
-    }
-    position: fixed;
-    top: @height_navbar + @gap;
-    right: 0;
-    z-index:9999 + 1;
-    line-height: 2 * @gap;
-    background: white;
-    border-right: 0;
+  .header{
+    border-top-left-radius: @border_radius;
+    border-top-right-radius: @border_radius;
+    background-color: fade(@color_bg_navbar,90%);
+    color: @color_text_in_header;
+    font-size: @fontsize_base;
+    line-height: 1.8em;
+    padding: 8px @gap+6px;
+  }
+  position: fixed;
+  top: @height_navbar + @gap;
+  right: 0;
+  z-index:9999 + 1;
+  line-height: 2 * @gap;
+  background: white;
+  border-right: 0;
+  box-shadow: @boxshadow_card_raised;
+  border-radius: @border_radius;
+  transform: translate3d(-40px, -40px, 0) scale(0,0);
+  transform-origin: right top;
+  .enable-trans();
+  &:hover {
     box-shadow: @boxshadow_card_raised;
-    border-radius: @border_radius;
-    transform: translate3d(-40px, -40px, 0) scale(0,0);
-    transform-origin: right top;
-    .enable-trans();
-    &:hover {
-        box-shadow: @boxshadow_card_raised;
+  }
+  &:active {
+    box-shadow: @boxshadow_card_normal;
+  }
+  nav {
+    padding: @gap/2 0px;
+    .nav {
+      height: @height_cell;
+      line-height: @height_cell;
+      position: relative;
+      display: block;
+      color: @black;
+      padding: 2px 20px;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      &:hover,&.active{
+        border-left: 4px solid @theme_main;
+        background: fade(@theme_main, 10%);
+      }
     }
-    &:active {
-        box-shadow: @boxshadow_card_normal;
-    }
-    nav {
-        padding: @gap/2 0px;
-        .nav {
-            height: @height_cell;
-            line-height: @height_cell;
-            position: relative;
-            display: block;
-            color: @black;
-            padding: 2px 20px;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            &:hover,&.active{
-                border-left: 4px solid @theme_main;
-                background: fade(@theme_main, 10%);
-            }
-        }
-    }
+  }
 }

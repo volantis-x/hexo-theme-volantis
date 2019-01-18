@@ -245,22 +245,22 @@
   }
 
   &.tagcloud{
-      .content{
-          text-align: justify;
-          padding: @gap/2 @gap;
-          &.pure{
-            padding: 0 @gap @gap @gap; // 适合白色导航栏背景
-          }
-          a{
-            display:inline-block;
-            .enable-trans(.1s);
-            line-height: 1.6em;
-            &:hover{
-              color: @color_text_highlight !important; //to cover inline style.
-              text-decoration: underline
-            }
-          }
+    .content{
+      text-align: justify;
+      padding: @gap/2 @gap;
+      &.pure{
+        padding: 0 @gap @gap @gap; // 适合白色导航栏背景
       }
+      a{
+        display:inline-block;
+        .enable-trans(.1s);
+        line-height: 1.6em;
+        &:hover{
+          color: @color_text_highlight !important; //to cover inline style.
+          text-decoration: underline
+        }
+      }
+    }
   }
 
   &.music{
@@ -270,16 +270,16 @@
       }
     }
     .content{
-        padding: @gap/2+4px;
-        padding-top: @gap/2;
-        &.pure{
-          padding-top: @gap/4; // 适合白色导航栏背景
-        }
-        .aplayer{
-          border-radius: 4px;
-          color: #666;
-          font-family: @fontfamily_base;
-        }
+      padding: @gap/2+4px;
+      padding-top: @gap/2;
+      &.pure{
+        padding-top: @gap/4; // 适合白色导航栏背景
+      }
+      .aplayer{
+        border-radius: 4px;
+        color: #666;
+        font-family: @fontfamily_base;
+      }
     }
   }
 }
