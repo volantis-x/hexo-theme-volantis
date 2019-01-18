@@ -344,6 +344,7 @@ ul.h-list {
       right: @gap*2;
       transform: translateY(100px) scale(0);
       transform-origin: bottom;
+      color: @color_text_main;
       @media(max-width: @on_pad) {
           right: @gap;
       }
@@ -351,7 +352,7 @@ ul.h-list {
         transform: translateY(0) scale(1);
         &.hl{
           background: @theme_main;
-          color: @theme_cardbg;
+          color: white;
           box-shadow: @boxshadow_card_normal;
         }
       }
@@ -360,7 +361,7 @@ ul.h-list {
           transform: scale(1.2);
           border-radius: 25%;
           background: @theme_main;
-          color: @theme_cardbg;
+          color: white;
           box-shadow: @boxshadow_card_raised;
           &.hl{
             box-shadow: @boxshadow_card_raised;

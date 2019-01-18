@@ -1,6 +1,6 @@
 <% if (is_tag()) { %>
     <script>
-        window.subData= { title:'<%- __('sidebar.tagcloud') %> : <%= page.tag %>'}
+        window.subData= { title:'<%- __('pagetitle.tagcloud') %> : <%= page.tag %>'}
     </script>
 <% } else if (is_archive()) { %>
     <script>
@@ -8,7 +8,7 @@
     </script>
 <% } else if (is_category()) { %>
     <script>
-        window.subData= { title:'<%- __('sidebar.category') %> : <%= page.category %>'}
+        window.subData= { title:'<%- __('pagetitle.category') %> : <%= page.category %>'}
     </script>
 <% } %>
 
