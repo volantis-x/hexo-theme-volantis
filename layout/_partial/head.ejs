@@ -59,6 +59,11 @@
   <% }) %>
   <% } %>
 
+  <% if (config.favicon) { %>
+  <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
+  <% } %>
+
+
   <% if (theme.services && theme.services.cdn == true && config.theme_cdn) { %>
     <% if (config.theme_cdn == true) { %>
     <%- css(theme.info.cdn + 'css/style.css') %>
