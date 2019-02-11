@@ -65,7 +65,7 @@
     text-align: justify;
     padding: @gap/2;
     max-height: ~"calc(100% - @{height_navbar} - 12.5 * @{gap})";
-    ul.entry > li > a{
+    ul > li > a{
       padding: 0 @gap;
       line-height: @height_cell;
       height: @height_cell;
@@ -91,6 +91,9 @@
       }
       &:active{
         border-left: 8px solid @theme_main;
+      }
+      &.child{
+        padding-left: @gap*2;
       }
     }
   }
