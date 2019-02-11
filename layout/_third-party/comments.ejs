@@ -1,6 +1,7 @@
 <!-- 显示推荐文章和评论 -->
 <%
   var displayRecommentedPosts = false;
+  var displayPopularPosts = false;
   var displayComments = false;
   if (page && theme.services) {
     if (theme.services.recommended_posts == true && theme.recommended_posts && theme.recommended_posts.autoDisplay == false && page.layout == 'post' && page.recommended_posts != false) {
@@ -9,17 +10,21 @@
     if ((config.disqus_shortname || config.livere_uid || config.valine) && theme.services.comments == true && page.comments != false) {
       displayComments = true;
     }
+    if (theme.services.popular_posts == true) {
+      displayPopularPosts = true;
+    }
   }
 %>
 
-<% if (displayRecommentedPosts || displayComments) { %>
+<% if (displayRecommentedPosts || displayPopularPosts || displayComments) { %>
   <article class="post white-box comments">
     <section class="article typo">
-
       <% if (displayRecommentedPosts) { %>
         <%- partial('recommended_posts', {page: page, site: site}) %>
       <% } %>
-
+      <% if (displayPopularPosts) { %>
+        <%- partial('popular_posts', {page: page, site: site}) %>
+      <% } %>
       <% if (displayComments) { %>
         <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;<%- __('post.comments') %></h4>
         <% if (config.disqus_shortname) { %>

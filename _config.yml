@@ -8,7 +8,7 @@ info:
   name: Material X
   docs: https://xaoxuu.com/wiki/material-x/
   # 主题的CDN地址。如需启用CDN，请在主目录的config中设置，详见文档。
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.1.18/
+  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.2.11/
 
 
 ############################### 主题样式 ###############################
@@ -26,7 +26,8 @@ services:
   busuanzi: true
   # fastclick: true
   # leancloud_visitors: true
-  recommended_posts: true   # 需要安装插件  hexo-recommended-posts
+  # recommended_posts: true   # 需要安装插件  hexo-recommended-posts
+  popular_posts: true   # 需要安装插件  hexo-related-popular-posts
   comments: true
   volantis: true
   music: true
