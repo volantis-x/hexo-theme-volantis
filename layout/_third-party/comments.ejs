@@ -10,7 +10,7 @@
     if ((config.disqus_shortname || config.livere_uid || config.valine) && theme.services.comments == true && page.comments != false) {
       displayComments = true;
     }
-    if (theme.services.popular_posts == true) {
+    if (theme.services.popular_posts == true && page.layout == 'post' && page.popular_posts != false) {
       displayPopularPosts = true;
     }
   }
