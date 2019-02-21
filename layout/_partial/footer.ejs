@@ -1,4 +1,10 @@
 <footer id="footer" class="clearfix">
+  <% if (config.footer) { %>
+    <div class="footer">
+      <%- markdown(config.footer) %>
+    </div>
+    <br>
+  <%}%>
   <% if (config.social) { %>
     <div class="social-wrapper">
       <% (config.social||[]).forEach(function(value){ %>

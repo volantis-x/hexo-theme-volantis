@@ -12,64 +12,135 @@
     </script>
 <% } %>
 
-<section class="post-list">
-    <% if (page.prev == 0) { %>
-      <% site.posts.each(function(post){ %>
-        <% if (post.top) { %>
-          <div class='post-wrapper'>
-            <%- partial('post', {post: post}) %>
-          </div>
-        <% } %>
-      <% }) %>
-    <% } %>
-    <% page.posts.each(function(post){ %>
-      <% if (!post.top) { %>
+<% if (site.posts && site.posts.length > 0) { %>
+
+  <section class="post-list">
+      <% if (page.prev == 0) { %>
+        <% site.posts.each(function(post){ %>
+          <% if (post.top) { %>
+            <div class='post-wrapper'>
+              <%- partial('post', {post: post}) %>
+            </div>
+          <% } %>
+        <% }) %>
+      <% } %>
+
+
+
+      <% if (is_current('categories') && !page.posts) { %>
         <div class='post-wrapper'>
-          <%- partial('post', {post: post}) %>
+          <article id="archive-page" class="post article white-box">
+            <section class="archive">
+              <div class="archive-item archive-year mark">
+                <h2><%- page.title %></h2>
+                <hr>
+              </div>
+              <div class="archive-item archive-post mark">
+                <% if (site.categories.length){ %>
+                  <% site.categories.sort('path').each(function(category){ %>
+                    <a class="<%= category.parent ? ' child' : ''%>" href="<%= url_for(category.path) %>">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;<%= category.name %></time>
+                      <span class="title">
+                        (<%- category.posts.length %>)
+                      </span>
+                    </a>
+                  <% }) %>
+                <% } %>
+              </div>
+              <br>
+              <%- page.content %>
+            </section>
+          </article>
         </div>
       <% } %>
-    <% }) %>
-</section>
 
-<% if (page.total > 1) { %>
-    <br>
-    <div class="prev-next">
-        <div class="prev-next">
-            <% if (page.prev != 0) { %>
-                <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
-                    <section class="post prev" >
-                        <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %>&nbsp;
-                    </section>
-                </a>
-            <% } %>
-            <p class="current">
-                <%= page.current%> / <%= page.total%>
-            </p>
-            <% if (page.next != 0) { %>
-                <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
-                    <section class="post next">
-                        &nbsp;<%- __('post.next_page') %>&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-                    </section>
-                </a>
-            <% } %>
-
+      <% if (is_current('tags') && !page.posts) { %>
+        <div class='post-wrapper'>
+          <article id="archive-page" class="post article white-box">
+            <section class="archive">
+              <div class="archive-item archive-year mark">
+                <h2><%- page.title %></h2>
+                <hr>
+              </div>
+              <div class="archive-item archive-post mark">
+                <% if (site.tags.length){ %>
+                  <% site.tags.sort('path').each(function(tags){ %>
+                    <% if (tags.posts.length){ %>
+                      <a class="<%= tags.parent ? ' child' : ''%>" href="<%= url_for(tags.path) %>">
+                        <time><i class='fas fa-hashtag fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;<%= tags.name %></time>
+                        <span class="title">
+                          (<%- tags.posts.length %>)
+                        </span>
+                      </a>
+                    <% } %>
+                  <% }) %>
+                <% } %>
+              </div>
+              <br>
+              <%- page.content %>
+            </section>
+          </article>
         </div>
-    </div>
+      <% } %>
+
+      <% if (page.posts && page.posts.length > 0) { %>
+        <% page.posts.each(function(post){ %>
+          <% if (!post.top) { %>
+            <div class='post-wrapper'>
+              <%- partial('post', {post: post}) %>
+            </div>
+          <% } %>
+        <% }) %>
+      <% } %>
+
+  </section>
 
 <% } %>
 
-<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-<%
-var need_mathjax = false;
-page.posts.each(function(post){
-  if (post.mathjax){
-    if (post.mathjax != "internal") {
-      need_mathjax = true;
-    }
-  }
-});
-%>
 
-<% if (need_mathjax){ %>
-  <%- partial('mathjax') %>
+<% if (page.posts && page.posts.length > 0) { %>
+
+  <% if (page.total > 1) { %>
+      <br>
+      <div class="prev-next">
+          <div class="prev-next">
+              <% if (page.prev != 0) { %>
+                  <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
+                      <section class="post prev" >
+                          <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %>&nbsp;
+                      </section>
+                  </a>
+              <% } %>
+              <p class="current">
+                  <%= page.current%> / <%= page.total%>
+              </p>
+              <% if (page.next != 0) { %>
+                  <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
+                      <section class="post next">
+                          &nbsp;<%- __('post.next_page') %>&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+                      </section>
+                  </a>
+              <% } %>
+
+          </div>
+      </div>
+
+  <% } %>
+
+  <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+  <%
+  var need_mathjax = false;
+  page.posts.each(function(post){
+    if (post.mathjax){
+      if (post.mathjax != "internal") {
+        need_mathjax = true;
+      }
+    }
+  });
+  %>
+
+  <% if (need_mathjax){ %>
+    <%- partial('mathjax') %>
+  <% } %>
+
 <% } %>

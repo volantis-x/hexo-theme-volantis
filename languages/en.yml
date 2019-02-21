@@ -41,5 +41,7 @@ symbol:
 navbar:
   home: Home
   blogs: Blogs
+  categories: Categories
+  tags: Tags
   archives: Archives
   friends: Friends

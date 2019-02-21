@@ -41,5 +41,7 @@ symbol:
 navbar:
   home: 主頁
   blogs: 博客
+  categories: 分類
+  tags: 標籤
   archives: 歸檔
   friends: 朋友

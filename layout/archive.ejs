@@ -10,21 +10,19 @@
           if (post.year && post.year !== year) {
             year = post.year;
       %>
-            <div class="archive-item archive-year mark">
-                <h2>
-                    <%= year %>
-                </h2>
-                <hr>
-            </div>
+          <div class="archive-item archive-year mark">
+            <h2><%= year %></h2>
+            <hr>
+          </div>
       <%  } %>
           <div class="archive-item archive-post mark">
             <a href="<%= url_for(post.path) %>">
               <time><%= date(post.date, 'MM-DD') %></time>
               <span class="title">
                 <% if(post.title){ %>
-                    <%= post.title %>
+                  <%= post.title %>
                 <% } else if (post.date) { %>
-                    <%= date(post.date, config.date_format) %>
+                  <%= date(post.date, config.date_format) %>
                 <% } %>
               </span>
             </a>
