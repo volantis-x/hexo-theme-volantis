@@ -257,10 +257,6 @@
   <% } %>
 <% } %>
 
-<% if (config.import && config.import.js && config.import.js.length > 0) { %>
-  <%- js(config.import.js) %>
-<% } %>
-
 <% if (page.layout == 'links') { %>
   <%- js('https://cdn.jsdelivr.net/gh/toddmotto/echo@1.7.3/src/echo.js') %>
   <script>
@@ -272,6 +268,21 @@
         console.log(element, 'has been', op + 'ed')
       }
     });
-    // echo.render(); is also available for non-scroll callbacks
   </script>
+<% } %>
+
+<% if (config.import && config.import.js && config.import.js.length > 0) { %>
+  <%- js(config.import.js) %>
+<% } %>
+
+<% if (config.import && config.import.script && config.import.script.length > 0) { %>
+  <% (config.import.script||[]).forEach(function(script){ %>
+  <script
+  <% if (script.type){ %> type="<%= script.type %>"<% } %>
+  <% if (script.src){ %> src="<%= script.src %>"<% } %>
+  <% if (script.async){ %> async="<%= script.async %>"<% } %>
+  <% if (script.defer){ %> defer="<%= script.defer %>"<% } %>
+  <% if (script.charset){ %> charset="<%= script.charset %>"<% } %>
+  <% if (script.integrity){ %> integrity="<%= script.integrity %>"<% } %>></script>
+  <% }) %>
 <% } %>
