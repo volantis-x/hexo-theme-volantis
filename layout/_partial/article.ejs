@@ -6,23 +6,29 @@
       </div>
         <% if(post.layout == 'post'){ %>
           <section class='meta' id="footer-meta">
-            <% if(!page.meta || page.meta.updated != false){ %>
-              <time class="metatag time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-                &nbsp;<%- date(post.updated, config.date_format) %>
-              </time>
-            <% } %>
-            <% if (post.tags && post.tags.length && (!page.meta || page.meta.tags != false)) { %>
+            <hr>
+            <div class='new-meta-box'>
+              <% if(!page.meta || page.meta.updated != false){ %>
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>">
+                  <a class='notlink'>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    <%- date(post.updated, config.date_format) %>
+                  </a>
+                </div>
+              <% } %>
+              <% if (post.tags && post.tags.length && (!page.meta || page.meta.tags != false)) { %>
                 <%
                 var items = [];
                 post.tags.each(function(item){
-                    items.push('<div class="metatag tags"><a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;' + item.name + '</a></div>');
+                  items.push('<div class="new-meta-item meta-tags"><a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;' + item.name + '</a></div>');
                 });
                 %>
                 <%- items.join(' ') %>
-            <% } %>
-            <% if (theme.services && theme.services.share == true && (config.share || config.mob) && (!page.meta || page.meta.share != false)) { %>
-              <%- partial('../_third-party/share') %>
-            <% } %>
+              <% } %>
+              <% if (theme.services && theme.services.share == true && (config.share || config.mob) && (!page.meta || page.meta.share != false)) { %>
+                <%- partial('../_third-party/share') %>
+              <% } %>
+            </div>
           </section>
         <% } %>
 

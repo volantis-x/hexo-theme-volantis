@@ -19,11 +19,6 @@
       margin: auto;
     }
   }
-  hr {
-    border: 0;
-    border-radius: 1px;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-  }
   p.small-img,
   div.small-img {
     img {
@@ -118,10 +113,12 @@
   }
   h2 {
     font-size: @fontsize_h2;
+    text-align: @text_align_h2;
   }
   h3 {
     font-size: @fontsize_h3;
-    color: darken(@color_text_main, 20%);
+    color: @color_text_h3;
+    text-align: @text_align_h3;
   }
   h4 {
     font-weight: bold;
@@ -131,7 +128,6 @@
     font-weight: bold;
     color: @color_text_main;
     font-size: @fontsize_h5;
-
   }
   h6 {
     color: fade(@color_text_main, 75%);
