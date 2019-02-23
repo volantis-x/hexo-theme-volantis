@@ -292,7 +292,7 @@
             margin-bottom: 0.5*@gap;
           }
           font-size: @fontsize_small * .95;
-          .aplayer{
+          .aplayer,.logo{
             .enable-trans();
             width: 65px;
             height: 65px;
@@ -313,7 +313,13 @@
               }
             }
           }
-
+          .logo{
+            border-radius: 4px;
+            &:hover {
+              border-radius: 4px;
+              transform: scale(1.1) rotate(4deg);
+            }
+          }
           .title {
               // left: 0;
               text-align: @text_align_h1;
