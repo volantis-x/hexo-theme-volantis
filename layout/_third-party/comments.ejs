@@ -4,9 +4,6 @@
   var displayPopularPosts = false;
   var displayComments = false;
   if (page && theme.services) {
-    if (theme.services.recommended_posts == true && theme.recommended_posts && theme.recommended_posts.autoDisplay == false && page.layout == 'post' && page.recommended_posts != false) {
-      displayRecommentedPosts = true;
-    }
     if ((config.disqus_shortname || config.livere_uid || config.valine) && theme.services.comments == true && page.comments != false) {
       displayComments = true;
     }
@@ -19,9 +16,6 @@
 <% if (displayRecommentedPosts || displayPopularPosts || displayComments) { %>
   <article class="post white-box comments">
     <section class="article typo">
-      <% if (displayRecommentedPosts) { %>
-        <%- partial('recommended_posts', {page: page, site: site}) %>
-      <% } %>
       <% if (displayPopularPosts) { %>
         <%- partial('popular_posts', {page: page, site: site}) %>
       <% } %>

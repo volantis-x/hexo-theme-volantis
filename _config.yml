@@ -26,13 +26,12 @@ services:
   busuanzi: true
   # fastclick: true
   # leancloud_visitors: true
-  # recommended_posts: true   # 需要安装插件  hexo-recommended-posts
-  popular_posts: true   # 需要安装插件  hexo-related-popular-posts
+  # popular_posts: true   # 需要安装插件  hexo-related-popular-posts
   comments: true
   volantis: true
-  music: true
-  share: true
-  qrcode: true    # 需要安装插件  npm i -S hexo-helper-qrcode
+  # music: true
+  # share: true
+  # qrcode: true    # 需要安装插件  npm i -S hexo-helper-qrcode
 
 
 ############################### 杂项 ###############################
@@ -55,20 +54,8 @@ music:
     post: true       # layout: post 的页面是否显示
 
 
-
 # 友链页头像占位图
 loading_img: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/qq/亲亲.gif
-
-# 推荐文章
-recommended_posts:
-  autoDisplay: false # 自动在文章底部显示推荐文章，如果你使用Material-X主题，这里要设置为false。
-  server: https://api.truelaurel.com # 后端推荐服务器地址
-  timeoutInMillis: 10000 # 服务时长，超过此时长，则使用离线推荐模式
-  excludePattern: []
-  titleHtml: <h4>推荐文章</h4> #自定义标题
-  internalLinks: 3 # 内部文章数量
-  externalLinks: 2 # 外部文章数量
-  fixedNumber: false
 
 
 # Search
