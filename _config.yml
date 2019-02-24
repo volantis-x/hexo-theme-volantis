@@ -26,12 +26,12 @@ services:
   busuanzi: true
   # fastclick: true
   # leancloud_visitors: true
-  # popular_posts: true   # 需要安装插件  hexo-related-popular-posts
+  popular_posts: true   # 需要安装插件  hexo-related-popular-posts
   comments: true
   volantis: true
-  # music: true
-  # share: true
-  # qrcode: true    # 需要安装插件  npm i -S hexo-helper-qrcode
+  music: true
+  share: true
+  qrcode: true    # 需要安装插件  npm i -S hexo-helper-qrcode
 
 
 ############################### 杂项 ###############################
