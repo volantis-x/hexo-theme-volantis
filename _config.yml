@@ -20,12 +20,11 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 # 服务开关，如果你想禁用某些功能，直接设置为false或者注释掉，相关的js脚本就不会加载。
 # 有些服务这里打开了也未必会生效，还需要额外的配置，详见文档。
 services:
-  cdn: true
+  # cdn: true
   scrollreveal: true
   nodewaves: true
   busuanzi: true
   # fastclick: true
-  # leancloud_visitors: true
   # popular_posts: true   # 需要安装插件  hexo-related-popular-posts
   comments: true
   volantis: true
