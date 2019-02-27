@@ -1,11 +1,12 @@
-<% if (post.categories && post.categories && post.categories.forEach){ %>
+<% if (post.categories && post.categories.length && post.categories.forEach){ %>
     <%
     var cats = [];
     post.categories.forEach(function(cat){
-        cats.push('<a href="'+url_for(cat.path)+'">' + cat.name + '</a>');
+        cats.push('<a class="categories" href="'+url_for(cat.path)+'">' + cat.name + '</a>');
     });
     %>
     <div class='cats'>
-        <%- cats.join(', ') %>
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+        <%- cats.join(' / ') %>
     </div>
 <% } %>

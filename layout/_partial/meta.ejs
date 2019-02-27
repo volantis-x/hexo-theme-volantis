@@ -1,0 +1,63 @@
+<% if(is_home() || is_category() || is_archive() || is_tag()) {
+  var isPostList = true;
+} else {
+  var isPostList = false;
+} %>
+<section class='meta'>
+  <% if((!isPostList && post.music && post.music.enable) || (isPostList && post.music && post.music.enable == true)){ %>
+    <div class="aplayer" data-mini=true
+      data-mode="circulation" data-volume="0.7"
+      data-server="<%= post.music.server %>"
+      data-type="<%= post.music.type %>"
+      data-id="<%= post.music.id %>">
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+  <% } %>
+  <div class="meta" id="header-meta">
+    <% if(isPostList){ %>
+      <h2 class="title">
+          <a href="<%- url_for(post.path) %>">
+              <% if(post.title){ %>
+                  <%= post.title %>
+              <% } else if (post.date) { %>
+                  <%= date(post.date, config.date_format) %>
+              <% } %>
+          </a>
+      </h2>
+    <% } else { %>
+      <% if(post.title){ %>
+          <h1 class="title"><%= post.title %></h1>
+      <% } else if (post.date) { %>
+          <h1 class="title"><%= date(post.date, config.date_format) %></h1>
+      <% } %>
+    <% } %>
+
+    <% if(post.date){ %>
+      <time class="time">
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+        <%= date(post.date, config.date_format) %>
+      </time>
+    <% } %>
+
+    <% if(post.categories){ %>
+      <%- partial('categories',{post:post}) %>
+    <% } %>
+
+    <% if(!isPostList){ %>
+      <% if (config.leancloud_visitors && config.leancloud_visitors.app_id && config.leancloud_visitors.app_key) { %>
+        <div class="browse leancloud"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+          <span id="<%= url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%= page.title %>">
+           <span class="leancloud-visitors-count"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          </span>
+        </div>
+      <% } else { %>
+        <div class="browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </div>
+      <% } %>
+    <% } %>
+
+  </div>
+</section>

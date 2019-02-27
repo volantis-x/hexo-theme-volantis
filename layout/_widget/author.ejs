@@ -1,29 +1,28 @@
-<% if(config.widgets.author.enable != false) { %>
-    <section class='m_widget author'>
-        <% if(config.widgets.author.avatar || config.avatar) { %>
-            <div class='header'>
-                <img class='avatar' src='<%= url_for(config.widgets.author.avatar || config.avatar) %>' />
-            </div>
-        <%} %>
-        <div class='content'>
-            <% if (config.widgets.author.title){ %>
-                <h2><%= config.widgets.author.title %></h2>
-            <% } %>
-            <% if (config.widgets.author.motto){ %>
-                <div>
-                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
-                    <%= config.widgets.author.motto %>
-                </div>
-            <% } %>
-        </div>
-        <% if (config.widgets.author.social){ %>
-            <div class="social-wrapper">
-              <% (config.social||[]).forEach(function(value){ %>
-                <% if (value.url && value.icon) { %>
-                    <a href="<%= value.url %>" class="social flat-box" target="_blank" rel="external"><i class="social fa <%= value.icon %>" aria-hidden="true"></i></a>
-                <%}%>
-              <%})%>
-            </div>
+<% if(theme.widgets.author.enable != false) { %>
+  <section class='author'>
+    <% if(theme.widgets.author.avatar) { %>
+      <div class='header'>
+        <img class='avatar' src='<%= url_for(config.avatar ? config.avatar : "https://img.vim-cn.com/a4/87a96e2e01b1180bba1e76e190df5220378c1a.png") %>'/>
+      </div>
+    <%} %>
+    <% if (theme.widgets.author.title == true || theme.widgets.author.motto == true){ %>
+      <div class='content'>
+        <% if (theme.widgets.author.title == true){ %>
+          <h2><%= config.title %></h2>
         <% } %>
-    </section>
+        <% if (theme.widgets.author.motto){ %>
+          <p><%= config.motto %></p>
+        <% } %>
+      </div>
+    <% } %>
+    <% if (theme.widgets.author.social == true && config.social){ %>
+      <div class="social-wrapper">
+        <% (config.social||[]).forEach(function(value){ %>
+          <% if (value.url && value.icon) { %>
+            <a href="<%= url_for(value.url) %>" class="social flat-btn" target="_blank" rel="external"><i class="social <%= value.icon %>" aria-hidden="true"></i></a>
+          <%}%>
+        <%})%>
+      </div>
+    <% } %>
+  </section>
 <% } %>
