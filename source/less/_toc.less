@@ -1,53 +1,26 @@
-.l_side .toc-wrapper{
-    z-index: 1;
+.m_widget.toc-wrapper{
     overflow: auto;
     border-radius: @border_radius;
     position: sticky;
     top: @height_navbar + 1*@gap;
-    // bottom: @gap;
-    // max-height: ~"calc(100% - 2 * @{gap} - @{height_navbar})";
-    // max-height: 600px;
     .enable-trans();
+    .content{
+        padding: @gap/2 0;
+    }
+    &.active{
+        position: fixed;
+        box-shadow: @boxshadow_card_raised;
+    }
+
     .header{
         position: sticky;
         width: 100%;
         top: 0;
     }
-    .content{
-        padding: @gap/2 0;
-        &.pure{
-          padding-top: 0; // 适合白色导航栏背景
-        }
-        a {
-            border-left: 4px solid transparent;
-            &:hover{
-                color: fade(@color_text_main, 100%);
-                border-left: 4px solid @theme_main;
-            }
-            &:active{
-                border-left: 8px solid @theme_main;
-            }
-            &.active{
-                color: fade(@color_text_main, 100%);
-                border-left: 4px solid @theme_main;
-                background: fade(@theme_main, 10%);
-            }
-        }
-    }
-    &.active{
-        position: fixed;
-        box-shadow: @boxshadow_card_raised;
-        .header{
-            .s-toc{
-              transform: rotate(30deg);
-            }
-        }
-    }
-
     @media(max-width: @on_phone){
         position: fixed;
-        width: ~"calc(100% - 2 * @{gap})";
-        top: @height_navbar;
+        width: 100% - 0.5 * @gap;
+        top: @height_navbar + @gap;
         left: @gap;
         box-shadow: @boxshadow_card_raised;
         display: none;
@@ -59,9 +32,23 @@
 
     a {
         padding-left: 8px;
-        color: fade(@color_text_main, 60%);
+        color: fade(@theme_text_main, 60%);
         font-size: @fontsize_small;
         display: inline-block;
+        border-left: 4px solid transparent;
+        &:hover{
+            color: fade(@theme_text_main, 100%);
+            border-left: 4px solid @theme_bg_quote;
+        }
+        &:active{
+            border-left: 8px solid @theme_bg_quote;
+        }
+        &.active{
+            color: fade(@theme_text_main, 100%);
+            border-left: 4px solid @theme_bg_quote;
+            background: fade(@theme_bg_quote, 10%);
+        }
+
     }
     ol{
         .toc-item.toc-level-1 {
@@ -91,6 +78,7 @@
         li{
             a{
                 padding: 0 @gap/2 0 (@gap - 5px);
+                font-weight: bold;
                 width: 100%;
 
             }

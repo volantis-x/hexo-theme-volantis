@@ -1,68 +1,66 @@
-<header class="l_header <%= theme.style %>">
+<header class="l_header">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
-      <a class="logo flat-box" href='<%= url_for("/") %>' >
-        <% if (config.logo) { %>
-          <img class='logo' src='<%- url_for(config.logo) %>'/>
-        <% } else { %>
-          <%- config.title %>
-        <% } %>
-      </a>
-			<div class='menu'>
-				<ul class='h-list'>
-          <% if (config.nav_menu) { %>
-  					<% (config.nav_menu || []).forEach(function(value){ %>
-  						<li>
-								<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
-								 class="nav flat-box" href="<%= url_for(value.url) %>">
-									<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
-								</a>
-							</li>
-      			<%})%>
-      		<% } %>
-				</ul>
-			</div>
+			<a class="logo flat-box" href='<%= url_for("/") %>' >
+				<!-- <i class="fa fa-home"></i> -->
+				<%- config.title %>
+			</a>
 
-			<% if (theme.search.enable === true) { %>
+				<div class='menu'>
+					<ul class='h-list'>
+                        <% if (config.nav_menu) { %>
+    						<% (config.nav_menu || []).forEach(function(value){ %>
+    							<li>
+    								<a class='nav-<%=value.slug%> flat-box' href='<%=url_for(value.url)%>'>
+    									<i class='fa <%=value.icon%> fa-'></i>&nbsp;<%=value.name%>
+    								</a>
+    							</li>
+    						<%})%>
+        			 <% } %>
+					</ul>
+					<div class='underline'></div>
+				</div>
+
+			<% if (config.search.enable === true) { %>
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="搜索" />
-						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
 					</form>
 				</div>
 			<% } %>
 			<ul class='switcher h-list'>
-				<% if (theme.search.enable === true) { %>
-					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				<% if (config.search.enable === true) { %>
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
 				<% } %>
-				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
 			</ul>
 		</div>
 
 		<div class='nav-sub container container--flex'>
-			<a class="logo flat-box"></a>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
 			<ul class='switcher h-list'>
-				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
-				<li class='s-top'><a class="flat-btn fas fa-arrow-up fa-fw" href='javascript:void(0)'></a></li>
-				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
 			</ul>
 		</div>
 	</div>
 </header>
 	<aside class="menu-phone">
-    <header>
-		<nav class="menu">
-      <ul>
-          <% if (config.nav_menu) { %>
-              <% (config.nav_menu || []).forEach(function(value){ %>
-                  <li>
-										<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>" class="nav flat-box" href="<%= url_for(value.url) %>">
-											<i class='<%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%>
-										</a>
-                  </li>
-              <%})%>
-       <% } %>
-      </ul>
+        <div class="header"><%=config.title%></div>
+		<nav>
+            <ul>
+                <% if (config.nav_menu) { %>
+                    <% (config.nav_menu || []).forEach(function(value){ %>
+                        <li>
+                            <a class='nav-<%=value.slug%> flat-box nav flat-box' href='<%=url_for(value.url)%>'><i class='fa <%=value.icon%> fa-fw'></i>&nbsp;<%=value.name%></a>
+                        </li>
+                    <%})%>
+             <% } %>
+            </ul>
 		</nav>
-    </header>
 	</aside>

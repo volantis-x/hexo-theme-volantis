@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,13 +18,8 @@
       title = 'Tag: ' + page.tag;
   %>
   <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
-  <% if (page.keywords && config.keywords){ %>
-  <meta name="keywords" content="<%= page.keywords %>, <%= config.keywords %>">
-  <% } else if (page.keywords) { %>
-  <meta name="keywords" content="<%= page.keywords %>">
-  <% } else if (config.keywords) { %>
-  <meta name="keywords" content="<%= config.keywords %>">
-  <% } %>
+  <meta name="description" content="<%= config.description %>" />
+  <meta name="keywords" content="<%=(config.keywords||[]).join(',') %>" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <%- favicon_tag(config.favicon) %>
@@ -31,60 +28,13 @@
 
   <link rel="shortcut icon" href="<%= config.shortcut_icon %>" />
   <link rel="icon" href="<%= config.favicon %>" />
-
-
-  <link href='//cdn.jsdelivr.net/npm/node-waves@0.7.5/dist/waves.min.css' rel='stylesheet'>
-
-  <!-- style.css -->
-  <% if (config.import && config.import.style == true) { %>
-    <%- css('//cdn.jsdelivr.net/gh/xaoxuu/blog@gh-pages/style.css') %>
-  <% } else if (config.import && config.import.style && config.import.style.length > 0){ %>
-    <%- css(config.import.style) %>
-  <% } else { %>
-    <%- css('style.css') %>
-  <% } %>
-
-  <!-- fontawesome -->
-  <% if (config.import && config.import.fontawesome == true) { %>
-    <%- css('//cdn.jsdelivr.net/gh/xaoxuu/cdn@master/fontawesome/5.6.3/css/all.min.css') %>
-  <% } else if (config.import && config.import.fontawesome && config.import.fontawesome.length > 0){ %>
-    <%- css(config.import.fontawesome) %>
-  <% } else { %>
-    <%- css('fontawesome-free-5.6.3-web/css/all.min.css') %>
-  <% } %>
-
-  <!-- google_fonts -->
-  <% if (config.import && config.import.google_fonts && config.import.google_fonts.length > 0){ %>
-    <link href="<%= config.import.google_fonts %>" rel="stylesheet">
-  <% } %>
-
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <%- css('style.css') %>
   <script>
     function setLoadingBarProgress(num) {
       document.getElementById('loading-bar').style.width=num+"%";
     }
   </script>
-
-  <!-- ga -->
-  <% if (config.google_analytics) { %>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', '<%- config.google_analytics %>', '<%- config.root_domain %>');
-      ga('send', 'pageview');
-    </script>
-  <% } %>
-  <!-- ba -->
-  <% if (config.baidu_analytics_key) { %>
-    <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
-  <% } %>
 </head>

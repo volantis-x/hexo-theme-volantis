@@ -1,26 +1,17 @@
-#####################################
-##      Material X                 ##
-##      version: 1.0 beta7         ##
-##      updated: 2018-12-22        ##
-#####################################
-
-# >> 主题配置写法示例 ---------------------------------------------------------------------
-# ⚠️ 注意：这里的内容需要复制到主目录到config中才有效，写在这里是为了提供参考
-
-# 支持google字体 在这里选好你需要的字体：https://fonts.google.com，然后在_defines.less中修改font_family。
-google_fonts: 'Skranji|Ubuntu' # 多个字体中间用英文竖线隔开
-
-# 导航栏，url必须以 "/" 结尾
+# >> 主题配置 ---------------------------------------------------------------------
+# 导航栏
 nav_menu:
   - name: 主页
-    icon: fas fa-home
-    url: https://xaoxuu.com/
+    slug: about
+    icon: fa-home
+    url: /
   - name: 项目
     slug: projects
     icon: fa-cube
     url: https://www.qdfuns.com/u/32286.html
   - name: 博客
-    icon: fas fa-rss
+    slug: home
+    icon: fa-rss
     url: /
   - name: 归档
     slug: archives
@@ -44,7 +35,7 @@ nav_menu:
     url: https://www.jianshu.com/u/c6b5715f3016
 # 右边的小窗口，不想显示哪一项的注释掉对应的即可
 widgets:
-  # 博主信息区，是否显示个人头像、格言、社交信息等
+  # 博主信息，显示个人头像、格言、社交信息等
   author:
     enable: true
     avatar: /img/me-lg.jpg # 头像，如果config中已经设置avatar了，这里可以不用写
@@ -132,7 +123,7 @@ recommended_posts:
   fixedNumber: false
 
 
-# Search
+# Search 确保_config中只有一个search，否则会冲突。
 search:
   enable: true
   service: hexo

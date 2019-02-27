@@ -1,6 +1,6 @@
 <% if (is_tag()) { %>
     <script>
-        window.subData= { title:'<%= theme.widgets.tagcloud.title %> : <%= page.tag %>'}
+        window.subData= { title:'tag : <%= page.tag %>'}
     </script>
 <% } else if (is_archive()) { %>
     <script>
@@ -8,11 +8,27 @@
     </script>
 <% } else if (is_category()) { %>
     <script>
-        window.subData= { title:'<%= theme.widgets.categories.title %> : <%= page.category %>'}
+        window.subData= { title:'category : <%= page.category %>'}
     </script>
 <% } %>
 
 <section class="post-list">
+    <% if(!config.nav_menu){ %>
+        <div class='post-wrapper'>
+            <article class="post revealno-title">
+                <section class="meta">
+                    <h2 class="title" style="color:#EF503A">
+                        <span class="fa fa-exclamation-triangle"></span>
+                        还剩最后一步就成功了
+                    </h2>
+                    <p>
+                        请按照下面的指示进行操作：
+                    </p>
+                </section>
+                <iframe frameborder="no" width=100% height=600 src="https://xaoxuu.com/wiki/material-x/#/?id=主题配置"></iframe>
+            </article>
+        </div>
+    <% } %>
     <% page.posts.each(function(post){ %>
         <div class='post-wrapper'>
             <%- partial('post', {post: post}) %>
@@ -27,7 +43,7 @@
             <% if (page.prev != 0) { %>
                 <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
                     <section class="post prev" >
-                        <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
                     </section>
                 </a>
             <% } %>
@@ -37,7 +53,7 @@
             <% if (page.next != 0) { %>
                 <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
                     <section class="post next">
-                        &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        &nbsp;下一页&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </section>
                 </a>
             <% } %>
@@ -45,20 +61,4 @@
         </div>
     </div>
 
-<% } %>
-
-<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-<%
-var need_mathjax = false;
-page.posts.each(function(post){
-  if (post.mathjax){
-    if (post.mathjax != "internal") {
-      need_mathjax = true;
-    }
-  }
-});
-%>
-
-<% if (need_mathjax){ %>
-  <%- partial('mathjax') %>
 <% } %>

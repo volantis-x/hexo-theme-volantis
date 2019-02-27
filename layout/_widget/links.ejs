@@ -1,24 +1,25 @@
-<section class='links'>
-    <header class='header <%= theme.style %>'>
-        <div><i class="<%= theme.widgets.links.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= theme.widgets.links.title %></div>
-        <% if(config.title && theme.widgets.links.mailto) { %>
-            <a class="rightBtn" title="联系博主添加友链" target="_blank" rel="external nofollow noopener noreferrer" href="mailto:<%= theme.widgets.links.mailto %>?subject=交换友链&body=你好，我想和你交换友链，我已经将【<%= config.title %>】添加到我的博客的友链中。我的博客链接是："><i class="fas fa-plus fa-fw"></i></a>
-        <%} %>
-    </header>
-    <div class='content <%= theme.style %>'>
+<section class='m_widget links'>
+    <div class='header'><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+    <div class='content'>
         <ul class="entry" id="links">
-            <% (config.links||[]).forEach(function(item){ %>
-                <li><a class="flat-box" title="<%= url_for(item.url) %>" target="_blank" rel="external nofollow noopener noreferrer" href="<%= url_for(item.url) %>">
+            <% (config.widgets.links||[]).forEach(function(item){ %>
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="<%= url_for(item.url) %>">
                     <div class='name'>
-                        <% if(item.avatar) { %>
-                            <img src="<%= item.avatar %>">
-                        <% } else { %>
-                            <i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>
-                        <% } %>
+                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>
                         &nbsp;&nbsp;<%= item.name %>
                     </div>
                 </a></li>
             <% }) %>
+            <% if(config.email) { %>
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="mailto:<%= config.email %>?subject=交换友链">
+                    <div class='name'>
+                        <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+                        &nbsp;&nbsp;联系博主交换友链
+                    </div>
+                </a></li>
+            <%} %>
+
         </ul>
+
     </div>
 </section>

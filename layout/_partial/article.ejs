@@ -1,33 +1,39 @@
-<article id="<%= post.layout %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
-  <%- partial('meta',{post:post}) %>
+<article id="<%= post.layout %>-<%= post.slug %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <section class='meta'>
+        <h1 class="title">
+            <% if(post.title){ %>
+                <%= post.title %>
+            <% } else if (post.date) { %>
+                <%= date(post.date, config.date_format) %>
+            <% } %>
+        </h1>
+        <time>
+            <%= date(post.date, config.date_format) %>&nbsp;&nbsp;
+            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </time>
+        <%- partial('categories',{post:post}) %>
+    </section>
+
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
             <%- post.content %>
         </div>
-        <% if(post.layout == 'post'){ %>
-          <section class='meta' id="footer-meta">
-              <time class="time" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>" content="<%- date(post.updated, config.date_format) %>">
-                  <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;本文最后更新于：<%- date(post.updated, config.date_format) %>
-              </time>
-              <% if (post.tags && post.tags.length && post.tags.each) { %>
-                  <%
-                  var items = [];
-                  post.tags.each(function(item){
-                      items.push('<div class="tags"><a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;' + item.name + '</a></div>');
-                  });
-                  %>
-                  <%- items.join(' ') %>
-              <% } %>
-          </section>
+
+        <% if (post.tags && post.tags && post.tags.each) { %>
+            <div class="article-tags tags">
+                <% post.tags.each(function(item){ %>
+                    <a href="<%- url_for(item.path) %>"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;<%=item.name %></a>
+                <%})%>
+            </div>
         <% } %>
 
         <% if(post.prev || post.next){ %>
             <div class="prev-next">
                 <% if(post.prev){ %>
-                    <section class="prev">
+                    <section class="prev" >
                         <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
+                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
                             <h4>
                                 <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
                                   <% if(post.prev.title){ %>
@@ -37,15 +43,11 @@
                                   <% } %>
                                 </a>
                             </h4>
-                            <% if (post.prev.tags && post.prev.tags.length && post.prev.tags.each) { %>
-                                <%
-                                var items = [];
-                                post.prev.tags.each(function(item){
-                                    items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>' + item.name + '</a>');
-                                });
-                                %>
+                            <% if (post.prev.tags && post.prev.tags.length) { %>
                                 <h6 class="tags">
-                                    <%- items.join(' ') %>
+                                    <% post.prev.tags.each(function(item){ %>
+                                        <i class="fa fa-tag fa-fw"></i><%=item.name %>
+                                    <%})%>
                                 </h6>
                             <% } %>
                         </span>
@@ -54,7 +56,7 @@
                 <% if(post.next){ %>
                     <section class="next">
                         <span class="art-item-right" aria-hidden="true">
-                            <h6>下一篇&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
                                 <a href="<%=url_for(post.next.path)%>" rel="prev" title="<%=post.next.title%>">
                                     <% if(post.next.title){ %>
@@ -64,15 +66,11 @@
                                     <% } %>
                                 </a>
                             </h4>
-                            <% if (post.next.tags && post.next.tags.length && post.next.tags.each) { %>
-                                <%
-                                var items = [];
-                                post.next.tags.each(function(item){
-                                    items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>' + item.name + '</a>');
-                                });
-                                %>
+                            <% if (post.next.tags && post.next.tags.length) { %>
                                 <h6 class="tags">
-                                    <%- items.join(' ') %>
+                                    <% post.next.tags.each(function(item){ %>
+                                        <i class="fa fa-tag fa-fw"></i><%=item.name %>
+                                    <%})%>
                                 </h6>
                             <% } %>
                         </span>
@@ -85,14 +83,53 @@
 
 </article>
 
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-<% if (page.mathjax){ %>
-    <%- partial('mathjax') %>
-<% } %>
-
 <br>
 
-<%- partial('comments') %>
+<!-- 显示推荐文章和评论 -->
+<% if (post && ((config.recommended_posts && config.recommended_posts.autoDisplay == false && post.recommended_posts != false) || (post.comments && (config.disqus_shortname || config.livere_shortname || config.valine)) )) { %>
+    <article class="post white-box comments">
+        <section class="article typo">
+
+            <% if (config.recommended_posts && config.recommended_posts.autoDisplay == false && post.recommended_posts != false) { %>
+                <%- partial('post/recommended_posts', {page: post, site: site}) %>
+            <% } %>
+
+            <% if (post.comments) { %>
+
+                <% if (config.disqus_shortname) { %>
+                    <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Disqus评论</h4>
+                    <section id="comments">
+                        <div id="disqus_thread">
+                            ⚠️  无法加载评论系统，请确保您的网络能够正常访问 <a href="https://disqus.com">Disqus</a> 。
+                        </div>
+                    </section>
+                <% } %>
+
+                <% if (config.livere_shortname){ %>
+                    <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;LiveRe评论</h4>
+                    <section id="comments">
+                        <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTU4Ny82MTU1">
+                            <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+                        </div>
+                    </section>
+                <% } %>
+
+                <% if (config.valine){ %>
+                    <% if (config.valine.enable && config.valine.appId && config.valine.appKey){ %>
+                        <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Valine评论</h4>
+                        <section id="comments">
+                            <div id="valine_container" class="valine_thread">
+                                </i><i class="fa fa-spinner fa-spin fa-fw"></i>
+                            </div>
+                        </section>
+                        <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+                    <% } %>
+                <% } %>
+            <% } %>
+
+        </section>
+    </article>
+<% } %>
 
 <script>
     window.subData = {

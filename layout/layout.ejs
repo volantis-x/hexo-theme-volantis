@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
 <%- partial('_partial/head') %>
 <body>
     <%- partial('_partial/loading') %>
     <script>setLoadingBarProgress(20)</script>
-    <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
+    <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
     <script>setLoadingBarProgress(40);</script>
     <div class="l_body">
     <div class='container clearfix'>
@@ -22,4 +20,3 @@
     <%- partial('_partial/scripts') %>
     <script>setLoadingBarProgress(100);</script>
 </body>
-</html>
