@@ -41,30 +41,22 @@
   <!-- meta -->
   <% if (config.import && config.import.meta){ %>
   <% (config.import.meta||[]).forEach(function(item){ %>
-  <meta name="<%= item.name %>" content="<%- item.content %>">
-  <% }) %>
+  <%- item %><% }) %>
   <% } %>
+
   <!-- link -->
   <% if (theme.services && theme.services.nodewaves == true) { %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
   <% } %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
-
   <% if (config.import && config.import.link){ %>
   <% (config.import.link||[]).forEach(function(item){ %>
-  <link rel="<%= item.rel %>" href="<%- item.href %>"
-  <% if (item.type){ %> type="<%= item.type %>"<% } %>
-  <% if (item.sizes){ %> sizes="<%= item.sizes %>"<% } %>
-  <% if (item.media){ %> media="<%= item.media %>"<% } %>
-  <% if (item.hreflang){ %> hreflang="<%= item.hreflang %>"<% } %>
-  <% if (item.color){ %> color="<%= item.color %>"<% } %>>
-  <% }) %>
+  <%- item %><% }) %>
   <% } %>
 
   <% if (config.favicon) { %>
   <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <% } %>
-
 
   <% if (theme.services && theme.services.cdn == true && config.theme_cdn) { %>
     <% if (config.theme_cdn == true) { %>
@@ -75,12 +67,6 @@
   <% } else { %>
   <%- css('style.css') %>
   <% } %>
-
-  <% if (config.import && config.import.css && config.import.css.length > 0) { %>
-  <%- css(config.import.css) %>
-  <% } %>
-
-
 
   <script>
     function setLoadingBarProgress(num) {

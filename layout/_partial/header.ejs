@@ -10,8 +10,8 @@
       </a>
 			<div class='menu'>
 				<ul class='h-list'>
-          <% if (config.nav_menu) { %>
-  					<% (config.nav_menu || []).forEach(function(value){ %>
+          <% if (config.menu) { %>
+  					<% (config.menu || []).forEach(function(value){ %>
   						<li>
 								<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
 								 class="nav flat-box" href="<%= url_for(value.url) %>">
@@ -52,8 +52,8 @@
     <header>
 		<nav class="menu">
       <ul>
-          <% if (config.nav_menu) { %>
-              <% (config.nav_menu || []).forEach(function(value){ %>
+          <% if (config.menu) { %>
+              <% (config.menu || []).forEach(function(value){ %>
                   <li>
 										<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>" class="nav flat-box" href="<%= url_for(value.url) %>">
 											<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
