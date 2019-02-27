@@ -516,3 +516,57 @@ table{
     font-size: @fontsize_small * .95 * .95;
   }
 }
+
+@hl_keyword: #9c27b0;
+@hl_blue: #1E80F0;
+@hl_cyan: #17AFCA;
+@hl_green: #3FA33F;
+@hl_light_blue: #6ECDF9;
+@hl_red: #EE2B29;
+@hl_orange: #FB3F1B;
+@hl_amber: #FD8607;
+
+pre{
+  // 行
+  .line{
+  }
+  .marked{
+    background-color: fade(@color_mac_minimize, 20%);
+    border-radius: 2px;
+    border: 1px solid fade(@color_mac_minimize, 40%);
+  }
+  // 注释
+  .comment, .title{
+    color: fade(@color_text_main, 60%);
+  }
+  .keyword, .javascript .function, .attr {
+    color: @hl_keyword;
+  }
+  .type, .built_in, .tag .name{
+    color: #e96900;
+  }
+  .variable, .attribute, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo {
+    color: @hl_amber;
+  }
+  .number, .preprocessor, .literal, .params, .constant {
+    color: @hl_amber;
+  }
+  .class, .ruby .class .title, .css .rules .attribute {
+    color: #ffcc66;
+  }
+  .string, .value, .inheritance, .header, .ruby .symbol, .xml .cdata {
+    color: @color_md_green;
+  }
+  .css .hexcolor {
+    color: #66cccc;
+  }
+  .function, .python .decorator, .python .title, .ruby .function .title, .ruby .title .keyword, .perl .sub, .javascript .title, .coffeescript .title {
+    color: #6699cc;
+  }
+
+}
+.html{
+  .tag .name{
+    color: @hl_red;
+  }
+}

@@ -1,20 +1,46 @@
-<% if (config.widgets){ %>
-    <% if (config.widgets.author){ %>
+<% if (theme.widgets){ %>
+    <% if (theme.widgets.author.enable){ %>
         <%- partial('../_widget/author') %>
     <% } %>
-    <% if (config.widgets.categories){ %>
+    <% if (config.widgets){ %>
+      <% (config.widgets||[]).forEach(function(item){ %>
+        <section class='mywidget' id='<%- item.type ? item.type : '' %>'>
+          <% if(item.icon && item.title) { %>
+            <header class='header <%= theme.style %>'>
+                <div><i class="<%= item.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%= item.title %></div>
+                <% if(item.more && item.more.url) { %>
+                    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="<%= url_for(item.more.url) %>">
+                      <i class="<%= item.more.icon?item.more.icon:'fas fa-question-circle' %> fa-fw"></i></a>
+                <%} %>
+            </header>
+            <%} %>
+            <div class='content <%= theme.style %>'>
+              <% if(item.type == 'list') { %>
+                <ul class="entry">
+                  <% (item.rows||[]).forEach(function(row){ %>
+                    <li><a class="flat-box" href="<%= url_for(row.url) %>"><i class="<%= row.icon %> fa-fw"></i><div class='name'><%= row.name %></div></a>
+                  <% }) %>
+                </ul>
+              <% } else { %>
+                <%- item.body %>
+              <% } %>
+            </div>
+        </section>
+      <% }) %>
+    <% } %>
+    <% if (theme.widgets.categories.enable){ %>
         <%- partial('../_widget/categories') %>
     <% } %>
-    <% if (config.widgets.tagcloud){ %>
+    <% if (theme.widgets.tagcloud.enable){ %>
         <%- partial('../_widget/tagcloud') %>
     <% } %>
-    <% if (config.widgets.musicid){ %>
+    <% if (theme.widgets.toc.enable){ %>
+        <%- partial('../_widget/toc') %>
+    <% } %>
+    <% if (theme.widgets.music.enable){ %>
         <%- partial('../_widget/music') %>
     <% } %>
-    <% if (config.widgets.links){ %>
+    <% if (theme.widgets.links.enable){ %>
         <%- partial('../_widget/links') %>
-    <% } %>
-    <% if (config.widgets.toc){ %>
-        <%- partial('../_widget/toc') %>
     <% } %>
 <% } %>

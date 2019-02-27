@@ -11,21 +11,21 @@
 /* My Base */
 
 html {
+    color: @color_text_main;
     width: 100%;
     height: 100%;
     padding-top: @height_navbar;
     font-family: @fontfamily_base;
     font-size: @fontsize_base;
     line-height: 1.5rem;
-    color: @theme_text_main;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-rendering: optimizelegibility;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
-    background-color: @theme_bg_main;
+    background-color: @theme_background;
     &.modal-active {
         overflow: hidden;
         @media (max-width: @on_modal_threshold) {
@@ -38,7 +38,7 @@ body {
     }
     &.z_menu-open {
         .menu-phone {
-            transform: translate3d(-10px, 0, 0);
+            transform: translate3d(-@gap, 0, 0);
         }
     }
 }
@@ -101,13 +101,11 @@ body {
 }
 
 ::-moz-selection {
-    background: fade(lighten(@theme_text_link, 5%), 25%);
-    // color: @black;
+    background: @color_bg_selection;
 }
 
 ::selection {
-    background: fade(lighten(@theme_text_link, 5%), 25%);
-    // color: @black;
+    background: @color_bg_selection;
 }
 // transition
 .enable-trans(@time: 0.25s){
@@ -201,7 +199,7 @@ img {
 }
 .container.clearfix{
     display: flex;
-    @media(max-width: @on_phone) {
+    @media(max-width: @on_pad) {
         display: inherit;
     }
 }
@@ -234,33 +232,7 @@ img {
 .disable-trans {
     -moz-transition: none !important;
     -webkit-transition: none !important;
-    -o-transition: color 0 ease-in !important;
     transition: none !important;
-}
-
-.dark-btn {
-    display: inline-block;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid black;
-    padding: 0px 15px;
-    font-size: 13px;
-    font-family: @fontfamily_base;
-    text-align: center;
-    color: lighten(#8f8f8f, 20%);
-    &:hover {
-        color: lighten(#8f8f8f, 40%);
-        // background-color: @brand-color;
-    }
-    .icon {
-        margin-right: 5px;
-        font-size: 16px;
-        vertical-align: middle;
-        line-height: 44px;
-    }
-    .text {
-        vertical-align: middle;
-        line-height: 44px;
-    }
 }
 
 .txt-ellipsis {
@@ -281,21 +253,21 @@ li {
 .mark {
     position: relative;
     a {
+        color: @black;
+        background: transparent;
         display: inline-block;
         padding: 0 8px;
-        color: @black;
-        border-left: @border_radius_left_line solid transparent;
+        border-left: @border_radius_line solid transparent;
         background: transparent;
-        // border-radius: @border_radius_code_block;
+        border-radius: @border_radius_code_block;
         .enable-trans();
         &:hover {
-            border-left: @border_radius_left_line solid @theme_bg_quote;
+            background: fade(@theme_main, 10%);
+            border-left: @border_radius_line solid @theme_main;
             padding: 8px;
-            background: fade(@theme_bg_quote, 10%);
         }
         &:active {
-            // border-radius: @border_radius;
-            border-left: max(@border_radius, @border_radius_left_line) solid @theme_bg_quote;
+            border-left: max(@border_radius, @border_radius_line) solid @theme_main;
         }
 
     }
@@ -319,8 +291,8 @@ ul.h-list {
 
 #loading-bar-wrapper {
     position: fixed;
-    top: @height_navbar - 8;
-    top: 0;
+    top: @height_navbar - @loading_height;
+    // top: 0;
     left: 0;
     width: 100%;
     // overflow: scroll;
@@ -330,10 +302,13 @@ ul.h-list {
 #loading-bar {
     position: fixed;
     width: 0;
-    height: 8px;
-    height: @height_navbar;
-    background-color: fade(@theme_text_in_header, 20%);
+    height: @loading_height;
+    // height: @height_navbar;
     .enable-trans();
+    background-color: fade(white, 50%);
+    &.pure{
+      background-color: fade(@theme_main, 50%);
+    }
 }
 
 .container {
@@ -352,13 +327,13 @@ ul.h-list {
 
 .l_body {
     position: relative;
-    padding: 2 * @gap 0 @gap;
+    padding: 2*@gap @gap @gap;
     @media(max-width: @on_phone) {
-        // padding: @gap @gap/2 @gap/2;
+        padding: @gap 0 @gap;
         border-radius: 0;
     }
 }
 
 .reveal {
-    visibility: hidden;
+    // visibility: hidden;
 }
