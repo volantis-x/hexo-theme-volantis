@@ -10,8 +10,8 @@
     aplayer_server: post.music.server, aplayer_type: post.music.type, aplayer_id: post.music.id,
     aplayer_volume: '0.7', aplayer_autoplay: false }) %>
   <% } %>
-  <% if(post.logo && post.logo.length){ %>
-    <a title='<%- post.title %>' href='<%- url_for(post.path) %>'><img class='logo' src='<%- post.logo %>'></a>
+  <% if(post.thumbnail && post.thumbnail.length){ %>
+    <a title='<%- post.title %>' href='<%- url_for(post.path) %>'><img class='thumbnail' src='<%- post.thumbnail %>'></a>
   <% } %>
   <div class="meta" id="header-meta">
     <% if(isPostList){ %>
