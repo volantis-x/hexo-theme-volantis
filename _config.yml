@@ -40,11 +40,11 @@ music:
   mode: circulation # random （随机） single （单曲） circulation （列表循环） order （列表）
   server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
   type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
-  id: 746319661     # 歌曲/专辑/歌单 ID
+  id: 2615636388    # 歌曲/专辑/歌单 ID
   volume: 0.7       # 音量, 0~1
   autoplay: false   # 自动播放
   display:           # 批量控制哪一类页面显示
-    home: false      # 在主页是否显示
+    home: true       # 在主页是否显示
     tag: false       # 在标签页面是否显示
     category: false  # 在分类页面是否显示
     archive: false   # 在归档页面是否显示
