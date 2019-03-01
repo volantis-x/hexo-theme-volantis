@@ -8,7 +8,7 @@ info:
   name: Material X
   docs: https://xaoxuu.com/wiki/material-x/
   # 主题的CDN地址。如需启用CDN，请在主目录的config中设置，详见文档。
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.2.26/
+  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.3.1/
 
 
 ############################### 主题样式 ###############################
@@ -20,7 +20,7 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 # 服务开关，如果你想禁用某些功能，直接设置为false或者注释掉，相关的js脚本就不会加载。
 # 有些服务这里打开了也未必会生效，还需要额外的配置，详见文档。
 services:
-  # cdn: true
+  cdn: true
   scrollreveal: true
   nodewaves: true
   busuanzi: true
