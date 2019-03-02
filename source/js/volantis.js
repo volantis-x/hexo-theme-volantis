@@ -203,7 +203,7 @@ function(e, t) {
 					head: {
 						nick: "昵称（必填）",
 						mail: "邮箱（必填）",
-						link: "你的博客链接"
+						link: "链接"
 					},
 					tips: {
 						comments: "评论",
@@ -681,6 +681,10 @@ function(e, t) {
 					if (h.nick == "" || h.nick == "匿名") {
 						alert('请输入昵称！');
 						return void _.nick.focus();
+					}
+					if (h.mail == "") {
+						alert('请输入邮箱！');
+						return void _.mail.focus();
 					}
 					if ("" == h.comment) {
 						alert('请输入内容！');

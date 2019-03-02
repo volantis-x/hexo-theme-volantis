@@ -24,6 +24,9 @@
                 <% } else if (post.date) { %>
                   <%= date(post.date, config.date_format) %>
                 <% } %>
+                <% if((post.music && post.music.autoplay) || (post.video)){ %>
+                  &nbsp;<i class="music fas fa-headphones-alt" aria-hidden="true"></i>
+                <% } %>
               </span>
             </a>
           </div>

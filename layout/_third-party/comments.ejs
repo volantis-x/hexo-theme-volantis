@@ -1,49 +1,51 @@
 <!-- 显示推荐文章和评论 -->
 <%
-  var displayRecommentedPosts = false;
-  var displayPopularPosts = false;
-  var displayComments = false;
-  if (page && theme.services) {
-    if ((config.disqus_shortname || config.livere_uid || config.valine) && theme.services.comments == true && page.comments != false) {
-      displayComments = true;
+  var enableDisqus = false;
+  var enableLivere = false;
+  var enableValine = false;
+  if (page && theme.services && theme.services.comments == true && page.comments != false) {
+    if (config.disqus_shortname) {
+      enableDisqus = true;
     }
-    if (theme.services.popular_posts == true && page.layout == 'post' && page.popular_posts != false) {
-      displayPopularPosts = true;
+    if (config.livere_uid) {
+      enableLivere = true;
+    }
+    if (config.valine && config.valine.app_id && config.valine.app_key) {
+      enableValine = true;
     }
   }
 %>
 
-<% if (displayRecommentedPosts || displayPopularPosts || displayComments) { %>
+<% if (enableDisqus || enableLivere || enableValine) { %>
   <article class="post white-box comments">
     <section class="article typo">
-      <% if (displayPopularPosts) { %>
-        <%- partial('popular_posts', {page: page, site: site}) %>
-      <% } %>
-      <% if (displayComments) { %>
-        <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;<%- __('post.comments') %></h4>
-        <% if (config.disqus_shortname) { %>
-          <section id="comments">
-            <div id="disqus_thread">
-              ⚠️  <%- __('post.comments_placeholder') %> <a href="https://disqus.com">Disqus</a> 。
-            </div>
-          </section>
-        <% } %>
-        <% if (config.livere_uid){ %>
-          <section id="comments">
-            <div id="lv-container" data-id="city" data-uid="<%= config.livere_uid %>">
-              <noscript>⚠️  <%- __('post.comments_placeholder') %></noscript>
-            </div>
-          </section>
-        <% } %>
-        <% if (config.valine){ %>
-          <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
-            <section id="comments">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;<%- __('post.comments') %></h4>
+      <% if (enableDisqus) { %>
+        <section id="comments">
+          <div id="disqus_thread">
+            <div><i class='fas fa-exclamation-triangle'>&nbsp;<%- __('post.comments_placeholder', 'Disqus') %></div>
+            <% if (enableValine) { %>
               <div id="valine_container" class="valine_thread">
                 <i class="fas fa-spinner fa-spin fa-fw"></i>
               </div>
-            </section>
-          <% } %>
-        <% } %>
+            <% } else { %>
+            <% } %>
+          </div>
+        </section>
+      <% } %>
+      <% if (enableLivere){ %>
+        <section id="comments">
+          <div id="lv-container" data-id="city" data-uid="<%= config.livere_uid %>">
+            <noscript><div><i class='fas fa-exclamation-triangle'>&nbsp;<%- __('post.comments_placeholder', 'Livere') %></div></noscript>
+          </div>
+        </section>
+      <% } %>
+      <% if (!enableDisqus && enableValine){ %>
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
       <% } %>
     </section>
   </article>

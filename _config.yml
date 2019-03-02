@@ -8,7 +8,7 @@ info:
   name: Material X
   docs: https://xaoxuu.com/wiki/material-x/
   # 主题的CDN地址。如需启用CDN，请在主目录的config中设置，详见文档。
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.3.1/
+  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.3.2/
 
 
 ############################### 主题样式 ###############################
@@ -43,14 +43,6 @@ music:
   id: 2615636388    # 歌曲/专辑/歌单 ID
   volume: 0.7       # 音量, 0~1
   autoplay: false   # 自动播放
-  display:           # 批量控制哪一类页面显示
-    home: true       # 在主页是否显示
-    tag: false       # 在标签页面是否显示
-    category: false  # 在分类页面是否显示
-    archive: false   # 在归档页面是否显示
-    page: false      # layout: page 的页面是否显示
-    links: true      # layout: links 的页面是否显示
-    post: true       # layout: post 的页面是否显示
 
 
 # 友链页头像占位图

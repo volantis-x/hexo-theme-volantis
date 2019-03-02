@@ -1,40 +1,7 @@
 <%
-var needDisplay = false;
-if (theme.music && theme.music.display) {
-  let display = theme.music.display;
-  if (page.layout == 'page') {
-    if (display.page != false) {
-      needDisplay = true;
-    }
-  } else if (page.layout == 'post') {
-    if (display.post != false && (!page.music || page.music.enable == false)) {
-      needDisplay = true;
-    }
-  } else if (page.layout == 'links') {
-    if (display.links != false) {
-      needDisplay = true;
-    }
-  } else {
-    if (is_home()) {
-      if (display.home != false) {
-        needDisplay = true;
-      }
-    } else if (is_tag()) {
-      if (display.tag != false) {
-        needDisplay = true;
-      }
-    } else if (is_category()) {
-      if (display.category != false) {
-        needDisplay = true;
-      }
-    } else if (is_archive()) {
-      if (display.archive != false) {
-        needDisplay = true;
-      }
-    } else {
-      needDisplay = true;
-    }
-  }
+var needDisplay = true;
+if (page.music && page.music.autoplay) {
+  needDisplay = false;
 }
 %>
 
