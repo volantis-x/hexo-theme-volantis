@@ -1,6 +1,6 @@
 <% if (site.tags.length){ %>
   <section class='<%- item.widget %>'>
-    <%- partial('header', {item: item, defIcon: 'fas fa-fire', defTitle: __('sidebar.tagcloud')}) %>
+    <%- partial('header', {item: item, defIcon: 'fas fa-hashtag', defTitle: __('sidebar.tagcloud')}) %>
     <div class='content <%= theme.style %>'>
       <%- tagcloud(site.tags, {
           min_font: 14,

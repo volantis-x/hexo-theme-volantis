@@ -4,7 +4,7 @@
   var isPostList = false;
 } %>
 <section class='meta'>
-  <% if((!isPostList && post.music && post.music.enable != false) || (isPostList && post.music && post.music.enable != false)){ %>
+  <% if(post.music && post.music.enable != false){ %>
     <%- partial('../_third-party/aplayer',
     {aplayer_theme: '', aplayer_mini: true, aplayer_mode: 'circulation',
     aplayer_server: post.music.server, aplayer_type: post.music.type, aplayer_id: post.music.id,

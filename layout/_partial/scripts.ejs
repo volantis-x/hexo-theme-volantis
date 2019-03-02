@@ -60,83 +60,86 @@
   <% } %>
 
   <%
-    var displayComments = false;
-    if (page && theme.services) {
-      if ((config.disqus_shortname || config.livere_uid || config.valine) && theme.services.comments == true && page.comments != false) {
-        displayComments = true;
+    var enableDisqus = false;
+    var enableLivere = false;
+    var enableValine = false;
+    if (page && theme.services && theme.services.comments == true && page.comments != false) {
+      if (config.disqus_shortname) {
+        enableDisqus = true;
+      }
+      if (config.livere_uid) {
+        enableLivere = true;
+      }
+      if (config.valine && config.valine.app_id && config.valine.app_key) {
+        enableValine = true;
       }
     }
   %>
-  <% if (displayComments == true) { %>
-    <% if ((page.layout == 'post' && page.comments != false) || page.comments == true) { %>
-      <% if (config.disqus_shortname){ %>
-        <script>
-          var disqus_shortname = '<%= config.disqus_shortname %>';
-          <% if (page.permalink){ %>
-            var disqus_url = '<%= page.permalink %>';
-          <% } %>
-          (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
+  <% if (enableDisqus){ %>
+    <script>
+      var disqus_shortname = '<%= config.disqus_shortname %>';
+      <% if (page.permalink){ %>
+        var disqus_url = '<%= page.permalink %>';
       <% } %>
-      <% if (config.livere_uid){ %>
-        <script type="text/javascript">
-          (function(d, s) {
-            var j, e = d.getElementsByTagName(s)[0];
-            if (typeof LivereTower === 'function') { return; }
-            j = d.createElement(s);
-            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-            j.async = true;
-            e.parentNode.insertBefore(j, e);
-          })(document, 'script');
-        </script>
-      <% } %>
-      <% if (config.valine){ %>
-        <% if (config.valine.enable && config.valine.app_id && config.valine.app_key){ %>
-          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <% if (theme.services.volantis == true) { %>
-            <% if (theme.services && theme.services.cdn == true) { %>
-              <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
-            <% } else { %>
-              <%- js('js/volantis.js') %>
-            <% } %>
-          <% } else { %>
-            <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-valine@1.3.4/js/valine.min.js"></script>
-          <% } %>
-          <script>
-          var GUEST_INFO = ['nick','mail','link'];
-          var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){
-            return GUEST_INFO.indexOf(item) > -1
-          });
-          var notify = '<%= config.valine.notify %>' == true;
-          var verify = '<%= config.valine.verify %>' == true;
-          var valine = new Valine();
-          valine.init({
-            el: '#valine_container',
-            notify: notify,
-            verify: verify,
-            guest_info: guest_info,
-            <% if(page.valine && page.valine.path) { %>
-              path: "<%= page.valine.path %>",
-            <% } %>
-            appId: "<%= config.valine.app_id %>",
-            appKey: "<%= config.valine.app_key %>",
-            placeholder: "<%= (page.valine && page.valine.placeholder) ? page.valine.placeholder : config.valine.placeholder %>",
-            pageSize:'<%= config.valine.pageSize %>',
-            avatar:'<%= config.valine.avatar %>',
-            lang:'<%= config.valine.lang %>',
-            highlight:'<%= config.valine.highlight %>'
-          })
-          </script>
-        <% } %>
-      <% } %>
-    <% } %>
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
   <% } %>
+  <% if (enableLivere){ %>
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  <% } %>
+  <% if (enableValine){ %>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <% if (theme.services.volantis == true) { %>
+      <% if (theme.services && theme.services.cdn == true) { %>
+        <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+      <% } else { %>
+        <%- js('js/volantis.js') %>
+      <% } %>
+    <% } else { %>
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-valine@1.3.4/js/valine.min.js"></script>
+    <% } %>
+    <script>
+    var GUEST_INFO = ['nick','mail','link'];
+    var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){
+      return GUEST_INFO.indexOf(item) > -1
+    });
+    var notify = '<%= config.valine.notify %>' == true;
+    var verify = '<%= config.valine.verify %>' == true;
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      notify: notify,
+      verify: verify,
+      guest_info: guest_info,
+      <% if(page.valine && page.valine.path) { %>
+        path: "<%= page.valine.path %>",
+      <% } %>
+      appId: "<%= config.valine.app_id %>",
+      appKey: "<%= config.valine.app_key %>",
+      placeholder: "<%= (page.valine && page.valine.placeholder) ? page.valine.placeholder : config.valine.placeholder %>",
+      pageSize:'<%= config.valine.pageSize %>',
+      avatar:'<%= config.valine.avatar %>',
+      lang:'<%= config.valine.lang %>',
+      highlight:'<%= config.valine.highlight %>'
+    })
+    </script>
+  <% } %>
+
   <% if (theme.services.cdn == true && config.theme_cdn) { %>
     <% if (config.theme_cdn == true) { %>
     <%- js([theme.info.cdn + 'js/app.js', theme.info.cdn + 'js/search.js']) %>
