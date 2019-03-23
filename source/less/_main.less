@@ -479,3 +479,41 @@
   }
 
 }
+
+.alert {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 99999;
+	text-align: center;
+	padding: 24px 36px;
+	border-radius: @border_radius;
+  box-shadow: @boxshadow_card_normal;
+
+  &.alert-success {
+      color: #3c763d;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+  }
+
+  &.alert-info {
+      color: #31708f;
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+  }
+
+  &.alert-warning {
+      color: #8a6d3b;
+      background-color: #fcf8e3;
+      border-color: #faebcc;
+  }
+
+  &.alert-danger {
+      color: #a94442;
+      background-color: #f2dede;
+      border-color: #ebccd1;
+  }
+
+}
