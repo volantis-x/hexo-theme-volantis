@@ -3,6 +3,9 @@ var needDisplay = true;
 if (page.music && page.music.autoplay) {
   needDisplay = false;
 }
+if (page.widget && page.widget.music == false) {
+  needDisplay = false;
+}
 %>
 
 <% if (theme.services && theme.services.music == true && needDisplay == true) { %>
