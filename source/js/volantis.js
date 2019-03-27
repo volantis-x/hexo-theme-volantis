@@ -203,7 +203,7 @@ function(e, t) {
 					head: {
 						nick: "昵称（必填）",
 						mail: "邮箱（必填）",
-						link: "链接"
+						link: "OJ（推荐luogu）账户链接（选填）"
 					},
 					tips: {
 						comments: "评论",
@@ -241,7 +241,7 @@ function(e, t) {
 					head: {
 						nick: "NickName",
 						mail: "E-Mail",
-						link: "Website(http://)"
+						link: "OJ(prefer luogu)account"
 					},
 					tips: {
 						comments: "Comments",
