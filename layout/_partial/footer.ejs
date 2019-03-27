@@ -18,4 +18,21 @@
   <div><%- markdown(__('footer.license')) %></div>
   <div><%- __('footer.use') %> <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> <%- __('footer.theme') %><% if (theme.services && theme.services.busuanzi == true) { %><%- __('symbol.comma') %><%- __('footer.total_views') %> <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> <%- __('footer.times') %><% } %><%- __('symbol.period') %>
   </div>
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+     var now = new Date(); 
+     function createtime() { 
+          var grt= new Date("2019-03-26 18:16:04");//在此处修改你的建站时间
+         now.setTime(now.getTime()+250); 
+         days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+         hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+         if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+         mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+         seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+         snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+         document.getElementById("timeDate").innerHTML = "我的blog就这样在这样一个最深层偏僻角落里存活了 "+dnum+" 天 "; 
+         document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+     } 
+  setInterval("createtime()",250);
+  </script>
 </footer>
