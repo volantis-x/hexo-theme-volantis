@@ -11,7 +11,7 @@
               <% if(!page.meta || page.meta.updated != false){ %>
                 <div class="new-meta-item date" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>">
                   <a class='notlink'>
-                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    <i class="fas fa-save" aria-hidden="true"></i>
                     <%- date(post.updated, config.date_format) %>
                   </a>
                 </div>
