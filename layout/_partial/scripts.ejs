@@ -140,16 +140,15 @@
   </script>
 <% } %>
 
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 
 <% if (theme.services.cdn == true && config.theme_cdn) { %>
   <% if (config.theme_cdn == true) { %>
-  <%- js([theme.info.cdn + 'js/app.js', theme.info.cdn + 'js/search.js', theme.info.cdn + 'js/clipboard-use.js']) %>
+  <%- js([theme.info.cdn + 'js/app.js', theme.info.cdn + 'js/search.js']) %>
   <% } else if (config.theme_cdn.length > 0) { %>
-  <%- js([config.theme_cdn + 'js/app.js', config.theme_cdn + 'js/search.js', config.theme_cdn + 'js/clipboard-use.js']) %>
+  <%- js([config.theme_cdn + 'js/app.js', config.theme_cdn + 'js/search.js']) %>
   <% } %>
 <% } else { %>
-  <%- js(['js/app.js', 'js/search.js', 'js/clipboard-use.js']) %>
+  <%- js(['js/app.js', 'js/search.js']) %>
 <% } %>
 
 
@@ -167,14 +166,14 @@
   </script>
 <% } %>
 
+<!-- 复制 -->
+<%- partial('_third-party/clipboard') %>
+
+<!-- fancybox -->
+<%- partial('_third-party/fancybox') %>
+
+
 <% if (config.import && config.import.script){ %>
 <% (config.import.script||[]).forEach(function(item){ %>
 <%- item %><% }) %>
 <% } %>
-
-<!-- fancybox start -->
-<script src="/js/fancybox-use.js"></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<!-- fancybox end -->
