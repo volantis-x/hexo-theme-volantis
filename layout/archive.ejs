@@ -20,7 +20,7 @@
               <time><%= date(post.date, 'MM-DD') %></time>
               <span class="title">
                 <% if(post.title){ %>
-                  <%= post.title %>
+                  <%- post.title %>
                 <% } else if (post.date) { %>
                   <%= date(post.date, config.date_format) %>
                 <% } %>
