@@ -28,6 +28,7 @@ footer:
   times: times
 search:
   placeholder: Search
+  placeholder_home: ' '
 symbol:
   comma: ", "
   period: ". "

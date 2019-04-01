@@ -28,6 +28,7 @@ footer:
   times: 次
 search:
   placeholder: 搜尋
+  placeholder_home: ' '
 symbol:
   comma: "，"
   period: "。"
