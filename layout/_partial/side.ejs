@@ -1,13 +1,15 @@
-<% if (config.widgets && config.widgets.length){ %>
-  <%
-  let supportWidgets = ['author', 'category', 'list', 'music', 'tagcloud', 'toc', 'plain', 'related_posts'];
-  %>
-  <% config.widgets.forEach(function(item){ %>
-    <% if (item.enable != false){ %>
-      <% let widget_name = item.widget ? item.widget : 'plain'; %>
-      <% if (supportWidgets.indexOf(widget_name) > -1){ %>
-        <%- partial('../_widget/' + item.widget, {item: item}) %>
+<aside class='l_side'>
+  <% if (config.widgets && config.widgets.length){ %>
+    <%
+    let supportWidgets = ['author', 'category', 'list', 'music', 'tagcloud', 'toc', 'plain', 'related_posts'];
+    %>
+    <% config.widgets.forEach(function(item){ %>
+      <% if (item.enable != false){ %>
+        <% let widget_name = item.widget ? item.widget : 'plain'; %>
+        <% if (supportWidgets.indexOf(widget_name) > -1){ %>
+          <%- partial('../_widget/' + item.widget, {item: item}) %>
+        <% } %>
       <% } %>
-    <% } %>
-  <% }) %>
-<% } %>
+    <% }) %>
+  <% } %>
+</aside>

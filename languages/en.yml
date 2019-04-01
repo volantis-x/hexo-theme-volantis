@@ -1,6 +1,3 @@
-pagetitle:
-  category: Category
-  tagcloud: Tag
 sidebar:
   category: Categories
   tagcloud: Hot Tags
@@ -31,6 +28,7 @@ footer:
   times: times
 search:
   placeholder: Search
+  placeholder_home: ' '
 symbol:
   comma: ", "
   period: ". "

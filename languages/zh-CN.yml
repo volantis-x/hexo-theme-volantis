@@ -1,6 +1,3 @@
-pagetitle:
-  category: 分类
-  tagcloud: 标签
 sidebar:
   category: 所有分类
   tagcloud: 热门标签
@@ -31,6 +28,7 @@ footer:
   times: 次
 search:
   placeholder: 搜索
+  placeholder_home: 'la víspera de la tormenta'
 symbol:
   comma: "，"
   period: "。"

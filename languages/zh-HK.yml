@@ -1,6 +1,3 @@
-pagetitle:
-  category: 分類
-  tagcloud: 標籤
 sidebar:
   category: 所有分類
   tagcloud: 熱門標籤
@@ -31,6 +28,7 @@ footer:
   times: 次
 search:
   placeholder: 搜尋
+  placeholder_home: ' '
 symbol:
   comma: "，"
   period: "。"

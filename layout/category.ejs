@@ -1,1 +1,6 @@
-<%- partial('_partial/archive') %>
+<%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
+<div class='l_main'>
+  <%- partial('_partial/archive') %>
+</div>
+<%- partial('_partial/side') %>
+<%- partial('_partial/footer', null, {cache: !config.relative_link}) %>

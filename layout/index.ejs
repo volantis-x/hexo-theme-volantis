@@ -1,1 +1,26 @@
-<%- partial('_partial/archive') %>
+<div class='home-cover'>
+  <h1 class='title'>xaoxuu</h1>
+  <br>
+  <% if (theme.search.enable === true) { %>
+    <div class="m_search">
+      <form name="searchform" class="form u-search-form">
+        <input type="text" class="input u-search-input" placeholder="<%- __('search.placeholder_home') %>" />
+        <span class="icon"><i class="fas fa-search fa-fw"></i></span>
+      </form>
+    </div>
+  <% } %>
+  <div class='menu'>
+    <ul class='h-list'>
+      <% if (config.menu) { %>
+        <% (config.menu || []).forEach(function(value){ %>
+          <li>
+            <a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
+             class="nav flat-box" href="<%= url_for(value.url) %>">
+              <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
+            </a>
+          </li>
+        <%})%>
+      <% } %>
+    </ul>
+  </div>
+</div>

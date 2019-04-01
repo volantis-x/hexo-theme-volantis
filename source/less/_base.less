@@ -43,6 +43,167 @@ body {
   }
 }
 
+.home-cover{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  // background: white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  margin-bottom: 2*@gap;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  padding: @gap;
+  .title{
+    font-size: @fontsize_h1*2;
+    margin-top: 25vh;
+    align-self: center;
+  }
+  .m_search{
+    margin-top: 10vh;
+    position: relative;
+    height: @height_navbar - @gap;
+    width: 1.2*@width_sidebar;
+    @media(max-width: @on_laptop){
+      width: 1.2*@width_sidebar_m;
+    }
+    line-height: @height_navbar - @gap;
+    vertical-align: middle;
+    .form {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+    .icon,.input{
+      .enable-trans(.1s);
+    }
+    .icon {
+      position: absolute;
+      display:block;
+      height: @height_navbar - @gap;
+      width: @height_navbar - @gap;
+      line-height: @height_navbar - @gap;
+      top: 0;
+      left: @gap/2;
+      font-size: @fontsize_base;
+    }
+    .input {
+      display:block;
+      font-size: @fontsize_base;
+      line-height: @height_navbar - @gap;
+      margin: 0;
+      width: 100%;
+      color: fade(@color_text_in_header, 60%);
+      padding-left: @fontsize_base + @gap - 2px;
+      @media(max-width: @on_phone){
+        padding-left: @fontsize_base + @gap - 2px;
+      }
+      height: @height_navbar - @gap;
+      line-height: @height_navbar - @gap;
+      font-family: @fontfamily_base;
+      border: none;
+      border-radius: @border_radius_searchbar;
+      background: fade(@theme_cardbg, 15%);
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      box-shadow: none;
+      border: 1px dashed transparent;
+      .enable-trans();
+      ~ .icon{
+        color: fade(@color_text_in_header, 60%);
+      }
+      .set-placeholder({color: fade(@color_text_in_header, 60%)});
+      &:hover{
+        border: 1px dashed fade(@color_text_in_header, 60%);
+      }
+      &:focus {
+        ~ .icon{
+          color: @color_text_in_header;
+        }
+        color: @color_text_in_header;
+        border: 1px solid fade(@color_text_in_header, 60%);
+        // .set-placeholder({color: @black});
+      }
+    }
+
+  }
+  background: @theme_cardbg;
+  &, a{
+    color: @theme_main;
+  }
+  box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
+  .menu{
+    margin-top: 4vh;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      li {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0;
+        height: auto;
+      }
+    }
+    ul > li > a{
+      font-size: @fontsize_small;
+      padding: 0 2px;
+      margin: 0 4px;
+      .enable-trans();
+      color: fade(@color_text_main, 70%);
+      border-bottom: @loading_height solid transparent;
+      &.current{
+        border-bottom: @loading_height solid fade(@theme_main, 80%);
+      }
+      &:hover{
+        color: @theme_main;
+        border-bottom: @loading_height solid @theme_main;
+      }
+      &:active,&.active{
+        color: @theme_main;
+        border-bottom: @loading_height solid @theme_main;
+      }
+    }
+  }
+  .switcher{
+    & > li{
+      a{
+        &:hover {
+          background: fade(@theme_main, 15%);
+        }
+      }
+    }
+  }
+  .m_search {
+    .input {
+      color: fade(@theme_main, 60%);
+      background: @theme_background;
+      ~ .icon{
+        color: fade(@theme_main, 60%);
+      }
+      .set-placeholder({color: fade(@theme_main, 60%)});
+      &:hover{
+        border: 1px dashed fade(@theme_main, 60%);
+      }
+      &:focus {
+        ~ .icon{
+          color: @theme_main;
+        }
+        color: @theme_main;
+        background: fade(@theme_main, 15%);
+        border: 1px solid fade(@theme_main, 60%);
+      }
+    }
+
+  }
+}
+
 
 .z-depth-nav {
   box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.24), 0 3px 6px 0px rgba(0, 0, 0, 0.1);
@@ -197,12 +358,8 @@ img {
     clear: both;
   }
 }
-.container.clearfix{
-  display: flex;
-  @media(max-width: @on_pad) {
-    display: inherit;
-  }
-}
+
+
 .hidden {
   text-indent: -9999px;
   visibility: hidden;
