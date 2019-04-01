@@ -1,48 +1,55 @@
-<% if (page.year || page.month) { %>
-	<%- partial('_partial/archive') %>
-<% } else { %>
-  <article id="archive-page" class="post article white-box">
-    <section class="archive">
-      <%
-        var year = -1, postid = -1;
-        site.posts.sort('date', -1).each(function(post) {
-          post.year = date(post.date, 'YYYY');
-          if (post.year && post.year !== year) {
-            year = post.year;
-      %>
-          <div class="archive-item archive-year mark">
-            <h2><%= year %></h2>
-            <hr>
-          </div>
-      <%  } %>
-          <div class="archive-item archive-post mark">
-            <a href="<%= url_for(post.path) %>">
-              <time><%= date(post.date, 'MM-DD') %></time>
-              <span class="title">
-                <% if(post.title){ %>
-                  <%- post.title %>
-                <% } else if (post.date) { %>
-                  <%= date(post.date, config.date_format) %>
-                <% } %>
-                <% if(post.music){ %>
-                  &nbsp;<i class="fas fa-music" aria-hidden="true"></i>
-                <% } %>
-                <% if(post.video){ %>
-                  &nbsp;<i class="fas fa-video" aria-hidden="true"></i>
-                <% } %>
-								<% if (post.icon) { %>
-									&nbsp;<i class="<%- post.icon %>" aria-hidden="true"></i>
-								<% } %>
-								<% (post.icons && post.icons||[]).forEach(function(icon){ %>
-								&nbsp;<i class="<%- icon %>" aria-hidden="true"></i>
-								<% }) %>
-              </span>
-            </a>
-          </div>
-      <% }); %>
-    </section>
-  </article>
-<% } %>
+<%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
+
+<div class='l_main'>
+	<% if (page.year || page.month) { %>
+		<%- partial('_partial/archive') %>
+	<% } else { %>
+	  <article id="archive-page" class="post article white-box">
+	    <section class="archive">
+	      <%
+	        var year = -1, postid = -1;
+	        site.posts.sort('date', -1).each(function(post) {
+	          post.year = date(post.date, 'YYYY');
+	          if (post.year && post.year !== year) {
+	            year = post.year;
+	      %>
+	          <div class="archive-item archive-year mark">
+	            <h2><%= year %></h2>
+	            <hr>
+	          </div>
+	      <%  } %>
+	          <div class="archive-item archive-post mark">
+	            <a href="<%= url_for(post.path) %>">
+	              <time><%= date(post.date, 'MM-DD') %></time>
+	              <span class="title">
+	                <% if(post.title){ %>
+	                  <%- post.title %>
+	                <% } else if (post.date) { %>
+	                  <%= date(post.date, config.date_format) %>
+	                <% } %>
+	                <% if(post.music){ %>
+	                  &nbsp;<i class="fas fa-music" aria-hidden="true"></i>
+	                <% } %>
+	                <% if(post.video){ %>
+	                  &nbsp;<i class="fas fa-video" aria-hidden="true"></i>
+	                <% } %>
+									<% if (post.icon) { %>
+										&nbsp;<i class="<%- post.icon %>" aria-hidden="true"></i>
+									<% } %>
+									<% (post.icons && post.icons||[]).forEach(function(icon){ %>
+									&nbsp;<i class="<%- icon %>" aria-hidden="true"></i>
+									<% }) %>
+	              </span>
+	            </a>
+	          </div>
+	      <% }); %>
+	    </section>
+	  </article>
+	<% } %>
+</div>
+<%- partial('_partial/side') %>
+
+
 
 <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
 <%
