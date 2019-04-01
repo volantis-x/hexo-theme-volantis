@@ -2,8 +2,6 @@
 <html>
 <%- partial('_partial/head') %>
 <body>
-    <%- partial('_partial/loading') %>
-    <script>setLoadingBarProgress(20)</script>
     <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
     <script>setLoadingBarProgress(40);</script>
     <div class="l_body">
