@@ -1,16 +1,3 @@
-<% if (is_tag()) { %>
-    <script>
-        window.subData= { title:'<%- __('pagetitle.tagcloud') %> : <%= page.tag %>'}
-    </script>
-<% } else if (is_archive()) { %>
-    <script>
-        window.subData= { title:'year : <%= page.year %><%= page.month ? '.' + page.month : '' %>'}
-    </script>
-<% } else if (is_category()) { %>
-    <script>
-        window.subData= { title:'<%- __('pagetitle.category') %> : <%= page.category %>'}
-    </script>
-<% } %>
 
 <% if (site.posts && site.posts.length > 0) { %>
 
