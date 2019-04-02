@@ -59,11 +59,11 @@ body {
   padding: @gap;
   .title{
     font-size: @fontsize_h1*2;
-    margin-top: 25vh;
+    margin-top: 30vh;
     align-self: center;
   }
   .m_search{
-    margin-top: 10vh;
+    margin-top: 5vh;
     position: relative;
     height: @height_navbar - @gap;
     width: 1.2*@width_sidebar;
@@ -150,21 +150,14 @@ body {
     }
     ul > li > a{
       font-size: @fontsize_small;
-      padding: 0 2px;
+      padding: 2px;
       margin: 0 4px;
       .enable-trans();
       color: fade(@color_text_main, 70%);
-      border-bottom: @loading_height solid transparent;
-      &.current{
-        border-bottom: @loading_height solid fade(@theme_main, 80%);
-      }
+      border-bottom: 1px solid transparent;
       &:hover{
         color: @theme_main;
-        border-bottom: @loading_height solid @theme_main;
-      }
-      &:active,&.active{
-        color: @theme_main;
-        border-bottom: @loading_height solid @theme_main;
+        border-bottom: 1px solid @theme_main;
       }
     }
   }

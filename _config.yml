@@ -47,7 +47,8 @@ loading_img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
 
 # 主页封面
 home_cover:
-  title: xaoxuu
+  title: "xaoxuu"
+  logo:
   search_placeholder: 'la víspera de la tormenta'
   # 主页封面菜单
   menu:
@@ -62,7 +63,7 @@ home_cover:
       url: https://xaoxuu.com/wiki/
     - name: 归档
       icon: fas fa-archive
-      url: blog/archives/
+      url: archives/
     - name: 关于
       icon: fas fa-info-circle
       url: about/
@@ -71,13 +72,13 @@ home_cover:
 menu:
   - name: Cocoa Dev
     icon: fab fa-apple
-    url: blog/categories/cocoa-dev/
+    url: categories/cocoa-dev/
   - name: Dev
     icon: fas fa-laptop-code
-    url: blog/categories/dev/
+    url: categories/dev/
   - name: Life
     icon: fas fa-coffee
-    url: blog/categories/life/
+    url: categories/life/
 
 
 # 侧边栏小部件
@@ -95,7 +96,7 @@ sidebar:
         url: https://xaoxuu.com/wiki/
       - name: 文章归档
         icon: fas fa-archive
-        url: blog/archives/
+        url: archives/
       - name: 我的友链
         icon: fas fa-link
         url: friends/
@@ -108,12 +109,12 @@ sidebar:
   - widget: category
     more:
       icon: fas fa-expand-arrows-alt
-      url: blog/categories/
+      url: categories/
   - widget: tagcloud
     icon: fas fa-fire
     more:
       icon: fas fa-expand-arrows-alt
-      url: blog/tags/
+      url: tags/
   - widget: related_posts
   - widget: music
     icon: fas fa-compact-disc
