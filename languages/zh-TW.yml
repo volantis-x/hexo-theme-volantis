@@ -1,7 +1,7 @@
 sidebar:
-  category: 所有分類
+  category: 文章分類
   tagcloud: 熱門標籤
-  toc: 文章目錄
+  toc: 本文目錄
   related_posts: 相關文章
 post:
   top: 置頂
@@ -28,7 +28,6 @@ footer:
   times: 次
 search:
   placeholder: 搜尋
-  placeholder_home: ' '
 symbol:
   comma: "，"
   period: "。"

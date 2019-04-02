@@ -1,9 +1,9 @@
 <aside class='l_side'>
-  <% if (config.widgets && config.widgets.length){ %>
+  <% if (theme.sidebar && theme.sidebar.length){ %>
     <%
     let supportWidgets = ['author', 'category', 'list', 'music', 'tagcloud', 'toc', 'plain', 'related_posts'];
     %>
-    <% config.widgets.forEach(function(item){ %>
+    <% theme.sidebar.forEach(function(item){ %>
       <% if (item.enable != false){ %>
         <% let widget_name = item.widget ? item.widget : 'plain'; %>
         <% if (supportWidgets.indexOf(widget_name) > -1){ %>

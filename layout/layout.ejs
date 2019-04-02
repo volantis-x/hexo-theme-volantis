@@ -2,13 +2,20 @@
 <html>
 <%- partial('_partial/head') %>
 <body>
-  <div class="l_body">
-  <div class='container clearfix'>
+  <% if (is_home()) { %>
     <%- body %>
-    <script>setLoadingBarProgress(60);</script>
-  </div>
-  <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
-  </div>
+  <% } else { %>
+  <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
+    <div class="l_body">
+      <div class='container clearfix'>
+        <%- body %>
+        <script>setLoadingBarProgress(60);</script>
+      </div>
+      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  <% } %>
+
+
   <%- partial('_partial/scripts') %>
   <script>setLoadingBarProgress(100);</script>
 </body>

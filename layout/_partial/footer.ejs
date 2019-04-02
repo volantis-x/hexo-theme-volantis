@@ -5,9 +5,9 @@
     </div>
     <br>
   <%}%>
-  <% if (config.social) { %>
+  <% if (theme.social) { %>
     <div class="social-wrapper">
-      <% (config.social||[]).forEach(function(value){ %>
+      <% (theme.social||[]).forEach(function(value){ %>
         <% if (value.url && value.icon) { %>
           <a href="<%= url_for(value.url) %>" class="social <%- value.icon %> flat-btn" target="_blank" rel="external"></a>
         <%}%>

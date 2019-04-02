@@ -1,8 +1,8 @@
-<% if (theme.services && theme.services.share == true && (config.share || config.mob) && page.layout == 'post' && page.share != false) { %>
+<% if (theme.services && theme.services.share == true && theme.share && page.layout == 'post' && page.share != false) { %>
   <div class="new-meta-item share -mob-share-list">
     <i class="fas fa-share-alt" aria-hidden="true"></i>
     <div class="-mob-share-list share-body">
-      <% ((config.share || config.mob.list)||[]).forEach(function(item){ %>
+      <% (theme.share||[]).forEach(function(item){ %>
         <% if (item.id == 'qrcode' && theme.services.qrcode == true){ %>
           <a class='qrcode' rel="external nofollow noopener noreferrer" href='<%- qrcode(url) %>'>
           <% if (item.img){ %>

@@ -13,6 +13,7 @@ var customSearch;
   function setBackToTop(){
     const $top = $('.s-top', '.l_body');
     let pos = document.body.scrollTop;
+		const $header = $('.l_header', '.home-wrapper');
 		$(document, window).scroll(() => {
 			const scrollTop = $(window).scrollTop();
 			const del = scrollTop - pos;
@@ -28,8 +29,14 @@ var customSearch;
 				pos = scrollTop;
 				$top.removeClass('show').removeClass('hl');
 			}
+	    $top.click(()=>scrolltoElement(document.body));
+
+			if (scrollTop > 400) {
+				$header.addClass('show');
+			} else {
+				$header.removeClass('show');
+			}
 		});
-    $top.click(()=>scrolltoElement(document.body));
   }
 
 	function setHeader() {
@@ -62,6 +69,8 @@ var customSearch;
 		if ($tocTarget.length && $tocTarget.children().length) {
 			$toc.click((e) => { e.stopPropagation(); $tocTarget.toggleClass('active'); });
 		} else $toc.remove();
+
+
 
 	}
 
@@ -218,6 +227,13 @@ var customSearch;
 		setTimeout(function () {
 			$('#loading-bar-wrapper').fadeOut(500);
 		}, 300);
+
+		// posts
+		const $postsBtn = $('.menu .posts');
+		const $postsTarget = $('.l_body');
+		if ($postsBtn.length && $postsTarget) {
+			$postsBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($postsTarget); });
+		}
 
 		if (SEARCH_SERVICE === 'google') {
 			customSearch = new GoogleCustomSearch({
