@@ -59,7 +59,7 @@ home_cover:
       url: https://github.com/xaoxuu/
     - name: 应用程序
       icon: fas fa-cube
-      url: https://xaoxuu.com/projects/
+      url: https://xaoxuu.com/wiki/
     - name: 归档
       icon: fas fa-archive
       url: blog/archives/
@@ -92,7 +92,7 @@ sidebar:
     rows:
       - name: 开源项目
         icon: fas fa-flask
-        url: https://xaoxuu.com/projects/
+        url: https://xaoxuu.com/wiki/
       - name: 文章归档
         icon: fas fa-archive
         url: blog/archives/
