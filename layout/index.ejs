@@ -2,7 +2,11 @@
 <% if (page.prev == 0) { %>
   <div class="home-wrapper">
     <div class='home-cover'>
-      <h1 class='title'><%- theme.home_cover.title %></h1>
+      <% if (theme.home_cover.logo) { %>
+        <img class='logo' src='<%- url_for(theme.home_cover.logo) %>'/>
+      <% } else { %>
+        <h1 class='title'><%- theme.home_cover.title ? theme.home_cover.title : config.title %></h1>
+      <% } %>
       <br>
       <% if (theme.search.enable === true) { %>
         <div class="m_search">

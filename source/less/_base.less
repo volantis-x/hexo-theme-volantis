@@ -57,15 +57,25 @@ body {
   align-self: center;
   align-content: center;
   padding: @gap;
-  .title{
+  .title, .logo{
     font-size: @fontsize_h1*3;
+    line-height: @fontsize_h1*3.2;
     margin-top: 30vh;
     align-self: center;
     font-weight: bold;
-    @media(max-width: @on_phone){
+  }
+  .logo{
+    max-height: 150px;
+    max-width: ~"calc(100% - 4*@{gap})";
+  }
+  @media(max-width: @on_phone){
+    .title, .logo {
       margin-top: 24vh;
+      font-size: @fontsize_h1*2;
+      line-height: @fontsize_h1*2.2;
     }
   }
+
   .m_search{
     margin-top: 5vh;
     position: relative;
@@ -97,6 +107,7 @@ body {
     .input {
       display:block;
       color: @color_text_main;
+      background: lighten(@theme_cardbg, 10%);
       font-size: @fontsize_base;
       line-height: @fontsize_base*2.2;
       margin: 0;
@@ -109,7 +120,6 @@ body {
       }
       font-family: @fontfamily_base;
       border: none;
-      background: white;
       box-sizing: border-box;
       -webkit-appearance: none;
       box-shadow: none;
