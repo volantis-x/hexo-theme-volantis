@@ -62,7 +62,7 @@ home_cover:
       url: https://xaoxuu.com/projects/
     - name: 归档
       icon: fas fa-archive
-      url: archives/
+      url: blog/archives/
     - name: 关于
       icon: fas fa-info-circle
       url: about/
@@ -71,13 +71,13 @@ home_cover:
 menu:
   - name: Cocoa Dev
     icon: fab fa-apple
-    url: categories/cocoa-dev/
+    url: blog/categories/cocoa-dev/
   - name: Dev
     icon: fas fa-laptop-code
-    url: categories/dev/
+    url: blog/categories/dev/
   - name: Life
     icon: fas fa-coffee
-    url: categories/life/
+    url: blog/categories/life/
 
 
 # 侧边栏小部件
@@ -95,7 +95,7 @@ sidebar:
         url: https://xaoxuu.com/projects/
       - name: 文章归档
         icon: fas fa-archive
-        url: archives/
+        url: blog/archives/
       - name: 我的友链
         icon: fas fa-link
         url: friends/
@@ -108,12 +108,12 @@ sidebar:
   - widget: category
     more:
       icon: fas fa-expand-arrows-alt
-      url: categories/
+      url: blog/categories/
   - widget: tagcloud
     icon: fas fa-fire
     more:
       icon: fas fa-expand-arrows-alt
-      url: tags/
+      url: blog/tags/
   - widget: related_posts
   - widget: music
     icon: fas fa-compact-disc

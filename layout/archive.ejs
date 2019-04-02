@@ -49,19 +49,20 @@
 <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
 
 
+<% if (page && page.posts) { %>
+	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+	<%
+	var need_mathjax = false;
+	page.posts.each(function(post){
+	  if (post.mathjax){
+	    if (post.mathjax != "internal") {
+	      need_mathjax = true;
+	    }
+	  }
+	});
+	%>
 
-<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-<%
-var need_mathjax = false;
-page.posts.each(function(post){
-  if (post.mathjax){
-    if (post.mathjax != "internal") {
-      need_mathjax = true;
-    }
-  }
-});
-%>
-
-<% if (need_mathjax){ %>
-    <%- partial('_partial/mathjax') %>
+	<% if (need_mathjax){ %>
+	    <%- partial('_partial/mathjax') %>
+	<% } %>
 <% } %>

@@ -1,5 +1,6 @@
-<div class="home-wrapper">
-    <% if (page.prev == 0) { %>
+
+<% if (page.prev == 0) { %>
+  <div class="home-wrapper">
     <div class='home-cover'>
       <h1 class='title'><%- theme.home_cover.title %></h1>
       <br>
@@ -33,9 +34,11 @@
         </ul>
       </div>
     </div>
-  <% } %>
+    <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
+  </div>
+<% } else { %>
   <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
-</div>
+<% } %>
 <div class="l_body" id='posts'>
   <div class='container clearfix'>
     <div class='l_main'>
