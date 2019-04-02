@@ -3,7 +3,7 @@
   <div class='content <%= theme.style %>'>
     <ul class="entry">
       <% (item.rows||[]).forEach(function(row){ %>
-        <li><a class="flat-box" title="<%- row.url %>" href="<%= url_for(row.url) %>">
+        <li><a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>">
           <div class='name'>
             <% if(row.img) { %>
               <img src="<%- row.img %>">

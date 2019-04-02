@@ -1,4 +1,3 @@
-
 <header class="l_header <%= theme.style %>">
   <div id="loading-bar-wrapper">
     <div id="loading-bar" class="<%= theme.style %>"></div>
@@ -6,7 +5,7 @@
 
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
-      <a class="logo flat-box" href='<%= url_for("/") %>' >
+      <a class="logo flat-box" href='<%- url_for("/") %>' >
         <% if (config.logo) { %>
           <img class='logo' src='<%- url_for(config.logo) %>'/>
         <% } else { %>
@@ -57,14 +56,14 @@
     <header>
 		<nav class="menu">
       <ul>
-          <% if (theme.menu) { %>
-              <% (theme.menu || []).forEach(function(value){ %>
-                  <li>
-										<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>" class="nav flat-box" href="<%= url_for(value.url) %>">
-											<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
-										</a>
-                  </li>
-              <%})%>
+        <% if (theme.menu_m) { %>
+          <% (theme.menu_m || []).forEach(function(value){ %>
+            <li>
+							<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>" class="nav flat-box" href="<%= url_for(value.url) %>">
+								<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
+							</a>
+            </li>
+          <%})%>
        <% } %>
       </ul>
 		</nav>
