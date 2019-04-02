@@ -1,7 +1,7 @@
 sidebar:
-  category: 所有分类
+  category: 文章分类
   tagcloud: 热门标签
-  toc: 文章目录
+  toc: 本文目录
   related_posts: 相关文章
 post:
   top: 置顶
@@ -28,7 +28,6 @@ footer:
   times: 次
 search:
   placeholder: 搜索
-  placeholder_home: 'la víspera de la tormenta'
 symbol:
   comma: "，"
   period: "。"

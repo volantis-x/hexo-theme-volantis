@@ -7,7 +7,7 @@
   <% if (item.widget == 'toc') { %>
     <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
   <% } else if(item.more && item.more.url) { %>
-    <a class="rightBtn<%- item.more.animate ? ' ' + item.more.animate : '' %>" target="_blank"
+    <a class="rightBtn<%- item.more.animate ? ' ' + item.more.animate : '' %>"
     rel="external nofollow noopener noreferrer"
     href="<%- url_for(item.more.url) %>"
     title="<%- item.more.url %>">

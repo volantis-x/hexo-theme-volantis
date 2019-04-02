@@ -1,0 +1,75 @@
+
+<div class='l_main'>
+
+  <% if (site.posts && site.posts.length > 0) { %>
+    <section class="post-list">
+      <% if (page.prev == 0) { %>
+        <% site.posts.each(function(post){ %>
+          <% if (post.top) { %>
+            <div class='post-wrapper'>
+              <%- partial('_partial/post', {post: post}) %>
+            </div>
+          <% } %>
+        <% }) %>
+      <% } %>
+      <% site.posts.sort(config.index_generator.order_by).each(function(post){ %>
+        <% if (!post.top) { %>
+          <div class='post-wrapper'>
+            <%- partial('_partial/post', {post: post}) %>
+          </div>
+        <% } %>
+      <% }) %>
+    </section>
+
+    <% if (page.total > 1) { %>
+      <br>
+      <div class="prev-next">
+        <div class="prev-next">
+          <% if (page.prev != 0) { %>
+            <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
+              <section class="post prev" >
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %>&nbsp;
+              </section>
+            </a>
+        <% } %>
+        <p class="current">
+          <%= page.current%> / <%= page.total%>
+        </p>
+        <% if (page.next != 0) { %>
+          <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
+            <section class="post next">
+              &nbsp;<%- __('post.next_page') %>&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
+          <% } %>
+        </div>
+      </div>
+    <% } %>
+
+<% } %>
+
+<% if (page.posts && page.posts.length > 0) { %>
+
+
+
+  <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+  <%
+  var need_mathjax = false;
+  page.posts.each(function(post){
+    if (post.mathjax){
+      if (post.mathjax != "internal") {
+        need_mathjax = true;
+      }
+    }
+  });
+  %>
+
+  <% if (need_mathjax){ %>
+    <%- partial('_partial/mathjax') %>
+  <% } %>
+
+<% } %>
+
+</div>
+<%- partial('_partial/side') %>
+<%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
