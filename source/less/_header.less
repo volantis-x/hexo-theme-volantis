@@ -253,12 +253,12 @@
     }
     .m_search {
       .input {
-        color: fade(@theme_main, 60%);
+        color: @color_text_main;
         background: @theme_background;
         ~ .icon{
-          color: fade(@theme_main, 60%);
+          color: fade(@color_text_main, 60%);
         }
-        .set-placeholder({color: fade(@theme_main, 60%)});
+        .set-placeholder({color: fade(@color_text_main, 60%)});
         &:hover{
           border: 1px dashed fade(@theme_main, 60%);
         }
@@ -266,7 +266,7 @@
           ~ .icon{
             color: @theme_main;
           }
-          color: @theme_main;
+          color: @color_text_main;
           background: fade(@theme_main, 15%);
           border: 1px solid fade(@theme_main, 60%);
         }
