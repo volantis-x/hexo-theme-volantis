@@ -31,7 +31,7 @@ var customSearch;
 			}
 	    $top.click(()=>scrolltoElement(document.body));
 
-			if (scrollTop > 400) {
+			if (scrollTop > document.body.clientHeight - 100) {
 				$header.addClass('show');
 			} else {
 				$header.removeClass('show');

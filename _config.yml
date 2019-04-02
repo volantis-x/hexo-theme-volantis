@@ -2,7 +2,7 @@
 info:
   name: Material X
   docs: https://xaoxuu.com/wiki/material-x/
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.2/
+  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/
 
 
 ############################### 主题样式 ###############################
@@ -48,7 +48,7 @@ loading_img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
 # 主页封面
 home_cover:
   title: "xaoxuu"
-  logo:
+  # logo: assets/logo.png
   search_placeholder: ' '
   # 主页封面菜单
   menu:

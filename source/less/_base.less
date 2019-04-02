@@ -45,29 +45,37 @@ body {
 .home-cover{
   top: 0;
   left: 0;
-  width: 100%;
-  // height: 100vh - @height_navbar - @gap;
+  max-width: 100%;
   height: ~"calc(100vh - @{gap} - @{height_navbar})";
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
-  // background: white;
   margin-bottom: 2*@gap;
   align-items: center;
   align-self: center;
   align-content: center;
   padding: @gap;
-  .title{
+  .title, .logo{
     font-size: @fontsize_h1*3;
-    margin-top: 30vh;
-    align-self: center;
+    line-height: @fontsize_h1*3.3;
+    margin-top: 28vh;
+    text-align: center;
     font-weight: bold;
-    @media(max-width: @on_phone){
-      margin-top: 24vh;
+  }
+  .logo{
+    max-height: 150px;
+    max-width: ~"calc(100% - 4*@{gap})";
+  }
+  @media(max-width: @on_phone){
+    .title, .logo {
+      margin-top: 20vh;
+      font-size: @fontsize_h1*2;
+      line-height: @fontsize_h1*2.2;
     }
   }
+
   .m_search{
-    margin-top: 5vh;
+    margin-top: 2vh;
     position: relative;
     height: @height_navbar - @gap;
     width: 1.1*@width_sidebar;
@@ -97,6 +105,7 @@ body {
     .input {
       display:block;
       color: @color_text_main;
+      background: lighten(@theme_cardbg, 10%);
       font-size: @fontsize_base;
       line-height: @fontsize_base*2.2;
       margin: 0;
@@ -109,7 +118,6 @@ body {
       }
       font-family: @fontfamily_base;
       border: none;
-      background: white;
       box-sizing: border-box;
       -webkit-appearance: none;
       box-shadow: none;
