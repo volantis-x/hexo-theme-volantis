@@ -70,7 +70,7 @@
     if (config.livere_uid) {
       enableLivere = true;
     }
-    if (config.valine && config.valine.app_id && config.valine.app_key) {
+    if (theme.valine && theme.valine.enable && config.leancloud) {
       enableValine = true;
     }
   }
@@ -115,11 +115,11 @@
   <% } %>
   <script>
   var GUEST_INFO = ['nick','mail','link'];
-  var guest_info = '<%= config.valine.guest_info %>'.split(',').filter(function(item){
+  var guest_info = '<%= theme.valine.guest_info %>'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = '<%= config.valine.notify %>' == true;
-  var verify = '<%= config.valine.verify %>' == true;
+  var notify = '<%= theme.valine.notify %>' == true;
+  var verify = '<%= theme.valine.verify %>' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
@@ -129,24 +129,20 @@
     <% if(page.valine && page.valine.path) { %>
       path: "<%= page.valine.path %>",
     <% } %>
-    appId: "<%= config.valine.app_id %>",
-    appKey: "<%= config.valine.app_key %>",
-    placeholder: "<%= (page.valine && page.valine.placeholder) ? page.valine.placeholder : config.valine.placeholder %>",
-    pageSize:'<%= config.valine.pageSize %>',
-    avatar:'<%= config.valine.avatar %>',
-    lang:'<%= config.valine.lang %>',
-    highlight:'<%= config.valine.highlight %>'
+    appId: "<%= config.leancloud.app_id %>",
+    appKey: "<%= config.leancloud.app_key %>",
+    placeholder: "<%= (page.valine && page.valine.placeholder) ? page.valine.placeholder : theme.valine.placeholder %>",
+    pageSize:'<%= theme.valine.pageSize %>',
+    avatar:'<%= theme.valine.avatar %>',
+    lang:'<%= theme.valine.lang %>',
+    highlight:'<%= theme.valine.highlight %>'
   })
   </script>
 <% } %>
 
 
-<% if (theme.services.cdn == true && config.theme_cdn) { %>
-  <% if (config.theme_cdn == true) { %>
+<% if (theme.services.cdn == true) { %>
   <%- js([theme.info.cdn + 'js/app.js', theme.info.cdn + 'js/search.js']) %>
-  <% } else if (config.theme_cdn.length > 0) { %>
-  <%- js([config.theme_cdn + 'js/app.js', config.theme_cdn + 'js/search.js']) %>
-  <% } %>
 <% } else { %>
   <%- js(['js/app.js', 'js/search.js']) %>
 <% } %>

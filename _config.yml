@@ -2,7 +2,6 @@
 info:
   name: Material X
   docs: https://xaoxuu.com/wiki/material-x/
-  # 主题的CDN地址。如需启用CDN，请在主目录的config中设置，详见文档。
   cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.3.31/
 
 
@@ -154,6 +153,34 @@ share:
   - id: qrcode
     name: QRcode
     img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png
+
+
+
+# footer: 页脚文字，支持markdown
+
+
+############################### 评论 ###############################
+# disqus_shortname: xaoxuu
+# livere_uid:
+# valine
+valine:
+  enable: true # 如果你想用Valine评论系统，请设置enable为true
+  # 还需要在根目录配置文件中添加下面这三行内容
+  # leancloud:
+  #   app_id: 你的appId
+  #   app_key: 你的appKey
+  guest_info: nick,mail,link #valine comment header info
+  placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
+  avatar: mp # gravatar style https://valine.js.org/avatar
+  pageSize: 20 # comment list page size
+  verify: false # valine verify code (true/false)
+  notify: false # valine mail notify (true/false)
+  lang: zh-cn
+  highlight: false
+
+
+
+
 
 ############################### 杂项，请勿删除 ###############################
 # 搜索配置
