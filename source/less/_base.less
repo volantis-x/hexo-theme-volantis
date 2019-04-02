@@ -58,15 +58,19 @@ body {
   align-content: center;
   padding: @gap;
   .title{
-    font-size: @fontsize_h1*2;
+    font-size: @fontsize_h1*3;
     margin-top: 30vh;
     align-self: center;
+    font-weight: bold;
+    @media(max-width: @on_phone){
+      margin-top: 24vh;
+    }
   }
   .m_search{
     margin-top: 5vh;
     position: relative;
     height: @height_navbar - @gap;
-    width: 1.2*@width_sidebar;
+    width: 1.1*@width_sidebar;
     @media(max-width: @on_laptop){
       width: 1.2*@width_sidebar_m;
     }
@@ -92,11 +96,13 @@ body {
     }
     .input {
       display:block;
+      color: @color_text_main;
       font-size: @fontsize_base;
       line-height: @fontsize_base*2.2;
       margin: 0;
       width: 100%;
       padding-left: @fontsize_base + @gap;
+      padding-right: @gap;
       padding-top: 2px;
       @media(max-width: @on_phone){
         padding-left: @fontsize_base + @gap;
@@ -109,7 +115,6 @@ body {
       box-shadow: none;
       border: 1px dashed transparent;
       .enable-trans();
-      color: fade(@theme_main, 60%);
       border-radius: @height_navbar;
       ~ .icon{
         line-height: @fontsize_base*2.2+4px;
@@ -125,7 +130,7 @@ body {
         ~ .icon{
           color: @theme_main;
         }
-        color: @theme_main;
+        color: @color_text_main;
         border: 1px solid @theme_main;
       }
     }
@@ -140,6 +145,11 @@ body {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
+      @media(max-width: @on_phone){
+        flex-direction: column;
+        align-items: baseline;
+      }
       li {
         display: flex;
         flex-wrap: wrap;
