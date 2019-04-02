@@ -2,7 +2,7 @@
 info:
   name: Material X
   docs: https://xaoxuu.com/wiki/material-x/
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.3.31/
+  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.2/
 
 
 ############################### 主题样式 ###############################
@@ -14,7 +14,7 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 # 服务开关，如果你想禁用某些功能，直接设置为false或者注释掉，相关的js脚本就不会加载。
 # 有些服务这里打开了也未必会生效，还需要额外的配置，详见文档。
 services:
-  # cdn: true
+  cdn: true
   scrollreveal: true
   nodewaves: true
   busuanzi: true
@@ -65,7 +65,7 @@ home_cover:
       icon: fas fa-info-circle
       url: about/
 
-# 导航栏菜单
+# 桌面端导航栏菜单
 menu:
   - name: Cocoa Dev
     icon: fab fa-apple
@@ -76,6 +76,27 @@ menu:
   - name: Life
     icon: fas fa-coffee
     url: blog/categories/life/
+
+# 手机端导航菜单（从右上角的按钮点击展开）
+menu_m:
+  - name: 近期文章
+    icon: fas fa-clock
+    url: /
+  - name: 文章归档
+    icon: fas fa-archive
+    url: blog/archives/
+  - name: 开源项目
+    icon: fas fa-flask
+    url: wiki/
+  - name: 歌单分享
+    icon: fas fa-compact-disc
+    url: music/
+  - name: 我的友链
+    icon: fas fa-link
+    url: friends/
+  - name: 关于小站
+    icon: fas fa-info-circle
+    url: about/
 
 
 # 侧边栏小部件
@@ -90,16 +111,16 @@ sidebar:
     rows:
       - name: 开源项目
         icon: fas fa-flask
-        url: https://xaoxuu.com/wiki/
+        url: wiki/
       - name: 文章归档
         icon: fas fa-archive
         url: blog/archives/
-      - name: 我的友链
-        icon: fas fa-link
-        url: friends/
       - name: 歌单分享
         icon: fas fa-compact-disc
         url: music/
+      - name: 我的友链
+        icon: fas fa-link
+        url: friends/
       - name: 关于小站
         icon: fas fa-info-circle
         url: about/
