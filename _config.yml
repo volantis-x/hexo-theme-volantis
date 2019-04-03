@@ -4,9 +4,9 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 把对应的那一行注释掉就使用本地的文件
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.8/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.8/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.8/js/app.js
+      # app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.8/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.8/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
 
@@ -49,6 +49,7 @@ updated_date_format: 'llll' # 文章更新日期的格式
 # 主页封面
 home_cover:
   scheme: search    # 后期将会提供多种封面方案
+  # height: half      # full: 封面占据整个第一屏幕， half: 封面只占半个屏幕高度
   title: "xaoxuu"
   # logo: assets/logo.png
   # search_placeholder: '搜索'
@@ -108,7 +109,7 @@ sidebar:
     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
     social: true
   - widget: toc
-  - widget: square
+  - widget: grid
     icon: fas fa-map-signs
     title: 站内导航
     rows:

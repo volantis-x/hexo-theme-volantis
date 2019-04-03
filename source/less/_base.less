@@ -44,6 +44,7 @@ body {
 
 fancybox{
   display: flex;
+  justify-content: center;
 }
 
 .home-cover{
@@ -74,6 +75,12 @@ fancybox{
     .title, .logo {
       font-size: @fontsize_h1*2;
       line-height: @fontsize_h1*2.2;
+    }
+  }
+  &.half{
+    height: ~"calc(60vh - @{gap} - @{height_navbar})";
+    .title, .logo{
+      margin-top: ~"calc(20vh - 2*@{gap})";
     }
   }
 

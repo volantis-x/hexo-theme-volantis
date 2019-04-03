@@ -257,13 +257,13 @@
       }
     }
   }
-  &.square{
+  &.grid{
     .content{
       padding: @gap/2 0;
       &.pure{
         padding-top: 0; // 适合白色导航栏背景
       }
-      ul.square{
+      ul.grid{
         border: none;
         display: flex;
         flex-wrap: wrap;
@@ -271,7 +271,7 @@
         padding: 0 @gap;
         a{
           text-align: center;
-          border-radius: @border_radius;
+          border-radius: @border_radius/2;
           margin: 4px 0;
           padding: 4px 8px;
           display: flex;
@@ -294,11 +294,17 @@
               border-radius: 100%;
             }
           }
-          &:hover, &.active {
+          border: 1px solid transparent;
+          &:hover {
             color: @color_text_highlight;
+            background: fade(@theme_main, 10%);
           }
           &:active {
             color: @color_text_highlight;
+          }
+          &.active {
+            color: @color_text_highlight;
+            border: 1px solid @color_text_highlight;
           }
         }
       }

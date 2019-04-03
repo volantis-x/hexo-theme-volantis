@@ -1,6 +1,6 @@
 <% if (page.prev == 0 && theme.home_cover) { %>
   <div class="home-wrapper">
-    <div class='home-cover'>
+    <div class='home-cover <%- theme.home_cover.height %>'>
       <% if (theme.home_cover.scheme == 'search') { %>
         <%- partial('_cover/search') %>
       <% } %>
