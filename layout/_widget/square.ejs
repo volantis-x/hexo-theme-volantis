@@ -1,9 +1,10 @@
 <section class='<%- item.widget %>'>
   <%- partial('header', {item: item, defIcon: '', defTitle: ''}) %>
   <div class='content <%= theme.style %>'>
-    <ul class="square">
+    <ul class="square navgation">
       <% (item.rows||[]).forEach(function(row){ %>
-        <li><a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>">
+        <li><a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>"
+          id="<%= url_for(row.url).replace(/\/|%/g, "")?url_for(row.url).replace(/\/|%/g, ""):"home" %>">
           <% if(row.img) { %>
             <img src="<%- row.img %>">
           <% } else if(row.avatar) { %>

@@ -74,8 +74,8 @@ var customSearch;
 
 	}
 
-	function setHeaderMenu() {
-    var $headerMenu = $('header .menu');
+	function setHeaderMenuSelection() {
+    var $headerMenu = $('body .navgation');
     // 先把已经激活的取消激活
     $headerMenu.find('li a.active').removeClass('active');
 		// var $underline = $headerMenu.find('.underline');
@@ -216,7 +216,7 @@ var customSearch;
 	$(function () {
 		//set header
 		setHeader();
-		setHeaderMenu();
+		setHeaderMenuSelection();
 		setHeaderMenuPhone();
 		setHeaderSearch();
 

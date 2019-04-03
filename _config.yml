@@ -6,7 +6,7 @@ info:
     css:
       # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.7/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.7/js/app.js
+      # app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.7/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.7/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
 
