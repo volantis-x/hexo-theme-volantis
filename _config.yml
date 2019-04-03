@@ -2,7 +2,14 @@
 info:
   name: Material X
   docs: https://xaoxuu.com/wiki/material-x/
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/
+  cdn:
+    css:
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/css/style.css
+    js:
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/js/search.js
+      volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
+
 
 
 ############################### 主题样式 ###############################
@@ -11,8 +18,8 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 
 
 ############################### 服务开关 ###############################
-services:
-  # cdn: true
+
+services: 
   scrollreveal: true
   nodewaves: true
   busuanzi: true
