@@ -2,7 +2,14 @@
 info:
   name: Material X
   docs: https://xaoxuu.com/wiki/material-x/
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/
+  cdn:
+    css:
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/css/style.css
+    js:
+      # app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/js/app.js
+      # search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/js/search.js
+      volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
+
 
 
 ############################### 主题样式 ###############################
@@ -11,25 +18,18 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 
 
 ############################### 服务开关 ###############################
-# 服务开关，如果你想禁用某些功能，直接设置为false或者注释掉，相关的js脚本就不会加载。
-# 有些服务这里打开了也未必会生效，还需要额外的配置，详见文档。
-services:
-  # cdn: true
-  scrollreveal: true
-  nodewaves: true
-  busuanzi: true
-  # fastclick: true
-  popular_posts: true   # 需要安装插件  hexo-related-popular-posts
-  comments: true
-  volantis: true
-  music: true
-  share: true
-  qrcode: true    # 需要安装插件  npm i -S hexo-helper-qrcode
+scrollreveal: true
+nodewaves: true
+busuanzi: true
+# fastclick: true
+
+
 
 
 ############################### 默认值 ###############################
 # 音乐控件的默认配置，如果sidebar或者page里没有提供，就取这里的参数
 music:
+  enable: true      # 是否启用
   color: '#1BCDFC'  # 主题色
   mode: circulation # random （随机） single （单曲） circulation （列表循环） order （列表）
   server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
@@ -108,7 +108,7 @@ sidebar:
     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
     social: true
   - widget: toc
-  - widget: list
+  - widget: square
     icon: fas fa-map-signs
     title: 站内导航
     rows:
@@ -142,7 +142,7 @@ sidebar:
     more:
       icon: fas fa-expand-arrows-alt
       url: blog/tags/
-  - widget: related_posts
+  - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
   - widget: music
     icon: fas fa-compact-disc
     title: "最近在听"
@@ -165,6 +165,7 @@ social:
     url: https://music.163.com/#/user/home?id=63035382
 
 # 分享按钮
+# 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
 share:
   - id: qq
     name: QQ好友
@@ -184,7 +185,7 @@ share:
 
 
 
-# footer: 页脚文字，支持markdown
+# footer: '页脚文字，支持[markdown](/)'
 
 
 ############################### 评论 ###############################
@@ -193,6 +194,7 @@ share:
 # valine
 valine:
   enable: true # 如果你想用Valine评论系统，请设置enable为true
+  volantis: true # 是否启用volantis版本（禁止匿名，增加若干贴吧、QQ表情）
   # 还需要在根目录配置文件中添加下面这三行内容
   # leancloud:
   #   app_id: 你的appId

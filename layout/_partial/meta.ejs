@@ -1,4 +1,4 @@
-<% if(is_home() || is_category() || is_archive() || is_tag()) {
+<% if(is_home() || is_category() || is_archive() || is_tag() || page.index) {
   var isPostList = true;
 } else {
   var isPostList = false;
@@ -67,8 +67,8 @@
           </div>
         <% } %>
       <% } %>
-      <% if(!isPostList && theme.services && (!post.meta || post.meta.counter != false)){ %>
-        <% if (theme.services.busuanzi == true) { %>
+      <% if(!isPostList && (!post.meta || post.meta.counter != false)){ %>
+        <% if (theme.busuanzi == true) { %>
           <div class="new-meta-item browse busuanzi">
             <a class='notlink'>
               <i class="fas fa-eye" aria-hidden="true"></i>

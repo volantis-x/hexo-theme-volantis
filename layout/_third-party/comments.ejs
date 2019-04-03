@@ -3,7 +3,7 @@
   var enableDisqus = false;
   var enableLivere = false;
   var enableValine = false;
-  if (page && theme.services && theme.services.comments == true && page.comments != false) {
+  if (page && page.comments != false) {
     if (config.disqus_shortname) {
       enableDisqus = true;
     }

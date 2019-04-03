@@ -16,7 +16,7 @@
   </script>
 <% } %>
 
-<% if (theme.services.scrollreveal == true) { %>
+<% if (theme.scrollreveal == true) { %>
   <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
   <script type="text/javascript">
     $(function() {
@@ -27,7 +27,7 @@
     });
   </script>
 <% } %>
-<% if (theme.services.nodewaves == true) { %>
+<% if (theme.nodewaves == true) { %>
   <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
   <script type="text/javascript">
     $(function() {
@@ -41,10 +41,10 @@
     });
   </script>
 <% } %>
-<% if (theme.services.busuanzi == true) { %>
+<% if (theme.busuanzi == true) { %>
   <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
 <% } %>
-<% if (theme.services.fastclick == true) { %>
+<% if (theme.fastclick == true) { %>
   <!-- fastclick -->
   <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
   <script>
@@ -53,17 +53,13 @@
     }, false)
   </script>
 <% } %>
-<% if (theme.services.share == true && config.mob && config.mob.app_key) { %>
-  <% if (page.layout == 'post' && page.share != false) { %>
-    <script id="-mob-share" src="//f1.webshare.mob.com/code/mob-share.js?appkey=<%- config.mob.app_key %>"></script>
-  <% } %>
-<% } %>
+
 
 <%
   var enableDisqus = false;
   var enableLivere = false;
   var enableValine = false;
-  if (page && theme.services && theme.services.comments == true && page.comments != false) {
+  if (page && page.comments != false) {
     if (config.disqus_shortname) {
       enableDisqus = true;
     }
@@ -104,11 +100,11 @@
 <% } %>
 <% if (enableValine){ %>
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <% if (theme.services.volantis == true) { %>
-    <% if (theme.services && theme.services.cdn == true) { %>
-      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+  <% if (theme.valine.volantis == true) { %>
+    <% if (theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.volantis) { %>
+      <%- js(theme.info.cdn.js.volantis) %>
     <% } else { %>
-      <%- js('js/volantis.js') %>
+      <%- js(['js/volantis.js']) %>
     <% } %>
   <% } else { %>
     <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-valine@1.3.4/js/valine.min.js"></script>
@@ -140,13 +136,16 @@
   </script>
 <% } %>
 
-
-<% if (theme.services.cdn == true) { %>
-  <%- js([theme.info.cdn + 'js/app.js', theme.info.cdn + 'js/search.js']) %>
+<% if (theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.app) { %>
+  <%- js(theme.info.cdn.js.app) %>
 <% } else { %>
-  <%- js(['js/app.js', 'js/search.js']) %>
+  <%- js(['js/app.js']) %>
 <% } %>
-
+<% if (theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.search) { %>
+  <%- js(theme.info.cdn.js.search) %>
+<% } else { %>
+  <%- js(['js/search.js']) %>
+<% } %>
 
 <% if (page.layout == 'links') { %>
   <%- js('https://cdn.jsdelivr.net/gh/toddmotto/echo@1.7.3/src/echo.js') %>
