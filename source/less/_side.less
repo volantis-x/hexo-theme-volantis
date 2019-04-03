@@ -91,6 +91,10 @@
         align-content: center;
         border-left: 2px solid transparent;
         .enable-trans();
+      }
+    }
+    ul.entry{
+      a{
         .name{
           flex:auto;
           &:extend(.txt-ellipsis);
@@ -223,7 +227,7 @@
     }
   }
 
-  &.list, &.square{
+  &.list{
     .content{
       padding: @gap/2 0;
       &.pure{
@@ -253,7 +257,75 @@
       }
     }
   }
-
+  &.square{
+    .content{
+      padding: @gap/2 0;
+      &.pure{
+        padding-top: 0; // 适合白色导航栏背景
+      }
+      ul.square{
+        border: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 0 @gap;
+        a{
+          text-align: center;
+          border-radius: @border_radius;
+          margin: 4px 0;
+          padding: 4px 8px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-size: @fontsize_small * .9;
+          font-weight: bold;
+          line-height: @fontsize_small * 1.3;
+          color: fade(@color_text_main, 70%);
+          i{
+            margin-top: .3em;
+            margin-bottom: .3em;
+            font-size: 1.8em;
+          }
+          img{
+            display: inline;
+            vertical-align: middle;
+            margin-bottom: 4px;
+            &#round{
+              border-radius: 100%;
+            }
+          }
+          &:hover {
+            color: @color_text_highlight;
+          }
+          &:active {
+            color: darken(@color_text_highlight, 25%);
+          }
+        }
+      }
+      // a{
+        // font-size: @fontsize_small;
+        // font-weight: bold;
+      //   &:hover{
+      //     text-decoration: none;
+      //   }
+      //   i{
+      //     color: fade(@color_text_main,70%);
+      //     line-height: @height_cell;
+      //     margin-right: 3px;
+      //   }
+      //   img{
+      //     display: inline;
+      //     vertical-align: middle;
+      //     height: 18px;
+      //     width: 18px;
+      //     margin-bottom: 4px;
+      //     &#round{
+      //       border-radius: 100%;
+      //     }
+      //   }
+      // }
+    }
+  }
   &.category{
     .content{
       padding: @gap/2 0;
