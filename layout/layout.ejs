@@ -2,10 +2,10 @@
 <html>
 <%- partial('_partial/head') %>
 <body>
-  <% if (!page.prev && theme.home_cover) { %>
-    <div class="home-wrapper">
-      <div class='home-cover <%- is_home() ? theme.home_cover.height : "half" %>'>
-        <% if (theme.home_cover.scheme == 'search') { %>
+  <% if (!page.prev && theme.cover) { %>
+    <div class="cover-wrapper">
+      <div class='cover <%- is_home() ? theme.cover.height : "half" %>'>
+        <% if (theme.cover.scheme == 'search') { %>
           <%- partial('_cover/search') %>
         <% } %>
       </div>

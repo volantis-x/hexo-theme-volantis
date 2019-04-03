@@ -13,7 +13,7 @@ var customSearch;
   function setBackToTop(){
     const $top = $('.s-top', '.l_body');
     let pos = document.body.scrollTop;
-		const $header = $('.l_header', '.home-wrapper');
+		const $header = $('.l_header', '.cover-wrapper');
 		$(document, window).scroll(() => {
 			const scrollTop = $(window).scrollTop();
 			const del = scrollTop - pos;
@@ -229,7 +229,7 @@ var customSearch;
 		}, 300);
 
 		// posts
-		const $postsBtn = $('.menu .posts');
+		const $postsBtn = $('.menu .active');
 		const $postsTarget = $('.l_body');
 		if ($postsBtn.length && $postsTarget) {
 			$postsBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($postsTarget); });

@@ -1,33 +1,26 @@
-<% if (theme.home_cover.logo) { %>
-  <img class='logo' src='<%- url_for(theme.home_cover.logo) %>'/>
+<% if (theme.cover.logo) { %>
+  <img class='logo' src='<%- url_for(theme.cover.logo) %>'/>
 <% } else { %>
-  <h1 class='title'><%- theme.home_cover.title ? theme.home_cover.title : config.title %></h1>
+  <h1 class='title'><%- theme.cover.title ? theme.cover.title : config.title %></h1>
 <% } %>
 <br>
 <% if (theme.search.enable === true) { %>
   <div class="m_search">
     <form name="searchform" class="form u-search-form">
-      <input type="text" class="input u-search-input" placeholder="<%- theme.home_cover.search_placeholder %>" />
+      <input type="text" class="input u-search-input" placeholder="<%- theme.cover.search_placeholder %>" />
       <span class="icon"><i class="fas fa-search fa-fw"></i></span>
     </form>
   </div>
 <% } %>
 <div class='menu navgation'>
   <ul class='h-list'>
-    <% if (theme.home_cover.features) { %>
-      <% (theme.home_cover.features || []).forEach(function(value){ %>
+    <% if (theme.cover.features) { %>
+      <% (theme.cover.features || []).forEach(function(value){ %>
         <li>
-          <% if (value.url == '#posts') { %>
-            <a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
-             class="posts" >
-              <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
-            </a>
-          <% } else { %>
-            <a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
-             class="nav home" href="<%= url_for(value.url) %>" >
-              <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
-            </a>
-          <% } %>
+          <a class="nav home" href="<%= url_for(value.url) %>"
+          id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
+            <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
+          </a>
         </li>
       <%})%>
     <% } %>

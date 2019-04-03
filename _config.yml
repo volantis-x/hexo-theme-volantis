@@ -4,9 +4,9 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 把对应的那一行注释掉就使用本地的文件
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.9/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.10/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.9/js/app.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.10/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.9/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
 
@@ -46,8 +46,8 @@ updated_date_format: 'llll' # 文章更新日期的格式
 
 
 ############################### 自定义 ###############################
-# 主页封面
-home_cover:
+# page的封面
+cover:
   scheme: search    # 后期将会提供多种封面方案
   # height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
   title: "xaoxuu"
@@ -57,7 +57,7 @@ home_cover:
   features:
     - name: 博文
       icon: fas fa-rss
-      url: '#posts'
+      url: /
     - name: 项目
       icon: fas fa-code-branch
       url: projects/
