@@ -1,7 +1,7 @@
 <div class='l_main'>
   <% if (site.posts && site.posts.length > 0) { %>
     <section class="post-list">
-      <% site.posts.each(function(p){ %>
+      <% site.posts.sort(page.sort ? page.sort : "-date").each(function(p){ %>
         <% if (p.type == page.type) { %>
           <div class='post-wrapper'>
             <%- partial('_partial/post', {post: p, index: false}) %>
