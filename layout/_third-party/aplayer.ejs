@@ -1,4 +1,4 @@
-<% if (theme.services.music == true) { %>
+<% if (theme.music && theme.music.enable == true) { %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
   <div class="aplayer"
     data-theme="<%- aplayer_theme != undefined ? aplayer_theme : theme.music.color %>"

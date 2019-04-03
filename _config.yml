@@ -6,8 +6,8 @@ info:
     css:
       # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/js/search.js
+      # app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/js/app.js
+      # search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
 
 
@@ -18,19 +18,18 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 
 
 ############################### 服务开关 ###############################
+scrollreveal: true
+nodewaves: true
+busuanzi: true
+# fastclick: true
 
-services: 
-  scrollreveal: true
-  nodewaves: true
-  busuanzi: true
-  # fastclick: true
-  # music: true
-  # share: true
+
 
 
 ############################### 默认值 ###############################
 # 音乐控件的默认配置，如果sidebar或者page里没有提供，就取这里的参数
 music:
+  enable: true      # 是否启用
   color: '#1BCDFC'  # 主题色
   mode: circulation # random （随机） single （单曲） circulation （列表循环） order （列表）
   server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
@@ -186,7 +185,7 @@ share:
 
 
 
-# footer: 页脚文字，支持markdown
+# footer: '页脚文字，支持[markdown](/)'
 
 
 ############################### 评论 ###############################

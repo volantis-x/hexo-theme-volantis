@@ -16,7 +16,7 @@
   </script>
 <% } %>
 
-<% if (theme.services.scrollreveal == true) { %>
+<% if (theme.scrollreveal == true) { %>
   <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
   <script type="text/javascript">
     $(function() {
@@ -27,7 +27,7 @@
     });
   </script>
 <% } %>
-<% if (theme.services.nodewaves == true) { %>
+<% if (theme.nodewaves == true) { %>
   <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
   <script type="text/javascript">
     $(function() {
@@ -41,10 +41,10 @@
     });
   </script>
 <% } %>
-<% if (theme.services.busuanzi == true) { %>
+<% if (theme.busuanzi == true) { %>
   <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
 <% } %>
-<% if (theme.services.fastclick == true) { %>
+<% if (theme.fastclick == true) { %>
   <!-- fastclick -->
   <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
   <script>
@@ -53,11 +53,7 @@
     }, false)
   </script>
 <% } %>
-<% if (theme.services.share == true && config.mob && config.mob.app_key) { %>
-  <% if (page.layout == 'post' && page.share != false) { %>
-    <script id="-mob-share" src="//f1.webshare.mob.com/code/mob-share.js?appkey=<%- config.mob.app_key %>"></script>
-  <% } %>
-<% } %>
+
 
 <%
   var enableDisqus = false;
