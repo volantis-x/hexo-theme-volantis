@@ -1,23 +1,5 @@
-<% if (page.prev == 0 && theme.home_cover) { %>
-  <div class="home-wrapper">
-    <div class='home-cover <%- theme.home_cover.height %>'>
-      <% if (theme.home_cover.scheme == 'search') { %>
-        <%- partial('_cover/search') %>
-      <% } %>
-    </div>
-    <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
-  </div>
-<% } else { %>
-  <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
-<% } %>
-<div class="l_body" id='posts'>
-  <div class='body-wrapper clearfix'>
-    <div class='l_main'>
-      <%- partial('_partial/archive') %>
-    </div>
-    <%- partial('_partial/side') %>
-    <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-    <script>setLoadingBarProgress(60);</script>
-  </div>
-  <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+<div class='l_main'>
+  <%- partial('_partial/archive') %>
 </div>
+<%- partial('_partial/side') %>
+<%- partial('_partial/footer', null, {cache: !config.relative_link}) %>

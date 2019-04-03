@@ -2,20 +2,25 @@
 <html>
 <%- partial('_partial/head') %>
 <body>
-  <% if (is_home()) { %>
-    <%- body %>
-  <% } else { %>
-  <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
-    <div class="l_body">
-      <div class='body-wrapper clearfix'>
-        <%- body %>
-        <script>setLoadingBarProgress(60);</script>
+  <% if (!page.prev && theme.home_cover) { %>
+    <div class="home-wrapper">
+      <div class='home-cover <%- is_home() ? theme.home_cover.height : "half" %>'>
+        <% if (theme.home_cover.scheme == 'search') { %>
+          <%- partial('_cover/search') %>
+        <% } %>
       </div>
-      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+      <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
     </div>
+  <% } else { %>
+    <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
   <% } %>
-
-
+  <div class="l_body">
+    <div class='body-wrapper clearfix'>
+      <%- body %>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
   <%- partial('_partial/scripts') %>
   <script>setLoadingBarProgress(100);</script>
 </body>
