@@ -58,7 +58,7 @@ body {
   .title, .logo{
     font-size: @fontsize_h1*3;
     line-height: @fontsize_h1*3.3;
-    margin-top: 28vh;
+    margin-top: ~"calc(28vh - 2*@{gap})";
     text-align: center;
     font-weight: bold;
   }
@@ -68,7 +68,6 @@ body {
   }
   @media(max-width: @on_phone){
     .title, .logo {
-      margin-top: 20vh;
       font-size: @fontsize_h1*2;
       line-height: @fontsize_h1*2.2;
     }
@@ -78,6 +77,7 @@ body {
     margin-top: 2vh;
     position: relative;
     height: @height_navbar - @gap;
+    max-width: ~"calc(100% - 1*@{gap})";
     width: 1.1*@width_sidebar;
     @media(max-width: @on_laptop){
       width: 1.2*@width_sidebar_m;
@@ -152,12 +152,8 @@ body {
     ul {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
+      align-items: baseline;
       justify-content: center;
-      @media(max-width: @on_phone){
-        flex-direction: column;
-        align-items: baseline;
-      }
       li {
         display: flex;
         flex-wrap: wrap;
