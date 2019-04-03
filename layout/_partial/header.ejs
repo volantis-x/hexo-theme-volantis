@@ -14,8 +14,8 @@
       </a>
 			<div class='menu'>
 				<ul class='h-list'>
-          <% if (theme.menu) { %>
-  					<% (theme.menu || []).forEach(function(value){ %>
+          <% if (theme.menu_desktop) { %>
+  					<% (theme.menu_desktop || []).forEach(function(value){ %>
   						<li>
 								<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
 								 class="nav flat-box" href="<%= url_for(value.url) %>">
@@ -56,8 +56,8 @@
     <header>
 		<nav class="menu">
       <ul>
-        <% if (theme.menu_m) { %>
-          <% (theme.menu_m || []).forEach(function(value){ %>
+        <% if (theme.menu_mobile) { %>
+          <% (theme.menu_mobile || []).forEach(function(value){ %>
             <li>
 							<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>" class="nav flat-box" href="<%= url_for(value.url) %>">
 								<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>

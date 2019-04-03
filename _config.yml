@@ -2,17 +2,17 @@
 info:
   name: Material X
   docs: https://xaoxuu.com/wiki/material-x/
-  cdn:
+  cdn: # 把对应的那一行注释掉就使用本地的文件
     css:
-      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.7/css/style.css
     js:
-      # app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/js/app.js
-      # search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.6/js/search.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.7/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.7/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
 
 
 
-############################### 主题样式 ###############################
+############################### 主题风格 ###############################
 # style: material    # material: 导航栏和标题栏背景是主题色
 style: pure        # pure: 导航栏和标题栏背景是白色
 
@@ -22,7 +22,6 @@ scrollreveal: true
 nodewaves: true
 busuanzi: true
 # fastclick: true
-
 
 
 
@@ -47,14 +46,14 @@ updated_date_format: 'llll' # 文章更新日期的格式
 
 
 ############################### 自定义 ###############################
-
 # 主页封面
 home_cover:
+  scheme: search    # 后期将会提供多种封面方案
   title: "xaoxuu"
   # logo: assets/logo.png
-  search_placeholder: ' '
+  # search_placeholder: '搜索'
   # 主页封面菜单
-  menu:
+  features:
     - name: 博文
       icon: fas fa-rss
       url: '#posts'
@@ -64,12 +63,13 @@ home_cover:
     - name: 归档
       icon: fas fa-archive
       url: blog/archives/
-    # - name: 关于
-    #   icon: fas fa-info-circle
-    #   url: about/
+    - name: 关于
+      icon: fas fa-info-circle
+      url: about/
+
 
 # 桌面端导航栏菜单
-menu:
+menu_desktop:
   - name: Cocoa Dev
     icon: fab fa-apple
     url: blog/categories/dev/cocoa/
@@ -81,7 +81,7 @@ menu:
     url: blog/categories/life/
 
 # 手机端导航菜单（从右上角的按钮点击展开）
-menu_m:
+menu_mobile:
   - name: 近期文章
     icon: fas fa-clock
     url: /
@@ -102,7 +102,7 @@ menu_m:
     url: about/
 
 
-# 侧边栏小部件
+# 侧边栏小部件，默认按下面给定的顺序全部显示，文章中还可以自定义显示一部分以及顺序
 sidebar:
   - widget: author
     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
@@ -153,6 +153,7 @@ sidebar:
     type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
     id: 2615636388     # 歌曲/专辑/歌单 ID
 
+
 # 社交信息
 social:
   - icon: fas fa-rss
@@ -164,6 +165,7 @@ social:
   - icon: fas fa-headphones-alt
     url: https://music.163.com/#/user/home?id=63035382
 
+
 # 分享按钮
 # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
 share:
@@ -173,15 +175,15 @@ share:
   - id: qzone
     name: QQ空间
     img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png
-  - id: qrcode
-    name: 微信
-    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png
+  # - id: qrcode
+  #   name: 微信
+  #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png
   - id: weibo
     name: 微博
     img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png
-  - id: qrcode
-    name: QRcode
-    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png
+  # - id: qrcode
+  #   name: QRcode
+  #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png
 
 
 
