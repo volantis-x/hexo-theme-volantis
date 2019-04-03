@@ -16,7 +16,7 @@
   <%}%>
   <br>
   <div><%- markdown(__('footer.license')) %></div>
-  <div><%- __('footer.use') %> <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> <%- __('footer.theme') %><% if (theme.services && theme.services.busuanzi == true) { %><%- __('symbol.comma') %><%- __('footer.total_views') %> <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> <%- __('footer.times') %><% } %><%- __('symbol.period') %>
+  <div><%- __('footer.use') %> <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> <%- __('footer.theme') %><% if (theme.services.busuanzi == true) { %><%- __('symbol.comma') %><%- __('footer.total_views') %> <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> <%- __('footer.times') %><% } %><%- __('symbol.period') %>
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>

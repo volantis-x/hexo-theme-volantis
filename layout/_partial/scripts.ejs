@@ -63,7 +63,7 @@
   var enableDisqus = false;
   var enableLivere = false;
   var enableValine = false;
-  if (page && theme.services && theme.services.comments == true && page.comments != false) {
+  if (page && page.comments != false) {
     if (config.disqus_shortname) {
       enableDisqus = true;
     }
@@ -104,8 +104,8 @@
 <% } %>
 <% if (enableValine){ %>
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <% if (theme.services.volantis == true) { %>
-    <% if (theme.services && theme.services.cdn == true) { %>
+  <% if (theme.valine.volantis == true) { %>
+    <% if (theme.services.cdn == true) { %>
       <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
     <% } else { %>
       <%- js('js/volantis.js') %>

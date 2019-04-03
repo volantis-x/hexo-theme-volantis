@@ -11,16 +11,12 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 
 
 ############################### 服务开关 ###############################
-# 服务开关，如果你想禁用某些功能，直接设置为false或者注释掉，相关的js脚本就不会加载。
-# 有些服务这里打开了也未必会生效，还需要额外的配置，详见文档。
 services:
   # cdn: true
   scrollreveal: true
   nodewaves: true
   busuanzi: true
   # fastclick: true
-  comments: true
-  volantis: true
   # music: true
   # share: true
 
@@ -192,6 +188,7 @@ share:
 # valine
 valine:
   enable: true # 如果你想用Valine评论系统，请设置enable为true
+  volantis: true # 是否启用volantis版本（禁止匿名，增加若干贴吧、QQ表情）
   # 还需要在根目录配置文件中添加下面这三行内容
   # leancloud:
   #   app_id: 你的appId
