@@ -422,13 +422,20 @@
       }
 
       img {
-          display: block;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           max-width: 100%;
           border-radius: 4px;
           background: none;
       }
       span img{
         display: inline-block;
+      }
+      a {
+        img{
+          display: inline;
+        }
       }
   }
   @media(max-width:@on_pad) {
