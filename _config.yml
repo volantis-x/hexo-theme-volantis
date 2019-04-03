@@ -19,12 +19,10 @@ services:
   nodewaves: true
   busuanzi: true
   # fastclick: true
-  # popular_posts: true   # 需要安装插件  hexo-related-popular-posts
   comments: true
   volantis: true
   # music: true
   # share: true
-  # qrcode: true    # 需要安装插件  npm i -S hexo-helper-qrcode
 
 
 ############################### 默认值 ###############################
@@ -108,7 +106,7 @@ sidebar:
     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
     social: true
   - widget: toc
-  - widget: list
+  - widget: square
     icon: fas fa-map-signs
     title: 站内导航
     rows:
@@ -142,7 +140,7 @@ sidebar:
     more:
       icon: fas fa-expand-arrows-alt
       url: blog/tags/
-  - widget: related_posts
+  - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
   - widget: music
     icon: fas fa-compact-disc
     title: "最近在听"
@@ -165,6 +163,7 @@ social:
     url: https://music.163.com/#/user/home?id=63035382
 
 # 分享按钮
+# 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
 share:
   - id: qq
     name: QQ好友

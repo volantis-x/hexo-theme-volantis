@@ -7,7 +7,7 @@
   <% } else { %>
   <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
     <div class="l_body">
-      <div class='container clearfix'>
+      <div class='body-wrapper clearfix'>
         <%- body %>
         <script>setLoadingBarProgress(60);</script>
       </div>

@@ -451,11 +451,15 @@ ul.h-list {
   }
 }
 
-.container {
+.body-wrapper {
   position: relative;
+  display: flex;
   width: 100%;
   max-width: @width_container;
   margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
 .container--flex {

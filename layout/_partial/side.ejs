@@ -1,15 +1,29 @@
 <aside class='l_side'>
   <% if (theme.sidebar && theme.sidebar.length){ %>
     <%
-    let supportWidgets = ['author', 'category', 'list', 'music', 'tagcloud', 'toc', 'plain', 'related_posts'];
+    let supportWidgets = ['author', 'category', 'list', 'music', 'tagcloud', 'toc', 'plain', 'related_posts', 'square'];
     %>
-    <% theme.sidebar.forEach(function(item){ %>
-      <% if (item.enable != false){ %>
-        <% let widget_name = item.widget ? item.widget : 'plain'; %>
-        <% if (supportWidgets.indexOf(widget_name) > -1){ %>
-          <%- partial('../_widget/' + item.widget, {item: item}) %>
+    <% if (page.sidebar){ %>
+      <% page.sidebar.forEach(function(name){ %>
+        <% theme.sidebar.forEach(function(item){ %>
+          <% let widget_name = item.widget ? item.widget : 'plain'; %>
+          <% if (item.enable != false && widget_name == name){ %>
+            <% if (supportWidgets.indexOf(widget_name) > -1){ %>
+              <%- partial('../_widget/' + item.widget, {item: item}) %>
+            <% } %>
+          <% } %>
+        <% }) %>
+      <% }) %>
+    <% } else { %>
+      <% theme.sidebar.forEach(function(item){ %>
+        <% if (item.enable != false){ %>
+          <% let widget_name = item.widget ? item.widget : 'plain'; %>
+          <% if (supportWidgets.indexOf(widget_name) > -1){ %>
+            <%- partial('../_widget/' + item.widget, {item: item}) %>
+          <% } %>
         <% } %>
-      <% } %>
-    <% }) %>
+      <% }) %>
+    <% } %>
+
   <% } %>
 </aside>

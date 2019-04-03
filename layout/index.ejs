@@ -1,4 +1,3 @@
-
 <% if (page.prev == 0) { %>
   <div class="home-wrapper">
     <div class='home-cover'>
@@ -44,7 +43,7 @@
   <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
 <% } %>
 <div class="l_body" id='posts'>
-  <div class='container clearfix'>
+  <div class='body-wrapper clearfix'>
     <div class='l_main'>
       <%- partial('_partial/archive') %>
     </div>
