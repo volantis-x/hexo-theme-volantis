@@ -12,7 +12,7 @@
                 <div class="new-meta-item date" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>">
                   <a class='notlink'>
                     <i class="fas fa-save" aria-hidden="true"></i>
-                    <%- date(post.updated, config.date_format) %>
+                    <%- __('post.updated') + ' ' + date(post.updated, theme.updated_date_format) %>
                   </a>
                 </div>
               <% } %>

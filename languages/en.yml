@@ -12,6 +12,7 @@ post:
   copy_button: Copy
   copy_success: Copied
   copy_failure: Copy failed
+  updated: last updated at
   prev_page: Previous
   next_page: Next
   copyright:

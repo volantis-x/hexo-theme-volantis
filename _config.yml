@@ -14,7 +14,7 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 # 服务开关，如果你想禁用某些功能，直接设置为false或者注释掉，相关的js脚本就不会加载。
 # 有些服务这里打开了也未必会生效，还需要额外的配置，详见文档。
 services:
-  cdn: true
+  # cdn: true
   scrollreveal: true
   nodewaves: true
   busuanzi: true
@@ -41,6 +41,9 @@ music:
 # 友链页头像占位图
 loading_img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
 
+# 日期格式 http://momentjs.com/docs/
+date_format: 'll' # 文章发布日期的格式
+updated_date_format: 'llll' # 文章更新日期的格式
 
 
 ############################### 自定义 ###############################
@@ -52,24 +55,24 @@ home_cover:
   search_placeholder: ' '
   # 主页封面菜单
   menu:
-    - name: 近期文章
-      icon: fas fa-clock
+    - name: 博文
+      icon: fas fa-rss
       url: '#posts'
-    - name: 应用程序
-      icon: fas fa-cube
-      url: wiki/
+    - name: 项目
+      icon: fas fa-code-branch
+      url: projects/
     - name: 归档
       icon: fas fa-archive
       url: blog/archives/
-    - name: 关于
-      icon: fas fa-info-circle
-      url: about/
+    # - name: 关于
+    #   icon: fas fa-info-circle
+    #   url: about/
 
 # 桌面端导航栏菜单
 menu:
   - name: Cocoa Dev
     icon: fab fa-apple
-    url: blog/categories/cocoa-dev/
+    url: blog/categories/dev/cocoa/
   - name: Dev
     icon: fas fa-laptop-code
     url: blog/categories/dev/
@@ -86,8 +89,8 @@ menu_m:
     icon: fas fa-archive
     url: blog/archives/
   - name: 开源项目
-    icon: fas fa-flask
-    url: wiki/
+    icon: fas fa-code-branch
+    url: projects/
   - name: 歌单分享
     icon: fas fa-compact-disc
     url: music/
@@ -109,12 +112,18 @@ sidebar:
     icon: fas fa-map-signs
     title: 站内导航
     rows:
-      - name: 开源项目
-        icon: fas fa-flask
-        url: wiki/
+      - name: 近期文章
+        icon: fas fa-clock
+        url: /
       - name: 文章归档
         icon: fas fa-archive
         url: blog/archives/
+      - name: 开源项目
+        icon: fas fa-code-branch
+        url: projects/
+      - name: Wiki文档
+        icon: fas fa-book
+        url: wiki/
       - name: 歌单分享
         icon: fas fa-compact-disc
         url: music/
