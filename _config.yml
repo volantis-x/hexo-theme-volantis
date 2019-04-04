@@ -38,10 +38,10 @@ music:
   autoplay: false   # 自动播放
 
 # 友链页头像占位图
-loading_img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
+avatar_placeholder: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
 
 # 日期格式 http://momentjs.com/docs/
-date_format: 'll' # 文章发布日期的格式
+date_format: 'YYYY-MM-DD' # 文章发布日期的格式
 updated_date_format: 'llll' # 文章更新日期的格式
 
 
@@ -64,9 +64,11 @@ cover:
     - name: 归档
       icon: fas fa-archive
       url: blog/archives/
+      rel: nofollow
     - name: 关于
       icon: fas fa-info-circle
       url: about/
+      rel: nofollow
 
 
 # 桌面端导航栏菜单
@@ -80,6 +82,7 @@ menu_desktop:
   - name: Life
     icon: fas fa-coffee
     url: blog/categories/life/
+    rel: nofollow
 
 # 手机端导航菜单（从右上角的按钮点击展开）
 menu_mobile:
@@ -89,18 +92,22 @@ menu_mobile:
   - name: 文章归档
     icon: fas fa-archive
     url: blog/archives/
+    rel: nofollow
   - name: 开源项目
     icon: fas fa-code-branch
     url: projects/
   - name: 歌单分享
     icon: fas fa-compact-disc
     url: music/
+    rel: nofollow
   - name: 我的友链
     icon: fas fa-link
     url: friends/
+    rel: nofollow
   - name: 关于小站
     icon: fas fa-info-circle
     url: about/
+    rel: nofollow
 
 # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
 # 其中，title只在top中有效，music和thumbnail无需在这里设置，文章中有则显示
@@ -126,30 +133,37 @@ sidebar:
       - name: 文章归档
         icon: fas fa-archive
         url: blog/archives/
+        rel: nofollow
       - name: 开源项目
         icon: fas fa-code-branch
         url: projects/
       - name: Wiki文档
         icon: fas fa-book
         url: wiki/
+        rel: nofollow
       - name: 歌单分享
         icon: fas fa-compact-disc
         url: music/
+        rel: nofollow
       - name: 我的友链
         icon: fas fa-link
         url: friends/
+        rel: nofollow
       - name: 关于小站
         icon: fas fa-info-circle
         url: about/
+        rel: nofollow
   - widget: category
     more:
       icon: fas fa-expand-arrows-alt
       url: blog/categories/
+      rel: nofollow
   - widget: tagcloud
     icon: fas fa-fire
     more:
       icon: fas fa-expand-arrows-alt
       url: blog/tags/
+      rel: nofollow
   - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
   - widget: music
     icon: fas fa-compact-disc
@@ -157,6 +171,8 @@ sidebar:
     more:
       icon: far fa-heart
       url: https://music.163.com/#/user/home?id=63035382
+      rel: external nofollow noopener noreferrer
+      target: _blank
     server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
     type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
     id: 2615636388     # 歌曲/专辑/歌单 ID

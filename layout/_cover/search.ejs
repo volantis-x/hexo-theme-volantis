@@ -18,7 +18,13 @@
       <% (theme.cover.features || []).forEach(function(value){ %>
         <li>
           <a class="nav home" href="<%= url_for(value.url) %>"
-          id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
+            <% if (value.rel) { %>
+              rel="<%- value.rel %>"
+            <% } %>
+            <% if (value.target) { %>
+              target="<%- value.target %>"
+            <% } %>
+            id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
             <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
           </a>
         </li>

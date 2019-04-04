@@ -9,14 +9,28 @@
     <div class="social-wrapper">
       <% (theme.social||[]).forEach(function(value){ %>
         <% if (value.url && value.icon) { %>
-          <a href="<%= url_for(value.url) %>" class="social <%- value.icon %> flat-btn" target="_blank" rel="external"></a>
+          <a href="<%= url_for(value.url) %>"
+            class="social <%- value.icon %> flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
         <%}%>
       <%})%>
     </div>
   <%}%>
   <br>
   <div><%- markdown(__('footer.license')) %></div>
-  <div><%- __('footer.use') %> <a href="<%- theme.info.docs %>" target="_blank" class="codename"><%- theme.info.name %></a> <%- __('footer.theme') %><% if (theme.busuanzi == true) { %><%- __('symbol.comma') %><%- __('footer.total_views') %> <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> <%- __('footer.times') %><% } %><%- __('symbol.period') %>
+  <div>
+    <%- __('footer.use') %>
+    <a href="<%- theme.info.docs %>" target="_blank" class="codename"><%- theme.info.name %></a>
+    <%- __('footer.theme') %>
+    <% if (theme.busuanzi == true) { %>
+      <%- __('symbol.comma') %>
+      <%- __('footer.total_views') %>
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      <%- __('footer.times') %>
+    <% } %>
+    <%- __('symbol.period') %>
   </div>
 </footer>
 <script>setLoadingBarProgress(80);</script>

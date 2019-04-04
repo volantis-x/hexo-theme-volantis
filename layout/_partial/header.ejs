@@ -17,8 +17,14 @@
           <% if (theme.menu_desktop) { %>
   					<% (theme.menu_desktop || []).forEach(function(value){ %>
   						<li>
-								<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
-								 class="nav flat-box" href="<%= url_for(value.url) %>">
+								<a class="nav flat-box" href="<%= url_for(value.url) %>"
+                  <% if (value.rel) { %>
+                    rel="<%- value.rel %>"
+                  <% } %>
+                  <% if (value.target) { %>
+                    target="<%- value.target %>"
+                  <% } %>
+                  id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
 									<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
 								</a>
 							</li>
@@ -59,7 +65,14 @@
         <% if (theme.menu_mobile) { %>
           <% (theme.menu_mobile || []).forEach(function(value){ %>
             <li>
-							<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>" class="nav flat-box" href="<%= url_for(value.url) %>">
+							<a class="nav flat-box" href="<%= url_for(value.url) %>"
+                <% if (value.rel) { %>
+                  rel="<%- value.rel %>"
+                <% } %>
+                <% if (value.target) { %>
+                  target="<%- value.target %>"
+                <% } %>
+                id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
 								<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
 							</a>
             </li>
