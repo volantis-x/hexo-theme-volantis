@@ -362,6 +362,7 @@
           .new-meta-box{
             @metaH: 24px;
             .enable-trans();
+            padding-top: 4px;
             padding-bottom: 8px;
             display: flex;
             align-items: center;
@@ -374,12 +375,16 @@
                 cursor: default;
                 &:hover{
                   color: fade(@color_text_main, 70%);
+                  p{
+                    color: fade(@color_text_main, 70%);
+                  }
                 }
               }
               display: flex;
               align-items: center;
+              justify-content: center;
               padding: 2px;
-              margin: 4px 8px 4px 0;
+              margin: 0 8px 0 0;
               border-radius: 4px;
               &:last-child{
                 margin-right: 0;
@@ -387,13 +392,13 @@
               img,i{
                 border-radius: 100%;
                 display: inline;
-                width: @metaH - 4px;
-              }
-              img{
-                width: @metaH - 10px;
               }
               i{
-                margin-right: 2px;
+                margin-right: 4px;
+                border-radius: 0;
+                &.fa-hashtag{
+                  margin-right: 1px;
+                }
               }
               p,a{
                 color: fade(@color_text_main, 70%);
@@ -401,8 +406,26 @@
                 padding-right: 4px;
               }
               a{
+                font-family: @fontfamily_base;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                  height: @metaH - 7px;
+                  width: @metaH - 7px;
+                  margin-right: 5px;
+                }
+                p{
+                  margin: 0;
+                  padding-top: 2px;
+                  font-weight: normal;
+                  .enable-trans();
+                }
                 &:hover{
                   color: @color_text_highlight;
+                  p{
+                    color: @color_text_highlight;
+                  }
                   text-decoration: none;
                 }
               }
@@ -420,7 +443,7 @@
                 }
               }
             }
-
+            
           }
 
       }

@@ -42,7 +42,7 @@ avatar_placeholder: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avat
 
 # 日期格式 http://momentjs.com/docs/
 date_format: 'YYYY-MM-DD' # 文章发布日期的格式
-updated_date_format: 'llll' # 文章更新日期的格式
+updated_date_format: 'lll' # 文章更新日期的格式
 
 
 ############################### 自定义 ###############################
