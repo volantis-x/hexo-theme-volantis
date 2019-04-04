@@ -10,31 +10,41 @@ var customSearch;
 		$('html, body').animate({ 'scrollTop': $elem.offset().top - correction }, 400);
 	};
 
-  function setBackToTop(){
-    const $top = $('.s-top', '.l_body');
-    let pos = document.body.scrollTop;
-		const $header = $('.l_header', '.cover-wrapper');
+  function setScrollAnchor(){
+		// button
+		const $postsBtn = $('.menu .active');
+		const $topBtn = $('.s-top');
+		// anchor
+		const $coverAnchor = $('.l_header', '.cover-wrapper');
+		const $bodyAnchor = $('.l_body');
+		// action
+		if ($postsBtn.length && $bodyAnchor) {
+			$postsBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($bodyAnchor); });
+		}
+		if ($topBtn.length && $bodyAnchor) {
+			$topBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($bodyAnchor); });
+		}
+
+		const showCoverPoint = document.body.clientHeight*0.6 - 100;
+		var pos = document.body.scrollTop;
 		$(document, window).scroll(() => {
 			const scrollTop = $(window).scrollTop();
 			const del = scrollTop - pos;
+			pos = scrollTop;
 			if (scrollTop > 150) {
-				pos = scrollTop;
-				$top.addClass('show');
+				$topBtn.addClass('show');
         if (del > 0) {
-          $top.removeClass('hl');
+          $topBtn.removeClass('hl');
         } else {
-          $top.addClass('hl');
+          $topBtn.addClass('hl');
         }
 			} else {
-				pos = scrollTop;
-				$top.removeClass('show').removeClass('hl');
+				$topBtn.removeClass('show').removeClass('hl');
 			}
-	    $top.click(()=>scrolltoElement(document.body));
-
 			if (scrollTop > document.body.clientHeight*0.6 - 100) {
-				$header.addClass('show');
+				$coverAnchor.addClass('show');
 			} else {
-				$header.removeClass('show');
+				$coverAnchor.removeClass('show');
 			}
 		});
   }
@@ -221,19 +231,13 @@ var customSearch;
 		setHeaderSearch();
 
 		setTocToggle();
-    setBackToTop();
+    setScrollAnchor();
 		// $(".article .video-container").fitVids();
 
 		setTimeout(function () {
 			$('#loading-bar-wrapper').fadeOut(500);
 		}, 300);
 
-		// posts
-		const $postsBtn = $('.menu .active');
-		const $postsTarget = $('.l_body');
-		if ($postsBtn.length && $postsTarget) {
-			$postsBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($postsTarget); });
-		}
 
 		if (SEARCH_SERVICE === 'google') {
 			customSearch = new GoogleCustomSearch({
