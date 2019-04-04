@@ -1,6 +1,6 @@
 <% if(post.author || config.author){ %>
   <div class='new-meta-item author'>
-    <a href="<%- url_for(config.url) %>">
+    <a href="<%- url_for(config.url) %>" rel="nofollow">
       <i class="fas fa-user" aria-hidden="true"></i>
       <%- post.author || config.author %>
     </a>
