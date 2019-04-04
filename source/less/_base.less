@@ -79,6 +79,8 @@ fancybox{
       }
     }
     .m_search{
+      @iconW: 32px;
+      @iconMargin: 4px;
       margin-top: 2vh;
       position: relative;
       height: @height_navbar - @gap;
@@ -95,55 +97,49 @@ fancybox{
         width: 100%;
       }
       .icon,.input{
-        .enable-trans(.1s);
+        .enable-trans(.3s);
       }
       .icon {
         position: absolute;
         display:block;
-        height: @height_navbar - @gap;
-        width: @height_navbar - @gap;
-        line-height: @height_navbar - @gap;
+        line-height: @searchbar_height_cover;
+        height: @searchbar_height_cover;
+        width: @iconW;
         top: 0;
-        left: @gap/2;
+        left: @iconMargin+1px;
         font-size: @fontsize_base;
+        color: fade(@color_text_main, 60%);
       }
       .input {
-        display:block;
-        color: @color_text_main;
-        background: lighten(@theme_cardbg, 10%);
+        display: block;
         font-size: @fontsize_base;
-        line-height: @fontsize_base*2.2;
-        margin: 0;
+        line-height: @fontsize_base;
+        height: @searchbar_height_cover;
         width: 100%;
-        padding-left: @fontsize_base + @gap;
-        padding-right: @gap;
-        padding-top: 2px;
-        @media(max-width: @on_phone){
-          padding-left: @fontsize_base + @gap;
-        }
-        font-family: @fontfamily_base;
-        border: none;
+        color: @color_text_main;
+        box-shadow: none;
         box-sizing: border-box;
         -webkit-appearance: none;
-        box-shadow: none;
-        border: 1px dashed transparent;
-        .enable-trans();
+        padding-left: @iconW + @iconMargin;
+        @media(max-width: @on_phone){
+          padding-left: @iconW + @iconMargin;
+        }
         border-radius: @height_navbar;
-        ~ .icon{
-          line-height: @fontsize_base*2.2+4px;
-          padding-left: 2px;
+        background: lighten(@theme_cardbg, 10%);
+        border: 1px dashed transparent;
+        .set-placeholder({
           padding-top: 2px;
-          color: fade(@color_text_main, 80%);
-        }
-        .set-placeholder({color: fade(@color_text_main, 60%)});
+          color: fade(@color_text_main, 60%);
+        });
         &:hover{
-          border: 1px dashed @theme_main;
-        }
-        &:focus {
-          ~ .icon{
+          ~.icon{
             color: @theme_main;
           }
-          color: @color_text_main;
+        }
+        &:focus {
+          ~.icon{
+            color: @theme_main;
+          }
           border: 1px solid @theme_main;
         }
       }

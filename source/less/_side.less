@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  @media(max-width: @on_laptop) {
+  @media(max-width: @on_desktop) {
     width: @width_sidebar_m;
   }
   @media(max-width: @on_pad) {
@@ -34,7 +34,7 @@
   }
 
   width: @width_sidebar;
-  @media(max-width: @on_laptop) {
+  @media(max-width: @on_desktop) {
     width: @width_sidebar_m;
   }
   @media(max-width: @on_pad) {
@@ -138,7 +138,7 @@
         height: @width_sidebar;
         border-top-left-radius: @border_radius;
         border-top-right-radius: @border_radius;
-        @media(max-width: @on_laptop) {
+        @media(max-width: @on_desktop) {
           width: @width_sidebar_m;
           height: @width_sidebar_m;
         }
@@ -194,6 +194,7 @@
         }
         @media(max-width: @on_pad){
           justify-content: center;
+          display: none;
         }
       }
     }

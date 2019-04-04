@@ -104,6 +104,10 @@ menu_mobile:
     icon: fas fa-link
     url: friends/
     rel: nofollow
+  - name: 主题文档
+    icon: fas fa-book
+    url: wiki/material-x/
+    rel: nofollow
   - name: 关于小站
     icon: fas fa-info-circle
     url: about/
@@ -137,10 +141,6 @@ sidebar:
       - name: 开源项目
         icon: fas fa-code-branch
         url: projects/
-      - name: Wiki文档
-        icon: fas fa-book
-        url: wiki/
-        rel: nofollow
       - name: 歌单分享
         icon: fas fa-compact-disc
         url: music/
@@ -148,6 +148,10 @@ sidebar:
       - name: 我的友链
         icon: fas fa-link
         url: friends/
+        rel: nofollow
+      - name: 主题文档
+        icon: fas fa-book
+        url: wiki/material-x/
         rel: nofollow
       - name: 关于小站
         icon: fas fa-info-circle

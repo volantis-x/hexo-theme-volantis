@@ -1,12 +1,21 @@
 .l_main {
   width: ~"calc(100% - 1 * @{width_sidebar})";
-  @media(max-width: @on_laptop) {
+  @media(max-width: @on_desktop) {
     width: ~"calc(100% - 1 * @{width_sidebar_m})";
   }
   @media(max-width: @on_pad) {
     width: 100%;
   }
   padding-right: @gap;
+  &.no_sidebar{
+    width: 100%;
+    padding-right: 0;
+    max-width: @on_pad;
+    margin: auto;
+    ~.l_side{
+      display: none;
+    }
+  }
   float: left;
   .post-list {
     position: relative;

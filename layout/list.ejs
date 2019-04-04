@@ -1,4 +1,4 @@
-<div class='l_main'>
+<div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.posts && site.posts.length > 0) { %>
     <section class="post-list">
       <% site.posts.sort(page.sort ? page.sort : "-date").each(function(p){ %>

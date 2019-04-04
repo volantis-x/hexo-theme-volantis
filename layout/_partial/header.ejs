@@ -1,4 +1,4 @@
-<header class="l_header <%= theme.style %>">
+<header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%= theme.style %>">
   <div id="loading-bar-wrapper">
     <div id="loading-bar" class="<%= theme.style %>"></div>
   </div>
@@ -37,7 +37,7 @@
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
 						<input type="text" class="input u-search-input" placeholder="<%- __('search.placeholder') %>" />
-						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
 			<% } %>

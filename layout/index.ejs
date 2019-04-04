@@ -1,4 +1,4 @@
-<div class='l_main'>
+<div class='l_main<%- page.sidebar == false ? 'no_sidebar' : '' %>'>
   <%- partial('_partial/archive') %>
 </div>
 <%- partial('_partial/side') %>
