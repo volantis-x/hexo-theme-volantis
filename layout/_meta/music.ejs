@@ -1,0 +1,6 @@
+<% if(post.music && post.music.enable != false){ %>
+  <%- partial('../_third-party/aplayer',
+  {aplayer_theme: '', aplayer_mini: true, aplayer_mode: 'circulation',
+  aplayer_server: post.music.server, aplayer_type: post.music.type, aplayer_id: post.music.id,
+  aplayer_volume: post.music.volume?post.music.volume:'0.7', aplayer_autoplay: post.music.autoplay?true:false }) %>
+<% } %>

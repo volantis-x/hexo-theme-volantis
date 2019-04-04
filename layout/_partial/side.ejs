@@ -3,7 +3,7 @@
     <%
     let supportWidgets = ['author', 'category', 'list', 'music', 'tagcloud', 'toc', 'plain', 'related_posts', 'grid'];
     %>
-    <% if (page.sidebar){ %>
+    <% if (page.sidebar) { %>
       <% page.sidebar.forEach(function(name){ %>
         <% theme.sidebar.forEach(function(item){ %>
           <% let widget_name = item.widget ? item.widget : 'plain'; %>

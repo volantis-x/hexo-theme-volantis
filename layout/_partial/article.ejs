@@ -1,98 +1,72 @@
 <article id="<%= post.layout %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
-  <%- partial('meta',{post:post}) %>
-    <section class="article typo">
-      <div class="article-entry" itemprop="articleBody">
-        <%- post.content %>
-      </div>
-        <% if(post.layout == 'post'){ %>
-          <section class='meta' id="footer-meta">
-            <hr>
-            <div class='new-meta-box'>
-              <% if(!page.meta || page.meta.updated != false){ %>
-                <div class="new-meta-item date" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>">
-                  <a class='notlink'>
-                    <i class="fas fa-save" aria-hidden="true"></i>
-                    <%- __('post.updated') + ' ' + date(post.updated, theme.updated_date_format) %>
-                  </a>
-                </div>
+  <%- partial('meta', {post: post, position: 'header'}) %>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <%- post.content %>
+    </div>
+      <% if(post.layout == 'post'){ %>
+        <%- partial('meta', {post: post, position: 'footer'}) %>
+      <% } %>
+      <% if(post.prev || post.next){ %>
+          <div class="prev-next">
+              <% if(post.prev){ %>
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %></h6>
+                          <h4>
+                              <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
+                                <% if(post.prev.title){ %>
+                                    <%= post.prev.title %>
+                                <% } else if (post.prev.date) { %>
+                                    <%= date(post.prev.date, config.date_format) %>
+                                <% } %>
+                              </a>
+                          </h4>
+                          <% if (post.prev.tags && post.prev.tags.length && post.prev.tags.each) { %>
+                              <%
+                              var items = [];
+                              post.prev.tags.each(function(item){
+                                  items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>' + item.name + '</a>');
+                              });
+                              %>
+                              <h6 class="tags">
+                                  <%- items.join(' ') %>
+                              </h6>
+                          <% } %>
+                      </span>
+                  </section>
               <% } %>
-              <% if (post.tags && post.tags.length && (!page.meta || page.meta.tags != false)) { %>
-                <%
-                var items = [];
-                post.tags.each(function(item){
-                  items.push('<div class="new-meta-item meta-tags"><a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;' + item.name + '</a></div>');
-                });
-                %>
-                <%- items.join(' ') %>
-              <% } %>
-              <% if (theme.share && (!page.meta || page.meta.share != false)) { %>
-                <%- partial('../_third-party/share') %>
-              <% } %>
-            </div>
-          </section>
-        <% } %>
-
-        <% if(post.prev || post.next){ %>
-            <div class="prev-next">
-                <% if(post.prev){ %>
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %></h6>
-                            <h4>
-                                <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
-                                  <% if(post.prev.title){ %>
-                                      <%= post.prev.title %>
-                                  <% } else if (post.prev.date) { %>
-                                      <%= date(post.prev.date, config.date_format) %>
+              <% if(post.next){ %>
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6><%- __('post.next_page') %>&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="<%=url_for(post.next.path)%>" rel="prev" title="<%=post.next.title%>">
+                                  <% if(post.next.title){ %>
+                                      <%= post.next.title %>
+                                  <% } else if (post.next.date) { %>
+                                      <%= date(post.next.date, config.date_format) %>
                                   <% } %>
-                                </a>
-                            </h4>
-                            <% if (post.prev.tags && post.prev.tags.length && post.prev.tags.each) { %>
-                                <%
-                                var items = [];
-                                post.prev.tags.each(function(item){
-                                    items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>' + item.name + '</a>');
-                                });
-                                %>
-                                <h6 class="tags">
-                                    <%- items.join(' ') %>
-                                </h6>
-                            <% } %>
-                        </span>
-                    </section>
-                <% } %>
-                <% if(post.next){ %>
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6><%- __('post.next_page') %>&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="<%=url_for(post.next.path)%>" rel="prev" title="<%=post.next.title%>">
-                                    <% if(post.next.title){ %>
-                                        <%= post.next.title %>
-                                    <% } else if (post.next.date) { %>
-                                        <%= date(post.next.date, config.date_format) %>
-                                    <% } %>
-                                </a>
-                            </h4>
-                            <% if (post.next.tags && post.next.tags.length && post.next.tags.each) { %>
-                                <%
-                                var items = [];
-                                post.next.tags.each(function(item){
-                                    items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>' + item.name + '</a>');
-                                });
-                                %>
-                                <h6 class="tags">
-                                    <%- items.join(' ') %>
-                                </h6>
-                            <% } %>
-                        </span>
-                    </section>
-                <%} %>
-            </div>
-        <%} %>
+                              </a>
+                          </h4>
+                          <% if (post.next.tags && post.next.tags.length && post.next.tags.each) { %>
+                              <%
+                              var items = [];
+                              post.next.tags.each(function(item){
+                                  items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>' + item.name + '</a>');
+                              });
+                              %>
+                              <h6 class="tags">
+                                  <%- items.join(' ') %>
+                              </h6>
+                          <% } %>
+                      </span>
+                  </section>
+              <%} %>
+          </div>
+      <%} %>
 
-    </section>
-
+  </section>
 </article>
 
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
