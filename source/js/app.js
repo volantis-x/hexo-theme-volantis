@@ -3,7 +3,7 @@ var customSearch;
 (function ($) {
 
 	"use strict";
-	const scrollCorrection = 70; // (header height = 50px) + (gap = 20px)
+	const scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
 	function scrolltoElement(elem, correction) {
 		correction = correction || scrollCorrection;
 		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
