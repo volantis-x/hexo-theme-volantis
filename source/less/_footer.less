@@ -20,9 +20,11 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 4px @gap/2;
   }
   a {
     color: fade(@color_text_main, 70%);
+    padding: 0;
     .enable-trans();
     &:hover {
       color: @color_text_highlight;
@@ -43,5 +45,8 @@
         color: @theme_main;
       }
     }
+  }
+  @media(max-width: @on_pad){
+    justify-content: center;
   }
 }
