@@ -69,7 +69,7 @@
     font-size: @fontsize_logo;
     font-family: @fontfamily_logo;
     @media(max-width: @on_phone){
-      flex: auto;
+      // flex: auto;
     }
     &.img{
       padding: 0 @gap 0 0;
@@ -162,6 +162,7 @@
     position: relative;
     display: flex;
     width: @width_sidebar;
+    height: @height_navbar;
     @media(max-width: @on_desktop){
       width: @width_sidebar_m;
     }
@@ -169,7 +170,7 @@
       position: relative;
       display: block;
       width: 100%;
-      height: 100%;
+      margin: auto;
     }
     .icon,.input{
       .enable-trans(.3s);
