@@ -273,7 +273,7 @@
         padding: 0 @gap;
         a{
           text-align: center;
-          border-radius: @border_radius/2;
+          border-radius: @border_radius;
           margin: 4px 0;
           padding: 4px 8px;
           display: flex;
@@ -300,6 +300,7 @@
           &:hover {
             color: @color_text_highlight;
             background: fade(@theme_main, 10%);
+            border-radius: 4px;
           }
           &:active {
             color: @color_text_highlight;

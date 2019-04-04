@@ -18,6 +18,7 @@
         justify-content: flex-start;
         align-content: flex-start;
         flex-direction: column;
+        border: 1px solid transparent;
         width:~"calc(100%/3 - @{gap})";
         @media(max-width: @on_laptop){
           width:~"calc(100%/3 - @{gap})";
@@ -44,26 +45,29 @@
           box-shadow: @boxshadow_card_raised, 0 32px 64px 0px rgba(0, 0, 0, 0.1);
           transform: scale(1.05);
           border-radius: @border_radius;
+          border: 1px solid white;
           @media(max-width: @on_phone){
             transform: scale(1.02);
             margin: @gap/2 0;
           }
           .friend-left{
             .avatar{
-              transform: scale(1.1) rotate(12deg);
+              transform: scale(1.2) rotate(12deg);
               box-shadow: @boxshadow_card_raised;
+              border: none;
             }
           }
 
         }
         .friend-left{
+          display: flex;
           align-self: center;
           .avatar{
             width: 64px;
             height: 64px;
             min-width: 64px;
             min-height: 64px;
-            margin: @gap @gap/2 @gap/2 @gap/2;
+            margin: @gap @gap/2 @gap/4 @gap/2;
             border-radius: 100%;
             border: 1px solid white;
             box-shadow: @boxshadow_card_normal;
@@ -73,9 +77,9 @@
           }
         }
         .friend-right{
-          flex: 1;
-          margin: 0 @gap/2 @gap/2 @gap/2;
+          margin: @gap/4 @gap/2;
           display: flex;
+          // flex: 1;
           flex-direction: column;
           text-align: center;
           p{
