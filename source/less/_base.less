@@ -78,13 +78,6 @@ fancybox{
         line-height: @fontsize_h1*2.2;
       }
     }
-    &.half{
-      height: ~"calc(60vh - @{gap} - @{height_navbar})";
-      .title, .logo{
-        margin-top: ~"calc(20vh - 2*@{gap})";
-      }
-    }
-
     .m_search{
       margin-top: 2vh;
       position: relative;
@@ -155,6 +148,15 @@ fancybox{
         }
       }
 
+    }
+    &.half{
+      height: ~"calc(60vh - @{gap} - @{height_navbar})";
+      .title, .logo{
+        margin-top: ~"calc(20vh - 2*@{gap})";
+      }
+      .m_search{
+        margin-top: 0;
+      }
     }
     &, a{
       color: @theme_main;
