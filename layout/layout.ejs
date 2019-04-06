@@ -2,18 +2,7 @@
 <html>
 <%- partial('_partial/head') %>
 <body>
-  <% if (!page.prev && theme.cover) { %>
-    <div class="cover-wrapper">
-      <div class='cover <%- is_home() ? theme.cover.height : "half" %>'>
-        <% if (theme.cover.scheme == 'search') { %>
-          <%- partial('_cover/search') %>
-        <% } %>
-      </div>
-      <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
-    </div>
-  <% } else { %>
-    <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
-  <% } %>
+  <%- partial('_partial/cover') %>
   <div class="l_body">
     <div class='body-wrapper'>
       <%- body %>

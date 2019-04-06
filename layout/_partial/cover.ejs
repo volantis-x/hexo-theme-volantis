@@ -1,0 +1,33 @@
+<%
+var showCover = false;
+if (theme.cover) {
+  // 如果页面的Front-matter声明了cover，就取页面的值
+  if (page.cover != undefined) {
+    showCover = page.cover;
+  } else {
+    // 否则，如果是首页，只有首页的第一页显示
+    if (is_home()) {
+      if (page.prev) {
+        showCover = false;
+      } else {
+        showCover = true;
+      }
+    } else {
+      showCover = true;
+    }
+  }
+}
+%>
+
+<% if (showCover == true) { %>
+  <div class="cover-wrapper">
+    <div class='cover <%- is_home() ? theme.cover.height : "half" %>'>
+      <% if (theme.cover.scheme == 'search') { %>
+        <%- partial('../_cover/search') %>
+      <% } %>
+    </div>
+    <%- partial('header', null, {cache: !config.relative_link, path: path}) %>
+  </div>
+<% } else { %>
+  <%- partial('header', null, {cache: !config.relative_link, path: path}) %>
+<% } %>
