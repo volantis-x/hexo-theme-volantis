@@ -9,7 +9,7 @@ if (page.widget && page.widget.music == false) {
 %>
 
 <% if (theme.music && theme.music.enable == true && needDisplay == true) { %>
-  <section class='<%- item.widget %>'>
+  <section class='widget <%- item.widget %>'>
     <%- partial('header', {item: item, defIcon: '', defTitle: ''}) %>
     <div class='content <%= theme.style %>'>
       <%- partial('../_third-party/aplayer',
