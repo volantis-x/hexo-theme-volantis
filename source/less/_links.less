@@ -45,7 +45,6 @@
           box-shadow: @boxshadow_card_raised, 0 32px 64px 0px rgba(0, 0, 0, 0.1);
           transform: scale(1.05);
           border-radius: @border_radius;
-          border: 1px solid white;
           @media(max-width: @on_phone){
             transform: scale(1.02);
             margin: @gap/2 0;
@@ -54,7 +53,7 @@
             .avatar{
               transform: scale(1.2) rotate(12deg);
               box-shadow: @boxshadow_card_raised;
-              border: none;
+              // border: 2px solid transparent;
             }
           }
 
@@ -69,8 +68,8 @@
             min-height: 64px;
             margin: @gap @gap/2 @gap/4 @gap/2;
             border-radius: 100%;
-            border: 1px solid white;
-            box-shadow: @boxshadow_card_normal;
+            border: 0px solid transparent;
+            // box-shadow: @boxshadow_card_normal;
             @media(max-width: @on_phone){
               margin: @gap;
             }
