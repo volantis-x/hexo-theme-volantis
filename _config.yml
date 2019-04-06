@@ -4,9 +4,9 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 把对应的那一行注释掉就使用本地的文件
     css:
-      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.10/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.11/css/style.css
     js:
-      # app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.10/js/app.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.11/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.10/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
 
@@ -42,7 +42,7 @@ avatar_placeholder: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avat
 
 # 日期格式 http://momentjs.com/docs/
 date_format: 'YYYY-MM-DD' # 文章发布日期的格式
-updated_date_format: 'lll' # 文章更新日期的格式
+updated_date_format: 'll' # 文章更新日期的格式
 
 
 ############################### 自定义 ###############################
