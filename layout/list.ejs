@@ -1,11 +1,24 @@
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.posts && site.posts.length > 0) { %>
     <section class="post-list">
-      <% site.posts.sort(page.sort ? page.sort : "-date").each(function(p){ %>
-        <% if (p.type == page.type) { %>
-          <div class='post-wrapper'>
-            <%- partial('_partial/post', {post: p, index: false}) %>
-          </div>
+      <% if (!page.prev) { %>
+        <% site.posts.sort(page.sort ? page.sort : "-date").each(function(post){ %>
+          <% if (post.type && post.type == page.type) { %>
+            <% if (post.top) { %>
+              <div class='post-wrapper'>
+                <%- partial('_partial/post', {post: post, index: false}) %>
+              </div>
+            <% } %>
+          <% } %>
+        <% }) %>
+      <% } %>
+      <% site.posts.sort(page.sort ? page.sort : "-date").each(function(post){ %>
+        <% if (post.type && post.type == page.type) { %>
+          <% if (!post.top) { %>
+            <div class='post-wrapper'>
+              <%- partial('_partial/post', {post: post, index: false}) %>
+            </div>
+          <% } %>
         <% } %>
       <% }) %>
     </section>

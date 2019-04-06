@@ -50,7 +50,7 @@ updated_date_format: 'll' # 文章更新日期的格式
 cover:
   scheme: search    # 后期将会提供多种封面方案
   # height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
-  title: "xaoxuu"
+  title: "Material X"
   # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
   # search_placeholder: '搜索'
   # 主页封面菜单
@@ -61,9 +61,9 @@ cover:
     - name: 项目
       icon: fas fa-code-branch
       url: projects/
-    - name: 归档
-      icon: fas fa-archive
-      url: blog/archives/
+    - name: 友链
+      icon: fas fa-link
+      url: friends/
       rel: nofollow
     - name: 关于
       icon: fas fa-info-circle
@@ -73,15 +73,20 @@ cover:
 
 # 桌面端导航栏菜单
 menu_desktop:
-  - name: Cocoa Dev
-    icon: fab fa-apple
-    url: blog/categories/dev/cocoa/
-  - name: Dev
-    icon: fas fa-laptop-code
-    url: blog/categories/dev/
-  - name: Life
-    icon: fas fa-coffee
-    url: blog/categories/life/
+  - name: 示例
+    icon: fas fa-grin
+    url: /
+  - name: 分类
+    icon: fas fa-folder-open
+    url: blog/categories/
+    rel: nofollow
+  - name: 标签
+    icon: fas fa-hashtag
+    url: blog/tags/
+    rel: nofollow
+  - name: 归档
+    icon: fas fa-archive
+    url: blog/archives/
     rel: nofollow
 
 # 手机端导航菜单（从右上角的按钮点击展开）
@@ -96,17 +101,13 @@ menu_mobile:
   - name: 开源项目
     icon: fas fa-code-branch
     url: projects/
-  - name: 歌单分享
-    icon: fas fa-compact-disc
-    url: music/
-    rel: nofollow
   - name: 我的友链
     icon: fas fa-link
     url: friends/
     rel: nofollow
   - name: 主题文档
     icon: fas fa-book
-    url: wiki/material-x/
+    url: https://xaoxuu.com/wiki/material-x/
     rel: nofollow
   - name: 关于小站
     icon: fas fa-info-circle
@@ -114,10 +115,10 @@ menu_mobile:
     rel: nofollow
 
 # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
-# 其中，title只在top中有效，music和thumbnail无需在这里设置，文章中有则显示
+# 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
 # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
 meta:
-  header: [title, author, date, categories, counter]
+  header: [title, author, date, categories, counter, top]
   footer: [updated, tags, share]
 
 
@@ -141,17 +142,13 @@ sidebar:
       - name: 开源项目
         icon: fas fa-code-branch
         url: projects/
-      - name: 歌单分享
-        icon: fas fa-compact-disc
-        url: music/
-        rel: nofollow
       - name: 我的友链
         icon: fas fa-link
         url: friends/
         rel: nofollow
       - name: 主题文档
         icon: fas fa-book
-        url: wiki/material-x/
+        url: https://xaoxuu.com/wiki/material-x/
         rel: nofollow
       - name: 关于小站
         icon: fas fa-info-circle
@@ -168,7 +165,7 @@ sidebar:
       icon: fas fa-expand-arrows-alt
       url: blog/tags/
       rel: nofollow
-  - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
+  # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
   - widget: music
     icon: fas fa-compact-disc
     title: "最近在听"
