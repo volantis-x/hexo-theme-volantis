@@ -6,6 +6,10 @@
   </h2>
 <% } else { %>
   <% if (post.title || page.title || config.title) { %>
-    <h1 class="title"><%- post.title ? post.title : date(post.date, theme.date_format) %></h1>
+    <h1 class="title">
+      <a href="<%- url_for(post.path) %>">
+        <%- post.title ? post.title : date(post.date, theme.date_format) %>
+      </a>
+    </h1>
   <% } %>
 <% } %>

@@ -21,7 +21,7 @@ if (theme.cover) {
 
 <% if (showCover == true) { %>
   <div class="cover-wrapper">
-    <div class='cover <%- is_home() ? theme.cover.height : "half" %>'>
+    <div class='cover <%- page.layout %> <%- is_home() ? theme.cover.height : "half" %>'>
       <% if (theme.cover.scheme == 'search') { %>
         <%- partial('../_cover/search') %>
       <% } %>

@@ -8,7 +8,7 @@ var customSearch;
 	if ($headerAnchor[0]) {
 		scrollCorrection = $headerAnchor[0].clientHeight + 16;
 	}
-	
+
 	function scrolltoElement(elem, correction) {
 		correction = correction || scrollCorrection;
 		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
@@ -19,11 +19,16 @@ var customSearch;
 		// button
 		const $postsBtn = $('.menu .active');
 		const $topBtn = $('.s-top');
+		const $titleBtn = $('h1.title', '#header-meta');
+		console.log($titleBtn);
 		// anchor
 		const $bodyAnchor = $('.l_body');
 		// action
 		if ($postsBtn.length && $bodyAnchor) {
 			$postsBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($bodyAnchor); });
+		}
+		if ($titleBtn.length && $bodyAnchor) {
+			$titleBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($bodyAnchor); });
 		}
 		if ($topBtn.length && $bodyAnchor) {
 			$topBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($bodyAnchor); });

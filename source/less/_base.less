@@ -81,7 +81,7 @@ fancybox{
     .m_search{
       @iconW: 32px;
       @iconMargin: 4px;
-      margin-top: 2vh;
+      margin-top: ~"calc(2vh + 2*@{gap})";
       position: relative;
       max-width: ~"calc(100% - 1*@{gap})";
       width: 1.1*@width_sidebar;
@@ -150,7 +150,7 @@ fancybox{
         margin-top: ~"calc(20vh - 2*@{gap})";
       }
       .m_search{
-        margin-top: 0;
+        margin-top: 2vh;
       }
     }
     &, a{
