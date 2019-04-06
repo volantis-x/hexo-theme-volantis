@@ -20,7 +20,6 @@ var customSearch;
 		const $postsBtn = $('.menu .active');
 		const $topBtn = $('.s-top');
 		const $titleBtn = $('h1.title', '#header-meta');
-		console.log($titleBtn);
 		// anchor
 		const $bodyAnchor = $('.l_body');
 		// action
@@ -39,7 +38,6 @@ var customSearch;
 		if ($coverAnchor[0]) {
 			showHeaderPoint = $coverAnchor[0].clientHeight - 64;
 		}
-		console.log(showHeaderPoint);
 		var pos = document.body.scrollTop;
 		$(document, window).scroll(() => {
 			const scrollTop = $(window).scrollTop();
