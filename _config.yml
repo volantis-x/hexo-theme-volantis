@@ -4,10 +4,10 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 把对应的那一行注释掉就使用本地的文件
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.15/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.16/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.15/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.15/js/search.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.16/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.16/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
 
 
@@ -121,6 +121,8 @@ meta:
   header: [title, author, date, categories, counter, top]
   footer: [updated, tags, share]
 
+# 主体元素，你也可以在页面的Front-matter中设置
+body: [article, comments]
 
 # 侧边栏小部件，默认按下面给定的顺序全部显示，文章中还可以自定义显示一部分以及顺序
 sidebar:
@@ -165,7 +167,7 @@ sidebar:
       icon: fas fa-expand-arrows-alt
       url: blog/tags/
       rel: nofollow
-  # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
+  - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
   - widget: music
     icon: fas fa-compact-disc
     title: "最近在听"

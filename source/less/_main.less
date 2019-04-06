@@ -277,9 +277,20 @@
     }
 
   }
+  .widget{
+    @media(max-width: @on_phone) {
+      border-radius: 0;
+      margin-left: 0;
+      margin-right: 0;
+      width: auto;
+      &:hover {
+        box-shadow: @boxshadow_card_normal;
+      }
+    }
+  }
   .post {
     position: relative;
-    margin: 0 auto;
+    margin: @gap auto;
     padding: 2*@gap 1.5*@gap;
     background: @theme_cardbg;
     border-radius: @border_radius;
