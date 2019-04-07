@@ -123,8 +123,10 @@ var customSearch;
       index = index[0];
       idname = idname.split(index)[0];
     }
-    $active_link = $('#' + idname, $headerMenu);
-    setUnderline($active_link);
+		if (idname && $headerMenu) {
+			$active_link = $('#' + idname, $headerMenu);
+			setUnderline($active_link);
+		}
 	}
 
 	function setHeaderMenuPhone() {
