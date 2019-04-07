@@ -26,8 +26,8 @@ if (theme.cover) {
         <%- partial('../_cover/search') %>
       <% } %>
     </div>
-    <%- partial('header', null, {cache: !config.relative_link, path: path}) %>
+    <%- partial('header', null, {cache: false, path: path}) %>
   </div>
 <% } else { %>
-  <%- partial('header', null, {cache: !config.relative_link, path: path}) %>
+  <%- partial('header', null, {cache: false, path: path}) %>
 <% } %>
