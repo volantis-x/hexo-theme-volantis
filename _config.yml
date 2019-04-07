@@ -170,7 +170,7 @@ sidebar:
       icon: fas fa-expand-arrows-alt
       url: blog/tags/
       rel: nofollow
-  # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
+  - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
   - widget: music
     icon: fas fa-compact-disc
     title: "最近在听"
