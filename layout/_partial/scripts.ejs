@@ -58,6 +58,7 @@
 <%
   var enableDisqus = false;
   var enableLivere = false;
+  var enableGitalk = false;
   var enableValine = false;
   if (page && page.comments != false) {
     if (config.disqus_shortname) {
@@ -66,7 +67,10 @@
     if (config.livere_uid) {
       enableLivere = true;
     }
-    if (theme.valine && theme.valine.enable && config.leancloud) {
+    if (config.gitalk) {
+      enableGitalk = true;
+    }
+    if (theme.valine.enable && config.leancloud) {
       enableValine = true;
     }
   }
@@ -98,6 +102,27 @@
     })(document, 'script');
   </script>
 <% } %>
+<% if (enableGitalk) { %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "<%- config.gitalk.clientID %>",
+      clientSecret: "<%- config.gitalk.clientSecret %>",
+      repo: "<%- config.gitalk.repo %>",
+      owner: "<%- config.gitalk.owner %>",
+      admin: "<%- config.gitalk.admin %>",
+      <% if(page.gitalk && page.gitalk.id) { %>
+        id: "<%= page.gitalk.id %>",
+      <% } else { %>
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+      <% } %>
+      distractionFreeMode: true  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
+<% } %>
+
 <% if (enableValine){ %>
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   <% if (theme.valine.volantis == true) { %>
