@@ -4,10 +4,10 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 把对应的那一行注释掉就使用本地的文件
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.18/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.18/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.18/js/search.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
 
 
@@ -43,6 +43,16 @@ avatar_placeholder: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avat
 # 日期格式 http://momentjs.com/docs/
 date_format: 'YYYY-MM-DD' # 文章发布日期的格式
 updated_date_format: 'll' # 文章更新日期的格式
+
+# 幻灯片
+# backstretch:
+#   position: cover  # cover: 封面背景   full: 整个网页背景
+#   duration: 6000 # 持续时间（毫秒）
+#   fade: 1500     # 渐变（毫秒）
+#   images:
+#     - https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg
+#     - https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg
+#     - https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg
 
 
 ############################### 自定义 ###############################
@@ -216,6 +226,19 @@ share:
 
 # footer: '页脚文字，支持[markdown](/)'
 
+
+############################### 评论系统 ###############################
+# disqus_shortname: 要使用哪个请复制到根目录配置文件！
+# livere_uid: 要使用哪个请复制到根目录配置文件！
+# gitalk: 要使用哪个请复制到根目录配置文件！
+#   clientID: 你的clientID
+#   clientSecret: 你的clientSecret
+#   repo: 你的repo名
+#   owner: 你的GitHub名
+#   admin: [] 至少填写你的GitHub名
+# leancloud: 要使用哪个请复制到根目录配置文件！
+#   app_id: 你的appId
+#   app_key: 你的appKey
 
 
 ############################### 杂项，请勿删除 ###############################
