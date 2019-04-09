@@ -54,13 +54,44 @@
   </script>
 <% } %>
 
+<% if (theme.backstretch && (theme.backstretch.images || page.images)) { %>
+  <% var imgs = theme.backstretch.images || page.images; %>
+  <% var posi = null;
+  if (theme.backstretch.position == 'cover') {
+    posi = '.cover';
+  }
+   %>
+  <% if (imgs != undefined && theme.backstretch.position != undefined){ %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('<%- posi %>') {
+          $('<%- posi %>').backstretch(
+          <%- '["' + imgs.join('", "') + '"]' %>,
+          {
+            duration: "<%- theme.backstretch.duration %>",
+            fade: "<%- theme.backstretch.fade %>"
+          });
+        } else {
+          $.backstretch(
+          <%- '["' + imgs.join('", "') + '"]' %>,
+          {
+            duration: "<%- theme.backstretch.duration %>",
+            fade: "<%- theme.backstretch.fade %>"
+          });
+        }
+      });
+    </script>
+  <% } %>
+<% } %>
+
 
 <%
   var enableDisqus = false;
   var enableLivere = false;
   var enableGitalk = false;
   var enableValine = false;
-  if (page && page.comments != false) {
+  if (page && page.comments == true) {
     if (config.disqus_shortname) {
       enableDisqus = true;
     }

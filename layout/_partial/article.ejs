@@ -81,6 +81,12 @@
   <% } %>
 <% }) %>
 
+<%
+  if (sections.indexOf('comments') < 0) {
+    page.comments = false;
+  }
+%>
+
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 <% if (page.mathjax){ %>
   <%- partial('mathjax') %>

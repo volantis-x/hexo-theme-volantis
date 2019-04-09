@@ -46,17 +46,19 @@ fancybox{
   display: flex;
   justify-content: center;
 }
-
+.backstretch {
+  opacity: .75;
+}
 .cover-wrapper{
+  padding-bottom: 2px;
   .cover{
     top: 0;
     left: 0;
     max-width: 100%;
-    height: ~"calc(100vh - @{gap} - @{height_navbar})";
+    height: ~"calc(100vh)";
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    margin-bottom: 2*@gap;
     align-items: center;
     align-self: center;
     align-content: center;
@@ -147,10 +149,15 @@ fancybox{
     &.half{
       height: ~"calc(60vh - @{gap} - @{height_navbar})";
       .title, .logo{
-        margin-top: ~"calc(20vh - 2*@{gap})";
+        margin-top: ~"calc(20vh - 4*@{gap})";
+      }
+      @media(max-width: @on_phone){
+        .title, .logo{
+          margin-top: ~"calc(32vh - 6*@{gap})";
+        }
       }
       .m_search{
-        margin-top: 2vh;
+        margin-top: 1vh;
       }
     }
     &, a{
@@ -483,7 +490,10 @@ ul.h-list {
 .l_body {
   position: relative;
   margin: @gap;
-  margin-top: @height_navbar + @gap;
+  margin-top: @gap;
+  &.nocover{
+    margin-top: @gap + @height_navbar;
+  }
   @media(max-width: @on_phone) {
     margin: @height_navbar + @gap 0 @gap;
     border-radius: 0;
