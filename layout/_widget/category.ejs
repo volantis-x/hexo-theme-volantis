@@ -1,5 +1,5 @@
 <% if (site.categories.length){ %>
-  <section class='widget <%- item.widget %>'>
+  <section class='<%- item.widget %>'>
     <%- partial('header', {item: item, defIcon: 'fas fa-folder-open', defTitle: __('sidebar.category')}) %>
     <div class='content <%= theme.style %>'>
       <ul class="entry">

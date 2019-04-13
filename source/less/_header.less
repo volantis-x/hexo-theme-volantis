@@ -1,29 +1,18 @@
 .l_header {
-  @iconW: 32px;
-  @iconMargin: 4px;
-  position: fixed;
+  position:fixed;
   z-index: 9999;
-  top: 0;
-  overflow: hidden;
-  width: 100%;
+  top:0;
+  left:0;
+  width:100%;
   font-size: @fontsize_base;
   line-height: @height_navbar;
   height: @height_navbar;
   overflow: hidden;
   font-family: @fontfamily_base;
   padding: 0 @gap;
-  margin-bottom: @gap;
   .wrapper{
     padding: auto @gap;
-    max-width: @width_container;
-    margin: auto;
     .enable-trans();
-  }
-  &.no_sidebar{
-    .wrapper{
-      max-width: @on_pad;
-      margin: auto;
-    }
   }
   .wrapper.sub{
     .enable-trans();
@@ -42,12 +31,7 @@
     height: @height_navbar;
   }
   background: @color_bg_navbar;
-  &.hide{
-    transform: translateY(100px) scale(0);
-  }
-  &.show{
-    transform: translateY(0) scale(1);
-  }
+
   &, a{
     .txt-ellipsis;
     height: @height_navbar;
@@ -69,7 +53,7 @@
     font-size: @fontsize_logo;
     font-family: @fontfamily_logo;
     @media(max-width: @on_phone){
-      // flex: auto;
+      flex: auto;
     }
     &.img{
       padding: 0 @gap 0 0;
@@ -129,7 +113,7 @@
       margin: 2px;
       @height: @height_navbar - @gap;
       @media(max-width: @on_phone){
-        margin: 0;
+        width: @height;
         height: @height;
       }
       a{
@@ -144,7 +128,7 @@
           background: fade(@theme_cardbg, 30%);
         }
         @media(max-width: @on_phone){
-          width: @iconW;
+          width: @height;
           height: @height;
         }
       }
@@ -160,63 +144,69 @@
   }
   .m_search {
     position: relative;
-    display: flex;
+    height: @height_navbar - @gap;
     width: @width_sidebar;
-    height: @height_navbar;
-    @media(max-width: @on_desktop){
+    @media(max-width: @on_laptop){
       width: @width_sidebar_m;
     }
+    line-height: @height_navbar - @gap;
+    margin-top: @gap/2;
+    margin-bottom: @gap/2;
+    vertical-align: middle;
     .form {
       position: relative;
       display: block;
       width: 100%;
-      margin: auto;
     }
     .icon,.input{
-      .enable-trans(.3s);
+      .enable-trans(.1s);
     }
     .icon {
       position: absolute;
-      display: block;
-      line-height: @height_searchbar;
-      height: @height_searchbar;
-      width: @iconW;
+      display:block;
+      height: @height_navbar - @gap;
+      width: @height_navbar - @gap;
+      line-height: @height_navbar - @gap;
       top: 0;
-      left: @iconMargin+1px;
+      left: @gap/2;
       font-size: @fontsize_base;
-      color: fade(@color_text_in_header, 60%);
     }
     .input {
-      display: block;
+      display:block;
       font-size: @fontsize_base;
-      line-height: @fontsize_base;
-      height: @height_searchbar;
+      line-height: @height_navbar - @gap;
+      margin: 0;
       width: 100%;
       color: fade(@color_text_in_header, 60%);
-      box-shadow: none;
-      box-sizing: border-box;
-      -webkit-appearance: none;
-      padding-left: @iconW + @iconMargin;
+      padding-left: @fontsize_base + @gap - 2px;
       @media(max-width: @on_phone){
-        padding-left: @iconW + @iconMargin;
+        padding-left: @fontsize_base + @gap - 2px;
       }
+      height: @height_navbar - @gap;
+      line-height: @height_navbar - @gap;
+      font-family: @fontfamily_base;
+      border: none;
       border-radius: @border_radius_searchbar;
       background: fade(@theme_cardbg, 15%);
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      box-shadow: none;
       border: 1px dashed transparent;
-      .set-placeholder({
-        padding-top: 2px;
+      .enable-trans();
+      ~ .icon{
         color: fade(@color_text_in_header, 60%);
-      });
+      }
+      .set-placeholder({color: fade(@color_text_in_header, 60%)});
       &:hover{
-        color: @color_text_in_header;
-        border: 1px solid fade(@color_text_in_header, 60%);
+        border: 1px dashed fade(@color_text_in_header, 60%);
       }
       &:focus {
-        ~.icon{
+        ~ .icon{
           color: @color_text_in_header;
         }
         color: @color_text_in_header;
-        border: 1px solid @color_text_in_header;
+        border: 1px solid fade(@color_text_in_header, 60%);
+        // .set-placeholder({color: @black});
       }
     }
   }
@@ -226,12 +216,6 @@
       color: @theme_main;
     }
     box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
-    // box-shadow: none;
-    // background: transparent;
-    // .wrapper{
-    //   background: @theme_cardbg;
-    //   box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
-    // }
     .menu{
       ul > li > a{
         .enable-trans();
@@ -260,28 +244,23 @@
       }
     }
     .m_search {
-      .icon{
-        color: fade(@color_text_main, 60%);
-      }
       .input {
-        color: @color_text_main;
+        color: fade(@theme_main, 60%);
         background: @theme_background;
-        .set-placeholder({
-          color: fade(@color_text_main, 60%);
-        });
+        ~ .icon{
+          color: fade(@theme_main, 60%);
+        }
+        .set-placeholder({color: fade(@theme_main, 60%)});
         &:hover{
-          ~.icon{
-            color: fade(@theme_main, 80%);
-          }
-          border: 1px solid fade(@theme_main, 60%);
+          border: 1px dashed fade(@theme_main, 60%);
         }
         &:focus {
-          ~.icon{
+          ~ .icon{
             color: @theme_main;
           }
-          color: @color_text_main;
+          color: @theme_main;
           background: fade(@theme_main, 15%);
-          border: 1px solid @theme_main;
+          border: 1px solid fade(@theme_main, 60%);
         }
       }
     }
@@ -300,7 +279,7 @@
         opacity:0;
       }
       .m_search{
-        width: ~"calc(100vw - 2*@{gap} - 2*@{iconW})";
+        width: 100% - 1.5*@gap;
       }
     }
   }
@@ -349,15 +328,6 @@
         border-left: 4px solid @theme_main;
         background: fade(@theme_main, 10%);
       }
-    }
-  }
-}
-.cover-wrapper{
-  .l_header{
-    .enable-trans(0.5s);
-    transform: translateY(-1.5*@height_navbar);
-    &.show{
-      transform: translateY(0);
     }
   }
 }

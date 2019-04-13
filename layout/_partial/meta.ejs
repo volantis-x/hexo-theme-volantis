@@ -1,62 +1,101 @@
-<% if(is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
+﻿<% if(is_home() || is_category() || is_archive() || is_tag()) {
   var isPostList = true;
 } else {
   var isPostList = false;
-}
-var topMetas = (theme.meta && theme.meta.header) || [];
-if (post.meta && (post.meta.header !== undefined && post.meta.header !== null)) {
-  if (post.meta.header.length) {
-    topMetas = post.meta.header;
-  } else {
-    topMetas = [];
-  }
-}
-var bottomMetas = (theme.meta && theme.meta.footer) || [];
-if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) {
-  if (post.meta.footer.length) {
-    bottomMetas = post.meta.footer;
-  } else {
-    bottomMetas = [];
-  }
-}
-%>
+} %>
+<section class='meta'>
+  <% if(post.music && post.music.enable != false){ %>
+    <%- partial('../_third-party/aplayer',
+    {aplayer_theme: '', aplayer_mini: true, aplayer_mode: 'circulation',
+    aplayer_server: post.music.server, aplayer_type: post.music.type, aplayer_id: post.music.id,
+    aplayer_volume: post.music.volume?post.music.volume:'0.7', aplayer_autoplay: post.music.autoplay?true:false }) %>
+  <% } %>
+  <% if(post.thumbnail && post.thumbnail.length){ %>
+    <a title='<%- post.title %>' href='<%- url_for(post.path) %>'><img class='thumbnail' src='<%- post.thumbnail %>'></a>
+  <% } %>
+  <div class="meta" id="header-meta">
+    <% if(isPostList){ %>
+      <h2 class="title">
+          <a href="<%- url_for(post.path) %>">
+              <% if(post.title){ %>
+                  <%- post.title %>
+              <% } else if (post.date) { %>
+                  <%= date(post.date, config.date_format) %>
+              <% } %>
+          </a>
+      </h2>
+    <% } else { %>
+      <% if(post.title){ %>
+          <h1 class="title"><%- post.title %></h1>
+      <% } else if (post.date) { %>
+          <h1 class="title"><%= date(post.date, config.date_format) %></h1>
+      <% } %>
+    <% } %>
 
-<% if (position == 'header') { %>
-  <section class='meta'>
-    <% if (post.music && post.music.enable != false) { %>
-      <%- partial('../_third-party/aplayer',
-      {aplayer_theme: '', aplayer_mini: true, aplayer_mode: 'circulation',
-      aplayer_server: post.music.server, aplayer_type: post.music.type, aplayer_id: post.music.id,
-      aplayer_volume: post.music.volume?post.music.volume:'0.7', aplayer_autoplay: post.music.autoplay?true:false }) %>
-    <% } %>
-    <% if(post.thumbnail && post.thumbnail.length){ %>
-      <a title='<%- post.title %>' href='<%- url_for(post.path) %>'><img class='thumbnail' src='<%- post.thumbnail %>'></a>
-    <% } %>
-    <div class="meta" id="header-meta">
-      <% if((topMetas).indexOf('title') > -1){ %>
-        <%- partial('../_meta/' + 'title', {post: post, isPostList: isPostList}) %>
-      <% } %>
-      <div class='new-meta-box'>
-        <% (topMetas).forEach(function(meta){ %>
-          <% if(meta != 'title'){ %>
-            <%- partial('../_meta/' + meta, {post: post, isPostList: isPostList}) %>
-          <% } %>
-        <% }) %>
-      </div>
-      <% if ((topMetas).length > 0){ %>
-        <hr>
-      <% } %>
-    </div>
-  </section>
-<% } else if (position == 'footer') { %>
-  <section class='meta' id="footer-meta">
-    <hr>
     <div class='new-meta-box'>
-      <% (bottomMetas).forEach(function(meta){ %>
-        <% if(meta != 'title'){ %>
-          <%- partial('../_meta/' + meta, {post: post, isPostList: isPostList}) %>
+      <% if(config.author && (!post.meta || post.meta.author != false)){ %>
+        <div class='new-meta-item author'>
+          <a href="<%- url_for(config.url) %>">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            <%- config.author %>
+          </a>
+        </div>
+      <% } %>
+      <% if(post.date && (!post.meta || post.meta.date != false)){ %>
+        <div class="new-meta-item date">
+          <a class='notlink'>
+            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+            <%= date(post.date, config.date_format) %>
+          </a>
+        </div>
+      <% } %>
+      <% if(post.categories && (!post.meta || post.meta.categories != false)){ %>
+        <% if (post.categories && post.categories.length && post.categories.forEach){ %>
+          <%
+          var cats = [];
+          var path;
+          post.categories.forEach(function(cat){
+            cats.push(cat.name);
+            path = cat.path;
+          });
+          %>
+          <div class='new-meta-item category'>
+            <a href='<%- url_for(path) %>'>
+              <i class="fas fa-folder-open" aria-hidden="true"></i>
+              <%- cats.join('&nbsp;/&nbsp;') %>
+            </a>
+          </div>
         <% } %>
-      <% }) %>
+      <% } %>
+      <% if(!isPostList && theme.services && (!post.meta || post.meta.counter != false)){ %>
+        <% if (theme.services.busuanzi == true) { %>
+          <div class="new-meta-item browse busuanzi">
+            <a class='notlink'>
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        <% } %>
+      <% } %>
+
+      <!--字数统计&阅读时长-->
+          <div class="new-meta-item text_count">
+            <a class='text_count'>
+                <%- partial('../_partial/post/word.ejs') %>
+            </a>
+          </div>
+
+      <% if(isPostList && post.top && (!post.meta || post.meta.top != false)){ %>
+        <div class="new-meta-item top-post">
+          <a class='notlink'>
+            <i class="fas fa-angle-double-up" aria-hidden="true"></i>
+            <%- post.top != true ? post.top : __('post.top') %>
+          </a>
+        </div>
+      <% } %>
     </div>
-  </section>
-<% } %>
+    <hr>
+  </div>
+</section>

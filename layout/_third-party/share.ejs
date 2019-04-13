@@ -1,31 +1,34 @@
-<div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    <% (theme.share||[]).forEach(function(item){ %>
-      <% if (item.id == 'qrcode'){ %>
-        <a class='qrcode' rel="external nofollow noopener noreferrer" href='<%- qrcode(url) %>'>
-        <% if (item.img){ %>
-          <img src="<%- item.img %>">
-        <% } else if (item.icon){ %>
-          <i class="<%- item.icon %> fa-fw"></i>
-        <% } %>
-        </a>
-      <% } else { %>
-        <a class="-mob-share-<%- item.id %>" title="<%- item.name %>" rel="external nofollow noopener noreferrer"
-          <% if (item.id == 'qzone'){ %>
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<%- post.permalink %>&title=<%- post.title + ' | ' + config.title %><%- (post.img || config.avatar) ? '&pics=' + (post.img || config.avatar) : '' %>&summary=<%- strip_html(post.excerpt) %>"
-          <% } else if (item.id == 'qq'){ %>
-          href="http://connect.qq.com/widget/shareqq/index.html?url=<%- post.permalink %>&title=<%- post.title + ' | ' + config.title %><%- (post.img || config.avatar) ? '&pics=' + (post.img || config.avatar) : '' %>&summary=<%- strip_html(post.excerpt) %>"
-          <% } else if (item.id == 'weibo'){ %>
-          href="http://service.weibo.com/share/share.php?url=<%- post.permalink %>&title=<%- post.title + ' | ' + config.title %><%- (post.img || config.avatar) ? '&pics=' + (post.img || config.avatar) : '' %>&summary=<%- strip_html(post.excerpt) %>"
-          <% } %>
-          >
+<% if (theme.services && theme.services.share == true && (config.share || config.mob) && page.layout == 'post' && page.share != false) { %>
+  <div class="new-meta-item share -mob-share-list">
+    <i class="fas fa-share-alt" aria-hidden="true"></i>
+    <div class="-mob-share-list share-body">
+      <% ((config.share || config.mob.list)||[]).forEach(function(item){ %>
+        <% if (item.id == 'qrcode' && theme.services.qrcode == true){ %>
+          <a class='qrcode' rel="external nofollow noopener noreferrer" href='<%- qrcode(url) %>'>
           <% if (item.img){ %>
             <img src="<%- item.img %>">
           <% } else if (item.icon){ %>
             <i class="<%- item.icon %> fa-fw"></i>
           <% } %>
-        </a>
-      <% } %>
-    <% }) %>
+          </a>
+        <% } else { %>
+          <a class="-mob-share-<%- item.id %>" title="<%- item.name %>" rel="external nofollow noopener noreferrer"
+            <% if (item.id == 'qzone'){ %>
+            href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<%- post.permalink %>&title=<%- post.title + ' | ' + config.title %><%- (post.img || config.avatar) ? '&pics=' + (post.img || config.avatar) : '' %>&summary=<%- strip_html(post.excerpt) %>"
+            <% } else if (item.id == 'qq'){ %>
+            href="http://connect.qq.com/widget/shareqq/index.html?url=<%- post.permalink %>&title=<%- post.title + ' | ' + config.title %><%- (post.img || config.avatar) ? '&pics=' + (post.img || config.avatar) : '' %>&summary=<%- strip_html(post.excerpt) %>"
+            <% } else if (item.id == 'weibo'){ %>
+            href="http://service.weibo.com/share/share.php?url=<%- post.permalink %>&title=<%- post.title + ' | ' + config.title %><%- (post.img || config.avatar) ? '&pics=' + (post.img || config.avatar) : '' %>&summary=<%- strip_html(post.excerpt) %>"
+            <% } %>
+            >
+            <% if (item.img){ %>
+              <img src="<%- item.img %>">
+            <% } else if (item.icon){ %>
+              <i class="<%- item.icon %> fa-fw"></i>
+            <% } %>
+          </a>
+        <% } %>
+      <% }) %>
+    </div>
   </div>
-</div>
+<% } %>

@@ -1,4 +1,4 @@
-<section class='widget <%- item.widget %>'>
+<section class='<%- item.widget %>'>
   <div class='content <%= theme.style %>'>
     <% if(item.avatar) { %>
       <div class='avatar'>
@@ -19,15 +19,11 @@
         <% } %>
       </div>
     <% } %>
-    <% if (item.social == true && theme.social) { %>
+    <% if (item.social == true && config.social) { %>
       <div class="social-wrapper">
-        <% (theme.social||[]).forEach(function(value){ %>
+        <% (config.social||[]).forEach(function(value){ %>
           <% if (value.url && value.icon) { %>
-            <a href="<%- url_for(value.url) %>"
-              class="social <%- value.icon %> flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <a href="<%- url_for(value.url) %>" class="social flat-btn" target="_blank" rel="external"><i class="social <%- value.icon %>" aria-hidden="true"></i></a>
           <%}%>
         <%})%>
       </div>

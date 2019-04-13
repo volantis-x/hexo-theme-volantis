@@ -8,8 +8,8 @@ if (page.widget && page.widget.music == false) {
 }
 %>
 
-<% if (theme.music && theme.music.enable == true && needDisplay == true) { %>
-  <section class='widget <%- item.widget %>'>
+<% if (theme.services && theme.services.music == true && needDisplay == true) { %>
+  <section class='<%- item.widget %>'>
     <%- partial('header', {item: item, defIcon: '', defTitle: ''}) %>
     <div class='content <%= theme.style %>'>
       <%- partial('../_third-party/aplayer',

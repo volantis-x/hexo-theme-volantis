@@ -18,7 +18,6 @@
         justify-content: flex-start;
         align-content: flex-start;
         flex-direction: column;
-        border: 1px solid transparent;
         width:~"calc(100%/3 - @{gap})";
         @media(max-width: @on_laptop){
           width:~"calc(100%/3 - @{gap})";
@@ -51,34 +50,32 @@
           }
           .friend-left{
             .avatar{
-              transform: scale(1.2) rotate(12deg);
+              transform: scale(1.1) rotate(12deg);
               box-shadow: @boxshadow_card_raised;
-              // border: 2px solid transparent;
             }
           }
 
         }
         .friend-left{
-          display: flex;
           align-self: center;
           .avatar{
             width: 64px;
             height: 64px;
             min-width: 64px;
             min-height: 64px;
-            margin: @gap @gap/2 @gap/4 @gap/2;
+            margin: @gap @gap/2 @gap/2 @gap/2;
             border-radius: 100%;
-            border: 0px solid transparent;
-            // box-shadow: @boxshadow_card_normal;
+            border: 1px solid white;
+            box-shadow: @boxshadow_card_normal;
             @media(max-width: @on_phone){
               margin: @gap;
             }
           }
         }
         .friend-right{
-          margin: @gap/4 @gap/2;
+          flex: 1;
+          margin: 0 @gap/2 @gap/2 @gap/2;
           display: flex;
-          // flex: 1;
           flex-direction: column;
           text-align: center;
           p{

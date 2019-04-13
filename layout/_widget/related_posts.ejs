@@ -1,5 +1,5 @@
-<% if(page.layout == 'post' && page.content && page.path != undefined){ %>
-  <section class='widget <%- item.widget %>'>
+<% if(theme.services && theme.services.popular_posts == true && page.layout == 'post' && page.content && page.path){ %>
+  <section class='<%- item.widget %>'>
     <%- partial('header', {item: item, defIcon: 'fas fa-bookmark', defTitle: __('sidebar.related_posts')}) %>
     <div class="content <%= theme.style %>">
       <%- popular_posts( { maxCount: 10 , ulClass: 'popular-posts' , PPMixingRate: 0.2 } , page ) %>
