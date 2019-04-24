@@ -1,10 +1,7 @@
-pagetitle:
-  category: 分類
-  tagcloud: 標籤
 sidebar:
-  category: 所有分類
+  category: 文章分類
   tagcloud: 熱門標籤
-  toc: 文章目錄
+  toc: 本文目錄
   related_posts: 相關文章
 post:
   top: 置頂
@@ -15,6 +12,7 @@ post:
   copy_button: 複製
   copy_success: 複製成功
   copy_failure: 複製失敗
+  updated: 最後更新於
   prev_page: 上一頁
   next_page: 下一頁
   copyright:

@@ -1,41 +1,35 @@
-# 这一页的内容可以修改值，但是不要删除行。初次使用主题请务必阅读官方文档！！！
-# 这一页的内容可以修改值，但是不要删除行。初次使用主题请务必阅读官方文档！！！
-# 这一页的内容可以修改值，但是不要删除行。初次使用主题请务必阅读官方文档！！！
-
-
 ############################### 基本信息 ###############################
 info:
   name: Material X
   docs: https://xaoxuu.com/wiki/material-x/
-  # 主题的CDN地址。如需启用CDN，请在主目录的config中设置，详见文档。
-  cdn: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.3.2/
+  cdn: # 把对应的那一行注释掉就使用本地的文件
+    css:
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css
+    js:
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js
+      volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
 
 
-############################### 主题样式 ###############################
+
+############################### 主题风格 ###############################
 # style: material    # material: 导航栏和标题栏背景是主题色
 style: pure        # pure: 导航栏和标题栏背景是白色
 
 
 ############################### 服务开关 ###############################
-# 服务开关，如果你想禁用某些功能，直接设置为false或者注释掉，相关的js脚本就不会加载。
-# 有些服务这里打开了也未必会生效，还需要额外的配置，详见文档。
-services:
-  cdn: true
-  scrollreveal: true
-  nodewaves: true
-  busuanzi: true
-  # fastclick: true
-  # popular_posts: true   # 需要安装插件  hexo-related-popular-posts
-  comments: true
-  volantis: true
-  music: true
-  # share: true
-  # qrcode: true    # 需要安装插件  npm i -S hexo-helper-qrcode
+
+scrollreveal: true
+nodewaves: true
+busuanzi: true
+# fastclick: true
 
 
-############################### 杂项 ###############################
+
+############################### 默认值 ###############################
 # 音乐控件的默认配置，如果sidebar或者page里没有提供，就取这里的参数
 music:
+  enable: true      # 是否启用
   color: '#1BCDFC'  # 主题色
   mode: circulation # random （随机） single （单曲） circulation （列表循环） order （列表）
   server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
@@ -44,12 +38,229 @@ music:
   volume: 0.7       # 音量, 0~1
   autoplay: false   # 自动播放
 
-
 # 友链页头像占位图
-loading_img: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/qq/亲亲.gif
+avatar_placeholder: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
+
+# 日期格式 http://momentjs.com/docs/
+date_format: 'YYYY-MM-DD' # 文章发布日期的格式
+updated_date_format: 'll' # 文章更新日期的格式
+
+# 幻灯片
+# backstretch:
+#   position: cover  # cover: 封面背景   full: 整个网页背景
+#   duration: 6000 # 持续时间（毫秒）
+#   fade: 1500     # 渐变（毫秒）
+#   images:
+#     - https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg
+#     - https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg
+#     - https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg
 
 
-# Search
+############################### 自定义 ###############################
+# page的封面
+cover:
+  scheme: search    # 后期将会提供多种封面方案
+  # height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
+  title: "Material X"
+  # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
+  # search_placeholder: '搜索'
+  # 主页封面菜单
+  features:
+    - name: 博文
+      icon: fas fa-rss
+      url: /
+    - name: 项目
+      icon: fas fa-code-branch
+      url: projects/
+    - name: 友链
+      icon: fas fa-link
+      url: friends/
+      rel: nofollow
+    - name: 关于
+      icon: fas fa-info-circle
+      url: about/
+      rel: nofollow
+
+
+# 桌面端导航栏菜单
+menu_desktop:
+  - name: 示例
+    icon: fas fa-grin
+    url: /
+  - name: 分类
+    icon: fas fa-folder-open
+    url: blog/categories/
+    rel: nofollow
+  - name: 标签
+    icon: fas fa-hashtag
+    url: blog/tags/
+    rel: nofollow
+  - name: 归档
+    icon: fas fa-archive
+    url: blog/archives/
+    rel: nofollow
+
+# 手机端导航菜单（从右上角的按钮点击展开）
+menu_mobile:
+  - name: 近期文章
+    icon: fas fa-clock
+    url: /
+  - name: 文章归档
+    icon: fas fa-archive
+    url: blog/archives/
+    rel: nofollow
+  - name: 开源项目
+    icon: fas fa-code-branch
+    url: projects/
+  - name: 我的友链
+    icon: fas fa-link
+    url: friends/
+    rel: nofollow
+  - name: 主题文档
+    icon: fas fa-book
+    url: https://xaoxuu.com/wiki/material-x/
+    rel: nofollow
+  - name: 关于小站
+    icon: fas fa-info-circle
+    url: about/
+    rel: nofollow
+
+# 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
+# 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
+# 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
+meta:
+  header: [title, author, date, categories, counter, top]
+  footer: [updated, tags, share]
+
+# 主体元素，你也可以在页面的Front-matter中设置
+body: [article, comments]
+
+# 侧边栏小部件，默认按下面给定的顺序全部显示，文章中还可以自定义显示一部分以及顺序
+sidebar:
+  - widget: author
+    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
+    social: true
+  - widget: toc
+  - widget: grid
+    icon: fas fa-map-signs
+    title: 站内导航
+    rows:
+      - name: 近期文章
+        icon: fas fa-clock
+        url: /
+      - name: 文章归档
+        icon: fas fa-archive
+        url: blog/archives/
+        rel: nofollow
+      - name: 开源项目
+        icon: fas fa-code-branch
+        url: projects/
+      - name: 我的友链
+        icon: fas fa-link
+        url: friends/
+        rel: nofollow
+      - name: 主题文档
+        icon: fas fa-book
+        url: https://xaoxuu.com/wiki/material-x/
+        rel: nofollow
+      - name: 关于小站
+        icon: fas fa-info-circle
+        url: about/
+        rel: nofollow
+  - widget: category
+    more:
+      icon: fas fa-expand-arrows-alt
+      url: blog/categories/
+      rel: nofollow
+  - widget: tagcloud
+    icon: fas fa-fire
+    more:
+      icon: fas fa-expand-arrows-alt
+      url: blog/tags/
+      rel: nofollow
+  # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
+  - widget: music
+    icon: fas fa-compact-disc
+    title: "最近在听"
+    more:
+      icon: far fa-heart
+      url: https://music.163.com/#/user/home?id=63035382
+      rel: external nofollow noopener noreferrer
+      target: _blank
+    server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
+    type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
+    id: 2615636388     # 歌曲/专辑/歌单 ID
+
+
+# 社交信息
+social:
+  - icon: fas fa-rss
+    url: atom.xml
+  - icon: fas fa-envelope
+    url: mailto:me@xaoxuu.com
+  - icon: fab fa-github
+    url: https://github.com/xaoxuu
+  - icon: fas fa-headphones-alt
+    url: https://music.163.com/#/user/home?id=63035382
+
+
+# 分享按钮
+# 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
+share:
+  - id: qq
+    name: QQ好友
+    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png
+  - id: qzone
+    name: QQ空间
+    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png
+  # - id: qrcode
+  #   name: 微信
+  #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png
+  - id: weibo
+    name: 微博
+    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png
+  # - id: qrcode
+  #   name: QRcode
+  #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png
+
+
+
+# footer: '页脚文字，支持[markdown](/)'
+
+
+############################### 评论系统 ###############################
+# disqus_shortname: 要使用哪个请复制到根目录配置文件！
+# livere_uid: 要使用哪个请复制到根目录配置文件！
+# gitalk: 要使用哪个请复制到根目录配置文件！
+#   clientID: 你的clientID
+#   clientSecret: 你的clientSecret
+#   repo: 你的repo名
+#   owner: 你的GitHub名
+#   admin: [] 至少填写你的GitHub名
+# leancloud: 要使用哪个请复制到根目录配置文件！
+#   app_id: 你的appId
+#   app_key: 你的appKey
+
+
+############################### 杂项，请勿删除 ###############################
+#valine配置
+valine:
+  enable: true # 如果你想用Valine评论系统，请设置enable为true
+  volantis: true # 是否启用volantis版本（禁止匿名，增加若干贴吧、QQ表情）
+  # 还需要在根目录配置文件中添加下面这三行内容
+  # leancloud:
+  #   app_id: 你的appId
+  #   app_key: 你的appKey
+  guest_info: nick,mail,link #valine comment header info
+  placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
+  avatar: mp # gravatar style https://valine.js.org/avatar
+  pageSize: 10 # comment list page size
+  verify: false # valine verify code (true/false)
+  notify: false # valine mail notify (true/false)
+  lang: zh-cn
+  highlight: false
+
+# 搜索配置
 search:
   enable: true
   service: hexo
@@ -67,6 +278,6 @@ search:
   # baidu
   baidu_api_id:
 
-# Less
+# Less渲染
 less:
   compress: true

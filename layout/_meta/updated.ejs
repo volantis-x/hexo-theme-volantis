@@ -1,0 +1,6 @@
+<div class="new-meta-item date" itemprop="dateUpdated" datetime="<%- moment(post.updated).format() %>">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p><%- __('post.updated') + ' ' + date(post.updated, theme.updated_date_format) %></p>
+  </a>
+</div>

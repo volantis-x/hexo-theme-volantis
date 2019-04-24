@@ -1,20 +1,30 @@
-<header class="l_header <%= theme.style %>">
+<header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%= theme.style %>">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="<%= theme.style %>"></div>
+  </div>
+
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
-      <a class="logo flat-box" href='<%= url_for("/") %>' >
+      <a class="logo flat-box" href='<%- url_for("/") %>' >
         <% if (config.logo) { %>
           <img class='logo' src='<%- url_for(config.logo) %>'/>
         <% } else { %>
           <%- config.title %>
         <% } %>
       </a>
-			<div class='menu'>
+			<div class='menu navgation'>
 				<ul class='h-list'>
-          <% if (config.menu) { %>
-  					<% (config.menu || []).forEach(function(value){ %>
+          <% if (theme.menu_desktop) { %>
+  					<% (theme.menu_desktop || []).forEach(function(value){ %>
   						<li>
-								<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
-								 class="nav flat-box" href="<%= url_for(value.url) %>">
+								<a class="nav flat-box" href="<%= url_for(value.url) %>"
+                  <% if (value.rel) { %>
+                    rel="<%- value.rel %>"
+                  <% } %>
+                  <% if (value.target) { %>
+                    target="<%- value.target %>"
+                  <% } %>
+                  id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
 									<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
 								</a>
 							</li>
@@ -27,7 +37,7 @@
 				<div class="m_search">
 					<form name="searchform" class="form u-search-form">
 						<input type="text" class="input u-search-input" placeholder="<%- __('search.placeholder') %>" />
-						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+						<i class="icon fas fa-search fa-fw"></i>
 					</form>
 				</div>
 			<% } %>
@@ -43,25 +53,35 @@
 			<a class="logo flat-box"></a>
 			<ul class='switcher h-list'>
 				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
-				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        <% if (page.sidebar == undefined || page.sidebar != false) { %>
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        <% } %>
 			</ul>
 		</div>
 	</div>
 </header>
 	<aside class="menu-phone">
     <header>
-		<nav class="menu">
+		<nav class="menu navgation">
       <ul>
-          <% if (config.menu) { %>
-              <% (config.menu || []).forEach(function(value){ %>
-                  <li>
-										<a id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>" class="nav flat-box" href="<%= url_for(value.url) %>">
-											<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
-										</a>
-                  </li>
-              <%})%>
+        <% if (theme.menu_mobile) { %>
+          <% (theme.menu_mobile || []).forEach(function(value){ %>
+            <li>
+							<a class="nav flat-box" href="<%= url_for(value.url) %>"
+                <% if (value.rel) { %>
+                  rel="<%- value.rel %>"
+                <% } %>
+                <% if (value.target) { %>
+                  target="<%- value.target %>"
+                <% } %>
+                id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
+								<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
+							</a>
+            </li>
+          <%})%>
        <% } %>
       </ul>
 		</nav>
     </header>
 	</aside>
+<script>setLoadingBarProgress(40);</script>

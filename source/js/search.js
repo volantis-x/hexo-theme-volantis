@@ -510,7 +510,6 @@ var BaiduSearch;
     self.query = function(queryText, page, callback) {
       self.cse.getResult(queryText, function(data) {
         console.log("Searching: " + queryText);
-        console.log(data);
         self.cse.getError(function(data) {
           console.log(data);
         });

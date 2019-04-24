@@ -1,0 +1,16 @@
+<% if (post.categories && post.categories.length && post.categories.forEach){ %>
+  <%
+  var cats = [];
+  var path;
+  post.categories.forEach(function(cat){
+    cats.push(cat.name);
+    path = cat.path;
+  });
+  %>
+  <div class='new-meta-item category'>
+    <a href='<%- url_for(path) %>' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p><%- cats.join('&nbsp;/&nbsp;') %></p>
+    </a>
+  </div>
+<% } %>

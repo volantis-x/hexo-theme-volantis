@@ -3,33 +3,62 @@ var customSearch;
 (function ($) {
 
 	"use strict";
-	const scrollCorrection = 70; // (header height = 50px) + (gap = 20px)
+	var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
+	const $headerAnchor = $('.l_header', '.cover-wrapper');
+	if ($headerAnchor[0]) {
+		scrollCorrection = $headerAnchor[0].clientHeight + 16;
+	}
+
 	function scrolltoElement(elem, correction) {
 		correction = correction || scrollCorrection;
 		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
 		$('html, body').animate({ 'scrollTop': $elem.offset().top - correction }, 400);
 	};
 
-  function setBackToTop(){
-    const $top = $('.s-top', '.l_body');
-    let pos = document.body.scrollTop;
+  function setScrollAnchor(){
+		// button
+		const $postsBtn = $('.menu .active');
+		const $topBtn = $('.s-top');
+		const $titleBtn = $('h1.title', '#header-meta');
+		// anchor
+		const $bodyAnchor = $('.l_body');
+		// action
+		if ($postsBtn.length && $bodyAnchor) {
+			$postsBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($bodyAnchor); });
+		}
+		if ($titleBtn.length && $bodyAnchor) {
+			$titleBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($bodyAnchor); });
+		}
+		if ($topBtn.length && $bodyAnchor) {
+			$topBtn.click(e => { e.preventDefault(); e.stopPropagation(); scrolltoElement($bodyAnchor); });
+		}
+
+		const $coverAnchor = $('.cover-wrapper');
+		var showHeaderPoint = 0;
+		if ($coverAnchor[0]) {
+			showHeaderPoint = $coverAnchor[0].clientHeight - 164;
+		}
+		var pos = document.body.scrollTop;
 		$(document, window).scroll(() => {
 			const scrollTop = $(window).scrollTop();
 			const del = scrollTop - pos;
+			pos = scrollTop;
 			if (scrollTop > 150) {
-				pos = scrollTop;
-				$top.addClass('show');
+				$topBtn.addClass('show');
         if (del > 0) {
-          $top.removeClass('hl');
+          $topBtn.removeClass('hl');
         } else {
-          $top.addClass('hl');
+          $topBtn.addClass('hl');
         }
 			} else {
-				pos = scrollTop;
-				$top.removeClass('show').removeClass('hl');
+				$topBtn.removeClass('show').removeClass('hl');
+			}
+			if (scrollTop > showHeaderPoint) {
+				$headerAnchor.addClass('show');
+			} else {
+				$headerAnchor.removeClass('show');
 			}
 		});
-    $top.click(()=>scrolltoElement(document.body));
   }
 
 	function setHeader() {
@@ -63,10 +92,12 @@ var customSearch;
 			$toc.click((e) => { e.stopPropagation(); $tocTarget.toggleClass('active'); });
 		} else $toc.remove();
 
+
+
 	}
 
-	function setHeaderMenu() {
-    var $headerMenu = $('header .menu');
+	function setHeaderMenuSelection() {
+    var $headerMenu = $('body .navgation');
     // 先把已经激活的取消激活
     $headerMenu.find('li a.active').removeClass('active');
 		// var $underline = $headerMenu.find('.underline');
@@ -92,8 +123,10 @@ var customSearch;
       index = index[0];
       idname = idname.split(index)[0];
     }
-    $active_link = $('#' + idname, $headerMenu);
-    setUnderline($active_link);
+		if (idname && $headerMenu) {
+			$active_link = $('#' + idname, $headerMenu);
+			setUnderline($active_link);
+		}
 	}
 
 	function setHeaderMenuPhone() {
@@ -207,17 +240,18 @@ var customSearch;
 	$(function () {
 		//set header
 		setHeader();
-		setHeaderMenu();
+		setHeaderMenuSelection();
 		setHeaderMenuPhone();
 		setHeaderSearch();
 
 		setTocToggle();
-    setBackToTop();
+    setScrollAnchor();
 		// $(".article .video-container").fitVids();
 
 		setTimeout(function () {
 			$('#loading-bar-wrapper').fadeOut(500);
 		}, 300);
+
 
 		if (SEARCH_SERVICE === 'google') {
 			customSearch = new GoogleCustomSearch({

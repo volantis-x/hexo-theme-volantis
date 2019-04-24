@@ -2,25 +2,35 @@
 <html>
 <%- partial('_partial/head') %>
 <body>
-    <%- partial('_partial/loading') %>
-    <script>setLoadingBarProgress(20)</script>
-    <%- partial('_partial/header', null, {cache: !config.relative_link, path: path}) %>
-    <script>setLoadingBarProgress(40);</script>
-    <div class="l_body">
-    <div class='container clearfix'>
-        <div class='l_main'>
-            <%- body %>
-        </div>
-        <aside class='l_side'>
-            <%- partial('_partial/side') %>
-        </aside>
-        <script>setLoadingBarProgress(60);</script>
+  <%
+  var showCover = false;
+  if (theme.cover) {
+    // 如果页面的Front-matter声明了cover，就取页面的值
+    if (page.cover != undefined && page.cover != undefined) {
+      showCover = page.cover;
+    } else {
+      // 否则，如果是首页，只有首页的第一页显示
+      if (is_home()) {
+        if (page.prev) {
+          showCover = false;
+        } else {
+          showCover = true;
+        }
+      } else {
+        showCover = true;
+      }
+    }
+  }
+  %>
+  <%- partial('_partial/cover', {showCover: showCover}) %>
+  <div class="l_body<%- showCover ? '' : ' nocover' %>">
+    <div class='body-wrapper'>
+      <%- body %>
+      <script>setLoadingBarProgress(60);</script>
     </div>
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
-    </div>
-    <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-    <script>setLoadingBarProgress(80);</script>
-    <%- partial('_partial/scripts') %>
-    <script>setLoadingBarProgress(100);</script>
+  </div>
+  <%- partial('_partial/scripts') %>
+  <script>setLoadingBarProgress(100);</script>
 </body>
 </html>

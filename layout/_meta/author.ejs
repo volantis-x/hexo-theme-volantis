@@ -1,0 +1,12 @@
+<% if(post.author || config.author){ %>
+  <div class='new-meta-item author'>
+    <a href="<%- url_for(post.author_url||config.url) %>" rel="nofollow">
+      <% if (post.avatar || config.avatar) { %>
+        <img src="<%- post.avatar || config.avatar %>">
+      <% } else { %>
+        <i class="fas fa-user" aria-hidden="true"></i>
+      <% } %>
+      <p><%- post.author || config.author %></p>
+    </a>
+  </div>
+<% } %>
