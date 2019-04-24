@@ -1,0 +1,46 @@
+<% page.comments = false; %>
+<div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+  <% if (site.posts && site.posts.length > 0) { %>
+    <section class="post-list">
+      <% if (!page.prev) { %>
+        <% site.posts.sort(page.sort ? page.sort : "-date").each(function(post){ %>
+          <% if (post.type && post.type == page.type) { %>
+            <% if (post.top) { %>
+              <div class='post-wrapper'>
+                <%- partial('_partial/post', {post: post, index: false}) %>
+              </div>
+            <% } %>
+          <% } %>
+        <% }) %>
+      <% } %>
+      <% site.posts.sort(page.sort ? page.sort : "-date").each(function(post){ %>
+        <% if (post.type && post.type == page.type) { %>
+          <% if (!post.top) { %>
+            <div class='post-wrapper'>
+              <%- partial('_partial/post', {post: post, index: false}) %>
+            </div>
+          <% } %>
+        <% } %>
+      <% }) %>
+    </section>
+    <% if (page && page.posts) { %>
+      <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+      <%
+      var need_mathjax = false;
+      page.posts.each(function(post){
+        if (post.mathjax){
+          if (post.mathjax != "internal") {
+            need_mathjax = true;
+          }
+        }
+      });
+      %>
+      <% if (need_mathjax){ %>
+        <%- partial('mathjax') %>
+      <% } %>
+
+    <% } %>
+  <% } %>
+</div>
+<%- partial('_partial/side') %>
+<%- partial('_partial/footer', null, {cache: !config.relative_link}) %>

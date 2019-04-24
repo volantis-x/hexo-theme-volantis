@@ -1,7 +1,7 @@
 <section class='widget <%- item.widget %>'>
   <%- partial('header', {item: item, defIcon: '', defTitle: ''}) %>
   <div class='content <%= theme.style %>'>
-    <ul class="entry">
+    <ul class="grid navgation">
       <% (item.rows||[]).forEach(function(row){ %>
         <li><a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>"
           <% if (row.rel) { %>
@@ -10,20 +10,15 @@
           <% if (row.target) { %>
             target="<%- row.target %>"
           <% } %>
-          >
-          <div class='name'>
-            <% if(row.img) { %>
-              <img src="<%- row.img %>">
-            <% } else if(row.avatar) { %>
-              <img src="<%- row.avatar %>" id="round">
-            <% } else { %>
-              <i class="<%= row.icon %> fa-fw" aria-hidden="true"></i>
-            <% } %>
-            &nbsp;&nbsp;<%- row.name %>
-          </div>
-          <% if(row.desc) { %>
-            <div class='badge'>(<%- row.desc %>)</div>
+          id="<%= url_for(row.url).replace(/\/|%/g, "")?url_for(row.url).replace(/\/|%/g, ""):"home" %>">
+          <% if (row.img) { %>
+            <img src="<%- row.img %>">
+          <% } else if(row.avatar) { %>
+            <img src="<%- row.avatar %>" id="round">
+          <% } else { %>
+            <i class="<%= row.icon %> fa-fw" aria-hidden="true"></i>
           <% } %>
+          <%- row.name %>
         </a></li>
       <% }) %>
     </ul>

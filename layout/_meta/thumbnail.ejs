@@ -1,0 +1,3 @@
+<% if(post.thumbnail && post.thumbnail.length){ %>
+  <a title='<%- post.title %>' href='<%- url_for(post.path) %>'><img class='thumbnail' src='<%- post.thumbnail %>'></a>
+<% } %>

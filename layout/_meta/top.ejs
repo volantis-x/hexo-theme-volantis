@@ -1,0 +1,8 @@
+<% if(isPostList && post.top){ %>
+  <div class="new-meta-item top-post">
+    <a class='notlink'>
+      <i class="fas fa-angle-double-up" aria-hidden="true"></i>
+      <p><%- post.top != true ? post.top : __('post.top') %></p>
+    </a>
+  </div>
+<% } %>

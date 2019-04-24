@@ -1,0 +1,12 @@
+<% if (showCover == true) { %>
+  <div class="cover-wrapper">
+    <cover class='cover <%- page.layout %> <%- is_home() ? theme.cover.height : "half" %>'>
+      <% if (theme.cover.scheme == 'search') { %>
+        <%- partial('../_cover/search') %>
+      <% } %>
+    </cover>
+    <%- partial('header', null, {cache: false, path: path}) %>
+  </div>
+<% } else { %>
+  <%- partial('header', null, {cache: false, path: path}) %>
+<% } %>
