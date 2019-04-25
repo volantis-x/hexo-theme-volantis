@@ -8,7 +8,7 @@ info:
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js
-      volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
+      # volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
 
 
 
@@ -61,68 +61,117 @@ updated_date_format: 'll' # 文章更新日期的格式
 cover:
   scheme: search    # 后期将会提供多种封面方案
   # height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
-  title: "Material X"
+  # title: "Material X"
+  title: "wxwoo's blog"
   # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
   # search_placeholder: '搜索'
   # 主页封面菜单
+  # features:
+  #   - name: 博文
+  #     icon: fas fa-rss
+  #     url: /
+  #   - name: 项目
+  #     icon: fas fa-code-branch
+  #     url: projects/
+  #   - name: 友链
+  #     icon: fas fa-link
+  #     url: friends/
+  #     rel: nofollow
+  #   - name: 关于
+  #     icon: fas fa-info-circle
+  #     url: about/
+  #     rel: nofollow
   features:
-    - name: 博文
-      icon: fas fa-rss
+    - name: 主页
+      icon: fas fa-home
       url: /
-    - name: 项目
-      icon: fas fa-code-branch
-      url: projects/
-    - name: 友链
-      icon: fas fa-link
-      url: friends/
+    - name: 归档
+      icon: fas fa-archive
+      url: archives/
       rel: nofollow
-    - name: 关于
-      icon: fas fa-info-circle
-      url: about/
+    - name: 标签
+      icon: fas fa-hashtag
+      url: tags/
+      rel: nofollow
+    - name: 分类
+      icon: fas fa-folder-open
+      url: categories/
       rel: nofollow
 
 
 # 桌面端导航栏菜单
+# menu_desktop:
+#   - name: 示例
+#     icon: fas fa-grin
+#     url: /
+#   - name: 分类
+#     icon: fas fa-folder-open
+#     url: blog/categories/
+#     rel: nofollow
+#   - name: 标签
+#     icon: fas fa-hashtag
+#     url: blog/tags/
+#     rel: nofollow
+#   - name: 归档
+#     icon: fas fa-archive
+#     url: blog/archives/
+#     rel: nofollow
 menu_desktop:
-  - name: 示例
-    icon: fas fa-grin
+  - name: 主页
+    icon: fas fa-home
     url: /
-  - name: 分类
-    icon: fas fa-folder-open
-    url: blog/categories/
+  - name: 归档
+    icon: fas fa-archive
+    url: archives/
     rel: nofollow
   - name: 标签
     icon: fas fa-hashtag
-    url: blog/tags/
+    url: tags/
     rel: nofollow
-  - name: 归档
-    icon: fas fa-archive
-    url: blog/archives/
+  - name: 分类
+    icon: fas fa-folder-open
+    url: categories/
     rel: nofollow
 
 # 手机端导航菜单（从右上角的按钮点击展开）
+# menu_mobile:
+#   - name: 近期文章
+#     icon: fas fa-clock
+#     url: /
+#   - name: 文章归档
+#     icon: fas fa-archive
+#     url: blog/archives/
+#     rel: nofollow
+#   - name: 开源项目
+#     icon: fas fa-code-branch
+#     url: projects/
+#   - name: 我的友链
+#     icon: fas fa-link
+#     url: friends/
+#     rel: nofollow
+#   - name: 主题文档
+#     icon: fas fa-book
+#     url: https://xaoxuu.com/wiki/material-x/
+#     rel: nofollow
+#   - name: 关于小站
+#     icon: fas fa-info-circle
+#     url: about/
+#     rel: nofollow
 menu_mobile:
-  - name: 近期文章
-    icon: fas fa-clock
+  - name: 主页
+    icon: fas fa-home
     url: /
-  - name: 文章归档
+  - name: 归档
     icon: fas fa-archive
-    url: blog/archives/
+    url: archives/
     rel: nofollow
-  - name: 开源项目
-    icon: fas fa-code-branch
-    url: projects/
-  - name: 我的友链
-    icon: fas fa-link
-    url: friends/
+  - name: 标签
+    icon: fas fa-hashtag
+    url: tags/
     rel: nofollow
-  - name: 主题文档
-    icon: fas fa-book
-    url: https://xaoxuu.com/wiki/material-x/
-    rel: nofollow
-  - name: 关于小站
-    icon: fas fa-info-circle
-    url: about/
+  - name: 分类
+    icon: fas fa-folder-open
+    url: categories/
     rel: nofollow
 
 # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
@@ -136,89 +185,136 @@ meta:
 body: [article, comments]
 
 # 侧边栏小部件，默认按下面给定的顺序全部显示，文章中还可以自定义显示一部分以及顺序
+# sidebar:
+#   - widget: author
+#     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
+#     social: true
+#   - widget: toc
+#   - widget: grid
+#     icon: fas fa-map-signs
+#     title: 站内导航
+#     rows:
+#       - name: 近期文章
+#         icon: fas fa-clock
+#         url: /
+#       - name: 文章归档
+#         icon: fas fa-archive
+#         url: blog/archives/
+#         rel: nofollow
+#       - name: 开源项目
+#         icon: fas fa-code-branch
+#         url: projects/
+#       - name: 我的友链
+#         icon: fas fa-link
+#         url: friends/
+#         rel: nofollow
+#       - name: 主题文档
+#         icon: fas fa-book
+#         url: https://xaoxuu.com/wiki/material-x/
+#         rel: nofollow
+#       - name: 关于小站
+#         icon: fas fa-info-circle
+#         url: about/
+#         rel: nofollow
+#   - widget: category
+#     more:
+#       icon: fas fa-expand-arrows-alt
+#       url: blog/categories/
+#       rel: nofollow
+#   - widget: tagcloud
+#     icon: fas fa-fire
+#     more:
+#       icon: fas fa-expand-arrows-alt
+#       url: blog/tags/
+#       rel: nofollow
+#   # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
+#   - widget: music
+#     icon: fas fa-compact-disc
+#     title: "最近在听"
+#     more:
+#       icon: far fa-heart
+#       url: https://music.163.com/#/user/home?id=63035382
+#       rel: external nofollow noopener noreferrer
+#       target: _blank
+#     server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
+#     type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
+#     id: 2615636388     # 歌曲/专辑/歌单 ID
 sidebar:
   - widget: author
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
+    jinrishici: 山重水复疑无路，柳暗花明又一村。
     social: true
-  - widget: toc
-  - widget: grid
-    icon: fas fa-map-signs
-    title: 站内导航
+  - widget: plain
+    icon: fas fa-bullhorn
+    title: 注意啦～
+    body: '请OIer们优先使用各OJ的私信联系我，如果没有OJ账号请邮件联系。邮箱[walkwoo@163.com](mailto:walkwoo@163.com)'
+  - widget: list
+    icon: fas fa-code
+    title: 我的OJ账号们
     rows:
-      - name: 近期文章
-        icon: fas fa-clock
-        url: /
-      - name: 文章归档
-        icon: fas fa-archive
-        url: blog/archives/
-        rel: nofollow
-      - name: 开源项目
-        icon: fas fa-code-branch
-        url: projects/
-      - name: 我的友链
-        icon: fas fa-link
-        url: friends/
-        rel: nofollow
-      - name: 主题文档
-        icon: fas fa-book
-        url: https://xaoxuu.com/wiki/material-x/
-        rel: nofollow
-      - name: 关于小站
-        icon: fas fa-info-circle
-        url: about/
-        rel: nofollow
+      - name: luogu
+        img: https://cdn.luogu.org/images/favicon3.ico
+        url: https://www.luogu.org/space/show?uid=116659
+      - name: codeforces
+        img: https://st.codeforces.com/s/53627/favicon.png
+        url: https://codeforces.com/profile/wxwoo
+      - name: vijos
+        img: https://cdn.vijos.org/favicon-32x32.png?dc5d043b0a
+        url: https://vijos.org/user/137451
   - widget: category
     more:
       icon: fas fa-expand-arrows-alt
-      url: blog/categories/
+      url: categories/
       rel: nofollow
   - widget: tagcloud
-    icon: fas fa-fire
     more:
       icon: fas fa-expand-arrows-alt
-      url: blog/tags/
+      url: tags/
       rel: nofollow
-  # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
   - widget: music
-    icon: fas fa-compact-disc
-    title: "最近在听"
-    more:
-      icon: far fa-heart
-      url: https://music.163.com/#/user/home?id=63035382
-      rel: external nofollow noopener noreferrer
-      target: _blank
-    server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
-    type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
-    id: 2615636388     # 歌曲/专辑/歌单 ID
-
+    icon: fas fa-music
+    title: "膜你抄"
+    server: netease
+    type: song
+    id: 459434585
 
 # 社交信息
+# social:
+  # - icon: fas fa-rss
+  #   url: atom.xml
+  # - icon: fas fa-envelope
+  #   url: mailto:me@xaoxuu.com
+  # - icon: fab fa-github
+  #   url: https://github.com/xaoxuu
+  # - icon: fas fa-headphones-alt
+  #   url: https://music.163.com/#/user/home?id=63035382
 social:
-  - icon: fas fa-rss
-    url: atom.xml
-  - icon: fas fa-envelope
-    url: mailto:me@xaoxuu.com
-  - icon: fab fa-github
-    url: https://github.com/xaoxuu
-  - icon: fas fa-headphones-alt
-    url: https://music.163.com/#/user/home?id=63035382
+- icon: fas fa-envelope
+  url: mailto:walkwoo@163.com
+- icon: fab fa-github
+  url: https://github.com/wxwoo
+- icon: fas fa-code
+  url: https://www.luogu.org/space/show?uid=116659
+- icon: fab fa-zhihu
+  url: https://www.zhihu.com/people/wxwoo/activities
+- icon: fas fa-headphones-alt
+  url: https://music.163.com/#/user/home?id=1400576361
 
 
 # 分享按钮
 # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
-share:
-  - id: qq
-    name: QQ好友
-    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png
-  - id: qzone
-    name: QQ空间
-    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png
+# share:
+#   - id: qq
+#     name: QQ好友
+#     img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png
+#   - id: qzone
+#     name: QQ空间
+#     img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png
   # - id: qrcode
   #   name: 微信
   #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png
-  - id: weibo
-    name: 微博
-    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png
+  # - id: weibo
+  #   name: 微博
+  #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png
   # - id: qrcode
   #   name: QRcode
   #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png
@@ -255,8 +351,8 @@ valine:
   placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
   avatar: mp # gravatar style https://valine.js.org/avatar
   pageSize: 10 # comment list page size
-  verify: false # valine verify code (true/false)
-  notify: false # valine mail notify (true/false)
+  verify: true # valine verify code (true/false)
+  notify: true # valine mail notify (true/false)
   lang: zh-cn
   highlight: false
 
