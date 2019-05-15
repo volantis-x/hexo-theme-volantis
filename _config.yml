@@ -46,14 +46,13 @@ date_format: 'YYYY-MM-DD' # 文章发布日期的格式
 updated_date_format: 'll' # 文章更新日期的格式
 
 # 幻灯片
-# backstretch:
-#   position: cover  # cover: 封面背景   full: 整个网页背景
-#   duration: 6000 # 持续时间（毫秒）
-#   fade: 1500     # 渐变（毫秒）
-#   images:
-#     - https://img.vim-cn.com/f6/78aed21213230b9220f310f9ea6c822b011846.jpg
-#     - https://img.vim-cn.com/d5/b004c81a13aea401375d03b1258ecadbfcbaa7.jpg
-#     - https://img.vim-cn.com/4c/8e7294998989454b2dcd2624373d5a699c4414.jpg
+backstretch:
+  position: cover  # cover: 封面背景   full: 整个网页背景
+  duration: 6000 # 持续时间（毫秒）
+  fade: 2500     # 渐变（毫秒）
+  images:
+    - https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg
+
 
 
 ############################### 自定义 ###############################
