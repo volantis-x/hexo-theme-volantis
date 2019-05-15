@@ -4,7 +4,7 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 把对应的那一行注释掉就使用本地的文件
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js
@@ -252,7 +252,7 @@ sidebar:
     title: 我的OJ账号们
     rows:
       - name: luogu
-        img: https://cdn.luogu.org/images/favicon3.ico
+        img: https://www.luogu.org/favicon.ico
         url: https://www.luogu.org/space/show?uid=116659
       - name: codeforces
         img: https://st.codeforces.com/s/53627/favicon.png
@@ -260,6 +260,12 @@ sidebar:
       - name: vijos
         img: https://cdn.vijos.org/favicon-32x32.png?dc5d043b0a
         url: https://vijos.org/user/137451
+      - name: SPOJ
+        img: https://www.spoj.com/gfx/favicon_new.png
+        url: https://www.spoj.com/users/wxwoo/
+      - name: LibreOJ
+        img: https://loj.ac/favicon.ico
+        url: https://loj.ac/user/12073
   - widget: category
     more:
       icon: fas fa-expand-arrows-alt
@@ -292,8 +298,6 @@ social:
   url: mailto:walkwoo@163.com
 - icon: fab fa-github
   url: https://github.com/wxwoo
-- icon: fas fa-code
-  url: https://www.luogu.org/space/show?uid=116659
 - icon: fab fa-zhihu
   url: https://www.zhihu.com/people/wxwoo/activities
 - icon: fas fa-headphones-alt
