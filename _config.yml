@@ -256,10 +256,10 @@ valine:
   placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
   avatar: mp # gravatar style https://valine.js.org/avatar
   pageSize: 10 # comment list page size
-  verify: false # valine verify code (true/false)
-  notify: false # valine mail notify (true/false)
+  verify: true # valine verify code (true/false)
+  notify: true # valine mail notify (true/false)
   lang: zh-cn
-  highlight: false
+  highlight: true
 
 # 搜索配置
 search:
