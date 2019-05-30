@@ -241,8 +241,9 @@ body: [article, comments]
 #     id: 2615636388     # 歌曲/专辑/歌单 ID
 sidebar:
   - widget: author
-    jinrishici: 山重水复疑无路，柳暗花明又一村。
+    body: 山重水复疑无路，柳暗花明又一村。
     social: true
+  - widget: toc
   - widget: plain
     icon: fas fa-bullhorn
     title: 注意啦～
