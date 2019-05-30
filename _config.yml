@@ -4,11 +4,11 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 把对应的那一行注释掉就使用本地的文件
     css:
-      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js
-      # volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/search.js
+      # volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/js/volantis.min.js
 
 
 
@@ -357,7 +357,7 @@ valine:
   verify: true # valine verify code (true/false)
   notify: true # valine mail notify (true/false)
   lang: zh-cn
-  highlight: false
+  highlight: true
 
 # 搜索配置
 search:
