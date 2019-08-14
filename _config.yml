@@ -74,6 +74,10 @@ cover:
       icon: fas fa-archive
       url: blog/archives/
       rel: nofollow
+    - name: 友链
+      icon: fas fa-link
+      url: friends/
+      rel: nofollow
     - name: 关于
       icon: fas fa-info-circle
       url: about/
