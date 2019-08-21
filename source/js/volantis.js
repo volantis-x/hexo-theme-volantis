@@ -1798,9 +1798,12 @@ function() {
             cells: i[3] ? i[3].replace(/\n$/, "").split("\n") : []
           },
           s.header.length === s.align.length)) {
-            for (e = e.substring(i[0].length), c = 0; c < s.align.length; c++) / ^*-+:*$ / .test(s.align[c]) ? s.align[c] = "right": /^ *:-+: *$/.test(s.align[c]) ? s.align[c] = "center": /^ *:-+ *$/.test(s.align[c]) ? s.align[c] = "left": s.align[c] = null;
-            for (c = 0; c < s.cells.length; c++) s.cells[c] = f(s.cells[c], s.header.length);
-            this.tokens.push(s)
+              for (e = e.substring(i[0].length),
+              c = 0; c < s.align.length; c++)
+                  /^ *-+: *$/.test(s.align[c]) ? s.align[c] = "right" : /^ *:-+: *$/.test(s.align[c]) ? s.align[c] = "center" : /^ *:-+ *$/.test(s.align[c]) ? s.align[c] = "left" : s.align[c] = null;
+              for (c = 0; c < s.cells.length; c++)
+                  s.cells[c] = f(s.cells[c], s.header.length);
+              this.tokens.push(s)
           } else if (i = this.rules.hr.exec(e)) e = e.substring(i[0].length),
           this.tokens.push({
             type: "hr"
@@ -1861,9 +1864,12 @@ function() {
             cells: i[3] ? i[3].replace(/(?: *\| *)?\n$/, "").split("\n") : []
           },
           s.header.length === s.align.length)) {
-            for (e = e.substring(i[0].length), c = 0; c < s.align.length; c++) / ^*-+:*$ / .test(s.align[c]) ? s.align[c] = "right": /^ *:-+: *$/.test(s.align[c]) ? s.align[c] = "center": /^ *:-+ *$/.test(s.align[c]) ? s.align[c] = "left": s.align[c] = null;
-            for (c = 0; c < s.cells.length; c++) s.cells[c] = f(s.cells[c].replace(/^ *\| *| *\| *$/g, ""), s.header.length);
-            this.tokens.push(s)
+              for (e = e.substring(i[0].length),
+              c = 0; c < s.align.length; c++)
+                  /^ *-+: *$/.test(s.align[c]) ? s.align[c] = "right" : /^ *:-+: *$/.test(s.align[c]) ? s.align[c] = "center" : /^ *:-+ *$/.test(s.align[c]) ? s.align[c] = "left" : s.align[c] = null;
+              for (c = 0; c < s.cells.length; c++)
+                  s.cells[c] = f(s.cells[c].replace(/^ *\| *| *\| *$/g, ""), s.header.length);
+              this.tokens.push(s)
           } else if (i = this.rules.lheading.exec(e)) e = e.substring(i[0].length),
           this.tokens.push({
             type: "heading",

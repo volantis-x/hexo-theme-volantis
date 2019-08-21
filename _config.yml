@@ -8,7 +8,7 @@ info:
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/search.js
-      volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.4/js/volantis.min.js
+      volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.5/js/volantis.min.js
 
 
 
