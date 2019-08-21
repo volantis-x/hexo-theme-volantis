@@ -35,12 +35,10 @@ function() {
       })
     },
     t.n = function(e) {
-      var n = e && e.__esModule ?
-      function() {
-        return e.
-      default
-      }:
-      function() {
+      var n = e && e.__esModule ? function() {
+        return e.default
+      }
+      : function() {
         return e
       };
       return t.d(n, "a", n),
@@ -216,10 +214,8 @@ function() {
         return e && Array.prototype.forEach.call(e.length ? e: [e], i),
         e
       }),
-      t.
-    default = s,
-      e.exports = t.
-    default
+      t.default = s,
+      e.exports = t.default
     })
   },
   function(e, t, n) {
@@ -412,8 +408,7 @@ function() {
             var r = u.attr(n, "data-xid");
             r && e.Q(r).count().then(function(e) {
               n.innerText = e
-            }).
-            catch(function(e) {
+            }).catch(function(e) {
               n.innerText = 0
             })
           }
@@ -504,8 +499,7 @@ function() {
       n.set("time", 1),
       n.save().then(function(e) {
         u.find(t.el, ".leancloud-visitors-count").innerText = 1
-      }).
-      catch(function(e) {})
+      }).catch(function(e) {})
     },
     k = {
       add: function(e) {
@@ -530,11 +524,9 @@ function() {
                 r.increment("time"),
                 r.save().then(function(e) {
                   u.find(n, ".leancloud-visitors-count").innerText = e.get("time")
-                }).
-                catch(function(e) {})
+                }).catch(function(e) {})
               } else w(e, a)
-            }).
-            catch(function(t) {
+            }).catch(function(t) {
               101 == t.code && w(e, a)
             })
           } else k.show(e, t)
@@ -563,8 +555,7 @@ function() {
                 n && (n.innerText = r)
               })
             })
-          }).
-          catch(function(e) {})
+          }).catch(function(e) {})
         }
       }
     };
@@ -756,15 +747,13 @@ function() {
             e(++n)
           }),
           t.loading.hide()
-        }).
-        catch(function(e) {
+        }).catch(function(e) {
           t.loading.hide().ErrorHandler(e)
         })
       };
       t.Q(y).count().then(function(e) {
         e > 0 ? (u.attr(u.find(t.el, ".vinfo"), "style", "display:block;"), u.find(t.el, ".vcount").innerHTML = '<span class="vnum">' + e + "</span> " + t.locale.tips.comments, C()) : t.loading.hide()
-      }).
-      catch(function(e) {
+      }).catch(function(e) {
         t.ErrorHandler(e)
       });
       var L = function(e, n, r) {
@@ -931,8 +920,7 @@ function() {
           } catch(e) {
             t.ErrorHandler(e)
           }
-        }).
-        catch(function(e) {
+        }).catch(function(e) {
           t.ErrorHandler(e)
         })
       },
@@ -956,8 +944,7 @@ function() {
               type: 1,
               text: "(T＿T)" + t.locale.tips.again,
               ctxt: t.locale.ctrl.cancel,
-              otxt: t.locale.ctrl.
-              try,
+              otxt: t.locale.ctrl.try,
               cb: function() {
                 e(n)
               }
@@ -974,16 +961,14 @@ function() {
         t.signUp()
       },
       F = function e(n) {
-        AV.User.requestPasswordReset(n.mail).then(function(e) {}).
-        catch(function(r) {
+        AV.User.requestPasswordReset(n.mail).then(function(e) {}).catch(function(r) {
           1 == r.code ? t.alert.show({
             type: 0,
             text: "ヾ(ｏ･ω･)ﾉ At太频繁啦，提醒功能暂时宕机。<br>" + r.error,
             ctxt: t.locale.ctrl.ok
           }) : Q(n).then(function(t) {
             e(n)
-          }).
-          catch(function(e) {})
+          }).catch(function(e) {})
         })
       };
       u.on("click", I, P),
@@ -994,8 +979,7 @@ function() {
       })
     },
     e.exports = i,
-    e.exports.
-  default = i
+    e.exports.default = i
   },
   function(e, t, n) {
     "use strict";
