@@ -69,7 +69,7 @@ cover:
       url: /
     - name: 项目
       icon: fas fa-code-branch
-      url: projects/
+      url: wiki/
     - name: 归档
       icon: fas fa-archive
       url: blog/archives/
@@ -108,7 +108,7 @@ menu_mobile:
     rel: nofollow
   - name: 开源项目
     icon: fas fa-code-branch
-    url: projects/
+    url: wiki/
   - name: 歌单分享
     icon: fas fa-compact-disc
     url: music/
@@ -155,7 +155,7 @@ sidebar:
         rel: nofollow
       - name: 开源项目
         icon: fas fa-code-branch
-        url: projects/
+        url: wiki/
       - name: 歌单分享
         icon: fas fa-compact-disc
         url: music/
