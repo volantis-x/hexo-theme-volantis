@@ -109,10 +109,10 @@ menu_mobile:
   - name: 开源项目
     icon: fas fa-code-branch
     url: wiki/
-  - name: 歌单分享
-    icon: fas fa-compact-disc
-    url: music/
-    rel: nofollow
+  # - name: 歌单分享
+  #   icon: fas fa-compact-disc
+  #   url: music/
+  #   rel: nofollow
   - name: 我的友链
     icon: fas fa-link
     url: friends/
@@ -156,10 +156,10 @@ sidebar:
       - name: 开源项目
         icon: fas fa-code-branch
         url: wiki/
-      - name: 歌单分享
-        icon: fas fa-compact-disc
-        url: music/
-        rel: nofollow
+      # - name: 歌单分享
+      #   icon: fas fa-compact-disc
+      #   url: music/
+      #   rel: nofollow
       - name: 我的友链
         icon: fas fa-link
         url: friends/
@@ -183,7 +183,7 @@ sidebar:
       icon: fas fa-expand-arrows-alt
       url: blog/tags/
       rel: nofollow
-  - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
+  # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
   - widget: music
     icon: fas fa-compact-disc
     title: "最近在听"
