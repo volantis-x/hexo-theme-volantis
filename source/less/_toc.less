@@ -42,6 +42,13 @@
         transform: rotate(30deg);
       }
     }
+    width: @width_sidebar;
+    @media(max-width: @on_desktop) {
+      width: @width_sidebar_m;
+    }
+    @media(max-width: @on_pad) {
+      width: ~"calc(100% - 2 * @{gap})";
+    }
   }
   .enable-trans();
   @media(max-width: @on_pad){
