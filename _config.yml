@@ -67,8 +67,8 @@ cover:
     - name: 博文
       icon: fas fa-rss
       url: /
-    - name: 项目
-      icon: fas fa-code-branch
+    - name: Wiki
+      icon: fas fa-landmark
       url: wiki/
     - name: 归档
       icon: fas fa-archive
@@ -86,13 +86,16 @@ cover:
 
 # 桌面端导航栏菜单
 menu_desktop:
-  - name: Cocoa Dev
+  - name: 近期文章
+    icon: fas fa-clock
+    url: /
+  - name: 苹果开发
     icon: fab fa-apple
     url: blog/categories/dev/cocoa/
-  - name: Dev
+  - name: 技术
     icon: fas fa-laptop-code
     url: blog/categories/dev/
-  - name: Life
+  - name: 生活
     icon: fas fa-coffee
     url: blog/categories/life/
     rel: nofollow
@@ -106,8 +109,8 @@ menu_mobile:
     icon: fas fa-archive
     url: blog/archives/
     rel: nofollow
-  - name: 开源项目
-    icon: fas fa-code-branch
+  - name: 项目Wiki
+    icon: fas fa-landmark
     url: wiki/
   # - name: 歌单分享
   #   icon: fas fa-compact-disc
@@ -153,8 +156,8 @@ sidebar:
         icon: fas fa-archive
         url: blog/archives/
         rel: nofollow
-      - name: 开源项目
-        icon: fas fa-code-branch
+      - name: 项目Wiki
+        icon: fas fa-landmark
         url: wiki/
       # - name: 歌单分享
       #   icon: fas fa-compact-disc
