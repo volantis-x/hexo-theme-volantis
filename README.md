@@ -16,7 +16,7 @@
 
 #### 易于扩展
 
-- 使用 [import](config/#import) 字段方便导入css和js到主题中。
+- 使用 [import](https://xaoxuu.com/wiki/material-x/config/#import) 字段方便导入css和js到主题中。
 
 #### 移动端优化
 
@@ -24,7 +24,7 @@
 
 #### 更多功能的支持
 
-- 支持4种评论系统：Disqus、Gitalk、来必力和Valine评论。（以及基于Valine的 [Volantis](third-party-services/#Volantis) ）
+- 支持4种评论系统：Disqus、Gitalk、来必力和Valine评论。
 - 提供主题CDN，也可自定义CDN。
 - 使用卡片设计元素以及交互动效。
 - 使用 fontawesome 5.6.3 免费版图标。
@@ -32,23 +32,29 @@
 - 支持不蒜子阅读统计、百度分析、Google分析。
 - 支持渲染MathJax数学公式，优化了渲染效果。
 
+
+
+<br>
+
 ## 博客示例
 
-- **示例1：master分支默认的效果**
-演示链接：https://mxclub.github.io
-源码：https://github.com/xaoxuu/blog-example
-
-- **示例2：我的博客**
-演示链接：https://xaoxuu.com
+| 博客                                | 源码                                   | 说明               |
+| ----------------------------------- | -------------------------------------- | ------------------ |
+| [@mxclub](https://mxclub.github.io) | https://github.com/xaoxuu/blog-example | master分支默认效果 |
+| [@xaoxuu](https://xaoxuu.com)       | 暂未开源                               | myblog分支效果     |
 
 
 - **更多示例请见 [#示例博客](https://xaoxuu.com/wiki/material-x/examples)**
 
+
+
+<br>
+
 ## 下载安装
 
-#### A. 使用脚本全自动安装（目前仅支持macOS）
+### A. 使用脚本全自动安装（目前仅支持macOS）
 
-1. 打开终端输入下面命令安装脚本，脚本文档见[#hexo.sh](../hexo.sh/)。
+1. 打开终端输入下面命令安装脚本，脚本文档见[#hexo.sh](https://xaoxuu.com/wiki/hexo.sh/)。
 ```bash
 curl -s https://xaoxuu.com/install | sh -s hexo.sh
 ```
@@ -58,7 +64,9 @@ curl -s https://xaoxuu.com/install | sh -s hexo.sh
 hexo.sh i x
 ```
 
-#### B. 手动安装
+
+
+### B. 手动安装
 
 1. 下载主题到 `themes/` 文件夹
 ```bash
@@ -69,6 +77,10 @@ git clone https://github.com/xaoxuu/hexo-theme-material-x themes/material-x
 ```bash
 npm i -S hexo-generator-search hexo-generator-json-content hexo-renderer-less
 ```
+
+
+
+<br>
 
 ## 文档
 
