@@ -51,7 +51,7 @@
     .rightBtn{
       color: @color_text_in_header;
       &:hover {
-        color: darken(@color_text_highlight, 25%);
+        color: darken(@theme_main, 25%);
         &.rotate90{
           transform: rotate(90deg);
         }
@@ -65,7 +65,7 @@
       .rightBtn{
         color: @theme_main;
         &:hover {
-          color: darken(@color_text_highlight, 25%);
+          color: darken(@theme_main, 25%);
         }
       }
     }
@@ -291,16 +291,16 @@
           }
           border: 1px solid transparent;
           &:hover {
-            color: @color_text_highlight;
+            color: @theme_main;
             background: fade(@theme_main, 10%);
             border-radius: 4px;
           }
           &:active {
-            color: @color_text_highlight;
+            color: @theme_main;
           }
           &.active {
-            color: @color_text_highlight;
-            border: 1px solid @color_text_highlight;
+            color: @theme_main;
+            border: 1px solid @theme_main;
           }
         }
       }
