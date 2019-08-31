@@ -44,7 +44,7 @@
 | [@xaoxuu](https://xaoxuu.com)       | 暂未开源                               | myblog分支效果     |
 
 
-- **更多示例请见 [#示例博客](https://xaoxuu.com/wiki/material-x/examples)**
+- **更多示例请见 [#示例博客](https://github.com/xaoxuu/hexo-theme-material-x/issues/97)**
 
 
 
