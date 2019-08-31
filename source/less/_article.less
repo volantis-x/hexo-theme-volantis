@@ -165,7 +165,9 @@
   }
   h1, h2 {
     color: @color_text_header;
-    margin-top: 2em;
+    margin-top: 3em;
+    border-bottom: 1px solid fade(@color_text_main, 10%);
+    padding-bottom: .2em;
   }
   h3, h4, h5, h6 {
     &:first-child{
@@ -576,21 +578,25 @@
 pre{
   // 行
   .line{
+    color: fade(@color_text_main, 90%);
   }
   .marked{
     background-color: fade(@color_mac_minimize, 20%);
     border-radius: 2px;
     border: 1px solid fade(@color_mac_minimize, 40%);
   }
+  .title{
+    color: @color_md_indigo;
+  }
   // 注释
-  .comment, .title{
-    color: fade(@color_text_main, 60%);
+  .comment {
+    color: fade(darken(@color_md_green, 10%), 70%);
   }
   .keyword, .javascript .function, .attr {
     color: @hl_keyword;
   }
   .type, .built_in, .tag .name{
-    color: #e96900;
+    color: @color_md_light_blue;
   }
   .variable, .attribute, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo {
     color: @hl_amber;
@@ -599,9 +605,12 @@ pre{
     color: @hl_amber;
   }
   .class, .ruby .class .title, .css .rules .attribute {
-    color: #ffcc66;
+    color: @color_md_orange;
   }
-  .string, .value, .inheritance, .header, .ruby .symbol, .xml .cdata {
+  .string {
+    color: darken(@color_md_green, 10%);
+  }
+  .value, .inheritance, .header, .ruby .symbol, .xml .cdata {
     color: @color_md_green;
   }
   .css .hexcolor {
