@@ -181,7 +181,7 @@ sidebar:
       url: blog/categories/
       rel: nofollow
   - widget: tagcloud
-    icon: fas fa-fire
+    icon: fas fa-tags
     more:
       icon: fas fa-expand-arrows-alt
       url: blog/tags/

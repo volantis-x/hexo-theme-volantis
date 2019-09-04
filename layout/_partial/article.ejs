@@ -8,6 +8,7 @@
           <%- post.content %>
         </div>
         <% if(post.layout == 'post'){ %>
+          <br>
           <%- partial('meta', {post: post, position: 'footer'}) %>
         <% } %>
         <% if(post.prev || post.next){ %>
@@ -29,7 +30,7 @@
                                 <%
                                 var items = [];
                                 post.prev.tags.each(function(item){
-                                    items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>' + item.name + '</a>');
+                                    items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> ' + item.name + '</a>');
                                 });
                                 %>
                                 <h6 class="tags">
@@ -56,7 +57,7 @@
                                 <%
                                 var items = [];
                                 post.next.tags.each(function(item){
-                                    items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>' + item.name + '</a>');
+                                    items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> ' + item.name + '</a>');
                                 });
                                 %>
                                 <h6 class="tags">
