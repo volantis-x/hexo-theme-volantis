@@ -86,13 +86,13 @@ cover:
 
 # 桌面端导航栏菜单
 menu_desktop:
-  - name: 近期文章
+  - name: 近期
     icon: fas fa-clock
     url: /
-  - name: 苹果开发
+  - name: 开发
     icon: fab fa-apple
     url: blog/categories/dev/cocoa/
-  - name: 文章归档
+  - name: 归档
     icon: fas fa-archive
     url: blog/archives/
     rel: nofollow
