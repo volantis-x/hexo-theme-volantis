@@ -122,7 +122,14 @@
     display: none;
     font-size: @fontsize_base;
     line-height: @height_navbar;
-
+    .s-toc {
+      display: none;
+    }
+    @media(max-width: @on_pad){
+      .s-toc {
+        display: block;
+      }
+    }
     & > li{
       height: @height_navbar - @gap;
       .enable-trans();
