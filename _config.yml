@@ -92,12 +92,9 @@ menu_desktop:
   - name: 苹果开发
     icon: fab fa-apple
     url: blog/categories/dev/cocoa/
-  - name: 技术
-    icon: fas fa-laptop-code
-    url: blog/categories/dev/
-  - name: 生活
-    icon: fas fa-coffee
-    url: blog/categories/life/
+  - name: 文章归档
+    icon: fas fa-archive
+    url: blog/archives/
     rel: nofollow
 
 # 手机端导航菜单（从右上角的按钮点击展开）
@@ -187,17 +184,17 @@ sidebar:
       url: blog/tags/
       rel: nofollow
   # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
-  - widget: music
-    icon: fas fa-compact-disc
-    title: "最近在听"
-    more:
-      icon: far fa-heart
-      url: https://music.163.com/#/user/home?id=63035382
-      rel: external nofollow noopener noreferrer
-      target: _blank
-    server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
-    type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
-    id: 2615636388     # 歌曲/专辑/歌单 ID
+  # - widget: music
+  #   icon: fas fa-compact-disc
+  #   title: "最近在听"
+  #   more:
+  #     icon: far fa-heart
+  #     url: https://music.163.com/#/user/home?id=63035382
+  #     rel: external nofollow noopener noreferrer
+  #     target: _blank
+  #   server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
+  #   type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
+  #   id: 2615636388     # 歌曲/专辑/歌单 ID
 
 
 # 社交信息
