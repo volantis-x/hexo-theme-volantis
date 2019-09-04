@@ -7,12 +7,13 @@
             <% if(group.items) { %>
               <div class='friends-group'>
                 <% if(group.group) { %>
-                  <h2 class='friend-header'>
+                  <br>
+                  <h3 class='friend-header'>
                     <% if (group.icon) { %>
                       <i class="<%= group.icon %> fa-fw" aria-hidden="true"></i>
                     <%} %>
                     <%= group.group %>
-                  </h2>
+                  </h3>
                 <%} %>
                 <div class='friend-content'>
                   <% (group.items||[]).forEach(function(item){ %>
@@ -38,7 +39,7 @@
             <%} %>
           <% }) %>
         <% } %>
-        <br><hr>
+        <br><br>
         <%- page.content %>
       </section>
   </article>
