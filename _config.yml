@@ -58,22 +58,22 @@ backstretch:
 # page的封面
 cover:
   scheme: search    # 后期将会提供多种封面方案
-  # height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
-  title: "xaoxuu"
-  logo: https://img.vim-cn.com/ec/d65d82ee7055c53513dd016b04614df5846f43.png    # logo和title只显示一个，若同时设置，则只显示logo
+  height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
+  title: xaoxuu
+  logo: https://img.vim-cn.com/72/b94c2193fb9bd27c8fceb3fc124344c5be4476.png    # logo和title只显示一个，若同时设置，则只显示logo
   # search_placeholder: '搜索'
   # 主页封面菜单
   features:
     - name: 博文
       icon: fas fa-rss
       url: /
-    - name: Wiki
-      icon: fas fa-landmark
-      url: wiki/
     - name: 归档
       icon: fas fa-archive
       url: blog/archives/
       rel: nofollow
+    - name: Wiki
+      icon: fas fa-landmark
+      url: wiki/
     - name: 友链
       icon: fas fa-link
       url: friends/
