@@ -67,12 +67,12 @@
 
   }
   .logo {
-    padding: 0 @gap;
+    padding: 0 @gap/2;
     line-height: @height_navbar;
     font-size: @fontsize_logo;
     font-family: @fontfamily_logo;
     @media(max-width: @on_phone){
-      // flex: auto;
+      padding: 0 @gap;
     }
     &.img{
       padding: 0 @gap 0 0;
@@ -86,6 +86,7 @@
 
   .nav-sub{
     .logo {
+      padding: 0 @gap*1.5;
       font-size: @fontsize_base;
       font-family: @fontfamily_base;
       @media(max-width: @on_phone){
