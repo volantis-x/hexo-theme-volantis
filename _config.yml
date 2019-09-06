@@ -4,7 +4,7 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 把对应的那一行注释掉就使用本地的文件
     css:
-      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.2/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.6/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/search.js
@@ -131,23 +131,23 @@ menu_mobile:
     rel: nofollow
 
 layout:
-  # 文章列表（主页、自定义的列表布局）布局
+  # 文章列表（主页、自定义的列表）布局
   posts:
-    # 每一篇文章的meta信息
+    # 列表中每一篇文章的meta信息
     meta: [title, author, date, categories, top]
-    # 侧边栏
-    sidebar: [author, grid, category, tagcloud, list]
+    # 列表类页面的侧边栏
+    sidebar: [author, list, grid, category, tagcloud]
   # 文章页面布局
   article:
-    # 主体元素，你也可以在页面的Front-matter中设置
+    # 文章页面主体元素，你也可以在页面的Front-matter中设置
     body: [article, comments]
     # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     header: [title, author, date, categories, top]
     footer: [updated, tags, share]
-    # 侧边栏（文章）
-    sidebar: [toc, related_posts]
+    # 文章页面的侧边栏
+    sidebar: [author, toc, grid, category, tagcloud, list, related_posts]
   # 其他的页面布局暂时等于文章列表
 
 
