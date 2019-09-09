@@ -39,19 +39,19 @@ music:
   autoplay: false   # 自动播放
 
 # 友链页头像占位图
-avatar_placeholder: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
+avatar_placeholder: https://en.gravatar.com/userimage/154277489/f05965abdc745e46f2705e11d8dccb95.jpg
 
 # 日期格式 http://momentjs.com/docs/
 date_format: 'YYYY-MM-DD' # 文章发布日期的格式
 updated_date_format: 'll' # 文章更新日期的格式
 
 # 幻灯片
-backstretch:
-  position: cover  # cover: 封面背景   full: 整个网页背景
-  duration: 6000 # 持续时间（毫秒）
-  fade: 2500     # 渐变（毫秒）
-  images:
-    - https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg
+# backstretch:
+  # position: cover  # cover: 封面背景   full: 整个网页背景
+  # duration: 6000 # 持续时间（毫秒）
+  # fade: 2500     # 渐变（毫秒）
+  # images:
+    # - https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg
 
 
 
@@ -96,6 +96,10 @@ cover:
       icon: fas fa-folder-open
       url: categories/
       rel: nofollow
+    - name: 友链
+      icon: fas fa-users
+      url: friends/
+      rel: nofollow
 
 
 # 桌面端导航栏菜单
@@ -115,22 +119,6 @@ cover:
 #     icon: fas fa-archive
 #     url: blog/archives/
 #     rel: nofollow
-menu_desktop:
-  - name: 主页
-    icon: fas fa-home
-    url: /
-  - name: 归档
-    icon: fas fa-archive
-    url: archives/
-    rel: nofollow
-  - name: 标签
-    icon: fas fa-hashtag
-    url: tags/
-    rel: nofollow
-  - name: 分类
-    icon: fas fa-folder-open
-    url: categories/
-    rel: nofollow
 
 # 手机端导航菜单（从右上角的按钮点击展开）
 # menu_mobile:
@@ -156,22 +144,6 @@ menu_desktop:
 #     icon: fas fa-info-circle
 #     url: about/
 #     rel: nofollow
-menu_mobile:
-  - name: 主页
-    icon: fas fa-home
-    url: /
-  - name: 归档
-    icon: fas fa-archive
-    url: archives/
-    rel: nofollow
-  - name: 标签
-    icon: fas fa-hashtag
-    url: tags/
-    rel: nofollow
-  - name: 分类
-    icon: fas fa-folder-open
-    url: categories/
-    rel: nofollow
 
 # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
 # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
@@ -238,49 +210,6 @@ body: [article, comments]
 #     server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
 #     type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
 #     id: 2615636388     # 歌曲/专辑/歌单 ID
-sidebar:
-  - widget: author
-    jinrishici: 山重水复疑无路，柳暗花明又一村。
-    social: true
-  - widget: plain
-    icon: fas fa-bullhorn
-    title: 注意啦～
-    body: '请OIer们优先使用各OJ的私信联系我，如果没有OJ账号请邮件联系。邮箱[walkwoo@163.com](mailto:walkwoo@163.com)'
-  - widget: list
-    icon: fas fa-code
-    title: 我的OJ账号们
-    rows:
-      - name: luogu
-        img: https://www.luogu.org/favicon.ico
-        url: https://www.luogu.org/space/show?uid=116659
-      - name: codeforces
-        img: https://st.codeforces.com/s/53627/favicon.png
-        url: https://codeforces.com/profile/wxwoo
-      - name: vijos
-        img: https://cdn.vijos.org/favicon-32x32.png?dc5d043b0a
-        url: https://vijos.org/user/137451
-      - name: SPOJ
-        img: https://www.spoj.com/gfx/favicon_new.png
-        url: https://www.spoj.com/users/wxwoo/
-      - name: LibreOJ
-        img: https://loj.ac/favicon.ico
-        url: https://loj.ac/user/12073
-  - widget: category
-    more:
-      icon: fas fa-expand-arrows-alt
-      url: categories/
-      rel: nofollow
-  - widget: tagcloud
-    more:
-      icon: fas fa-expand-arrows-alt
-      url: tags/
-      rel: nofollow
-  - widget: music
-    icon: fas fa-music
-    title: "膜你抄"
-    server: netease
-    type: song
-    id: 459434585
 
 # 社交信息
 # social:
@@ -292,15 +221,6 @@ sidebar:
   #   url: https://github.com/xaoxuu
   # - icon: fas fa-headphones-alt
   #   url: https://music.163.com/#/user/home?id=63035382
-social:
-- icon: fas fa-envelope
-  url: mailto:walkwoo@163.com
-- icon: fab fa-github
-  url: https://github.com/wxwoo
-- icon: fab fa-zhihu
-  url: https://www.zhihu.com/people/wxwoo/activities
-- icon: fas fa-headphones-alt
-  url: https://music.163.com/#/user/home?id=1400576361
 
 
 # 分享按钮
