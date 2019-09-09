@@ -67,8 +67,7 @@
 
   }
   .logo {
-    padding: 0 @gap/2;
-    line-height: @height_navbar;
+    padding: 0 @gap*1.5;
     font-size: @fontsize_logo;
     font-family: @fontfamily_logo;
     @media(max-width: @on_phone){
@@ -78,10 +77,12 @@
       padding: 0 @gap 0 0;
     }
     img{
-      padding: 0;
       height: 100%;
     }
     letter-spacing: 0;
+  }
+  img.logo {
+    padding: 4px 0;
   }
 
   .nav-sub{
@@ -101,7 +102,7 @@
     flex: 1 0 auto;
     height: @height_navbar;
     .enable-trans();
-    margin:0 @gap;
+    margin: 0 @gap 0 0;
     ul > li > a{
       .enable-trans();
       display: block;
@@ -246,7 +247,7 @@
     .menu{
       ul > li > a{
         .enable-trans();
-        color: fade(@color_text_main, 70%);
+        color: fade(@color_text_main, 85%);
         &.current{
           border-bottom: @loading_height solid fade(@theme_main, 80%);
         }
