@@ -4,7 +4,7 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 把对应的那一行注释掉就使用本地的文件
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.6/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.6/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/search.js
@@ -147,7 +147,7 @@ layout:
     header: [title, author, date, categories, top]
     footer: [updated, tags, share]
     # 文章页面的侧边栏
-    sidebar: [author, toc, grid, category, tagcloud, list, related_posts]
+    sidebar: [toc]
   # 其他的页面布局暂时等于文章列表
 
 
