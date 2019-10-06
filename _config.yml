@@ -50,7 +50,7 @@ backstretch:
   duration: 6000 # 持续时间（毫秒）
   fade: 2500     # 渐变（毫秒）
   images:
-    - https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg
+    # - https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg
 
 
 
@@ -154,7 +154,7 @@ layout:
 # 侧边栏小部件配置
 sidebar:
   - widget: author
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
+    avatar: https://img.vim-cn.com/4a/6fda0c831be0e443413d3366aec4498d2b874d.jpg
     social: true
   - widget: toc
   - widget: grid
