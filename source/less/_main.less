@@ -42,9 +42,6 @@
     #valine_container{
       p{
         line-height: @lineheight_base;
-        img {
-          max-height: 28px;
-        }
       }
       img {
         display: inline;
@@ -187,17 +184,17 @@
         height: 36px;
         padding: 0;
         margin: 8px 8px 0 8px;
-        .emoji{
-          height: 24px;
-          margin-top: 6px;
-          background: transparent;
+        #emoji{
+            height: 24px;
+            margin-top: 6px;
+            background: transparent;
         }
       }
     }
     p{
-      .emoji{
+      #emoji{
         display: inline;
-        height: 28px;
+        max-height: 28px;
         background: transparent;
       }
     }
