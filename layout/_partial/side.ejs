@@ -15,28 +15,13 @@
         <% }) %>
       <% }) %>
     <% } else { %>
-      <%
-      var names = [];
-      if(is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
-        var isPostList = true;
-      } else {
-        var isPostList = false;
-      }
-      if (isPostList) {
-        names = theme.layout.posts.sidebar;
-      } else {
-        names = theme.layout.article.sidebar;
-      }
-      %>
-      <% names.forEach(function(name){ %>
-        <% theme.sidebar.forEach(function(item){ %>
+      <% theme.sidebar.forEach(function(item){ %>
+        <% if (item.enable != false){ %>
           <% let widget_name = item.widget ? item.widget : 'plain'; %>
-          <% if (item.enable != false && widget_name == name){ %>
-            <% if (supportWidgets.indexOf(widget_name) > -1){ %>
-              <%- partial('../_widget/' + item.widget, {item: item}) %>
-            <% } %>
+          <% if (supportWidgets.indexOf(widget_name) > -1){ %>
+            <%- partial('../_widget/' + item.widget, {item: item}) %>
           <% } %>
-        <% }) %>
+        <% } %>
       <% }) %>
     <% } %>
 

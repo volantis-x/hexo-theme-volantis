@@ -13,6 +13,7 @@
 	      %>
 	          <div class="archive-item archive-year mark">
 	            <h2><%= year %></h2>
+	            <hr>
 	          </div>
 	      <%  } %>
 	          <div class="archive-item archive-post mark">
@@ -24,14 +25,17 @@
 	                <% } else if (post.date) { %>
 	                  <%= date(post.date, config.date_format) %>
 	                <% } %>
-	                <% if(post.music && post.music.enable != false){ %>
-	                  &nbsp;<i class="fas fa-headphones-alt music" aria-hidden="true"></i>
+	                <% if(post.music){ %>
+	                  &nbsp;<i class="fas fa-music" aria-hidden="true"></i>
+	                <% } %>
+	                <% if(post.video){ %>
+	                  &nbsp;<i class="fas fa-video" aria-hidden="true"></i>
 	                <% } %>
 									<% if (post.icon) { %>
 										&nbsp;<i class="<%- post.icon %>" aria-hidden="true"></i>
 									<% } %>
 									<% (post.icons && post.icons||[]).forEach(function(icon){ %>
-								  	&nbsp;<i class="<%- icon %>" aria-hidden="true"></i>
+									&nbsp;<i class="<%- icon %>" aria-hidden="true"></i>
 									<% }) %>
 	              </span>
 	            </a>

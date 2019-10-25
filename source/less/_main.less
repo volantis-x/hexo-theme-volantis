@@ -43,11 +43,8 @@
       p{
         line-height: @lineheight_base;
       }
-      img {
-        display: inline;
-      }
       .info{
-        // display: none;
+        display: none;
       }
       .vwrap{
         border-radius: @border_radius;
@@ -184,17 +181,17 @@
         height: 36px;
         padding: 0;
         margin: 8px 8px 0 8px;
-        #emoji{
-            height: 24px;
-            margin-top: 6px;
-            background: transparent;
+        .emoji{
+          height: 24px;
+          margin-top: 6px;
+          background: transparent;
         }
       }
     }
     p{
-      #emoji{
+      .emoji{
         display: inline;
-        max-height: 28px;
+        height: 28px;
         background: transparent;
       }
     }
@@ -253,10 +250,7 @@
       .meta {
         margin-bottom: @gap;
         .title {
-          font-size: @fontsize_list_title;
-          a {
-            font-size: @fontsize_list_title;
-          }
+          font-size: @fontsize_article_title_phone;
         }
       }
       .full-width {

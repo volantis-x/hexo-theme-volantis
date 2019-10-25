@@ -1,45 +1,45 @@
 sidebar:
-  category: 文章分類
-  tagcloud: 熱門標籤
-  toc: 本文目錄
-  related_posts: 相關文章
+  category: 文章分类
+  tagcloud: 热门标签
+  toc: 本文目录
+  related_posts: 相关文章
 post:
-  top: 置頂
-  read_more: 閱讀全文
-  sticky: 置頂
-  comments: 評論
-  comments_placeholder: 無法加載%s評論系統，請確保您的網絡能夠正常訪問。
-  copy_button: 複製
-  copy_success: 複製成功
-  copy_failure: 複製失敗
-  updated: 更新於
-  prev_page: 上一頁
-  next_page: 下一頁
+  top: 置顶
+  read_more: 阅读全文
+  sticky: 置顶
+  comments: 评论
+  comments_placeholder: 无法加载%s评论系统，请确保您的网络能够正常访问。
+  copy_button: 复制
+  copy_success: 复制成功
+  copy_failure: 复制失败
+  updated: 最后更新于
+  prev_page: 上一页
+  next_page: 下一页
   copyright:
     author: 本文作者
-    link: 文章連結
-    license_title: 版權聲明
-    license_content: "本網誌所有文章除特別聲明外，均採用 %s 許可協議。轉載請註明出處！"
+    link: 本文链接
+    license_title: 版权声明
+    license_content: "本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"
 footer:
-  license: '博客內容遵循 [姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0) 協議](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW)'
+  license: '博客内容遵循 [署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)'
   use: 本站使用
-  theme: 作為主題
-  total_views: 總訪問量為
-  total_visitors: 總訪客量為
-  times: 次
+  theme: 作为主题
+  total_views: 总访问量为
+  total_visitors: 总访客量
+  times: 次
 search:
-  placeholder: 搜尋
+  placeholder: 搜索
 symbol:
   comma: "，"
   period: "。"
   colon: "："
   brackets_l: "（"
   brackets_r: "）"
-# 下面這是博主相關的
+# 下面这是博主相关的
 navbar:
-  home: 主頁
+  home: 主页
   blogs: 博客
-  categories: 分類
-  tags: 標籤
-  archives: 歸檔
+  categories: 分类
+  tags: 标签
+  archives: 归档
   friends: 朋友

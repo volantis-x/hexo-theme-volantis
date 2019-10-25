@@ -2,8 +2,8 @@
   <%- partial('meta',{post:post, position:'header'}) %>
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <%- post.excerpt || post.description %>
-      <% if (post.readmore != false && post.path) { %>
+      <%- post.excerpt || post.description || post.content %>
+      <% if (post.readmore != false && (post.excerpt || post.description)) { %>
         <div class="readmore">
           <a href="<%- url_for(post.path) %>" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
@@ -15,7 +15,7 @@
     <% if (post.tags && post.tags.length) { %>
       <div class="full-width auto-padding tags">
         <% post.tags.each(function(item){ %>
-          <a href="<%- url_for(item.path) %>" rel="nofollow"><i class="fas fa-tag fa-fw"></i> <%=item.name %></a>
+          <a href="<%- url_for(item.path) %>" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i><%=item.name %></a>
         <%})%>
       </div>
     <% } %>
