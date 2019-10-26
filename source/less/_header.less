@@ -18,9 +18,6 @@
     max-width: @width_container;
     margin: auto;
     .enable-trans();
-    a.logo {
-      color: @color_text_header;
-    }
   }
   &.no_sidebar{
     .wrapper{
@@ -67,27 +64,25 @@
 
   }
   .logo {
-    padding: 0 @gap*1.5;
+    padding: 0 @gap;
+    line-height: @height_navbar;
     font-size: @fontsize_logo;
     font-family: @fontfamily_logo;
     @media(max-width: @on_phone){
-      padding: 0 @gap;
+      // flex: auto;
     }
     &.img{
       padding: 0 @gap 0 0;
     }
     img{
+      padding: 0;
       height: 100%;
     }
     letter-spacing: 0;
   }
-  img.logo {
-    padding: 4px 0;
-  }
 
   .nav-sub{
     .logo {
-      padding: 0 @gap*1.5;
       font-size: @fontsize_base;
       font-family: @fontfamily_base;
       @media(max-width: @on_phone){
@@ -102,7 +97,7 @@
     flex: 1 0 auto;
     height: @height_navbar;
     .enable-trans();
-    margin: 0 @gap 0 0;
+    margin:0 @gap;
     ul > li > a{
       .enable-trans();
       display: block;
@@ -127,14 +122,7 @@
     display: none;
     font-size: @fontsize_base;
     line-height: @height_navbar;
-    .s-toc {
-      display: none;
-    }
-    @media(max-width: @on_pad){
-      .s-toc {
-        display: block;
-      }
-    }
+
     & > li{
       height: @height_navbar - @gap;
       .enable-trans();
@@ -247,7 +235,7 @@
     .menu{
       ul > li > a{
         .enable-trans();
-        color: fade(@color_text_main, 85%);
+        color: fade(@color_text_main, 70%);
         &.current{
           border-bottom: @loading_height solid fade(@theme_main, 80%);
         }

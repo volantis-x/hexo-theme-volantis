@@ -15,7 +15,7 @@
                   <% site.tags.sort('path').each(function(tags){ %>
                     <% if (tags.posts.length){ %>
                       <a class="<%= tags.parent ? ' child' : ''%>" href="<%= url_for(tags.path) %>">
-                        <time><i class='fas fa-tag fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;<%= tags.name %></time>
+                        <time><i class='fas fa-hashtag fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;<%= tags.name %></time>
                         <span class="title">
                           (<%- tags.posts.length %>)
                         </span>

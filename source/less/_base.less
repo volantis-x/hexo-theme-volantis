@@ -47,7 +47,7 @@ fancybox{
   justify-content: center;
 }
 .backstretch {
-  // opacity: .75;
+  opacity: .75;
 }
 .cover-wrapper{
   padding-bottom: 2px;
@@ -62,18 +62,16 @@ fancybox{
     align-items: center;
     align-self: center;
     align-content: center;
-    // padding: @gap;
+    padding: @gap;
     .title, .logo{
-      font-size: @fontsize_h1*2;
+      font-size: @fontsize_h1*3;
+      line-height: @fontsize_h1*3.3;
       margin-top: ~"calc(28vh - 2*@{gap})";
       text-align: center;
       font-weight: bold;
     }
-    .title{
-      line-height: ~"calc(@{fontsize_h1}*2 + 2*@{gap})";
-    }
     .logo{
-      max-height: 100px;
+      max-height: 150px;
       max-width: ~"calc(100% - 4*@{gap})";
     }
     @media(max-width: @on_phone){
@@ -88,10 +86,10 @@ fancybox{
       margin-top: ~"calc(2vh + 2*@{gap})";
       position: relative;
       max-width: ~"calc(100% - 1*@{gap})";
-      width: 340px;
-      // @media(max-width: @on_laptop){
-      //   width: 1.4*@width_sidebar_m;
-      // }
+      width: 1.1*@width_sidebar;
+      @media(max-width: @on_laptop){
+        width: 1.2*@width_sidebar_m;
+      }
       line-height: @height_navbar - @gap;
       vertical-align: middle;
       .form {
@@ -151,23 +149,22 @@ fancybox{
     &.half{
       height: ~"calc(60vh - @{gap} - @{height_navbar})";
       .title, .logo{
-        margin-top: ~"calc(22vh - 4*@{gap})";
+        margin-top: ~"calc(20vh - 4*@{gap})";
       }
       @media(max-width: @on_phone){
-        height: ~"calc(45vh - @{gap} - @{height_navbar})";
         .title, .logo{
-          margin-top: ~"calc(24vh - 6*@{gap})";
+          margin-top: ~"calc(32vh - 6*@{gap})";
         }
       }
       .m_search{
-        margin-top: @gap;
+        margin-top: 1vh;
       }
     }
     &, a{
       color: @theme_main;
     }
     .menu{
-      margin-top: @gap;
+      margin-top: 4vh;
       ul {
         display: flex;
         flex-wrap: wrap;
@@ -186,7 +183,7 @@ fancybox{
         padding: 2px;
         margin: 0 4px;
         .enable-trans();
-        color: fade(@color_text_main, 85%);
+        color: fade(@color_text_main, 70%);
         border-bottom: 1px solid transparent;
         &:hover, &.active{
           color: @theme_main;

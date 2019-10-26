@@ -1,45 +1,45 @@
 sidebar:
-  category: Categories
-  tagcloud: Hot Tags
-  toc: TOC
-  related_posts: Related Posts
+  category: 文章分类
+  tagcloud: 热门标签
+  toc: 本文目录
+  related_posts: 相关文章
 post:
-  top: Top
-  read_more: Read More
-  sticky: Sticky
-  comments: Comments
-  comments_placeholder: Unable to load %s, please make sure your network can access.
-  copy_button: Copy
-  copy_success: Copied
-  copy_failure: Copy failed
-  updated: updated at
-  prev_page: Previous
-  next_page: Next
+  top: 置顶
+  read_more: 阅读全文
+  sticky: 置顶
+  comments: 评论
+  comments_placeholder: 无法加载%s评论系统，请确保您的网络能够正常访问。
+  copy_button: 复制
+  copy_success: 复制成功
+  copy_failure: 复制失败
+  updated: 最后更新于
+  prev_page: 上一页
+  next_page: 下一页
   copyright:
-    author: Post author
-    link: Post link
-    license_title: Copyright Notice
-    license_content: "All articles in this blog are licensed under %s unless stating additionally."
+    author: 本文作者
+    link: 本文链接
+    license_title: 版权声明
+    license_content: "本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"
 footer:
-  license: 'Blog content follows the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)'
-  use: Use
-  theme: as theme
-  total_views: total visits
-  total_visitors: total visitors
-  times: times
+  license: '博客内容遵循 [CC BY-NC-SA 4.0 协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)'
+  use: 本站使用
+  theme: 作为主题
+  total_views: 总访问量为
+  total_visitors: 总访客量
+  times: 次
 search:
-  placeholder: Search
+  placeholder: 搜索
 symbol:
-  comma: ", "
-  period: ". "
-  colon: ": "
-  brackets_l: "("
-  brackets_r: ")"
+  comma: "，"
+  period: "。"
+  colon: "："
+  brackets_l: "（"
+  brackets_r: "）"
 # 下面这是博主相关的
 navbar:
-  home: Home
-  blogs: Blogs
-  categories: Categories
-  tags: Tags
-  archives: Archives
-  friends: Friends
+  home: 主页
+  blogs: 博客
+  categories: 分类
+  tags: 标签
+  archives: 归档
+  friends: 朋友
