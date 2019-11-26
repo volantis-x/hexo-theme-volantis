@@ -158,7 +158,7 @@
 <% if (enableValine){ %>
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   <% if (theme.valine.volantis == true) { %>
-    <% if (theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.volantis) { %>
+    <% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.volantis) { %>
       <%- js(theme.info.cdn.js.volantis) %>
     <% } else { %>
       <%- js(['js/volantis.js']) %>
@@ -193,12 +193,12 @@
   </script>
 <% } %>
 
-<% if (theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.app) { %>
+<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.app) { %>
   <%- js(theme.info.cdn.js.app) %>
 <% } else { %>
   <%- js(['js/app.js']) %>
 <% } %>
-<% if (theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.search) { %>
+<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.search) { %>
   <%- js(theme.info.cdn.js.search) %>
 <% } else { %>
   <%- js(['js/search.js']) %>

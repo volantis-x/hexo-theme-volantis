@@ -59,7 +59,7 @@
   <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <% } %>
 
-  <% if (theme.info && theme.info.cdn && theme.info.cdn.css && theme.info.cdn.css.style) { %>
+  <% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.css && theme.info.cdn.css.style) { %>
     <%- css(theme.info.cdn.css.style) %>
   <% } else { %>
     <%- css('style.css') %>
