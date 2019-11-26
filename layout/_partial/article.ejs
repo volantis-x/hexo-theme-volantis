@@ -6,6 +6,10 @@
       <div class="article-entry" itemprop="articleBody">
         <%- post.content %>
       </div>
+      <% if(theme.footer_post){ %>
+        <br>
+        <%- markdown(theme.footer_post) %>
+      <% } %>
       <% if(post.layout == 'post'){ %>
         <br>
         <%- partial('meta', {post: post, position: 'footer'}) %>
