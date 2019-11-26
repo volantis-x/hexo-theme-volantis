@@ -1,5 +1,94 @@
 # Material X
 
+A minimalist card-style Hexo blog theme.
+
+![](https://img.vim-cn.com/52/a54815c02ce232f11f54b2c547c1337828833c.png)
+
+
+#### Completely free modular and easy to customize design
+
+- You can freely decide whether each page requires a cover, whether a cover requires a background image, how many images, whether a carousel is required, and how fast it is.
+- Freely decide whether each page needs sidebar, what cards are displayed in sidebar widgets, and in what order.
+- You can freely determine the main structure of each page (default articles + comments), and add cards as needed (share the card library with sidebar widgets).
+- You can freely decide whether the meta tag (date, update date, category, tag, share, reading statistics, sticky) of each article is displayed, whether it is placed at the beginning or the end of the article. Titles, thumbnails, small icons (for archiving pages), and page-specific music players are also counted as meta tags, but their positions are fixed.
+- Most buttons can be set as icons, text, target, nofollow, etc.
+- Easily change visual effects such as theme colors, custom fonts, margins, rounded corners, shadows, etc., and quickly implement dark theme.
+
+#### Easy to extend
+
+- Use the [import](https://xaoxuu.com/wiki/material-x/config/#import) field to easily import css and js into the theme.
+
+#### Mobile optimization
+
+- A lot of optimization for mobile layout.
+
+#### Support for more features
+
+- Supports 4 comment systems: Disqus, Gitalk, La BiLi and Valin comments.
+- Provide themed CDN, or customize CDN.
+- Use card design elements and interactive animations.
+- Use fontawesome 5.6.3 free icon.
+- Support APlayer player, can play the music of Netease cloud, QQ music, shrimp, cool dog platform and other servers.
+- Support non-garlic reading statistics, Baidu analysis, Google analysis.
+- Support rendering MathJax mathematical formula, optimized rendering effect.
+
+
+
+<br>
+
+## Blog Example
+
+| Blog | Source Code | Instructions |
+| ----------------------------------- | -------------------------------------- | ------------------ |
+| [@mxclub](https://mxclub.github.io) | https://github.com/xaoxuu/blog-example | The default effect of the master branch |
+| [@xaoxuu](https://xaoxuu.com) | Not open source yet | myblog branch effect |
+
+
+- **For more examples, please see [#Example Blog](https://github.com/xaoxuu/hexo-theme-material-x/issues/97)**
+
+
+
+<br>
+
+## Download and install
+
+### A. Full automatic installation using scripts (currently only macOS is supported)
+
+1. Open a terminal and enter the following command to install the script, see [# hexo.sh](https://xaoxuu.com/wiki/hexo.sh/) for the script document.
+```bash
+curl -s https://xaoxuu.com/install | sh -s hexo.sh
+```
+
+2. After successful installation, open a terminal on your blog path and enter the following command to install the theme and dependencies.
+```bash
+hexo.sh i x
+```
+
+
+
+### B. Manual installation
+
+1. Download theme to `themes /` folder
+```bash
+git clone https://github.com/xaoxuu/hexo-theme-material-x themes / material-x
+```
+
+2. Then install the necessary dependencies
+```bash
+npm i -S hexo-generator-search hexo-generator-json-content hexo-renderer-less
+```
+
+
+
+<br>
+
+## Documentation
+
+https://xaoxuu.com/wiki/material-x/
+
+
+# Material X
+
 一个简约的卡片式Hexo博客主题。
 
 ![](https://img.vim-cn.com/52/a54815c02ce232f11f54b2c547c1337828833c.png)

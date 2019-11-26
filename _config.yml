@@ -129,7 +129,7 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, date, categories, top]
     # 列表类页面的侧边栏
-    sidebar: [author, list, grid, category, tagcloud]
+    sidebar: [author, plain, list, grid, category, tagcloud]
   # 文章页面布局
   article:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
@@ -140,7 +140,7 @@ layout:
     header: [title, author, date, categories, counter, top]
     footer: [updated, tags, share]
     # 文章页面的侧边栏
-    sidebar: [author, toc, grid, category, tagcloud, list, related_posts]
+    sidebar: [author, plain, toc, grid, category, tagcloud, list, related_posts]
   # 其他的页面布局暂时等于文章列表
 
 
@@ -148,7 +148,12 @@ layout:
 sidebar:
   - widget: author
     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
+    jinrishici: true
     social: true
+  - widget: plain
+    icon: fas fa-file
+    title: 文本部件
+    body: '这是一段支持markdown的文本<br>![](https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png)'
   - widget: toc
   - widget: grid
     icon: fas fa-map-signs
@@ -248,7 +253,7 @@ share:
   #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png
 
 
-# footer_post: '<center>文章页脚，支持[markdown](/)，可用于设置版权标识或打赏图片</center>'
+footer_post: '<center>这是文章页脚，可以设置打赏图片：<br><fancybox>![](https://img.vim-cn.com/4a/5f8244a7c6e1e069a781b84ed11008e7955e16.png)</fancybox></center>'
 # footer: '网页页脚文字，支持[markdown](/)'
 
 
