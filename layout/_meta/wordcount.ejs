@@ -1,0 +1,18 @@
+<% if(isPostList || !isPostList){ %>
+  <% if (theme.word_count && !post.no_word_count) { %>
+    <div class="new-meta-item wordcount">
+      <a class='notlink'>
+        <i class="fas fa-keyboard" aria-hidden="true"></i>
+        <p>字数统计:</p>
+        <p><%= wordcount(post.content) %>字</p>
+      </a>
+    </div>
+    <div class="new-meta-item readtime">
+      <a class='notlink'>
+        <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+        <p>阅读时长≈</p>
+        <p><%= min2read(post.content) %>分</p>
+      </a>
+    </div>
+  <% } %>
+<% } %>
