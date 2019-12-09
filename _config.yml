@@ -298,18 +298,18 @@ search:
   service: hexo    # 类型：google, algolia, azure, baidu 默认 hexo
 # 选择你选取的搜索服务后，复制相应的配置到根目录配置文件中
 # google:
-#   api_key:
-#   engine_id:
+#   apiKey:
+#   engineId:
 # algolia:
-#   application_ID: 
-#   api_Key: 
-#   index_Name: 
+#   applicationID: 
+#   apiKey: 
+#   indexName: 
 # azure:
-#   service_name:
-#   index_name:
-#   query_key:
+#   serviceName:
+#   indexName:
+#   queryKey:
 # baidu:
-#   api_id:
+#   apiId:
 
 # Less渲染
 less:

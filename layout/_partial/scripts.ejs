@@ -2,18 +2,18 @@
 <% if (theme.search && theme.search.enable) { %>
   <script>
     <% if(theme.search.service === 'baidu') { %>
-      var BAIDU_API_ID = "<%- config.baidu.api_id %>";
+      var BAIDU_API_ID = "<%- config.baidu.apiId %>";
     <%} else if(theme.search.service === 'algolia') { %>
-      var ALGOLIA_API_KEY = "<%- config.algolia.api_Key %>";
-      var ALGOLIA_APP_ID = "<%- config.algolia.application_ID %>";
-      var ALGOLIA_INDEX_NAME = "<%- config.algolia.index_Name %>";
+      var ALGOLIA_API_KEY = "<%- config.algolia.apiKey %>";
+      var ALGOLIA_APP_ID = "<%- config.algolia.applicationID %>";
+      var ALGOLIA_INDEX_NAME = "<%- config.algolia.indexName %>";
     <%} else if(theme.search.service === 'azure') { %>
-      var AZURE_QUERY_KEY = "<%- config.azure.query_key %>";
-      var AZURE_INDEX_NAME = "<%- config.azure.index_name %>";
-      var AZURE_SERVICE_NAME = "<%- config.azure.service_name %>";
+      var AZURE_QUERY_KEY = "<%- config.azure.queryKey %>";
+      var AZURE_INDEX_NAME = "<%- config.azure.indexName %>";
+      var AZURE_SERVICE_NAME = "<%- config.azure.serviceName %>";
     <%} else if(theme.search.service === 'google') { %>
-      var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- config.google.api_key %>";
-      var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- config.google.engine_id %>";
+      var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- config.google.apiKey %>";
+      var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- config.google.engineId %>";
     <%}%>
     var SEARCH_SERVICE = "<%- theme.search.service%>" || "hexo";
     var ROOT = "<%- config.root %>" || "/";
