@@ -31,11 +31,11 @@ var SearchService = "";
         btn_prev: "#u-search .btn-prev"
       },
       brands: {
+        'hexo': {logo: '', url: ''},
         'google': {logo: 'google.svg', url: 'https://cse.google.com'},
         'algolia': {logo: 'algolia.svg', url: 'https://www.algolia.com'},
-        'hexo': {logo: '', url: ''},
-        'azure': {logo: 'azure.svg', url: 'https://azure.microsoft.com/en-us/services/search/'},
-        'baidu': {logo: 'baidu.svg', url: 'http://zn.baidu.com/cse/home/index'}
+        'baidu': {logo: 'baidu.svg', url: 'http://zn.baidu.com/cse/home/index'},
+        'azure': {logo: 'azure.svg', url: 'https://azure.microsoft.com/en-us/services/search/'}
       },
       imagePath: ROOT + "img/"
     }, options);
@@ -127,13 +127,18 @@ var SearchService = "";
      * @param url : (string) url
      * @param title : (string) title
      * @param digest : (string) digest
+     * @param index : 标号
      */
-    self.buildResult = function(url, title, digest) {
+    self.buildResult = function(url, title, digest, index) {
       var html = "";
       html = "<li>";
       html +=   "<a class='result' href='" +url+ "'>";
-      html +=     "<span class='title'>" +title+ "</span>";
-      html +=     "<span class='digest'>" +digest+ "</span>";
+      if(index === undefined)
+        html +=     "<span class='title'>" +title+ "</span>";
+      else
+        html +=     "<span class='title'>" +index + ".  " + title+ "</span>";
+      if(digest !== "")
+        html +=     "<span class='digest'>" +digest+ "</span>";
       html +=     "<span class='fas fa-chevron-thin-right'></span>";
       html +=   "</a>";
       html += "</li>";
@@ -237,7 +242,6 @@ var SearchService = "";
 })(jQuery);
 
 var AlgoliaSearch;
-
 (function($) {
   'use strict';
 
@@ -248,7 +252,7 @@ var AlgoliaSearch;
   AlgoliaSearch = function(options) {
     SearchService.apply(this, arguments);
     var self = this;
-    var endpoint = "https://" +self.config.app_id+ "-dsn.algolia.net/1/indexes/" +self.config.indexName;
+    var endpoint = "https://" +self.config.appId+ "-dsn.algolia.net/1/indexes/" + self.config.indexName;
     self.addLogo('algolia');
 
     /**
@@ -263,8 +267,8 @@ var AlgoliaSearch;
           url = ROOT + url;
         }
         var title = row.title;
-        var digest = row._highlightResult.excerptStrip.value || "";
-        html += self.buildResult(url, title, digest);
+        var digest = "";
+        html += self.buildResult(url, title, digest, index+1);
       });
       return html;
     };
@@ -315,7 +319,7 @@ var AlgoliaSearch;
         query: queryText,
         page: page-1,
         hitsPerPage: self.config.per_page,
-        "x-algolia-application-id": self.config.app_id,
+        "x-algolia-application-id": self.config.appId,
         "x-algolia-api-key": self.config.apiKey
       }, function(data, status) {
         if (status === 'success' && data.hits && data.hits.length > 0) {
@@ -336,8 +340,8 @@ var AlgoliaSearch;
   };
 
 })(jQuery);
-var AzureSearch;
 
+var AzureSearch;
 (function($) {
   'use strict';
 
@@ -447,8 +451,8 @@ var AzureSearch;
   };
 
 })(jQuery);
-var BaiduSearch;
 
+var BaiduSearch;
 (function($) {
   'use strict';
 
@@ -541,8 +545,8 @@ var BaiduSearch;
   };
 
 })(jQuery);
-var GoogleCustomSearch = "";
 
+var GoogleCustomSearch = "";
 (function($) {
   'use strict';
 
@@ -636,8 +640,8 @@ var GoogleCustomSearch = "";
     return self;
   };
 })(jQuery);
-var HexoSearch;
 
+var HexoSearch;
 (function($) {
   'use strict';
 
@@ -686,14 +690,14 @@ var HexoSearch;
             post_content = post.text.trim();
             var start = 0, end = 0;
             if (first_occur >= 0) {
-              start = Math.max(first_occur-30, 0);
-              end = (start === 0) ? Math.min(200, post_content.length) : Math.min(first_occur+170, post_content.length);
+              start = Math.max(first_occur-40, 0);
+              end = (start === 0) ? Math.min(200, post_content.length) : Math.min(first_occur + 120, post_content.length);
               var match_content = post_content.substring(start, end);
               keywords.forEach(function(keyword) {
                 var regS = new RegExp(keyword, "gi");
-                match_content = match_content.replace(regS, "<b>"+keyword+"</b>");
+                match_content = match_content.replace(regS, "<b style='color: #c00'>"+keyword+"</b>");
               });
-              post.digest = match_content;
+              post.digest = match_content + "......";
             }
             else {
               end = Math.min(200, post_content.length);
@@ -712,9 +716,10 @@ var HexoSearch;
     self.buildResultList = function(data, queryText) {
       var results = [],
           html = "";
+      var i = 1;
       $.each(data, function(index, post) {
-        if (self.contentSearch(post, queryText))
-          html += self.buildResult(post.permalink, post.title, post.digest);
+        if (self.contentSearch(post, queryText)) 
+          html += self.buildResult(post.permalink, post.title, post.digest, i++);
       });
       return html;
     };

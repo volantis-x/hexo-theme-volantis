@@ -295,20 +295,21 @@ valine:
 # 搜索配置
 search:
   enable: true
-  service: hexo
-  # google
-  google_api_key:
-  google_engine_id:
-  # algolia
-  algolia_app_id:
-  algolia_api_key:
-  algolia_index_name:
-  # azure
-  azure_service_name:
-  azure_index_name:
-  azure_query_key:
-  # baidu
-  baidu_api_id:
+  service: hexo    # 类型：google, algolia, azure, baidu 默认 hexo
+# 选择你选取的搜索服务后，复制相应的配置到根目录配置文件中
+# google:
+#   api_key:
+#   engine_id:
+# algolia:
+#   application_ID: 
+#   api_Key: 
+#   index_Name: 
+# azure:
+#   service_name:
+#   index_name:
+#   query_key:
+# baidu:
+#   api_id:
 
 # Less渲染
 less:
