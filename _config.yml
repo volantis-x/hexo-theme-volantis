@@ -9,7 +9,7 @@ info:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js
-
+      commentTyping: https://cdn.jsdelivr.net/gh/inkss/inkss.github.io/js/commentTyping.js
 
 
 ############################### 主题风格 ###############################
@@ -18,9 +18,10 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 
 
 ############################### 服务开关 ###############################
-scrollreveal: true
-nodewaves: true
-busuanzi: true
+commentTyping: true # 文本框打字机特效
+scrollreveal: true  # 页面滚动显示动画
+nodewaves: true     # 按钮点击效果
+busuanzi: true      # 访问量统计
 # fastclick: true
 
 
