@@ -44,6 +44,9 @@ avatar_placeholder: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avat
 date_format: 'YYYY-MM-DD' # 文章发布日期的格式
 updated_date_format: 'll' # 文章更新日期的格式
 
+# 文章字数统计、阅读时长，默认关闭，开启需要安装插件: npm i --save hexo-wordcount
+word_count: false
+
 # 幻灯片
 backstretch:
   position: cover  # cover: 封面背景   full: 整个网页背景
@@ -127,7 +130,7 @@ layout:
   # 文章列表（主页、自定义的列表）布局
   posts:
     # 列表中每一篇文章的meta信息
-    meta: [title, author, date, categories, top]
+    meta: [title, author, date, categories, wordcount, top]
     # 列表类页面的侧边栏
     sidebar: [author, plain, list, grid, category, tagcloud]
   # 文章页面布局
@@ -137,7 +140,7 @@ layout:
     # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
-    header: [title, author, date, categories, counter, top]
+    header: [title, author, date, categories, counter, wordcount, top]
     footer: [updated, tags, share]
     # 文章页面的侧边栏
     sidebar: [author, plain, toc, grid, category, tagcloud, list, related_posts]
