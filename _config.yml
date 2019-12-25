@@ -54,7 +54,7 @@ word_count: false
 # page的封面
 cover:
     scheme: search # 后期将会提供多种封面方案
-    height: full # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
+    height: half # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
     title: A Salted Fish
     # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
     search_placeholder: '搜点什么？'
@@ -104,11 +104,11 @@ menu_mobile:
       url: /
     - name: 笔记
       icon: fas fa-sticky-note
-      url: http://chenchunyang.site/notes/dist/
+      url: notes/dist/
       target: true
     - name: 文章归档
       icon: fas fa-archive
-      url: blog/archives/
+      url: archives/
       rel: nofollow
     - name: 开源作品
       icon: fas fa-code-branch
@@ -162,7 +162,7 @@ sidebar:
           #     url: /
           #   - name: 文章归档
           #     icon: fas fa-archive
-          #     url: blog/archives/
+          #     url: archives/
           #     rel: nofollow
           - name: 开源作品
             icon: fas fa-code-branch
@@ -178,14 +178,14 @@ sidebar:
     - widget: category
       more:
           icon: fas fa-expand-arrows-alt
-          url: blog/categories/
+          url: categories/
           rel: nofollow
     - widget: tagcloud
       icon: fas fa-tags
-      more:
-          icon: fas fa-expand-arrows-alt
-          url: blog/tags/
-          rel: nofollow
+    #   more:
+    #       icon: fas fa-expand-arrows-alt
+    #       url: tags/
+    #       rel: nofollow
     # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
     - widget: music
       icon: fas fa-compact-disc
