@@ -39,6 +39,9 @@ avatar_placeholder: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avat
 date_format: 'YYYY-MM-DD' # 文章发布日期的格式
 updated_date_format: 'll' # 文章更新日期的格式
 
+# 文章字数统计、阅读时长，默认关闭，开启需要安装插件: npm i --save hexo-wordcount
+word_count: false
+
 # 幻灯片
 # backstretch:
 #     position: cover # cover: 封面背景   full: 整个网页背景
