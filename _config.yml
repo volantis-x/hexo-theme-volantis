@@ -9,7 +9,7 @@ info:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.8/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.8/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js
-
+      commentTyping: https://cdn.jsdelivr.net/gh/inkss/inkss.github.io/js/commentTyping.js
 
 
 ############################### 主题风格 ###############################
@@ -18,9 +18,10 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 
 
 ############################### 服务开关 ###############################
-scrollreveal: true
-nodewaves: true
-busuanzi: true
+commentTyping: true # 文本框打字机特效
+scrollreveal: true  # 页面滚动显示动画
+nodewaves: true     # 按钮点击效果
+busuanzi: true      # 访问量统计
 # fastclick: true
 
 
@@ -298,20 +299,21 @@ valine:
 # 搜索配置
 search:
   enable: true
-  service: hexo
-  # google
-  google_api_key:
-  google_engine_id:
-  # algolia
-  algolia_app_id:
-  algolia_api_key:
-  algolia_index_name:
-  # azure
-  azure_service_name:
-  azure_index_name:
-  azure_query_key:
-  # baidu
-  baidu_api_id:
+  service: hexo    # 类型：google, algolia, azure, baidu 默认 hexo
+# 选择你选取的搜索服务后，复制相应的配置到根目录配置文件中
+# google:
+#   apiKey:
+#   engineId:
+# algolia:
+#   applicationID: 
+#   apiKey: 
+#   indexName: 
+# azure:
+#   serviceName:
+#   indexName:
+#   queryKey:
+# baidu:
+#   apiId:
 
 # Less渲染
 less:

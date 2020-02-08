@@ -1,24 +1,29 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 <% if (theme.search && theme.search.enable) { %>
   <script>
-    var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google_api_key %>";
-    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google_engine_id %>";
-    var ALGOLIA_API_KEY = "<%- theme.search.algolia_api_key %>";
-    var ALGOLIA_APP_ID = "<%- theme.search.algolia_app_id %>";
-    var ALGOLIA_INDEX_NAME = "<%- theme.search.algolia_index_name %>";
-    var AZURE_SERVICE_NAME = "<%- theme.search.azure_service_name %>";
-    var AZURE_INDEX_NAME = "<%- theme.search.azure_index_name %>";
-    var AZURE_QUERY_KEY = "<%- theme.search.azure_query_key %>";
-    var BAIDU_API_ID = "<%- theme.search.baidu_api_id %>";
+    <% if(theme.search.service === 'baidu') { %>
+      var BAIDU_API_ID = "<%- config.baidu.apiId %>";
+    <%} else if(theme.search.service === 'algolia') { %>
+      var ALGOLIA_API_KEY = "<%- config.algolia.apiKey %>";
+      var ALGOLIA_APP_ID = "<%- config.algolia.applicationID %>";
+      var ALGOLIA_INDEX_NAME = "<%- config.algolia.indexName %>";
+    <%} else if(theme.search.service === 'azure') { %>
+      var AZURE_QUERY_KEY = "<%- config.azure.queryKey %>";
+      var AZURE_INDEX_NAME = "<%- config.azure.indexName %>";
+      var AZURE_SERVICE_NAME = "<%- config.azure.serviceName %>";
+    <%} else if(theme.search.service === 'google') { %>
+      var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- config.google.apiKey %>";
+      var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- config.google.engineId %>";
+    <%}%>
     var SEARCH_SERVICE = "<%- theme.search.service%>" || "hexo";
-    var ROOT = "<%- config.root %>"||"/";
-    if(!ROOT.endsWith('/'))ROOT += '/';
+    var ROOT = "<%- config.root %>" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
   </script>
 <% } %>
 <script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
 
 <% if (theme.scrollreveal == true) { %>
-  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
   <script type="text/javascript">
     $(function() {
       const $reveal = $('.reveal');
@@ -202,6 +207,15 @@
   <%- js(theme.info.cdn.js.search) %>
 <% } else { %>
   <%- js(['js/search.js']) %>
+<% } %>
+<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.commentTyping) { %>
+  <% if (theme.commentTyping == true) { %>
+    <%- js(theme.info.cdn.js.commentTyping) %>
+  <%}%>
+<% } else { %>
+  <% if (theme.commentTyping == true) { %>
+    <%- js(['js/commentTyping.js']) %>
+  <%}%>
 <% } %>
 
 <% if (page.layout == 'links') { %>
