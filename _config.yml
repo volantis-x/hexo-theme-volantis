@@ -4,10 +4,10 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.8/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.8/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.8/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js
 
 
@@ -49,11 +49,14 @@ word_count: false
 
 # 幻灯片
 backstretch:
-  position: cover  # cover: 封面背景   full: 整个网页背景
+  position: full  # cover: 封面背景   full: 整个网页背景
   duration: 6000 # 持续时间（毫秒）
   fade: 2500     # 渐变（毫秒）
   images:
-    - https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg
+    - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
+    - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
+    - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
+    - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
 
 
 
@@ -132,7 +135,7 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, date, categories, wordcount, top]
     # 列表类页面的侧边栏
-    sidebar: [author, plain, list, grid, category, tagcloud]
+    sidebar: [author, plain, list, grid, category, tagcloud, music]
   # 文章页面布局
   article:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
@@ -206,7 +209,7 @@ sidebar:
       target: _blank
     server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
     type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
-    id: 2615636388     # 歌曲/专辑/歌单 ID
+    id: 3175833810     # 歌曲/专辑/歌单 ID
   - widget: list
     icon: fas fa-thumbs-up
     title: 强烈推荐
