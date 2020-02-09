@@ -5,7 +5,7 @@
 
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
-      <a class="logo flat-box" href='<%- url_for("/") %>' >
+      <a class="logo flat-box" target="_self" href='<%- url_for("/") %>' >
         <% if (config.logo) { %>
           <img class='logo' src='<%- url_for(config.logo) %>'/>
         <% } else { %>
@@ -43,18 +43,18 @@
 			<% } %>
 			<ul class='switcher h-list'>
 				<% if (theme.search.enable === true) { %>
-					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+					<li class='s-search'><a class="fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
 				<% } %>
-				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-menu'><a class="fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
 			</ul>
 		</div>
 
 		<div class='nav-sub container container--flex'>
 			<a class="logo flat-box"></a>
 			<ul class='switcher h-list'>
-				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
         <% if (page.sidebar == undefined || page.sidebar != false) { %>
-          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
         <% } %>
 			</ul>
 		</div>
