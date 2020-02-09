@@ -208,15 +208,14 @@
 <% } else { %>
   <%- js(['js/search.js']) %>
 <% } %>
-<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.commentTyping) { %>
-  <% if (theme.commentTyping == true) { %>
+<% if (theme.commentTyping == true) { %>
+  <% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.commentTyping) { %>
     <%- js(theme.info.cdn.js.commentTyping) %>
-  <%}%>
-<% } else { %>
-  <% if (theme.commentTyping == true) { %>
+  <% } else { %>
     <%- js(['js/commentTyping.js']) %>
-  <%}%>
-<% } %>
+  <% } %>
+<%}%>
+
 
 <% if (page.layout == 'links') { %>
   <%- js('https://cdn.jsdelivr.net/gh/toddmotto/echo@1.7.3/src/echo.js') %>

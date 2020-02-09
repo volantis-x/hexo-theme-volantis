@@ -4,12 +4,12 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.8/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.9/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.8/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.8/js/search.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js
-      commentTyping: https://cdn.jsdelivr.net/gh/inkss/inkss.github.io/js/commentTyping.js
+      commentTyping: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/commentTyping.js
 
 
 ############################### 主题风格 ###############################
@@ -18,7 +18,7 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 
 
 ############################### 服务开关 ###############################
-commentTyping: true # 文本框打字机特效
+commentTyping: false # 文本框打字机特效
 scrollreveal: true  # 页面滚动显示动画
 nodewaves: true     # 按钮点击效果
 busuanzi: true      # 访问量统计
@@ -305,9 +305,9 @@ search:
 #   apiKey:
 #   engineId:
 # algolia:
-#   applicationID: 
-#   apiKey: 
-#   indexName: 
+#   applicationID:
+#   apiKey:
+#   indexName:
 # azure:
 #   serviceName:
 #   indexName:

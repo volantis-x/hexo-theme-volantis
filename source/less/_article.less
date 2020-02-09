@@ -155,7 +155,7 @@
     font-family: @fontfamily_base;
     font-weight: normal;
     margin-top: 1.5em;
-    margin-bottom: 1em;
+    margin-bottom: 0.6em;
     &.title {
       left: 0;
       &:before {
@@ -165,15 +165,9 @@
   }
   h1, h2 {
     color: @color_text_header;
-    margin-top: 3em;
+    margin-top: @height_h2;
     border-bottom: 1px solid fade(@color_text_main, 10%);
     padding-bottom: .2em;
-  }
-  h3, h4, h5, h6 {
-    &:first-child{
-      margin-top: 0;
-      padding-top: 0;
-    }
   }
   h1 {
     font-size: @fontsize_h1;
@@ -183,6 +177,7 @@
     text-align: @text_align_h2;
   }
   h3 {
+    margin-top: @height_h3;
     font-size: @fontsize_h3;
     color: @color_text_h3;
     text-align: @text_align_h3;
@@ -199,6 +194,12 @@
   h6 {
     color: fade(@color_text_main, 75%);
     font-size: @fontsize_h6;
+  }
+  h3, h4, h5, h6 {
+    &:first-child{
+      margin-top: 0;
+      padding-top: 0;
+    }
   }
   .subtitle{
     h6 {
@@ -220,6 +221,7 @@
       margin: 0;
       font-size: @fontsize_small;
       line-height: @fontsize_small * 1.5;
+      padding: @gap/2 0;
     }
     position: relative;
     width: 100%;
