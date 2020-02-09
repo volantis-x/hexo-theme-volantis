@@ -1,5 +1,5 @@
 <% page.comments = false; %>
-<div class='l_main'>
+<div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.posts && site.posts.length > 0) { %>
     <% if (page.layout == 'tag') { %>
       <section class="post-list">
@@ -8,21 +8,20 @@
             <section class="archive">
               <div class="archive-item archive-year mark">
                 <h2><%- page.title %></h2>
-                <hr>
               </div>
-              <div class="archive-item archive-post mark">
-                <% if (site.tags.length){ %>
-                  <% site.tags.sort('path').each(function(tags){ %>
-                    <% if (tags.posts.length){ %>
-                      <a class="<%= tags.parent ? ' child' : ''%>" href="<%= url_for(tags.path) %>">
-                        <time><i class='fas fa-tag fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;<%= tags.name %></time>
-                        <span class="title">
-                          (<%- tags.posts.length %>)
-                        </span>
-                      </a>
-                    <% } %>
-                  <% }) %>
-                <% } %>
+              <div class="archive-item all-tags">
+                <% theme.sidebar.forEach(function(item){ %>
+                  <% let widget_name = item.widget ? item.widget : 'plain'; %>
+                  <% if (item.enable != false && widget_name == 'tagcloud'){ %>
+                    <%- tagcloud(site.tags, {
+                        min_font: 16,
+                        max_font: 32,
+                        color: false,
+                        start_color: item.start_color ? item.start_color : '#999',
+                        end_color: item.end_color ? item.end_color : '#666',
+                    }) %>
+                  <% } %>
+                <% }) %>
               </div>
               <br>
               <%- page.content %>

@@ -4,7 +4,7 @@
     <div class="article-entry" itemprop="articleBody">
       <%- post.excerpt || post.description %>
       <% if (post.readmore != false && post.path) { %>
-        <div class="readmore">
+        <div class="button readmore">
           <a href="<%- url_for(post.path) %>" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             <%- __('post.read_more') %>

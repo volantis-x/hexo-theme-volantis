@@ -8,9 +8,8 @@
             <section class="archive">
               <div class="archive-item archive-year mark">
                 <h2><%- page.title %></h2>
-                <hr>
               </div>
-              <div class="archive-item archive-post mark">
+              <div class="archive-item archive-post mark all-categories">
                 <% if (site.categories.length){ %>
                   <% site.categories.sort('path').each(function(category){ %>
                     <a class="<%= category.parent ? ' child' : ''%>" href="<%= url_for(category.path) %>">
