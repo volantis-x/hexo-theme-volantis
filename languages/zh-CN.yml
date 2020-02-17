@@ -32,11 +32,3 @@ symbol:
   colon: "："
   brackets_l: "（"
   brackets_r: "）"
-# 下面这是博主相关的
-navbar:
-  home: 主页
-  blogs: 博客
-  categories: 分类
-  tags: 标签
-  archives: 归档
-  friends: 朋友
