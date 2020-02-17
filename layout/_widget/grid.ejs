@@ -1,5 +1,5 @@
-<section class='widget <%- item.widget %>'>
-  <%- partial('header', {item: item, defIcon: '', defTitle: ''}) %>
+<section class='widget <%- item.class %>'>
+  <%- partial('header', {item: item}) %>
   <div class='content <%= theme.style %>'>
     <ul class="grid navgation">
       <% (item.rows||[]).forEach(function(row){ %>

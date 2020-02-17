@@ -1,0 +1,6 @@
+<section class='widget <%- item.class?item.class:'text' %>'>
+  <%- partial('header', {item: item}) %>
+  <div class='content <%= theme.style %>'>
+    <%- markdown(item.body) %>
+  </div>
+</section>

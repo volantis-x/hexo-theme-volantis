@@ -1,6 +1,6 @@
 <% if (site.categories.length){ %>
-  <section class='widget <%- item.widget %>'>
-    <%- partial('header', {item: item, defIcon: 'fas fa-folder-open', defTitle: __('sidebar.category')}) %>
+  <section class='widget <%- item.class %>'>
+    <%- partial('header', {item: item}) %>
     <div class='content <%= theme.style %>'>
       <ul class="entry">
         <% site.categories.sort('path').each(function(category){ %>

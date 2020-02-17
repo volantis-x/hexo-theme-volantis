@@ -1,44 +1,32 @@
 <aside class='l_side'>
-  <% if (theme.sidebar && theme.sidebar.length){ %>
+  <% if (page.sidebar) { %>
+    <% page.sidebar.forEach(function(widget_id){ %>
+      <% theme.widget.forEach(function(widget){ %>
+        <% if (widget.id == widget_id){ %>
+          <%- partial('../_widget/' + widget.class, {item: widget}) %>
+        <% } %>
+      <% }) %>
+    <% }) %>
+  <% } else { %>
     <%
-    let supportWidgets = ['author', 'category', 'list', 'music', 'tagcloud', 'toc', 'plain', 'related_posts', 'grid'];
+    var ids = [];
+    if(is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
+      var isPostList = true;
+    } else {
+      var isPostList = false;
+    }
+    if (isPostList) {
+      ids = theme.layout.posts.sidebar;
+    } else {
+      ids = theme.layout.article.sidebar;
+    }
     %>
-    <% if (page.sidebar) { %>
-      <% page.sidebar.forEach(function(name){ %>
-        <% theme.sidebar.forEach(function(item){ %>
-          <% let widget_name = item.widget ? item.widget : 'plain'; %>
-          <% if (item.enable != false && widget_name == name){ %>
-            <% if (supportWidgets.indexOf(widget_name) > -1){ %>
-              <%- partial('../_widget/' + item.widget, {item: item}) %>
-            <% } %>
-          <% } %>
-        <% }) %>
+    <% ids.forEach(function(widget_id){ %>
+      <% theme.widget.forEach(function(widget){ %>
+        <% if (widget.id == widget_id){ %>
+          <%- partial('../_widget/' + widget.class, {item: widget}) %>
+        <% } %>
       <% }) %>
-    <% } else { %>
-      <%
-      var names = [];
-      if(is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
-        var isPostList = true;
-      } else {
-        var isPostList = false;
-      }
-      if (isPostList) {
-        names = theme.layout.posts.sidebar;
-      } else {
-        names = theme.layout.article.sidebar;
-      }
-      %>
-      <% names.forEach(function(name){ %>
-        <% theme.sidebar.forEach(function(item){ %>
-          <% let widget_name = item.widget ? item.widget : 'plain'; %>
-          <% if (item.enable != false && widget_name == name){ %>
-            <% if (supportWidgets.indexOf(widget_name) > -1){ %>
-              <%- partial('../_widget/' + item.widget, {item: item}) %>
-            <% } %>
-          <% } %>
-        <% }) %>
-      <% }) %>
-    <% } %>
-
+    <% }) %>
   <% } %>
 </aside>

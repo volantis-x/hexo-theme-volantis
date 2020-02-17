@@ -1,8 +1,8 @@
 <% if(page.layout == 'post' && page.content && toc(page.content).length > 0){ %>
   <section class='widget toc-wrapper'>
-    <%- partial('header', {item: item, defIcon: 'fas fa-list', defTitle: __('sidebar.toc')}) %>
+    <%- partial('header', {item: item}) %>
     <div class='content <%= theme.style %>'>
-      <%- toc(page.content, {list_number: false}) %>
+      <%- toc(page.content, {list_number: item.list_number, max_depth: item.max_depth}) %>
     </div>
   </section>
 <% } %>

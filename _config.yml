@@ -4,7 +4,7 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.11/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.11/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/search.js
@@ -18,12 +18,12 @@ style: pure        # pure: 导航栏和标题栏背景是白色
 
 
 ############################### 服务开关 ###############################
-commentTyping: false # 文本框打字机特效
 scrollreveal: true  # 页面滚动显示动画
 nodewaves: true     # 按钮点击效果
 busuanzi: true      # 访问量统计
 # fastclick: true
-
+# commentTyping: true # 文本框打字机特效
+# wordcount: true # 文章字数统计、阅读时长，开启需要安装插件: npm i --save hexo-wordcount
 
 
 ############################### 默认值 ###############################
@@ -34,7 +34,7 @@ music:
   mode: circulation # random （随机） single （单曲） circulation （列表循环） order （列表）
   server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
   type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
-  id: 2615636388    # 歌曲/专辑/歌单 ID
+  id: 3175833810    # 歌曲/专辑/歌单 ID
   volume: 0.7       # 音量, 0~1
   autoplay: false   # 自动播放
 
@@ -45,14 +45,12 @@ avatar_placeholder: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avat
 date_format: 'YYYY-MM-DD' # 文章发布日期的格式
 updated_date_format: 'll' # 文章更新日期的格式
 
-# 文章字数统计、阅读时长，默认关闭，开启需要安装插件: npm i --save hexo-wordcount
-word_count: false
 
 # 幻灯片
 backstretch:
-  position: full  # cover: 封面背景   full: 整个网页背景
-  duration: 6000 # 持续时间（毫秒）
-  fade: 2500     # 渐变（毫秒）
+  position: background  # cover: 封面背景   background: 整个网页背景
+  duration: 6000        # 持续时间（毫秒）
+  fade: 2500            # 渐变（毫秒）
   images:
     - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
     - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
@@ -64,7 +62,7 @@ backstretch:
 ############################### 自定义 ###############################
 # page的封面
 cover:
-  scheme: search    # 后期将会提供多种封面方案
+  scheme: search    # 后期将会提供多种封面布局方案
   height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
   title: Demo
   # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
@@ -92,18 +90,22 @@ menu_desktop:
   - name: 示例
     icon: fas fa-grin
     url: /
+    target: _self
   - name: 分类
     icon: fas fa-folder-open
     url: blog/categories/
     rel: nofollow
+    target: _self
   - name: 标签
     icon: fas fa-hashtag
     url: blog/tags/
     rel: nofollow
+    target: _self
   - name: 归档
     icon: fas fa-archive
     url: blog/archives/
     rel: nofollow
+    target: _self
 
 # 手机端导航菜单（从右上角的按钮点击展开）
 menu_mobile:
@@ -130,39 +132,104 @@ menu_mobile:
     url: about/
     rel: nofollow
 
+
+# 布局
 layout:
   # 文章列表（主页、自定义的列表）布局
   posts:
     # 列表中每一篇文章的meta信息
-    meta: [title, author, date, categories, wordcount, top]
+    meta: [title, author, date, category, wordcount, top]
     # 列表类页面的侧边栏
-    sidebar: [author, plain, list, grid, category, tagcloud, music]
+    sidebar: [blogger, dao_hang, huan_ying, category, tagcloud, music, tui_jian]
   # 文章页面布局
   article:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
-    body: [article, comments]
+    body: [article, comments  ]
     # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
-    header: [title, author, date, categories, counter, wordcount, top]
+    header: [title, author, date, category, counter, wordcount, top]
     footer: [updated, tags, share]
     # 文章页面的侧边栏
-    sidebar: [author, plain, toc, grid, category, tagcloud, list, related_posts]
+    sidebar: [blogger, toc, category, tagcloud]
   # 其他的页面布局暂时等于文章列表
 
-
-# 侧边栏小部件配置
-sidebar:
-  - widget: author
+# 组件库配置
+widget:
+  # ---------------------------------------
+  # 博主信息小部件配置
+  - id: blogger
+    class: blogger
     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
-    jinrishici: true
+    # title:  标题
+    # subtitle: 副标题
+    jinrishici: true # 今日诗词。可以设置字符串，加载失败时会显示占位字符串。
     social: true
-  - widget: plain
+  # ---------------------------------------
+  # 目录小部件配置(仅在文章中有效)
+  - id: toc
+    class: toc
+    icon: fas fa-list
+    title: 本文目录
+    list_number: false # 是否显示章节
+    max_depth: 5 # 由于宽度有限，主题没有针对所有层级进行布局优化，建议文章最多分为：H2/H3/H4/H5四个层级
+  # ---------------------------------------
+  # 文章分类小部件配置
+  - id: category
+    class: category
+    icon: fas fa-folder-open
+    title: 文章分类
+    more: # 右上角的按钮
+      icon: fas fa-expand-arrows-alt
+      url: blog/categories/
+      rel: external nofollow noopener noreferrer
+      target: _self
+  # ---------------------------------------
+  # 标签云小部件配置
+  - id: tagcloud
+    class: tagcloud
+    icon: fas fa-tags
+    title: 热门标签
+    more: # 右上角的按钮
+      icon: fas fa-expand-arrows-alt
+      url: blog/tags/
+      rel: external nofollow noopener noreferrer
+      target: _self
+    min_font: 14
+    max_font: 24
+    color: true
+    start_color: '#999'
+    end_color: '#555'
+    order: -1
+  # ---------------------------------------
+  # 相关文章小部件配置
+  - id: related_posts
+    class: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
+    icon: fas fa-bookmark
+    title: 相关文章
+  # ---------------------------------------
+  # 音乐小部件配置
+  - id: music
+    class: music
+    icon: fas fa-compact-disc
+    title: "最近在听"
+    more: # 右上角的按钮
+      icon: far fa-heart
+      url: https://music.163.com/#/user/home?id=63035382
+      rel: external nofollow noopener noreferrer
+      target: _blank
+    server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
+    type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
+    mid: 3175833810     # 歌曲/专辑/歌单 ID
+  # ---------------------------------------
+  # 自定义组件，仿照如下写法
+  - id: huan_ying # 唯一标识，自己命名，建议全英文
+    class: text # 小部件类型，对应_widget文件夹中的文件名
     icon: fas fa-file
     title: 文本部件
     body: '这是一段支持markdown的文本<br>![](https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png)'
-  - widget: toc
-  - widget: grid
+  - id: dao_hang
+    class: grid
     icon: fas fa-map-signs
     title: 站内导航
     rows:
@@ -172,63 +239,55 @@ sidebar:
       - name: 文章归档
         icon: fas fa-archive
         url: blog/archives/
-        rel: nofollow
+        rel: external nofollow noopener noreferrer
+        target: _self
       - name: 开源项目
         icon: fas fa-code-branch
         url: projects/
       - name: 我的友链
         icon: fas fa-link
         url: friends/
-        rel: nofollow
+        rel: external nofollow noopener noreferrer
+        target: _self
       - name: 主题文档
         icon: fas fa-book
         url: https://xaoxuu.com/wiki/material-x/
-        rel: nofollow
+        rel: external nofollow noopener noreferrer
+        target: _blank
       - name: 关于小站
         icon: fas fa-info-circle
         url: about/
-        rel: nofollow
-  - widget: category
-    more:
-      icon: fas fa-expand-arrows-alt
-      url: blog/categories/
-      rel: nofollow
-  - widget: tagcloud
-    icon: fas fa-tags
-    more:
-      icon: fas fa-expand-arrows-alt
-      url: blog/tags/
-      rel: nofollow
-  # - widget: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
-  - widget: music
-    icon: fas fa-compact-disc
-    title: "最近在听"
-    more:
-      icon: far fa-heart
-      url: https://music.163.com/#/user/home?id=63035382
-      rel: external nofollow noopener noreferrer
-      target: _blank
-    server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
-    type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
-    id: 3175833810     # 歌曲/专辑/歌单 ID
-  - widget: list
+        rel: external nofollow noopener noreferrer
+        target: _self
+  - id: tui_jian
+    class: list
     icon: fas fa-thumbs-up
     title: 强烈推荐
     rows:
       - name: Hexo脚本（Mac）
         url: https://xaoxuu.com/wiki/hexo.sh/
+        rel: external nofollow noopener noreferrer
+        target: _blank
       - name: 图床脚本（Mac）
         url: https://xaoxuu.com/wiki/vim-cn.sh/
+        rel: external nofollow noopener noreferrer
+        target: _blank
       - name: 图片在线压缩
         url: https://yasuotu.com
+        rel: external nofollow noopener noreferrer
+        target: _blank
       - name: 生成Favicon
         url: https://realfavicongenerator.net
+        rel: external nofollow noopener noreferrer
+        target: _blank
       - name: 简历主题
         url: https://mxclub.github.io/resume/
+        rel: external nofollow noopener noreferrer
+        target: _blank
 
 
 
-# 社交信息
+# 社交信息配置
 social:
   - icon: fas fa-rss
     url: atom.xml
@@ -241,7 +300,6 @@ social:
 
 
 # 分享按钮
-# 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
 share:
   - id: qq
     name: QQ好友
@@ -249,18 +307,18 @@ share:
   - id: qzone
     name: QQ空间
     img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png
-  # - id: qrcode
+  # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
   #   name: 微信
   #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png
   - id: weibo
     name: 微博
     img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png
-  # - id: qrcode
+  # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
   #   name: QRcode
   #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png
 
 
-footer_post: '<center>这是文章页脚，可以设置打赏图片：<br><fancybox>![](https://img.vim-cn.com/4a/5f8244a7c6e1e069a781b84ed11008e7955e16.png)</fancybox></center>'
+footer_post: '<blockquote>这是文章页脚，可以放置版权说明以及打赏图片。</blockquote><center><fancybox><img src="https://img.vim-cn.com/4a/5f8244a7c6e1e069a781b84ed11008e7955e16.png" width=64px></fancybox></center>'
 # footer: '网页页脚文字，支持[markdown](/)'
 
 

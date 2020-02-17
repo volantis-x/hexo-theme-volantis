@@ -10,15 +10,14 @@
                 <h2><%- page.title %></h2>
               </div>
               <div class="archive-item all-tags">
-                <% theme.sidebar.forEach(function(item){ %>
-                  <% let widget_name = item.widget ? item.widget : 'plain'; %>
-                  <% if (item.enable != false && widget_name == 'tagcloud'){ %>
+                <% theme.widget.forEach(function(item){ %>
+                  <% if (item.class == 'tagcloud'){ %>
                     <%- tagcloud(site.tags, {
-                        min_font: 16,
-                        max_font: 32,
-                        color: false,
-                        start_color: item.start_color ? item.start_color : '#999',
-                        end_color: item.end_color ? item.end_color : '#666',
+                        min_font: item.min_font,
+                        max_font: item.max_font,
+                        color: item.color,
+                        start_color: item.start_color,
+                        end_color: item.end_color,
                     }) %>
                   <% } %>
                 <% }) %>

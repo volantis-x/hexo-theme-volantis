@@ -1,17 +1,17 @@
-<section class='widget <%- item.widget %>'>
+<section class='widget <%- item.class %>'>
   <div class='content <%= theme.style %>'>
     <% if(item.avatar) { %>
       <div class='avatar'>
         <img class='avatar' src='<%- url_for(item.avatar) %>'/>
       </div>
     <%} %>
-    <% if (item.title || item.body || item.jinrishici) { %>
+    <% if (item.title || item.subtitle || item.jinrishici) { %>
       <div class='text'>
         <% if (item.title){ %>
           <h2><%- item.title %></h2>
         <% } %>
-        <% if (item.body){ %>
-          <%- markdown(item.body) %>
+        <% if (item.subtitle){ %>
+          <%- markdown(item.subtitle) %>
         <% } %>
         <% if (item.jinrishici){ %>
           <p><span id="jinrishici-sentence"><%- item.jinrishici != true ? item.jinrishici : config.title %></span></p>

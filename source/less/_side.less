@@ -114,7 +114,7 @@
   }
 
 
-  &.author{
+  &.blogger{
     .enable-trans();
     .content{
       padding: 0;
@@ -148,6 +148,7 @@
         text-align: center;
         font-weight: bold;
         margin: @gap/2;
+        margin-top: @gap;
         @media(max-width: @on_pad){
           margin: @gap/2;
         }
@@ -193,12 +194,12 @@
     }
     @media(max-width: @on_pad){
       box-shadow: none;
-      background: @theme_background;
+      background: transparent;
       margin-top: 2*@gap;
     }
   }
 
-  &.plain{
+  &.text{
     .content{
       font-size: @fontsize_small;
       font-weight: bold;

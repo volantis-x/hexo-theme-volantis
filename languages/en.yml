@@ -1,12 +1,9 @@
-sidebar:
-  category: Categories
-  tagcloud: Hot Tags
-  toc: TOC
-  related_posts: Related Posts
 post:
   top: Top
   read_more: Read More
   sticky: Sticky
+  wordcount: '%s words'
+  duration: '%s min'
   comments: Comments
   comments_placeholder: Unable to load %s, please make sure your network can access.
   copy_button: Copy

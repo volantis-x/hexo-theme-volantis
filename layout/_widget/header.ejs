@@ -1,10 +1,6 @@
-<%
-  let icon = item.icon ? item.icon : defIcon;
-  let title = item.title ? item.title : defTitle;
-%>
 <header class='<%= theme.style %>'>
-  <div><i class="<%- icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%- title %></div>
-  <% if (item.widget == 'toc') { %>
+  <div><i class="<%- item.icon %> fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;<%- item.title %></div>
+  <% if (item.class == 'toc') { %>
     <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
   <% } else if(item.more && item.more.url) { %>
     <a class="rightBtn<%- item.more.animate ? ' ' + item.more.animate : '' %>"
