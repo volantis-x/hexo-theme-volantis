@@ -16,7 +16,7 @@
 	          </div>
 	      <%  } %>
 	          <div class="archive-item archive-post mark">
-	            <a href="<%= url_for(post.path) %>">
+	            <a href="<%= url_for(post.link || post.path) %>">
 	              <time><%= date(post.date, 'MM-DD') %></time>
 	              <span class="title">
 	                <% if(post.title){ %>

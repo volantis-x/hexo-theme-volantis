@@ -3,9 +3,9 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       <%- post.excerpt || post.description %>
-      <% if (post.readmore != false && post.path) { %>
+      <% if (post.readmore != false && (post.link || post.path)) { %>
         <div class="button readmore">
-          <a href="<%- url_for(post.path) %>" class="flat-box">
+          <a href="<%- url_for(post.link || post.path) %>" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             <%- __('post.read_more') %>
           </a>

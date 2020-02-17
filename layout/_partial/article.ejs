@@ -5,6 +5,9 @@
       <%- partial('meta', {post: post, position: 'header'}) %>
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
+          <% post.photos.forEach(function(photo){ %>
+            <fancybox><img src='<%- url_for(photo) %>'/></fancybox>
+          <% }) %>
           <%- post.content %>
           <% if(theme.footer_post && page.layout == 'post'){ %>
             <br>

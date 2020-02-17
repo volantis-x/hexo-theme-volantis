@@ -3,7 +3,7 @@ post:
   read_more: 閱讀全文
   sticky: 置頂
   wordcount: '字數：%s字'
-  duration: '時長：%s分鐘'
+  duration: '時長：%s分鐘'
   comments: 評論
   comments_placeholder: 無法加載%s評論系統，請確保您的網絡能夠正常訪問。
   copy_button: 複製
