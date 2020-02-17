@@ -6,7 +6,7 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           <%- post.content %>
-          <% if(theme.footer_post){ %>
+          <% if(theme.footer_post && page.layout == 'post'){ %>
             <br>
             <%- markdown(theme.footer_post) %>
           <% } %>
