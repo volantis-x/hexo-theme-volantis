@@ -1,0 +1,15 @@
+<section class='widget <%- item.class %>'>
+  <div class='content <%= theme.style %>'>
+    <blockquote>
+      <% (item.content||[]).forEach(function(row){ %>
+        <p>
+          <% if (row == 'permalink') { %>
+            <%- item.permalink %><a href=<%- page.permalink %>><%- page.permalink %><a>
+          <% } else { %>
+            <%- row %>
+          <% } %>
+        </p>
+      <% }) %>
+    </blockquote>
+  </div>
+</section>

@@ -5,9 +5,9 @@
 }
 var topMetas = (theme.meta && theme.meta.header) || [];
 if (isPostList) {
-  topMetas = theme.layout.posts.meta || [];
+  topMetas = theme.layout.on_list.meta || [];
 } else {
-  topMetas = theme.layout.article.header || [];
+  topMetas = theme.layout.on_page.meta.header || [];
 }
 if (post.meta && (post.meta.header !== undefined && post.meta.header !== null)) {
   if (post.meta.header.length) {
@@ -20,7 +20,7 @@ var bottomMetas = (theme.meta && theme.meta.footer) || [];
 if (isPostList) {
   bottomMetas = [];
 } else {
-  bottomMetas = theme.layout.article.footer || [];
+  bottomMetas = theme.layout.on_page.meta.footer || [];
 }
 if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) {
   if (post.meta.footer.length) {

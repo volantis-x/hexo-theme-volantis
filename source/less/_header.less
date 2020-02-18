@@ -19,7 +19,7 @@
     margin: auto;
     .enable-trans();
     a.logo {
-      color: @color_text_header;
+      color: @color_text_in_header;
     }
   }
   &.no_sidebar{
@@ -240,10 +240,13 @@
     box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
     // box-shadow: none;
     // background: transparent;
-    // .wrapper{
-    //   background: @theme_cardbg;
-    //   box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
-    // }
+    .wrapper{
+      a.logo {
+        color: @color_text_header;
+      }
+      // background: @theme_cardbg;
+      // box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
+    }
     .menu{
       ul > li > a{
         .enable-trans();

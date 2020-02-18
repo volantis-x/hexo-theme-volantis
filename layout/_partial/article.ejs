@@ -1,4 +1,4 @@
-<% var sections = page.body ? page.body : theme.layout.article.body; %>
+<% var sections = page.body ? page.body : theme.layout.on_page.body; %>
 <% sections.forEach(function(widget_id){ %>
   <% if (widget_id == 'article') { %>
     <article id="<%= post.layout %>" class="post white-box article-type-<%= post.layout %>" itemscope itemprop="blogPost">
@@ -9,9 +9,15 @@
             <fancybox><img src='<%- url_for(photo) %>'/></fancybox>
           <% }) %>
           <%- post.content %>
-          <% if(theme.footer_post && page.layout == 'post'){ %>
+          <% if(theme.layout.on_page.footer && (page.layout == 'post')){ %>
             <br>
-            <%- markdown(theme.footer_post) %>
+            <% (theme.layout.on_page.footer||[]).forEach(function(widget_id){ %>
+              <% theme.widget.forEach(function(widget){ %>
+                <% if (widget.id == widget_id){ %>
+                  <%- partial('../_widget/' + widget.class, {item: widget}) %>
+                <% } %>
+              <% }) %>
+            <% }) %>
           <% } %>
         </div>
         <% if(post.layout == 'post'){ %>

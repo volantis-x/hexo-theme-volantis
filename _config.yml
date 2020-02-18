@@ -136,22 +136,25 @@ menu_mobile:
 # 布局
 layout:
   # 文章列表（主页、自定义的列表）布局
-  posts:
+  on_list:
     # 列表中每一篇文章的meta信息
     meta: [title, author, date, category, wordcount, top]
     # 列表类页面的侧边栏
-    sidebar: [blogger, dao_hang, huan_ying, category, tagcloud, music, tui_jian]
+    sidebar: [blogger, dao_hang, huan_ying, category, tagcloud, music, tui_jian, donate]
   # 文章页面布局
-  article:
+  on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
     body: [article, comments]
     # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
-    header: [title, author, date, category, counter, wordcount, top]
-    footer: [updated, tags, share]
+    meta:
+      header: [title, author, date, category, counter, wordcount, top]
+      footer: [updated, tags, share]
+    # 文章页脚，自动在每一篇文章末尾添加
+    footer: [copyright, donate]
     # 文章页面的侧边栏
-    sidebar: [blogger, toc, category, tagcloud]
+    sidebar: [blogger, toc, category, tagcloud, donate]
   # 其他的页面布局暂时等于文章列表
 
 # 组件库配置
@@ -221,6 +224,28 @@ widget:
     server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
     type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
     mid: 3175833810     # 歌曲/专辑/歌单 ID
+  # ---------------------------------------
+  # 版权说明小部件（仅用于文章中）
+  - id: copyright
+    class: copyright
+    permalink: '本文永久链接是：' # 显示文章永久链接
+    content:
+      - '这是文章页脚，可以放置版权说明以及打赏图片。<br>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
+      - ''
+      - permalink
+  # ---------------------------------------
+  # 捐赠小部件（可用于文章中和侧边栏）
+  - id: donate
+    class: donate
+    icon: fas fa-donate
+    title: 打赏
+    height: 64px
+    # fancybox: true # 是否允许点击放大
+    images:
+      - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
+      # - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
+      # - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
+      # - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
   # ---------------------------------------
   # 自定义组件，仿照如下写法
   - id: huan_ying # 唯一标识，自己命名，建议全英文
@@ -319,7 +344,7 @@ share:
 
 
 footer_post: '<blockquote>这是文章页脚，可以放置版权说明以及打赏图片。</blockquote><center><fancybox><img src="https://img.vim-cn.com/4a/5f8244a7c6e1e069a781b84ed11008e7955e16.png" width=64px></fancybox></center>'
-copyright: 'Copyright ©2017-2020 Mr. X'
+copyright: 'Copyright © 2017-2020 Mr. X'
 
 ############################### 评论系统 ###############################
 # disqus_shortname: 要使用哪个请复制到根目录配置文件！
