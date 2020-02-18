@@ -1,21 +1,8 @@
-<%
-var needDisplay = true;
-if (page.music && page.music.autoplay) {
-  needDisplay = false;
-}
-if (page.widget && page.widget.music == false) {
-  needDisplay = false;
-}
-%>
-
-<% if (theme.music && theme.music.enable == true && needDisplay == true) { %>
+<% if (theme.aplayer == true) { %>
   <section class='widget <%- item.class %>'>
     <%- partial('header', {item: item}) %>
     <div class='content <%= theme.style %>'>
-      <%- partial('../_third-party/aplayer',
-      {aplayer_theme: item.color, aplayer_mini: false, aplayer_mode: item.mode,
-      aplayer_server: item.server, aplayer_type: item.type, aplayer_id: item.mid,
-      aplayer_volume: item.volume, aplayer_autoplay: item.autoplay?item.autoplay:false }) %>
+      <%- partial('../_third-party/aplayer', {post: null}) %>
     </div>
   </section>
 <% } %>

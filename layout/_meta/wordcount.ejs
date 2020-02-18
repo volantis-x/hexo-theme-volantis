@@ -1,13 +1,13 @@
 <% if (theme.wordcount) { %>
   <div class="new-meta-item wordcount">
     <a class='notlink'>
-      <i class="fas fa-keyboard" aria-hidden="true"></i>
+      <i class="<%- theme.meta.wordcount.icon_wordcount %>" aria-hidden="true"></i>
       <p><%- __('post.wordcount', wordcount(post.content))%></p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
-      <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+      <i class="<%- theme.meta.wordcount.icon_duration %>" aria-hidden="true"></i>
       <p><%- __('post.duration', min2read(post.content))%></p>
     </a>
   </div>

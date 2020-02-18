@@ -59,6 +59,10 @@
   <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <% } %>
 
+  <% if (theme.aplayer == true) { %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  <% } %>
+
   <% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.css && theme.info.cdn.css.style) { %>
     <%- css(theme.info.cdn.css.style) %>
   <% } else { %>

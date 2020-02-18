@@ -34,10 +34,7 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
 <% if (position == 'header') { %>
   <section class='meta'>
     <% if (post.music && post.music.enable != false) { %>
-      <%- partial('../_third-party/aplayer',
-      {aplayer_theme: '', aplayer_mini: true, aplayer_mode: 'circulation',
-      aplayer_server: post.music.server, aplayer_type: post.music.type, aplayer_id: post.music.id,
-      aplayer_volume: post.music.volume?post.music.volume:'0.7', aplayer_autoplay: post.music.autoplay?true:false }) %>
+      <%- partial('../_third-party/aplayer', {post: post}) %>
     <% } %>
     <% if(post.thumbnail && post.thumbnail.length){ %>
       <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'><img class='thumbnail' src='<%- post.thumbnail %>'></a>

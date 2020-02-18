@@ -1,6 +1,6 @@
 <div class="new-meta-item share -mob-share-list">
   <div class="-mob-share-list share-body">
-    <% (theme.share||[]).forEach(function(item){ %>
+    <% (theme.meta.share||[]).forEach(function(item){ %>
       <% if (item.id == 'qrcode'){ %>
         <a class='qrcode' rel="external nofollow noopener noreferrer" href='<%- qrcode(url) %>'>
         <% if (item.img){ %>

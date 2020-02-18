@@ -5,7 +5,7 @@
         <% if (post.author.avatar) { %>
           <img src="<%- post.author.avatar %>">
         <% } else { %>
-          <i class="fas fa-user" aria-hidden="true"></i>
+          <i class="<%- theme.meta.author.icon %>" aria-hidden="true"></i>
         <% } %>
         <p><%- post.author.name %></p>
       </a>
@@ -14,7 +14,7 @@
         <% if (config.avatar) { %>
           <img src="<%- config.avatar %>">
         <% } else { %>
-          <i class="fas fa-user" aria-hidden="true"></i>
+          <i class="<%- theme.meta.author.icon %>" aria-hidden="true"></i>
         <% } %>
         <p><%- config.author %></p>
       </a>
