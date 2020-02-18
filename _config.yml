@@ -52,10 +52,10 @@ backstretch:
   duration: 6000        # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
   images:
-    - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
-    - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
-    - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
-    - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
+    # - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
+    # - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
+    # - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
+    # - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
 
 
 
@@ -201,7 +201,6 @@ widget:
     color: true
     start_color: '#999'
     end_color: '#555'
-    order: -1
   # ---------------------------------------
   # 相关文章小部件配置
   - id: related_posts
@@ -320,8 +319,8 @@ share:
 
 
 footer_post: '<blockquote>这是文章页脚，可以放置版权说明以及打赏图片。</blockquote><center><fancybox><img src="https://img.vim-cn.com/4a/5f8244a7c6e1e069a781b84ed11008e7955e16.png" width=64px></fancybox></center>'
-# footer: '网页页脚文字，支持[markdown](/)'
-
+footer: '网页页脚文字，支持[markdown](/)'
+copyright: 'Copyright ©2017-2020 Mr. X'
 
 ############################### 评论系统 ###############################
 # disqus_shortname: 要使用哪个请复制到根目录配置文件！

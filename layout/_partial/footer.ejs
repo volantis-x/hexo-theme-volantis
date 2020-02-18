@@ -1,10 +1,4 @@
 <footer id="footer" class="clearfix">
-  <% if (theme.footer) { %>
-    <div class="footer">
-      <%- markdown(theme.footer) %>
-    </div>
-    <br>
-  <%}%>
   <% if (theme.social) { %>
     <div class="social-wrapper">
       <% (theme.social||[]).forEach(function(value){ %>
@@ -32,5 +26,10 @@
     <% } %>
     <%- __('symbol.period') %>
   </div>
+  <% if (theme.copyright) { %>
+    <div class='copyright'>
+    <%- markdown(theme.copyright) %>
+    </div>
+  <%}%>
 </footer>
 <script>setLoadingBarProgress(80);</script>
