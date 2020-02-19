@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Suggest an idea for this project
+about: 提出一个建议
 title: ''
 labels: 建议
 assignees: ''
