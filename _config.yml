@@ -289,7 +289,10 @@ widget:
     class: text # 小部件类型，对应_widget文件夹中的文件名
     icon: fas fa-file
     title: 文本部件
-    body: '这是一段支持markdown的文本<br>![](https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png)'
+    content:
+      - '这是一段支持markdown的文本'
+      - '![](https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png)'
+      - haha
   - id: dao_hang
     class: grid
     icon: fas fa-map-signs

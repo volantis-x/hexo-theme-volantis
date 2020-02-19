@@ -3,7 +3,7 @@
 } else {
   var isPostList = false;
 }
-var topMetas = (theme.meta && theme.meta.header) || [];
+var topMetas;
 if (isPostList) {
   topMetas = theme.layout.on_list.meta || [];
 } else {
@@ -16,7 +16,7 @@ if (post.meta && (post.meta.header !== undefined && post.meta.header !== null)) 
     topMetas = [];
   }
 }
-var bottomMetas = (theme.meta && theme.meta.footer) || [];
+var bottomMetas;
 if (isPostList) {
   bottomMetas = [];
 } else {
