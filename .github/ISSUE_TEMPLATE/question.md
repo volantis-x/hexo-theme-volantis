@@ -1,6 +1,9 @@
 ---
-name: 使用遇到问题
-about: 使用遇到问题请先认真阅读文档，仍然无法解决可在文档页面下方留言。
+name: Question
+about: Create a report to help us improve
+title: "[求助]"
+labels: 疑问
+assignees: ''
 
 ---
 
