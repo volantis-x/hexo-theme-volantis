@@ -39,13 +39,19 @@
   }
   p {
     // margin: 20px 0px;
-    margin-top: .5em;
-    margin-bottom: 1em;
+    margin-top: .6em;
+    margin-bottom: .6em;
     // text-align: justify;
     strong{
       color: @color_text_main;
       // padding-left: 2px;
       // padding-right: 2px;
+    }
+    u{
+      color: @color_md_deep_orange;
+    }
+    s{
+      color: fade(@color_text_main, 70%);
     }
     max-width: 100%;
     overflow: auto;
@@ -62,7 +68,7 @@
     list-style: initial;
     padding-left: 8px;
     margin-left: @gap;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
     &.task-list{
       padding-left: 0;
       margin-left: 4px;
@@ -241,8 +247,8 @@
     width: 100%;
     font-size: @fontsize_small;
 
-    margin: 1em 0;
-    padding: @gap;
+    margin: .6em 0;
+    padding: .7em 1.2em;
 
     .enable-trans();
     footer {
@@ -271,10 +277,10 @@
   code {
     font-family: @fontfamily_code;
     padding: 3px 3px 0px 3px;
-    margin: 0px 2px;
+    margin: 0px 1px;
     vertical-align: center;
     border-radius: 2px;
-    border: 1px solid fade(@color_bg_code, 50%);
+    border: 1px solid fade(@color_bg_code, 20%);
     font-size: @fontsize_base * .8;
     background: @color_bg_code;
     @media(max-width: @on_phone){
@@ -437,8 +443,8 @@
 .highlight {
   position: relative;
   width: 100%;
-  margin-top: 1em;
-  margin-bottom: 1.2em;
+  margin-top: .7em;
+  margin-bottom: .7em;
   overflow: auto;
   display: block;
   background: @color_bg_code_block;
