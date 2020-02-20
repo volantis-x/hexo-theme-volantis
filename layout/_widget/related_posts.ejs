@@ -1,5 +1,5 @@
 <% if(page.layout == 'post' && page.content && page.path != undefined){ %>
-  <section class='widget <%- item.class %>'>
+  <section class='widget <%- theme.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
     <%- partial('header', {item: item}) %>
     <div class="content <%= theme.style %>">
       <%- popular_posts( { maxCount: 10 , ulClass: 'popular-posts' , PPMixingRate: 0.2 } , page ) %>

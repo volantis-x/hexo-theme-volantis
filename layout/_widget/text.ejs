@@ -1,4 +1,4 @@
-<section class='widget <%- item.class?item.class:'text' %>'>
+<section class='widget <%- theme.blur.widget ? 'widget-blur' : '' %> <%- item.class?item.class:'text' %>'>
   <%- partial('header', {item: item}) %>
   <div class='content <%= theme.style %>'>
     <% (item.content||[]).forEach(function(row){ %>

@@ -1,4 +1,4 @@
-<section class='widget <%- item.class %>'>
+<section class='widget <%- theme.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
   <div class='content <%= theme.style %>'>
     <blockquote>
       <% (item.content||[]).forEach(function(row){ %>

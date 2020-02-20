@@ -1,5 +1,5 @@
 <% if (theme.aplayer == true) { %>
-  <section class='widget <%- item.class %>'>
+  <section class='widget <%- theme.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
     <%- partial('header', {item: item}) %>
     <div class='content <%= theme.style %>'>
       <%- partial('../_third-party/aplayer', {post: null}) %>

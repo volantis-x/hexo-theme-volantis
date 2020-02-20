@@ -71,7 +71,11 @@
   }
    %>
   <% if (imgs != undefined && theme.backstretch.position != undefined){ %>
-    <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/backstretch.min.js"></script>
+    <% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.backstretch) { %>
+      <%- js(theme.info.cdn.js.backstretch) %>
+    <% } else { %>
+      <%- js(['js/backstretch.min.js']) %>
+    <% } %>
     <script type="text/javascript">
       $(function(){
         if ('<%- posi %>') {

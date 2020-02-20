@@ -1,4 +1,4 @@
-<section class='widget <%- item.class %>'>
+<section class='widget <%- theme.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
   <%- partial('header', {item: item}) %>
   <div class='content <%= theme.style %>'>
     <ul class="entry">

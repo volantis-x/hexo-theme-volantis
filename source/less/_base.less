@@ -47,7 +47,7 @@ fancybox{
   justify-content: center;
 }
 .backstretch {
-  // opacity: .75;
+
 }
 .cover-wrapper{
   padding-bottom: 2px;
@@ -149,12 +149,13 @@ fancybox{
 
     }
     &.half{
-      height: ~"calc(60vh - @{gap} - @{height_navbar})";
+      height: ~"calc(60vh - @{gap} - @{height_navbar} + 6*@{gap})";
+      margin-bottom: ~"calc(-6*@{gap})";
       .title, .logo{
         margin-top: ~"calc(22vh - 4*@{gap})";
       }
       @media(max-width: @on_phone){
-        height: ~"calc(45vh - @{gap} - @{height_navbar})";
+        height: ~"calc(45vh - @{gap} - @{height_navbar} + 6*@{gap})";
         .title, .logo{
           margin-top: ~"calc(24vh - 6*@{gap})";
         }

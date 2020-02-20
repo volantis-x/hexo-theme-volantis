@@ -39,3 +39,19 @@
 // 正文文字颜色
 @color_text_main: @dark;
 // @color_text_main: white; // 暗色主题
+
+
+// 导航栏毛玻璃效果
+.nav-blur {
+  background: fade(@color_bg_navbar, 75%);
+  &.pure {
+    background: fade(@theme_cardbg, 75%);
+  }
+  backdrop-filter: blur(60px);
+}
+
+// 侧边栏毛玻璃效果
+.widget-blur {
+  background: fade(@theme_cardbg, 75%);
+  backdrop-filter: blur(60px);
+}
