@@ -34,7 +34,7 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
 <% if (position == 'header') { %>
   <section class='meta'>
     <% if (post.music && post.music.enable != false) { %>
-      <%- partial('../_third-party/aplayer', {post: post}) %>
+      <%- partial('../_third-party/aplayer', {post: post, where: 'meta'}) %>
     <% } %>
     <% if(post.thumbnail && post.thumbnail.length){ %>
       <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'><img class='thumbnail' src='<%- post.thumbnail %>'></a>

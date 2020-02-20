@@ -1,34 +1,31 @@
 <%
-let music;
-if (music == undefined) {
-  theme.widget.forEach(function(widget){
-    if (widget.class == 'music'){
-      music = widget;
-    }
-  })
-}
+let aplayer = theme.aplayer;
 %>
-<% if (theme.aplayer == true) { %>
+<% if (theme.aplayer.enable == true) { %>
   <% if (post && post.music) { %>
     <meting-js
       mini='true'
-      autoplay='<%- (post.music && post.music.autoplay) || music.autoplay %>'
-      volume='<%- music.volume %>'
-      loop='<%- music.loop %>'
-      server='<%- (post.music && post.music.server) || music.server %>'
-      type='<%- post.music && post.music.type || music.type %>'
-      id='<%- post.music && post.music.id || music.mid %>'>
+      autoplay='<%- post.music.autoplay || aplayer.autoplay %>'
+      volume='<%- post.music.volume || aplayer.volume %>'
+      loop='<%- post.music.loop || aplayer.loop %>'
+      order='<%- post.music.order || aplayer.order %>'
+      server='<%- post.music.server || aplayer.server %>'
+      type='<%- post.music.type || aplayer.type %>'
+      id='<%- post.music.id || aplayer.id %>'>
     </meting-js>
   <% } else { %>
     <meting-js
-      theme='<%- music.theme %>'
-      autoplay='<%- music.autoplay %>'
-      volume='<%- music.volume %>'
-      loop='<%- music.loop %>'
-      order='<%- music.order %>'
-      server='<%- music.server %>'
-      type='<%- music.type %>'
-      id='<%- music.mid %>'>
+      theme='<%- aplayer.theme %>'
+      autoplay='<%- aplayer.autoplay %>'
+      volume='<%- aplayer.volume %>'
+      loop='<%- aplayer.loop %>'
+      order='<%- aplayer.order %>'
+      fixed='<%- aplayer.fixed %>'
+      list-max-height='<%- aplayer.list_max_height %>'
+      server='<%- aplayer.server %>'
+      type='<%- aplayer.type %>'
+      id='<%- aplayer.id %>'
+      list-folded='<%- aplayer.list_folded %>'>
     </meting-js>
   <% } %>
 <% } %>

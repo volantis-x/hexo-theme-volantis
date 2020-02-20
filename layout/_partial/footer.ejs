@@ -13,6 +13,10 @@
     </div>
   <%}%>
   <br>
+  <div class="aplayer-container">
+    <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
+  </div>
+  <br>
   <div><%- markdown(__('footer.license')) %></div>
   <div>
     <%- __('footer.use') %>

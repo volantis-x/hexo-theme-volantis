@@ -6,16 +6,21 @@
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
       <a class="logo flat-box" target="_self" href='<%- url_for("/") %>' >
-        <% if (config.logo) { %>
-          <img class='logo' src='<%- url_for(config.logo) %>'/>
+        <% if (theme.navbar.logo.img) { %>
+          <img class='logo' src='<%- theme.navbar.logo.img %>'/>
         <% } else { %>
-          <%- config.title %>
+          <% if (theme.navbar.logo.icon) { %>
+            <i class='<%- theme.navbar.logo.icon %>'></i>
+          <% } %>
+          <% if (theme.navbar.logo.title) { %>
+            <%- theme.navbar.logo.title %>
+          <% } %>
         <% } %>
       </a>
 			<div class='menu navgation'>
 				<ul class='h-list'>
-          <% if (theme.menu_desktop) { %>
-  					<% (theme.menu_desktop || []).forEach(function(value){ %>
+          <% if (theme.navbar.menu.on_desktop) { %>
+  					<% (theme.navbar.menu.on_desktop || []).forEach(function(value){ %>
   						<li>
 								<a class="nav flat-box" href="<%= url_for(value.url) %>"
                   <% if (value.rel) { %>
@@ -33,14 +38,13 @@
 				</ul>
 			</div>
 
-			<% if (theme.search.enable === true) { %>
-				<div class="m_search">
-					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="<%- __('search.placeholder') %>" />
-						<i class="icon fas fa-search fa-fw"></i>
-					</form>
-				</div>
-			<% } %>
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="<%- __('search.placeholder') %>" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+
 			<ul class='switcher h-list'>
 				<% if (theme.search.enable === true) { %>
 					<li class='s-search'><a class="fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
@@ -64,8 +68,8 @@
     <header>
 		<nav class="menu navgation">
       <ul>
-        <% if (theme.menu_mobile) { %>
-          <% (theme.menu_mobile || []).forEach(function(value){ %>
+        <% if (theme.navbar.menu.on_mobile) { %>
+          <% (theme.navbar.menu.on_mobile || []).forEach(function(value){ %>
             <li>
 							<a class="nav flat-box" href="<%= url_for(value.url) %>"
                 <% if (value.rel) { %>

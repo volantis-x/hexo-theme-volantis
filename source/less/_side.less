@@ -349,11 +349,6 @@
       &.pure{
         padding-top: @gap/4; // 适合白色导航栏背景
       }
-      .aplayer{
-        border-radius: 4px;
-        color: #666;
-        font-family: @fontfamily_base;
-      }
     }
   }
 
@@ -392,4 +387,21 @@
     }
   }
 
+}
+
+.aplayer-container{
+  display: flex;
+  justify-content: center;
+}
+.aplayer{
+  max-width: 500px;
+  border-radius: 4px;
+  color: @color_text_main;
+  font-family: @fontfamily_base;
+  .aplayer-list{
+    text-align: left;
+  }
+  @media(max-width: @on_phone){
+    border-radius: @border_radius;
+  }
 }

@@ -4,7 +4,7 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.20/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.20/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/search.js
@@ -27,7 +27,6 @@ blur:
 scrollreveal: true  # 页面滚动显示动画
 nodewaves: true     # 按钮点击效果
 busuanzi: true      # 访问量统计
-aplayer: true       # 启用音乐播放器
 # fastclick: true
 commentTyping: true # 文本框打字机特效
 # wordcount: true   # 文章字数统计、阅读时长，开启需要安装插件: npm i --save hexo-wordcount
@@ -51,7 +50,7 @@ backstretch:
 cover:
   scheme: search    # 后期将会提供多种封面布局方案
   height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
-  title: Demo
+  title: Live Demo
   # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
   # search_placeholder: '搜索'
   # 主页封面菜单
@@ -72,52 +71,64 @@ cover:
       rel: nofollow
 
 
-# 桌面端导航栏菜单
-menu_desktop:
-  - name: 示例
-    icon: fas fa-grin
-    url: /
-    target: _self
-  - name: 分类
-    icon: fas fa-folder-open
-    url: blog/categories/
-    rel: nofollow
-    target: _self
-  - name: 标签
-    icon: fas fa-hashtag
-    url: blog/tags/
-    rel: nofollow
-    target: _self
-  - name: 归档
-    icon: fas fa-archive
-    url: blog/archives/
-    rel: nofollow
-    target: _self
+# 导航栏
+navbar:
+  # 左侧logo区
+  logo:
+    # 显示图片，使用图片时将不会显示icon和title
+    img: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.7/apple-touch-icon.png
+    # 显示图标
+    icon: fas fa-home
+    # 显示标题
+    title: XAOXUU
+  # logo后面的导航菜单
+  menu:
+    # 在桌面端显示的导航菜单
+    on_desktop:
+      - name: 近期
+        icon: fas fa-hourglass-half
+        url: /
+        target: _self
+      - name: 分类
+        icon: fas fa-folder-open
+        url: blog/categories/
+        rel: nofollow
+        target: _self
+      - name: 标签
+        icon: fas fa-hashtag
+        url: blog/tags/
+        rel: nofollow
+        target: _self
+      - name: 归档
+        icon: fas fa-archive
+        url: blog/archives/
+        rel: nofollow
+        target: _self
+    # 手机端导航菜单（从右上角的按钮点击展开）
+    on_mobile:
+      - name: 近期文章
+        icon: fas fa-clock
+        url: /
+      - name: 文章归档
+        icon: fas fa-archive
+        url: blog/archives/
+        rel: nofollow
+      - name: 开源项目
+        icon: fas fa-code-branch
+        url: projects/
+      - name: 我的友链
+        icon: fas fa-link
+        url: friends/
+        rel: nofollow
+      - name: 主题文档
+        icon: fas fa-book
+        url: https://xaoxuu.com/wiki/material-x/
+        rel: nofollow
+      - name: 关于小站
+        icon: fas fa-info-circle
+        url: about/
+        rel: nofollow
 
-# 手机端导航菜单（从右上角的按钮点击展开）
-menu_mobile:
-  - name: 近期文章
-    icon: fas fa-clock
-    url: /
-  - name: 文章归档
-    icon: fas fa-archive
-    url: blog/archives/
-    rel: nofollow
-  - name: 开源项目
-    icon: fas fa-code-branch
-    url: projects/
-  - name: 我的友链
-    icon: fas fa-link
-    url: friends/
-    rel: nofollow
-  - name: 主题文档
-    icon: fas fa-book
-    url: https://xaoxuu.com/wiki/material-x/
-    rel: nofollow
-  - name: 关于小站
-    icon: fas fa-info-circle
-    url: about/
-    rel: nofollow
 
 
 # 布局
@@ -249,25 +260,6 @@ widget:
     icon: fas fa-bookmark
     title: 相关文章
   # ---------------------------------------
-  # 音乐小部件配置
-  - id: music
-    class: music
-    icon: fas fa-compact-disc
-    title: "最近在听"
-    theme: '#1BCDFC'  # 主题色
-    autoplay: true    # 自动播放
-    server: netease   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
-    order: list       # list (列表) 'random'（随机）
-    loop: all         # 'all', 'one', 'none'
-    type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）artist
-    mid: 3175833810   # 歌曲/专辑/歌单 ID/搜索关键词
-    volume: 0.7       # 音量, 0~1
-    more: # 右上角的按钮
-      icon: far fa-heart
-      url: https://music.163.com/#/user/home?id=63035382
-      rel: external nofollow noopener noreferrer
-      target: _blank
-  # ---------------------------------------
   # 版权说明小部件（仅用于文章中）
   - id: copyright
     class: copyright
@@ -372,6 +364,25 @@ social:
   - icon: fas fa-headphones-alt
     url: https://music.163.com/#/user/home?id=63035382
 
+# APlayer配置 https://github.com/metowolf/MetingJS
+aplayer:
+  # 是否启用，注释此项则不加载服务
+  enable: true
+  # 显示在哪里（导航栏、网页页脚）
+  display: footer   # header, footer
+  # 必选参数
+  server: netease   # netease, tencent, kugou, xiami, baidu
+  type: playlist    # song, playlist, album, search, artist
+  id: 3175833810    # song id / playlist id / album id / search keyword
+  # 可选参数
+  fixed: false      # enable fixed mode
+  theme: '#1BCDFC'  # main color
+  autoplay: false   # audio autoplay
+  order: list       # player play order, values: 'list', 'random'
+  loop: all         # player loop play, values: 'all', 'one', 'none'
+  volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+  list_max_height: 340px # list max height
+  list_folded: true
 
 ############################### 需要复制到根目录配置文件中 ###############################
 # 请复制到根目录配置文件！
