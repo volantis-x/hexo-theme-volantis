@@ -139,7 +139,7 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, date, category, wordcount, top]
     # 列表类页面的侧边栏
-    sidebar: [blogger, dao_hang, huan_ying, category, tagcloud, music, tui_jian, donate]
+    sidebar: [blogger, dao_hang, huan_ying, category, tagcloud, tui_jian, donate]
   # 文章页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
@@ -153,7 +153,7 @@ layout:
     # 文章页脚，自动在每一篇文章末尾添加
     footer: [copyright, donate]
     # 文章页面的侧边栏
-    sidebar: [blogger, toc, category, tagcloud, music, donate]
+    sidebar: [blogger, toc, category, tagcloud, donate]
   # 其他的页面布局暂时等于文章列表
 
 
