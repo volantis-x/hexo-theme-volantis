@@ -1,5 +1,5 @@
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
-  <article id="<%= page.layout %>" class="post white-box article-type-<%= page.layout %>" itemscope itemprop="blogPost">
+  <article id="<%= page.layout %>" class="post white-box <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur.body ? 'body-blur' : '' %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
     <%- partial('_partial/meta',{post:page, position:'header'}) %>
       <section class="article typo l_friends">
         <% if (page.links){ %>

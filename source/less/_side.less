@@ -16,23 +16,12 @@
 
 .widget{
   z-index: 0;
-  &:extend(.z-depth-main);
   background: @theme_cardbg;
   margin-top: @gap;
   font-family: @fontfamily_base;
   font-size: @fontsize_base;
-
   border-radius: @border_radius;
-  .enable-trans();
-  &:hover {
-    box-shadow: @boxshadow_card_raised;
-  }
-  &:active {
-    box-shadow: @boxshadow_card_normal;
-  }
-
   width: 100%;
-
   @media(max-width: @on_phone) {
     width: ~"calc(100% - 2 * @{gap})";
     margin: @gap @gap 0 @gap;

@@ -1,4 +1,4 @@
-<header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%- theme.blur.nav ? 'nav-blur' : '' %>">
+<header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%- theme.style.blur.nav ? 'nav-blur' : '' %>">
   <div id="loading-bar-wrapper">
     <div id="loading-bar"></div>
   </div>
@@ -40,8 +40,8 @@
 
       <div class="m_search">
         <form name="searchform" class="form u-search-form">
-          <input type="text" class="input u-search-input" placeholder="<%- __('search.placeholder') %>" />
           <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="<%- __('search.placeholder') %>" />
         </form>
       </div>
 

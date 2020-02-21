@@ -17,9 +17,9 @@
 // 导航栏背景，默认和主题色保持一致
 @color_bg_navbar: @theme_main;
 // 代码的背景色
-@color_bg_code: fade(@color_text_main, 5%);
+@color_bg_code: #FFF8F0;
 // 代码块的背景色
-@color_bg_code_block: #F4FAFE;
+@color_bg_code_block: #FFFAF5;
 // 引用的颜色
 @color_bg_quote: @theme_main;
 // 选中部分文字的背景颜色
@@ -39,16 +39,26 @@
 // 正文文字颜色
 @color_text_main: @dark;
 // @color_text_main: white; // 暗色主题
-
+// 代码颜色
+@color_text_code: #A55A00;
 
 // 导航栏毛玻璃效果
 .nav-blur {
   background: fade(@theme_cardbg, 75%);
-  backdrop-filter: blur(60px);
+  backdrop-filter: blur(50px);
 }
 
-// 侧边栏毛玻璃效果
-.widget-blur {
+// 卡片毛玻璃效果
+.body-blur,.widget-blur {
   background: fade(@theme_cardbg, 75%);
-  backdrop-filter: blur(60px);
+  backdrop-filter: blur(50px);
+}
+
+// 卡片阴影
+.card-shadow {
+  .enable-trans();
+  box-shadow: @boxshadow_card_normal;
+  &:hover {
+    box-shadow: @boxshadow_card_raised;
+  }
 }

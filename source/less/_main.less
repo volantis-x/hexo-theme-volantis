@@ -292,30 +292,19 @@
       margin-left: 0;
       margin-right: 0;
       width: auto;
-      &:hover {
-        box-shadow: @boxshadow_card_normal;
-      }
     }
   }
   .post {
     position: relative;
     margin: @gap auto;
     padding: 2*@gap 1.5*@gap;
-    background: @theme_cardbg;
+    // background: @theme_cardbg;
     border-radius: @border_radius;
     h1{
       font-weight: normal;
       font-size: @fontsize_article_title;
       line-height: @lineheight_base;
       color: @color_text_main;
-    }
-    &:extend(.z-depth-main);
-    .enable-trans();
-    &:hover {
-      box-shadow: @boxshadow_card_raised;
-    }
-    &:active {
-      box-shadow: @boxshadow_card_normal;
     }
     @media(max-width: @on_phone) {
       border-radius: 0;

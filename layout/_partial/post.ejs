@@ -1,4 +1,4 @@
-<article class="post reveal <%= (post.title) ? "" : "no-title" %>">
+<article class="post <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur.body ? 'body-blur' : '' %> reveal <%= (post.title) ? "" : "no-title" %>">
   <%- partial('meta',{post:post, position:'header'}) %>
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">

@@ -183,35 +183,32 @@
     }
     .form {
       position: relative;
-      display: block;
+      display: flex;
       width: 100%;
       margin: auto;
+      justify-content: flex-start;
+      align-items: center;
     }
     .icon,.input{
       .enable-trans(.3s);
     }
     .icon {
       position: absolute;
-      display: block;
-      line-height: @height_searchbar;
-      height: @height_searchbar;
       width: @iconW;
-      top: 0;
       left: @iconMargin+1px;
-      font-size: @fontsize_base;
-      color: fade(@color_text_main, 60%);
+      font-size: @fontsize_small;
+      color: fade(@color_text_main, 70%);
     }
     .input {
       display: block;
-      font-size: @fontsize_base;
-      line-height: @fontsize_base;
-      height: @height_searchbar;
+      font-size: @fontsize_small;
+      padding-top: 8px;
+      padding-bottom: 8px;
       width: 100%;
       color: @color_text_main;
       background: @theme_background;
       box-shadow: none;
       box-sizing: border-box;
-      -webkit-appearance: none;
       padding-left: @iconW + @iconMargin;
       @media(max-width: @on_phone){
         padding-left: @iconW + @iconMargin;
@@ -219,8 +216,7 @@
       border-radius: @border_radius_searchbar;
       border: 1px dashed transparent;
       .set-placeholder({
-        padding-top: 2px;
-        color: fade(@color_text_main, 60%);
+        color: fade(@color_text_main, 50%);
       });
       &:hover{
         color: @color_text_in_header;

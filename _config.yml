@@ -14,16 +14,23 @@ info:
       commentTyping: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/commentTyping.js
 
 
-############################### 主题风格 ###############################
-
-# 毛玻璃效果 具体效果调整在： source/less/_color.less
-blur:
-  nav: true
-  widget: true
-
+############################### 主题样式 ###############################
+style:
+  # 卡片阴影效果
+  shadow:
+    # 导航栏阴影
+    nav: true
+    # 卡片阴影和悬浮动画
+    # card: true
+  # 毛玻璃效果 具体效果调整在： source/less/_color.less
+  blur:
+    nav: true
+    widget: true
+    body: true
 # 建议：
 #   有背景图：开启毛玻璃，关闭卡片阴影
 #   无背景图：关闭毛玻璃，开启卡片阴影
+
 
 ############################### 服务开关 ###############################
 scrollreveal: true  # 页面滚动显示动画
@@ -42,10 +49,10 @@ backstretch:
   duration: 6000        # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
   images:
-    # - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
-    # - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
-    # - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
-    # - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
+    - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
+    - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
+    - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
+    - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
 
 
 # page的封面
