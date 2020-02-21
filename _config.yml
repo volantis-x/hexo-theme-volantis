@@ -5,7 +5,7 @@ info:
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.21/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.21/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/search.js
@@ -148,8 +148,8 @@ layout:
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
-      header: [title, author, date, category, counter, wordcount, top]
-      footer: [updated, tags, share]
+      header: [title, author, category, date, updated, counter, wordcount, top]
+      footer: [tags, links, share]
     # 文章页脚，自动在每一篇文章末尾添加
     footer: [copyright, donate]
     # 文章页面的侧边栏
@@ -166,12 +166,12 @@ meta:
     icon: fas fa-user # 如果配置了头像，则不会显示图标
   # 文章创建日期
   date:
-    icon: fas fa-calendar-alt
+    icon: fas fa-edit
     title: '发布于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章更新日期
   updated:
-    icon: fas fa-clock
+    icon: fas fa-save
     title: '更新于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章分类
@@ -207,7 +207,32 @@ meta:
     # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
     #   name: QRcode
     #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png
-
+  # 链接
+  links:
+    repo: # 源码链接
+      icon: fas fa-code-branch
+      title: 源码
+      color: '#508EF2'
+    bug: # BUG反馈链接
+      icon: fas fa-bug
+      title: BUG
+      color: '#FE5F58'
+    doubt: # 疑问链接
+      icon: fas fa-question-circle
+      title: 疑问
+      color: '#FFBD2B'
+    idea: # 建议链接
+      icon: fas fa-lightbulb
+      title: 建议
+      color: '#3DC550'
+    faq: # FAQ链接
+      icon: fas fa-comments
+      title: FAQ
+      color: '#29B1C9'
+    feedback: # 反馈链接
+      icon: fas fa-comment-dots
+      title: 反馈
+      color: '#1BCDFC'
 
 # 组件库配置
 widget:

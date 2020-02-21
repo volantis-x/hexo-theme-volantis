@@ -4,7 +4,7 @@
       <blockquote>
         <% (item.content||[]).forEach(function(row){ %>
           <% if (row == 'permalink') { %>
-            <p><%- item.permalink %><a href=<%- page.permalink %>><%- page.permalink %><a></p>
+            <p><%- item.permalink %><a href=<%- page.permalink %>><%- page.permalink %></a></p>
           <% } else { %>
             <%- markdown(row) %>
           <% } %>
@@ -13,7 +13,7 @@
     <% } else { %>
       <% (item.content||[]).forEach(function(row){ %>
         <% if (row == 'permalink') { %>
-          <p><%- item.permalink %><a href=<%- page.permalink %>><%- page.permalink %><a></p>
+          <p><%- item.permalink %><a href=<%- page.permalink %>><%- page.permalink %></a></p>
         <% } else { %>
           <%- markdown(row) %>
         <% } %>

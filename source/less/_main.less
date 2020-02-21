@@ -407,6 +407,36 @@
           color: fade(@color_text_main, 70%);
           font-size: @fontsize_small * 1;
           line-height: @metaH;
+          &.link-btns{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            .btn{
+              font-size: @fontsize_small * .9;
+              line-height: @metaH - 4px;
+              color: white;
+              padding: 0 4px;
+              border-radius: 2px;
+              margin: 2px;
+              &:extend(.hoverable);
+              &:hover{
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+              }
+              i{
+                padding-left: 3px;
+                font-size: @fontsize_small * 1;
+              }
+              p{
+                color: white;
+              }
+              &:hover{
+                color: white;
+                p{
+                  color: white;
+                }
+              }
+            }
+          }
           .notlink{
             cursor: default;
             &:hover{

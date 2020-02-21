@@ -1,0 +1,40 @@
+<% if(post && post.links){ %>
+  <div class='new-meta-item link-btns'>
+    <% if(post.links.repo){ %>
+      <a class='btn flat-box' href='<%- post.links.repo %>' style='background: <%- theme.meta.links.repo.color %>'>
+        <i class='<%- theme.meta.links.repo.icon %>' aria-hidden='true'></i>
+        <p><%- theme.meta.links.repo.title %></p>
+      </a>
+    <% } %>
+    <% if(post.links.bug){ %>
+      <a class='btn flat-box' href='<%- post.links.bug %>' style='background: <%- theme.meta.links.bug.color %>'>
+        <i class='<%- theme.meta.links.bug.icon %>' aria-hidden='true'></i>
+        <p><%- theme.meta.links.bug.title %></p>
+      </a>
+    <% } %>
+    <% if(post.links.doubt){ %>
+      <a class='btn flat-box' href='<%- post.links.doubt %>' style='background: <%- theme.meta.links.doubt.color %>'>
+        <i class='<%- theme.meta.links.doubt.icon %>' aria-hidden='true'></i>
+        <p><%- theme.meta.links.doubt.title %></p>
+      </a>
+    <% } %>
+    <% if(post.links.idea){ %>
+      <a class='btn flat-box' href='<%- post.links.idea %>' style='background: <%- theme.meta.links.idea.color %>'>
+        <i class='<%- theme.meta.links.idea.icon %>' aria-hidden='true'></i>
+        <p><%- theme.meta.links.idea.title %></p>
+      </a>
+    <% } %>
+    <% if(post.links.faq){ %>
+      <a class='btn flat-box' href='<%- post.links.faq %>' style='background: <%- theme.meta.links.faq.color %>'>
+        <i class='<%- theme.meta.links.faq.icon %>' aria-hidden='true'></i>
+        <p><%- theme.meta.links.faq.title %></p>
+      </a>
+    <% } %>
+    <% if(post.links.feedback){ %>
+      <a class='btn flat-box' href='<%- post.links.feedback %>' style='background: <%- theme.meta.links.feedback.color %>'>
+        <i class='<%- theme.meta.links.feedback.icon %>' aria-hidden='true'></i>
+        <p><%- theme.meta.links.feedback.title %></p>
+      </a>
+    <% } %>
+  </div>
+<% } %>
