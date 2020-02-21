@@ -1,4 +1,5 @@
 <footer class="clearfix">
+  <br><br>
   <% if (theme.social) { %>
     <div class="social-wrapper">
       <% (theme.social||[]).forEach(function(value){ %>
@@ -12,10 +13,12 @@
       <%})%>
     </div>
   <%}%>
-  <br>
-  <div class="aplayer-container">
-    <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
-  </div>
+  <% if (theme.aplayer.enable) { %>
+    <br>
+    <div class="aplayer-container">
+      <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
+    </div>
+  <% } %>
   <br>
   <div><%- markdown(__('footer.license')) %></div>
   <div>
