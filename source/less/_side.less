@@ -43,13 +43,13 @@
     justify-content: space-between;
     border-top-left-radius: @border_radius;
     border-top-right-radius: @border_radius;
-    background-color: @color_bg_navbar;
-    color: @color_text_in_header;
+    color: @theme_main;
     font-weight: bold;
     line-height: 1.5em;
-    padding: 8px @gap;
+    padding: ~"calc(@{gap} - 2px)";
+    padding-bottom: 0;
     .rightBtn{
-      color: @color_text_in_header;
+      color: @theme_main;
       &:hover {
         color: darken(@theme_main, 25%);
         &.rotate90{
@@ -57,22 +57,10 @@
         }
       }
     }
-    &.pure{
-      background-color: transparent;
-      color: @theme_main;
-      padding-top: 14px; // 适合白色导航栏背景
-      padding-bottom: 14px; // 适合白色导航栏背景
-      .rightBtn{
-        color: @theme_main;
-        &:hover {
-          color: darken(@theme_main, 25%);
-        }
-      }
-    }
   }
   .content{
     text-align: justify;
-    padding: @gap/2;
+    padding: @gap/2 0;
     max-height: ~"calc(100% - @{height_navbar} - 12.5 * @{gap})";
     ul > li{
       a{
@@ -164,7 +152,7 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        margin: 4px @gap/2;
+        margin: 4px @gap/4;
         a{
           color: fade(@color_text_main, 70%);
           padding: 0;
@@ -204,11 +192,9 @@
       font-size: @fontsize_small;
       font-weight: bold;
       word-break: break-all;
-      padding: @gap/2 @gap;
+      padding: @gap;
       line-height: @fontsize_small + 8px;
-      &.pure{
-        padding: 0 @gap @gap @gap; // 适合白色导航栏背景
-      }
+
       a{
         color: @color_text_link;
         .enable-trans();
@@ -226,9 +212,6 @@
   &.list{
     .content{
       padding: @gap/2 0;
-      &.pure{
-        padding-top: 0; // 适合白色导航栏背景
-      }
       a{
         font-size: @fontsize_small;
         font-weight: bold;
@@ -255,10 +238,6 @@
   }
   &.grid{
     .content{
-      padding: @gap/2 0;
-      &.pure{
-        padding-top: 0; // 适合白色导航栏背景
-      }
       ul.grid{
         border: none;
         display: flex;
@@ -309,12 +288,8 @@
   }
   &.category{
     .content{
-      padding: @gap/2 0;
       font-size: @fontsize_small;
       font-weight: bold;
-      &.pure{
-        padding-top: 0; // 适合白色导航栏背景
-      }
     }
   }
 
@@ -322,9 +297,6 @@
     .content{
       text-align: justify;
       padding: @gap/2 @gap;
-      &.pure{
-        padding: 0 @gap @gap @gap; // 适合白色导航栏背景
-      }
       a{
         display:inline-block;
         .enable-trans(.1s);
@@ -337,29 +309,10 @@
     }
   }
 
-  &.music{
-    header{
-      &.pure{
-        padding-bottom: @gap/4; // 适合白色导航栏背景
-      }
-    }
-    .content{
-      padding: @gap/2+4px;
-      padding-top: @gap/2;
-      &.pure{
-        padding-top: @gap/4; // 适合白色导航栏背景
-      }
-    }
-  }
-
   &.related_posts{
     .content{
-      padding: @gap/2 0;
       font-size: @fontsize_small;
       font-weight: bold;
-      &.pure{
-        padding-top: 0; // 适合白色导航栏背景
-      }
       h3{
         font-size: @fontsize_small;
         font-weight: bold;
@@ -380,9 +333,6 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-around;
-      &.pure{
-        padding-top: 0; // 适合白色导航栏背景
-      }
       img{
         margin-bottom: 4px;
       }

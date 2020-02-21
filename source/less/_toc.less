@@ -11,25 +11,19 @@
     top: 0;
   }
   .content{
-    padding: @gap/2 0 @gap 0;
     max-height: 500px;
     overflow: auto;
-    &.pure{
-      padding-top: 0; // 适合白色导航栏背景
-    }
     a {
       border-left: 4px solid transparent;
       &:hover{
-        color: fade(@color_text_main, 100%);
-        border-left: 4px solid @theme_main;
+        background: fade(@theme_main, 10%);
       }
       &:active{
         border-left: 8px solid @theme_main;
       }
       &.active{
-        color: fade(@color_text_main, 100%);
+        color: @theme_main;
         border-left: 4px solid @theme_main;
-        background: fade(@theme_main, 10%);
       }
     }
   }
@@ -71,7 +65,7 @@
 
   a {
     padding-left: 8px;
-    color: fade(@color_text_main, 60%);
+    color: fade(@color_text_main, 70%);
     font-size: @fontsize_small;
     display: inline-block;
   }

@@ -15,8 +15,6 @@ info:
 
 
 ############################### 主题风格 ###############################
-# style: material    # material: 导航栏和标题栏背景是主题色
-style: pure        # pure: 导航栏和标题栏背景是白色
 
 # 毛玻璃效果 具体效果调整在： source/less/_color.less
 blur:
@@ -44,10 +42,10 @@ backstretch:
   duration: 6000        # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
   images:
-    - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
-    - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
-    - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
-    - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
+    # - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
+    # - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
+    # - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
+    # - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
 
 
 # page的封面

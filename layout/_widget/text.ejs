@@ -1,6 +1,6 @@
 <section class='widget <%- theme.blur.widget ? 'widget-blur' : '' %> <%- item.class?item.class:'text' %>'>
   <%- partial('header', {item: item}) %>
-  <div class='content <%= theme.style %>'>
+  <div class='content'>
     <% (item.content||[]).forEach(function(row){ %>
       <p>
         <%- markdown(row) %>

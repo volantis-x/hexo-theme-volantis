@@ -13,13 +13,14 @@
   font-family: @fontfamily_base;
   padding: 0 @gap;
   margin-bottom: @gap;
+  box-shadow: @boxshadow_card_normal;
   .wrapper{
     padding: auto @gap;
     max-width: @width_container;
     margin: auto;
     .enable-trans();
     a.logo {
-      color: @color_text_in_header;
+      color: @color_text_header;
     }
   }
   &.no_sidebar{
@@ -44,7 +45,7 @@
   .nav--main,.nav-sub{
     height: @height_navbar;
   }
-  background: @color_bg_navbar;
+  background: @theme_cardbg;
   &.hide{
     transform: translateY(100px) scale(0);
   }
@@ -55,7 +56,7 @@
     .txt-ellipsis;
     height: @height_navbar;
     line-height: @height_navbar;
-    color: @color_text_in_header;
+    color: @theme_main;
   }
   &:extend(.z-depth-nav); // 适合深色导航栏背景
 
@@ -106,17 +107,19 @@
     ul > li > a{
       .enable-trans();
       display: block;
-      font-size: @fontsize_base;
-      color: fade(@color_text_in_header, 70%);
       padding: 0 8px;
+      color: fade(@color_text_main, 85%);
+      &.current{
+        border-bottom: @loading_height solid fade(@theme_main, 80%);
+      }
       &:hover{
-        color: @color_text_in_header;
-        border-bottom: @loading_height solid @theme_cardbg;
-        background: fade(@theme_cardbg, 10%);
+        color: @theme_main;
+        border-bottom: @loading_height solid @theme_main;
+        background: fade(@theme_main, 10%);
       }
       &:active,&.active{
-        color: @color_text_in_header;
-        border-bottom: @loading_height solid @theme_cardbg;
+        color: @theme_main;
+        border-bottom: @loading_height solid @theme_main;
       }
     }
     @media(max-width: @on_phone){
@@ -153,7 +156,7 @@
         border-radius: 100px;
         .enable-trans();
         &:hover {
-          background: fade(@theme_cardbg, 30%);
+          background: fade(@theme_main, 15%);
         }
         @media(max-width: @on_phone){
           width: @iconW;
@@ -196,7 +199,7 @@
       top: 0;
       left: @iconMargin+1px;
       font-size: @fontsize_base;
-      color: fade(@color_text_in_header, 60%);
+      color: fade(@color_text_main, 60%);
     }
     .input {
       display: block;
@@ -204,7 +207,8 @@
       line-height: @fontsize_base;
       height: @height_searchbar;
       width: 100%;
-      color: fade(@color_text_in_header, 60%);
+      color: @color_text_main;
+      background: @theme_background;
       box-shadow: none;
       box-sizing: border-box;
       -webkit-appearance: none;
@@ -213,91 +217,25 @@
         padding-left: @iconW + @iconMargin;
       }
       border-radius: @border_radius_searchbar;
-      background: fade(@theme_cardbg, 15%);
       border: 1px dashed transparent;
       .set-placeholder({
         padding-top: 2px;
-        color: fade(@color_text_in_header, 60%);
+        color: fade(@color_text_main, 60%);
       });
       &:hover{
         color: @color_text_in_header;
-        border: 1px solid fade(@color_text_in_header, 60%);
+        ~.icon{
+          color: fade(@theme_main, 80%);
+        }
+        border: 1px solid fade(@theme_main, 60%);
       }
       &:focus {
         ~.icon{
-          color: @color_text_in_header;
-        }
-        color: @color_text_in_header;
-        border: 1px solid @color_text_in_header;
-      }
-    }
-  }
-  &.pure{
-    background: @theme_cardbg;
-    &, a{
-      color: @theme_main;
-    }
-    box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
-    // box-shadow: none;
-    // background: transparent;
-    .wrapper{
-      a.logo {
-        color: @color_text_header;
-      }
-      // background: @theme_cardbg;
-      // box-shadow: @boxshadow_card_normal; // 适合白色导航栏背景
-    }
-    .menu{
-      ul > li > a{
-        .enable-trans();
-        color: fade(@color_text_main, 85%);
-        &.current{
-          border-bottom: @loading_height solid fade(@theme_main, 80%);
-        }
-        &:hover{
           color: @theme_main;
-          border-bottom: @loading_height solid @theme_main;
-          background: fade(@theme_main, 10%);
         }
-        &:active,&.active{
-          color: @theme_main;
-          border-bottom: @loading_height solid @theme_main;
-        }
-      }
-    }
-    .switcher{
-      & > li{
-        a{
-          &:hover {
-            background: fade(@theme_main, 15%);
-          }
-        }
-      }
-    }
-    .m_search {
-      .icon{
-        color: fade(@color_text_main, 60%);
-      }
-      .input {
         color: @color_text_main;
-        background: @theme_background;
-        .set-placeholder({
-          color: fade(@color_text_main, 60%);
-        });
-        &:hover{
-          ~.icon{
-            color: fade(@theme_main, 80%);
-          }
-          border: 1px solid fade(@theme_main, 60%);
-        }
-        &:focus {
-          ~.icon{
-            color: @theme_main;
-          }
-          color: @color_text_main;
-          background: fade(@theme_main, 15%);
-          border: 1px solid @theme_main;
-        }
+        background: fade(@theme_main, 15%);
+        border: 1px solid @theme_main;
       }
     }
   }

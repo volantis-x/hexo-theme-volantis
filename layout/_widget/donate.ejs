@@ -1,6 +1,6 @@
 <section class='widget <%- theme.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
   <%- partial('header', {item: item}) %>
-  <div class='content <%= theme.style %>'>
+  <div class='content'>
     <% if (item.fancybox == true) { %>
       <fancybox>
         <% (item.images||[]).forEach(function(url){ %>

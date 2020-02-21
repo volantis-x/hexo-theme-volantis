@@ -20,7 +20,7 @@
             <% }) %>
           <% } %>
         </div>
-        <% if(post.layout == 'post'){ %>
+        <% if(post.layout == 'post' || post.layout == 'page'){ %>
           <br>
           <%- partial('meta', {post: post, position: 'footer'}) %>
         <% } %>

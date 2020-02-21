@@ -1,7 +1,7 @@
 <% if (site.tags.length){ %>
   <section class='widget <%- theme.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
     <%- partial('header', {item: item}) %>
-    <div class='content <%= theme.style %>'>
+    <div class='content'>
       <%- tagcloud(site.tags, {
           min_font: item.min_font,
           max_font: item.max_font,
