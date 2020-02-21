@@ -24,8 +24,6 @@ footer:
   total_views: total visits
   total_visitors: total visitors
   times: times
-search:
-  placeholder: Search
 symbol:
   comma: ", "
   period: ". "

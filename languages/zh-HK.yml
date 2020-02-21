@@ -24,8 +24,6 @@ footer:
   total_views: 總訪問量為
   total_visitors: 總訪客量為
   times: 次
-search:
-  placeholder: 搜尋
 symbol:
   comma: "，"
   period: "。"
