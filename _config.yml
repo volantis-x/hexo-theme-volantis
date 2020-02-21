@@ -48,9 +48,9 @@ backstretch:
   fade: 2500            # 渐变（毫秒）
   images:
     - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
-    - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
-    - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
-    - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
+    # - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
+    # - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
+    # - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
 
 
 ############################### 自定义 ###############################
@@ -58,25 +58,25 @@ backstretch:
 cover:
   scheme: search    # 后期将会提供多种封面布局方案
   height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
-  title: Live Demo
+  title: Volantis
   # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
-  search: 'for Hexo 4.2+'
+  search: 'wonderful theme for Hexo 4.2+'
   # color: '#FFF' # 菜单文字颜色
   # 主页封面菜单
   features:
-    - name: 博文
-      icon: fas fa-rss
+    - name: 公告
+      icon: fas fa-bullhorn
       url: /
-    - name: 项目
+    - name: 文档
+      icon: fas fa-book
+      url: start/
+    - name: 源码
       icon: fas fa-code-branch
-      url: projects/
-    - name: 友链
-      icon: fas fa-link
-      url: friends/
-      rel: nofollow
-    - name: 关于
-      icon: fas fa-info-circle
       url: about/
+      rel: nofollow
+    - name: 鸣谢
+      icon: fas fa-handshake
+      url: contributors
       rel: nofollow
 
 
@@ -89,28 +89,33 @@ navbar:
     # 显示图标
     icon: # fas fa-home
     # 显示标题
-    title: XAOXUU
+    title: VOLANTIS
   # logo后面的导航菜单
   menu:
     # 在桌面端显示的导航菜单
     on_desktop:
-      - name: 近期
-        icon: fas fa-hourglass-half
-        url: /
-        target: _self
-      - name: 分类
-        icon: fas fa-folder-open
-        url: blog/categories/
+      - name: 开始使用
+        icon: fas fa-download
+        url: start
         rel: nofollow
         target: _self
-      - name: 标签
-        icon: fas fa-hashtag
-        url: blog/tags/
+      - name: 站点配置
+        icon: fas fa-cogs
+        url: site-settings
+        target: _self
+      - name: 主题配置
+        icon: fas fa-palette
+        url: theme-settings
         rel: nofollow
         target: _self
-      - name: 归档
-        icon: fas fa-archive
-        url: blog/archives/
+      - name: 页面配置
+        icon: fas fa-file-alt
+        url: page-settings
+        rel: nofollow
+        target: _self
+      - name: 进阶设定
+        icon: fas fa-flask
+        url: advanced-settings
         rel: nofollow
         target: _self
     # 手机端导航菜单（从右上角的按钮点击展开）
@@ -118,21 +123,6 @@ navbar:
       - name: 近期文章
         icon: fas fa-clock
         url: /
-      - name: 文章归档
-        icon: fas fa-archive
-        url: blog/archives/
-        rel: nofollow
-      - name: 开源项目
-        icon: fas fa-code-branch
-        url: projects/
-      - name: 我的友链
-        icon: fas fa-link
-        url: friends/
-        rel: nofollow
-      - name: 主题文档
-        icon: fas fa-book
-        url: https://xaoxuu.com/wiki/material-x/
-        rel: nofollow
       - name: 关于小站
         icon: fas fa-info-circle
         url: about/
@@ -148,23 +138,23 @@ layout:
   # 文章列表（主页、自定义的列表）布局
   on_list:
     # 列表中每一篇文章的meta信息
-    meta: [title, author, date, category, wordcount, top]
+    meta: [title, date, updated, top]
     # 列表类页面的侧边栏
-    sidebar: [blogger, dao_hang, huan_ying, category, tagcloud, tui_jian, donate]
+    sidebar: [navigation, repos_sidebar]
   # 文章页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
-    body: [article, comments]
+    body: [article, footnote, repos_bottom]
     # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
-      header: [title, author, category, date, updated, counter, wordcount, top]
-      footer: [tags, links, share]
+      header: [title, category, date, updated, top]
+      footer: [links, tags]
     # 文章页脚，自动在每一篇文章末尾添加
-    footer: [copyright, donate]
+    # footer: [copyright, donate]
     # 文章页面的侧边栏
-    sidebar: [blogger, toc, category, tagcloud, donate]
+    sidebar: [navigation, toc]
   # 其他的页面布局暂时等于文章列表
 
 
@@ -310,10 +300,10 @@ widget:
       - permalink
   # ---------------------------------------
   # 捐赠小部件（可用于文章中和侧边栏）
-  - id: donate
+  - id: qrcode
     class: donate
-    icon: fas fa-donate
-    title: 打赏
+    icon: fas fa-mobile
+    title: 手机观看
     height: 64px
     # fancybox: true # 是否允许点击放大
     images:
@@ -331,37 +321,27 @@ widget:
       - '这是一段支持markdown的文本'
       - '![](https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png)'
       - haha
-  - id: dao_hang
+  - id: navigation
     class: grid
     icon: fas fa-map-signs
-    title: 站内导航
+    title: 帮助索引
     rows:
-      - name: 近期文章
-        icon: fas fa-clock
+      - name: 近期消息
+        icon: fas fa-bullhorn
         url: /
-      - name: 文章归档
-        icon: fas fa-archive
-        url: blog/archives/
+      - name: 消息归档
+        icon: fas fa-file-archive
+        url: archives/
+      - name: 常见问题
+        icon: fas fa-question-circle
+        url: faqs
         rel: external nofollow noopener noreferrer
         target: _self
-      - name: 开源项目
-        icon: fas fa-code-branch
-        url: projects/
-      - name: 我的友链
-        icon: fas fa-link
-        url: friends/
-        rel: external nofollow noopener noreferrer
-        target: _self
-      - name: 主题文档
-        icon: fas fa-book
-        url: https://xaoxuu.com/wiki/material-x/
+      - name: 更新日志
+        icon: fas fa-clipboard-list
+        url: https://github.com/xaoxuu/hexo-theme-material-x/releases/
         rel: external nofollow noopener noreferrer
         target: _blank
-      - name: 关于小站
-        icon: fas fa-info-circle
-        url: about/
-        rel: external nofollow noopener noreferrer
-        target: _self
   - id: tui_jian
     class: list
     icon: fas fa-thumbs-up
@@ -391,6 +371,30 @@ widget:
         url: https://mxclub.github.io/resume/
         rel: external nofollow noopener noreferrer
         target: _blank
+  - id: repos_sidebar
+    class: text
+    icon: fas fa-star
+    title: 点个赞吧
+    content:
+      - '您的赞对我来说很重要，如果您喜欢本主题，希望能够给下面的项目点个赞来支持一下作者。'
+      - '<br>'
+      - '[<img src="https://img.vim-cn.com/92/807ffd8bab40497971172514294020b6501074.png" height="50px">](https://github.com/xaoxuu/ProHUD)'
+      - '[<img src="https://img.vim-cn.com/d4/12de11f629bd1395a1a968eb23071d0fefa280.png" height="50px">](https://github.com/xaoxuu/ValueX)'
+      - '[<img src="https://img.vim-cn.com/12/1dd7852a36433f9efe3e11a7772bddcf68be72.png" height="50px">](https://github.com/xaoxuu/Inspire)'
+  - id: footnote
+    class: text
+    icon: fas fa-info-circle
+    title: 关于文档
+    content:
+      - '由于文档经历大改，可能存在内容或链接过时等问题，我会尽快检查和更新，请见谅。'
+  - id: repos_bottom
+    class: text
+    icon: fas fa-star
+    title: 点个赞吧
+    content:
+      - '您的赞对我来说很重要，如果您喜欢本主题，希望能够给下面的项目点个赞来支持一下作者。'
+      - '<br>'
+      - '[<img src="https://img.vim-cn.com/92/807ffd8bab40497971172514294020b6501074.png" height="50px">](https://github.com/xaoxuu/ProHUD)&nbsp;&nbsp;[<img src="https://img.vim-cn.com/d4/12de11f629bd1395a1a968eb23071d0fefa280.png" height="50px">](https://github.com/xaoxuu/ValueX)&nbsp;&nbsp;[<img src="https://img.vim-cn.com/12/1dd7852a36433f9efe3e11a7772bddcf68be72.png" height="50px">](https://github.com/xaoxuu/Inspire)'
 
 
 # 社交信息配置
@@ -407,7 +411,7 @@ social:
 # APlayer配置 https://github.com/metowolf/MetingJS
 aplayer:
   # 是否启用，注释此项则不加载服务
-  enable: true
+  # enable: true
   # 必选参数
   server: netease   # netease, tencent, kugou, xiami, baidu
   type: playlist    # song, playlist, album, search, artist
