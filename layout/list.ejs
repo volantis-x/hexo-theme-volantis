@@ -4,7 +4,7 @@
     <section class="post-list">
       <% if (!page.prev) { %>
         <% site.posts.sort(page.sort ? page.sort : "-date").each(function(post){ %>
-          <% if (post.type && post.type == page.type) { %>
+          <% if (post.group && post.group == page.group) { %>
             <% if (post.top) { %>
               <div class='post-wrapper'>
                 <%- partial('_partial/post', {post: post, index: false}) %>
@@ -14,7 +14,7 @@
         <% }) %>
       <% } %>
       <% site.posts.sort(page.sort ? page.sort : "-date").each(function(post){ %>
-        <% if (post.type && post.type == page.type) { %>
+        <% if (post.group && post.group == page.group) { %>
           <% if (!post.top) { %>
             <div class='post-wrapper'>
               <%- partial('_partial/post', {post: post, index: false}) %>

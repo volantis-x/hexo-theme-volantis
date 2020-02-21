@@ -4,7 +4,7 @@
       <% if (is_home()) { %>
         <% site.posts.each(function(post){ %>
           <% if (post.top) { %>
-            <% if (page.type == undefined || post.type == page.type) { %>
+            <% if (page.group == undefined || post.group == page.group) { %>
               <div class='post-wrapper'>
                 <%- partial('post', {post: post}) %>
               </div>
