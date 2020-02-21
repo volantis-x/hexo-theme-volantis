@@ -2,8 +2,8 @@
   <%- partial('meta',{post:post, position:'header'}) %>
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <%- post.excerpt || post.description %>
-      <% if (post.readmore != false && (post.link || post.path)) { %>
+      <%- post.excerpt || post.description || post.content %>
+      <% if ((post.readmore != false) && (post.excerpt || post.description || post.link)) { %>
         <div class="button readmore">
           <a href="<%- url_for(post.link || post.path) %>" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
