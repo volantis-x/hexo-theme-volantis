@@ -21,7 +21,7 @@
 %>
 
 <% if (enableDisqus || enableLivere || enableGitalk || enableValine) { %>
-  <article class="post white-box comments <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur.body ? 'body-blur' : '' %>">
+  <article class="post white-box comments <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.body ? 'body-blur' : '' %>">
     <section class="article typo">
       <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;<%- __('post.comments') %></h4>
       <% if (enableDisqus) { %>

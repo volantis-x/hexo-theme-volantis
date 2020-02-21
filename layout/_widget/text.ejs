@@ -1,4 +1,4 @@
-<section class='widget <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur.widget ? 'widget-blur' : '' %> <%- item.class?item.class:'text' %>'>
+<section class='widget <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %> <%- item.class?item.class:'text' %>'>
   <%- partial('header', {item: item}) %>
   <div class='content'>
     <% (item.content||[]).forEach(function(row){ %>

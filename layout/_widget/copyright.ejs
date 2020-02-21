@@ -1,4 +1,4 @@
-<section class='widget <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
+<section class='widget <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
   <div class='content'>
     <% if (item.blockquote == true) { %>
       <blockquote>

@@ -14,24 +14,6 @@ info:
       commentTyping: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/commentTyping.js
 
 
-############################### 主题样式 ###############################
-style:
-  # 卡片阴影效果
-  shadow:
-    # 导航栏阴影
-    nav: true
-    # 卡片阴影和悬浮动画
-    # card: true
-  # 毛玻璃效果 具体效果调整在： source/less/_color.less
-  blur:
-    nav: true
-    widget: true
-    body: true
-# 建议：
-#   有背景图：开启毛玻璃，关闭卡片阴影
-#   无背景图：关闭毛玻璃，开启卡片阴影
-
-
 ############################### 服务开关 ###############################
 scrollreveal: true  # 页面滚动显示动画
 nodewaves: true     # 按钮点击效果
@@ -41,8 +23,24 @@ commentTyping: true # 文本框打字机特效
 # wordcount: true   # 文章字数统计、阅读时长，开启需要安装插件: npm i --save hexo-wordcount
 
 
+############################### 主题样式 ###############################
+# 样式
+style:
+  # 卡片阴影效果
+  shadow:
+    # 导航栏阴影
+    nav: true
+    # 卡片阴影和悬浮动画
+    # card: true
+  # 毛玻璃效果 具体效果调整在： source/less/_color.less
+  blur:
+    navbar: true
+    widget: true
+    body: true
+# 建议：
+#   有背景图：开启毛玻璃，关闭卡片阴影
+#   无背景图：关闭毛玻璃，开启卡片阴影
 
-############################### 自定义 ###############################
 # 幻灯片背景
 backstretch:
   position: background  # cover: 封面背景   background: 整个网页背景
@@ -55,13 +53,15 @@ backstretch:
     - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
 
 
+############################### 自定义 ###############################
 # page的封面
 cover:
   scheme: search    # 后期将会提供多种封面布局方案
   height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
   title: Live Demo
   # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
-  # search_placeholder: '搜索'
+  search: 'for Hexo 4.2+'
+  # color: '#FFF' # 菜单文字颜色
   # 主页封面菜单
   features:
     - name: 博文
@@ -137,6 +137,7 @@ navbar:
         icon: fas fa-info-circle
         url: about/
         rel: nofollow
+  # search: 搜索一下   # 搜索框文字
 
 
 
