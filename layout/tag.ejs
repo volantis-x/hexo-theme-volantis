@@ -2,9 +2,9 @@
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.posts && site.posts.length > 0) { %>
     <% if (page.layout == 'tag') { %>
-      <section class="post-list">
+      <section class="post-list <%- theme.layout.multiple_columns ? 'multiple-columns' : '' %>">
         <div class='post-wrapper'>
-          <article id="archive-page" class="post article white-box">
+          <article id="archive-page" class="post article white-box <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %>">
             <section class="archive">
               <div class="archive-item archive-year mark">
                 <h2><%- page.title %></h2>

@@ -143,6 +143,8 @@ navbar:
 
 # 布局
 layout:
+  # 多列布局
+  multiple_columns: false # 部分浏览器不兼容，谨慎使用
   # 文章列表（主页、自定义的列表）布局
   on_list:
     # 列表中每一篇文章的meta信息

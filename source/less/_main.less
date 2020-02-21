@@ -19,11 +19,16 @@
   float: left;
   .post-list {
     position: relative;
-    margin: 0px auto;
-    // columns: 400px;
-    column-gap: 0;
+    margin: @gap auto;
+    column-gap: @gap;
     @media(max-width: @on_phone) {
       margin: 0;
+    }
+    &.multiple-columns{
+      columns: 320px; // 支持多列
+    }
+    :first-child{
+      margin-top: 0;
     }
   }
   ul.popular-posts{
