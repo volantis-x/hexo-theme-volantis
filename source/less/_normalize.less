@@ -422,8 +422,9 @@ optgroup {
 table {
   border-collapse: collapse;
   width: 100%;
+  background-color: @theme_cardbg;
   th {
-    background-color: lighten(@theme_background, 1%);
+    background-color: @color_bg_code_block;
   }
   td,
   th {
@@ -434,6 +435,9 @@ table {
   tr {
     // border-bottom: 2px solid #eee;
     // background-color: @theme_main;
+    &:hover{
+      background-color: @color_bg_code_block;
+    }
   }
   &>thead>th {
     // border-bottom-width: 2px;
