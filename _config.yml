@@ -23,6 +23,9 @@ blur:
   nav: true
   widget: true
 
+# 建议：
+#   有背景图：开启毛玻璃，关闭卡片阴影
+#   无背景图：关闭毛玻璃，开启卡片阴影
 
 ############################### 服务开关 ###############################
 scrollreveal: true  # 页面滚动显示动画
@@ -79,7 +82,7 @@ navbar:
     # 显示图片，使用图片时将不会显示icon和title
     img: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.7/apple-touch-icon.png
     # 显示图标
-    icon: fas fa-home
+    icon: # fas fa-home
     # 显示标题
     title: XAOXUU
   # logo后面的导航菜单

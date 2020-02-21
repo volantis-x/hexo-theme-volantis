@@ -1,4 +1,4 @@
-<% if(page.layout == 'post' && page.content && toc(page.content).length > 0){ %>
+<% if(page.content && page.toc != false && toc(page.content).length > 0){ %>
   <section class='widget <%- theme.blur.widget ? 'widget-blur' : '' %> toc-wrapper'>
     <%- partial('header', {item: item}) %>
     <div class='content <%= theme.style %>'>
