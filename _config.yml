@@ -167,10 +167,12 @@ meta:
   # 文章创建日期
   date:
     icon: fas fa-calendar-alt
-    format: 'YYYY-MM-DD' # 日期格式 http://momentjs.com/docs/
+    title: '发布于：'
+    format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章更新日期
   updated:
     icon: fas fa-clock
+    title: '更新于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章分类
   category:
