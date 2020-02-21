@@ -424,7 +424,7 @@ table {
   width: 100%;
   background-color: @theme_cardbg;
   th {
-    background-color: @color_bg_code_block;
+    background-color: darken(@theme_cardbg, 5%);
   }
   td,
   th {
@@ -434,9 +434,10 @@ table {
   }
   tr {
     // border-bottom: 2px solid #eee;
-    // background-color: @theme_main;
+    .enable-trans();
+    background-color: @theme_cardbg;
     &:hover{
-      background-color: @color_bg_code_block;
+      background-color: darken(@theme_cardbg, 5%);
     }
   }
   &>thead>th {
