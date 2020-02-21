@@ -1,6 +1,6 @@
 ############################### 主题基本信息 ###############################
 info:
-  name: Material X
+  name: Volantis
   version: 1.5
   docs: https://xaoxuu.com/wiki/material-x/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
@@ -60,7 +60,7 @@ cover:
   height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
   title: Volantis
   # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
-  search: 'wonderful theme for Hexo 4.2+'
+  search: 'for Hexo 4.2+'
   # color: '#FFF' # 菜单文字颜色
   # 主页封面菜单
   features:
@@ -127,7 +127,7 @@ navbar:
         icon: fas fa-info-circle
         url: about/
         rel: nofollow
-  # search: 搜索一下   # 搜索框文字
+  search: 搜索文档   # 搜索框文字
 
 
 
