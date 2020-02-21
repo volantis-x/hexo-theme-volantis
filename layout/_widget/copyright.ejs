@@ -1,15 +1,23 @@
 <section class='widget <%- theme.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
   <div class='content <%= theme.style %>'>
-    <blockquote>
-      <% (item.content||[]).forEach(function(row){ %>
-        <p>
+    <% if (item.blockquote == true) { %>
+      <blockquote>
+        <% (item.content||[]).forEach(function(row){ %>
           <% if (row == 'permalink') { %>
-            <%- item.permalink %><a href=<%- page.permalink %>><%- page.permalink %><a>
+            <p><%- item.permalink %><a href=<%- page.permalink %>><%- page.permalink %><a></p>
           <% } else { %>
-            <%- row %>
+            <%- markdown(row) %>
           <% } %>
-        </p>
+        <% }) %>
+      </blockquote>
+    <% } else { %>
+      <% (item.content||[]).forEach(function(row){ %>
+        <% if (row == 'permalink') { %>
+          <p><%- item.permalink %><a href=<%- page.permalink %>><%- page.permalink %><a></p>
+        <% } else { %>
+          <%- markdown(row) %>
+        <% } %>
       <% }) %>
-    </blockquote>
+    <% } %>
   </div>
 </section>
