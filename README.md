@@ -55,13 +55,13 @@ A minimalist card-style Hexo blog theme.
 ### A. Full automatic installation using scripts (currently only macOS is supported)
 
 1. Open a terminal and enter the following command to install the script, see [# hexo.sh](https://xaoxuu.com/wiki/hexo.sh/) for the script document.
-```bash
+```sh
 curl -s https://xaoxuu.com/install | sh -s hexo.sh
 ```
 
 2. After successful installation, open a terminal on your blog path and enter the following command to install the theme and dependencies.
-```bash
-hexo.sh i x
+```sh
+hexo.sh i v
 ```
 
 
@@ -69,12 +69,12 @@ hexo.sh i x
 ### B. Manual installation
 
 1. Download theme to `themes /` folder
-```bash
+```sh
 git clone https://github.com/xaoxuu/hexo-theme-volantis themes/volantis
 ```
 
 2. Then install the necessary dependencies
-```bash
+```sh
 npm i -S hexo-generator-search hexo-generator-json-content hexo-renderer-less
 ```
 
@@ -148,13 +148,13 @@ https://xaoxuu.com/wiki/volantis/
 ### A. 使用脚本全自动安装（目前仅支持macOS）
 
 1. 打开终端输入下面命令安装脚本，脚本文档见[#hexo.sh](https://xaoxuu.com/wiki/hexo.sh/)。
-```bash
+```sh
 curl -s https://xaoxuu.com/install | sh -s hexo.sh
 ```
 
 2. 安装成功后，在你的博客路径打开终端，输入下面命令即可安装主题和依赖包。
-```bash
-hexo.sh i x
+```sh
+hexo.sh i v
 ```
 
 
@@ -162,12 +162,12 @@ hexo.sh i x
 ### B. 手动安装
 
 1. 下载主题到 `themes/` 文件夹
-```bash
+```sh
 git clone https://github.com/xaoxuu/hexo-theme-volantis themes/volantis
 ```
 
 2. 然后安装必要的依赖包
-```bash
+```sh
 npm i -S hexo-generator-search hexo-generator-json-content hexo-renderer-less
 ```
 
