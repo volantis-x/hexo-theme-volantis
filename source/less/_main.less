@@ -588,7 +588,7 @@
 	transform: translate(-50%,-50%);
 	z-index: 99999;
 	text-align: center;
-	padding: 24px 36px;
+	padding: 24px 36px 22px 36px;
 	border-radius: @border_radius_code_block;
   box-shadow: @boxshadow_card_normal;
   font-family: @fontfamily_base;
@@ -615,4 +615,23 @@
     background-color: lighten(@color_mac_close, 40%);
   }
 
+}
+
+details {
+  display: block;
+  background: @color_bg_code_block;
+  padding: @gap;
+  border: 1px solid darken(@theme_cardbg, 10%);
+  border-radius: @border_radius_code_block;
+  .enable-trans();
+  summary {
+    cursor: pointer;
+    padding: @gap;
+    margin: -@gap;
+    color: fade(@color_text_main, 60%);;
+    font-weight: bold;
+    &:hover {
+      color: @color_text_highlight;
+    }
+  }
 }

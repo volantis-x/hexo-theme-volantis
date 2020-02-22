@@ -1,7 +1,7 @@
 ---
 name: Question Report
 about: 主题使用遇到问题（通过阅读文档和查看示例博客源码仍无法解决）
-title: "[求助]"
+title: ''
 labels: 疑问
 assignees: ''
 

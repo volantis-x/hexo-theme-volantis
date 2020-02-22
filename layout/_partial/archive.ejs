@@ -35,27 +35,24 @@
     <% if (page.total > 1) { %>
       <br>
       <div class="prev-next">
-        <div class="prev-next">
-          <% if (page.prev != 0) { %>
-            <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
-              <section class="post prev" >
-                <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %>&nbsp;
-              </section>
-            </a>
-          <% } %>
-          <p class="current">
-            <%= page.current%> / <%= page.total%>
-          </p>
-          <% if (page.next != 0) { %>
-            <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
-              <section class="post next">
-                &nbsp;<%- __('post.next_page') %>&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-              </section>
-            </a>
-          <% } %>
-        </div>
+        <% if (page.prev != 0) { %>
+          <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
+            <section class="post prev white-box <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %>" >
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %>&nbsp;
+            </section>
+          </a>
+        <% } %>
+        <p class="current">
+          <%= page.current%> / <%= page.total%>
+        </p>
+        <% if (page.next != 0) { %>
+          <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
+            <section class="post next white-box <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %>">
+              &nbsp;<%- __('post.next_page') %>&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
+        <% } %>
       </div>
-
     <% } %>
     <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
     <%

@@ -1,17 +1,17 @@
 ############################### 主题基本信息 ###############################
 info:
   name: Volantis
-  version: 1.5
-  docs: https://xaoxuu.com/wiki/material-x/
+  version: 1.5.2
+  docs: https://xaoxuu.com/wiki/volantis/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2.22/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.25/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/search.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js
-      backstretch: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/backstretch.min.js
-      commentTyping: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/commentTyping.js
+      backstretch: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/backstretch.min.js
+      commentTyping: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/commentTyping.js
 
 
 ############################### 服务开关 ###############################
@@ -40,6 +40,8 @@ style:
 # 建议：
 #   有背景图：开启毛玻璃，关闭卡片阴影
 #   无背景图：关闭毛玻璃，开启卡片阴影
+
+# readmore: true
 
 # 幻灯片背景
 backstretch:
@@ -121,13 +123,30 @@ navbar:
         target: _self
     # 手机端导航菜单（从右上角的按钮点击展开）
     on_mobile:
-      - name: 近期文章
-        icon: fas fa-clock
-        url: /
-      - name: 关于小站
-        icon: fas fa-info-circle
-        url: about/
+      - name: 开始使用
+        icon: fas fa-download
+        url: start
         rel: nofollow
+        target: _self
+      - name: 站点配置
+        icon: fas fa-cogs
+        url: site-settings
+        target: _self
+      - name: 主题配置
+        icon: fas fa-palette
+        url: theme-settings
+        rel: nofollow
+        target: _self
+      - name: 页面配置
+        icon: fas fa-file-alt
+        url: page-settings
+        rel: nofollow
+        target: _self
+      - name: 进阶设定
+        icon: fas fa-flask
+        url: advanced-settings
+        rel: nofollow
+        target: _self
   search: 搜索文档   # 搜索框文字
 
 
@@ -309,9 +328,9 @@ widget:
     # fancybox: true # 是否允许点击放大
     images:
       - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
-      # - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
-      # - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
-      # - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
+      - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
+      - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
+      - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
   # ---------------------------------------
   # 自定义组件，仿照如下写法
   - id: huan_ying # 唯一标识，自己命名，建议全英文

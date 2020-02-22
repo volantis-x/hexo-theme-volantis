@@ -1,7 +1,7 @@
 ---
 name: Bug Report
 about: 确认存在并反馈一个BUG
-title: "[BUG] "
+title: ''
 labels: BUG
 assignees: ''
 
