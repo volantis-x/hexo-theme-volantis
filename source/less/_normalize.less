@@ -422,20 +422,21 @@ optgroup {
 table {
   border-collapse: collapse;
   width: 100%;
-  background-color: @theme_cardbg;
+  border: 2px solid darken(@theme_cardbg, 10%);
   th {
-    background-color: darken(@theme_cardbg, 5%);
+    background-color: fade(darken(@theme_cardbg, 12%), 50%);
   }
   td,
   th {
     text-align: justify;
     padding: 4px 8px;
-    border: 1px solid @theme_background;
+    border: 1px solid darken(@theme_cardbg, 10%);
   }
   tr {
-    // border-bottom: 2px solid #eee;
+    background-color: fade(darken(@theme_cardbg, 2%), 50%);
+  }
+  tbody>tr {
     .enable-trans();
-    background-color: @theme_cardbg;
     &:hover{
       background-color: darken(@theme_cardbg, 5%);
     }
