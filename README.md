@@ -1,4 +1,4 @@
-# Material X
+# Volantis
 
 A minimalist card-style Hexo blog theme.
 
@@ -91,7 +91,7 @@ https://xaoxuu.com/wiki/volantis/
 <br>
 <br>
 
-# Material X
+# Volantis
 
 一个简约的卡片式Hexo博客主题。
 
