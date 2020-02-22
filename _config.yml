@@ -72,8 +72,9 @@ cover:
       url: start/
     - name: 源码
       icon: fas fa-code-branch
-      url: about/
+      url: https://github.com/xaoxuu/hexo-theme-material-x/
       rel: nofollow
+      target: _blank
     - name: 鸣谢
       icon: fas fa-handshake
       url: contributors
