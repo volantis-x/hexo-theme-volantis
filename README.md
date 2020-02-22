@@ -24,7 +24,7 @@ A minimalist card-style Hexo blog theme.
 
 #### Support for more features
 
-- Supports 4 comment systems: Disqus, Gitalk, La BiLi and Valin comments.
+- Support 4 comment systems: Disqus, Gitalk, LiveRe and Valine.
 - Provide themed CDN, or customize CDN.
 - Use card design elements and interactive animations.
 - Use fontawesome 5.6.3 free icon.
