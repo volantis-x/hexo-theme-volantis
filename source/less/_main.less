@@ -616,3 +616,22 @@
   }
 
 }
+
+details {
+  display: block;
+  background: @color_bg_code_block;
+  padding: @gap;
+  border: 1px solid darken(@theme_cardbg, 10%);
+  border-radius: @border_radius_code_block;
+  .enable-trans();
+  summary {
+    cursor: pointer;
+    padding: @gap;
+    margin: -@gap;
+    color: fade(@color_text_main, 60%);;
+    font-weight: bold;
+    &:hover {
+      color: @color_text_highlight;
+    }
+  }
+}

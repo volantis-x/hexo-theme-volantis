@@ -5,7 +5,7 @@ info:
   docs: https://xaoxuu.com/wiki/volantis/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.23/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.24/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/search.js
