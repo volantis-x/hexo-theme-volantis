@@ -16,7 +16,7 @@ A minimalist card-style Hexo blog theme.
 
 #### Easy to extend
 
-- Use the [import](https://xaoxuu.com/wiki/material-x/config/#import) field to easily import css and js into the theme.
+- Use the [import](https://xaoxuu.com/wiki/volantis/config/#import) field to easily import css and js into the theme.
 
 #### Mobile optimization
 
@@ -44,7 +44,7 @@ A minimalist card-style Hexo blog theme.
 | [@xaoxuu](https://xaoxuu.com) | Not open source yet | myblog branch effect |
 
 
-- **For more examples, please see [#Example Blog](https://github.com/xaoxuu/hexo-theme-material-x/issues/97)**
+- **For more examples, please see [#Example Blog](https://github.com/xaoxuu/hexo-theme-volantis/issues/97)**
 
 
 
@@ -70,7 +70,7 @@ hexo.sh i x
 
 1. Download theme to `themes /` folder
 ```bash
-git clone https://github.com/xaoxuu/hexo-theme-material-x themes / material-x
+git clone https://github.com/xaoxuu/hexo-theme-volantis themes/volantis
 ```
 
 2. Then install the necessary dependencies
@@ -84,7 +84,7 @@ npm i -S hexo-generator-search hexo-generator-json-content hexo-renderer-less
 
 ## Documentation
 
-https://xaoxuu.com/wiki/material-x/
+https://xaoxuu.com/wiki/volantis/
 
 
 <br>
@@ -109,7 +109,7 @@ https://xaoxuu.com/wiki/material-x/
 
 #### 易于扩展
 
-- 使用 [import](https://xaoxuu.com/wiki/material-x/config/#import) 字段方便导入css和js到主题中。
+- 使用 [import](https://xaoxuu.com/wiki/volantis/config/#import) 字段方便导入css和js到主题中。
 
 #### 移动端优化
 
@@ -137,7 +137,7 @@ https://xaoxuu.com/wiki/material-x/
 | [@xaoxuu](https://xaoxuu.com)       | 暂未开源                               | myblog分支效果     |
 
 
-- **更多示例请见 [#示例博客](https://github.com/xaoxuu/hexo-theme-material-x/issues/97)**
+- **更多示例请见 [#示例博客](https://github.com/xaoxuu/hexo-theme-volantis/issues/97)**
 
 
 
@@ -163,7 +163,7 @@ hexo.sh i x
 
 1. 下载主题到 `themes/` 文件夹
 ```bash
-git clone https://github.com/xaoxuu/hexo-theme-material-x themes/material-x
+git clone https://github.com/xaoxuu/hexo-theme-volantis themes/volantis
 ```
 
 2. 然后安装必要的依赖包
@@ -177,4 +177,4 @@ npm i -S hexo-generator-search hexo-generator-json-content hexo-renderer-less
 
 ## 文档
 
-https://xaoxuu.com/wiki/material-x/
+https://xaoxuu.com/wiki/volantis/

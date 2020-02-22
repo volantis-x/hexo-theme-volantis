@@ -4,20 +4,24 @@
     <div class="article-entry" itemprop="articleBody">
       <%- post.excerpt || post.description || post.content %>
       <% if ((post.readmore != false) && (post.excerpt || post.description || post.link)) { %>
-        <div class="button readmore">
-          <a href="<%- url_for(post.link || post.path) %>" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            <%- __('post.read_more') %>
-          </a>
-        </div>
+        <% if (theme.readmore) { %>
+          <div class="button readmore">
+            <a href="<%- url_for(post.link || post.path) %>" class="flat-box">
+              <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+              <%- __('post.read_more') %>
+            </a>
+          </div>
+        <% } else { %>
+          
+        <% } %>
       <% } %>
     </div>
-    <% if (post.tags && post.tags.length) { %>
+    <!-- <% if (post.tags && post.tags.length) { %>
       <div class="full-width auto-padding tags">
         <% post.tags.each(function(item){ %>
           <a href="<%- url_for(item.path) %>" rel="nofollow"><i class="fas fa-tag fa-fw"></i> <%=item.name %></a>
         <%})%>
       </div>
-    <% } %>
+    <% } %> -->
   </section>
 </article>
