@@ -55,11 +55,14 @@
     }
     max-width: 100%;
     overflow: auto;
-    .mjx-math{
+    &.has-jax{
       font-family: @fontfamily_code;
       background: @color_bg_mathjax;
-      padding: @gap/2;
+      padding: @gap @gap/2;
       border-radius: @border_radius_code_block;
+      .mjx-chtml.MJXc-display{
+        margin: 0;
+      }
     }
   }
   ul,
@@ -68,7 +71,8 @@
     list-style: initial;
     padding-left: 8px;
     margin-left: @gap;
-    margin-bottom: .5em;
+    margin-top: .6em;
+    margin-bottom: .6em;
     &.task-list{
       padding-left: 0;
       margin-left: 4px;
@@ -443,7 +447,7 @@
       background: @color_text_link;
       color: @color_text_in_header;
       padding: 2px 5px 0px 5px;
-      margin: 2px;
+      // margin: 1px;
       border-radius: 2px;
       .enable-trans();
       &:hover {
@@ -456,6 +460,12 @@
       font-size: @fontsize_base * .9;
       a {
         padding: 2px 3px 0px 3px;
+      }
+    }
+    &.regular {
+      a {
+        line-height: 50px;
+        padding: 9px 16px 8px 16px;
       }
     }
   }

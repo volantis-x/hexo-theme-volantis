@@ -8,6 +8,16 @@ footer {
   overflow: hidden;
   text-align: center;
   font-family: @fontfamily_base;
+  &.white, &.white a{
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  &.white{
+    color: fade(white, 50%);
+  }
+  &.white a{
+    color: fade(white, 80%);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
   .licenses {
     color: fade(@color_text_main, 50%);
     text-decoration: underline;

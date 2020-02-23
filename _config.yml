@@ -5,7 +5,7 @@ info:
   docs: https://xaoxuu.com/wiki/volantis/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.25/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.25/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/search.js
@@ -48,6 +48,7 @@ backstretch:
   position: background  # cover: 封面背景   background: 整个网页背景
   duration: 6000        # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
+  is_dark: #true         # 图片是否是暗色的（调整文字为白色）
   images:
     - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
     # - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
@@ -63,7 +64,6 @@ cover:
   title: Volantis
   # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
   search: 'for Hexo 4.2+'
-  # color: '#FFF' # 菜单文字颜色
   # 主页封面菜单
   features:
     - name: 公告

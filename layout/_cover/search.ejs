@@ -1,7 +1,7 @@
 <% if (theme.cover.logo) { %>
   <img class='logo' src='<%- url_for(theme.cover.logo) %>'/>
 <% } else { %>
-  <h1 class='title'><%- theme.cover.title ? theme.cover.title : config.title %></h1>
+  <p class="title <%- theme.backstretch && theme.backstretch.is_dark ? 'white' : '' %>"><%- theme.cover.title ? theme.cover.title : config.title %></p>
 <% } %>
 <% if (theme.search.enable === true) { %>
   <div class="m_search">
@@ -16,7 +16,7 @@
     <% if (theme.cover.features) { %>
       <% (theme.cover.features || []).forEach(function(value){ %>
         <li>
-          <a class="nav home" style="color: <%- theme.cover && theme.cover.color %>"
+          <a class="nav home <%- theme.backstretch && theme.backstretch.is_dark ? 'white' : '' %>"
             href="<%= url_for(value.url) %>"
             <% if (value.rel) { %>
               rel="<%- value.rel %>"
