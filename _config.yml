@@ -177,7 +177,7 @@ layout:
   # 文章列表（主页、自定义的列表）布局
   on_list:
     # 列表中每一篇文章的meta信息
-    meta: [title, date, updated, top]
+    meta: [title, author, date, top]
     # 列表类页面的侧边栏
     sidebar: [navigation, repos_sidebar]
   # 文章页面布局
@@ -188,7 +188,7 @@ layout:
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
-      header: [title, category, date, updated, top]
+      header: [title, author, category, date, top]
       footer: [links, tags]
     # 文章页脚，自动在每一篇文章末尾添加
     # footer: [copyright, donate]
@@ -207,12 +207,12 @@ meta:
   # 文章创建日期
   date:
     icon: fas fa-edit
-    title: '发布于：'
+    title: '消息发布于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章更新日期
   updated:
     icon: fas fa-save
-    title: '更新于：'
+    title: '本页文档最后更新于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章分类
   category:
