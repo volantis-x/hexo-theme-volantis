@@ -5,13 +5,13 @@ info:
   docs: https://xaoxuu.com/wiki/volantis/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.28/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.29/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.28/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.28/js/search.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.29/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.29/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js
-      backstretch: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.28/js/backstretch.min.js
-      commentTyping: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.28/js/commentTyping.js
+      backstretch: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.29/js/backstretch.min.js
+      commentTyping: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.29/js/commentTyping.js
 
 
 ############################### 服务开关 ###############################

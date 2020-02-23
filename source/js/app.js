@@ -50,7 +50,7 @@ var customSearch;
 		const $coverAnchor = $('.cover-wrapper');
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
-			showHeaderPoint = $coverAnchor[0].clientHeight - 164;
+			showHeaderPoint = $coverAnchor[0].clientHeight - 80;
 		}
 		var pos = document.body.scrollTop;
 		$(document, window).scroll(() => {
