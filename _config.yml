@@ -157,6 +157,14 @@ navbar:
         url: advanced-settings
         rel: nofollow
         target: _self
+      - name: FAQ
+        icon: fas fa-question-circle
+        url: faqs
+        rel: nofollow
+      - name: 鸣谢
+        icon: fas fa-handshake
+        url: contributors
+        rel: nofollow
   search: 搜索文档   # 搜索框文字
 
 
@@ -361,7 +369,7 @@ widget:
         url: /
       - name: 消息归档
         icon: fas fa-file-archive
-        url: archives/
+        url: news/archives/
       - name: 常见问题
         icon: fas fa-question-circle
         url: faqs
