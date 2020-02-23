@@ -48,10 +48,10 @@ backstretch:
   position: background  # cover: 封面背景   background: 整个网页背景
   duration: 6000        # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
-  is_dark: #true         # 图片是否是暗色的（调整文字为白色）
+  is_dark: true         # 图片是否是暗色的（调整文字为白色）
   images:
-    - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
-    # - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
+    # - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
+    - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
     # - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
     # - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
 
@@ -71,7 +71,7 @@ cover:
       url: /
     - name: 文档
       icon: fas fa-book
-      url: start/
+      url: getting-started/
     - name: 源码
       icon: fas fa-code-branch
       url: https://github.com/xaoxuu/hexo-theme-material-x/
@@ -97,52 +97,62 @@ navbar:
   menu:
     # 在桌面端显示的导航菜单
     on_desktop:
-      - name: 开始使用
-        icon: fas fa-download
-        url: start
+      - name: 开始
+        icon: fas fa-flag
+        url: getting-started
         rel: nofollow
         target: _self
-      - name: 站点配置
-        icon: fas fa-cogs
+      - name: 站点
+        icon: fas fa-globe-asia
         url: site-settings
         target: _self
-      - name: 主题配置
+      - name: 主题
         icon: fas fa-palette
         url: theme-settings
         rel: nofollow
         target: _self
-      - name: 页面配置
+      - name: 页面
         icon: fas fa-file-alt
         url: page-settings
         rel: nofollow
         target: _self
-      - name: 进阶设定
+      - name: 书写
+        icon: fas fa-pen-alt
+        url: tag-plugins
+        rel: nofollow
+        target: _self
+      - name: 进阶
         icon: fas fa-flask
         url: advanced-settings
         rel: nofollow
         target: _self
     # 手机端导航菜单（从右上角的按钮点击展开）
     on_mobile:
-      - name: 开始使用
-        icon: fas fa-download
-        url: start
+      - name: 开始
+        icon: fas fa-flag
+        url: getting-started
         rel: nofollow
         target: _self
-      - name: 站点配置
-        icon: fas fa-cogs
+      - name: 站点
+        icon: fas fa-globe-asia
         url: site-settings
         target: _self
-      - name: 主题配置
+      - name: 主题
         icon: fas fa-palette
         url: theme-settings
         rel: nofollow
         target: _self
-      - name: 页面配置
+      - name: 页面
         icon: fas fa-file-alt
         url: page-settings
         rel: nofollow
         target: _self
-      - name: 进阶设定
+      - name: 书写
+        icon: fas fa-pen-alt
+        url: tag-plugins
+        rel: nofollow
+        target: _self
+      - name: 进阶
         icon: fas fa-flask
         url: advanced-settings
         rel: nofollow
