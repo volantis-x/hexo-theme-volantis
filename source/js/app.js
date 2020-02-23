@@ -50,7 +50,7 @@ var customSearch;
 		const $coverAnchor = $('.cover-wrapper');
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
-			showHeaderPoint = $coverAnchor[0].clientHeight - 164;
+			showHeaderPoint = $coverAnchor[0].clientHeight - 80;
 		}
 		var pos = document.body.scrollTop;
 		$(document, window).scroll(() => {
@@ -118,7 +118,7 @@ var customSearch;
 	}
 
 	function setHeaderMenuSelection() {
-		var $headerMenu = $('body .navgation');
+		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
 		$headerMenu.find('li a.active').removeClass('active');
 		// var $underline = $headerMenu.find('.underline');

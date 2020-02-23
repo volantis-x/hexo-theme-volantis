@@ -1,7 +1,7 @@
 <section class='widget <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
   <%- partial('header', {item: item}) %>
   <div class='content'>
-    <ul class="grid navgation">
+    <ul class="grid navigation">
       <% (item.rows||[]).forEach(function(row){ %>
         <li><a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>"
           <% if (row.rel) { %>

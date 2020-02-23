@@ -2,6 +2,9 @@
   <img class='logo' src='<%- url_for(theme.cover.logo) %>'/>
 <% } else { %>
   <p class="title <%- theme.backstretch && theme.backstretch.is_dark ? 'white' : '' %>"><%- theme.cover.title ? theme.cover.title : config.title %></p>
+  <% if (theme.cover.subtitle) { %>
+    <p class="subtitle <%- theme.backstretch && theme.backstretch.is_dark ? 'white' : '' %>"><%- theme.cover.subtitle%></p>
+  <% } %>
 <% } %>
 <% if (theme.search.enable === true) { %>
   <div class="m_search">
@@ -11,7 +14,7 @@
     </form>
   </div>
 <% } %>
-<div class='menu navgation'>
+<div class='menu navigation'>
   <ul class='h-list'>
     <% if (theme.cover.features) { %>
       <% (theme.cover.features || []).forEach(function(value){ %>

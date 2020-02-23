@@ -62,16 +62,18 @@ fancybox{
     align-items: center;
     align-self: center;
     align-content: center;
-    color: fade(@color_text_main, 85%);
-    // padding: @gap;
+    color: fade(@color_text_main, 75%);
+    padding: @gap;
     .title, .logo{
-      font-size: @fontsize_h1*2;
       margin-top: ~"calc(28vh - 2*@{gap})";
       text-align: center;
-      font-weight: bold;
     }
     .title{
-      line-height: ~"calc(@{fontsize_h1}*2 + 2*@{gap})";
+      font-size: @fontsize_h1*2;
+      line-height: @fontsize_h1*2;
+    }
+    .subtitle{
+      font-size: @fontsize_small;
     }
     .logo{
       max-height: 100px;
@@ -83,14 +85,14 @@ fancybox{
     }
     @media(max-width: @on_phone){
       .title, .logo {
-        font-size: @fontsize_h1*2;
-        line-height: @fontsize_h1*2.2;
+        font-size: @fontsize_h1*1.7;
+        line-height: @fontsize_h1*1.7;
       }
     }
     .m_search{
       @iconW: 32px;
       @iconMargin: 4px;
-      margin-top: ~"calc(2vh + 2*@{gap})";
+      margin-top: ~"calc(2vh + 32px)";
       position: relative;
       max-width: ~"calc(100% - 1*@{gap})";
       width: 340px;
@@ -137,6 +139,7 @@ fancybox{
         border: 1px dashed transparent;
         .set-placeholder({
           padding-top: 2px;
+          font-size: @fontsize_small;
           color: fade(@color_text_main, 60%);
         });
         &:hover{
@@ -154,19 +157,25 @@ fancybox{
 
     }
     &.half{
-      height: ~"calc(60vh - @{gap} - @{height_navbar} + 6*@{gap})";
-      margin-bottom: ~"calc(-6*@{gap})";
+      margin-bottom: ~"calc(-100px)";
+      height: ~"calc(60vh - @{height_navbar} + 120px)";
       .title, .logo{
-        margin-top: ~"calc(24vh - 4*@{gap})";
-      }
-      @media(max-width: @on_phone){
-        height: ~"calc(45vh - @{gap} - @{height_navbar} + 6*@{gap})";
-        .title, .logo{
-          margin-top: ~"calc(24vh - 6*@{gap})";
-        }
+        margin-top: ~"calc(28vh - 80px)";
       }
       .m_search{
-        margin-top: @gap;
+        margin-top: @gap*2;
+      }
+      @media(max-width: @on_pad){
+        height: ~"calc(40vh - @{height_navbar} + 160px)";
+        .title, .logo{
+          margin-top: ~"calc(22vh - 90px)";
+        }
+      }
+      @media(max-width: @on_phone){
+        height: ~"calc(30vh - @{height_navbar} + 200px)";
+        .title, .logo{
+          margin-top: ~"calc(22vh - 70px)";
+        }
       }
     }
     .menu{
