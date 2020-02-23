@@ -48,7 +48,7 @@ backstretch:
   position: background  # cover: 封面背景   background: 整个网页背景
   duration: 10000       # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
-  is_dark: # true         # 图片是否是暗色的（调整文字为白色）
+  is_dark: # true       # 图片是否是暗色的（调整文字为白色）
   images:
     - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
     # - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
