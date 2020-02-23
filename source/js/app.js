@@ -118,7 +118,7 @@ var customSearch;
 	}
 
 	function setHeaderMenuSelection() {
-		var $headerMenu = $('body .navgation');
+		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
 		$headerMenu.find('li a.active').removeClass('active');
 		// var $underline = $headerMenu.find('.underline');

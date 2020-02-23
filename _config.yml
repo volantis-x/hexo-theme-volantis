@@ -5,13 +5,13 @@ info:
   docs: https://xaoxuu.com/wiki/volantis/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.27/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.28/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/search.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.28/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.28/js/search.js
       volantis: https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js
-      backstretch: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/backstretch.min.js
-      commentTyping: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.22/js/commentTyping.js
+      backstretch: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.28/js/backstretch.min.js
+      commentTyping: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.28/js/commentTyping.js
 
 
 ############################### 服务开关 ###############################
@@ -45,7 +45,7 @@ style:
 
 # 幻灯片背景
 backstretch:
-  position: background  # cover: 封面背景   background: 整个网页背景
+  position: fixed       # cover: 封面背景   fixed: 整个网页背景
   duration: 10000       # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
   is_dark: # true       # 图片是否是暗色的（调整文字为白色）
@@ -62,8 +62,9 @@ cover:
   scheme: search    # 后期将会提供多种封面布局方案
   height: half      # full（默认值）: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
   title: Live Demo
+  subtitle: 山重水复疑无路 柳暗花明又一村
   # logo: assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
-  search: 'for Hexo 4.2+'
+  search: 'A Wonderful Theme for Hexo 4.2+'
   # 主页封面菜单
   features:
     - name: 博文

@@ -32,11 +32,19 @@
     justify-content: space-between;
     border-top-left-radius: @border_radius;
     border-top-right-radius: @border_radius;
-    color: @theme_main;
     font-weight: bold;
     line-height: 1.5em;
     padding: ~"calc(@{gap} - 2px)";
     padding-bottom: 0;
+    &,a{
+      color: @theme_main;
+    }
+    a:hover{
+      color: @color_text_highlight;
+    }
+    span.name{
+      margin-left: @gap/2;
+    }
     .rightBtn{
       color: @theme_main;
       &:hover {
@@ -55,11 +63,12 @@
       a{
         color: fade(@color_text_main, 80%);
         padding: 0 @gap;
+        padding-left: @gap/2 + 4px;
         line-height: @height_cell;
         display: flex;
         justify-content: space-between;
         align-content: center;
-        border-left: 2px solid transparent;
+        border-left: 4px solid transparent;
         .enable-trans();
       }
     }
@@ -79,6 +88,15 @@
         &:hover{
           border-left: 4px solid @theme_main;
           background: fade(@theme_main, 10%);
+        }
+        &.active{
+          border-left: 4px solid @theme_main;
+          .name{
+            color: @theme_main;
+          }
+          .badge{
+            color: fade(@theme_main, 90%);
+          }
         }
         &:active{
           border-left: 8px solid @theme_main;
@@ -336,6 +354,9 @@
 .aplayer-container{
   display: flex;
   justify-content: center;
+  meting-js{
+    max-width: 100%;
+  }
 }
 .aplayer{
   max-width: 500px;
