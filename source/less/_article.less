@@ -2,7 +2,7 @@
   color: @color_text_main;
   font-size: @fontsize_base;
   line-height: @lineheight_base;
-  word-break: break-all;
+  // word-break: break-all;
   word-wrap: break-word;
   img {
     position: relative;
@@ -242,22 +242,30 @@
     p{
       text-align: left;
       word-wrap: normal;
-      margin: 0;
       font-size: @fontsize_small;
       line-height: @fontsize_small * 1.5;
-      padding: @gap/2 0;
+      margin: .6em 0;
     }
     position: relative;
     width: 100%;
     font-size: @fontsize_small;
-
     margin: .6em 0;
     padding: .7em 1.2em;
 
     .enable-trans();
     footer {
-      strong {
-        margin-right: 7px;
+      padding: 0;
+      text-align: justify;
+      color: inherit;
+      font-style: italic;
+      margin: .6em 0;
+      cite{
+        &::before{
+          content: '----';
+          padding: 0 .3em;
+        }
+        color: fade(@color_text_main, 70%);
+        margin-left: 1em;
       }
     }
     &.pullquote{
@@ -442,7 +450,7 @@
     }
 
   }
-  p btn {
+  p btn, li btn {
     a {
       background: @color_text_link;
       color: @color_text_in_header;
