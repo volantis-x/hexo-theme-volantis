@@ -1,15 +1,15 @@
 ############################### 主题基本信息 ###############################
 info:
   name: Volantis
-  version: 1.5.3
+  version: 1.5.4
   docs: https://xaoxuu.com/wiki/volantis/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.32/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.32/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.32/js/search.js
-      valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.32/js/valine.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/js/search.js
+      valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/js/valine.js
 
 
 
@@ -17,7 +17,8 @@ info:
 ############################### 服务开关 ###############################
 # ⚠️ 注意：开启过多服务会导致网页加载缓慢、运行卡顿
 service:
-  jquery: '//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js'
+  # jquery是很多功能的基础，请勿关闭
+  jquery: '//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js'
   ################################################## 提升速度类的服务
   # 鼠标放在链接上就提前开始加载了
   instant_page: '//instant.page/3.0.0'
@@ -32,7 +33,7 @@ service:
   # clipboard: '//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js'
   ################################################## 运维服务
   # 访问量统计【加载非常缓慢】
-  # busuanzi: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js'
+  busuanzi: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js'
   # 文章字数统计、阅读时长，开启需要安装插件: npm i --save hexo-wordcount
   # wordcount: true
   ################################################## 美化类的服务
@@ -41,7 +42,7 @@ service:
   #   css: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css'
   #   js: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js'
   # 文本框打字机特效
-  # comment_typing: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/js/comment_typing.js'
+  comment_typing: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/js/comment_typing.js'
 
 
 
@@ -206,7 +207,7 @@ navbar:
 
 # 布局
 layout:
-  # 多列布局
+  # 文章列表多列布局
   multiple_columns: false # 部分浏览器不兼容，谨慎使用
   # 文章列表（主页、自定义的列表）布局
   on_list:
@@ -217,7 +218,7 @@ layout:
   # 文章页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
-    body: [article]
+    body: [article, comments]
     # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
