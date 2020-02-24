@@ -1,14 +1,5 @@
-<%
-var plats = [];
-if (item.display) {
-  item.display.forEach(function(plat){
-    plats.push(plat);
-  });
-} else {
-  plats = ['desktop', 'mobile'];
-}
-%>
-<section class="widget <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %> <%- item.class %> <%- plats.join(' ') %>">
+<%- partial('_pre') %>
+<section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
   <%- partial('header', {item: item}) %>
   <div class='content'>
     <ul class="list entry navigation">

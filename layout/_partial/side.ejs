@@ -1,32 +1,10 @@
+<%console.log('sidebar: ', page.sidebar);%>
 <aside class='l_side'>
-  <% if (page.sidebar) { %>
-    <% page.sidebar.forEach(function(widget_id){ %>
-      <% theme.widget.forEach(function(widget){ %>
-        <% if (widget.id == widget_id){ %>
-          <%- partial('../_widget/' + widget.class, {item: widget}) %>
-        <% } %>
-      <% }) %>
+  <% page.sidebar.forEach(function(widget_id){ %>
+    <% theme.widget.forEach(function(widget){ %>
+      <% if (widget.id == widget_id){ %>
+        <%- partial('../_widget/' + widget.class, {item: widget}) %>
+      <% } %>
     <% }) %>
-  <% } else { %>
-    <%
-    var ids = [];
-    if(is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
-      var isPostList = true;
-    } else {
-      var isPostList = false;
-    }
-    if (isPostList) {
-      ids = theme.layout.on_list.sidebar;
-    } else {
-      ids = theme.layout.on_page.sidebar;
-    }
-    %>
-    <% ids.forEach(function(widget_id){ %>
-      <% theme.widget.forEach(function(widget){ %>
-        <% if (widget.id == widget_id){ %>
-          <%- partial('../_widget/' + widget.class, {item: widget}) %>
-        <% } %>
-      <% }) %>
-    <% }) %>
-  <% } %>
+  <% }) %>
 </aside>
