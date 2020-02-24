@@ -1,10 +1,18 @@
-<section class='widget <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %> <%- item.class?item.class:'text' %>'>
+<%
+var plats = [];
+if (item.display) {
+  item.display.forEach(function(plat){
+    plats.push(plat);
+  });
+} else {
+  plats = ['desktop', 'mobile'];
+}
+%>
+<section class="widget <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %> <%- item.class %> <%- plats.join(' ') %>">
   <%- partial('header', {item: item}) %>
   <div class='content'>
     <% (item.content||[]).forEach(function(row){ %>
-      <p>
-        <%- markdown(row) %>
-      </p>
+      <%- markdown(row) %>
     <% }) %>
   </div>
 </section>

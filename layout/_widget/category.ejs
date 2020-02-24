@@ -1,5 +1,15 @@
 <% if (site.categories.length){ %>
-  <section class='widget <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %> <%- item.class %>'>
+  <%
+  var plats = [];
+  if (item.display) {
+    item.display.forEach(function(plat){
+      plats.push(plat);
+    });
+  } else {
+    plats = ['desktop', 'mobile'];
+  }
+  %>
+  <section class="widget <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.widget ? 'widget-blur' : '' %> <%- item.class %> <%- plats.join(' ') %>">
     <%- partial('header', {item: item}) %>
     <div class='content'>
       <ul class="entry navigation">

@@ -451,31 +451,7 @@
 
   }
   p btn, li btn {
-    a {
-      background: @color_text_link;
-      color: @color_text_in_header;
-      padding: 2px 5px 0px 5px;
-      // margin: 1px;
-      border-radius: 2px;
-      .enable-trans();
-      &:hover {
-        color: @color_text_in_header;
-        text-decoration: none;
-        background: @color_text_highlight;
-      }
-    }
-    &.small {
-      font-size: @fontsize_base * .9;
-      a {
-        padding: 2px 3px 0px 3px;
-      }
-    }
-    &.regular {
-      a {
-        line-height: 50px;
-        padding: 9px 16px 8px 16px;
-      }
-    }
+    .btn-wrapper();
   }
   .large, .huge {
     margin: 0;

@@ -5,7 +5,7 @@ info:
   docs: https://xaoxuu.com/wiki/volantis/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.30/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.30/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.30/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.30/js/search.js
@@ -179,11 +179,11 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, date, top]
     # 列表类页面的侧边栏
-    sidebar: [navigation, repos_sidebar]
+    sidebar: [navigation, repos, qrcode]
   # 文章页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
-    body: [article, repos_bottom]
+    body: [article]
     # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
@@ -191,9 +191,9 @@ layout:
       header: [title, author, category, date, top]
       footer: [links, tags]
     # 文章页脚，自动在每一篇文章末尾添加
-    # footer: [copyright, donate]
+    footer: #[copyright, qrcode]
     # 文章页面的侧边栏
-    sidebar: [navigation, toc, footnote]
+    sidebar: [navigation, repos, qrcode, toc]
   # 其他的页面布局暂时等于文章列表
 
 
@@ -280,6 +280,7 @@ widget:
   # 博主信息小部件配置
   - id: blogger
     class: blogger
+    display: [desktop] # [desktop, mobile]
     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png
     # title:  标题
     # subtitle: 副标题
@@ -289,8 +290,10 @@ widget:
   # 目录小部件配置(仅在文章中有效)
   - id: toc
     class: toc
-    icon: fas fa-list
-    title: 本文目录
+    display: [desktop] # [desktop, mobile]
+    header:
+      icon: fas fa-list
+      title: 本文目录
     list_number: false # 是否显示章节
     min_depth: 2 # H1建议用作网页或者文章的标题，章节从H2开始。
     max_depth: 5 # 由于宽度有限，主题没有针对所有层级进行布局优化，建议文章最多分为：H2/H3/H4/H5四个层级
@@ -298,24 +301,20 @@ widget:
   # 文章分类小部件配置
   - id: category
     class: category
-    icon: fas fa-folder-open
-    title: 文章分类
-    more: # 右上角的按钮
-      icon: fas fa-expand-arrows-alt
+    display: [desktop] # [desktop, mobile]
+    header:
+      icon: fas fa-folder-open
+      title: 文章分类
       url: blog/categories/
-      rel: external nofollow noopener noreferrer
-      target: _self
   # ---------------------------------------
   # 标签云小部件配置
   - id: tagcloud
     class: tagcloud
-    icon: fas fa-tags
-    title: 热门标签
-    more: # 右上角的按钮
-      icon: fas fa-expand-arrows-alt
+    display: [desktop] # [desktop, mobile]
+    header:
+      icon: fas fa-tags
+      title: 热门标签
       url: blog/tags/
-      rel: external nofollow noopener noreferrer
-      target: _self
     min_font: 14
     max_font: 24
     color: true
@@ -325,12 +324,15 @@ widget:
   # 相关文章小部件配置
   - id: related_posts
     class: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
-    icon: fas fa-bookmark
-    title: 相关文章
+    display: [desktop, mobile] # [desktop, mobile]
+    header:
+      icon: fas fa-bookmark
+      title: 相关文章
   # ---------------------------------------
   # 版权说明小部件（仅用于文章中）
   - id: copyright
     class: copyright
+    display: [desktop, mobile] # [desktop, mobile]
     blockquote: true # 是否把内容放到blockquote中
     permalink: '本文永久链接是：' # 显示文章永久链接
     content:
@@ -338,32 +340,27 @@ widget:
       - ''
       - permalink
   # ---------------------------------------
-  # 捐赠小部件（可用于文章中和侧边栏）
+  # 二维码小部件（可用于文章中的打赏，只显示图片，无其他功能）
   - id: qrcode
-    class: donate
-    icon: fas fa-mobile
-    title: 手机观看
-    height: 64px
-    # fancybox: true # 是否允许点击放大
+    class: qrcode
+    display: [desktop] # [desktop, mobile]
+    header:
+      icon: fas fa-mobile
+      title: 手机观看
+    height: #64px  # 不设置则自动高度
+    fancybox: #true # 是否允许点击放大
     images:
-      - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
-      - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
-      - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
-      - https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
+      - https://img.vim-cn.com/a1/093847694418628874eaf837b6d01b0006bc2f.png
+  # ---------------------------------------
+  # ---------------------------------------
   # ---------------------------------------
   # 自定义组件，仿照如下写法
-  - id: huan_ying # 唯一标识，自己命名，建议全英文
-    class: text # 小部件类型，对应_widget文件夹中的文件名
-    icon: fas fa-file
-    title: 文本部件
-    content:
-      - '这是一段支持markdown的文本'
-      - '![](https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png)'
-      - haha
   - id: navigation
     class: grid
-    icon: fas fa-map-signs
-    title: 帮助索引
+    display: [desktop] # [desktop, mobile]
+    header:
+      icon: fas fa-map-signs
+      title: 文档导航
     rows:
       - name: 近期消息
         icon: fas fa-bullhorn
@@ -381,59 +378,18 @@ widget:
         url: https://github.com/xaoxuu/hexo-theme-material-x/releases/
         rel: external nofollow noopener noreferrer
         target: _blank
-  - id: tui_jian
-    class: list
-    icon: fas fa-thumbs-up
-    title: 强烈推荐
-    rows:
-      - name: 带图片的列表
-        img: https://img.vim-cn.com/4e/3c87a2fd28fd0b9c2f27ce3f83f1e9275d0488.png
-      - name: 带图标的列表
-        icon: fas fa-home
-      - name: Hexo脚本（Mac）
-        url: https://xaoxuu.com/wiki/hexo.sh/
-        rel: external nofollow noopener noreferrer
-        target: _blank
-      - name: 图床脚本（Mac）
-        url: https://xaoxuu.com/wiki/vim-cn.sh/
-        rel: external nofollow noopener noreferrer
-        target: _blank
-      - name: 图片在线压缩
-        url: https://yasuotu.com
-        rel: external nofollow noopener noreferrer
-        target: _blank
-      - name: 生成Favicon
-        url: https://realfavicongenerator.net
-        rel: external nofollow noopener noreferrer
-        target: _blank
-      - name: 简历主题
-        url: https://mxclub.github.io/resume/
-        rel: external nofollow noopener noreferrer
-        target: _blank
-  - id: repos_sidebar
+  - id: repos
     class: text
-    icon: fas fa-star
-    title: 点个赞吧
+    display: [desktop] # [desktop, mobile]
+    header:
+      icon: fab fa-github
+      title: 点个赞吧
+      url: https://github.com/xaoxuu/
     content:
-      - '您的赞对我来说很重要，如果您喜欢本主题，希望能够给下面的项目点个赞来支持一下作者。'
-      - '<br>'
+      - '您的赞对我来说很重要，如果您喜欢本主题，希望能够给下面的项目点个赞来支持一下。'
       - '[<img src="https://img.vim-cn.com/92/807ffd8bab40497971172514294020b6501074.png" height="50px">](https://github.com/xaoxuu/ProHUD)'
       - '[<img src="https://img.vim-cn.com/d4/12de11f629bd1395a1a968eb23071d0fefa280.png" height="50px">](https://github.com/xaoxuu/ValueX)'
       - '[<img src="https://img.vim-cn.com/12/1dd7852a36433f9efe3e11a7772bddcf68be72.png" height="50px">](https://github.com/xaoxuu/Inspire)'
-  - id: footnote
-    class: text
-    icon: fas fa-info-circle
-    title: 关于文档
-    content:
-      - '由于文档经历大改，可能存在内容或链接过时等问题，我会尽快检查和更新，请见谅。'
-  - id: repos_bottom
-    class: text
-    icon: fas fa-star
-    title: 点个赞吧
-    content:
-      - '您的赞对我来说很重要，如果您喜欢本主题，希望能够给下面的项目点个赞来支持一下作者。'
-      - '<br>'
-      - '[<img src="https://img.vim-cn.com/92/807ffd8bab40497971172514294020b6501074.png" height="50px">](https://github.com/xaoxuu/ProHUD)&nbsp;&nbsp;[<img src="https://img.vim-cn.com/d4/12de11f629bd1395a1a968eb23071d0fefa280.png" height="50px">](https://github.com/xaoxuu/ValueX)&nbsp;&nbsp;[<img src="https://img.vim-cn.com/12/1dd7852a36433f9efe3e11a7772bddcf68be72.png" height="50px">](https://github.com/xaoxuu/Inspire)'
 
 
 # 社交信息配置

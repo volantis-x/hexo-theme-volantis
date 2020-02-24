@@ -1,26 +1,9 @@
-<header>
-  <div>
-    <% if (item.backurl) { %>
-      <a href='<%- item.backurl %>'><i class="<%- item.icon %> fa-fw" aria-hidden="true"></i><span class='name'><%- item.title %></span></a>
+<% if (item.header) { %>
+  <header>
+    <% if (item.header.url) { %>
+      <a href='<%- item.header.url %>'><i class="<%- item.header.icon %> fa-fw" aria-hidden="true"></i><span class='name'><%- item.header.title %></span></a>
     <% } else { %>
-      <i class="<%- item.icon %> fa-fw" aria-hidden="true"></i><span class='name'><%- item.title %></span>
+      <i class="<%- item.header.icon %> fa-fw" aria-hidden="true"></i><span class='name'><%- item.header.title %></span>
     <% } %>
-
-  </div>
-  <% if (item.class == 'toc') { %>
-    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
-  <% } else if(item.more && item.more.url) { %>
-    <a class="rightBtn<%- item.more.animate ? ' ' + item.more.animate : '' %>"
-    <% if (item.more.rel) { %>
-      rel="<%- item.more.rel %>"
-    <% } else { %>
-      rel="external nofollow noopener noreferrer"
-    <% } %>
-    <% if (item.more.target) { %>
-      target="<%- item.more.target %>"
-    <% } %>
-    href="<%- url_for(item.more.url) %>"
-    title="<%- item.more.url %>">
-    <i class="<%- item.more.icon?item.more.icon:'fas fa-question-circle' %> fa-fw"></i></a>
-  <% } %>
-</header>
+  </header>
+<% } %>
