@@ -17,4 +17,7 @@ if (is_home() || is_category() || is_archive() || is_tag() || page.layout == 'li
     }
   }
 }
+if (page.sidebar == false) {
+  page.sidebar = [];
+}
 %>
