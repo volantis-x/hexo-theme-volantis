@@ -48,12 +48,20 @@ backstretch:
   position: fixed       # cover: 封面背景   fixed: 整个网页背景
   duration: 10000       # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
-  is_dark: # true       # 图片是否是暗色的（调整文字为白色）
-  images:
-    - https://i.loli.net/2020/02/08/HNuVoted2mUxILl.jpg
-    # - https://i.loli.net/2020/02/08/dNJyR4LHtarTqPu.jpg
-    # - https://i.loli.net/2020/02/08/yXx4GwgZYdi81Qs.jpg
-    # - https://i.loli.net/2020/02/08/RP7JpGvWaCYfuB6.jpg
+  is_dark: #true        # 图片是否是暗色的（调整文字为白色）
+  images:               # 我上传了一些高清壁纸到CDN中，仅限个人使用，商用后果自负！！！
+    - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
+    # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
+    # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg
+    # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg
+    # 下面这些建议 is_dark: true
+    # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/2884F904-F1F3-479E-AE27-5EBC291B63B0.jpeg
+    # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg
+    # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg
+    # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/10A0FCE5-36A1-4AD0-8CF0-019259A89E03.jpeg
+    # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/250662D4-5A21-4AAA-BB63-CD25CF97CFF1.jpeg
+    # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/298468D7-E388-44A8-8CC5-8213BDC33CED.jpeg
+    # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/AEB33F9D-7294-4CF1-B8C5-3020748A9D45.jpeg
 
 
 ############################### 自定义 ###############################
