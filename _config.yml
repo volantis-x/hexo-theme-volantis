@@ -290,7 +290,7 @@ widget:
   # 目录小部件配置(仅在文章中有效)
   - id: toc
     class: toc
-    display: [desktop] # [desktop, mobile]
+    display: [desktop, mobile] # [desktop, mobile]
     header:
       icon: fas fa-list
       title: 本文目录
