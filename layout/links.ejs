@@ -20,11 +20,9 @@
                     <a class='friend-card' style='background:<%- item.backgroundColor %>; color:<%- item.textColor %>'
                       target="_blank" rel="external nofollow noopener noreferrer" href='<%- url_for(item.url || '') %>'>
                       <div class='friend-left'>
-                        <img class='avatar'
-                        <% if(page.avatar_placeholder){ %>
-                          src='<%- page.avatar_placeholder %>'
+                        <% if(item.avatar){ %>
+                          <img class='avatar' src='<%- item.avatar %>'/>
                         <% } %>
-                        data-echo='<%- url_for(item.avatar ? item.avatar : "https://img.vim-cn.com/a4/87a96e2e01b1180bba1e76e190df5220378c1a.png") %>'/>
                       </div>
                       <div class='friend-right'>
                         <p class="friend-name"><%- item.name %></p>

@@ -1,5 +1,5 @@
 /*!
- * Valine v1.3.9
+ * Valine v1.3.10
  * (c) 2017-2019 xCss
  * Released under the GPL-2.0 License.
  * Last Update: 2019-6-26 21:52:17
@@ -258,7 +258,7 @@
                 head: {
                     nick: "昵称（必填）",
                     mail: "邮箱（必填）",
-                    link: "完整链接"
+                    link: "链接"
                 },
                 tips: {
                     comments: "评论",
@@ -800,6 +800,9 @@
                 s && (l = '<span class="vsys">' + (s = d(s)).browser + " " + s.version + '</span> <span class="vsys">' + s.os + " " + s.osVersion + "</span>"),
                 "*" === y && (l = '<a href="' + e.get("url") + '" class="vsys">' + e.get("url") + "</a>");
                 var p, f = e.get("link") || "";
+                if (f.indexOf('://') < 0) {
+                  f = 'http://' + f;
+                }
                 p = f ? '<a class="vnick" rel="nofollow" href="' + f + '" target="_blank" >' + e.get("nick") + "</a>" : '<span class="vnick">' + e.get("nick") + "</span>",
                 i.innerHTML = o + '\n            <div class="vh" rootid=' + (e.get("rid") || e.id) + '>\n                <div class="vhead">' + p + " " + l + '</div>\n                <div class="vmeta">\n                    <span class="vtime">' + c(e.get("insertedAt") || e.createdAt, t.locale) + '</span>\n                    <span class="vat">' + t.locale.ctrl.reply + '</span>\n                </div>\n                <div class="vcontent">\n                    ' + b(e.get("comment")) + "\n                </div>\n            </div>";
                 for (var h = u.find(i, ".vat"), v = u.findAll(i, "a"), g = 0, x = v.length; g < x; g++) {
@@ -2317,61 +2320,7 @@
         e.exports = n
     }
     , function(e, t) {
-        function aru(index){
-          return "<img id='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/aru/" + index + ".png'>";
-        }
-        function tieba(str){
-          return "<img id='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/tieba/" + str + ".png'>";
-        }
-        function qq(str) {
-          return "<img id='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0/img/qq/" + str + ".gif'>";
-        }
         e.exports = {
-            aru151: aru(151),
-            贴吧what: tieba('what'),
-            贴吧乖: tieba('乖'),
-            贴吧喷: tieba('喷'),
-            贴吧太开心: tieba('太开心'),
-            贴吧委屈: tieba('委屈'),
-            贴吧小乖: tieba('小乖'),
-            贴吧捂嘴笑: tieba('捂嘴笑'),
-            贴吧泪: tieba('泪'),
-            贴吧滑稽: tieba('滑稽'),
-            贴吧爱心: tieba('爱心'),
-            贴吧玫瑰: tieba('玫瑰'),
-            贴吧真棒: tieba('真棒'),
-      			贴吧疑问: tieba('疑问'),
-      			qqOK: qq('OK'),
-      			qq亲亲: qq('亲亲'),
-      			qq便便: qq('便便'),
-      			qq偷笑: qq('偷笑'),
-      			qq冷汗: qq('冷汗'),
-      			qq发呆: qq('发呆'),
-      			qq发怒: qq('发怒'),
-      			qq可怜: qq('可怜'),
-      			qq可爱: qq('可爱'),
-      			qq左哼哼: qq('左哼哼'),
-      			qq右哼哼: qq('右哼哼'),
-      			qq吓: qq('吓'),
-      			qq呲牙: qq('呲牙'),
-      			qq嗅大了: qq('嗅大了'),
-      			qq坏笑: qq('坏笑'),
-      			qq奋斗: qq('奋斗'),
-      			qq委屈: qq('委屈'),
-      			qq害羞: qq('害羞'),
-      			qq尴尬: qq('尴尬'),
-      			qq强: qq('强'),
-      			qq得意: qq('得意'),
-      			qq快哭了: qq('快哭了'),
-      			qq惊恐: qq('惊恐'),
-      			qq憨笑: qq('憨笑'),
-      			qq抓狂: qq('抓狂'),
-      			qq抱拳: qq('抱拳'),
-      			qq握手: qq('握手'),
-      			qq晕: qq('晕'),
-      			qq疑问: qq('疑问'),
-      			qq阴险: qq('阴险'),
-      			qq鼓掌: qq('鼓掌'),
             grinning: "😀",
             smiley: "😃",
             smile: "😄",

@@ -45,11 +45,14 @@
   <% } %>
 
   <!-- link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  <% if (theme.nodewaves == true) { %>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  <% if (theme.service.fancybox && theme.service.fancybox.css) { %>
+    <%- css(theme.service.fancybox.css) %>
   <% } %>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  <% if (theme.service.nodewaves && theme.service.nodewaves.css) { %>
+    <%- css(theme.service.nodewaves.css) %>
+  <% } %>
+
   <% if (config.import && config.import.link){ %>
   <% (config.import.link||[]).forEach(function(item){ %>
   <%- item %><% }) %>
