@@ -56,15 +56,15 @@
   <script async src="<%- theme.service.busuanzi %>"></script>
 <% } %>
 
-<% if (theme.backstretch && (theme.backstretch.images || page.images)) { %>
+<% if (theme.backstretch && theme.backstretch.enable && (theme.backstretch.images || page.images)) { %>
   <% var imgs = theme.backstretch.images || page.images; %>
   <% var posi = null;
   if (theme.backstretch.position == 'cover') {
     posi = '.cover';
   }
    %>
-  <% if (imgs != undefined && theme.backstretch.position != undefined && theme.service.backstretch){ %>
-    <%- js(theme.service.backstretch) %>
+  <% if (imgs != undefined && theme.backstretch.position != undefined){ %>
+    <%- js(theme.backstretch.js) %>
     <script type="text/javascript">
       $(function(){
         if ('<%- posi %>') {

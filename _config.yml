@@ -14,39 +14,34 @@ info:
 
 
 
-
 ############################### 服务开关 ###############################
 # ⚠️ 注意：开启过多服务会导致网页加载缓慢、运行缓慢
 service:
   jquery: '//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js'
-  ############################# 提升速度类的服务
+  ################################################## 提升速度类的服务
   # 鼠标放在链接上就提前开始加载了
   instant_page: '//instant.page/3.0.0'
-  ############################# 优化体验类的服务
+  ################################################## 优化体验类的服务
   # 图片放大预览
   fancybox:
     css: '//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css'
     js: '//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js'
   # 页面滚动显示动画
-  scrollreveal: '//cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js'
+  # scrollreveal: '//cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js'
   # 代码块复制按钮
-  clipboard: '//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js'
-  # 图片懒加载  需要安装插件 npm i --save hexo-lazyload-image
-  lazyload: '//cdn.jsdelivr.net/gh/toddmotto/echo@1.7.3/src/echo.js'
-  ############################# 运维服务
+  # clipboard: '//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js'
+  ################################################## 运维服务
   # 访问量统计【加载非常缓慢】
-  busuanzi: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js'
+  # busuanzi: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js'
   # 文章字数统计、阅读时长，开启需要安装插件: npm i --save hexo-wordcount
-  wordcount: #true
-  ############################# 美化类的服务
-  # 幻灯片背景
-  backstretch: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.32/js/backstretch.min.js'
+  # wordcount: true
+  ################################################## 美化类的服务
   # 按钮点击涟漪效果
-  nodewaves:
-    css: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css'
-    js: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js'
+  # nodewaves:
+  #   css: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css'
+  #   js: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js'
   # 文本框打字机特效
-  commentTyping: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.32/js/commentTyping.js
+  # comment_typing: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/js/comment_typing.js'
 
 
 
@@ -72,6 +67,8 @@ style:
 
 # 幻灯片背景
 backstretch:
+  enable: true          # 是否启用 
+  js: '//cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js'
   position: fixed       # cover: 封面背景   fixed: 整个网页背景
   duration: 10000       # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
