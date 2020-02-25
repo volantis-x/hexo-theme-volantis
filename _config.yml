@@ -20,7 +20,7 @@ service:
   # jquery是很多功能的基础，请勿关闭
   jquery: '//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js'
   ################################################## 提升速度类的服务
-  # 鼠标放在链接上就提前开始加载了
+  # 鼠标放在链接上就提前开始加载了 [站内的url一定要以‘/’结尾]
   instant_page: 'https://instant.page/3.0.0'
   ################################################## 优化体验类的服务
   # 图片放大预览
@@ -111,12 +111,11 @@ cover:
     - name: 源码
       icon: fas fa-code-branch
       url: https://github.com/xaoxuu/hexo-theme-material-x/
-      rel: nofollow
+      rel: external nofollow noopener noreferrer
       target: _blank
     - name: 鸣谢
       icon: fas fa-handshake
       url: contributors/
-      rel: nofollow
 
 
 # 导航栏
@@ -135,72 +134,48 @@ navbar:
     on_desktop:
       - name: 开始
         icon: fas fa-flag
-        url: getting-started
-        rel: nofollow
-        target: _self
+        url: getting-started/
       - name: 站点
         icon: fas fa-globe-asia
-        url: site-settings
-        target: _self
+        url: site-settings/
       - name: 主题
         icon: fas fa-palette
-        url: theme-settings
-        rel: nofollow
-        target: _self
+        url: theme-settings/
       - name: 页面
         icon: fas fa-file-alt
-        url: page-settings
-        rel: nofollow
-        target: _self
+        url: page-settings/
       - name: 书写
         icon: fas fa-pen-alt
-        url: tag-plugins
-        rel: nofollow
-        target: _self
+        url: tag-plugins/
       - name: 进阶
         icon: fas fa-flask
-        url: advanced-settings
-        rel: nofollow
-        target: _self
+        url: advanced-settings/
     # 手机端导航菜单（从右上角的按钮点击展开）
     on_mobile:
       - name: 开始
         icon: fas fa-flag
-        url: getting-started
-        rel: nofollow
-        target: _self
+        url: getting-started/
       - name: 站点
         icon: fas fa-globe-asia
-        url: site-settings
-        target: _self
+        url: site-settings/
       - name: 主题
         icon: fas fa-palette
-        url: theme-settings
-        rel: nofollow
-        target: _self
+        url: theme-settings/
       - name: 页面
         icon: fas fa-file-alt
-        url: page-settings
-        rel: nofollow
-        target: _self
+        url: page-settings/
       - name: 书写
         icon: fas fa-pen-alt
-        url: tag-plugins
-        rel: nofollow
-        target: _self
+        url: tag-plugins/
       - name: 进阶
         icon: fas fa-flask
-        url: advanced-settings
-        rel: nofollow
-        target: _self
+        url: advanced-settings/
       - name: FAQ
         icon: fas fa-question-circle
         url: faqs
-        rel: nofollow
       - name: 鸣谢
         icon: fas fa-handshake
-        url: contributors
-        rel: nofollow
+        url: contributors/
   search: 搜索文档   # 搜索框文字
 
 
@@ -405,9 +380,7 @@ widget:
         url: news/archives/
       - name: 常见问题
         icon: fas fa-question-circle
-        url: faqs
-        rel: external nofollow noopener noreferrer
-        target: _self
+        url: faqs/
       - name: 更新日志
         icon: fas fa-clipboard-list
         url: https://github.com/xaoxuu/hexo-theme-material-x/releases/
