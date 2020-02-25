@@ -9,6 +9,7 @@
     position: sticky;
     width: 100%;
     top: 0;
+    padding-bottom: @gap/4;
   }
   .content{
     max-height: ~"calc(100vh - 5 * @{gap} - @{height_navbar})";;
@@ -52,9 +53,6 @@
     top: @height_navbar;
     box-shadow: @boxshadow_card_raised;
     visibility: hidden;
-    .rightBtn{
-      display: none;
-    }
     transform: scale(0,0);
     transform-origin: right top;
     &.active{

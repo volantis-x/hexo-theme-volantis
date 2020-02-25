@@ -529,7 +529,8 @@ ul.h-list {
   a {
     background: @color_text_link;
     color: @color_text_in_header;
-    padding: 2px 5px 0px 5px;
+    padding: 2px 5px 1px 5px;
+    margin: 1px;
     border-radius: 2px;
     .enable-trans();
     &:hover {
@@ -539,15 +540,28 @@ ul.h-list {
     }
   }
   &.small {
-    font-size: @fontsize_base * .9;
     a {
-      padding: 2px 3px 0px 3px;
+      font-size: @fontsize_base * .9;
+      padding: 2px 3px 1px 3px;
     }
   }
   &.regular {
     a {
       line-height: 50px;
       padding: 9px 16px 8px 16px;
+      i {
+        margin-right: 2px;
+      }
+    }
+  }
+  &.large {
+    font-size: @fontsize_base * 1.1;
+    line-height: @fontsize_base * 4;
+    a {
+      padding: 11px 40px 10px 40px;
+      i {
+        margin: 0 5px 0 -2px;
+      }
     }
   }
 }

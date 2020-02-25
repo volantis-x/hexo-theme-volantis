@@ -620,14 +620,16 @@ details {
   display: block;
   background: @color_bg_code_block;
   padding: @gap;
-  border: 1px solid darken(@theme_cardbg, 10%);
+  margin: .6em 0;
+  border: 1px solid darken(@color_bg_code_block, 10%);
   border-radius: @border_radius_code_block;
   .enable-trans();
   summary {
     cursor: pointer;
     padding: @gap;
     margin: -@gap;
-    color: fade(@color_text_main, 60%);;
+    color: fade(@color_text_main, 70%);
+    font-size: @fontsize_base * .95;
     font-weight: bold;
     &:hover {
       color: @color_text_highlight;

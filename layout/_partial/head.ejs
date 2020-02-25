@@ -46,11 +46,11 @@
 
   <!-- link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
-  <% if (theme.service.fancybox && theme.service.fancybox.css) { %>
-    <%- css(theme.service.fancybox.css) %>
+  <% if (theme.plugins.fancybox && theme.plugins.fancybox.css) { %>
+    <%- css(theme.plugins.fancybox.css) %>
   <% } %>
-  <% if (theme.service.nodewaves && theme.service.nodewaves.css) { %>
-    <%- css(theme.service.nodewaves.css) %>
+  <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
+    <%- css(theme.plugins.nodewaves.css) %>
   <% } %>
 
   <% if (config.import && config.import.link){ %>

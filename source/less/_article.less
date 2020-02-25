@@ -333,7 +333,7 @@
     font-size: @fontsize_small;
     line-height: @lineheight_base;
     margin-top: @gap;
-    background: fade(darken(@theme_cardbg, 5%), 50%);
+    background: @color_bg_code_block;
     &.article-tags {
       // padding-top: 2*@gap;
       // background: transparent;
@@ -393,7 +393,7 @@
       width: 100%;
       padding: @gap/2;
       color: fade(@color_text_main, 70%);
-      background-color: fade(darken(@theme_cardbg, 5%), 50%);
+      background-color: @color_bg_code_block;
       border-radius: @border_radius;
       p{
         font-size: @fontsize_base;
@@ -504,11 +504,14 @@
   font-family:@fontfamily_code;
   line-height: @lineheight_base;
   border-radius: @border_radius_code_block;
-  border: 1px solid darken(@theme_cardbg, 10%);
+  border: 1px solid darken(@color_bg_code_block, 10%);
   .enable-trans();
   figcaption{
-    padding: @gap/4 @gap/2;
-    background-color: darken(@color_bg_code_block, 3%);
+    position: sticky;
+    left: 0;
+    padding: @gap/4 @gap/2 @gap/4 @gap/2;
+    background-color: darken(@color_bg_code_block, 5%);
+
   }
   table {
     td,th{
@@ -530,25 +533,27 @@
       text-align: right;
       border-width: 0;
       margin-left: 0;
-      background-color: darken(@color_bg_code_block, 3%);
+      position: sticky;
+      left: 0;
+      background-color: darken(@color_bg_code_block, 5%);
       pre{
           color: fade(@color_text_main, 80%);
       }
     }
     .code{
-        padding: @gap;
-        vertical-align: top;
-        background-color: transparent;
-        &:before{
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: fade(@color_text_main, 80%);
-            font-size: @fontsize_footnote;
-            padding: 4px 8px 0;
-            line-height: @lineheight_base;
-        }
+      padding: @gap;
+      vertical-align: top;
+      background-color: transparent;
+      &:before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: fade(@color_text_main, 80%);
+        font-size: @fontsize_footnote;
+        padding: 4px 8px;
+        line-height: @lineheight_base;
+      }
     }
   }
 
@@ -665,6 +670,7 @@
 
 pre{
   // 行
+  line-height: @lineheight_base*1.1;
   .line{
     color: fade(@color_text_main, 90%);
   }
@@ -672,6 +678,7 @@ pre{
     background-color: fade(@color_mac_minimize, 40%);
     padding: 3px 8px 3px 0;
     border-radius: 2px;
+    width: 100%;
   }
   .title{
     color: @color_md_indigo;

@@ -1,4 +1,4 @@
-<%- js(theme.service.jquery) %>
+<%- js(theme.plugins.jquery) %>
 <% if (theme.search && theme.search.enable) { %>
   <script>
     <% if(theme.search.service === 'baidu') { %>
@@ -20,15 +20,15 @@
     if (!ROOT.endsWith('/')) ROOT += '/';
   </script>
 <% } %>
-<% if (theme.service.instant_page) { %>
-  <script async src="<%- theme.service.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<% if (theme.plugins.instant_page) { %>
+  <script async src="<%- theme.plugins.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 <% } %>
 <% if (theme.aplayer.enable) { %>
   <script async src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
   <script async src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
 <% } %>
-<% if (theme.service.scrollreveal) { %>
-  <script src="<%- theme.service.scrollreveal %>"></script>
+<% if (theme.plugins.scrollreveal) { %>
+  <script src="<%- theme.plugins.scrollreveal %>"></script>
   <script type="text/javascript">
     $(function() {
       const $reveal = $('.reveal');
@@ -38,8 +38,8 @@
     });
   </script>
 <% } %>
-<% if (theme.service.nodewaves && theme.service.nodewaves.js) { %>
-  <%- js({src: theme.service.nodewaves.js, async: true }) %>
+<% if (theme.plugins.nodewaves && theme.plugins.nodewaves.js) { %>
+  <%- js({src: theme.plugins.nodewaves.js, async: true }) %>
   <script type="text/javascript">
     $(function() {
       Waves.attach('.flat-btn', ['waves-button']);
@@ -52,8 +52,8 @@
     });
   </script>
 <% } %>
-<% if (theme.service.busuanzi) { %>
-  <script async src="<%- theme.service.busuanzi %>"></script>
+<% if (theme.plugins.busuanzi) { %>
+  <script async src="<%- theme.plugins.busuanzi %>"></script>
 <% } %>
 
 <% if (theme.backstretch && theme.backstretch.enable && (theme.backstretch.images || page.images)) { %>
@@ -199,18 +199,18 @@
 <% } else { %>
   <%- js(['js/search.js']) %>
 <% } %>
-<% if (theme.service.comment_typing) { %>
-  <%- js(theme.service.comment_typing) %>
+<% if (theme.plugins.comment_typing) { %>
+  <%- js(theme.plugins.comment_typing) %>
 <%}%>
 
 <!-- 复制 -->
-<% if (theme.service.clipboard) { %>
+<% if (theme.plugins.clipboard) { %>
   <%- partial('_third-party/clipboard') %>
 <% } %>
 
 
 <!-- fancybox -->
-<% if (theme.service.fancybox) { %>
+<% if (theme.plugins.fancybox) { %>
   <%- partial('_third-party/fancybox') %>
 <% } %>
 

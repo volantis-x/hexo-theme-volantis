@@ -5,7 +5,7 @@ info:
   docs: https://xaoxuu.com/wiki/volantis/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.33/js/search.js
@@ -14,9 +14,9 @@ info:
 
 
 
-############################### 服务开关 ###############################
+############################### 第三方插件 ###############################
 # ⚠️ 注意：开启过多服务会导致网页加载缓慢、运行卡顿
-service:
+plugins:
   # jquery是很多功能的基础，请勿关闭
   jquery: '//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js'
   ################################################## 提升速度类的服务
@@ -76,8 +76,8 @@ backstretch:
   fade: 2500            # 渐变（毫秒）
   is_dark: #true        # 图片是否是暗色的（调整文字为白色）
   images:               # 我上传了一些高清壁纸到CDN中，仅限个人使用，商用后果自负！！！
-    - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
     - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
+    - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
     - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg
     - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg
     # 下面这些建议 is_dark: true
