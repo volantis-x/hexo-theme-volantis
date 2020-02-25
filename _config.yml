@@ -21,7 +21,7 @@ service:
   jquery: '//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js'
   ################################################## 提升速度类的服务
   # 鼠标放在链接上就提前开始加载了
-  instant_page: '//instant.page/3.0.0'
+  instant_page: 'https://instant.page/3.0.0'
   ################################################## 优化体验类的服务
   # 图片放大预览
   fancybox:
@@ -115,7 +115,7 @@ cover:
       target: _blank
     - name: 鸣谢
       icon: fas fa-handshake
-      url: contributors
+      url: contributors/
       rel: nofollow
 
 
@@ -269,19 +269,19 @@ meta:
   share:
     - id: qq
       name: QQ好友
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png
+      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png
     - id: qzone
       name: QQ空间
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png
+      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png
     # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
     #   name: 微信
-    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png
+    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png
     - id: weibo
       name: 微博
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png
+      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png
     # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
     #   name: QRcode
-    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png
+    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qrcode.png
   # 链接
   links:
     repo: # 源码链接
@@ -385,7 +385,7 @@ widget:
     height: #64px  # 不设置则自动高度
     fancybox: #true # 是否允许点击放大
     images:
-      - https://img.vim-cn.com/a1/093847694418628874eaf837b6d01b0006bc2f.png
+      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
   # ---------------------------------------
   # ---------------------------------------
   # ---------------------------------------
@@ -422,9 +422,9 @@ widget:
       url: https://github.com/xaoxuu/
     content:
       - '您的赞对我来说很重要，如果您喜欢本主题，希望能够给下面的项目点个赞来支持一下。'
-      - '[<img src="https://img.vim-cn.com/92/807ffd8bab40497971172514294020b6501074.png" height="50px">](https://github.com/xaoxuu/ProHUD)'
-      - '[<img src="https://img.vim-cn.com/d4/12de11f629bd1395a1a968eb23071d0fefa280.png" height="50px">](https://github.com/xaoxuu/ValueX)'
-      - '[<img src="https://img.vim-cn.com/12/1dd7852a36433f9efe3e11a7772bddcf68be72.png" height="50px">](https://github.com/xaoxuu/Inspire)'
+      - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/prohud/logo.png" height="50px">](https://github.com/xaoxuu/ProHUD)'
+      - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/valuex/logo.png" height="50px">](https://github.com/xaoxuu/ValueX)'
+      - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/inspire/logo.png" height="50px">](https://github.com/xaoxuu/Inspire)'
 
 
 # 社交信息配置

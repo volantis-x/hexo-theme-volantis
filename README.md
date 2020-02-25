@@ -38,11 +38,7 @@ A minimalist card-style Hexo blog theme.
 
 ## Blog Example
 
-| Blog | Source Code | Instructions |
-| ----------------------------------- | -------------------------------------- | ------------------ |
-| [@mxclub](https://mxclub.github.io) | https://github.com/xaoxuu/blog-example | The default effect of the master branch |
-| [@xaoxuu](https://xaoxuu.com) | Not open source yet | myblog branch effect |
-
+https://xaoxuu.com/
 
 - **For more examples, please see [#Example Blog](https://github.com/xaoxuu/hexo-theme-volantis/issues/97)**
 
@@ -131,11 +127,7 @@ https://xaoxuu.com/wiki/volantis/
 
 ## 博客示例
 
-| 博客                                | 源码                                   | 说明               |
-| ----------------------------------- | -------------------------------------- | ------------------ |
-| [@mxclub](https://mxclub.github.io) | https://github.com/xaoxuu/blog-example | master分支默认效果 |
-| [@xaoxuu](https://xaoxuu.com)       | 暂未开源                               | myblog分支效果     |
-
+https://xaoxuu.com/
 
 - **更多示例请见 [#示例博客](https://github.com/xaoxuu/hexo-theme-volantis/issues/97)**
 
