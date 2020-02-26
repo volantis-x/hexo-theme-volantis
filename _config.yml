@@ -5,11 +5,11 @@ info:
   docs: https://xaoxuu.com/wiki/volantis/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.38/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.39/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.38/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.38/js/search.js
-      valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.38/js/valine.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.39/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.39/js/search.js
+      valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.39/js/valine.js
 
 
 
@@ -42,7 +42,7 @@ plugins:
   #   css: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css'
   #   js: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js'
   # 文本框打字机特效
-  comment_typing: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.38/js/comment_typing.js'
+  comment_typing: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.39/js/comment_typing.js'
 
 
 
