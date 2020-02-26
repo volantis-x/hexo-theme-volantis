@@ -1,15 +1,15 @@
 ############################### 主题基本信息 ###############################
 info:
   name: Volantis
-  version: 1.5.4
+  version: 1.5.5
   docs: https://xaoxuu.com/wiki/volantis/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.36/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.38/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.36/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.36/js/search.js
-      valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.36/js/valine.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.38/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.38/js/search.js
+      valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.38/js/valine.js
 
 
 
@@ -42,7 +42,7 @@ plugins:
   #   css: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css'
   #   js: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js'
   # 文本框打字机特效
-  comment_typing: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.36/js/comment_typing.js'
+  comment_typing: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.38/js/comment_typing.js'
 
 
 
@@ -108,6 +108,9 @@ cover:
     - name: 文档
       icon: fas fa-book
       url: getting-started/
+    - name: 示例
+      icon: fas fa-play-circle
+      url: examples/
     - name: 源码
       icon: fas fa-code-branch
       url: https://github.com/xaoxuu/hexo-theme-material-x/
@@ -170,9 +173,9 @@ navbar:
       - name: 进阶
         icon: fas fa-flask
         url: advanced-settings/
-      - name: FAQ
+      - name: 帮助
         icon: fas fa-question-circle
-        url: faqs
+        url: faqs/
       - name: 鸣谢
         icon: fas fa-handshake
         url: contributors/
@@ -367,7 +370,7 @@ widget:
   # 自定义组件，仿照如下写法
   - id: navigation
     class: grid
-    display: [desktop] # [desktop, mobile]
+    display: [desktop, mobile] # [desktop, mobile]
     header:
       icon: fas fa-map-signs
       title: 文档导航
@@ -381,6 +384,9 @@ widget:
       - name: 常见问题
         icon: fas fa-question-circle
         url: faqs/
+      - name: 示例博客
+        icon: fas fa-play-circle
+        url: examples/
       - name: 更新日志
         icon: fas fa-clipboard-list
         url: https://github.com/xaoxuu/hexo-theme-material-x/releases/

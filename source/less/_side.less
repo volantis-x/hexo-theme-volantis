@@ -26,6 +26,12 @@
   &.desktop{
     display: block;
   }
+  @media(max-width: @on_pad) {
+    display: none !important;
+    &.mobile{
+      display: block !important;
+    }
+  }
   @media(max-width: @on_phone) {
     width: ~"calc(100% - 2 * @{gap})";
     margin: @gap @gap 0 @gap;

@@ -35,6 +35,11 @@
                           <% }) %>
                           </div>
                         <% } %>
+                        <% if(item.desc){ %>
+                          <div class='friend-tags-wrapper'>
+                            <p class="tags"><%= item.desc %></p>
+                          </div>
+                        <% } %>
                       </div>
                     </a>
                   <% }) %>

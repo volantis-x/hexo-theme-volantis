@@ -5,14 +5,16 @@
       flex-wrap: wrap;
       margin: -@gap/2;
       border-radius: @border_radius;
+      align-items: flex-start;
       .friend-card{
         display: flex;
-        border-radius: @border_radius/2;
+        border-radius: @border_radius/4;
         box-shadow: @boxshadow_card_normal;
         padding: @gap/2 0;
         margin: @gap/2;
         margin-top: ~"calc(@{gap}*1.25 + 32px)";
         color: fade(@color_text_main, 80%);
+        background: darken(@color_bg_code_block, 10%);
         justify-content: flex-start;
         align-content: flex-start;
         flex-direction: column;
@@ -73,6 +75,7 @@
               font-size: @fontsize_small;
               line-height: @fontsize_small*1.5;
               padding-top: 4px;
+              font-weight: bold;
             }
             &.tags{
               font-size: @fontsize_footnote;
