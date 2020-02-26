@@ -495,6 +495,37 @@
     flex-wrap: wrap;
     margin: .6em -@gap/2;
     align-items: flex-start;
+    &.auto{
+      a{
+        padding-left: @gap;
+        padding-right: @gap;
+      }
+    }
+    &.fill{
+      a{
+        flex-grow: 1;
+        width: auto;
+      }
+    }
+    &.wide{
+      a{
+        width:~"calc(100%/2 - @{gap})" !important;
+      }
+    }
+    &:not(.auto){
+      a{
+        width:~"calc(100%/5 - @{gap})";
+        @media(max-width: @on_laptop){
+          width:~"calc(100%/4 - @{gap})";
+        }
+        @media(max-width: @on_pad){
+          width:~"calc(100%/3 - @{gap})";
+        }
+        @media(max-width: @on_phone){
+          width:~"calc(100%/2 - @{gap})";
+        }
+      }
+    }
     a{
       .enable-trans();
       margin: @gap/2;
@@ -505,51 +536,50 @@
       align-content: center;
       align-items: center;
       flex-direction: column;
-      width:~"calc(100%/5 - @{gap})";
-      @media(max-width: @on_laptop){
-        width:~"calc(100%/4 - @{gap})";
-      }
-      @media(max-width: @on_pad){
-        width:~"calc(100%/3 - @{gap})";
-      }
-      @media(max-width: @on_phone){
-        width:~"calc(100%/2 - @{gap})";
-      }
+      min-width: 120px;
       line-height: @lineheight_base;
       padding: @gap/2;
       text-align: center;
       font-size: @fontsize_small;
-      img,i{
+      img{
         width: 64px;
         height: 64px;
         margin: @gap @gap/2 @gap/4 @gap/2;
-        margin-top: ~"calc(-@{gap}*1.5 - 32px)";
+        margin-top: ~"calc(-@{gap}*1.25 - 32px)";
         border: 3px solid @theme_cardbg;
         background: @color_text_in_header;
         line-height: 60px;
         font-size: 28px;
       }
       background: darken(@color_bg_code_block, 10%);
-      border-radius: 2px;
+      border-radius: 4px;
       color: @color_text_main;
+      p{
+        margin: .2em 0;
+        font-weight: normal;
+        line-height: 1.2;
+        word-wrap: break-word;
+        &.title{
+          font-size: @fontsize_base;
+          font-weight: bold;
+          line-height: 1.3;
+        }
+      }
       &:hover{
         text-decoration: none;
         background: @color_text_highlight;
         color: @color_text_in_header;
-        i{
-          background: @color_text_highlight;
+        img{
+          transform: scale(1.1) translateY(-8px);
+          box-shadow: @boxshadow_base_4;
         }
       }
     }
-    &.circle > a {
-      img,i{
-        border-radius: 50%;
-      }
+    &.circle > a > img{
+      border-radius: 50%;
     }
-    &.rounded > a {
-      img,i{
-        border-radius: 25%;
-      }
+    &.rounded > a > img {
+      border-radius: 25%;
     }
   }
 
