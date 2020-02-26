@@ -1,8 +1,5 @@
 .article.typo.l_friends{
   .friends-group{
-    h2{
-      font-size: @fontsize_h3;
-    }
     .friend-content{
       display: flex;
       flex-wrap: wrap;
@@ -10,53 +7,35 @@
       border-radius: @border_radius;
       .friend-card{
         display: flex;
-        border-radius: @border_radius;
+        border-radius: @border_radius/2;
         box-shadow: @boxshadow_card_normal;
-        background: #eee;
+        padding: @gap/2 0;
         margin: @gap/2;
+        margin-top: ~"calc(@{gap}*1.25 + 32px)";
         color: fade(@color_text_main, 80%);
         justify-content: flex-start;
         align-content: flex-start;
         flex-direction: column;
-        border: 1px solid transparent;
-        width:~"calc(100%/3 - @{gap})";
+        width:~"calc(100%/5 - @{gap})";
         @media(max-width: @on_laptop){
-          width:~"calc(100%/3 - @{gap})";
+          width:~"calc(100%/4 - @{gap})";
         }
         @media(max-width: @on_pad){
-          width:~"calc(100%/2 - @{gap})";
+          width:~"calc(100%/3 - @{gap})";
         }
         @media(max-width: @on_phone){
-          width: 100%;
-          margin: 0 @gap/4;
-          border-radius: 0;
-          flex-direction: row;
-          &:first-child{
-            border-top-left-radius: @border_radius;
-            border-top-right-radius: @border_radius;
-          }
-          &:last-child{
-            border-bottom-left-radius: @border_radius;
-            border-bottom-right-radius: @border_radius;
-          }
+          width:~"calc(100%/2 - @{gap})";
         }
         &:hover{
           text-decoration: none;
-          box-shadow: @boxshadow_card_raised, 0 32px 64px 0px rgba(0, 0, 0, 0.1);
           transform: scale(1.05);
-          border-radius: @border_radius;
-          @media(max-width: @on_phone){
-            transform: scale(1.02);
-            margin: @gap/2 0;
-          }
+          border-radius: @border_radius/2;
           .friend-left{
             .avatar{
               transform: scale(1.2) rotate(12deg);
               box-shadow: @boxshadow_card_raised;
-              // border: 2px solid transparent;
             }
           }
-
         }
         .friend-left{
           display: flex;
@@ -64,53 +43,39 @@
           .avatar{
             width: 64px;
             height: 64px;
-            min-width: 64px;
-            min-height: 64px;
+            .enable-trans();
+            box-shadow: @boxshadow_card_normal;
             margin: @gap @gap/2 @gap/4 @gap/2;
+            margin-top: ~"calc(-@{gap}*1.25 - 32px)";
             border-radius: 100%;
-            border: 0px solid transparent;
-            // box-shadow: @boxshadow_card_normal;
-            @media(max-width: @on_phone){
-              margin: @gap;
-            }
+            border: 2px solid white;
+            background: white;
           }
         }
         .friend-right{
           margin: @gap/4 @gap/2;
           display: flex;
-          // flex: 1;
           flex-direction: column;
           text-align: center;
           p{
             text-align: center;
           }
-          @media(max-width: @on_phone){
-            margin: @gap @gap @gap 0;
-            text-align: left;
-            p{
-              text-align: left;
-            }
-          }
           .friend-tags-wrapper{
             .enable-trans();
             margin-left: -2px;
             word-break:break-all;
-            margin-bottom: @gap/2;
-            @media(max-width: @on_phone){
-              margin-bottom: 0;
-            }
+            line-height: @fontsize_footnote;
           }
           p{
             margin: 0;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
             &.friend-name{
               font-family: @fontfamily_logo;
-              font-size: @fontsize_base;
-              font-weight: bold;
+              font-size: @fontsize_small;
+              line-height: @fontsize_small*1.5;
               padding-top: 4px;
             }
             &.tags{
-              font-size: @fontsize_small * 0.85;
+              font-size: @fontsize_footnote;
               display: inline;
               background: none;
               word-wrap: break-word;
@@ -120,6 +85,5 @@
         }
       }
     }
-
   }
 }
