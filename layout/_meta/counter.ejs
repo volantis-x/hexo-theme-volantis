@@ -1,5 +1,18 @@
 <% if(!isPostList){ %>
-  <% if (theme.plugins.busuanzi) { %>
+  <% if (config.leancloud && config.leancloud.app_id && config.leancloud.app_key && theme.valine.visitor) { %>
+    <div class="new-meta-item browse valine">
+      <a class='notlink'>
+        <i class="<%- theme.meta.counter.icon %>" aria-hidden="true"></i>
+        <span id="<%- url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">
+        <p>
+          <span class="leancloud-visitors-count">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+        </span>
+      </a>
+    </div>
+  <% } else if (theme.plugins.busuanzi) { %>
     <div class="new-meta-item browse busuanzi">
       <a class='notlink'>
         <i class="<%- theme.meta.counter.icon %>" aria-hidden="true"></i>

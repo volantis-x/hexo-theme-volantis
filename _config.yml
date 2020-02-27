@@ -483,6 +483,7 @@ valine:
   notify: true # valine mail notify (true/false)
   lang: zh-cn
   highlight: true
+  visitor: false # 阅读统计，按照官网文档接入了，但是依然不能用。
 
 # 搜索配置
 search:
