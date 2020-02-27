@@ -112,8 +112,8 @@ cover:
       icon: fas fa-play-circle
       url: examples/
     - name: 源码
-      icon: fas fa-code-branch
-      url: https://github.com/xaoxuu/hexo-theme-material-x/
+      icon: fas fa-file-code
+      url: https://github.com/xaoxuu/hexo-theme-volantis/
       rel: external nofollow noopener noreferrer
       target: _blank
     - name: 鸣谢
@@ -202,7 +202,7 @@ layout:
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
       header: [title, author, category, date, top]
-      footer: [links, tags]
+      footer: [btns, tags]
     # 文章页脚，自动在每一篇文章末尾添加
     footer: #[copyright, qrcode]
     # 文章页面的侧边栏
@@ -261,9 +261,13 @@ meta:
     #   name: QRcode
     #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qrcode.png
   # 链接
-  links:
+  btns:
+    edit:
+      icon: fas fa-edit
+      title: 在GitHub上编辑此页
+      color: '#888'
     repo: # 源码链接
-      icon: fas fa-code-branch
+      icon: fas fa-file-code
       title: 源码
       color: '#508EF2'
     bug: # BUG反馈链接
@@ -375,21 +379,26 @@ widget:
       icon: fas fa-map-signs
       title: 文档导航
     rows:
-      - name: 近期消息
-        icon: fas fa-bullhorn
-        url: /
-      - name: 消息归档
-        icon: fas fa-file-archive
-        url: news/archives/
       - name: 常见问题
         icon: fas fa-question-circle
         url: faqs/
       - name: 示例博客
         icon: fas fa-play-circle
         url: examples/
+      - name: 特别感谢
+        icon: fas fa-handshake
+        url: contributors/
+      - name: 历史事件
+        icon: fas fa-file-archive
+        url: news/archives/
+      - name: 主题源码
+        icon: fas fa-file-code
+        url: https://github.com/xaoxuu/hexo-theme-volantis/
+        rel: external nofollow noopener noreferrer
+        target: _blank
       - name: 更新日志
         icon: fas fa-clipboard-list
-        url: https://github.com/xaoxuu/hexo-theme-material-x/releases/
+        url: https://github.com/xaoxuu/hexo-theme-volantis/releases/
         rel: external nofollow noopener noreferrer
         target: _blank
   - id: repos
@@ -460,13 +469,14 @@ aplayer:
 #valine配置
 valine:
   enable: true # 如果你想用Valine评论系统，请设置enable为true
-  volantis: true # 是否启用volantis版本（禁止匿名，增加若干贴吧、QQ表情）
   # 还需要在根目录配置文件中添加下面这三行内容
   # leancloud:
   #   app_id: 你的appId
   #   app_key: 你的appKey
+  #   valine_path: 全站采用同一个path（共用同一个评论框数据）
   guest_info: nick,mail,link #valine comment header info
-  placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
+  # placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
+  placeholder: 这里仅供用户之间进行交流，如需反馈请移步「GitHub Issues」。
   avatar: mp # gravatar style https://valine.js.org/avatar
   pageSize: 10 # comment list page size
   verify: true # valine verify code (true/false)
