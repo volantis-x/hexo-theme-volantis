@@ -450,46 +450,57 @@
     }
 
   }
+
   p btn, li btn {
     .btn-wrapper();
   }
-  .large, .huge {
-    margin: 0;
+
+  p{
+    &[small]{
+      font-size: @fontsize_small;
+    }
+    &[large]{
+      font-size: 4em;
+    }
+    &[huge]{
+      font-size: 6em;
+    }
+    &[small],&[large],&[huge]{
+      margin: .1em 0;
+      line-height: 1em;
+    }
+    &[bold]{
+      font-weight: bold;
+    }
+    &[left]{
+      text-align: left;
+    }
+    &[center]{
+      text-align: center;
+    }
+    &[right]{
+      text-align: right;
+    }
+
   }
-  .large {
-    font-size: 4em;
-  }
-  .huge {
-    font-size: 6em;
-  }
-  .bold {
-    font-weight: bold;
-  }
-  .left {
-    text-align: left;
-  }
-  .right {
-    text-align: right;
-  }
-  red, .red {
+  red,p[red]{
     color: @color_mac_close;
   }
-  green, .green {
-    color: @color_mac_maximize;
-  }
-  yellow, .yellow {
+  yellow,p[yellow]{
     color: @color_mac_minimize;
   }
-  blue, .blue {
-    color: @color_md_blue;
+  green,p[green]{
+    color: @color_mac_maximize;
   }
-  cyan, .cyan {
+  cyan,p[cyan]{
     color: @color_mac_finder;
   }
-  gray, .gray {
-    color: #AAA;
+  blue,p[blue]{
+    color: @color_md_blue;
   }
-  
+  gray,p[gray]{
+    color: #666;
+  }
   btns {
     .btns-wrapper();
   }
