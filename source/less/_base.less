@@ -526,13 +526,12 @@ ul.h-list {
 }
 
 .btn-wrapper{
-  line-height: 1.8em;
   a {
-    line-height: @lineheight_base;
+    line-height: @lineheight_base * 1.3;
     background: @color_text_link;
     color: @color_text_in_header;
-    padding: 2px 5px 1px 5px;
-    margin: 1px;
+    padding: 3px 5px 1px 5px;
+    margin: 2px;
     border-radius: 2px;
     .enable-trans();
     &:hover {
@@ -541,30 +540,26 @@ ul.h-list {
       background: @color_text_highlight;
     }
   }
-  &.small {
+  &[regular] {
     a {
-      font-size: @fontsize_footnote;
-      padding: 2px 3px 1px 3px;
-    }
-  }
-  &.regular {
-    font-size: @fontsize_base * 1.1;
-    a {
-      line-height: 50px;
-      padding: 9px 16px 8px 16px;
+      line-height: @lineheight_base * 1.8;
+      padding: 9px 16px 7px 16px;
       i {
         margin-right: 2px;
       }
     }
   }
-  &.large {
-    font-size: @fontsize_base * 1.1;
-    line-height: @fontsize_base * 4;
+  &[large] {
     a {
+      line-height: @lineheight_base * 3;
       padding: 11px 40px 10px 40px;
       i {
         margin: 0 5px 0 -2px;
       }
     }
+  }
+  &[center] {
+    display: block;
+    text-align: center;
   }
 }
