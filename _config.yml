@@ -190,7 +190,7 @@ layout:
   # 文章列表（主页、自定义的列表）布局
   on_list:
     # 列表中每一篇文章的meta信息
-    meta: [title, author, date, top]
+    meta: [title, author, date, updated, top]
     # 列表类页面的侧边栏
     sidebar: [navigation, repos, qrcode]
   # 文章页面布局
@@ -214,18 +214,20 @@ layout:
 meta:
   # 文章标题
   title: # 暂无配置
-  # 文章作者
+  # 默认文章作者（可在front-matter中覆盖）
   author:
-    icon: fas fa-user # 如果配置了头像，则不会显示图标
+    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
+    name: Mr. Xu
+    url: https://xaoxuu.com
   # 文章创建日期
   date:
     icon: fas fa-edit
-    title: '消息发布于：'
+    title: '发布于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章更新日期
   updated:
     icon: fas fa-save
-    title: '本页文档最后更新于：'
+    title: '更新于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章分类
   category:
