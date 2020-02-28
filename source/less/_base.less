@@ -587,6 +587,20 @@ ul.h-list {
   &[center]{
     justify-content: center;
   }
+  &[grid2]{
+    a{
+      width:~"calc(100%/2 - @{gap})";
+      @media(max-width: @on_laptop){
+        width:~"calc(100%/2 - @{gap})";
+      }
+      @media(max-width: @on_pad){
+        width:~"calc(100%/2 - @{gap})";
+      }
+      @media(max-width: @on_phone){
+        width:~"calc(100%/1 - @{gap})";
+      }
+    }
+  }
   &[grid3]{
     a{
       width:~"calc(100%/3 - @{gap})";
@@ -597,7 +611,7 @@ ul.h-list {
         width:~"calc(100%/3 - @{gap})";
       }
       @media(max-width: @on_phone){
-        width:~"calc(100%/2 - @{gap})";
+        width:~"calc(100%/1 - @{gap})";
       }
     }
   }
