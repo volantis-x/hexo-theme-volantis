@@ -1,11 +1,11 @@
 <%- partial('_pre') %>
 <% page.comments = false; %>
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
-  <% if (site.posts && site.posts.length > 0) { %>
+  <% if (site.pages && site.pages.length > 0) { %>
     <section class="post-list <%- theme.layout.multiple_columns ? 'multiple-columns' : '' %>">
       <% if (!page.prev) { %>
-        <% site.posts.sort(page.sort ? page.sort : "-date").each(function(post){ %>
-          <% if (post.group && post.group == page.group) { %>
+        <% site.pages.sort("-date").each(function(post){ %>
+          <% if (post.group && post.group == page.group && post.layout != 'list') { %>
             <% if (post.top) { %>
               <div class='post-wrapper'>
                 <%- partial('_partial/post', {post: post, index: false}) %>
@@ -14,8 +14,8 @@
           <% } %>
         <% }) %>
       <% } %>
-      <% site.posts.sort(page.sort ? page.sort : "-date").each(function(post){ %>
-        <% if (post.group && post.group == page.group) { %>
+      <% site.pages.sort("-date").each(function(post){ %>
+        <% if (post.group && post.group == page.group && post.layout != 'list') { %>
           <% if (!post.top) { %>
             <div class='post-wrapper'>
               <%- partial('_partial/post', {post: post, index: false}) %>
