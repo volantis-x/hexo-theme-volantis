@@ -2,21 +2,27 @@
   <div id="loading-bar-wrapper">
     <div id="loading-bar"></div>
   </div>
-
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
-      <a class="logo flat-box" target="_self" href='<%- url_for("/") %>' >
-        <% if (theme.navbar.logo.img) { %>
-          <img class='logo' src='<%- theme.navbar.logo.img %>'/>
-        <% } else { %>
-          <% if (theme.navbar.logo.icon) { %>
-            <i class='<%- theme.navbar.logo.icon %>'></i>
+      <% if (theme.navbar.logo) { %>
+        <a class="logo flat-box" target="_self" href='<%- url_for("/") %>' >
+          <% if (theme.navbar.logo.img) { %>
+            <img class='logo' src='<%- theme.navbar.logo.img %>'/>
+          <% } else { %>
+            <% if (theme.navbar.logo.icon || theme.navbar.logo.title) { %>
+              <% if (theme.navbar.logo.icon) { %>
+                <i class='<%- theme.navbar.logo.icon %>'></i>
+              <% } %>
+              <% if (theme.navbar.logo.title) { %>
+                <%- theme.navbar.logo.title %>
+              <% } %>
+            <% } else { %>
+              <%- theme.info.name.toUpperCase() %> <sup style='color:#2196f3'><%- theme.info.version %></sup>
+            <% } %>
           <% } %>
-          <% if (theme.navbar.logo.title) { %>
-            <%- theme.navbar.logo.title %>
-          <% } %>
-        <% } %>
-      </a>
+        </a>
+      <% } %>
+
 			<div class='menu navigation'>
 				<ul class='h-list'>
           <% if (theme.navbar.menu.on_desktop) { %>
