@@ -28,19 +28,19 @@ plugins:
     css: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
     js: https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
   # 页面滚动显示动画
-  # scrollreveal: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js
+  scrollreveal: #https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js
   # 代码块复制按钮
-  # clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
+  clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
   ################################################## 运维服务
   # 访问量统计【加载非常缓慢】
   busuanzi: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   # 文章字数统计、阅读时长，开启需要安装插件: npm i --save hexo-wordcount
-  # wordcount: true
+  wordcount: #true
   ################################################## 美化类的服务
   # 按钮点击涟漪效果
-  # nodewaves:
-  #   css: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
-  #   js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
+  nodewaves:
+    css: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
+    js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
   # 文本框打字机特效
   comment_typing: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.42/js/comment_typing.js
 
@@ -72,7 +72,7 @@ backstretch:
   enable: true          # 是否启用
   js: '//cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js'
   position: fixed       # cover: 封面背景   fixed: 整个网页背景
-  duration: 10000       # 持续时间（毫秒）
+  duration: 20000       # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
   is_dark: #true        # 图片是否是暗色的（调整文字为白色）
   images:               # 我上传了一些高清壁纸到CDN中，仅限个人使用，商用后果自负！！！
@@ -431,7 +431,7 @@ social:
 # APlayer配置 https://github.com/metowolf/MetingJS
 aplayer:
   # 是否启用，注释此项则不加载服务
-  # enable: true
+  enable: true
   # 必选参数
   server: netease   # netease, tencent, kugou, xiami, baidu
   type: playlist    # song, playlist, album, search, artist
@@ -477,8 +477,7 @@ valine:
   #   app_key: 你的appKey
   #   valine_path: 全站采用同一个path（共用同一个评论框数据）
   guest_info: nick,mail,link #valine comment header info
-  # placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
-  placeholder: 这里仅供用户之间进行交流，如需反馈请移步「GitHub Issues」。
+  placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
   avatar: mp # gravatar style https://valine.js.org/avatar
   pageSize: 10 # comment list page size
   verify: true # valine verify code (true/false)
