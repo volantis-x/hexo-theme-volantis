@@ -5,11 +5,11 @@ info:
   docs: https://volantis.js.org/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.41/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.42/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.41/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.41/js/search.js
-      valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.41/js/valine.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.42/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.42/js/search.js
+      valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.42/js/valine.js
 
 
 
@@ -18,31 +18,31 @@ info:
 # ⚠️ 注意：开启过多服务会导致网页加载缓慢、运行卡顿
 plugins:
   # jquery是很多功能的基础，请勿关闭
-  jquery: '//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js'
+  jquery: https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js
   ################################################## 提升速度类的服务
   # 鼠标放在链接上就提前开始加载了 [站内的url一定要以‘/’结尾]
-  instant_page: 'https://instant.page/3.0.0'
+  instant_page: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.42/js/instant_page.js
   ################################################## 优化体验类的服务
   # 图片放大预览
   fancybox:
-    css: '//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css'
-    js: '//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js'
+    css: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
+    js: https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
   # 页面滚动显示动画
-  # scrollreveal: '//cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js'
+  # scrollreveal: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js
   # 代码块复制按钮
-  # clipboard: '//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js'
+  # clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
   ################################################## 运维服务
   # 访问量统计【加载非常缓慢】
-  busuanzi: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js'
+  busuanzi: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   # 文章字数统计、阅读时长，开启需要安装插件: npm i --save hexo-wordcount
   # wordcount: true
   ################################################## 美化类的服务
   # 按钮点击涟漪效果
   # nodewaves:
-  #   css: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css'
-  #   js: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js'
+  #   css: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
+  #   js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
   # 文本框打字机特效
-  comment_typing: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.41/js/comment_typing.js'
+  comment_typing: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.42/js/comment_typing.js
 
 
 
