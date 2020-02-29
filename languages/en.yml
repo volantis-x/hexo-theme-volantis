@@ -1,3 +1,7 @@
+navbar:
+  archive: Archive
+  category: Category
+  tag: Tag
 post:
   top: Top
   read_more: Read More

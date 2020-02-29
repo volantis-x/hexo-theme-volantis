@@ -1,3 +1,7 @@
+navbar:
+  archive: 归档
+  category: 分类
+  tag: 标签
 post:
   top: 置顶
   read_more: 阅读全文

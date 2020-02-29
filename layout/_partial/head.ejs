@@ -1,47 +1,76 @@
-<head hexo-theme='Volantis' version='<%- theme.info.version %>' docs='https://volantis.js.org/'>
+<head hexo-theme='https://volantis.js.org/#<%- theme.info.version %>'>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <%
-    var title = page.title;
-    if (is_archive()) {
-      title = 'Archives';
-      if (is_month())
-        title += ': ' + page.year + '/' + page.month;
-      else if (is_year())
-        title += ': ' + page.year;
-    }
-    else if (is_category())
-      title = 'Category: ' + page.category;
-    else if (is_tag())
-      title = 'Tag: ' + page.tag;
-  %>
-  <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
-  <% if (page.keywords && config.keywords){ %>
-  <meta name="keywords" content="<%- page.keywords %>, <%- config.keywords %>">
-  <% } else if (page.keywords) { %>
-  <meta name="keywords" content="<%- page.keywords %>">
-  <% } else if (config.keywords) { %>
-  <meta name="keywords" content="<%- config.keywords %>">
+  <!-- SEO相关 -->
+  <% if (page.robots) { %>
+    <meta name="robots" content="<%- page.robots %>">
+  <% } else if (theme.robots) { %>
+    <% if (is_home()) { %>
+      <meta name="robots" content="<%- theme.robots.home %>">
+    <% } else if (is_archive()) { %>
+      <meta name="robots" content="<%- theme.robots.archive %>">
+    <% } else if (is_category()) { %>
+      <meta name="robots" content="<%- theme.robots.category %>">
+    <% } else if (is_tag()) { %>
+      <meta name="robots" content="<%- theme.robots.tag %>">
+    <% } %>
   <% } %>
-  <% if (page.description && config.description){ %>
-  <meta name="description" content="<%- page.description %>, <%- config.description %>">
-  <% } else if (page.description) { %>
-  <meta name="description" content="<%- page.description %>">
-  <% } else if (config.description) { %>
-  <meta name="description" content="<%- config.description %>">
-  <% } %>
-
-  <% if (config.feed && config.feed.path){ %>
-  <%- feed_tag(config.feed.path, {title: config.title}) %>
-  <% } %>
-
-  <meta name="HandheldFriendly" content="True" />
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <!-- meta -->
+
+  <!-- 页面元数据 -->
+  <%
+    var title = page.title;
+    var keywords = page.keywords || '';
+    var description = page.description || '';
+    if (is_archive()) {
+      title = __('navbar.archive');
+      if (is_month()) {
+        title += __('symbol.colon') + page.year + '/' + page.month;
+      } else if (is_year()) {
+        title += __('symbol.colon') + page.year;
+      }
+    } else if (is_category()) {
+      title = __('navbar.category') + __('symbol.colon') + page.category;
+    } else if (is_tag()) {
+      title = __('navbar.tag') + __('symbol.colon') + page.tag;
+    }
+    if (!keywords && page.tags && page.tags.length > 0) {
+      let tags = page.tags.map(function(t){return t.name}).join(',');
+      if (tags.length > 0) {
+        keywords += tags;
+      }
+    }
+    if (page.description == undefined) {
+      if (page.excerpt) {
+        description = truncate(strip_html(page.excerpt), {length: 240});
+      } else if (page.more) {
+        description = truncate(strip_html(page.more), {length: 240});
+      }
+    }
+  %>
+    <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
+  <% if (keywords){ %>
+    <meta name="keywords" content="<%- keywords %>">
+  <% } %>
+  <% if (description){ %>
+    <meta name="description" content="<%- description %>">
+  <% } %>
+
+  <!-- feed -->
+  <% if (config.feed && config.feed.path){ %>
+    <%- feed_tag(config.feed.path, {title: config.title}) %>
+  <% } %>
+
+  <!-- import meta -->
   <% if (config.import && config.import.meta){ %>
-  <% (config.import.meta||[]).forEach(function(item){ %>
-  <%- item %><% }) %>
+    <% (config.import.meta||[]).forEach(function(item){ %>
+      <%- item %>
+    <% }) %>
   <% } %>
 
   <!-- link -->
@@ -53,17 +82,18 @@
     <%- css(theme.plugins.nodewaves.css) %>
   <% } %>
 
-  <% if (config.import && config.import.link){ %>
-  <% (config.import.link||[]).forEach(function(item){ %>
-  <%- item %><% }) %>
-  <% } %>
-
   <% if (config.favicon) { %>
   <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <% } %>
 
   <% if (theme.aplayer.enable) { %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  <% } %>
+
+  <!-- import link -->
+  <% if (config.import && config.import.link){ %>
+  <% (config.import.link||[]).forEach(function(item){ %>
+  <%- item %><% }) %>
   <% } %>
 
   <% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.css && theme.info.cdn.css.style) { %>

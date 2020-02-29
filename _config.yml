@@ -446,6 +446,14 @@ aplayer:
   list_max_height: 340px # list max height
   list_folded: true
 
+
+robots:
+  home: index,follow
+  archive: noindex,follow
+  category: noindex,follow
+  tag: noindex,follow
+# 其它页面自己在front-matter中写
+
 ############################### 需要复制到根目录配置文件中 ###############################
 # 请复制到根目录配置文件！
 # copyright: '[Copyright © 2017-2020 Mr. X](https://xaoxuu.com)'
