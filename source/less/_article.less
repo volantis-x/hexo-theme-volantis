@@ -282,8 +282,22 @@
     display: block;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    font-family: @fontfamily_code;
-    color: @color_text_main;
+    margin-top: .7em;
+    margin-bottom: .7em;
+    overflow: auto;
+    background: @color_bg_code_block;
+    font-size: @fontsize_small * .95;
+    font-family:@fontfamily_code;
+    line-height: @lineheight_base;
+    border-radius: @border_radius_code_block;
+    border: 1px solid darken(@color_bg_code_block, 10%);
+    padding: @gap;
+  }
+  pre>code{
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    color: fade(@color_text_main, 90%);
   }
   code {
     font-family: @fontfamily_code;
@@ -555,6 +569,12 @@
       pre{
           color: fade(@color_text_main, 80%);
       }
+    }
+    pre{
+      background: transparent;
+      margin: 0;
+      padding: 0;
+      border: none;
     }
     .code{
       padding: @gap;
