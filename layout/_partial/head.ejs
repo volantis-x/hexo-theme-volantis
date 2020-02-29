@@ -3,15 +3,15 @@
   <!-- SEO相关 -->
   <% if (page.robots) { %>
     <meta name="robots" content="<%- page.robots %>">
-  <% } else if (theme.robots) { %>
+  <% } else if (theme.seo && theme.seo.robots) { %>
     <% if (is_home()) { %>
-      <meta name="robots" content="<%- theme.robots.home %>">
+      <meta name="robots" content="<%- theme.seo.robots.home %>">
     <% } else if (is_archive()) { %>
-      <meta name="robots" content="<%- theme.robots.archive %>">
+      <meta name="robots" content="<%- theme.seo.robots.archive %>">
     <% } else if (is_category()) { %>
-      <meta name="robots" content="<%- theme.robots.category %>">
+      <meta name="robots" content="<%- theme.seo.robots.category %>">
     <% } else if (is_tag()) { %>
-      <meta name="robots" content="<%- theme.robots.tag %>">
+      <meta name="robots" content="<%- theme.seo.robots.tag %>">
     <% } %>
   <% } %>
   <!-- 渲染优化 -->
@@ -39,17 +39,19 @@
     } else if (is_tag()) {
       title = __('navbar.tag') + __('symbol.colon') + page.tag;
     }
-    if (!keywords && page.tags && page.tags.length > 0) {
-      let tags = page.tags.map(function(t){return t.name}).join(',');
-      if (tags.length > 0) {
-        keywords += tags;
+    if (theme.seo && theme.seo.use_tags_as_keywords) {
+      if (!keywords && page.tags && page.tags.length > 0) {
+        let tags = page.tags.map(function(t){return t.name}).join(',');
+        if (tags.length > 0) {
+          keywords += tags;
+        }
       }
     }
-    if (page.description == undefined) {
-      if (page.excerpt) {
-        description = truncate(strip_html(page.excerpt), {length: 240});
-      } else if (page.more) {
-        description = truncate(strip_html(page.more), {length: 240});
+    if (theme.seo && theme.seo.use_excerpt_as_description) {
+      if (page.description == undefined) {
+        if (page.excerpt) {
+          description = truncate(strip_html(page.excerpt), {length: 240});
+        }
       }
     }
   %>
