@@ -45,7 +45,7 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
       <% } %>
       <div class='new-meta-box'>
         <% (topMetas).forEach(function(meta){ %>
-          <% if(meta != 'title'){ %>
+          <% if((meta != 'title') && (meta in theme.meta)){ %>
             <%- partial('../_meta/' + meta, {post: post, isPostList: isPostList}) %>
           <% } %>
         <% }) %>
@@ -59,7 +59,7 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
   <section class='meta' id="footer-meta">
     <div class='new-meta-box'>
       <% (bottomMetas).forEach(function(meta){ %>
-        <% if(meta != 'title'){ %>
+        <% if((meta != 'title') && (meta in theme.meta)){ %>
           <%- partial('../_meta/' + meta, {post: post, isPostList: isPostList}) %>
         <% } %>
       <% }) %>
