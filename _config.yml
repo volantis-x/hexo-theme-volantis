@@ -192,7 +192,7 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, date, updated, top]
     # 列表类页面的侧边栏
-    sidebar: [navigation, repos, qrcode]
+    sidebar: [guide, repos, qrcode]
   # 文章页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
@@ -206,7 +206,7 @@ layout:
     # 文章页脚，自动在每一篇文章末尾添加
     footer: #[copyright, qrcode]
     # 文章页面的侧边栏
-    sidebar: [navigation, repos, qrcode, toc]
+    sidebar: [guide, repos, qrcode, toc]
   # 其他的页面布局暂时等于文章列表
 
 
@@ -297,7 +297,7 @@ meta:
 widget:
   # ---------------------------------------
   # 博主信息小部件配置
-  - id: blogger
+  blogger:
     class: blogger
     display: [desktop] # [desktop, mobile]
     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
@@ -307,7 +307,7 @@ widget:
     social: true
   # ---------------------------------------
   # 目录小部件配置(仅在文章中有效)
-  - id: toc
+  toc:
     class: toc
     display: [desktop, mobile] # [desktop, mobile]
     header:
@@ -318,7 +318,7 @@ widget:
     max_depth: 5 # 由于宽度有限，主题没有针对所有层级进行布局优化，建议文章最多分为：H2/H3/H4/H5四个层级
   # ---------------------------------------
   # 文章分类小部件配置
-  - id: category
+  category:
     class: category
     display: [desktop] # [desktop, mobile]
     header:
@@ -327,7 +327,7 @@ widget:
       url: /blog/categories/
   # ---------------------------------------
   # 标签云小部件配置
-  - id: tagcloud
+  tagcloud:
     class: tagcloud
     display: [desktop] # [desktop, mobile]
     header:
@@ -341,7 +341,7 @@ widget:
     end_color: '#555'
   # ---------------------------------------
   # 相关文章小部件配置
-  - id: related_posts
+  related_posts:
     class: related_posts # 需要安装插件  npm i -S hexo-related-popular-posts
     display: [desktop, mobile] # [desktop, mobile]
     header:
@@ -349,7 +349,7 @@ widget:
       title: 相关文章
   # ---------------------------------------
   # 版权说明小部件（仅用于文章中）
-  - id: copyright
+  copyright:
     class: copyright
     display: [desktop, mobile] # [desktop, mobile]
     blockquote: true # 是否把内容放到blockquote中
@@ -360,7 +360,7 @@ widget:
       - permalink
   # ---------------------------------------
   # 二维码小部件（可用于文章中的打赏，只显示图片，无其他功能）
-  - id: qrcode
+  qrcode:
     class: qrcode
     display: [desktop] # [desktop, mobile]
     header:
@@ -373,8 +373,8 @@ widget:
   # ---------------------------------------
   # ---------------------------------------
   # ---------------------------------------
-  # 自定义组件，仿照如下写法
-  - id: navigation
+  # 自定义组件，仿照如下写法（下面这些如果不需要可以删除）
+  guide:
     class: grid
     display: [desktop, mobile] # [desktop, mobile]
     header:
@@ -403,7 +403,7 @@ widget:
         url: https://github.com/xaoxuu/hexo-theme-volantis/releases/
         rel: external nofollow noopener noreferrer
         target: _blank
-  - id: repos
+  repos:
     class: text
     display: [desktop] # [desktop, mobile]
     header:
@@ -415,6 +415,7 @@ widget:
       - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/prohud/logo.png" height="50px">](https://github.com/xaoxuu/ProHUD)'
       - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/valuex/logo.png" height="50px">](https://github.com/xaoxuu/ValueX)'
       - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/inspire/logo.png" height="50px">](https://github.com/xaoxuu/Inspire)'
+
 
 # 网站页脚
 footer:

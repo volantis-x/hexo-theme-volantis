@@ -1,9 +1,8 @@
 <aside class='l_side'>
   <% page.sidebar.forEach(function(widget_id){ %>
-    <% theme.widget.forEach(function(widget){ %>
-      <% if (widget.id == widget_id){ %>
-        <%- partial('../_widget/' + widget.class, {item: widget}) %>
-      <% } %>
-    <% }) %>
+    <% if (widget_id in theme.widget){ %>
+      <% let widget = theme.widget[widget_id]; %>
+      <%- partial('../_widget/' + widget.class, {item: widget}) %>
+    <% } %>
   <% }) %>
 </aside>
