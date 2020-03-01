@@ -1,42 +1,52 @@
-<footer class="clearfix <%- theme.backstretch && theme.backstretch.is_dark ? 'white' : '' %>">
-  <br><br>
-  <% if (theme.social) { %>
-    <div class="social-wrapper">
-      <% (theme.social||[]).forEach(function(value){ %>
-        <% if (value.url && value.icon) { %>
-          <a href="<%= url_for(value.url) %>"
-            class="social <%- value.icon %> flat-btn"
-            target="_blank"
-            rel="external nofollow noopener noreferrer">
-          </a>
-        <%}%>
-      <%})%>
-    </div>
-  <%}%>
-  <% if (theme.aplayer.enable) { %>
-    <br>
-    <div class="aplayer-container">
-      <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
-    </div>
-  <% } %>
-  <br>
-  <div><%- markdown(__('footer.license')) %></div>
-  <div>
-    <%- __('footer.use') %>
-    <a href="<%- theme.info.docs %>" target="_blank" class="codename"><%- theme.info.name %></a>
-    <%- __('footer.theme') %>
-    <% if (theme.plugins.busuanzi) { %>
-      <%- __('symbol.comma') %>
-      <%- __('footer.total_views') %>
-      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      <%- __('footer.times') %>
-    <% } %>
-    <%- __('symbol.period') %>
-  </div>
-  <% if (config.copyright) { %>
-    <div class='copyright'>
-    <%- markdown(config.copyright) %>
-    </div>
-  <%}%>
-</footer>
+<% if (theme.footer) { %>
+  <%
+  var layout = theme.footer.layout;
+  if (config.theme_config && config.theme_config.footer && config.theme_config.footer.layout) {
+    layout = config.theme_config.footer.layout;
+  }
+  %>
+  <footer class="clearfix <%- theme.backstretch && theme.backstretch.is_dark ? 'white' : '' %>">
+    <br><br>
+    <% layout.forEach(function(item){ %>
+      <% if (item == 'social') { %>
+        <br>
+        <div class="social-wrapper">
+          <% (theme.footer.social||[]).forEach(function(value){ %>
+            <% if (value.url && value.icon) { %>
+              <a href="<%= url_for(value.url) %>"
+                class="social <%- value.icon %> flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            <%}%>
+          <%})%>
+        </div>
+      <% } else if (item == 'aplayer') { %>
+        <div class="aplayer-container">
+          <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
+        </div>
+      <% } else if (item == 'license') { %>
+        <div><%- markdown(__('footer.license')) %></div>
+      <% } else if (item == 'info') { %>
+        <%- __('footer.use') %>
+        <a href="<%- theme.info.docs %>" target="_blank" class="codename"><%- theme.info.name %></a>
+        <%- __('footer.theme') %>
+        <% if (theme.plugins.busuanzi) { %>
+          <%- __('symbol.comma') %>
+          <%- __('footer.total_views') %>
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          <%- __('footer.times') %>
+        <% } %>
+      <% } else if (item == 'copyright') { %>
+        <div class='copyright'>
+        <%- markdown(config.copyright) %>
+        </div>
+      <% } else { %>
+        <% if (item in theme.footer) { %>
+          <div><%- markdown(theme.footer[item]) %></div>
+        <% } %>
+      <% } %>
+    <% }) %>
+  </footer>
+<% } %>
 <script>setLoadingBarProgress(80);</script>

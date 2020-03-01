@@ -5,7 +5,7 @@ info:
   docs: https://volantis.js.org/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.6.3/css/style.css
+      # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.6.3/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.6.3/js/app.js
       search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.6.3/js/search.js
@@ -416,35 +416,42 @@ widget:
       - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/valuex/logo.png" height="50px">](https://github.com/xaoxuu/ValueX)'
       - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/inspire/logo.png" height="50px">](https://github.com/xaoxuu/Inspire)'
 
+# 网站页脚
+footer:
+  # 网站页脚布局，默认支持 aplayer/social/license/info/copyright
+  layout: [aplayer, social, license, info, copyright]
+  # APlayer配置 https://github.com/metowolf/MetingJS
+  aplayer:
+    # 是否启用，注释此项则不加载服务
+    enable: true
+    # 必选参数
+    server: netease   # netease, tencent, kugou, xiami, baidu
+    type: playlist    # song, playlist, album, search, artist
+    id: 3175833810    # song id / playlist id / album id / search keyword
+    # 可选参数
+    fixed: false      # enable fixed mode
+    theme: '#1BCDFC'  # main color
+    autoplay: false   # audio autoplay
+    order: list       # player play order, values: 'list', 'random'
+    loop: all         # player loop play, values: 'all', 'one', 'none'
+    volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+    list_max_height: 340px # list max height
+    list_folded: true
+  # 社交信息配置
+  social:
+    - icon: fas fa-rss
+      url: atom.xml
+    - icon: fas fa-envelope
+      url: mailto:me@xaoxuu.com
+    - icon: fab fa-github
+      url: https://github.com/xaoxuu
+    - icon: fas fa-headphones-alt
+      url: https://music.163.com/#/user/home?id=63035382
+  copyright: '[Copyright © 2017-2020 Mr. X](https://xaoxuu.com)'
+  # 可自己增加任意属性，支持markdown，例如：br: '<br>'
+  br: '<br>'
 
-# 社交信息配置
-social:
-  - icon: fas fa-rss
-    url: atom.xml
-  - icon: fas fa-envelope
-    url: mailto:me@xaoxuu.com
-  - icon: fab fa-github
-    url: https://github.com/xaoxuu
-  - icon: fas fa-headphones-alt
-    url: https://music.163.com/#/user/home?id=63035382
 
-# APlayer配置 https://github.com/metowolf/MetingJS
-aplayer:
-  # 是否启用，注释此项则不加载服务
-  enable: true
-  # 必选参数
-  server: netease   # netease, tencent, kugou, xiami, baidu
-  type: playlist    # song, playlist, album, search, artist
-  id: 3175833810    # song id / playlist id / album id / search keyword
-  # 可选参数
-  fixed: false      # enable fixed mode
-  theme: '#1BCDFC'  # main color
-  autoplay: false   # audio autoplay
-  order: list       # player play order, values: 'list', 'random'
-  loop: all         # player loop play, values: 'all', 'one', 'none'
-  volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
-  list_max_height: 340px # list max height
-  list_folded: true
 
 seo:
   # 当文章front-matter中没有keywords时，使用tags作为keywords
