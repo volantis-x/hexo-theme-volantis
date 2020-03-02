@@ -460,7 +460,8 @@ seo:
   # 当文章front-matter中没有description时，使用摘要作为description
   use_excerpt_as_description: true
   robots:
-    home: index,follow
+    home_first_page: index,follow
+    home_other_pages: noindex,follow
     archive: noindex,follow
     category: noindex,follow
     tag: noindex,follow

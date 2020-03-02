@@ -5,7 +5,11 @@
     <meta name="robots" content="<%- page.robots %>">
   <% } else if (theme.seo && theme.seo.robots) { %>
     <% if (is_home()) { %>
-      <meta name="robots" content="<%- theme.seo.robots.home %>">
+      <% if (page.prev == 0) { %>
+        <meta name="robots" content="<%- theme.seo.robots.home_first_page %>">
+      <% } else { %>
+        <meta name="robots" content="<%- theme.seo.robots.home_other_pages %>">
+      <% } %>
     <% } else if (is_archive()) { %>
       <meta name="robots" content="<%- theme.seo.robots.archive %>">
     <% } else if (is_category()) { %>
@@ -24,7 +28,7 @@
 
   <!-- 页面元数据 -->
   <%
-    var title = page.title;
+    var title = page.seotitle || page.title;
     var keywords = page.keywords || '';
     var description = page.description || '';
     if (is_archive()) {
@@ -38,7 +42,7 @@
       title = __('navbar.category') + __('symbol.colon') + page.category;
     } else if (is_tag()) {
       title = __('navbar.tag') + __('symbol.colon') + page.tag;
-    } else if (is_home()) {
+    } else if (is_home() && page.prev == 0) {
       keywords = config.keywords || '';
       description = config.description || '';
     }
@@ -53,7 +57,7 @@
     if (theme.seo && theme.seo.use_excerpt_as_description) {
       if (page.description == undefined) {
         if (page.excerpt) {
-          description = truncate(strip_html(page.excerpt), {length: 240});
+          description = truncate(strip_html(page.excerpt), {length: 160});
         }
       }
     }
