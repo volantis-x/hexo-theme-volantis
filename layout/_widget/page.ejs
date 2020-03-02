@@ -15,5 +15,18 @@
         </article>
       <% } %>
     <% }) %>
+    <% site.posts.forEach(function(post){ %>
+      <% if (post.pid == item.pid) { %>
+        <article id="<%= post.layout %>" class="post article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+          <section class="article typo">
+            <div class="article-entry" itemprop="articleBody">
+              <% if (item.content in post) { %>
+                <%- post[item.content] %>
+              <% } %>
+            </div>
+          </section>
+        </article>
+      <% } %>
+    <% }) %>
   </div>
 </section>
