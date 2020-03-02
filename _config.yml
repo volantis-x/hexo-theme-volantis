@@ -371,51 +371,6 @@ widget:
     fancybox: #true # 是否允许点击放大
     images:
       - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
-  # ---------------------------------------
-  # ---------------------------------------
-  # ---------------------------------------
-  # 自定义组件，仿照如下写法（下面这些如果不需要可以删除）
-  guide:
-    class: grid
-    display: [desktop, mobile] # [desktop, mobile]
-    header:
-      icon: fas fa-map-signs
-      title: 文档导航
-    rows:
-      - name: 常见问题
-        icon: fas fa-question-circle
-        url: faqs/
-      - name: 示例博客
-        icon: fas fa-play-circle
-        url: examples/
-      - name: 特别感谢
-        icon: fas fa-handshake
-        url: contributors/
-      - name: 历史事件
-        icon: fas fa-file-archive
-        url: news/archives/
-      - name: 主题源码
-        icon: fas fa-file-code
-        url: https://github.com/xaoxuu/hexo-theme-volantis/
-        rel: external nofollow noopener noreferrer
-        target: _blank
-      - name: 更新日志
-        icon: fas fa-clipboard-list
-        url: https://github.com/xaoxuu/hexo-theme-volantis/releases/
-        rel: external nofollow noopener noreferrer
-        target: _blank
-  repos:
-    class: text
-    display: [desktop] # [desktop, mobile]
-    header:
-      icon: fab fa-github
-      title: 点个赞吧
-      url: https://github.com/xaoxuu/
-    content:
-      - '您的赞对我来说很重要，如果您喜欢本主题，希望能够给下面的项目点个赞来支持一下。'
-      - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/prohud/logo.png" height="50px">](https://github.com/xaoxuu/ProHUD)'
-      - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/valuex/logo.png" height="50px">](https://github.com/xaoxuu/ValueX)'
-      - '[<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/inspire/logo.png" height="50px">](https://github.com/xaoxuu/Inspire)'
 
 
 # 网站页脚
