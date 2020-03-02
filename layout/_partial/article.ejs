@@ -11,12 +11,7 @@
           <%- post.content %>
           <% if(theme.layout.on_page.footer && (page.layout == 'post')){ %>
             <br>
-            <% (theme.layout.on_page.footer||[]).forEach(function(widget_id){ %>
-              <% if (widget_id in theme.widget){ %>
-                <% let widget = theme.widget[widget_id]; %>
-                <%- partial('../_widget/' + widget.class, {item: widget}) %>
-              <% } %>
-            <% }) %>
+            <%- partial('../_widget/load', {widgets: theme.layout.on_page.footer, where: 'article'}) %>
           <% } %>
         </div>
         <% if(post.layout == 'post' || post.layout == 'page'){ %>
@@ -86,10 +81,7 @@
   <% } else if (widget_id == 'comments') { %>
     <%- partial('../_third-party/comments') %>
   <% } else { %>
-    <% if (widget_id in theme.widget){ %>
-      <% let widget = theme.widget[widget_id]; %>
-      <%- partial('../_widget/' + widget.class, {item: widget}) %>
-    <% } %>
+    <%- partial('../_widget/load', {widgets: [widget_id], where: 'body'}) %>
   <% } %>
 <% }) %>
 

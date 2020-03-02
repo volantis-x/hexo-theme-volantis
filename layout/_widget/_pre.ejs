@@ -7,8 +7,12 @@ if (item.display) {
 } else {
   pf = ['desktop', 'mobile'];
 }
-
-page.widget_style = (theme.style.shadow.card ? ' card-shadow' : '') + ((theme.style.blur && theme.style.blur.widget) ? ' widget-blur' : '');
+console.log('where: ', where);
+if (where == 'sidebar') {
+  page.widget_style = (theme.style.shadow.card ? ' card-shadow' : '') + ((theme.style.blur && theme.style.blur.widget) ? ' widget-blur' : '');
+} else if (where == 'body') {
+  page.widget_style = (theme.style.shadow.card ? ' card-shadow' : '') + ((theme.style.blur && theme.style.blur.card) ? ' widget-blur' : '');
+}
 page.widget_platform = pf.join(' ');
 
 %>
