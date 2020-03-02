@@ -12,11 +12,10 @@
           <% if(theme.layout.on_page.footer && (page.layout == 'post')){ %>
             <br>
             <% (theme.layout.on_page.footer||[]).forEach(function(widget_id){ %>
-              <% theme.widget.forEach(function(widget){ %>
-                <% if (widget.id == widget_id){ %>
-                  <%- partial('../_widget/' + widget.class, {item: widget}) %>
-                <% } %>
-              <% }) %>
+              <% if (widget_id in theme.widget){ %>
+                <% let widget = theme.widget[widget_id]; %>
+                <%- partial('../_widget/' + widget.class, {item: widget}) %>
+              <% } %>
             <% }) %>
           <% } %>
         </div>
@@ -87,11 +86,10 @@
   <% } else if (widget_id == 'comments') { %>
     <%- partial('../_third-party/comments') %>
   <% } else { %>
-    <% theme.widget.forEach(function(widget){ %>
-      <% if (widget.id == widget_id){ %>
-        <%- partial('../_widget/' + widget.class, {item: widget}) %>
-      <% } %>
-    <% }) %>
+    <% if (widget_id in theme.widget){ %>
+      <% let widget = theme.widget[widget_id]; %>
+      <%- partial('../_widget/' + widget.class, {item: widget}) %>
+    <% } %>
   <% } %>
 <% }) %>
 

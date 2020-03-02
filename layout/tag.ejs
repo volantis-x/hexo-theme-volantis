@@ -11,17 +11,14 @@
                 <h2><%- page.title %></h2>
               </div>
               <div class="archive-item all-tags">
-                <% theme.widget.forEach(function(item){ %>
-                  <% if (item.class == 'tagcloud'){ %>
-                    <%- tagcloud(site.tags, {
-                        min_font: item.min_font,
-                        max_font: item.max_font,
-                        color: item.color,
-                        start_color: item.start_color,
-                        end_color: item.end_color,
-                    }) %>
-                  <% } %>
-                <% }) %>
+                <% let tc = theme.widget.tagcloud; %>
+                <%- tagcloud(site.tags, {
+                    min_font: tc.min_font,
+                    max_font: tc.max_font,
+                    color: tc.color,
+                    start_color: tc.start_color,
+                    end_color: tc.end_color,
+                }) %>
               </div>
               <br>
               <%- page.content %>
