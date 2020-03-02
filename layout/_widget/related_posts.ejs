@@ -3,7 +3,7 @@
   <section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
     <%- partial('header', {item: item}) %>
     <div class="content">
-      <%- popular_posts( { maxCount: 10 , ulClass: 'popular-posts' , PPMixingRate: 0.2 } , page ) %>
+      <%- popular_posts( { maxCount: item.max_count , ulClass: 'popular-posts' , PPMixingRate: 0.2 } , page ) %>
     </div>
   </section>
 <% } %>

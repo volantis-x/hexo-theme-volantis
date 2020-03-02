@@ -347,6 +347,7 @@ widget:
     header:
       icon: fas fa-bookmark
       title: 相关文章
+    max_count: 5
   # ---------------------------------------
   # 版权说明小部件（仅用于文章中）
   copyright:
