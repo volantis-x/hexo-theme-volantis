@@ -800,7 +800,7 @@
                 s && (l = '<span class="vsys">' + (s = d(s)).browser + " " + s.version + '</span> <span class="vsys">' + s.os + " " + s.osVersion + "</span>"),
                 "*" === y && (l = '<a href="' + e.get("url") + '" class="vsys">' + e.get("url") + "</a>");
                 var p, f = e.get("link") || "";
-                if (f.indexOf('://') < 0) {
+                if (f.indexOf('.') > 0 && f.indexOf('://') < 0) {
                   f = 'http://' + f;
                 }
                 p = f ? '<a class="vnick" rel="nofollow" href="' + f + '" target="_blank" >' + e.get("nick") + "</a>" : '<span class="vnick">' + e.get("nick") + "</span>",
