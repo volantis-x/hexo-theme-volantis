@@ -411,7 +411,7 @@
       padding: @gap/2;
       color: fade(@color_text_main, 70%);
       background-color: @color_bg_code_block;
-      border-radius: @border_radius;
+      border-radius: @border_radius_code_block;
       p{
         font-size: @fontsize_base;
         line-height: @lineheight_base;
@@ -455,15 +455,15 @@
       text-align: left;
       margin-left: 0;
       margin-right: @gap/2;
-      border-top-right-radius: @border_radius;
-      border-bottom-right-radius: @border_radius;
+      border-top-right-radius: @border_radius_code_block;
+      border-bottom-right-radius: @border_radius_code_block;
     }
     .next{
       text-align: right;
       margin-left: @gap/2;
       margin-right: 0;
-      border-top-left-radius: @border_radius;
-      border-bottom-left-radius: @border_radius;
+      border-top-left-radius: @border_radius_code_block;
+      border-bottom-left-radius: @border_radius_code_block;
     }
 
   }
@@ -897,12 +897,14 @@ pre{
 
   .widget{
     background: transparent;
-    margin: 0;
+    margin: .6em 0;
     font-family: @fontfamily_base;
     font-size: @fontsize_base;
     box-shadow: none;
-    border-radius: @border_radius;
+    border-radius: @border_radius_code_block;
     cursor: auto;
+    background: @color_bg_code_block;
+    padding: @gap/2 0;
     .enable-trans();
     &:hover {
       box-shadow: none;
@@ -911,11 +913,55 @@ pre{
       box-shadow: none;
     }
     header {
-      display: none;
+      padding: @gap/4 .6em;
+      padding-bottom: 0;
+      color: fade(@color_text_main, 85%);
+    }
+    &.copyright,&.qrcode{
+      background: none;
+      padding: 0;
+      header {
+        display: none;
+      }
+      .content{
+        padding: 0;
+      }
     }
     .content{
-      padding: 0;
-      margin-top: @gap;
+      padding: 0 .6em;
+      margin: 0;
+      ul.entry, ul.popular-posts{
+        padding-left: 8px;
+        margin-left: @gap;
+        a{
+          display: inline;
+          border-left: none;
+          padding: 0;
+          padding-left: 4px;
+          color: inherit;
+          font-weight: normal;
+          &:hover,&.active,&:active{
+            border-left: none;
+            background: none;
+            color: @color_text_highlight;
+          }
+        }
+      }
+    }
+    &.qrcode > .content{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding-left: @gap;
+      padding-right: @gap;
+      &>fancybox, &>img{
+        margin: 0 @gap/2;
+      }
+      img{
+        margin-bottom: 4px;
+      }
+      margin-bottom: 4px;
     }
   }
   .widget-blur{
