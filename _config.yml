@@ -253,15 +253,11 @@ meta:
     - id: qzone
       name: QQ空间
       img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png
-    # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
-    #   name: 微信
-    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png
     - id: weibo
       name: 微博
       img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png
     # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
     #   name: QRcode
-    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qrcode.png
   # 链接
   btns:
     edit:

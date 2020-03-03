@@ -2,13 +2,12 @@
   <div class="-mob-share-list share-body">
     <% (theme.meta.share||[]).forEach(function(item){ %>
       <% if (item.id == 'qrcode'){ %>
-        <a class='qrcode' rel="external nofollow noopener noreferrer" href='<%- qrcode(url) %>'>
-        <% if (item.img){ %>
-          <img src="<%- item.img %>">
-        <% } else if (item.icon){ %>
-          <i class="<%- item.icon %> fa-fw"></i>
-        <% } %>
-        </a>
+        <% var src = qrcode(url,{margin:1,size:8}); %>
+        <fancybox>
+          <a class='qrcode' rel="external nofollow noopener noreferrer" data-fancybox="gallery-qrcode" href="<%- src %>">
+            <img style='height:16px;border-radius:0;margin-left:4px' src="<%- src %>">
+          </a>
+        </fancybox>
       <% } else { %>
         <a class="-mob-share-<%- item.id %>" title="<%- item.name %>" rel="external nofollow noopener noreferrer"
           <% if (item.id == 'qzone'){ %>
