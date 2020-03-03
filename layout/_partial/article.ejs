@@ -15,7 +15,6 @@
           <% } %>
         </div>
         <% if(post.layout == 'post' || post.layout == 'page'){ %>
-          <br>
           <%- partial('meta', {post: post, position: 'footer'}) %>
         <% } %>
         <% if(post.prev || post.next){ %>
