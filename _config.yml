@@ -1,15 +1,15 @@
 ############################### 主题基本信息 ###############################
 info:
   name: Volantis
-  version: 1.7.1
+  version: 1.7.2
   docs: https://volantis.js.org/
   cdn: # 要使用CDN，请在根目录的config文件中写上 use_cdn: true
     css:
-      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.1/css/style.css
+      style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.2/css/style.css
     js:
-      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.1/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.1/js/search.js
-      valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.1/js/valine.js
+      app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.2/js/app.js
+      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.2/js/search.js
+      valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.2/js/valine.js
 
 
 
@@ -21,7 +21,7 @@ plugins:
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js
   ################################################## 提升速度类的服务
   # 鼠标放在链接上就提前开始加载了 [站内的url一定要以‘/’结尾]
-  instant_page: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.1/js/instant_page.js
+  instant_page: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.2/js/instant_page.js
   ################################################## 优化体验类的服务
   # 图片放大预览
   fancybox:
@@ -42,7 +42,7 @@ plugins:
     css: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
     js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
   # 文本框打字机特效
-  comment_typing: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.1/js/comment_typing.js
+  comment_typing: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.2/js/comment_typing.js
 
 
 
