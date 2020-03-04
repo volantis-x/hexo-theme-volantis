@@ -4,6 +4,9 @@
       <% if (theme.cover.scheme == 'search') { %>
         <%- partial('../_cover/search') %>
       <% } %>
+      <% if (is_home() && theme.cover.height == 'full') { %>
+        <div class="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+      <% } %>
     </cover>
     <%- partial('header', null, {cache: false, path: path}) %>
   </div>

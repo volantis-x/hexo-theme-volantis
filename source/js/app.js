@@ -301,7 +301,9 @@ var customSearch;
 		setScrollAnchor();
 		setSearchService();
 		// $(".article .video-container").fitVids();
-
+		$('.scroll-down').on('click', function () {
+	    scrolltoElement('.l_body');
+	  });
 		setTimeout(function () {
 			$('#loading-bar-wrapper').fadeOut(500);
 		}, 300);

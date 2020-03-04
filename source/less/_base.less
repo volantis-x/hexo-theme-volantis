@@ -70,8 +70,8 @@ fancybox{
       text-align: center;
     }
     .title{
-      font-size: @fontsize_h1*2;
-      line-height: @fontsize_h1*2;
+      font-size: @fontsize_h1*2.2;
+      line-height: @fontsize_h1*2.2;
     }
     .subtitle{
       font-size: @fontsize_small;
@@ -86,8 +86,8 @@ fancybox{
     }
     @media(max-width: @on_phone){
       .title, .logo {
-        font-size: @fontsize_h1*1.7;
-        line-height: @fontsize_h1*1.7;
+        font-size: @fontsize_h1*2;
+        line-height: @fontsize_h1*2;
       }
     }
     .m_search{
@@ -224,8 +224,43 @@ fancybox{
         }
       }
     }
-
   }
+  .scroll-down{
+    width: 100%;
+    height: 64px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    cursor: pointer;
+    .scroll-down-effects{
+      color: white;
+      font-size: 24px;
+      line-height: 64px;
+      position: absolute;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+      @keyframes scroll-down-effect{
+        0%{
+          top: 0;
+          opacity: .4;
+        }
+        50%{
+          top: -16px;
+          opacity: 1;
+        }
+        100%{
+          top: 0;
+          opacity: .4;
+        }
+      }
+      animation: scroll-down-effect 1.5s infinite;
+      transform: rotateX(20px);
+    }
+  }
+
+
+
+
+
 }
 
 
