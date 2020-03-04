@@ -196,7 +196,7 @@ layout:
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
       header: [title, author, category, date, top]
-      footer: [updated, tags, btns, tags]
+      footer: [updated, tags, btns]
     # 文章页脚，自动在每一篇文章末尾添加
     footer: #[copyright, qrcode]
     # 文章页面的侧边栏

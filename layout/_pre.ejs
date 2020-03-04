@@ -2,6 +2,9 @@
 if (page.cover == undefined && theme.cover) {
   page.cover = true;
 }
+if (site.data && site.data.layout) {
+  theme.layout = site.data.layout;
+}
 if (is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
   if (page.sidebar == undefined) {
     if (theme.layout.on_list.sidebar.length == 0) {
