@@ -25,22 +25,29 @@
 
 			<div class='menu navigation'>
 				<ul class='h-list'>
-          <% if (theme.navbar.menu.on_desktop) { %>
-  					<% (theme.navbar.menu.on_desktop || []).forEach(function(value){ %>
-  						<li>
-								<a class="nav flat-box" href="<%= url_for(value.url) %>"
-                  <% if (value.rel) { %>
-                    rel="<%- value.rel %>"
-                  <% } %>
-                  <% if (value.target) { %>
-                    target="<%- value.target %>"
-                  <% } %>
-                  id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
-									<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
-								</a>
-							</li>
-      			<%})%>
-      		<% } %>
+          <%
+          let menu_desktop;
+          if (site.data && site.data.menu && site.data.menu.on_desktop) {
+            menu_desktop = site.data.menu.on_desktop;
+          } else {
+            menu_desktop = theme.navbar.menu.on_desktop;
+          }
+          menu_desktop = menu_desktop || [];
+          %>
+          <% menu_desktop.forEach(function(value){ %>
+            <li>
+              <a class="nav flat-box" href="<%= url_for(value.url) %>"
+                <% if (value.rel) { %>
+                  rel="<%- value.rel %>"
+                <% } %>
+                <% if (value.target) { %>
+                  target="<%- value.target %>"
+                <% } %>
+                id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
+                <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
+              </a>
+            </li>
+          <%})%>
 				</ul>
 			</div>
 
@@ -74,22 +81,29 @@
     <header>
 		<nav class="menu navigation">
       <ul>
-        <% if (theme.navbar.menu.on_mobile) { %>
-          <% (theme.navbar.menu.on_mobile || []).forEach(function(value){ %>
-            <li>
-							<a class="nav flat-box" href="<%= url_for(value.url) %>"
-                <% if (value.rel) { %>
-                  rel="<%- value.rel %>"
-                <% } %>
-                <% if (value.target) { %>
-                  target="<%- value.target %>"
-                <% } %>
-                id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
-								<i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
-							</a>
-            </li>
-          <%})%>
-       <% } %>
+        <%
+        let menu_mobile;
+        if (site.data && site.data.menu && site.data.menu.on_mobile) {
+          menu_mobile = site.data.menu.on_mobile;
+        } else {
+          menu_mobile = theme.navbar.menu.on_mobile;
+        }
+        menu_mobile = menu_mobile || [];
+        %>
+        <% menu_mobile.forEach(function(value){ %>
+          <li>
+            <a class="nav flat-box" href="<%= url_for(value.url) %>"
+              <% if (value.rel) { %>
+                rel="<%- value.rel %>"
+              <% } %>
+              <% if (value.target) { %>
+                target="<%- value.target %>"
+              <% } %>
+              id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
+              <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
+            </a>
+          </li>
+        <%})%>
       </ul>
 		</nav>
     </header>

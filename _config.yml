@@ -99,18 +99,18 @@ cover:
   title: Volantis
   subtitle: 'A Wonderful Theme for Hexo 4.2+'
   logo: # assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
-  search: '搜索文档'
+  search: '搜索一下'
   # 主页封面菜单
   features:
     - name: 公告
       icon: fas fa-bullhorn
-      url: /
+      url: https://volantis.js.org/
     - name: 文档
       icon: fas fa-book
-      url: getting-started/
+      url: https://volantis.js.org/getting-started/
     - name: 示例
       icon: fas fa-play-circle
-      url: examples/
+      url: https://volantis.js.org/examples/
     - name: 源码
       icon: fas fa-file-code
       url: https://github.com/xaoxuu/hexo-theme-volantis/
@@ -118,7 +118,7 @@ cover:
       target: _blank
     - name: 鸣谢
       icon: fas fa-handshake
-      url: contributors/
+      url: https://volantis.js.org/contributors/
 
 
 # 导航栏
@@ -135,51 +135,45 @@ navbar:
   menu:
     # 在桌面端显示的导航菜单
     on_desktop:
-      - name: 开始
-        icon: fas fa-flag
-        url: getting-started/
-      - name: 站点
-        icon: fas fa-globe-asia
-        url: site-settings/
-      - name: 主题
-        icon: fas fa-palette
-        url: theme-settings/
-      - name: 页面
-        icon: fas fa-file-alt
-        url: page-settings/
-      - name: 书写
-        icon: fas fa-pen-alt
-        url: tag-plugins/
-      - name: 进阶
-        icon: fas fa-flask
-        url: advanced-settings/
+      - name: 博客
+        icon: fas fa-rss
+        url: /
+      - name: 分类
+        icon: fas fa-folder-open
+        url: categories/
+      - name: 标签
+        icon: fas fa-tags
+        url: tags/
+      - name: 归档
+        icon: fas fa-archive
+        url: archives/
+      - name: 友链
+        icon: fas fa-link
+        url: friends/
+      - name: 关于
+        icon: fas fa-info-circle
+        url: about/
     # 手机端导航菜单（从右上角的按钮点击展开）
     on_mobile:
-      - name: 开始
-        icon: fas fa-flag
-        url: getting-started/
-      - name: 站点
-        icon: fas fa-globe-asia
-        url: site-settings/
-      - name: 主题
-        icon: fas fa-palette
-        url: theme-settings/
-      - name: 页面
-        icon: fas fa-file-alt
-        url: page-settings/
-      - name: 书写
-        icon: fas fa-pen-alt
-        url: tag-plugins/
-      - name: 进阶
-        icon: fas fa-flask
-        url: advanced-settings/
-      - name: 帮助
-        icon: fas fa-question-circle
-        url: faqs/
-      - name: 鸣谢
-        icon: fas fa-handshake
-        url: contributors/
-  search: 搜索文档   # 搜索框文字
+      - name: 博客
+        icon: fas fa-rss
+        url: /
+      - name: 分类
+        icon: fas fa-folder-open
+        url: categories/
+      - name: 标签
+        icon: fas fa-tags
+        url: tags/
+      - name: 归档
+        icon: fas fa-archive
+        url: archives/
+      - name: 友链
+        icon: fas fa-link
+        url: friends/
+      - name: 关于
+        icon: fas fa-info-circle
+        url: about/
+  search: 搜索一下   # 搜索框文字
 
 
 
@@ -190,9 +184,9 @@ layout:
   # 文章列表（主页、自定义的列表）布局
   on_list:
     # 列表中每一篇文章的meta信息
-    meta: [title, author, date, updated, top]
+    meta: [title, author, date, category, top]
     # 列表类页面的侧边栏
-    sidebar: [guide, repos, qrcode]
+    sidebar: [blogger, category, tagcloud, qrcode]
   # 文章页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
@@ -202,11 +196,11 @@ layout:
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
       header: [title, author, category, date, top]
-      footer: [btns, tags]
+      footer: [updated, tags, btns, tags]
     # 文章页脚，自动在每一篇文章末尾添加
     footer: #[copyright, qrcode]
     # 文章页面的侧边栏
-    sidebar: [guide, repos, qrcode, toc]
+    sidebar: [qrcode, toc]
   # 其他的页面布局暂时等于文章列表
 
 
