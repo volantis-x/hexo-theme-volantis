@@ -9,9 +9,9 @@
             <fancybox><img src='<%- url_for(photo) %>'/></fancybox>
           <% }) %>
           <%- post.content %>
-          <% if(theme.layout.on_page.footer && (page.layout == 'post')){ %>
+          <% if(theme.layout.on_post.article_footer && (page.layout == 'post')){ %>
             <br>
-            <%- partial('../_widget/load', {widgets: theme.layout.on_page.footer, where: 'article'}) %>
+            <%- partial('../_widget/load', {widgets: theme.layout.on_post.article_footer, where: 'article'}) %>
           <% } %>
         </div>
         <% if(post.layout == 'post' || post.layout == 'page'){ %>

@@ -178,7 +178,7 @@ navbar:
 
 
 # 布局
-layout:
+layout: # 下面的内容可以写在 `blog/source/_data/layout.yml` 中
   # 文章列表多列布局
   multiple_columns: false # 部分浏览器不兼容，谨慎使用
   # 文章列表（主页、自定义的列表）布局
@@ -187,7 +187,7 @@ layout:
     meta: [title, author, date, category, top]
     # 列表类页面的侧边栏
     sidebar: [blogger, category, tagcloud, qrcode]
-  # 文章页面布局
+  # 页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
     body: [article, comments]
@@ -196,12 +196,14 @@ layout:
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
       header: [title, author, category, date, top]
-      footer: [updated, tags, btns]
-    # 文章页脚，自动在每一篇文章末尾添加
-    footer: #[copyright, qrcode]
+      footer: [updated, tags, btns, share]
     # 文章页面的侧边栏
     sidebar: [qrcode, toc]
-  # 其他的页面布局暂时等于文章列表
+  # 文章布局，参数继承自 on_page
+  on_post:
+    # 文章页脚，自动在每一篇文章末尾添加
+    article_footer: [copyright, donate]
+  # 其他的页面布局暂时等于 on_list
 
 
 # meta库配置
@@ -284,7 +286,7 @@ meta:
       color: '#1BCDFC'
 
 # 组件库配置
-widget: #下面的内容可以写在 `blog/source/_data/widget.yml` 中
+widget: # 下面的内容可以写在 `blog/source/_data/widget.yml` 中
   # ---------------------------------------
   # 博主信息小部件配置
   blogger:
@@ -360,6 +362,15 @@ widget: #下面的内容可以写在 `blog/source/_data/widget.yml` 中
     height: #64px  # 不设置则自动高度
     fancybox: #true # 是否允许点击放大
     images:
+      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
+  # 打赏
+  donate:
+    class: qrcode
+    display: [desktop, mobile] # [desktop, mobile]
+    height: 64px  # 不设置则自动高度
+    fancybox: true # 是否允许点击放大
+    images:
+      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
       - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
 
 
