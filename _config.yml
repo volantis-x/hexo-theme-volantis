@@ -104,7 +104,7 @@ cover:
   features:
     - name: 公告
       icon: fas fa-bullhorn
-      url: https://volantis.js.org/
+      url: /
     - name: 文档
       icon: fas fa-book
       url: https://volantis.js.org/getting-started/
