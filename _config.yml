@@ -8,7 +8,7 @@ info:
       # style: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.4/css/style.css
     js:
       app: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.4/js/app.js
-      search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.4/js/search.js
+      # search: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.4/js/search.js
       valine: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.4/js/valine.js
 
 
