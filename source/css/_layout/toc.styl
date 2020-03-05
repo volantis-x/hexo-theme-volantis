@@ -1,0 +1,96 @@
+.l_side .toc-wrapper
+  z-index: 1
+  overflow: hidden
+  border-radius: $border-radius
+  position: sticky
+  top: $navbar-height + $gap
+  trans()
+  header
+    position: sticky
+    width: 100%
+    top: 0
+    padding-bottom: $gap * 0.25
+
+  .content
+    max-height: "calc(100vh - 5 * %s - %s)" % $gap $navbar-height
+    overflow: auto
+    a
+      border-left: $border-radius-line solid transparent
+      &:hover
+        background: bgcolor($color-link)
+        border-left: $border-radius-line solid $color-link
+
+      &:active
+        border-left: 2 * $border-radius-line solid $color-link
+
+      &.active
+        color: $color-link
+        border-left: $border-radius-line solid $color-link
+
+
+
+  &.active
+    position: fixed
+    box-shadow: $box-shadow-card-float
+    top: $navbar-height
+    header
+      .s-toc
+        transform: rotate(30deg)
+    width: $sidebar
+    @media screen and (max-width: $device-desktop)
+      width: $sidebar-s
+    @media screen and (max-width: $device-tablet)
+      width: "calc(100% - 2 * %s)" % $gap
+  trans()
+  @media screen and (max-width: $device-tablet)
+    position: fixed
+    max-height: 1000px
+    width: "calc(100% - 2 * %s)" % $gap
+    top: $navbar-height
+    box-shadow: $box-shadow-card-float
+    visibility: hidden
+    transform: scale(0,0)
+    transform-origin: right top
+    &.active
+      visibility: visible
+      transform: scale(1,1)
+
+
+  a
+    padding-left: 8px
+    color: $color-meta
+    font-size: $font-size-meta
+    display: inline-block
+
+  ol
+    .toc-item.toc-level-1
+      .toc-child a
+        padding-left: 0.8 * $gap
+        font-weight: normal
+    .toc-item.toc-level-2
+      .toc-child a
+        padding-left: 1.6 * $gap
+        font-weight: normal
+    .toc-item.toc-level-3
+      .toc-child a
+        padding-left: 2.4 * $gap
+        font-weight: normal
+    .toc-item.toc-level-4
+      .toc-child a
+        padding-left: 3.2 * $gap
+        font-weight: normal
+    .toc-item.toc-level-5
+      .toc-child a
+        padding-left: 4 * $gap
+        font-weight: normal
+
+    li
+      a
+        padding: 0 $gap * 0.5 0 ($gap - 5px)
+        font-weight: bold
+        width: 100%
+      width: auto
+      text-align: left
+
+  &:empty
+    display:none
