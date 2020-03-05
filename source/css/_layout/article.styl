@@ -4,13 +4,12 @@
   word-wrap: break-word
   img
     position: relative
-    margin: 0 auto
-    background: white
+    
     trans()
     @media screen and (max-width: $device-mobile)
       box-shadow: none
-
-
+  div>img,p>img
+    margin: $gap-line auto
   span
     img
       display: inline

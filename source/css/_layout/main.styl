@@ -117,10 +117,8 @@
     h1
       font-weight: normal
       font-size: $font-size-h2
-
     @media screen and (max-width: $device-mobile)
       border-radius: 0
-
     .meta
       color: $color-meta
       &#header-meta
@@ -132,7 +130,7 @@
 
       font-size: $font-size-code
       .aplayer,.thumbnail
-        .enable-trans()
+        trans()
         width: 65px
         height: 65px
         border-radius: 100%
@@ -149,19 +147,15 @@
             border-radius: 100%
             transform: scale(1)
             box-shadow: $box-shadow-card
-
-
-
       .thumbnail
         width: auto
         border-radius: 4px
         box-shadow: none
+        trans()
         &:hover
           border-radius: 4px
           transform: scale(1.1) rotate(4deg)
           box-shadow: none
-
-
       .title
         margin: 0
         a
@@ -276,15 +270,6 @@
               height: $metaH - 2px
               width: auto
               background: transparent
-
-
-    img
-      display: flex
-      justify-content: center
-      align-items: center
-      max-width: 100%
-      border-radius: 4px
-      background: none
 
     span>img
       display: inline-block
