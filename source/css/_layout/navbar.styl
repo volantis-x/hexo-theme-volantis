@@ -1,0 +1,300 @@
+
+#loading-bar-wrapper
+  position: fixed
+  top: 0
+  left: 0
+  height: 2px
+  width: 100%
+  z-index: 99999
+
+#loading-bar
+  position: fixed
+  width: 0
+  height: 2px
+  trans()
+  background-color: $color-link
+
+
+.l_header
+  $iconW = 32px
+  $iconMargin = 4px
+  position: fixed
+  z-index: 9999
+  top: 0
+  overflow: hidden
+  width: 100%
+  font-size: $font-size-body
+  line-height: $navbar-height
+  height: $navbar-height
+  overflow: hidden
+  padding: 0 $gap
+  margin-bottom: $gap
+  box-shadow: $box-shadow-card
+  .wrapper
+    padding: auto $gap
+    max-width: $layout-width
+    margin: auto
+    trans()
+    a.logo
+      color: $color-text
+
+
+  &.no_sidebar
+    .wrapper
+      max-width: $device-tablet
+      margin: auto
+
+
+  .wrapper.sub
+    trans()
+    transform: translateY(-$navbar-height)
+    .logo
+      @media screen and (max-width: $device-mobile)
+        trans()
+        padding-left: $gap
+        padding-right: 0
+
+
+  .nav--main,.nav-sub
+    height: $navbar-height
+
+  background: $color-card
+  &.hide
+    transform: translateY(100px) scale(0)
+
+  &.show
+    transform: translateY(0) scale(1)
+
+  &, a
+    txt-ellipsis()
+    height: $navbar-height
+    line-height: $navbar-height
+
+
+  .logo
+    padding: 0 $gap*1.5
+    font-size: $font-size-h3
+    font-family: $font-family-logo
+    @media screen and (max-width: $device-mobile)
+      padding: 0 $gap
+
+    &.img
+      padding: 0 $gap 0 0
+
+    img
+      height: 100%
+
+    letter-spacing: 0
+
+  img.logo
+    padding: 4px 0
+
+
+  .nav-sub
+    .logo
+      padding: 0 $gap*1.5
+      font-size: $font-size-body
+      font-family: $font-family
+      @media screen and (max-width: $device-mobile)
+        letter-spacing: -0.5px
+        padding-top: 1px
+
+
+  .menu
+    position:relative
+    flex: 1 0 auto
+    height: $navbar-height
+    trans()
+    margin: 0 $gap 0 0
+    ul>li>a
+      trans()
+      display: block
+      padding: 0 8px
+      color: alpha($color-text, 85%)
+      &.current
+        border-bottom: @loading_height solid alpha($color-link, 80%)
+
+      &:hover
+        color: $color-link
+        border-bottom: $border-line solid $color-link
+        background: alpha($color-link, 10%)
+
+      &:active,&.active
+        color: $color-link
+        border-bottom: $border-line solid $color-link
+
+
+    @media screen and (max-width: $device-mobile)
+      display:none
+
+
+  .switcher
+    display: none
+    line-height: $navbar-height
+    .s-toc
+      display: none
+
+    @media screen and (max-width: @on_pad)
+      .s-toc
+        display: block
+    &>li
+      height: $navbar-height - $gap
+      trans()
+      margin: 2px
+      $height = $navbar-height - $gap
+      @media screen and (max-width: $device-mobile)
+        margin: 0
+        height: $height
+
+      a
+        display: flex
+        justify-content: center
+        align-items: center
+        width: $height
+        height: $height
+        border-radius: 100px
+        trans()
+        &:hover
+          background: alpha($color-link, 15%)
+
+        @media screen and (max-width: $device-mobile)
+          width: $iconW
+          height: $height
+
+
+
+    @media screen and (max-width: $device-mobile)
+      display: flex
+      padding-left: $gap/2
+      padding-right: $gap - 6px
+
+
+  .nav-sub .switcher
+    display: flex
+
+  .m_search
+    position: relative
+    display: flex
+    width: $sidebar
+    height: $navbar-height
+    @media screen and (max-width: $device-desktop)
+      width: $sidebar-s
+
+    .form
+      position: relative
+      display: flex
+      width: 100%
+      margin: auto
+      justify-content: flex-start
+      align-items: center
+
+    .icon,.input
+      trans(.3s)
+
+    .icon
+      position: absolute
+      width: $iconW
+      left: $iconMargin+1px
+      color: alpha($color-text, 70%)
+
+    .input
+      display: block
+      padding-top: 8px
+      padding-bottom: 8px
+      width: 100%
+      color: $color-text
+      background: alpha(darken($color-card, 5%), 75%)
+      box-shadow: none
+      box-sizing: border-box
+      padding-left: $iconW + $iconMargin
+      @media screen and (max-width: $device-mobile)
+        padding-left: $iconW + $iconMargin
+
+      border-radius: $border-radius-searchbar
+      border: 1px dashed transparent
+      .set-placeholder(
+        color: alpha($color-text, 50%)
+      )
+      &:hover
+        color: $color-inner
+        ~.icon
+          color: alpha($color-link, 80%)
+
+        border: 1px solid alpha($color-link, 60%)
+
+      &:focus
+        ~.icon
+          color: $color-link
+
+        color: $color-text
+        background: alpha($color-link, 15%)
+        border: 1px solid $color-link
+
+
+
+  @media (max-width: $device-mobile)
+    padding: 0
+    .m_search
+      width:0
+      overflow: hidden
+      position: absolute
+      trans()
+      margin: 0 $gap/2
+
+    &.z_search-open
+      .logo
+        opacity:0
+
+      .m_search
+        width: "calc(100vw - 2* %s - 2* %s)" % $gap $iconW
+
+
+.menu-phone
+  .header
+    border-top-left-radius: $border-radius
+    border-top-right-radius: $border-radius
+    background-color: alpha($color-card,90%)
+    color: $color-inner
+    padding: 8px $gap+6px
+
+  position: fixed
+  top: $navbar-height + $gap
+  right: 0
+  z-index:9999 + 1
+  line-height: 2 * $gap
+  border-right: 0
+  box-shadow: $box-shadow-card-float
+  border-radius: $border-radius
+  transform: translate3d(-40px, -40px, 0) scale(0,0)
+  transform-origin: right top
+  trans()
+  &:hover
+    box-shadow: $box-shadow-card-float
+
+  &:active
+    box-shadow: $box-shadow-card
+
+  nav
+    padding: $gap/2 0px
+    .nav
+      height: 40px
+      line-height: 40px
+      position: relative
+      display: block
+      color: $color-text
+      padding: 2px 20px
+      border-left: 4px solid transparent
+      border-right: 4px solid transparent
+      &:hover,&.active
+        border-left: 4px solid $color-link
+        background: alpha($color-link, 10%)
+
+
+
+
+.cover-wrapper
+  .l_header
+    trans(0.5s)
+    transform: translateY(-1.5*$navbar-height)
+    &.show
+      transform: translateY(0)

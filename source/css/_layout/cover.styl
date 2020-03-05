@@ -1,0 +1,171 @@
+.cover-wrapper
+  padding-bottom: 2px
+  .cover
+    top: 0
+    left: 0
+    max-width: 100%
+    height: "calc(100vh)"
+    display: flex
+    flex-wrap: nowrap
+    flex-direction: column
+    align-items: center
+    align-self: center
+    align-content: center
+    color: alpha($color-text, .75)
+    padding: $gap
+    .title, .logo
+      margin-top: "calc(30vh)"
+      text-align: center
+    .title
+      font-size: $font-size-huge
+    .subtitle
+      font-size: $font-size-body
+    .logo
+      max-height: 100px
+      max-width: "calc(100% - 4 * %s)" % $gap
+
+    .white
+      color: white
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+    @media screen and (max-width: $device-mobile)
+      .title, .logo
+        font-size: $font-size-large
+
+    .m_search
+      $iconW = 32px
+      $iconMargin = 4px
+      margin-top: "calc(2vh + 32px)"
+      position: relative
+      max-width: "calc(100% - 32px)"
+      width: 340px
+      line-height: $navbar-height - $gap
+      vertical-align: middle
+      .form
+        position: relative
+        display: block
+        width: 100%
+
+      .icon,.input
+        trans()
+      .icon
+        position: absolute
+        display:block
+        height: 2.8rem
+        width: $iconW
+        top: 0
+        left: $iconMargin+1px
+        color: alpha($color-text, .6)
+
+      .input
+        display: block
+        height: 2.8rem
+        width: 100%
+        box-shadow: none
+        box-sizing: border-box
+        -webkit-appearance: none
+        padding-left: $iconW + $iconMargin
+        @media screen and (max-width: $device-mobile)
+          padding-left: $iconW + $iconMargin
+        border-radius: 1.4rem
+        background: white
+        border: 1px dashed transparent
+        // placeholder(
+        //   padding-top: 2px
+        //   font-size: $font-size-body
+        //   color: alpha($color-text, .6)
+        // )
+        &:hover
+          ~.icon
+            color: $color-link
+
+        &:focus
+          ~.icon
+            color: $color-link
+
+          border: 1px solid $color-link
+
+    &.half
+      margin-bottom: "calc(-100px)"
+      height: "calc(60vh - %s + 120px)" % $navbar-height
+      .title, .logo
+        margin-top: "calc(28vh - 80px)"
+
+      .m_search
+        margin-top: $gap*2
+
+        @media screen and (max-width: $device-tablet)
+          height: "calc(40vh - %s + 160px)" % $navbar-height
+          .title, .logo
+            margin-top: "calc(22vh - 90px)"
+
+
+      @media screen and (max-width: $device-mobile)
+        height: "calc(30vh - %s + 200px)" % $navbar-height
+        .title, .logo
+          margin-top: "calc(22vh - 70px)"
+
+
+
+    .menu
+      margin-top: $gap
+      ul
+        display: flex
+        flex-wrap: wrap
+        align-items: baseline
+        justify-content: center
+        li
+          display: flex
+          flex-wrap: wrap
+          align-items: center
+          padding: 0
+          height: auto
+
+      ul>li>a
+        font-size: $font-size-body
+        padding: 2px
+        margin: 0 4px
+        .enable-trans()
+        color: alpha($color-text, .85)
+        border-bottom: 1px solid transparent
+        &:hover, &.active, &:active
+          color: $color-text
+          border-bottom: 1px solid $color-text
+
+        &.white
+          color: fade(white, 70%)
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+          &:hover, &.active, &:active
+            color: white
+            border-bottom: 1px solid white
+
+    .switcher
+      & > li
+        a
+          &:hover
+            background: alpha($color-text, .15)
+
+
+  .scroll-down
+    width: 100%
+    height: 64px
+    position: absolute
+    bottom: 0
+    text-align: center
+    cursor: pointer
+    .scroll-down-effects
+      color: white
+      font-size: 24px
+      line-height: 64px
+      position: absolute
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .1)
+      animation: scroll-down-effect 1.5s infinite
+      @keyframes scroll-down-effect
+        0%
+          top: 0
+          opacity: 1
+        50%
+          top: -16px
+          opacity: .4
+        100%
+          top: 0
+          opacity: 1

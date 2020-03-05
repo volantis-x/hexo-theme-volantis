@@ -1,0 +1,425 @@
+.l_main
+  width: "calc(100% - 1 * %s)" % $sidebar
+  @media screen and (max-width: $device-desktop)
+    width: "calc(100% - 1 * %s)" % $sidebar-s
+  @media screen and (max-width: $device-tablet)
+    width: 100%
+  padding-right: $gap
+  &.no_sidebar
+    width: 100%
+    padding-right: 0
+    max-width: $device-tablet
+    margin: auto
+    ~.l_side
+      display: none
+  float: left
+  .post-list
+    position: relative
+    margin: $gap auto
+    column-gap: $gap
+    @media screen and (max-width: $device-mobile)
+      margin: 0
+
+    &.multiple-columns
+      columns: 320px // 支持多列
+
+    :first-child
+      // margin-top: 0
+
+
+  ul.popular-posts
+    h3
+      padding: 0
+      margin: 0
+      font-size: $font-size-body
+
+
+  .post-wrapper
+      // for firefox
+      column-break-inside: avoid
+      break-inside: avoid-column
+
+  mobile-post()
+    .post
+      .meta
+        margin-bottom: $gap
+        .title
+          font-size: $font-size-h3
+      .full-width
+        margin-left: -$gap
+        margin-right: -$gap
+        padding-left: $gap
+        padding-right: $gap
+        width:"calc(100% + 2 * %s)" % $gap
+      .auto-padding
+        padding-left: $gap
+        padding-right: $gap
+        border-bottom-left-radius: $border-radius
+        border-bottom-right-radius: $border-radius
+        overflow: auto
+      .highlight
+        margin-left: 0*$gap
+        margin-right: 0*$gap
+        width: 100%
+      @media(max-width:@on_phone)
+        padding: 1.5*$gap $gap
+        .highlight
+          margin-left: 0*$gap
+          margin-right: 0*$gap
+        .auto-padding
+          border-bottom-left-radius: 0
+          border-bottom-right-radius: 0
+
+  .post-wrapper
+    margin-bottom: $gap
+    .post
+      .meta
+        margin-bottom: $gap
+        .title
+          font-size: $font-size-h2
+          a
+            font-size: $font-size-h2
+
+      .full-width
+        margin-left: -1.5*$gap
+        margin-right: -1.5*$gap
+        width: "calc(100% + 3 * %s)" % $gap
+
+      .auto-padding
+        padding-left: 1.5*$gap
+        padding-right: 1.5*$gap
+        border-bottom-left-radius: $border-radius
+        border-bottom-right-radius: $border-radius
+        overflow: auto
+
+
+    .tags
+      margin-bottom: -2*$gap
+
+    @media(max-width:@on_phone)
+      .tags
+        margin-bottom: -1.5*$gap
+      mobile-post()
+
+  .widget
+    @media screen and (max-width: $device-mobile)
+      border-radius: 0
+      margin-left: 0
+      margin-right: 0
+      width: auto
+
+
+  .post
+    position: relative
+    margin: $gap auto
+    padding: 1.5*$gap
+    border-radius: $border-radius
+    h1
+      font-weight: normal
+      font-size: $font-size-h2
+
+    @media screen and (max-width: $device-mobile)
+      border-radius: 0
+
+    .meta
+      color: $color-meta
+      &#header-meta
+        margin-top: 0
+        margin-bottom: 1*$gap
+      &#footer-meta
+        margin-top: 2*$gap
+        margin-bottom: 0.5*$gap
+
+      font-size: $font-size-code
+      .aplayer,.thumbnail
+        .enable-trans()
+        width: 65px
+        height: 65px
+        border-radius: 100%
+        float: right
+        margin: 4px
+        box-shadow: $box-shadow-card
+        &:hover
+          border-radius: 25%
+          transform: scale(1.1)
+          box-shadow: $box-shadow-card-float
+
+        @media screen and (max-width: $device-mobile)
+          &:hover
+            border-radius: 100%
+            transform: scale(1)
+            box-shadow: $box-shadow-card
+
+
+
+      .thumbnail
+        width: auto
+        border-radius: 4px
+        box-shadow: none
+        &:hover
+          border-radius: 4px
+          transform: scale(1.1) rotate(4deg)
+          box-shadow: none
+
+
+      .title
+        margin: 0
+        a
+          display: inline
+          font-weight: normal
+          color: $color-text
+          text-decoration: none
+
+      $cellH = 28px
+      .new-meta-box
+        $metaH = 24px
+        trans()
+        padding-top: 4px
+        padding-bottom: 8px
+        display: flex
+        align-items: center
+        flex-wrap: wrap
+        .new-meta-item
+          color: $color-meta
+          font-size: $font-size-code
+          line-height: $metaH
+          &.link-btns
+            display: flex
+            flex-wrap: wrap
+            justify-content: flex-start
+            .btn
+              font-size: $font-size-code
+              line-height: $metaH - 4px
+              color: white
+              padding: 0 4px
+              border-radius: 2px
+              margin: 2px
+              // &:extend(.hoverable)
+              &:hover
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 16px 0 rgba(0, 0, 0, 0.1)
+
+              i
+                padding-left: 3px
+                font-size: $font-size-code
+              p
+                color: white
+
+              &:hover
+                color: white
+                p
+                  color: white
+
+          .notlink
+            cursor: default
+            &:hover
+              color: $color-meta
+              p
+                color: $color-meta
+
+
+
+          display: flex
+          align-items: center
+          justify-content: center
+          padding: 2px
+          margin: 0 8px 0 0
+          border-radius: 4px
+          &:last-child
+            margin-right: 0
+
+          img,i
+            border-radius: 100%
+            display: inline
+
+          i
+            margin-right: 4px
+            border-radius: 0
+            &.fa-hashtag
+              margin-right: 1px
+
+          p,a
+            color: $color-meta
+            padding-left: 0
+            padding-right: 4px
+
+          a
+            display: flex
+            justify-content: center
+            align-items: center
+            img
+              height: $metaH - 7px
+              width: $metaH - 7px
+              margin-right: 5px
+              transform: translateY(-1px)
+
+            p
+              margin: 0
+              padding-top: 2px
+              font-weight: normal
+              trans()
+
+            &:hover
+              color: $color-link-hover
+              p
+                color: $color-link-hover
+              text-decoration: none
+
+
+
+        .share-body
+          height: $metaH - 2px
+          display: flex
+          a
+            padding: 0
+            margin-right: 4px
+            img
+              height: $metaH - 2px
+              width: auto
+              background: transparent
+
+
+    img
+      display: flex
+      justify-content: center
+      align-items: center
+      max-width: 100%
+      border-radius: 4px
+      background: none
+
+    span>img
+      display: inline-block
+
+    a
+      img
+        display: inline
+
+
+
+  @media screen and (max-width:$device-tablet)
+    padding-right: 0
+    @media screen and (max-width: $device-mobile)
+      width: 100%
+    mobile-post()
+
+  .prev-next
+    width: 100%
+    display: flex
+    justify-content: space-between
+    align-items: baseline
+    color: $color-meta
+    margin: 0
+    .prev
+      text-align: left
+      border-top-right-radius: 32px
+      border-bottom-right-radius: 32px
+
+    .next
+      text-align: right
+      border-top-left-radius: 32px
+      border-bottom-left-radius: 32px
+
+    p
+      margin: $gap
+
+    section
+      color: $color-meta
+      padding: $gap
+      border-radius: $border-radius
+      &:hover
+        color: $color-link-hover
+
+
+    @media screen and (max-width: $device-mobile)
+      section
+        border-radius: 0
+
+
+details
+  display: block
+  background: $color-codeblock-bg
+  padding: $gap
+  margin: $gap-line 0
+  border: 1px solid darken($color-codeblock-bg, .1)
+  border-radius: $border-radius-codeblock
+  trans()
+  summary
+    cursor: pointer
+    padding: $gap
+    margin: 0 - $gap
+    color: $color-meta
+    font-size: $font-size-body
+    font-weight: bold
+    &:hover
+      color: $color-link-hover
+
+
+
+.body-wrapper
+  position: relative
+  display: flex
+  width: 100%
+  max-width: $layout-width
+  margin: 0 auto
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: stretch
+
+
+.container--flex
+  display: flex
+  flex-wrap: nowrap
+  justify-content: space-between
+  align-items: center
+
+
+.l_body
+  position: relative
+  margin: $gap
+  margin-top: $gap
+  &.nocover
+    margin-top: $gap + $navbar-height
+
+  @media screen and (max-width: $device-mobile)
+    margin: $navbar-height + $gap 0 $gap
+    border-radius: 0
+
+  .s-top
+    trans(0.6s)
+    z-index: 9
+    position: fixed
+    width: 48px
+    height: 48px
+    line-height: 48px
+    border-radius: 100%
+    bottom: $gap*2
+    right: $gap*2
+    transform: translateY(100px) scale(0)
+    transform-origin: bottom
+    color: $color-text
+    @media screen and (max-width: $device-tablet)
+      right: $gap
+
+    &.show
+      transform: translateY(0) scale(1)
+      &.hl
+        background: $color-link
+        color: white
+        box-shadow: $box-shadow-card
+
+
+    @media screen and (min-width: $device-tablet)
+      &:hover
+        transform: scale(1.2)
+        border-radius: 25%
+        background: $color-link
+        color: white
+        box-shadow: $box-shadow-card-float
+        &.hl
+          box-shadow: $box-shadow-card-float
+
+
+
+
+
+.white-box
+  background: $color-card

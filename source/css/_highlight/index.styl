@@ -1,0 +1,133 @@
+// https://github.com/equinusocio/vsc-material-theme
+@require 'theme'
+@require 'diff'
+
+
+.highlight
+  position: relative
+  width: 100%
+  margin: $gap-line 0
+  overflow: auto
+  display: block
+  background: $color-codeblock-bg
+  font-size: $font-size-code
+  font-family: $font-family-code
+  border-radius: $border-radius-codeblock
+  border: 1px solid darken($color-codeblock-bg, 10%)
+  trans()
+  figcaption
+    position: sticky
+    left: 0
+    padding: $gap * 0.25 $gap * 0.5 $gap * 0.25 $gap * 0.5
+    background-color: darken($color-codeblock-bg, 5%)
+
+
+  table
+    td,th
+      padding: 0
+      border: none
+
+    margin: 0
+    background-color: transparent
+    border: none
+    tr
+      background-color: transparent
+      &:hover
+        background-color: transparent
+
+
+    .gutter
+      width: 24px
+      padding: 0 12px
+      text-align: right
+      border-width: 0
+      margin-left: 0
+      position: sticky
+      left: 0
+      background-color: darken($color-codeblock-bg, 5%)
+      pre
+          color: $color-meta
+
+
+    pre
+      background: transparent
+      margin: 0
+      padding: 0
+      border: none
+
+    .code
+      padding: $gap
+      vertical-align: top
+      background-color: transparent
+      &:before
+        content: ""
+        position: absolute
+        top: 0
+        right: 0
+        color: $color-meta
+        font-size: $font-size-footnote
+        padding: 4px 8px
+
+  &.html .code:before
+      content: "HTML"
+
+  &.js .code:before
+      content: "JS"
+
+  &.bash .code:before
+      content: "BASH"
+
+  &.shell .code:before
+      content: "SHELL"
+
+  &.css .code:before
+      content: "CSS"
+
+  &.less .code:before
+      content: "LESS"
+
+  &.swift .code:before
+      content: "SWIFT"
+
+  &.objc .code:before
+      content: "OBJECTIVE-C"
+
+  &.c .code:before
+      content: "C"
+
+  &.cpp .code:before
+      content: "C++"
+
+  &.java .code:before
+      content: "JAVA"
+
+  &.python .code:before
+      content: "PYTHON"
+
+  &.yaml .code:before
+      content: "YAML"
+
+  &.plain .code:before
+      content: ""
+
+
+  &::-webkit-scrollbar
+    height: $border-radius-line
+    width: $border-radius-line
+
+  // /* Track */
+
+  &::-webkit-scrollbar-track-piece
+      background: transparent
+
+
+
+/* Handle */
+
+  &::-webkit-scrollbar-thumb
+    background: darken($color-codeblock-bg, 5%)
+    cursor: pointer
+    border-radius: $border-radius-codeblock
+    trans()
+    &:hover
+      background: darken($color-codeblock-bg, 12%)
