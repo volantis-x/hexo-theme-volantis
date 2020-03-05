@@ -1,0 +1,62 @@
+#archive-page
+  margin-bottom: $gap * 2
+  .archive
+    a
+      color: $color-text
+      display: block
+      background: transparent
+      border-left: $border-radius-line solid transparent
+      border-radius: $border-radius-line
+      vertical-align: middle
+      text-decoration: none
+      &.child
+        padding-left: 2*$gap
+
+      trans()
+      &:hover
+        background: bgcolor($color-link)
+        border-left: $border-radius-line solid $color-link
+      &:active
+        border-left: $border-radius-line * 2 solid $color-link
+
+    .archive-year
+      margin-top: 4em
+      margin-bottom: 1em
+      &:first-child
+        margin-top: 0em
+        padding-top: 0
+
+      h2
+        margin-top: 1em
+
+
+    .archive-post
+      $line-height = 2.2rem
+      time
+        line-height: $line-height
+        vertical-align: middle
+        font-size: $font-size-footnote
+        padding-left: 2em
+        @media screen and (max-width: $device-mobile)
+          padding-left: 0
+
+      .title
+        padding: .5em
+        font-size: $font-size-body
+        line-height: $line-height
+        i
+          color: @color-link-hover
+          &.red
+            color: $color-mac-red
+          &.green
+            color: $color-mac-green
+          &.yellow
+            color: $color-mac-yellow
+          &.blue
+            color: $color-mac-cyan
+          &.theme
+            color: $color-link
+          &.accent
+            color: $color-link-hover
+          &.orange
+            color: $color-md-deep-orange
