@@ -33,19 +33,18 @@
 
       button
         border: none
-        padding-left: 2.4em
-        padding-right: 2.4em
-        font-weight: bold
-        background-color: $color-link
-        color: $color-inner
-        border-radius: $border-radius-codeblock
+        padding-left: 2rem
+        padding-right: 2rem
+        border-radius: $border-radius-button
+        line-height: 1.5rem
         trans()
         &:hover
-          background: darken($color-link, .1)
+          color: $color-link-hover
+          background: bgcolor($color-link-hover)
 
       blockquote
         padding: $gap
-        border-left: $border-radius-line solid $color-blockquote-border
+        border-left: $border-radius-line solid $color-blockquote
         trans()
         p
           text-align: left

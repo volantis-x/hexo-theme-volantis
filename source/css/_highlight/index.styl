@@ -114,20 +114,76 @@
   &::-webkit-scrollbar
     height: $border-radius-line
     width: $border-radius-line
-
-  // /* Track */
-
   &::-webkit-scrollbar-track-piece
-      background: transparent
-
-
-
-/* Handle */
-
+    background: transparent
   &::-webkit-scrollbar-thumb
-    background: darken($color-codeblock-bg, 5%)
+    background: alpha($color-text, .3)
     cursor: pointer
     border-radius: $border-radius-codeblock
     trans()
     &:hover
-      background: darken($color-codeblock-bg, 12%)
+      background: alpha($color-text, .6)
+
+
+
+
+$hl-keyword = #9c27b0
+$hl-blue = #1E80F0
+$hl-cyan = #17AFCA
+$hl-green = #3FA33F
+$hl-light-blue = #6ECDF9
+$hl-red = #EE2B29
+$hl-orange = #FB3F1B
+$hl-amber = #FD8607
+
+pre
+  // 行
+  line-height: 1.6
+  .line
+    color: alpha($color-text, 90%)
+
+  .marked
+    background-color: alpha($color-mac-yellow, 40%)
+    padding: 3px 8px 3px 0
+    border-radius: 2px
+    width: 100%
+
+  .title
+    color: $color-md-indigo
+
+  // 注释
+  .comment
+    color: alpha(darken($color-md-green, 10%), 70%)
+
+  .keyword, .javascript .function, .attr
+    color: $hl-keyword
+
+  .type, .built_in, .tag .name
+    color: $color-md-light-blue
+
+  .variable, .attribute, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo
+    color: $hl-amber
+
+  .number, .preprocessor, .literal, .params, .constant
+    color: $hl-amber
+
+  .class, .ruby .class .title, .css .rules .attribute
+    color: $color-md-orange
+
+  .string
+    color: darken($color-md-green, 10%)
+
+  .value, .inheritance, .header, .ruby .symbol, .xml .cdata
+    color: $color-md-green
+
+  .css .hexcolor
+    color: #66cccc
+
+  .function, .python .decorator, .python .title, .ruby .function .title, .ruby .title .keyword, .perl .sub, .javascript .title, .coffeescript .title
+    color: #6699cc
+
+
+
+.html
+  .tag .name
+    color: $hl-red
