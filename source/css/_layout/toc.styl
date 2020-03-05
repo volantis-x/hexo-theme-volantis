@@ -10,9 +10,8 @@
     width: 100%
     top: 0
     padding-bottom: $gap * 0.25
-
   .content
-    max-height: "calc(100vh - 5 * %s - %s)" % $gap $navbar-height
+    max-height: "calc(100vh - %s)" % ($gap * 5 + $navbar-height)
     overflow: auto
     a
       border-left: $border-radius-line solid transparent

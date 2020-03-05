@@ -58,7 +58,7 @@ style:
   # 毛玻璃效果 具体效果调整在： source/less/_color.less
   blur:
     navbar: true
-    widget: true
+    # widget: true
     # body: true
 # 建议：
 #   有背景图：开启毛玻璃，关闭卡片阴影
@@ -71,7 +71,7 @@ readmore: true
 backstretch:
   enable: true          # 是否启用
   js: '//cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js'
-  position: fixed       # cover: 封面背景   fixed: 整个网页背景
+  position: cover       # cover: 封面背景   fixed: 整个网页背景
   duration: 20000       # 持续时间（毫秒）
   fade: 2500            # 渐变（毫秒）
   is_dark: #true        # 图片是否是暗色的（调整文字为白色）
@@ -94,11 +94,11 @@ backstretch:
 ############################### 自定义 ###############################
 # page的封面
 cover:
-  scheme: search    # 后期将会提供多种封面布局方案
+  scheme: docs      # docs: 适合文档的封面方案  blog: 适合博客的封面方案
   height: full      # full: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
   title: Volantis
-  subtitle: 'A Wonderful Theme for Hexo 4.2+'
-  logo: # assets/logo.png    # logo和title只显示一个，若同时设置，则只显示logo
+  subtitle: 'A Wonderful Theme for Hexo'
+  logo:  # logo和title只显示一个，若同时设置，则只显示logo
   search: '搜索一下'
   # 主页封面菜单
   features:
@@ -240,7 +240,7 @@ meta:
     icon_duration: fas fa-hourglass-half
   # 文章标签
   tags:
-    icon: fas fa-tag
+    icon: fas fa-hashtag
   # 分享
   share:
     - id: qq

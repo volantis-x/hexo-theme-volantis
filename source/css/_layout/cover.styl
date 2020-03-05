@@ -4,7 +4,7 @@
     top: 0
     left: 0
     max-width: 100%
-    height: "calc(100vh)"
+    height: 100vh
     display: flex
     flex-wrap: nowrap
     flex-direction: column
@@ -14,10 +14,11 @@
     color: alpha($color-text, .75)
     padding: $gap
     .title, .logo
-      margin-top: "calc(30vh)"
+      margin-top: 28vh
       text-align: center
     .title
-      font-size: $font-size-huge
+      font-size: $font-size-large
+      line-height: 1.2
     .subtitle
       font-size: $font-size-body
     .logo
@@ -28,16 +29,16 @@
       color: white
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
     @media screen and (max-width: $device-mobile)
-      .title, .logo
+      .title,.logo
         font-size: $font-size-large
 
     .m_search
       $iconW = 32px
       $iconMargin = 4px
-      margin-top: "calc(2vh + 32px)"
+      margin-top: 10vh
       position: relative
-      max-width: "calc(100% - 32px)"
-      width: 340px
+      max-width: "calc(100% - %s)" % 32px
+      width: 320px
       line-height: $navbar-height - $gap
       vertical-align: middle
       .form
@@ -50,7 +51,7 @@
       .icon
         position: absolute
         display:block
-        height: 2.8rem
+        line-height: 2.8rem
         width: $iconW
         top: 0
         left: $iconMargin+1px
@@ -62,47 +63,45 @@
         width: 100%
         box-shadow: none
         box-sizing: border-box
+        font-size: $font-size-body
         -webkit-appearance: none
         padding-left: $iconW + $iconMargin
         @media screen and (max-width: $device-mobile)
           padding-left: $iconW + $iconMargin
         border-radius: 1.4rem
-        background: white
-        border: 1px dashed transparent
+        background: alpha(white, .6)
+        backdrop-filter: blur(10px)
+        border: none
+        color: $color-text
         // placeholder(
         //   padding-top: 2px
         //   font-size: $font-size-body
         //   color: alpha($color-text, .6)
         // )
         &:hover
-          ~.icon
-            color: $color-link
-
+          background: alpha(white, .8)
         &:focus
-          ~.icon
-            color: $color-link
-
-          border: 1px solid $color-link
+          background: alpha(white, 1)
 
     &.half
-      margin-bottom: "calc(-100px)"
+      margin-bottom: -100px
       height: "calc(60vh - %s + 120px)" % $navbar-height
       .title, .logo
-        margin-top: "calc(28vh - 80px)"
+        margin-top: "calc(28vh - %s)" % 80px
 
       .m_search
-        margin-top: $gap*2
+        margin-top: $gap * 2
 
         @media screen and (max-width: $device-tablet)
           height: "calc(40vh - %s + 160px)" % $navbar-height
           .title, .logo
-            margin-top: "calc(22vh - 90px)"
+            margin-top: "calc(22vh - %s)" % 90px
 
 
       @media screen and (max-width: $device-mobile)
         height: "calc(30vh - %s + 200px)" % $navbar-height
         .title, .logo
-          margin-top: "calc(22vh - 70px)"
+          margin-top: "calc(22vh - %s)" % 70px
 
 
 
@@ -124,15 +123,14 @@
         font-size: $font-size-body
         padding: 2px
         margin: 0 4px
-        .enable-trans()
-        color: alpha($color-text, .85)
+        trans()
+        color: $color-meta
         border-bottom: 1px solid transparent
         &:hover, &.active, &:active
-          color: $color-text
-          border-bottom: 1px solid $color-text
-
+          color: $color-link
+          border-bottom: 1px solid $color-link
         &.white
-          color: fade(white, 70%)
+          color: alpha(white, .7)
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
           &:hover, &.active, &:active
             color: white

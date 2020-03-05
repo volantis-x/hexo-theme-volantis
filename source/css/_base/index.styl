@@ -15,6 +15,15 @@ html
   -ms-text-size-adjust: 100%
   text-rendering: optimizelegibility
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  // >
+  //   ::-webkit-scrollbar
+  //     width: 8px
+  //     height: 8px
+  //   ::-webkit-scrollbar-thumb
+  //     background: $color-link
+  //     border-radius: 2px
+  //   ::-webkit-scrollbar-track
+  //     background: transparent
 
 body
   background-color: $color-site
@@ -31,25 +40,26 @@ body
       transform: translate3d(-$gap, 0, 0)
 
 
-*::-webkit-scrollbar
-  width: 8px
-  height: 8px
-
-*::-webkit-scrollbar-thumb
-  background: $color-link
-  border-radius: 2px
-  trans()
-  &:hover
-    width: 20px
-
-*::-webkit-scrollbar-track
-  background: transparent
-  trans()
-  &:hover
-    transform: scaleX(2)
+// *::-webkit-scrollbar
+//   height: 2px
+//   width: 8px
+// *::-webkit-scrollbar-track-piece
+//   background: transparent
+// *::-webkit-scrollbar-thumb
+//   background: alpha($color-text, .3)
+//   cursor: pointer
+//   trans()
+//   &:hover
+//     background: alpha($color-text, .6)
 
 
+::-moz-selection {
+  background: $color-selection
+}
 
+::selection {
+  background: $color-selection
+}
 
 
 h1
@@ -77,7 +87,6 @@ a
   text-decoration: none
   trans()
   &:hover
-    text-decoration: none
     color: $color-link-hover
   &:active,&:hover
     outline: 0
@@ -181,7 +190,7 @@ hr
   height: 0
   border: 0
   border-radius: 1px
-  border-bottom: 1px solid fade(@color_text_main, 10%)
+  border-bottom: 1px solid alpha($color-text, .1)
 
 
 pre
@@ -270,23 +279,15 @@ table
   width: 100%
   th
     background-color: darken($color-codeblock-bg, 5%)
-
-  td,
-  th
+  td,th
     padding: 4px 16px
-    border: 1px solid darken($color-codeblock-bg, 10%)
-
+    border: 1px solid darken($color-codeblock-bg, 10)
   tr
     background-color: lighten($color-codeblock-bg, 4%)
-
   tbody>tr
-    .enable-trans()
+    trans()
     &:hover
-      background-color: darken($color-codeblock-bg, 5%)
-
-
-  &>thead>th
-    // border-bottom-width: 2px
+      background-color: darken($color-codeblock-bg, 10)
 
 
 
