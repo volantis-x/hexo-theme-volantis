@@ -1,0 +1,60 @@
+footer
+  position: relative
+  padding: 40px 10px 120px 10px
+  width: 100%
+  color: $color-meta
+  margin: 0px auto
+  font-size: $font-size-footnote
+  overflow: hidden
+  text-align: center
+  &.white, &.white a
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+
+  &.white
+    color: fade(white, 50%)
+
+  &.white a
+    color: fade(white, 80%)
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+
+  .licenses
+    color: fade(@color_text_main, 50%)
+    text-decoration: underline
+
+  .codename
+    text-decoration: underline
+
+  .social-wrapper
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    margin: 4px $gap/2
+
+  a
+    color: $color-meta
+    padding: 0
+    trans()
+
+    &.social
+      position: relative
+      display: inline-block
+      text-align: center
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 32px
+      height: 32px
+      margin: 4px
+      border-radius: 100px
+      &:hover
+        background: bgcolor($color-link)
+        color: $color-link
+
+
+
+  .copyright
+    margin-top: $gap
+    font-size: $font-size-footnote
+
+  @media screen and (max-width: $device-tablet)
+    justify-content: center
