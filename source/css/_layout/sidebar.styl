@@ -42,7 +42,7 @@
     padding: "calc(%s - 2px)" % $gap
     padding-bottom: 0
     &,a
-      color: $color-link
+      color: $color-theme
     >a:hover
       color: $color-hover
 
@@ -263,16 +263,16 @@
 
           border: 1px solid transparent
           &:hover
-            color: $color-link
-            background: alpha($color-link, 10%)
+            color: $color-theme
+            background: bgcolor($color-theme)
             border-radius: 4px
 
           &:active
-            color: $color-link
+            color: $color-theme
 
           &.active
-            color: $color-link
-            border: 1px solid $color-link
+            color: $color-theme
+            border: 1px solid $color-theme
 
 
 

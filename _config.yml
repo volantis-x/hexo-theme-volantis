@@ -64,8 +64,9 @@ style:
 #   有背景图：开启毛玻璃，关闭卡片阴影
 #   无背景图：关闭毛玻璃，开启卡片阴影
   # theme: '#F6C344'
-  color:
-    link: '#4caf50'
+  # color:
+  #   theme: '#4caf50'
+  #   link: '#3f51b5'
   # color:
   #   site: '#333'
   #   card: '#666'

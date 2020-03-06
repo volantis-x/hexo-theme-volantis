@@ -14,10 +14,10 @@
 
       trans()
       &:hover
-        background: bgcolor($color-link)
-        border-left: $border-radius-line solid $color-link
+        background: bgcolor($color-theme)
+        border-left: $border-radius-line solid $color-theme
       &:active
-        border-left: $border-radius-line * 2 solid $color-link
+        border-left: $border-radius-line * 2 solid $color-theme
 
     .archive-year
       margin-top: 4em
@@ -45,7 +45,7 @@
         font-size: $font-size-body
         line-height: $line-height
         i
-          color: @color-link-hover
+          color: @color-hover
           &.red
             color: $color-mac-red
           &.green
@@ -55,7 +55,7 @@
           &.blue
             color: $color-mac-cyan
           &.theme
-            color: $color-link
+            color: $color-theme
           &.accent
             color: $color-hover
           &.orange
