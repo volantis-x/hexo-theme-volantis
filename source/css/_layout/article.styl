@@ -38,7 +38,7 @@
   p
     margin-top: $gap-line
     margin-bottom: $gap-line
-    text-align: $text-align-p
+    text-align: $textalign-p
 
     u
       color: $color-md-deep-orange
@@ -48,16 +48,16 @@
     max-width: 100%
     overflow: auto
     &.has-jax
-      font-family: $font-family-code
-      background: $color-mathjax-bg
+      font-family: $fontfamily-code
+      background: $color-mathjax
       padding: $gap $gap * 0.5
-      border-radius: $border-radius-codeblock
+      border-radius: $borderradius-codeblock
       .mjx-chtml.MJXc-display
         margin: 0
 
 
   ul,ol
-    font-size: $font-size-body
+    font-size: $fontsize-body
     list-style: initial
     padding-left: 8px
     margin-left: $gap
@@ -106,18 +106,18 @@
     border-bottom: 1px solid alpha($color-text, 10%)
     margin-bottom: $gap-line * 2
   h1
-    text-align: $text-align-h1
+    text-align: $textalign-h1
     color: $color-h1
   h2
-    text-align: $text-align-h2
+    text-align: $textalign-h2
     color: $color-h2
   h3
-    text-align: $text-align-h3
+    text-align: $textalign-h3
     margin-top: $gap-h3
     color: $color-h3
     margin-bottom: $gap-line * 2
   h4
-    text-align: $text-align-h4
+    text-align: $textalign-h4
     margin-top: $gap-line * 2
     color: $color-h4
   h5
@@ -143,16 +143,16 @@
 
   blockquote
     background: bgcolor($color-blockquote)
-    border-left: $border-radius-codeblock solid $color-blockquote
-    border-radius: $border-radius-codeblock
+    border-left: $borderradius-codeblock solid $color-blockquote
+    border-radius: $borderradius-codeblock
 
   blockquote,div.info,div.success,div.warning,div.danger
     &,p
       text-align: left
       word-wrap: normal
-      font-size: $font-size-meta
+      font-size: $fontsize-meta
       margin: $gap-line 0
-    box-shadow: $box-shadow-card
+    box-shadow: $boxshadow-card
     position: relative
     width: 100%
     padding: .7em 1.2em
@@ -175,7 +175,7 @@
     &.pullquote
       &.right
         border-left: none
-        border-right: $border-radius-codeblock solid $color-blockquote
+        border-right: $borderradius-codeblock solid $color-blockquote
         p
           text-align: right
 
@@ -187,13 +187,13 @@
     margin-bottom: $gap-line
     overflow: auto
     background: $color-codeblock
-    font-size: $font-size-code
-    font-family: $font-family-code
+    font-size: $fontsize-code
+    font-family: $fontfamily-code
     border: 1px solid darken($color-codeblock, 10%)
     padding: $gap
 
   div>pre
-    border-radius: $border-radius-codeblock
+    border-radius: $borderradius-codeblock
     &>code
       padding: 0
       margin: 0
@@ -201,13 +201,13 @@
       color: alpha($color-text, 90%)
 
   code
-    font-family: $font-family-code
+    font-family: $fontfamily-code
     padding: 3px 2px 1px 2px
     margin: 0
     vertical-align: middle
     border-radius: 2px
     line-height: 1.45
-    font-size: $font-size-code
+    font-size: $fontsize-code
     color: $color-inlinecode
     background: bgcolor($color-inlinecode, 4)
 
@@ -218,7 +218,7 @@
 
   @media screen and (max-width: $device-mobile)
     ul,ol
-      font-size: $font-size-meta
+      font-size: $fontsize-meta
     figure
       font-size: 13px
       line-height: 1.6em
@@ -228,7 +228,7 @@
     background: transparent
     margin: $gap-line 0
     box-shadow: none
-    border-radius: $border-radius-codeblock
+    border-radius: $borderradius-codeblock
     cursor: auto
     background: $color-block
     padding: $gap * 0.5 0

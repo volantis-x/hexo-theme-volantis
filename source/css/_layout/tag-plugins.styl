@@ -2,15 +2,19 @@
 // p
 p
   &[small]
-    font-size: $font-size-meta
+    font-size: $fontsize-meta
   &[large]
-    font-size: $font-size-large
+    font-size: $fontsize-large
     line-height: 1.2em
   &[huge]
-    font-size: $font-size-huge
+    font-size: $fontsize-huge
     line-height: 1.2em
-  &[small],&[large],&[huge]
+  &[ultra]
+    font-size: $fontsize-ultra
+    line-height: 1.2em
+  &[small],&[large],&[huge],&[ultra]
     margin: 0
+    padding: 0
   &[bold]
     font-weight: bold
   &[left]
@@ -76,7 +80,7 @@ gray,p[gray]
   btns
     font-weight: bold
     &,b,p
-      font-size: $font-size-meta
+      font-size: $fontsize-meta
     display: flex
     flex-wrap: wrap
     margin: $gap-line  -0.5 * $gap
@@ -142,7 +146,7 @@ gray,p[gray]
       flex-direction: column
       padding: $gap * 0.5
       text-align: center
-      font-size: $font-size-code
+      font-size: $fontsize-code
       &>img:first-child, &>i:first-child
         trans()
         height: 64px
@@ -177,7 +181,7 @@ gray,p[gray]
         color: $color-hover
         &>img:first-child, &>i:first-child
           transform: scale(1.1) translateY(-8px)
-          box-shadow: $box-shadow-float
+          box-shadow: $boxshadow-float
         &>i:first-child
           background:$color-hover
     &[circle] > a

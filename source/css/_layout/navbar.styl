@@ -23,13 +23,13 @@
   top: 0
   overflow: hidden
   width: 100%
-  font-size: $font-size-body
+  font-size: $fontsize-body
   line-height: $navbar-height
   height: $navbar-height
   overflow: hidden
   padding: 0 $gap
   margin-bottom: $gap
-  box-shadow: $box-shadow-card
+  box-shadow: $boxshadow-card
   .wrapper
     padding: auto $gap
     max-width: $layout-width
@@ -73,8 +73,8 @@
 
   .logo
     padding: 0 $gap*1.5
-    font-size: $font-size-h3
-    font-family: $font-family-logo
+    font-size: $fontsize-h3
+    font-family: $fontfamily-logo
     @media screen and (max-width: $device-mobile)
       padding: 0 $gap
 
@@ -93,8 +93,8 @@
   .nav-sub
     .logo
       padding: 0 $gap*1.5
-      font-size: $font-size-body
-      font-family: $font-family
+      font-size: $fontsize-body
+      font-family: $fontfamily
       @media screen and (max-width: $device-mobile)
         letter-spacing: -0.5px
         padding-top: 1px
@@ -112,16 +112,16 @@
       padding: 0 8px
       color: alpha($color-text, 85%)
       &.current
-        border-bottom: $border-radius-line solid alpha($color-theme, 80%)
+        border-bottom: $borderradius-line solid alpha($color-theme, 80%)
 
       &:hover
         color: $color-theme
-        border-bottom: $border-radius-line solid $color-theme
+        border-bottom: $borderradius-line solid $color-theme
         background: bgcolor($color-theme)
 
       &:active,&.active
         color: $color-theme
-        border-bottom: $border-radius-line solid $color-theme
+        border-bottom: $borderradius-line solid $color-theme
 
 
     @media screen and (max-width: $device-mobile)
@@ -201,8 +201,8 @@
       box-shadow: none
       box-sizing: border-box
       padding-left: $iconW + $iconMargin
-      font-size: $font-size-meta
-      border-radius: $border-radius-searchbar
+      font-size: $fontsize-meta
+      border-radius: $borderradius-searchbar
       border: 1px dashed transparent
       @media screen and (max-width: $device-mobile)
         padding-left: $gap * 0.5
@@ -237,8 +237,8 @@
 
 .menu-phone
   .header
-    border-top-left-radius: $border-radius
-    border-top-right-radius: $border-radius
+    border-top-left-radius: $borderradius
+    border-top-right-radius: $borderradius
     background-color: alpha($color-card,90%)
     color: $color-inner
     padding: 8px $gap + 6px
@@ -248,16 +248,16 @@
   z-index:9999 + 1
   line-height: 2 * $gap
   border-right: 0
-  box-shadow: $box-shadow-card-float
-  border-radius: $border-radius
+  box-shadow: $boxshadow-card-float
+  border-radius: $borderradius
   transform: translate3d(-40px, -40px, 0) scale(0,0)
   transform-origin: right top
   trans()
   &:hover
-    box-shadow: $box-shadow-card-float
+    box-shadow: $boxshadow-card-float
 
   &:active
-    box-shadow: $box-shadow-card
+    box-shadow: $boxshadow-card
 
   nav
     padding: $gap * 0.5 0px

@@ -1,5 +1,5 @@
 #u-search
-  $border-radius = 4px
+  $borderradius = 4px
   display: none
   position: fixed
   top: 0
@@ -8,8 +8,6 @@
   height: 100%
   padding: 60px 20px
   z-index: 999999
-  ::-webkit-scrollbar-thumb
-    background: $color-theme
   @media screen and (max-width: $modal-threshold)
     padding: 0px
   .modal
@@ -22,7 +20,7 @@
     margin: 64px 0px 0px -320px
     background: $color-card
     z-index: 3
-    border-radius: $border-radius
+    border-radius: $borderradius
     overflow: hidden
     @media screen and (max-width: $modal-threshold)
       box-shadow: none
@@ -49,10 +47,10 @@
       width: 100%
       height: $navbar-height
       z-index: 3
-      border-top-left-radius: $border-radius
-      border-top-right-radius: $border-radius
-      font-size: $font-size
-      box-shadow: $box-shadow-card
+      border-top-left-radius: $borderradius
+      border-top-right-radius: $borderradius
+      font-size: $fontsize
+      box-shadow: $boxshadow-card
       @media screen and (max-width: $modal-threshold)
         border-radius: 0
         padding: 0px
@@ -106,7 +104,7 @@
           @media screen and (max-width: $modal-threshold)
             padding: 0
           line-height: 2rem
-          border-radius: $border-radius
+          border-radius: $borderradius
           vertical-align: middle
           border: none
           appearance: none
@@ -114,8 +112,8 @@
           background: transparent
           trans()
           &:focus
-            border-top-left-radius: $border-radius
-            border-top-right-radius: $border-radius
+            border-top-left-radius: $borderradius
+            border-top-right-radius: $borderradius
 
       #u-search-modal-btn-submit
         position: absolute
@@ -215,17 +213,17 @@
       overflow-y: scroll
       -webkit-overflow-scrolling: touch
       background: $color-card
-      border-radius: $border-radius
+      border-radius: $borderradius
 
       .modal-results
         list-style: none
-        
+
         .result
           position: relative
           display: block
           padding: $gap
           text-decoration: none
-          border-radius: $border-radius
+          border-radius: $borderradius
           b[mark]
             color: darken($color-md-blue, 10)
             text-decoration: underline
@@ -248,14 +246,14 @@
             white-space: normal
             overflow: hidden
             text-overflow: ellipsis
-            font-size: $font-size-h4
+            font-size: $fontsize-h4
           .digest
             display: block
             white-space: inherit
             overflow: hidden
             word-break: break-all
             text-overflow: ellipsis
-            font-size: $font-size-code
+            font-size: $fontsize-code
             color: lighten($color-text, 30)
           .icon
             position: absolute

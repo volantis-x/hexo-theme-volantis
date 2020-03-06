@@ -54,7 +54,7 @@ style:
     # 导航栏阴影
     nav: true
     # 卡片阴影和悬浮动画
-    # card: true
+    card: true
   # 毛玻璃效果 具体效果调整在： source/less/_color.less
   blur:
     navbar: true
@@ -68,8 +68,8 @@ style:
   #   h2: center
   #   h3: center
   #   h4: center
-  navbar_height: 64px # 导航栏高度
-  max_width: 1080px # 最大布局宽度，包含侧边栏
+  # navbar_height: 64px # 导航栏高度
+  # max_width: 1080px # 最大布局宽度，包含侧边栏
   # color:
   #   site: '#222' # 网页背景颜色
   #   card: '#444' # 卡片背景

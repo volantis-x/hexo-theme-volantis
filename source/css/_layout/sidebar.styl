@@ -16,7 +16,7 @@
   z-index: 0
   background: $color-card
   margin-top: $gap
-  border-radius: $border-radius
+  border-radius: $borderradius
   width: 100%
   display: none
   &.desktop
@@ -35,8 +35,8 @@
 
 
   header
-    border-top-left-radius: $border-radius
-    border-top-right-radius: $border-radius
+    border-top-left-radius: $borderradius
+    border-top-right-radius: $borderradius
     font-weight: bold
     line-height: 1.5em
     padding: "calc(%s - 2px)" % $gap
@@ -52,7 +52,7 @@
 
   .content
     text-align: justify
-    font-size: $font-size-body
+    font-size: $fontsize-body
     padding: $gap * 0.5 0
     $offset = $navbar-height + 12.5 * $gap
     max-height: "calc(100% - %s)" % $offset
@@ -69,7 +69,7 @@
         display: flex
         justify-content: space-between
         align-content: center
-        border-left: $border-radius-line solid transparent
+        border-left: $borderradius-line solid transparent
         trans()
     ul.entry, ul.popular-posts
       a
@@ -80,15 +80,15 @@
         .badge
           flex:none
           font-weight: normal
-          font-size: $font-size-meta
+          font-size: $fontsize-meta
           color: alpha($color-text, .7)
 
         &:hover
-          border-left: $border-radius-line solid $color-theme
+          border-left: $borderradius-line solid $color-theme
           background: alpha($color-theme, .1)
 
         &.active
-          border-left: $border-radius-line solid $color-theme
+          border-left: $borderradius-line solid $color-theme
           .name
             color: $color-theme
           .badge
@@ -96,7 +96,7 @@
 
 
         &:active
-          border-left: $border-radius-line * 2 solid $color-theme
+          border-left: $borderradius-line * 2 solid $color-theme
 
         &.child
           padding-left: $gap * 2
@@ -117,8 +117,8 @@
         justify-content: center
         width: $sidebar
         height: $sidebar
-        border-top-left-radius: $border-radius
-        border-top-right-radius: $border-radius
+        border-top-left-radius: $borderradius
+        border-top-right-radius: $borderradius
         @media screen and (max-width: $device-desktop)
           width: $sidebar-s
           height: $sidebar-s
@@ -187,7 +187,7 @@
 
   &.text
     .content
-      font-size: $font-size-meta
+      font-size: $fontsize-meta
       word-break: break-all
       padding: $gap * 0.25 $gap
       a
@@ -205,7 +205,7 @@
     .content
       padding: $gap * 0.5 0
       a
-        font-size: $font-size-meta
+        font-size: $fontsize-meta
         font-weight: bold
         line-height: 2.4em
         &:hover
@@ -231,13 +231,13 @@
         padding: 0 $gap
         a
           text-align: center
-          border-radius: $border-radius
+          border-radius: $borderradius
           margin: 4px 0
           padding: 4px 8px
           display: flex
           flex-direction: column
           align-items: center
-          font-size: $font-size-footnote
+          font-size: $fontsize-footnote
           font-weight: bold
           color: alpha($color-text, 70%)
           line-height: 1.5
@@ -294,7 +294,7 @@
     .content
       font-weight: bold
       h3
-        font-size: $font-size-meta
+        font-size: $fontsize-meta
         font-weight: bold
         margin: 0
         a
@@ -338,8 +338,8 @@
   max-width: 500px
   border-radius: 4px
   color: $color-text
-  font-family: $font-family
+  font-family: $fontfamily
   .aplayer-list
     text-align: left
   @media screen and (max-width: $device-mobile)
-    border-radius: $border-radius
+    border-radius: $borderradius

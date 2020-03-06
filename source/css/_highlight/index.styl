@@ -10,9 +10,9 @@
   overflow: auto
   display: block
   background: $color-codeblock
-  font-size: $font-size-code
-  font-family: $font-family-code
-  border-radius: $border-radius-codeblock
+  font-size: $fontsize-code
+  font-family: $fontfamily-code
+  border-radius: $borderradius-codeblock
   border: 1px solid darken($color-codeblock, 10%)
   trans()
   figcaption
@@ -64,7 +64,7 @@
         top: 0
         right: 0
         color: $color-meta
-        font-size: $font-size-footnote
+        font-size: $fontsize-footnote
         padding: 4px 8px
 
   &.html .code:before
@@ -114,14 +114,14 @@
 
 
   &::-webkit-scrollbar
-    height: $border-radius-line
-    width: $border-radius-line
+    height: $borderradius-line
+    width: $borderradius-line
   &::-webkit-scrollbar-track-piece
     background: transparent
   &::-webkit-scrollbar-thumb
     background: alpha($color-text, .3)
     cursor: pointer
-    border-radius: $border-radius-codeblock
+    border-radius: $borderradius-codeblock
     trans()
     &:hover
       background: alpha($color-text, .6)

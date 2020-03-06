@@ -4,13 +4,13 @@
       display: flex
       flex-wrap: wrap
       margin: -0.5 * $gap
-      border-radius: $border-radius
+      border-radius: $borderradius
       align-items: flex-start
       line-height: 1.3
       .friend-card
         display: flex
-        border-radius: $border-radius-codeblock
-        box-shadow: $box-shadow-card
+        border-radius: $borderradius-codeblock
+        box-shadow: $boxshadow-card
         padding: $gap * 0.5 0
         margin: $gap * 0.5
         margin-top: "calc(1.5 * %s + 32px)" % $gap
@@ -36,7 +36,7 @@
           .friend-left
             .avatar
               transform: scale(1.2) rotate(12deg)
-              box-shadow: $box-shadow-card-float
+              box-shadow: $boxshadow-card-float
 
 
 
@@ -47,7 +47,7 @@
             width: 64px
             height: 64px
             trans()
-            box-shadow: $box-shadow-card
+            box-shadow: $boxshadow-card
             margin: $gap $gap * 0.5 $gap * 0.25 $gap * 0.5
             margin-top: "calc(-1.25 * %s - 32px)" % $gap
             border-radius: 100%
@@ -70,12 +70,12 @@
           p
             margin: 0
             &.friend-name
-              font-size: $font-size-footnote
+              font-size: $fontsize-footnote
               padding-top: 4px
               font-weight: bold
 
             &.tags
-              font-size: $font-size-footnote
+              font-size: $fontsize-footnote
               display: inline
               background: none
               word-wrap: break-word

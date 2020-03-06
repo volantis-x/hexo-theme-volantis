@@ -31,7 +31,7 @@
     h3
       padding: 0
       margin: 0
-      font-size: $font-size-body
+      font-size: $fontsize-body
 
 
   .post-wrapper
@@ -44,7 +44,7 @@
       .meta
         margin-bottom: $gap
         .title
-          font-size: $font-size-h3
+          font-size: $fontsize-h3
       @media screen and (max-width: $device-mobile)
         padding: 1.5 * $gap $gap
 
@@ -54,9 +54,9 @@
       .meta
         margin-bottom: $gap
         .title
-          font-size: $font-size-h2
+          font-size: $fontsize-h2
           a
-            font-size: $font-size-h2
+            font-size: $fontsize-h2
     @media screen and (max-width: $device-mobile)
       mobile-post()
 
@@ -71,10 +71,10 @@
     position: relative
     margin: $gap auto
     padding: 1.5 * $gap
-    border-radius: $border-radius
+    border-radius: $borderradius
     h1
       font-weight: normal
-      font-size: $font-size-h2
+      font-size: $fontsize-h2
     @media screen and (max-width: $device-mobile)
       border-radius: 0
     .meta
@@ -92,16 +92,16 @@
         border-radius: 100%
         float: right
         margin: 4px
-        box-shadow: $box-shadow-card
+        box-shadow: $boxshadow-card
         &:hover
           border-radius: 25%
           transform: scale(1.1)
-          box-shadow: $box-shadow-card-float
+          box-shadow: $boxshadow-card-float
         @media screen and (max-width: $device-mobile)
           &:hover
             border-radius: 100%
             transform: scale(1)
-            box-shadow: $box-shadow-card
+            box-shadow: $boxshadow-card
       .thumbnail
         width: auto
         border-radius: 4px
@@ -132,7 +132,7 @@
         align-items: center
         flex-wrap: wrap
         &,p,i
-          font-size: $font-size-meta
+          font-size: $fontsize-meta
         .new-meta-item
           color: $color-meta
           line-height: 1.2
@@ -251,14 +251,14 @@ details
   padding: $gap
   margin: $gap-line 0
   border: 1px solid darken($color-block, .1)
-  border-radius: $border-radius-codeblock
+  border-radius: $borderradius-codeblock
   trans()
   summary
     cursor: pointer
     padding: $gap
     margin: 0 - $gap
     color: $color-meta
-    font-size: $font-size-body
+    font-size: $fontsize-body
     font-weight: bold
     &:hover
       color: $color-hover
@@ -317,7 +317,7 @@ details
       &.hl
         background: $color-theme
         color: white
-        box-shadow: $box-shadow-card
+        box-shadow: $boxshadow-card
 
 
     @media screen and (min-width: $device-tablet)
@@ -326,9 +326,9 @@ details
         border-radius: 25%
         background: $color-theme
         color: white
-        box-shadow: $box-shadow-card-float
+        box-shadow: $boxshadow-card-float
         &.hl
-          box-shadow: $box-shadow-card-float
+          box-shadow: $boxshadow-card-float
 
 
 
