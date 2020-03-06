@@ -16,6 +16,9 @@
                     <%} %>
                     <%= group.group %>
                   </h3>
+                  <% if(group.desc) { %>
+                    <%- markdown(group.desc) %>
+                  <%} %>
                 <%} %>
                 <div class='friend-content'>
                   <% (group.items||[]).forEach(function(item){ %>

@@ -133,10 +133,10 @@ cover:
       url: news/archives/
     - name: 文档
       icon: fas fa-book
-      url: https://volantis.js.org/getting-started/
+      url: getting-started/
     - name: 示例
       icon: fas fa-play-circle
-      url: https://volantis.js.org/examples/
+      url: examples/
     - name: 源码
       icon: fas fa-file-code
       url: https://github.com/xaoxuu/hexo-theme-volantis/
@@ -144,7 +144,7 @@ cover:
       target: _blank
     - name: 鸣谢
       icon: fas fa-handshake
-      url: https://volantis.js.org/contributors/
+      url: contributors/
 
 
 # 导航栏
