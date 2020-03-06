@@ -39,7 +39,6 @@
       position: relative
       max-width: "calc(100% - %s)" % 32px
       width: 320px
-      line-height: $navbar-height - $gap
       vertical-align: middle
       .form
         position: relative
@@ -73,11 +72,6 @@
         backdrop-filter: blur(10px)
         border: none
         color: $color-text
-        // placeholder(
-        //   padding-top: 2px
-        //   font-size: $font-size-body
-        //   color: alpha($color-text, .6)
-        // )
         &:hover
           background: alpha(white, .8)
         &:focus
@@ -92,14 +86,19 @@
       .m_search
         margin-top: $gap * 2
 
-        @media screen and (max-width: $device-tablet)
-          height: "calc(40vh - %s + 160px)" % $navbar-height
-          .title, .logo
-            margin-top: "calc(22vh - %s)" % 90px
+      @media screen and (max-width: $device-laptop)
+        height: "calc(36vh - %s + 200px)" % $navbar-height
+        .title, .logo
+          margin-top: "calc(22vh - %s)" % 90px
+
+      @media screen and (max-width: $device-tablet)
+        height: "calc(40vh - %s + 160px)" % $navbar-height
+        .title, .logo
+          margin-top: "calc(22vh - %s)" % 90px
 
 
       @media screen and (max-width: $device-mobile)
-        height: "calc(30vh - %s + 200px)" % $navbar-height
+        height: "calc(24vh - %s + 280px)" % $navbar-height
         .title, .logo
           margin-top: "calc(22vh - %s)" % 70px
 
@@ -122,7 +121,7 @@
       ul>li>a
         font-size: $font-size-body
         padding: 2px
-        margin: 0 4px
+        margin: 4px
         trans()
         color: $color-meta
         border-bottom: 1px solid transparent

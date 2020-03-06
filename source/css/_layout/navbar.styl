@@ -205,8 +205,7 @@
       border-radius: $border-radius-searchbar
       border: 1px dashed transparent
       @media screen and (max-width: $device-mobile)
-        padding-left: $gap
-        line-height: "calc(%s - 32px)" % $navbar-height
+        padding-left: $gap * 0.5
         border: none
         &:hover,&:focus
           border: none
@@ -226,7 +225,7 @@
       overflow: hidden
       position: absolute
       trans()
-      margin-left: $gap * 0.5
+      margin-left: $gap
 
     &.z_search-open
       .logo

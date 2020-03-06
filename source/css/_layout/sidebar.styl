@@ -52,6 +52,7 @@
 
   .content
     text-align: justify
+    font-size: $font-size-body
     padding: $gap * 0.5 0
     $offset = $navbar-height + 12.5 * $gap
     max-height: "calc(100% - %s)" % $offset
@@ -150,7 +151,7 @@
         flex-wrap: wrap
         margin: 4px $gap * 0.25
         a
-          color: alpha($color-text, 70%)
+          color: $color-meta
           padding: 0
           trans()
           &:hover
@@ -165,8 +166,8 @@
             margin: 4px
             border-radius: 100px
             &:hover
-              background: alpha($color-text, 10%)
-              color: $color-text
+              background: bgcolor($color-theme)
+              color: $color-theme
 
 
 
@@ -178,7 +179,7 @@
 
     @media screen and (max-width: $device-tablet)
       box-shadow: none
-      background: transparent
+      background: transparent !important
       margin-top: 2 * $gap
       backdrop-filter: none
 
@@ -270,9 +271,9 @@
 
 
 
-  &.category
-    .content
-      font-weight: bold
+  // &.category
+  //   .content
+  //     font-weight: bold
 
   &.tagcloud
     .content
