@@ -2,9 +2,9 @@
 <section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
   <%- partial('header', {item: item}) %>
   <div class='content'>
-    <ul class="grid navigation">
+    <div class="grid navigation">
       <% (item.rows||[]).forEach(function(row){ %>
-        <li><a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>"
+        <a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>"
           <% if (row.rel) { %>
             rel="<%- row.rel %>"
           <% } %>
@@ -20,8 +20,8 @@
             <i class="<%= row.icon %> fa-fw" aria-hidden="true"></i>
           <% } %>
           <%- row.name %>
-        </a></li>
+        </a>
       <% }) %>
-    </ul>
+    </div>
   </div>
 </section>

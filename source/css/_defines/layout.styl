@@ -17,14 +17,15 @@ $modal-threshold = 680px
 $navbar-height = 64px
 
 // gap
-$gap = 16px
+// $gap = 16px
+$gap = convert(hexo-config('style.gap')) || 16px
 $gap-h2 = 2.5rem
 $gap-h3 = 1.5rem
 $gap-line = .5rem
 $gap-card = $gap
 
 // border radius
-$border-radius = 12px
+$border-radius = convert(hexo-config('style.border_radius.card')) || 12px
 $border-radius-codeblock = 4px
 $border-radius-line = 2px
 $border-radius-searchbar = 8px

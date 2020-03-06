@@ -2,7 +2,6 @@
   <div id="loading-bar"></div>
 </div>
 <header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%- theme.style.blur && theme.style.blur.navbar ? 'nav-blur' : '' %>">
-
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
       <% if (theme.navbar.logo) { %>
@@ -18,7 +17,7 @@
                 <%- theme.navbar.logo.title %>
               <% } %>
             <% } else { %>
-              <%- theme.info.name.toUpperCase() %> <sup style='color:#2196f3'><%- theme.info.version %></sup>
+              <%- theme.info.name.toUpperCase() %> <b><sup style='color:<%- theme.info.version.indexOf('beta') > 0 ? '#ff9800':'#4caf50' %>'><%- theme.info.version %></sup></b>
             <% } %>
           <% } %>
         </a>
