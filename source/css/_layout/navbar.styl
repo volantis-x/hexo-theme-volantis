@@ -189,11 +189,12 @@
       width: $iconW
       left: $iconMargin + 1px
       color: alpha($color-text, 70%)
-
+      @media screen and (max-width: $device-mobile)
+        display: none
     .input
       display: block
-      padding-top: 8px
-      padding-bottom: 8px
+      padding-top: $gap * 0.5
+      padding-bottom: $gap * 0.5
       width: 100%
       color: $color-text
       background: alpha(darken($color-card, 5), .75)
@@ -201,27 +202,20 @@
       box-sizing: border-box
       padding-left: $iconW + $iconMargin
       font-size: $font-size-meta
-      @media screen and (max-width: $device-mobile)
-        padding-left: $iconW + $iconMargin
-
       border-radius: $border-radius-searchbar
       border: 1px dashed transparent
-      // .set-placeholder(
-      //   color: alpha($color-text, 50%)
-      // )
+      @media screen and (max-width: $device-mobile)
+        padding-left: $gap
+        line-height: "calc(%s - 32px)" % $navbar-height
+        border: none
+        &:hover,&:focus
+          border: none
       &:hover
-        color: $color-inner
         ~.icon
           color: alpha($color-theme, 80%)
-        border: 1px solid alpha($color-theme, 60%)
-
       &:focus
         ~.icon
           color: $color-theme
-
-        color: $color-text
-        background: bgcolor($color-theme)
-        border: 1px solid $color-theme
 
 
 
@@ -232,13 +226,14 @@
       overflow: hidden
       position: absolute
       trans()
-      margin: 0 $gap * 0.5
+      margin-left: $gap * 0.5
 
     &.z_search-open
       .logo
         opacity:0
       .m_search
-        width: "calc(100vw - %s)" % (2 * $gap + 2 * $iconW)
+        $offset = 2 * ($gap + $iconW)
+        width: "calc(100vw - %s)" % $offset
 
 
 .menu-phone

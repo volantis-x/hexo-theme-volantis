@@ -45,30 +45,8 @@
         margin-bottom: $gap
         .title
           font-size: $font-size-h3
-      .full-width
-        margin-left: 0 - $gap
-        margin-right: 0 - $gap
-        padding-left: $gap
-        padding-right: $gap
-        width:"calc(100% + 2 * %s)" % $gap
-      .auto-padding
-        padding-left: $gap
-        padding-right: $gap
-        border-bottom-left-radius: $border-radius
-        border-bottom-right-radius: $border-radius
-        overflow: auto
-      .highlight
-        margin-left: 0*$gap
-        margin-right: 0*$gap
-        width: 100%
-      @media(max-width:@on_phone)
-        padding: 1.5*$gap $gap
-        .highlight
-          margin-left: 0*$gap
-          margin-right: 0*$gap
-        .auto-padding
-          border-bottom-left-radius: 0
-          border-bottom-right-radius: 0
+      @media screen and (max-width: $device-mobile)
+        padding: 1.5 * $gap $gap
 
   .post-wrapper
     margin-bottom: $gap
@@ -79,26 +57,7 @@
           font-size: $font-size-h2
           a
             font-size: $font-size-h2
-
-      .full-width
-        margin-left: -1.5*$gap
-        margin-right: -1.5*$gap
-        width: "calc(100% + 3 * %s)" % $gap
-
-      .auto-padding
-        padding-left: 1.5*$gap
-        padding-right: 1.5*$gap
-        border-bottom-left-radius: $border-radius
-        border-bottom-right-radius: $border-radius
-        overflow: auto
-
-
-    .tags
-      margin-bottom: -2*$gap
-
-    @media(max-width:@on_phone)
-      .tags
-        margin-bottom: -1.5*$gap
+    @media screen and (max-width: $device-mobile)
       mobile-post()
 
   .widget
@@ -139,7 +98,6 @@
           border-radius: 25%
           transform: scale(1.1)
           box-shadow: $box-shadow-card-float
-
         @media screen and (max-width: $device-mobile)
           &:hover
             border-radius: 100%
@@ -332,6 +290,8 @@ details
   @media screen and (max-width: $device-mobile)
     margin: $navbar-height + $gap 0 $gap
     border-radius: 0
+    &.nocover
+      margin-top: $navbar-height - $gap
 
   .s-top
     trans(0.6s)
