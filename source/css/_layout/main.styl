@@ -112,27 +112,29 @@
           transform: scale(1.1) rotate(4deg)
           box-shadow: none
       .title
+        trans(.1s)
         margin: 0
         a
           display: inline
           font-weight: normal
           color: $color-text
           text-decoration: none
+          &:hover
+            color: $color-hover
 
       $cellH = 28px
       .new-meta-box
         $metaH = 24px
-        trans()
+        trans(.1s)
         padding-top: 4px
         padding-bottom: 8px
         display: flex
         align-items: center
         flex-wrap: wrap
         &,p,i
-          font-size: $font-size-code
+          font-size: $font-size-meta
         .new-meta-item
           color: $color-meta
-          font-size: $font-size-code
           line-height: 1.2
           &.link-btns
             display: flex

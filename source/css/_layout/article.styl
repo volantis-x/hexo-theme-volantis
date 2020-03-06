@@ -36,8 +36,8 @@
       box-shadow: none
 
   p
-    margin-top: .6em
-    margin-bottom: .6em
+    margin-top: $gap-line
+    margin-bottom: $gap-line
     // text-align: justify
 
     u
@@ -61,8 +61,8 @@
     list-style: initial
     padding-left: 8px
     margin-left: $gap
-    margin-top: .6em
-    margin-bottom: .6em
+    margin-top: $gap-line
+    margin-bottom: $gap-line
     ul,ol
       margin-top: 0
       margin-bottom: 0
@@ -99,7 +99,7 @@
   h6
     position: relative
     margin-top: 1.5em
-    margin-bottom: 0.6em
+    margin-bottom: $gap-line
     &.title
       left: 0
       &:before
@@ -144,7 +144,7 @@
       text-align: left
       word-wrap: normal
       font-size: $font-size-meta
-      margin: .6em 0
+      margin: $gap-line 0
     position: relative
     width: 100%
     padding: .7em 1.2em
@@ -154,7 +154,7 @@
       text-align: justify
       color: inherit
       font-style: italic
-      margin: .6em 0
+      margin: $gap-line 0
       cite
         &::before
           content: '----'
@@ -218,7 +218,7 @@
 
   .widget
     background: transparent
-    margin: .6em 0
+    margin: $gap-line 0
     box-shadow: none
     border-radius: $border-radius-codeblock
     cursor: auto
