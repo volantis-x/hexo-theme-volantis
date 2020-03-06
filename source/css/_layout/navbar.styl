@@ -159,18 +159,12 @@
         @media screen and (max-width: $device-mobile)
           width: $iconW
           height: $height
-
-
-
     @media screen and (max-width: $device-mobile)
       display: flex
-      padding-left: $gap/2
+      padding-left: $gap * 0.5
       padding-right: $gap - 6px
-
-
   .nav-sub .switcher
     display: flex
-
   .m_search
     position: relative
     display: flex
@@ -193,7 +187,7 @@
     .icon
       position: absolute
       width: $iconW
-      left: $iconMargin+1px
+      left: $iconMargin + 1px
       color: alpha($color-text, 70%)
 
     .input
@@ -202,7 +196,7 @@
       padding-bottom: 8px
       width: 100%
       color: $color-text
-      background: alpha(darken($color-card, 5%), 75%)
+      background: alpha(darken($color-card, 5), .75)
       box-shadow: none
       box-sizing: border-box
       padding-left: $iconW + $iconMargin
@@ -212,9 +206,9 @@
 
       border-radius: $border-radius-searchbar
       border: 1px dashed transparent
-      .set-placeholder(
-        color: alpha($color-text, 50%)
-      )
+      // .set-placeholder(
+      //   color: alpha($color-text, 50%)
+      // )
       &:hover
         color: $color-inner
         ~.icon
@@ -238,14 +232,13 @@
       overflow: hidden
       position: absolute
       trans()
-      margin: 0 $gap/2
+      margin: 0 $gap * 0.5
 
     &.z_search-open
       .logo
         opacity:0
-
       .m_search
-        width: "calc(100vw - 2* %s - 2* %s)" % $gap $iconW
+        width: "calc(100vw - %s)" % (2 * $gap + 2 * $iconW)
 
 
 .menu-phone
@@ -255,7 +248,6 @@
     background-color: alpha($color-card,90%)
     color: $color-inner
     padding: 8px $gap + 6px
-
   position: fixed
   top: $navbar-height + $gap
   right: 0
@@ -274,7 +266,7 @@
     box-shadow: $box-shadow-card
 
   nav
-    padding: $gap/2 0px
+    padding: $gap * 0.5 0px
     .nav
       height: 40px
       line-height: 40px
@@ -294,6 +286,6 @@
 .cover-wrapper
   .l_header
     trans(0.5s)
-    transform: translateY(-1.5*$navbar-height)
+    transform: translateY(-1.5 * $navbar-height)
     &.show
       transform: translateY(0)
