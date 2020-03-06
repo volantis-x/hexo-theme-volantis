@@ -38,7 +38,7 @@
   p
     margin-top: $gap-line
     margin-bottom: $gap-line
-    // text-align: justify
+    text-align: $text-align-p
 
     u
       color: $color-md-deep-orange
@@ -91,34 +91,43 @@
       color: darken($color-hover, 25%)
 
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6
+  h1,h2,h3,h4,h5,h6
     position: relative
-    margin-top: 1.5em
-    margin-bottom: $gap-line
+    &:first-child
+      margin-top: 0
+      padding-top: 0
     &.title
       left: 0
       &:before
         content: none
-
-  h1, h2
+  h1,h2
     margin-top: $gap-h2
-    border-bottom: 1px solid alpha($color-text, 10%)
     padding-bottom: .2em
+    border-bottom: 1px solid alpha($color-text, 10%)
+    margin-bottom: $gap-line * 2
+  h1
+    text-align: $text-align-h1
+    color: $color-h1
+  h2
+    text-align: $text-align-h2
+    color: $color-h2
   h3
+    text-align: $text-align-h3
     margin-top: $gap-h3
     color: $color-h3
+    margin-bottom: $gap-line * 2
+  h4
+    text-align: $text-align-h4
+    margin-top: $gap-line * 2
+    color: $color-h4
   h5
     font-weight: bold
+    margin-top: $gap-line * 2
+    color: $color-h5
+  h6
+  margin-top: $gap-line * 2
+    color: $color-h6
 
-  h1,h2,h3, h4, h5, h6
-    &:first-child
-      margin-top: 0
-      padding-top: 0
 
   .subtitle
     h6
@@ -174,8 +183,8 @@
     display: block
     -moz-box-sizing: border-box
     box-sizing: border-box
-    margin-top: .7em
-    margin-bottom: .7em
+    margin-top: $gap-line
+    margin-bottom: $gap-line
     overflow: auto
     background: $color-codeblock
     font-size: $font-size-code

@@ -50,12 +50,12 @@ $color-blockquote = convert(hexo-config('style.color.blockquote')) || $color-the
 $color-mathjax-bg = #fff0
 
 // title color
-$color-h1 = $color-text
-$color-h2 = $color-text
-$color-h3 = $color-theme
-$color-h4 = $color-text
-$color-h5 = $color-text
-$color-h6 = $color-text
+$color-h1 = convert(hexo-config('style.color.h1')) || $color-text
+$color-h2 = convert(hexo-config('style.color.h2')) || $color-text
+$color-h3 = convert(hexo-config('style.color.h3')) || $color-theme
+$color-h4 = convert(hexo-config('style.color.h4')) || $color-text
+$color-h5 = convert(hexo-config('style.color.h5')) || $color-text
+$color-h6 = convert(hexo-config('style.color.h6')) || $color-text
 
 
 $color-meta = alpha($color-text, .7)

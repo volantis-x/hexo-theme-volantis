@@ -63,6 +63,13 @@ style:
 # 建议：
 #   有背景图：开启毛玻璃，关闭卡片阴影
 #   无背景图：关闭毛玻璃，开启卡片阴影
+  # align: # left, right, justify, center
+  #   h1: center
+  #   h2: center
+  #   h3: center
+  #   h4: center
+  navbar_height: 64px # 导航栏高度
+  max_width: 1080px # 最大布局宽度，包含侧边栏
   # color:
   #   site: '#222' # 网页背景颜色
   #   card: '#444' # 卡片背景
@@ -75,6 +82,11 @@ style:
   #   inlinecode: yellow # 行内代码颜色
   #   codeblock: '#555' # 代码块背景
   #   blockquote: '#888' # 引用块颜色
+  #   # h1: # H1标题颜色
+  #   # h2: # H2标题颜色
+  #   # h3: # H3标题颜色
+  #   # h4: # H4标题颜色
+
 
 
 
