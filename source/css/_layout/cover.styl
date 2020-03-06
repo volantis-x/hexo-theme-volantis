@@ -119,21 +119,21 @@
           height: auto
 
       ul>li>a
-        font-size: $fontsize-body
+        font-size: $fontsize-meta
         padding: 2px
         margin: 4px
         trans()
         color: $color-meta
-        border-bottom: 1px solid transparent
+        border-bottom: 2px solid transparent
         &:hover, &.active, &:active
           color: $color-theme
-          border-bottom: 1px solid $color-theme
+          border-bottom: 2px solid $color-theme
         &.white
           color: alpha(white, .7)
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
           &:hover, &.active, &:active
             color: white
-            border-bottom: 1px solid white
+            border-bottom: 2px solid white
 
     .switcher
       & > li

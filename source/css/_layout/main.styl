@@ -74,7 +74,7 @@
     border-radius: $borderradius
     h1
       font-weight: normal
-      font-size: $fontsize-h2
+      font-size: $fontsize-h1
     @media screen and (max-width: $device-mobile)
       border-radius: 0
     .meta
@@ -262,7 +262,16 @@ details
     font-weight: bold
     &:hover
       color: $color-hover
-
+  &[blue]
+    background: bgcolor($color-md-blue)
+  &[cyan]
+    background: bgcolor($color-mac-cyan)
+  &[green]
+    background: bgcolor($color-mac-green)
+  &[yellow]
+    background: bgcolor($color-mac-yellow)
+  &[red]
+    background: bgcolor($color-mac-red)
 
 
 .body-wrapper
