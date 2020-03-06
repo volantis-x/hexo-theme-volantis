@@ -53,7 +53,8 @@
   .content
     text-align: justify
     padding: $gap * 0.5 0
-    max-height: "calc(100% - %s - 12.5 * %s)" % $navbar-height $gap
+    $offset = $navbar-height + 12.5 * $gap
+    max-height: "calc(100% - %s)" % $offset
     max-width: 100%
     p
       margin: .6em 0
@@ -63,48 +64,41 @@
         color: $color-meta
         padding: 0 $gap
         padding-left: $gap * 0.5 + 4px
-        line-height: 2rem
+        line-height: 2
         display: flex
         justify-content: space-between
         align-content: center
-        border-left: 4px solid transparent
+        border-left: $border-radius-line solid transparent
         trans()
-
-
     ul.entry, ul.popular-posts
       a
         .name
           flex:auto
           txt-ellipsis()
-          color: alpha($color-text, 80%)
+          color: alpha($color-text, .8)
         .badge
           flex:none
           font-weight: normal
-          font-size: $font-size-footnote
-          color: alpha($color-text, 70%)
+          font-size: $font-size-meta
+          color: alpha($color-text, .7)
 
         &:hover
-          border-left: 4px solid $color-text
-          background: alpha($color-text, 10%)
+          border-left: $border-radius-line solid $color-theme
+          background: alpha($color-theme, .1)
 
         &.active
-          border-left: 4px solid $color-text
+          border-left: $border-radius-line solid $color-theme
           .name
-            color: $color-text
-
+            color: $color-theme
           .badge
-            color: alpha($color-text, 90%)
+            color: alpha($color-theme, .9)
 
 
         &:active
-          border-left: 8px solid $color-text
+          border-left: $border-radius-line * 2 solid $color-theme
 
         &.child
           padding-left: $gap * 2
-
-
-
-
 
 
   &.blogger
@@ -212,18 +206,16 @@
       a
         font-size: $font-size-meta
         font-weight: bold
+        line-height: 2.4em
         &:hover
           text-decoration: none
         i
-          color: $color-meta
-          line-height: 3rem
-          margin-right: 3px
+          margin-left: 1px
         img
           display: inline
           vertical-align: middle
-          height: 18px
-          width: 18px
-          margin-bottom: 4px
+          height: 2em
+          width: 2em
           &#round
             border-radius: 100%
 

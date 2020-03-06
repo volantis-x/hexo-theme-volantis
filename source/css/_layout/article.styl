@@ -10,6 +10,9 @@
   div>img,p>img
     display: block
     margin: $gap-line auto
+    border-radius: 4px
+    @media screen and (max-width: $device-mobile)
+      border-radius: 2px
   span
     img
       display: inline
@@ -216,12 +219,10 @@
   .widget
     background: transparent
     margin: .6em 0
-    font-family: @fontfamily_base
-    font-size: @fontsize_base
     box-shadow: none
     border-radius: $border-radius-codeblock
     cursor: auto
-    background: @color_bg_code_block
+    background: $color-block
     padding: $gap * 0.5 0
     trans()
     &:hover
@@ -249,21 +250,19 @@
       padding: 0 .6em
       margin: 0
       ul.entry, ul.popular-posts
-        padding-left: 8px
+        padding-left: 9px
         margin-left: $gap
         a
           display: inline
           border-left: none
           padding: 0
           padding-left: 4px
-          color: inherit
+          color: $color-link
           font-weight: normal
           &:hover,&.active,&:active
             border-left: none
             background: none
             color: $color-hover
-
-
 
 
     &.qrcode > .content

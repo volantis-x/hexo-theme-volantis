@@ -62,7 +62,6 @@
 
   .widget
     @media screen and (max-width: $device-mobile)
-      border-radius: 0
       margin-left: 0
       margin-right: 0
       width: auto
@@ -135,7 +134,6 @@
           color: $color-meta
           font-size: $font-size-code
           line-height: 1.2
-          // line-height: $metaH
           &.link-btns
             display: flex
             flex-wrap: wrap
@@ -177,7 +175,6 @@
             margin-right: 0
 
           img,i
-            border-radius: 100%
             display: inline
 
           i
@@ -224,7 +221,9 @@
               height: 1.8em
               width: auto
               background: transparent
-
+          fancybox>a>img
+            margin-left: 4px
+            height: 1.4em
     span>img
       display: inline-block
 

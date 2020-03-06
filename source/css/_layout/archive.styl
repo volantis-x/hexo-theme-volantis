@@ -1,23 +1,6 @@
 #archive-page
   margin-bottom: $gap * 2
   .archive
-    a
-      color: $color-text
-      display: block
-      background: transparent
-      border-left: $border-radius-line solid transparent
-      border-radius: $border-radius-line
-      vertical-align: middle
-      text-decoration: none
-      &.child
-        padding-left: 2*$gap
-
-      trans()
-      &:hover
-        background: bgcolor($color-theme)
-        border-left: $border-radius-line solid $color-theme
-      &:active
-        border-left: $border-radius-line * 2 solid $color-theme
 
     .archive-year
       margin-top: 4em
@@ -31,19 +14,43 @@
 
 
     .archive-post
-      $line-height = 2.2rem
-      time
-        line-height: $line-height
+      a
+        color: $color-text
+        width: 100%
+        display: inline-flex
+        flex-flow: row nowrap
+        justify-content: flex-start
+        align-items: flex-start
+        background: transparent
+        border-left: $border-radius-line solid transparent
+        border-radius: $border-radius-line
         vertical-align: middle
-        font-size: $font-size-footnote
+        text-decoration: none
+        font-size: $font-size-body
+        &.child
+          padding-left: 2 * $gap
+
+        trans()
+        &:hover
+          background: bgcolor($color-theme)
+          border-left: $border-radius-line solid $color-theme
+          padding-top: 8px
+          padding-bottom: 8px
+        &:active
+          border-left: $border-radius-line * 2 solid $color-theme
+
+      time
+        flex: none
+        vertical-align: middle
+        padding: .4em
         padding-left: 2em
+        color: $color-meta
         @media screen and (max-width: $device-mobile)
-          padding-left: 0
+          padding-left: 1em
 
       .title
-        padding: .5em
-        font-size: $font-size-body
-        line-height: $line-height
+        flex: auto
+        padding: .4em
         i
           color: $color-hover
           &.red
@@ -60,3 +67,22 @@
             color: $color-hover
           &.orange
             color: $color-md-deep-orange
+    .all-categories
+      time
+        color: $color-text
+      .title
+        color: $color-meta
+
+    .all-tags
+      display: flex
+      flex-wrap: wrap
+      align-items: flex-start
+      justify-content: flex-start
+      align-items: baseline
+      word-spacing: $gap * 0.5
+      text-align: center
+      >a
+        color: $color-meta
+        margin-right: $gap
+        &:hover,&:active,&.active
+          color: $color-hover !important
