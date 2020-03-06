@@ -20,7 +20,7 @@
     left: 50%
     top: 0
     margin: 64px 0px 0px -320px
-    background: white
+    background: $color-card
     z-index: 3
     border-radius: $border-radius
     overflow: hidden
@@ -53,8 +53,6 @@
       border-top-right-radius: $border-radius
       font-size: $font-size
       box-shadow: $box-shadow-card
-      background: alpha(white, .8)
-      backdrop-filter: blur(10px)
       @media screen and (max-width: $modal-threshold)
         border-radius: 0
         padding: 0px
@@ -241,9 +239,9 @@
           &:hover
             background: bgcolor($color-link)
             // .digest, .icon
-            //   color: $color-link-hover
+            //   color: $color-hover
             // .title
-            //   color: $color-link-hover
+            //   color: $color-hover
 
 
 

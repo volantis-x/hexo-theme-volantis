@@ -87,7 +87,7 @@ a
   text-decoration: none
   trans()
   &:hover
-    color: $color-link-hover
+    color: $color-hover
   &:active,&:hover
     outline: 0
 
@@ -278,16 +278,16 @@ table
   margin-bottom: .7em
   width: 100%
   th
-    background-color: darken($color-codeblock-bg, 5%)
+    background-color: darken($color-block, 5)
   td,th
     padding: 4px 16px
-    border: 1px solid darken($color-codeblock-bg, 10)
+    border: 1px solid darken($color-block, 8)
   tr
-    background-color: lighten($color-codeblock-bg, 4%)
+    background-color: lighten($color-block, 3)
   tbody>tr
     trans()
     &:hover
-      background-color: darken($color-codeblock-bg, 10)
+      background-color: darken($color-block, 5)
 
 
 

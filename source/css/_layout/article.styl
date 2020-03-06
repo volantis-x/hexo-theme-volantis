@@ -82,10 +82,10 @@
       display: none
     trans()
     &:hover
-      color: $color-link-hover
+      color: $color-hover
       text-decoration: underline
     &:active
-      color: darken($color-link-hover, 25%)
+      color: darken($color-hover, 25%)
 
 
   h1,
@@ -175,10 +175,10 @@
     margin-top: .7em
     margin-bottom: .7em
     overflow: auto
-    background: $color-codeblock-bg
+    background: $color-codeblock
     font-size: $font-size-code
     font-family: $font-family-code
-    border: 1px solid darken($color-codeblock-bg, 10%)
+    border: 1px solid darken($color-codeblock, 10%)
     padding: $gap
 
   div>pre
@@ -191,15 +191,14 @@
 
   code
     font-family: $font-family-code
-    padding: 3px 2px 0px 2px
+    padding: 3px 2px 1px 2px
     margin: 0
     vertical-align: middle
     border-radius: 2px
     line-height: 1.45
-    border: 1px solid darken($color-inline-code-bg, .1)
     font-size: $font-size-code
-    background: $color-inline-code-bg
-    color: $color-inline-code-text
+    color: $color-inlinecode
+    background: bgcolor($color-inlinecode, 4)
 
   table:not('.highlight table')
     width: 100%
@@ -262,7 +261,7 @@
           &:hover,&.active,&:active
             border-left: none
             background: none
-            color: $color-link-hover
+            color: $color-hover
 
 
 
