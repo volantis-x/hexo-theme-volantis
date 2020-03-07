@@ -79,8 +79,9 @@ gray,p[gray]
 
   btns
     font-weight: bold
-    &,b,p
+    &,b,p,a
       font-size: $fontsize-meta
+      color: $color-p
     display: flex
     flex-wrap: wrap
     margin: $gap-line  -0.5 * $gap
@@ -146,7 +147,6 @@ gray,p[gray]
       flex-direction: column
       padding: $gap * 0.5
       text-align: center
-      font-size: $fontsize-meta
       &>img:first-child, &>i:first-child
         trans()
         height: 64px
@@ -164,7 +164,6 @@ gray,p[gray]
         background: $color-theme
       background: $color-block
       border-radius: 4px
-      color: $color-text
       p,b
         margin: .25em
         font-weight: normal
@@ -177,8 +176,13 @@ gray,p[gray]
         margin: .4em auto
       &:hover
         text-decoration: none
+      &:not([href])
+        cursor: default
+        color: inherit
+      &[href]:hover
         background: alpha($color-hover, 15%)
-        color: $color-hover
+        &,b
+          color: $color-hover
         &>img:first-child, &>i:first-child
           transform: scale(1.1) translateY(-8px)
           box-shadow: $boxshadow-float

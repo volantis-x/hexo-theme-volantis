@@ -51,9 +51,6 @@
   .post-wrapper
     margin-bottom: $gap
     .post
-      &:hover
-        .title>a
-          color: $color-link
       .meta
         margin-bottom: $gap
         .title
@@ -253,7 +250,6 @@ details
   background: $color-block
   padding: $gap
   margin: $gap-line 0
-  border: 1px solid darken($color-block, .1)
   border-radius: $borderradius-codeblock
   trans()
   summary
@@ -264,7 +260,7 @@ details
     font-size: $fontsize-meta
     font-weight: bold
     &:hover
-      color: $color-hover
+      color: darken(@color, 50)
   &[blue]
     background: bgcolor($color-md-blue)
   &[cyan]

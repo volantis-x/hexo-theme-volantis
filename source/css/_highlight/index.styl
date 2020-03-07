@@ -13,7 +13,7 @@
   font-size: $fontsize-code
   font-family: $fontfamily-code
   border-radius: $borderradius-codeblock
-  border: 1px solid darken($color-codeblock, 10%)
+  border: 1px solid darken($color-codeblock, 6)
   trans()
   figcaption
     position: sticky
@@ -67,64 +67,65 @@
         font-size: $fontsize-footnote
         padding: 4px 8px
 
-  &.html .code:before
-      content: "HTML"
+  if hexo-config('style.highlight.language') == true
+    &.html .code:before
+        content: "HTML"
 
-  &.js .code:before
-      content: "JS"
+    &.js .code:before
+        content: "JS"
 
-  &.bash .code:before
-      content: "bash"
+    &.bash .code:before
+        content: "bash"
 
-  &.shell .code:before
-      content: "shell"
+    &.shell .code:before
+        content: "shell"
 
-  &.css .code:before
-      content: "css"
+    &.css .code:before
+        content: "css"
 
-  &.less .code:before
-      content: "less"
+    &.less .code:before
+        content: "less"
 
-  &.stylus .code:before
-      content: "stylus"
+    &.stylus .code:before
+        content: "stylus"
 
-  &.swift .code:before
-      content: "Swift"
+    &.swift .code:before
+        content: "Swift"
 
-  &.objc .code:before
-      content: "ObjC"
+    &.objc .code:before
+        content: "ObjC"
 
-  &.c .code:before
-      content: "C"
+    &.c .code:before
+        content: "C"
 
-  &.cpp .code:before
-      content: "C++"
+    &.cpp .code:before
+        content: "C++"
 
-  &.java .code:before
-      content: "Java"
+    &.java .code:before
+        content: "Java"
 
-  &.python .code:before
-      content: "Python"
+    &.python .code:before
+        content: "Python"
 
-  &.yaml .code:before
-      content: "YAML"
+    &.yaml .code:before
+        content: "YAML"
 
-  &.plain .code:before
-      content: ""
+    &.plain .code:before
+        content: ""
 
 
-  &::-webkit-scrollbar
-    height: $borderradius-line
-    width: $borderradius-line
-  &::-webkit-scrollbar-track-piece
-    background: transparent
-  &::-webkit-scrollbar-thumb
-    background: alpha($color-text, .3)
-    cursor: pointer
-    border-radius: $borderradius-codeblock
-    trans()
-    &:hover
-      background: alpha($color-text, .6)
+  // &::-webkit-scrollbar
+  //   height: $borderradius-line
+  //   width: $borderradius-line
+  // &::-webkit-scrollbar-track-piece
+  //   background: transparent
+  // &::-webkit-scrollbar-thumb
+  //   background: alpha($color-text, .3)
+  //   cursor: pointer
+  //   border-radius: $borderradius-codeblock
+  //   trans()
+  //   &:hover
+  //     background: alpha($color-text, .6)
 
 
 

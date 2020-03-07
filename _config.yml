@@ -63,6 +63,9 @@ style:
 # 建议：
 #   有背景图：开启毛玻璃，关闭卡片阴影
 #   无背景图：关闭毛玻璃，开启卡片阴影
+  highlight:
+    language: false # 是否显示语言
+  # fontfamily: CourierNew
   # align: # left, right, justify, center
   #   h1: center
   #   h2: center

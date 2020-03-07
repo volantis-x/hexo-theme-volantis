@@ -33,7 +33,7 @@ $color-google-red = #E8453C
 // common
 $color-site = convert(hexo-config('style.color.site')) || #f4f4f4
 $color-card = convert(hexo-config('style.color.card')) || white
-$color-text = convert(hexo-config('style.color.text')) || #333
+$color-text = convert(hexo-config('style.color.text')) || #444
 $color-theme = convert(hexo-config('style.color.theme')) || #2196f3
 $color-link = convert(hexo-config('style.color.link')) || #2196f3
 $color-hover = convert(hexo-config('style.color.hover')) || #ff5722
@@ -42,8 +42,8 @@ $color-block = convert(hexo-config('style.color.block')) || #f4f4f4
 $color-selection = alpha(#2196f3, 0.2)
 
 // code
-$color-inlinecode = convert(hexo-config('style.color.inlinecode')) || #a55a00
-$color-codeblock = convert(hexo-config('style.color.codeblock')) || #f6f8fa
+$color-inlinecode = convert(hexo-config('style.color.inlinecode')) || #4f5a60
+$color-codeblock = convert(hexo-config('style.color.codeblock')) || #f6f6f6
 // blockquote
 $color-blockquote = convert(hexo-config('style.color.blockquote')) || $color-theme
 // mathjax
@@ -56,9 +56,9 @@ $color-h3 = convert(hexo-config('style.color.h3')) || $color-theme
 $color-h4 = convert(hexo-config('style.color.h4')) || $color-text
 $color-h5 = convert(hexo-config('style.color.h5')) || $color-text
 $color-h6 = convert(hexo-config('style.color.h6')) || $color-text
+$color-p = convert(hexo-config('style.color.p')) || #555
 
-
-$color-meta = alpha($color-text, .7)
+$color-meta = alpha($color-text, .65)
 
 bgcolor($c, $mix = 10)
   return mix($c, $color-card, $mix)
