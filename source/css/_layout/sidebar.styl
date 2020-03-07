@@ -52,7 +52,7 @@
 
   .content
     text-align: justify
-    font-size: $fontsize-body
+    font-size: $fontsize-meta
     padding: $gap * 0.5 0
     $offset = $navbar-height + 12.5 * $gap
     max-height: "calc(100% - %s)" % $offset
@@ -158,6 +158,7 @@
             color: $color-hover
 
           &.social
+            font-size: $fontsize-body
             display: flex
             justify-content: center
             align-items: center
