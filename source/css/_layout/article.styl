@@ -148,11 +148,12 @@
     border-radius: $borderradius-codeblock
 
   blockquote,div.info,div.success,div.warning,div.danger
-    &,p
+    &,p,ul,ol
       text-align: left
       word-wrap: normal
       font-size: $fontsize-list
-      margin: .5rem 0
+      margin-top: $gap-inline
+      margin-bottom: $gap-inline
     box-shadow: $boxshadow-card
     position: relative
     width: 100%
@@ -163,7 +164,7 @@
       text-align: justify
       color: inherit
       font-style: italic
-      margin: .5rem 0
+      margin: $gap-inline 0
       cite
         &::before
           content: '----'
