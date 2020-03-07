@@ -9,7 +9,7 @@
       box-shadow: none
   div>img,p>img
     display: block
-    margin: $gap-line auto
+    margin: auto
     border-radius: 4px
     @media screen and (max-width: $device-mobile)
       border-radius: 2px
@@ -102,7 +102,7 @@
     margin-top: $gap-h2
     padding-bottom: .2em
     border-bottom: 1px solid alpha($color-text, 10%)
-    margin-bottom: $gap-line * 2
+    margin-bottom: 1em
   h1
     text-align: $textalign-h1
     color: $color-h1
@@ -113,19 +113,19 @@
     text-align: $textalign-h3
     margin-top: $gap-h3
     color: $color-h3
-    margin-bottom: $gap-line * 2
+    margin-bottom: 1em
   h4
     text-align: $textalign-h4
-    margin-top: $gap-line * 2
+    margin-top: $gap-line * 1.5
     margin-bottom: $gap-line
     color: $color-h4
   h5
     font-weight: bold
-    margin-top: $gap-line * 2
+    margin-top: $gap-line * 1.5
     margin-bottom: $gap-line
     color: $color-h5
   h6
-    margin-top: $gap-line * 2
+    margin-top: $gap-line * 1.5
     margin-bottom: $gap-line
     color: $color-h6
 
@@ -152,7 +152,7 @@
       text-align: left
       word-wrap: normal
       font-size: $fontsize-list
-      margin: $gap-line 0
+      margin: .5rem 0
     box-shadow: $boxshadow-card
     position: relative
     width: 100%
@@ -163,7 +163,7 @@
       text-align: justify
       color: inherit
       font-style: italic
-      margin: $gap-line 0
+      margin: .5rem 0
       cite
         &::before
           content: '----'

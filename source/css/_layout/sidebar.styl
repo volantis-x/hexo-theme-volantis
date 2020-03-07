@@ -58,7 +58,7 @@
     max-height: "calc(100% - %s)" % $offset
     max-width: 100%
     p
-      margin: $gap-line 0
+      margin: .5rem 0
 
     ul>li
       a
@@ -306,6 +306,9 @@
   &.related_posts
     .content
       font-weight: bold
+      ul
+        margin-top: $gap * 0.5
+        margin-bottom: $gap * 0.5
       h3
         font-size: $fontsize-meta
         font-weight: bold
