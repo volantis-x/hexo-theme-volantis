@@ -270,6 +270,17 @@
             color: $color-theme
             border: 1px solid $color-theme
 
+        &.fixed a
+          width: "calc(100%/3 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-tablet)
+            width: "calc(100%/6 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile)
+            width: "calc(100%/5 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile-l)
+            width: "calc(100%/4 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile-m)
+            width: "calc(100%/3 - 0 * %s)" % $gap
+
 
 
 

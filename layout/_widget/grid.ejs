@@ -2,7 +2,7 @@
 <section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
   <%- partial('header', {item: item}) %>
   <div class='content'>
-    <div class="grid navigation">
+    <div class="grid navigation<%- item.fixed ? ' fixed' : '' %>">
       <% (item.rows||[]).forEach(function(row){ %>
         <a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>"
           <% if (row.rel) { %>
