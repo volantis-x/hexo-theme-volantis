@@ -50,14 +50,14 @@ var customSearch;
 		const $coverAnchor = $('.cover-wrapper');
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
-			showHeaderPoint = $coverAnchor[0].clientHeight - 80;
+			showHeaderPoint = $coverAnchor[0].clientHeight - 180;
 		}
 		var pos = document.body.scrollTop;
 		$(document, window).scroll(() => {
 			const scrollTop = $(window).scrollTop();
 			const del = scrollTop - pos;
 			pos = scrollTop;
-			if (scrollTop > 150) {
+			if (scrollTop > 180) {
 				$topBtn.addClass('show');
 				if (del > 0) {
 					$topBtn.removeClass('hl');
