@@ -16,11 +16,11 @@ style:
   max_width: 1080px # Sum of body width and sidebar width
   navbar:
     height: 64px
-    effect: [shadow, blur]
+    effect: [shadow, blur] # [shadow, floatable, blur]
   sidebar:
-    effect: [shadow]
+    effect: [shadow] # [shadow, floatable, blur]
   body:
-    effect: [shadow]
+    effect: [shadow] # [shadow, floatable, blur]
     highlight:
       language: false # show language of codeblock
     text_align: # left, right, justify, center
@@ -59,10 +59,10 @@ style:
 ############################### Layout ###############################
 cover:
   scheme: docs # docs, blog
-  logo: #https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
+  logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
   title: Volantis
   subtitle: 'A Wonderful Theme for Hexo'
-  search:
+  search: # search bar placeholder
   # 主页封面菜单
   features:
     - name: 文档
@@ -466,8 +466,8 @@ comments:
   subtitle:
   service: valine # valine, disqus, gitalk, livere
   valine:
-    appId: #你的appId
-    appKey: #你的appKey
+    appId: # your appId
+    appKey: # your appKey
     js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@1.7.4/js/valine.js
     path: # 全站采用同一个path（共用同一个评论框数据）
     meta: nick,mail,link #valine comment header info
