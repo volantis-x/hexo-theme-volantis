@@ -1,6 +1,12 @@
 <%
 if (page.cover == undefined && theme.cover) {
-  page.cover = true;
+  if (is_home() && page.prev == 0) {
+    page.cover = theme.cover.display.home;
+  } else if (is_archive()) {
+    page.cover = theme.cover.display.archive;
+  } else {
+    page.cover = theme.cover.display.others;
+  }
 }
 if (site.data && site.data.layout) {
   theme.layout = site.data.layout;
