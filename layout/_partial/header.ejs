@@ -2,7 +2,17 @@
   <div id="loading-bar"></div>
 </div>
 <header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%- theme.style.navbar.effect.join(' ') %>">
-	<div class='wrapper'>
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        <% if (page.sidebar == undefined || page.sidebar != false) { %>
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        <% } %>
+      </ul>
+    </div>
 		<div class="nav-main container container--flex">
       <% if (theme.navbar.logo) { %>
         <a class="logo flat-box" target="_self" href='<%- url_for("/") %>' >
@@ -34,9 +44,9 @@
           }
           menu_desktop = menu_desktop || [];
           %>
-          <% menu_desktop.forEach(function(value){ %>
+          <% function menu(value) { %>
             <li>
-              <a class="nav flat-box" href="<%= url_for(value.url) %>"
+              <a class="nav flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
                 <% if (value.rel) { %>
                   rel="<%- value.rel %>"
                 <% } %>
@@ -44,9 +54,23 @@
                   target="<%- value.target %>"
                 <% } %>
                 id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
-                <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
+                <% if (value.icon) { %>
+                  <i class='<%= value.icon %> fa-fw'></i>
+                <% } %>
+                <%= value.name %>
               </a>
+              <% if (value.rows) { %>
+                <ul class="submenu">
+                  <% value.rows.forEach(function(value){ %>
+                    <% menu(value) %>
+                  <%})%>
+                </ul>
+              <% } %>
             </li>
+          <% } %>
+          <% menu_desktop.forEach(function(value){ %>
+            <% menu(value) %>
+
           <%})%>
 				</ul>
 			</div>
@@ -66,46 +90,39 @@
 			</ul>
 		</div>
 
-		<div class='nav-sub container container--flex'>
-			<a class="logo flat-box"></a>
-			<ul class='switcher h-list'>
-				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
-        <% if (page.sidebar == undefined || page.sidebar != false) { %>
-          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
-        <% } %>
-			</ul>
-		</div>
+
 	</div>
+
 </header>
-	<aside class="menu-phone white-box">
-    <header>
-		<nav class="menu navigation">
-      <ul>
-        <%
-        let menu_mobile;
-        if (site.data && site.data.menu && site.data.menu.on_mobile) {
-          menu_mobile = site.data.menu.on_mobile;
-        } else {
-          menu_mobile = theme.navbar.menu.on_mobile;
-        }
-        menu_mobile = menu_mobile || [];
-        %>
-        <% menu_mobile.forEach(function(value){ %>
-          <li>
-            <a class="nav flat-box" href="<%= url_for(value.url) %>"
-              <% if (value.rel) { %>
-                rel="<%- value.rel %>"
-              <% } %>
-              <% if (value.target) { %>
-                target="<%- value.target %>"
-              <% } %>
-              id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
-              <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
-            </a>
-          </li>
-        <%})%>
-      </ul>
-		</nav>
-    </header>
-	</aside>
+<aside class="menu-phone white-box">
+  <header>
+	<nav class="menu navigation">
+    <ul>
+      <%
+      let menu_mobile;
+      if (site.data && site.data.menu && site.data.menu.on_mobile) {
+        menu_mobile = site.data.menu.on_mobile;
+      } else {
+        menu_mobile = theme.navbar.menu.on_mobile;
+      }
+      menu_mobile = menu_mobile || [];
+      %>
+      <% menu_mobile.forEach(function(value){ %>
+        <li>
+          <a class="nav flat-box" href="<%= url_for(value.url) %>"
+            <% if (value.rel) { %>
+              rel="<%- value.rel %>"
+            <% } %>
+            <% if (value.target) { %>
+              target="<%- value.target %>"
+            <% } %>
+            id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
+            <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
+          </a>
+        </li>
+      <%})%>
+    </ul>
+	</nav>
+  </header>
+</aside>
 <script>setLoadingBarProgress(40);</script>

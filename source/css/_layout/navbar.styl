@@ -21,10 +21,8 @@
   position: fixed
   z-index: 9999
   top: 0
-  overflow: hidden
   width: 100%
   line-height: $navbar-height
-  overflow: hidden
   padding: 0 $gap
   margin-bottom: $gap
   box-shadow: $boxshadow-card
@@ -32,7 +30,17 @@
     padding: auto $gap
     max-width: $layout-width
     margin: auto
+    height: $navbar-height
+    .nav-main
+      trans()
+      transform: translateY(0 - $navbar-height)
+    .nav-sub
+      trans()
+      opacity: 0
     trans()
+    a
+      &:not([href])
+        cursor: default
     a.logo
       color: $color-text
 
@@ -42,18 +50,19 @@
       max-width: $device-tablet
       margin: auto
 
-
   .wrapper.sub
-    trans()
-    transform: translateY(0 - $navbar-height)
     .logo
       @media screen and (max-width: $device-mobile)
         trans()
         padding-left: $gap
         padding-right: 0
-
-
-  .nav--main,.nav-sub
+  .wrapper.sub
+    .nav-main
+      trans()
+      transform: translateY(0 - 2 * $navbar-height)
+    .nav-sub
+      opacity: 1
+  .nav-main,.nav-sub
     height: $navbar-height
 
   background: $color-card
@@ -63,8 +72,7 @@
   &.show
     transform: translateY(0) scale(1)
 
-  &, a
-    txt-ellipsis()
+  &,a
     height: $navbar-height
     line-height: $navbar-height
 
@@ -105,6 +113,42 @@
     height: $navbar-height
     trans()
     margin: 0 $gap 0 0
+    li
+      ul.submenu
+        display: none
+        position: absolute
+        background: $color-card
+        box-shadow: $boxshadow-float
+        margin-top: -2px - $borderradius * 0.5
+        margin-left: 0
+        border-radius: $borderradius * 0.5
+        border: 1px solid darken($color-codeblock, 6)
+        padding: $gap * 0.5 0
+        >li
+          ul
+            margin-left: 0
+            display: none
+            margin-top: 0 - 32px - $gap * 0.5
+            left: "calc(100% - 0.5 * %s)" % $gap
+            i
+              display: none
+        >li>a
+          font-size: $fontsize-meta
+          font-weight: bold
+          line-height: 33px
+          padding: 0 $gap
+          height: 32px
+          word-break: keep-all
+          white-space: nowrap
+          border-left: $borderradius-line solid transparent
+          &:hover,&.active,&:active
+            color: $color-theme
+            border-left: $borderradius-line solid $color-theme
+            border-bottom: none
+      &:hover
+        >ul.submenu
+          display: block
+
     ul>li>a
       trans()
       display: block
