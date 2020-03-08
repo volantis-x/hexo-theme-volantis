@@ -59,11 +59,10 @@ style:
 ############################### Layout ###############################
 # page的封面
 cover:
-  scheme: docs      # docs: 适合文档的封面方案  blog: 适合博客的封面方案
-  height: full      # full: 首页封面占据整个第一屏幕，其他页面占半个屏幕高度， half: 所有页面都封面都只占半个屏幕高度
+  scheme: docs # docs: 适合文档的封面方案  blog: 适合博客的封面方案
+  logo:  # logo和title只显示一个，若同时设置，则只显示logo
   title: Volantis
   subtitle: 'A Wonderful Theme for Hexo'
-  logo:  # logo和title只显示一个，若同时设置，则只显示logo
   search: '搜索一下'
   # 主页封面菜单
   features:
