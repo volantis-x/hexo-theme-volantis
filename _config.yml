@@ -63,18 +63,18 @@ cover:
   logo:  # logo和title只显示一个，若同时设置，则只显示logo
   title: Volantis
   subtitle: 'A Wonderful Theme for Hexo'
-  search: '搜索一下'
+  search:
   # 主页封面菜单
   features:
     - name: 文档
       icon: fas fa-book
-      url: getting-started/
+      url: https://volantis.js.org/getting-started/
     - name: 博文
       icon: fas fa-rss
-      url: archives/
+      url: https://volantis.js.org/archives/
     - name: 示例
       icon: fas fa-play-circle
-      url: examples/
+      url: https://volantis.js.org/examples/
     - name: 源码
       icon: fas fa-file-code
       url: https://github.com/xaoxuu/hexo-theme-volantis/
@@ -82,7 +82,7 @@ cover:
       target: _blank
     - name: 鸣谢
       icon: fas fa-handshake
-      url: contributors/
+      url: https://volantis.js.org/contributors/
 
 
 # 导航栏
@@ -138,7 +138,7 @@ navbar:
       - name: 关于
         icon: fas fa-info-circle
         url: about/
-  search: 搜索一下   # 搜索框文字
+  search: 搜索   # 搜索框文字
 
 
 
