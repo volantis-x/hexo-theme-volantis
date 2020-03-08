@@ -126,12 +126,12 @@ cover:
   search: '搜索一下'
   # 主页封面菜单
   features:
-    - name: 公告
-      icon: fas fa-bullhorn
-      url: news/archives/
     - name: 文档
       icon: fas fa-book
       url: getting-started/
+    - name: 博文
+      icon: fas fa-rss
+      url: archives/
     - name: 示例
       icon: fas fa-play-circle
       url: examples/
