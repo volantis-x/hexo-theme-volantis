@@ -1,4 +1,4 @@
-<article class="post white-box <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.body ? 'body-blur' : '' %> reveal <%= (post.title) ? "" : "no-title" %>">
+<article class="post white-box <%- theme.style.body.effect.join(' ') %> reveal <%= (post.title) ? "" : "no-title" %>">
   <%- partial('meta',{post:post, position:'header'}) %>
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
@@ -12,7 +12,7 @@
             </a>
           </div>
         <% } else { %>
-          
+
         <% } %>
       <% } %>
     </div>

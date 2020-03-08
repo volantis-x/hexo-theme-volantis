@@ -1,7 +1,7 @@
 <div id="loading-bar-wrapper">
   <div id="loading-bar"></div>
 </div>
-<header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%- theme.style.blur && theme.style.blur.navbar ? 'nav-blur' : '' %>">
+<header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%- theme.style.navbar.effect.join(' ') %>">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
       <% if (theme.navbar.logo) { %>

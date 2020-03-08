@@ -1,5 +1,5 @@
 <% if(!isPostList){ %>
-  <% if (config.leancloud && config.leancloud.app_id && config.leancloud.app_key && theme.valine.visitor) { %>
+  <% if (theme.comments.valine && theme.comments.valine.appId && theme.comments.valine.visitor) { %>
     <div class="new-meta-item browse valine">
       <a class='notlink'>
         <i class="<%- theme.meta.counter.icon %>" aria-hidden="true"></i>

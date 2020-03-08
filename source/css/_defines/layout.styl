@@ -14,7 +14,7 @@ $layout-width = convert(hexo-config('style.max_width')) || 1080px
 $sidebar-s = 240px
 $sidebar = 285px
 $modal-threshold = 680px
-$navbar-height = convert(hexo-config('style.navbar_height')) || 64px
+$navbar-height = convert(hexo-config('style.navbar.height')) || 64px
 
 // gap
 $gap = convert(hexo-config('style.gap')) || 16px
@@ -30,10 +30,10 @@ $borderradius-codeblock = 4px
 $borderradius-line = 2px
 $borderradius-searchbar = 8px
 $borderradius-button = 2px
-// align
-$textalign-h1 = convert(hexo-config('style.align.h1')) || left
-$textalign-h2 = convert(hexo-config('style.align.h2')) || left
-$textalign-h3 = convert(hexo-config('style.align.h3')) || left
-$textalign-h4 = convert(hexo-config('style.align.h4')) || left
 
-$textalign-p = convert(hexo-config('style.align.p')) || justify
+// text align
+$textalign-h1 = convert(hexo-config('style.body.text_align.h1')) || left
+$textalign-h2 = convert(hexo-config('style.body.text_align.h2')) || left
+$textalign-h3 = convert(hexo-config('style.body.text_align.h3')) || left
+$textalign-h4 = convert(hexo-config('style.body.text_align.h4')) || left
+$textalign-p = convert(hexo-config('style.body.text_align.p')) || justify
