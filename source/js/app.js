@@ -9,8 +9,7 @@ var customSearch;
 		scrollCorrection = $headerAnchor[0].clientHeight + 16;
 	}
 
-	function scrolltoElement(elem, correction) {
-		correction = correction || scrollCorrection;
+	function scrolltoElement(elem, correction = scrollCorrection) {
 		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
 		$('html, body').animate({
 			'scrollTop': $elem.offset().top - correction
@@ -221,9 +220,9 @@ var customSearch;
 			e.preventDefault();
 			e.stopPropagation();
 			if (e.target.tagName === 'A') {
-				scrolltoElement(e.target);
+				scrolltoElement(e.target, 0);
 			} else if (e.target.tagName === 'SPAN') {
-				scrolltoElement(e.target.parentElement);
+				scrolltoElement(e.target.parentElement, 0);
 			}
 			$toc.removeClass('active');
 		});
