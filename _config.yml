@@ -1,7 +1,7 @@
 ############################### Basic Information ###############################
 info:
   name: Volantis
-  version: '2.0-beta3'
+  version: '2.0-beta4'
   docs: https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
     css:
@@ -57,10 +57,9 @@ style:
 
 
 ############################### Layout ###############################
-# page的封面
 cover:
-  scheme: docs # docs: 适合文档的封面方案  blog: 适合博客的封面方案
-  logo:  # logo和title只显示一个，若同时设置，则只显示logo
+  scheme: docs # docs, blog
+  logo: #https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
   title: Volantis
   subtitle: 'A Wonderful Theme for Hexo'
   search:

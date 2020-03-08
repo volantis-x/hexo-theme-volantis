@@ -1,146 +1,38 @@
-.cover-wrapper
-  padding-bottom: 2px
-  .cover
-    top: 0
-    left: 0
-    max-width: 100%
-    height: 100vh
-    display: flex
-    flex-wrap: nowrap
-    flex-direction: column
-    align-items: center
-    align-self: center
-    align-content: center
-    color: $color-p
-    padding: $gap
-    .title, .logo
-      margin-top: 28vh
-      text-align: center
-    .title
-      font-size: $fontsize-large
-      line-height: 1.2
-    .subtitle
-      font-size: $fontsize-meta
-    .logo
-      max-height: 100px
-      max-width: "calc(100% - 4 * %s)" % $gap
-
-    .white
-      color: white
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+.cover-wrapper .cover
+  top: 0
+  left: 0
+  max-width: 100%
+  height: 100vh
+  display: flex
+  flex-wrap: nowrap
+  flex-direction: column
+  align-items: center
+  align-self: center
+  align-content: center
+  color: $color-p
+  padding: $gap
+  .white
+    color: white
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+  .cover-body
+    section[b]
+      margin-top: 8vh
+  &.half
+    margin-bottom: -100px
+    max-height: 500px
+    .cover-body
+      section[b]
+        margin-top: 5vh
+    height: "calc(60vh - %s + 120px)" % $navbar-height
+    @media screen and (max-width: $device-laptop)
+      height: "calc(36vh - %s + 200px)" % $navbar-height
+    @media screen and (max-width: $device-tablet)
+      height: "calc(40vh - %s + 160px)" % $navbar-height
     @media screen and (max-width: $device-mobile)
-      .title,.logo
-        font-size: $fontsize-large
-
-    .m_search
-      $iconW = 32px
-      $iconMargin = 4px
-      margin-top: 10vh
-      position: relative
-      max-width: "calc(100% - %s)" % 32px
-      width: 320px
-      vertical-align: middle
-      .form
-        position: relative
-        display: block
-        width: 100%
-
-      .icon,.input
-        trans()
-      .icon
-        position: absolute
-        display:block
-        line-height: 2.5rem
-        width: $iconW
-        top: 0
-        left: $iconMargin+1px
-        color: alpha($color-p, .75)
-
-      .input
-        display: block
-        height: 2.5rem
-        width: 100%
-        box-shadow: none
-        box-sizing: border-box
-        font-size: $fontsize-meta
-        -webkit-appearance: none
-        padding-left: $iconW + $iconMargin
-        @media screen and (max-width: $device-mobile)
-          padding-left: $iconW + $iconMargin
-        border-radius: 1.4rem
-        background: alpha($color-card, .6)
-        backdrop-filter: blur(10px)
-        border: none
-        color: $color-text
-        &:hover
-          background: alpha($color-card, .8)
-        &:focus
-          background: alpha($color-card, 1)
-
-    &.half
-      margin-bottom: -100px
-      height: "calc(60vh - %s + 120px)" % $navbar-height
-      .title, .logo
-        margin-top: "calc(28vh - %s)" % 80px
-
-      .m_search
-        margin-top: $gap * 2
-
-      @media screen and (max-width: $device-laptop)
-        height: "calc(36vh - %s + 200px)" % $navbar-height
-        .title, .logo
-          margin-top: "calc(22vh - %s)" % 90px
-
-      @media screen and (max-width: $device-tablet)
-        height: "calc(40vh - %s + 160px)" % $navbar-height
-        .title, .logo
-          margin-top: "calc(22vh - %s)" % 90px
-
-
-      @media screen and (max-width: $device-mobile)
-        height: "calc(24vh - %s + 280px)" % $navbar-height
-        .title, .logo
-          margin-top: "calc(22vh - %s)" % 70px
-
-
-
-    .menu
-      margin-top: $gap
-      ul
-        display: flex
-        flex-wrap: wrap
-        align-items: baseline
-        justify-content: center
-        li
-          display: flex
-          flex-wrap: wrap
-          align-items: center
-          padding: 0
-          height: auto
-
-      ul>li>a
-        font-size: $fontsize-meta
-        padding: 2px
-        margin: 4px
-        trans()
-        color: $color-p
-        border-bottom: 2px solid transparent
-        &:hover, &.active, &:active
-          color: $color-theme
-          border-bottom: 2px solid $color-theme
-        &.white
-          color: alpha(white, .7)
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
-          &:hover, &.active, &:active
-            color: white
-            border-bottom: 2px solid white
-
-    .switcher
-      & > li
-        a
-          &:hover
-            background: alpha($color-text, .15)
-
+      .cover-body
+        section[a]
+          margin-top: 5vh
+      height: "calc(24vh - %s + 280px)" % $navbar-height
 
   .scroll-down
     width: 100%
@@ -166,3 +58,96 @@
         100%
           top: 0
           opacity: 1
+
+
+.cover-wrapper .cover .cover-body
+  margin: auto
+  &,section
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    max-width: 100%
+  .title
+    font-size: $fontsize-large
+    line-height: 1.2
+  .subtitle
+    font-size: $fontsize-meta
+  .logo
+    max-height: 100px
+    max-width: "calc(100% - 4 * %s)" % $gap
+  .m_search
+    $iconW = 32px
+    $iconMargin = 4px
+    position: relative
+    max-width: "calc(100% - %s)" % 32px
+    width: 320px
+    vertical-align: middle
+    .form
+      position: relative
+      display: block
+      width: 100%
+    .icon,.input
+      trans()
+    .icon
+      position: absolute
+      display:block
+      line-height: 2.5rem
+      width: $iconW
+      top: 0
+      left: $iconMargin+1px
+      color: alpha($color-p, .75)
+    .input
+      display: block
+      height: 2.5rem
+      width: 100%
+      box-shadow: none
+      box-sizing: border-box
+      font-size: $fontsize-meta
+      -webkit-appearance: none
+      padding-left: $iconW + $iconMargin
+      @media screen and (max-width: $device-mobile)
+        padding-left: $iconW + $iconMargin
+      border-radius: 1.4rem
+      background: alpha($color-card, .6)
+      backdrop-filter: blur(10px)
+      border: none
+      color: $color-text
+      &:hover
+        background: alpha($color-card, .8)
+      &:focus
+        background: alpha($color-card, 1)
+  .menu
+    margin-top: $gap
+    ul
+      display: flex
+      flex-wrap: wrap
+      align-items: baseline
+      justify-content: center
+      li
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        padding: 0
+        height: auto
+    ul>li>a
+      font-size: $fontsize-meta
+      padding: 2px
+      margin: 4px
+      trans()
+      color: $color-p
+      border-bottom: 2px solid transparent
+      &:hover, &.active, &:active
+        color: $color-theme
+        border-bottom: 2px solid $color-theme
+      &.white
+        color: alpha(white, .7)
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+        &:hover, &.active, &:active
+          color: white
+          border-bottom: 2px solid white
+  .switcher
+    & > li
+      a
+        &:hover
+          background: alpha($color-text, .15)
