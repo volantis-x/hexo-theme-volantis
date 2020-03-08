@@ -2,12 +2,12 @@
   <div class="cover-wrapper">
     <% if (is_home() && page.prev == 0 && theme.cover.scheme == 'docs') { %>
       <cover class='cover <%- page.layout %> full'>
-        <%- partial('../_cover/docs') %>
+        <%- partial('../_cover/index') %>
         <div class="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
       </cover>
     <% } else { %>
       <cover class='cover <%- page.layout %> half'>
-        <%- partial('../_cover/docs') %>
+        <%- partial('../_cover/index') %>
       </cover>
     <% } %>
     <%- partial('header', null, {cache: false, path: path}) %>
