@@ -51,6 +51,7 @@
       border-top-right-radius: $borderradius
       font-size: $fontsize
       box-shadow: $boxshadow-card
+      background: darken($color-card, 5)
       @media screen and (max-width: $modal-threshold)
         border-radius: 0
         padding: 0px
@@ -214,10 +215,8 @@
       -webkit-overflow-scrolling: touch
       background: $color-card
       border-radius: $borderradius
-
       .modal-results
         list-style: none
-
         .result
           position: relative
           display: block
@@ -225,7 +224,7 @@
           text-decoration: none
           border-radius: $borderradius
           b[mark]
-            color: darken($color-md-blue, 10)
+            color: darken($color-theme, 10)
             text-decoration: underline
           &:hover
             background: bgcolor($color-theme)
@@ -254,7 +253,7 @@
             word-break: break-all
             text-overflow: ellipsis
             font-size: $fontsize-code
-            color: lighten($color-text, 30)
+            color: $color-meta
           .icon
             position: absolute
             top: 50%

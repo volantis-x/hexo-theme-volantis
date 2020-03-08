@@ -74,7 +74,7 @@ style:
   # navbar_height: 64px # 导航栏高度
   # max_width: 1080px # 最大布局宽度，包含侧边栏
   # color:
-  #   site: '#222' # 网页背景颜色
+  #   site: '#21232F' # 网页背景颜色
   #   card: '#444' # 卡片背景
   #   text: '#fff' # 卡片上的文字
   #   theme: '#ff9800' # 主题色
@@ -84,17 +84,12 @@ style:
   #   block: '#555' # 区块颜色
   #   inlinecode: yellow # 行内代码颜色
   #   codeblock: '#555' # 代码块背景
-  #   blockquote: '#888' # 引用块颜色
+  #   p: '#ccc'
   #   # h1: # H1标题颜色
   #   # h2: # H2标题颜色
   #   # h3: # H3标题颜色
   #   # h4: # H4标题颜色
 
-
-
-
-# 显示「阅读全文」按钮
-readmore: true
 
 # 幻灯片背景
 backstretch:
@@ -476,6 +471,9 @@ seo:
 
 
 ############################### 杂项，请勿删除 ###############################
+comments:
+  title: <i class='fas fa-comments'></i> 评论
+  subtitle:
 #valine配置
 valine:
   enable: true # 如果你想用Valine评论系统，请设置enable为true

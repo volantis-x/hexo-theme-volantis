@@ -65,6 +65,20 @@
       margin-left: 0
       margin-right: 0
       width: auto
+    &.grid .content .grid.fixed a
+      width: "calc(100%/8 - 0 * %s)" % $gap
+      @media screen and (max-width: $device-laptop)
+        width: "calc(100%/7 - 0 * %s)" % $gap
+      @media screen and (max-width: $device-tablet)
+        width: "calc(100%/6 - 0 * %s)" % $gap
+      @media screen and (max-width: $device-mobile)
+        width: "calc(100%/5 - 0 * %s)" % $gap
+      @media screen and (max-width: $device-mobile-l)
+        width: "calc(100%/4 - 0 * %s)" % $gap
+      @media screen and (max-width: $device-mobile-m)
+        width: "calc(100%/3 - 0 * %s)" % $gap
+
+
 
 
   .post
@@ -257,11 +271,11 @@ details
     cursor: pointer
     padding: $gap
     margin: 0 - $gap
-    color: $color-meta
+    color: alpha($color-p, .7)
     font-size: $fontsize-meta
     font-weight: bold
     &:hover
-      color: darken(@color, 50)
+      color: alpha($color-p, .9)
   &[blue]
     background: bgcolor($color-md-blue)
   &[cyan]
@@ -325,7 +339,7 @@ details
       transform: translateY(0) scale(1)
       &.hl
         background: $color-theme
-        color: white
+        color: $color-inner
         box-shadow: $boxshadow-card
 
 
@@ -340,7 +354,17 @@ details
           box-shadow: $boxshadow-card-float
 
 
-
+.comments
+  .article
+    p[ct]
+      margin-top: 0
+      margin-bottom: $gap-inline
+      font-size: $fontsize-h4
+      color: $color-text
+    p[cst]
+      margin-top: $gap-inline
+      margin-bottom: $gap-inline
+      font-size: $fontsize-meta
 
 
 .white-box
