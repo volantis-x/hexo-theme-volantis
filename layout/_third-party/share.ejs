@@ -3,11 +3,12 @@
     <% (theme.meta.share||[]).forEach(function(item){ %>
       <% if (item.id == 'qrcode'){ %>
         <% var src = qrcode(url,{margin:1,size:8}); %>
-        <fancybox>
-          <a class='qrcode' rel="external nofollow noopener noreferrer" data-fancybox="gallery-qrcode" href="<%- src %>">
+        <div class='hoverbox'>
+          <a><img src="<%- item.img %>"></a>
+          <div class='target'>
             <img src="<%- src %>">
-          </a>
-        </fancybox>
+          </div>
+        </div>
       <% } else { %>
         <a class="-mob-share-<%- item.id %>" title="<%- item.name %>" rel="external nofollow noopener noreferrer"
           <% if (item.id == 'qzone'){ %>

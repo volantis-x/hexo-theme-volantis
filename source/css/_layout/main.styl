@@ -240,9 +240,7 @@
               height: 1.8em
               width: auto
               background: transparent
-          fancybox>a>img
-            margin-left: 4px
-            height: 1.4em
+
     span>img
       display: inline-block
 
@@ -353,6 +351,28 @@ details
         &.hl
           box-shadow: $boxshadow-card-float
 
+div.hoverbox
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  >div.target
+    display: none
+    position: absolute
+    background: $color-card
+    border-radius: $borderradius
+    box-shadow: $boxshadow-card-float
+    padding: 8px
+    margin-left: -4px
+    margin-top: 0 - 4px - 64px - 40px
+    >img
+      margin: 0
+      padding: 0
+      height: 128px
+      width: 128px
+  &:hover
+    >div.target
+      display: flex
 
 .comments
   .article
