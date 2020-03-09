@@ -53,7 +53,9 @@
                 <% if (value.target) { %>
                   target="<%- value.target %>"
                 <% } %>
-                id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>">
+                <% if (value.url) { %>
+                  id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
+                <% } %>>
                 <% if (value.icon) { %>
                   <i class='<%= value.icon %> fa-fw'></i>
                 <% } %>
@@ -70,7 +72,6 @@
           <% } %>
           <% menu_desktop.forEach(function(value){ %>
             <% menu(value) %>
-
           <%})%>
 				</ul>
 			</div>
