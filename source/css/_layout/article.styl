@@ -104,8 +104,7 @@
       &:before
         content: none
   h1,h2
-    padding-top: "calc(%s + 1rem)" % $navbar-height
-    margin-top: "calc(%s - 1rem)" % ($gap-h2 - $navbar-height)
+    margin-top: $gap-h2
     padding-bottom: .2em
     border-bottom: 1px solid alpha($color-text, 10%)
   h1
@@ -115,22 +114,19 @@
     text-align: $textalign-h2
     color: $color-h2
   h3
-    padding-top: "calc(%s + 1rem)" % $navbar-height
-    margin-top: "calc(%s - 1rem)" % ($gap-h3 - $navbar-height)
+    margin-top: $gap-h3
     text-align: $textalign-h3
     color: $color-h3
   h4
-    padding-top: "calc(1em + %s)" % ($navbar-height + $gap-line)
+    padding-top:$gap-h4
     text-align: $textalign-h4
     margin-bottom: $gap-line
     color: $color-h4
   h5
-    padding-top: "calc(1em + %s)" % ($navbar-height + $gap-line)
     font-weight: bold
     margin-bottom: $gap-line
     color: $color-h5
   h6
-    padding-top: "calc(1em + %s)" % ($navbar-height + $gap-line)
     margin-bottom: $gap-line
     color: $color-h6
 

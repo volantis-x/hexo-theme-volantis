@@ -220,9 +220,9 @@ var customSearch;
 			e.preventDefault();
 			e.stopPropagation();
 			if (e.target.tagName === 'A') {
-				scrolltoElement(e.target, 0);
+				scrolltoElement(e.target);
 			} else if (e.target.tagName === 'SPAN') {
-				scrolltoElement(e.target.parentElement, 0);
+				scrolltoElement(e.target.parentElement);
 			}
 			$toc.removeClass('active');
 		});

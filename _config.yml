@@ -29,6 +29,12 @@ style:
       h3: left
       h4: left
       p: justify
+  gap:
+    h2: 2.5em # H2标题上方的间距
+    h3: 1.5em # H3标题上方的间距
+    h4: 1em # H4标题上方的间距
+    line: 1rem # 段落间距
+    inline: .5rem # 区块内的段落间距
   fontfamily:
     bodyfont:
       name: 'Varela Round'
