@@ -31,6 +31,10 @@
     max-width: $layout-width
     margin: auto
     height: $navbar-height
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
     .nav-main
       trans()
       transform: translateY(0 - $navbar-height)
@@ -56,7 +60,6 @@
         trans()
         padding-left: $gap
         padding-right: 0
-  .wrapper.sub
     .nav-main
       trans()
       transform: translateY(0 - 2 * $navbar-height)
@@ -127,7 +130,19 @@
         border-radius: $borderradius * 0.5
         border: 1px solid darken($color-codeblock, 6)
         padding: $gap * 0.5 0
+        >hr
+          margin-top: $gap * 0.5
+          margin-bottom: $gap * 0.5
         >li
+          margin: -1px
+          white-space: nowrap
+          word-break: keep-all
+          &.header
+            font-size: $fontsize-footnote
+            font-weight: bold
+            line-height: 2em
+            color: $color-meta
+            margin: $gap * 0.5 $gap $gap * 0.25
           ul
             margin-left: 0
             display: none
@@ -139,13 +154,13 @@
           line-height: 33px
           padding: 0 $gap
           height: 32px
-          word-break: keep-all
-          white-space: nowrap
           border-left: $borderradius-line solid transparent
           &:hover,&.active,&:active
             color: $color-theme
             border-left: $borderradius-line solid $color-theme
             border-bottom: none
+          >i
+            margin-right: 4px
       &:hover
         >ul.submenu
           display: block
@@ -298,6 +313,9 @@
   transform: translate3d(-40px, -40px, 0) scale(0,0)
   transform-origin: right top
   trans()
+  a
+    i
+      margin-right: 4px
   &:hover
     box-shadow: $boxshadow-card-float
 
@@ -318,7 +336,6 @@
       &:hover,&.active
         border-left: 4px solid $color-theme
         background: bgcolor($color-theme)
-
 
 
 
