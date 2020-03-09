@@ -15,20 +15,19 @@
     </div>
 		<div class="nav-main container container--flex">
       <% if (theme.navbar.logo) { %>
-        <a class="logo flat-box" target="_self" href='<%- url_for("/") %>' >
-          <% if (theme.navbar.logo.img) { %>
-            <img class='logo' src='<%- theme.navbar.logo.img %>'/>
-          <% } else { %>
-            <% if (theme.navbar.logo.icon || theme.navbar.logo.title) { %>
-              <% if (theme.navbar.logo.icon) { %>
-                <i class='<%- theme.navbar.logo.icon %>'></i>
-              <% } %>
-              <% if (theme.navbar.logo.title) { %>
-                <%- theme.navbar.logo.title %>
-              <% } %>
-            <% } else { %>
-              <%- theme.info.name.toUpperCase() %> <b><sup style='color:<%- theme.info.version.indexOf('beta') > 0 ? '#ff9800':'#3AA757' %>'><%- theme.info.version %></sup></b>
-            <% } %>
+        <% let logo = theme.navbar.logo %>
+        <a class="logo flat-box" target="_self" href='<%- url_for("/") %>'>
+          <% if (logo.img) { %>
+            <img class='logo' src='<%- logo.img %>'/>
+          <% } %>
+          <% if (logo.icon) { %>
+            <i class='<%- logo.icon %>'></i>
+          <% } %>
+          <% if (logo.title) { %>
+            <%- logo.title %>
+          <% } %>
+          <% if (logo.title == undefined && logo.icon == undefined && logo.img == undefined) { %>
+            <%- theme.info.name.toUpperCase() %> <b><sup style='color:<%- theme.info.version.indexOf('beta') > 0 ? '#ff9800':'#3AA757' %>'><%- theme.info.version %></sup></b>
           <% } %>
         </a>
       <% } %>
@@ -87,12 +86,14 @@
 				</ul>
 			</div>
 
-      <div class="m_search">
-        <form name="searchform" class="form u-search-form">
-          <i class="icon fas fa-search fa-fw"></i>
-          <input type="text" class="input u-search-input" placeholder="<%- theme.navbar && theme.navbar.search %>" />
-        </form>
-      </div>
+      <% if (theme.search.enable === true) { %>
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="<%- theme.navbar && theme.navbar.search %>" />
+          </form>
+        </div>
+      <% } %>
 
 			<ul class='switcher h-list'>
 				<% if (theme.search.enable === true) { %>

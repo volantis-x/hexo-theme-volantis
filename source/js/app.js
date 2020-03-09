@@ -13,7 +13,7 @@ var customSearch;
 		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
 		$('html, body').animate({
 			'scrollTop': $elem.offset().top - correction
-		}, 750);
+		}, 500);
 	}
 
 	function setScrollAnchor() {

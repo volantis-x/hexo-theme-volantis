@@ -193,15 +193,13 @@
   </script>
 <% } %>
 
-<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.app) { %>
-  <%- js(theme.info.cdn.js.app) %>
+<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js) { %>
+  <%- js(theme.info.cdn.js) %>
 <% } else { %>
   <%- js(['js/app.js']) %>
 <% } %>
-<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.search) { %>
-  <%- js(theme.info.cdn.js.search) %>
-<% } else { %>
-  <%- js(['js/search.js']) %>
+<% if (theme.search && theme.search.enable && theme.search.js) { %>
+  <%- js(theme.search.js) %>
 <% } %>
 <% if (theme.plugins.comment_typing) { %>
   <%- js(theme.plugins.comment_typing) %>
