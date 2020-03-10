@@ -18,34 +18,21 @@
       &:hover
         background: bgcolor($color-theme)
         border-left: $borderradius-line solid $color-theme
-
       &:active
         border-left: 2 * $borderradius-line solid $color-theme
-
       &.active
         color: $color-theme
         border-left: $borderradius-line solid $color-theme
 
 
-
-  &.active
-    position: fixed
-    box-shadow: $boxshadow-card-float
-    top: $navbar-height
-    header
-      .s-toc
-        transform: rotate(30deg)
-    width: $sidebar
-    @media screen and (max-width: $device-desktop)
-      width: $sidebar-s
-    @media screen and (max-width: $device-tablet)
-      width: "calc(100% - 2 * %s)" % $gap
   trans()
   @media screen and (max-width: $device-tablet)
     position: fixed
     max-height: 1000px
-    width: "calc(100% - 2 * %s)" % $gap
+    width: auto
+    max-width: "calc(100% - 2 * %s)" % $gap
     top: $navbar-height
+    right: $gap
     box-shadow: $boxshadow-card-float
     visibility: hidden
     transform: scale(0,0)
@@ -53,7 +40,8 @@
     &.active
       visibility: visible
       transform: scale(1,1)
-
+  @media screen and (max-width: $device-mobile-l)
+    right: 0
 
   a
     padding-left: 8px
@@ -61,7 +49,7 @@
     font-size: $fontsize-meta
     display: inline-block
 
-  ol
+  ul,ol
     .toc-item.toc-level-1
       .toc-child a
         padding-left: 0.8 * $gap
@@ -79,6 +67,10 @@
         padding-left: 3.2 * $gap
         font-weight: normal
     .toc-item.toc-level-5
+      .toc-child a
+        padding-left: 4 * $gap
+        font-weight: normal
+    .toc-item.toc-level-6
       .toc-child a
         padding-left: 4 * $gap
         font-weight: normal

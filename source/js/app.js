@@ -95,7 +95,7 @@ var customSearch;
 		});
 
 		// bind events to every btn
-		const $commentTarget = $('#comments');
+		const $commentTarget = $('.l_body .comments');
 		if ($commentTarget.length) {
 			$comment.click(e => {
 				e.preventDefault();
@@ -104,11 +104,16 @@ var customSearch;
 			});
 		} else $comment.remove();
 
-		const $tocTarget = $('.toc-wrapper');
+		const $tocTarget = $('.l_body .toc-wrapper');
 		if ($tocTarget.length && $tocTarget.children().length) {
 			$toc.click((e) => {
 				e.stopPropagation();
 				$tocTarget.toggleClass('active');
+				$toc.toggleClass('active');
+			});
+			$(document).click(function (e) {
+				$tocTarget.removeClass('active');
+				$toc.removeClass('active');
 			});
 		} else $toc.remove();
 
@@ -213,10 +218,10 @@ var customSearch;
 	function setTocToggle() {
 		const $toc = $('.toc-wrapper');
 		if ($toc.length === 0) return;
-		// $toc.click((e) => {
-		//     e.stopPropagation();
-		//     $toc.addClass('active');
-		// });
+		$toc.click((e) => {
+		    e.stopPropagation();
+		    $toc.addClass('active');
+		});
 		$(document).click(() => $toc.removeClass('active'));
 
 		$toc.on('click', 'a', (e) => {
@@ -228,6 +233,10 @@ var customSearch;
 				scrolltoElement(e.target.parentElement);
 			}
 			$toc.removeClass('active');
+			const $tocBtn = $('.s-toc');
+			if ($tocBtn.length > 0) {
+				$tocBtn.removeClass('active');
+			}
 		});
 
 		const liElements = Array.from($toc.find('li a'));

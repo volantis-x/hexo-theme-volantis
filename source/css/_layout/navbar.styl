@@ -289,7 +289,7 @@
       .logo
         opacity:0
       .m_search
-        $offset = 2.5 * $gap + 2 * $iconW
+        $offset = 3 * $gap + 2 * $iconW
         width: "calc(100% - %s)" % $offset
 
 
@@ -311,15 +311,17 @@ ul.menu-phone
     transform: scale(1,1)
 
   >li>a
-    font-size: $fontsize-body
-    line-height: 2.2
-    color: $color-text
-    padding: 0 $gap
-    i
-      margin-right: 4px
-    &.active
-      border-left: $borderradius-line solid $color-theme
-      background: bgcolor($color-theme)
+      display: block
+      font-size: $fontsize-body
+      color: $color-text
+      line-height: 33px
+      height: 32px
+      padding: 0 $gap
+      i
+        margin-right: 4px
+      &.active
+        border-left: $borderradius-line solid $color-theme
+        color: $color-theme
 
 
 .cover-wrapper

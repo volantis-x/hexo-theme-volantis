@@ -55,7 +55,7 @@
               </li>
             <% } else { %>
               <li>
-                <a class="nav flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
+                <a class="flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
                   <% if (value.rel) { %>
                     rel="<%- value.rel %>"
                   <% } %>
@@ -116,7 +116,7 @@
   %>
   <% menu_mobile.forEach(function(value){ %>
     <li>
-      <a class="nav flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
+      <a class="flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
         <% if (value.rel) { %>
           rel="<%- value.rel %>"
         <% } %>
