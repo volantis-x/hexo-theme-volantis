@@ -295,48 +295,33 @@
         width: "calc(100vw - %s)" % $offset
 
 
-.menu-phone
-  .header
-    border-top-left-radius: $borderradius
-    border-top-right-radius: $borderradius
-    background-color: alpha($color-card,90%)
-    color: $color-inner
-    padding: 8px $gap + 6px
+ul.menu-phone
+  display: none
+  @media screen and (max-width: $device-mobile)
+    display: block
   position: fixed
+  padding: $gap * 0.5 0
   top: $navbar-height + $gap
-  right: 0
-  z-index:9999 + 1
-  line-height: 2 * $gap
-  border-right: 0
+  right: $gap
+  z-index: 9999 + 1
   box-shadow: $boxshadow-card-float
   border-radius: $borderradius
+  trans()
   transform: scale(0,0)
   transform-origin: right top
-  trans()
-  a
+  &.show
+    transform: scale(1,1)
+
+  >li>a
+    font-size: $fontsize-body
+    line-height: 2.2
+    color: $color-text
+    padding: 0 $gap
     i
       margin-right: 4px
-  &:hover
-    box-shadow: $boxshadow-card-float
-
-  &:active
-    box-shadow: $boxshadow-card
-
-  nav
-    padding: $gap * 0.5 0px
-    .nav
-      height: 40px
-      line-height: 40px
-      position: relative
-      display: block
-      color: $color-text
-      padding: 2px 20px
-      border-left: 4px solid transparent
-      border-right: 4px solid transparent
-      &:hover,&.active
-        border-left: 4px solid $color-theme
-        background: bgcolor($color-theme)
-
+    &.active
+      border-left: $borderradius-line solid $color-theme
+      background: bgcolor($color-theme)
 
 
 .cover-wrapper

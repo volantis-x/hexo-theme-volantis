@@ -151,13 +151,14 @@ var customSearch;
 
 	function setHeaderMenuPhone() {
 		var $switcher = $('.l_header .switcher .s-menu');
+		var $menu = $('body ul.menu-phone');
 		$switcher.click(function (e) {
 			e.stopPropagation();
-			$('body').toggleClass('z_menu-open');
+			$menu.toggleClass('show');
 			$switcher.toggleClass('active');
 		});
 		$(document).click(function (e) {
-			$('body').removeClass('z_menu-open');
+			$menu.removeClass('show');
 			$switcher.removeClass('active');
 		});
 	}
