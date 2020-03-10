@@ -47,12 +47,9 @@
         cursor: default
     a.logo
       color: $color-text
-
-
   &.no_sidebar
     .wrapper
-      max-width: $device-tablet
-      margin: auto
+      max-width: $layout-width - $sidebar
 
   .wrapper.sub
     .logo
@@ -195,14 +192,14 @@
 
     @media screen and (max-width: $device-tablet)
       .s-toc
-        display: block
+        display: flex
     &>li
       height: $navbar-height - $gap
       trans()
       margin: 2px
       $height = $navbar-height - $gap
       @media screen and (max-width: $device-mobile)
-        margin: 0
+        margin: 0 1px
         height: $height
 
       a
@@ -211,10 +208,11 @@
         align-items: center
         width: $height
         height: $height
+        padding: .85em 1.1em
         border-radius: 100px
         trans()
         color: $color-theme
-        &:hover
+        &.active,&:active
           background: bgcolor($color-theme)
         @media screen and (max-width: $device-mobile)
           width: $iconW
@@ -291,8 +289,8 @@
       .logo
         opacity:0
       .m_search
-        $offset = 2 * ($gap + $iconW)
-        width: "calc(100vw - %s)" % $offset
+        $offset = 2.5 * $gap + 2 * $iconW
+        width: "calc(100% - %s)" % $offset
 
 
 ul.menu-phone

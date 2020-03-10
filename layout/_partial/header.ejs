@@ -7,9 +7,9 @@
     <div class='nav-sub container--flex'>
       <a class="logo flat-box"></a>
       <ul class='switcher h-list'>
-        <li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
         <% if (page.sidebar == undefined || page.sidebar != false) { %>
-          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
         <% } %>
       </ul>
     </div>
@@ -97,9 +97,9 @@
 
 			<ul class='switcher h-list'>
 				<% if (theme.search.enable === true) { %>
-					<li class='s-search'><a class="fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
 				<% } %>
-				<li class='s-menu'><a class="fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
 			</ul>
 		</div>
 	</div>

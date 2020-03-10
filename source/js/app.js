@@ -172,9 +172,11 @@ var customSearch;
 			e.stopPropagation();
 			$header.toggleClass('z_search-open');
 			$search.find('input').focus();
+			$switcher.toggleClass('active');
 		});
 		$(document).click(function (e) {
 			$header.removeClass('z_search-open');
+			$switcher.removeClass('active');
 		});
 		$search.click(function (e) {
 			e.stopPropagation();

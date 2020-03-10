@@ -1,3 +1,44 @@
+.l_body
+  position: relative
+  margin: $gap
+  &.nocover
+    margin-top: $gap + $navbar-height
+  @media screen and (max-width: $device-mobile-l)
+    margin: $navbar-height + $gap 0 $gap
+    &.nocover
+      margin-top: $navbar-height - $gap
+
+  .s-top
+    trans(0.6s)
+    z-index: 9
+    position: fixed
+    width: 48px
+    height: 48px
+    line-height: 48px
+    border-radius: 100%
+    bottom: $gap*2
+    right: $gap*2
+    transform: translateY(100px) scale(0)
+    transform-origin: bottom
+    color: $color-text
+    @media screen and (max-width: $device-tablet)
+      right: $gap
+    &.show
+      transform: translateY(0) scale(1)
+      &.hl
+        background: $color-theme
+        color: $color-inner
+        box-shadow: $boxshadow-card
+    @media screen and (min-width: $device-tablet)
+      &:hover
+        transform: scale(1.2)
+        border-radius: 25%
+        background: $color-theme
+        color: white
+        box-shadow: $boxshadow-card-float
+        &.hl
+          box-shadow: $boxshadow-card-float
+
 .l_main
   width: "calc(100% - 1 * %s)" % $sidebar
   @media screen and (max-width: $device-desktop)
@@ -8,7 +49,7 @@
   &.no_sidebar
     width: 100%
     padding-right: 0
-    max-width: $device-tablet
+    max-width: $layout-width - $sidebar
     margin: auto
     ~.l_side
       display: none
@@ -17,14 +58,11 @@
     position: relative
     margin: $gap auto
     column-gap: $gap
-    @media screen and (max-width: $device-mobile)
-      margin: 0
+    // @media screen and (max-width: $device-mobile)
+    //   margin: 0
 
     &.multiple-columns
       columns: 320px // 支持多列
-
-    :first-child
-      // margin-top: 0
 
 
   ul.popular-posts
@@ -35,9 +73,8 @@
 
 
   .post-wrapper
-      // for firefox
-      column-break-inside: avoid
-      break-inside: avoid-column
+    column-break-inside: avoid
+    break-inside: avoid-column
 
   mobile-post()
     .post
@@ -82,11 +119,11 @@
     margin: $gap auto
     padding: 1.5 * $gap
     border-radius: $borderradius
+    @media screen and (max-width: $device-mobile-l)
+      border-radius: 0
     h1
       font-weight: normal
       font-size: $fontsize-h1
-    @media screen and (max-width: $device-mobile)
-      border-radius: 0
     .meta
       color: $color-meta
       &#header-meta
@@ -300,52 +337,6 @@ details
   align-items: center
 
 
-.l_body
-  position: relative
-  margin: $gap
-  margin-top: $gap
-  &.nocover
-    margin-top: $gap + $navbar-height
-
-  @media screen and (max-width: $device-mobile)
-    margin: $navbar-height + $gap 0 $gap
-    border-radius: 0
-    &.nocover
-      margin-top: $navbar-height - $gap
-
-  .s-top
-    trans(0.6s)
-    z-index: 9
-    position: fixed
-    width: 48px
-    height: 48px
-    line-height: 48px
-    border-radius: 100%
-    bottom: $gap*2
-    right: $gap*2
-    transform: translateY(100px) scale(0)
-    transform-origin: bottom
-    color: $color-text
-    @media screen and (max-width: $device-tablet)
-      right: $gap
-
-    &.show
-      transform: translateY(0) scale(1)
-      &.hl
-        background: $color-theme
-        color: $color-inner
-        box-shadow: $boxshadow-card
-
-
-    @media screen and (min-width: $device-tablet)
-      &:hover
-        transform: scale(1.2)
-        border-radius: 25%
-        background: $color-theme
-        color: white
-        box-shadow: $boxshadow-card-float
-        &.hl
-          box-shadow: $boxshadow-card-float
 
 div.hoverbox
   display: flex
