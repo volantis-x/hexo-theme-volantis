@@ -19,20 +19,16 @@
       margin-top: 8vh
   &.half
     margin-bottom: -100px
-    max-height: 500px
+    max-height: 640px
+    min-height: 360px
     .cover-body
       div.b
-        margin-top: 5vh
-    height: "calc(60vh - %s + 120px)" % $navbar-height
-    @media screen and (max-width: $device-laptop)
-      height: "calc(36vh - %s + 200px)" % $navbar-height
-    @media screen and (max-width: $device-tablet)
-      height: "calc(40vh - %s + 160px)" % $navbar-height
+        margin-top: 10%
+    height: "calc(36vh - %s + 200px)" % $navbar-height
     @media screen and (max-width: $device-mobile)
       .cover-body
-        div[a]
-          margin-top: 5vh
-      height: "calc(24vh - %s + 280px)" % $navbar-height
+        div.a
+          margin-top: 4vh
 
   .scroll-down
     width: 100%
@@ -76,6 +72,13 @@
   .logo
     max-height: 100px
     max-width: "calc(100% - 4 * %s)" % $gap
+  @media screen and (min-height: 1024px)
+    .title
+      font-size: $fontsize-large * 1.2
+    .subtitle
+      font-size: $fontsize-meta * 1.2
+    .logo
+      max-height: 150px
   .m_search
     $iconW = 32px
     $iconMargin = 4px
