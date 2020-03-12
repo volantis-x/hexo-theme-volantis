@@ -67,8 +67,8 @@ cover:
     archive: true
     others: false # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
-  title: Volantis
-  subtitle: 'A Wonderful Theme for Hexo'
+  title: Safety
+  subtitle: 谨言慎行，君子之道
   search: # search bar placeholder
   features:
     - name: 文档
