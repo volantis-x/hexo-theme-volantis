@@ -1,7 +1,7 @@
 .l_side .toc-wrapper
   z-index: 1
   overflow: hidden
-  border-radius: $borderradius
+  border-radius: $border-card
   position: sticky
   top: $navbar-height + $gap
   trans()
@@ -14,15 +14,15 @@
     max-height: "calc(100vh - %s)" % ($gap * 5 + $navbar-height)
     overflow: auto
     a
-      border-left: $borderradius-line solid transparent
+      border-left: $border-line solid transparent
       &:hover
         background: bgcolor($color-theme)
-        border-left: $borderradius-line solid $color-theme
+        border-left: $border-line solid $color-theme
       &:active
-        border-left: 2 * $borderradius-line solid $color-theme
+        border-left: 2 * $border-line solid $color-theme
       &.active
         color: $color-theme
-        border-left: $borderradius-line solid $color-theme
+        border-left: $border-line solid $color-theme
 
 
   trans()
@@ -35,7 +35,7 @@
     right: $gap
     box-shadow: $boxshadow-card-float
     visibility: hidden
-    transform: scale(0,0)
+    transform: scale(0,0) rotate(12deg)
     transform-origin: right top
     &.active
       visibility: visible

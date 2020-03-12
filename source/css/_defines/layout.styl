@@ -25,12 +25,14 @@ $gap-line = convert(hexo-config('style.gap.line')) || 1rem      // 段落间距
 $gap-inline = convert(hexo-config('style.gap.inline')) || .5rem   // 块内行间距
 $gap-card = $gap
 
+// border width
+$border-line = 2px
+
 // border radius
-$borderradius = convert(hexo-config('style.border_radius.card')) || 12px
-$borderradius-codeblock = 4px
-$borderradius-line = 2px
-$borderradius-searchbar = 8px
-$borderradius-button = 2px
+$border-card = convert(hexo-config('style.border_radius.card')) || 12px
+$border-codeblock = convert(hexo-config('style.border_radius.codeblock')) || 4px
+$border-searchbar = convert(hexo-config('style.border_radius.searchbar')) || 8px
+$border-button = convert(hexo-config('style.border_radius.button')) || 2px
 
 // text align
 $textalign-h1 = convert(hexo-config('style.body.text_align.h1')) || left

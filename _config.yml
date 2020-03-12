@@ -32,6 +32,26 @@ style:
     h4: 1em # Spacing above H4
     line: 1rem # Paragraph spacing
     inline: .5rem # Paragraph spacing within a block
+  border_radius:
+    card: 12px
+    codeblock: 4px
+    searchbar: 8px
+    button: 4px
+  tabs:
+    shadow_level: 1 # 0, 1, 2, 3
+  fontsize:
+    root: 16px
+    h1: 1.625rem
+    h2: 1.375rem
+    h3: 1.25rem
+    h4: 1.125rem
+    h5: 1rem
+    h6: 1rem
+    body: 1rem
+    list: .9375rem
+    meta: .875rem
+    code: .8125rem
+    footnote: .75rem
   fontfamily:
     bodyfont:
       name: 'Varela Round'

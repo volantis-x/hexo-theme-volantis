@@ -122,9 +122,9 @@
         position: absolute
         background: $color-card
         box-shadow: $boxshadow-float
-        margin-top: -2px - $borderradius * 0.5
+        margin-top: -2px - $border-card * 0.5
         margin-left: 0
-        border-radius: $borderradius * 0.5
+        border-radius: $border-card * 0.5
         border: 1px solid darken($color-codeblock, 6)
         padding: $gap * 0.5 0
         >hr
@@ -151,10 +151,10 @@
           line-height: 33px
           padding: 0 $gap
           height: 32px
-          border-left: $borderradius-line solid transparent
+          border-left: $border-line solid transparent
           &:hover,&.active,&:active
             color: $color-theme
-            border-left: $borderradius-line solid $color-theme
+            border-left: $border-line solid $color-theme
             border-bottom: none
           >i
             margin-right: 4px
@@ -168,16 +168,16 @@
       padding: 0 8px
       color: alpha($color-text, 85%)
       &.current
-        border-bottom: $borderradius-line solid alpha($color-theme, 80%)
+        border-bottom: $border-line solid alpha($color-theme, 80%)
 
       &:hover
         color: $color-theme
-        border-bottom: $borderradius-line solid $color-theme
+        border-bottom: $border-line solid $color-theme
         background: bgcolor($color-theme)
 
       &:active,&.active
         color: $color-theme
-        border-bottom: $borderradius-line solid $color-theme
+        border-bottom: $border-line solid $color-theme
 
 
     @media screen and (max-width: $device-mobile)
@@ -260,7 +260,7 @@
       box-sizing: border-box
       padding-left: $iconW + $iconMargin
       font-size: $fontsize-meta
-      border-radius: $borderradius-searchbar
+      border-radius: $border-searchbar
       border: 1px dashed transparent
       @media screen and (max-width: $device-mobile)
         padding-left: $gap * 0.5
@@ -303,9 +303,9 @@ ul.menu-phone
   right: $gap
   z-index: 9999 + 1
   box-shadow: $boxshadow-card-float
-  border-radius: $borderradius
+  border-radius: $border-card * 0.5
   trans()
-  transform: scale(0,0)
+  transform: scale(0,0) rotate(12deg)
   transform-origin: right top
   &.show
     transform: scale(1,1)
@@ -317,11 +317,11 @@ ul.menu-phone
       line-height: 33px
       height: 32px
       padding: 0 $gap
-      border-left: $borderradius-line solid transparent
+      border-left: $border-line solid transparent
       i
         margin-right: 4px
       &.active
-        border-left: $borderradius-line solid $color-theme
+        border-left: $border-line solid $color-theme
         color: $color-theme
 
 

@@ -54,7 +54,7 @@
       font-family: $fontfamily-code
       background: $color-mathjax
       padding: $gap $gap * 0.5
-      border-radius: $borderradius-codeblock
+      border-radius: $border-codeblock
       .mjx-chtml.MJXc-display
         margin: 0
 
@@ -145,8 +145,8 @@
 
   blockquote
     background: bgcolor($color-blockquote)
-    border-left: $borderradius-codeblock solid $color-blockquote
-    border-radius: $borderradius-codeblock
+    border-left: $border-codeblock solid $color-blockquote
+    border-radius: $border-codeblock
 
   blockquote,div.info,div.success,div.warning,div.danger
     &,p,ul,ol
@@ -178,7 +178,7 @@
     &.pullquote
       &.right
         border-left: none
-        border-right: $borderradius-codeblock solid $color-blockquote
+        border-right: $border-codeblock solid $color-blockquote
         p
           text-align: right
 
@@ -196,7 +196,7 @@
     padding: $gap
 
   div>pre
-    border-radius: $borderradius-codeblock
+    border-radius: $border-codeblock
     &>code
       padding: 0
       margin: 0
@@ -231,7 +231,7 @@
     background: transparent
     margin: $gap-line 0
     box-shadow: none
-    border-radius: $borderradius-codeblock
+    border-radius: $border-codeblock
     cursor: auto
     background: $color-block
     padding: $gap * 0.5 0
