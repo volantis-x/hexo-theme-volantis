@@ -67,8 +67,8 @@ cover:
     archive: true
     others: false # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
-  title: Safety
-  subtitle: 谨言慎行，君子之道
+  title: Functional Safety
+  subtitle: 「谨言慎行，君子之道」
   search: # search bar placeholder
   features:
     - name: 文档
@@ -335,10 +335,10 @@ footer:
     - icon: fas fa-envelope
       url: mailto:me@xaoxuu.com
     - icon: fab fa-github
-      url: https://github.com/xaoxuu
+      url: https://github.com/jigangujs
     - icon: fas fa-headphones-alt
-      url: https://music.163.com/#/user/home?id=63035382
-  copyright: '[Copyright © 2017-2020 Mr. X](https://xaoxuu.com)'
+      url: https://music.163.com/#/song?id=32341324
+  copyright: '[Copyright © 2020~ Mr. Gang](https://jigangujs.github.io)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
