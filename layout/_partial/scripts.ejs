@@ -35,7 +35,7 @@
   </script>
 <% } %>
 <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.js) { %>
-  <%- js({src: theme.plugins.nodewaves.js, async: true }) %>
+  <%- js({src: theme.plugins.nodewaves.js}) %>
   <script type="text/javascript">
     $(function() {
       Waves.attach('.flat-btn', ['waves-button']);

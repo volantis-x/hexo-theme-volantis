@@ -1,12 +1,6 @@
 <script src="<%- theme.plugins.clipboard %>"></script>
 <script>
-  /*页面载入完成后，创建复制按钮*/
   !function (e, t, a) {
-    /* code */
-    function on_success(){
-      let $btn = $('.highlight .code pre');
-      console.log($btn);
-    }
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
