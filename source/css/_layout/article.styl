@@ -93,14 +93,16 @@
     &:active
       color: darken($color-hover, 25%)
 
-
   h1,h2,h3,h4,h5,h6
     position: relative
+    pointer-events: none
     &:before
       content: ''
       display: block
-      height: $navbar-height + 2 * $gap
       margin-top: 0 - $navbar-height - 2 * $gap
+      height: $navbar-height + 2 * $gap
+      visibility: hidden
+      pointer-events: none
     &:first-child
       margin-top: 0
       padding-top: 0
