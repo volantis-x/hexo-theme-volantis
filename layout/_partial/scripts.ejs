@@ -220,7 +220,7 @@
 <%}%>
 
 <!-- 复制 -->
-<% if (theme.plugins.clipboard) { %>
+<% if (theme.plugins.clipboard && theme.style.body.highlight.copy_btn) { %>
   <%- partial('_third-party/clipboard') %>
 <% } %>
 

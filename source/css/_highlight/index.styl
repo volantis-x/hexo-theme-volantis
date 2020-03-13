@@ -7,7 +7,6 @@
   position: relative
   width: 100%
   margin: $gap-line 0
-  overflow: auto
   display: block
   background: $color-codeblock
   font-size: $fontsize-code
@@ -23,6 +22,8 @@
 
 
   table
+    overflow: auto
+    display: block
     td,th
       padding: 0
       border: none
@@ -36,7 +37,7 @@
 
 
     .gutter
-      width: 24px
+      disable-user-select()
       padding: 0 12px
       text-align: right
       border-width: 0
@@ -45,7 +46,7 @@
       left: 0
       background-color: darken($color-codeblock, 5%)
       pre
-          color: $color-meta
+        color: $color-meta
 
 
     pre

@@ -31,10 +31,7 @@
     max-width: $layout-width
     margin: auto
     height: $navbar-height
-    -webkit-user-select: none
-    -moz-user-select: none
-    -ms-user-select: none
-    user-select: none
+    disable-user-select()
     .nav-main
       trans()
       transform: translateY(0 - $navbar-height)
