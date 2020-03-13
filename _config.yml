@@ -4,8 +4,8 @@ info:
   version: '2.1.3'
   docs: https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.3/css/style.css
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.3/js/app.js
+    # css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.3/css/style.css
+    # js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.3/js/app.js
 
 
 ############################### Style ###############################
@@ -28,9 +28,9 @@ style:
       h4: left
       p: justify
   gap:
-    h2: 2.5em # Spacing above H2
-    h3: 1.5em # Spacing above H3
-    h4: 1em # Spacing above H4
+    h2: 48px # Spacing above H2 (only px unit)
+    h3: 32px # Spacing above H3 (only px unit)
+    h4: 16px # Spacing above H4 (only px unit)
     line: 1rem # Paragraph spacing
     inline: .5rem # Paragraph spacing within a block
   border_radius:
