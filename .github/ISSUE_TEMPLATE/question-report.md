@@ -2,7 +2,7 @@
 name: Question Report
 about: I have a question for Volantis (e.g. Customize)
 title: ''
-labels: Question
+labels: 'New,Question'
 assignees: ''
 
 ---
