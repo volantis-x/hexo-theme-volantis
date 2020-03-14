@@ -14,12 +14,13 @@ style:
   navbar:
     height: 64px
     effect: [shadow, blur] # [shadow, floatable, blur]
-  sidebar:
+  sidebar: 
     effect: [shadow] # [shadow, floatable, blur]
   body:
     effect: [shadow] # [shadow, floatable, blur]
     highlight:
-      language: false # show language of codeblock
+      language: true # show language of codeblock
+      copy_btn: true
     text_align: # left, right, justify, center
       h1: left
       h2: left
@@ -64,19 +65,19 @@ cover:
   scheme: docs # docs, blog
   display:
     home: true
-    archive: true
+    archive: false
     others: false # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
   title: Functional Safety
   subtitle: 「谨言慎行，君子之道」
   search: # search bar placeholder
   features:
-    - name: 文档
+    - name: 简历
       icon: fas fa-book
-      url: https://volantis.js.org/getting-started/
+      url: /resume
     - name: 博文
       icon: fas fa-rss
-      url: https://volantis.js.org/archives/
+      url: https://rsshub.app
     - name: 示例
       icon: fas fa-play-circle
       url: https://volantis.js.org/examples/
@@ -100,24 +101,24 @@ navbar:
     # The following can be written in `blog/source/_data/menu.yml`
     # This menu will be displayed on the laptop or desktop.
     on_desktop:
-      - name: 博客
+      - name: 资讯
         icon: fas fa-rss
         url: /
       - name: 分类
         icon: fas fa-folder-open
-        url: categories/
+        url: /categories/
       - name: 标签
         icon: fas fa-tags
-        url: tags/
+        url: /tags/
       - name: 归档
         icon: fas fa-archive
-        url: archives/
+        url: /archives/
       - name: 友链
         icon: fas fa-link
-        url: friends/
+        url: /friends/
       - name: 关于
         icon: fas fa-info-circle
-        url: about/
+        url: /about/
     # This menu will be displayed on the mobile.
     on_mobile:
       - name: 博客
@@ -158,7 +159,7 @@ layout:
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
-      header: [title, author, category, date, top]
+      header: [title, author, category, date, counter, tags, top]
       footer: [updated, tags, btns, share]
     # 文章页面的侧边栏
     sidebar: [qrcode, toc]
@@ -175,9 +176,9 @@ meta:
   title: # 暂无配置
   # 默认文章作者（可在front-matter中覆盖）
   author:
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
-    name: Mr. X
-    url: https://xaoxuu.com
+    avatar: https://s1.ax1x.com/2020/03/12/8mVbbd.md.jpg
+    name: Mr. Gang
+    url: https://jigangujs.github.io
   # 文章创建日期
   date:
     icon: fas fa-edit
@@ -253,8 +254,8 @@ widget:
   blogger:
     class: blogger
     display: [desktop] # [desktop, mobile]
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
-    title:
+    avatar: https://s1.ax1x.com/2020/03/12/8mVbbd.md.jpg
+    title: 关于我
     subtitle:
     jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
     social: true
@@ -266,7 +267,7 @@ widget:
     header:
       icon: fas fa-list
       title: 本文目录
-    list_number: false
+    list_number: true
     min_depth: 2
     max_depth: 5
   # ---------------------------------------
@@ -328,17 +329,17 @@ widget:
 
 footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, info, copyright]
+  layout: [aplayer,   license, copyright, info]
   social:
     - icon: fas fa-rss
       url: atom.xml
     - icon: fas fa-envelope
-      url: mailto:me@xaoxuu.com
+      url: mailto:jigang@vivaldi.net
     - icon: fab fa-github
       url: https://github.com/jigangujs
     - icon: fas fa-headphones-alt
-      url: https://music.163.com/#/song?id=32341324
-  copyright: '[Copyright © 2020~ Mr. Gang](https://jigangujs.github.io)'
+      url: https://music.163.com/#/my/m/music/playlist?id=39495906
+  copyright: '[Copyright © 2020 Gang](https://jigangujs.github.io)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
@@ -405,7 +406,7 @@ plugins:
     fade: 1500            # fade duration (ms) (Not more than 1500)
     white_text: #true     # Whether the picture is dark (adjust the text to white)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
+      - https://s1.ax1x.com/2020/03/12/8mVbbd.jpg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg
@@ -428,7 +429,7 @@ plugins:
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
-    id: 3175833810    # song id / playlist id / album id / search keyword
+    id: 39495906    # song id / playlist id / album id / search keyword
     # Optional
     fixed: false      # enable fixed mode
     theme: '#1BCDFC'  # main color
