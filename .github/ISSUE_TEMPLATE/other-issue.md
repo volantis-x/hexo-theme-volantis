@@ -2,7 +2,7 @@
 name: Other Issue
 about: Others
 title: ''
-labels: 'New'
+labels: 'new'
 assignees: ''
 
 ---
