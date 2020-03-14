@@ -22,20 +22,8 @@ Please check if your Issue fulfills the following requirements. This will guide 
 
 ***
 
-## Expected behavior <!-- 预期行为 -->
+## Describe your question <!-- 描述您的问题 -->
 
-
-## Actual behavior <!-- 实际行为 -->
-<!-- Please provide at least one of the following information (请至少提供以下的一项信息) -->
-
-- Links to demo site with this issue: N/A
-- Links to repository or source code of the blog: N/A
-
-
-## Steps to reproduce the behavior <!-- 重现步骤 -->
-1. N/A
-2. N/A
-3. N/A
 
 
 ## Environment Information
