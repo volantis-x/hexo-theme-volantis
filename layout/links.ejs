@@ -2,7 +2,7 @@
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <article id="<%= page.layout %>" class="post white-box <%- theme.style.body.effect.join(' ') %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
     <%- partial('_partial/meta',{post:page, position:'header'}) %>
-      <section class="article typo l_friends">
+      <section class="article article-entry l_friends">
         <%- page.excerpt %>
         <% if (page.links){ %>
           <% (page.links||[]).forEach(function(group){ %>

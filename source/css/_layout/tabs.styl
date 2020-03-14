@@ -12,6 +12,7 @@ div.tabs
   margin-bottom: $gap-line
   border-bottom: 0
   border-radius: $tbr
+  background: lighten($color-block, 2)
   if hexo-config('style.tabs.shadow_level') == 0
     box-shadow: none
   else if hexo-config('style.tabs.shadow_level') == 1
@@ -62,7 +63,6 @@ div.tabs
   .tab-content
     overflow: hidden
     .tab-pane
-      background: lighten($color-block, 2)
       border-top: 0
       border-radius: $tbr
       padding: $gap-inline $gap
