@@ -1,5 +1,10 @@
 $table-border-color = $color-block
-$tbr = $borderradius-codeblock
+$tbr = $border-codeblock
+
+div.tabs
+  .highlight,p,ul,ol
+    margin-top: $gap-inline
+    margin-bottom: $gap-inline
 div.tabs
   display: block
   position: relative
@@ -7,47 +12,57 @@ div.tabs
   margin-bottom: $gap-line
   border-bottom: 0
   border-radius: $tbr
-  a
-    color: $color-text
-    &:hover
-      text-decoration: none
-
+  background: lighten($color-block, 2)
+  if hexo-config('style.tabs.shadow_level') == 0
+    box-shadow: none
+  else if hexo-config('style.tabs.shadow_level') == 1
+    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1)
+  else if hexo-config('style.tabs.shadow_level') == 2
+    box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.1)
+  else if hexo-config('style.tabs.shadow_level') == 3
+    box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.1)
+  else if hexo-config('style.tabs.shadow_level') == 4
+    box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.1), 0 8px 16px 0px rgba(0, 0, 0, 0.1)
+  else
+    box-shadow: $boxshadow-card
 
 div.tabs
   ul.nav-tabs
     display: flex
-    overflow-x: scroll
+    overflow-x: auto;
     white-space: nowrap
     justify-content: flex-start
     margin: 0
     padding: 0
-    padding-top: $borderradius-line
+    padding-top: $border-line
     background: darken($color-block, 2)
     border-radius: $tbr $tbr 0 0
+    padding: 0 4px
     li.tab
       list-style-type: none
       border-radius: $tbr $tbr 0 0
       a
         display: block
         padding: $gap * 0.5
-        margin: 0 $gap * 0.25
+        margin: 0 2px
         text-align: center
         font-size: $fontsize-meta
         font-weight: bold
         color: $color-meta
-        border-bottom: $borderradius-line solid transparent
+        border-top: $border-line solid transparent
+        border-bottom: $border-line solid transparent
         &:hover
+          text-decoration: none
           color: $color-p
-          border-bottom: $borderradius-line solid $color-meta
+          border-bottom: $border-line solid $color-meta
       &.active a
         cursor: default
         color: $color-p
-        border-bottom: $borderradius-line solid $color-meta
+        border-bottom: $border-line solid $color-meta
 
   .tab-content
     overflow: hidden
     .tab-pane
-      background: lighten($color-block, 2)
       border-top: 0
       border-radius: $tbr
       padding: $gap-inline $gap

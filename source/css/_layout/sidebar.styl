@@ -16,7 +16,7 @@
   z-index: 0
   background: $color-card
   margin-top: $gap
-  border-radius: $borderradius
+  border-radius: $border-card
   width: 100%
   display: none
   &.desktop
@@ -35,8 +35,8 @@
 
 
   header
-    border-top-left-radius: $borderradius
-    border-top-right-radius: $borderradius
+    border-top-left-radius: $border-card
+    border-top-right-radius: $border-card
     font-weight: bold
     line-height: 1.5em
     padding: "calc(%s - 2px)" % $gap
@@ -69,7 +69,7 @@
         display: flex
         justify-content: space-between
         align-content: center
-        border-left: $borderradius-line solid transparent
+        border-left: $border-line solid transparent
         trans()
     ul.entry, ul.popular-posts
       a
@@ -84,11 +84,11 @@
           color: alpha($color-text, .7)
 
         &:hover
-          border-left: $borderradius-line solid $color-theme
+          border-left: $border-line solid $color-theme
           background: alpha($color-theme, .1)
 
         &.active
-          border-left: $borderradius-line solid $color-theme
+          border-left: $border-line solid $color-theme
           .name
             color: $color-theme
           .badge
@@ -96,7 +96,7 @@
 
 
         &:active
-          border-left: $borderradius-line * 2 solid $color-theme
+          border-left: $border-line * 2 solid $color-theme
 
         &.child
           padding-left: $gap * 2
@@ -117,8 +117,8 @@
         justify-content: center
         width: $sidebar
         height: $sidebar
-        border-top-left-radius: $borderradius
-        border-top-right-radius: $borderradius
+        border-top-left-radius: $border-card
+        border-top-right-radius: $border-card
         @media screen and (max-width: $device-desktop)
           width: $sidebar-s
           height: $sidebar-s
@@ -233,7 +233,7 @@
         padding: 0 $gap
         a
           text-align: center
-          border-radius: $borderradius
+          border-radius: $border-card
           margin: 4px 0
           padding: 4px 8px
           display: flex
@@ -358,4 +358,4 @@
   .aplayer-list
     text-align: left
   @media screen and (max-width: $device-mobile)
-    border-radius: $borderradius
+    border-radius: $border-card

@@ -228,9 +228,9 @@ var customSearch;
 			e.preventDefault();
 			e.stopPropagation();
 			if (e.target.tagName === 'A') {
-				scrolltoElement(e.target);
+				scrolltoElement(e.target, 0);
 			} else if (e.target.tagName === 'SPAN') {
-				scrolltoElement(e.target.parentElement);
+				scrolltoElement(e.target.parentElement, 0);
 			}
 			$toc.removeClass('active');
 			const $tocBtn = $('.s-toc');
@@ -311,16 +311,17 @@ var customSearch;
 			let $a = $tabs.find($nav[i].children[0]);
 			$a.addClass($a.attr("href"));
 			$a.removeAttr('href');
+			$('.tabs .nav-tabs').on('click', 'a', (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				$tabs.find('.nav-tabs .active').removeClass('active');
+				$tabs.find(e.target.parentElement).addClass('active');
+				$tabs.find('.tab-content .active').removeClass('active');
+				$tabs.find($(e.target).attr("class")).addClass('active');
+				return false;
+			});
 		}
-		$tabs.on('click', 'a', (e) => {
-			e.preventDefault();
-			e.stopPropagation();
-			$tabs.find('.nav-tabs .active').removeClass('active');
-			$tabs.find(e.target.parentElement).addClass('active');
-			$tabs.find('.tab-content .active').removeClass('active');
-			$tabs.find($(e.target).attr("class")).addClass('active');
-			return false;
-		});
+
 	}
 
 	$(function () {

@@ -35,7 +35,7 @@
   </script>
 <% } %>
 <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.js) { %>
-  <%- js({src: theme.plugins.nodewaves.js, async: true }) %>
+  <%- js({src: theme.plugins.nodewaves.js}) %>
   <script type="text/javascript">
     $(function() {
       Waves.attach('.flat-btn', ['waves-button']);
@@ -220,7 +220,7 @@
 <%}%>
 
 <!-- 复制 -->
-<% if (theme.plugins.clipboard) { %>
+<% if (theme.plugins.clipboard && theme.style.body.highlight.copy_btn) { %>
   <%- partial('_third-party/clipboard') %>
 <% } %>
 

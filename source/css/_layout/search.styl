@@ -1,5 +1,5 @@
 #u-search
-  $borderradius = 4px
+  $border-card = 4px
   display: none
   position: fixed
   top: 0
@@ -20,7 +20,7 @@
     margin: 64px 0px 0px -320px
     background: $color-card
     z-index: 3
-    border-radius: $borderradius
+    border-radius: $border-card
     overflow: hidden
     @media screen and (max-width: $modal-threshold)
       box-shadow: none
@@ -47,8 +47,8 @@
       width: 100%
       height: $navbar-height
       z-index: 3
-      border-top-left-radius: $borderradius
-      border-top-right-radius: $borderradius
+      border-top-left-radius: $border-card
+      border-top-right-radius: $border-card
       font-size: $fontsize
       box-shadow: $boxshadow-card
       background: darken($color-card, 5)
@@ -105,7 +105,7 @@
           @media screen and (max-width: $modal-threshold)
             padding: 0
           line-height: 2rem
-          border-radius: $borderradius
+          border-radius: $border-card
           vertical-align: middle
           border: none
           appearance: none
@@ -113,8 +113,8 @@
           background: transparent
           trans()
           &:focus
-            border-top-left-radius: $borderradius
-            border-top-right-radius: $borderradius
+            border-top-left-radius: $border-card
+            border-top-right-radius: $border-card
 
       #u-search-modal-btn-submit
         position: absolute
@@ -140,7 +140,6 @@
       height: 50px
       padding: 0px 15px
       background: $color-card
-      border-top: 1px solid alpha($color-text, .2)
       .logo
         position: absolute
         top: 0
@@ -208,7 +207,7 @@
       overflow-y: scroll
       -webkit-overflow-scrolling: touch
       background: $color-card
-      border-radius: $borderradius
+      border-radius: $border-card
       .modal-results
         list-style: none
         .result
@@ -216,7 +215,7 @@
           display: block
           padding: $gap
           text-decoration: none
-          border-radius: $borderradius
+          border-radius: $border-card
           b[mark]
             color: darken($color-theme, 10)
             text-decoration: underline

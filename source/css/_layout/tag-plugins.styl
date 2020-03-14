@@ -84,7 +84,7 @@ gray,p[gray]
       color: $color-p
     display: flex
     flex-wrap: wrap
-    margin: $gap-line  -0.5 * $gap
+    margin: 0 -0.5 * $gap
     align-items: flex-start
     &[wide]
       a
@@ -137,7 +137,7 @@ gray,p[gray]
     a
       trans()
       margin: $gap * 0.5
-      margin-top: "calc(1.25 * %s + 32px)" % $gap
+      margin-top: "calc(2.25 * %s + 32px)" % $gap
       min-width: 120px
       font-weight: bold
       display: flex
@@ -151,6 +151,7 @@ gray,p[gray]
         trans()
         height: 64px
         width: 64px
+        box-shadow: $boxshadow-card
         &[auto]
           width: auto
         margin: $gap $gap * 0.5 $gap * 0.25 $gap * 0.5

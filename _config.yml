@@ -1,11 +1,11 @@
 ############################### Basic Information ###############################
 info:
   name: Volantis
-  version: '2.1'
+  version: '2.1.4'
   docs: https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.0/css/style.css
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.0/js/app.js
+    # css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.4.3/css/style.css
+    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.4/js/app.js
 
 
 ############################### Style ###############################
@@ -28,11 +28,31 @@ style:
       h4: left
       p: justify
   gap:
-    h2: 2.5em # Spacing above H2
-    h3: 1.5em # Spacing above H3
-    h4: 1em # Spacing above H4
+    h2: 48px # Spacing above H2 (only px unit)
+    h3: 32px # Spacing above H3 (only px unit)
+    h4: 16px # Spacing above H4 (only px unit)
     line: 1rem # Paragraph spacing
     inline: .5rem # Paragraph spacing within a block
+  border_radius:
+    card: 12px
+    codeblock: 4px
+    searchbar: 8px
+    button: 4px
+  tabs:
+    shadow_level: 1 # 0, 1, 2, 3
+  fontsize:
+    root: 16px
+    h1: 1.625rem
+    h2: 1.375rem
+    h3: 1.25rem
+    h4: 1.125rem
+    h5: 1rem
+    h6: 1rem
+    body: 1rem
+    list: .9375rem
+    meta: .875rem
+    code: .8125rem
+    footnote: .75rem
   fontfamily:
     bodyfont:
       name: 'Varela Round'
@@ -148,9 +168,11 @@ layout:
   # 文章列表（主页、自定义的列表）布局
   on_list:
     # 列表中每一篇文章的meta信息
-    meta: [title, author, date, category, top]
+    meta: [title, author, category, date, wordcount, top]
     # 列表类页面的侧边栏
     sidebar: [blogger, category, tagcloud, qrcode]
+    # read more button
+    readmore: Read More <i class="fas fa-chevron-right"></i>
   # 页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
@@ -362,7 +384,7 @@ seo:
 ############################### Plugins ###############################
 plugins:
   # Required plugins:
-  jquery: https://cdn.jsdelivr.net/npm/jquery@3.3/dist/jquery.min.js
+  jquery: https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js
 
   ######## Plugins to improve loading speed:
   # Preload (The menu's url must end with ‘/’)
@@ -379,6 +401,9 @@ plugins:
 
   # Codeblock Copy Button
   clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
+
+  # mathjax
+  mathjax: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
   ######## Plugins for SEO:
   # Traffic statistics (very slow loading)
