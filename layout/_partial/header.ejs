@@ -63,7 +63,7 @@
                     target="<%- value.target %>"
                   <% } %>
                   <% if (value.url) { %>
-                    id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
+                    id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>"
                   <% } %>>
                   <% if (value.icon) { %>
                     <i class='<%= value.icon %> fa-fw'></i>
@@ -124,7 +124,7 @@
           target="<%- value.target %>"
         <% } %>
         <% if (value.url) { %>
-          id="<%= url_for(value.url).replace(/\/|%/g, "")?url_for(value.url).replace(/\/|%/g, ""):"home" %>"
+          id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>"
         <% } %>>
         <% if (value.icon) { %>
           <i class='<%= value.icon %> fa-fw'></i>

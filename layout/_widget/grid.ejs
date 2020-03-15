@@ -11,7 +11,7 @@
           <% if (row.target) { %>
             target="<%- row.target %>"
           <% } %>
-          id="<%= url_for(row.url).replace(/\/|%/g, "")?url_for(row.url).replace(/\/|%/g, ""):"home" %>">
+          id="<%= url_for(row.url).replace(/\/|%|\./g, "")?url_for(row.url).replace(/\/|%|\./g, ""):"home" %>">
           <% if (row.img) { %>
             <img src="<%- row.img %>">
           <% } else if(row.avatar) { %>
