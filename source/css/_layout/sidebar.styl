@@ -57,9 +57,9 @@
     $offset = $navbar-height + 12.5 * $gap
     max-height: "calc(100% - %s)" % $offset
     max-width: 100%
-    p
-      margin: $gap-inline 0
-
+    p,ul,ol,table,tabs,details
+      margin-top: $gap-inline
+      margin-bottom: $gap-inline
     ul>li
       a
         color: $color-meta

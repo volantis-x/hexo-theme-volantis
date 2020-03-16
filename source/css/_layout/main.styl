@@ -98,6 +98,11 @@
       mobile-post()
 
   .widget
+    .post
+      padding-top: 0
+      padding-bottom: 0
+      margin-top: $gap-inline
+      margin-bottom: $gap-inline
     &.grid .content .grid.fixed a
       width: "calc(100%/8 - 0 * %s)" % $gap
       @media screen and (max-width: $device-laptop)
@@ -307,6 +312,10 @@ details
     font-weight: bold
     &:hover
       color: alpha($color-p, .9)
+      &:after
+        float: right
+        content: '+'
+
   &[blue]
     background: bgcolor($color-md-blue)
   &[cyan]
@@ -317,7 +326,13 @@ details
     background: bgcolor($color-mac-yellow)
   &[red]
     background: bgcolor($color-mac-red)
-
+details[open]
+  summary
+    margin-bottom: 0
+    &:hover
+      color: alpha($color-p, .9)
+      &:after
+        content: '-'
 
 
 .body-wrapper

@@ -307,22 +307,22 @@ var customSearch;
 	function setTabs() {
 		const $tabs = $('.tabs');
 		if ($tabs.length === 0) return;
-		let $nav = $tabs.find('.nav-tabs .tab');
-		for (var i = 0; i < $nav.length; i++) {
-			let $a = $tabs.find($nav[i].children[0]);
+		let $navs = $tabs.find('.nav-tabs .tab');
+		for (var i = 0; i < $navs.length; i++) {
+			let $a = $tabs.find($navs[i].children[0]);
 			$a.addClass($a.attr("href"));
 			$a.removeAttr('href');
-			$('.tabs .nav-tabs').on('click', 'a', (e) => {
-				e.preventDefault();
-				e.stopPropagation();
-				$tabs.find('.nav-tabs .active').removeClass('active');
-				$tabs.find(e.target.parentElement).addClass('active');
-				$tabs.find('.tab-content .active').removeClass('active');
-				$tabs.find($(e.target).attr("class")).addClass('active');
-				return false;
-			});
 		}
-
+		$('.tabs .nav-tabs').on('click', 'a', (e) => {
+			e.preventDefault();
+			e.stopPropagation();
+			let $tab = $(e.target.parentElement.parentElement.parentElement);
+			$tab.find('.nav-tabs .active').removeClass('active');
+			$tab.find(e.target.parentElement).addClass('active');
+			$tab.find('.tab-content .active').removeClass('active');
+			$tab.find($(e.target).attr("class")).addClass('active');
+			return false;
+		});
 	}
 
 	$(function () {

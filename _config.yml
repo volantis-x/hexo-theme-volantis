@@ -1,7 +1,7 @@
 ############################### Basic Information ###############################
 info:
   name: Volantis
-  version: '2.1.4'
+  version: '2.1.5'
   docs: https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
     # css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.4.3/css/style.css
@@ -38,8 +38,6 @@ style:
     codeblock: 4px
     searchbar: 8px
     button: 4px
-  tabs:
-    shadow_level: 1 # 0, 1, 2, 3
   fontsize:
     root: 16px
     h1: 1.625rem
