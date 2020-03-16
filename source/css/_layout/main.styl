@@ -98,11 +98,15 @@
       mobile-post()
 
   .widget
-    .post
-      padding-top: 0
-      padding-bottom: 0
-      margin-top: $gap-inline
-      margin-bottom: $gap-inline
+    .content
+      p,ul,ol,table,.tabs,details
+        margin-top: $gap-inline
+        margin-bottom: $gap-inline
+      .post
+        padding-top: 0
+        padding-bottom: 0
+        margin-top: $gap-inline
+        margin-bottom: $gap-inline
     &.grid .content .grid.fixed a
       width: "calc(100%/8 - 0 * %s)" % $gap
       @media screen and (max-width: $device-laptop)
@@ -298,42 +302,81 @@
 
 details
   display: block
-  background: $color-block
   padding: $gap
   margin: $gap-line 0
+  overflow: hidden
   border-radius: $border-codeblock
+  border: 1px solid darken($color-block, 4)
   trans()
   summary
     cursor: pointer
+    background: $color-block
     padding: $gap
     margin: 0 - $gap
     color: alpha($color-p, .7)
     font-size: $fontsize-meta
     font-weight: bold
     &:hover
-      color: alpha($color-p, .9)
+      color: $color-p
       &:after
         float: right
         content: '+'
 
   &[blue]
-    background: bgcolor($color-md-blue)
+    border: 1px solid darken(bgcolor($color-md-blue), 4)
+    summary
+      background: bgcolor($color-md-blue)
   &[cyan]
-    background: bgcolor($color-mac-cyan)
+    border: 1px solid darken(bgcolor($color-mac-cyan), 4)
+    summary
+      background: bgcolor($color-mac-cyan)
   &[green]
-    background: bgcolor($color-mac-green)
+    border: 1px solid darken(bgcolor($color-mac-green), 4)
+    summary
+      background: bgcolor($color-mac-green)
   &[yellow]
-    background: bgcolor($color-mac-yellow)
+    border: 1px solid darken(bgcolor($color-mac-yellow), 4)
+    summary
+      background: bgcolor($color-mac-yellow)
   &[red]
-    background: bgcolor($color-mac-red)
+    border: 1px solid darken(bgcolor($color-mac-red), 4)
+    summary
+      background: bgcolor($color-mac-red)
+
 details[open]
+  border: 1px solid darken($color-block, 8)
   summary
-    margin-bottom: 0
+    border-bottom: 1px solid darken(bgcolor($color-block), 8)
+  &[blue]
+    border: 1px solid darken(bgcolor($color-md-blue), 8)
+    summary
+      border-bottom: 1px solid darken(bgcolor($color-md-blue), 8)
+  &[cyan]
+    border: 1px solid darken(bgcolor($color-mac-cyan), 8)
+    summary
+      border-bottom: 1px solid darken(bgcolor($color-mac-cyan), 8)
+  &[green]
+    border: 1px solid darken(bgcolor($color-mac-green), 8)
+    summary
+      border-bottom: 1px solid darken(bgcolor($color-mac-green), 8)
+  &[yellow]
+    border: 1px solid darken(bgcolor($color-mac-yellow), 8)
+    summary
+      border-bottom: 1px solid darken(bgcolor($color-mac-yellow), 8)
+  &[red]
+    border: 1px solid darken(bgcolor($color-mac-red), 8)
+    summary
+      border-bottom: 1px solid darken(bgcolor($color-mac-red), 8)
+  summary
+    color: $color-p
+    margin-bottom: $gap-line
     &:hover
-      color: alpha($color-p, .9)
       &:after
         content: '-'
-
+  >
+    p,.tabs,ul,ol
+      margin-top: $gap-inline
+      margin-bottom: $gap-inline
 
 .body-wrapper
   position: relative
