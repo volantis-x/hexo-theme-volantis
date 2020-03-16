@@ -4,10 +4,10 @@
       <img class='logo' src='<%- url_for(theme.cover.logo) %>'/>
     <% } %>
     <% if (theme.cover.title) { %>
-      <p class="title <%- theme.plugins.backstretch && theme.plugins.backstretch.white_text ? 'white' : '' %>"><%- theme.cover.title ? theme.cover.title : config.title %></p>
+      <p class="title"><%- theme.cover.title ? theme.cover.title : config.title %></p>
     <% } %>
     <% if (theme.cover.subtitle) { %>
-      <p class="subtitle <%- theme.plugins.backstretch && theme.plugins.backstretch.white_text ? 'white' : '' %>"><%- theme.cover.subtitle%></p>
+      <p class="subtitle"><%- theme.cover.subtitle%></p>
     <% } %>
   </div>
   <div class='b'>
@@ -24,7 +24,7 @@
         <% if (theme.cover.features) { %>
           <% (theme.cover.features || []).forEach(function(value){ %>
             <li>
-              <a class="nav home <%- theme.plugins.backstretch && theme.plugins.backstretch.white_text ? 'white' : '' %>"
+              <a class="nav home"
                 href="<%= url_for(value.url) %>"
                 <% if (value.rel) { %>
                   rel="<%- value.rel %>"

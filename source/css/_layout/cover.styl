@@ -9,11 +9,9 @@
   align-items: center
   align-self: center
   align-content: center
-  color: $color-p
+  color: $color-site-inner
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
   padding: $gap
-  .white
-    color: white
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
   .cover-body
     div.b
       margin-top: 8vh
@@ -140,17 +138,12 @@
       padding: 2px
       margin: 4px
       trans()
-      color: $color-p
+      color: alpha($color-site-inner, .65)
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
       border-bottom: 2px solid transparent
       &:hover, &.active, &:active
-        color: $color-theme
-        border-bottom: 2px solid $color-theme
-      &.white
-        color: alpha(white, .7)
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
-        &:hover, &.active, &:active
-          color: white
-          border-bottom: 2px solid white
+        color: $color-site-inner
+        border-bottom: 2px solid $color-site-inner
   .switcher
     & > li
       a
