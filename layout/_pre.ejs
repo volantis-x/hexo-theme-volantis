@@ -32,4 +32,18 @@ if (is_home() || is_category() || is_archive() || is_tag() || page.layout == 'li
 if (page.sidebar == false) {
   page.sidebar = [];
 }
+
+if (config.theme_config && config.theme_config.style) {
+  let style = config.theme_config.style;
+  if (style.navbar && style.navbar.effect) {
+    theme.style.navbar.effect = style.navbar.effect;
+  }
+  if (style.sidebar && style.sidebar.effect) {
+    theme.style.sidebar.effect = style.sidebar.effect;
+  }
+  if (style.body && style.body.effect) {
+    theme.style.body.effect = style.body.effect;
+  }
+}
+
 %>
