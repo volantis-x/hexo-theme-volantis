@@ -24,7 +24,7 @@
         <% if (theme.cover.features) { %>
           <% (theme.cover.features || []).forEach(function(value){ %>
             <li>
-              <a class="nav home"
+              <a class="nav home <%- theme.plugins.backstretch && theme.plugins.backstretch.white_text ? 'white' : '' %>"
                 href="<%= url_for(value.url) %>"
                 <% if (value.rel) { %>
                   rel="<%- value.rel %>"
