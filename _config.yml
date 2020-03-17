@@ -63,11 +63,8 @@ style:
     #   weight: normal
     #   style: normal
   # color:
-    # site: '#E84D3B'
-    # site_inner: '#FFCE48'
-    # theme: '#E84D3B'
   #   site: '#21232F' # Website background color
-  #   site_inner: '#FFCE48' # Text color inside the website background
+  #   site_inner: '#fff' # Text color inside the website background
   #   card: '#444' # Card background color
   #   text: '#fff' # The color of the text on the card.
   #   theme: '#ff9800' # Main color
