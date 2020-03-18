@@ -46,6 +46,20 @@
           <% function menu(value) { %>
             <% if (value.name == 'hr') { %>
               <hr>
+            <% } else if (value.icon && value.icon.indexOf('fa-compact-disc') > -1 && value.url  == undefined && value.rows  == undefined) { %>
+              <li>
+                <a class="flat-box">
+                  <i class='<%= value.icon %> fa-fw music'></i>
+                  <%- value.name %>
+                </a>
+                <ul class="submenu">
+                  <li class='header'>
+                    <div class="aplayer-container">
+                      <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
+                    </div>
+                  </li>
+                </ul>
+              <li>
             <% } else if (value.name != undefined && value.url  == undefined && value.rows == undefined) { %>
               <li class='header'>
                 <% if (value.icon) { %>

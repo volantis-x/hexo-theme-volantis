@@ -168,6 +168,19 @@
       display: block
       padding: 0 8px
       color: alpha($color-text, 85%)
+      i.music
+        animation: rotate-effect 1.5s linear infinite
+        @keyframes rotate-effect
+          0%
+            transform: rotate(0)
+          25%
+            transform: rotate(90deg)
+          50%
+            transform: rotate(180deg)
+          75%
+            transform: rotate(27  0deg)
+          100%
+            transform: rotate(360deg)
       &.current
         border-bottom: $border-line solid alpha($color-theme, 80%)
 
