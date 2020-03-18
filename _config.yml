@@ -1,16 +1,16 @@
 ############################### Basic Information ###############################
 info:
   name: Volantis
-  version: '2.1.5'
+  version: '2.1.6'
   docs: https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.5.2/css/style.css
+    # css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.5.2/css/style.css
     js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.5/js/app.js
 
 
 ############################### Style ###############################
 style:
-  max_width: 1080px # Sum of body width and sidebar width
+  max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   navbar:
     height: 64px
     effect: [shadow, blur] # [shadow, floatable, blur]

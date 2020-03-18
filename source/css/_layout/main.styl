@@ -50,6 +50,8 @@
     width: 100%
     padding-right: 0
     max-width: $layout-width - $sidebar
+    @media screen and (min-width: 2000px)
+      max-width: 55vw
     margin: auto
     ~.l_side
       display: none
@@ -383,6 +385,8 @@ details[open]
   display: flex
   width: 100%
   max-width: $layout-width
+  @media screen and (min-width: 2000px)
+    max-width: 55vw
   margin: 0 auto
   flex-wrap: wrap
   justify-content: space-between
