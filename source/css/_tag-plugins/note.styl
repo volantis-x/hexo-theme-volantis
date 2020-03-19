@@ -48,11 +48,18 @@ div.note
     vertical-align: middle
     font-family: 'Font Awesome 5 Free'
 
-  background: bg($color-text)
-  border-left: $border-codeblock solid border($color-text)
+  background: mix($color-text, $color-card, 5)
+  border-left: $border-codeblock solid mix($color-text, $color-card, 50)
   &::before
-    color: border($color-text)
-    content: '\f10d'
+    color: mix($color-text, $color-card, 50)
+    content: '\f14b'
+
+  &.quote
+    background: bg($color-md-blue)
+    border-color: border($color-md-blue)
+    &::before
+      color: border($color-md-blue)
+      content: '\f10d'
   &.info
     background: bg($color-mac-cyan)
     border-color: border($color-mac-cyan)
@@ -95,19 +102,23 @@ div.note
     content: '\f277'
   &.download::before
     content: '\f019'
+  &.up::before
+    content: '\f102'
 
 
-
+  &.clear
+    background: none
+    border-color: none
   &.light
     background: mix($color-text, $color-card, 5)
-    border-left-color: mix($color-text, $color-card, 50)
+    border-color: mix($color-text, $color-card, 50)
     &::before
       color: mix($color-text, $color-card, 50)
   &.gray
-    background: bg($color-text)
-    border-color: border($color-text)
+    background: mix($color-text, $color-card, 5)
+    border-color: mix($color-text, $color-card, 80)
     &::before
-      color: border($color-text)
+      color: mix($color-text, $color-card, 80)
   &.red
     background: bg($color-mac-red)
     border-color: border($color-mac-red)
