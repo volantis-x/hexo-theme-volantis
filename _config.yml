@@ -1,7 +1,7 @@
 ############################### Basic Information ###############################
 info:
   name: Volantis
-  version: '2.1.6'
+  version: '2.2-beta1'
   docs: https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
     css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.6.2/css/style.css
