@@ -25,6 +25,20 @@
             &:focus
               border-bottom: 1px solid $color-theme
 
+        .vedit
+          .vemojis,.vpreview
+            justify-content: space-between
+            background: $color-block
+            border-radius: $border-codeblock
+            i
+              width: auto
+              height: 36px
+              padding: 0
+              margin: 8px 8px 0 8px
+              #emoji
+                height: 24px
+                margin-top: 6px
+                background: transparent
         .vedit .vctrl span
           color: $color-link
           padding: 0
@@ -34,6 +48,7 @@
         border: none
         padding: 8px 2rem 7px 2rem
         border-radius: $border-button
+        background: darken($color-block, 2)
         trans()
         &:hover
           color: $color-hover
@@ -110,19 +125,6 @@
 
       p
         color: $color-text
-
-
-    .vemojis
-      justify-content: space-between
-      i
-        width: auto
-        height: 36px
-        padding: 0
-        margin: 8px 8px 0 8px
-        #emoji
-            height: 24px
-            margin-top: 6px
-            background: transparent
 
 
 

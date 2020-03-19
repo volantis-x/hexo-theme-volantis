@@ -4,7 +4,7 @@ info:
   version: '2.1.6'
   docs: https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.6.1/css/style.css
+    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.6.2/css/style.css
     js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.6/js/app.js
 
 
@@ -473,7 +473,7 @@ comments:
   valine:
     appId: # your appId
     appKey: # your appKey
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0/js/valine.js
+    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.6.2/js/valine.js
     path: # All pages use the same path (share the same comments data)
     meta: nick,mail,link #valine comment header info
     placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )

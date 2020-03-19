@@ -454,7 +454,7 @@
                     return b.indexOf(t) > -1 ? '<input name="' + t + '" placeholder="' + e.locale.head[t] + '" class="v' + t + ' vinput" type="' + n + '">' : ""
                 });
                 e.placeholder = e.config.placeholder || "Just Go Go",
-                e.el.innerHTML = '<div class="vwrap"><div class="vheader item' + P.length + '">' + P.join("") + '</div><div class="vedit"><textarea id="veditor" class="veditor vinput" placeholder="' + e.placeholder + '"></textarea><div class="vctrl"><span class="vemoji-btn">' + e.locale.ctrl.emoji + '</span> | <span class="vpreview-btn">' + e.locale.ctrl.preview + '</span></div><div class="vemojis" style="display:none;"></div><div class="vinput vpreview" style="display:none;"></div></div><div class="vcontrol"><div class="col col-20" title="Markdown is supported"><a href="https://segmentfault.com/markdown" target="_blank"><svg class="markdown" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a></div><div class="col col-80 text-right"><button type="button" title="Cmd|Ctrl+Enter" class="vsubmit vbtn">' + e.locale.ctrl.reply + '</button></div></div><div style="display:none;" class="vmark"></div></div><div class="vinfo" style="display:none;"><div class="vcount col"></div></div><div class="vlist"></div><div class="vempty" style="display:none;"></div><div class="vpage txt-center"></div><div class="info"><div class="power txt-right">Powered By <a href="https://valine.js.org" target="_blank">Valine</a><br>' + o + "</div></div>";
+                e.el.innerHTML = '<div class="vwrap"><div class="vheader item' + P.length + '">' + P.join("") + '</div><div class="vedit"><textarea id="veditor" class="veditor vinput" placeholder="' + e.placeholder + '"></textarea><div class="vctrl"><span class="vemoji-btn">' + e.locale.ctrl.emoji + '</span> | <span class="vpreview-btn">' + e.locale.ctrl.preview + '</span></div><div class="vemojis" style="display:none;"></div><div class="vinput vpreview" style="display:none;"></div></div><div class="vcontrol"><div class="col col-20" title="Markdown is supported"><a rel="external nofollow noopener noreferrer" href="https://segmentfault.com/markdown" target="_blank"><svg class="markdown" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a></div><div class="col col-80 text-right"><button type="button" title="Cmd|Ctrl+Enter" class="vsubmit vbtn">' + e.locale.ctrl.reply + '</button></div></div><div style="display:none;" class="vmark"></div></div><div class="vinfo" style="display:none;"><div class="vcount col"></div></div><div class="vlist"></div><div class="vempty" style="display:none;"></div><div class="vpage txt-center"></div><div class="info"><div class="power txt-right">Powered By <a href="https://valine.js.org" target="_blank">Valine</a><br>' + o + "</div></div>";
                 var U = u.find(e.el, ".vempty");
                 e.nodata = {
                     show: function(t) {
@@ -2320,7 +2320,61 @@
         e.exports = n
     }
     , function(e, t) {
+        function aru(index){
+          return "<img id='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/aru/" + index + ".png'>";
+        }
+        function tieba(str){
+          return "<img id='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/tieba/" + str + ".png'>";
+        }
+        function qq(str) {
+          return "<img id='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/qq/" + str + ".gif'>";
+        }
         e.exports = {
+            aru151: aru(151),
+            贴吧what: tieba('what'),
+            贴吧乖: tieba('乖'),
+            贴吧喷: tieba('喷'),
+            贴吧太开心: tieba('太开心'),
+            贴吧委屈: tieba('委屈'),
+            贴吧小乖: tieba('小乖'),
+            贴吧捂嘴笑: tieba('捂嘴笑'),
+            贴吧泪: tieba('泪'),
+            贴吧滑稽: tieba('滑稽'),
+            贴吧爱心: tieba('爱心'),
+            贴吧玫瑰: tieba('玫瑰'),
+            贴吧真棒: tieba('真棒'),
+      			贴吧疑问: tieba('疑问'),
+      			qqOK: qq('OK'),
+      			qq亲亲: qq('亲亲'),
+      			qq便便: qq('便便'),
+      			qq偷笑: qq('偷笑'),
+      			qq冷汗: qq('冷汗'),
+      			qq发呆: qq('发呆'),
+      			qq发怒: qq('发怒'),
+      			qq可怜: qq('可怜'),
+      			qq可爱: qq('可爱'),
+      			qq左哼哼: qq('左哼哼'),
+      			qq右哼哼: qq('右哼哼'),
+      			qq吓: qq('吓'),
+      			qq呲牙: qq('呲牙'),
+      			qq嗅大了: qq('嗅大了'),
+      			qq坏笑: qq('坏笑'),
+      			qq奋斗: qq('奋斗'),
+      			qq委屈: qq('委屈'),
+      			qq害羞: qq('害羞'),
+      			qq尴尬: qq('尴尬'),
+      			qq强: qq('强'),
+      			qq得意: qq('得意'),
+      			qq快哭了: qq('快哭了'),
+      			qq惊恐: qq('惊恐'),
+      			qq憨笑: qq('憨笑'),
+      			qq抓狂: qq('抓狂'),
+      			qq抱拳: qq('抱拳'),
+      			qq握手: qq('握手'),
+      			qq晕: qq('晕'),
+      			qq疑问: qq('疑问'),
+      			qq阴险: qq('阴险'),
+      			qq鼓掌: qq('鼓掌'),
             grinning: "😀",
             smiley: "😃",
             smile: "😄",
