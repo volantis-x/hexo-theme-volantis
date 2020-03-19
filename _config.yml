@@ -91,24 +91,9 @@ cover:
   subtitle: 'A Wonderful Theme for Hexo'
   search: # search bar placeholder
   features:
-    - name: 文档
+    - name: 首页
       icon: fas fa-book
-      url: https://volantis.js.org/getting-started/
-    - name: 博文
-      icon: fas fa-rss
-      url: https://volantis.js.org/archives/
-    - name: 示例
-      icon: fas fa-play-circle
-      url: https://volantis.js.org/examples/
-    - name: 源码
-      icon: fas fa-file-code
-      url: https://github.com/xaoxuu/hexo-theme-volantis/
-      rel: external nofollow noopener noreferrer
-      target: _blank
-    - name: 鸣谢
-      icon: fas fa-handshake
-      url: https://volantis.js.org/contributors/
-
+      url: /
 
 # Navigation Bar
 navbar:
