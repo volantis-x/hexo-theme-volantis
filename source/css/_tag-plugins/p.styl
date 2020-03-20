@@ -1,0 +1,44 @@
+article
+  p
+    &[left]
+      text-align: left
+    &[center]
+      text-align: center
+    &[right]
+      text-align: right
+p
+  &[small]
+    font-size: $fontsize-meta
+  &[large]
+    font-size: $fontsize-large
+    line-height: 1.3
+  &[huge]
+    font-size: $fontsize-huge
+    line-height: 1.3
+  &[ultra]
+    font-size: $fontsize-ultra
+    line-height: 1.3
+  &[small],&[large],&[huge],&[ultra]
+    margin: 0
+    padding: 0
+  &[bold]
+    font-weight: bold
+
+
+red,p[red]
+  color: $color-mac-red
+
+yellow,p[yellow]
+  color: $color-mac-yellow
+
+green,p[green]
+  color: $color-mac-green
+
+cyan,p[cyan]
+  color: $color-mac-cyan
+
+blue,p[blue]
+  color: $color-md-blue
+
+gray,p[gray]
+  color: #666

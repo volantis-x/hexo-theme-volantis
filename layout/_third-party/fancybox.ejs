@@ -1,7 +1,7 @@
 <script src="<%- theme.plugins.fancybox.js %>"></script>
 <script>
   let LAZY_LOAD_IMAGE = "<%- config.lazyload %>";
-  $(".article-entry").find("fancybox").find("img").each(function () {
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
       var element = document.createElement("a");
       $(element).attr("data-fancybox", "gallery");
       $(element).attr("href", $(this).attr("src"));
