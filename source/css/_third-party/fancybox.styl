@@ -1,7 +1,10 @@
 div.fancybox
   margin: $gap-line 0
   $sp = 1px
-  a
+  >a,>p>a
+    margin: $sp
+    padding: 0
+    line-height: 0
     overflow: hidden
     align-items: stretch
     border-radius: 2px
@@ -35,10 +38,6 @@ div.fancybox
     width: "calc(12.5% - 2 * %s)" % $sp
   >p
     margin: 0
-    a
-      margin: $sp
-      padding: 0
-      line-height: 0
   &.left,&.left>p
     justify-content: flex-start
   &.center,&.center>p
