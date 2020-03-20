@@ -192,10 +192,6 @@ var customSearch;
 			$header.removeClass('z_search-open');
 			$switcher.removeClass('active');
 		});
-		$(document, window).scroll(() => {
-			$header.removeClass('z_search-open');
-			$switcher.removeClass('active');
-		});
 		$search.click(function (e) {
 			e.stopPropagation();
 		});
