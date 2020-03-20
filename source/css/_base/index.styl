@@ -268,27 +268,20 @@ table
   border-collapse: collapse
   margin-top: .7em
   margin-bottom: .7em
-  width: 100%
+  overflow: auto
+  display: block
   th
     background-color: darken($color-block, 2)
   td,th
-    padding: 4px 12px
+    padding: 6px 16px
     border: 1px solid darken($color-block, 3)
   tr
+    word-break: keep-all
     background-color: lighten($color-block, 3)
   tbody>tr
     trans()
     &:hover
       background-color: darken($color-block, 2)
-
-
-
-overflow
-  table
-    overflow: auto
-    display: block
-    tr
-      word-break: keep-all
 
 
 td,th
