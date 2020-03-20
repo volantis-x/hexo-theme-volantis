@@ -46,9 +46,10 @@
 
       button
         border: none
-        padding: 8px 2rem 7px 2rem
+        padding: 9px 2rem 7px 2rem
         border-radius: $border-button
         background: darken($color-block, 2)
+        color: $color-text
         trans()
         &:hover
           color: $color-hover
@@ -98,36 +99,36 @@
           padding: 1px 8px
           background-color: alpha($color-text, .1)
 
-
-
       .vcard
         .vquote
           border-left: none
-
         .vh
           border-bottom: 1px dashed alpha($color-text, .1)
-
-
+        .vcontent.expand
+          &:before
+            background: linear-gradient(180deg, alpha($color-card, .9), alpha($color-block, .9));
+          &:after
+            background: alpha($color-block, .9)
+            color: $color-text
+        .vh:hover
+          >.vmeta>.vat
+            opacity: 1
       .vmeta
         .vat
           font-weight: bold
           color: $color-link
           trans()
+          opacity: 0
           &:hover
             color: $color-hover
             text-decoration: underline
           &:active
             color: darken($color-hover, .25)
 
-
       .vinput
         color: $color-text
-
       p
         color: $color-text
-
-
-
     p
       #emoji
         display: inline

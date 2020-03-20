@@ -269,7 +269,7 @@
       padding-bottom: $gap * 0.5
       width: 100%
       color: $color-text
-      background: alpha(darken($color-card, 5), .75)
+      background: darken($color-card, 5)
       box-shadow: none
       box-sizing: border-box
       padding-left: $iconW + $iconMargin
@@ -300,8 +300,6 @@
       margin-left: $gap
 
     &.z_search-open
-      .logo
-        opacity:0
       .m_search
         $offset = 3 * $gap + 2 * $iconW
         width: "calc(100% - %s)" % $offset

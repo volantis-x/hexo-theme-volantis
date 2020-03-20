@@ -115,6 +115,10 @@ var customSearch;
 				$tocTarget.removeClass('active');
 				$toc.removeClass('active');
 			});
+			$(document, window).scroll(() => {
+				$tocTarget.removeClass('active');
+				$toc.removeClass('active');
+			});
 		} else $toc.remove();
 
 
@@ -167,6 +171,10 @@ var customSearch;
 			$menu.removeClass('show');
 			$switcher.removeClass('active');
 		});
+		$(document, window).scroll(() => {
+			$menu.removeClass('show');
+			$switcher.removeClass('active');
+		});
 	}
 
 	function setHeaderSearch() {
@@ -181,6 +189,10 @@ var customSearch;
 			$switcher.toggleClass('active');
 		});
 		$(document).click(function (e) {
+			$header.removeClass('z_search-open');
+			$switcher.removeClass('active');
+		});
+		$(document, window).scroll(() => {
 			$header.removeClass('z_search-open');
 			$switcher.removeClass('active');
 		});
