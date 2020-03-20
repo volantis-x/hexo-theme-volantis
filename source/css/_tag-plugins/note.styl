@@ -49,9 +49,9 @@ div.note
     font-family: 'Font Awesome 5 Free'
 
   background: mix($color-text, $color-card, 5)
-  border-left: $border-codeblock solid mix($color-text, $color-card, 50)
+  border-left: $border-codeblock solid mix($color-text, $color-card, 80)
   &::before
-    color: mix($color-text, $color-card, 50)
+    color: mix($color-text, $color-card, 80)
     content: '\f054'
 
   &.quote
@@ -61,10 +61,10 @@ div.note
       color: border($color-md-blue)
       content: '\f10d'
   &.info
-    background: bg($color-mac-cyan)
-    border-color: border($color-mac-cyan)
+    background: bg($color-theme)
+    border-color: border($color-theme)
     &::before
-      color: border($color-mac-cyan)
+      color: border($color-theme)
       content: '\f129'
   &.success,&.done
     background: bg($color-mac-green)
@@ -96,7 +96,7 @@ div.note
     content: '\f0c6'
   &.todo::before
     content: '\f0ae'
-  &.msg::before
+  &.message::before
     content: '\f4ad'
   &.guide::before
     content: '\f277'
@@ -106,6 +106,8 @@ div.note
     content: '\f102'
   &.undo::before
     content: '\f2ea'
+  &.play::before
+    content: '\f144'
 
 
   &.clear
