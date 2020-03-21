@@ -6,7 +6,7 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           <% (post.photos||[]).forEach(function(photo){ %>
-            <fancybox><img src='<%- url_for(photo) %>'/></fancybox>
+            <div class='fancybox'><img src='<%- url_for(photo) %>'/></div>
           <% }) %>
           <%- post.content %>
           <% if(theme.layout.on_post.article_footer && (page.layout == 'post')){ %>

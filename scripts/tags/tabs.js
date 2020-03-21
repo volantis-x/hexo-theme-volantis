@@ -1,8 +1,7 @@
 /**
- * tabs.js | https://theme-next.org/docs/tag-plugins/tabs
+ * note.js
+ * transplant from hexo-theme-next
  */
-
-/* global hexo */
 
 'use strict';
 

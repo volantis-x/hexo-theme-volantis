@@ -1,11 +1,50 @@
-fancybox
-  display: flex
-  justify-content: center
-  align-items: center
-  a
-    margin: 0 1px
+div.fancybox
+  margin: $gap-line 0
+  $sp = 1px
+  >a,>p>a
+    margin: $sp
     padding: 0
+    line-height: 0
+    overflow: hidden
+    align-items: stretch
+    border-radius: 2px
     @media screen and (max-width: $device-mobile)
-      margin: 0 .5px
-    >img
-      margin: 0
+      border-radius: 1px
+
+  br
+    display: none !important
+  &,>p
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-wrap: nowrap
+    padding: 0 !important
+  &[col]>p
+    flex-wrap: wrap
+    justify-content: flex-start
+  &[col='2']>p>a
+    width: "calc(50% - 2 * %s)" % $sp
+  &[col='3']>p>a
+    width: "calc(33.33% - 2 * %s)" % $sp
+  &[col='4']>p>a
+    width: "calc(25% - 2 * %s)" % $sp
+  &[col='5']>p>a
+    width: "calc(20% - 2 * %s)" % $sp
+  &[col='6']>p>a
+    width: "calc(16.66% - 2 * %s)" % $sp
+  &[col='7']>p>a
+    width: "calc(14.2857% - 2 * %s)" % $sp
+  &[col='8']>p>a
+    width: "calc(12.5% - 2 * %s)" % $sp
+  >p
+    margin: 0
+  &.left,&.left>p
+    justify-content: flex-start
+  &.center,&.center>p
+    justify-content: center
+  &.right,&.right>p
+    justify-content: flex-end
+  &.stretch,&.stretch>p
+    align-items: stretch
+    img
+      transform: scale(1.5)

@@ -1,0 +1,147 @@
+.article
+  p>btn,li>btn
+    a
+      line-height: 1.5em
+      background: $color-theme
+      color: $color-inner
+      padding: 2px 3px 0px 3px
+      margin: 2px
+      border-radius: 2px
+      trans()
+      &:hover
+        color: $color-inner
+        text-decoration: none
+        background: $color-hover
+    &[regular]
+      a
+        line-height: 3
+        padding: 9px 16px 7px 16px
+        i
+          margin-right: 2px
+    &[large]
+      a
+        line-height: 3
+        padding: 11px 40px 9px 40px
+        i
+          margin: 0 5px 0 -2px
+    &[center]
+      display: block
+      text-align: center
+
+
+// btns
+div.btns
+  margin: 0 -0.5 * $gap
+  &,b,p,a
+    font-size: $fontsize-meta
+    color: $color-p
+  &,>p
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    overflow: visible
+  &.wide>p>a,&.wide>a
+    padding-left: $gap*2
+    padding-right: $gap*2
+  &.fill>p>a,&.fill>a
+    flex-grow: 1
+    width: auto
+  &.around
+    &,>p
+      justify-content: space-around
+  &.center
+    &,>p
+      justify-content: center
+  &.grid2>p>a,&.grid2>a
+    width: "calc(100%/2 - %s)" % $gap
+    @media screen and (max-width: $device-laptop)
+      width: "calc(100%/2 - %s)" % $gap
+    @media screen and (max-width: $device-tablet)
+      width: "calc(100%/2 - %s)" % $gap
+    @media screen and (max-width: $device-mobile)
+      width: "calc(100%/1 - %s)" % $gap
+  &.grid3>p>a,&.grid3>a
+    width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-laptop)
+      width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-tablet)
+      width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-mobile)
+      width: "calc(100%/1 - %s)" % $gap
+  &.grid4>p>a,&.grid4>a
+    width: "calc(100%/4 - %s)" % $gap
+    @media screen and (max-width: $device-laptop)
+      width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-tablet)
+      width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-mobile)
+      width: "calc(100%/2 - %s)" % $gap
+  &.grid5>p>a,&.grid5>a
+    width: "calc(100%/5 - %s)" % $gap
+    @media screen and (max-width: $device-laptop)
+      width: "calc(100%/4 - %s)" % $gap
+    @media screen and (max-width: $device-tablet)
+      width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-mobile)
+      width: "calc(100%/2 - %s)" % $gap
+  a
+    trans()
+    margin: $gap * 0.5
+    margin-top: "calc(1.25 * %s + 32px)" % $gap
+    min-width: 120px
+    font-weight: bold
+    display: flex
+    justify-content: flex-start
+    align-content: center
+    align-items: center
+    flex-direction: column
+    padding: $gap * 0.5
+    text-align: center
+    &>img:first-child, &>i:first-child
+      trans()
+      height: 64px
+      width: 64px
+      box-shadow: $boxshadow-card
+      &.auto
+        width: auto
+      margin: $gap $gap * 0.5 $gap * 0.25 $gap * 0.5
+      margin-top: "calc(-1.25 * %s - 32px)" % $gap
+      border: 2px solid $color-card
+      background: $color-inner
+      line-height: 60px
+      font-size: 28px
+    &>i:first-child
+      color: $color-inner
+      background: $color-theme
+    background: $color-block
+    border-radius: 4px
+    p,b
+      margin: .25em
+      font-weight: normal
+      line-height: 1.25
+      word-wrap: break-word
+    b
+      font-weight: bold
+      line-height: 1.3
+    img
+      margin: .4em auto
+    &:hover
+      text-decoration: none
+    &:not([href])
+      cursor: default
+      color: inherit
+    &[href]:hover
+      background: alpha($color-hover, 15%)
+      &,b
+        color: $color-hover
+      &>img:first-child, &>i:first-child
+        transform: scale(1.1) translateY(-8px)
+        box-shadow: $boxshadow-float
+      &>i:first-child
+        background:$color-hover
+  &.circle>p a, &.circle a
+    &>img:first-child, &>i:first-child
+      border-radius: 32px
+  &.rounded>p a, &.rounded a
+    &>img:first-child, &>i:first-child
+      border-radius: 16px

@@ -115,6 +115,10 @@ var customSearch;
 				$tocTarget.removeClass('active');
 				$toc.removeClass('active');
 			});
+			$(document, window).scroll(() => {
+				$tocTarget.removeClass('active');
+				$toc.removeClass('active');
+			});
 		} else $toc.remove();
 
 
@@ -164,6 +168,10 @@ var customSearch;
 			$switcher.toggleClass('active');
 		});
 		$(document).click(function (e) {
+			$menu.removeClass('show');
+			$switcher.removeClass('active');
+		});
+		$(document, window).scroll(() => {
 			$menu.removeClass('show');
 			$switcher.removeClass('active');
 		});
