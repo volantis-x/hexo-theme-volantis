@@ -1,52 +1,103 @@
 <% if (theme.footer) { %>
-  <%
+<%
   var layout = theme.footer.layout;
   if (config.theme_config && config.theme_config.footer && config.theme_config.footer.layout) {
     layout = config.theme_config.footer.layout;
   }
   %>
-  <footer class="clearfix">
-    <br><br>
-    <% layout.forEach(function(item){ %>
-      <% if (item == 'social') { %>
-        <br>
-        <div class="social-wrapper">
-          <% (theme.footer.social||[]).forEach(function(value){ %>
-            <% if (value.url && value.icon) { %>
-              <a href="<%= url_for(value.url) %>"
-                class="social <%- value.icon %> flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            <%}%>
+<footer class="clearfix">
+  <br><br>
+  <% layout.forEach(function(item){ %>
+  <% if (item == 'social') { %>
+  <br>
+  <div class="social-wrapper">
+    <% (theme.footer.social||[]).forEach(function(value){ %>
+    <% if (value.url && value.icon) { %>
+    <a href="<%= url_for(value.url) %>" class="social <%- value.icon %> flat-btn" target="_blank"
+      rel="external nofollow noopener noreferrer">
+    </a>
+    <%}%>
           <%})%>
-        </div>
-      <% } else if (item == 'aplayer') { %>
-        <div class="aplayer-container">
-          <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
-        </div>
-      <% } else if (item == 'license') { %>
-        <div><%- markdown(__('footer.license')) %></div>
-      <% } else if (item == 'info') { %>
-        <%- __('footer.use') %>
-        <a href="<%- theme.info.docs %>" target="_blank" class="codename"><%- theme.info.name %></a>
-        <%- __('footer.theme') %>
-        <% if (theme.plugins.busuanzi) { %>
-          <%- __('symbol.comma') %>
-          <%- __('footer.total_views') %>
-          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-          <%- __('footer.times') %>
-        <% } %>
-      <% } else if (item == 'copyright') { %>
-        <div class='copyright'>
-        <%- markdown(theme.footer.copyright) %>
-        </div>
-      <% } else { %>
-        <% if (item in theme.footer) { %>
-          <div><%- markdown(theme.footer[item]) %></div>
-        <% } %>
-      <% } %>
-    <% }) %>
-  </footer>
+  </div>
+  <% } else if (item == 'aplayer') { %>
+  <div class="aplayer-container">
+    <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
+  </div>
+  <% } else if (item == 'license') { %>
+  <div><%- markdown(__('footer.license')) %></div>
+  <% } else if (item == 'info') { %>
+  <%- __('footer.use') %>
+  <a href="<%- theme.info.docs %>" target="_blank" class="codename"><%- theme.info.name %></a>
+  <%- __('footer.theme') %>
+  <% if (theme.plugins.busuanzi) { %>
+  <%- __('symbol.comma') %>
+  <%- __('footer.total_views') %>
+  <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+  <%- __('footer.times') %>
+  <% } %>
+  <% } else if (item == 'copyright') { %>
+  <div class='copyright'>
+    <%- markdown(theme.footer.copyright) %>
+  </div>
+  <% } else if(item == "elapsedTime"){%>
+  <br>
+  <br>
+  <br>
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <% }else if(item == "badges"){%>
+  <br>
+  <div>
+    <div class="github-badge">
+      <a style="color: #fff" rel="license" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+    </div>
+    <div class="github-badge">
+      <a style="color: #fff" rel="license" href="https://www.jsdelivr.com/" target="_blank"
+        title="jsDelivr 提供 CDN 加速服务">
+        <span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a>
+    </div>
+    <div class="github-badge">
+      <a style="color: #fff" rel="license" href="https://xaoxuu.com/wiki/volantis/" target="_blank"
+        title="站点使用 Volantis 主题">
+        <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a>
+    </div>
+    <span class="github-badge">
+      <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"
+        title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+        <span class="badge-subject"><i class="fa fa-copyright"></i></span><span
+          class="badge-value bg-lightgrey">BY-NC-SA 4.0</span></a>
+    </span>
+    <div class="github-badge">
+      <a style="color: #fff" rel="license" href="https://996.icu/" target="_blank" title="支持 996.ICU">
+        <span class="badge-subject">Link</span><span class="badge-value bg-red">996.ICU</span></a>
+    </div>
+    <div class="github-badge">
+      <a style="color: #fff" rel="license" href="https://996.icu/" target="_blank" title="第一行内容“ 第二行内容“ 第三行内容">
+        <span class="badge-subject">Link</span><span class="badge-value bg-red">测试title</span></a>
+    </div>
+  </div>
+  <%  }else{ %>
+  <% if (item in theme.footer) { %>
+  <div><%- markdown(theme.footer[item]) %></div>
+  <% } %>
+  <% } %>
+  <% }) %>
+</footer>
 <% } %>
 <script>setLoadingBarProgress(80);</script>
+<script>
+  var now = new Date();
+  function createtime() {
+    var grt = new Date("02/28/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+    now.setTime(now.getTime() + 250);
+    days = (now - grt) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+    if (String(hnum).length == 1) { hnum = "0" + hnum; } minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+    mnum = Math.floor(minutes); if (String(mnum).length == 1) { mnum = "0" + mnum; }
+    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+    snum = Math.round(seconds); if (String(snum).length == 1) { snum = "0" + snum; }
+    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+  }
+  setInterval("createtime()", 250);
+</script>
