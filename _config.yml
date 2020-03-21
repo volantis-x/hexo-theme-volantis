@@ -1,19 +1,46 @@
-############################### Basic Information ###############################
+############################### 基本情况 ###############################
 info:
   name: Volantis
   version: '2.1.6'
   docs: https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.6.1/css/style.css
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.6/js/app.js
+    #css: https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/css/style.css
+    js: https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/js/app.js
+# https://github.com/mygitname/mywebsite/tree/0.0.1/static/css/style.css
+# https://github.com/lihawhaw/cdn-assets/blob/master/js/app.js
+# https://cdn.jsdelivr.net/gh/mygitname/mywebsite@0.0.1/static/css/style.css
+# 若要使用缩小版本功能，则将“.min”添加到任何JS / CSS文件中，jsdelivr将自动生成文件。
+# https://cdn.jsdelivr.net/gh/mygitname/mywebsite@0.0.1/static/css/style.min.css
+#   https://github.com/xaoxuu/hexo-theme-volantis
 
+############################### 第三方插件 ###############################
+# ⚠️ 注意：开启过多服务会导致网页加载缓慢、运行卡顿    
+# plugins:
+#   # jquery是很多功能的基础，请勿关闭
+#   jquery: '//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js'
+#   ################################################## 优化体验类的服务
+#   # 图片放大预览
+#   fancybox:
+#     css: '//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css'
+#     js: '//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js'
+#   # 页面滚动显示动画
+#   # scrollreveal: '//cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js'
+#   # 代码块复制按钮
+#   # clipboard: '//cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js'
+#   ################################################## 美化类的服务
+#   # 按钮点击涟漪效果
+#   # nodewaves:
+#   #   css: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css'
+#   #   js: '//cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js'
+#   # 文本框打字机特效
+#   comment_typing: '//cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.40/js/comment_typing.js'
 
 ############################### Style ###############################
 style:
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   navbar:
     height: 64px
-    effect: [shadow, blur] # [shadow, floatable, blur]
+    effect: [shadow, blur,floatable] # [shadow, floatable, blur]
   sidebar:
     effect: [shadow] # [shadow, floatable, blur]
   body:
@@ -87,12 +114,12 @@ cover:
     archive: true
     others: false # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
-  title: Volantis
-  subtitle: 'A Wonderful Theme for Hexo'
+  title: li.ha.ha
+  subtitle: 'Love what you do,do what you love.'
   search: # search bar placeholder
   features:
     - name: 首页
-      icon: fas fa-book
+      icon: fas fa-home
       url: /
 
 # Navigation Bar
@@ -105,8 +132,8 @@ navbar:
     # The following can be written in `blog/source/_data/menu.yml`
     # This menu will be displayed on the laptop or desktop.
     on_desktop:
-      - name: 博客
-        icon: fas fa-rss
+      - name: HOME
+        icon: fas fa-home
         url: /
       - name: 分类
         icon: fas fa-folder-open
@@ -125,8 +152,8 @@ navbar:
         url: about/
     # This menu will be displayed on the mobile.
     on_mobile:
-      - name: 博客
-        icon: fas fa-rss
+      - name: HOME
+        icon: fas fa-home
         url: /
       - name: 分类
         icon: fas fa-folder-open
@@ -181,10 +208,11 @@ meta:
   # 文章标题
   title: # 暂无配置
   # 默认文章作者（可在front-matter中覆盖）
-  author:
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
-    name: Mr. X
-    url: https://xaoxuu.com
+  author: 
+    avatar: https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/avatar/favicon_circle32.ico
+    ########https://github.com/lihawhaw/cdn-assets/blob/master/avatar/avatar700.jpg
+    name: Mr.Li
+    url: https://lihawhaw.github.io
   # 文章创建日期
   date:
     icon: fas fa-edit
@@ -214,13 +242,13 @@ meta:
   # 分享
   share:
     - id: qq
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png
+      img: https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/logo/128/qq.png
     - id: qzone
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png
+      img: https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/logo/128/qzone.png
     - id: weibo
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png
+      img: https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/logo/128/weibo.png
     # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
-    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png
+    #   img: https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/logo/128/wechat.png
   # 链接
   btns:
     edit:
@@ -260,7 +288,7 @@ widget:
   blogger:
     class: blogger
     display: [desktop] # [desktop, mobile]
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
+    avatar:  https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/avatar/avatar_square700.jpg
     title:
     subtitle:
     jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
@@ -316,7 +344,6 @@ widget:
     blockquote: true
     permalink: '本文永久链接是：'
     content:
-      - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
       - permalink
   # ---------------------------------------
   # qrcode widget
@@ -326,8 +353,8 @@ widget:
     height: 64px  # Automatic height if not set
     fancybox: true
     images:
-      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
-      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
+      - https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/blob/master/qrcode/wechat_gzb.jpg
+      - https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/blob/master/qrcode/wechat_gzb.jpg
   # You can add your own widget here or 'blog/source/_data/widget.yml'
   # class: text, list, grid, qrcode, page, ... see more at https://volantis.js.org/
 
@@ -335,17 +362,8 @@ widget:
 
 footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, info, copyright]
-  social:
-    - icon: fas fa-rss
-      url: atom.xml
-    - icon: fas fa-envelope
-      url: mailto:me@xaoxuu.com
-    - icon: fab fa-github
-      url: https://github.com/xaoxuu
-    - icon: fas fa-headphones-alt
-      url: https://music.163.com/#/user/home?id=63035382
-  copyright: '[Copyright © 2017-2020 Mr. X](https://xaoxuu.com)'
+  layout: [aplayer,elapsedTime,badges]
+  # elapsedTime: '02/28/2020 17:38:00' #网站运行时间
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
@@ -371,7 +389,7 @@ plugins:
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js
 
   ######## Plugins to improve loading speed:
-  # Preload (The menu's url must end with ‘/’)
+  # Preload (The menu's url must end with ‘/’)--预加载
   instant_page: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js
 
   ######## Plugins to optimize the experience:
@@ -392,12 +410,13 @@ plugins:
   ######## Plugins for SEO:
   # Traffic statistics (very slow loading)
   busuanzi: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
-
+  
+  #文章字数统计、阅读时长，开启需要安装插件: npm i --save hexo-wordcount
   # npm i --save hexo-wordcount
-  wordcount: #true
+  wordcount: true
 
   ######## Plugins for ...
-  # Button Ripple Effect
+  # 点击出现涟漪效果
   nodewaves:
     css: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
     js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
@@ -482,7 +501,7 @@ comments:
 
 
 
-
+#ceshi 
 ############################### Search ###############################
 # To use hexo search, you need to install the following plugins:
 # npm i -S hexo-generator-search hexo-generator-json-content
