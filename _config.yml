@@ -1,8 +1,8 @@
 ############################### 基本情况 ###############################
 info:
-  name: Volantis
-  version: '2.2.0'
-  docs: https://volantis.js.org/
+  name: 李哈哈
+  version: ''
+  docs: '' #https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
     css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0.2/css/style.css
     js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0.2/js/app.js
@@ -57,24 +57,24 @@ style:
       url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
       weight: normal
       style: normal
-    # codefont:
-    #   name: 'Monaco'
-    #   url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/Monaco/Monaco.ttf
-    #   weight: normal
-    #   style: normal
+    codefont:
+      name: 'Monaco'
+      url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/Monaco/Monaco.ttf
+      weight: normal
+      style: normal
   # color:
-  #   site: '#21232F' # Website background color
-  #   site_inner: '#fff' # Text color inside the website background
-  #   card: '#444' # Card background color
-  #   text: '#fff' # The color of the text on the card.
-  #   theme: '#ff9800' # Main color
-  #   link: '#1BCDFC' # Link color
-  #   hover: '#ff5722' # Link highlight color
-  #   inner: '#333' # Text color inside the button
-  #   block: '#555' # Block color
-  #   inlinecode: yellow # Inline code color
-  #   codeblock: '#555' # Codeblock color
-  #   p: '#ccc' # Paragraph color
+    # site: '#21232F' # Website background color
+    # site_inner: '#fff' # Text color inside the website background
+    # # card: '#444' # Card background color
+    # text: '#000' # The color of the text on the card.
+    # theme: '#ff9800' # Main color
+    # link: '#1BCDFC' # Link color
+    # hover: '#ff5722' # Link highlight color
+    # inner: '#333' # Text color inside the button
+    # block: '#555' # Block color
+    # inlinecode: yellow # Inline code color
+    # codeblock: '#D2EAFD' # Codeblock color
+    # p: '#ccc' # Paragraph color
 
 
 
@@ -100,7 +100,7 @@ navbar:
   logo: # choose [img] or [icon + title]
     img:
     icon:
-    title:
+    title: "李哈哈"
   menu:
     # The following can be written in `blog/source/_data/menu.yml`
     # This menu will be displayed on the laptop or desktop.
@@ -165,8 +165,8 @@ layout:
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
-      header: [title, author, category, date, top]
-      footer: [updated, tags, btns, share]
+      header: [title, author, category, date, top,wordcount]
+      footer: [updated, tags, btns, share,wordcount]
     # 文章页面的侧边栏
     sidebar: [qrcode, toc]
   # 文章布局，参数继承自 on_page
@@ -301,6 +301,7 @@ widget:
     start_color: '#999'
     end_color: '#555'
   # ---------------------------------------
+  
   # related posts widget
   related_posts:
     class: related_posts # npm i -S hexo-related-popular-posts
@@ -382,7 +383,7 @@ plugins:
 
   ######## Plugins for SEO:
   # Traffic statistics (very slow loading)
-  busuanzi: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
+  #busuanzi: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   
   #文章字数统计、阅读时长，开启需要安装插件: npm i --save hexo-wordcount
   # npm i --save hexo-wordcount
@@ -406,8 +407,8 @@ plugins:
     duration: 20000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
+      #- https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
+       - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg
@@ -422,20 +423,21 @@ plugins:
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
     enable: true
-    js:
+    js: 
       - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
-      - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
+      # - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
+      - https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
-    id: 3175833810    # song id / playlist id / album id / search keyword
+    id: 4928475192   # song id / playlist id / album id / search keyword
     # Optional
     fixed: false      # enable fixed mode
     theme: '#1BCDFC'  # main color
     autoplay: false   # audio autoplay
     order: list       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
-    volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+    volume: 0.4       # 默认音量，注意播放器会记住用户设置，默认音量在用户自己设置音量后不起作用
     list_max_height: 340px # list max height
     list_folded: true
 
