@@ -1,6 +1,6 @@
 ############################### 基本情况 ###############################
 info:
-  name: 李哈哈
+  name: One.Doub
   version: ''
   docs: '' #https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
@@ -87,64 +87,21 @@ cover:
     archive: true
     others: false # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
-  title: li.ha.ha
+  title: Doub Blog
   subtitle: 'Love what you do,do what you love.'
-  search: # search bar placeholder
+  search: 探索一下吧 喵~ # search bar placeholder
   features:
     - name: 首页
       icon: fas fa-home
       url: /
 
-# Navigation Bar
+# 头部导航
 navbar:
   logo: # choose [img] or [icon + title]
     img:
     icon:
-    title: "李哈哈"
-  menu:
-    # The following can be written in `blog/source/_data/menu.yml`
-    # This menu will be displayed on the laptop or desktop.
-    on_desktop:
-      - name: HOME
-        icon: fas fa-home
-        url: /
-      - name: 分类
-        icon: fas fa-folder-open
-        url: categories/
-      - name: 标签
-        icon: fas fa-tags
-        url: tags/
-      - name: 归档
-        icon: fas fa-archive
-        url: archives/
-      - name: 友链
-        icon: fas fa-link
-        url: friends/
-      - name: 关于
-        icon: fas fa-info-circle
-        url: about/
-    # This menu will be displayed on the mobile.
-    on_mobile:
-      - name: HOME
-        icon: fas fa-home
-        url: /
-      - name: 分类
-        icon: fas fa-folder-open
-        url: categories/
-      - name: 标签
-        icon: fas fa-tags
-        url: tags/
-      - name: 归档
-        icon: fas fa-archive
-        url: archives/
-      - name: 友链
-        icon: fas fa-link
-        url: friends/
-      - name: 关于
-        icon: fas fa-info-circle
-        url: about/
-  search: 搜索   # Search bar placeholder
-
+    title: "OneDoub"
+  search: 探索一下 喵喵~
 
 
 layout:
@@ -226,33 +183,8 @@ meta:
   btns:
     edit:
       icon: fas fa-edit
-      title: 在GitHub上编辑此页
+      title: btns/edit
       color: '#888'
-    repo: # 源码链接
-      icon: fas fa-file-code
-      title: 源码
-      color: '#508EF2'
-    bug: # BUG反馈链接
-      icon: fas fa-bug
-      title: BUG
-      color: '#FE5F58'
-    doubt: # 疑问链接
-      icon: fas fa-question-circle
-      title: 疑问
-      color: '#FFBD2B'
-    idea: # 建议链接
-      icon: fas fa-lightbulb
-      title: 建议
-      color: '#3DC550'
-    faq: # FAQ链接
-      icon: fas fa-comments
-      title: FAQ
-      color: '#29B1C9'
-    feedback: # 反馈链接
-      icon: fas fa-comment-dots
-      title: 反馈
-      color: '#1BCDFC'
-
 # widget library
 widget:
   # The following can be written in `blog/source/_data/widget.yml`
@@ -327,8 +259,7 @@ widget:
     height: 64px  # Automatic height if not set
     fancybox: true
     images:
-      - https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/blob/master/qrcode/wechat_gzb.jpg
-      - https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/blob/master/qrcode/wechat_gzb.jpg
+      - https://cdn.jsdelivr.net/gh/lihawhaw/cdn-assets/qrcode/wechat_gzb.jpg
   # You can add your own widget here or 'blog/source/_data/widget.yml'
   # class: text, list, grid, qrcode, page, ... see more at https://volantis.js.org/
 
@@ -475,8 +406,6 @@ comments:
     uid:
 
 
-
-#ceshi 
 ############################### Search ###############################
 # To use hexo search, you need to install the following plugins:
 # npm i -S hexo-generator-search hexo-generator-json-content
