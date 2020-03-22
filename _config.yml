@@ -202,12 +202,12 @@ meta:
     url: https://xaoxuu.com
   # 文章创建日期
   date:
-    icon: fas fa-edit
+    icon: fas fa-calendar-alt
     title: '发布于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章更新日期
   updated:
-    icon: fas fa-save
+    icon: fas fa-edit
     title: '更新于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章分类
