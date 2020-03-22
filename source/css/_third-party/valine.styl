@@ -40,7 +40,6 @@
                 margin-top: 6px
                 background: transparent
         .vedit .vctrl span
-          color: $color-link
           padding: 0
           margin: 10px
 
@@ -71,7 +70,6 @@
         trans()
         &:hover
           color: $color-hover
-          text-decoration: underline
 
       div.info
         box-shadow: none
@@ -82,15 +80,13 @@
         span
           &.vnick
             color: $color-meta
-
-
+            cursor: default
         a
           &.vnick
             color: #ff9800
             font-weight: bold
             &:hover
               color: $color-hover
-              text-decoration: underline
 
 
 
@@ -122,8 +118,6 @@
           &:hover
             color: $color-hover
             text-decoration: underline
-          &:active
-            color: darken($color-hover, .25)
 
       .vinput
         color: $color-text

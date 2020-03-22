@@ -31,8 +31,8 @@ style:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 32px # Spacing above H3 (only px unit)
     h4: 16px # Spacing above H4 (only px unit)
-    line: 1rem # Paragraph spacing
-    inline: .5rem # Paragraph spacing within a block
+    block: 1rem # Paragraph spacing between blocks
+    p: .5rem # Paragraph spacing within a block
   border_radius:
     card: 12px
     codeblock: 4px

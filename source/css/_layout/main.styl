@@ -67,13 +67,6 @@
       columns: 320px // 支持多列
 
 
-  ul.popular-posts
-    h3
-      padding: 0
-      margin: 0
-      font-size: $fontsize-body
-
-
   .post-wrapper
     column-break-inside: avoid
     break-inside: avoid-column
@@ -102,13 +95,13 @@
   .widget
     .content
       p,ul,ol,table,.tabs,details
-        margin-top: $gap-inline
-        margin-bottom: $gap-inline
+        margin-top: $gap-p
+        margin-bottom: $gap-p
       .post
         padding-top: 0
         padding-bottom: 0
-        margin-top: $gap-inline
-        margin-bottom: $gap-inline
+        margin-top: $gap-p
+        margin-bottom: $gap-p
     &.grid .content .grid.fixed a
       width: "calc(100%/8 - 0 * %s)" % $gap
       @media screen and (max-width: $device-laptop)
@@ -176,7 +169,6 @@
           display: inline
           font-weight: normal
           color: $color-text
-          text-decoration: none
           &:hover
             color: $color-hover
 
@@ -216,16 +208,12 @@
                 color: white
                 p
                   color: white
-
           .notlink
             cursor: default
             &:hover
               color: $color-meta
               p
                 color: $color-meta
-
-
-
           display: flex
           align-items: center
           justify-content: center
@@ -234,10 +222,8 @@
           border-radius: 4px
           &:last-child
             margin-right: 0
-
           img,i
             display: inline
-
           i
             margin-right: 4px
             border-radius: 0
@@ -247,7 +233,6 @@
             color: $color-meta
             padding-left: 0
             padding-right: 4px
-
           a
             display: flex
             justify-content: center
@@ -257,18 +242,15 @@
               width: 1.2em
               margin-right: 5px
               transform: translateY(-1px)
-
             p
               margin: 0
               padding-top: 2px
               font-weight: normal
               trans()
-
             &:hover
               color: $color-hover
               p
                 color: $color-hover
-              text-decoration: none
 
         .author
           img,i
@@ -350,12 +332,12 @@ div.hoverbox
   .article
     p[ct]
       margin-top: 0
-      margin-bottom: $gap-inline
+      margin-bottom: $gap-p
       font-size: $fontsize-h4
       color: $color-text
     p[cst]
-      margin-top: $gap-inline
-      margin-bottom: $gap-inline
+      margin-top: $gap-p
+      margin-bottom: $gap-p
       font-size: $fontsize-meta
 
 

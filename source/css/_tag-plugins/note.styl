@@ -5,9 +5,9 @@ div.note
   border($c)
     return mix($c, $color-card, 80)
   position: relative
-  margin-top: $gap-line
-  margin-bottom: $gap-line
-  padding: $gap-inline $gap
+  margin-top: $gap-block
+  margin-bottom: $gap-block
+  padding: $gap-p $gap
   padding-left: "calc(16px + %s)" % $gap
   border-radius: $border-codeblock
 
@@ -33,8 +33,8 @@ div.note
   blockquote,
   img
     font-size: $fontsize-list
-    margin-top: $gap-inline
-    margin-bottom: $gap-inline
+    margin-top: $gap-p
+    margin-bottom: $gap-p
 
   &::before
     position: absolute

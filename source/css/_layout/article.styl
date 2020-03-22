@@ -20,7 +20,7 @@
 
   h1,h2,h3,h4,h5,h6
     &:first-child
-      margin-top: $gap-line
+      margin-top: $gap-block
       padding-top: 0
     &.title
       left: 0
@@ -49,17 +49,17 @@
   h5
     font-weight: bold
     color: $color-h5
-    margin-top: $gap-line
+    margin-top: $gap-block
   h6
     color: $color-h6
-    margin-top: $gap-line
+    margin-top: $gap-block
 
   center
     &,p
       text-align: center
 
   .aplayer
-    margin: $gap-line 0
+    margin: $gap-block 0
     display: inline-block
     width: 400px
     max-width: 100%
@@ -78,8 +78,8 @@
   u
     color: $color-hover
   p
-    margin-top: $gap-line
-    margin-bottom: $gap-line
+    margin-top: $gap-block
+    margin-bottom: $gap-block
     text-align: $textalign-p
 
     max-width: 100%
@@ -98,8 +98,8 @@
     list-style: initial
     padding-left: 8px
     margin-left: $gap
-    margin-top: $gap-line
-    margin-bottom: $gap-line
+    margin-top: $gap-block
+    margin-bottom: $gap-block
     ul,ol
       margin-top: 0
       margin-bottom: 0
@@ -117,10 +117,7 @@
       list-style: initial
   ol>li
       list-style: decimal
-  a
-    &:before
-      display: none
-    trans()
+  >a,>p>a,blockquote a,div.note a
     &:hover
       color: $color-hover
       text-decoration: underline
@@ -150,8 +147,8 @@
       text-align: left
       word-wrap: normal
       font-size: $fontsize-list
-      margin-top: $gap-inline
-      margin-bottom: $gap-inline
+      margin-top: $gap-p
+      margin-bottom: $gap-p
     box-shadow: $boxshadow-card
     position: relative
     width: 100%
@@ -162,7 +159,7 @@
       text-align: justify
       color: inherit
       font-style: italic
-      margin: $gap-inline 0
+      margin: $gap-p 0
       cite
         &::before
           content: '----'
@@ -183,8 +180,8 @@
     display: block
     -moz-box-sizing: border-box
     box-sizing: border-box
-    margin-top: $gap-line
-    margin-bottom: $gap-line
+    margin-top: $gap-block
+    margin-bottom: $gap-block
     overflow: auto
     background: $color-codeblock
     font-size: $fontsize-code
@@ -226,7 +223,7 @@
 
   .widget
     background: transparent
-    margin: $gap-line 0
+    margin: $gap-block 0
     box-shadow: none
     border-radius: $border-codeblock
     cursor: auto
@@ -266,6 +263,7 @@
           color: $color-link
           font-weight: normal
           &:hover,&.active,&:active
+            text-decoration: underline
             border-left: none
             background: none
             color: $color-hover
@@ -312,17 +310,15 @@
   h4
     &:before
       margin-top: $gap-h4 - $navbar-height - 2 * $gap
-    margin-bottom: $gap-line
+    margin-bottom: $gap-block
   h5
     font-weight: bold
-    margin-bottom: $gap-line
+    margin-bottom: $gap-block
   h6
-    margin-bottom: $gap-line
+    margin-bottom: $gap-block
 
 
 article .readmore
-  margin-top: $gap-line
+  margin-top: $gap-block
   >a
     font-size: $fontsize-meta
-    &:hover
-      text-decoration: none

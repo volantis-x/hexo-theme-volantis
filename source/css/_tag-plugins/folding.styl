@@ -1,7 +1,7 @@
 details
   display: block
   padding: $gap
-  margin: $gap-line 0
+  margin: $gap-block 0
   overflow: hidden
   border-radius: $border-codeblock
   border: 1px solid darken($color-block, 4)
@@ -24,8 +24,8 @@ details
         float: right
         content: '+'
   div.content
-    margin-top: $gap-line
-    margin-bottom: unit($gap-line, px) - unit($gap, px)
+    margin-top: $gap-block
+    margin-bottom: unit($gap-block, px) - unit($gap, px)
   &[blue]
     border: 1px solid darken(bgcolor($color-md-blue), 4)
     >summary
@@ -73,11 +73,11 @@ details[open]
       border-bottom: 1px solid darken(bgcolor($color-mac-red), 8)
   >summary
     color: $color-p
-    margin-bottom: $gap-line
+    margin-bottom: $gap-block
     &:hover
       &:after
         content: '-'
   >
     p,.tabs,ul,ol
-      margin-top: $gap-inline
-      margin-bottom: $gap-inline
+      margin-top: $gap-p
+      margin-bottom: $gap-p

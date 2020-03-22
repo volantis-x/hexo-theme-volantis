@@ -58,8 +58,8 @@
     max-height: "calc(100% - %s)" % $offset
     max-width: 100%
     p
-      margin-top: $gap-inline
-      margin-bottom: $gap-inline
+      margin-top: $gap-p
+      margin-bottom: $gap-p
     ul>li
       a
         color: $color-meta
@@ -210,8 +210,6 @@
         font-size: $fontsize-meta
         font-weight: bold
         line-height: 2.4em
-        &:hover
-          text-decoration: none
         i
           margin-left: 1px
         img
@@ -282,19 +280,12 @@
             width: "calc(100%/3 - 0 * %s)" % $gap
 
 
-
-
-
-  // &.category
-  //   .content
-  //     font-weight: bold
-
   &.tagcloud
     .content
       text-align: justify
       padding: $gap * 0.5 $gap
       a
-        display:inline-block
+        display: inline-block
         trans()
         line-height: 1.6em
         &:hover
