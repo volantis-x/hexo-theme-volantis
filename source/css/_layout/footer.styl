@@ -1,0 +1,55 @@
+footer
+  position: relative
+  padding: 40px 10px 120px 10px
+  width: 100%
+  color: alpha($color-site-inner, .5)
+  margin: 0px auto
+  &,p
+    font-size: $fontsize-code
+  overflow: hidden
+  text-align: center
+
+  .licenses
+    color: fade(@color_text_main, 50%)
+    text-decoration: underline
+
+  .codename
+    text-decoration: underline
+
+  .social-wrapper
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    margin: 4px $gap * 0.5
+    font-size: $fontsize
+
+  a
+    color: alpha($color-site-inner, .75)
+    padding: 0
+    trans()
+    &:hover
+      color: $color-site-inner
+    &.social
+      position: relative
+      display: inline-block
+      text-align: center
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 36px
+      height: 36px
+      margin: 4px
+      border-radius: 100px
+      color: alpha($color-site-inner, .75)
+      &:hover
+        background: alpha($color-site-inner, .1)
+        color: $color-site-inner
+
+
+
+  .copyright
+    margin-top: $gap
+    font-size: $fontsize-footnote
+
+  @media screen and (max-width: $device-tablet)
+    justify-content: center

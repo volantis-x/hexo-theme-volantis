@@ -1,0 +1,32 @@
+<%- partial('_pre') %>
+<section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
+  <%- partial('header', {item: item}) %>
+  <div class='content'>
+    <% site.pages.forEach(function(post){ %>
+      <% if (post.pid == item.pid) { %>
+        <article id="<%= post.layout %>" class="post article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+          <section class="article typo">
+            <div class="article-entry" itemprop="articleBody">
+              <% if (item.content in post) { %>
+                <%- post[item.content] %>
+              <% } %>
+            </div>
+          </section>
+        </article>
+      <% } %>
+    <% }) %>
+    <% site.posts.forEach(function(post){ %>
+      <% if (post.pid == item.pid) { %>
+        <article id="<%= post.layout %>" class="post article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+          <section class="article typo">
+            <div class="article-entry" itemprop="articleBody">
+              <% if (item.content in post) { %>
+                <%- post[item.content] %>
+              <% } %>
+            </div>
+          </section>
+        </article>
+      <% } %>
+    <% }) %>
+  </div>
+</section>

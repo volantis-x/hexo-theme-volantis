@@ -1,26 +1,24 @@
+<%- partial('_pre') %>
 <% page.comments = false; %>
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.posts && site.posts.length > 0) { %>
     <% if (page.layout == 'tag') { %>
-      <section class="post-list">
+      <section class="post-list <%- theme.layout.multiple_columns ? 'multiple-columns' : '' %>">
         <div class='post-wrapper'>
-          <article id="archive-page" class="post article white-box">
+          <article id="archive-page" class="post article white-box <%- theme.style.body.effect.join(' ') %>">
             <section class="archive">
               <div class="archive-item archive-year mark">
                 <h2><%- page.title %></h2>
               </div>
               <div class="archive-item all-tags">
-                <% theme.widget.forEach(function(item){ %>
-                  <% if (item.class == 'tagcloud'){ %>
-                    <%- tagcloud(site.tags, {
-                        min_font: item.min_font,
-                        max_font: item.max_font,
-                        color: item.color,
-                        start_color: item.start_color,
-                        end_color: item.end_color,
-                    }) %>
-                  <% } %>
-                <% }) %>
+                <% let tc = theme.widget.tagcloud; %>
+                <%- tagcloud(site.tags, {
+                    min_font: tc.min_font,
+                    max_font: tc.max_font,
+                    color: tc.color,
+                    start_color: tc.start_color,
+                    end_color: tc.end_color,
+                }) %>
               </div>
               <br>
               <%- page.content %>

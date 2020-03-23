@@ -1,0 +1,22 @@
+@require('func')
+// shadow
+$boxshadow-card = 0 1px 2px 0px rgba(0, 0, 0, 0.1)
+$boxshadow-card-float = 0 2px 4px 0px rgba(0, 0, 0, 0.1), 0 4px 8px 0px rgba(0, 0, 0, 0.1), 0 8px 16px 0px rgba(0, 0, 0, 0.1)
+
+$boxshadow-float = 0 4px 8px 0px rgba(0, 0, 0, 0.1)
+
+$textshadow = 0 1px 2px 0px rgba(0, 0, 0, 0.1)
+
+
+.blur
+  @supports (backdrop-filter: blur(20px))
+    background: alpha($color-card, .9) !important
+    backdrop-filter: saturate(200%) blur(20px)
+
+
+.shadow
+  box-shadow: $boxshadow-card
+  &.floatable
+    trans()
+    &:hover
+      box-shadow: $boxshadow-card-float

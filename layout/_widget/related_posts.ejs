@@ -1,8 +1,9 @@
 <% if(page.layout == 'post' && page.content && page.path != undefined){ %>
-  <section class='widget <%- item.class %>'>
+  <%- partial('_pre') %>
+  <section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
     <%- partial('header', {item: item}) %>
-    <div class="content <%= theme.style %>">
-      <%- popular_posts( { maxCount: 10 , ulClass: 'popular-posts' , PPMixingRate: 0.2 } , page ) %>
+    <div class="content">
+      <%- popular_posts( { maxCount: item.max_count , ulClass: 'popular-posts' , PPMixingRate: 0.2 } , page ) %>
     </div>
   </section>
 <% } %>

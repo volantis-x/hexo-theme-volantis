@@ -1,0 +1,5 @@
+<%- partial('_pre') %>
+<div class='l_main no_sidebar'>
+  <%- partial('_partial/article', {post: page, index: false}) %>
+</div>
+<%- partial('_partial/footer', null, {cache: !config.relative_link}) %>

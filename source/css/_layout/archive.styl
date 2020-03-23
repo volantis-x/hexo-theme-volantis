@@ -1,0 +1,87 @@
+#archive-page
+  margin-bottom: $gap * 2
+  .archive
+
+    .archive-year
+      margin-top: 4em
+      margin-bottom: 1em
+      &:first-child
+        margin-top: 0em
+        padding-top: 0
+
+      h2
+        margin-top: 1em
+
+
+    .archive-post
+      a
+        color: $color-text
+        width: 100%
+        display: inline-flex
+        flex-flow: row nowrap
+        justify-content: flex-start
+        align-items: flex-start
+        background: transparent
+        border-left: $border-line solid transparent
+        border-radius: $border-line
+        vertical-align: middle
+        font-size: $fontsize-meta
+        &.child
+          padding-left: 2 * $gap
+
+        trans()
+        &:hover
+          background: bgcolor($color-theme)
+          border-left: $border-line solid $color-theme
+          // padding-top: 8px
+          // padding-bottom: 8px
+        &:active
+          border-left: $border-line * 2 solid $color-theme
+
+      time
+        flex: none
+        vertical-align: middle
+        padding: .4em
+        padding-left: 2em
+        color: $color-meta
+        @media screen and (max-width: $device-mobile)
+          padding-left: 1em
+
+      .title
+        flex: auto
+        padding: .4em
+        i
+          color: $color-hover
+          &.red
+            color: $color-mac-red
+          &.green
+            color: $color-mac-green
+          &.yellow
+            color: $color-mac-yellow
+          &.blue
+            color: $color-mac-cyan
+          &.theme
+            color: $color-theme
+          &.accent
+            color: $color-hover
+          &.orange
+            color: $color-md-deep-orange
+    .all-categories
+      time
+        color: $color-text
+      .title
+        color: $color-meta
+
+    .all-tags
+      display: flex
+      flex-wrap: wrap
+      align-items: flex-start
+      justify-content: flex-start
+      align-items: baseline
+      word-spacing: $gap * 0.5
+      text-align: center
+      >a
+        color: $color-meta
+        margin-right: $gap
+        &:hover,&:active,&.active
+          color: $color-hover !important

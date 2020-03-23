@@ -132,15 +132,10 @@ var SearchService = "";
     self.buildResult = function(url, title, digest, index) {
       var html = "";
       html = "<li>";
-      html +=   "<a class='result' href='" +url+ "'>";
-      if(index === undefined)
-        html +=     "<span class='title'>" +title+ "</span>";
-      else
-        html +=     "<span class='title'>" +index + ".  " + title+ "</span>";
-      if(digest !== "")
-        html +=     "<span class='digest'>" +digest+ "</span>";
-      html +=     "<span class='fas fa-chevron-thin-right'></span>";
-      html +=   "</a>";
+      html += "<a class='result' href='" +url+ "'>";
+      html += "<span class='title'>" +title+ "</span>";
+      if (digest !== "") html += "<span class='digest'>" +digest+ "</span>";
+      html += "</a>";
       html += "</li>";
       return html;
     };
@@ -695,7 +690,7 @@ var HexoSearch;
               var match_content = post_content.substring(start, end);
               keywords.forEach(function(keyword) {
                 var regS = new RegExp(keyword, "gi");
-                match_content = match_content.replace(regS, "<b style='color: #c00'>"+keyword+"</b>");
+                match_content = match_content.replace(regS, "<b mark>"+keyword+"</b>");
               });
               post.digest = match_content + "......";
             }
@@ -718,7 +713,7 @@ var HexoSearch;
           html = "";
       var i = 1;
       $.each(data, function(index, post) {
-        if (self.contentSearch(post, queryText)) 
+        if (self.contentSearch(post, queryText))
           html += self.buildResult(post.permalink, post.title, post.digest, i++);
       });
       return html;

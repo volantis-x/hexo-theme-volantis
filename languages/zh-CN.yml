@@ -1,3 +1,7 @@
+navbar:
+  archive: 归档
+  category: 分类
+  tag: 标签
 post:
   top: 置顶
   read_more: 阅读全文
@@ -24,8 +28,6 @@ footer:
   total_views: 总访问量为
   total_visitors: 总访客量
   times: 次
-search:
-  placeholder: 搜索
 symbol:
   comma: "，"
   period: "。"

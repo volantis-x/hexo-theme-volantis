@@ -1,3 +1,7 @@
+navbar:
+  archive: 歸檔
+  category: 分類
+  tag: 標籤
 post:
   top: 置頂
   read_more: 閱讀全文
@@ -24,8 +28,6 @@ footer:
   total_views: 總訪問量為
   total_visitors: 總訪客量為
   times: 次
-search:
-  placeholder: 搜尋
 symbol:
   comma: "，"
   period: "。"

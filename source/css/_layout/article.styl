@@ -1,0 +1,324 @@
+.article
+  color: $color-p
+  // word-break: break-all
+  word-wrap: break-word
+  img
+    position: relative
+    trans()
+    @media screen and (max-width: $device-mobile)
+      box-shadow: none
+  div>img,p>img
+    display: block
+    margin: auto
+    border-radius: 4px
+    @media screen and (max-width: $device-mobile)
+      border-radius: 2px
+  span
+    img
+      display: inline
+      margin: auto
+
+  h1,h2,h3,h4,h5,h6
+    &:first-child
+      margin-top: $gap-block
+      padding-top: 0
+    &.title
+      left: 0
+      &:before
+        content: none
+  h1,h2
+    padding-bottom: .2em
+    margin-bottom: .5em
+    border-bottom: 1px solid alpha($color-text, 10%)
+  h1
+    text-align: $textalign-h1
+    color: $color-h1
+    margin-top: $gap-h2
+  h2
+    text-align: $textalign-h2
+    color: $color-h2
+    margin-top: $gap-h2
+  h3
+    text-align: $textalign-h3
+    color: $color-h3
+    margin-top: $gap-h3
+  h4
+    text-align: $textalign-h4
+    color: $color-h4
+    margin-top: $gap-h4
+  h5
+    font-weight: bold
+    color: $color-h5
+    margin-top: $gap-block
+  h6
+    color: $color-h6
+    margin-top: $gap-block
+
+  center
+    &,p
+      text-align: center
+
+  .aplayer
+    margin: $gap-block 0
+    display: inline-block
+    width: 400px
+    max-width: 100%
+    border-radius: 4px
+    color: #666
+
+  p.small-img,
+  div.small-img
+    img
+      width: auto
+      max-width: 100%
+      margin: 0
+      box-shadow: none
+  s
+    color: alpha(@color, .75)
+  u
+    color: $color-hover
+  p
+    margin-top: $gap-block
+    margin-bottom: $gap-block
+    text-align: $textalign-p
+
+    max-width: 100%
+    overflow: auto
+    &.has-jax
+      font-family: $fontfamily-code
+      background: $color-mathjax
+      padding: $gap $gap * 0.5
+      border-radius: $border-codeblock
+      .mjx-chtml.MJXc-display
+        margin: 0
+
+
+  ul,ol
+    font-size: $fontsize-list
+    list-style: initial
+    padding-left: 8px
+    margin-left: $gap
+    margin-top: $gap-block
+    margin-bottom: $gap-block
+    ul,ol
+      margin-top: 0
+      margin-bottom: 0
+
+    &.task-list
+      padding-left: 0
+      margin-left: 4px
+      li
+        list-style: none
+        input
+          margin-right: 4px
+
+
+  ul>li
+      list-style: initial
+  ol>li
+      list-style: decimal
+  >a,>p>a,blockquote a,div.note a
+    &:hover
+      color: $color-hover
+      text-decoration: underline
+    &:active
+      color: darken($color-hover, 25%)
+
+
+  .subtitle
+    h6
+      color: alpha($color-text, 90%)
+
+  figure
+    figcaption
+      span
+        display: inline-block
+        margin-right: 5px
+
+
+
+  blockquote
+    background: bgcolor($color-blockquote)
+    border-left: $border-codeblock solid $color-blockquote
+    border-radius: $border-codeblock
+
+  blockquote
+    &,p,ul,ol
+      text-align: left
+      word-wrap: normal
+      font-size: $fontsize-list
+      margin-top: $gap-p
+      margin-bottom: $gap-p
+    box-shadow: $boxshadow-card
+    position: relative
+    width: 100%
+    padding: .7em 1.2em
+    trans()
+    footer
+      padding: 0
+      text-align: justify
+      color: inherit
+      font-style: italic
+      margin: $gap-p 0
+      cite
+        &::before
+          content: '----'
+          padding: 0 .3em
+
+        color: $color-meta
+        margin-left: 1em
+
+
+    &.pullquote
+      &.right
+        border-left: none
+        border-right: $border-codeblock solid $color-blockquote
+        p
+          text-align: right
+
+  pre
+    display: block
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+    margin-top: $gap-block
+    margin-bottom: $gap-block
+    overflow: auto
+    background: $color-codeblock
+    font-size: $fontsize-code
+    font-family: $fontfamily-code
+    border: 1px solid darken($color-codeblock, 10%)
+    padding: $gap
+
+  div>pre
+    border-radius: $border-codeblock
+    &>code
+      padding: 0
+      margin: 0
+      background: transparent
+      color: alpha($color-text, 90%)
+
+  code
+    font-family: $fontfamily-code
+    padding: 4px 2px 2px 2px
+    margin: 0
+    vertical-align: middle
+    border-radius: 2px
+    line-height: 1.45
+    font-size: $fontsize-code
+    color: $color-inlinecode
+    background: bgcolor($color-inlinecode, 4)
+
+  table:not('.highlight table')
+    width: 100%
+    td,th
+      padding: 12px 24px
+
+  @media screen and (max-width: $device-mobile)
+    ul,ol
+      font-size: $fontsize-meta
+    figure
+      font-size: 13px
+      line-height: 1.6em
+
+
+  .widget
+    background: transparent
+    margin: $gap-block 0
+    box-shadow: none
+    border-radius: $border-codeblock
+    cursor: auto
+    background: $color-block
+    padding: $gap * 0.5 0
+    trans()
+    &:hover
+      box-shadow: none
+
+    &:active
+      box-shadow: none
+    header
+      padding: $gap * 0.25 .6em
+      padding-bottom: 0
+      color: alpha($color-text, 85%)
+
+    &.copyright,&.qrcode
+      background: none
+      padding: 0
+      header
+        display: none
+      .content
+        padding: 0
+    width: 100%
+
+    .content
+      padding: 0 .6em
+      margin: 0
+      ul.entry, ul.popular-posts
+        padding-left: 9px
+        margin-left: $gap
+        a
+          display: inline
+          border-left: none
+          padding: 0
+          padding-left: 4px
+          color: $color-link
+          font-weight: normal
+          &:hover,&.active,&:active
+            text-decoration: underline
+            border-left: none
+            background: none
+            color: $color-hover
+
+
+    &.qrcode > .content
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      justify-content: center
+      padding-left: $gap
+      padding-right: $gap
+      &>.fancybox, &>img
+        margin: 0 $gap * 0.5
+
+      img
+        margin-bottom: 4px
+
+      margin-bottom: 4px
+
+
+  .widget-blur
+    backdrop-filter: none
+
+// nav to title
+.article .article-entry>
+  h1,h2,h3,h4,h5,h6
+    position: relative
+    pointer-events: none
+    margin-top: 0
+    &:before
+      content: ''
+      display: block
+      margin-top: 0 - $navbar-height - 2 * $gap
+      height: $navbar-height + 2 * $gap
+      visibility: hidden
+      pointer-events: none
+  h1,h2
+    &:before
+      margin-top: $gap-h2 - $navbar-height - 2 * $gap
+  h3
+    &:before
+      margin-top: $gap-h3 - $navbar-height - 2 * $gap
+  h4
+    &:before
+      margin-top: $gap-h4 - $navbar-height - 2 * $gap
+    margin-bottom: $gap-block
+  h5
+    font-weight: bold
+    margin-bottom: $gap-block
+  h6
+    margin-bottom: $gap-block
+
+
+article .readmore
+  margin-top: $gap-block
+  >a
+    font-size: $fontsize-meta

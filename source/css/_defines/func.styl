@@ -1,0 +1,36 @@
+
+
+trans($time = 0.28s)
+  transition: all $time ease
+  -moz-transition: all $time ease
+  -webkit-transition: all $time ease
+  -o-transition: all $time ease
+
+// bgcolor($color = #ccc)
+//   return lighten(desaturate($color, 10%), 88%)
+
+hoverable-card()
+  trans()
+  &:hover
+    box-shadow: 0 0 4px rgba(0,0,0,.1), 0 0 8px rgba(0,0,0,.08)
+
+txt-ellipsis()
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+placeholder(rules)
+  &::-webkit-input-placeholder
+    rules()
+  &:-moz-placeholder
+    rules()
+	&::-moz-placeholder
+    rules()
+	&:-ms-input-placeholder
+    rules()
+
+disable-user-select()
+  -moz-user-select: none
+  -ms-user-select: none
+  -webkit-user-select: none
+  user-select: none

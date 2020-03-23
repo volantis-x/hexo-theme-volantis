@@ -1,0 +1,193 @@
+// https://github.com/equinusocio/vsc-material-theme
+@require 'theme'
+@require 'diff'
+
+
+.highlight
+  position: relative
+  width: 100%
+  margin: $gap-block 0
+  display: block
+  background: $color-codeblock
+  font-size: $fontsize-code
+  font-family: $fontfamily-code
+  border-radius: $border-codeblock
+  border: 1px solid darken($color-codeblock, 6)
+  trans()
+  figcaption
+    position: sticky
+    left: 0
+    padding: $gap * 0.25 $gap * 0.5 $gap * 0.25 $gap * 0.5
+    background-color: darken($color-codeblock, 5%)
+
+
+  table
+    overflow: auto
+    display: block
+    td,th
+      padding: 0
+      border: none
+    margin: 0
+    background-color: transparent
+    border: none
+    tr
+      background-color: transparent
+      &:hover
+        background-color: transparent
+
+
+    .gutter
+      disable-user-select()
+      padding: 0 12px
+      text-align: right
+      border-width: 0
+      margin-left: 0
+      position: sticky
+      left: 0
+      background-color: darken($color-codeblock, 5%)
+      pre
+        color: $color-meta
+
+
+    pre
+      background: transparent
+      margin: 0
+      padding: 0
+      border: none
+
+    .code
+      padding: $gap
+      vertical-align: top
+      background-color: transparent
+      &:before
+        content: ""
+        position: absolute
+        top: 0
+        right: 0
+        color: $color-meta
+        font-size: $fontsize-footnote
+        padding: 4px 8px
+
+  if hexo-config('style.body.highlight.language') == true
+    &.html .code:before
+        content: "HTML"
+
+    &.js .code:before
+        content: "JS"
+
+    &.bash .code:before
+        content: "bash"
+
+    &.shell .code:before
+        content: "shell"
+
+    &.css .code:before
+        content: "css"
+
+    &.less .code:before
+        content: "less"
+
+    &.stylus .code:before
+        content: "stylus"
+
+    &.swift .code:before
+        content: "Swift"
+
+    &.objc .code:before
+        content: "ObjC"
+
+    &.c .code:before
+        content: "C"
+
+    &.cpp .code:before
+        content: "C++"
+
+    &.java .code:before
+        content: "Java"
+
+    &.python .code:before
+        content: "Python"
+
+    &.yaml .code:before
+        content: "YAML"
+
+    &.plain .code:before
+        content: ""
+
+
+  // &::-webkit-scrollbar
+  //   height: $border-line
+  //   width: $border-line
+  // &::-webkit-scrollbar-track-piece
+  //   background: transparent
+  // &::-webkit-scrollbar-thumb
+  //   background: alpha($color-text, .3)
+  //   cursor: pointer
+  //   border-radius: $border-codeblock
+  //   trans()
+  //   &:hover
+  //     background: alpha($color-text, .6)
+
+
+
+
+$hl-keyword = #9c27b0
+$hl-blue = #1E80F0
+$hl-cyan = #17AFCA
+$hl-green = #3FA33F
+$hl-light-blue = #6ECDF9
+$hl-red = #EE2B29
+$hl-orange = #FB3F1B
+$hl-amber = #FD8607
+
+pre
+  // 行
+  // line-height: 1.5
+  .line
+    color: alpha($color-text, 90%)
+
+  .marked
+    background-color: alpha(#FED542, 40%)
+    padding: 2px 8px 2px 0
+    border-radius: 2px
+    width: 100%
+
+  .title
+    color: $color-md-indigo
+
+  // 注释
+  .comment
+    color: alpha(darken($color-md-green, 10%), 70%)
+
+  .keyword, .javascript .function, .attr
+    color: $hl-keyword
+
+  .type, .built_in, .tag .name
+    color: $color-md-light-blue
+
+  .variable, .attribute, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo
+    color: $hl-amber
+
+  .number, .preprocessor, .literal, .params, .constant
+    color: $hl-amber
+
+  .class, .ruby .class .title, .css .rules .attribute
+    color: $color-md-orange
+
+  .string
+    color: darken($color-md-green, 10%)
+
+  .value, .inheritance, .header, .ruby .symbol, .xml .cdata
+    color: $color-md-green
+
+  .css .hexcolor
+    color: #66cccc
+
+  .function, .python .decorator, .python .title, .ruby .function .title, .ruby .title .keyword, .perl .sub, .javascript .title, .coffeescript .title
+    color: #6699cc
+
+
+
+.html
+  .tag .name
+    color: $hl-red

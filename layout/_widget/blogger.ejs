@@ -1,5 +1,6 @@
-<section class='widget <%- item.class %>'>
-  <div class='content <%= theme.style %>'>
+<%- partial('_pre') %>
+<section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
+  <div class='content'>
     <% if(item.avatar) { %>
       <div class='avatar'>
         <img class='avatar' src='<%- item.avatar %>'/>
@@ -19,9 +20,9 @@
         <% } %>
       </div>
     <% } %>
-    <% if (item.social == true && theme.social) { %>
+    <% if (item.social == true && theme.footer.social) { %>
       <div class="social-wrapper">
-        <% (theme.social||[]).forEach(function(value){ %>
+        <% (theme.footer.social||[]).forEach(function(value){ %>
           <% if (value.url && value.icon) { %>
             <a href="<%- url_for(value.url) %>"
               class="social <%- value.icon %> flat-btn"

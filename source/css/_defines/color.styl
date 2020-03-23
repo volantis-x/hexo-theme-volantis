@@ -1,0 +1,65 @@
+// color lib
+$color-md-red = #f44336
+$color-md-pink = #E91E63
+$color-md-purple = #9c27b0
+$color-md-deep-purple = #673ab7
+$color-md-indigo = #3f51b5
+$color-md-light-blue = #4BA7EE
+$color-md-blue = #2196f3
+$color-md-deep-blue = #3367d6
+$color-md-teal = #009688
+$color-md-green = #4caf50
+$color-md-light-green = #8bc34a
+$color-md-orange = #ff9800
+$color-md-deep-orange = #ff5722
+$color-md-brown = #795548
+$color-md-blue-grey = #607d8b
+$color-md-grey = #9e9e9e
+$color-md-light-grey =#e0e0e0
+$color-md-yellow = #FCEC60
+$color-md-amber = #F6C344
+
+$color-mac-cyan = #1BCDFC
+$color-mac-green = #3DC550
+$color-mac-yellow = #FFBD2B
+$color-mac-red = #FE5F58
+
+$color-google-blue = #4688F1
+$color-google-green = #3AA757
+$color-google-yellow = #FABB2D
+$color-google-red = #E8453C
+
+
+// common
+$color-site = convert(hexo-config('style.color.site')) || #f4f4f4
+$color-site-inner = convert(hexo-config('style.color.site_inner')) || #555
+$color-card = convert(hexo-config('style.color.card')) || white
+$color-text = convert(hexo-config('style.color.text')) || #444
+$color-theme = convert(hexo-config('style.color.theme')) || #2196f3
+$color-link = convert(hexo-config('style.color.link')) || #2196f3
+$color-hover = convert(hexo-config('style.color.hover')) || #ff5722
+$color-inner = convert(hexo-config('style.color.inner')) || white
+$color-block = convert(hexo-config('style.color.block')) || #f6f6f6
+$color-selection = alpha(#2196f3, 0.2)
+
+// code
+$color-inlinecode = convert(hexo-config('style.color.inlinecode')) || #4f5a60
+$color-codeblock = convert(hexo-config('style.color.codeblock')) || #f6f6f6
+// blockquote
+$color-blockquote = convert(hexo-config('style.color.blockquote')) || $color-theme
+// mathjax
+$color-mathjax = #fff0
+
+// title color
+$color-h1 = convert(hexo-config('style.color.h1')) || $color-text
+$color-h2 = convert(hexo-config('style.color.h2')) || $color-text
+$color-h3 = convert(hexo-config('style.color.h3')) || $color-theme
+$color-h4 = convert(hexo-config('style.color.h4')) || $color-text
+$color-h5 = convert(hexo-config('style.color.h5')) || $color-text
+$color-h6 = convert(hexo-config('style.color.h6')) || $color-text
+$color-p = convert(hexo-config('style.color.p')) || #555
+
+$color-meta = alpha($color-text, .65)
+
+bgcolor($c, $mix = 10)
+  return mix($c, $color-card, $mix)

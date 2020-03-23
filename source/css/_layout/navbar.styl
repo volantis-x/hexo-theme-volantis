@@ -1,0 +1,345 @@
+
+#loading-bar-wrapper
+  position: fixed
+  top: 0
+  left: 0
+  height: 2px
+  width: 100%
+  z-index: 99999
+
+#loading-bar
+  position: fixed
+  width: 0
+  height: 2px
+  trans()
+  background-color: $color-theme
+
+
+.l_header
+  $iconW = 32px
+  $iconMargin = 4px
+  position: fixed
+  z-index: 9999
+  top: 0
+  width: 100%
+  line-height: $navbar-height
+  padding: 0 $gap
+  margin-bottom: $gap
+  box-shadow: $boxshadow-card
+  .wrapper
+    padding: auto $gap
+    max-width: $layout-width
+    @media screen and (min-width: 2000px)
+      max-width: 55vw
+    margin: auto
+    height: $navbar-height
+    disable-user-select()
+    .nav-main
+      trans()
+      transform: translateY(0 - $navbar-height)
+    .nav-sub
+      trans()
+      opacity: 0
+    trans()
+    a
+      &:not([href])
+        cursor: default
+    a.logo
+      color: $color-text
+  &.no_sidebar
+    .wrapper
+      max-width: $layout-width - $sidebar
+      @media screen and (min-width: 2000px)
+        max-width: "calc(55vw - %s)" % $sidebar
+
+  .wrapper.sub
+    .logo
+      @media screen and (max-width: $device-mobile)
+        trans()
+        padding-left: $gap
+        padding-right: 0
+    .nav-main
+      trans()
+      transform: translateY(0 - 2 * $navbar-height)
+    .nav-sub
+      opacity: 1
+  .nav-main,.nav-sub
+    height: $navbar-height
+
+  background: $color-card
+  &.hide
+    transform: translateY(100px) scale(0)
+
+  &.show
+    transform: translateY(0) scale(1)
+
+  &,a
+    height: $navbar-height
+    line-height: $navbar-height
+
+
+  .logo
+    txt-ellipsis()
+    padding: 0 $gap*1.5
+    font-size: $fontsize-h3
+    font-family: $fontfamily-logo
+    flex-shrink: 0
+    @media screen and (max-width: $device-mobile)
+      padding: 0 $gap
+
+    &.img
+      padding: 0 $gap 0 0
+
+    img
+      height: 100%
+
+    letter-spacing: 0
+
+  img.logo
+    padding: 4px 0
+
+
+  .nav-sub
+    .logo
+      font-size: $fontsize-body
+      font-family: $fontfamily
+      flex-shrink: 1
+      @media screen and (max-width: $device-mobile)
+        padding: 0 $gap
+        letter-spacing: -0.5px
+        padding-top: 1px
+
+
+  .menu
+    position:relative
+    flex: 1 1 auto
+    height: $navbar-height
+    trans()
+    margin: 0 $gap 0 0
+    li
+      ul.submenu
+        z-index: 1
+        display: none
+        position: absolute
+        background: $color-card
+        box-shadow: $boxshadow-float
+        margin-top: -2px - $border-card * 0.5
+        margin-left: 0
+        border-radius: $border-card * 0.5
+        border: 1px solid darken($color-codeblock, 6)
+        padding: $gap * 0.5 0
+        >hr
+          margin-top: $gap * 0.5
+          margin-bottom: $gap * 0.5
+        >li
+          // margin: -1px
+          white-space: nowrap
+          word-break: keep-all
+          &.header
+            font-size: $fontsize-footnote
+            font-weight: bold
+            line-height: 2em
+            color: $color-meta
+            margin: $gap * 0.5 $gap $gap * 0.25
+          ul
+            margin-left: 0
+            display: none
+            margin-top: 0 - 32px - $gap * 0.5
+            left: "calc(100% - 0.5 * %s)" % $gap
+        >li>a
+          font-size: $fontsize-meta
+          font-weight: bold
+          line-height: 33px
+          padding: 0 $gap
+          height: 32px
+          border-left: $border-line solid transparent
+          &:hover,&.active,&:active
+            color: $color-theme
+            border-left: $border-line solid $color-theme
+            border-bottom: none
+          >i
+            margin-right: 4px
+      &:hover
+        >ul.submenu
+          display: block
+
+    ul>li>a
+      trans()
+      display: block
+      padding: 0 8px
+      color: alpha($color-text, 85%)
+      i.music
+        animation: rotate-effect 1.5s linear infinite
+        @keyframes rotate-effect
+          0%
+            transform: rotate(0)
+          25%
+            transform: rotate(90deg)
+          50%
+            transform: rotate(180deg)
+          75%
+            transform: rotate(27  0deg)
+          100%
+            transform: rotate(360deg)
+      &.current
+        border-bottom: $border-line solid alpha($color-theme, 80%)
+
+      &:hover
+        color: $color-theme
+        border-bottom: $border-line solid $color-theme
+        background: bgcolor($color-theme)
+
+      &:active,&.active
+        color: $color-theme
+        border-bottom: $border-line solid $color-theme
+
+
+    @media screen and (max-width: $device-mobile)
+      display:none
+
+
+  .switcher
+    display: none
+    line-height: $navbar-height
+    .s-toc
+      display: none
+
+    @media screen and (max-width: $device-tablet)
+      .s-toc
+        display: flex
+    &>li
+      height: $navbar-height - $gap
+      trans()
+      margin: 2px
+      $height = $navbar-height - $gap
+      @media screen and (max-width: $device-mobile)
+        margin: 0 1px
+        height: $height
+
+      a
+        display: flex
+        justify-content: center
+        align-items: center
+        width: $height
+        height: $height
+        padding: .85em 1.1em
+        border-radius: 100px
+        trans()
+        color: $color-theme
+        &.active,&:active
+          background: bgcolor($color-theme)
+        @media screen and (max-width: $device-mobile)
+          width: $iconW
+          height: $height
+    @media screen and (max-width: $device-mobile)
+      display: flex
+      padding-left: $gap * 0.5
+      padding-right: $gap - 6px
+  .nav-sub .switcher
+    display: flex
+  .m_search
+    position: relative
+    display: flex
+    width: $sidebar
+    height: $navbar-height
+    @media screen and (max-width: $device-desktop)
+      width: $sidebar-s
+
+    .form
+      position: relative
+      display: flex
+      width: 100%
+      margin: auto
+      justify-content: flex-start
+      align-items: center
+
+    .icon,.input
+      trans(.3s)
+
+    .icon
+      position: absolute
+      width: $iconW
+      left: $iconMargin + 1px
+      color: alpha($color-text, 70%)
+      @media screen and (max-width: $device-mobile)
+        display: none
+    .input
+      display: block
+      padding-top: $gap * 0.5
+      padding-bottom: $gap * 0.5
+      width: 100%
+      color: $color-text
+      background: darken($color-card, 5)
+      box-shadow: none
+      box-sizing: border-box
+      padding-left: $iconW + $iconMargin
+      font-size: $fontsize-meta
+      border-radius: $border-searchbar
+      border: 1px dashed transparent
+      @media screen and (max-width: $device-mobile)
+        padding-left: $gap * 0.5
+        border: none
+        &:hover,&:focus
+          border: none
+      &:hover
+        ~.icon
+          color: alpha($color-theme, 80%)
+      &:focus
+        ~.icon
+          color: $color-theme
+
+
+
+  @media (max-width: $device-mobile)
+    padding: 0
+    .m_search
+      width:0
+      overflow: hidden
+      position: absolute
+      trans()
+      margin-left: $gap
+
+    &.z_search-open
+      .m_search
+        $offset = 3 * $gap + 2 * $iconW
+        width: "calc(100% - %s)" % $offset
+
+
+ul.menu-phone
+  display: none
+  @media screen and (max-width: $device-mobile)
+    display: block
+  position: fixed
+  padding: $gap * 0.5 0
+  top: $navbar-height + $gap
+  right: $gap
+  z-index: 9999 + 1
+  box-shadow: $boxshadow-card-float
+  border-radius: $border-card * 0.5
+  trans()
+  transform: scale(0,0) rotate(12deg)
+  transform-origin: right top
+  &.show
+    transform: scale(1,1) rotate(0)
+
+  >li>a
+      display: block
+      font-size: $fontsize-body
+      color: $color-text
+      line-height: 33px
+      height: 32px
+      padding: 0 $gap
+      border-left: $border-line solid transparent
+      i
+        margin-right: 4px
+      &.active
+        border-left: $border-line solid $color-theme
+        color: $color-theme
+
+
+.cover-wrapper
+  .l_header
+    trans(0.5s)
+    transform: translateY(-2 * $navbar-height)
+    &.show
+      transform: translateY(0)

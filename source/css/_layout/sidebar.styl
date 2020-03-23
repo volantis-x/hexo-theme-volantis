@@ -1,0 +1,352 @@
+.l_side
+  width: $sidebar
+  float: right
+  position: relative
+  display: flex
+  flex-direction: column
+  @media screen and (max-width: $device-desktop)
+    width: $sidebar-s
+
+  @media screen and (max-width: $device-tablet)
+    // margin: $gap 0 0
+    width: 100%
+
+
+.widget
+  z-index: 0
+  background: $color-card
+  margin-top: $gap
+  border-radius: $border-card
+  width: 100%
+  display: none
+  &.desktop
+    display: block
+  @media screen and (max-width: $device-tablet)
+    display: none !important
+    &.mobile
+      display: block !important
+
+  @media screen and (max-width: $device-mobile-l)
+    width: "calc(100% - 2 * %s)" % $gap
+    margin: $gap $gap 0 $gap
+    display: none !important
+    &.mobile
+      display: block !important
+
+
+  header
+    border-top-left-radius: $border-card
+    border-top-right-radius: $border-card
+    font-weight: bold
+    line-height: 1.5em
+    padding: "calc(%s - 2px)" % $gap
+    padding-bottom: 0
+    &,a
+      color: $color-theme
+    >a:hover
+      color: $color-hover
+
+    span.name
+      margin-left: $gap * 0.5
+
+
+  .content
+    text-align: justify
+    font-size: $fontsize-meta
+    padding: $gap * 0.5 0
+    $offset = $navbar-height + 12.5 * $gap
+    max-height: "calc(100% - %s)" % $offset
+    max-width: 100%
+    p
+      margin-top: $gap-p
+      margin-bottom: $gap-p
+    ul>li
+      a
+        color: $color-meta
+        padding: 0 $gap
+        padding-left: $gap * 0.5 + 4px
+        line-height: 2
+        display: flex
+        justify-content: space-between
+        align-content: center
+        border-left: $border-line solid transparent
+        trans()
+    ul.entry, ul.popular-posts
+      a
+        .name
+          flex:auto
+          txt-ellipsis()
+          color: alpha($color-text, .8)
+        .badge
+          flex:none
+          font-weight: normal
+          font-size: $fontsize-meta
+          color: alpha($color-text, .7)
+
+        &:hover
+          border-left: $border-line solid $color-theme
+          background: alpha($color-theme, .1)
+
+        &.active
+          border-left: $border-line solid $color-theme
+          .name
+            color: $color-theme
+          .badge
+            color: alpha($color-theme, .9)
+
+
+        &:active
+          border-left: $border-line * 2 solid $color-theme
+
+        &.child
+          padding-left: $gap * 2
+
+
+  &.blogger
+    trans()
+    .content
+      padding: 0
+      div.avatar
+        display: flex
+        justify-content: center
+
+      img
+        padding: 0
+        margin: 0
+        display: flex
+        justify-content: center
+        width: $sidebar
+        height: $sidebar
+        border-top-left-radius: $border-card
+        border-top-right-radius: $border-card
+        @media screen and (max-width: $device-desktop)
+          width: $sidebar-s
+          height: $sidebar-s
+
+        @media screen and (max-width: $device-tablet)
+          width: 96px
+          height: 96px
+          border-radius: 100%
+          margin-top: $gap * 0.5
+          padding: $gap * 0.5
+
+      h2
+        text-align: center
+        font-weight: bold
+        margin: $gap * 0.5
+        margin-top: $gap
+        @media screen and (max-width: $device-tablet)
+          margin: $gap * 0.5
+
+
+      p
+        font-weight: bold
+        text-align: center
+        margin: $gap * 0.5 $gap * 0.5 0 $gap * 0.5
+        empty-cells: hide
+
+      .social-wrapper
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        margin: 4px $gap * 0.25
+        a
+          color: $color-meta
+          padding: 0
+          trans()
+          &:hover
+            color: $color-hover
+
+          &.social
+            font-size: $fontsize-body
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 32px
+            height: 32px
+            margin: 4px
+            border-radius: 100px
+            &:hover
+              background: bgcolor($color-theme)
+              color: $color-theme
+
+
+
+        @media screen and (max-width: $device-tablet)
+          justify-content: center
+          display: none
+
+
+
+    @media screen and (max-width: $device-tablet)
+      box-shadow: none
+      background: transparent !important
+      margin-top: 2 * $gap
+      backdrop-filter: none
+
+
+
+  &.text
+    .content
+      &,p
+        font-size: $fontsize-meta
+        word-break: break-all
+      padding: $gap * 0.25 $gap
+      a
+        color: $color-link
+        trans()
+        &:hover
+          color: $color-hover
+          text-decoration: underline
+
+        &:active
+          color: darken($color-hover, 25%)
+
+
+  &.list
+    .content
+      padding: $gap * 0.5 0
+      a
+        font-size: $fontsize-meta
+        font-weight: bold
+        line-height: 2.4em
+        i
+          margin-left: 1px
+        img
+          display: inline
+          vertical-align: middle
+          height: 2em
+          width: 2em
+          &#round
+            border-radius: 100%
+
+
+  &.grid
+    .content
+      .grid
+        border: none
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-around
+        padding: 0 $gap
+        a
+          text-align: center
+          border-radius: $border-card
+          margin: 4px 0
+          padding: 4px 8px
+          display: flex
+          flex-direction: column
+          align-items: center
+          font-size: $fontsize-footnote
+          font-weight: bold
+          color: alpha($color-text, 70%)
+          line-height: 1.5
+          word-wrap: break-word
+          i
+            margin-top: .3em
+            margin-bottom: .3em
+            font-size: 1.8em
+
+          img
+            display: inline
+            vertical-align: middle
+            margin-bottom: 4px
+            &#round
+              border-radius: 100%
+
+
+          border: 1px solid transparent
+          &:hover
+            color: $color-theme
+            background: bgcolor($color-theme)
+            border-radius: 4px
+
+          &:active
+            color: $color-theme
+
+          &.active
+            color: $color-theme
+            border: 1px solid $color-theme
+
+        &.fixed a
+          width: "calc(100%/3 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-tablet)
+            width: "calc(100%/6 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile)
+            width: "calc(100%/5 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile-l)
+            width: "calc(100%/4 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile-m)
+            width: "calc(100%/3 - 0 * %s)" % $gap
+
+
+  &.tagcloud
+    .content
+      text-align: justify
+      padding: $gap * 0.5 $gap
+      a
+        display: inline-block
+        trans()
+        line-height: 1.6em
+        &:hover
+          color: $color-hover !important //to cover inline style.
+          text-decoration: underline
+
+
+
+  &.related_posts
+    .content
+      font-weight: bold
+      ul
+        margin-top: $gap * 0.5
+        margin-bottom: $gap * 0.5
+      h3
+        font-size: $fontsize-meta
+        font-weight: bold
+        margin: 0
+        a
+          line-height: inherit
+          padding-top: 4px
+          padding-bottom: 4px
+
+
+
+
+
+  &.qrcode
+    .content
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      justify-content: space-around
+      padding-left: $gap
+      padding-right: $gap
+      &,img
+        margin-bottom: 4px
+
+
+.l_side>.widget.page
+  .content
+    padding-top: 0
+    padding-left: $gap - 4px
+    padding-right: $gap - 4px
+
+
+
+.aplayer-container
+  display: flex
+  justify-content: center
+  min-height: 100px
+  meting-js
+    max-width: 100%
+
+
+.aplayer
+  max-width: 500px
+  border-radius: 4px
+  color: $color-text
+  font-family: $fontfamily
+  .aplayer-list
+    text-align: left
+  @media screen and (max-width: $device-mobile)
+    border-radius: $border-card

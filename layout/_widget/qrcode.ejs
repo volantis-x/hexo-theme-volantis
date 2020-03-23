@@ -1,0 +1,19 @@
+<%- partial('_pre') %>
+<section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
+  <%- partial('header', {item: item}) %>
+  <div class='content article-entry'>
+    <% (item.images||[]).forEach(function(url){ %>
+      <% if (item.fancybox == true) { %>
+        <div class='fancybox'><img src='<%- url_for(url) %>'
+        <% if (item.height) { %>
+          height='<%- item.height %>'
+        <% } %>></div>
+      <% } else { %>
+        <img src='<%- url_for(url) %>'
+        <% if (item.height) { %>
+          height='<%- item.height %>'
+        <% } %>>
+      <% } %>
+    <% }) %>
+  </div>
+</section>

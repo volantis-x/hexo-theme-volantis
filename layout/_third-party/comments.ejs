@@ -4,26 +4,29 @@
   var enableLivere = false;
   var enableGitalk = false;
   var enableValine = false;
-  if (page && page.comments != false) {
-    if (config.disqus_shortname) {
+  if (theme.comments && page && page.comments == true) {
+    if (theme.comments.disqus && theme.comments.disqus.shortname) {
       enableDisqus = true;
     }
-    if (config.livere_uid) {
+    if (theme.comments.livere && theme.comments.livere.uid) {
       enableLivere = true;
     }
-    if (config.gitalk) {
+    if (theme.comments.gitalk && theme.comments.gitalk.clientID) {
       enableGitalk = true;
     }
-    if (theme.valine.enable && config.leancloud) {
+    if (theme.comments.valine && theme.comments.valine.appId) {
       enableValine = true;
     }
   }
 %>
 
 <% if (enableDisqus || enableLivere || enableGitalk || enableValine) { %>
-  <article class="post white-box comments">
+  <article class="post white-box comments <%- theme.style.body.effect.join(' ') %>">
     <section class="article typo">
-      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;<%- __('post.comments') %></h4>
+      <p ct><%- theme.comments && theme.comments.title %></p>
+      <% if (theme.comments && theme.comments.subtitle) { %>
+        <p cst><%- theme.comments.subtitle %></p>
+      <% } %>
       <% if (enableDisqus) { %>
         <section id="comments">
           <div id="disqus_thread">
@@ -33,7 +36,7 @@
       <% } %>
       <% if (enableLivere){ %>
         <section id="comments">
-          <div id="lv-container" data-id="city" data-uid="<%= config.livere_uid %>">
+          <div id="lv-container" data-id="city" data-uid="<%= theme.comments.livere.uid %>">
             <noscript><div><i class='fas fa-exclamation-triangle'>&nbsp;<%- __('post.comments_placeholder', 'Livere') %></div></noscript>
           </div>
         </section>

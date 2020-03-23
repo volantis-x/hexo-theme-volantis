@@ -1,22 +1,55 @@
 ---
 name: Question Report
-about: 主题使用遇到问题（通过阅读文档和查看示例博客源码仍无法解决）
-title: "[求助]"
-labels: 疑问
+about: I have a question for Volantis (e.g. Customize)
+title: ''
+labels: 'new,question'
 assignees: ''
 
 ---
 
-## 描述
-清楚简明地描述问题是什么。
-对您期望发生的事情的简洁明了的描述。
+If you delete this template, we may close your issue without conducting an investigation.
+如果您删除此模版，我们可能会在不进行调查的情况下关闭您的 Issue。
 
-## 重现
-网址：
-截图：
+Please check if your Issue fulfills the following requirements. This will guide you to resolve the issue quickly.
+请务必确认您在提交此 Issue 前已经查看并完成了下列检查单中的所有事项。这会指导您快速地解决问题。
 
-## 环境
-Hexo版本：
-`package.json`文件：
-根目录的`_config.yml`文件：（敏感数据请替换为****）
-主题的`_config.yml`文件：
+## Issue Checklist <!-- 我确认我已经查看了 -->
+<!-- Change [ ] to [x] to select (将 [ ] 换成 [x] 来选择) -->
+
+- [ ] I am using [the latest](https://github.com/xaoxuu/hexo-theme-volantis/releases/latest) version of Volantis.
+- [ ] I have reviewed [guidelines for Volantis](https://volantis.js.org), which does not help me.
+- [ ] I have reviewed the latest Roadmap on GitHub and searched for current issues, which does not help me.
+
+***
+
+## Describe your question <!-- 描述您的问题 -->
+
+
+
+## Environment Information
+
+### Node.js and NPM Information
+<!-- Paste output from `node -v && npm -v` (粘贴 `node -v && npm -v` 输出的信息) -->
+```
+
+```
+
+### Package dependencies Information
+<!-- Paste output from `npm ls --depth 0` (粘贴 `npm ls --depth 0` 输出的信息) -->
+```
+
+```
+
+### Hexo Configuration
+<!-- Paste configuration from Hexo `_config.yml` (粘贴 Hexo `_config.yml` 中的内容) -->
+```yml
+
+```
+
+### Volantis Configuration
+<!-- Paste ONLY CHANGED CONFIGURATION from Volantis `_config.yml` (只粘贴 Volantis 主题配置文件 `_config.yml` 中修改过的部分) -->
+```yml
+
+```
+
+## Other Information <!-- (Like Browser, System, Screenshots) -->

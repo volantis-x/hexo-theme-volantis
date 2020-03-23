@@ -1,32 +1,30 @@
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<%- js(theme.plugins.jquery) %>
 <% if (theme.search && theme.search.enable) { %>
   <script>
     <% if(theme.search.service === 'baidu') { %>
-      var BAIDU_API_ID = "<%- config.baidu.apiId %>";
+      var BAIDU_API_ID = "<%- theme.search.baidu.apiId %>";
     <%} else if(theme.search.service === 'algolia') { %>
-      var ALGOLIA_API_KEY = "<%- config.algolia.apiKey %>";
-      var ALGOLIA_APP_ID = "<%- config.algolia.applicationID %>";
-      var ALGOLIA_INDEX_NAME = "<%- config.algolia.indexName %>";
+      var ALGOLIA_API_KEY = "<%- theme.search.algolia.apiKey %>";
+      var ALGOLIA_APP_ID = "<%- theme.search.algolia.applicationID %>";
+      var ALGOLIA_INDEX_NAME = "<%- theme.search.algolia.indexName %>";
     <%} else if(theme.search.service === 'azure') { %>
-      var AZURE_QUERY_KEY = "<%- config.azure.queryKey %>";
-      var AZURE_INDEX_NAME = "<%- config.azure.indexName %>";
-      var AZURE_SERVICE_NAME = "<%- config.azure.serviceName %>";
+      var AZURE_QUERY_KEY = "<%- theme.search.azure.queryKey %>";
+      var AZURE_INDEX_NAME = "<%- theme.search.azure.indexName %>";
+      var AZURE_SERVICE_NAME = "<%- theme.search.azure.serviceName %>";
     <%} else if(theme.search.service === 'google') { %>
-      var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- config.google.apiKey %>";
-      var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- config.google.engineId %>";
+      var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google.apiKey %>";
+      var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google.engineId %>";
     <%}%>
-    var SEARCH_SERVICE = "<%- theme.search.service%>" || "hexo";
+    var SEARCH_SERVICE = "<%- theme.search.service %>" || "hexo";
     var ROOT = "<%- config.root %>" || "/";
     if (!ROOT.endsWith('/')) ROOT += '/';
   </script>
 <% } %>
-<script async src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
-<% if (theme.aplayer == true) { %>
-  <script async src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
-  <script async src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+<% if (theme.plugins.instant_page) { %>
+  <script async src="<%- theme.plugins.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 <% } %>
-<% if (theme.scrollreveal == true) { %>
-  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+<% if (theme.plugins.scrollreveal) { %>
+  <script src="<%- theme.plugins.scrollreveal %>"></script>
   <script type="text/javascript">
     $(function() {
       const $reveal = $('.reveal');
@@ -36,8 +34,8 @@
     });
   </script>
 <% } %>
-<% if (theme.nodewaves == true) { %>
-  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+<% if (theme.plugins.nodewaves && theme.plugins.nodewaves.js) { %>
+  <%- js({src: theme.plugins.nodewaves.js}) %>
   <script type="text/javascript">
     $(function() {
       Waves.attach('.flat-btn', ['waves-button']);
@@ -50,43 +48,48 @@
     });
   </script>
 <% } %>
-<% if (theme.busuanzi == true) { %>
-  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
-<% } %>
-<% if (theme.fastclick == true) { %>
-  <!-- fastclick -->
-  <script async src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      FastClick.attach(document.body)
-    }, false)
-  </script>
+<% if (theme.plugins.busuanzi) { %>
+  <script async src="<%- theme.plugins.busuanzi %>"></script>
 <% } %>
 
-<% if (theme.backstretch && (theme.backstretch.images || page.images)) { %>
-  <% var imgs = theme.backstretch.images || page.images; %>
+<% if (theme.plugins.backstretch && theme.plugins.backstretch.enable && (theme.plugins.backstretch.images || page.images)) { %>
+  <% var imgs = theme.plugins.backstretch.images || page.images; %>
   <% var posi = null;
-  if (theme.backstretch.position == 'cover') {
+  if (theme.plugins.backstretch.position == 'cover') {
     posi = '.cover';
   }
    %>
-  <% if (imgs != undefined && theme.backstretch.position != undefined){ %>
-    <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@20.2/js/backstretch.min.js"></script>
+  <% if (imgs != undefined && theme.plugins.backstretch.position != undefined){ %>
+    <%- js(theme.plugins.backstretch.js) %>
     <script type="text/javascript">
       $(function(){
+        var imgs=<%- '["' + imgs.join('", "') + '"]' %>;
+        if ('<%- theme.plugins.backstretch.shuffle %>' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
         if ('<%- posi %>') {
           $('<%- posi %>').backstretch(
-          <%- '["' + imgs.join('", "') + '"]' %>,
+            imgs,
           {
-            duration: "<%- theme.backstretch.duration %>",
-            fade: "<%- theme.backstretch.fade %>"
+            duration: "<%- theme.plugins.backstretch.duration %>",
+            fade: "<%- theme.plugins.backstretch.fade %>"
           });
         } else {
           $.backstretch(
-          <%- '["' + imgs.join('", "') + '"]' %>,
+            imgs,
           {
-            duration: "<%- theme.backstretch.duration %>",
-            fade: "<%- theme.backstretch.fade %>"
+            duration: "<%- theme.plugins.backstretch.duration %>",
+            fade: "<%- theme.plugins.backstretch.fade %>"
           });
         }
       });
@@ -94,30 +97,35 @@
   <% } %>
 <% } %>
 
+<% if (theme.plugins.aplayer && theme.plugins.aplayer.enable && theme.plugins.aplayer.js) { %>
+  <% (theme.plugins.aplayer.js||[]).forEach(function(item){ %>
+    <%- js({src:item,async:true}) %>
+  <% }) %>
+<% } %>
 
 <%
   var enableDisqus = false;
   var enableLivere = false;
   var enableGitalk = false;
   var enableValine = false;
-  if (page && page.comments == true) {
-    if (config.disqus_shortname) {
+  if (theme.comments && page && page.comments == true) {
+    if (theme.comments.disqus && theme.comments.disqus.shortname) {
       enableDisqus = true;
     }
-    if (config.livere_uid) {
+    if (theme.comments.livere && theme.comments.livere.uid) {
       enableLivere = true;
     }
-    if (config.gitalk) {
+    if (theme.comments.gitalk && theme.comments.gitalk.clientID) {
       enableGitalk = true;
     }
-    if (theme.valine.enable && config.leancloud) {
+    if (theme.comments.valine && theme.comments.valine.appId) {
       enableValine = true;
     }
   }
 %>
 <% if (enableDisqus){ %>
   <script>
-    var disqus_shortname = '<%= config.disqus_shortname %>';
+    var disqus_shortname = '<%= theme.comments.disqus.shortname %>';
     <% if (page.permalink){ %>
       var disqus_url = '<%= page.permalink %>';
     <% } %>
@@ -147,11 +155,11 @@
   <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
   <script type="text/javascript">
     var gitalk = new Gitalk({
-      clientID: "<%- config.gitalk.clientID %>",
-      clientSecret: "<%- config.gitalk.clientSecret %>",
-      repo: "<%- config.gitalk.repo %>",
-      owner: "<%- config.gitalk.owner %>",
-      admin: "<%- config.gitalk.admin %>",
+      clientID: "<%- theme.comments.gitalk.clientID %>",
+      clientSecret: "<%- theme.comments.gitalk.clientSecret %>",
+      repo: "<%- theme.comments.gitalk.repo %>",
+      owner: "<%- theme.comments.gitalk.owner %>",
+      admin: "<%- theme.comments.gitalk.admin %>",
       <% if(page.gitalk && page.gitalk.id) { %>
         id: "<%= page.gitalk.id %>",
       <% } else { %>
@@ -164,81 +172,63 @@
 <% } %>
 
 <% if (enableValine){ %>
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <% if (theme.valine.volantis == true) { %>
-    <% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.volantis) { %>
-      <%- js(theme.info.cdn.js.volantis) %>
-    <% } else { %>
-      <%- js(['js/volantis.js']) %>
-    <% } %>
+  <% if (theme.comments.valine.js) { %>
+    <%- js(theme.comments.valine.js) %>
   <% } else { %>
-    <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-valine@1.3.4/js/valine.min.js"></script>
+    <%- js(['js/valine.js']) %>
   <% } %>
   <script>
   var GUEST_INFO = ['nick','mail','link'];
-  var guest_info = '<%= theme.valine.guest_info %>'.split(',').filter(function(item){
+  var guest_info = '<%= theme.comments.valine.meta %>'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = '<%= theme.valine.notify %>' == true;
-  var verify = '<%= theme.valine.verify %>' == true;
+  var notify = '<%= theme.comments.valine.notify %>' == true;
+  var verify = '<%= theme.comments.valine.verify %>' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
     notify: notify,
     verify: verify,
     guest_info: guest_info,
-    <% if(page.valine && page.valine.path) { %>
+    <% if (page.valine && page.valine.path) { %>
       path: "<%= page.valine.path %>",
+    <% } else if (theme.comments.valine.path) { %>
+      path: "<%= theme.comments.valine.path %>",
     <% } %>
-    appId: "<%= config.leancloud.app_id %>",
-    appKey: "<%= config.leancloud.app_key %>",
-    placeholder: "<%= (page.valine && page.valine.placeholder) ? page.valine.placeholder : theme.valine.placeholder %>",
-    pageSize:'<%= theme.valine.pageSize %>',
-    avatar:'<%= theme.valine.avatar %>',
-    lang:'<%= theme.valine.lang %>',
-    highlight:'<%= theme.valine.highlight %>'
+    appId: "<%= theme.comments.valine.appId %>",
+    appKey: "<%= theme.comments.valine.appKey %>",
+    placeholder: "<%= (page.valine && page.valine.placeholder) ? page.valine.placeholder : theme.comments.valine.placeholder %>",
+    pageSize:'<%= theme.comments.valine.pageSize %>',
+    avatar:'<%= theme.comments.valine.avatar %>',
+    lang:'<%= theme.comments.valine.lang %>',
+    visitor: '<%- theme.comments.valine.visitor %>',
+    highlight:'<%= theme.comments.valine.highlight %>'
   })
   </script>
 <% } %>
 
-<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.app) { %>
-  <%- js(theme.info.cdn.js.app) %>
+<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js) { %>
+  <%- js(theme.info.cdn.js) %>
 <% } else { %>
   <%- js(['js/app.js']) %>
 <% } %>
-<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.search) { %>
-  <%- js(theme.info.cdn.js.search) %>
-<% } else { %>
-  <%- js(['js/search.js']) %>
+<% if (theme.search && theme.search.enable && theme.search.js) { %>
+  <%- js(theme.search.js) %>
 <% } %>
-<% if (theme.commentTyping == true) { %>
-  <% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js && theme.info.cdn.js.commentTyping) { %>
-    <%- js(theme.info.cdn.js.commentTyping) %>
-  <% } else { %>
-    <%- js(['js/commentTyping.js']) %>
-  <% } %>
+<% if (theme.plugins.comment_typing) { %>
+  <%- js(theme.plugins.comment_typing) %>
 <%}%>
 
-
-<% if (page.layout == 'links') { %>
-  <%- js('https://cdn.jsdelivr.net/gh/toddmotto/echo@1.7.3/src/echo.js') %>
-  <script>
-    echo.init({
-      offset: 100,
-      throttle: 250,
-      unload: false,
-      callback: function (element, op) {
-        // console.log(element, 'has been', op + 'ed');
-      }
-    });
-  </script>
+<!-- 复制 -->
+<% if (theme.plugins.clipboard && theme.style.body.highlight.copy_btn) { %>
+  <%- partial('_third-party/clipboard') %>
 <% } %>
 
-<!-- 复制 -->
-<%- partial('_third-party/clipboard') %>
 
 <!-- fancybox -->
-<%- partial('_third-party/fancybox') %>
+<% if (theme.plugins.fancybox) { %>
+  <%- partial('_third-party/fancybox') %>
+<% } %>
 
 
 <% if (config.import && config.import.script){ %>

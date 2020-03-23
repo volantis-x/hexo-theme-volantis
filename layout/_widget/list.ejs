@@ -1,7 +1,8 @@
-<section class='widget <%- item.class %>'>
+<%- partial('_pre') %>
+<section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
   <%- partial('header', {item: item}) %>
-  <div class='content <%= theme.style %>'>
-    <ul class="entry">
+  <div class='content'>
+    <ul class="list entry navigation">
       <% (item.rows||[]).forEach(function(row){ %>
         <li><a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>"
           <% if (row.rel) { %>
@@ -10,6 +11,7 @@
           <% if (row.target) { %>
             target="<%- row.target %>"
           <% } %>
+          id="<%= url_for(row.url).replace(/\/|%|\./g, "")?url_for(row.url).replace(/\/|%|\./g, ""):"home" %>"
           >
           <div class='name'>
             <% if(row.img) { %>

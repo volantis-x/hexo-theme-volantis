@@ -1,23 +1,11 @@
-<% if(post.author || config.author){ %>
-  <div class='new-meta-item author'>
-    <% if (post.author) { %>
-      <a href="<%- url_for(post.author.url) %>" rel="nofollow">
-        <% if (post.author.avatar) { %>
-          <img src="<%- post.author.avatar %>">
-        <% } else { %>
-          <i class="<%- theme.meta.author.icon %>" aria-hidden="true"></i>
-        <% } %>
-        <p><%- post.author.name %></p>
-      </a>
-    <% } else { %>
-      <a href="<%- url_for(config.url) %>" rel="nofollow">
-        <% if (config.avatar) { %>
-          <img src="<%- config.avatar %>">
-        <% } else { %>
-          <i class="<%- theme.meta.author.icon %>" aria-hidden="true"></i>
-        <% } %>
-        <p><%- config.author %></p>
-      </a>
-    <% } %>
-  </div>
-<% } %>
+<%
+if (post.author == undefined) {
+  post.author = theme.meta.author;
+}
+%>
+<div class='new-meta-item author'>
+  <a href="<%- post.author.url %>" rel="nofollow">
+    <img src="<%- post.author.avatar %>">
+    <p><%- post.author.name %></p>
+  </a>
+</div>
