@@ -28,10 +28,6 @@
   box-shadow: $boxshadow-card
   .wrapper
     padding: auto $gap
-    max-width: $layout-width
-    @media screen and (min-width: 2000px)
-      max-width: 55vw
-    margin: auto
     height: $navbar-height
     disable-user-select()
     .nav-main
@@ -65,6 +61,10 @@
       opacity: 1
   .nav-main,.nav-sub
     height: $navbar-height
+    display: flex
+    flex-wrap: nowrap
+    justify-content: space-between
+    align-items: center
 
   background: $color-card
   &.hide
@@ -100,6 +100,10 @@
 
 
   .nav-sub
+    max-width: $layout-width
+    margin: auto
+    @media screen and (min-width: 2000px)
+      max-width: 55vw
     .logo
       font-size: $fontsize-body
       font-family: $fontfamily
@@ -111,12 +115,11 @@
 
 
   .menu
-    position:relative
-    flex: 1 1 auto
+    position: relative
     height: $navbar-height
     trans()
-    margin: 0 $gap 0 0
     li
+      position: relative
       ul.submenu
         z-index: 1
         display: none
@@ -124,7 +127,6 @@
         background: $color-card
         box-shadow: $boxshadow-float
         margin-top: -2px - $border-card * 0.5
-        margin-left: 0
         border-radius: $border-card * 0.5
         border: 1px solid darken($color-codeblock, 6)
         padding: $gap * 0.5 0
@@ -145,7 +147,7 @@
             margin-left: 0
             display: none
             margin-top: 0 - 32px - $gap * 0.5
-            left: "calc(100% - 0.5 * %s)" % $gap
+
         >li>a
           font-size: $fontsize-meta
           font-weight: bold
@@ -303,6 +305,28 @@
       .m_search
         $offset = 3 * $gap + 2 * $iconW
         width: "calc(100% - %s)" % $offset
+
+.l_header .wrapper
+  if hexo-config('style.navbar.width') == 'auto'
+    max-width: $layout-width
+    margin: auto
+    @media screen and (min-width: 2000px)
+      max-width: 55vw
+    .menu
+      flex: 1 1 auto
+      margin: 0 $gap 0 0
+      .submenu ul
+        left: "calc(100% - 0.5 * %s)" % $gap
+  else
+    a.logo
+      margin-right: auto
+    .m_search
+      margin-right: $gap
+
+    .menu li ul.submenu
+      right: 0
+      ul
+        right: "calc(100% - 0.5 * %s)" % $gap
 
 
 ul.menu-phone

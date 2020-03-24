@@ -1,11 +1,11 @@
 ############################### Basic Information ###############################
 info:
   name: Volantis
-  version: '2.2.0'
+  version: '2.2.1'
   docs: https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    # css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0.2/css/style.css
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0.2/js/app.js
+    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.1/css/style.css
+    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.1/js/app.js
 
 
 ############################### Style ###############################
@@ -13,6 +13,7 @@ style:
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   navbar:
     height: 64px
+    width: auto # auto, max
     effect: [shadow, blur] # [shadow, floatable, blur]
   sidebar:
     effect: [shadow] # [shadow, floatable, blur]

@@ -4,7 +4,7 @@
 <header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%- theme.style.navbar.effect.join(' ') %>">
 
   <div class='wrapper'>
-    <div class='nav-sub container--flex'>
+    <div class='nav-sub'>
       <a class="logo flat-box"></a>
       <ul class='switcher h-list'>
         <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
@@ -13,7 +13,7 @@
         <% } %>
       </ul>
     </div>
-		<div class="nav-main container container--flex">
+		<div class="nav-main">
       <% if (theme.navbar.logo) { %>
         <% let logo = theme.navbar.logo %>
         <a class="logo flat-box" target="_self" href='<%- url_for("/") %>'>
@@ -30,6 +30,15 @@
             <%- theme.info.name.toUpperCase() %> <b><sup style='color:<%- theme.info.version.indexOf('beta') > 0 ? '#ff9800':'#3AA757' %>'><%- theme.info.version %></sup></b>
           <% } %>
         </a>
+      <% } %>
+
+      <% if (theme.search.enable === true && theme.style.navbar.width != 'auto') { %>
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="<%- theme.navbar && theme.navbar.search %>" />
+          </form>
+        </div>
       <% } %>
 
 			<div class='menu navigation'>
@@ -100,7 +109,7 @@
 				</ul>
 			</div>
 
-      <% if (theme.search.enable === true) { %>
+      <% if (theme.search.enable === true && theme.style.navbar.width == 'auto') { %>
         <div class="m_search">
           <form name="searchform" class="form u-search-form">
             <i class="icon fas fa-search fa-fw"></i>
