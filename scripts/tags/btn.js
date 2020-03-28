@@ -6,7 +6,7 @@ function postBtn(args) {
   let icon = ''
   let text = ''
   let url = ''
-  if (args[1].indexOf('fas') > -1) {
+  if (args[1].indexOf(' fa-') > -1) {
     icon = args[1].trim()
     text = args[2].trim()
     url = args[3] || ''
