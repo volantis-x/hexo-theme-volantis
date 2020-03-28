@@ -6,10 +6,15 @@
   flex-direction: column
   @media screen and (max-width: $device-desktop)
     width: $sidebar-s
-
   @media screen and (max-width: $device-tablet)
-    // margin: $gap 0 0
     width: 100%
+  .widget
+    >.content
+      text-align: justify
+      font-size: $fontsize-meta
+      $offset = $navbar-height + 12.5 * $gap
+      max-height: "calc(100% - %s)" % $offset
+      max-width: 100%
 
 
 .widget
@@ -50,13 +55,8 @@
       margin-left: $gap * 0.5
 
 
-  .content
-    text-align: justify
-    font-size: $fontsize-meta
+  >.content
     padding: $gap * 0.5 0
-    $offset = $navbar-height + 12.5 * $gap
-    max-height: "calc(100% - %s)" % $offset
-    max-width: 100%
     p
       margin-top: $gap-p
       margin-bottom: $gap-p

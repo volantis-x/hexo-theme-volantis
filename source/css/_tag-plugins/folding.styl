@@ -23,9 +23,9 @@ details
       &:after
         float: right
         content: '+'
-  div.content
+  >div.content
     margin-top: $gap-block
-    margin-bottom: unit($gap-block, px) - unit($gap, px)
+    margin-bottom: "calc(%s - %s)" % ($gap-block $gap)
   &[blue]
     border: 1px solid darken(bgcolor($color-md-blue), 4)
     >summary
@@ -77,7 +77,9 @@ details[open]
     &:hover
       &:after
         content: '-'
-  >
-    p,.tabs,ul,ol
+  >div.content>
+    p,.tabs,ul,ol,.highlight,div.note
       margin-top: $gap-p
       margin-bottom: $gap-p
+      &:last-child
+        margin-bottom: 0
