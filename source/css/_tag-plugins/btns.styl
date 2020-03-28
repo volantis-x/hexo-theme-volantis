@@ -1,31 +1,35 @@
-.article
-  p>btn,li>btn
-    a
-      line-height: 1.5em
-      background: $color-theme
+// inline btn
+span.btn
+  display: inline
+  >a
+    display: inline-block
+    background: $color-theme
+    color: $color-inner
+    padding: 1px 3px 0px 3px
+    margin: 2px
+    border-radius: 2px
+    i
+      margin-right: 6px
+    trans()
+    &:hover
       color: $color-inner
-      padding: 2px 3px 0px 3px
-      margin: 2px
-      border-radius: 2px
-      trans()
+      background: $color-hover
+    &:not([href])
+      opacity: 0.5
       &:hover
-        color: $color-inner
-        background: $color-hover
-    &[regular]
-      a
-        line-height: 3
-        padding: 9px 16px 7px 16px
-        i
-          margin-right: 2px
-    &[large]
-      a
-        line-height: 3
-        padding: 11px 40px 9px 40px
-        i
-          margin: 0 5px 0 -2px
-    &[center]
-      display: block
-      text-align: center
+        cursor: not-allowed
+
+  &.regular
+    >a
+      padding: 8px 16px 6px 16px
+  &.large
+    >a
+      padding: 10px 40px 8px 40px
+      i
+        margin-right: 12px
+  &.center
+    display: block
+    text-align: center
 
 
 // btns
