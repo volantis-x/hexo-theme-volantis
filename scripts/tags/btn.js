@@ -26,10 +26,6 @@ function postBtn(args) {
     text = args[0]
   }
 
-  console.log('cls ', cls);
-  console.log('icon ', icon);
-  console.log('text ', text);
-  console.log('url ', url);
   cls = cls.trim()
   icon = icon.trim()
   text = text.trim()
