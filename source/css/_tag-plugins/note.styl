@@ -51,6 +51,15 @@ div.note
   &::before
     color: mix($color-text, $color-card, 80)
     content: '\f054'
+  if hexo-config('style.body.note') && hexo-config('style.body.note.icon')
+    &::before
+      content: hexo-config('style.body.note.icon') || '\f054'
+    if hexo-config('style.body.note.color')
+      $c = convert(hexo-config('style.body.note.color')) || mix($color-text, $color-card, 80)
+      background: bg($c)
+      border-color: border($c)
+      &::before
+        color: border($c)
 
   &.quote
     background: bg($color-md-blue)
