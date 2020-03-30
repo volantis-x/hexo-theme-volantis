@@ -182,8 +182,8 @@
   var guest_info = '<%= theme.comments.valine.meta %>'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = '<%= theme.comments.valine.notify %>' == true;
-  var verify = '<%= theme.comments.valine.verify %>' == true;
+  var notify = '<%= theme.comments.valine.notify %>' == 'true';
+  var verify = '<%= theme.comments.valine.verify %>' == 'true';
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
