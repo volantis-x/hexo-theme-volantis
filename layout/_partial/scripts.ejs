@@ -99,7 +99,7 @@
 
 <% if (theme.plugins.aplayer && theme.plugins.aplayer.enable && theme.plugins.aplayer.js) { %>
   <% (theme.plugins.aplayer.js||[]).forEach(function(item){ %>
-    <%- js({src:item,async:true}) %>
+    <%- js({src:item}) %>
   <% }) %>
 <% } %>
 
