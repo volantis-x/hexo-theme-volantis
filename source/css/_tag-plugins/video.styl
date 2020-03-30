@@ -1,0 +1,44 @@
+$sp = 4px
+
+video
+  border-radius: $border-codeblock
+  max-width: 100%
+
+div.videos
+  max-width: "calc(100% + 2 * %s)" % $sp
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-start
+  align-items: flex-end
+  margin: $gap-p 0 - $sp
+  video,iframe
+    width: 100%
+    margin: $sp
+  video
+    trans()
+    &:hover
+      box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.24), 0 8px 16px 0px rgba(0, 0, 0, 0.24)
+  iframe
+    border-radius: $border-codeblock
+    width: 100%
+    min-height: 300px
+  &.left
+    justify-content: flex-start
+  &.center
+    justify-content: center
+  &.right
+    justify-content: flex-end
+  &.stretch
+    align-items: stretch
+  &[col='1']
+    video,iframe
+      width: 100%
+  &[col='2']
+    video,iframe
+      width: "calc(50% - 2 * %s)" % $sp
+  &[col='3']
+    video,iframe
+      width: "calc(33.33% - 2 * %s)" % $sp
+  &[col='4']
+    video,iframe
+      width: "calc(25% - 2 * %s)" % $sp
