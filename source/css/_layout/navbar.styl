@@ -21,74 +21,51 @@
   z-index: 99
   top: 0
   width: 100%
-  line-height: $navbar-height
-  padding: 0 $gap
-  margin-bottom: $gap
+  height: $navbar-height
+  background: $color-card
   box-shadow: $boxshadow-card
+  &.hide
+    transform: translateY(100px) scale(0)
+  &.show
+    transform: translateY(0) scale(1)
+  .container
+    margin-left: $gap
+    margin-right: $gap
   .wrapper
-    padding: auto $gap
-    height: $navbar-height
+    height: 100%
     disable-user-select()
+    .nav-main,.nav-sub
+      display: flex
+      flex-wrap: nowrap
+      justify-content: space-between
+      align-items: center
+
     .nav-main
       trans()
       transform: translateY(0 - $navbar-height)
+    &.sub .nav-main
+      transform: translateY(0 - 2 * $navbar-height)
     .nav-sub
       trans()
       opacity: 0
-    trans()
-    a
-      &:not([href])
-        cursor: default
+      @media screen and (min-width: $device-2k)
+        max-width: 55vw
+        margin: auto
+    &.sub .nav-sub
+      opacity: 1
     .title
       color: $color-text
-  &.no_sidebar
-    .wrapper
-      max-width: $layout-width - $sidebar
-      @media screen and (min-width: 2000px)
-        max-width: "calc(55vw - %s)" % $sidebar
-      .m_search
-        @media screen and (min-width: $device-mobile)
-          max-width: 112px
+      padding-left: $gap * 1.5
 
-  .wrapper.sub
-    .title
-      @media screen and (max-width: $device-mobile)
-        trans()
-        padding-left: $gap
-        padding-right: 0
-    .nav-main
-      trans()
-      transform: translateY(0 - 2 * $navbar-height)
-    .nav-sub
-      opacity: 1
-  .nav-main,.nav-sub
-    height: $navbar-height
-    display: flex
-    flex-wrap: nowrap
-    justify-content: space-between
-    align-items: center
-
-  background: $color-card
-  &.hide
-    transform: translateY(100px) scale(0)
-
-  &.show
-    transform: translateY(0) scale(1)
-
-  &,a
-    height: $navbar-height
-    line-height: $navbar-height
-
-  .nav-main
-    .title
+    .nav-main .title
       txt-ellipsis()
       flex-shrink: 0
+      line-height: $navbar-height
       padding: 0 $gap*1.5
       font-size: $fontsize-h3
       font-family: $fontfamily-logo
-
       @media screen and (max-width: $device-mobile)
-        padding: 0 $gap
+        padding: 0
       img
         height: 100%
         padding: 4px 0
@@ -96,8 +73,6 @@
   .nav-sub
     max-width: $layout-width
     margin: auto
-    @media screen and (min-width: 2000px)
-      max-width: 55vw
     .title
       font-size: $fontsize-body
       font-family: $fontfamily
@@ -108,7 +83,7 @@
       @media screen and (max-width: $device-mobile)
         overflow-y: scroll
         margin-top: 2px
-        padding: 8px $gap
+        padding: 8px 0
 
 
 
@@ -117,7 +92,7 @@
     line-height: $navbar-height
     .s-toc
       display: none
-
+    align-items: center
     @media screen and (max-width: $device-tablet)
       .s-toc
         display: flex
@@ -150,17 +125,18 @@
           height: $height
     @media screen and (max-width: $device-mobile)
       display: flex
-      padding-left: $gap * 0.5
-      padding-right: $gap - 6px
+      margin-right: 0 - $gap * 0.5
   .nav-sub .switcher
     display: flex
   .m_search
     position: relative
     display: flex
-    width: $sidebar
     height: $navbar-height
-    @media screen and (max-width: $device-desktop)
-      width: $sidebar-s
+    width: $sidebar
+    @media screen and (max-width: $device-laptop)
+      width: 120px
+    @media screen and (min-width: $device-mobile)
+      min-width: 80px
 
     .form
       position: relative
@@ -205,8 +181,6 @@
         ~.icon
           color: $color-theme
 
-
-
   @media (max-width: $device-mobile)
     padding: 0
     .m_search
@@ -214,11 +188,9 @@
       overflow: hidden
       position: absolute
       trans()
-      margin-left: $gap
-
     &.z_search-open
       .m_search
-        $offset = 3 * $gap + 2 * $iconW
+        $offset = 1 * $gap + 2 * $iconW
         width: "calc(100% - %s)" % $offset
 
 ul.list-h,ul.list-v
@@ -228,14 +200,15 @@ ul.list-h,ul.list-v
 
 ul.list-h
   display: flex
-  align-items: center
-  height: 100%
+  align-items: stretch
+  height: $navbar-height
   &>li
-    height: 100%
     position: relative
     justify-content: center
     >a
-      // border-top: $border-line solid transparent
+      height: 100%
+      line-height: $navbar-height - $border-line
+      border-top: $border-line solid transparent
       border-bottom: $border-line solid transparent
 
 ul.list-v
@@ -331,7 +304,7 @@ ul>li>a
   if hexo-config('style.navbar.width') == 'auto'
     max-width: $layout-width
     margin: auto
-    @media screen and (min-width: 2000px)
+    @media screen and (min-width: $device-2k)
       max-width: 55vw
     .menu
       flex: 1 1 auto
@@ -339,10 +312,11 @@ ul>li>a
       .list-v ul
         left: "calc(100% - 0.5 * %s)" % $gap
   else
-    .title
-      margin-right: auto
     .m_search
+      margin-left: auto
       margin-right: $gap
+    .menu
+      order: 1
     .menu li ul.list-v
       right: 0
       ul
@@ -352,16 +326,12 @@ ul>li>a
 .menu-phone
   display: none
   margin-top: $gap
-  right: 0
+  right: $gap * 0.5
   ul
     right: "calc(100% - 0.5 * %s)" % $gap
   @media screen and (max-width: $device-mobile)
     display: block
   trans()
-  // transform: scale(0,0) rotate(12deg)
-  // transform-origin: right top
-  // &.show
-  //   transform: scale(1,1) rotate(0)
 
 
 .cover-wrapper
@@ -370,3 +340,16 @@ ul>li>a
     transform: translateY(-2 * $navbar-height)
     &.show
       transform: translateY(0)
+
+
+.l_header
+  @media screen and (min-width: $device-2k)
+    max-width: 65vw
+    left: "calc((100% - %s) * 0.5)" % @max-width
+    border-bottom-left-radius: $border-card
+    border-bottom-right-radius: $border-card
+  @media screen and (max-width: $device-mobile)
+    .wrapper.sub
+      .title
+        padding-left: 0
+        padding-right: 0

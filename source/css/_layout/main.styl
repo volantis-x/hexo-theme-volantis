@@ -41,8 +41,6 @@
 
 .l_main
   width: "calc(100% - 1 * %s)" % $sidebar
-  @media screen and (max-width: $device-desktop)
-    width: "calc(100% - 1 * %s)" % $sidebar-s
   @media screen and (max-width: $device-tablet)
     width: 100%
   padding-right: $gap
@@ -50,7 +48,7 @@
     width: 100%
     padding-right: 0
     max-width: $layout-width - $sidebar
-    @media screen and (min-width: 2000px)
+    @media screen and (min-width: $device-2k)
       max-width: "calc(55vw - %s)" % $sidebar
     margin: auto
     ~.l_side
@@ -289,7 +287,7 @@
   display: flex
   width: 100%
   max-width: $layout-width
-  @media screen and (min-width: 2000px)
+  @media screen and (min-width: $device-2k)
     max-width: 55vw
   margin: 0 auto
   flex-wrap: wrap

@@ -2,7 +2,7 @@
   <div id="loading-bar"></div>
 </div>
 <header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%- theme.style.navbar.effect.join(' ') %>">
-
+  <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
       <p class="title"></p>
@@ -30,15 +30,6 @@
             <%- theme.info.name.toUpperCase() %> <b><sup style='color:<%- theme.info.version.indexOf('beta') > 0 ? '#ff9800':'#3AA757' %>'><%- theme.info.version %></sup></b>
           <% } %>
         </a>
-      <% } %>
-
-      <% if (theme.search.enable === true && theme.style.navbar.width != 'auto') { %>
-        <div class="m_search">
-          <form name="searchform" class="form u-search-form">
-            <i class="icon fas fa-search fa-fw"></i>
-            <input type="text" class="input u-search-input" placeholder="<%- theme.navbar && theme.navbar.search %>" />
-          </form>
-        </div>
       <% } %>
 
 			<div class='menu navigation'>
@@ -109,14 +100,12 @@
 				</ul>
 			</div>
 
-      <% if (theme.search.enable === true && theme.style.navbar.width == 'auto') { %>
-        <div class="m_search">
-          <form name="searchform" class="form u-search-form">
-            <i class="icon fas fa-search fa-fw"></i>
-            <input type="text" class="input u-search-input" placeholder="<%- theme.navbar && theme.navbar.search %>" />
-          </form>
-        </div>
-      <% } %>
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="<%- theme.navbar && theme.navbar.search %>" />
+        </form>
+      </div>
 
 			<ul class='switcher list-h'>
 				<% if (theme.search.enable === true) { %>
@@ -133,6 +122,7 @@
 			</ul>
 		</div>
 	</div>
+  </div>
 </header>
 
 <script>setLoadingBarProgress(40);</script>
