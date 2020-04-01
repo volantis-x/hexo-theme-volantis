@@ -193,12 +193,12 @@
         $offset = 1 * $gap + 2 * $iconW
         width: "calc(100% - %s)" % $offset
 
-ul.list-h,ul.list-v
+ul.nav-list-h,ul.list-v
   li:hover
     >ul.list-v
       display: block
 
-ul.list-h
+ul.nav-list-h
   display: flex
   align-items: stretch
   height: $navbar-height
@@ -262,7 +262,7 @@ ul.list-v
   @media screen and (max-width: $device-mobile)
     display:none
 
-ul>li>a
+.l_header ul>li>a
   trans()
   display: block
   padding: 0 8px
