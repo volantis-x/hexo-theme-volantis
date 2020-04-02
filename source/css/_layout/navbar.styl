@@ -242,6 +242,9 @@ ul.list-v
       margin-top: 0 - 32px - $gap * 0.5
 
   >li>a
+    trans()
+    display: block
+    color: alpha($color-text, 85%)
     font-size: $fontsize-meta
     font-weight: bold
     line-height: 33px
@@ -255,6 +258,19 @@ ul.list-v
       border-bottom: none
     >i
       margin-right: 4px
+    &.current
+      border-left-color: alpha($color-theme, 80%)
+      border-bottom-color: alpha($color-theme, 80%)
+    &:hover
+      color: $color-theme
+      border-left-color: $color-theme
+      border-bottom-color: $color-theme
+      background: bgcolor($color-theme)
+
+    &:active,&.active
+      color: $color-theme
+      border-left-color: $color-theme
+      border-bottom-color: $color-theme
 
 .l_header
   .menu
@@ -262,9 +278,19 @@ ul.list-v
       padding: 0 8px
 
 .l_header ul>li>a
-  trans()
-  display: block
   color: alpha($color-text, 85%)
+  &.current
+    border-left-color: alpha($color-theme, 80%)
+    border-bottom-color: alpha($color-theme, 80%)
+  &:hover
+    color: $color-theme
+    border-left-color: $color-theme
+    border-bottom-color: $color-theme
+    background: bgcolor($color-theme)
+  &:active,&.active
+    color: $color-theme
+    border-left-color: $color-theme
+    border-bottom-color: $color-theme
   i.music
     animation: rotate-effect 1.5s linear infinite
     @keyframes rotate-effect
@@ -278,20 +304,7 @@ ul.list-v
         transform: rotate(270deg)
       100%
         transform: rotate(360deg)
-  &.current
-    border-left-color: alpha($color-theme, 80%)
-    border-bottom-color: alpha($color-theme, 80%)
 
-  &:hover
-    color: $color-theme
-    border-left-color: $color-theme
-    border-bottom-color: $color-theme
-    background: bgcolor($color-theme)
-
-  &:active,&.active
-    color: $color-theme
-    border-left-color: $color-theme
-    border-bottom-color: $color-theme
 
 .menu-phone li ul.list-v
   right: "calc(100% - 0.5 * %s)" % $gap
