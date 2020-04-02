@@ -42,12 +42,14 @@
 
     .nav-main
       trans()
-      transform: translateY(0 - $navbar-height)
+      // transform: translateY(0 - $navbar-height)
     &.sub .nav-main
-      transform: translateY(0 - 2 * $navbar-height)
+      transform: translateY(0 - 1 * $navbar-height)
     .nav-sub
       trans()
       opacity: 0
+      width: "calc(100% - 2 * %s)" % $gap
+      position: absolute
       @media screen and (min-width: $device-2k)
         max-width: 55vw
         margin: auto
@@ -128,6 +130,7 @@
       margin-right: 0 - $gap * 0.5
   .nav-sub .switcher
     display: flex
+
   .m_search
     position: relative
     display: flex
