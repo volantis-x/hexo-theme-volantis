@@ -253,16 +253,10 @@ ul.list-v
     >i
       margin-right: 4px
 
-.menu
-  >ul>li>a
-    padding: 0 8px
-.menu,.menu-phone
-  position: relative
-  trans()
-  li
-    position: relative
-  @media screen and (max-width: $device-mobile)
-    display:none
+.l_header
+  .menu
+    >ul>li>a
+      padding: 0 8px
 
 .l_header ul>li>a
   trans()
@@ -354,3 +348,5 @@ ul.list-v
       .title
         padding-left: 0
         padding-right: 0
+    .menu
+      display:none
