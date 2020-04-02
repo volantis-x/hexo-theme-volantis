@@ -253,7 +253,9 @@ ul.list-v
     >i
       margin-right: 4px
 
-
+.menu
+  >ul>li>a
+    padding: 0 8px
 .menu,.menu-phone
   position: relative
   trans()
@@ -265,7 +267,6 @@ ul.list-v
 .l_header ul>li>a
   trans()
   display: block
-  padding: 0 8px
   color: alpha($color-text, 85%)
   i.music
     animation: rotate-effect 1.5s linear infinite
@@ -277,7 +278,7 @@ ul.list-v
       50%
         transform: rotate(180deg)
       75%
-        transform: rotate(27  0deg)
+        transform: rotate(270deg)
       100%
         transform: rotate(360deg)
   &.current
