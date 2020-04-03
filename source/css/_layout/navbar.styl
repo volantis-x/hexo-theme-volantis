@@ -67,8 +67,6 @@
       padding: 0 $gap*1.5
       font-size: $fontsize-h3
       font-family: $fontfamily-logo
-      @media screen and (max-width: $device-mobile)
-        padding: 0
       img
         height: $navbar-height
 
@@ -82,10 +80,6 @@
       max-height: $navbar-height
       white-space: normal
       flex-shrink: 1
-      @media screen and (max-width: $device-mobile)
-        overflow-y: scroll
-        margin-top: 2px
-        padding: 8px 0
 
 
 
@@ -125,9 +119,7 @@
         @media screen and (max-width: $device-mobile)
           width: $iconW
           height: $height
-    @media screen and (max-width: $device-mobile)
-      display: flex
-      margin-right: 0 - $gap * 0.5
+
   .nav-sub .switcher
     display: flex
 
@@ -140,6 +132,8 @@
       width: 120px
     @media screen and (min-width: $device-mobile)
       min-width: 80px
+    @media screen and (max-width: $device-mobile)
+      min-width: 0
 
     .form
       position: relative
@@ -187,18 +181,20 @@
   @media (max-width: $device-mobile)
     .m_search
       left: 0
-      width:0
+      width: 0
       overflow: hidden
       position: absolute
+      background: lighten($color-card, 5)
       trans()
       .input
+        border-radius: $navbar-height * 0.5
+        margin-left: $gap
         padding-left: $gap
-        border-radius: 0
-        background: lighten($color-card, 5)
-        height: $navbar-height
     &.z_search-open
       .m_search
         width: 100%
+        .input
+          width: "calc(100% - %s)" % (3 * $gap + 2 * $iconW)
 
 ul.nav-list-h,ul.list-v
   li:hover
@@ -364,9 +360,26 @@ ul.list-v
     border-bottom-left-radius: $border-card
     border-bottom-right-radius: $border-card
   @media screen and (max-width: $device-mobile)
-    .wrapper.sub
-      .title
-        padding-left: 0
-        padding-right: 0
+    .container
+      margin-left: 0
+      margin-right: 0
+    .wrapper
+      .nav-main
+        .title
+          padding-left: $gap
+          padding-right: $gap
+      .nav-sub
+        width: 100%
+        .title
+          overflow-y: scroll
+          margin-top: 2px
+          padding: 8px $gap
+      .switcher
+        display: flex
+        margin-right: $gap * 0.5
+    // .wrapper.sub
+    //   .title
+    //     padding-left: 0
+    //     padding-right: 0
     .menu
       display:none
