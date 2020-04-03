@@ -58,6 +58,7 @@
     .title
       color: $color-text
       padding-left: $gap * 1.5
+      max-height: $navbar-height
 
     .nav-main .title
       txt-ellipsis()
@@ -69,8 +70,7 @@
       @media screen and (max-width: $device-mobile)
         padding: 0
       img
-        height: 100%
-        padding: 4px 0
+        height: $navbar-height
 
   .nav-sub
     max-width: $layout-width
@@ -185,16 +185,20 @@
           color: $color-theme
 
   @media (max-width: $device-mobile)
-    padding: 0
     .m_search
+      left: 0
       width:0
       overflow: hidden
       position: absolute
       trans()
+      .input
+        padding-left: $gap
+        border-radius: 0
+        background: lighten($color-card, 5)
+        height: $navbar-height
     &.z_search-open
       .m_search
-        $offset = 3 * $gap + 2 * $iconW
-        width: "calc(100% - %s)" % $offset
+        width: 100%
 
 ul.nav-list-h,ul.list-v
   li:hover
