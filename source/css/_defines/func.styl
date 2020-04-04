@@ -34,3 +34,17 @@ disable-user-select()
   -ms-user-select: none
   -webkit-user-select: none
   user-select: none
+
+scrollbar($w = 4px, $c = mix($color-p, $color-card, 70))
+  &::-webkit-scrollbar
+    height: $w
+    width: $w
+  &::-webkit-scrollbar-track-piece
+    background: transparent
+  &::-webkit-scrollbar-thumb
+    background: alpha($c, .5)
+    cursor: pointer
+    border-radius: 2px
+    trans()
+    &:hover
+      background: $c

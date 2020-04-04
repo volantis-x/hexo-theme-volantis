@@ -11,6 +11,9 @@ info:
 ############################### Style ###############################
 style:
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
+  scrollbar:
+    size:  8px
+    color:  '#2196f3'
   navbar:
     height: 64px
     width: auto # auto, max
@@ -66,19 +69,19 @@ style:
     #   url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/Monaco/Monaco.ttf
     #   weight: normal
     #   style: normal
-  # color:
-  #   site: '#21232F' # Website background color
-  #   site_inner: '#fff' # Text color inside the website background
-  #   card: '#444' # Card background color
-  #   text: '#fff' # The color of the text on the card.
-  #   theme: '#ff9800' # Main color
-  #   link: '#1BCDFC' # Link color
-  #   hover: '#ff5722' # Link highlight color
-  #   inner: '#333' # Text color inside the button
-  #   block: '#555' # Block color
-  #   inlinecode: yellow # Inline code color
-  #   codeblock: '#555' # Codeblock color
-  #   p: '#ccc' # Paragraph color
+  color:
+    site: '#21232F' # Website background color
+    site_inner: '#fff' # Text color inside the website background
+    card: '#444' # Card background color
+    text: '#fff' # The color of the text on the card.
+    theme: '#ff9800' # Main color
+    link: '#1BCDFC' # Link color
+    hover: '#ff5722' # Link highlight color
+    inner: '#333' # Text color inside the button
+    block: '#555' # Block color
+    inlinecode: yellow # Inline code color
+    codeblock: '#555' # Codeblock color
+    p: '#ccc' # Paragraph color
 
 
 
@@ -455,7 +458,7 @@ comments:
   valine:
     appId: # your appId
     appKey: # your appKey
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4/js/valine.js
+    # js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4/js/valine.js
     path: # All pages use the same path (share the same comments data)
     meta: nick,mail,link #valine comment header info
     placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )

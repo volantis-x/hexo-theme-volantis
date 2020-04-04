@@ -37,6 +37,11 @@ body
       left: 0
 
 
+if hexo-config('style.scrollbar.size')
+  if hexo-config('style.scrollbar.color')
+    scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.color')))
+  else
+    scrollbar(convert(hexo-config('style.scrollbar.size')))
 // *::-webkit-scrollbar
 //   height: 2px
 //   width: 8px
