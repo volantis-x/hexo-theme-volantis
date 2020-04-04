@@ -4,7 +4,7 @@ info:
   version: '2.4.1' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.1.5/css/style.css
+    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.1.6/css/style.css
     js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.1/js/app.js
 
 
