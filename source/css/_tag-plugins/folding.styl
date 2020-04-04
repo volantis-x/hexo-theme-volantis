@@ -2,7 +2,6 @@ details
   display: block
   padding: $gap
   margin: $gap-block 0
-  // overflow: hidden
   border-radius: $border-codeblock
   border: 1px solid darken($color-block, 4)
   background: $color-card
@@ -12,6 +11,7 @@ details
     background: $color-block
     padding: $gap
     margin: 0 - $gap
+    border-radius: $border-codeblock
     color: alpha($color-p, .7)
     font-size: $fontsize-meta
     font-weight: bold
@@ -52,6 +52,8 @@ details[open]
   border: 1px solid darken($color-block, 8)
   >summary
     border-bottom: 1px solid darken(bgcolor($color-block), 8)
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
   &[blue]
     border: 1px solid darken(bgcolor($color-md-blue), 8)
     >summary
