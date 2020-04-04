@@ -368,9 +368,6 @@ seo:
 
 ############################### Plugins ###############################
 plugins:
-  # Required plugins:
-  jquery: https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js
-
   ######## Plugins to improve loading speed:
   # Preload (The menu's url must end with ‘/’)
   instant_page: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js
