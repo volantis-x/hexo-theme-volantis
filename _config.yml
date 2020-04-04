@@ -1,11 +1,11 @@
-############################### Basic Information ###############################
+############################### Theme Information ###############################
 info:
-  name: Volantis
-  version: '2.4.0'
-  docs: https://volantis.js.org/
+  name: Volantis # This is theme's name, not your blog's name.
+  version: '2.4.1' # This is theme's version.
+  docs: https://volantis.js.org/ # This is theme's URL.
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    # css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.0.3/css/style.css
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.0/js/app.js
+    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.1/css/style.css
+    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.1/js/app.js
 
 
 ############################### Style ###############################
