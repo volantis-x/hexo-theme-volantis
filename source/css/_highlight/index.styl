@@ -136,12 +136,12 @@ $hl-light-blue = #6ECDF9
 $hl-red = #EE2B29
 $hl-orange = #FB3F1B
 $hl-amber = #FD8607
-
+$hl-text = alpha($color-text, .9)
 .highlight pre
   // 行
   // line-height: 1.5
   .line,.params
-    color: alpha($color-text, .9)
+    color: $hl-text
 
   .marked
     background-color: alpha(#FED542, .4)
@@ -203,6 +203,7 @@ $hl-amber = #FD8607
     .meta-string,.string
       color: $hl-orange
     .class
+      color: $hl-text
       .title
         color: $hl-blue
     .comment
