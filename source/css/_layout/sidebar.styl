@@ -83,7 +83,7 @@
 
         &:hover
           border-left: $border-line solid $color-theme
-          background: alpha($color-theme, .1)
+          background: bgcolor($color-theme)
 
         &.active
           border-left: $border-line solid $color-theme
@@ -223,11 +223,11 @@
         display: flex
         flex-wrap: wrap
         justify-content: space-around
-        padding: 0 $gap
+        padding: $gap * 0.25 $gap
         a
           text-align: center
-          border-radius: $border-card
-          margin: 4px 0
+          border-radius: $border-line
+          margin: 0
           padding: 4px 8px
           display: flex
           flex-direction: column
@@ -249,19 +249,14 @@
             &#round
               border-radius: 100%
 
-
-          border: 1px solid transparent
-          &:hover
-            color: $color-theme
-            background: bgcolor($color-theme)
-            border-radius: 4px
-
-          &:active
-            color: $color-theme
-
           &.active
             color: $color-theme
-            border: 1px solid $color-theme
+            background: bgcolor($color-theme)
+          &:hover
+            color: $color-theme
+            border-radius: $border-line
+            background: bgcolor($color-theme)
+
 
         &.fixed a
           width: "calc(100%/3 - 0 * %s)" % $gap
