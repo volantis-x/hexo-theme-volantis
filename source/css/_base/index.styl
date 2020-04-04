@@ -15,15 +15,12 @@ html
   -ms-text-size-adjust: 100%
   text-rendering: optimizelegibility
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-  // >
-  //   ::-webkit-scrollbar
-  //     width: 8px
-  //     height: 8px
-  //   ::-webkit-scrollbar-thumb
-  //     background: $color-theme
-  //     border-radius: 2px
-  //   ::-webkit-scrollbar-track
-  //     background: transparent
+  >
+    if hexo-config('style.scrollbar.size')
+      if hexo-config('style.scrollbar.color')
+        scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px, convert(hexo-config('style.scrollbar.color')))
+      else
+        scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px)
 
 body
   background-color: $color-site
@@ -36,23 +33,6 @@ body
       bottom: 0
       left: 0
 
-
-if hexo-config('style.scrollbar.size')
-  if hexo-config('style.scrollbar.color')
-    scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.color')))
-  else
-    scrollbar(convert(hexo-config('style.scrollbar.size')))
-// *::-webkit-scrollbar
-//   height: 2px
-//   width: 8px
-// *::-webkit-scrollbar-track-piece
-//   background: transparent
-// *::-webkit-scrollbar-thumb
-//   background: alpha($color-text, .3)
-//   cursor: pointer
-//   trans()
-//   &:hover
-//     background: alpha($color-text, .6)
 
 
 ::-moz-selection {

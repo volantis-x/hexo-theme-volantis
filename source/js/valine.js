@@ -970,7 +970,7 @@
                 header: [],
                 hr: [],
                 i: [],
-                img: ["src", "alt", "title", "width", "height"],
+                img: ["src", "id", "alt", "title", "width", "height"],
                 ins: ["datetime"],
                 li: [],
                 mark: [],
