@@ -2,12 +2,12 @@
 
 function postAudio(args) {
   let src = args[0].trim()
-  return `<p><audio controls preload><source src='${src}' type='audio/mp3'>Your browser does not support the audio tag.</audio></p>`;
+  return `<audio controls preload><source src='${src}' type='audio/mp3'>Your browser does not support the audio tag.</audio>`;
 }
 
 function postVideo(args) {
   let src = args[0].trim()
-  return `<p><video controls preload><source src='${src}' type='video/mp4'>Your browser does not support the video tag.</video></p>`;
+  return `<video controls preload><source src='${src}' type='video/mp4'>Your browser does not support the video tag.</video>`;
 }
 
 function postVideos(args, content) {
