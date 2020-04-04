@@ -88,10 +88,18 @@
       max-width: 100%
       margin: 0
       box-shadow: none
-  s
+  s,del
     opacity: 0.7
   u
     color: $color-hover
+  kbd
+    border-radius: $border-codeblock * 0.5
+    border: 1px solid darken($color-codeblock, 6)
+    background: $color-codeblock
+    padding-left: 4px
+    padding-right: 4px
+    margin-left: 2px
+    margin-right: 2px
   p
     margin-top: $gap-block
     margin-bottom: $gap-block
@@ -193,9 +201,11 @@
     background: $color-codeblock
     font-size: $fontsize-code
     font-family: $fontfamily-code
-    border: 1px solid darken($color-codeblock, 10%)
+    border: 1px solid darken($color-codeblock, 6)
     padding: $gap
-
+    border-radius: $border-codeblock
+    >code
+      background: transparent
   div>pre
     border-radius: $border-codeblock
     &>code

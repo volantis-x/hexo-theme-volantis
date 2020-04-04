@@ -45,7 +45,7 @@
       margin-left: 0
       position: sticky
       left: 0
-      background-color: darken($color-codeblock, 5%)
+      background-color: darken($color-codeblock, 5)
       pre
         color: $color-meta
 
@@ -70,21 +70,23 @@
         padding: 4px 8px
 
   if hexo-config('style.body.highlight.language') == true
+    &.md .code:before,&.markdown .code:before
+      content: "md"
     &.yaml .code:before
       content: "YAML"
-    &.md .code:before
-      content: "md"
+    &.json .code:before
+      content: "JSON"
 
     &.html .code:before
       content: "HTML"
-    &.js .code:before
+    &.js .code:before,&.javascript .code:before
       content: "JS"
     &.css .code:before
-      content: "css"
+      content: "CSS"
     &.less .code:before
-      content: "less"
+      content: "Less"
     &.stylus .code:before
-      content: "stylus"
+      content: "Stylus"
 
     &.bash .code:before
       content: "bash"
@@ -92,13 +94,15 @@
       content: "shell"
     &.sh .code:before
       content: "sh"
+    &.ini .code:before
+      content: "ini"
 
     &.c .code:before
       content: "C"
     &.cpp .code:before
       content: "C++"
-    &.objc .code:before
-      content: "ObjC"
+    &.objc .code:before,&.objectivec .code:before
+      content: "Objective-C"
     &.swift .code:before
       content: "Swift"
 
@@ -108,6 +112,18 @@
       content: "Python"
     &.php .code:before
       content: "PHP"
+    &.rust .code:before
+      content: "Rust"
+    &.sql .code:before
+      content: "SQL"
+    &.ruby .code:before
+      content: "Ruby"
+    &.makefile .code:before
+      content: "Makefile"
+    &.go .code:before
+      content: "Go"
+    &.typescript .code:before
+      content: "TypeScript"
 
 
 
@@ -121,41 +137,41 @@ $hl-red = #EE2B29
 $hl-orange = #FB3F1B
 $hl-amber = #FD8607
 
-pre
+.highlight pre
   // 行
   // line-height: 1.5
-  .line
-    color: alpha($color-text, 90%)
+  .line,.params
+    color: alpha($color-text, .9)
 
   .marked
-    background-color: alpha(#FED542, 40%)
+    background-color: alpha(#FED542, .4)
     padding: 2px 8px 2px 0
     border-radius: 2px
     width: 100%
 
-  .title
+  .title, .attr, .attribute
     color: $color-md-indigo
 
   // 注释
   .comment
     color: alpha($color-p, .5)
 
-  .keyword, .javascript .function, .attr
+  .keyword, .meta-keyword, .javascript .function
     color: $hl-keyword
 
   .type, .built_in, .tag .name
     color: $color-md-light-blue
 
-  .variable, .attribute, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo
+  .variable, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo
     color: $hl-amber
 
-  .number, .preprocessor, .literal, .params, .constant
+  .number, .preprocessor, .literal, .constant
     color: $hl-amber
 
   .class, .ruby .class .title, .css .rules .attribute
     color: $color-md-orange
 
-  .string
+  .string, .meta-string
     color: darken($color-md-green, 10%)
 
   .value, .inheritance, .header, .ruby .symbol, .xml .cdata
@@ -168,7 +184,33 @@ pre
     color: #6699cc
 
 
+.highlight.html,.highlight.css,.highlight.less,.highlight.stylus
+  .line
+    .tag .name, .selector-tag
+      color: $hl-red
+    .selector-class, .selector-attr
+      color: $hl-amber
+    .attribute
+      color: $color-md-indigo
+    .number
+      color: $hl-cyan
 
-.html
-  .tag .name
-    color: $hl-red
+
+.highlight.objc,.highlight.objectivec,.highlight.swift
+  .line
+    .meta
+      color: $hl-keyword
+    .meta-string,.string
+      color: $hl-orange
+    .class
+      .title
+        color: $hl-blue
+    .comment
+      color: $hl-green
+
+.highlight.json
+  .line
+    .attr
+      color: $hl-orange
+    .literal
+      color: $color-md-indigo
