@@ -243,23 +243,23 @@ optgroup
 
 table
   border-collapse: collapse
-  margin-top: .7em
-  margin-bottom: .7em
   overflow: auto
-  display: block
+  display: inline-block
+  max-width: 100%
+  scrollbar()
   th
     background-color: darken($color-block, 2)
   td,th
     padding: 6px 16px
-    border: 1px solid darken($color-block, 3)
+    border: 2px solid darken($color-block, 2)
   tr
     word-break: keep-all
     background-color: lighten($color-block, 3)
-  tbody>tr
-    trans()
-    &:hover
-      background-color: darken($color-block, 2)
-
+  tbody
+    >tr
+      trans()
+      &:hover
+        background-color: darken($color-block, 2)
 
 td,th
   padding: 0

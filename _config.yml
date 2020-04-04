@@ -12,9 +12,9 @@ info:
 style:
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
-    size:  8px
+    size: 8px
     border: 1px
-    color:  '#2196f3'
+    color: '#2196f3'
   navbar:
     height: 64px
     width: auto # auto, max
