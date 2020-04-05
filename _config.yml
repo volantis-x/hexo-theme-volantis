@@ -1,11 +1,11 @@
 ############################### Theme Information ###############################
 info:
   name: Volantis # This is theme's name, not your blog's name.
-  version: '2.4.2' # This is theme's version.
+  version: '2.4.3' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    # css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.2.3/css/style.css
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.2/js/app.js
+    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.3/css/style.css
+    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.3/js/app.js
 
 
 ############################### Style ###############################
@@ -41,7 +41,7 @@ style:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 32px # Spacing above H3 (only px unit)
     h4: 16px # Spacing above H4 (only px unit)
-    paragraph: 1.5rem # Paragraph spacing between paragraphs
+    paragraph: 1rem # Paragraph spacing between paragraphs
     row: .5rem # Paragraph spacing between other elements
   border_radius:
     card: 8px
