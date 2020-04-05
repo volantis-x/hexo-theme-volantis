@@ -93,13 +93,13 @@
   .widget
     .content
       p,ul,ol,table,.tabs,details
-        margin-top: $gap-p
-        margin-bottom: $gap-p
+        margin-top: $gap-row
+        margin-bottom: $gap-row
       .post
         padding-top: 0
         padding-bottom: 0
-        margin-top: $gap-p
-        margin-bottom: $gap-p
+        margin-top: $gap-row
+        margin-bottom: $gap-row
     &.grid .content .grid.fixed a
       width: "calc(100%/8 - 0 * %s)" % $gap
       @media screen and (max-width: $device-laptop)
@@ -322,12 +322,12 @@ div.hoverbox
   .article
     p[ct]
       margin-top: 0
-      margin-bottom: $gap-p
+      margin-bottom: $gap-row
       font-size: $fontsize-h4
       color: $color-text
     p[cst]
-      margin-top: $gap-p
-      margin-bottom: $gap-p
+      margin-top: $gap-row
+      margin-bottom: $gap-row
       font-size: $fontsize-meta
 
 

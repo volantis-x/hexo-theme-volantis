@@ -4,14 +4,14 @@ $tbr = 4px
 div.tabs
   display: block
   position: relative
-  margin-top: $gap-block
-  margin-bottom: $gap-block
+  margin-top: $gap-row
+  margin-bottom: $gap-row
   border-radius: $tbr
   background: $color-card
   border: 1px solid $border-color
   .highlight,p,ul,ol,div.note,details
-    margin-top: $gap-p
-    margin-bottom: $gap-p
+    margin-top: $gap-row
+    margin-bottom: $gap-row
 
 div.tabs
   ul.nav-tabs
@@ -49,7 +49,7 @@ div.tabs
     border-top: 1px solid $border-color
     margin-top: -1px
     .tab-pane
-      padding: $gap-p $gap
+      padding: $gap-row $gap
       &:not(.active)
         display: none
       &.active

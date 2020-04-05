@@ -228,7 +228,7 @@
 
 
 <!-- 复制 -->
-<% if (theme.plugins.clipboard && theme.style.body.highlight.copy_btn) { %>
+<% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
   <%- partial('_third-party/clipboard') %>
 <% } %>
 
