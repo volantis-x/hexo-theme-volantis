@@ -105,6 +105,11 @@
   <%- item %><% }) %>
   <% } %>
 
+  <% if (config.highlight.enable != true) { %>
+    <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.css) { %>
+      <%- css(theme.plugins.highlightjs.css) %>
+    <% } %>
+  <% } %>
   <% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.css) { %>
     <%- css(theme.info.cdn.css) %>
   <% } else { %>

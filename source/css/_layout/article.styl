@@ -204,11 +204,11 @@
     border: 1px solid darken($color-codeblock, 6)
     padding: $gap
     border-radius: $border-codeblock
-    >code
+    >code:not([class])
       background: transparent
   div>pre
     border-radius: $border-codeblock
-    &>code
+    &>code:not([class])
       padding: 0
       margin: 0
       background: transparent
@@ -216,14 +216,15 @@
 
   code
     font-family: $fontfamily-code
-    padding: 4px 2px 2px 2px
-    margin: 0
-    vertical-align: middle
-    border-radius: 2px
-    line-height: 1.45
-    font-size: $fontsize-code
-    color: $color-inlinecode
-    background: bgcolor($color-inlinecode, 4)
+    &:not([class])
+      padding: 4px 2px 2px 2px
+      margin: 0
+      vertical-align: middle
+      border-radius: 2px
+      line-height: 1.45
+      font-size: $fontsize-code
+      color: $color-inlinecode
+      background: bgcolor($color-inlinecode, 4)
 
   table:not('.highlight table')
     width: 100%

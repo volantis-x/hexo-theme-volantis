@@ -217,7 +217,15 @@
 <% } %>
 <% if (theme.plugins.comment_typing) { %>
   <%- js(theme.plugins.comment_typing) %>
-<%}%>
+<% } %>
+
+<% if (config.highlight.enable != true) { %>
+  <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.js) { %>
+    <%- js(theme.plugins.highlightjs.js) %>
+    <script>hljs.initHighlightingOnLoad();</script>
+  <% } %>
+<% } %>
+
 
 <!-- 复制 -->
 <% if (theme.plugins.clipboard && theme.style.body.highlight.copy_btn) { %>
