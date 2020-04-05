@@ -4,7 +4,7 @@ info:
   version: '2.4.2' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.2.2/css/style.css
+    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.2.3/css/style.css
     js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.2/js/app.js
 
 
@@ -12,9 +12,10 @@ info:
 style:
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
-    size: 8px
-    border: 1px
+    size: 4px
+    border: 2px
     color: '#2196f3'
+    hover: '#ff5722'
   navbar:
     height: 64px
     width: auto # auto, max

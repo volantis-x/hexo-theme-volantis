@@ -35,15 +35,15 @@ disable-user-select()
   -webkit-user-select: none
   user-select: none
 
-scrollbar($w = 4px, $b = 2px, $c = mix($color-p, $color-card, 70))
+scrollbar($w = 4px, $b = 2px, $c = alpha(mix($color-p, $color-card, 80), .4), $h = mix($color-p, $color-card, 80))
   &::-webkit-scrollbar
     height: $w
     width: $w
   &::-webkit-scrollbar-track-piece
     background: transparent
   &::-webkit-scrollbar-thumb
-    background: alpha($c, .4)
+    background: $c
     cursor: pointer
     border-radius: $b
     &:hover
-      background: alpha($c, 1)
+      background: $h

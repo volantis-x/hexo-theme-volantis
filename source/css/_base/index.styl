@@ -18,7 +18,10 @@ html
   >
     if hexo-config('style.scrollbar.size')
       if hexo-config('style.scrollbar.color')
-        scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px, convert(hexo-config('style.scrollbar.color')))
+        if hexo-config('style.scrollbar.hover')
+          scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px, convert(hexo-config('style.scrollbar.color')), convert(hexo-config('style.scrollbar.hover')))
+        else
+          scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px, convert(hexo-config('style.scrollbar.color')))
       else
         scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px)
 
