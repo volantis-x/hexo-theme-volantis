@@ -320,19 +320,19 @@
     &:before
       content: ''
       display: block
-      margin-top: 0 - $navbar-height - 2 * $gap
-      height: $navbar-height + 2 * $gap
+      margin-top: 0 - $navbar-height -  $gap
+      height: $navbar-height + $gap
       visibility: hidden
       pointer-events: none
   h1,h2
     &:before
-      margin-top: $gap-h2 - $navbar-height - 2 * $gap
+      margin-top: $gap-h2 - $navbar-height - $gap
   h3
     &:before
-      margin-top: $gap-h3 - $navbar-height - 2 * $gap
+      margin-top: $gap-h3 - $navbar-height - $gap
   h4
     &:before
-      margin-top: $gap-h4 - $navbar-height - 2 * $gap
+      margin-top: $gap-h4 - $navbar-height - $gap
   h5
     font-weight: bold
   p
