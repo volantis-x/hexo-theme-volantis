@@ -64,10 +64,10 @@
   h5
     font-weight: bold
     color: $color-h5
-    margin-top: $gap-row
+    margin-top: $gap-paragraph
   h6
     color: $color-h6
-    margin-top: $gap-row
+    margin-top: $gap-paragraph
 
   center
     &,p
@@ -311,6 +311,7 @@
     position: relative
     pointer-events: none
     margin-top: 0
+    margin-bottom: $gap-paragraph
     >a
       color: inherit
       pointer-events: auto
@@ -332,12 +333,8 @@
   h4
     &:before
       margin-top: $gap-h4 - $navbar-height - 2 * $gap
-    margin-bottom: $gap-row
   h5
     font-weight: bold
-    margin-bottom: $gap-row
-  h6
-    margin-bottom: $gap-row
   p
     margin-top: $gap-paragraph
     margin-bottom: $gap-paragraph

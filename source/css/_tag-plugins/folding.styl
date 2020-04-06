@@ -24,9 +24,11 @@ details
       &:after
         float: right
         content: '+'
-  >div.content
-    margin-top: $gap
-    margin-bottom: "calc(%s - %s)" % ($gap $gap)
+  // >div.content
+  //   padding-top: 0.1px
+  //   padding-bottom: 0.1px
+    // margin-top: $gap
+    // margin-bottom: "calc(%s - %s)" % ($gap $gap)
   &[blue]
     border: 1px solid darken(bgcolor($color-md-blue), 4)
     >summary
@@ -76,13 +78,17 @@ details[open]
       border-bottom: 1px solid darken(bgcolor($color-mac-red), 8)
   >summary
     color: $color-p
-    margin-bottom: $gap
+    margin-bottom: 0
     &:hover
       &:after
         content: '-'
-  >div.content>
-    p,.tabs,ul,ol,.highlight,div.note
-      margin-top: $gap
-      margin-bottom: $gap
-      &:last-child
-        margin-bottom: 0
+  >div.content
+    padding: $gap
+    margin: 0 - $gap
+    margin-top: 0
+    >
+      p,.tabs,ul,ol,.highlight,div.note
+        &:first-child
+          margin-top: 0
+        &:last-child
+          margin-bottom: 0
