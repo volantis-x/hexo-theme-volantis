@@ -98,9 +98,12 @@
     background: $color-inlinecode
     padding-left: 4px
     padding-right: 4px
-    margin-left: 2px
-    margin-right: 2px
-
+    trans()
+    &:hover
+      cursor: default
+      border-color: $color-theme
+      background: $color-theme
+      color: $color-inner
   p
     margin-top: $gap-row
     margin-bottom: $gap-row
