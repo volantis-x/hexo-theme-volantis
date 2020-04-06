@@ -64,10 +64,10 @@
   h5
     font-weight: bold
     color: $color-h5
-    margin-top: $gap-row
+    margin-top: $gap-paragraph
   h6
     color: $color-h6
-    margin-top: $gap-row
+    margin-top: $gap-paragraph
 
   center
     &,p
@@ -94,13 +94,16 @@
     color: $color-hover
   kbd
     border-radius: $border-codeblock * 0.5
-    border: 1px solid darken($color-codeblock, 6)
-    background: $color-codeblock
+    border: 1px solid darken($color-inlinecode, 6)
+    background: $color-inlinecode
     padding-left: 4px
     padding-right: 4px
-    margin-left: 2px
-    margin-right: 2px
-
+    trans()
+    &:hover
+      cursor: default
+      border-color: $color-theme
+      background: $color-theme
+      color: $color-inner
   p
     margin-top: $gap-row
     margin-bottom: $gap-row
@@ -217,14 +220,13 @@
   code
     font-family: $fontfamily-code
     &:not([class])
-      padding: 4px 2px 2px 2px
+      padding: 3px 4px 1px 4px
       margin: 0
       vertical-align: middle
-      border-radius: 2px
-      line-height: 1.45
       font-size: $fontsize-code
-      color: $color-inlinecode
-      background: bgcolor($color-inlinecode, 4)
+      background: $color-inlinecode
+      border-radius: $border-codeblock * 0.5
+      border: 1px solid darken($color-inlinecode, 6)
 
   table:not('.highlight table')
     width: 100%
@@ -312,6 +314,7 @@
     position: relative
     pointer-events: none
     margin-top: 0
+    margin-bottom: $gap-paragraph
     >a
       color: inherit
       pointer-events: auto
@@ -320,30 +323,26 @@
     &:before
       content: ''
       display: block
-      margin-top: 0 - $navbar-height - 2 * $gap
-      height: $navbar-height + 2 * $gap
+      margin-top: 0 - $navbar-height -  $gap
+      height: $navbar-height + $gap
       visibility: hidden
       pointer-events: none
   h1,h2
     &:before
-      margin-top: $gap-h2 - $navbar-height - 2 * $gap
+      margin-top: $gap-h2 - $navbar-height - $gap
   h3
     &:before
-      margin-top: $gap-h3 - $navbar-height - 2 * $gap
+      margin-top: $gap-h3 - $navbar-height - $gap
   h4
     &:before
-      margin-top: $gap-h4 - $navbar-height - 2 * $gap
-    margin-bottom: $gap-row
+      margin-top: $gap-h4 - $navbar-height - $gap
   h5
     font-weight: bold
-    margin-bottom: $gap-row
-  h6
-    margin-bottom: $gap-row
   p
     margin-top: $gap-paragraph
     margin-bottom: $gap-paragraph
 
 article .readmore
-  margin-top: $gap-row
+  margin-top: $gap-paragraph
   >a
     font-size: $fontsize-meta

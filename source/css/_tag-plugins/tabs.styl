@@ -1,4 +1,4 @@
-$border-color = darken($color-block, 8)
+$border-color = alpha($color-p, .2)
 $tbr = 4px
 
 div.tabs
@@ -9,6 +9,7 @@ div.tabs
   border-radius: $tbr
   background: $color-card
   border: 1px solid $border-color
+  font-size: $fontsize-list
   .highlight,p,ul,ol,div.note,details
     margin-top: $gap-row
     margin-bottom: $gap-row
@@ -49,8 +50,14 @@ div.tabs
     border-top: 1px solid $border-color
     margin-top: -1px
     .tab-pane
-      padding: $gap-row $gap
+      padding: $gap
       &:not(.active)
         display: none
       &.active
         display: block
+      >
+        p,.tabs,ul,ol,.highlight,div.note
+          &:first-child
+            margin-top: 0
+          &:last-child
+            margin-bottom: 0

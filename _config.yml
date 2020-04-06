@@ -3,13 +3,12 @@ info:
   name: Volantis # This is theme's name, not your blog's name.
   version: '2.4.3' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
-  cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.3/css/style.css
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.3/js/app.js
+  cdn:
+    css:
+    js:
 
 
 ############################### Style ###############################
-# cdn.css must be closed
 style:
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
@@ -39,7 +38,7 @@ style:
       color: ''
   gap:
     h2: 48px # Spacing above H2 (only px unit)
-    h3: 32px # Spacing above H3 (only px unit)
+    h3: 24px # Spacing above H3 (only px unit)
     h4: 16px # Spacing above H4 (only px unit)
     paragraph: 1rem # Paragraph spacing between paragraphs
     row: .5rem # Paragraph spacing between other elements
@@ -62,16 +61,24 @@ style:
     code: .8125rem
     footnote: .75rem
   fontfamily:
-    bodyfont:
+    logofont:
+      fontfamily: '"Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
       name: 'Varela Round'
       url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
       weight: normal
       style: normal
-    # codefont:
-    #   name: 'Monaco'
-    #   url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/Monaco/Monaco.ttf
-    #   weight: normal
-    #   style: normal
+    bodyfont:
+      fontfamily: 'UbuntuMono, "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
+      name: 'UbuntuMono'
+      url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
+      weight: normal
+      style: normal
+    codefont:
+      fontfamily: 'Menlo, Monaco'
+      # name: 'Monaco'
+      # url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/Monaco/Monaco.ttf
+      # weight: normal
+      # style: normal
   # color:
   #   site: '#21232F' # Website background color
   #   site_inner: '#fff' # Text color inside the website background
@@ -82,7 +89,7 @@ style:
   #   hover: '#ff5722' # Link highlight color
   #   inner: '#333' # Text color inside the button
   #   block: '#555' # Block color
-  #   inlinecode: yellow # Inline code color
+  #   inlinecode: '#555' # Inline code color
   #   codeblock: '#555' # Codeblock color
   #   p: '#ccc' # Paragraph color
 
@@ -146,7 +153,7 @@ navbar:
     - name: 关于
       icon: fas fa-info-circle
       url: about/
-  search: 搜索   # Search bar placeholder
+  search: Search...   # Search bar placeholder
 
 
 

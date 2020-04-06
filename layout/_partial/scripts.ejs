@@ -207,7 +207,7 @@
   </script>
 <% } %>
 
-<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js) { %>
+<% if (theme.info.cdn && theme.info.cdn.js) { %>
   <%- js(theme.info.cdn.js) %>
 <% } else { %>
   <%- js(['js/app.js']) %>
