@@ -94,8 +94,8 @@
     color: $color-hover
   kbd
     border-radius: $border-codeblock * 0.5
-    border: 1px solid darken($color-codeblock, 6)
-    background: $color-codeblock
+    border: 1px solid darken($color-inlinecode, 6)
+    background: $color-inlinecode
     padding-left: 4px
     padding-right: 4px
     margin-left: 2px
@@ -217,14 +217,13 @@
   code
     font-family: $fontfamily-code
     &:not([class])
-      padding: 4px 2px 2px 2px
+      padding: 3px 4px 1px 4px
       margin: 0
       vertical-align: middle
-      border-radius: 2px
-      line-height: 1.45
       font-size: $fontsize-code
-      color: $color-inlinecode
-      background: bgcolor($color-inlinecode, 4)
+      background: $color-inlinecode
+      border-radius: $border-codeblock * 0.5
+      border: 1px solid darken($color-inlinecode, 6)
 
   table:not('.highlight table')
     width: 100%
