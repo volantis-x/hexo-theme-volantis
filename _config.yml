@@ -89,7 +89,7 @@ style:
   #   hover: '#ff5722' # Link highlight color
   #   inner: '#333' # Text color inside the button
   #   block: '#555' # Block color
-  #   inlinecode: yellow # Inline code color
+  #   inlinecode: '#555' # Inline code color
   #   codeblock: '#555' # Codeblock color
   #   p: '#ccc' # Paragraph color
 
