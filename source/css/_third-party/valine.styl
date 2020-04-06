@@ -25,23 +25,29 @@
             &:focus
               border-bottom: 1px solid $color-theme
 
+        .vemojis,.vpreview
+          justify-content: space-between
+          background: $color-block
+          border-radius: $border-codeblock
+          scrollbar()
+          i
+            width: auto
+            height: 36px
+            padding: 0
+            margin: 8px 8px 0 8px
+            line-height: 2
+            #emoji,.emoji
+              height: 24px
+              margin-top: 6px
+              background: transparent
         .vedit
-          .vemojis,.vpreview
-            justify-content: space-between
-            background: $color-block
-            border-radius: $border-codeblock
-            i
-              width: auto
-              height: 36px
-              padding: 0
-              margin: 8px 8px 0 8px
-              #emoji
-                height: 24px
-                margin-top: 6px
-                background: transparent
-        .vedit .vctrl span
-          padding: 0
-          margin: 10px
+          .vctrl span
+            padding: 0
+            margin: 10px
+          svg
+            fill: $color-p
+            &.actived
+              fill: $color-theme
 
       button
         border: none
@@ -65,7 +71,7 @@
       pre code
         border: none
 
-      a, .vemoji-btn, .vpreview-btn
+      a
         color: $color-link
         trans()
         &:hover
@@ -100,31 +106,33 @@
           border-left: none
         .vh
           border-bottom: 1px dashed alpha($color-text, .1)
+        .vimg
+          border: 1px solid white
+          padding: 0
+          background: $color-codeblock
         .vcontent.expand
           &:before
             background: linear-gradient(180deg, alpha($color-card, .9), alpha($color-block, .9));
           &:after
             background: alpha($color-block, .9)
             color: $color-text
-        .vh:hover
-          >.vmeta>.vat
-            opacity: 1
       .vmeta
         .vat
           font-weight: bold
           color: $color-link
           trans()
-          opacity: 0
           &:hover
             color: $color-hover
             text-decoration: underline
 
+      input
+        background: $color-card
       .vinput
         color: $color-text
       p
         color: $color-text
     p
-      #emoji
+      #emoji,.emoji
         display: inline
         max-height: 28px
         background: transparent

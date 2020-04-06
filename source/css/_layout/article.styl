@@ -35,7 +35,7 @@
 
   h1,h2,h3,h4,h5,h6
     &:first-child
-      margin-top: $gap-block
+      margin-top: $gap-row
       padding-top: 0
     &.title
       left: 0
@@ -64,17 +64,17 @@
   h5
     font-weight: bold
     color: $color-h5
-    margin-top: $gap-block
+    margin-top: $gap-row
   h6
     color: $color-h6
-    margin-top: $gap-block
+    margin-top: $gap-row
 
   center
     &,p
       text-align: center
 
   .aplayer
-    margin: $gap-block 0
+    margin: $gap-row 0
     display: inline-block
     width: 400px
     max-width: 100%
@@ -88,15 +88,23 @@
       max-width: 100%
       margin: 0
       box-shadow: none
-  s
-    color: alpha(@color, .75)
+  s,del
+    opacity: 0.7
   u
     color: $color-hover
-  p
-    margin-top: $gap-block
-    margin-bottom: $gap-block
-    text-align: $textalign-p
+  kbd
+    border-radius: $border-codeblock * 0.5
+    border: 1px solid darken($color-codeblock, 6)
+    background: $color-codeblock
+    padding-left: 4px
+    padding-right: 4px
+    margin-left: 2px
+    margin-right: 2px
 
+  p
+    margin-top: $gap-row
+    margin-bottom: $gap-row
+    text-align: $textalign-p
     max-width: 100%
     overflow: auto
     &.has-jax
@@ -113,8 +121,8 @@
     list-style: initial
     padding-left: 8px
     margin-left: $gap
-    margin-top: $gap-block
-    margin-bottom: $gap-block
+    margin-top: $gap-row
+    margin-bottom: $gap-row
     ul,ol
       margin-top: 0
       margin-bottom: 0
@@ -155,8 +163,8 @@
       text-align: left
       word-wrap: normal
       font-size: $fontsize-list
-      margin-top: $gap-p
-      margin-bottom: $gap-p
+      margin-top: $gap-row
+      margin-bottom: $gap-row
     position: relative
     width: 100%
     padding: .7em 1.2em
@@ -166,7 +174,7 @@
       text-align: justify
       color: inherit
       font-style: italic
-      margin: $gap-p 0
+      margin: $gap-row 0
       cite
         &::before
           content: '----'
@@ -187,18 +195,20 @@
     display: block
     -moz-box-sizing: border-box
     box-sizing: border-box
-    margin-top: $gap-block
-    margin-bottom: $gap-block
+    margin-top: $gap-row
+    margin-bottom: $gap-row
     overflow: auto
     background: $color-codeblock
     font-size: $fontsize-code
     font-family: $fontfamily-code
-    border: 1px solid darken($color-codeblock, 10%)
+    border: 1px solid darken($color-codeblock, 6)
     padding: $gap
-
+    border-radius: $border-codeblock
+    >code:not([class])
+      background: transparent
   div>pre
     border-radius: $border-codeblock
-    &>code
+    &>code:not([class])
       padding: 0
       margin: 0
       background: transparent
@@ -206,14 +216,15 @@
 
   code
     font-family: $fontfamily-code
-    padding: 4px 2px 2px 2px
-    margin: 0
-    vertical-align: middle
-    border-radius: 2px
-    line-height: 1.45
-    font-size: $fontsize-code
-    color: $color-inlinecode
-    background: bgcolor($color-inlinecode, 4)
+    &:not([class])
+      padding: 4px 2px 2px 2px
+      margin: 0
+      vertical-align: middle
+      border-radius: 2px
+      line-height: 1.45
+      font-size: $fontsize-code
+      color: $color-inlinecode
+      background: bgcolor($color-inlinecode, 4)
 
   table:not('.highlight table')
     width: 100%
@@ -230,7 +241,7 @@
 
   .widget
     background: transparent
-    margin: $gap-block 0
+    margin: $gap-row 0
     box-shadow: none
     border-radius: $border-codeblock
     cursor: auto
@@ -322,15 +333,17 @@
   h4
     &:before
       margin-top: $gap-h4 - $navbar-height - 2 * $gap
-    margin-bottom: $gap-block
+    margin-bottom: $gap-row
   h5
     font-weight: bold
-    margin-bottom: $gap-block
+    margin-bottom: $gap-row
   h6
-    margin-bottom: $gap-block
-
+    margin-bottom: $gap-row
+  p
+    margin-top: $gap-paragraph
+    margin-bottom: $gap-paragraph
 
 article .readmore
-  margin-top: $gap-block
+  margin-top: $gap-row
   >a
     font-size: $fontsize-meta

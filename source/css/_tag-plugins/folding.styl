@@ -1,8 +1,7 @@
 details
   display: block
   padding: $gap
-  margin: $gap-block 0
-  overflow: hidden
+  margin: $gap-row 0
   border-radius: $border-codeblock
   border: 1px solid darken($color-block, 4)
   background: $color-card
@@ -12,6 +11,7 @@ details
     background: $color-block
     padding: $gap
     margin: 0 - $gap
+    border-radius: $border-codeblock
     color: alpha($color-p, .7)
     font-size: $fontsize-meta
     font-weight: bold
@@ -25,8 +25,8 @@ details
         float: right
         content: '+'
   >div.content
-    margin-top: $gap-block
-    margin-bottom: "calc(%s - %s)" % ($gap-block $gap)
+    margin-top: $gap-row
+    margin-bottom: "calc(%s - %s)" % ($gap-row $gap)
   &[blue]
     border: 1px solid darken(bgcolor($color-md-blue), 4)
     >summary
@@ -52,6 +52,8 @@ details[open]
   border: 1px solid darken($color-block, 8)
   >summary
     border-bottom: 1px solid darken(bgcolor($color-block), 8)
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
   &[blue]
     border: 1px solid darken(bgcolor($color-md-blue), 8)
     >summary
@@ -74,13 +76,13 @@ details[open]
       border-bottom: 1px solid darken(bgcolor($color-mac-red), 8)
   >summary
     color: $color-p
-    margin-bottom: $gap-block
+    margin-bottom: $gap-row
     &:hover
       &:after
         content: '-'
   >div.content>
     p,.tabs,ul,ol,.highlight,div.note
-      margin-top: $gap-p
-      margin-bottom: $gap-p
+      margin-top: $gap-row
+      margin-bottom: $gap-row
       &:last-child
         margin-bottom: 0

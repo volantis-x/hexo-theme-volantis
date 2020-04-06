@@ -41,8 +41,6 @@
 
 .l_main
   width: "calc(100% - 1 * %s)" % $sidebar
-  @media screen and (max-width: $device-desktop)
-    width: "calc(100% - 1 * %s)" % $sidebar-s
   @media screen and (max-width: $device-tablet)
     width: 100%
   padding-right: $gap
@@ -50,7 +48,7 @@
     width: 100%
     padding-right: 0
     max-width: $layout-width - $sidebar
-    @media screen and (min-width: 2000px)
+    @media screen and (min-width: $device-2k)
       max-width: "calc(55vw - %s)" % $sidebar
     margin: auto
     ~.l_side
@@ -73,7 +71,7 @@
 
   mobile-post()
     .post
-      .meta
+      div.meta
         margin-bottom: $gap
         .title
           font-size: $fontsize-h3
@@ -83,7 +81,7 @@
   .post-wrapper
     margin-bottom: $gap
     .post
-      .meta
+      div.meta
         margin-bottom: $gap
         .title
           font-size: $fontsize-h2
@@ -95,13 +93,13 @@
   .widget
     .content
       p,ul,ol,table,.tabs,details
-        margin-top: $gap-p
-        margin-bottom: $gap-p
+        margin-top: $gap-row
+        margin-bottom: $gap-row
       .post
         padding-top: 0
         padding-bottom: 0
-        margin-top: $gap-p
-        margin-bottom: $gap-p
+        margin-top: $gap-row
+        margin-bottom: $gap-row
     &.grid .content .grid.fixed a
       width: "calc(100%/8 - 0 * %s)" % $gap
       @media screen and (max-width: $device-laptop)
@@ -128,7 +126,7 @@
     h1
       font-weight: normal
       font-size: $fontsize-h1
-    .meta
+    section.meta
       color: $color-meta
       &#header-meta
         margin-top: 0
@@ -289,7 +287,7 @@
   display: flex
   width: 100%
   max-width: $layout-width
-  @media screen and (min-width: 2000px)
+  @media screen and (min-width: $device-2k)
     max-width: 55vw
   margin: 0 auto
   flex-wrap: wrap
@@ -324,12 +322,12 @@ div.hoverbox
   .article
     p[ct]
       margin-top: 0
-      margin-bottom: $gap-p
+      margin-bottom: $gap-row
       font-size: $fontsize-h4
       color: $color-text
     p[cst]
-      margin-top: $gap-p
-      margin-bottom: $gap-p
+      margin-top: $gap-row
+      margin-bottom: $gap-row
       font-size: $fontsize-meta
 
 

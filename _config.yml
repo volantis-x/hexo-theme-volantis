@@ -1,16 +1,22 @@
-############################### Basic Information ###############################
+############################### Theme Information ###############################
 info:
-  name: Volantis
-  version: '2.3.2'
-  docs: https://volantis.js.org/
+  name: Volantis # This is theme's name, not your blog's name.
+  version: '2.4.3' # This is theme's version.
+  docs: https://volantis.js.org/ # This is theme's URL.
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    # css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.3.1.2/css/style.css
-    # js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.3/js/app.js
+    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.3/css/style.css
+    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.3/js/app.js
 
 
 ############################### Style ###############################
+# cdn.css must be closed
 style:
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
+  scrollbar:
+    size: 4px
+    border: 2px
+    color: '#2196f3'
+    hover: '#ff5722'
   navbar:
     height: 64px
     width: auto # auto, max
@@ -35,10 +41,10 @@ style:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 32px # Spacing above H3 (only px unit)
     h4: 16px # Spacing above H4 (only px unit)
-    block: 1rem # Paragraph spacing between blocks
-    p: .5rem # Paragraph spacing within a block
+    paragraph: 1rem # Paragraph spacing between paragraphs
+    row: .5rem # Paragraph spacing between other elements
   border_radius:
-    card: 12px
+    card: 8px
     codeblock: 4px
     searchbar: 8px
     button: 4px
@@ -122,46 +128,24 @@ navbar:
     title:
   menu:
     # The following can be written in `blog/source/_data/menu.yml`
-    # This menu will be displayed on the laptop or desktop.
-    on_desktop:
-      - name: 博客
-        icon: fas fa-rss
-        url: /
-      - name: 分类
-        icon: fas fa-folder-open
-        url: categories/
-      - name: 标签
-        icon: fas fa-tags
-        url: tags/
-      - name: 归档
-        icon: fas fa-archive
-        url: archives/
-      - name: 友链
-        icon: fas fa-link
-        url: friends/
-      - name: 关于
-        icon: fas fa-info-circle
-        url: about/
-    # This menu will be displayed on the mobile.
-    on_mobile:
-      - name: 博客
-        icon: fas fa-rss
-        url: /
-      - name: 分类
-        icon: fas fa-folder-open
-        url: categories/
-      - name: 标签
-        icon: fas fa-tags
-        url: tags/
-      - name: 归档
-        icon: fas fa-archive
-        url: archives/
-      - name: 友链
-        icon: fas fa-link
-        url: friends/
-      - name: 关于
-        icon: fas fa-info-circle
-        url: about/
+    - name: 博客
+      icon: fas fa-rss
+      url: /
+    - name: 分类
+      icon: fas fa-folder-open
+      url: categories/
+    - name: 标签
+      icon: fas fa-tags
+      url: tags/
+    - name: 归档
+      icon: fas fa-archive
+      url: archives/
+    - name: 友链
+      icon: fas fa-link
+      url: friends/
+    - name: 关于
+      icon: fas fa-info-circle
+      url: about/
   search: 搜索   # Search bar placeholder
 
 
@@ -386,14 +370,16 @@ seo:
 
 ############################### Plugins ###############################
 plugins:
-  # Required plugins:
-  jquery: https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js
-
   ######## Plugins to improve loading speed:
   # Preload (The menu's url must end with ‘/’)
   instant_page: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js
 
   ######## Plugins to optimize the experience:
+  # highlight.js
+  highlightjs:
+    js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js
+    css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css
+    # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
   # Picture Zoom
   fancybox:
     css: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
@@ -477,7 +463,7 @@ comments:
   valine:
     appId: # your appId
     appKey: # your appKey
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js
+    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.2/js/valine.js
     path: # All pages use the same path (share the same comments data)
     meta: nick,mail,link #valine comment header info
     placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
@@ -508,7 +494,7 @@ comments:
 search:
   enable: true
   service: hexo  # hexo, google, algolia, azure, baidu
-  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js
+  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4/js/search.js
   google:
     apiKey:
     engineId:

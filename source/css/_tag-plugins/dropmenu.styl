@@ -1,0 +1,28 @@
+div.dropmenu
+  display: inline-block
+  position: relative
+  line-height: 2.4
+  cursor: default
+  trans()
+  color: alpha($color-text, 85%)
+  background: $color-codeblock
+  border-radius: $border-codeblock
+  border: 1px solid darken($color-codeblock, 6)
+  padding: 0 $gap
+  padding-top: 1px
+  font-size: $fontsize-meta
+  font-weight: bold
+  &:hover
+    background: bgcolor($color-theme)
+    border-color: darken(bgcolor($color-theme), 6)
+    >ul
+      display: block
+      margin-left: 0 - $gap * 0.5
+      margin-top: 0 - $border-codeblock
+  ul>li
+    list-style: none
+    >a
+      &:hover
+        text-decoration: none !important
+  .list-v .list-v
+    left: "calc(100% - 0.5 * %s)" % $gap
