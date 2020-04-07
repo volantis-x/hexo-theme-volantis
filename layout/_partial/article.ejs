@@ -53,7 +53,7 @@
   <%- partial('../_third-party/mathjax') %>
 <% } %>
 
-<% if (page.layout == 'post'){ %>
+<% if (page.layout == 'post' && page.title){ %>
   <script>
     window.subData = {
       title: '<%- post.title %>',
