@@ -74,7 +74,7 @@ style:
       weight: normal
       style: normal
     codefont:
-      fontfamily: 'Menlo, Monaco'
+      fontfamily: 'Menlo, UbuntuMono, Monaco'
       # name: 'Monaco'
       # url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/Monaco/Monaco.ttf
       # weight: normal
