@@ -1,0 +1,9 @@
+<%
+if (item.rows == undefined) {
+  item.rows = page.references;
+}
+%>
+
+<% if (item.rows && item.rows.length > 0) { %>
+  <%- partial('list', {item: item, where: where}) %>
+<% } %>
