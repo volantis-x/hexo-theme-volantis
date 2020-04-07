@@ -4,7 +4,7 @@
   <div class='content'>
     <ul class="list entry navigation">
       <% (item.rows||[]).forEach(function(row){ %>
-        <li><a class="flat-box" title="<%- row.url %>" href="<%- row.url %>"
+        <li><a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>"
           <% if (row.rel) { %>
             rel="<%- row.rel %>"
           <% } %>
