@@ -163,6 +163,14 @@
       .title
         trans(.1s)
         margin: 0
+        color: $color-text
+        p
+          &.h1,&.h2
+            margin-top: $gap-paragraph + $gap-row
+          &.h1
+            font-size: $fontsize-h1 * 1.1
+          &.h2
+            font-size: $fontsize-h2 * 1.1
         a
           display: inline
           font-weight: normal

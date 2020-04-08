@@ -258,7 +258,8 @@
     header
       padding: $gap * 0.25 .6em
       padding-bottom: 0
-      color: alpha($color-text, 85%)
+      &,a
+        color: alpha($color-text, 85%)
 
     &.copyright,&.qrcode
       background: none
@@ -269,10 +270,13 @@
         padding: 0
     width: 100%
 
+    &.list, &.related_posts
+      .content
+        padding: 0 .6em !important
     .content
       padding: 0 .6em
       margin: 0
-      ul.entry, ul.popular-posts
+      ul
         padding-left: 9px
         margin-left: $gap
         a
@@ -282,11 +286,22 @@
           padding-left: 4px
           color: $color-link
           font-weight: normal
-          &:hover,&.active,&:active
+          &:hover
             text-decoration: underline
-            border-left: none
-            background: none
             color: $color-hover
+          &:hover,&.active,&:active
+            border-left: none !important
+            background: none !important
+
+      .list
+        a
+          .name
+            display: inline
+            color: $color-link
+          &:hover
+            .name
+              text-decoration: underline
+              color: $color-hover
 
 
     &.qrcode > .content

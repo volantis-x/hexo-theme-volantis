@@ -1,0 +1,14 @@
+<%
+if (item.rows == undefined) {
+  item.rows = new Array();
+  (page.references||[]).forEach(function(ref) {
+    if (ref.name || ref.url) {
+      item.rows.push(ref);
+    }
+  })
+}
+%>
+
+<% if (item.rows && item.rows.length > 0) { %>
+  <%- partial('list', {item: item, where: where}) %>
+<% } %>

@@ -182,7 +182,7 @@ layout:
   # 文章布局，参数继承自 on_page
   on_post:
     # 文章页脚，自动在每一篇文章末尾添加
-    article_footer: [copyright, donate]
+    article_footer: [references, copyright, donate]
   # 其他的页面布局暂时等于 on_list
 
 
@@ -338,6 +338,15 @@ widget:
     images:
       - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
       - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
+  # ---------------------------------------
+  # references widget
+  references:
+    class: references # is subclass of list
+    display: [desktop, mobile] # [desktop, mobile]
+    header:
+      icon: fas fa-quote-left
+      title: 参考资料
+
   # You can add your own widget here or 'blog/source/_data/widget.yml'
   # class: text, list, grid, qrcode, page, ... see more at https://volantis.js.org/
 
