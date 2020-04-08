@@ -108,6 +108,7 @@
   var enableLivere = false;
   var enableGitalk = false;
   var enableValine = false;
+  var enableMiniValine = false;
   if (theme.comments && page && page.comments == true) {
     if (theme.comments.disqus && theme.comments.disqus.shortname) {
       enableDisqus = true;
@@ -120,6 +121,9 @@
     }
     if (theme.comments.valine && theme.comments.valine.appId) {
       enableValine = true;
+    }
+    if (theme.comments.minivaline && theme.comments.minivaline.appId) {
+      enableMiniValine = true;
     }
   }
 %>
@@ -204,6 +208,22 @@
     visitor: '<%- theme.comments.valine.visitor %>',
     highlight:'<%= theme.comments.valine.highlight %>'
   })
+  </script>
+<% } %>
+
+<% if (enableMiniValine){ %>
+  <<script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
+  <script>
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: '<%= theme.comments.minivaline.appId %>',
+    appKey: '<%= theme.comments.minivaline.appKey %>',
+    placeholder: '<%= theme.comments.minivaline.placeholder %>',
+    lang: '<%= theme.comments.minivaline.lang %>',
+    adminEmailMd5: '<%= theme.comments.minivaline.adminEmailMd5 %>',
+    math: <%= theme.comments.minivaline.math %>,
+    md: <%= theme.comments.minivaline.md %>
+  });
   </script>
 <% } %>
 
