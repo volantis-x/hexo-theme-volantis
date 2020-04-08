@@ -14,6 +14,7 @@ details
     color: alpha($color-p, .7)
     font-size: $fontsize-meta
     font-weight: bold
+    position: relative
     >
       p,h1,h2,h3,h4,h5,h6
         display: inline
@@ -21,8 +22,13 @@ details
     &:hover
       color: $color-p
       &:after
-        float: right
+        position: absolute
         content: '+'
+        text-align: center
+        top: 50%
+        transform: translateY(-50%)
+        right: $gap
+
   border: 1px solid $color-block
   >summary
     background: $color-block
