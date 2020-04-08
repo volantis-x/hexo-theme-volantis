@@ -212,7 +212,7 @@
 <% } %>
 
 <% if (enableMiniValine){ %>
-  <<script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
+  <script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
   <script>
   new MiniValine({
     el: '#minivaline_container',
@@ -221,8 +221,8 @@
     placeholder: '<%= theme.comments.minivaline.placeholder %>',
     lang: '<%= theme.comments.minivaline.lang %>',
     adminEmailMd5: '<%= theme.comments.minivaline.adminEmailMd5 %>',
-    math: <%= theme.comments.minivaline.math %>,
-    md: <%= theme.comments.minivaline.md %>
+    math: '<%= theme.comments.minivaline.math %>',
+    md: '<%= theme.comments.minivaline.md %>'
   });
   </script>
 <% } %>
