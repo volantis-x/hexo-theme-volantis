@@ -232,7 +232,7 @@ meta:
     # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
     #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png
     # - id: telegram
-    #   img: https://img.icons8.com/color/144/000000/telegram-app.png
+    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/telegram.png
   # 链接
   btns:
     edit:
