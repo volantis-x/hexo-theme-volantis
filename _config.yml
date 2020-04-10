@@ -1,7 +1,7 @@
 ############################### Theme Information ###############################
 info:
   name: Volantis # This is theme's name, not your blog's name.
-  version: '2.5.0' # This is theme's version.
+  version: '2.5.1' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
   cdn:
     css:
