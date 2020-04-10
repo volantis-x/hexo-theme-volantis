@@ -10,6 +10,8 @@
     overflow: hidden
     >.content
       max-height: "calc(100vh - %s)" % ($gap * 5 + $navbar-height)
+      @media screen and (max-width: $device-tablet)
+        max-height: none
       overflow: auto
       scrollbar()
       text-align: justify
