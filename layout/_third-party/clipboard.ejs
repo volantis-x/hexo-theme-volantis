@@ -4,12 +4,11 @@
     var timelag = null;
     timelag = window.setTimeout(callback, seconds);
   }
-  
   !function (e, t, a) {
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="far fa-copy"></i><span>COPY</span>';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       $(".article pre code").before(copyHtml);
