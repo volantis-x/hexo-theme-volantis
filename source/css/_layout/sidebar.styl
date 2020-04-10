@@ -7,11 +7,13 @@
   @media screen and (max-width: $device-tablet)
     width: 100%
   .widget
+    overflow: hidden
     >.content
+      max-height: "calc(100vh - %s)" % ($gap * 5 + $navbar-height)
+      overflow: auto
+      scrollbar()
       text-align: justify
       font-size: $fontsize-meta
-      $offset = $navbar-height + 12.5 * $gap
-      max-height: "calc(100% - %s)" % $offset
       max-width: 100%
 
 
@@ -108,42 +110,52 @@
     trans()
     .content
       padding: 0
-      div.avatar
-        display: flex
-        justify-content: center
-
-      img
-        padding: 0
-        margin: 0
-        display: flex
-        justify-content: center
-        width: $sidebar
-        height: $sidebar
+      text-align: center
+      display: flex
+      flex-direction: column
+      align-items: stretch
+      >.avatar
+        align-self: center
+        overflow: hidden
+        position: relative
         border-top-left-radius: $border-card
         border-top-right-radius: $border-card
-
-        @media screen and (max-width: $device-tablet)
-          width: 96px
-          height: 96px
+        line-height: 0
+        if hexo-config('widget.blogger.shape') == 'circle'
           border-radius: 100%
-          margin-top: $gap * 0.5
-          padding: $gap * 0.5
-
+          width: 128px
+          height: 128px
+          margin-top: $gap * 2
+          margin-bottom: $gap-row
+          img
+            display: block
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+        @media screen and (max-width: $device-tablet)
+          width: 80px
+          height: 80px
+          border-radius: 100%
+          border: 2px solid white
+          img
+            display: block
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            position: absolute
+      .text
+        :first-child
+          margin-top: $gap
       h2
-        text-align: center
         font-weight: bold
         margin: $gap * 0.5
-        margin-top: $gap
         @media screen and (max-width: $device-tablet)
           margin: $gap * 0.5
-
-
       p
         font-weight: bold
-        text-align: center
         margin: $gap * 0.5 $gap * 0.5 0 $gap * 0.5
         empty-cells: hide
-
       .social-wrapper
         display: flex
         justify-content: space-between
@@ -169,19 +181,16 @@
               background: bgcolor($color-theme)
               color: $color-theme
 
-
-
         @media screen and (max-width: $device-tablet)
           justify-content: center
           display: none
-
-
 
     @media screen and (max-width: $device-tablet)
       box-shadow: none
       background: transparent !important
       margin-top: 2 * $gap
       backdrop-filter: none
+      color: $color-site-inner
 
 
 

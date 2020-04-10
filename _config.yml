@@ -272,8 +272,10 @@ widget:
   # blogger info widget
   blogger:
     class: blogger
-    display: [desktop] # [desktop, mobile]
+    display: [desktop, mobile] # [desktop, mobile]
     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
+    shape: rectangle # circle, rectangle
+    url: /about/
     title:
     subtitle:
     jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
