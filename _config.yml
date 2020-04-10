@@ -82,7 +82,7 @@ style:
   # color:
   #   site: '#21232F' # Website background color
   #   site_inner: '#fff' # Text color inside the website background
-  #   site_footer: '#fff' # Footer text color inside the website background
+  #   site_footer: '#666' # Footer text color inside the website background
   #   card: '#444' # Card background color
   #   text: '#fff' # The color of the text on the card.
   #   theme: '#ff9800' # Main color
