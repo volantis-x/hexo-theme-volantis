@@ -1,8 +1,8 @@
 /*!
- * Valine v1.4.0
+ * Valine v1.4.2
  * (c) 2017-2020 xCss
  * Released under the GPL-2.0 License.
- * Last Update: 2020-04-09 10:25:36
+ * Last Update: 2020-4-11 11:21:17
  */
 !function(e, t) {
     "object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define([], t) : "object" == typeof exports ? exports.Valine = t() : e.Valine = t()
@@ -55,6 +55,291 @@
         t(t.s = 63)
     }([function(e, t, n) {
         "use strict";
+        function r(e) {
+            return e && e.__esModule ? e : {
+                default: e
+            }
+        }
+        t.__esModule = !0;
+        var o = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+            return typeof e
+        }
+        : function(e) {
+            return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+        }
+        ;
+        n(32);
+        var i = n(38)
+          , a = r(i)
+          , s = n(29)
+          , l = r(s)
+          , c = n(28)
+          , u = r(c)
+          , p = n(42)
+          , d = r(p)
+          , f = n(27)
+          , h = r(f)
+          , g = document
+          , v = (window,
+        navigator)
+          , m = /[&<>"'`\\]/g
+          , y = RegExp(m.source)
+          , b = /&(?:amp|lt|gt|quot|#39|#x60|#x5c);/g
+          , w = RegExp(b.source)
+          , x = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+            "`": "&#x60;",
+            "\\": "&#x5c;"
+        }
+          , k = {};
+        for (var A in x)
+            k[x[A]] = A;
+        Array.prototype.forEach || (Array.prototype.forEach = function(e, t) {
+            var n, r;
+            if (null == this)
+                throw new TypeError(" this is null or not defined");
+            var o = Object(this)
+              , i = o.length >>> 0;
+            if ("function" != typeof e)
+                throw new TypeError(e + " is not a function");
+            for (arguments.length > 1 && (n = t),
+            r = 0; r < i; ) {
+                var a;
+                r in o && (a = o[r],
+                e.call(n, a, r, o)),
+                r++
+            }
+        }
+        ),
+        window.NodeList && !NodeList.prototype.forEach && (NodeList.prototype.forEach = Array.prototype.forEach),
+        (0,
+        a.default)(l.default.fn, {
+            prepend: function(e) {
+                return e instanceof HTMLElement || (e = e[0]),
+                this.forEach(function(t) {
+                    t.insertAdjacentElement("afterBegin", e)
+                }),
+                this
+            },
+            append: function(e) {
+                return e instanceof HTMLElement || (e = e[0]),
+                this.forEach(function(t) {
+                    t.insertAdjacentElement("beforeEnd", e)
+                }),
+                this
+            },
+            remove: function() {
+                return this.forEach(function(e) {
+                    e.parentNode.removeChild(e)
+                }),
+                this
+            },
+            find: function(e) {
+                return (0,
+                l.default)(e, this)
+            },
+            eq: function(e) {
+                return (0,
+                l.default)(this[e])
+            },
+            show: function() {
+                return this.forEach(function(e) {
+                    e.style.display = "block"
+                }),
+                this
+            },
+            hide: function() {
+                return this.forEach(function(e) {
+                    e.style.display = "none"
+                }),
+                this
+            },
+            css: function(e) {
+                var t = this;
+                return Object.keys(e).forEach(function(n) {
+                    t.forEach(function(t) {
+                        t.style[n] = e[n]
+                    })
+                }),
+                this
+            },
+            index: function() {
+                var e = this[0]
+                  , t = e.parentNode;
+                return Array.prototype.indexOf.call(t.children, e)
+            },
+            on: function(e, t, n) {
+                if (t) {
+                    l.default.fn.off(e, t, n);
+                    var r = "string" == typeof t && "function" == typeof n;
+                    return r || (n = t),
+                    this.forEach(function(o) {
+                        e.split(" ").forEach(function(e) {
+                            o.addEventListener(e, function(e) {
+                                r ? this.contains(e.target.closest(t)) && n.call(e.target, e) : n.call(this, e)
+                            }, !1)
+                        })
+                    }),
+                    this
+                }
+            },
+            off: function(e, t, n) {
+                return "function" == typeof t && (n = t,
+                t = null),
+                this.forEach(function(r) {
+                    e.split(" ").forEach(function(e) {
+                        "string" == typeof t ? r.querySelectorAll(t).forEach(function(t) {
+                            t.removeEventListener(e, n)
+                        }) : r.removeEventListener(e, n)
+                    })
+                }),
+                this
+            },
+            offAll: function() {
+                var e = this;
+                return this.forEach(function(t, n) {
+                    var r = t.cloneNode(!0);
+                    t.parentNode.replaceChild(r, t),
+                    e[n] = r
+                }),
+                this
+            },
+            html: function(e) {
+                return void 0 !== e ? (this.forEach(function(t) {
+                    t.innerHTML = e
+                }),
+                this) : this[0].innerHTML
+            },
+            text: function(e) {
+                return void 0 !== e ? (this.forEach(function(t) {
+                    t.innerText = e
+                }),
+                this) : this[0].innerText
+            },
+            empty: function(e) {
+                return e = e || 0,
+                this.forEach(function(t) {
+                    setTimeout(function(e) {
+                        t.innerText = ""
+                    }, e)
+                }),
+                this
+            },
+            val: function(e) {
+                return void 0 !== e ? (this.forEach(function(t) {
+                    t.value = e
+                }),
+                this) : this[0].value || ""
+            },
+            attr: function() {
+                var e = arguments;
+                if ("object" == o(arguments[0])) {
+                    var t = arguments[0]
+                      , n = this;
+                    return Object.keys(t).forEach(function(e) {
+                        n.forEach(function(n) {
+                            n.setAttribute(e, t[e])
+                        })
+                    }),
+                    this
+                }
+                return "string" == typeof arguments[0] && arguments.length < 2 ? this[0].getAttribute(arguments[0]) : (this.forEach(function(t) {
+                    t.setAttribute(e[0], e[1])
+                }),
+                this)
+            },
+            removeAttr: function(e) {
+                return this.forEach(function(t) {
+                    var n = void 0
+                      , r = 0
+                      , o = e && e.match(/[^\x20\t\r\n\f\*\/\\]+/g);
+                    if (o && 1 === t.nodeType)
+                        for (; n = o[r++]; )
+                            t.removeAttribute(n)
+                }),
+                this
+            },
+            hasClass: function(e) {
+                return !!this[0] && new RegExp("(\\s|^)" + e + "(\\s|$)").test(this[0].getAttribute("class"))
+            },
+            addClass: function(e) {
+                return this.forEach(function(t) {
+                    var n = (0,
+                    l.default)(t)
+                      , r = n.attr("class");
+                    n.hasClass(e) || n.attr("class", r += " " + e)
+                }),
+                this
+            },
+            removeClass: function(e) {
+                return this.forEach(function(t) {
+                    var n = (0,
+                    l.default)(t)
+                      , r = n.attr("class");
+                    if (n.hasClass(e)) {
+                        var o = new RegExp("(\\s|^)" + e + "(\\s|$)");
+                        n.attr("class", r.replace(o, ""))
+                    }
+                }),
+                this
+            }
+        });
+        var _ = null;
+        (0,
+        a.default)(l.default, {
+            navi: v,
+            ua: v.userAgent,
+            lang: v.language || v.languages[0],
+            TJ: h.default,
+            extend: a.default,
+            noop: function() {},
+            detect: u.default,
+            store: d.default,
+            escape: function(e) {
+                return e && y.test(e) ? e.replace(m, function(e) {
+                    return x[e]
+                }) : e
+            },
+            unescape: function(e) {
+                return e && w.test(e) ? e.replace(b, function(e) {
+                    return k[e]
+                }) : e
+            },
+            dynamicLoadSource: function(e, t) {
+                if ((0,
+                l.default)('script[src="' + e + '"]')[0])
+                    "function" == typeof t && t();
+                else {
+                    var n = g.createElement("script");
+                    n.src = e,
+                    n.async = !0;
+                    (0,
+                    l.default)("head")[0].appendChild(n),
+                    n.onload = n.onreadystatechange = function() {
+                        var e = this;
+                        e.onload = e.onreadystatechange = null,
+                        "function" == typeof t && t()
+                    }
+                }
+            },
+            sdkLoader: function(e, t, n) {
+                var r = t in window;
+                ("MathJax" === t ? r && "version"in window[t] : r) ? (_ && clearTimeout(_),
+                n && n()) : l.default.dynamicLoadSource(e, function() {
+                    _ = setTimeout(function() {
+                        l.default.sdkLoader(e, t, n)
+                    }, 200)
+                })
+            }
+        }),
+        t.default = l.default
+    }
+    , function(e, t, n) {
+        "use strict";
         var r = TypeError
           , o = Object.getOwnPropertyDescriptor;
         if (o)
@@ -76,7 +361,7 @@
                     return s
                 }
             }
-        }() : s, c = n(38)(), u = Object.getPrototypeOf || function(e) {
+        }() : s, c = n(47)(), u = Object.getPrototypeOf || function(e) {
             return e.__proto__
         }
         , p = i ? u(i) : void 0, d = a ? u(a) : void 0, f = a ? a() : void 0, h = "undefined" == typeof Uint8Array ? void 0 : u(Uint8Array), g = {
@@ -189,13 +474,13 @@
             "%WeakMapPrototype%": "undefined" == typeof WeakMap ? void 0 : WeakMap.prototype,
             "%WeakSet%": "undefined" == typeof WeakSet ? void 0 : WeakSet,
             "%WeakSetPrototype%": "undefined" == typeof WeakSet ? void 0 : WeakSet.prototype
-        }, v = n(3), m = v.call(Function.call, String.prototype.replace), y = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g, b = /\\(\\)?/g, x = function(e) {
+        }, v = n(3), m = v.call(Function.call, String.prototype.replace), y = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g, b = /\\(\\)?/g, w = function(e) {
             var t = [];
             return m(e, y, function(e, n, r, o) {
                 t[t.length] = r ? m(o, b, "$1") : n || e
             }),
             t
-        }, w = function(e, t) {
+        }, x = function(e, t) {
             if (!(e in g))
                 throw new SyntaxError("intrinsic " + e + " does not exist!");
             if (void 0 === g[e] && !t)
@@ -207,7 +492,7 @@
                 throw new TypeError("intrinsic name must be a non-empty string");
             if (arguments.length > 1 && "boolean" != typeof t)
                 throw new TypeError('"allowMissing" argument must be a boolean');
-            for (var n = x(e), i = w("%" + (n.length > 0 ? n[0] : "") + "%", t), a = 1; a < n.length; a += 1)
+            for (var n = w(e), i = x("%" + (n.length > 0 ? n[0] : "") + "%", t), a = 1; a < n.length; a += 1)
                 if (null != i)
                     if (o && a + 1 >= n.length) {
                         var s = o(i, n[a]);
@@ -220,273 +505,10 @@
         }
     }
     , function(e, t, n) {
-        "use strict";
-        function r(e) {
-            return e && e.__esModule ? e : {
-                default: e
-            }
-        }
-        t.__esModule = !0;
-        var o = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
-            return typeof e
-        }
-        : function(e) {
-            return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
-        }
-        ;
-        n(32);
-        var i = n(43)
-          , a = r(i)
-          , s = n(29)
-          , l = r(s)
-          , c = n(28)
-          , u = r(c)
-          , p = n(47)
-          , d = r(p)
-          , f = n(27)
-          , h = r(f)
-          , g = document
-          , v = (window,
-        /[&<>"'`\\]/g)
-          , m = RegExp(v.source)
-          , y = /&(?:amp|lt|gt|quot|#39|#x60|#x5c);/g
-          , b = RegExp(y.source)
-          , x = {
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': "&quot;",
-            "'": "&#39;",
-            "`": "&#x60;",
-            "\\": "&#x5c;"
-        }
-          , w = {};
-        for (var k in x)
-            w[x[k]] = k;
-        Array.prototype.forEach || (Array.prototype.forEach = function(e, t) {
-            var n, r;
-            if (null == this)
-                throw new TypeError(" this is null or not defined");
-            var o = Object(this)
-              , i = o.length >>> 0;
-            if ("function" != typeof e)
-                throw new TypeError(e + " is not a function");
-            for (arguments.length > 1 && (n = t),
-            r = 0; r < i; ) {
-                var a;
-                r in o && (a = o[r],
-                e.call(n, a, r, o)),
-                r++
-            }
-        }
-        ),
-        window.NodeList && !NodeList.prototype.forEach && (NodeList.prototype.forEach = Array.prototype.forEach),
-        (0,
-        a.default)(l.default.fn, {
-            append: function(e) {
-                return e instanceof HTMLElement || (e = e[0]),
-                this.forEach(function(t) {
-                    t.appendChild(e)
-                }),
-                this
-            },
-            remove: function() {
-                return this.forEach(function(e) {
-                    e.parentNode.removeChild(e)
-                }),
-                this
-            },
-            find: function(e) {
-                return (0,
-                l.default)(e, this)
-            },
-            eq: function(e) {
-                return (0,
-                l.default)(this[e])
-            },
-            show: function() {
-                return this.forEach(function(e) {
-                    e.style.display = "block"
-                }),
-                this
-            },
-            hide: function() {
-                return this.forEach(function(e) {
-                    e.style.display = "none"
-                }),
-                this
-            },
-            css: function(e) {
-                var t = this;
-                return Object.keys(e).forEach(function(n) {
-                    t.forEach(function(t) {
-                        t.style[n] = e[n]
-                    })
-                }),
-                this
-            },
-            index: function() {
-                var e = this[0]
-                  , t = e.parentNode;
-                return Array.prototype.indexOf.call(t.children, e)
-            },
-            on: function(e, t, n) {
-                l.default.fn.off(e, t, n);
-                var r = "string" == typeof t && "function" == typeof n;
-                return r || (n = t),
-                this.forEach(function(o) {
-                    e.split(" ").forEach(function(e) {
-                        o.addEventListener(e, function(e) {
-                            r ? this.contains(e.target.closest(t)) && n.call(e.target, e) : n.call(this, e)
-                        }, !1)
-                    })
-                }),
-                this
-            },
-            off: function(e, t, n) {
-                return "function" == typeof t && (n = t,
-                t = null),
-                this.forEach(function(r) {
-                    e.split(" ").forEach(function(e) {
-                        "string" == typeof t ? r.querySelectorAll(t).forEach(function(t) {
-                            t.removeEventListener(e, n)
-                        }) : r.removeEventListener(e, n)
-                    })
-                }),
-                this
-            },
-            offAll: function() {
-                var e = this;
-                return this.forEach(function(t, n) {
-                    var r = t.cloneNode(!0);
-                    t.parentNode.replaceChild(r, t),
-                    e[n] = r
-                }),
-                this
-            },
-            html: function(e) {
-                return void 0 !== e ? (this.forEach(function(t) {
-                    t.innerHTML = e
-                }),
-                this) : this[0].innerHTML
-            },
-            text: function(e) {
-                return void 0 !== e ? (this.forEach(function(t) {
-                    t.innerText = e
-                }),
-                this) : this[0].innerText
-            },
-            val: function(e) {
-                return void 0 !== e ? (this.forEach(function(t) {
-                    t.value = e
-                }),
-                this) : this[0].value || ""
-            },
-            attr: function() {
-                var e = arguments;
-                if ("object" == o(arguments[0])) {
-                    var t = arguments[0]
-                      , n = this;
-                    return Object.keys(t).forEach(function(e) {
-                        n.forEach(function(n) {
-                            n.setAttribute(e, t[e])
-                        })
-                    }),
-                    this
-                }
-                return "string" == typeof arguments[0] && arguments.length < 2 ? this[0].getAttribute(arguments[0]) : (this.forEach(function(t) {
-                    t.setAttribute(e[0], e[1])
-                }),
-                this)
-            },
-            removeAttr: function(e) {
-                return this.forEach(function(t) {
-                    var n = void 0
-                      , r = 0
-                      , o = e && e.match(/[^\x20\t\r\n\f\*\/\\]+/g);
-                    if (o && 1 === t.nodeType)
-                        for (; n = o[r++]; )
-                            t.removeAttribute(n)
-                }),
-                this
-            },
-            hasClass: function(e) {
-                return !!this[0] && new RegExp("(\\s|^)" + e + "(\\s|$)").test(this[0].getAttribute("class"))
-            },
-            addClass: function(e) {
-                return this.forEach(function(t) {
-                    var n = (0,
-                    l.default)(t)
-                      , r = n.attr("class");
-                    n.hasClass(e) || n.attr("class", r += " " + e)
-                }),
-                this
-            },
-            removeClass: function(e) {
-                return this.forEach(function(t) {
-                    var n = (0,
-                    l.default)(t)
-                      , r = n.attr("class");
-                    if (n.hasClass(e)) {
-                        var o = new RegExp("(\\s|^)" + e + "(\\s|$)");
-                        n.attr("class", r.replace(o, ""))
-                    }
-                }),
-                this
-            }
-        });
-        var A = null;
-        (0,
-        a.default)(l.default, {
-            analytics: h.default,
-            extend: a.default,
-            noop: function() {},
-            detect: u.default,
-            store: d.default,
-            escape: function(e) {
-                return e && m.test(e) ? e.replace(v, function(e) {
-                    return x[e]
-                }) : e
-            },
-            unescape: function(e) {
-                return e && b.test(e) ? e.replace(y, function(e) {
-                    return w[e]
-                }) : e
-            },
-            dynamicLoadSource: function(e, t) {
-                if ((0,
-                l.default)('script[src="' + e + '"]')[0])
-                    "function" == typeof t && t();
-                else {
-                    var n = g.createElement("script");
-                    n.src = e,
-                    n.async = !0;
-                    (0,
-                    l.default)("head")[0].appendChild(n),
-                    n.onload = n.onreadystatechange = function() {
-                        var e = this;
-                        e.onload = e.onreadystatechange = null,
-                        "function" == typeof t && t()
-                    }
-                }
-            },
-            sdkLoader: function(e, t, n) {
-                var r = t in window;
-                ("MathJax" === t ? r && "version"in window[t] : r) ? (A && clearTimeout(A),
-                n && n()) : l.default.dynamicLoadSource(e, function() {
-                    A = setTimeout(function() {
-                        l.default.sdkLoader(e, t, n)
-                    }, 200)
-                })
-            }
-        }),
-        t.default = l.default
-    }
-    , function(e, t, n) {
         function r(e, t) {
             return new i(t).process(e)
         }
-        var o = n(5)
+        var o = n(6)
           , i = n(30);
         t = e.exports = r,
         t.FilterCSS = i;
@@ -496,7 +518,7 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(37);
+        var r = n(34);
         e.exports = Function.prototype.bind || r
     }
     , function(e, t) {
@@ -528,6 +550,34 @@
                 return n ? n.index : -1
             }
         }
+    }
+    , function(e, t, n) {
+        "use strict";
+        t.__esModule = !0,
+        t.DEFAULT_META = t.DEFAULT_CONFIG = t.DB_NAME = t.DEFAULT_EMOJI_CDN = void 0;
+        var r = n(0);
+        (function(e) {
+            e && e.__esModule
+        }
+        )(r),
+        t.DEFAULT_EMOJI_CDN = "//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/",
+        t.DB_NAME = "Comment",
+        t.DEFAULT_CONFIG = {
+            lang: "zh-CN",
+            langMode: null,
+            appId: "",
+            appKey: "",
+            clazzName: "Comment",
+            mathJax: !1,
+            meta: ["nick", "mail", "link"],
+            path: location.pathname,
+            placeholder: "Just Go Go",
+            pageSize: 10,
+            recordIP: !0,
+            serverURLs: "",
+            visitor: !1
+        },
+        t.DEFAULT_META = ["nick", "mail", "link"]
     }
     , function(e, t) {
         function n() {
@@ -911,7 +961,7 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(45)
+        var r = n(40)
           , o = "function" == typeof Symbol && "symbol" == typeof Symbol("foo")
           , i = Object.prototype.toString
           , a = Array.prototype.concat
@@ -953,21 +1003,6 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(3)
-          , o = n(0)
-          , i = o("%Function%")
-          , a = i.apply
-          , s = i.call;
-        e.exports = function() {
-            return r.apply(s, arguments)
-        }
-        ,
-        e.exports.apply = function() {
-            return r.apply(a, arguments)
-        }
-    }
-    , function(e, t, n) {
-        "use strict";
         var r = Object.prototype.toString;
         e.exports = function(e) {
             var t = r.call(e)
@@ -978,15 +1013,30 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(34)
-          , o = n(33)
-          , i = n(35)
+        var r = n(45)
+          , o = n(44)
+          , i = n(46)
           , a = i("String.prototype.replace")
           , s = /^[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+/
           , l = /[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+$/;
         e.exports = function() {
             var e = o(r(this));
             return a(a(e, s, ""), l, "")
+        }
+    }
+    , function(e, t, n) {
+        "use strict";
+        var r = n(3)
+          , o = n(1)
+          , i = o("%Function%")
+          , a = i.apply
+          , s = i.call;
+        e.exports = function() {
+            return r.apply(s, arguments)
+        }
+        ,
+        e.exports.apply = function() {
+            return r.apply(a, arguments)
         }
     }
     , function(e, t, n) {
@@ -1083,7 +1133,7 @@
         function a(e, t, n) {}
         function s(e, t, n) {}
         function l(e) {
-            return e.replace(O, "&lt;").replace(E, "&gt;")
+            return e.replace(S, "&lt;").replace(O, "&gt;")
         }
         function c(e, t, n, r) {
             if (n = g(n),
@@ -1097,20 +1147,20 @@
                 P.test(n))
                     return ""
             } else if ("style" === t) {
-                if (I.lastIndex = 0,
-                I.test(n))
-                    return "";
                 if (M.lastIndex = 0,
-                M.test(n) && (P.lastIndex = 0,
+                M.test(n))
+                    return "";
+                if (I.lastIndex = 0,
+                I.test(n) && (P.lastIndex = 0,
                 P.test(n)))
                     return "";
-                !1 !== r && (r = r || S,
+                !1 !== r && (r = r || _,
                 n = r.process(n))
             }
             return n = v(n)
         }
         function u(e) {
-            return e.replace(_, "&quot;")
+            return e.replace(E, "&quot;")
         }
         function p(e) {
             return e.replace($, '"')
@@ -1177,9 +1227,9 @@
             }
         }
         function b(e) {
-            return e.replace(L, "")
+            return e.replace(z, "")
         }
-        function x(e) {
+        function w(e) {
             var t = e.split("");
             return t = t.filter(function(e) {
                 var t = e.charCodeAt(0);
@@ -1187,21 +1237,21 @@
             }),
             t.join("")
         }
-        var w = n(2).FilterCSS
+        var x = n(2).FilterCSS
           , k = n(2).getDefaultWhiteList
           , A = n(4)
-          , S = new w
-          , O = /</g
-          , E = />/g
-          , _ = /"/g
+          , _ = new x
+          , S = /</g
+          , O = />/g
+          , E = /"/g
           , $ = /&quot;/g
           , j = /&#([a-zA-Z0-9]*);?/gim
           , T = /&colon;?/gim
           , C = /&newline;?/gim
           , P = /((j\s*a\s*v\s*a|v\s*b|l\s*i\s*v\s*e)\s*s\s*c\s*r\s*i\s*p\s*t\s*|m\s*o\s*c\s*h\s*a)\:/gi
-          , I = /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi
-          , M = /u\s*r\s*l\s*\(.*/gi
-          , L = /<!--[\s\S]*?-->/g;
+          , M = /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi
+          , I = /u\s*r\s*l\s*\(.*/gi
+          , z = /<!--[\s\S]*?-->/g;
         t.whiteList = r(),
         t.getDefaultWhiteList = r,
         t.onTag = o,
@@ -1220,8 +1270,8 @@
         t.onIgnoreTagStripAll = m,
         t.StripTagBody = y,
         t.stripCommentTag = b,
-        t.stripBlankChar = x,
-        t.cssFilter = S,
+        t.stripBlankChar = w,
+        t.cssFilter = _,
         t.getDefaultCSSWhiteList = k
     }
     , function(e, t, n) {
@@ -1546,41 +1596,13 @@
     }
     , function(e, t, n) {
         "use strict";
-        t.__esModule = !0;
-        t.DB_NAME = "Comment",
-        t.DEFAULT_CONFIG = {
-            lang: "zh-CN",
-            langMode: null,
-            appId: "",
-            appKey: "",
-            clazzName: "Comment",
-            mathJax: !1,
-            meta: ["nick", "mail", "link"],
-            path: location.pathname,
-            placeholder: "Just Go Go",
-            pageSize: 10,
-            recordIP: !0,
-            serverURLs: "",
-            visitor: !1
-        },
-        t.DEFAULT_AVATAR_CONFIG = {
-            cdn: "https://gravatar.loli.net/avatar/",
-            ds: ["mp", "identicon", "monsterid", "wavatar", "robohash", "retro", ""],
-            params: "",
-            hide: !1
-        },
-        t.DEFAULT_META = ["nick", "mail", "link"],
-        t.DEFAULT_COMMENT = {}
-    }
-    , function(e, t, n) {
-        "use strict";
         function r(e) {
             return e && e.__esModule ? e : {
                 default: e
             }
         }
         t.__esModule = !0;
-        var o = n(42)
+        var o = n(37)
           , i = r(o)
           , a = n(55)
           , s = r(a)
@@ -1626,7 +1648,7 @@
           , s = r(a)
           , l = n(25)
           , c = r(l)
-          , u = n(15)
+          , u = n(16)
           , p = r(u)
           , d = n(24)
           , f = r(d)
@@ -1634,25 +1656,25 @@
           , g = r(h)
           , v = n(20)
           , m = r(v)
-          , y = n(16)
+          , y = n(5)
           , b = n(21)
-          , x = r(b)
-          , w = n(22)
-          , k = r(w)
+          , w = r(b)
+          , x = n(22)
+          , k = r(x)
           , A = n(19)
-          , S = r(A)
-          , O = n(1)
-          , E = r(O)
-          , _ = navigator
-          , $ = n(26).version
-          , j = {
+          , _ = r(A)
+          , S = n(0)
+          , O = r(S)
+          , E = n(26).version
+          , $ = {
             comment: "",
             nick: "Anonymous",
             mail: "",
             link: "",
-            ua: _.userAgent,
+            ua: O.default.ua,
             url: ""
         }
+          , j = ""
           , T = {
             cdn: "https://gravatar.loli.net/avatar/",
             ds: ["mp", "identicon", "monsterid", "wavatar", "robohash", "retro", ""],
@@ -1661,18 +1683,18 @@
         }
           , C = ["nick", "mail", "link"];
         o.prototype.init = function(e) {
-            var t = this
-              , n = E.default.extend(y.DEFAULT_CONFIG, e);
-            return E.default.sdkLoader("https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js", "AV", function() {
-                if (E.default.analytics(),
+            var t = this;
+            return e = O.default.extend(y.DEFAULT_CONFIG, e),
+            O.default.sdkLoader("https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js", "AV", function(n) {
+                if (O.default.TJ(),
                 (0,
-                S.default)(n.mathJax),
+                _.default)(e.mathJax),
                 t.i18n = (0,
-                g.default)(n.lang || _.language || _.userLanguage, n.langMode),
-                t.config = n,
+                g.default)(e.lang || O.default.lang, e.langMode),
+                t.config = e,
                 "undefined" == typeof document)
-                    return void console;
-                !!n && t._init()
+                    throw new Error("Sorry, Valine does not support Server-side rendering.");
+                !!e && t._init()
             }),
             t
         }
@@ -1692,7 +1714,7 @@
                 e.config.path = s.replace(/index\.html?$/, "");
                 var p = T.ds
                   , d = r ? "&q=" + Math.random().toString(32).substring(2) : "";
-                T.params = "?d=" + (p.indexOf(n) > -1 ? n : "mp") + "&v=" + $ + d,
+                T.params = "?d=" + (p.indexOf(n) > -1 ? n : "mp") + "&v=" + E + d,
                 T.hide = "hide" === n,
                 T.cdn = /^https?\:\/\//.test(o) ? o : T.cdn,
                 e.config.pageSize = isNaN(l) ? 10 : l < 1 ? 10 : l,
@@ -1707,9 +1729,9 @@
                     smartLists: !0,
                     smartypants: !0
                 }),
-                u && (E.default.sdkLoader("//api.ip.sb/jsonip?callback=getIP", "getIP"),
+                u && (O.default.sdkLoader("//api.ip.sb/jsonip?callback=getIP", "getIP"),
                 window.getIP = function(e) {
-                    j.ip = e.ip
+                    $.ip = e.ip
                 }
                 );
                 var h = e.config.app_id || e.config.appId
@@ -1735,13 +1757,13 @@
                     })
                 } catch (e) {}
                 var y = (0,
-                E.default)(".valine-comment-count")
+                O.default)(".valine-comment-count")
                   , b = 0;
                 !function t(n) {
                     var r = n[b++];
                     if (r) {
                         var o = (0,
-                        E.default)(r).attr("data-xid");
+                        O.default)(r).attr("data-xid");
                         !!o && e.Q(o).count().then(function(e) {
                             r.innerText = e,
                             t(n)
@@ -1750,14 +1772,14 @@
                         })
                     }
                 }(y),
-                i && I.add(AV.Object.extend("Counter"), e.config.path);
-                var x = e.config.el || null
-                  , w = (0,
-                E.default)(x);
-                if (!(x = x instanceof HTMLElement ? x : w[w.length - 1] || null))
+                i && M.add(AV.Object.extend("Counter"), e.config.path);
+                var w = e.config.el || null
+                  , x = (0,
+                O.default)(w);
+                if (!(w = w instanceof HTMLElement ? w : x[x.length - 1] || null))
                     return;
                 e.$el = (0,
-                E.default)(x),
+                O.default)(w),
                 e.$el.addClass("v"),
                 T.hide && e.$el.addClass("hide-avatar"),
                 e.config.meta = (e.config.guest_info || e.config.meta || C).filter(function(e) {
@@ -1767,34 +1789,33 @@
                     var n = "mail" == t ? "email" : "text";
                     return C.indexOf(t) > -1 ? '<input name="' + t + '" placeholder="' + e.i18n.t(t) + '" class="v' + t + ' vinput" type="' + n + '">' : ""
                 })
-                  , A = '<div class="vpanel"><div class="vwrap"><p class="cancel-reply text-right" style="display:none;" title="' + e.i18n.t("cancelReply") + '"><svg class="icon cancel-reply-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4220" width="22" height="22"><path d="M796.454 985H227.545c-50.183 0-97.481-19.662-133.183-55.363-35.7-35.701-55.362-83-55.362-133.183V227.545c0-50.183 19.662-97.481 55.363-133.183 35.701-35.7 83-55.362 133.182-55.362h568.909c50.183 0 97.481 19.662 133.183 55.363 35.701 35.702 55.363 83 55.363 133.183v568.909c0 50.183-19.662 97.481-55.363 133.183S846.637 985 796.454 985zM227.545 91C152.254 91 91 152.254 91 227.545v568.909C91 871.746 152.254 933 227.545 933h568.909C871.746 933 933 871.746 933 796.454V227.545C933 152.254 871.746 91 796.454 91H227.545z" p-id="4221"></path><path d="M568.569 512l170.267-170.267c15.556-15.556 15.556-41.012 0-56.569s-41.012-15.556-56.569 0L512 455.431 341.733 285.165c-15.556-15.556-41.012-15.556-56.569 0s-15.556 41.012 0 56.569L455.431 512 285.165 682.267c-15.556 15.556-15.556 41.012 0 56.569 15.556 15.556 41.012 15.556 56.569 0L512 568.569l170.267 170.267c15.556 15.556 41.012 15.556 56.569 0 15.556-15.556 15.556-41.012 0-56.569L568.569 512z" p-id="4222" ></path></svg></p><div class="vheader item' + k.length + '">' + k.join("") + '</div><div class="vedit"><textarea id="veditor" class="veditor vinput" placeholder="' + e.config.placeholder + '"></textarea><div class="row"><div class="col col-60 status-bar">\x3c!-- <i class="vloading"></i><i class="check-o"></i>asdfasf --\x3e</div><div class="col col-40 vctrl text-right"><span title="' + e.i18n.t("emoji") + '"  class="icon vemoji-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16172" width="22" height="22" ><path d="M512 1024a512 512 0 1 1 512-512 512 512 0 0 1-512 512zM512 56.888889a455.111111 455.111111 0 1 0 455.111111 455.111111 455.111111 455.111111 0 0 0-455.111111-455.111111zM312.888889 512A85.333333 85.333333 0 1 1 398.222222 426.666667 85.333333 85.333333 0 0 1 312.888889 512z" p-id="16173"></path><path d="M512 768A142.222222 142.222222 0 0 1 369.777778 625.777778a28.444444 28.444444 0 0 1 56.888889 0 85.333333 85.333333 0 0 0 170.666666 0 28.444444 28.444444 0 0 1 56.888889 0A142.222222 142.222222 0 0 1 512 768z" p-id="16174"></path><path d="M782.222222 391.964444l-113.777778 59.733334a29.013333 29.013333 0 0 1-38.684444-10.808889 28.444444 28.444444 0 0 1 10.24-38.684445l113.777778-56.888888a28.444444 28.444444 0 0 1 38.684444 10.24 28.444444 28.444444 0 0 1-10.24 36.408888z" p-id="16175"></path><path d="M640.568889 451.697778l113.777778 56.888889a27.875556 27.875556 0 0 0 38.684444-10.24 27.875556 27.875556 0 0 0-10.24-38.684445l-113.777778-56.888889a28.444444 28.444444 0 0 0-38.684444 10.808889 28.444444 28.444444 0 0 0 10.24 38.115556z" p-id="16176"></path></svg></span><span title="' + e.i18n.t("preview") + '" class="icon vpreview-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17688" width="22" height="22"><path d="M502.390154 935.384615a29.538462 29.538462 0 1 1 0 59.076923H141.430154C79.911385 994.461538 29.538462 946.254769 29.538462 886.153846V137.846154C29.538462 77.745231 79.950769 29.538462 141.390769 29.538462h741.218462c61.44 0 111.852308 48.206769 111.852307 108.307692v300.268308a29.538462 29.538462 0 1 1-59.076923 0V137.846154c0-26.899692-23.355077-49.230769-52.775384-49.230769H141.390769c-29.420308 0-52.775385 22.331077-52.775384 49.230769v748.307692c0 26.899692 23.355077 49.230769 52.775384 49.230769h360.999385z" p-id="17689"></path><path d="M196.923077 216.615385m29.538461 0l374.153847 0q29.538462 0 29.538461 29.538461l0 0q0 29.538462-29.538461 29.538462l-374.153847 0q-29.538462 0-29.538461-29.538462l0 0q0-29.538462 29.538461-29.538461Z" p-id="17690"></path><path d="M649.846154 846.769231a216.615385 216.615385 0 1 0 0-433.230769 216.615385 216.615385 0 0 0 0 433.230769z m0 59.076923a275.692308 275.692308 0 1 1 0-551.384616 275.692308 275.692308 0 0 1 0 551.384616z" p-id="17691"></path><path d="M807.398383 829.479768m20.886847-20.886846l0 0q20.886846-20.886846 41.773692 0l125.321079 125.321079q20.886846 20.886846 0 41.773693l0 0q-20.886846 20.886846-41.773693 0l-125.321078-125.321079q-20.886846-20.886846 0-41.773693Z" p-id="17692"></path></svg></span></div></div></div><div class="row"><div class="col col-30" ><a alt="Markdown is supported" href="https://segmentfault.com/markdown" class="icon" target="_blank"><svg class="markdown" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a></div><div class="col col-70 text-right"><button type="button"  title="Cmd|Ctrl+Enter" class="vsubmit vbtn">' + e.i18n.t("submit") + '</button></div></div><div class="vemojis" style="display:none;"></div><div class="vinput vpreview" style="display:none;"></div><div style="display:none;" class="vmark"></div></div></div><div class="vinfo" style="display:none;"><div class="vcount"><span class="vnum">0</span> ' + e.i18n.t("comments") + '</div></div><div class="load load-top text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vlist"></div><div class="load load-bottom text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vempty" style="display:none;"></div><div class="vpage txt-center" style="display:none"><button type="button" class="vmore vbtn">' + e.i18n.t("more") + '</button></div><div class="info"><div class="power txt-right">Powered By <a href="https://valine.js.org" target="_blank">Valine</a><br>' + $ + "</div></div>";
+                  , A = '<div class="vpanel"><div class="vwrap"><p class="cancel-reply text-right" style="display:none;" title="' + e.i18n.t("cancelReply") + '"><svg class="vicon cancel-reply-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4220" width="22" height="22"><path d="M796.454 985H227.545c-50.183 0-97.481-19.662-133.183-55.363-35.7-35.701-55.362-83-55.362-133.183V227.545c0-50.183 19.662-97.481 55.363-133.183 35.701-35.7 83-55.362 133.182-55.362h568.909c50.183 0 97.481 19.662 133.183 55.363 35.701 35.702 55.363 83 55.363 133.183v568.909c0 50.183-19.662 97.481-55.363 133.183S846.637 985 796.454 985zM227.545 91C152.254 91 91 152.254 91 227.545v568.909C91 871.746 152.254 933 227.545 933h568.909C871.746 933 933 871.746 933 796.454V227.545C933 152.254 871.746 91 796.454 91H227.545z" p-id="4221"></path><path d="M568.569 512l170.267-170.267c15.556-15.556 15.556-41.012 0-56.569s-41.012-15.556-56.569 0L512 455.431 341.733 285.165c-15.556-15.556-41.012-15.556-56.569 0s-15.556 41.012 0 56.569L455.431 512 285.165 682.267c-15.556 15.556-15.556 41.012 0 56.569 15.556 15.556 41.012 15.556 56.569 0L512 568.569l170.267 170.267c15.556 15.556 41.012 15.556 56.569 0 15.556-15.556 15.556-41.012 0-56.569L568.569 512z" p-id="4222" ></path></svg></p><div class="vheader item' + k.length + '">' + k.join("") + '</div><div class="vedit"><textarea id="veditor" class="veditor vinput" placeholder="' + e.config.placeholder + '"></textarea><div class="vrow"><div class="vcol vcol-60 status-bar"></div><div class="vcol vcol-40 vctrl text-right"><span title="' + e.i18n.t("emoji") + '"  class="vicon vemoji-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16172" width="22" height="22" ><path d="M512 1024a512 512 0 1 1 512-512 512 512 0 0 1-512 512zM512 56.888889a455.111111 455.111111 0 1 0 455.111111 455.111111 455.111111 455.111111 0 0 0-455.111111-455.111111zM312.888889 512A85.333333 85.333333 0 1 1 398.222222 426.666667 85.333333 85.333333 0 0 1 312.888889 512z" p-id="16173"></path><path d="M512 768A142.222222 142.222222 0 0 1 369.777778 625.777778a28.444444 28.444444 0 0 1 56.888889 0 85.333333 85.333333 0 0 0 170.666666 0 28.444444 28.444444 0 0 1 56.888889 0A142.222222 142.222222 0 0 1 512 768z" p-id="16174"></path><path d="M782.222222 391.964444l-113.777778 59.733334a29.013333 29.013333 0 0 1-38.684444-10.808889 28.444444 28.444444 0 0 1 10.24-38.684445l113.777778-56.888888a28.444444 28.444444 0 0 1 38.684444 10.24 28.444444 28.444444 0 0 1-10.24 36.408888z" p-id="16175"></path><path d="M640.568889 451.697778l113.777778 56.888889a27.875556 27.875556 0 0 0 38.684444-10.24 27.875556 27.875556 0 0 0-10.24-38.684445l-113.777778-56.888889a28.444444 28.444444 0 0 0-38.684444 10.808889 28.444444 28.444444 0 0 0 10.24 38.115556z" p-id="16176"></path></svg></span><span title="' + e.i18n.t("preview") + '" class="vicon vpreview-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17688" width="22" height="22"><path d="M502.390154 935.384615a29.538462 29.538462 0 1 1 0 59.076923H141.430154C79.911385 994.461538 29.538462 946.254769 29.538462 886.153846V137.846154C29.538462 77.745231 79.950769 29.538462 141.390769 29.538462h741.218462c61.44 0 111.852308 48.206769 111.852307 108.307692v300.268308a29.538462 29.538462 0 1 1-59.076923 0V137.846154c0-26.899692-23.355077-49.230769-52.775384-49.230769H141.390769c-29.420308 0-52.775385 22.331077-52.775384 49.230769v748.307692c0 26.899692 23.355077 49.230769 52.775384 49.230769h360.999385z" p-id="17689"></path><path d="M196.923077 216.615385m29.538461 0l374.153847 0q29.538462 0 29.538461 29.538461l0 0q0 29.538462-29.538461 29.538462l-374.153847 0q-29.538462 0-29.538461-29.538462l0 0q0-29.538462 29.538461-29.538461Z" p-id="17690"></path><path d="M649.846154 846.769231a216.615385 216.615385 0 1 0 0-433.230769 216.615385 216.615385 0 0 0 0 433.230769z m0 59.076923a275.692308 275.692308 0 1 1 0-551.384616 275.692308 275.692308 0 0 1 0 551.384616z" p-id="17691"></path><path d="M807.398383 829.479768m20.886847-20.886846l0 0q20.886846-20.886846 41.773692 0l125.321079 125.321079q20.886846 20.886846 0 41.773693l0 0q-20.886846 20.886846-41.773693 0l-125.321078-125.321079q-20.886846-20.886846 0-41.773693Z" p-id="17692"></path></svg></span></div></div></div><div class="vrow"><div class="vcol vcol-30" ><a alt="Markdown is supported" href="https://guides.github.com/features/mastering-markdown/" class="vicon" target="_blank"><svg class="markdown" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a></div><div class="vcol vcol-70 text-right"><button type="button"  title="Cmd|Ctrl+Enter" class="vsubmit vbtn">' + e.i18n.t("submit") + '</button></div></div><div class="vemojis" style="display:none;"></div><div class="vinput vpreview" style="display:none;"></div><div style="display:none;" class="vmark"></div></div></div><div class="vinfo" style="display:none;"><div class="vcount"><span class="vnum">0</span> ' + e.i18n.t("comments") + '</div></div><div class="load load-top text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vlist"></div><div class="load load-bottom text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vempty" style="display:none;"></div><div class="vpage txt-center" style="display:none"><button type="button" class="vmore vbtn">' + e.i18n.t("more") + '</button></div><div class="vcopy txt-right">Powered By <a href="https://valine.js.org" target="_blank">Valine</a><br>' + E + "</div>";
                 e.$el.html(A),
                 e.$el.find(".cancel-reply").on("click", function(t) {
                     e.reset()
                 });
-                var S = e.$el.find(".vempty");
+                var _ = e.$el.find(".vempty");
                 e.nodata = {
                     show: function(t) {
-                        return S.html(t || e.i18n.t("sofa")),
-                        S.show(),
-                        e
-                    },
-                    hide: function() {
-                        return S.hide(),
-                        e
-                    }
-                };
-                var O = e.$el.find(".load-bottom")
-                  , _ = e.$el.find(".load-top");
-                e.loading = {
-                    show: function(t) {
-                        return t && _.show() || O.show(),
-                        e.nodata.hide(),
+                        return _.html(t || e.i18n.t("sofa")).show(),
                         e
                     },
                     hide: function() {
                         return _.hide(),
-                        O.hide(),
+                        e
+                    }
+                };
+                var S = e.$el.find(".load-bottom")
+                  , j = e.$el.find(".load-top");
+                e.loading = {
+                    show: function(t) {
+                        return t && j.show() || S.show(),
+                        e.nodata.hide(),
+                        e
+                    },
+                    hide: function() {
+                        return j.hide(),
+                        S.hide(),
                         0 === e.$el.find(".vcard").length && e.nodata.show(),
                         e
                     }
@@ -1817,20 +1838,20 @@
             n.set("time", 1),
             n.save().then(function(e) {
                 (0,
-                E.default)(t.el).find(".leancloud-visitors-count").text(1)
+                O.default)(t.el).find(".leancloud-visitors-count").text(1)
             }).catch(function(e) {})
         }
-          , I = {
+          , M = {
             add: function(e, t) {
                 var n = this
                   , r = (0,
-                E.default)(".leancloud_visitors,.leancloud-visitors");
+                O.default)(".leancloud_visitors,.leancloud-visitors");
                 if (r.length) {
                     var o = r[0]
                       , i = decodeURI((0,
-                    E.default)(o).attr("id"))
+                    O.default)(o).attr("id"))
                       , a = (0,
-                    E.default)(o).attr("data-flag-title")
+                    O.default)(o).attr("data-flag-title")
                       , s = encodeURI(i)
                       , l = {
                         el: o,
@@ -1847,7 +1868,7 @@
                                 n.increment("time"),
                                 n.save().then(function(e) {
                                     (0,
-                                    E.default)(o).find(".leancloud-visitors-count").text(e.get("time"))
+                                    O.default)(o).find(".leancloud-visitors-count").text(e.get("time"))
                                 }).catch(function(e) {})
                             } else
                                 P(e, l)
@@ -1855,19 +1876,19 @@
                             101 == t.code ? P(e, l) : n.ErrorHandler(t)
                         })
                     } else
-                        I.show(e, r)
+                        M.show(e, r)
                 }
             },
             show: function(e, t) {
                 t.forEach(function(e) {
                     var t = (0,
-                    E.default)(e).find(".leancloud-visitors-count");
+                    O.default)(e).find(".leancloud-visitors-count");
                     t && t.text(0)
                 });
                 var n = [];
                 if (t.forEach(function(e) {
                     n.push(decodeURI((0,
-                    E.default)(e).find("id")))
+                    O.default)(e).find("id")))
                 }),
                 n.length) {
                     var r = new AV.Query(e);
@@ -1877,9 +1898,9 @@
                             var t = e.get("url")
                               , n = e.get("time");
                             (0,
-                            E.default)('.leancloud_visitors[id="' + t + '"],.leancloud-visitors[id="' + t + '"]').forEach(function(e) {
+                            O.default)('.leancloud_visitors[id="' + t + '"],.leancloud-visitors[id="' + t + '"]').forEach(function(e) {
                                 var t = (0,
-                                E.default)(e).find(".leancloud-visitors-count");
+                                O.default)(e).find(".leancloud-visitors-count");
                                 t && (t.innerText = n)
                             })
                         })
@@ -1911,10 +1932,13 @@
             var n = this;
             if (n.$el && n.loading.hide().nodata.hide(),
             "[object Error]" === {}.toString.call(e)) {
-                var r = e.code || ""
-                  , o = n.i18n.t("code-" + r)
-                  , i = (o == "code-" + r ? void 0 : o) || e.message || e.error || "";
-                101 == r ? n.nodata.show() : n.$el && n.nodata.show('<pre style="text-align:left;">Code ' + r + ": " + i + "</pre>")
+                var r = e.code || "";
+                if (r) {
+                    var o = n.i18n.t("code-" + r)
+                      , i = (o == "code-" + r ? void 0 : o) || e.message || e.error || "";
+                    101 == r ? n.nodata.show() : n.$el && n.nodata.show('<pre style="text-align:left;">Code ' + r + ": " + i + "</pre>")
+                } else
+                    n.$el && n.nodata.show('<pre style="text-align:left;"> ' + msg + "</pre>")
             } else
                 n.$el && n.nodata.show('<pre style="text-align:left;">' + JSON.stringify(e) + "</pre>")
         }
@@ -1930,92 +1954,84 @@
             this
         }
         ,
-        o.prototype.bind = function(e) {
-            var t = this
-              , n = t.$el.find(".vemojis")
-              , r = t.$el.find(".vpreview")
-              , o = t.$el.find(".vemoji-btn")
-              , i = t.$el.find(".vpreview-btn")
-              , a = t.$el.find(".veditor")
-              , l = m.default.data;
-            for (var u in l)
-                l.hasOwnProperty(u) && function(e, t) {
-                    var r = (0,
-                    E.default)('<i name="' + e + '" title="' + e + '"></i>');
-                    r.html(t),
-                    n.append(r),
-                    r.on("click", function(e) {
-                        y(a[0], t),
-                        d(a)
-                    })
-                }(u, l[u]);
-            t.emoji = {
+        o.prototype.bind = function() {
+            var e = this
+              , t = e.$el.find(".vemojis")
+              , n = e.$el.find(".vpreview")
+              , r = e.$el.find(".vemoji-btn")
+              , o = e.$el.find(".vpreview-btn")
+              , i = e.$el.find(".veditor")
+              , a = m.default.data;
+            for (var l in a)
+                if (a.hasOwnProperty(l)) {
+                    var u = a[l]
+                      , d = (0,
+                    O.default)('<i title="' + l + '" data-action="' + u + '"><img class="vemoji" referrerPolicy="no-referrer" src=\'' + (y.DEFAULT_EMOJI_CDN + u) + "' alt=\"" + l + '"></i>');
+                    t.append(d)
+                }
+            t.find("i").on("click", function() {
+                x(i[0], " :" + (0,
+                O.default)(this).attr("title") + ":")
+            }),
+            e.$emoji = {
                 show: function() {
-                    return t.preview.hide(),
+                    return e.$preview.hide(),
+                    r.addClass("actived"),
+                    t.show(),
+                    e.$emoji
+                },
+                hide: function() {
+                    return r.removeClass("actived"),
+                    t.hide(),
+                    e.$emoji
+                }
+            },
+            e.$preview = {
+                show: function() {
+                    return j ? (e.$emoji.hide(),
                     o.addClass("actived"),
-                    n.show(),
-                    t.emoji
+                    n.html(j).show(),
+                    M()) : e.$preview.hide(),
+                    e.$preview
                 },
                 hide: function() {
                     return o.removeClass("actived"),
-                    n.hide(),
-                    t.emoji
-                }
-            },
-            t.preview = {
-                show: function() {
-                    return j.comment && (t.emoji.hide(),
-                    i.addClass("actived"),
-                    r.html(j.comment).show(),
-                    O()),
-                    t.preview
-                },
-                hide: function() {
-                    return i.removeClass("actived"),
-                    r.hide(),
-                    t.preview
-                },
-                empty: function() {
-                    return r.html(""),
-                    t.preview
+                    n.hide().html(""),
+                    e.$preview
                 }
             };
-            var d = function(e) {
-                var t = e.val() || "";
-                t = m.default.parse(t),
-                e.val(t);
-                var n = (0,
+            var f = function(e) {
+                j = (0,
                 k.default)((0,
-                c.default)(t));
-                j.comment = n,
-                i.hasClass("actived") > -1 && n != r.html() && r.html(n),
+                c.default)(m.default.parse(e.val() || ""))),
+                o.hasClass("actived") > -1 && j != n.html() && n.html(j),
                 (0,
                 p.default)(e[0])
             };
-            o.on("click", function(e) {
-                o.hasClass("actived") ? t.emoji.hide() : t.emoji.show()
+            r.on("click", function(t) {
+                r.hasClass("actived") ? e.$emoji.hide() : e.$emoji.show()
             }),
-            i.on("click", function(e) {
-                i.hasClass("actived") ? t.preview.hide() : t.preview.show()
+            o.on("click", function(t) {
+                o.hasClass("actived") ? e.$preview.hide() : e.$preview.show()
             });
-            var f = t.config.meta
-              , h = {}
-              , g = {
+            var h = e.config.meta
+              , g = {}
+              , v = {
                 veditor: "comment"
             };
-            f.forEach(function(e) {
-                g["v" + e] = e
+            h.forEach(function(e) {
+                v["v" + e] = e
             });
-            for (var v in g)
-                g.hasOwnProperty(v) && function() {
-                    var e = g[v]
-                      , n = t.$el.find("." + v);
-                    h[e] = n,
-                    n.on("input change blur ", function(t) {
-                        "comment" === e ? d(n) : j[e] = E.default.escape(n.val().replace(/(^\s*)|(\s*$)/g, "")).substring(0, 40)
+            for (var b in v)
+                v.hasOwnProperty(b) && function() {
+                    var t = v[b]
+                      , n = e.$el.find("." + b);
+                    g[t] = n,
+                    n.on("input change blur ", function(e) {
+                        "comment" === t ? f(n) : $[t] = O.default.escape(n.val().replace(/(^\s*)|(\s*$)/g, "")).substring(0, 40)
                     })
                 }();
-            var y = function(e, t) {
+            var x = function(e, t) {
                 if (document.selection) {
                     e.focus();
                     document.selection.createRange().text = t,
@@ -2031,259 +2047,269 @@
                     e.scrollTop = o
                 } else
                     e.focus(),
-                    e.value += t
+                    e.value += t;
+                (0,
+                p.default)(e)
             }
-              , b = {
+              , A = {
                 no: 1,
-                size: t.config.pageSize,
-                skip: t.config.pageSize
+                size: e.config.pageSize,
+                skip: e.config.pageSize
             }
-              , w = t.$el.find(".vpage");
-            w.on("click", function(e) {
-                w.hide(),
-                b.no++,
-                A()
+              , _ = e.$el.find(".vpage");
+            _.on("click", function(e) {
+                _.hide(),
+                A.no++,
+                S()
             });
-            var A = function() {
-                var e = b.size
-                  , n = b.no
-                  , r = Number(t.$el.find(".vnum").text());
-                t.loading.show();
-                var o = t.Q(t.config.path);
-                o.limit(e),
-                o.skip((n - 1) * e),
+            var S = function() {
+                var t = A.size
+                  , n = A.no
+                  , r = Number(e.$el.find(".vnum").text());
+                e.loading.show();
+                var o = e.Q(e.config.path);
+                o.limit(t),
+                o.skip((n - 1) * t),
                 o.find().then(function(o) {
-                    if (b.skip = b.size,
+                    if (A.skip = A.size,
                     o && o.length) {
                         var i = [];
-                        o.forEach(function(e) {
-                            i.push(e.id),
-                            S(e, t.$el.find(".vlist"), !0)
+                        o.forEach(function(t) {
+                            i.push(t.id),
+                            E(t, e.$el.find(".vlist"), !0)
                         }),
-                        t.Q(t.config.path, i).then(function(e) {
+                        e.Q(e.config.path, i).then(function(e) {
                             (e && e.results || []).forEach(function(e) {
-                                S(e, t.$el.find('.vh[data-rid="' + e.get("rid") + '"]').find(".vquote"))
+                                E(e, (0,
+                                O.default)('.vquote[data-self-id="' + e.get("rid") + '"]'))
                             }).catch(function(e) {})
                         }),
-                        e * n < r ? w.show() : w.hide()
+                        t * n < r ? _.show() : _.hide()
                     } else
-                        t.nodata.show();
-                    t.loading.hide()
-                }).catch(function(e) {
-                    t.loading.hide().ErrorHandler(e, "query")
+                        e.nodata.show();
+                    e.loading.hide()
+                }).catch(function(t) {
+                    e.loading.hide().ErrorHandler(t, "query")
                 })
             };
-            t.Q(t.config.path).count().then(function(e) {
-                e > 0 ? (t.$el.find(".vinfo").show(),
-                t.$el.find(".vnum").text(e),
-                A()) : t.loading.hide()
-            }).catch(function(e) {
-                t.ErrorHandler(e, "count")
+            e.Q(e.config.path).count().then(function(t) {
+                t > 0 ? (e.$el.find(".vinfo").show(),
+                e.$el.find(".vnum").text(t),
+                S()) : e.loading.hide()
+            }).catch(function(t) {
+                e.ErrorHandler(t, "count")
             });
-            var S = function(e, n, r) {
+            var E = function(t, n, r) {
                 var o = (0,
-                E.default)('<div class="vcard" id="' + e.id + '"></div>')
-                  , i = e.get("ua") || ""
-                  , a = ""
-                  , l = ""
-                  , c = "";
-                i && (i = E.default.detect(i),
-                l = '<span class="vsys">' + i.browser + " " + i.version + "</span>",
-                c = '<span class="vsys">' + i.os + " " + i.osVersion + "</span>",
-                a = l + " " + c),
-                "*" === t.config.path && (a = '<a href="' + e.get("url") + '" class="vsys">' + e.get("url") + "</a>");
-                var u = e.get("link") ? /^https?\:\/\//.test(e.get("link")) ? e.get("link") : "http://" + e.get("link") : ""
-                  , p = u ? '<a class="vnick" rel="nofollow" href="' + u + '" target="_blank" >' + e.get("nick") + "</a>" : '<span class="vnick">' + e.get("nick") + "</span>"
-                  , d = T.hide ? "" : '<img class="vimg" src="' + (T.cdn + (0,
-                s.default)(e.get("mail")) + T.params) + '">'
-                  , f = e.get("rid") || e.id
-                  , h = d + '<div class="vh" data-rid=' + f + '><div class="vhead">' + p + " " + a + '</div><div class="vmeta"><span class="vtime" >' + (0,
-                x.default)(e.get("insertedAt"), t.i18n) + '</span><span class="vat" data-rid="' + f + '">' + t.i18n.t("reply") + '</span></div><div class="vcontent">' + (0,
-                k.default)(e.get("comment")) + '</div><div class="vreply-wrapper" data-id="' + e.id + '"></div><div class="vquote" data-rid="' + f + '"></div></div>';
-                o.html(h);
-                var g = o.find(".vat");
+                O.default)('<div class="vcard" id="' + t.id + '"></div>')
+                  , i = t.get("ua")
+                  , a = "";
+                i && !/ja/.test(e.config.lang) && (i = O.default.detect(i),
+                a = '<span class="vsys">' + i.browser + " " + i.version + '</span> <span class="vsys">' + i.os + " " + i.osVersion + "</span>"),
+                "*" === e.config.path && (a = '<a href="' + t.get("url") + '" class="vsys">' + t.get("url") + "</a>");
+                var l = t.get("link") ? /^https?\:\/\//.test(t.get("link")) ? t.get("link") : "http://" + t.get("link") : ""
+                  , c = l ? '<a class="vnick" rel="nofollow" href="' + l + '" target="_blank" >' + t.get("nick") + "</a>" : '<span class="vnick">' + t.get("nick") + "</span>"
+                  , u = T.hide ? "" : '<img class="vimg" src="' + (T.cdn + (0,
+                s.default)(t.get("mail")) + T.params) + '">'
+                  , p = u + '<div class="vh"><div class="vhead">' + c + " " + a + '</div><div class="vmeta"><span class="vtime" >' + (0,
+                w.default)(t.get("insertedAt"), e.i18n) + '</span><span class="vat" data-root-id="' + (t.get("rid") || t.id) + '" data-self-id="' + t.id + '">' + e.i18n.t("reply") + '</span></div><div class="vcontent" data-expand="' + e.i18n.t("expand") + '">' + (0,
+                k.default)(t.get("comment")) + '</div><div class="vreply-wrapper" data-self-id="' + t.id + '"></div><div class="vquote" data-self-id="' + t.id + '"></div></div>';
+                o.html(p);
+                var d = o.find(".vat");
                 o.find("a").forEach(function(e) {
                     e && !(0,
-                    E.default)(e).hasClass("at") && (0,
-                    E.default)(e).attr({
+                    O.default)(e).hasClass("at") && (0,
+                    O.default)(e).attr({
                         target: "_blank",
                         rel: "nofollow"
                     })
-                });
-                var v = n.find(".vcard");
-                r ? n.append(o) : n[0].insertBefore(o[0], v[0]);
-                var m = o.find(".vcontent");
-                m && _(m),
-                g && C(g, e),
-                O()
+                }),
+                r ? n.append(o) : n.prepend(o);
+                var f = o.find(".vcontent");
+                f && I(f),
+                d && P(d, t),
+                M()
             }
-              , O = function() {
+              , C = {}
+              , P = function(t, n) {
+                t.on("click", function(r) {
+                    var o = t.attr("data-root-id")
+                      , i = t.attr("data-self-id")
+                      , a = e.$el.find(".vwrap")
+                      , s = "@" + O.default.escape(n.get("nick"));
+                    (0,
+                    O.default)('.vreply-wrapper[data-self-id="' + i + '"]').append(a).find(".cancel-reply").show(),
+                    C = {
+                        at: O.default.escape(s) + " ",
+                        rid: o,
+                        pid: i,
+                        rmail: n.get("mail")
+                    },
+                    g.comment.attr({
+                        placeholder: s
+                    })[0].focus()
+                })
+            }
+              , M = function() {
                 setTimeout(function() {
                     try {
                         "MathJax"in window && "version"in window.MathJax && (/^3.*/.test(window.MathJax.version) && MathJax.typeset() || MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.querySelector(".v")])),
                         "hljs"in window && (0,
-                        E.default)("pre code,code.hljs").forEach(function(e) {
+                        O.default)("pre code,code.hljs").forEach(function(e) {
                             hljs.highlightBlock(e)
                         })
                     } catch (e) {}
                 }, 200)
             }
-              , _ = function(e) {}
-              , $ = {}
-              , C = function(e, n) {
-                e.on("click", function(e) {
-                    var r = t.$el.find(".vwrap")
-                      , o = n.get("rid") || n.id
-                      , i = "@" + E.default.escape(n.get("nick"));
-                    (0,
-                    E.default)('.vreply-wrapper[data-id="' + n.id + '"]').append(r).find(".cancel-reply").show(),
-                    $ = {
-                        at: E.default.escape(i) + " ",
-                        rid: o,
-                        pid: n.id,
-                        rmail: n.get("mail")
-                    },
-                    h.comment.attr({
-                        placeholder: i
-                    })[0].focus()
+              , I = function(e) {
+                setTimeout(function() {
+                    e[0].offsetHeight > 180 && (e.addClass("expand"),
+                    e.on("click", function(t) {
+                        e.removeClass("expand")
+                    }))
                 })
             };
-            !function() {
-                var e = E.default.store.get("ValineCache");
-                if (e) {
-                    var n = f;
-                    for (var r in n) {
-                        var o = n[r];
-                        t.$el.find(".v" + o).val(E.default.unescape(e[o])),
-                        j[o] = e[o]
+            !function(t) {
+                var n = O.default.store.get("ValineCache");
+                if (n)
+                    for (var r in h) {
+                        var o = h[r];
+                        e.$el.find(".v" + o).val(O.default.unescape(n[o])),
+                        $[o] = n[o]
                     }
-                }
             }(),
-            t.reset = function() {
-                j.comment = "",
-                h.comment.val(""),
-                d(h.comment),
-                h.comment.attr("placeholder", t.config.placeholder),
-                $ = {},
-                t.preview.empty().hide(),
-                t.$el.find(".vpanel").append(t.$el.find(".vwrap")),
-                t.$el.find(".cancel-reply").hide()
+            e.reset = function() {
+                $.comment = "",
+                g.comment.val(""),
+                f(g.comment),
+                g.comment.attr("placeholder", e.config.placeholder),
+                C = {},
+                e.$preview.hide(),
+                e.$el.find(".vpanel").append(e.$el.find(".vwrap")),
+                e.$el.find(".cancel-reply").hide(),
+                j = ""
             }
             ;
-            var P = t.$el.find(".vsubmit")
-              , I = function(e) {
-                if ("" == j.comment) return void h.comment[0].focus();
-                if ("" == j.mail || j.mail.length < 6 || j.mail.indexOf('@') < 1 || j.mail.indexOf('.') < 3) return void h.mail[0].focus();
-                if ("" == j.nick || j.nick.length < 3 || "Anonymous" == j.nick) return void h.nick[0].focus();
-                j.nick = j.nick || "Anonymous";
-                var n = E.default.store.get("vlx");
+            var z = e.$el.find(".vsubmit")
+              , L = function(t) {
+                if ("" == j) return void g.comment[0].focus();
+                if ("" == $.mail || $.mail.length < 6 || $.mail.indexOf('@') < 1 || $.mail.indexOf('.') < 3) return void g.mail[0].focus();
+                if ("" == $.nick || $.nick.length < 3 || "Anonymous" == $.nick) return void g.nick[0].focus();
+                $.comment = j,
+                $.nick = $.nick || "Anonymous";
+                var n = O.default.store.get("vlx");
                 if (n) {
-                    if (Date.now() / 1e3 - n / 1e3 < 10)
-                        return t.$el.find(".status-bar").text(t.i18n.t("busy")),
-                        void setTimeout(function(e) {
-                            t.$el.find(".status-bar").text("")
-                        }, 3e3)
+                    if (Date.now() / 1e3 - n / 1e3 < 20)
+                        return void e.$el.find(".status-bar").text(e.i18n.t("busy")).empty(3e3)
                 }
-                L()
+                F()
             }
-              , M = function() {
+              , R = function() {
                 var e = new AV.ACL;
                 return e.setPublicReadAccess(!0),
                 e.setPublicWriteAccess(!1),
                 e
             }
-              , L = function() {
-                E.default.store.set("vlx", Date.now()),
-                P.attr({
+              , F = function() {
+                O.default.store.set("vlx", Date.now()),
+                z.attr({
                     disabled: !0
                 }),
-                t.loading.show(!0);
-                var e = AV.Object.extend(t.config.clazzName || "Comment")
-                  , n = new e;
-                if (j.url = decodeURI(t.config.path),
-                j.insertedAt = new Date,
-                $.rid) {
-                    var r = $.pid || $.rid;
-                    n.set("rid", $.rid),
+                e.loading.show(!0);
+                var t = AV.Object.extend(e.config.clazzName || "Comment")
+                  , n = new t;
+                if ($.url = decodeURI(e.config.path),
+                $.insertedAt = new Date,
+                C.rid) {
+                    var r = C.pid || C.rid;
+                    n.set("rid", C.rid),
                     n.set("pid", r),
-                    j.comment = j.comment.replace("<p>", '<p><a class="at" href="#' + r + '">' + $.at + "</a> , ")
+                    $.comment = j.replace("<p>", '<p><a class="at" href="#' + r + '">' + C.at + "</a> , ")
                 }
-                for (var o in j)
-                    if (j.hasOwnProperty(o)) {
-                        var i = j[o];
+                for (var o in $)
+                    if ($.hasOwnProperty(o)) {
+                        var i = $[o];
                         n.set(o, i)
                     }
-                n.setACL(M()),
-                n.save().then(function(e) {
-                    "Anonymous" != j.nick && E.default.store.set("ValineCache", {
-                        nick: j.nick,
-                        link: j.link,
-                        mail: j.mail
+                n.setACL(R()),
+                n.save().then(function(t) {
+                    "Anonymous" != $.nick && O.default.store.set("ValineCache", {
+                        nick: $.nick,
+                        link: $.link,
+                        mail: $.mail
                     });
-                    var n = t.$el.find(".vnum")
+                    var n = e.$el.find(".vnum")
                       , r = 1;
                     try {
-                        $.rid ? S(e, t.$el.find('.vquote[rid="' + $.rid + '"]'), !0) : (n ? (r = Number(n.innerText) + 1,
-                        n.innerText = r) : t.$el.find(".vcount").html('<span class="num">1</span> ' + t.i18n.t("comments")),
-                        S(e, t.$el.find(".vlist")),
-                        b.skip++),
-                        P.removeAttr("disabled"),
-                        t.loading.hide(),
-                        t.reset()
-                    } catch (e) {
-                        t.ErrorHandler(e, "save")
+                        C.rid ? (e.$el.find(".vinfo").show().find(".vcount").html('<span class="num">1</span> ' + e.i18n.t("comments")),
+                        E(t, (0,
+                        O.default)('.vquote[data-self-id="' + C.rid + '"]'), !0)) : (n ? (r = Number(n.innerText) + 1,
+                        n.innerText = r) : e.$el.find(".vcount").html('<span class="num">1</span> ' + e.i18n.t("comments")),
+                        E(t, e.$el.find(".vlist")),
+                        A.skip++),
+                        z.removeAttr("disabled"),
+                        e.loading.hide(),
+                        e.reset()
+                    } catch (t) {
+                        e.ErrorHandler(t, "save")
                     }
-                }).catch(function(e) {
-                    t.ErrorHandler(e, "commitEvt")
+                }).catch(function(t) {
+                    e.ErrorHandler(t, "commitEvt")
                 })
             };
-            P.on("click", I),
+            z.on("click", L),
             (0,
-            E.default)(document).on("keydown", function(e) {
+            O.default)(document).on("keydown", function(e) {
                 e = event || e;
                 var t = e.keyCode || e.which || e.charCode;
-                ((e.ctrlKey || e.metaKey) && 13 === t && I(),
+                ((e.ctrlKey || e.metaKey) && 13 === t && L(),
                 9 === t) && ("veditor" == (document.activeElement.id || "") && (e.preventDefault(),
-                y(a[0], "    ")))
+                x(i[0], "    ")))
             }).on("paste", function(e) {
                 var t = "clipboardData"in e ? e.clipboardData : e.originalEvent && e.originalEvent.clipboardData || window.clipboardData;
-                t && R(t.items, !0)
+                t && U(t.items, !0)
             }),
-            a.on("dragenter dragleave dragover drop", function(e) {
+            i.on("dragenter dragleave dragover drop", function(e) {
                 e.stopPropagation(),
                 e.preventDefault(),
-                "drop" === e.type && R(e.dataTransfer.items)
+                "drop" === e.type && U(e.dataTransfer.items)
             });
-            var R = function(e, t) {
+            var U = function(e, t) {
                 for (var n = [], r = 0, o = e.length; r < o; r++) {
-                    var i = e[r];
-                    if ("string" === i.kind && i.type.match("^text/html"))
-                        !t && i.getAsString(function(e) {
-                            e && y(a[0], e.replace(/<[^>]+>/g, ""))
+                    var a = e[r];
+                    if ("string" === a.kind && a.type.match("^text/html"))
+                        !t && a.getAsString(function(e) {
+                            e && x(i[0], e.replace(/<[^>]+>/g, ""))
                         });
-                    else if (-1 !== i.type.indexOf("image")) {
-                        n.push(i.getAsFile());
+                    else if (-1 !== a.type.indexOf("image")) {
+                        n.push(a.getAsFile());
                         continue
                     }
                 }
-                z(n)
+                B(n)
             }
-              , z = function e(t, n) {
-                n = n || 0;
-                var r = t.length
-                  , o = t[n];
-                if (o) {
-                    var i = "![Uploading " + o.name + "...]()";
-                    y(a[0], i),
-                    o && F(o, function(s, l) {
-                        !s && l ? (a.val(a.val().replace(i, "![" + o.name + "](" + l.data.url + ")\r\n")),
-                        d(h.comment),
-                        ++n < r && e(t, n)) : s && (a.val(a.val().replace(i, "")),
-                        d(h.comment))
+              , B = function t(n, r) {
+                r = r || 0;
+                var o = n.length;
+                if (o > 0) {
+                    var a = n[r];
+                    z.attr({
+                        disabled: !0
+                    });
+                    var s = "![Uploading " + a.name + "...]()";
+                    x(i[0], s),
+                    D(a, function(l, c) {
+                        !l && c ? (i.val(i.val().replace(s, "![" + a.name + "](" + c.data.url + ")\r\n")),
+                        (0,
+                        p.default)(i[0]),
+                        ++r < o ? t(n, r) : z.removeAttr("disabled")) : l && (i.val(i.val().replace(s, "")),
+                        (0,
+                        p.default)(i[0]),
+                        e.$el.find(".status-bar").text(l).empty(3e3))
                     })
                 }
             }
-              , F = function(e, t) {
+              , D = function(e, t) {
                 var n = new FormData;
                 n.append("image", e);
                 var r = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
@@ -2311,7 +2337,7 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(1)
+        var r = n(0)
           , o = function(e) {
             return e && e.__esModule ? e : {
                 default: e
@@ -2328,7 +2354,7 @@
             try {
                 new Function("'use strict'; let a; const b = 2;")()
             } catch (e) {
-                o.default.dynamicLoadSource("https://polyfill.io/v3/polyfill.min.js?features=es6")
+                o.default.dynamicLoadSource("https://polyfill.io/v3/polyfill.min.js?features=es5%2Ces6%2Ces7%2CArray.prototype.forEach%2CElement.prototype.closest")
             }
             o.default.sdkLoader("https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js", "MathJax", function() {
                 MathJax.typeset()
@@ -2338,15 +2364,17 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = {
+        t.__esModule = !0;
+        var r = n(5)
+          , o = {
             data: n(57),
             parse: function(e) {
                 return String(e).replace(/:(.+?):/g, function(e, t) {
-                    return r.data[t] || e
+                    return ' <img alt="' + t + '" referrerPolicy="no-referrer" class="vemoji" src=\'' + (r.DEFAULT_EMOJI_CDN + (o.data[t] || e)) + "'/> "
                 })
             }
         };
-        e.exports = r
+        t.default = o
     }
     , function(e, t, n) {
         "use strict";
@@ -2565,17 +2593,17 @@
             function b(e) {
                 return g(y(e))
             }
-            function x(e) {
+            function w(e) {
                 return m(b(e))
             }
-            function w(e, t) {
+            function x(e, t) {
                 return v(y(e), y(t))
             }
             function k(e, t) {
-                return m(w(e, t))
+                return m(x(e, t))
             }
             function A(e, t, n) {
-                return t ? n ? w(t, e) : k(t, e) : n ? b(e) : x(e)
+                return t ? n ? x(t, e) : k(t, e) : n ? b(e) : w(e)
             }
             void 0 !== (r = function() {
                 return A
@@ -3364,12 +3392,12 @@
                 e.exports = h
             }(this || "undefined" != typeof window && window)
         }
-        ).call(t, n(12))
+        ).call(t, n(13))
     }
     , function(e, t) {
         e.exports = {
             name: "valine",
-            version: "Volantis Edition (based on 1.4.0)",
+            version: "Volantis Edition (based on 1.4.2)",
             description: "A simple comment system based on Leancloud.",
             main: "/dist/Valine.min.js",
             author: "xCss <xioveliu@gmail.com> (https://github.com/xCss)",
@@ -3416,36 +3444,40 @@
                 balalaika: "^1.0.1",
                 "element-closest": "^3.0.2",
                 storejs: "^1.0.25",
-                xss: "^1.0.6"
+                xss: "^1.0.6",
+                "leancloud-storage": "^3.0.4"
             }
         }
     }
     , function(e, t, n) {
         "use strict";
         t.__esModule = !0;
-        var r = n(1)
+        var r = n(0)
           , o = function(e) {
             return e && e.__esModule ? e : {
                 default: e
             }
         }(r)
           , i = function(e) {
-            var t = navigator
+            var t = o.default.navi
               , n = "3a67769b7760c62aafb6fa58d51da74c"
               , r = window
               , i = document
               , a = +(r.pageYOffset || i.documentElement.scrollTop || i.body && i.body.scrollTop || 0)
               , s = +(r.innerHeight || i.documentElement.clientHeight || i.body && i.body.clientHeight || 0)
-              , l = ["cc=1", "ck=" + (t.cookieEnabled ? 1 : 0), "cl=" + (r.screen.colorDepth || 0) + "-bit", "ds=" + (r.screen.width || 0) + "x" + (r.screen.height || 0), "vl=" + (a + s), "et=0", "ja=" + (t.javaEnabled() ? 1 : 0), "ln=" + String(t.language).toLowerCase(), "lo=1", "lt=" + Math.round(+new Date / 1e3), "rnd=" + Math.round(2147483647 * Math.random()), "si=" + n, "su=" + i.referrer, "v=1.2.72", "lv=1", "sn=" + Math.round(+new Date / 1e3) % 65535, "ct=" + decodeURIComponent(o.default.store.get("Hm_cv_" + n) || ""), "tt=" + (i.title || ""), "u=" + r.location.href]
-              , c = l.join("&");
-            (new Image).src = "https://hm.baidu.com/hm.gif?" + c
+              , l = r.screen
+              , c = ["cc=1", "ck=" + (t.cookieEnabled ? 1 : 0), "cl=" + (l.colorDepth || 0) + "-bit", "ds=" + (l.width || 0) + "x" + (l.height || 0), "vl=" + (a + s), "et=0", "ja=" + (t.javaEnabled() ? 1 : 0), "ln=" + String(o.default.lang).toLowerCase(), "lo=1", "lt=" + Math.round(+new Date / 1e3), "rnd=" + Math.round(2147483647 * Math.random()), "si=" + n, "su=https://valine.js.org?f=tv", "wd=tv", "v=1.2.72", "lv=1", "sn=" + Math.round(+new Date / 1e3) % 65535, "ct=" + decodeURIComponent(o.default.store.get("Hm_cv_" + n) || ""), "tt=" + (i.title || ""), "u=" + r.location.href]
+              , u = c.join("&");
+            (new Image).src = "//hm.baidu.com/hm.gif?" + u
         };
         t.default = i
     }
     , function(e, t, n) {
         "use strict";
-        function r(e) {
-            var t = this
+        t.__esModule = !0;
+        var r = function(e) {
+            e = e || navigator.userAgent;
+            var t = {}
               , n = {
                 Trident: e.indexOf("Trident") > -1 || e.indexOf("NET CLR") > -1,
                 Presto: e.indexOf("Presto") > -1,
@@ -3501,18 +3533,16 @@
             };
             n.Mobile && (n.Mobile = !(e.indexOf("iPad") > -1));
             var r = {
-                engine: ["WebKit", "Trident", "Gecko", "Presto"],
                 browser: ["Safari", "Chrome", "Edge", "IE", "Firefox", "Firefox Focus", "Chromium", "Opera", "Vivaldi", "Yandex", "Kindle", "360", "UC", "QQBrowser", "QQ", "Baidu", "Maxthon", "Sogou", "LBBROWSER", "2345Explorer", "TheWorld", "XiaoMi", "Quark", "Qiyu", "Wechat", "Taobao", "Alipay", "Weibo", "Douban", "Suning", "iQiYi"],
-                os: ["Windows", "Linux", "Mac OS", "macOS", "Android", "Ubuntu", "FreeBSD", "Debian", "iOS", "Windows Phone", "BlackBerry", "MeeGo", "Symbian", "Chrome OS", "WebOS"],
-                device: ["Mobile", "Tablet"]
+                os: ["Windows", "Linux", "Mac OS", "macOS", "Android", "Ubuntu", "FreeBSD", "Debian", "iOS", "Windows Phone", "BlackBerry", "MeeGo", "Symbian", "Chrome OS", "WebOS"]
             };
-            t.device = "PC";
             for (var o in r)
-                for (var i = 0; i < r[o].length; i++) {
-                    var a = r[o][i];
-                    n[a] && (t[o] = a)
-                }
-            var s = {
+                if (r.hasOwnProperty(o))
+                    for (var i = 0, a = r[o].length; i < a; i++) {
+                        var s = r[o][i];
+                        n[s] && (t[o] = s)
+                    }
+            var l = {
                 Windows: function() {
                     var t = e.replace(/^.*Windows NT ([\d.]+);.*$/, "$1");
                     return {
@@ -3526,129 +3556,55 @@
                         "5.0": "2000"
                     }[t] || t
                 },
-                Android: function() {
-                    return e.replace(/^.*Android ([\d.]+);.*$/, "$1")
-                },
-                iOS: function() {
-                    return e.replace(/^.*OS ([\d_]+) like.*$/, "$1").replace(/_/g, ".")
-                },
-                Debian: function() {
-                    return e.replace(/^.*Debian\/([\d.]+).*$/, "$1")
-                },
-                "Windows Phone": function() {
-                    return e.replace(/^.*Windows Phone( OS)? ([\d.]+);.*$/, "$2")
-                },
-                macOS: function() {
-                    return e.replace(/^.*Mac OS X ([\d_]+).*$/, "$1").replace(/_/g, ".")
-                },
-                WebOS: function() {
-                    return e.replace(/^.*hpwOS\/([\d.]+);.*$/, "$1")
-                },
-                BlackBerry: function() {
-                    return e.replace(/^.*BB([\d.]+);*$/, "$1")
-                }
+                Android: e.replace(/^.*Android ([\d.]+);.*$/, "$1"),
+                iOS: e.replace(/^.*OS ([\d_]+) like.*$/, "$1").replace(/_/g, "."),
+                Debian: e.replace(/^.*Debian\/([\d.]+).*$/, "$1"),
+                "Windows Phone": e.replace(/^.*Windows Phone( OS)? ([\d.]+);.*$/, "$2"),
+                macOS: e.replace(/^.*Mac OS X ([\d_]+).*$/, "$1").replace(/_/g, "."),
+                WebOS: e.replace(/^.*hpwOS\/([\d.]+);.*$/, "$1"),
+                BlackBerry: e.replace(/^.*BB([\d.]+);*$/, "$1")
             };
-            t.osVersion = "",
-            s[t.os] && (t.osVersion = s[t.os](),
-            t.osVersion == e && (t.osVersion = ""));
-            var l = {
-                Safari: function() {
-                    return e.replace(/^.*Version\/([\d.]+).*$/, "$1")
-                },
-                Chrome: function() {
-                    return e.replace(/^.*Chrome\/([\d.]+).*$/, "$1").replace(/^.*CriOS\/([\d.]+).*$/, "$1")
-                },
-                IE: function() {
-                    return e.replace(/^.*MSIE ([\d.]+).*$/, "$1").replace(/^.*rv:([\d.]+).*$/, "$1")
-                },
-                Edge: function() {
-                    return e.replace(/^.*Edge?\/([\d.]+).*$/, "$1")
-                },
-                Firefox: function() {
-                    return e.replace(/^.*Firefox\/([\d.]+).*$/, "$1").replace(/^.*FxiOS\/([\d.]+).*$/, "$1")
-                },
-                "Firefox Focus": function() {
-                    return e.replace(/^.*Focus\/([\d.]+).*$/, "$1")
-                },
-                Chromium: function() {
-                    return e.replace(/^.*Chromium\/([\d.]+).*$/, "$1")
-                },
-                Opera: function() {
-                    return e.replace(/^.*Opera\/([\d.]+).*$/, "$1").replace(/^.*OPR\/([\d.]+).*$/, "$1")
-                },
-                Vivaldi: function() {
-                    return e.replace(/^.*Vivaldi\/([\d.]+).*$/, "$1")
-                },
-                Yandex: function() {
-                    return e.replace(/^.*YaBrowser\/([\d.]+).*$/, "$1")
-                },
-                Kindle: function() {
-                    return e.replace(/^.*Version\/([\d.]+).*$/, "$1")
-                },
-                Maxthon: function() {
-                    return e.replace(/^.*Maxthon\/([\d.]+).*$/, "$1")
-                },
-                QQBrowser: function() {
-                    return e.replace(/^.*QQBrowser\/([\d.]+).*$/, "$1")
-                },
-                QQ: function() {
-                    return e.replace(/^.*QQ\/([\d.]+).*$/, "$1")
-                },
-                Baidu: function() {
-                    return e.replace(/^.*BIDUBrowser[\s\/]([\d.]+).*$/, "$1")
-                },
-                UC: function() {
-                    return e.replace(/^.*UC?Browser\/([\d.]+).*$/, "$1")
-                },
-                Sogou: function() {
-                    return e.replace(/^.*SE ([\d.X]+).*$/, "$1").replace(/^.*SogouMobileBrowser\/([\d.]+).*$/, "$1")
-                },
-                "2345Explorer": function() {
-                    return e.replace(/^.*2345Explorer\/([\d.]+).*$/, "$1")
-                },
-                TheWorld: function() {
-                    return e.replace(/^.*TheWorld ([\d.]+).*$/, "$1")
-                },
-                XiaoMi: function() {
-                    return e.replace(/^.*MiuiBrowser\/([\d.]+).*$/, "$1")
-                },
-                Quark: function() {
-                    return e.replace(/^.*Quark\/([\d.]+).*$/, "$1")
-                },
-                Qiyu: function() {
-                    return e.replace(/^.*Qiyu\/([\d.]+).*$/, "$1")
-                },
-                Wechat: function() {
-                    return e.replace(/^.*MicroMessenger\/([\d.]+).*$/, "$1")
-                },
-                Taobao: function() {
-                    return e.replace(/^.*AliApp\(TB\/([\d.]+).*$/, "$1")
-                },
-                Alipay: function() {
-                    return e.replace(/^.*AliApp\(AP\/([\d.]+).*$/, "$1")
-                },
-                Weibo: function() {
-                    return e.replace(/^.*weibo__([\d.]+).*$/, "$1")
-                },
-                Douban: function() {
-                    return e.replace(/^.*com.douban.frodo\/([\d.]+).*$/, "$1")
-                },
-                Suning: function() {
-                    return e.replace(/^.*SNEBUY-APP([\d.]+).*$/, "$1")
-                },
-                iQiYi: function() {
-                    return e.replace(/^.*IqiyiVersion\/([\d.]+).*$/, "$1")
-                }
+            t.osVersion = "";
+            var c = l[t.os];
+            c && (t.osVersion = "function" == typeof c ? c() : c == e ? "" : c);
+            var u = {
+                Safari: e.replace(/^.*Version\/([\d.]+).*$/, "$1"),
+                Chrome: e.replace(/^.*Chrome\/([\d.]+).*$/, "$1").replace(/^.*CriOS\/([\d.]+).*$/, "$1"),
+                IE: e.replace(/^.*MSIE ([\d.]+).*$/, "$1").replace(/^.*rv:([\d.]+).*$/, "$1"),
+                Edge: e.replace(/^.*Edge?\/([\d.]+).*$/, "$1"),
+                Firefox: e.replace(/^.*Firefox\/([\d.]+).*$/, "$1").replace(/^.*FxiOS\/([\d.]+).*$/, "$1"),
+                "Firefox Focus": e.replace(/^.*Focus\/([\d.]+).*$/, "$1"),
+                Chromium: e.replace(/^.*Chromium\/([\d.]+).*$/, "$1"),
+                Opera: e.replace(/^.*Opera\/([\d.]+).*$/, "$1").replace(/^.*OPR\/([\d.]+).*$/, "$1"),
+                Vivaldi: e.replace(/^.*Vivaldi\/([\d.]+).*$/, "$1"),
+                Yandex: e.replace(/^.*YaBrowser\/([\d.]+).*$/, "$1"),
+                Kindle: e.replace(/^.*Version\/([\d.]+).*$/, "$1"),
+                Maxthon: e.replace(/^.*Maxthon\/([\d.]+).*$/, "$1"),
+                QQBrowser: e.replace(/^.*QQBrowser\/([\d.]+).*$/, "$1"),
+                QQ: e.replace(/^.*QQ\/([\d.]+).*$/, "$1"),
+                Baidu: e.replace(/^.*BIDUBrowser[\s\/]([\d.]+).*$/, "$1"),
+                UC: e.replace(/^.*UC?Browser\/([\d.]+).*$/, "$1"),
+                Sogou: e.replace(/^.*SE ([\d.X]+).*$/, "$1").replace(/^.*SogouMobileBrowser\/([\d.]+).*$/, "$1"),
+                "2345Explorer": e.replace(/^.*2345Explorer\/([\d.]+).*$/, "$1"),
+                TheWorld: e.replace(/^.*TheWorld ([\d.]+).*$/, "$1"),
+                XiaoMi: e.replace(/^.*MiuiBrowser\/([\d.]+).*$/, "$1"),
+                Quark: e.replace(/^.*Quark\/([\d.]+).*$/, "$1"),
+                Qiyu: e.replace(/^.*Qiyu\/([\d.]+).*$/, "$1"),
+                Wechat: e.replace(/^.*MicroMessenger\/([\d.]+).*$/, "$1"),
+                Taobao: e.replace(/^.*AliApp\(TB\/([\d.]+).*$/, "$1"),
+                Alipay: e.replace(/^.*AliApp\(AP\/([\d.]+).*$/, "$1"),
+                Weibo: e.replace(/^.*weibo__([\d.]+).*$/, "$1"),
+                Douban: e.replace(/^.*com.douban.frodo\/([\d.]+).*$/, "$1"),
+                Suning: e.replace(/^.*SNEBUY-APP([\d.]+).*$/, "$1"),
+                iQiYi: e.replace(/^.*IqiyiVersion\/([\d.]+).*$/, "$1")
             };
-            t.version = "",
-            l[t.browser] && (t.version = l[t.browser](),
-            t.version == e && (t.version = "")),
-            "Edge" == t.browser ? t.engine = "EdgeHTML" : "Chrome" == t.browser && parseInt(t.version) > 27 ? t.engine = "Blink" : "Opera" == t.browser && parseInt(t.version) > 12 ? t.engine = "Blink" : "Yandex" == t.browser ? t.engine = "Blink" : void 0 == t.browser && (t.browser = "Unknow App")
-        }
-        function o(e) {
-            return new r(e || navigator.userAgent)
-        }
-        e.exports = o
+            t.version = "";
+            var p = u[t.browser];
+            return p && (t.version = "function" == typeof p ? p() : p == e ? "" : p),
+            void 0 == t.browser && (t.browser = "Unknow App"),
+            t
+        };
+        t.default = r
     }
     , function(e, t, n) {
         var r, o;
@@ -3692,9 +3648,9 @@
             e.safeAttrValue = e.safeAttrValue || a.safeAttrValue,
             this.options = e
         }
-        var a = n(5)
+        var a = n(6)
           , s = n(31);
-        n(6);
+        n(7);
         i.prototype.process = function(e) {
             if (e = e || "",
             !(e = e.toString()))
@@ -3762,7 +3718,7 @@
             }
             return o.trim(l)
         }
-        var o = n(6);
+        var o = n(7);
         e.exports = r
     }
     , function(e, t, n) {
@@ -3792,38 +3748,7 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(0)
-          , o = r("%String%")
-          , i = r("%TypeError%");
-        e.exports = function(e) {
-            if ("symbol" == typeof e)
-                throw new i("Cannot convert a Symbol value to a string");
-            return o(e)
-        }
-    }
-    , function(e, t, n) {
-        "use strict";
-        var r = n(0)
-          , o = r("%TypeError%");
-        e.exports = function(e, t) {
-            if (null == e)
-                throw new o(t || "Cannot call method on " + e);
-            return e
-        }
-    }
-    , function(e, t, n) {
-        "use strict";
-        var r = n(0)
-          , o = n(8)
-          , i = o(r("String.prototype.indexOf"));
-        e.exports = function(e, t) {
-            var n = r(e, !!t);
-            return "function" == typeof n && i(e, ".prototype.") ? o(n) : n
-        }
-    }
-    , function(e, t, n) {
-        "use strict";
-        var r = n(41)
+        var r = n(36)
           , o = Object.prototype.toString
           , i = Object.prototype.hasOwnProperty
           , a = function(e, t, n) {
@@ -3871,53 +3796,6 @@
                 u.prototype = null
             }
             return n
-        }
-    }
-    , function(e, t, n) {
-        "use strict";
-        (function(t) {
-            var r = t.Symbol
-              , o = n(39);
-            e.exports = function() {
-                return "function" == typeof r && ("function" == typeof Symbol && ("symbol" == typeof r("foo") && ("symbol" == typeof Symbol("bar") && o())))
-            }
-        }
-        ).call(t, n(12))
-    }
-    , function(e, t, n) {
-        "use strict";
-        e.exports = function() {
-            if ("function" != typeof Symbol || "function" != typeof Object.getOwnPropertySymbols)
-                return !1;
-            if ("symbol" == typeof Symbol.iterator)
-                return !0;
-            var e = {}
-              , t = Symbol("test")
-              , n = Object(t);
-            if ("string" == typeof t)
-                return !1;
-            if ("[object Symbol]" !== Object.prototype.toString.call(t))
-                return !1;
-            if ("[object Symbol]" !== Object.prototype.toString.call(n))
-                return !1;
-            e[t] = 42;
-            for (t in e)
-                return !1;
-            if ("function" == typeof Object.keys && 0 !== Object.keys(e).length)
-                return !1;
-            if ("function" == typeof Object.getOwnPropertyNames && 0 !== Object.getOwnPropertyNames(e).length)
-                return !1;
-            var r = Object.getOwnPropertySymbols(e);
-            if (1 !== r.length || r[0] !== t)
-                return !1;
-            if (!Object.prototype.propertyIsEnumerable.call(e, t))
-                return !1;
-            if ("function" == typeof Object.getOwnPropertyDescriptor) {
-                var o = Object.getOwnPropertyDescriptor(e, t);
-                if (42 !== o.value || !0 !== o.enumerable)
-                    return !1
-            }
-            return !0
         }
     }
     , function(e, t, n) {
@@ -3996,7 +3874,7 @@
             if (null == t)
                 return e;
             var a = e
-              , s = r || x
+              , s = r || w
               , l = o || b
               , c = "number" == typeof t ? {
                 smart_count: t
@@ -4020,10 +3898,10 @@
             this.tokenRegex = s(t.interpolation),
             this.pluralRules = t.pluralRules || b
         }
-        var u = n(36)
+        var u = n(33)
           , p = n(50)
-          , d = n(40)
-          , f = n(48)
+          , d = n(35)
+          , f = n(43)
           , h = function(e) {
             p(!1, e)
         }
@@ -4090,7 +3968,7 @@
                 slovenian: ["sl-SL"]
             }
         }
-          , x = /%\{(.*?)\}/g;
+          , w = /%\{(.*?)\}/g;
         c.prototype.locale = function(e) {
             return e && (this.currentLocale = e),
             this.currentLocale
@@ -4222,8 +4100,6 @@ object-assign
                 $frames: !0,
                 $innerHeight: !0,
                 $innerWidth: !0,
-                $onmozfullscreenchange: !0,
-                $onmozfullscreenerror: !0,
                 $outerHeight: !0,
                 $outerWidth: !0,
                 $pageXOffset: !0,
@@ -4297,7 +4173,7 @@ object-assign
           , a = i ? function(e) {
             return i(e)
         }
-        : n(44)
+        : n(39)
           , s = Object.keys;
         a.shim = function() {
             if (Object.keys) {
@@ -4597,10 +4473,10 @@ object-assign
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(8)
-          , o = n(7)
+        var r = n(11)
+          , o = n(8)
           , i = n(10)
-          , a = n(11)
+          , a = n(12)
           , s = n(49)
           , l = r(a());
         o(l, {
@@ -4612,8 +4488,86 @@ object-assign
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(7)
-          , o = n(11);
+        var r = n(1)
+          , o = r("%String%")
+          , i = r("%TypeError%");
+        e.exports = function(e) {
+            if ("symbol" == typeof e)
+                throw new i("Cannot convert a Symbol value to a string");
+            return o(e)
+        }
+    }
+    , function(e, t, n) {
+        "use strict";
+        var r = n(1)
+          , o = r("%TypeError%");
+        e.exports = function(e, t) {
+            if (null == e)
+                throw new o(t || "Cannot call method on " + e);
+            return e
+        }
+    }
+    , function(e, t, n) {
+        "use strict";
+        var r = n(1)
+          , o = n(11)
+          , i = o(r("String.prototype.indexOf"));
+        e.exports = function(e, t) {
+            var n = r(e, !!t);
+            return "function" == typeof n && i(e, ".prototype.") ? o(n) : n
+        }
+    }
+    , function(e, t, n) {
+        "use strict";
+        (function(t) {
+            var r = t.Symbol
+              , o = n(48);
+            e.exports = function() {
+                return "function" == typeof r && ("function" == typeof Symbol && ("symbol" == typeof r("foo") && ("symbol" == typeof Symbol("bar") && o())))
+            }
+        }
+        ).call(t, n(13))
+    }
+    , function(e, t, n) {
+        "use strict";
+        e.exports = function() {
+            if ("function" != typeof Symbol || "function" != typeof Object.getOwnPropertySymbols)
+                return !1;
+            if ("symbol" == typeof Symbol.iterator)
+                return !0;
+            var e = {}
+              , t = Symbol("test")
+              , n = Object(t);
+            if ("string" == typeof t)
+                return !1;
+            if ("[object Symbol]" !== Object.prototype.toString.call(t))
+                return !1;
+            if ("[object Symbol]" !== Object.prototype.toString.call(n))
+                return !1;
+            e[t] = 42;
+            for (t in e)
+                return !1;
+            if ("function" == typeof Object.keys && 0 !== Object.keys(e).length)
+                return !1;
+            if ("function" == typeof Object.getOwnPropertyNames && 0 !== Object.getOwnPropertyNames(e).length)
+                return !1;
+            var r = Object.getOwnPropertySymbols(e);
+            if (1 !== r.length || r[0] !== t)
+                return !1;
+            if (!Object.prototype.propertyIsEnumerable.call(e, t))
+                return !1;
+            if ("function" == typeof Object.getOwnPropertyDescriptor) {
+                var o = Object.getOwnPropertyDescriptor(e, t);
+                if (42 !== o.value || !0 !== o.enumerable)
+                    return !1
+            }
+            return !0
+        }
+    }
+    , function(e, t, n) {
+        "use strict";
+        var r = n(8)
+          , o = n(12);
         e.exports = function() {
             var e = o();
             return r(String.prototype, {
@@ -4657,14 +4611,14 @@ object-assign
             }
             e.exports = r
         }
-        ).call(t, n(46))
+        ).call(t, n(41))
     }
     , function(e, t, n) {
         function r(e, t) {
             return new a(t).process(e)
         }
-        var o = n(13)
-          , i = n(14)
+        var o = n(14)
+          , i = n(15)
           , a = n(52);
         t = e.exports = r,
         t.filterXSS = r,
@@ -4719,8 +4673,8 @@ object-assign
             this.cssFilter = new s(e.css))
         }
         var s = n(2).FilterCSS
-          , l = n(13)
-          , c = n(14)
+          , l = n(14)
+          , c = n(15)
           , u = c.parseTag
           , p = c.parseAttr
           , d = n(4);
@@ -4759,9 +4713,9 @@ object-assign
                     if (m.isClosing)
                         return "</" + n + ">";
                     var b = o(l)
-                      , x = i[n]
-                      , w = p(b.html, function(e, t) {
-                        var o = -1 !== d.indexOf(x, e)
+                      , w = i[n]
+                      , x = p(b.html, function(e, t) {
+                        var o = -1 !== d.indexOf(w, e)
                           , i = c(n, e, t, o);
                         if (!r(i))
                             return i;
@@ -4772,7 +4726,7 @@ object-assign
                         return r(i) ? void 0 : i
                     })
                       , l = "<" + n;
-                    return w && (l += " " + w),
+                    return x && (l += " " + x),
                     b.closing && (l += " /"),
                     l += ">"
                 }
@@ -4801,6 +4755,7 @@ object-assign
             more: "Load More...",
             preview: "Preview",
             emoji: "Emoji",
+            expand: "See more....",
             seconds: "seconds ago",
             minutes: "minutes ago",
             hours: "hours ago",
@@ -4832,6 +4787,7 @@ object-assign
             more: "さらに読み込む...",
             preview: "プレビュー",
             emoji: "絵文字",
+            expand: "もっと見る",
             seconds: "秒前",
             minutes: "分前",
             hours: "時間前",
@@ -4839,7 +4795,7 @@ object-assign
             now: "たっだ今",
             uploading: "アップロード中...",
             uploadDone: "アップロードが完了しました!",
-            busy: "もう一度提出してください...",
+            busy: "20 秒間隔で提出してください    ...",
             "code-99": "ロードエラーです。initにある`el`エレメントを確認ください.",
             "code-100": "ロードエラーです。AppIdとAppKeyを確認ください.",
             "code-140": "今日のAPIコールの総数が開発バージョンの上限を超えた.",
@@ -4863,6 +4819,7 @@ object-assign
             more: "加载更多...",
             preview: "预览",
             emoji: "表情",
+            expand: "查看更多...",
             seconds: "秒前",
             minutes: "分钟前",
             hours: "小时前",
@@ -4894,6 +4851,7 @@ object-assign
             more: "加載更多...",
             preview: "預覽",
             emoji: "表情",
+            expand: "查看更多...",
             seconds: "秒前",
             minutes: "分鐘前",
             hours: "小時前",
@@ -4910,177 +4868,79 @@ object-assign
         }
     }
     , function(e, t) {
-        function aru(index){
-            return "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/aru/" + index + ".png'>";
-        }
-        function tieba(str){
-            return "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/tieba/" + str + ".png'>";
-        }
-        function qq(str) {
-            return "<img class='emoji' src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/qq/" + str + ".gif'>";
-        }
         e.exports = {
-            aru151: aru(151),
-            贴吧what: tieba('what'),
-            贴吧乖: tieba('乖'),
-            贴吧喷: tieba('喷'),
-            贴吧太开心: tieba('太开心'),
-            贴吧委屈: tieba('委屈'),
-            贴吧小乖: tieba('小乖'),
-            贴吧捂嘴笑: tieba('捂嘴笑'),
-            贴吧泪: tieba('泪'),
-            贴吧滑稽: tieba('滑稽'),
-            贴吧爱心: tieba('爱心'),
-            贴吧玫瑰: tieba('玫瑰'),
-            贴吧真棒: tieba('真棒'),
-            贴吧疑问: tieba('疑问'),
-            qqOK: qq('OK'),
-            qq亲亲: qq('亲亲'),
-            qq便便: qq('便便'),
-            qq偷笑: qq('偷笑'),
-            qq冷汗: qq('冷汗'),
-            qq发呆: qq('发呆'),
-            qq发怒: qq('发怒'),
-            qq可怜: qq('可怜'),
-            qq可爱: qq('可爱'),
-            qq左哼哼: qq('左哼哼'),
-            qq右哼哼: qq('右哼哼'),
-            qq吓: qq('吓'),
-            qq呲牙: qq('呲牙'),
-            qq嗅大了: qq('嗅大了'),
-            qq坏笑: qq('坏笑'),
-            qq奋斗: qq('奋斗'),
-            qq委屈: qq('委屈'),
-            qq害羞: qq('害羞'),
-            qq尴尬: qq('尴尬'),
-            qq强: qq('强'),
-            qq得意: qq('得意'),
-            qq快哭了: qq('快哭了'),
-            qq惊恐: qq('惊恐'),
-            qq憨笑: qq('憨笑'),
-            qq抓狂: qq('抓狂'),
-            qq抱拳: qq('抱拳'),
-            qq握手: qq('握手'),
-            qq晕: qq('晕'),
-            qq疑问: qq('疑问'),
-            qq阴险: qq('阴险'),
-            qq鼓掌: qq('鼓掌'),
-            grinning: "😀",
-            smiley: "😃",
-            smile: "😄",
-            grin: "😁",
-            laughing: "😆",
-            sweat_smile: "😅",
-            joy: "😂",
-            blush: "😊",
-            innocent: "😇",
-            wink: "😉",
-            relieved: "😌",
-            heart_eyes: "😍",
-            kissing_heart: "😘",
-            kissing: "😗",
-            kissing_smiling_eyes: "😙",
-            kissing_closed_eyes: "😚",
-            yum: "😋",
-            stuck_out_tongue_winking_eye: "😜",
-            stuck_out_tongue_closed_eyes: "😝",
-            stuck_out_tongue: "😛",
-            sunglasses: "😎",
-            smirk: "😏",
-            unamused: "😒",
-            disappointed: "😞",
-            pensive: "😔",
-            worried: "😟",
-            confused: "😕",
-            persevere: "😣",
-            confounded: "😖",
-            tired_face: "😫",
-            weary: "😩",
-            angry: "😠",
-            rage: "😡",
-            no_mouth: "😶",
-            neutral_face: "😐",
-            expressionless: "😑",
-            hushed: "😯",
-            frowning: "😦",
-            anguished: "😧",
-            open_mouth: "😮",
-            astonished: "😲",
-            dizzy_face: "😵",
-            flushed: "😳",
-            scream: "😱",
-            fearful: "😨",
-            cold_sweat: "😰",
-            cry: "😢",
-            disappointed_relieved: "😥",
-            sob: "😭",
-            sweat: "😓",
-            sleepy: "😪",
-            sleeping: "😴",
-            mask: "😷",
-            smiling_imp: "😈",
-            smiley_cat: "😺",
-            smile_cat: "😸",
-            joy_cat: "😹",
-            heart_eyes_cat: "😻",
-            smirk_cat: "😼",
-            kissing_cat: "😽",
-            scream_cat: "🙀",
-            crying_cat_face: "😿",
-            pouting_cat: "😾",
-            cat: "🐱",
-            mouse: "🐭",
-            cow: "🐮",
-            monkey_face: "🐵",
-            hand: "✋",
-            fist: "✊",
-            v: "✌️",
-            point_up: "👆",
-            point_down: "👇",
-            point_left: "👈",
-            point_right: "👉",
-            facepunch: "👊",
-            wave: "👋",
-            clap: "👏",
-            open_hands: "👐",
-            "+1": "👍",
-            "-1": "👎",
-            ok_hand: "👌",
-            pray: "🙏",
-            ear: "👂",
-            eyes: "👀",
-            nose: "👃",
-            lips: "👄",
-            tongue: "👅",
-            heart: "❤️",
-            cupid: "💘",
-            sparkling_heart: "💖",
-            star: "⭐️",
-            sparkles: "✨",
-            zap: "⚡️",
-            sunny: "☀️",
-            cloud: "☁️",
-            snowflake: "❄️",
-            umbrella: "☔️",
-            coffee: "☕️",
-            airplane: "✈️",
-            anchor: "⚓️",
-            watch: "⌚️",
-            phone: "☎️",
-            hourglass: "⌛️",
-            email: "✉️",
-            scissors: "✂️",
-            black_nib: "✒️",
-            pencil2: "✏️",
-            x: "❌",
-            recycle: "♻️",
-            white_check_mark: "✅",
-            negative_squared_cross_mark: "❎",
-            m: "Ⓜ️",
-            i: "ℹ️",
-            tm: "™️",
-            copyright: "©️",
-            registered: "®️"
+            smile: "e3/2018new_weixioa02_org.png",
+            lovely: "09/2018new_keai_org.png",
+            happy: "1e/2018new_taikaixin_org.png",
+            clap: "6e/2018new_guzhang_thumb.png",
+            whee: "33/2018new_xixi_thumb.png",
+            haha: "8f/2018new_haha_thumb.png",
+            "laugh and cry": "4a/2018new_xiaoku_thumb.png",
+            wink: "43/2018new_jiyan_org.png",
+            greddy: "fa/2018new_chanzui_org.png",
+            awkward: "a3/2018new_heixian_thumb.png",
+            sweat: "28/2018new_han_org.png",
+            "pick nose": "9a/2018new_wabi_thumb.png",
+            hum: "7c/2018new_heng_thumb.png",
+            angry: "f6/2018new_nu_thumb.png",
+            grievance: "a5/2018new_weiqu_thumb.png",
+            poor: "96/2018new_kelian_org.png",
+            disappoint: "aa/2018new_shiwang_thumb.png",
+            sad: "ee/2018new_beishang_org.png",
+            tear: "6e/2018new_leimu_org.png",
+            "no way": "83/2018new_kuxiao_org.png",
+            shy: "c1/2018new_haixiu_org.png",
+            dirt: "10/2018new_wu_thumb.png",
+            "love you": "f6/2018new_aini_org.png",
+            kiss: "2c/2018new_qinqin_thumb.png",
+            amorousness: "9d/2018new_huaxin_org.png",
+            longing: "c9/2018new_chongjing_org.png",
+            desire: "3e/2018new_tianping_thumb.png",
+            "bad laugh": "4d/2018new_huaixiao_org.png",
+            blackness: "9e/2018new_yinxian_org.png",
+            "laugh without word": "2d/2018new_xiaoerbuyu_org.png",
+            titter: "71/2018new_touxiao_org.png",
+            cool: "c4/2018new_ku_org.png",
+            "not easy": "aa/2018new_bingbujiandan_thumb.png",
+            think: "30/2018new_sikao_org.png",
+            question: "b8/2018new_ningwen_org.png",
+            "no idea": "2a/2018new_wenhao_thumb.png",
+            dizzy: "07/2018new_yun_thumb.png",
+            bomb: "a2/2018new_shuai_thumb.png",
+            bone: "a1/2018new_kulou_thumb.png",
+            "be quiet": "b0/2018new_xu_org.png",
+            "shut up": "62/2018new_bizui_org.png",
+            stupid: "dd/2018new_shayan_org.png",
+            "surprise ": "49/2018new_chijing_org.png",
+            vomit: "08/2018new_tu_org.png",
+            cold: "40/2018new_kouzhao_thumb.png",
+            sick: "3b/2018new_shengbing_thumb.png",
+            bye: "fd/2018new_baibai_thumb.png",
+            "look down on": "da/2018new_bishi_org.png",
+            "white eye": "ef/2018new_landelini_org.png",
+            "left hum": "43/2018new_zuohengheng_thumb.png",
+            "right hum": "c1/2018new_youhengheng_thumb.png",
+            crazy: "17/2018new_zhuakuang_org.png",
+            "scold ": "87/2018new_zhouma_thumb.png",
+            "hit on face": "cb/2018new_dalian_org.png",
+            wow: "ae/2018new_ding_org.png",
+            fan: "86/2018new_hufen02_org.png",
+            money: "a2/2018new_qian_thumb.png",
+            yawn: "55/2018new_dahaqian_org.png",
+            sleepy: "3c/2018new_kun_thumb.png",
+            sleep: "e2/2018new_shuijiao_thumb.png",
+            "watermelon ": "01/2018new_chigua_thumb.png",
+            doge: "a1/2018new_doge02_org.png",
+            dog: "22/2018new_erha_org.png",
+            cat: "7b/2018new_miaomiao_thumb.png",
+            thumb: "e6/2018new_zan_org.png",
+            good: "8a/2018new_good_org.png",
+            ok: "45/2018new_ok_org.png",
+            yeah: "29/2018new_ye_thumb.png",
+            "shack hand": "e9/2018new_woshou_thumb.png",
+            bow: "e7/2018new_zuoyi_org.png",
+            come: "42/2018new_guolai_thumb.png",
+            punch: "86/2018new_quantou_thumb.png"
         }
     }
     , function(e, t, n) {
@@ -5093,7 +4953,7 @@ object-assign
     }
     , function(e, t, n) {
         t = e.exports = n(60)(!1),
-        t.push([e.i, '.MathJax,.MathJax_Display,mjx-container{overflow-y:auto;outline:none}.v{font-size:16px;text-align:left}.v *{-webkit-box-sizing:border-box;box-sizing:border-box;line-height:1.75;color:#555}.v .text-right{text-align:right}.v .text-center{text-align:center}.v hr{margin:.825em 0;border-color:#f6f6f6;border-style:dashed}.v.hide-avatar .vimg{display:none}.v a{position:relative;cursor:pointer;color:#1abc9c;display:inline-block}.v a:hover{color:#d7191a}.v code,.v pre{background-color:#f8f8f8;color:#555;padding:.2em .4em;border-radius:3px;font-size:85%;margin:0;font-family:Source Code Pro,courier new,Input Mono,PT Mono,SFMono-Regular,Consolas,Monaco,Menlo,PingFang SC,Liberation Mono,Microsoft YaHei,Courier，monospace}.v pre{padding:10px;overflow:auto;line-height:1.45}.v pre code{padding:0;background:transparent;white-space:pre-wrap;word-break:keep-all}.v blockquote{color:#666;margin:.5em 0;padding:0 0 0 1em;border-left:8px solid hsla(0,0%,93%,.5)}.v .vinput{border:none;resize:none;outline:none;padding:10px 5px;max-width:100%;font-size:.775em}.v input[type=checkbox],.v input[type=radio]{display:inline-block;vertical-align:middle;margin-top:-2px}.v .icon{cursor:pointer;display:inline-block;overflow:hidden;fill:#666;vertical-align:middle}.v .icon+.icon{margin-left:10px}.v .icon.actived{fill:#66b1ff}.v .row{font-size:0;padding:10px 0}.v .row .col{display:inline-block;vertical-align:middle;font-size:14px;color:#666}.v .row .col.col-20{width:20%}.v .row .col.col-30{width:30%}.v .row .col.col-40{width:40%}.v .row .col.col-50{width:50%}.v .row .col.col-60{width:60%}.v .row .col.col-70{width:70%}.v .row .col.col-80{width:80%}.v .row .col.vctrl{font-size:12px}.v .vwrap{border:1px solid #f0f0f0;border-radius:4px;margin-bottom:10px;overflow:hidden;position:relative;padding:10px}.v .vwrap input{background:transparent}.v .vwrap .vedit{position:relative;padding-top:10px}.v .vwrap .cancel-reply-btn{position:absolute;right:5px;top:5px;cursor:pointer}.v .vwrap .vemojis{display:none;font-size:18px;text-align:justify;max-height:145px;overflow:auto;margin-bottom:10px;-webkit-box-shadow:0 0 1px #f0f0f0;box-shadow:0 0 1px #f0f0f0}.v .vwrap .vemojis i{font-style:normal;padding:7px 0;width:38px;cursor:pointer;text-align:center;display:inline-block;vertical-align:middle}.v .vwrap .vpreview{padding:7px;-webkit-box-shadow:0 0 1px #f0f0f0;box-shadow:0 0 1px #f0f0f0}.v .vwrap .vpreview frame,.v .vwrap .vpreview iframe,.v .vwrap .vpreview img{max-width:100%;border:none}.v .vwrap .vheader .vinput{width:33.33%;border-bottom:1px dashed #dedede}.v .vwrap .vheader.item2 .vinput{width:50%}.v .vwrap .vheader.item1 .vinput{width:100%}.v .vwrap .vheader .vinput:focus{border-bottom-color:#eb5055}@media screen and (max-width:520px){.v .vwrap .vheader.item2 .vinput,.v .vwrap .vheader .vinput{width:100%}}.v .power{color:#999;padding:.5em 0}.v .power,.v .power a{font-size:.75em}.v .vinfo{padding:5px}.v .vinfo .vcount .vnum{font-weight:600;font-size:1.25em}.v a{text-decoration:none;color:#555}.v a:hover{color:#222}.v ol,.v ul{padding:0;margin-left:1.25em}.v .txt-center{text-align:center}.v .txt-right{text-align:right}.v .pd5{padding:5px}.v .pd10{padding:10px}.v .veditor{width:100%;min-height:8.75em;font-size:.875em;background:transparent;resize:vertical;-webkit-transition:all .25s ease;transition:all .25s ease}.v .vbtn{-webkit-transition-duration:.4s;transition-duration:.4s;text-align:center;color:#313131;border:1px solid #ededed;border-radius:.3em;display:inline-block;background:#ededed;margin-bottom:0;font-weight:400;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;white-space:nowrap;padding:.5em 1.25em;font-size:.875em;line-height:1.42857143;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;outline:none}.v .vbtn+.vbtn{margin-left:1.25em}.v .vbtn:active,.v .vbtn:hover{color:#3090e4;border-color:#3090e4;background-color:#fff}.v .vbtn:disabled{border-color:#e1e1e1;color:#e1e1e1;background-color:#fdfafa;cursor:not-allowed}.v .vempty{padding:1.25em;text-align:center;color:#999}.v .vsys{display:inline-block;padding:.2em .5em;background:#ededed;color:#b3b1b1;font-size:.75em;border-radius:.2em;margin-right:.3em}@media screen and (max-width:520px){.v .vsys{display:none}}.v .vlist{width:100%}.v .vlist .vcard{padding-top:1.25em;position:relative;display:block}.v .vlist .vcard:after{content:"";clear:both;display:block}.v .vlist .vcard .vimg{width:3.125em;height:3.125em;float:left;border-radius:50%;margin-right:.7525em;border:1px solid #f5f5f5;padding:.125em}@media screen and (max-width:720px){.v .vlist .vcard .vimg{width:2.5em;height:2.5em}}.v .vlist .vcard .vhead{line-height:1.5;margin-top:0}.v .vlist .vcard .vhead .vnick{position:relative;font-size:.875em;font-weight:500;margin-right:.875em;cursor:pointer;color:#1abc9c;text-decoration:none;display:inline-block}.v .vlist .vcard .vhead .vnick:hover{color:#d7191a}.v .vlist .vcard .vh{overflow:hidden;padding-bottom:.5em;border-bottom:1px dashed #f5f5f5}.v .vlist .vcard .vh .vtime{color:#b3b3b3;font-size:.75em;margin-right:.875em}.v .vlist .vcard .vh .vmeta{line-height:1;position:relative}.v .vlist .vcard .vh .vmeta .vat{font-size:.8125em;color:#ef2f11;cursor:pointer;float:right}.v .vlist .vcard:last-child .vh{border-bottom:none}.v .vlist .vcard .vcontent{word-wrap:break-word;word-break:break-all;text-align:justify;font-size:.875em;line-height:2;position:relative;margin-bottom:.75em;padding-top:.625em}.v .vlist .vcard .vcontent a:hover{color:#ef2f11}.v .vlist .vcard .vcontent frame,.v .vlist .vcard .vcontent iframe,.v .vlist .vcard .vcontent img{max-width:100%;border:none}.v .vlist .vcard .vcontent.expand{cursor:pointer;max-height:8em;overflow:hidden}.v .vlist .vcard .vcontent.expand:before{display:block;content:"";position:absolute;width:100%;left:0;top:0;bottom:3.15em;background:-webkit-gradient(linear,left top,left bottom,from(hsla(0,0%,100%,0)),to(hsla(0,0%,100%,.9)));background:linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.9))}.v .vlist .vcard .vcontent.expand:after{display:block;content:"Click on expand";text-align:center;color:#828586;position:absolute;width:100%;height:3.15em;line-height:3.15em;left:0;bottom:0;z-index:999;background:hsla(0,0%,100%,.9)}.v .vlist .vcard .vquote{color:#666;padding-left:1em;border-left:1px dashed hsla(0,0%,93%,.5)}.v .vlist .vcard .vquote .vimg{width:2.225em;height:2.225em}.v .vpage .vmore{margin:1em 0}.v .clear{content:"";display:block;clear:both}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@-webkit-keyframes pulse{50%{background:#dcdcdc}}@keyframes pulse{50%{background:#dcdcdc}}.v .vspinner{width:22px;height:22px;display:inline-block;border:6px double #a0a0a0;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;-webkit-animation:spin 1s infinite linear;animation:spin 1s infinite linear;position:relative;vertical-align:middle;margin:0 5px}[data-theme=dark] .v *{color:#e6e6e6}[data-theme=dark] .v .vsys,[data-theme=dark] .v code,[data-theme=dark] .v pre{background-color:#272626;color:#e6e6e6}[data-theme=dark] .v .icon{fill:#e6e6e6}[data-theme=dark] .v .vbtn{background-color:transparent;color:#e6e6e6}[data-theme=dark] .v a:hover{color:#d7191a}@media (prefers-color-scheme:dark){.v *{color:#e6e6e6}.v .vsys,.v code,.v pre{background-color:#272626;color:#e6e6e6}.v .icon{fill:#e6e6e6}.v .vbtn{background-color:transparent;color:#e6e6e6}.v a:hover{color:#d7191a}}', ""])
+        t.push([e.i, '.MathJax,.MathJax_Display,mjx-container{overflow-y:auto;outline:none}.v{font-size:16px;text-align:left}.v *{-webkit-box-sizing:border-box;box-sizing:border-box;line-height:1.75;color:#555}.v .text-right{text-align:right}.v .text-center{text-align:center}.v hr{margin:.825em 0;border-color:#f6f6f6;border-style:dashed}.v.hide-avatar .vimg{display:none}.v a{position:relative;cursor:pointer;color:#1abc9c;display:inline-block}.v a:hover{color:#d7191a}.v code,.v pre{background-color:#f8f8f8;color:#555;padding:.2em .4em;border-radius:3px;font-size:85%;margin:0;font-family:Source Code Pro,courier new,Input Mono,PT Mono,SFMono-Regular,Consolas,Monaco,Menlo,PingFang SC,Liberation Mono,Microsoft YaHei,Courier，monospace}.v pre{padding:10px;overflow:auto;line-height:1.45}.v pre code{padding:0;background:transparent;white-space:pre-wrap;word-break:keep-all}.v blockquote{color:#666;margin:.5em 0;padding:0 0 0 1em;border-left:8px solid hsla(0,0%,93%,.5)}.v .vinput{border:none;resize:none;outline:none;padding:10px 5px;max-width:100%;font-size:.775em}.v input[type=checkbox],.v input[type=radio]{display:inline-block;vertical-align:middle;margin-top:-2px}.v .vicon{cursor:pointer;display:inline-block;overflow:hidden;fill:#666;vertical-align:middle}.v .vicon+.vicon{margin-left:10px}.v .vicon.actived{fill:#66b1ff}.v .vrow{font-size:0;padding:10px 0}.v .vrow .vcol{display:inline-block;vertical-align:middle;font-size:14px}.v .vrow .vcol.vcol-20{width:20%}.v .vrow .vcol.vcol-30{width:30%}.v .vrow .vcol.vcol-40{width:40%}.v .vrow .vcol.vcol-50{width:50%}.v .vrow .vcol.vcol-60{width:60%}.v .vrow .vcol.vcol-70{width:70%}.v .vrow .vcol.vcol-80{width:80%}.v .vrow .vcol.vctrl{font-size:12px}.v .emoji,.v .vemoji{max-height:22px;vertical-align:middle;margin:0 1px;display:inline-block}.v .vwrap{border:1px solid #f0f0f0;border-radius:4px;margin-bottom:10px;overflow:hidden;position:relative;padding:10px}.v .vwrap input{background:transparent}.v .vwrap .vedit{position:relative;padding-top:10px}.v .vwrap .cancel-reply-btn{position:absolute;right:5px;top:5px;cursor:pointer}.v .vwrap .vemojis{display:none;font-size:18px;text-align:justify;max-height:145px;overflow:auto;padding-bottom:10px;-webkit-box-shadow:0 0 1px #f0f0f0;box-shadow:0 0 1px #f0f0f0}.v .vwrap .vemojis i{font-style:normal;padding-top:7px;width:36px;cursor:pointer;text-align:center;display:inline-block;vertical-align:middle}.v .vwrap .vpreview{padding:7px;-webkit-box-shadow:0 0 1px #f0f0f0;box-shadow:0 0 1px #f0f0f0}.v .vwrap .vpreview frame,.v .vwrap .vpreview iframe,.v .vwrap .vpreview img{max-width:100%;border:none}.v .vwrap .vheader .vinput{width:33.33%;border-bottom:1px dashed #dedede}.v .vwrap .vheader.item2 .vinput{width:50%}.v .vwrap .vheader.item1 .vinput{width:100%}.v .vwrap .vheader .vinput:focus{border-bottom-color:#eb5055}@media screen and (max-width:520px){.v .vwrap .vheader.item2 .vinput,.v .vwrap .vheader .vinput{width:100%}}.v .vcopy{color:#999;padding:.5em 0}.v .vcopy,.v .vcopy a{font-size:.75em}.v .vinfo{padding:5px}.v .vinfo .vcount .vnum{font-weight:600;font-size:1.25em}.v a{text-decoration:none;color:#555}.v a:hover{color:#222}.v ol,.v ul{padding:0;margin-left:1.25em}.v .txt-center{text-align:center}.v .txt-right{text-align:right}.v .pd5{padding:5px}.v .pd10{padding:10px}.v .veditor{width:100%;min-height:8.75em;font-size:.875em;background:transparent;resize:vertical;-webkit-transition:all .25s ease;transition:all .25s ease}.v .vbtn{-webkit-transition-duration:.4s;transition-duration:.4s;text-align:center;color:#313131;border:1px solid #ededed;border-radius:.3em;display:inline-block;background:#ededed;margin-bottom:0;font-weight:400;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;white-space:nowrap;padding:.5em 1.25em;font-size:.875em;line-height:1.42857143;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;outline:none}.v .vbtn+.vbtn{margin-left:1.25em}.v .vbtn:active,.v .vbtn:hover{color:#3090e4;border-color:#3090e4;background-color:#fff}.v .vbtn:disabled{border-color:#e1e1e1;color:#e1e1e1;background-color:#fdfafa;cursor:not-allowed}.v .vempty{padding:1.25em;text-align:center;color:#999}.v .vsys{display:inline-block;padding:.2em .5em;background:#ededed;color:#b3b1b1;font-size:.75em;border-radius:.2em;margin-right:.3em}@media screen and (max-width:520px){.v .vsys{display:none}}.v .vlist{width:100%}.v .vlist .vcard{padding-top:1.25em;position:relative;display:block}.v .vlist .vcard:after{content:"";clear:both;display:block}.v .vlist .vcard .vimg{width:3.125em;height:3.125em;float:left;border-radius:50%;margin-right:.7525em;border:1px solid #f5f5f5;padding:.125em}@media screen and (max-width:720px){.v .vlist .vcard .vimg{width:2.5em;height:2.5em}}.v .vlist .vcard .vhead{line-height:1.5;margin-top:0}.v .vlist .vcard .vhead .vnick{position:relative;font-size:.875em;font-weight:500;margin-right:.875em;cursor:pointer;color:#1abc9c;text-decoration:none;display:inline-block}.v .vlist .vcard .vhead .vnick:hover{color:#d7191a}.v .vlist .vcard .vh{overflow:hidden;padding-bottom:.5em;border-bottom:1px dashed #f5f5f5}.v .vlist .vcard .vh .vtime{color:#b3b3b3;font-size:.75em;margin-right:.875em}.v .vlist .vcard .vh .vmeta{line-height:1;position:relative}.v .vlist .vcard .vh .vmeta .vat{font-size:.8125em;color:#ef2f11;cursor:pointer;float:right}.v .vlist .vcard:last-child .vh{border-bottom:none}.v .vlist .vcard .vcontent{word-wrap:break-word;word-break:break-all;text-align:justify;font-size:.875em;line-height:2;position:relative;margin-bottom:.75em;padding-top:.625em}.v .vlist .vcard .vcontent a:hover{color:#ef2f11}.v .vlist .vcard .vcontent frame,.v .vlist .vcard .vcontent iframe,.v .vlist .vcard .vcontent img{max-width:100%;border:none}.v .vlist .vcard .vcontent.expand{cursor:pointer;max-height:8em;overflow:hidden}.v .vlist .vcard .vcontent.expand:before{display:block;content:"";position:absolute;width:100%;left:0;top:0;bottom:3.15em;background:-webkit-gradient(linear,left top,left bottom,from(hsla(0,0%,100%,0)),to(hsla(0,0%,100%,.9)));background:linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.9));z-index:999}.v .vlist .vcard .vcontent.expand:after{display:block;content:attr(data-expand);text-align:center;color:#828586;position:absolute;width:100%;height:3.15em;line-height:3.15em;left:0;bottom:0;z-index:999;background:hsla(0,0%,100%,.9)}.v .vlist .vcard .vquote{color:#666;padding-left:1em;border-left:1px dashed hsla(0,0%,93%,.5)}.v .vlist .vcard .vquote .vimg{width:2.225em;height:2.225em}.v .vpage .vmore{margin:1em 0}.v .clear{content:"";display:block;clear:both}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@-webkit-keyframes pulse{50%{background:#dcdcdc}}@keyframes pulse{50%{background:#dcdcdc}}.v .vspinner{width:22px;height:22px;display:inline-block;border:6px double #a0a0a0;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;-webkit-animation:spin 1s infinite linear;animation:spin 1s infinite linear;position:relative;vertical-align:middle;margin:0 5px}[data-theme=dark] .v *{color:#929298}[data-theme=dark] .v .vsys,[data-theme=dark] .v code,[data-theme=dark] .v pre{background-color:transparent;color:#929298}[data-theme=dark] .v .vicon{fill:#929298}[data-theme=dark] .v .vicon.actived{fill:#66b1ff}[data-theme=dark] .v .vbtn{background-color:transparent;color:#929298}[data-theme=dark] .v .vbtn:hover{color:#66b1ff}[data-theme=dark] .v a:hover{color:#d7191a}[data-theme=dark] .v .vlist .vcard .vcontent.expand:before{background:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.3)),to(rgba(0,0,0,.7)));background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.7))}[data-theme=dark] .v .vlist .vcard .vcontent.expand:after{background:rgba(0,0,0,.7)}@media (prefers-color-scheme:dark){.v *{color:#929298}.v .vsys,.v code,.v pre{background-color:transparent;color:#929298}.v .vicon{fill:#929298}.v .vicon.actived{fill:#66b1ff}.v .vbtn{background-color:transparent;color:#929298}.v .vbtn:hover{color:#66b1ff}.v a:hover{color:#d7191a}.v .vlist .vcard .vcontent.expand:before{background:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.3)),to(rgba(0,0,0,.7)));background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.7))}.v .vlist .vcard .vcontent.expand:after{background:rgba(0,0,0,.7)}}', ""])
     }
     , function(e, t) {
         function n(e, t) {
@@ -5258,7 +5118,7 @@ object-assign
         function p(e, t, n, r) {
             var o = n ? "" : r.css;
             if (e.styleSheet)
-                e.styleSheet.cssText = w(t, o);
+                e.styleSheet.cssText = x(t, o);
             else {
                 var i = document.createTextNode(o)
                   , a = e.childNodes;
@@ -5282,7 +5142,7 @@ object-assign
             var r = n.css
               , o = n.sourceMap
               , i = void 0 === t.convertToAbsoluteUrls && o;
-            (t.convertToAbsoluteUrls || i) && (r = x(r)),
+            (t.convertToAbsoluteUrls || i) && (r = w(r)),
             o && (r += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(o)))) + " */");
             var a = new Blob([r],{
                 type: "text/css"
@@ -5313,7 +5173,7 @@ object-assign
           , m = null
           , y = 0
           , b = []
-          , x = n(62);
+          , w = n(62);
         e.exports = function(e, t) {
             if ("undefined" != typeof DEBUG && DEBUG && "object" != typeof document)
                 throw new Error("The style-loader cannot be used in a non-browser environment");
@@ -5345,7 +5205,7 @@ object-assign
             }
         }
         ;
-        var w = function() {
+        var x = function() {
             var e = [];
             return function(t, n) {
                 return e[t] = n,
