@@ -1,8 +1,8 @@
 /*!
- * Valine v1.4.2
+ * Valine v1.4.3
  * (c) 2017-2020 xCss
  * Released under the GPL-2.0 License.
- * Last Update: 2020-4-11 11:21:17
+ * Last Update: 2020-4-11 13:41:08
  */
 !function(e, t) {
     "object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define([], t) : "object" == typeof exports ? exports.Valine = t() : e.Valine = t()
@@ -52,7 +52,7 @@
         }
         ,
         t.p = "",
-        t(t.s = 63)
+        t(t.s = 62)
     }([function(e, t, n) {
         "use strict";
         function r(e) {
@@ -68,16 +68,16 @@
             return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
         }
         ;
-        n(32);
-        var i = n(38)
+        n(31);
+        var i = n(37)
           , a = r(i)
-          , s = n(29)
+          , s = n(28)
           , l = r(s)
-          , c = n(28)
+          , c = n(27)
           , u = r(c)
-          , p = n(42)
+          , p = n(41)
           , d = r(p)
-          , f = n(27)
+          , f = n(26)
           , h = r(f)
           , g = document
           , v = (window,
@@ -361,7 +361,7 @@
                     return s
                 }
             }
-        }() : s, c = n(47)(), u = Object.getPrototypeOf || function(e) {
+        }() : s, c = n(46)(), u = Object.getPrototypeOf || function(e) {
             return e.__proto__
         }
         , p = i ? u(i) : void 0, d = a ? u(a) : void 0, f = a ? a() : void 0, h = "undefined" == typeof Uint8Array ? void 0 : u(Uint8Array), g = {
@@ -509,7 +509,7 @@
             return new i(t).process(e)
         }
         var o = n(6)
-          , i = n(30);
+          , i = n(29);
         t = e.exports = r,
         t.FilterCSS = i;
         for (var a in o)
@@ -518,7 +518,7 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(34);
+        var r = n(33);
         e.exports = Function.prototype.bind || r
     }
     , function(e, t) {
@@ -961,7 +961,7 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(40)
+        var r = n(39)
           , o = "function" == typeof Symbol && "symbol" == typeof Symbol("foo")
           , i = Object.prototype.toString
           , a = Array.prototype.concat
@@ -1013,9 +1013,9 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(45)
-          , o = n(44)
-          , i = n(46)
+        var r = n(44)
+          , o = n(43)
+          , i = n(45)
           , a = i("String.prototype.replace")
           , s = /^[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+/
           , l = /[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+$/;
@@ -1143,16 +1143,16 @@
                 if ("http://" !== n.substr(0, 7) && "https://" !== n.substr(0, 8) && "mailto:" !== n.substr(0, 7) && "tel:" !== n.substr(0, 4) && "#" !== n[0] && "/" !== n[0])
                     return ""
             } else if ("background" === t) {
-                if (P.lastIndex = 0,
-                P.test(n))
-                    return ""
-            } else if ("style" === t) {
                 if (M.lastIndex = 0,
                 M.test(n))
+                    return ""
+            } else if ("style" === t) {
+                if (P.lastIndex = 0,
+                P.test(n))
                     return "";
                 if (I.lastIndex = 0,
-                I.test(n) && (P.lastIndex = 0,
-                P.test(n)))
+                I.test(n) && (M.lastIndex = 0,
+                M.test(n)))
                     return "";
                 !1 !== r && (r = r || _,
                 n = r.process(n))
@@ -1248,8 +1248,8 @@
           , j = /&#([a-zA-Z0-9]*);?/gim
           , T = /&colon;?/gim
           , C = /&newline;?/gim
-          , P = /((j\s*a\s*v\s*a|v\s*b|l\s*i\s*v\s*e)\s*s\s*c\s*r\s*i\s*p\s*t\s*|m\s*o\s*c\s*h\s*a)\:/gi
-          , M = /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi
+          , M = /((j\s*a\s*v\s*a|v\s*b|l\s*i\s*v\s*e)\s*s\s*c\s*r\s*i\s*p\s*t\s*|m\s*o\s*c\s*h\s*a)\:/gi
+          , P = /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi
           , I = /u\s*r\s*l\s*\(.*/gi
           , z = /<!--[\s\S]*?-->/g;
         t.whiteList = r(),
@@ -1602,15 +1602,15 @@
             }
         }
         t.__esModule = !0;
-        var o = n(37)
+        var o = n(36)
           , i = r(o)
-          , a = n(55)
+          , a = n(54)
           , s = r(a)
-          , l = n(56)
+          , l = n(55)
           , c = r(l)
-          , u = n(53)
+          , u = n(52)
           , p = r(u)
-          , d = n(54)
+          , d = n(53)
           , f = r(d)
           , h = {
             zh: s.default,
@@ -1665,8 +1665,7 @@
           , _ = r(A)
           , S = n(0)
           , O = r(S)
-          , E = n(26).version
-          , $ = {
+          , E = {
             comment: "",
             nick: "Anonymous",
             mail: "",
@@ -1674,19 +1673,19 @@
             ua: O.default.ua,
             url: ""
         }
-          , j = ""
-          , T = {
+          , $ = ""
+          , j = {
             cdn: "https://gravatar.loli.net/avatar/",
             ds: ["mp", "identicon", "monsterid", "wavatar", "robohash", "retro", ""],
             params: "",
             hide: !1
         }
-          , C = ["nick", "mail", "link"];
+          , T = ["nick", "mail", "link"];
         o.prototype.init = function(e) {
             var t = this;
             return e = O.default.extend(y.DEFAULT_CONFIG, e),
             O.default.sdkLoader("https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js", "AV", function(n) {
-                if (O.default.TJ(),
+                if (O.default.TJ("1.4.3"),
                 (0,
                 _.default)(e.mathJax),
                 t.i18n = (0,
@@ -1712,11 +1711,11 @@
                   , l = t.pageSize
                   , u = t.recordIP;
                 e.config.path = s.replace(/index\.html?$/, "");
-                var p = T.ds
+                var p = j.ds
                   , d = r ? "&q=" + Math.random().toString(32).substring(2) : "";
-                T.params = "?d=" + (p.indexOf(n) > -1 ? n : "mp") + "&v=" + E + d,
-                T.hide = "hide" === n,
-                T.cdn = /^https?\:\/\//.test(o) ? o : T.cdn,
+                j.params = "?d=" + (p.indexOf(n) > -1 ? n : "mp") + "&v=1.4.3" + d,
+                j.hide = "hide" === n,
+                j.cdn = /^https?\:\/\//.test(o) ? o : j.cdn,
                 e.config.pageSize = isNaN(l) ? 10 : l < 1 ? 10 : l,
                 c.default.setOptions({
                     renderer: new c.default.Renderer,
@@ -1731,7 +1730,7 @@
                 }),
                 u && (O.default.sdkLoader("//api.ip.sb/jsonip?callback=getIP", "getIP"),
                 window.getIP = function(e) {
-                    $.ip = e.ip
+                    E.ip = e.ip
                 }
                 );
                 var h = e.config.app_id || e.config.appId
@@ -1781,15 +1780,15 @@
                 e.$el = (0,
                 O.default)(w),
                 e.$el.addClass("v"),
-                T.hide && e.$el.addClass("hide-avatar"),
-                e.config.meta = (e.config.guest_info || e.config.meta || C).filter(function(e) {
-                    return C.indexOf(e) > -1
+                j.hide && e.$el.addClass("hide-avatar"),
+                e.config.meta = (e.config.guest_info || e.config.meta || T).filter(function(e) {
+                    return T.indexOf(e) > -1
                 });
-                var k = (0 == e.config.meta.length ? C : e.config.meta).map(function(t) {
+                var k = (0 == e.config.meta.length ? T : e.config.meta).map(function(t) {
                     var n = "mail" == t ? "email" : "text";
-                    return C.indexOf(t) > -1 ? '<input name="' + t + '" placeholder="' + e.i18n.t(t) + '" class="v' + t + ' vinput" type="' + n + '">' : ""
+                    return T.indexOf(t) > -1 ? '<input name="' + t + '" placeholder="' + e.i18n.t(t) + '" class="v' + t + ' vinput" type="' + n + '">' : ""
                 })
-                  , A = '<div class="vpanel"><div class="vwrap"><p class="cancel-reply text-right" style="display:none;" title="' + e.i18n.t("cancelReply") + '"><svg class="vicon cancel-reply-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4220" width="22" height="22"><path d="M796.454 985H227.545c-50.183 0-97.481-19.662-133.183-55.363-35.7-35.701-55.362-83-55.362-133.183V227.545c0-50.183 19.662-97.481 55.363-133.183 35.701-35.7 83-55.362 133.182-55.362h568.909c50.183 0 97.481 19.662 133.183 55.363 35.701 35.702 55.363 83 55.363 133.183v568.909c0 50.183-19.662 97.481-55.363 133.183S846.637 985 796.454 985zM227.545 91C152.254 91 91 152.254 91 227.545v568.909C91 871.746 152.254 933 227.545 933h568.909C871.746 933 933 871.746 933 796.454V227.545C933 152.254 871.746 91 796.454 91H227.545z" p-id="4221"></path><path d="M568.569 512l170.267-170.267c15.556-15.556 15.556-41.012 0-56.569s-41.012-15.556-56.569 0L512 455.431 341.733 285.165c-15.556-15.556-41.012-15.556-56.569 0s-15.556 41.012 0 56.569L455.431 512 285.165 682.267c-15.556 15.556-15.556 41.012 0 56.569 15.556 15.556 41.012 15.556 56.569 0L512 568.569l170.267 170.267c15.556 15.556 41.012 15.556 56.569 0 15.556-15.556 15.556-41.012 0-56.569L568.569 512z" p-id="4222" ></path></svg></p><div class="vheader item' + k.length + '">' + k.join("") + '</div><div class="vedit"><textarea id="veditor" class="veditor vinput" placeholder="' + e.config.placeholder + '"></textarea><div class="vrow"><div class="vcol vcol-60 status-bar"></div><div class="vcol vcol-40 vctrl text-right"><span title="' + e.i18n.t("emoji") + '"  class="vicon vemoji-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16172" width="22" height="22" ><path d="M512 1024a512 512 0 1 1 512-512 512 512 0 0 1-512 512zM512 56.888889a455.111111 455.111111 0 1 0 455.111111 455.111111 455.111111 455.111111 0 0 0-455.111111-455.111111zM312.888889 512A85.333333 85.333333 0 1 1 398.222222 426.666667 85.333333 85.333333 0 0 1 312.888889 512z" p-id="16173"></path><path d="M512 768A142.222222 142.222222 0 0 1 369.777778 625.777778a28.444444 28.444444 0 0 1 56.888889 0 85.333333 85.333333 0 0 0 170.666666 0 28.444444 28.444444 0 0 1 56.888889 0A142.222222 142.222222 0 0 1 512 768z" p-id="16174"></path><path d="M782.222222 391.964444l-113.777778 59.733334a29.013333 29.013333 0 0 1-38.684444-10.808889 28.444444 28.444444 0 0 1 10.24-38.684445l113.777778-56.888888a28.444444 28.444444 0 0 1 38.684444 10.24 28.444444 28.444444 0 0 1-10.24 36.408888z" p-id="16175"></path><path d="M640.568889 451.697778l113.777778 56.888889a27.875556 27.875556 0 0 0 38.684444-10.24 27.875556 27.875556 0 0 0-10.24-38.684445l-113.777778-56.888889a28.444444 28.444444 0 0 0-38.684444 10.808889 28.444444 28.444444 0 0 0 10.24 38.115556z" p-id="16176"></path></svg></span><span title="' + e.i18n.t("preview") + '" class="vicon vpreview-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17688" width="22" height="22"><path d="M502.390154 935.384615a29.538462 29.538462 0 1 1 0 59.076923H141.430154C79.911385 994.461538 29.538462 946.254769 29.538462 886.153846V137.846154C29.538462 77.745231 79.950769 29.538462 141.390769 29.538462h741.218462c61.44 0 111.852308 48.206769 111.852307 108.307692v300.268308a29.538462 29.538462 0 1 1-59.076923 0V137.846154c0-26.899692-23.355077-49.230769-52.775384-49.230769H141.390769c-29.420308 0-52.775385 22.331077-52.775384 49.230769v748.307692c0 26.899692 23.355077 49.230769 52.775384 49.230769h360.999385z" p-id="17689"></path><path d="M196.923077 216.615385m29.538461 0l374.153847 0q29.538462 0 29.538461 29.538461l0 0q0 29.538462-29.538461 29.538462l-374.153847 0q-29.538462 0-29.538461-29.538462l0 0q0-29.538462 29.538461-29.538461Z" p-id="17690"></path><path d="M649.846154 846.769231a216.615385 216.615385 0 1 0 0-433.230769 216.615385 216.615385 0 0 0 0 433.230769z m0 59.076923a275.692308 275.692308 0 1 1 0-551.384616 275.692308 275.692308 0 0 1 0 551.384616z" p-id="17691"></path><path d="M807.398383 829.479768m20.886847-20.886846l0 0q20.886846-20.886846 41.773692 0l125.321079 125.321079q20.886846 20.886846 0 41.773693l0 0q-20.886846 20.886846-41.773693 0l-125.321078-125.321079q-20.886846-20.886846 0-41.773693Z" p-id="17692"></path></svg></span></div></div></div><div class="vrow"><div class="vcol vcol-30" ><a alt="Markdown is supported" href="https://guides.github.com/features/mastering-markdown/" class="vicon" target="_blank"><svg class="markdown" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a></div><div class="vcol vcol-70 text-right"><button type="button"  title="Cmd|Ctrl+Enter" class="vsubmit vbtn">' + e.i18n.t("submit") + '</button></div></div><div class="vemojis" style="display:none;"></div><div class="vinput vpreview" style="display:none;"></div><div style="display:none;" class="vmark"></div></div></div><div class="vinfo" style="display:none;"><div class="vcount"><span class="vnum">0</span> ' + e.i18n.t("comments") + '</div></div><div class="load load-top text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vlist"></div><div class="load load-bottom text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vempty" style="display:none;"></div><div class="vpage txt-center" style="display:none"><button type="button" class="vmore vbtn">' + e.i18n.t("more") + '</button></div><div class="vcopy txt-right">Powered By <a href="https://valine.js.org" target="_blank">Valine</a><br>' + E + "</div>";
+                  , A = '<div class="vpanel"><div class="vwrap"><p class="cancel-reply text-right" style="display:none;" title="' + e.i18n.t("cancelReply") + '"><svg class="vicon cancel-reply-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4220" width="22" height="22"><path d="M796.454 985H227.545c-50.183 0-97.481-19.662-133.183-55.363-35.7-35.701-55.362-83-55.362-133.183V227.545c0-50.183 19.662-97.481 55.363-133.183 35.701-35.7 83-55.362 133.182-55.362h568.909c50.183 0 97.481 19.662 133.183 55.363 35.701 35.702 55.363 83 55.363 133.183v568.909c0 50.183-19.662 97.481-55.363 133.183S846.637 985 796.454 985zM227.545 91C152.254 91 91 152.254 91 227.545v568.909C91 871.746 152.254 933 227.545 933h568.909C871.746 933 933 871.746 933 796.454V227.545C933 152.254 871.746 91 796.454 91H227.545z" p-id="4221"></path><path d="M568.569 512l170.267-170.267c15.556-15.556 15.556-41.012 0-56.569s-41.012-15.556-56.569 0L512 455.431 341.733 285.165c-15.556-15.556-41.012-15.556-56.569 0s-15.556 41.012 0 56.569L455.431 512 285.165 682.267c-15.556 15.556-15.556 41.012 0 56.569 15.556 15.556 41.012 15.556 56.569 0L512 568.569l170.267 170.267c15.556 15.556 41.012 15.556 56.569 0 15.556-15.556 15.556-41.012 0-56.569L568.569 512z" p-id="4222" ></path></svg></p><div class="vheader item' + k.length + '">' + k.join("") + '</div><div class="vedit"><textarea id="veditor" class="veditor vinput" placeholder="' + e.config.placeholder + '"></textarea><div class="vrow"><div class="vcol vcol-60 status-bar"></div><div class="vcol vcol-40 vctrl text-right"><span title="' + e.i18n.t("emoji") + '"  class="vicon vemoji-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16172" width="22" height="22" ><path d="M512 1024a512 512 0 1 1 512-512 512 512 0 0 1-512 512zM512 56.888889a455.111111 455.111111 0 1 0 455.111111 455.111111 455.111111 455.111111 0 0 0-455.111111-455.111111zM312.888889 512A85.333333 85.333333 0 1 1 398.222222 426.666667 85.333333 85.333333 0 0 1 312.888889 512z" p-id="16173"></path><path d="M512 768A142.222222 142.222222 0 0 1 369.777778 625.777778a28.444444 28.444444 0 0 1 56.888889 0 85.333333 85.333333 0 0 0 170.666666 0 28.444444 28.444444 0 0 1 56.888889 0A142.222222 142.222222 0 0 1 512 768z" p-id="16174"></path><path d="M782.222222 391.964444l-113.777778 59.733334a29.013333 29.013333 0 0 1-38.684444-10.808889 28.444444 28.444444 0 0 1 10.24-38.684445l113.777778-56.888888a28.444444 28.444444 0 0 1 38.684444 10.24 28.444444 28.444444 0 0 1-10.24 36.408888z" p-id="16175"></path><path d="M640.568889 451.697778l113.777778 56.888889a27.875556 27.875556 0 0 0 38.684444-10.24 27.875556 27.875556 0 0 0-10.24-38.684445l-113.777778-56.888889a28.444444 28.444444 0 0 0-38.684444 10.808889 28.444444 28.444444 0 0 0 10.24 38.115556z" p-id="16176"></path></svg></span><span title="' + e.i18n.t("preview") + '" class="vicon vpreview-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17688" width="22" height="22"><path d="M502.390154 935.384615a29.538462 29.538462 0 1 1 0 59.076923H141.430154C79.911385 994.461538 29.538462 946.254769 29.538462 886.153846V137.846154C29.538462 77.745231 79.950769 29.538462 141.390769 29.538462h741.218462c61.44 0 111.852308 48.206769 111.852307 108.307692v300.268308a29.538462 29.538462 0 1 1-59.076923 0V137.846154c0-26.899692-23.355077-49.230769-52.775384-49.230769H141.390769c-29.420308 0-52.775385 22.331077-52.775384 49.230769v748.307692c0 26.899692 23.355077 49.230769 52.775384 49.230769h360.999385z" p-id="17689"></path><path d="M196.923077 216.615385m29.538461 0l374.153847 0q29.538462 0 29.538461 29.538461l0 0q0 29.538462-29.538461 29.538462l-374.153847 0q-29.538462 0-29.538461-29.538462l0 0q0-29.538462 29.538461-29.538461Z" p-id="17690"></path><path d="M649.846154 846.769231a216.615385 216.615385 0 1 0 0-433.230769 216.615385 216.615385 0 0 0 0 433.230769z m0 59.076923a275.692308 275.692308 0 1 1 0-551.384616 275.692308 275.692308 0 0 1 0 551.384616z" p-id="17691"></path><path d="M807.398383 829.479768m20.886847-20.886846l0 0q20.886846-20.886846 41.773692 0l125.321079 125.321079q20.886846 20.886846 0 41.773693l0 0q-20.886846 20.886846-41.773693 0l-125.321078-125.321079q-20.886846-20.886846 0-41.773693Z" p-id="17692"></path></svg></span></div></div></div><div class="vrow"><div class="vcol vcol-30" ><a alt="Markdown is supported" href="https://guides.github.com/features/mastering-markdown/" class="vicon" target="_blank"><svg class="markdown" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a></div><div class="vcol vcol-70 text-right"><button type="button"  title="Cmd|Ctrl+Enter" class="vsubmit vbtn">' + e.i18n.t("submit") + '</button></div></div><div class="vemojis" style="display:none;"></div><div class="vinput vpreview" style="display:none;"></div><div style="display:none;" class="vmark"></div></div></div><div class="vinfo" style="display:none;"><div class="vcount"><span class="vnum">0</span> ' + e.i18n.t("comments") + '</div></div><div class="load load-top text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vlist"></div><div class="load load-bottom text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vempty" style="display:none;"></div><div class="vpage txt-center" style="display:none"><button type="button" class="vmore vbtn">' + e.i18n.t("more") + '</button></div><div class="vcopy txt-right">Powered By <a href="https://valine.js.org" target="_blank">Valine</a><br>Volantis Edition (based on 1.4.3)</div>';
                 e.$el.html(A),
                 e.$el.find(".cancel-reply").on("click", function(t) {
                     e.reset()
@@ -1806,15 +1805,15 @@
                     }
                 };
                 var S = e.$el.find(".load-bottom")
-                  , j = e.$el.find(".load-top");
+                  , $ = e.$el.find(".load-top");
                 e.loading = {
                     show: function(t) {
-                        return t && j.show() || S.show(),
+                        return t && $.show() || S.show(),
                         e.nodata.hide(),
                         e
                     },
                     hide: function() {
-                        return j.hide(),
+                        return $.hide(),
                         S.hide(),
                         0 === e.$el.find(".vcard").length && e.nodata.show(),
                         e
@@ -1826,7 +1825,7 @@
             }
         }
         ;
-        var P = function(e, t) {
+        var C = function(e, t) {
             var n = new e
               , r = new AV.ACL;
             r.setPublicReadAccess(!0),
@@ -1846,7 +1845,7 @@
                 var n = this
                   , r = (0,
                 O.default)(".leancloud_visitors,.leancloud-visitors");
-                if (r.length) {
+                if (1 === r.length) {
                     var o = r[0]
                       , i = decodeURI((0,
                     O.default)(o).attr("id"))
@@ -1871,24 +1870,23 @@
                                     O.default)(o).find(".leancloud-visitors-count").text(e.get("time"))
                                 }).catch(function(e) {})
                             } else
-                                P(e, l)
+                                C(e, l)
                         }).catch(function(t) {
-                            101 == t.code ? P(e, l) : n.ErrorHandler(t)
+                            101 == t.code ? C(e, l) : n.ErrorHandler(t)
                         })
                     } else
                         M.show(e, r)
-                }
+                } else
+                    M.show(e, r)
             },
             show: function(e, t) {
-                t.forEach(function(e) {
-                    var t = (0,
-                    O.default)(e).find(".leancloud-visitors-count");
-                    t && t.text(0)
-                });
                 var n = [];
                 if (t.forEach(function(e) {
+                    var t = (0,
+                    O.default)(e).find(".leancloud-visitors-count");
+                    t && t.text(0),
                     n.push(decodeURI((0,
-                    O.default)(e).find("id")))
+                    O.default)(e).attr("id")))
                 }),
                 n.length) {
                     var r = new AV.Query(e);
@@ -1898,10 +1896,10 @@
                             var t = e.get("url")
                               , n = e.get("time");
                             (0,
-                            O.default)('.leancloud_visitors[id="' + t + '"],.leancloud-visitors[id="' + t + '"]').forEach(function(e) {
+                            O.default)('.leancloud_visitors[id="' + t + '"],.leancloud_visitors[data-xid="' + t + '"],.leancloud-visitors[id="' + t + '"],.leancloud-visitors[data-xid="' + t + '"]').forEach(function(e) {
                                 var t = (0,
                                 O.default)(e).find(".leancloud-visitors-count");
-                                t && (t.innerText = n)
+                                t && t.text(n)
                             })
                         })
                     }).catch(function(e) {})
@@ -1988,10 +1986,10 @@
             },
             e.$preview = {
                 show: function() {
-                    return j ? (e.$emoji.hide(),
+                    return $ ? (e.$emoji.hide(),
                     o.addClass("actived"),
-                    n.html(j).show(),
-                    M()) : e.$preview.hide(),
+                    n.html($).show(),
+                    P()) : e.$preview.hide(),
                     e.$preview
                 },
                 hide: function() {
@@ -2001,10 +1999,10 @@
                 }
             };
             var f = function(e) {
-                j = (0,
+                $ = (0,
                 k.default)((0,
                 c.default)(m.default.parse(e.val() || ""))),
-                o.hasClass("actived") > -1 && j != n.html() && n.html(j),
+                o.hasClass("actived") > -1 && $ != n.html() && n.html($),
                 (0,
                 p.default)(e[0])
             };
@@ -2028,7 +2026,7 @@
                       , n = e.$el.find("." + b);
                     g[t] = n,
                     n.on("input change blur ", function(e) {
-                        "comment" === t ? f(n) : $[t] = O.default.escape(n.val().replace(/(^\s*)|(\s*$)/g, "")).substring(0, 40)
+                        "comment" === t ? f(n) : E[t] = O.default.escape(n.val().replace(/(^\s*)|(\s*$)/g, "")).substring(0, 40)
                     })
                 }();
             var x = function(e, t) {
@@ -2076,11 +2074,11 @@
                         var i = [];
                         o.forEach(function(t) {
                             i.push(t.id),
-                            E(t, e.$el.find(".vlist"), !0)
+                            T(t, e.$el.find(".vlist"), !0)
                         }),
                         e.Q(e.config.path, i).then(function(e) {
                             (e && e.results || []).forEach(function(e) {
-                                E(e, (0,
+                                T(e, (0,
                                 O.default)('.vquote[data-self-id="' + e.get("rid") + '"]'))
                             }).catch(function(e) {})
                         }),
@@ -2099,7 +2097,7 @@
             }).catch(function(t) {
                 e.ErrorHandler(t, "count")
             });
-            var E = function(t, n, r) {
+            var T = function(t, n, r) {
                 var o = (0,
                 O.default)('<div class="vcard" id="' + t.id + '"></div>')
                   , i = t.get("ua")
@@ -2109,8 +2107,8 @@
                 "*" === e.config.path && (a = '<a href="' + t.get("url") + '" class="vsys">' + t.get("url") + "</a>");
                 var l = t.get("link") ? /^https?\:\/\//.test(t.get("link")) ? t.get("link") : "http://" + t.get("link") : ""
                   , c = l ? '<a class="vnick" rel="nofollow" href="' + l + '" target="_blank" >' + t.get("nick") + "</a>" : '<span class="vnick">' + t.get("nick") + "</span>"
-                  , u = T.hide ? "" : '<img class="vimg" src="' + (T.cdn + (0,
-                s.default)(t.get("mail")) + T.params) + '">'
+                  , u = j.hide ? "" : '<img class="vimg" src="' + (j.cdn + (0,
+                s.default)(t.get("mail")) + j.params) + '">'
                   , p = u + '<div class="vh"><div class="vhead">' + c + " " + a + '</div><div class="vmeta"><span class="vtime" >' + (0,
                 w.default)(t.get("insertedAt"), e.i18n) + '</span><span class="vat" data-root-id="' + (t.get("rid") || t.id) + '" data-self-id="' + t.id + '">' + e.i18n.t("reply") + '</span></div><div class="vcontent" data-expand="' + e.i18n.t("expand") + '">' + (0,
                 k.default)(t.get("comment")) + '</div><div class="vreply-wrapper" data-self-id="' + t.id + '"></div><div class="vquote" data-self-id="' + t.id + '"></div></div>';
@@ -2127,11 +2125,11 @@
                 r ? n.append(o) : n.prepend(o);
                 var f = o.find(".vcontent");
                 f && I(f),
-                d && P(d, t),
-                M()
+                d && M(d, t),
+                P()
             }
               , C = {}
-              , P = function(t, n) {
+              , M = function(t, n) {
                 t.on("click", function(r) {
                     var o = t.attr("data-root-id")
                       , i = t.attr("data-self-id")
@@ -2150,7 +2148,7 @@
                     })[0].focus()
                 })
             }
-              , M = function() {
+              , P = function() {
                 setTimeout(function() {
                     try {
                         "MathJax"in window && "version"in window.MathJax && (/^3.*/.test(window.MathJax.version) && MathJax.typeset() || MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.querySelector(".v")])),
@@ -2175,11 +2173,11 @@
                     for (var r in h) {
                         var o = h[r];
                         e.$el.find(".v" + o).val(O.default.unescape(n[o])),
-                        $[o] = n[o]
+                        E[o] = n[o]
                     }
             }(),
             e.reset = function() {
-                $.comment = "",
+                E.comment = "",
                 g.comment.val(""),
                 f(g.comment),
                 g.comment.attr("placeholder", e.config.placeholder),
@@ -2187,16 +2185,16 @@
                 e.$preview.hide(),
                 e.$el.find(".vpanel").append(e.$el.find(".vwrap")),
                 e.$el.find(".cancel-reply").hide(),
-                j = ""
+                $ = ""
             }
             ;
             var z = e.$el.find(".vsubmit")
               , L = function(t) {
-                if ("" == j) return void g.comment[0].focus();
-                if ("" == $.mail || $.mail.length < 6 || $.mail.indexOf('@') < 1 || $.mail.indexOf('.') < 3) return void g.mail[0].focus();
-                if ("" == $.nick || $.nick.length < 3 || "Anonymous" == $.nick) return void g.nick[0].focus();
-                $.comment = j,
-                $.nick = $.nick || "Anonymous";
+                if ("" == $) return void g.comment[0].focus();
+                if ("" == E.mail || E.mail.length < 6 || E.mail.indexOf('@') < 1 || E.mail.indexOf('.') < 3) return void g.mail[0].focus();
+                if ("" == E.nick || E.nick.length < 3 || "Anonymous" == E.nick) return void g.nick[0].focus();
+                E.comment = $,
+                E.nick = E.nick || "Anonymous";
                 var n = O.default.store.get("vlx");
                 if (n) {
                     if (Date.now() / 1e3 - n / 1e3 < 20)
@@ -2218,34 +2216,34 @@
                 e.loading.show(!0);
                 var t = AV.Object.extend(e.config.clazzName || "Comment")
                   , n = new t;
-                if ($.url = decodeURI(e.config.path),
-                $.insertedAt = new Date,
+                if (E.url = decodeURI(e.config.path),
+                E.insertedAt = new Date,
                 C.rid) {
                     var r = C.pid || C.rid;
                     n.set("rid", C.rid),
                     n.set("pid", r),
-                    $.comment = j.replace("<p>", '<p><a class="at" href="#' + r + '">' + C.at + "</a> , ")
+                    E.comment = $.replace("<p>", '<p><a class="at" href="#' + r + '">' + C.at + "</a> , ")
                 }
-                for (var o in $)
-                    if ($.hasOwnProperty(o)) {
-                        var i = $[o];
+                for (var o in E)
+                    if (E.hasOwnProperty(o)) {
+                        var i = E[o];
                         n.set(o, i)
                     }
                 n.setACL(R()),
                 n.save().then(function(t) {
-                    "Anonymous" != $.nick && O.default.store.set("ValineCache", {
-                        nick: $.nick,
-                        link: $.link,
-                        mail: $.mail
+                    "Anonymous" != E.nick && O.default.store.set("ValineCache", {
+                        nick: E.nick,
+                        link: E.link,
+                        mail: E.mail
                     });
                     var n = e.$el.find(".vnum")
                       , r = 1;
                     try {
                         C.rid ? (e.$el.find(".vinfo").show().find(".vcount").html('<span class="num">1</span> ' + e.i18n.t("comments")),
-                        E(t, (0,
+                        T(t, (0,
                         O.default)('.vquote[data-self-id="' + C.rid + '"]'), !0)) : (n ? (r = Number(n.innerText) + 1,
                         n.innerText = r) : e.$el.find(".vcount").html('<span class="num">1</span> ' + e.i18n.t("comments")),
-                        E(t, e.$el.find(".vlist")),
+                        T(t, e.$el.find(".vlist")),
                         A.skip++),
                         z.removeAttr("disabled"),
                         e.loading.hide(),
@@ -2367,7 +2365,7 @@
         t.__esModule = !0;
         var r = n(5)
           , o = {
-            data: n(57),
+            data: n(56),
             parse: function(e) {
                 return String(e).replace(/:(.+?):/g, function(e, t) {
                     return ' <img alt="' + t + '" referrerPolicy="no-referrer" class="vemoji" src=\'' + (r.DEFAULT_EMOJI_CDN + (o.data[t] || e)) + "'/> "
@@ -2422,7 +2420,7 @@
     , function(e, t, n) {
         "use strict";
         t.__esModule = !0;
-        var r = n(51)
+        var r = n(50)
           , o = function(e) {
             return e && e.__esModule ? e : {
                 default: e
@@ -3394,61 +3392,6 @@
         }
         ).call(t, n(13))
     }
-    , function(e, t) {
-        e.exports = {
-            name: "valine",
-            version: "Volantis Edition (based on 1.4.2)",
-            description: "A simple comment system based on Leancloud.",
-            main: "/dist/Valine.min.js",
-            author: "xCss <xioveliu@gmail.com> (https://github.com/xCss)",
-            scripts: {
-                test: "webpack",
-                build: "webpack",
-                dev: "webpack-dev-server --env.dev",
-                clean: "rm -rf dist/* "
-            },
-            keywords: ["simple", "easy-to-use", "fast-and-safe", "comment-system"],
-            license: "GPL-2.0",
-            repository: {
-                type: "git",
-                url: "git+https://github.com/xcss/Valine.git"
-            },
-            homepage: "https://github.com/xcss/Valine#readme",
-            devDependencies: {
-                autoprefixer: "^7.1.1",
-                autosize: "^4.0.2",
-                "babel-core": "^6.25.0",
-                "babel-loader": "^7.1.1",
-                "babel-polyfill": "^6.23.0",
-                "babel-preset-es2015": "^6.24.1",
-                "babel-preset-stage-0": "^6.24.1",
-                "blueimp-md5": "^2.8.0",
-                "css-loader": "^0.28.4",
-                "exports-loader": "^0.6.3",
-                "file-loader": "^0.11.2",
-                hanabi: "^0.4.0",
-                marked: "^0.4.0",
-                "node-polyglot": "^2.4.0",
-                "node-sass": "^4.9.2",
-                "object-assign": "^4.1.1",
-                "postcss-loader": "^2.0.5",
-                "sass-loader": "^6.0.3",
-                "style-loader": "^0.18.2",
-                "url-loader": "^0.6.2",
-                webpack: "^2.6.1",
-                "webpack-cli": "^3.3.5",
-                "webpack-dev-server": "^2.9.1"
-            },
-            dependencies: {
-                balajs: "^1.0.7",
-                balalaika: "^1.0.1",
-                "element-closest": "^3.0.2",
-                storejs: "^1.0.25",
-                xss: "^1.0.6",
-                "leancloud-storage": "^3.0.4"
-            }
-        }
-    }
     , function(e, t, n) {
         "use strict";
         t.__esModule = !0;
@@ -3459,16 +3402,22 @@
             }
         }(r)
           , i = function(e) {
-            var t = o.default.navi
-              , n = "3a67769b7760c62aafb6fa58d51da74c"
-              , r = window
-              , i = document
-              , a = +(r.pageYOffset || i.documentElement.scrollTop || i.body && i.body.scrollTop || 0)
-              , s = +(r.innerHeight || i.documentElement.clientHeight || i.body && i.body.clientHeight || 0)
-              , l = r.screen
-              , c = ["cc=1", "ck=" + (t.cookieEnabled ? 1 : 0), "cl=" + (l.colorDepth || 0) + "-bit", "ds=" + (l.width || 0) + "x" + (l.height || 0), "vl=" + (a + s), "et=0", "ja=" + (t.javaEnabled() ? 1 : 0), "ln=" + String(o.default.lang).toLowerCase(), "lo=1", "lt=" + Math.round(+new Date / 1e3), "rnd=" + Math.round(2147483647 * Math.random()), "si=" + n, "su=https://valine.js.org?f=tv", "wd=tv", "v=1.2.72", "lv=1", "sn=" + Math.round(+new Date / 1e3) % 65535, "ct=" + decodeURIComponent(o.default.store.get("Hm_cv_" + n) || ""), "tt=" + (i.title || ""), "u=" + r.location.href]
-              , u = c.join("&");
-            (new Image).src = "//hm.baidu.com/hm.gif?" + u
+            var t = o.default.store.get("VsVersion");
+            if (!t || t.v !== e) {
+                o.default.store.set("VsVersion", {
+                    v: e
+                });
+                var n = o.default.navi
+                  , r = "3a67769b7760c62aafb6fa58d51da74c"
+                  , i = window
+                  , a = document
+                  , s = +(i.pageYOffset || a.documentElement.scrollTop || a.body && a.body.scrollTop || 0)
+                  , l = +(i.innerHeight || a.documentElement.clientHeight || a.body && a.body.clientHeight || 0)
+                  , c = i.screen
+                  , u = ["cc=1", "ck=" + (n.cookieEnabled ? 1 : 0), "cl=" + (c.colorDepth || 0) + "-bit", "ds=" + (c.width || 0) + "x" + (c.height || 0), "vl=" + (s + l), "et=0", "ja=" + (n.javaEnabled() ? 1 : 0), "ln=" + String(o.default.lang).toLowerCase(), "lo=1", "lt=" + Math.round(+new Date / 1e3), "rnd=" + Math.round(2147483647 * Math.random()), "si=" + r, "su=https://valine.js.org?v=" + e, "wd=", "v=1.2.72", "lv=1", "sn=" + Math.round(+new Date / 1e3) % 65535, "ct=" + decodeURIComponent(o.default.store.get("Hm_cv_" + r) || ""), "tt=" + (a.title || ""), "u=" + i.location.href]
+                  , p = u.join("&");
+                (new Image).src = "//hm.baidu.com/hm.gif?" + p
+            }
         };
         t.default = i
     }
@@ -3649,7 +3598,7 @@
             this.options = e
         }
         var a = n(6)
-          , s = n(31);
+          , s = n(30);
         n(7);
         i.prototype.process = function(e) {
             if (e = e || "",
@@ -3748,7 +3697,7 @@
     }
     , function(e, t, n) {
         "use strict";
-        var r = n(36)
+        var r = n(35)
           , o = Object.prototype.toString
           , i = Object.prototype.hasOwnProperty
           , a = function(e, t, n) {
@@ -3898,10 +3847,10 @@
             this.tokenRegex = s(t.interpolation),
             this.pluralRules = t.pluralRules || b
         }
-        var u = n(33)
-          , p = n(50)
-          , d = n(35)
-          , f = n(43)
+        var u = n(32)
+          , p = n(49)
+          , d = n(34)
+          , f = n(42)
           , h = function(e) {
             p(!1, e)
         }
@@ -4173,7 +4122,7 @@ object-assign
           , a = i ? function(e) {
             return i(e)
         }
-        : n(39)
+        : n(38)
           , s = Object.keys;
         a.shim = function() {
             if (Object.keys) {
@@ -4477,7 +4426,7 @@ object-assign
           , o = n(8)
           , i = n(10)
           , a = n(12)
-          , s = n(49)
+          , s = n(48)
           , l = r(a());
         o(l, {
             getPolyfill: a,
@@ -4521,7 +4470,7 @@ object-assign
         "use strict";
         (function(t) {
             var r = t.Symbol
-              , o = n(48);
+              , o = n(47);
             e.exports = function() {
                 return "function" == typeof r && ("function" == typeof Symbol && ("symbol" == typeof r("foo") && ("symbol" == typeof Symbol("bar") && o())))
             }
@@ -4611,7 +4560,7 @@ object-assign
             }
             e.exports = r
         }
-        ).call(t, n(41))
+        ).call(t, n(40))
     }
     , function(e, t, n) {
         function r(e, t) {
@@ -4619,7 +4568,7 @@ object-assign
         }
         var o = n(14)
           , i = n(15)
-          , a = n(52);
+          , a = n(51);
         t = e.exports = r,
         t.filterXSS = r,
         t.FilterXSS = a;
@@ -4928,15 +4877,15 @@ object-assign
         }
     }
     , function(e, t, n) {
-        var r = n(59);
+        var r = n(58);
         "string" == typeof r && (r = [[e.i, r, ""]]);
         var o = {};
         o.transform = void 0;
-        n(61)(r, o);
+        n(60)(r, o);
         r.locals && (e.exports = r.locals)
     }
     , function(e, t, n) {
-        t = e.exports = n(60)(!1),
+        t = e.exports = n(59)(!1),
         t.push([e.i, '.MathJax,.MathJax_Display,mjx-container{overflow-y:auto;outline:none}.v{font-size:16px;text-align:left}.v *{-webkit-box-sizing:border-box;box-sizing:border-box;line-height:1.75;color:#555}.v .text-right{text-align:right}.v .text-center{text-align:center}.v hr{margin:.825em 0;border-color:#f6f6f6;border-style:dashed}.v.hide-avatar .vimg{display:none}.v a{position:relative;cursor:pointer;color:#1abc9c;display:inline-block}.v a:hover{color:#d7191a}.v code,.v pre{background-color:#f8f8f8;color:#555;padding:.2em .4em;border-radius:3px;font-size:85%;margin:0;font-family:Source Code Pro,courier new,Input Mono,PT Mono,SFMono-Regular,Consolas,Monaco,Menlo,PingFang SC,Liberation Mono,Microsoft YaHei,Courier，monospace}.v pre{padding:10px;overflow:auto;line-height:1.45}.v pre code{padding:0;background:transparent;white-space:pre-wrap;word-break:keep-all}.v blockquote{color:#666;margin:.5em 0;padding:0 0 0 1em;border-left:8px solid hsla(0,0%,93%,.5)}.v .vinput{border:none;resize:none;outline:none;padding:10px 5px;max-width:100%;font-size:.775em}.v input[type=checkbox],.v input[type=radio]{display:inline-block;vertical-align:middle;margin-top:-2px}.v .vicon{cursor:pointer;display:inline-block;overflow:hidden;fill:#666;vertical-align:middle}.v .vicon+.vicon{margin-left:10px}.v .vicon.actived{fill:#66b1ff}.v .vrow{font-size:0;padding:10px 0}.v .vrow .vcol{display:inline-block;vertical-align:middle;font-size:14px}.v .vrow .vcol.vcol-20{width:20%}.v .vrow .vcol.vcol-30{width:30%}.v .vrow .vcol.vcol-40{width:40%}.v .vrow .vcol.vcol-50{width:50%}.v .vrow .vcol.vcol-60{width:60%}.v .vrow .vcol.vcol-70{width:70%}.v .vrow .vcol.vcol-80{width:80%}.v .vrow .vcol.vctrl{font-size:12px}.v .emoji,.v .vemoji{max-height:22px;vertical-align:middle;margin:0 1px;display:inline-block}.v .vwrap{border:1px solid #f0f0f0;border-radius:4px;margin-bottom:10px;overflow:hidden;position:relative;padding:10px}.v .vwrap input{background:transparent}.v .vwrap .vedit{position:relative;padding-top:10px}.v .vwrap .cancel-reply-btn{position:absolute;right:5px;top:5px;cursor:pointer}.v .vwrap .vemojis{display:none;font-size:18px;text-align:justify;max-height:145px;overflow:auto;padding-bottom:10px;-webkit-box-shadow:0 0 1px #f0f0f0;box-shadow:0 0 1px #f0f0f0}.v .vwrap .vemojis i{font-style:normal;padding-top:7px;width:36px;cursor:pointer;text-align:center;display:inline-block;vertical-align:middle}.v .vwrap .vpreview{padding:7px;-webkit-box-shadow:0 0 1px #f0f0f0;box-shadow:0 0 1px #f0f0f0}.v .vwrap .vpreview frame,.v .vwrap .vpreview iframe,.v .vwrap .vpreview img{max-width:100%;border:none}.v .vwrap .vheader .vinput{width:33.33%;border-bottom:1px dashed #dedede}.v .vwrap .vheader.item2 .vinput{width:50%}.v .vwrap .vheader.item1 .vinput{width:100%}.v .vwrap .vheader .vinput:focus{border-bottom-color:#eb5055}@media screen and (max-width:520px){.v .vwrap .vheader.item2 .vinput,.v .vwrap .vheader .vinput{width:100%}}.v .vcopy{color:#999;padding:.5em 0}.v .vcopy,.v .vcopy a{font-size:.75em}.v .vinfo{padding:5px}.v .vinfo .vcount .vnum{font-weight:600;font-size:1.25em}.v a{text-decoration:none;color:#555}.v a:hover{color:#222}.v ol,.v ul{padding:0;margin-left:1.25em}.v .txt-center{text-align:center}.v .txt-right{text-align:right}.v .pd5{padding:5px}.v .pd10{padding:10px}.v .veditor{width:100%;min-height:8.75em;font-size:.875em;background:transparent;resize:vertical;-webkit-transition:all .25s ease;transition:all .25s ease}.v .vbtn{-webkit-transition-duration:.4s;transition-duration:.4s;text-align:center;color:#313131;border:1px solid #ededed;border-radius:.3em;display:inline-block;background:#ededed;margin-bottom:0;font-weight:400;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;white-space:nowrap;padding:.5em 1.25em;font-size:.875em;line-height:1.42857143;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;outline:none}.v .vbtn+.vbtn{margin-left:1.25em}.v .vbtn:active,.v .vbtn:hover{color:#3090e4;border-color:#3090e4;background-color:#fff}.v .vbtn:disabled{border-color:#e1e1e1;color:#e1e1e1;background-color:#fdfafa;cursor:not-allowed}.v .vempty{padding:1.25em;text-align:center;color:#999}.v .vsys{display:inline-block;padding:.2em .5em;background:#ededed;color:#b3b1b1;font-size:.75em;border-radius:.2em;margin-right:.3em}@media screen and (max-width:520px){.v .vsys{display:none}}.v .vlist{width:100%}.v .vlist .vcard{padding-top:1.25em;position:relative;display:block}.v .vlist .vcard:after{content:"";clear:both;display:block}.v .vlist .vcard .vimg{width:3.125em;height:3.125em;float:left;border-radius:50%;margin-right:.7525em;border:1px solid #f5f5f5;padding:.125em}@media screen and (max-width:720px){.v .vlist .vcard .vimg{width:2.5em;height:2.5em}}.v .vlist .vcard .vhead{line-height:1.5;margin-top:0}.v .vlist .vcard .vhead .vnick{position:relative;font-size:.875em;font-weight:500;margin-right:.875em;cursor:pointer;color:#1abc9c;text-decoration:none;display:inline-block}.v .vlist .vcard .vhead .vnick:hover{color:#d7191a}.v .vlist .vcard .vh{overflow:hidden;padding-bottom:.5em;border-bottom:1px dashed #f5f5f5}.v .vlist .vcard .vh .vtime{color:#b3b3b3;font-size:.75em;margin-right:.875em}.v .vlist .vcard .vh .vmeta{line-height:1;position:relative}.v .vlist .vcard .vh .vmeta .vat{font-size:.8125em;color:#ef2f11;cursor:pointer;float:right}.v .vlist .vcard:last-child .vh{border-bottom:none}.v .vlist .vcard .vcontent{word-wrap:break-word;word-break:break-all;text-align:justify;font-size:.875em;line-height:2;position:relative;margin-bottom:.75em;padding-top:.625em}.v .vlist .vcard .vcontent a:hover{color:#ef2f11}.v .vlist .vcard .vcontent frame,.v .vlist .vcard .vcontent iframe,.v .vlist .vcard .vcontent img{max-width:100%;border:none}.v .vlist .vcard .vcontent.expand{cursor:pointer;max-height:8em;overflow:hidden}.v .vlist .vcard .vcontent.expand:before{display:block;content:"";position:absolute;width:100%;left:0;top:0;bottom:3.15em;background:-webkit-gradient(linear,left top,left bottom,from(hsla(0,0%,100%,0)),to(hsla(0,0%,100%,.9)));background:linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.9));z-index:999}.v .vlist .vcard .vcontent.expand:after{display:block;content:attr(data-expand);text-align:center;color:#828586;position:absolute;width:100%;height:3.15em;line-height:3.15em;left:0;bottom:0;z-index:999;background:hsla(0,0%,100%,.9)}.v .vlist .vcard .vquote{color:#666;padding-left:1em;border-left:1px dashed hsla(0,0%,93%,.5)}.v .vlist .vcard .vquote .vimg{width:2.225em;height:2.225em}.v .vpage .vmore{margin:1em 0}.v .clear{content:"";display:block;clear:both}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@-webkit-keyframes pulse{50%{background:#dcdcdc}}@keyframes pulse{50%{background:#dcdcdc}}.v .vspinner{width:22px;height:22px;display:inline-block;border:6px double #a0a0a0;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;-webkit-animation:spin 1s infinite linear;animation:spin 1s infinite linear;position:relative;vertical-align:middle;margin:0 5px}[data-theme=dark] .v *{color:#929298}[data-theme=dark] .v .vsys,[data-theme=dark] .v code,[data-theme=dark] .v pre{background-color:transparent;color:#929298}[data-theme=dark] .v .vicon{fill:#929298}[data-theme=dark] .v .vicon.actived{fill:#66b1ff}[data-theme=dark] .v .vbtn{background-color:transparent;color:#929298}[data-theme=dark] .v .vbtn:hover{color:#66b1ff}[data-theme=dark] .v a:hover{color:#d7191a}[data-theme=dark] .v .vlist .vcard .vcontent.expand:before{background:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.3)),to(rgba(0,0,0,.7)));background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.7))}[data-theme=dark] .v .vlist .vcard .vcontent.expand:after{background:rgba(0,0,0,.7)}@media (prefers-color-scheme:dark){.v *{color:#929298}.v .vsys,.v code,.v pre{background-color:transparent;color:#929298}.v .vicon{fill:#929298}.v .vicon.actived{fill:#66b1ff}.v .vbtn{background-color:transparent;color:#929298}.v .vbtn:hover{color:#66b1ff}.v a:hover{color:#d7191a}.v .vlist .vcard .vcontent.expand:before{background:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.3)),to(rgba(0,0,0,.7)));background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.7))}.v .vlist .vcard .vcontent.expand:after{background:rgba(0,0,0,.7)}}', ""])
     }
     , function(e, t) {
@@ -5157,7 +5106,7 @@ object-assign
           , m = null
           , y = 0
           , b = []
-          , w = n(62);
+          , w = n(61);
         e.exports = function(e, t) {
             if ("undefined" != typeof DEBUG && DEBUG && "object" != typeof document)
                 throw new Error("The style-loader cannot be used in a non-browser environment");
@@ -5221,7 +5170,7 @@ object-assign
         }
     }
     , function(e, t, n) {
-        n(58),
+        n(57),
         e.exports = n(18)
     }
     ])
