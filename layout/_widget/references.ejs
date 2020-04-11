@@ -1,11 +1,16 @@
 <%
 if (item.rows == undefined) {
   item.rows = new Array();
-  (page.references||[]).forEach(function(ref) {
-    if (ref.name || ref.url) {
-      item.rows.push(ref);
-    }
-  })
+  var itms = new Array();
+  let id = item.id || 'references';
+  if (id in page) {
+    (page[id]||[]).forEach(function(ref) {
+      if (ref.name || ref.url) {
+        item.rows.push(ref);
+      }
+    })
+  }
+
 }
 %>
 
