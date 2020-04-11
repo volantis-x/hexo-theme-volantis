@@ -1,9 +1,9 @@
 <% (widgets||[]).forEach(function(widget){ %>
   <% if (theme.widget && (widget in theme.widget)){ %>
-    <% let w = theme.widget[widget]; %>
+    <% let w = theme.widget[widget]; w.id = widget; %>
     <%- partial(w.class, {item: w, where: where}) %>
   <% } else if (site.data.widget && (widget in site.data.widget)){ %>
-    <% let w = site.data.widget[widget]; %>
+    <% let w = site.data.widget[widget]; w.id = widget; %>
     <%- partial(w.class, {item: w, where: where}) %>
   <% } %>
 <% }) %>
