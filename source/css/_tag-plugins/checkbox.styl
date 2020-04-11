@@ -59,7 +59,78 @@ article .checkbox
         bottom: 1px
         width: 2px
         height: 10px
-
+  &.minus input[type=checkbox]
+    &:before
+      transform: rotate(0)
+      left: 1px
+      top: 5px
+      width: 0px
+      height: 2px
+    &:after
+      transform: rotate(0)
+      left: 1px
+      top: 5px
+      width: 0px
+      height: 2px
+    &:checked
+      &:before
+        left: 1px
+        top: 5px
+        width: 10px
+        height: 2px
+      &:after
+        left: 1px
+        top: 5px
+        width: 10px
+        height: 2px
+  &.plus input[type=checkbox]
+    &:before
+      transform: rotate(0)
+      left: 1px
+      top: 5px
+      width: 0px
+      height: 2px
+    &:after
+      transform: rotate(0)
+      left: 5px
+      top: 1px
+      width: 2px
+      height: 0px
+    &:checked
+      &:before
+        left: 1px
+        top: 5px
+        width: 10px
+        height: 2px
+      &:after
+        left: 5px
+        top: 1px
+        width: 2px
+        height: 10px
+  &.times input[type=checkbox]
+    &:before
+      transform: rotate(45deg)
+      left: 3px
+      top: 1px
+      width: 0px
+      height: 2px
+    &:after
+      transform: rotate(135deg)
+      right: 3px
+      top: 1px
+      width: 0px
+      height: 2px
+    &:checked
+      &:before
+        left: 1px
+        top: 5px
+        width: 10px
+        height: 2px
+      &:after
+        right: 1px
+        top: 5px
+        width: 10px
+        height: 2px
   /* Radio */
   input[type=radio]
     border-radius: 50%
