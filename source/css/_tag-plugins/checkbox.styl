@@ -1,0 +1,120 @@
+article .checkbox
+  display: flex
+  align-items: center
+  input
+    -webkit-appearance: none
+    -moz-appearance: none
+    -ms-appearance: none
+    -o-appearance: none
+    appearance: none
+    position: relative
+    height: 20px
+    width: 20px
+    transition:all .15s ease-out 0s
+    cursor: pointer
+    display: inline-block
+    outline: none
+    border-radius: 2px
+    flex-shrink: 0
+    margin-right: 8px
+    margin-bottom: 2px
+    if hexo-config('style.body.checkbox.enable') != true
+      pointer-events: none
+  /* Checkbox */
+  input[type=checkbox]
+    &:before, &:after
+      position: absolute
+      content: ""
+      background: #fff
+      transition: all .2s ease-in-out
+    &:before
+      left: 2px
+      top: 8px
+      width: 0
+      height: 2px
+      transform: rotate(45deg)
+      -webkit-transform: rotate(45deg)
+      -moz-transform: rotate(45deg)
+      -ms-transform: rotate(45deg)
+      -o-transform: rotate(45deg)
+    &:after
+      right: 9px
+      bottom: 3px
+      width: 2px
+      height: 0
+      transform: rotate(40deg)
+      -webkit-transform: rotate(40deg)
+      -moz-transform: rotate(40deg)
+      -ms-transform: rotate(40deg)
+      -o-transform: rotate(40deg)
+      transition-delay: .2s
+    &:checked
+      &:before
+        left: 1px
+        top: 10px
+        width: 6px
+        height: 2px
+      &:after
+        right: 5px
+        bottom: 1px
+        width: 2px
+        height: 14px
+
+  /* Radio */
+  input[type=radio]
+    border-radius: 50%
+    &:before
+      content: ""
+      display: block
+      width: 10px
+      height: 10px
+      border-radius: 50%
+      margin: .2rem
+      transform: scale(0)
+      transition: all ease-out 250ms
+    &:checked:before
+      transform: scale(1)
+  /* Colors */
+  input
+    $c = convert(hexo-config('style.body.checkbox.color')) || $color-theme
+    border: 2px solid $c
+    &[type=checkbox]:checked
+      background: $c
+    &[type=radio]:checked:before
+      background: $c
+  &.red input
+    border-color: $color-mac-red
+    &[type=checkbox]:checked
+      background: $color-mac-red
+    &[type=radio]:checked:before
+      background: $color-mac-red
+  &.green input
+    border-color: $color-mac-green
+    &[type=checkbox]:checked
+      background: $color-mac-green
+    &[type=radio]:checked:before
+      background: $color-mac-green
+  &.yellow input
+    border-color: $color-mac-yellow
+    &[type=checkbox]:checked
+      background: $color-mac-yellow
+    &[type=radio]:checked:before
+      background: $color-mac-yellow
+  &.cyan input
+    border-color: $color-mac-cyan
+    &[type=checkbox]:checked
+      background: $color-mac-cyan
+    &[type=radio]:checked:before
+      background: $color-mac-cyan
+  &.blue input
+    border-color: $color-md-blue
+    &[type=checkbox]:checked
+      background: $color-md-blue
+    &[type=radio]:checked:before
+      background: $color-md-blue
+
+article .checkbox
+  p
+    display: inline-block
+    margin-top: 2px
+    margin-bottom: 0
