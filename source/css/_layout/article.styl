@@ -105,8 +105,8 @@
       background: $color-theme
       color: $color-inner
   p
-    margin-top: $gap-row
-    margin-bottom: $gap-row
+    margin-top: $gap-paragraph
+    margin-bottom: $gap-paragraph
     text-align: $textalign-p
     max-width: 100%
     overflow: auto
@@ -129,7 +129,15 @@
     ul,ol
       margin-top: 0
       margin-bottom: 0
-
+    li
+      margin-top: $gap-row * 0.5
+      margin-bottom: $gap-row * 0.5
+      li
+        margin-top: 0
+        margin-bottom: 0
+      p
+        margin-top: $gap-row
+        margin-bottom: $gap-row
     &.task-list
       padding-left: 0
       margin-left: 4px
@@ -140,9 +148,9 @@
 
 
   ul>li
-      list-style: initial
+    list-style: initial
   ol>li
-      list-style: decimal
+    list-style: decimal
 
   .subtitle
     h6
@@ -353,9 +361,6 @@
       margin-top: $gap-h4 - $navbar-height - $gap
   h5
     font-weight: bold
-  p
-    margin-top: $gap-paragraph
-    margin-bottom: $gap-paragraph
 
 article .readmore
   margin-top: $gap-paragraph

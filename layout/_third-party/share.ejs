@@ -17,6 +17,8 @@
           href="http://connect.qq.com/widget/shareqq/index.html?url=<%- post.permalink %>&title=<%- (post.title || post.seotitle) + ' - ' + config.title %><%- (post.thumbnail) ? '&pics=' + (post.thumbnail) : '' %>&summary=<%- strip_html(post.excerpt) %>"
           <% } else if (item.id == 'weibo'){ %>
           href="http://service.weibo.com/share/share.php?url=<%- post.permalink %>&title=<%- (post.title || post.seotitle) + ' - ' + config.title %><%- (post.thumbnail) ? '&pics=' + (post.thumbnail) : '' %>&summary=<%- strip_html(post.excerpt) %>"
+          <% } else if (item.id == 'telegram'){ %>
+            href="https://t.me/share/url?url=<%- post.permalink %>&text=<%- (post.title || post.seotitle) + ' - ' + config.title %>"
           <% } %>
           >
           <% if (item.img){ %>
