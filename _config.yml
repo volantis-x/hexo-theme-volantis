@@ -491,11 +491,10 @@ comments:
     placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
     avatar: mp # gravatar style https://valine.js.org/avatar
     pageSize: 10 # comment list page size
-    verify: true # valine verify code (true/false)
-    notify: true # valine mail notify (true/false)
     lang: zh-cn
     highlight: true
     visitor: false # unavailable for now...
+    mathJax: false
   # MiniValine
   # See: https://github.com/MiniValine/MiniValine
   minivaline:

@@ -183,17 +183,13 @@
   <% } %>
   <script>
   var GUEST_INFO = ['nick','mail','link'];
-  var guest_info = '<%= theme.comments.valine.meta %>'.split(',').filter(function(item){
+  var meta = '<%= theme.comments.valine.meta %>'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = '<%= theme.comments.valine.notify %>' == 'true';
-  var verify = '<%= theme.comments.valine.verify %>' == 'true';
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
-    notify: notify,
-    verify: verify,
-    guest_info: guest_info,
+    meta: meta,
     <% if (page.valine && page.valine.path) { %>
       path: "<%= page.valine.path %>",
     <% } else if (theme.comments.valine.path) { %>
@@ -206,7 +202,8 @@
     avatar:'<%= theme.comments.valine.avatar %>',
     lang:'<%= theme.comments.valine.lang %>',
     visitor: '<%- theme.comments.valine.visitor %>',
-    highlight:'<%= theme.comments.valine.highlight %>'
+    highlight: '<%= theme.comments.valine.highlight %>',
+    mathJax: '<%= theme.comments.valine.mathJax %>'
   })
   </script>
 <% } %>
