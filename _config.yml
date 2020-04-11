@@ -39,8 +39,6 @@ style:
     checkbox:
       enable: true # enable for user
       color: '' # color for default checkbox
-
-
   gap:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 24px # Spacing above H3 (only px unit)
