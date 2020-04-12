@@ -1,6 +1,10 @@
 .l_main
   #comments
     position: relative
+    // padding-top: 1.5*$gap
+    @media screen and (max-width: $device-mobile)
+      // padding-top: $gap
+
     #valine_container
       >i
         display: block
@@ -50,12 +54,6 @@
             fill: $color-p
             &.actived
               fill: $color-theme
-      .vcount
-        font-size: $fontsize-meta
-        padding: 0
-        font-weight: inherit
-        .vnum
-          font-size: $fontsize-h2
 
       button
         border: none
@@ -68,7 +66,48 @@
           color: $color-hover
           background: bgcolor($color-hover)
 
-      .vcards
+      blockquote
+        padding: $gap
+        border-left: $border-line solid $color-blockquote
+        trans()
+        p
+          text-align: left
+          word-wrap: normal
+
+      pre code
+        border: none
+
+      a
+        color: $color-link
+        trans()
+        &:hover
+          color: $color-hover
+
+      div.info
+        box-shadow: none
+      div.info>div.power
+        &,a
+          font-size: $fontsize-footnote
+      .vhead
+        span
+          &.vnick
+            color: $color-meta
+            cursor: default
+        a
+          &.vnick
+            color: #ff9800
+            font-weight: bold
+            &:hover
+              color: $color-hover
+
+
+
+        .vsys
+          margin: 2px
+          padding: 1px 8px
+          background-color: alpha($color-text, .1)
+
+      .vcard
         .vquote
           border-left: none
         .vh
@@ -83,58 +122,21 @@
           &:after
             background: alpha($color-block, .9)
             color: $color-text
-        .vhead
-          span
-            &.vnick
-              color: $color-meta
-              cursor: default
-          a
-            &.vnick
-              color: #ff9800
-              font-weight: bold
-              &:hover
-                color: $color-hover
-          .vsys
-            margin: 2px
-            padding: 1px 8px
-            background-color: $color-block
-        .vmeta
-          .vat
-            font-weight: bold
-            color: $color-link
-            trans()
-            &:hover
-              color: $color-hover
-              text-decoration: underline
-        .vcontent
-          blockquote
-            padding-top: $gap-row
-            padding-bottom: $gap-row
-            background: bgcolor($color-blockquote)
-            border-left: $border-codeblock solid $color-blockquote
-            border-radius: $border-codeblock
-            trans()
-          code
-            color: $color-p
-            font-family: $fontfamily-code
-          pre
-            background: $color-codeblock
-            code
-              border: none
-          a
-            color: $color-link
-            trans()
-            &:hover
-              color: $color-hover
-          p
-            margin-top: $gap-row
-            margin-bottom: $gap-row
-          .vemoji
-            max-height: 25px
-      .vcopy
-        &,a
-          font-size: $fontsize-footnote
+      .vmeta
+        .vat
+          font-weight: bold
+          color: $color-link
+          trans()
+          &:hover
+            color: $color-hover
+            text-decoration: underline
+
       .vinput
         color: $color-text
       p
         color: $color-text
+    p
+      #emoji,.emoji
+        display: inline
+        max-height: 28px
+        background: transparent

@@ -49,7 +49,8 @@
             <% } else if (value.icon && value.icon.indexOf('fa-compact-disc') > -1 && value.url  == undefined && value.rows  == undefined) { %>
               <li>
                 <a class="flat-box">
-                  <i class='<%= value.icon %> fa-fw music'></i><%- value.name %>
+                  <i class='<%= value.icon %> fa-fw music'></i>
+                  <%- value.name %>
                 </a>
                 <ul class="list-v">
                   <li>
@@ -61,7 +62,10 @@
               <li>
             <% } else if (value.name != undefined && value.url  == undefined && value.rows == undefined) { %>
               <li class='header'>
-                <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
+                <% if (value.icon) { %>
+                  <i class='<%= value.icon %> fa-fw'></i>
+                <% } %>
+                <%- value.name %>
               </li>
             <% } else { %>
               <li>
@@ -75,7 +79,10 @@
                   <% if (value.url) { %>
                     id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>"
                   <% } %>>
-                  <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
+                  <% if (value.icon) { %>
+                    <i class='<%= value.icon %> fa-fw'></i>
+                  <% } %>
+                  <%- value.name %>
                 </a>
                 <% if (value.rows) { %>
                   <ul class="list-v">

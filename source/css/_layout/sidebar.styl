@@ -91,7 +91,9 @@
 
         &:hover
           border-left: $border-line solid $color-theme
+          border-right: $border-line solid $color-theme
           background: bgcolor($color-theme)
+          transform: scale(1.05)
 
         &.active
           border-left: $border-line solid $color-theme
@@ -123,18 +125,18 @@
         border-top-left-radius: $border-card
         border-top-right-radius: $border-card
         line-height: 0
-        if hexo-config('widget.blogger.shape') == 'circle'
-          border-radius: 100%
-          width: 128px
-          height: 128px
-          margin-top: $gap * 2
-          margin-bottom: $gap-row
-          img
-            display: block
-            position: absolute
-            top: 50%
-            left: 50%
-            transform: translate(-50%, -50%)
+        // if hexo-config('widget.blogger.shape') == 'circle'
+        //   border-radius: 100%
+        //   width: 128px
+        //   height: 128px
+        //   margin-top: $gap * 2
+        //   margin-bottom: $gap-row
+        //   img
+        //     display: block
+        //     position: absolute
+        //     top: 50%
+        //     left: 50%
+        //     transform: translate(-50%, -50%)
         @media screen and (max-width: $device-tablet)
           width: 80px
           height: 80px
