@@ -165,7 +165,7 @@
       line-height: 1.3
       width: 100%
       color: $color-text
-      background: $color-card
+      background: darken($color-card, 2)
       box-shadow: none
       box-sizing: border-box
       padding-left: $iconW + $iconMargin
@@ -175,7 +175,6 @@
       trans()
       @media screen and (min-width: $device-mobile)
         &:focus
-          background: $color-card
           box-shadow: $boxshadow-float
       @media screen and (max-width: $device-mobile)
         background: $color-codeblock
@@ -264,7 +263,7 @@ ul.list-v
       border-left: $border-line solid $color-theme
       border-bottom: none
     >i
-      margin-right: 4px
+      margin-right: 8px
     &.current
       border-left-color: alpha($color-theme, 80%)
       border-bottom-color: alpha($color-theme, 80%)
@@ -283,6 +282,8 @@ ul.list-v
   .menu
     >ul>li>a
       padding: 0 8px
+      >i
+        margin-right: 4px
 
 .l_header ul>li>a
   color: alpha($color-text, 85%)

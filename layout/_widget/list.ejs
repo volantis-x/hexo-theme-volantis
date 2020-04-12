@@ -21,7 +21,7 @@
             <% } else if (row.icon) { %>
               <i class="<%= row.icon %> fa-fw" aria-hidden="true"></i>
             <% } %>
-            <%- row.name %>
+            <%- row.name || url_for(row.url) %>
           </div>
           <% if(row.desc) { %>
             <div class='badge'>(<%- row.desc %>)</div>
