@@ -41,7 +41,10 @@
             if luminosity($color-block) > 0.5
               &:hover
                 background: lighten($color-block, 2)
-                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.8), inset 8px 8px 16px rgba(0, 0, 0, 0.05), inset -8px -8px 16px rgba(255, 255, 255, 0.4)
+                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1), -1px -1px 2px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.05), inset -8px -8px 16px rgba(255, 255, 255, 0.4)
+              &:active
+                background: darken($color-block, 2)
+                box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1), -0px -0px 0px rgba(255, 255, 255, 0.8), inset 2px 2px 4px rgba(0, 0, 0, 0.1), inset -2px -2px 4px rgba(255, 255, 255, 1), inset -8px -8px 16px rgba(255, 255, 255, 0.4)
         .vedit
           .vctrl span
             padding: 0
