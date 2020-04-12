@@ -141,8 +141,13 @@
         width: $sidebar
     @media screen and (min-width: $device-mobile)
       &:hover .input
+        &::placeholder
+          opacity: 1
         width: 100%
     @media screen and (max-width: $device-mobile)
+      input
+        &::placeholder
+          opacity: 1
       min-width: 0
 
     .form
@@ -241,6 +246,8 @@ ul.list-v
       line-height: 2em
       color: $color-meta
       margin: $gap * 0.5 $gap $gap * 0.25
+      i
+        margin-right: 8px
     ul
       margin-left: 0
       display: none
