@@ -68,49 +68,10 @@
         &:hover
           color: $color-hover
           background: bgcolor($color-hover)
-
-      blockquote
-        padding: $gap
-        border-left: $border-line solid $color-blockquote
-        trans()
-        p
-          text-align: left
-          word-wrap: normal
-
-      pre code
-        border: none
-
-      a
-        color: $color-link
-        trans()
-        &:hover
-          color: $color-hover
-
-      div.info
-        box-shadow: none
-      div.info>div.power
-        &,a
-          font-size: $fontsize-footnote
-      .vhead
-        span
-          &.vnick
-            color: $color-meta
-            cursor: default
-        a
-          &.vnick
-            color: #ff9800
-            font-weight: bold
-            &:hover
-              color: $color-hover
-
-
-
-        .vsys
-          margin: 2px
-          padding: 1px 8px
-          background-color: alpha($color-text, .1)
-
-      .vcard
+        &.vmore
+          width: 100%
+          padding: $gap-paragraph 2rem
+      .vcards
         .vquote
           border-left: none
         .vh
