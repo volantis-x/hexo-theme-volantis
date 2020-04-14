@@ -72,7 +72,6 @@
   mobile-post()
     .post
       div.meta
-        margin-bottom: $gap
         .title
           font-size: $fontsize-h3
       @media screen and (max-width: $device-mobile)
@@ -128,6 +127,7 @@
       font-size: $fontsize-h1
     section.meta
       color: $color-meta
+      margin-bottom: $gap
       &#header-meta
         margin-top: 0
         margin-bottom: 1 * $gap
@@ -167,6 +167,7 @@
         p
           &.h1,&.h2
             margin-top: $gap-paragraph + $gap-row
+            border-bottom: none
           &.h1
             font-size: $fontsize-h1 * 1.1
           &.h2
