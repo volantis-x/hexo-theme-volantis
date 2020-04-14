@@ -258,10 +258,10 @@ plugins:
     # 导入 dart 包
     js: /assets/js/highlight.js
     # 覆盖默认的 css
-    css: /assets/css/highlight.css
+    # css: /assets/css/highlight.css
+    css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css
     # css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/idea.css
     # css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/monokai-sublime.css
-    # css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
   # Picture Zoom
   fancybox:
