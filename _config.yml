@@ -423,7 +423,7 @@ plugins:
   clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   # mathjax
-  mathjax: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  mathjax: https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js
 
   ######## Plugins for SEO:
   # Traffic statistics (very slow loading)
