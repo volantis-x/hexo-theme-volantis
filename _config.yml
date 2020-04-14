@@ -43,7 +43,7 @@ style:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 24px # Spacing above H3 (only px unit)
     h4: 16px # Spacing above H4 (only px unit)
-    paragraph: 1rem # Paragraph spacing between paragraphs
+    paragraph: .75rem # Paragraph spacing between paragraphs
     row: .5rem # Paragraph spacing between other elements
     line_height: 1.75
   border_radius:
