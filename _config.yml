@@ -87,7 +87,7 @@ cover:
     archive: true
     others: false # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
-  title: Doub Blog
+  title: 一个逗比
   subtitle: 'Love what you do,do what you love.'
   search: 探索一下吧 喵~ # search bar placeholder
   features:
@@ -101,7 +101,7 @@ navbar:
     img:
     icon:
     title: "OneDoub"
-  search: 探索一下 喵喵~
+  search: 探索一下 喵~
 
 
 layout:
@@ -407,12 +407,13 @@ comments:
 
 
 ############################### Search ###############################
-# To use hexo search, you need to install the following plugins:
+# 要使用hexo搜索，您需要安装以下插件：
 # npm i -S hexo-generator-search hexo-generator-json-content
 search:
   enable: true
   service: hexo  # hexo, google, algolia, azure, baidu
-  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js
+  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@20.2.44/js/search.js
+  # js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js
   google:
     apiKey:
     engineId:
