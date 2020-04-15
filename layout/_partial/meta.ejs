@@ -33,27 +33,37 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
 
 <% if (position == 'header') { %>
   <section class='meta'>
-    <% if (post.music && post.music.enable != false) { %>
-      <%- partial('../_third-party/aplayer', {post: post, where: 'meta'}) %>
-    <% } %>
-    <% if(post.thumbnail && post.thumbnail.length){ %>
-      <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'><img class='thumbnail' src='<%- post.thumbnail %>'></a>
-    <% } %>
-    <div class="meta" id="header-meta">
-      <% if((topMetas).indexOf('title') > -1){ %>
-        <%- partial('../_meta/' + 'title', {post: post, isPostList: isPostList}) %>
+    <% if (topMetas.length == 1 && topMetas.indexOf('centertitle') > -1) { %>
+      <% if(isPostList){ %>
+        <h2 class="title"><p class="p center h2"><%- post.title || post.seotitle %></p></h2><br>
+      <% } else { %>
+        <% if (post.title || page.title || config.title) { %>
+          <h1 class="title"><p class="p center h1"><%- post.title || post.seotitle %></p></h1><br>
+        <% } %>
       <% } %>
-      <div class='new-meta-box'>
-        <% (topMetas).forEach(function(meta){ %>
-          <% if((meta != 'title') && (meta in theme.meta)){ %>
-            <%- partial('../_meta/' + meta, {post: post, isPostList: isPostList}) %>
-          <% } %>
-        <% }) %>
+    <% } else { %>
+      <% if (post.music && post.music.enable != false) { %>
+        <%- partial('../_third-party/aplayer', {post: post, where: 'meta'}) %>
+      <% } %>
+      <% if(post.thumbnail && post.thumbnail.length){ %>
+        <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'><img class='thumbnail' src='<%- post.thumbnail %>'></a>
+      <% } %>
+      <div class="meta" id="header-meta">
+        <% if((topMetas).indexOf('title') > -1){ %>
+          <%- partial('../_meta/' + 'title', {post: post, isPostList: isPostList}) %>
+        <% } %>
+        <div class='new-meta-box'>
+          <% (topMetas).forEach(function(meta){ %>
+            <% if((meta != 'title') && (meta in theme.meta)){ %>
+              <%- partial('../_meta/' + meta, {post: post, isPostList: isPostList}) %>
+            <% } %>
+          <% }) %>
+        </div>
+        <% if ((topMetas).length > 0){ %>
+          <hr>
+        <% } %>
       </div>
-      <% if ((topMetas).length > 0){ %>
-        <hr>
-      <% } %>
-    </div>
+    <% } %>
   </section>
 <% } else if (position == 'footer') { %>
   <section class='meta' id="footer-meta">

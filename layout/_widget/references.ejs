@@ -1,0 +1,19 @@
+<%
+if (item.rows == undefined) {
+  item.rows = new Array();
+  var itms = new Array();
+  let id = item.id || 'references';
+  if (id in page) {
+    (page[id]||[]).forEach(function(ref) {
+      if (ref.name || ref.url) {
+        item.rows.push(ref);
+      }
+    })
+  }
+
+}
+%>
+
+<% if (item.rows && item.rows.length > 0) { %>
+  <%- partial('list', {item: item, where: where}) %>
+<% } %>

@@ -1,4 +1,19 @@
 .article
+  underline()
+    &:hover
+      text-decoration: underline
+  .article-entry
+    >a,>p>a,blockquote a,div.note a
+      underline()
+    >ul>li,>ol>li,tbody tr td
+      >a
+        underline()
+    div.tab-pane
+      >p,li
+        >a
+          underline()
+
+.article
   color: $color-p
   // word-break: break-all
   word-wrap: break-word
@@ -20,7 +35,7 @@
 
   h1,h2,h3,h4,h5,h6
     &:first-child
-      margin-top: $gap-line
+      margin-top: $gap-row
       padding-top: 0
     &.title
       left: 0
@@ -49,17 +64,17 @@
   h5
     font-weight: bold
     color: $color-h5
-    margin-top: $gap-line
+    margin-top: $gap-paragraph
   h6
     color: $color-h6
-    margin-top: $gap-line
+    margin-top: $gap-paragraph
 
   center
     &,p
       text-align: center
 
   .aplayer
-    margin: $gap-line 0
+    margin: $gap-row 0
     display: inline-block
     width: 400px
     max-width: 100%
@@ -73,15 +88,26 @@
       max-width: 100%
       margin: 0
       box-shadow: none
-  s
-    color: alpha(@color, .75)
+  s,del
+    opacity: 0.7
   u
     color: $color-hover
+  kbd
+    border-radius: $border-codeblock * 0.5
+    border: 1px solid darken($color-inlinecode, 6)
+    background: $color-inlinecode
+    padding-left: 4px
+    padding-right: 4px
+    trans()
+    &:hover
+      cursor: default
+      border-color: $color-theme
+      background: $color-theme
+      color: $color-inner
   p
-    margin-top: $gap-line
-    margin-bottom: $gap-line
+    margin-top: $gap-paragraph
+    margin-bottom: $gap-paragraph
     text-align: $textalign-p
-
     max-width: 100%
     overflow: auto
     &.has-jax
@@ -98,12 +124,20 @@
     list-style: initial
     padding-left: 8px
     margin-left: $gap
-    margin-top: $gap-line
-    margin-bottom: $gap-line
+    margin-top: $gap-row
+    margin-bottom: $gap-row
     ul,ol
       margin-top: 0
       margin-bottom: 0
-
+    li
+      margin-top: 2px
+      margin-bottom: 2px
+      li
+        margin-top: 0
+        margin-bottom: 0
+      p
+        margin-top: $gap-row
+        margin-bottom: $gap-row
     &.task-list
       padding-left: 0
       margin-left: 4px
@@ -114,19 +148,9 @@
 
 
   ul>li
-      list-style: initial
+    list-style: initial
   ol>li
-      list-style: decimal
-  a
-    &:before
-      display: none
-    trans()
-    &:hover
-      color: $color-hover
-      text-decoration: underline
-    &:active
-      color: darken($color-hover, 25%)
-
+    list-style: decimal
 
   .subtitle
     h6
@@ -150,9 +174,8 @@
       text-align: left
       word-wrap: normal
       font-size: $fontsize-list
-      margin-top: $gap-inline
-      margin-bottom: $gap-inline
-    box-shadow: $boxshadow-card
+      margin-top: $gap-row
+      margin-bottom: $gap-row
     position: relative
     width: 100%
     padding: .7em 1.2em
@@ -162,7 +185,7 @@
       text-align: justify
       color: inherit
       font-style: italic
-      margin: $gap-inline 0
+      margin: $gap-row 0
       cite
         &::before
           content: '----'
@@ -183,18 +206,20 @@
     display: block
     -moz-box-sizing: border-box
     box-sizing: border-box
-    margin-top: $gap-line
-    margin-bottom: $gap-line
+    margin-top: $gap-row
+    margin-bottom: $gap-row
     overflow: auto
     background: $color-codeblock
     font-size: $fontsize-code
     font-family: $fontfamily-code
-    border: 1px solid darken($color-codeblock, 10%)
+    border: 1px solid darken($color-codeblock, 6)
     padding: $gap
-
+    border-radius: $border-codeblock
+    >code:not([class])
+      background: transparent
   div>pre
     border-radius: $border-codeblock
-    &>code
+    &>code:not([class])
       padding: 0
       margin: 0
       background: transparent
@@ -202,19 +227,15 @@
 
   code
     font-family: $fontfamily-code
-    padding: 4px 2px 2px 2px
-    margin: 0
-    vertical-align: middle
-    border-radius: 2px
-    line-height: 1.45
-    font-size: $fontsize-code
-    color: $color-inlinecode
-    background: bgcolor($color-inlinecode, 4)
+    &:not([class])
+      padding: 3px 4px 1px 4px
+      margin: 0
+      vertical-align: middle
+      font-size: $fontsize-code
+      background: $color-inlinecode
+      border-radius: $border-codeblock * 0.5
+      border: 1px solid darken($color-inlinecode, 6)
 
-  table:not('.highlight table')
-    width: 100%
-    td,th
-      padding: 12px 24px
 
   @media screen and (max-width: $device-mobile)
     ul,ol
@@ -226,7 +247,7 @@
 
   .widget
     background: transparent
-    margin: $gap-line 0
+    margin: $gap-row 0
     box-shadow: none
     border-radius: $border-codeblock
     cursor: auto
@@ -241,7 +262,8 @@
     header
       padding: $gap * 0.25 .6em
       padding-bottom: 0
-      color: alpha($color-text, 85%)
+      &,a
+        color: alpha($color-text, 85%)
 
     &.copyright,&.qrcode
       background: none
@@ -252,10 +274,13 @@
         padding: 0
     width: 100%
 
+    &.list, &.related_posts
+      .content
+        padding: 0 .6em !important
     .content
       padding: 0 .6em
       margin: 0
-      ul.entry, ul.popular-posts
+      ul
         padding-left: 9px
         margin-left: $gap
         a
@@ -265,10 +290,22 @@
           padding-left: 4px
           color: $color-link
           font-weight: normal
-          &:hover,&.active,&:active
-            border-left: none
-            background: none
+          &:hover
+            text-decoration: underline
             color: $color-hover
+          &:hover,&.active,&:active
+            border-left: none !important
+            background: none !important
+
+      .list
+        a
+          .name
+            display: inline
+            color: $color-link
+          &:hover
+            .name
+              text-decoration: underline
+              color: $color-hover
 
 
     &.qrcode > .content
@@ -296,31 +333,32 @@
     position: relative
     pointer-events: none
     margin-top: 0
+    margin-bottom: $gap-paragraph
+    >a
+      color: inherit
+      pointer-events: auto
+      &:hover
+        color: $color-hover
     &:before
       content: ''
       display: block
-      margin-top: 0 - $navbar-height - 2 * $gap
-      height: $navbar-height + 2 * $gap
+      margin-top: 0 - $navbar-height -  $gap
+      height: $navbar-height + $gap
       visibility: hidden
       pointer-events: none
   h1,h2
     &:before
-      margin-top: $gap-h2 - $navbar-height - 2 * $gap
+      margin-top: $gap-h2 - $navbar-height - $gap
   h3
     &:before
-      margin-top: $gap-h3 - $navbar-height - 2 * $gap
+      margin-top: $gap-h3 - $navbar-height - $gap
   h4
     &:before
-      margin-top: $gap-h4 - $navbar-height - 2 * $gap
-    margin-bottom: $gap-line
+      margin-top: $gap-h4 - $navbar-height - $gap
   h5
     font-weight: bold
-    margin-bottom: $gap-line
-  h6
-    margin-bottom: $gap-line
 
-
-article .readmore>a
-  font-size: $fontsize-meta
-  &:hover
-    text-decoration: none
+article .readmore
+  margin-top: $gap-paragraph
+  >a
+    font-size: $fontsize-meta

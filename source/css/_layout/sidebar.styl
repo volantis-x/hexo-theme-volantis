@@ -4,12 +4,19 @@
   position: relative
   display: flex
   flex-direction: column
-  @media screen and (max-width: $device-desktop)
-    width: $sidebar-s
-
   @media screen and (max-width: $device-tablet)
-    // margin: $gap 0 0
     width: 100%
+  .widget
+    overflow: hidden
+    >.content
+      max-height: "calc(100vh - %s)" % ($gap * 5 + $navbar-height)
+      @media screen and (max-width: $device-tablet)
+        max-height: none
+      overflow: auto
+      scrollbar()
+      text-align: justify
+      font-size: $fontsize-meta
+      max-width: 100%
 
 
 .widget
@@ -19,6 +26,10 @@
   border-radius: $border-card
   width: 100%
   display: none
+  ul,ol
+    li
+      margin-top: 0
+      margin-bottom: 0
   &.desktop
     display: block
   @media screen and (max-width: $device-tablet)
@@ -38,7 +49,6 @@
     border-top-left-radius: $border-card
     border-top-right-radius: $border-card
     font-weight: bold
-    line-height: 1.5em
     padding: "calc(%s - 2px)" % $gap
     padding-bottom: 0
     &,a
@@ -50,16 +60,11 @@
       margin-left: $gap * 0.5
 
 
-  .content
-    text-align: justify
-    font-size: $fontsize-meta
+  >.content
     padding: $gap * 0.5 0
-    $offset = $navbar-height + 12.5 * $gap
-    max-height: "calc(100% - %s)" % $offset
-    max-width: 100%
     p
-      margin-top: $gap-inline
-      margin-bottom: $gap-inline
+      margin-top: $gap-row
+      margin-bottom: $gap-row
     ul>li
       a
         color: $color-meta
@@ -72,10 +77,11 @@
         border-left: $border-line solid transparent
         trans()
     ul.entry, ul.popular-posts
+      list-style: none
       a
         .name
-          flex:auto
-          txt-ellipsis()
+          flex: auto
+          // txt-ellipsis()
           color: alpha($color-text, .8)
         .badge
           flex:none
@@ -85,7 +91,7 @@
 
         &:hover
           border-left: $border-line solid $color-theme
-          background: alpha($color-theme, .1)
+          background: bgcolor($color-theme)
 
         &.active
           border-left: $border-line solid $color-theme
@@ -106,45 +112,52 @@
     trans()
     .content
       padding: 0
-      div.avatar
-        display: flex
-        justify-content: center
-
-      img
-        padding: 0
-        margin: 0
-        display: flex
-        justify-content: center
-        width: $sidebar
-        height: $sidebar
+      text-align: center
+      display: flex
+      flex-direction: column
+      align-items: stretch
+      >.avatar
+        align-self: center
+        overflow: hidden
+        position: relative
         border-top-left-radius: $border-card
         border-top-right-radius: $border-card
-        @media screen and (max-width: $device-desktop)
-          width: $sidebar-s
-          height: $sidebar-s
-
-        @media screen and (max-width: $device-tablet)
-          width: 96px
-          height: 96px
+        line-height: 0
+        if hexo-config('widget.blogger.shape') == 'circle'
           border-radius: 100%
-          margin-top: $gap * 0.5
-          padding: $gap * 0.5
-
+          width: 128px
+          height: 128px
+          margin-top: $gap * 2
+          margin-bottom: $gap-row
+          img
+            display: block
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+        @media screen and (max-width: $device-tablet)
+          width: 80px
+          height: 80px
+          border-radius: 100%
+          border: 2px solid white
+          img
+            display: block
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            position: absolute
+      .text
+        :first-child
+          margin-top: $gap
       h2
-        text-align: center
         font-weight: bold
         margin: $gap * 0.5
-        margin-top: $gap
         @media screen and (max-width: $device-tablet)
           margin: $gap * 0.5
-
-
       p
         font-weight: bold
-        text-align: center
         margin: $gap * 0.5 $gap * 0.5 0 $gap * 0.5
         empty-cells: hide
-
       .social-wrapper
         display: flex
         justify-content: space-between
@@ -170,19 +183,16 @@
               background: bgcolor($color-theme)
               color: $color-theme
 
-
-
         @media screen and (max-width: $device-tablet)
           justify-content: center
           display: none
-
-
 
     @media screen and (max-width: $device-tablet)
       box-shadow: none
       background: transparent !important
       margin-top: 2 * $gap
       backdrop-filter: none
+      color: $color-site-inner
 
 
 
@@ -209,16 +219,18 @@
       a
         font-size: $fontsize-meta
         font-weight: bold
-        line-height: 2.4em
-        &:hover
-          text-decoration: none
+        line-height: 1.5
+        padding-top: 6px
+        padding-bottom: 6px
+        img,i
+          margin-right: 4px
         i
           margin-left: 1px
         img
-          display: inline
           vertical-align: middle
-          height: 2em
-          width: 2em
+          height: 20px
+          width: 20px
+          margin-bottom: 4px
           &#round
             border-radius: 100%
 
@@ -230,11 +242,11 @@
         display: flex
         flex-wrap: wrap
         justify-content: space-around
-        padding: 0 $gap
+        padding: $gap * 0.25 $gap
         a
           text-align: center
-          border-radius: $border-card
-          margin: 4px 0
+          border-radius: $border-line
+          margin: 0
           padding: 4px 8px
           display: flex
           flex-direction: column
@@ -256,19 +268,14 @@
             &#round
               border-radius: 100%
 
-
-          border: 1px solid transparent
-          &:hover
-            color: $color-theme
-            background: bgcolor($color-theme)
-            border-radius: 4px
-
-          &:active
-            color: $color-theme
-
           &.active
             color: $color-theme
-            border: 1px solid $color-theme
+            background: bgcolor($color-theme)
+          &:hover
+            color: $color-theme
+            border-radius: $border-line
+            background: bgcolor($color-theme)
+
 
         &.fixed a
           width: "calc(100%/3 - 0 * %s)" % $gap
@@ -282,19 +289,12 @@
             width: "calc(100%/3 - 0 * %s)" % $gap
 
 
-
-
-
-  // &.category
-  //   .content
-  //     font-weight: bold
-
   &.tagcloud
     .content
       text-align: justify
       padding: $gap * 0.5 $gap
       a
-        display:inline-block
+        display: inline-block
         trans()
         line-height: 1.6em
         &:hover

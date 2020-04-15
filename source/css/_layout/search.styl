@@ -7,7 +7,7 @@
   width: 100%
   height: 100%
   padding: 60px 20px
-  z-index: 999999
+  z-index: 99
   @media screen and (max-width: $modal-threshold)
     padding: 0px
   .modal
@@ -51,7 +51,7 @@
       border-top-right-radius: $border-card
       font-size: $fontsize
       box-shadow: $boxshadow-card
-      background: darken($color-card, 5)
+      background: lighten($color-card, 5)
       @media screen and (max-width: $modal-threshold)
         border-radius: 0
         padding: 0px
@@ -208,23 +208,19 @@
       -webkit-overflow-scrolling: touch
       background: $color-card
       border-radius: $border-card
+      scrollbar()
       .modal-results
         list-style: none
         .result
           position: relative
           display: block
           padding: $gap
-          text-decoration: none
           border-radius: $border-card
           b[mark]
             color: darken($color-theme, 10)
             text-decoration: underline
           &:hover
             background: bgcolor($color-theme)
-            // .digest, .icon
-            //   color: $color-hover
-            // .title
-            //   color: $color-hover
 
 
 

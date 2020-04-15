@@ -9,9 +9,13 @@
             <div class='fancybox'><img src='<%- url_for(photo) %>'/></div>
           <% }) %>
           <%- post.content %>
-          <% if(theme.layout.on_post.article_footer && (page.layout == 'post')){ %>
+          <% if ((page.meta && page.meta.article_footer && page.meta.article_footer.length > 0) || (theme.layout.on_post.article_footer && (page.layout == 'post'))) { %>
             <br>
-            <%- partial('../_widget/load', {widgets: theme.layout.on_post.article_footer, where: 'article'}) %>
+            <% if (page.meta && page.meta.article_footer && page.meta.article_footer.length > 0) { %>
+              <%- partial('../_widget/load', {widgets: page.meta.article_footer, where: 'article'}) %>
+            <% } else { %>
+              <%- partial('../_widget/load', {widgets: theme.layout.on_post.article_footer, where: 'article'}) %>
+            <% } %>
           <% } %>
         </div>
         <% if(post.layout == 'post' || post.layout == 'page'){ %>
@@ -53,7 +57,7 @@
   <%- partial('../_third-party/mathjax') %>
 <% } %>
 
-<% if (page.layout == 'post'){ %>
+<% if (page.layout == 'post' && page.title){ %>
   <script>
     window.subData = {
       title: '<%- post.title %>',

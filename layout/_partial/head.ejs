@@ -83,7 +83,7 @@
   <% } %>
 
   <!-- link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
   <% if (theme.plugins.fancybox && theme.plugins.fancybox.css) { %>
     <%- css(theme.plugins.fancybox.css) %>
   <% } %>
@@ -105,7 +105,12 @@
   <%- item %><% }) %>
   <% } %>
 
-  <% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.css) { %>
+  <% if (config.highlight.enable != true) { %>
+    <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.css) { %>
+      <%- css(theme.plugins.highlightjs.css) %>
+    <% } %>
+  <% } %>
+  <% if (theme.info.cdn && theme.info.cdn.css) { %>
     <%- css(theme.info.cdn.css) %>
   <% } else { %>
     <%- css('css/style.css') %>

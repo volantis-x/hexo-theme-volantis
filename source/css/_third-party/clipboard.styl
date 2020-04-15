@@ -1,15 +1,17 @@
 //代码块复制按钮
-if hexo-config('style.body.highlight.copy_btn')
+if hexo-config('style.body.highlight.copy_btn') == true
   .highlight
     //方便copy代码按钮（btn-copy）的定位
     position: relative
 
   .btn-copy
+    z-index: 1
     display: inline-block
     cursor: pointer
     border: none
     disable-user-select()
     -webkit-appearance: none
+    font-family: Menlo, $fontfamily-code
     font-size: "calc(%s - 1px)" % $fontsize-code
     font-weight: bold
     padding: $gap * 0.25 $gap * 0.5
@@ -17,8 +19,7 @@ if hexo-config('style.body.highlight.copy_btn')
       margin-right: 4px
     color: $color-meta
     background: $color-card
-    border-bottom-left-radius: $border-codeblock
-    border-top-right-radius: $border-codeblock
+    border-radius: 2px
     box-shadow: $boxshadow-card
     position: absolute
     top: 0
@@ -30,4 +31,7 @@ if hexo-config('style.body.highlight.copy_btn')
       background: bgcolor($color-hover)
 
   .highlight:hover .btn-copy
+    opacity: 1
+
+  .article pre:hover .btn-copy
     opacity: 1

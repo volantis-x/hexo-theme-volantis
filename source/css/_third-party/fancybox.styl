@@ -1,5 +1,5 @@
 div.fancybox
-  margin: $gap-line 0
+  margin: $gap-row 0
   $sp = 1px
   >a,>p>a
     margin: $sp
@@ -8,6 +8,7 @@ div.fancybox
     overflow: hidden
     align-items: stretch
     border-radius: 2px
+    cursor: zoom-in
     @media screen and (max-width: $device-mobile)
       border-radius: 1px
 
@@ -48,3 +49,19 @@ div.fancybox
     align-items: stretch
     img
       transform: scale(1.5)
+
+.fancybox-container
+  .fancybox-stage
+    cursor: zoom-out
+
+.fancybox
+  &.caption
+    flex-direction: column
+    a
+      margin: 0
+    .gallery
+      overflow: hidden
+    .image-caption
+      font-size: $fontsize-code
+      margin-top: $gap-row
+      color: $color-meta

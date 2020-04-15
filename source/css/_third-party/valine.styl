@@ -1,11 +1,10 @@
 .l_main
   #comments
     position: relative
-    // padding-top: 1.5*$gap
-    @media screen and (max-width: $device-mobile)
-      // padding-top: $gap
-
     #valine_container
+      >i
+        display: block
+        margin: $gap auto
       img
         display: inline
       .vwrap
@@ -15,7 +14,9 @@
         trans()
         &:hover
           border: 1px dashed $color-theme
-
+        .cancel-reply
+          margin-top: 0
+          margin-bottom: 0
         .vheader
           .vinput
             border-radius: 0
@@ -25,24 +26,39 @@
             &:focus
               border-bottom: 1px solid $color-theme
 
+        .vemojis,.vpreview
+          background: $color-block
+          border-radius: $border-codeblock
+          padding: $gap * 0.5
+          scrollbar()
+          i
+            width: auto
+            padding: 8px
+            border-radius: 4px
+            transition: box-shadow .2s ease-out, background .2s ease-out
+            #emoji,.emoji
+              background: transparent
+            if luminosity($color-block) > 0.5
+              &:hover
+                background: lighten($color-block, 2)
+                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1), -1px -1px 2px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.05), inset -8px -8px 16px rgba(255, 255, 255, 0.4)
+              &:active
+                background: darken($color-block, 2)
+                box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1), -0px -0px 0px rgba(255, 255, 255, 0.8), inset 2px 2px 4px rgba(0, 0, 0, 0.1), inset -2px -2px 4px rgba(255, 255, 255, 1), inset -8px -8px 16px rgba(255, 255, 255, 0.4)
         .vedit
-          .vemojis,.vpreview
-            justify-content: space-between
-            background: $color-block
-            border-radius: $border-codeblock
-            i
-              width: auto
-              height: 36px
-              padding: 0
-              margin: 8px 8px 0 8px
-              #emoji
-                height: 24px
-                margin-top: 6px
-                background: transparent
-        .vedit .vctrl span
-          color: $color-link
-          padding: 0
-          margin: 10px
+          .vctrl span
+            padding: 0
+            margin: 10px
+          span
+            fill: $color-p
+            &.actived
+              fill: $color-theme
+      .vcount
+        font-size: $fontsize-meta
+        padding: 0
+        font-weight: inherit
+        .vnum
+          font-size: $fontsize-h2
 
       button
         border: none
@@ -54,83 +70,77 @@
         &:hover
           color: $color-hover
           background: bgcolor($color-hover)
-
-      blockquote
-        padding: $gap
-        border-left: $border-line solid $color-blockquote
-        trans()
-        p
-          text-align: left
-          word-wrap: normal
-
-      pre code
-        border: none
-
-      a, .vemoji-btn, .vpreview-btn
-        color: $color-link
-        trans()
-        &:hover
-          color: $color-hover
-          text-decoration: underline
-
-      div.info
-        box-shadow: none
-      div.info>div.power
-        &,a
-          font-size: $fontsize-footnote
-      .vhead
-        span
-          &.vnick
-            color: $color-meta
-
-
-        a
-          &.vnick
-            color: #ff9800
-            font-weight: bold
-            &:hover
-              color: $color-hover
-              text-decoration: underline
-
-
-
-        .vsys
-          margin: 2px
-          padding: 1px 8px
-          background-color: alpha($color-text, .1)
-
-      .vcard
+        &.vmore
+          width: 100%
+          padding: $gap-paragraph 2rem
+      .vcards
         .vquote
           border-left: none
         .vh
           border-bottom: 1px dashed alpha($color-text, .1)
+        .vimg
+          border: 1px solid white
+          padding: 0
+          background: $color-codeblock
         .vcontent.expand
           &:before
             background: linear-gradient(180deg, alpha($color-card, .9), alpha($color-block, .9));
           &:after
             background: alpha($color-block, .9)
             color: $color-text
-        .vh:hover
-          >.vmeta>.vat
-            opacity: 1
-      .vmeta
-        .vat
-          font-weight: bold
-          color: $color-link
-          trans()
-          opacity: 0
-          &:hover
-            color: $color-hover
-            text-decoration: underline
-          &:active
-            color: darken($color-hover, .25)
-
+        .vhead
+          span
+            &.vnick
+              color: $color-meta
+              cursor: default
+          a
+            &.vnick
+              color: #ff9800
+              font-weight: bold
+              &:hover
+                color: $color-hover
+          .vsys
+            margin: 2px
+            padding: 1px 8px
+            background-color: $color-block
+        .vmeta
+          .vat
+            font-weight: bold
+            color: $color-link
+            trans()
+            &:hover
+              color: $color-hover
+              text-decoration: underline
+        .vcontent
+          blockquote
+            padding-top: $gap-row
+            padding-bottom: $gap-row
+            background: bgcolor($color-blockquote)
+            border-left: $border-codeblock solid $color-blockquote
+            border-radius: $border-codeblock
+            trans()
+          code
+            color: $color-p
+            font-family: $fontfamily-code
+          pre
+            background: $color-codeblock
+            code
+              border: none
+          a
+            color: $color-link
+            trans()
+            &:hover
+              color: $color-hover
+          p
+            margin-top: $gap-row
+            margin-bottom: $gap-row
+          .vemoji
+            max-height: 25px
+            border-radius: 0
+      .vcopy
+        &,a
+          font-size: $fontsize-footnote
       .vinput
         color: $color-text
       p
         color: $color-text
-    p
-      #emoji
-        display: inline
-        max-height: 28px
-        background: transparent

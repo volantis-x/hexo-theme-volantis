@@ -15,15 +15,15 @@ html
   -ms-text-size-adjust: 100%
   text-rendering: optimizelegibility
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-  // >
-  //   ::-webkit-scrollbar
-  //     width: 8px
-  //     height: 8px
-  //   ::-webkit-scrollbar-thumb
-  //     background: $color-theme
-  //     border-radius: 2px
-  //   ::-webkit-scrollbar-track
-  //     background: transparent
+  >
+    if hexo-config('style.scrollbar.size')
+      if hexo-config('style.scrollbar.color')
+        if hexo-config('style.scrollbar.hover')
+          scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px, convert(hexo-config('style.scrollbar.color')), convert(hexo-config('style.scrollbar.hover')))
+        else
+          scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px, convert(hexo-config('style.scrollbar.color')))
+      else
+        scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px)
 
 body
   cursor: url(https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.1.6/images/mouse.cur),auto;
@@ -37,76 +37,6 @@ body
       right: 0
       bottom: 0
       left: 0
-
-
-// *::-webkit-scrollbar
-//   height: 2px
-//   width: 8px
-// *::-webkit-scrollbar-track-piece
-//   background: transparent
-// *::-webkit-scrollbar-thumb
-//   background: alpha($color-text, .3)
-//   cursor: pointer
-//   trans()
-//   &:hover
-//     background: alpha($color-text, .6)
-
-//彩色图标
-.github-badge 
-	display: inline-block;
-	border-radius: 4px;
-
-	text-shadow: none;
-	font-size: 12px;
-	color: #fff;
-	line-height: 15px;
-
-	background-color: #ABBAC3;
-
-	margin-bottom: 5px;
-
-
-.github-badge .badge-subject 
-	display: inline-block;
-	background-color: #4D4D4D;
-	padding: 4px 4px 4px 6px;
-	border-top-left-radius: 4px;
-	border-bottom-left-radius: 4px;
-
-
-.github-badge .badge-value 
-	display: inline-block;
-	padding: 4px 6px 4px 4px;
-	border-top-right-radius: 4px;
-	border-bottom-right-radius: 4px;
-
-
-.github-badge .bg-brightgreen 
-	background-color: #4c1 !important;
-
-.github-badge .bg-green 
-	background-color: #97CA00 !important;
-
-.github-badge .bg-yellow 
-	background-color: #dfb317 !important;
-
-.github-badge .bg-yellowgreen 
-	background-color: #a4a61d !important;
-
-.github-badge .bg-orange 
-	background-color: #fe7d37 !important;
-
-.github-badge .bg-red 
-	background-color: #e05d44 !important;
-
-.github-badge .bg-blue 
-	background-color: #007ec6 !important;
-
-.github-badge .bg-grey, .github-badge .bg-gray 
-	background-color: #555 !important;
-
-.github-badge .bg-lightgrey, .github-badge .bg-lightgray 
-	background-color: #9f9f9f !important;
 
 
 
@@ -144,7 +74,8 @@ a
     color: $color-hover
   &:active,&:hover
     outline: 0
-
+  &:not([href])
+    cursor: default
 
 
 pre
@@ -182,21 +113,8 @@ img
 
 ul,ol
   padding-left: 0
-
-li
-  list-style: none
-
-
-ul.h-list
-  display: flex
-  align-items: center
-  height: 100%
-  &>li
-    height: 100%
-    justify-content: center
-
-
-
+  li
+    list-style: none
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary
   display: block
@@ -283,9 +201,6 @@ input::-moz-focus-inner
   padding: 0
 
 
-input
-  line-height: normal
-
 input[type="checkbox"],
 input[type="radio"]
   box-sizing: border-box /* 1 */
@@ -326,23 +241,27 @@ optgroup
 
 table
   border-collapse: collapse
-  margin-top: .7em
-  margin-bottom: .7em
   overflow: auto
-  display: block
+  display: inline-block
+  max-width: 100%
+  scrollbar()
+  margin-right: $gap-row
+  vertical-align: text-top
   th
     background-color: darken($color-block, 2)
   td,th
     padding: 6px 16px
-    border: 1px solid darken($color-block, 3)
+    border: 2px solid darken($color-block, 2)
+    line-height: 1.5
+    font-size: 90%
   tr
     word-break: keep-all
     background-color: lighten($color-block, 3)
-  tbody>tr
-    trans()
-    &:hover
-      background-color: darken($color-block, 2)
-
+  tbody
+    >tr
+      trans()
+      &:hover
+        background-color: darken($color-block, 2)
 
 td,th
   padding: 0

@@ -1,5 +1,5 @@
 <%- partial('_pre') %>
-<section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
+<section class="widget <%- item.class == 'list' ? item.class : 'list ' + item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
   <%- partial('header', {item: item}) %>
   <div class='content'>
     <ul class="list entry navigation">
@@ -14,14 +14,14 @@
           id="<%= url_for(row.url).replace(/\/|%|\./g, "")?url_for(row.url).replace(/\/|%|\./g, ""):"home" %>"
           >
           <div class='name'>
-            <% if(row.img) { %>
+            <% if (row.img) { %>
               <img src="<%- row.img %>">
-            <% } else if(row.avatar) { %>
+            <% } else if (row.avatar) { %>
               <img src="<%- row.avatar %>" id="round">
-            <% } else { %>
+            <% } else if (row.icon) { %>
               <i class="<%= row.icon %> fa-fw" aria-hidden="true"></i>
             <% } %>
-            &nbsp;&nbsp;<%- row.name %>
+            <%- row.name || url_for(row.url) %>
           </div>
           <% if(row.desc) { %>
             <div class='badge'>(<%- row.desc %>)</div>

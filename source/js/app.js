@@ -80,7 +80,7 @@ var customSearch;
 		const $comment = $('.s-comment', $wrapper);
 		const $toc = $('.s-toc', $wrapper);
 
-		$wrapper.find('.nav-sub .logo').text(window.subData.title);
+		$wrapper.find('.nav-sub .title').text(window.subData.title);
 		let pos = document.body.scrollTop;
 		$(document, window).scroll(() => {
 			const scrollTop = $(window).scrollTop();
@@ -160,21 +160,21 @@ var customSearch;
 	}
 
 	function setHeaderMenuPhone() {
-		var $switcher = $('.l_header .switcher .s-menu');
-		var $menu = $('body ul.menu-phone');
-		$switcher.click(function (e) {
-			e.stopPropagation();
-			$menu.toggleClass('show');
-			$switcher.toggleClass('active');
-		});
-		$(document).click(function (e) {
-			$menu.removeClass('show');
-			$switcher.removeClass('active');
-		});
-		$(document, window).scroll(() => {
-			$menu.removeClass('show');
-			$switcher.removeClass('active');
-		});
+		// var $switcher = $('.l_header .switcher .s-menu');
+		// var $menu = $('body .menu-phone');
+		// $switcher.click(function (e) {
+		// 	e.stopPropagation();
+		// 	$menu.toggleClass('show');
+		// 	$switcher.toggleClass('active');
+		// });
+		// $(document).click(function (e) {
+		// 	// $menu.removeClass('show');
+		// 	$switcher.removeClass('active');
+		// });
+		// $(document, window).scroll(() => {
+		// 	$menu.removeClass('show');
+		// 	$switcher.removeClass('active');
+		// });
 	}
 
 	function setHeaderSearch() {

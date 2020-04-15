@@ -1,58 +1,63 @@
-.article
-  p>btn,li>btn
-    a
-      line-height: 1.5em
-      background: $color-theme
+// inline btn
+span.btn
+  display: inline
+  >a
+    display: inline-block
+    background: $color-theme
+    color: $color-inner
+    padding: 4px 4px 2px 4px
+    margin: 2px
+    line-height: 1.1
+    border-radius: 2px
+    i
+      margin-right: 2px
+    trans()
+    &:hover
       color: $color-inner
-      padding: 2px 3px 0px 3px
-      margin: 2px
-      border-radius: 2px
-      trans()
+      background: $color-hover
+    &:not([href])
+      opacity: 0.5
       &:hover
-        color: $color-inner
-        text-decoration: none
-        background: $color-hover
-    &[regular]
-      a
-        line-height: 3
-        padding: 9px 16px 7px 16px
-        i
-          margin-right: 2px
-    &[large]
-      a
-        line-height: 3
-        padding: 11px 40px 9px 40px
-        i
-          margin: 0 5px 0 -2px
-    &[center]
-      display: block
-      text-align: center
+        cursor: not-allowed
+
+  &.regular
+    >a
+      padding: 8px 12px 6px 12px
+      i
+        margin-right: 4px
+  &.large
+    >a
+      padding: 12px 36px 10px 36px
+      i
+        margin-right: 8px
+  &.center
+    display: block
+    text-align: center
 
 
 // btns
 div.btns
   margin: 0 -0.5 * $gap
-  &,b,p,a
-    font-size: $fontsize-meta
+  &,p,a
+    font-size: $fontsize-code
     color: $color-p
-  &,>p
-    display: flex
-    flex-wrap: wrap
-    align-items: flex-start
-    overflow: visible
-  &.wide>p>a,&.wide>a
+  b
+    font-size: $fontsize-meta
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  overflow: visible
+  &.wide>a
     padding-left: $gap*2
     padding-right: $gap*2
-  &.fill>p>a,&.fill>a
+  &.fill>a
     flex-grow: 1
     width: auto
   &.around
-    &,>p
-      justify-content: space-around
+    justify-content: space-around
   &.center
-    &,>p
-      justify-content: center
-  &.grid2>p>a,&.grid2>a
+    justify-content: center
+  &.grid2>a
     width: "calc(100%/2 - %s)" % $gap
     @media screen and (max-width: $device-laptop)
       width: "calc(100%/2 - %s)" % $gap
@@ -60,7 +65,7 @@ div.btns
       width: "calc(100%/2 - %s)" % $gap
     @media screen and (max-width: $device-mobile)
       width: "calc(100%/1 - %s)" % $gap
-  &.grid3>p>a,&.grid3>a
+  &.grid3>a
     width: "calc(100%/3 - %s)" % $gap
     @media screen and (max-width: $device-laptop)
       width: "calc(100%/3 - %s)" % $gap
@@ -68,7 +73,7 @@ div.btns
       width: "calc(100%/3 - %s)" % $gap
     @media screen and (max-width: $device-mobile)
       width: "calc(100%/1 - %s)" % $gap
-  &.grid4>p>a,&.grid4>a
+  &.grid4>a
     width: "calc(100%/4 - %s)" % $gap
     @media screen and (max-width: $device-laptop)
       width: "calc(100%/3 - %s)" % $gap
@@ -76,7 +81,7 @@ div.btns
       width: "calc(100%/3 - %s)" % $gap
     @media screen and (max-width: $device-mobile)
       width: "calc(100%/2 - %s)" % $gap
-  &.grid5>p>a,&.grid5>a
+  &.grid5>a
     width: "calc(100%/5 - %s)" % $gap
     @media screen and (max-width: $device-laptop)
       width: "calc(100%/4 - %s)" % $gap
@@ -125,8 +130,6 @@ div.btns
       line-height: 1.3
     img
       margin: .4em auto
-    &:hover
-      text-decoration: none
     &:not([href])
       cursor: default
       color: inherit
@@ -139,9 +142,9 @@ div.btns
         box-shadow: $boxshadow-float
       &>i:first-child
         background:$color-hover
-  &.circle>p a, &.circle a
+  &.circle a
     &>img:first-child, &>i:first-child
       border-radius: 32px
-  &.rounded>p a, &.rounded a
+  &.rounded a
     &>img:first-child, &>i:first-child
       border-radius: 16px

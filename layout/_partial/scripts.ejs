@@ -1,4 +1,4 @@
-<%- js(theme.plugins.jquery) %>
+<%- js('https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js') %>
 <% if (theme.search && theme.search.enable) { %>
   <script>
     <% if(theme.search.service === 'baidu') { %>
@@ -99,7 +99,7 @@
 
 <% if (theme.plugins.aplayer && theme.plugins.aplayer.enable && theme.plugins.aplayer.js) { %>
   <% (theme.plugins.aplayer.js||[]).forEach(function(item){ %>
-    <%- js({src:item,async:true}) %>
+    <%- js({src:item}) %>
   <% }) %>
 <% } %>
 
@@ -108,6 +108,7 @@
   var enableLivere = false;
   var enableGitalk = false;
   var enableValine = false;
+  var enableMiniValine = false;
   if (theme.comments && page && page.comments == true) {
     if (theme.comments.disqus && theme.comments.disqus.shortname) {
       enableDisqus = true;
@@ -120,6 +121,9 @@
     }
     if (theme.comments.valine && theme.comments.valine.appId) {
       enableValine = true;
+    }
+    if (theme.comments.minivaline && theme.comments.minivaline.appId) {
+      enableMiniValine = true;
     }
   }
 %>
@@ -179,17 +183,13 @@
   <% } %>
   <script>
   var GUEST_INFO = ['nick','mail','link'];
-  var guest_info = '<%= theme.comments.valine.meta %>'.split(',').filter(function(item){
+  var meta = '<%= theme.comments.valine.meta %>'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = '<%= theme.comments.valine.notify %>' == true;
-  var verify = '<%= theme.comments.valine.verify %>' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
-    notify: notify,
-    verify: verify,
-    guest_info: guest_info,
+    meta: meta,
     <% if (page.valine && page.valine.path) { %>
       path: "<%= page.valine.path %>",
     <% } else if (theme.comments.valine.path) { %>
@@ -202,12 +202,29 @@
     avatar:'<%= theme.comments.valine.avatar %>',
     lang:'<%= theme.comments.valine.lang %>',
     visitor: '<%- theme.comments.valine.visitor %>',
-    highlight:'<%= theme.comments.valine.highlight %>'
+    highlight: '<%= theme.comments.valine.highlight %>',
+    mathJax: '<%= theme.comments.valine.mathJax %>'
   })
   </script>
 <% } %>
 
-<% if (config.use_cdn && theme.info && theme.info.cdn && theme.info.cdn.js) { %>
+<% if (enableMiniValine){ %>
+  <script src="https://unpkg.com/minivaline/dist/MiniValine.min.js"></script>
+  <script>
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: '<%= theme.comments.minivaline.appId %>',
+    appKey: '<%= theme.comments.minivaline.appKey %>',
+    placeholder: '<%= theme.comments.minivaline.placeholder %>',
+    lang: '<%= theme.comments.minivaline.lang %>',
+    adminEmailMd5: '<%= theme.comments.minivaline.adminEmailMd5 %>',
+    math: '<%= theme.comments.minivaline.math %>',
+    md: '<%= theme.comments.minivaline.md %>'
+  });
+  </script>
+<% } %>
+
+<% if (theme.info.cdn && theme.info.cdn.js) { %>
   <%- js(theme.info.cdn.js) %>
 <% } else { %>
   <%- js(['js/app.js']) %>
@@ -217,10 +234,18 @@
 <% } %>
 <% if (theme.plugins.comment_typing) { %>
   <%- js(theme.plugins.comment_typing) %>
-<%}%>
+<% } %>
+
+<% if (config.highlight.enable != true) { %>
+  <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.js) { %>
+    <%- js(theme.plugins.highlightjs.js) %>
+    <script>hljs.initHighlightingOnLoad();</script>
+  <% } %>
+<% } %>
+
 
 <!-- 复制 -->
-<% if (theme.plugins.clipboard && theme.style.body.highlight.copy_btn) { %>
+<% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
   <%- partial('_third-party/clipboard') %>
 <% } %>
 

@@ -4,6 +4,7 @@
   var enableLivere = false;
   var enableGitalk = false;
   var enableValine = false;
+  var enableMiniValine = false;
   if (theme.comments && page && page.comments == true) {
     if (theme.comments.disqus && theme.comments.disqus.shortname) {
       enableDisqus = true;
@@ -17,10 +18,13 @@
     if (theme.comments.valine && theme.comments.valine.appId) {
       enableValine = true;
     }
+	if (theme.comments.minivaline && theme.comments.minivaline.appId) {
+      enableMiniValine = true;
+    }
   }
 %>
 
-<% if (enableDisqus || enableLivere || enableGitalk || enableValine) { %>
+<% if (enableDisqus || enableLivere || enableGitalk || enableValine || enableMiniValine) { %>
   <article class="post white-box comments <%- theme.style.body.effect.join(' ') %>">
     <section class="article typo">
       <p ct><%- theme.comments && theme.comments.title %></p>
@@ -49,6 +53,13 @@
       <% if (enableValine){ %>
         <section id="comments">
           <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      <% } %>
+      <% if (enableMiniValine){ %>
+        <section id="comments">
+          <div id="minivaline_container">
             <i class="fas fa-spinner fa-spin fa-fw"></i>
           </div>
         </section>
