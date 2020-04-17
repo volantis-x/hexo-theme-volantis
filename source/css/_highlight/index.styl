@@ -77,7 +77,7 @@ pre
   font-family: $fontfamily-code
   border-radius: $border-codeblock
   border: 1px solid darken($color-codeblock, 6)
-  line-height: 1.5
+  line-height: $lineheight-fixed
   trans()
   figcaption
     position: sticky
@@ -93,7 +93,7 @@ pre
     td,th
       padding: 0
       border: none
-      line-height: 1.5
+      line-height: $lineheight-fixed
     margin: 0
     background-color: transparent
     border: none
@@ -205,7 +205,6 @@ $hl-amber = #FD8607
 $hl-text = alpha($color-text, .9)
 .highlight pre
   // 行
-  // line-height: 1.5
   .line,.params
     color: $hl-text
 
