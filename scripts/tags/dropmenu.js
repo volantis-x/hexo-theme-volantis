@@ -8,7 +8,7 @@ function postMenu(args, content) {
     return `<div class='dropmenu'>
               <i class='${icon} fa-fw'></i>
               <span>${text}</span>
-              <i class='fas fa-caret-down'></i>
+              <i class='fal fa-caret-down'></i>
               <ul class='list-v'>
                 ${content}
               </ul>
@@ -16,7 +16,7 @@ function postMenu(args, content) {
   } else {
     return `<div class='dropmenu'>
               <span>${text}</span>
-              <i class='fas fa-caret-down'></i>
+              <i class='fal fa-caret-down'></i>
               <ul class='list-v'>
                 ${content}
               </ul>

@@ -38,7 +38,7 @@
         <% if (page.prev != 0) { %>
           <a class="prev" rel="prev" href="<%= url_for(page.prev_link) %>">
             <section class="post prev white-box <%- theme.style.body.effect.join(' ') %>" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %>&nbsp;
+              <i class="fal fa-chevron-left" aria-hidden="true"></i>&nbsp;<%- __('post.prev_page') %>&nbsp;
             </section>
           </a>
         <% } %>
@@ -48,7 +48,7 @@
         <% if (page.next != 0) { %>
           <a class="next" rel="next" href="<%= url_for(page.next_link) %>">
             <section class="post next white-box <%- theme.style.body.effect.join(' ') %>">
-              &nbsp;<%- __('post.next_page') %>&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+              &nbsp;<%- __('post.next_page') %>&nbsp;<i class="fal fa-chevron-right" aria-hidden="true"></i>
             </section>
           </a>
         <% } %>

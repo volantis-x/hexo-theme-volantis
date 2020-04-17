@@ -7,9 +7,9 @@
     <div class='nav-sub'>
       <p class="title"></p>
       <ul class='switcher nav-list-h'>
-        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        <li><a class="s-comment fal fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
         <% if (page.sidebar == undefined || page.sidebar != false) { %>
-          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+          <li><a class="s-toc fal fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
         <% } %>
       </ul>
     </div>
@@ -95,17 +95,17 @@
 
       <div class="m_search">
         <form name="searchform" class="form u-search-form">
-          <i class="icon fas fa-search fa-fw"></i>
+          <i class="icon fal fa-search fa-fw"></i>
           <input type="text" class="input u-search-input" placeholder="<%- theme.navbar && theme.navbar.search %>" />
         </form>
       </div>
 
 			<ul class='switcher nav-list-h'>
 				<% if (theme.search.enable === true) { %>
-					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+					<li><a class="s-search fal fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
 				<% } %>
 				<li>
-          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <a class="s-menu fal fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
           <ul class="menu-phone list-v navigation white-box">
             <% menu_list.forEach(function(value){ %>
               <% menu(value) %>

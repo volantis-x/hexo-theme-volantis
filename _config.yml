@@ -114,21 +114,21 @@ cover:
   search: # search bar placeholder
   features:
     - name: 文档
-      icon: fas fa-book
+      icon: fal fa-book
       url: https://volantis.js.org/getting-started/
     - name: 博文
-      icon: fas fa-rss
+      icon: fal fa-rss
       url: https://volantis.js.org/archives/
     - name: 示例
-      icon: fas fa-play-circle
+      icon: fal fa-play-circle
       url: https://volantis.js.org/examples/
     - name: 源码
-      icon: fas fa-file-code
+      icon: fal fa-file-code
       url: https://github.com/xaoxuu/hexo-theme-volantis/
       rel: external nofollow noopener noreferrer
       target: _blank
     - name: 鸣谢
-      icon: fas fa-handshake
+      icon: fal fa-handshake
       url: https://volantis.js.org/contributors/
 
 
@@ -141,22 +141,22 @@ navbar:
   menu:
     # The following can be written in `blog/source/_data/menu.yml`
     - name: 博客
-      icon: fas fa-rss
+      icon: fal fa-rss
       url: /
     - name: 分类
-      icon: fas fa-folder-open
+      icon: fal fa-folder-open
       url: categories/
     - name: 标签
-      icon: fas fa-tags
+      icon: fal fa-tags
       url: tags/
     - name: 归档
-      icon: fas fa-archive
+      icon: fal fa-archive
       url: archives/
     - name: 友链
-      icon: fas fa-link
+      icon: fal fa-link
       url: friends/
     - name: 关于
-      icon: fas fa-info-circle
+      icon: fal fa-info-circle
       url: about/
   search: Search...   # Search bar placeholder
 
@@ -171,7 +171,7 @@ layout:
     # 列表类页面的侧边栏
     sidebar: [blogger, category, tagcloud, qrcode]
     # read more button
-    readmore: Read More <i class="fas fa-chevron-right"></i>
+    readmore: Read More <i class="fal fa-chevron-right"></i>
   # 页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
@@ -202,30 +202,30 @@ meta:
     url: https://xaoxuu.com
   # 文章创建日期
   date:
-    icon: fas fa-calendar-alt
+    icon: fal fa-calendar-alt
     title: '发布于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章更新日期
   updated:
-    icon: fas fa-edit
+    icon: fal fa-edit
     title: '更新于：'
     format: 'll' # 日期格式 http://momentjs.com/docs/
   # 文章分类
   category:
-    icon: fas fa-folder-open
+    icon: fal fa-folder-open
   # 文章置顶
   top:
-    icon: fas fa-angle-double-up
+    icon: fal fa-angle-double-up
   # 文章浏览计数
   counter:
-    icon: fas fa-eye
+    icon: fal fa-eye
   # 文章字数和阅读时长
   wordcount:
-    icon_wordcount: fas fa-keyboard
-    icon_duration: fas fa-hourglass-half
+    icon_wordcount: fal fa-keyboard
+    icon_duration: fal fa-hourglass-half
   # 文章标签
   tags:
-    icon: fas fa-hashtag
+    icon: fal fa-hashtag
   # 分享
   share:
     - id: qq
@@ -241,31 +241,31 @@ meta:
   # 链接
   btns:
     edit:
-      icon: fas fa-edit
+      icon: fal fa-edit
       title: 在GitHub上编辑此页
       color: '#888'
     repo: # 源码链接
-      icon: fas fa-file-code
+      icon: fal fa-file-code
       title: 源码
       color: '#508EF2'
     bug: # BUG反馈链接
-      icon: fas fa-bug
+      icon: fal fa-bug
       title: BUG
       color: '#FE5F58'
     doubt: # 疑问链接
-      icon: fas fa-question-circle
+      icon: fal fa-question-circle
       title: 疑问
       color: '#FFBD2B'
     idea: # 建议链接
-      icon: fas fa-lightbulb
+      icon: fal fa-lightbulb
       title: 建议
       color: '#3DC550'
     faq: # FAQ链接
-      icon: fas fa-comments
+      icon: fal fa-comments
       title: FAQ
       color: '#29B1C9'
     feedback: # 反馈链接
-      icon: fas fa-comment-dots
+      icon: fal fa-comment-dots
       title: 反馈
       color: '#1BCDFC'
 
@@ -290,7 +290,7 @@ widget:
     class: toc
     display: [desktop, mobile] # [desktop, mobile]
     header:
-      icon: fas fa-list
+      icon: fal fa-list
       title: 本文目录
     list_number: false
     min_depth: 2
@@ -301,7 +301,7 @@ widget:
     class: category
     display: [desktop] # [desktop, mobile]
     header:
-      icon: fas fa-folder-open
+      icon: fal fa-folder-open
       title: 文章分类
       url: /blog/categories/
   # ---------------------------------------
@@ -310,7 +310,7 @@ widget:
     class: tagcloud
     display: [desktop, mobile] # [desktop, mobile]
     header:
-      icon: fas fa-tags
+      icon: fal fa-tags
       title: 热门标签
       url: /blog/tags/
     min_font: 14
@@ -324,7 +324,7 @@ widget:
     class: related_posts # npm i -S hexo-related-popular-posts
     display: [desktop, mobile] # [desktop, mobile]
     header:
-      icon: fas fa-bookmark
+      icon: fal fa-bookmark
       title: 相关文章
     max_count: 5
   # ---------------------------------------
@@ -353,7 +353,7 @@ widget:
     class: references # is subclass of list
     display: [desktop, mobile] # [desktop, mobile]
     header:
-      icon: fas fa-quote-left
+      icon: fal fa-quote-left
       title: 参考资料
   related_repos:
     class: references # is subclass of list
@@ -371,13 +371,13 @@ footer:
   # layout of footer: [aplayer, social, license, info, copyright]
   layout: [aplayer, social, license, info, copyright]
   social:
-    - icon: fas fa-rss
+    - icon: fal fa-rss
       url: atom.xml
-    - icon: fas fa-envelope
+    - icon: fal fa-envelope
       url: mailto:me@xaoxuu.com
     - icon: fab fa-github
       url: https://github.com/xaoxuu
-    - icon: fas fa-headphones-alt
+    - icon: fal fa-headphones-alt
       url: https://music.163.com/#/user/home?id=63035382
   copyright: '[Copyright © 2017-2020 Mr. X](https://xaoxuu.com)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
@@ -489,7 +489,7 @@ plugins:
 
 ############################### Comments ###############################
 comments:
-  title: <i class='fas fa-comments'></i> 评论
+  title: <i class='fal fa-comments'></i> 评论
   subtitle:
   service: valine # valine, minivaline, disqus, gitalk, livere
   valine:

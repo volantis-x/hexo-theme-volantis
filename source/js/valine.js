@@ -2108,7 +2108,7 @@
                 "*" === e.config.path && (a = '<a href="' + t.get("url") + '" class="vsys">' + t.get("url") + "</a>");
                 var l = t.get("link") ? /^https?\:\/\//.test(t.get("link")) ? t.get("link") : "http://" + t.get("link") : ""
                   , c = l ? '<a class="vnick" rel="nofollow" href="' + l + '" target="_blank" >' + t.get("nick") + "</a>" : '<span class="vnick">' + t.get("nick") + "</span>"
-                  , u = E.hide ? "" : '<img class="vimg" src="' + (E.cdn + (0,
+                  , u = E.hide ? "" : '<img no-lazy class="vimg" src="' + (E.cdn + (0,
                 s.default)(t.get("mail")) + E.params) + '">'
                   , d = u + '<div class="vh"><div class="vhead">' + c + " " + a + '</div><div class="vmeta"><span class="vtime" >' + (0,
                 w.default)(t.get("insertedAt"), e.i18n) + '</span><span class="vat" data-root-id="' + (t.get("rid") || t.id) + '" data-self-id="' + t.id + '">' + e.i18n.t("reply") + '</span></div><div class="vcontent" data-expand="' + e.i18n.t("expand") + '">' + (0,

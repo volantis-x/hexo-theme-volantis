@@ -83,7 +83,6 @@
   <% } %>
 
   <!-- link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
   <% if (theme.plugins.fancybox && theme.plugins.fancybox.css) { %>
     <%- css(theme.plugins.fancybox.css) %>
   <% } %>
@@ -115,6 +114,7 @@
   <% } else { %>
     <%- css('css/style.css') %>
   <% } %>
+  <%- css('fontcss/all.min.css') %>
 
   <script>
     function setLoadingBarProgress(num) {
