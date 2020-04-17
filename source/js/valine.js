@@ -4809,17 +4809,28 @@ object-assign
         function qq(str) {
             return "qq/qq-" + str + ".gif";
         }
+        function twemoji(str) {
+            return "twemoji/twemoji-" + str + ".png";
+        }
+        function weibo(str) {
+            return "weibo/weibo-" + str + ".png";
+        }
         e.exports = {};
-        for (var i = 1; i < 54; i++) {
+        for (var i = 1; i <= 54; i++) {
           e.exports['tieba-' + i] = tieba(i);
         }
-        for (var i = 1; i < 101; i++) {
+        for (var i = 1; i <= 101; i++) {
           e.exports['qq-' + i] = qq(i);
         }
-        for (var i = 1; i < 116; i++) {
+        for (var i = 1; i <= 116; i++) {
           e.exports['aru-' + i] = aru(i);
         }
-
+        for (var i = 1; i <= 125; i++) {
+          e.exports['twemoji-' + i] = twemoji(i);
+        }
+        for (var i = 1; i <= 4; i++) {
+          e.exports['weibo-' + i] = weibo(i);
+        }
     }
     , function(e, t, n) {
         var r = n(57);

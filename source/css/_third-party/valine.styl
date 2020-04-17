@@ -70,7 +70,9 @@
         &:hover
           color: $color-hover
           background: bgcolor($color-hover)
-
+        &.vmore
+          width: 100%
+          padding: $gap-paragraph 2rem
       .vcards
         .vquote
           border-left: none
@@ -134,6 +136,7 @@
             margin-bottom: $gap-row
           .vemoji
             max-height: 25px
+            border-radius: 0
       .vcopy
         &,a
           font-size: $fontsize-footnote
