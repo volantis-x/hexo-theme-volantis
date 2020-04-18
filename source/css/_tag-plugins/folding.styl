@@ -15,7 +15,7 @@ details
     font-size: $fontsize-meta
     font-weight: bold
     position: relative
-    line-height: $lineheight-fixed
+    line-height: normal
     >
       p,h1,h2,h3,h4,h5,h6
         display: inline
@@ -90,6 +90,8 @@ details[open]
     padding: $gap
     margin: 0 - $gap
     margin-top: 0
+    p>a:hover
+      text-decoration: underline
     >
       p,.tabs,ul,ol,.highlight,.note,.fancybox,details
         &:first-child

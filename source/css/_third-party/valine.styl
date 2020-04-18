@@ -62,10 +62,12 @@
 
       button
         border: none
-        padding: 9px 2rem 7px 2rem
+        padding: 4px 2rem
         border-radius: $border-button
         background: darken($color-block, 2)
         color: $color-text
+        line-height: 2
+        font-size: 14px
         trans()
         &:hover
           color: $color-hover
@@ -128,15 +130,19 @@
               border: none
           a
             color: $color-link
+            line-height: inherit
             trans()
             &:hover
               color: $color-hover
+              text-decoration: underline
           p
             margin-top: $gap-row
             margin-bottom: $gap-row
+            line-height: inherit
           .vemoji
-            max-height: 25px
+            max-height: 24px
             border-radius: 0
+            margin-top: -5px
       .vcopy
         &,a
           font-size: $fontsize-footnote
