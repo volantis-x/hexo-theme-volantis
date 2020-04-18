@@ -77,7 +77,7 @@ style:
       url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
       weight: normal
       style: normal
-      offset: 0.05rem # Correct baseline
+      offset: 0.08rem # Correct baseline for zh-CN
     codefont:
       fontfamily: 'Menlo, UbuntuMono, Monaco'
       # name: 'Monaco'
