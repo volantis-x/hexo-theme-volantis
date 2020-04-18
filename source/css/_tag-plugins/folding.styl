@@ -15,6 +15,7 @@ details
     font-size: $fontsize-meta
     font-weight: bold
     position: relative
+    line-height: $lineheight-fixed
     >
       p,h1,h2,h3,h4,h5,h6
         display: inline
@@ -92,7 +93,7 @@ details[open]
     margin: 0 - $gap
     margin-top: 0
     >
-      p,.tabs,ul,ol,.highlight,.note,.fancybox
+      p,.tabs,ul,ol,.highlight,.note,.fancybox,details
         &:first-child
           margin-top: 0
         &:last-child
