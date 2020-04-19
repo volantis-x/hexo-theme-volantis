@@ -258,7 +258,7 @@ ul.list-v
   >li>a
     trans()
     display: block
-    color: alpha($color-text, 85%)
+    color: $color-p
     font-size: $fontsize-meta
     font-weight: bold
     line-height: 33px
@@ -295,7 +295,7 @@ ul.list-v
         margin-right: 4px
 
 .l_header ul>li>a
-  color: alpha($color-text, 80%)
+  color: mix($color-text, $color-card, 90)
   &.current
     border-left-color: alpha($color-theme, 80%)
     border-bottom-color: alpha($color-theme, 80%)
