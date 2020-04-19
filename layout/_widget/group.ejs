@@ -2,12 +2,12 @@
 if (page.layout == 'page' || page.layout == 'post') {
   var rows = new Array();
   site.posts.each(function(post){
-    if (post.title && post.path && (post.group == item.id)) {
+    if ((post.short_title || post.title) && post.path && (post.group == item.id)) {
       rows.push({name: post.short_title || post.title, url: post.path, order: (post.order || 0)})
     }
   })
   site.pages.each(function(post){
-    if (post.title && post.path && (post.group == item.id)) {
+    if ((post.short_title || post.title) && post.path && (post.group == item.id)) {
       rows.push({name: post.short_title || post.title, url: post.path, order: (post.order || 0)})
     }
   })
