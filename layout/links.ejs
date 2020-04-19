@@ -1,8 +1,9 @@
 <%- partial('_pre') %>
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <article id="<%= page.layout %>" class="post white-box <%- theme.style.body.effect.join(' ') %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
-    <%- partial('_partial/meta',{post:page, position:'header'}) %>
+    
       <section class="article article-entry l_friends">
+        <p class="friends">友 链</p>
         <%- page.excerpt %>
         <% if (page.links){ %>
           <% (page.links||[]).forEach(function(group){ %>
@@ -54,6 +55,9 @@
         <br><br>
         <%- page.more %>
       </section>
+      <div style="margin: 10px 0 -30px;">
+        <%- partial('_partial/meta',{post:page, position:'header'}) %>
+      </div>
   </article>
 
   <%- partial('_third-party/comments') %>
