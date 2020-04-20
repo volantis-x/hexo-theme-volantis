@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ############################### Theme Information ###############################
 info:
   name: magic 的 blog # This is theme's name, not your blog's name.
@@ -8,8 +7,6 @@ info:
     css:
     js:
 
-=======
->>>>>>> b62a8bce11aaeeb930b41ff10ba4fadf1a5a04eb
 ############################### Style ###############################
 style:
   font_smoothing: false # font-smoothing for webkit
