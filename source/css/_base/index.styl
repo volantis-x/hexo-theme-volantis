@@ -10,11 +10,6 @@ html
   height: 100%
   font-family: $fontfamily
   font-size: $fontsize
-  line-height: $lineheight
-  -webkit-text-size-adjust: 100%
-  -ms-text-size-adjust: 100%
-  text-rendering: optimizelegibility
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
   >
     if hexo-config('style.scrollbar.size')
       if hexo-config('style.scrollbar.color')
@@ -27,6 +22,11 @@ html
 
 body
   background-color: $color-site
+  text-rendering: optimizelegibility
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  line-height: $lineheight
+  -webkit-text-size-adjust: 100%
+  -ms-text-size-adjust: 100%
   &.modal-active
     overflow: hidden
     @media screen and (max-width: $modal-threshold)
@@ -248,7 +248,7 @@ table
   th
     background-color: darken($color-block, 2)
   td,th
-    padding: 6px 16px
+    padding: 8px 16px
     border: 2px solid darken($color-block, 2)
     line-height: 1.5
     font-size: 90%

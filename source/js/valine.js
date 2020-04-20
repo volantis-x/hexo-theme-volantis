@@ -4809,99 +4809,27 @@ object-assign
         function qq(str) {
             return "qq/" + str + ".gif";
         }
-        e.exports = {
-            贴吧滑稽: tieba('滑稽'),
-            贴吧what: tieba('what'),
-            贴吧笑眼: tieba('笑眼'),
-            贴吧乖: tieba('乖'),
-            贴吧啊: tieba('啊'),
-            贴吧喷: tieba('喷'),
-            贴吧太开心: tieba('太开心'),
-            贴吧不高兴: tieba('不高兴'),
-            贴吧委屈: tieba('委屈'),
-            贴吧小乖: tieba('小乖'),
-            贴吧乖: tieba('乖'),
-            贴吧哈哈: tieba('哈哈'),
-            贴吧捂嘴笑: tieba('捂嘴笑'),
-            贴吧泪: tieba('泪'),
-            贴吧爱心: tieba('爱心'),
-            贴吧玫瑰: tieba('玫瑰'),
-            贴吧真棒: tieba('真棒'),
-            贴吧疑问: tieba('疑问'),
-            贴吧haha: tieba('haha'),
-            贴吧OK: tieba('OK'),
-            qqOK: qq('OK'),
-            qq亲亲: qq('亲亲'),
-            qq便便: qq('便便'),
-            qq偷笑: qq('偷笑'),
-            qq冷汗: qq('冷汗'),
-            qq擦汗: qq('擦汗'),
-            qq大哭: qq('大哭'),
-            qq调皮: qq('调皮'),
-            qq勾引: qq('勾引'),
-            qq哈欠: qq('哈欠'),
-            qq喝彩: qq('喝彩'),
-            qq惊讶: qq('惊讶'),
-            qq抠鼻: qq('抠鼻'),
-            qq酷: qq('酷'),
-            qq困: qq('困'),
-            qq篮球: qq('篮球'),
-            qq流汗: qq('流汗'),
-            qq拳头: qq('拳头'),
-            qq色: qq('色'),
-            qq睡: qq('睡'),
-            qq吐: qq('吐'),
-            qq微笑: qq('微笑'),
-            qq西瓜: qq('西瓜'),
-            qq心碎: qq('心碎'),
-            qq夜晚: qq('夜晚'),
-            qq太阳: qq('太阳'),
-            qq拥抱: qq('拥抱'),
-            qq再见: qq('再见'),
-            qq折磨: qq('折磨'),
-            qqNO: qq('NO'),
-            qq发呆: qq('发呆'),
-            qq发怒: qq('发怒'),
-            qq可怜: qq('可怜'),
-            qq可爱: qq('可爱'),
-            qq左哼哼: qq('左哼哼'),
-            qq右哼哼: qq('右哼哼'),
-            qq吓: qq('吓'),
-            qq呲牙: qq('呲牙'),
-            qq嗅大了: qq('嗅大了'),
-            qq坏笑: qq('坏笑'),
-            qq奋斗: qq('奋斗'),
-            qq委屈: qq('委屈'),
-            qq害羞: qq('害羞'),
-            qq尴尬: qq('尴尬'),
-            qq胜利: qq('胜利'),
-            qq强: qq('强'),
-            qq弱: qq('弱'),
-            qq得意: qq('得意'),
-            qq快哭了: qq('快哭了'),
-            qq惊恐: qq('惊恐'),
-            qq憨笑: qq('憨笑'),
-            qq抓狂: qq('抓狂'),
-            qq抱拳: qq('抱拳'),
-            qq握手: qq('握手'),
-            qq晕: qq('晕'),
-            qq疑问: qq('疑问'),
-            qq阴险: qq('阴险'),
-            qq菜刀: qq('菜刀'),
-            qq刀: qq('刀'),
-            qq爆筋: qq('爆筋'),
-            qq鼓掌: qq('鼓掌'),
-            aru140: aru(140),
-            aru151: aru(151),
-            aru161: aru(161),
-            aru1: aru(1),
-            aru3: aru(3),
-            aru7: aru(7),
-            aru12: aru(12),
-            aru15: aru(15),
-            aru34: aru(34),
-            aru46: aru(46),
-            aru77: aru(77)
+        function twemoji(str) {
+            return "twemoji/twemoji-" + str + ".png";
+        }
+        function weibo(str) {
+            return "weibo/weibo-" + str + ".png";
+        }
+        e.exports = {};
+        for (var i = 1; i <= 54; i++) {
+          e.exports['tieba-' + i] = tieba(i);
+        }
+        for (var i = 1; i <= 101; i++) {
+          e.exports['qq-' + i] = qq(i);
+        }
+        for (var i = 1; i <= 116; i++) {
+          e.exports['aru-' + i] = aru(i);
+        }
+        for (var i = 1; i <= 125; i++) {
+          e.exports['twemoji-' + i] = twemoji(i);
+        }
+        for (var i = 1; i <= 4; i++) {
+          e.exports['weibo-' + i] = weibo(i);
         }
     }
     , function(e, t, n) {

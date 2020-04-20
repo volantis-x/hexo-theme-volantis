@@ -1,6 +1,9 @@
 .l_body
   position: relative
   margin: $gap
+  if hexo-config('style.font_smoothing') == true
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
   &.nocover
     margin-top: $navbar-height
   @media screen and (max-width: $device-mobile-l)
@@ -128,6 +131,7 @@
     section.meta
       color: $color-meta
       margin-bottom: $gap
+      line-height: normal
       &#header-meta
         margin-top: 0
         margin-bottom: 1 * $gap
@@ -186,6 +190,8 @@
         display: flex
         align-items: center
         flex-wrap: wrap
+        -webkit-font-smoothing: auto
+        -moz-osx-font-smoothing: auto
         &,p,i
           font-size: $fontsize-code
         .new-meta-item
@@ -199,13 +205,15 @@
               padding: 1px 4px
               border-radius: 2px
               margin: 2px
+              line-height: 1.5
               &:hover
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 16px 0 rgba(0, 0, 0, 0.1)
               i
                 padding-left: 3px
               p
                 color: white
-                padding-top: 2px
+                padding-top: 3px
+                padding-right: 2px
               &:hover
                 color: white
                 p
@@ -217,11 +225,9 @@
               p
                 color: $color-meta
           display: flex
-          align-items: center
+          align-items: baseline
           justify-content: center
-          padding: 2px
-          margin: 0 8px 0 0
-          border-radius: 4px
+          margin: 0 $gap 0 0
           &:last-child
             margin-right: 0
           img,i
@@ -233,15 +239,14 @@
               margin-right: 2px
           p,a
             color: $color-meta
-            padding-left: 0
-            padding-right: 4px
+            padding: 3px 0
           a
             display: flex
             justify-content: center
             align-items: center
             img
-              height: 1.2em
-              width: 1.2em
+              height: 16px
+              width: 16px
               margin-right: 5px
             p
               margin: 0
@@ -256,7 +261,7 @@
           img,i
             border-radius: 100%
           img
-            transform: translateY(-1px)
+            transform: translateY(-0.5px)
 
         @media screen and (max-width: $device-mobile)
           .share

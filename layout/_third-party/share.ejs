@@ -12,13 +12,13 @@
       <% } else { %>
         <a class="-mob-share-<%- item.id %>" title="<%- item.name %>" rel="external nofollow noopener noreferrer"
           <% if (item.id == 'qzone'){ %>
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<%- post.permalink %>&title=<%- (post.title || post.seotitle) + ' - ' + config.title %><%- (post.thumbnail) ? '&pics=' + (post.thumbnail) : '' %>&summary=<%- strip_html(post.excerpt) %>"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<%- post.permalink %>&title=<%- (post.seo_title || post.title) + ' - ' + config.title %><%- (post.thumbnail) ? '&pics=' + (post.thumbnail) : '' %>&summary=<%- strip_html(post.excerpt) %>"
           <% } else if (item.id == 'qq'){ %>
-          href="http://connect.qq.com/widget/shareqq/index.html?url=<%- post.permalink %>&title=<%- (post.title || post.seotitle) + ' - ' + config.title %><%- (post.thumbnail) ? '&pics=' + (post.thumbnail) : '' %>&summary=<%- strip_html(post.excerpt) %>"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=<%- post.permalink %>&title=<%- (post.seo_title || post.title) + ' - ' + config.title %><%- (post.thumbnail) ? '&pics=' + (post.thumbnail) : '' %>&summary=<%- strip_html(post.excerpt) %>"
           <% } else if (item.id == 'weibo'){ %>
-          href="http://service.weibo.com/share/share.php?url=<%- post.permalink %>&title=<%- (post.title || post.seotitle) + ' - ' + config.title %><%- (post.thumbnail) ? '&pics=' + (post.thumbnail) : '' %>&summary=<%- strip_html(post.excerpt) %>"
+          href="http://service.weibo.com/share/share.php?url=<%- post.permalink %>&title=<%- (post.seo_title || post.title) + ' - ' + config.title %><%- (post.thumbnail) ? '&pics=' + (post.thumbnail) : '' %>&summary=<%- strip_html(post.excerpt) %>"
           <% } else if (item.id == 'telegram'){ %>
-            href="https://t.me/share/url?url=<%- post.permalink %>&text=<%- (post.title || post.seotitle) + ' - ' + config.title %>"
+            href="https://t.me/share/url?url=<%- post.permalink %>&text=<%- (post.seo_title || post.title) + ' - ' + config.title %>"
           <% } %>
           >
           <% if (item.img){ %>
