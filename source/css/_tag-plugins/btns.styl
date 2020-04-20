@@ -38,27 +38,27 @@ span.btn
 // btns
 div.btns
   margin: 0 -0.5 * $gap
-  &,b,p,a
+  &,p,a
     font-size: $fontsize-code
     color: $color-p
-  &,>p
-    display: flex
-    flex-wrap: wrap
-    align-items: flex-start
-    overflow: visible
-  &.wide>p>a,&.wide>a
+  b
+    font-size: $fontsize-meta
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  overflow: visible
+  line-height: 1.8
+  &.wide>a
     padding-left: $gap*2
     padding-right: $gap*2
-  &.fill>p>a,&.fill>a
+  &.fill>a
     flex-grow: 1
     width: auto
   &.around
-    &,>p
-      justify-content: space-around
+    justify-content: space-around
   &.center
-    &,>p
-      justify-content: center
-  &.grid2>p>a,&.grid2>a
+    justify-content: center
+  &.grid2>a
     width: "calc(100%/2 - %s)" % $gap
     @media screen and (max-width: $device-laptop)
       width: "calc(100%/2 - %s)" % $gap
@@ -66,7 +66,7 @@ div.btns
       width: "calc(100%/2 - %s)" % $gap
     @media screen and (max-width: $device-mobile)
       width: "calc(100%/1 - %s)" % $gap
-  &.grid3>p>a,&.grid3>a
+  &.grid3>a
     width: "calc(100%/3 - %s)" % $gap
     @media screen and (max-width: $device-laptop)
       width: "calc(100%/3 - %s)" % $gap
@@ -74,7 +74,7 @@ div.btns
       width: "calc(100%/3 - %s)" % $gap
     @media screen and (max-width: $device-mobile)
       width: "calc(100%/1 - %s)" % $gap
-  &.grid4>p>a,&.grid4>a
+  &.grid4>a
     width: "calc(100%/4 - %s)" % $gap
     @media screen and (max-width: $device-laptop)
       width: "calc(100%/3 - %s)" % $gap
@@ -82,7 +82,7 @@ div.btns
       width: "calc(100%/3 - %s)" % $gap
     @media screen and (max-width: $device-mobile)
       width: "calc(100%/2 - %s)" % $gap
-  &.grid5>p>a,&.grid5>a
+  &.grid5>a
     width: "calc(100%/5 - %s)" % $gap
     @media screen and (max-width: $device-laptop)
       width: "calc(100%/4 - %s)" % $gap
@@ -143,9 +143,9 @@ div.btns
         box-shadow: $boxshadow-float
       &>i:first-child
         background:$color-hover
-  &.circle>p a, &.circle a
+  &.circle a
     &>img:first-child, &>i:first-child
       border-radius: 32px
-  &.rounded>p a, &.rounded a
+  &.rounded a
     &>img:first-child, &>i:first-child
       border-radius: 16px

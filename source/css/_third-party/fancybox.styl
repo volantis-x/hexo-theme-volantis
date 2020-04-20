@@ -1,5 +1,6 @@
 div.fancybox
   margin: $gap-row 0
+  overflow: hidden
   $sp = 1px
   >a,>p>a
     margin: $sp
@@ -53,3 +54,15 @@ div.fancybox
 .fancybox-container
   .fancybox-stage
     cursor: zoom-out
+
+.fancybox
+  &.caption
+    flex-direction: column
+    a
+      margin: 0
+    .gallery
+      overflow: hidden
+    .image-caption
+      font-size: $fontsize-code
+      margin-top: $gap-row
+      color: $color-meta
