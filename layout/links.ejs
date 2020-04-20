@@ -1,9 +1,8 @@
 <%- partial('_pre') %>
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <article id="<%= page.layout %>" class="post white-box <%- theme.style.body.effect.join(' ') %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
-    
       <section class="article article-entry l_friends">
-        <p class="friends"><i class="fad fa-whale"></i></p>
+        <p class="friends"><i class="fad fa-whale" title="爱我"></i></p>
         <%- page.excerpt %>
         <% if (page.links){ %>
           <% (page.links||[]).forEach(function(group){ %>
