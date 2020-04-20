@@ -4,7 +4,7 @@
   left: 0
   height: 2px
   width: 100%
-  z-index: 9999
+  z-index: 99999
 
 #loading-bar
   position: fixed
@@ -18,7 +18,7 @@
   $iconW = 32px
   $iconMargin = 4px
   position: fixed
-  z-index: 99
+  z-index: 1000
   top: 0
   width: 100%
   height: $navbar-height
@@ -258,13 +258,14 @@ ul.list-v
   >li>a
     trans()
     display: block
-    color: alpha($color-text, 85%)
+    color: $color-p
     font-size: $fontsize-meta
     font-weight: bold
     line-height: 33px
     padding: 0 $gap + $border-line + 2px 0 $gap
     height: 32px
     border-left: $border-line solid transparent
+    text-overflow: ellipsis
     &:hover,&.active,&:active
       color: $color-theme
       border-left: $border-line solid $color-theme
@@ -288,12 +289,13 @@ ul.list-v
 .l_header
   .menu
     >ul>li>a
+      display: block
       padding: 0 8px
       >i
         margin-right: 4px
 
 .l_header ul>li>a
-  color: alpha($color-text, 80%)
+  color: mix($color-text, $color-card, 90)
   &.current
     border-left-color: alpha($color-theme, 80%)
     border-bottom-color: alpha($color-theme, 80%)
@@ -398,3 +400,8 @@ ul.list-v
     //     padding-right: 0
     .menu
       display:none
+
+@media screen and (max-width: $device-mobile)
+  .list-v
+    li
+      max-width: 264px

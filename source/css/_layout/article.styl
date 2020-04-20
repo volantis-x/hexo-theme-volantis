@@ -6,7 +6,7 @@
     >a,>p>a,blockquote a,div.note a
       underline()
     >ul>li,>ol>li,tbody tr td
-      >a
+      >a,>p>a
         underline()
     div.tab-pane
       >p,li
@@ -109,7 +109,7 @@
     margin-bottom: $gap-paragraph
     text-align: $textalign-p
     max-width: 100%
-    overflow: auto
+    line-height: inherit
     &.has-jax
       font-family: $fontfamily-code
       background: $color-mathjax
@@ -178,7 +178,7 @@
       margin-bottom: $gap-row
     position: relative
     width: 100%
-    padding: .7em 1.2em
+    padding: $gap-row + $fontoffset  $gap $gap-row $gap
     trans()
     footer
       padding: 0
@@ -224,12 +224,10 @@
       margin: 0
       background: transparent
       color: alpha($color-text, 90%)
-
   code
     font-family: $fontfamily-code
     &:not([class])
       padding: 3px 4px 1px 4px
-      margin: 0
       vertical-align: middle
       font-size: $fontsize-code
       background: $color-inlinecode
@@ -242,7 +240,7 @@
       font-size: $fontsize-meta
     figure
       font-size: 13px
-      line-height: 1.6em
+      line-height: 1.5
 
 
   .widget
@@ -324,6 +322,8 @@
       margin-bottom: 4px
 
 
+  .article_footer
+    margin-top: $gap * 4
   .widget-blur
     backdrop-filter: none
 
