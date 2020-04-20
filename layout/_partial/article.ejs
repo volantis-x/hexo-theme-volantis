@@ -10,12 +10,13 @@
           <% }) %>
           <%- post.content %>
           <% if ((page.meta && page.meta.article_footer && page.meta.article_footer.length > 0) || (theme.layout.on_post.article_footer && (page.layout == 'post'))) { %>
-            <br>
-            <% if (page.meta && page.meta.article_footer && page.meta.article_footer.length > 0) { %>
-              <%- partial('../_widget/load', {widgets: page.meta.article_footer, where: 'article'}) %>
-            <% } else { %>
-              <%- partial('../_widget/load', {widgets: theme.layout.on_post.article_footer, where: 'article'}) %>
-            <% } %>
+            <div class='article_footer'>
+              <% if (page.meta && page.meta.article_footer && page.meta.article_footer.length > 0) { %>
+                <%- partial('../_widget/load', {widgets: page.meta.article_footer, where: 'article'}) %>
+              <% } else { %>
+                <%- partial('../_widget/load', {widgets: theme.layout.on_post.article_footer, where: 'article'}) %>
+              <% } %>
+            </div>
           <% } %>
         </div>
         <% if(post.layout == 'post' || post.layout == 'page'){ %>

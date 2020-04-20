@@ -1,15 +1,6 @@
-############################### Theme Information ###############################
-info:
-  name: Volantis # This is theme's name, not your blog's name.
-  version: '2.6.2' # This is theme's version.
-  docs: https://volantis.js.org/ # This is theme's URL.
-  cdn:
-    css:
-    js:
-
-
 ############################### Style ###############################
 style:
+  font_smoothing: false # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
     size: 4px
@@ -77,7 +68,7 @@ style:
       url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
       weight: normal
       style: normal
-      offset: 0.08rem # Correct baseline for zh-CN
+      offset: 0.1rem # Correct baseline for zh-CN
     codefont:
       fontfamily: 'Menlo, UbuntuMono, Monaco'
       # name: 'Monaco'
@@ -554,3 +545,14 @@ search:
     queryKey:
   baidu:
     apiId:
+
+
+
+############################### Theme Information ###############################
+info:
+  name: Volantis # This is theme's name. ⚠️ NOT FOR YOUR BLOG'S INFO. 这不是博客的信息，请勿修改。
+  version: '2.6.3' # This is theme's version. ⚠️ NOT FOR YOUR BLOG'S INFO. 这不是博客的信息，请勿修改。
+  docs: https://volantis.js.org/ # This is theme's URL. ⚠️ NOT FOR YOUR BLOG'S INFO. 这不是博客的信息，请勿修改。
+  cdn:
+    css:
+    js:

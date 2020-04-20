@@ -35,10 +35,10 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
   <section class='meta'>
     <% if (topMetas.length == 1 && topMetas.indexOf('centertitle') > -1) { %>
       <% if(isPostList){ %>
-        <h2 class="title"><p class="p center h2"><%- post.title || post.seotitle %></p></h2><br>
+        <h2 class="title"><p class="p center h2"><%- post.title || post.seo_title %></p></h2><br>
       <% } else { %>
         <% if (post.title || page.title || config.title) { %>
-          <h1 class="title"><p class="p center h1"><%- post.title || post.seotitle %></p></h1><br>
+          <h1 class="title"><p class="p center h1"><%- post.title || post.seo_title %></p></h1><br>
         <% } %>
       <% } %>
     <% } else { %>

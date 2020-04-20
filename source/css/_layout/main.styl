@@ -1,8 +1,9 @@
 .l_body
   position: relative
   margin: $gap
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+  if hexo-config('style.font_smoothing') == true
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
   &.nocover
     margin-top: $navbar-height
   @media screen and (max-width: $device-mobile-l)
@@ -212,6 +213,7 @@
               p
                 color: white
                 padding-top: 3px
+                padding-right: 2px
               &:hover
                 color: white
                 p
@@ -223,7 +225,7 @@
               p
                 color: $color-meta
           display: flex
-          align-items: center
+          align-items: baseline
           justify-content: center
           margin: 0 $gap 0 0
           &:last-child
