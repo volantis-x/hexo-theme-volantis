@@ -23,14 +23,16 @@
 <% if (theme.plugins.instant_page) { %>
   <script async src="<%- theme.plugins.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 <% } %>
-<% if (theme.plugins.scrollreveal) { %>
-  <script src="<%- theme.plugins.scrollreveal %>"></script>
+<% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
+  <script src="<%- theme.plugins.scrollreveal.js %>"></script>
   <script type="text/javascript">
     $(function() {
-      const $reveal = $('.reveal');
-      if ($reveal.length === 0) return;
-      const sr = ScrollReveal({ distance: 0 });
-      sr.reveal('.reveal');
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '<%- theme.plugins.scrollreveal.distance %>',
+        duration: '<%- theme.plugins.scrollreveal.duration %>',
+        interval: '<%- theme.plugins.scrollreveal.interval %>',
+        scale: '<%- theme.plugins.scrollreveal.scale %>'
+      });
     });
   </script>
 <% } %>
