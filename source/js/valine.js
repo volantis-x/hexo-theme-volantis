@@ -3385,7 +3385,7 @@
             }
         }(r)
           , i = function(e) {
-            var t = o.default.store.get("VsVersion");
+            /*var t = o.default.store.get("VsVersion");
             if (!t || t.v !== e) {
                 o.default.store.set("VsVersion", {
                     v: e
@@ -3400,7 +3400,7 @@
                   , u = ["cc=1", "ck=" + (n.cookieEnabled ? 1 : 0), "cl=" + (c.colorDepth || 0) + "-bit", "ds=" + (c.width || 0) + "x" + (c.height || 0), "vl=" + (s + l), "et=0", "ja=" + (n.javaEnabled() ? 1 : 0), "ln=" + String(o.default.lang).toLowerCase(), "lo=1", "lt=" + Math.round(+new Date / 1e3), "rnd=" + Math.round(2147483647 * Math.random()), "si=" + r, "su=https://valine.js.org?v=" + e, "wd=", "v=1.2.72", "lv=1", "sn=" + Math.round(+new Date / 1e3) % 65535, "ct=" + decodeURIComponent(o.default.store.get("Hm_cv_" + r) || ""), "tt=" + (a.title || ""), "u=" + i.location.href]
                   , d = u.join("&");
                 (new Image).src = "//hm.baidu.com/hm.gif?" + d
-            }
+            }*/
         };
         t.default = i
     }
