@@ -500,7 +500,7 @@ comments:
     pageSize: 10 # comment list page size
     lang: zh-cn
     highlight: true
-    visitor: false # unavailable for now...
+    visitor: true
     mathJax: false
   # MiniValine
   # See: https://github.com/MiniValine/MiniValine

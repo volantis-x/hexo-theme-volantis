@@ -31,13 +31,13 @@
           border-radius: $border-codeblock
           padding: $gap * 0.5
           scrollbar()
+          .vemoji
+            max-height: 22px
           i
             width: auto
             padding: 8px
             border-radius: 4px
             transition: box-shadow .2s ease-out, background .2s ease-out
-            #emoji,.emoji
-              background: transparent
             if luminosity($color-block) > 0.5
               &:hover
                 background: lighten($color-block, 2)
