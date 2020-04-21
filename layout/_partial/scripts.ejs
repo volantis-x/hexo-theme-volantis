@@ -128,6 +128,9 @@
       enableMiniValine = true;
     }
   }
+  if (theme.comments.valine && theme.comments.valine.appId && theme.comments.valine.visitor && (theme.layout.on_list.meta.indexOf('counter') > -1)) {
+    enableValine = true;
+  }
 %>
 <% if (enableDisqus){ %>
   <script>
@@ -189,6 +192,25 @@
     return GUEST_INFO.indexOf(item) > -1
   });
   var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
   valine.init({
     el: '#valine_container',
     meta: meta,
@@ -203,9 +225,11 @@
     pageSize:'<%= theme.comments.valine.pageSize %>',
     avatar:'<%= theme.comments.valine.avatar %>',
     lang:'<%= theme.comments.valine.lang %>',
-    visitor: '<%- theme.comments.valine.visitor %>',
+    visitor: '<%= theme.comments.valine.visitor %>',
     highlight: '<%= theme.comments.valine.highlight %>',
-    mathJax: '<%= theme.comments.valine.mathJax %>'
+    mathJax: '<%= theme.comments.valine.mathJax %>',
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
   })
   </script>
 <% } %>
