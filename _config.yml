@@ -492,9 +492,11 @@ comments:
   valine:
     appId: # your appId
     appKey: # your appKey
-    # js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.2/js/valine.js
+    js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
     path: # All pages use the same path (share the same comments data)
-    meta: nick,mail,link #valine comment header info
+    meta: nick,mail,link # valine comment header info
+    requiredFields: ['nick','mail']
+    enableQQ: true # Unstable avatar link
     placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
     avatar: mp # gravatar style https://valine.js.org/avatar
     pageSize: 10 # comment list page size

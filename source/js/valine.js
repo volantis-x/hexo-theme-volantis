@@ -1,8 +1,8 @@
 /*!
- * Valine v1.4.5
+ * Valine v1.4.7
  * (c) 2017-2020 xCss
  * Released under the GPL-2.0 License.
- * Last Update: 2020-04-21 15:25:50
+ * Last Update: 2020-04-22 11:04:55
  */
 !function(e, t) {
     "object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define([], t) : "object" == typeof exports ? exports.Valine = t() : e.Valine = t()
@@ -567,10 +567,13 @@
             recordIP: !0,
             serverURLs: "",
             visitor: !1,
-            emojiCDN: void 0,
-            emojiMaps: void 0
+            emojiCDN: "",
+            emojiMaps: void 0,
+            enableQQ: !1,
+            requiredFields: []
         },
-        t.DEFAULT_META = ["nick", "mail", "link"]
+        t.DEFAULT_META = ["nick", "mail", "link"],
+        t.VERSION = "1.4.7"
     }
     , function(e, t, n) {
         "use strict";
@@ -1170,16 +1173,16 @@
                 if ("http://" !== n.substr(0, 7) && "https://" !== n.substr(0, 8) && "mailto:" !== n.substr(0, 7) && "tel:" !== n.substr(0, 4) && "#" !== n[0] && "/" !== n[0])
                     return ""
             } else if ("background" === t) {
-                if (C.lastIndex = 0,
-                C.test(n))
-                    return ""
-            } else if ("style" === t) {
                 if (I.lastIndex = 0,
                 I.test(n))
+                    return ""
+            } else if ("style" === t) {
+                if (C.lastIndex = 0,
+                C.test(n))
                     return "";
                 if (M.lastIndex = 0,
-                M.test(n) && (C.lastIndex = 0,
-                C.test(n)))
+                M.test(n) && (I.lastIndex = 0,
+                I.test(n)))
                     return "";
                 !1 !== r && (r = r || A,
                 n = r.process(n))
@@ -1275,8 +1278,8 @@
           , j = /&#([a-zA-Z0-9]*);?/gim
           , T = /&colon;?/gim
           , P = /&newline;?/gim
-          , C = /((j\s*a\s*v\s*a|v\s*b|l\s*i\s*v\s*e)\s*s\s*c\s*r\s*i\s*p\s*t\s*|m\s*o\s*c\s*h\s*a)\:/gi
-          , I = /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi
+          , I = /((j\s*a\s*v\s*a|v\s*b|l\s*i\s*v\s*e)\s*s\s*c\s*r\s*i\s*p\s*t\s*|m\s*o\s*c\s*h\s*a)\:/gi
+          , C = /e\s*x\s*p\s*r\s*e\s*s\s*s\s*i\s*o\s*n\s*\(.*/gi
           , M = /u\s*r\s*l\s*\(.*/gi
           , z = /<!--[\s\S]*?-->/g;
         t.whiteList = r(),
@@ -1670,22 +1673,18 @@
             ds: ["mp", "identicon", "monsterid", "wavatar", "robohash", "retro", ""],
             params: "",
             hide: !1
-        }
-          , T = ["nick", "mail", "link"];
+        };
         o.prototype.init = function(e) {
             if ("undefined" == typeof document)
                 throw new Error("Sorry, Valine does not support Server-side rendering.");
             var t = this;
-            return e = w.default.extend(h.DEFAULT_CONFIG, e),
-            (0,
-            A.default)(e, function(n) {
-                t.i18n = (0,
-                d.default)(e.lang || w.default.lang, e.langMode),
-                t.config = e,
-                e.emojiCDN && e.emojiMaps && (f.default.maps = e.emojiMaps,
-                f.default.cdn = e.emojiCDN),
-                !!e && t._init()
-            }),
+            return e && (e = w.default.extend(h.DEFAULT_CONFIG, e),
+            t.i18n = (0,
+            d.default)(e.lang || w.default.lang, e.langMode),
+            t.config = e,
+            e.emojiMaps && (f.default.maps = e.emojiMaps,
+            e.emojiCDN && (f.default.cdn = e.emojiCDN)),
+            t._init()),
             t
         }
         ,
@@ -1704,7 +1703,7 @@
                 e.config.path = s.replace(/index\.html?$/, "");
                 var u = j.ds
                   , d = r ? "&q=" + Math.random().toString(32).substring(2) : "";
-                j.params = "?d=" + (u.indexOf(n) > -1 ? n : "mp") + "&v=1.4.5" + d,
+                j.params = "?d=" + (u.indexOf(n) > -1 ? n : "mp") + "&v=" + h.VERSION + d,
                 j.hide = "hide" === n,
                 j.cdn = /^https?\:\/\//.test(o) ? o : j.cdn,
                 e.config.pageSize = isNaN(l) ? 10 : l < 1 ? 10 : l,
@@ -1713,77 +1712,83 @@
                     $.ip = e.ip
                 }
                 );
-                var p = (0,
-                w.default)(".valine-comment-count")
-                  , f = 0;
-                !function t(n) {
-                    var r = n[f++];
-                    if (r) {
-                        var o = (0,
-                        w.default)(r).attr("data-xid");
-                        !!o && e.Q(o).count().then(function(e) {
-                            r.innerText = e,
-                            t(n)
-                        }).catch(function(e) {
-                            r.innerText = 0
-                        })
+                var p = e.config.el || null
+                  , f = (0,
+                w.default)(p);
+                if (p = p instanceof HTMLElement ? p : f[f.length - 1] || null) {
+                    e.$el = (0,
+                    w.default)(p),
+                    e.$el.addClass("v").attr("data-class", "v"),
+                    j.hide && e.$el.addClass("hide-avatar"),
+                    e.config.meta = (e.config.guest_info || e.config.meta || h.DEFAULT_META).filter(function(e) {
+                        return h.DEFAULT_META.indexOf(e) > -1
+                    }),
+                    e.config.requiredFields = e.config.requiredFields.filter(function(e) {
+                        return h.DEFAULT_META.indexOf(e) > -1
+                    });
+                    var v = (0 == e.config.meta.length ? h.DEFAULT_META : e.config.meta).map(function(t) {
+                        var n = "mail" == t ? "email" : "text";
+                        return h.DEFAULT_META.indexOf(t) > -1 ? '<input name="' + t + '" placeholder="' + e.i18n.t(t) + '" class="v' + t + ' vinput" type="' + n + '">' : ""
+                    })
+                      , g = '<div class="vpanel"><div class="vwrap"><p class="cancel-reply text-right" style="display:none;" title="' + e.i18n.t("cancelReply") + '"><svg class="vicon cancel-reply-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4220" width="22" height="22"><path d="M796.454 985H227.545c-50.183 0-97.481-19.662-133.183-55.363-35.7-35.701-55.362-83-55.362-133.183V227.545c0-50.183 19.662-97.481 55.363-133.183 35.701-35.7 83-55.362 133.182-55.362h568.909c50.183 0 97.481 19.662 133.183 55.363 35.701 35.702 55.363 83 55.363 133.183v568.909c0 50.183-19.662 97.481-55.363 133.183S846.637 985 796.454 985zM227.545 91C152.254 91 91 152.254 91 227.545v568.909C91 871.746 152.254 933 227.545 933h568.909C871.746 933 933 871.746 933 796.454V227.545C933 152.254 871.746 91 796.454 91H227.545z" p-id="4221"></path><path d="M568.569 512l170.267-170.267c15.556-15.556 15.556-41.012 0-56.569s-41.012-15.556-56.569 0L512 455.431 341.733 285.165c-15.556-15.556-41.012-15.556-56.569 0s-15.556 41.012 0 56.569L455.431 512 285.165 682.267c-15.556 15.556-15.556 41.012 0 56.569 15.556 15.556 41.012 15.556 56.569 0L512 568.569l170.267 170.267c15.556 15.556 41.012 15.556 56.569 0 15.556-15.556 15.556-41.012 0-56.569L568.569 512z" p-id="4222" ></path></svg></p><div class="vheader item' + v.length + '">' + v.join("") + '</div><div class="vedit"><textarea id="veditor" class="veditor vinput" placeholder="' + e.config.placeholder + '"></textarea><div class="vrow"><div class="vcol vcol-60 status-bar"></div><div class="vcol vcol-40 vctrl text-right"><span title="' + e.i18n.t("emoji") + '"  class="vicon vemoji-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16172" width="22" height="22" ><path d="M512 1024a512 512 0 1 1 512-512 512 512 0 0 1-512 512zM512 56.888889a455.111111 455.111111 0 1 0 455.111111 455.111111 455.111111 455.111111 0 0 0-455.111111-455.111111zM312.888889 512A85.333333 85.333333 0 1 1 398.222222 426.666667 85.333333 85.333333 0 0 1 312.888889 512z" p-id="16173"></path><path d="M512 768A142.222222 142.222222 0 0 1 369.777778 625.777778a28.444444 28.444444 0 0 1 56.888889 0 85.333333 85.333333 0 0 0 170.666666 0 28.444444 28.444444 0 0 1 56.888889 0A142.222222 142.222222 0 0 1 512 768z" p-id="16174"></path><path d="M782.222222 391.964444l-113.777778 59.733334a29.013333 29.013333 0 0 1-38.684444-10.808889 28.444444 28.444444 0 0 1 10.24-38.684445l113.777778-56.888888a28.444444 28.444444 0 0 1 38.684444 10.24 28.444444 28.444444 0 0 1-10.24 36.408888z" p-id="16175"></path><path d="M640.568889 451.697778l113.777778 56.888889a27.875556 27.875556 0 0 0 38.684444-10.24 27.875556 27.875556 0 0 0-10.24-38.684445l-113.777778-56.888889a28.444444 28.444444 0 0 0-38.684444 10.808889 28.444444 28.444444 0 0 0 10.24 38.115556z" p-id="16176"></path></svg></span><span title="' + e.i18n.t("preview") + '" class="vicon vpreview-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17688" width="22" height="22"><path d="M502.390154 935.384615a29.538462 29.538462 0 1 1 0 59.076923H141.430154C79.911385 994.461538 29.538462 946.254769 29.538462 886.153846V137.846154C29.538462 77.745231 79.950769 29.538462 141.390769 29.538462h741.218462c61.44 0 111.852308 48.206769 111.852307 108.307692v300.268308a29.538462 29.538462 0 1 1-59.076923 0V137.846154c0-26.899692-23.355077-49.230769-52.775384-49.230769H141.390769c-29.420308 0-52.775385 22.331077-52.775384 49.230769v748.307692c0 26.899692 23.355077 49.230769 52.775384 49.230769h360.999385z" p-id="17689"></path><path d="M196.923077 216.615385m29.538461 0l374.153847 0q29.538462 0 29.538461 29.538461l0 0q0 29.538462-29.538461 29.538462l-374.153847 0q-29.538462 0-29.538461-29.538462l0 0q0-29.538462 29.538461-29.538461Z" p-id="17690"></path><path d="M649.846154 846.769231a216.615385 216.615385 0 1 0 0-433.230769 216.615385 216.615385 0 0 0 0 433.230769z m0 59.076923a275.692308 275.692308 0 1 1 0-551.384616 275.692308 275.692308 0 0 1 0 551.384616z" p-id="17691"></path><path d="M807.398383 829.479768m20.886847-20.886846l0 0q20.886846-20.886846 41.773692 0l125.321079 125.321079q20.886846 20.886846 0 41.773693l0 0q-20.886846 20.886846-41.773693 0l-125.321078-125.321079q-20.886846-20.886846 0-41.773693Z" p-id="17692"></path></svg></span></div></div></div><div class="vrow"><div class="vcol vcol-30" ><a alt="Markdown is supported" href="https://guides.github.com/features/mastering-markdown/" class="vicon" target="_blank"><svg class="markdown" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a></div><div class="vcol vcol-70 text-right"><button type="button"  title="Cmd|Ctrl+Enter" class="vsubmit vbtn">' + e.i18n.t("submit") + '</button></div></div><div class="vemojis" style="display:none;"></div><div class="vinput vpreview" style="display:none;"></div><div style="display:none;" class="vmark"></div></div></div><div class="vcount" style="display:none;"><span class="vnum">0</span> ' + e.i18n.t("comments") + '</div><div class="vload-top text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vcards"></div><div class="vload-bottom text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vempty" style="display:none;"></div><div class="vpage txt-center" style="display:none"><button type="button" class="vmore vbtn">' + e.i18n.t("more") + '</button></div><div class="vcopy txt-right">Powered By <a href="https://valine.js.org" target="_blank">Valine</a><br>v' + h.VERSION + "</div>";
+                    e.$el.html(g),
+                    e.$el.find(".cancel-reply").on("click", function(t) {
+                        e.reset()
+                    });
+                    var m = e.$el.find(".vempty");
+                    e.$nodata = {
+                        show: function(t) {
+                            return m.html(t || e.i18n.t("sofa")).show(),
+                            e
+                        },
+                        hide: function() {
+                            return m.hide(),
+                            e
+                        }
+                    };
+                    var y = e.$el.find(".vload-bottom")
+                      , b = e.$el.find(".vload-top");
+                    e.$loading = {
+                        show: function(t) {
+                            return t && b.show() || y.show(),
+                            e.$nodata.hide(),
+                            e
+                        },
+                        hide: function() {
+                            return b.hide(),
+                            y.hide(),
+                            0 === e.$el.find(".vcard").length && e.$nodata.show(),
+                            e
+                        }
                     }
-                }(p),
-                i && C.add(AV.Object.extend("Counter"), e.config.path);
-                var h = e.config.el || null
-                  , v = (0,
-                w.default)(h);
-                if (!(h = h instanceof HTMLElement ? h : v[v.length - 1] || null))
-                    return;
-                e.$el = (0,
-                w.default)(h),
-                e.$el.addClass("v").attr("data-class", "v"),
-                j.hide && e.$el.addClass("hide-avatar"),
-                e.config.meta = (e.config.guest_info || e.config.meta || T).filter(function(e) {
-                    return T.indexOf(e) > -1
-                });
-                var g = (0 == e.config.meta.length ? T : e.config.meta).map(function(t) {
-                    var n = "mail" == t ? "email" : "text";
-                    return T.indexOf(t) > -1 ? '<input name="' + t + '" placeholder="' + e.i18n.t(t) + '" class="v' + t + ' vinput" type="' + n + '">' : ""
+                }
+                (0,
+                A.default)(e.config, function(t) {
+                    var n = (0,
+                    w.default)(".valine-comment-count")
+                      , r = 0;
+                    !function t(n) {
+                        var o = n[r++];
+                        if (o) {
+                            var i = (0,
+                            w.default)(o).attr("data-xid");
+                            !!i && e.Q(i).count().then(function(e) {
+                                o.innerText = e,
+                                t(n)
+                            }).catch(function(e) {
+                                o.innerText = 0
+                            })
+                        }
+                    }(n),
+                    i && P.add(AV.Object.extend("Counter"), e.config.path),
+                    e.bind()
                 })
-                  , m = '<div class="vpanel"><div class="vwrap"><p class="cancel-reply text-right" style="display:none;" title="' + e.i18n.t("cancelReply") + '"><svg class="vicon cancel-reply-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4220" width="22" height="22"><path d="M796.454 985H227.545c-50.183 0-97.481-19.662-133.183-55.363-35.7-35.701-55.362-83-55.362-133.183V227.545c0-50.183 19.662-97.481 55.363-133.183 35.701-35.7 83-55.362 133.182-55.362h568.909c50.183 0 97.481 19.662 133.183 55.363 35.701 35.702 55.363 83 55.363 133.183v568.909c0 50.183-19.662 97.481-55.363 133.183S846.637 985 796.454 985zM227.545 91C152.254 91 91 152.254 91 227.545v568.909C91 871.746 152.254 933 227.545 933h568.909C871.746 933 933 871.746 933 796.454V227.545C933 152.254 871.746 91 796.454 91H227.545z" p-id="4221"></path><path d="M568.569 512l170.267-170.267c15.556-15.556 15.556-41.012 0-56.569s-41.012-15.556-56.569 0L512 455.431 341.733 285.165c-15.556-15.556-41.012-15.556-56.569 0s-15.556 41.012 0 56.569L455.431 512 285.165 682.267c-15.556 15.556-15.556 41.012 0 56.569 15.556 15.556 41.012 15.556 56.569 0L512 568.569l170.267 170.267c15.556 15.556 41.012 15.556 56.569 0 15.556-15.556 15.556-41.012 0-56.569L568.569 512z" p-id="4222" ></path></svg></p><div class="vheader item' + g.length + '">' + g.join("") + '</div><div class="vedit"><textarea id="veditor" class="veditor vinput" placeholder="' + e.config.placeholder + '"></textarea><div class="vrow"><div class="vcol vcol-60 status-bar"></div><div class="vcol vcol-40 vctrl text-right"><span title="' + e.i18n.t("emoji") + '"  class="vicon vemoji-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16172" width="22" height="22" ><path d="M512 1024a512 512 0 1 1 512-512 512 512 0 0 1-512 512zM512 56.888889a455.111111 455.111111 0 1 0 455.111111 455.111111 455.111111 455.111111 0 0 0-455.111111-455.111111zM312.888889 512A85.333333 85.333333 0 1 1 398.222222 426.666667 85.333333 85.333333 0 0 1 312.888889 512z" p-id="16173"></path><path d="M512 768A142.222222 142.222222 0 0 1 369.777778 625.777778a28.444444 28.444444 0 0 1 56.888889 0 85.333333 85.333333 0 0 0 170.666666 0 28.444444 28.444444 0 0 1 56.888889 0A142.222222 142.222222 0 0 1 512 768z" p-id="16174"></path><path d="M782.222222 391.964444l-113.777778 59.733334a29.013333 29.013333 0 0 1-38.684444-10.808889 28.444444 28.444444 0 0 1 10.24-38.684445l113.777778-56.888888a28.444444 28.444444 0 0 1 38.684444 10.24 28.444444 28.444444 0 0 1-10.24 36.408888z" p-id="16175"></path><path d="M640.568889 451.697778l113.777778 56.888889a27.875556 27.875556 0 0 0 38.684444-10.24 27.875556 27.875556 0 0 0-10.24-38.684445l-113.777778-56.888889a28.444444 28.444444 0 0 0-38.684444 10.808889 28.444444 28.444444 0 0 0 10.24 38.115556z" p-id="16176"></path></svg></span><span title="' + e.i18n.t("preview") + '" class="vicon vpreview-btn"><svg  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17688" width="22" height="22"><path d="M502.390154 935.384615a29.538462 29.538462 0 1 1 0 59.076923H141.430154C79.911385 994.461538 29.538462 946.254769 29.538462 886.153846V137.846154C29.538462 77.745231 79.950769 29.538462 141.390769 29.538462h741.218462c61.44 0 111.852308 48.206769 111.852307 108.307692v300.268308a29.538462 29.538462 0 1 1-59.076923 0V137.846154c0-26.899692-23.355077-49.230769-52.775384-49.230769H141.390769c-29.420308 0-52.775385 22.331077-52.775384 49.230769v748.307692c0 26.899692 23.355077 49.230769 52.775384 49.230769h360.999385z" p-id="17689"></path><path d="M196.923077 216.615385m29.538461 0l374.153847 0q29.538462 0 29.538461 29.538461l0 0q0 29.538462-29.538461 29.538462l-374.153847 0q-29.538462 0-29.538461-29.538462l0 0q0-29.538462 29.538461-29.538461Z" p-id="17690"></path><path d="M649.846154 846.769231a216.615385 216.615385 0 1 0 0-433.230769 216.615385 216.615385 0 0 0 0 433.230769z m0 59.076923a275.692308 275.692308 0 1 1 0-551.384616 275.692308 275.692308 0 0 1 0 551.384616z" p-id="17691"></path><path d="M807.398383 829.479768m20.886847-20.886846l0 0q20.886846-20.886846 41.773692 0l125.321079 125.321079q20.886846 20.886846 0 41.773693l0 0q-20.886846 20.886846-41.773693 0l-125.321078-125.321079q-20.886846-20.886846 0-41.773693Z" p-id="17692"></path></svg></span></div></div></div><div class="vrow"><div class="vcol vcol-30" ><a alt="Markdown is supported" href="https://guides.github.com/features/mastering-markdown/" class="vicon" target="_blank"><svg class="markdown" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"></path></svg></a></div><div class="vcol vcol-70 text-right"><button type="button"  title="Cmd|Ctrl+Enter" class="vsubmit vbtn">' + e.i18n.t("submit") + '</button></div></div><div class="vemojis" style="display:none;"></div><div class="vinput vpreview" style="display:none;"></div><div style="display:none;" class="vmark"></div></div></div><div class="vcount" style="display:none;"><span class="vnum">0</span> ' + e.i18n.t("comments") + '</div><div class="vload-top text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vcards"></div><div class="vload-bottom text-center" style="display:none;"><i class="vspinner" style="width:30px;height:30px;"></i></div><div class="vempty" style="display:none;"></div><div class="vpage txt-center" style="display:none"><button type="button" class="vmore vbtn">' + e.i18n.t("more") + '</button></div><div class="vcopy txt-right">Powered By <a href="https://valine.js.org" target="_blank">Valine</a><br>v1.4.5</div>';
-                e.$el.html(m),
-                e.$el.find(".cancel-reply").on("click", function(t) {
-                    e.reset()
-                });
-                var y = e.$el.find(".vempty");
-                e.$nodata = {
-                    show: function(t) {
-                        return y.html(t || e.i18n.t("sofa")).show(),
-                        e
-                    },
-                    hide: function() {
-                        return y.hide(),
-                        e
-                    }
-                };
-                var b = e.$el.find(".vload-bottom")
-                  , x = e.$el.find(".vload-top");
-                e.$loading = {
-                    show: function(t) {
-                        return t && x.show() || b.show(),
-                        e.$nodata.hide(),
-                        e
-                    },
-                    hide: function() {
-                        return x.hide(),
-                        b.hide(),
-                        0 === e.$el.find(".vcard").length && e.$nodata.show(),
-                        e
-                    }
-                },
-                e.bind()
             } catch (t) {
                 e.ErrorHandler(t, "init")
             }
         }
         ;
-        var P = function(e, t) {
+        var T = function(e, t) {
             var n = new e
               , r = new AV.ACL;
             r.setPublicReadAccess(!0),
@@ -1798,7 +1803,7 @@
                 w.default)(t.el).find(".leancloud-visitors-count").text(1)
             }).catch(function(e) {})
         }
-          , C = {
+          , P = {
             add: function(e, t) {
                 var n = this
                   , r = (0,
@@ -1828,14 +1833,14 @@
                                     w.default)(o).find(".leancloud-visitors-count").text(e.get("time"))
                                 }).catch(function(e) {})
                             } else
-                                P(e, l)
+                                T(e, l)
                         }).catch(function(t) {
-                            101 == t.code ? P(e, l) : n.ErrorHandler(t)
+                            101 == t.code ? T(e, l) : n.ErrorHandler(t)
                         })
                     } else
-                        C.show(e, r)
+                        P.show(e, r)
                 } else
-                    C.show(e, r)
+                    P.show(e, r)
             },
             show: function(e, t) {
                 var n = [];
@@ -1889,9 +1894,9 @@
         ,
         o.prototype.ErrorHandler = function(e, t) {
             var n = this;
-            if (n.$el && n.$loading.hide().nodata.hide(),
+            if (n.$el && n.$loading.hide().$nodata.hide() && n.$el.find(".vwrap").hide(),
             "[object Error]" === {}.toString.call(e)) {
-                var r = e.code || "";
+                var r = e.code || !isNaN(e.message) ? e.message : "";
                 if (r) {
                     var o = n.i18n.t("code-" + r)
                       , i = (o == "code-" + r ? void 0 : o) || e.message || e.error || "";
@@ -1953,7 +1958,7 @@
                     return E ? (e.$emoji.hide(),
                     o.addClass("actived"),
                     n.html(E).show(),
-                    C()) : e.$preview.hide(),
+                    I()) : e.$preview.hide(),
                     e.$preview
                 },
                 hide: function() {
@@ -1968,7 +1973,7 @@
                 o.hasClass("actived") > -1 && E != n.html() && n.html(E),
                 (0,
                 c.default)(e[0]),
-                C()
+                I()
             };
             r.on("click", function(t) {
                 r.hasClass("actived") ? e.$emoji.hide() : e.$emoji.show()
@@ -1989,20 +1994,18 @@
                     var t = v[m]
                       , n = e.$el.find("." + m);
                     h[t] = n,
-                    n.on("input change blur propertychange", function(e) {
-                        "blur" === e.type && "nick" === t && setTimeout(function(e) {
-                            !isNaN(n.val()) && (0,
-                            O.default)(n.val(), function(e) {
-                                var t = e.name || n.val();
-                                (0,
-                                w.default)(".vnick").val(t),
-                                (0,
-                                w.default)(".vmail").val(e.qq + "@qq.com"),
-                                $.nick = t,
-                                $.mail = e.qq + "@qq.com",
-                                $.QQAvatar = e.pic
-                            })
-                        }, 200),
+                    n.on("input change blur propertychange", function(r) {
+                        e.config.enableQQ && "blur" === r.type && "nick" === t && !isNaN(n.val()) && (0,
+                        O.default)(n.val(), function(e) {
+                            var t = e.name || n.val();
+                            (0,
+                            w.default)(".vnick").val(t),
+                            (0,
+                            w.default)(".vmail").val(e.qq + "@qq.com"),
+                            $.nick = t,
+                            $.mail = e.qq + "@qq.com",
+                            $.QQAvatar = e.pic
+                        }),
                         "comment" === t ? d(n) : $[t] = w.default.escape(n.val().replace(/(^\s*)|(\s*$)/g, "")).substring(0, 40)
                     })
                 }();
@@ -2083,7 +2086,7 @@
                 "*" === e.config.path && (a = '<a href="' + t.get("url") + '" class="vsys">' + t.get("url") + "</a>");
                 var l = t.get("link") ? /^https?\:\/\//.test(t.get("link")) ? t.get("link") : "http://" + t.get("link") : ""
                   , c = l ? '<a class="vnick" rel="nofollow" href="' + l + '" target="_blank" >' + t.get("nick") + "</a>" : '<span class="vnick">' + t.get("nick") + "</span>"
-                  , u = j.hide ? "" : t.get("QQAvatar") ? '<img class="vimg" src="' + t.get("QQAvatar") + '" referrerPolicy="no-referrer"/>' : '<img class="vimg" src="' + (j.cdn + (0,
+                  , u = j.hide ? "" : e.config.enableQQ && t.get("QQAvatar") ? '<img class="vimg" src="' + t.get("QQAvatar") + '" referrerPolicy="no-referrer"/>' : '<img class="vimg" src="' + (j.cdn + (0,
                 s.default)(t.get("mail")) + j.params) + '">'
                   , d = u + '<div class="vh"><div class="vhead">' + c + " " + a + '</div><div class="vmeta"><span class="vtime" >' + (0,
                 g.default)(t.get("insertedAt"), e.i18n) + '</span><span class="vat" data-vm-id="' + (t.get("rid") || t.id) + '" data-self-id="' + t.id + '">' + e.i18n.t("reply") + '</span></div><div class="vcontent" data-expand="' + e.i18n.t("expand") + '">' + (0,
@@ -2100,9 +2103,9 @@
                 }),
                 r ? n.append(o) : n.prepend(o);
                 var f = o.find(".vcontent");
-                f && I(f),
+                f && C(f),
                 p && P(p, t),
-                C()
+                I()
             }
               , T = {}
               , P = function(t, n) {
@@ -2124,7 +2127,7 @@
                     })[0].focus()
                 })
             }
-              , C = function() {
+              , I = function() {
                 setTimeout(function() {
                     try {
                         "MathJax"in window && "version"in window.MathJax && (/^3.*/.test(window.MathJax.version) && MathJax.typeset() || MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.querySelector(".v")])),
@@ -2139,15 +2142,11 @@
                                 right: "$",
                                 display: !1
                             }]
-                        }),
-                        "hljs"in window && (0,
-                        w.default)("pre code,code.hljs").forEach(function(e) {
-                            hljs.highlightBlock(e)
                         })
                     } catch (e) {}
                 }, 100)
             }
-              , I = function(e) {
+              , C = function(e) {
                 setTimeout(function() {
                     e[0].offsetHeight > 180 && (e.addClass("expand"),
                     e.on("click", function(t) {
@@ -2177,9 +2176,14 @@
             ;
             var M = e.$el.find(".vsubmit")
               , z = function(t) {
-                if ("" == E) return void h.comment[0].focus();
-                if ("" == $.mail || $.mail.length < 6 || $.mail.indexOf('@') < 1 || $.mail.indexOf('.') < 3) return void h.mail[0].focus();
-                if ("" == $.nick || $.nick.length < 3 || "Anonymous" == $.nick) return void h.nick[0].focus();
+                if (e.config.requiredFields.indexOf("nick") > -1 && $.nick.length < 3)
+                    return h.nick[0].focus(),
+                    void e.$el.find(".status-bar").text("" + e.i18n.t("nickFail")).empty(3e3);
+                if (e.config.requiredFields.indexOf("mail") > -1 && !/[\w-\.]+@([\w-]+\.)+[a-z]{2,3}/.test($.mail))
+                    return h.mail[0].focus(),
+                    void e.$el.find(".status-bar").text("" + e.i18n.t("mailFail")).empty(3e3);
+                if ("" == E)
+                    return void h.comment[0].focus();
                 $.comment = E,
                 $.nick = $.nick || "Anonymous";
                 var n = w.default.store.get("vlx");
@@ -2329,6 +2333,12 @@
         }(r)
           , i = !1;
         t.default = function(e, t) {
+            if ("AV"in window) {
+                var n = window.AV.version || window.AV.VERSION;
+                if (!(parseInt(n.split(".")[0]) > 2 && AV.applicationId && AV.applicationKey))
+                    throw new Error(98);
+                i = !0
+            }
             i ? t && t() : o.default.sdkLoader("//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js", "AV", function(n) {
                 var r = "https://"
                   , o = ""
@@ -2366,7 +2376,7 @@
                 })
             },
             build: function(e) {
-                return ' <img alt="' + e + '" referrerPolicy="no-referrer" class="vemoji" src=\'' + (o.cdn + o.maps[e]) + "'/>"
+                return ' <img alt=":' + e + ':" referrerPolicy="no-referrer" class="vemoji" src=\'' + (o.cdn + o.maps[e]) + "'/>"
             }
         };
         t.default = o
@@ -4814,6 +4824,8 @@ object-assign
             nick: "NickName",
             mail: "E-Mail",
             link: "Website(http://)",
+            nickFail: "NickName cannot be less than 3 bytes.",
+            mailFail: "Please confirm your email address.",
             sofa: "No comment yet.",
             submit: "Submit",
             reply: "Reply",
@@ -4834,8 +4846,9 @@ object-assign
             uploading: "Uploading ...",
             uploadDone: "Upload completed!",
             busy: "Submit is busy, please wait...",
-            "code-99": "Initialization failed, Please check the `el` element in the init method.",
-            "code-100": "Initialization failed, Please check your appId and appKey.",
+            "code-98": "Valine initialization failed, please check your version of av-min.js.",
+            "code-99": "Valine initialization failed, Please check the `el` element in the init method.",
+            "code-100": "Valine initialization failed, Please check your appId and appKey.",
             "code-140": "The total number of API calls today has exceeded the development version limit.",
             "code-401": "Unauthorized operation, Please check your appId and appKey.",
             "code-403": "Access denied by API domain white list, Please check your security domain."
@@ -4846,6 +4859,8 @@ object-assign
             nick: "ニックネーム",
             mail: "メールアドレス",
             link: "サイト(http://)",
+            nickFail: "3バイト以上のニックネームをご入力ください.",
+            mailFail: "メールアドレスをご確認ください.",
             sofa: "コメントしましょう~",
             submit: "提出する",
             reply: "返信する",
@@ -4866,6 +4881,7 @@ object-assign
             uploading: "アップロード中...",
             uploadDone: "アップロードが完了しました!",
             busy: "20 秒間隔で提出してください    ...",
+            "code-98": "ロードエラーです。av-min.js のバージョンを確認してください.",
             "code-99": "ロードエラーです。initにある`el`エレメントを確認ください.",
             "code-100": "ロードエラーです。AppIdとAppKeyを確認ください.",
             "code-140": "今日のAPIコールの総数が開発バージョンの上限を超えた.",
@@ -4878,6 +4894,8 @@ object-assign
             nick: "昵称",
             mail: "邮箱",
             link: "网址(http://)",
+            nickFail: "昵称不能少于3个字符",
+            mailFail: "请填写正确的邮件地址",
             sofa: "来发评论吧~",
             submit: "提交",
             reply: "回复",
@@ -4898,8 +4916,9 @@ object-assign
             uploading: "正在传输...",
             uploadDone: "传输完成!",
             busy: "操作频繁，请稍候再试...",
-            "code-99": "初始化失败，请检查init中的`el`元素.",
-            "code-100": "初始化失败，请检查你的AppId和AppKey.",
+            "code-98": "Valine 初始化失败，请检查 av-min.js 版本",
+            "code-99": "Valine 初始化失败，请检查init中的`el`元素.",
+            "code-100": "Valine 初始化失败，请检查你的AppId和AppKey.",
             "code-140": "今日 API 调用总次数已超过开发版限制.",
             "code-401": "未经授权的操作，请检查你的AppId和AppKey.",
             "code-403": "访问被API域名白名单拒绝，请检查你的安全域名设置."
@@ -4910,6 +4929,8 @@ object-assign
             nick: "暱稱",
             mail: "郵箱",
             link: "網址(http://)",
+            nickFail: "昵稱不能少於3個字符",
+            mailFail: "請填寫正確的郵件地址",
             sofa: "來發評論吧~",
             submit: "提交",
             reply: "回覆",
@@ -4930,8 +4951,9 @@ object-assign
             uploading: "正在上傳...",
             uploadDone: "上傳完成!",
             busy: "操作頻繁，請稍候再試...",
-            "code-99": "初始化失敗，請檢查init中的`el`元素.",
-            "code-100": "初始化失敗，請檢查你的AppId和AppKey.",
+            "code-98": "Valine 初始化失敗，請檢查 av-min.js 版本",
+            "code-99": "Valine 初始化失敗，請檢查init中的`el`元素.",
+            "code-100": "Valine 初始化失敗，請檢查你的AppId和AppKey.",
             "code-140": "今日 API 調用總次數已超過開發版限制.",
             "code-401": "未經授權的操作，請檢查你的AppId和AppKey.",
             "code-403": "訪問被API域名白名單拒絕，請檢查你的安全域名設置."
@@ -4947,7 +4969,7 @@ object-assign
     }
     , function(e, t, n) {
         t = e.exports = n(60)(!1),
-        t.push([e.i, '.v[data-class=v]{font-size:16px;text-align:left}.v[data-class=v] *{-webkit-box-sizing:border-box;box-sizing:border-box;line-height:1.75}.v[data-class=v] p,.v[data-class=v] pre code{color:#555}.v[data-class=v] .vsys,.v[data-class=v] .vtime{color:#b3b3b3}.v[data-class=v] .text-right{text-align:right}.v[data-class=v] .text-center{text-align:center}.v[data-class=v] hr{margin:.825em 0;border-color:#f6f6f6;border-style:dashed}.v[data-class=v].hide-avatar .vimg{display:none}.v[data-class=v] a{position:relative;cursor:pointer;color:#1abc9c;text-decoration:none;display:inline-block}.v[data-class=v] a:hover{color:#d7191a}.v[data-class=v] code,.v[data-class=v] pre{background-color:#f8f8f8;padding:.2em .4em;border-radius:3px;font-size:85%;margin:0;font-family:Source Code Pro,courier new,Input Mono,PT Mono,SFMono-Regular,Consolas,Monaco,Menlo,PingFang SC,Liberation Mono,Microsoft YaHei,Courier，monospace}.v[data-class=v] pre{padding:10px;overflow:auto;line-height:1.45}.v[data-class=v] pre code{padding:0;background:transparent;white-space:pre-wrap;word-break:keep-all}.v[data-class=v] blockquote{color:#666;margin:.5em 0;padding:0 0 0 1em;border-left:8px solid hsla(0,0%,93%,.5)}.v[data-class=v] .vinput{border:none;resize:none;outline:none;padding:10px 5px;max-width:100%;font-size:.775em}.v[data-class=v] input[type=checkbox],.v[data-class=v] input[type=radio]{display:inline-block;vertical-align:middle;margin-top:-2px}.v[data-class=v] .vicon{cursor:pointer;display:inline-block;overflow:hidden;fill:#666;vertical-align:middle}.v[data-class=v] .vicon+.vicon{margin-left:10px}.v[data-class=v] .vicon.actived{fill:#66b1ff}.v[data-class=v] .vrow{font-size:0;padding:10px 0}.v[data-class=v] .vrow .vcol{display:inline-block;vertical-align:middle;font-size:14px}.v[data-class=v] .vrow .vcol.vcol-20{width:20%}.v[data-class=v] .vrow .vcol.vcol-30{width:30%}.v[data-class=v] .vrow .vcol.vcol-40{width:40%}.v[data-class=v] .vrow .vcol.vcol-50{width:50%}.v[data-class=v] .vrow .vcol.vcol-60{width:60%}.v[data-class=v] .vrow .vcol.vcol-70{width:70%}.v[data-class=v] .vrow .vcol.vcol-80{width:80%}.v[data-class=v] .vrow .vcol.vctrl{font-size:12px}.v[data-class=v] .emoji,.v[data-class=v] .vemoji{max-height:28px;vertical-align:middle;margin:0 1px;display:inline-block}.v[data-class=v] .vwrap{border:1px solid #f0f0f0;border-radius:4px;margin-bottom:10px;overflow:hidden;position:relative;padding:10px}.v[data-class=v] .vwrap input{background:transparent}.v[data-class=v] .vwrap .vedit{position:relative;padding-top:10px}.v[data-class=v] .vwrap .cancel-reply-btn{position:absolute;right:5px;top:5px;cursor:pointer}.v[data-class=v] .vwrap .vemojis{display:none;font-size:18px;text-align:justify;max-height:145px;overflow:auto;padding-bottom:10px;-webkit-box-shadow:0 0 1px #f0f0f0;box-shadow:0 0 1px #f0f0f0}.v[data-class=v] .vwrap .vemojis i{font-style:normal;padding-top:7px;width:36px;cursor:pointer;text-align:center;display:inline-block;vertical-align:middle}.v[data-class=v] .vwrap .vpreview{padding:7px;-webkit-box-shadow:0 0 1px #f0f0f0;box-shadow:0 0 1px #f0f0f0}.v[data-class=v] .vwrap .vpreview frame,.v[data-class=v] .vwrap .vpreview iframe,.v[data-class=v] .vwrap .vpreview img{max-width:100%;border:none}.v[data-class=v] .vwrap .vheader .vinput{width:33.33%;border-bottom:1px dashed #dedede}.v[data-class=v] .vwrap .vheader.item2 .vinput{width:50%}.v[data-class=v] .vwrap .vheader.item1 .vinput{width:100%}.v[data-class=v] .vwrap .vheader .vinput:focus{border-bottom-color:#eb5055}@media screen and (max-width:520px){.v[data-class=v] .vwrap .vheader.item2 .vinput,.v[data-class=v] .vwrap .vheader .vinput{width:100%}}.v[data-class=v] .vcopy{color:#999;font-size:.75em;padding:.5em 0}.v[data-class=v] .vcopy a{font-size:.75em}.v[data-class=v] .vcount{padding:5px;font-weight:600;font-size:1.25em}.v[data-class=v] ol,.v[data-class=v] ul{padding:0;margin-left:1.25em}.v[data-class=v] .txt-center{text-align:center}.v[data-class=v] .txt-right{text-align:right}.v[data-class=v] .pd5{padding:5px}.v[data-class=v] .pd10{padding:10px}.v[data-class=v] .veditor{width:100%;min-height:8.75em;font-size:.875em;background:transparent;resize:vertical;-webkit-transition:all .25s ease;transition:all .25s ease}.v[data-class=v] .vbtn{-webkit-transition-duration:.4s;transition-duration:.4s;text-align:center;color:#313131;border:1px solid #ededed;border-radius:.3em;display:inline-block;background:#ededed;margin-bottom:0;font-weight:400;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;white-space:nowrap;padding:.5em 1.25em;font-size:.875em;line-height:1.42857143;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;outline:none}.v[data-class=v] .vbtn+.vbtn{margin-left:1.25em}.v[data-class=v] .vbtn:active,.v[data-class=v] .vbtn:hover{color:#3090e4;border-color:#3090e4}.v[data-class=v] .vbtn:disabled{border-color:#e1e1e1;color:#e1e1e1;background-color:#fdfafa;cursor:not-allowed}.v[data-class=v] .vempty{padding:1.25em;text-align:center;color:#999}.v[data-class=v] .vsys{display:inline-block;padding:.2em .5em;font-size:.75em;border-radius:.2em;margin-right:.3em}@media screen and (max-width:520px){.v[data-class=v] .vsys{display:none}}.v[data-class=v] .vcards{width:100%}.v[data-class=v] .vcards .vcard{padding-top:1.25em;position:relative;display:block}.v[data-class=v] .vcards .vcard:after{content:"";clear:both;display:block}.v[data-class=v] .vcards .vcard .vimg{width:3.125em;height:3.125em;float:left;border-radius:50%;margin-right:.7525em;border:1px solid #f5f5f5;padding:.125em}@media screen and (max-width:720px){.v[data-class=v] .vcards .vcard .vimg{width:2.5em;height:2.5em}}.v[data-class=v] .vcards .vcard .vhead{line-height:1.5;margin-top:0}.v[data-class=v] .vcards .vcard .vhead .vnick{position:relative;font-size:.875em;font-weight:500;margin-right:.875em;cursor:pointer;text-decoration:none;display:inline-block}.v[data-class=v] .vcards .vcard .vhead .vnick:hover{color:#d7191a}.v[data-class=v] .vcards .vcard .vh{overflow:hidden;padding-bottom:.5em;border-bottom:1px dashed #f5f5f5}.v[data-class=v] .vcards .vcard .vh .vtime{font-size:.75em;margin-right:.875em}.v[data-class=v] .vcards .vcard .vh .vmeta{line-height:1;position:relative}.v[data-class=v] .vcards .vcard .vh .vmeta .vat{font-size:.8125em;color:#ef2f11;cursor:pointer;float:right}.v[data-class=v] .vcards .vcard:last-child .vh{border-bottom:none}.v[data-class=v] .vcards .vcard .vcontent{word-wrap:break-word;word-break:break-all;text-align:justify;font-size:.875em;line-height:2;position:relative;margin-bottom:.75em;padding-top:.625em}.v[data-class=v] .vcards .vcard .vcontent frame,.v[data-class=v] .vcards .vcard .vcontent iframe,.v[data-class=v] .vcards .vcard .vcontent img{max-width:100%;border:none}.v[data-class=v] .vcards .vcard .vcontent.expand{cursor:pointer;max-height:8em;overflow:hidden}.v[data-class=v] .vcards .vcard .vcontent.expand:before{display:block;content:"";position:absolute;width:100%;left:0;top:0;bottom:3.15em;background:-webkit-gradient(linear,left top,left bottom,from(hsla(0,0%,100%,0)),to(hsla(0,0%,100%,.9)));background:linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.9));z-index:999}.v[data-class=v] .vcards .vcard .vcontent.expand:after{display:block;content:attr(data-expand);text-align:center;color:#828586;position:absolute;width:100%;height:3.15em;line-height:3.15em;left:0;bottom:0;z-index:999;background:hsla(0,0%,100%,.9)}.v[data-class=v] .vcards .vcard .vquote{padding-left:1em;border-left:1px dashed hsla(0,0%,93%,.5)}.v[data-class=v] .vcards .vcard .vquote .vimg{width:2.225em;height:2.225em}.v[data-class=v] .vpage .vmore{margin:1em 0}.v[data-class=v] .clear{content:"";display:block;clear:both}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@-webkit-keyframes pulse{50%{background:#dcdcdc}}@keyframes pulse{50%{background:#dcdcdc}}.v[data-class=v] .vspinner{width:22px;height:22px;display:inline-block;border:6px double #a0a0a0;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;-webkit-animation:spin 1s infinite linear;animation:spin 1s infinite linear;position:relative;vertical-align:middle;margin:0 5px}.night .v .vsys,.night .v .vtime,.night .v input,.night .v p,.night .v textarea,.theme__dark .v .vsys,.theme__dark .v .vtime,.theme__dark .v input,.theme__dark .v p,.theme__dark .v textarea,[data-theme=dark] .v .vsys,[data-theme=dark] .v .vtime,[data-theme=dark] .v input,[data-theme=dark] .v p,[data-theme=dark] .v textarea{color:#929298}.night .v code,.night .v pre,.night .v pre code,.theme__dark .v code,.theme__dark .v pre,.theme__dark .v pre code,[data-theme=dark] .v code,[data-theme=dark] .v pre,[data-theme=dark] .v pre code{color:#929298;background-color:#151414}.night .v .vicon,.theme__dark .v .vicon,[data-theme=dark] .v .vicon{fill:#929298}.night .v .vicon.actived,.theme__dark .v .vicon.actived,[data-theme=dark] .v .vicon.actived{fill:#66b1ff}.night .v .vbtn,.theme__dark .v .vbtn,[data-theme=dark] .v .vbtn{color:#929298;background:transparent;border-color:#929290}.night .v .vbtn:hover,.theme__dark .v .vbtn:hover,[data-theme=dark] .v .vbtn:hover{color:#66b1ff}.night .v a:hover,.theme__dark .v a:hover,[data-theme=dark] .v a:hover{color:#d7191a}.night .v .vcards .vcard .vcontent.expand:before,.theme__dark .v .vcards .vcard .vcontent.expand:before,[data-theme=dark] .v .vcards .vcard .vcontent.expand:before{background:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.3)),to(rgba(0,0,0,.7)));background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.7))}.night .v .vcards .vcard .vcontent.expand:after,.theme__dark .v .vcards .vcard .vcontent.expand:after,[data-theme=dark] .v .vcards .vcard .vcontent.expand:after{background:rgba(0,0,0,.7)}@media (prefers-color-scheme:dark){.v .vsys,.v .vtime,.v input,.v p,.v textarea{color:#929298}.v code,.v pre,.v pre code{color:#929298;background-color:#151414}.v .vicon{fill:#929298}.v .vicon.actived{fill:#66b1ff}.v .vbtn{color:#929298;background:transparent;border-color:#929290}.v .vbtn:hover{color:#66b1ff}.v a:hover{color:#d7191a}.v .vcards .vcard .vcontent.expand:before{background:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.3)),to(rgba(0,0,0,.7)));background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.7))}.v .vcards .vcard .vcontent.expand:after{background:rgba(0,0,0,.7)}}', ""])
+        t.push([e.i, '.v[data-class=v]{font-size:16px;text-align:left}.v[data-class=v] *{-webkit-box-sizing:border-box;box-sizing:border-box;line-height:1.75}.v[data-class=v] .status-bar,.v[data-class=v] .veditor,.v[data-class=v] .vinput,.v[data-class=v] p,.v[data-class=v] pre code{color:#555}.v[data-class=v] .vsys,.v[data-class=v] .vtime{color:#b3b3b3}.v[data-class=v] .text-right{text-align:right}.v[data-class=v] .text-center{text-align:center}.v[data-class=v] hr{margin:.825em 0;border-color:#f6f6f6;border-style:dashed}.v[data-class=v].hide-avatar .vimg{display:none}.v[data-class=v] a{position:relative;cursor:pointer;color:#1abc9c;text-decoration:none;display:inline-block}.v[data-class=v] a:hover{color:#d7191a}.v[data-class=v] code,.v[data-class=v] pre{background-color:#f8f8f8;padding:.2em .4em;border-radius:3px;font-size:85%;margin:0;font-family:Source Code Pro,courier new,Input Mono,PT Mono,SFMono-Regular,Consolas,Monaco,Menlo,PingFang SC,Liberation Mono,Microsoft YaHei,Courier，monospace}.v[data-class=v] pre{padding:10px;overflow:auto;line-height:1.45}.v[data-class=v] pre code{padding:0;background:transparent;white-space:pre-wrap;word-break:keep-all}.v[data-class=v] blockquote{color:#666;margin:.5em 0;padding:0 0 0 1em;border-left:8px solid hsla(0,0%,93%,.5)}.v[data-class=v] .vinput{border:none;resize:none;outline:none;padding:10px 5px;max-width:100%;font-size:.775em}.v[data-class=v] input[type=checkbox],.v[data-class=v] input[type=radio]{display:inline-block;vertical-align:middle;margin-top:-2px}.v[data-class=v] .vicon{cursor:pointer;display:inline-block;overflow:hidden;fill:#666;vertical-align:middle}.v[data-class=v] .vicon+.vicon{margin-left:10px}.v[data-class=v] .vicon.actived{fill:#66b1ff}.v[data-class=v] .vrow{font-size:0;padding:10px 0}.v[data-class=v] .vrow .vcol{display:inline-block;vertical-align:middle;font-size:14px}.v[data-class=v] .vrow .vcol.vcol-20{width:20%}.v[data-class=v] .vrow .vcol.vcol-30{width:30%}.v[data-class=v] .vrow .vcol.vcol-40{width:40%}.v[data-class=v] .vrow .vcol.vcol-50{width:50%}.v[data-class=v] .vrow .vcol.vcol-60{width:60%}.v[data-class=v] .vrow .vcol.vcol-70{width:70%}.v[data-class=v] .vrow .vcol.vcol-80{width:80%}.v[data-class=v] .vrow .vcol.vctrl{font-size:12px}.v[data-class=v] .emoji,.v[data-class=v] .vemoji{max-height:28px;vertical-align:middle;margin:0 1px;display:inline-block}.v[data-class=v] .vwrap{border:1px solid #f0f0f0;border-radius:4px;margin-bottom:10px;overflow:hidden;position:relative;padding:10px}.v[data-class=v] .vwrap input{background:transparent}.v[data-class=v] .vwrap .vedit{position:relative;padding-top:10px}.v[data-class=v] .vwrap .cancel-reply-btn{position:absolute;right:5px;top:5px;cursor:pointer}.v[data-class=v] .vwrap .vemojis{display:none;font-size:18px;text-align:justify;max-height:145px;overflow:auto;padding-bottom:10px;-webkit-box-shadow:0 0 1px #f0f0f0;box-shadow:0 0 1px #f0f0f0}.v[data-class=v] .vwrap .vemojis i{font-style:normal;padding-top:7px;width:36px;cursor:pointer;text-align:center;display:inline-block;vertical-align:middle}.v[data-class=v] .vwrap .vpreview{padding:7px;-webkit-box-shadow:0 0 1px #f0f0f0;box-shadow:0 0 1px #f0f0f0}.v[data-class=v] .vwrap .vpreview frame,.v[data-class=v] .vwrap .vpreview iframe,.v[data-class=v] .vwrap .vpreview img{max-width:100%;border:none}.v[data-class=v] .vwrap .vheader .vinput{width:33.33%;border-bottom:1px dashed #dedede}.v[data-class=v] .vwrap .vheader.item2 .vinput{width:50%}.v[data-class=v] .vwrap .vheader.item1 .vinput{width:100%}.v[data-class=v] .vwrap .vheader .vinput:focus{border-bottom-color:#eb5055}@media screen and (max-width:520px){.v[data-class=v] .vwrap .vheader.item2 .vinput,.v[data-class=v] .vwrap .vheader .vinput{width:100%}}.v[data-class=v] .vcopy{color:#999;font-size:.75em;padding:.5em 0}.v[data-class=v] .vcopy a{font-size:.75em}.v[data-class=v] .vcount{padding:5px;font-weight:600;font-size:1.25em}.v[data-class=v] ol,.v[data-class=v] ul{padding:0;margin-left:1.25em}.v[data-class=v] .txt-center{text-align:center}.v[data-class=v] .txt-right{text-align:right}.v[data-class=v] .pd5{padding:5px}.v[data-class=v] .pd10{padding:10px}.v[data-class=v] .veditor{width:100%;min-height:8.75em;font-size:.875em;background:transparent;resize:vertical;-webkit-transition:all .25s ease;transition:all .25s ease}.v[data-class=v] .vbtn{-webkit-transition-duration:.4s;transition-duration:.4s;text-align:center;color:#313131;border:1px solid #ededed;border-radius:.3em;display:inline-block;background:transparent;margin-bottom:0;font-weight:400;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;white-space:nowrap;padding:.5em 1.25em;font-size:.875em;line-height:1.42857143;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;outline:none}.v[data-class=v] .vbtn+.vbtn{margin-left:1.25em}.v[data-class=v] .vbtn:active,.v[data-class=v] .vbtn:hover{color:#3090e4;border-color:#3090e4}.v[data-class=v] .vbtn:disabled{border-color:#e1e1e1;color:#e1e1e1;background-color:#fdfafa;cursor:not-allowed}.v[data-class=v] .vempty{padding:1.25em;text-align:center;color:#999}.v[data-class=v] .vsys{display:inline-block;padding:.2em .5em;font-size:.75em;border-radius:.2em;margin-right:.3em}@media screen and (max-width:520px){.v[data-class=v] .vsys{display:none}}.v[data-class=v] .vcards{width:100%}.v[data-class=v] .vcards .vcard{padding-top:1.25em;position:relative;display:block}.v[data-class=v] .vcards .vcard:after{content:"";clear:both;display:block}.v[data-class=v] .vcards .vcard .vimg{width:3.125em;height:3.125em;float:left;border-radius:50%;margin-right:.7525em;border:1px solid #f5f5f5;padding:.125em}@media screen and (max-width:720px){.v[data-class=v] .vcards .vcard .vimg{width:2.5em;height:2.5em}}.v[data-class=v] .vcards .vcard .vhead{line-height:1.5;margin-top:0}.v[data-class=v] .vcards .vcard .vhead .vnick{position:relative;font-size:.875em;font-weight:500;margin-right:.875em;cursor:pointer;text-decoration:none;display:inline-block}.v[data-class=v] .vcards .vcard .vhead .vnick:hover{color:#d7191a}.v[data-class=v] .vcards .vcard .vh{overflow:hidden;padding-bottom:.5em;border-bottom:1px dashed #f5f5f5}.v[data-class=v] .vcards .vcard .vh .vtime{font-size:.75em;margin-right:.875em}.v[data-class=v] .vcards .vcard .vh .vmeta{line-height:1;position:relative}.v[data-class=v] .vcards .vcard .vh .vmeta .vat{font-size:.8125em;color:#ef2f11;cursor:pointer;float:right}.v[data-class=v] .vcards .vcard:last-child .vh{border-bottom:none}.v[data-class=v] .vcards .vcard .vcontent{word-wrap:break-word;word-break:break-all;text-align:justify;font-size:.875em;line-height:2;position:relative;margin-bottom:.75em;padding-top:.625em}.v[data-class=v] .vcards .vcard .vcontent frame,.v[data-class=v] .vcards .vcard .vcontent iframe,.v[data-class=v] .vcards .vcard .vcontent img{max-width:100%;border:none}.v[data-class=v] .vcards .vcard .vcontent.expand{cursor:pointer;max-height:8em;overflow:hidden}.v[data-class=v] .vcards .vcard .vcontent.expand:before{display:block;content:"";position:absolute;width:100%;left:0;top:0;bottom:3.15em;background:-webkit-gradient(linear,left top,left bottom,from(hsla(0,0%,100%,0)),to(hsla(0,0%,100%,.9)));background:linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.9));z-index:999}.v[data-class=v] .vcards .vcard .vcontent.expand:after{display:block;content:attr(data-expand);text-align:center;color:#828586;position:absolute;width:100%;height:3.15em;line-height:3.15em;left:0;bottom:0;z-index:999;background:hsla(0,0%,100%,.9)}.v[data-class=v] .vcards .vcard .vquote{padding-left:1em;border-left:1px dashed hsla(0,0%,93%,.5)}.v[data-class=v] .vcards .vcard .vquote .vimg{width:2.225em;height:2.225em}.v[data-class=v] .vpage .vmore{margin:1em 0}.v[data-class=v] .clear{content:"";display:block;clear:both}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(1turn);transform:rotate(1turn)}}@-webkit-keyframes pulse{50%{background:#dcdcdc}}@keyframes pulse{50%{background:#dcdcdc}}.v[data-class=v] .vspinner{width:22px;height:22px;display:inline-block;border:6px double #a0a0a0;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;-webkit-animation:spin 1s infinite linear;animation:spin 1s infinite linear;position:relative;vertical-align:middle;margin:0 5px}.dark .v[data-class=v] .status-bar,.dark .v[data-class=v] .veditor,.dark .v[data-class=v] .vinput,.dark .v[data-class=v] .vsys,.dark .v[data-class=v] .vtime,.dark .v[data-class=v] li,.dark .v[data-class=v] p,.night .v[data-class=v] .status-bar,.night .v[data-class=v] .veditor,.night .v[data-class=v] .vinput,.night .v[data-class=v] .vsys,.night .v[data-class=v] .vtime,.night .v[data-class=v] li,.night .v[data-class=v] p,.theme__dark .v[data-class=v] .status-bar,.theme__dark .v[data-class=v] .veditor,.theme__dark .v[data-class=v] .vinput,.theme__dark .v[data-class=v] .vsys,.theme__dark .v[data-class=v] .vtime,.theme__dark .v[data-class=v] li,.theme__dark .v[data-class=v] p,[data-theme=dark] .v[data-class=v] .status-bar,[data-theme=dark] .v[data-class=v] .veditor,[data-theme=dark] .v[data-class=v] .vinput,[data-theme=dark] .v[data-class=v] .vsys,[data-theme=dark] .v[data-class=v] .vtime,[data-theme=dark] .v[data-class=v] li,[data-theme=dark] .v[data-class=v] p{color:#929298}.dark .v[data-class=v] code,.dark .v[data-class=v] pre,.dark .v[data-class=v] pre code,.night .v[data-class=v] code,.night .v[data-class=v] pre,.night .v[data-class=v] pre code,.theme__dark .v[data-class=v] code,.theme__dark .v[data-class=v] pre,.theme__dark .v[data-class=v] pre code,[data-theme=dark] .v[data-class=v] code,[data-theme=dark] .v[data-class=v] pre,[data-theme=dark] .v[data-class=v] pre code{color:#929298;background-color:#151414}.dark .v[data-class=v] .vwrap,.night .v[data-class=v] .vwrap,.theme__dark .v[data-class=v] .vwrap,[data-theme=dark] .v[data-class=v] .vwrap{border-color:#929298}.dark .v[data-class=v] .vicon,.night .v[data-class=v] .vicon,.theme__dark .v[data-class=v] .vicon,[data-theme=dark] .v[data-class=v] .vicon{fill:#929298}.dark .v[data-class=v] .vicon.actived,.night .v[data-class=v] .vicon.actived,.theme__dark .v[data-class=v] .vicon.actived,[data-theme=dark] .v[data-class=v] .vicon.actived{fill:#66b1ff}.dark .v[data-class=v] .vbtn,.night .v[data-class=v] .vbtn,.theme__dark .v[data-class=v] .vbtn,[data-theme=dark] .v[data-class=v] .vbtn{color:#929298;border-color:#929298}.dark .v[data-class=v] .vbtn:hover,.night .v[data-class=v] .vbtn:hover,.theme__dark .v[data-class=v] .vbtn:hover,[data-theme=dark] .v[data-class=v] .vbtn:hover{color:#66b1ff;border-color:#66b1ff}.dark .v[data-class=v] a:hover,.night .v[data-class=v] a:hover,.theme__dark .v[data-class=v] a:hover,[data-theme=dark] .v[data-class=v] a:hover{color:#d7191a}.dark .v[data-class=v] .vcards .vcard .vcontent.expand:before,.night .v[data-class=v] .vcards .vcard .vcontent.expand:before,.theme__dark .v[data-class=v] .vcards .vcard .vcontent.expand:before,[data-theme=dark] .v[data-class=v] .vcards .vcard .vcontent.expand:before{background:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.3)),to(rgba(0,0,0,.7)));background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.7))}.dark .v[data-class=v] .vcards .vcard .vcontent.expand:after,.night .v[data-class=v] .vcards .vcard .vcontent.expand:after,.theme__dark .v[data-class=v] .vcards .vcard .vcontent.expand:after,[data-theme=dark] .v[data-class=v] .vcards .vcard .vcontent.expand:after{background:rgba(0,0,0,.7)}@media (prefers-color-scheme:dark){.v[data-class=v] .status-bar,.v[data-class=v] .veditor,.v[data-class=v] .vinput,.v[data-class=v] .vsys,.v[data-class=v] .vtime,.v[data-class=v] li,.v[data-class=v] p{color:#929298}.v[data-class=v] code,.v[data-class=v] pre,.v[data-class=v] pre code{color:#929298;background-color:#151414}.v[data-class=v] .vwrap{border-color:#929298}.v[data-class=v] .vicon{fill:#929298}.v[data-class=v] .vicon.actived{fill:#66b1ff}.v[data-class=v] .vbtn{color:#929298;border-color:#929298}.v[data-class=v] .vbtn:hover{color:#66b1ff;border-color:#66b1ff}.v[data-class=v] a:hover{color:#d7191a}.v[data-class=v] .vcards .vcard .vcontent.expand:before{background:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.3)),to(rgba(0,0,0,.7)));background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.7))}.v[data-class=v] .vcards .vcard .vcontent.expand:after{background:rgba(0,0,0,.7)}}', ""])
     }
     , function(e, t) {
         function n(e, t) {
