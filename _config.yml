@@ -498,7 +498,7 @@ comments:
     requiredFields: ['nick','mail']
     enableQQ: true # Unstable avatar link
     placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
-    avatar: mp # gravatar style https://valine.js.org/avatar
+    avatar: robohash # gravatar style https://valine.js.org/avatar
     pageSize: 10 # comment list page size
     lang: zh-cn
     highlight: true
