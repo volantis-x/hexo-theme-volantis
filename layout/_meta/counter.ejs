@@ -1,25 +1,21 @@
-<% if(!isPostList){ %>
-  <% if (theme.comments.valine && theme.comments.valine.appId && theme.comments.valine.visitor) { %>
-    <div class="new-meta-item browse valine">
-      <a class='notlink'>
-        <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
-        <span id="<%- url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">
-        <p>
-          <span class="leancloud-visitors-count">
-            <i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-        </span>
-      </a>
-    </div>
-  <% } else if (theme.plugins.busuanzi) { %>
+<% if (theme.comments.valine && theme.comments.valine.appId && (theme.comments.valine.visitor == true)) { %>
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
+      <span id="<%- url_for(post.path || page.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title || page.title %>">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+<% } else if (theme.plugins.busuanzi) { %>
+  <% if(!isPostList){ %>
     <div class="new-meta-item browse busuanzi">
       <a class='notlink'>
         <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
         <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
+          <span id="busuanzi_value_page_pv"></span>
         </p>
       </a>
     </div>

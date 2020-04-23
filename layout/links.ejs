@@ -1,6 +1,6 @@
 <%- partial('_pre') %>
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
-  <article id="<%= page.layout %>" class="post white-box <%- theme.style.body.effect.join(' ') %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
+  <article id="<%= page.layout %>" class="post white-box reveal <%- theme.style.body.effect.join(' ') %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
     <%- partial('_partial/meta',{post:page, position:'header'}) %>
       <section class="article article-entry l_friends">
         <%- page.excerpt %>
