@@ -229,10 +229,9 @@ ul.list-v
   display: none
   position: absolute
   background: $color-card
-  box-shadow: $boxshadow-float
+  box-shadow: $boxshadow-dropmenu
   margin-top: -2px - $border-card * 0.5
   border-radius: $border-card * 0.5
-  border: 1px solid darken($color-codeblock, 6)
   padding: $gap * 0.5 0
   >hr
     margin-top: $gap * 0.5
@@ -258,7 +257,7 @@ ul.list-v
   >li>a
     trans()
     display: block
-    color: $color-p
+    color: mix($color-text, $color-card, 90)
     font-size: $fontsize-meta
     font-weight: bold
     line-height: 33px
@@ -404,4 +403,4 @@ ul.list-v
 @media screen and (max-width: $device-mobile)
   .list-v
     li
-      max-width: 264px
+      max-width: 270px

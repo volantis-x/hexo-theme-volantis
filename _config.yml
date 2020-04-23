@@ -408,8 +408,13 @@ plugins:
     css: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
     js: https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
 
-  # Page Scrolling Animation
-  scrollreveal: #https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js
+  # https://scrollrevealjs.org/api/reveal.html
+  scrollreveal:
+    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
+    distance: 8px
+    duration: 800 # ms
+    interval: 100 # ms
+    scale: 1 # 0.1~1
 
   # Codeblock Copy Button
   clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
@@ -487,15 +492,17 @@ comments:
   valine:
     appId: # your appId
     appKey: # your appKey
-    # js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.2/js/valine.js
+    js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
     path: # All pages use the same path (share the same comments data)
-    meta: nick,mail,link #valine comment header info
+    meta: nick,mail,link # valine comment header info
+    requiredFields: ['nick','mail']
+    enableQQ: true # Unstable avatar link
     placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
-    avatar: mp # gravatar style https://valine.js.org/avatar
+    avatar: robohash # gravatar style https://valine.js.org/avatar
     pageSize: 10 # comment list page size
     lang: zh-cn
     highlight: true
-    visitor: false # unavailable for now...
+    visitor: true
     mathJax: false
   # MiniValine
   # See: https://github.com/MiniValine/MiniValine
