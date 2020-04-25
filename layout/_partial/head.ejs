@@ -110,7 +110,7 @@
       <%- css(theme.plugins.highlightjs.css) %>
     <% } %>
   <% } %>
-  <% if (theme.info.cdn && theme.info.cdn.css) { %>
+  <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.css) { %>
     <%- css(theme.info.cdn.css) %>
   <% } else { %>
     <%- css('css/style.css') %>
