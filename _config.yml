@@ -549,7 +549,7 @@ comments:
 search:
   enable: true
   service: hexo  # hexo, google, algolia, azure, baidu
-  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4/js/search.js
+  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.4/js/search.js
   google:
     apiKey:
     engineId:
@@ -568,9 +568,9 @@ search:
 
 ############################### Theme Information ###############################
 info:
-  name: Volantis # This is theme's name. ⚠️ NOT FOR YOUR BLOG'S INFO. 这不是博客的信息，请勿修改。
-  version: '2.6.3' # This is theme's version. ⚠️ NOT FOR YOUR BLOG'S INFO. 这不是博客的信息，请勿修改。
-  docs: https://volantis.js.org/ # This is theme's URL. ⚠️ NOT FOR YOUR BLOG'S INFO. 这不是博客的信息，请勿修改。
+  name: Volantis # This is theme's name.
+  version: '2.6.4' # This is theme's version.
+  docs: https://volantis.js.org/ # This is theme's URL.
   cdn:
-    css:
-    js:
+    css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.4/css/style.css
+    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.4/js/app.js
