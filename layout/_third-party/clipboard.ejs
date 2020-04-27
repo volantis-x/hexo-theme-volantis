@@ -4,7 +4,7 @@
     var timelag = null;
     timelag = window.setTimeout(callback, seconds);
   }
-  !function (e, t, a) {
+  function pjax_initCopyCode() {
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
@@ -49,6 +49,9 @@
         }, 2000);
       });
     }
-    initCopyCode();
-  }(window, document);
+  }
+
+  $(function () {
+    pjax_initCopyCode()
+  });
 </script>

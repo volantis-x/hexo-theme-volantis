@@ -1,0 +1,27 @@
+<!--此文件用来存放一些不方便取值的变量-->
+
+<%
+var changeValinePath = 'none';
+var changeValinePlaceholder = 'none';
+var enableValine = false;
+if (theme.comments && page && page.comments == true && theme.comments.valine && theme.comments.valine.appId) {
+    enableValine = true;
+}
+if (page && page.comments == true) {
+    if (enableValine && page.valine && page.valine.path) {
+        changeValinePath = page.valine.path;
+    }
+    if (enableValine && page.valine && page.valine.placeholder) {
+        changeValinePlaceholder = page.valine.placeholder;
+    }
+}
+%>
+
+<script>
+  var valine_path = 'none';
+  var valine_placeholder = 'none';
+  <% if (enableValine){ %>
+  valine_path = '<%= changeValinePath %>';
+  valine_placeholder = '<%= changeValinePlaceholder %>';
+  <% } %>
+</script>

@@ -117,11 +117,6 @@
   <%- css('fontcss/all.min.css') %>
 
   <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
-  <script>
     if(window.location.hash){
         var checkExist = setInterval(function() {
            if ($(window.location.hash).length) {

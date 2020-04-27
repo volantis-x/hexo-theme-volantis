@@ -1,18 +1,34 @@
 <script src="<%- theme.plugins.fancybox.js %>"></script>
 <script>
-  let LAZY_LOAD_IMAGE = "<%- config.lazyload.enable %>";
-  $(".article-entry").find("div.fancybox").find("img").each(function () {
-      var element = document.createElement("a");
-      $(element).attr("data-fancybox", "gallery");
-      $(element).attr("href", $(this).attr("src"));
-      /* 图片采用懒加载处理时,
-       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
-       * 那么此处将原本的属性名src替换为对应属性名data-original,
-       * 修改如下
-       */
-       if (LAZY_LOAD_IMAGE) {
-         $(element).attr("href", $(this).attr("data-original"));
-       }
-      $(this).wrap(element);
+  function pjax_fancybox() {
+    $('article img').not('[hidden]').not('.new-meta-item img').not('.vemojis img').not('.avatar').each(function () {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('data-original');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '" style="display:block;text-align: center;"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
   });
 </script>

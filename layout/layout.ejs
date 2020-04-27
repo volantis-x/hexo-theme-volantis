@@ -2,15 +2,15 @@
 <html>
 <%- partial('_partial/head') %>
 <body>
-  <%- partial('_partial/cover') %>
-  <div class="l_body<%- page.cover ? '' : ' nocover' %>">
-    <div class='body-wrapper'>
-      <script>setLoadingBarProgress(60);</script>
-      <%- body %>
+<%- partial('_partial/cover') %>
+<div class="l_body<%- page.cover ? '' : ' nocover' %>">
+    <div class='body-wrapper' id="pjax-container">
+        <%- body %>
+        <%- partial('_partial/pjaxData') %>
     </div>
     <a class="s-top fal fa-arrow-up fa-fw" href='javascript:void(0)'></a>
-  </div>
-  <%- partial('_partial/scripts') %>
-  <script>setLoadingBarProgress(100);</script>
+</div>
+<%- partial('_partial/scripts') %>
+
 </body>
 </html>

@@ -492,6 +492,7 @@ comments:
   valine:
     appId: dogUA2FSKGTo029M1SEwGROT-MdYXbMMI # your appId
     appKey: u0NdtQ8nvHoMdJPSYqm1LRxE # your appKey
+    cdn: false,
     js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
     path: # All pages use the same path (share the same comments data)
     meta: nick,mail,link # valine comment header info
@@ -549,6 +550,7 @@ comments:
 search:
   enable: true
   service: hexo  # hexo, google, algolia, azure, baidu
+  cdn: false
   js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.4/js/search.js
   google:
     apiKey:
