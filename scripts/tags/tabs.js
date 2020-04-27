@@ -1,6 +1,5 @@
 /**
- * note.js
- * transplant from hexo-theme-next
+ * tabs.js | https://theme-next.org/docs/tag-plugins/tabs
  */
 
 'use strict';
@@ -40,7 +39,9 @@ function postTabs(args, content) {
     ((tabCaption.length === 0) && (tabIcon.length === 0)) && (tabCaption = tabName + ' ' + tabId);
 
     var isOnlyicon = tabIcon.length > 0 && tabCaption.length === 0 ? ' style="text-align: center;"' : '';
-    tabIcon.length > 0 && (tabIcon = `<i class="fa fa-${tabIcon.trim()}"${isOnlyicon}></i>`);
+    let icon = tabIcon.trim();
+    icon = icon.startsWith('fa') ? icon : 'fa fa-' + icon;
+    tabIcon.length > 0 && (tabIcon = `<i class="${icon}"${isOnlyicon}></i>`);
 
     var isActive = (tabActive > 0 && tabActive === tabId) || (tabActive === 0 && tabId === 1) ? ' active' : '';
     tabNav += `<li class="tab${isActive}"><a href="#${tabHref}">${tabIcon + tabCaption.trim()}</a></li>`;
