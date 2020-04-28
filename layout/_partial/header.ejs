@@ -43,10 +43,10 @@
           }
           menu_list = menu_list || [];
           %>
-          <% function menu(value) { %>
+          <% function menu(value, type) { %>
             <% if (value.name == 'hr') { %>
               <hr>
-            <% } else if (value.icon && value.icon.indexOf('fa-compact-disc') > -1 && value.url  == undefined && value.rows  == undefined) { %>
+            <% } else if (value.icon && value.icon.indexOf('fa-compact-disc') > -1 && value.url  == undefined && value.rows  == undefined && type == 'PC') { %>
               <li>
                 <a class="flat-box">
                   <i class='<%= value.icon %> fa-fw music'></i><%- value.name %>
@@ -59,11 +59,11 @@
                   </li>
                 </ul>
               <li>
-            <% } else if (value.name != undefined && value.url  == undefined && value.rows == undefined) { %>
+            <% } else if (value.name != undefined && value.url  == undefined && value.rows == undefined && type == 'PC') { %>
               <li class='header'>
                 <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
               </li>
-            <% } else { %>
+            <% } else if(value.icon.indexOf('fa-compact-disc') == -1) { %>
               <li>
                 <a class="flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
                   <% if (value.rel) { %>
@@ -80,7 +80,7 @@
                 <% if (value.rows) { %>
                   <ul class="list-v">
                     <% value.rows.forEach(function(value){ %>
-                      <% menu(value) %>
+                      <% menu(value, type) %>
                     <%})%>
                   </ul>
                 <% } %>
@@ -88,7 +88,7 @@
             <% } %>
           <% } %>
           <% menu_list.forEach(function(value){ %>
-            <% menu(value) %>
+            <% menu(value, 'PC') %>
           <%})%>
 				</ul>
 			</div>
@@ -108,7 +108,7 @@
           <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
           <ul class="menu-phone list-v navigation white-box">
             <% menu_list.forEach(function(value){ %>
-              <% menu(value) %>
+              <% menu(value, 'Phone') %>
             <%})%>
           </ul>
         </li>
