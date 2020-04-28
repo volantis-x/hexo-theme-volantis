@@ -3,12 +3,15 @@ var customSearch;
 (function ($) {
 
 	"use strict";
+
+	// 校正页面定位（被导航栏挡住的区域）
 	var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
 	const $headerAnchor = $('.l_header', '.cover-wrapper');
 	if ($headerAnchor[0]) {
 		scrollCorrection = $headerAnchor[0].clientHeight + 16;
 	}
 
+	// 滚动到指定元素位置
 	function scrolltoElement(elem, correction = scrollCorrection) {
 		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
 		$('html, body').animate({
@@ -16,6 +19,7 @@ var customSearch;
 		}, 500);
 	}
 
+	// 设置滚动锚点
 	function setScrollAnchor() {
 		// button
 		const $postsBtn = $('.menu .active');
@@ -74,6 +78,7 @@ var customSearch;
 		});
 	}
 
+	// 设置导航栏
 	function setHeader() {
 		if (!window.subData) return;
 		const $wrapper = $('header .wrapper');
@@ -125,6 +130,7 @@ var customSearch;
 
 	}
 
+	// 设置导航栏菜单选中状态
 	function setHeaderMenuSelection() {
 		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
@@ -159,24 +165,7 @@ var customSearch;
 		}
 	}
 
-	function setHeaderMenuPhone() {
-		// var $switcher = $('.l_header .switcher .s-menu');
-		// var $menu = $('body .menu-phone');
-		// $switcher.click(function (e) {
-		// 	e.stopPropagation();
-		// 	$menu.toggleClass('show');
-		// 	$switcher.toggleClass('active');
-		// });
-		// $(document).click(function (e) {
-		// 	// $menu.removeClass('show');
-		// 	$switcher.removeClass('active');
-		// });
-		// $(document, window).scroll(() => {
-		// 	$menu.removeClass('show');
-		// 	$switcher.removeClass('active');
-		// });
-	}
-
+	// 设置导航栏搜索框
 	function setHeaderSearch() {
 		var $switcher = $('.l_header .switcher .s-search');
 		var $header = $('.l_header');
@@ -224,6 +213,7 @@ var customSearch;
 		});
 	}
 
+	// 设置toc
 	function setTocToggle() {
 		const $toc = $('.toc-wrapper');
 		if ($toc.length === 0) return;
@@ -279,6 +269,7 @@ var customSearch;
 		scrollListener();
 	}
 
+	// 设置搜索服务
 	function setSearchService() {
 		if (SEARCH_SERVICE === 'google') {
 			customSearch = new GoogleCustomSearch({
@@ -312,6 +303,7 @@ var customSearch;
 		}
 	}
 
+	// 设置 tabs 标签
 	function setTabs() {
 		const $tabs = $('.tabs');
 		if ($tabs.length === 0) return;
@@ -336,13 +328,12 @@ var customSearch;
 	$(function () {
 		setHeader();
 		setHeaderMenuSelection();
-		setHeaderMenuPhone();
 		setHeaderSearch();
 		setTocToggle();
 		setScrollAnchor();
 		setSearchService();
 		setTabs();
-		// $(".article .video-container").fitVids();
+
 		$('.scroll-down').on('click', function () {
 	    scrolltoElement('.l_body');
 	  });
