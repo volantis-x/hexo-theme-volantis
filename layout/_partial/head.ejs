@@ -65,9 +65,14 @@
     <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
   <% if (keywords){ %>
     <meta name="keywords" content="<%- keywords %>">
+  <% } else { %>
+    <meta name="keywords" content="<%- config.keywords || '' %>">
   <% } %>
+
   <% if (description){ %>
     <meta name="description" content="<%- description %>">
+  <% } else { %>
+    <meta name="description" content="<%- config.description || '' %>">
   <% } %>
 
   <!-- feed -->
@@ -98,6 +103,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
   <% } %>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+
   <!-- import link -->
   <% if (config.import && config.import.link){ %>
   <% (config.import.link||[]).forEach(function(item){ %>
@@ -115,7 +122,7 @@
     <%- css('css/style.css') %>
   <% } %>
   <%- css('fontcss/all.min.css') %>
-
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
   <script>
     if(window.location.hash){
         var checkExist = setInterval(function() {
@@ -125,6 +132,7 @@
            }
         }, 100);
     }
+
   </script>
 
   <% if (config.google_analytics_key) { %>

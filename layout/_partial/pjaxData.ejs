@@ -1,12 +1,16 @@
-<!--此文件用来存放一些不方便取值的变量-->
+<!--此文件用来存放一些 js 不方便取值的变量-->
 
 <%
 var changeValinePath = 'none';
 var changeValinePlaceholder = 'none';
+
+var frontMatterCover = false;
+
 var enableValine = false;
 if (theme.comments && page && page.comments == true && theme.comments.valine && theme.comments.valine.appId) {
     enableValine = true;
 }
+
 if (page && page.comments == true) {
     if (enableValine && page.valine && page.valine.path) {
         changeValinePath = page.valine.path;
@@ -15,13 +19,18 @@ if (page && page.comments == true) {
         changeValinePlaceholder = page.valine.placeholder;
     }
 }
+
+if (page && page.cover) {
+    frontMatterCover = page.cover;
+}
 %>
 
-<script>
-  var valine_path = 'none';
-  var valine_placeholder = 'none';
-  <% if (enableValine){ %>
-  valine_path = '<%= changeValinePath %>';
-  valine_placeholder = '<%= changeValinePlaceholder %>';
-  <% } %>
-</script>
+<div id="pjax-data" style="display: none">
+    <div id="page-cover"><%=frontMatterCover%></div>
+
+    <% if (enableValine){ %>
+    <div id="valine-path"><%=changeValinePath%></div>
+    <div id="valine-placeholder"><%=changeValinePlaceholder%></div>
+    <% } %>
+</div>
+
