@@ -3,48 +3,66 @@ var customSearch;
 (function ($) {
 
 	"use strict";
+
+	// 校正页面定位（被导航栏挡住的区域）
 	var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
-	const $headerAnchor = $('.l_header', '.cover-wrapper');
+	var $headerAnchor = $('.l_header', '.cover-wrapper');
 	if ($headerAnchor[0]) {
 		scrollCorrection = $headerAnchor[0].clientHeight + 16;
 	}
 
+	// 尝试： 重设数据值  作用判断待定
+	function restData() {
+		scrollCorrection = 80;
+		$headerAnchor = $('.l_header', '.cover-wrapper');
+		if ($headerAnchor[0]) {
+			scrollCorrection = $headerAnchor[0].clientHeight + 16;
+		}
+		console.log($headerAnchor);
+	}
+
+	// 校正页面定位（被导航栏挡住的区域）
 	function scrolltoElement(elem, correction = scrollCorrection) {
-		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
+		let $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
 		$('html, body').animate({
 			'scrollTop': $elem.offset().top - correction
 		}, 500);
 	}
 
+	// 设置滚动锚点
 	function setScrollAnchor() {
-		// button
-		const $postsBtn = $('.menu .active');
-		const $topBtn = $('.s-top');
-		const $titleBtn = $('h1.title', '#header-meta');
-		// anchor
-		const $bodyAnchor = $('.l_body');
-		// action
+		const $postsBtn = $('.menu .active');            // 一级导航上的当前激活的按钮
+		const $topBtn = $('.s-top');                     // 向上
+		const $titleBtn = $('h1.title', '#header-meta'); // 文章内标题
+		const $bodyAnchor = $('.l_body');                // 页面主体
+
 		if ($postsBtn.length && $bodyAnchor) {
-			$postsBtn.click(e => {
+			$postsBtn.click(e => {                 // 挺好奇这个的点击的作用  感觉没啥用
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
+				e.stopImmediatePropagation();
 			});
 		}
 		if ($titleBtn.length && $bodyAnchor) {
-			$titleBtn.click(e => {
-				e.preventDefault();
+			$titleBtn.click(e => {                // 挺好奇这个的点击的作用  感觉没啥用
+				e.preventDefault();                 // +1 好奇
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
+				e.stopImmediatePropagation();
 			});
 		}
 		if ($topBtn.length && $bodyAnchor) {
-			$topBtn.click(e => {
+			$topBtn.click(e => {                  // 天天向上 呱~
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
+				e.stopImmediatePropagation();
 			});
 		}
+
+		//==========================================
+		//  不知道怎么处理的封面部分 👇👇👇👇👇👇👇👇👇
 
 		const $coverAnchor = $('.cover-wrapper');
 		var showHeaderPoint = 0;
@@ -74,35 +92,53 @@ var customSearch;
 		});
 	}
 
+	// 设置导航栏
 	function setHeader() {
 		if (!window.subData) return;
-		const $wrapper = $('header .wrapper');
-		const $comment = $('.s-comment', $wrapper);
-		const $toc = $('.s-toc', $wrapper);
+		const $wrapper = $('header .wrapper');        // 整个导航栏
+		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
+		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
 
-		$wrapper.find('.nav-sub .title').text(window.subData.title);
+		// 判断文章用的，只有在文章页面才需要进行一二级导航的切换
+		const pathname = window.location.pathname;
+		const parm1 = pathname == "/" ? "index" : pathname.split('/')[1];
+		const parm2 = HEXO_PERMALINK.split('/')[0];
+		const isArticle = (parm1 == "" || parm1 == parm2) ? true : false;
+
+		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
+
+		// 决定一二级导航栏的切换
 		let pos = document.body.scrollTop;
-		$(document, window).scroll(() => {
-			const scrollTop = $(window).scrollTop();
-			const del = scrollTop - pos;
-			if (del >= 50 && scrollTop > 100) {
-				pos = scrollTop;
-				$wrapper.addClass('sub');
-			} else if (del <= -50) {
-				pos = scrollTop;
-				$wrapper.removeClass('sub');
-			}
-		});
+		if (isArticle){
+      $(document, window).scroll(() => {
+          const scrollTop = $(window).scrollTop();
+          const del = scrollTop - pos;
+          if (del >= 50 && scrollTop > 100) {
+            pos = scrollTop;
+            $wrapper.addClass('sub');
+          } else if (del <= -50) {
+            pos = scrollTop;
+            $wrapper.removeClass('sub');  // <---- 取消二级导航显示
+          }
+      });
+		}
 
 		// bind events to every btn
-		const $commentTarget = $('.l_body .comments');
+		let $commentTarget = $('.l_body .comments');  // 评论区域
 		if ($commentTarget.length) {
-			$comment.click(e => {
+			$comment.click(e => {                         // 评论按钮点击后 跳转到评论区域
 				e.preventDefault();
 				e.stopPropagation();
-				scrolltoElement($commentTarget);
+				scrolltoElement($commentTarget);   // TODO：评论点击后的滚动，先向上滚动顶部再下滚动到评论框，需要修复
+				// e.stopImmediatePropagation();
 			});
-		} else $comment.remove();
+		}
+		// else $comment.remove();   // bug：进入到没有评论的页面后，评论按钮被移除的   （👇 咋加？）
+		                             // todo： 或许可以尝试在 pjax 完成事件里手动添加评论按钮
+		                             // ==============================================
+
+
+		// -------------------------hello world------------------------- //
 
 		const $tocTarget = $('.l_body .toc-wrapper');
 		if ($tocTarget.length && $tocTarget.children().length) {
@@ -112,6 +148,7 @@ var customSearch;
 				$toc.toggleClass('active');
 			});
 			$(document).click(function (e) {
+				e.stopPropagation();
 				$tocTarget.removeClass('active');
 				$toc.removeClass('active');
 			});
@@ -120,11 +157,9 @@ var customSearch;
 				$toc.removeClass('active');
 			});
 		} else $toc.remove();
-
-
-
 	}
 
+	// 设置导航栏菜单选中状态
 	function setHeaderMenuSelection() {
 		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
@@ -159,24 +194,7 @@ var customSearch;
 		}
 	}
 
-	function setHeaderMenuPhone() {
-		// var $switcher = $('.l_header .switcher .s-menu');
-		// var $menu = $('body .menu-phone');
-		// $switcher.click(function (e) {
-		// 	e.stopPropagation();
-		// 	$menu.toggleClass('show');
-		// 	$switcher.toggleClass('active');
-		// });
-		// $(document).click(function (e) {
-		// 	// $menu.removeClass('show');
-		// 	$switcher.removeClass('active');
-		// });
-		// $(document, window).scroll(() => {
-		// 	$menu.removeClass('show');
-		// 	$switcher.removeClass('active');
-		// });
-	}
-
+	// 设置导航栏搜索框
 	function setHeaderSearch() {
 		var $switcher = $('.l_header .switcher .s-search');
 		var $header = $('.l_header');
@@ -224,6 +242,7 @@ var customSearch;
 		});
 	}
 
+	// 设置导航栏搜索框
 	function setTocToggle() {
 		const $toc = $('.toc-wrapper');
 		if ($toc.length === 0) return;
@@ -248,37 +267,43 @@ var customSearch;
 			}
 		});
 
-		const liElements = Array.from($toc.find('li a'));
-		//function animate above will convert float to int.
-		const getAnchor = () => liElements.map(elem => Math.floor($(elem.getAttribute('href')).offset().top - scrollCorrection));
+		// balabala  此处暂时这样判断吧
+		// TODO：需改善
 
-		let anchor = getAnchor();
-		const scrollListener = () => {
-			const scrollTop = $('html').scrollTop() || $('body').scrollTop();
-			if (!anchor) return;
-			//binary search.
-			let l = 0,
-				r = anchor.length - 1,
-				mid;
-			while (l < r) {
-				mid = (l + r + 1) >> 1;
-				if (anchor[mid] === scrollTop) l = r = mid;
-				else if (anchor[mid] < scrollTop) l = mid;
-				else r = mid - 1;
+		const liElements = Array.from($toc.find('li a'));
+		if (liElements.length != 0) {
+			//function animate above will convert float to int.
+			const getAnchor = () => liElements.map(elem => Math.floor($(elem.getAttribute('href')).offset().top - scrollCorrection));
+
+			let anchor = getAnchor();
+			const scrollListener = () => {
+				const scrollTop = $('html').scrollTop() || $('body').scrollTop();
+				if (!anchor) return;
+				//binary search.
+				let l = 0,
+					r = anchor.length - 1,
+					mid;
+				while (l < r) {
+					mid = (l + r + 1) >> 1;
+					if (anchor[mid] === scrollTop) l = r = mid;
+					else if (anchor[mid] < scrollTop) l = mid;
+					else r = mid - 1;
+				}
+				$(liElements).removeClass('active').eq(l).addClass('active');
 			}
-			$(liElements).removeClass('active').eq(l).addClass('active');
+			$(window)
+				.resize(() => {
+					anchor = getAnchor();
+					scrollListener();
+				})
+				.scroll(() => {
+					scrollListener()
+				});
+			scrollListener();
 		}
-		$(window)
-			.resize(() => {
-				anchor = getAnchor();
-				scrollListener();
-			})
-			.scroll(() => {
-				scrollListener()
-			});
-		scrollListener();
 	}
 
+	// 设置搜索服务
 	function setSearchService() {
 		if (SEARCH_SERVICE === 'google') {
 			customSearch = new GoogleCustomSearch({
@@ -312,6 +337,7 @@ var customSearch;
 		}
 	}
 
+	// 设置 tabs 标签
 	function setTabs() {
 		const $tabs = $('.tabs');
 		if ($tabs.length === 0) return;
@@ -336,19 +362,35 @@ var customSearch;
 	$(function () {
 		setHeader();
 		setHeaderMenuSelection();
-		setHeaderMenuPhone();
 		setHeaderSearch();
 		setTocToggle();
 		setScrollAnchor();
 		setSearchService();
 		setTabs();
-		// $(".article .video-container").fitVids();
+
+		// 全屏封面底部箭头 无需处理
 		$('.scroll-down').on('click', function () {
 	    scrolltoElement('.l_body');
 	  });
-		setTimeout(function () {
-			$('#loading-bar-wrapper').fadeOut(500);
-		}, 300);
+
+
+		// addEventListener是先绑定先执行，此处的绑定后执行
+		document.addEventListener('pjax:success', function () {
+			try {
+				restData();
+				setHeader();
+				setHeaderMenuSelection();
+				setHeaderSearch();
+				setTocToggle();
+				setScrollAnchor();
+				setTabs();
+
+			} catch (error) {
+				console.log(error);
+			}
+		});
 	});
+
+
 
 })(jQuery);

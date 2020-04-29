@@ -263,6 +263,10 @@
 
   document.addEventListener('pjax:send', function () {
     NProgress.start();
+    $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+    $.fancybox.close();    // 关闭弹窗，曾经有人提过个BUG，在查看图片时浏览器返回上一页后，弹窗无法关闭了
+    $(window).unbind();    // 解绑
+    $(document).unbind();  // 解绑
   });
   document.addEventListener('pjax:complete', function () {
     $('script[data-pjax], .pjax-reload script').each(function () {

@@ -474,7 +474,7 @@ plugins:
     # Optional
     fixed: false      # enable fixed mode
     theme: '#1BCDFC'  # main color
-    autoplay: false   # audio autoplay
+    autoplay: true   # audio autoplay
     order: list       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
