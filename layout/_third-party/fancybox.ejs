@@ -1,34 +1,37 @@
 <script src="<%- theme.plugins.fancybox.js %>"></script>
 <script>
   function pjax_fancybox() {
-    $('article img').not('[hidden]').not('.new-meta-item img').not('.vemojis img').not('.avatar').each(function () {
-      var $image = $(this);
-      var imageCaption = $image.attr('alt');
-      var $imageWrapLink = $image.parent('a');
-      if ($imageWrapLink.length < 1) {
-        var src = this.getAttribute('data-original');
-        var idx = src.lastIndexOf('?');
-        if (idx != -1) {
-          src = src.substring(0, idx);
-        }
-        $imageWrapLink = $image.wrap('<a href="' + src + '" style="display:block;text-align: center;"></a>').parent('a');
+    $(".article-entry").find("img").each(function () {//渲染fancy box
+      var element = document.createElement("a");
+      $(element).attr("pjax-fancybox", "");
+      $(element).attr("href", $(this).attr("data-original"));
+      $(element).attr("style", "display:block;text-align: center;");
+
+      $(element).attr("data-fancybox", "images");
+      if ($(this).attr('alt')) {
+        $(element).attr('data-caption', $(this).attr('alt'));
       }
-      $imageWrapLink.attr('data-fancybox', 'images');
-      if (imageCaption) {
-        $imageWrapLink.attr('data-caption', imageCaption);
-      }
-    });
-    $().fancybox({
+      $(this).wrap(element);
+    })
+
+    $(".article-entry").find("img").fancybox({
       selector: '[data-fancybox="images"]',
       hash: false,
       loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
       buttons: [
         "zoom",
         "close"
       ]
     });
   };
+
+
   $(function () {
     pjax_fancybox();
   });
+
 </script>

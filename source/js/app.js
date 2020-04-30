@@ -11,7 +11,7 @@ var customSearch;
 		scrollCorrection = $headerAnchor[0].clientHeight + 16;
 	}
 
-	// 尝试： 重设数据值  作用判断待定
+	// 尝试： 重设数据值                                   // 真的有用吗？不知道啊啊
 	function restData() {
 		scrollCorrection = 80;
 		$headerAnchor = $('.l_header', '.cover-wrapper');
@@ -44,8 +44,8 @@ var customSearch;
 			});
 		}
 		if ($titleBtn.length && $bodyAnchor) {
-			$titleBtn.click(e => {                // 挺好奇这个的点击的作用  感觉没啥用
-				e.preventDefault();                 // +1 好奇
+			$titleBtn.click(e => {                // +1 好奇
+				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
 				e.stopImmediatePropagation();
@@ -61,8 +61,9 @@ var customSearch;
 		}
 
 		//==========================================
-		//  不知道怎么处理的封面部分 👇👇👇👇👇👇👇👇👇
-
+		// 这里几乎不用处理 👇👇👇👇👇👇👇👇👇                                TODO： fix it
+		// @xaoxuxu 我的观点是，提供一个可以手动控制封面显示出现的样式，
+		//                    类似其它的 addClass 和 removeClass
 		const $coverAnchor = $('.cover-wrapper');
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
@@ -89,6 +90,7 @@ var customSearch;
 				$headerAnchor.removeClass('show');
 			}
 		});
+		//==========================================
 	}
 
 	// 设置导航栏  fix √
@@ -133,7 +135,7 @@ var customSearch;
 			});
 		}
 		// else $comment.remove();   // bug：进入到没有评论的页面后，评论按钮被移除的   （👇 咋加？）
-		                             // todo： 或许可以尝试在 pjax 完成事件里手动添加评论按钮
+		                             // TODO： 或许可以尝试在 pjax 完成事件里手动添加评论按钮
 		                             // ==============================================
 
 
@@ -268,40 +270,35 @@ var customSearch;
 			}
 		});
 
-		// balabala  此处暂时这样判断吧，存在没有 toc 的文章的，需要过滤
-		// TODO：需改善
-
 		const liElements = Array.from($toc.find('li a'));
-		if (liElements.length != 0) {
-			//function animate above will convert float to int.
-			const getAnchor = () => liElements.map(elem => Math.floor($(elem.getAttribute('href')).offset().top - scrollCorrection));
+		//function animate above will convert float to int.
+		const getAnchor = () => liElements.map(elem => Math.floor($(elem.getAttribute('href')).offset().top - scrollCorrection));
 
-			let anchor = getAnchor();
-			const scrollListener = () => {
-				const scrollTop = $('html').scrollTop() || $('body').scrollTop();
-				if (!anchor) return;
-				//binary search.
-				let l = 0,
-					r = anchor.length - 1,
-					mid;
-				while (l < r) {
-					mid = (l + r + 1) >> 1;
-					if (anchor[mid] === scrollTop) l = r = mid;
-					else if (anchor[mid] < scrollTop) l = mid;
-					else r = mid - 1;
-				}
-				$(liElements).removeClass('active').eq(l).addClass('active');
+		let anchor = getAnchor();
+		const scrollListener = () => {
+			const scrollTop = $('html').scrollTop() || $('body').scrollTop();
+			if (!anchor) return;
+			//binary search.
+			let l = 0,
+				r = anchor.length - 1,
+				mid;
+			while (l < r) {
+				mid = (l + r + 1) >> 1;
+				if (anchor[mid] === scrollTop) l = r = mid;
+				else if (anchor[mid] < scrollTop) l = mid;
+				else r = mid - 1;
 			}
-			$(window)
-				.resize(() => {
-					anchor = getAnchor();
-					scrollListener();
-				})
-				.scroll(() => {
-					scrollListener()
-				});
-			scrollListener();
+			$(liElements).removeClass('active').eq(l).addClass('active');
 		}
+		$(window)
+			// .resize(() => {           // resize 事件解绑不掉，在没有目录的界面上时，此处疯狂报错 主要是报 offset().top <--
+			// 	anchor = getAnchor();    // @xaoxuxu 这里监听浏览器窗口大小干嘛？
+			// 	scrollListener();        // TODO: 需要检查
+			// })
+			.scroll(() => {
+				scrollListener()
+			});
+		scrollListener();
 	}
 
 	// 设置搜索服务
@@ -376,7 +373,7 @@ var customSearch;
 
 
 		// addEventListener是先绑定先执行，此处的绑定后执行
-		document.addEventListener('pjax:success', function () {
+		document.addEventListener('pjax:complete', function () {
 			try {
 				restData();
 				setHeader();
@@ -390,7 +387,6 @@ var customSearch;
 			}
 		});
 	});
-
 
 
 })(jQuery);
