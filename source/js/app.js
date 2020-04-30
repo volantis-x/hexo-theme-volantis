@@ -18,12 +18,11 @@ var customSearch;
 		if ($headerAnchor[0]) {
 			scrollCorrection = $headerAnchor[0].clientHeight + 16;
 		}
-		console.log($headerAnchor);
 	}
 
 	// 校正页面定位（被导航栏挡住的区域）
 	function scrolltoElement(elem, correction = scrollCorrection) {
-		let $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
+		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
 		$('html, body').animate({
 			'scrollTop': $elem.offset().top - correction
 		}, 500);
@@ -92,7 +91,7 @@ var customSearch;
 		});
 	}
 
-	// 设置导航栏
+	// 设置导航栏  fix √
 	function setHeader() {
 		if (!window.subData) return;
 		const $wrapper = $('header .wrapper');        // 整个导航栏
@@ -129,8 +128,8 @@ var customSearch;
 			$comment.click(e => {                         // 评论按钮点击后 跳转到评论区域
 				e.preventDefault();
 				e.stopPropagation();
-				scrolltoElement($commentTarget);   // TODO：评论点击后的滚动，先向上滚动顶部再下滚动到评论框，需要修复
-				// e.stopImmediatePropagation();
+				scrolltoElement($('.l_body .comments'));
+				e.stopImmediatePropagation();
 			});
 		}
 		// else $comment.remove();   // bug：进入到没有评论的页面后，评论按钮被移除的   （👇 咋加？）
@@ -140,7 +139,7 @@ var customSearch;
 
 		// -------------------------hello world------------------------- //
 
-		const $tocTarget = $('.l_body .toc-wrapper');
+		const $tocTarget = $('.l_body .toc-wrapper');         // 侧边栏的目录列表  PC
 		if ($tocTarget.length && $tocTarget.children().length) {
 			$toc.click((e) => {
 				e.stopPropagation();
@@ -159,7 +158,7 @@ var customSearch;
 		} else $toc.remove();
 	}
 
-	// 设置导航栏菜单选中状态
+	// 设置导航栏菜单选中状态            <-------------- 重新加载下即可
 	function setHeaderMenuSelection() {
 		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
@@ -194,22 +193,23 @@ var customSearch;
 		}
 	}
 
-	// 设置导航栏搜索框
+	// 设置导航栏搜索框   fix √
 	function setHeaderSearch() {
-		var $switcher = $('.l_header .switcher .s-search');
-		var $header = $('.l_header');
-		var $search = $('.l_header .m_search');
+		var $switcher = $('.l_header .switcher .s-search');   // 搜索按钮   移动端
+		var $header = $('.l_header');                         // 移动端导航栏
+		var $search = $('.l_header .m_search');               // 搜索框 桌面端
 		if ($switcher.length === 0) return;
 		$switcher.click(function (e) {
-			e.stopPropagation();
-			$header.toggleClass('z_search-open');
+			// e.stopPropagation();
+			$header.toggleClass('z_search-open');   // 激活移动端搜索框
+			$switcher.toggleClass('active');        // 搜索按钮
 			$search.find('input').focus();
-			$switcher.toggleClass('active');
 		});
 		$(document).click(function (e) {
 			$header.removeClass('z_search-open');
 			$switcher.removeClass('active');
 		});
+
 		$search.click(function (e) {
 			e.stopPropagation();
 		});
@@ -244,7 +244,7 @@ var customSearch;
 
 	// 设置导航栏搜索框
 	function setTocToggle() {
-		const $toc = $('.toc-wrapper');
+		const $toc = $('.toc-wrapper');   // 侧边栏 TOC 移动端
 		if ($toc.length === 0) return;
 		$toc.click((e) => {
 		    e.stopPropagation();
@@ -252,6 +252,7 @@ var customSearch;
 		});
 		$(document).click(() => $toc.removeClass('active'));
 
+		// 👇  不知道是干嘛的  懒得看了
 		$toc.on('click', 'a', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
@@ -267,7 +268,7 @@ var customSearch;
 			}
 		});
 
-		// balabala  此处暂时这样判断吧
+		// balabala  此处暂时这样判断吧，存在没有 toc 的文章的，需要过滤
 		// TODO：需改善
 
 		const liElements = Array.from($toc.find('li a'));
@@ -380,7 +381,6 @@ var customSearch;
 				restData();
 				setHeader();
 				setHeaderMenuSelection();
-				setHeaderSearch();
 				setTocToggle();
 				setScrollAnchor();
 				setTabs();
