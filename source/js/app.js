@@ -536,12 +536,3 @@ function ShowPDF(){
 	}
 }
 ShowPDF();
-var url=window.location.href;
-function CheckPDF(){
-	var urltmp=window.location.href;
-	if(urltmp!=url){
-		ShowPDF();
-		url=window.location.href;
-	}
-}
-setInterval("CheckPDF()",1000);
