@@ -4,8 +4,7 @@
 <%
 var changeValinePath = 'none';
 var changeValinePlaceholder = 'none';
-
-var frontMatterCover = false;
+var frontMatterCover = 'none';
 
 var enableValine = false;
 if (theme.comments && page && page.comments == true && theme.comments.valine && theme.comments.valine.appId) {
@@ -24,9 +23,11 @@ if (page && page.comments == true) {
 if (page && page.cover) {
     frontMatterCover = page.cover;
 }
+
 %>
 
 <div id="pjax-data" style="display: none">
+
     <div id="page-cover"><%=frontMatterCover%></div>
 
     <% if (enableValine){ %>
