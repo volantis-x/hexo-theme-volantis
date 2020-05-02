@@ -72,6 +72,8 @@ pre
 .highlight
   position: relative
   width: 100%
+  max-height: 500px
+  overflow: auto
   margin: $gap-row 0
   display: block
   background: $color-codeblock
@@ -139,6 +141,7 @@ pre
       margin: 0
       padding: 0
       border: none
+      overflow-y: hidden
 
     .code
       padding: $gap
@@ -209,6 +212,20 @@ pre
     &.typescript .code:before
       content: "TypeScript"
 
+  &::-webkit-scrollbar
+    height: $border-line
+    width: $border-line
+    height: 10px
+    width: 6px
+  &::-webkit-scrollbar-track-piece
+    background: transparent
+  &::-webkit-scrollbar-thumb
+    background: alpha($color-text, .3)
+    cursor: pointer
+    border-radius: $border-codeblock
+    trans()
+    &:hover
+      background: alpha($color-text, .6)
 
 
 
