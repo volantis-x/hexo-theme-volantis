@@ -186,8 +186,6 @@
   <% } else { %>
     <%- js(['js/valine.js']) %>
   <% } %>
-  <% var master = theme.comments.valine.master %>
-  <% var friends = theme.comments.valine.friends %>
   <script>
   var GUEST_INFO = ['nick','mail','link'];
   var meta = '<%= theme.comments.valine.meta %>'.split(',').filter(function(item){
@@ -237,12 +235,7 @@
     enableQQ: '<%= theme.comments.valine.enableQQ %>',
     requiredFields: requiredFields,
     emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
-    emojiMaps: emojiMaps,
-    metaPlaceholder: { "nick": "昵称 / QQ 号", "mail": "邮箱(必填)" },
-    meta: ["nick", "mail", "link"],
-    tagMeta: ["管理员", "小伙伴", "访客"],
-    master: <%- '["' + master.join('", "') + '"]' %>,
-    friends: <%- '["' + friends.join('", "') + '"]' %>
+    emojiMaps: emojiMaps
   })
   </script>
 <% } %>
