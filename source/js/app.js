@@ -529,7 +529,7 @@ function ShowPDF(){
 			  pagemode: 'thumbs',
 			  view: 'FitH'
 			},
-			PDFJS_URL: 'https://mhuig.github.io/NoteBook/libs/pdf.js/es6/web/viewer.html',
+			PDFJS_URL: 'https://mhuig.github.io/blog-cdn/libs/pdf.js/es5/web/viewer.html',
 			height: '500px'
 		  });
 		});
