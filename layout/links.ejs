@@ -3,7 +3,7 @@
   <article id="<%= page.layout %>" class="post white-box reveal <%- theme.style.body.effect.join(' ') %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
     <%- partial('_partial/meta',{post:page, position:'header'}) %>
       <section class="article article-entry l_friends">
-        <p class="friends"><i class="fad fa-whale" title="爱我"></i></p>
+        <p class="p center logo huge"><i class="fad fa-narwhal" style="color:#a6d5fa" title="爱我"></i></p>
         <%- page.excerpt %>
         <% if (page.links){ %>
           <% (page.links||[]).forEach(function(group){ %>

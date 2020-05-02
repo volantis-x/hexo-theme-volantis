@@ -11,6 +11,10 @@
       if ($(this).attr('alt')) {
         $(element).attr('data-caption', $(this).attr('alt'));
       }
+      if ($(this).next().text()) {
+        $(element).attr('data-caption', $(this).next().text());
+      }
+
       $(this).wrap(element);
     })
 
