@@ -438,11 +438,11 @@ function buildFragmentString(pdfParams) {
 };
 function log(msg) {
 	if (typeof console !== "undefined" && console.log) {
-		console.log("[PDFObject] " + msg);
+		//console.log("[PDFObject] " + msg);
 	}
 };
 function embedError(msg) {
-	log(msg);
+        //log(msg);
 	return false;
 };
 function getTargetElement(targetSelector) {
