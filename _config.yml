@@ -481,6 +481,10 @@ plugins:
     list_max_height: 340px # list max height
     list_folded: true
 
+  ## PDF
+  pdf:
+    enable: true
+    PDFJS_URL: https://sourcemhuig.netlify.app/libs/pdf.js/es5/web/viewer.html
 
 
 
