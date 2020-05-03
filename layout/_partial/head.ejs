@@ -62,7 +62,7 @@
       }
     }
   %>
-    <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
+  <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
   <% if (keywords){ %>
     <meta name="keywords" content="<%- keywords %>">
   <% } else { %>
@@ -88,6 +88,8 @@
   <% } %>
 
   <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/inkss/common@1.2.1/font/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
   <% if (theme.plugins.fancybox && theme.plugins.fancybox.css) { %>
     <%- css(theme.plugins.fancybox.css) %>
   <% } %>
@@ -96,15 +98,12 @@
   <% } %>
 
   <% if (config.favicon) { %>
-  <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
+    <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <% } %>
 
   <% if (theme.plugins.aplayer.enable) { %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
   <% } %>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/inkss/common@1.2.1/font/fontawesome/css/all.min.css">
 
   <!-- import link -->
   <% if (config.import && config.import.link){ %>
@@ -124,16 +123,6 @@
   <% } %>
 
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
-  <script>
-    if(window.location.hash){
-        var checkExist = setInterval(function() {
-           if ($(window.location.hash).length) {
-              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
-              clearInterval(checkExist);
-           }
-        }, 100);
-    }
-  </script>
 
   <% if (config.google_analytics_key) { %>
     <!-- Global site tag (gtag.js) - Google Analytics -->

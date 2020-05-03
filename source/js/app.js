@@ -111,17 +111,17 @@ var customSearch;
 		// 决定一二级导航栏的切换
 		let pos = document.body.scrollTop;
 		if (isArticle){
-      $(document, window).scroll(() => {
-          const scrollTop = $(window).scrollTop();
-          const del = scrollTop - pos;
-          if (del >= 50 && scrollTop > 100) {
-            pos = scrollTop;
-            $wrapper.addClass('sub');
-          } else if (del <= -50) {
-            pos = scrollTop;
-            $wrapper.removeClass('sub');  // <---- 取消二级导航显示
-          }
-      });
+			$(document, window).scroll(() => {
+				const scrollTop = $(window).scrollTop();
+				const del = scrollTop - pos;
+				if (del >= 50 && scrollTop > 100) {
+					pos = scrollTop;
+					$wrapper.addClass('sub');
+				} else if (del <= -50) {
+					pos = scrollTop;
+					$wrapper.removeClass('sub');  // <---- 取消二级导航显示
+				}
+			});
 		}
 
 		// bind events to every btn
@@ -135,8 +135,8 @@ var customSearch;
 			});
 		}
 		// else $comment.remove();   // bug：进入到没有评论的页面后，评论按钮被移除的   （👇 咋加？）
-		                             // TODO： 或许可以尝试在 pjax 完成事件里手动添加评论按钮
-		                             // ==============================================
+		// TODO： 或许可以尝试在 pjax 完成事件里手动添加评论按钮
+		// ==============================================
 
 
 		// -------------------------hello world------------------------- //
@@ -249,8 +249,8 @@ var customSearch;
 		const $toc = $('.toc-wrapper');   // 侧边栏 TOC 移动端
 		if ($toc.length === 0) return;
 		$toc.click((e) => {
-		    e.stopPropagation();
-		    $toc.addClass('active');
+			e.stopPropagation();
+			$toc.addClass('active');
 		});
 		$(document).click(() => $toc.removeClass('active'));
 
@@ -368,8 +368,8 @@ var customSearch;
 
 		// 全屏封面底部箭头 无需处理
 		$('.scroll-down').on('click', function () {
-	    scrolltoElement('.l_body');
-	  });
+			scrolltoElement('.l_body');
+		});
 
 
 		// addEventListener是先绑定先执行，此处的绑定后执行
