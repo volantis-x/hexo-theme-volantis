@@ -1,4 +1,6 @@
 <%- js('https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js') %>
+<%- js('https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js') %>
+
 <% if (theme.search && theme.search.enable) { %>
   <script>
     <% if(theme.search.service === 'baidu') { %>
@@ -20,40 +22,14 @@
     if (!ROOT.endsWith('/')) ROOT += '/';
   </script>
 <% } %>
+
+<!--无许处理 - 确认兼容-->
 <% if (theme.plugins.instant_page) { %>
-  <script async src="<%- theme.plugins.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
-<% } %>
-<% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
-  <script src="<%- theme.plugins.scrollreveal.js %>"></script>
-  <script type="text/javascript">
-    $(function() {
-      ScrollReveal().reveal('.l_main .reveal', {
-        distance: '<%- theme.plugins.scrollreveal.distance %>',
-        duration: '<%- theme.plugins.scrollreveal.duration %>',
-        interval: '<%- theme.plugins.scrollreveal.interval %>',
-        scale: '<%- theme.plugins.scrollreveal.scale %>'
-      });
-    });
-  </script>
-<% } %>
-<% if (theme.plugins.nodewaves && theme.plugins.nodewaves.js) { %>
-  <%- js({src: theme.plugins.nodewaves.js}) %>
-  <script type="text/javascript">
-    $(function() {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
-    });
-  </script>
-<% } %>
-<% if (theme.plugins.busuanzi) { %>
-  <script async src="<%- theme.plugins.busuanzi %>"></script>
+  <script async src="<%- theme.plugins.instant_page %>" type="module" defer
+          integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 <% } %>
 
+<!--无许处理 - 确认兼容-->
 <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable && (theme.plugins.backstretch.images || page.images)) { %>
   <% var imgs = theme.plugins.backstretch.images || page.images; %>
   <% var posi = null;
@@ -99,19 +75,21 @@
   <% } %>
 <% } %>
 
+<!--似乎不需要处理-->
 <% if (theme.plugins.aplayer && theme.plugins.aplayer.enable && theme.plugins.aplayer.js) { %>
   <% (theme.plugins.aplayer.js||[]).forEach(function(item){ %>
     <%- js({src:item}) %>
   <% }) %>
 <% } %>
 
+<!--PS：只对 valine 做了 Pjax 兼容测试-->
 <%
   var enableDisqus = false;
   var enableLivere = false;
   var enableGitalk = false;
   var enableValine = false;
   var enableMiniValine = false;
-  if (theme.comments && page && page.comments == true) {
+  if (theme.comments) {
     if (theme.comments.disqus && theme.comments.disqus.shortname) {
       enableDisqus = true;
     }
@@ -128,10 +106,8 @@
       enableMiniValine = true;
     }
   }
-  if (theme.comments.valine && theme.comments.valine.appId && theme.comments.valine.visitor && (theme.layout.on_list.meta.indexOf('counter') > -1)) {
-    enableValine = true;
-  }
 %>
+
 <% if (enableDisqus){ %>
   <script>
     var disqus_shortname = '<%= theme.comments.disqus.shortname %>';
@@ -179,7 +155,6 @@
     gitalk.render('gitalk-container');
   </script>
 <% } %>
-
 <% if (enableValine){ %>
   <% if (theme.comments.valine.js) { %>
     <%- js(theme.comments.valine.js) %>
@@ -187,59 +162,60 @@
     <%- js(['js/valine.js']) %>
   <% } %>
   <script>
-  var GUEST_INFO = ['nick','mail','link'];
-  var meta = '<%= theme.comments.valine.meta %>'.split(',').filter(function(item){
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick','mail','link'];
-  var requiredFields = '<%= theme.comments.valine.requiredFields %>'.split(',').filter(function(item){
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-  var valine = new Valine();
-  function emoji(path, idx, ext) {
+    var GUEST_INFO = ['nick', 'mail', 'link'];
+    var meta = '<%= theme.comments.valine.meta %>'.split(',').filter(function (item) {
+      return GUEST_INFO.indexOf(item) > -1
+    });
+    var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+    var requiredFields = '<%= theme.comments.valine.requiredFields %>'.split(',').filter(function (item) {
+      return REQUIRED_FIELDS.indexOf(item) > -1
+    });
+
+    function emoji(path, idx, ext) {
       return path + "/" + path + "-" + idx + "." + ext;
-  }
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-  valine.init({
-    el: '#valine_container',
-    meta: meta,
-    <% if (page.valine && page.valine.path) { %>
-      path: "<%= page.valine.path %>",
-    <% } else if (theme.comments.valine.path) { %>
-      path: "<%= theme.comments.valine.path %>",
-    <% } %>
-    appId: "<%= theme.comments.valine.appId %>",
-    appKey: "<%= theme.comments.valine.appKey %>",
-    placeholder: "<%= (page.valine && page.valine.placeholder) ? page.valine.placeholder : theme.comments.valine.placeholder %>",
-    pageSize:'<%= theme.comments.valine.pageSize %>',
-    avatar:'<%= theme.comments.valine.avatar %>',
-    lang:'<%= theme.comments.valine.lang %>',
-    visitor: '<%= theme.comments.valine.visitor %>',
-    highlight: '<%= theme.comments.valine.highlight %>',
-    mathJax: '<%= theme.comments.valine.mathJax %>',
-    enableQQ: '<%= theme.comments.valine.enableQQ %>',
-    requiredFields: requiredFields,
-    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
-    emojiMaps: emojiMaps
-  })
+    }
+
+    var emojiMaps = {};
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+
+    function pjax_valine() {
+      var valinePath = $.trim($('#valine-path').text()) === "none" ?
+              window.location.pathname : $.trim($('#valine-path').text());
+
+      var valinePlaceholder = $.trim($('#valine-placeholder').text()) === "none" ?
+              "<%= theme.comments.valine.placeholder %>" : $.trim($('#valine-placeholder').text());
+
+      var valine = new Valine();
+      valine.init({
+        el: '#valine_container',
+        meta: meta,
+        placeholder: valinePlaceholder,
+        path: valinePath,
+        appId: "<%= theme.comments.valine.appId %>",
+        appKey: "<%= theme.comments.valine.appKey %>",
+        pageSize: '<%= theme.comments.valine.pageSize %>',
+        avatar: '<%= theme.comments.valine.avatar %>',
+        lang: '<%= theme.comments.valine.lang %>',
+        visitor: '<%= theme.comments.valine.visitor %>',
+        highlight: '<%= theme.comments.valine.highlight %>',
+        mathJax: '<%= theme.comments.valine.mathJax %>',
+        enableQQ: '<%= theme.comments.valine.enableQQ %>',
+        requiredFields: requiredFields,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+        emojiMaps: emojiMaps
+      })
+    }
+
+    $(function () {
+      pjax_valine();
+    });
   </script>
 <% } %>
-
 <% if (enableMiniValine){ %>
   <% if (theme.comments.minivaline.js) { %>
     <%- js(theme.comments.minivaline.js) %>
@@ -270,18 +246,81 @@
   </script>
 <% } %>
 
+<!-- 复制 -fix -->
+<% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
+  <%- partial('_third-party/clipboard') %>
+<% } %>
+<!-- ================================== -->
+
+<!--scrollreveal -fix -->
+<% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
+  <script src="<%- theme.plugins.scrollreveal.js %>"></script>
+  <script type="text/javascript">
+    function pjax_scrollrebeal() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '<%- theme.plugins.scrollreveal.distance %>',
+        duration: '<%- theme.plugins.scrollreveal.duration %>',
+        interval: '<%- theme.plugins.scrollreveal.interval %>',
+        scale: '<%- theme.plugins.scrollreveal.scale %>'
+      });
+    }
+
+    $(function () {
+      pjax_scrollrebeal();
+    });
+  </script>
+<% } %>
+<!-- ================================== -->
+
+<!-- fancybox -fix -->
+<% if (theme.plugins.fancybox) { %>
+  <%- partial('_third-party/fancybox') %>
+<% } %>
+<!-- ================================== -->
+
+<!--主要的 JS 文件-->
 <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.js) { %>
   <%- js(theme.info.cdn.js) %>
 <% } else { %>
   <%- js(['js/app.js']) %>
 <% } %>
-<% if (theme.search && theme.search.enable && theme.search.js) { %>
-  <%- js(theme.search.js) %>
+
+<!--fix-->
+<% if (theme.search && theme.search.enable) { %>
+  <% if (theme.info.cdn) { %>
+    <%- js(theme.search.js) %>
+  <% } else { %>
+    <%- js(['js/search.js']) %>
+  <% } %>
 <% } %>
+
+<!--重新加载即可-->
+<% if (theme.plugins.busuanzi) { %>
+  <script src="<%- theme.plugins.busuanzi %>" data-pjax></script>
+<% } %>
+
+<!--无需处理-->
+<% if (theme.plugins.nodewaves && theme.plugins.nodewaves.js) { %>
+  <%- js({src: theme.plugins.nodewaves.js}) %>
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+<% } %>
+
+<!--无需处理-->
 <% if (theme.plugins.comment_typing) { %>
   <%- js(theme.plugins.comment_typing) %>
 <% } %>
 
+<!--无需处理 ？-->
 <% if (config.highlight.enable != true) { %>
   <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.js) { %>
     <%- js(theme.plugins.highlightjs.js) %>
@@ -289,20 +328,71 @@
   <% } %>
 <% } %>
 
-
-<!-- 复制 -->
-<% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
-  <%- partial('_third-party/clipboard') %>
-<% } %>
-
-
-<!-- fancybox -->
-<% if (theme.plugins.fancybox) { %>
-  <%- partial('_third-party/fancybox') %>
-<% } %>
-
-
 <% if (config.import && config.import.script){ %>
 <% (config.import.script||[]).forEach(function(item){ %>
 <%- item %><% }) %>
 <% } %>
+
+<script>
+  $(document).ready(function () {
+    NProgress.done();
+  });
+
+  var HEXO_URL = "<%- config.url %>";
+  var HEXO_PERMALINK = "<%- config.permalink %>";
+
+  var pjax;
+  document.addEventListener('DOMContentLoaded', function () {
+    pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+      selectors: [
+        "title",
+        "meta[name=description]",
+        "meta[name=keywords]",
+        "#pjax-container"
+      ],
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: '5000'
+    });
+  });
+
+  document.addEventListener('pjax:send', function () {
+    $.fancybox.close();    // 关闭弹窗，曾经有人提过个BUG，在查看图片时浏览器返回上一页后，弹窗无法关闭了
+    $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+    $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+    $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+    $(document, window).unbind('scroll');    // 解绑
+    $(document, window).unbind('click');     // 解绑
+    NProgress.start();
+  });
+  document.addEventListener('pjax:complete', function () {
+    $('script[data-pjax], .pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    try{
+      <% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
+        pjax_scrollrebeal();
+      <% } %>
+      <% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
+        pjax_initCopyCode();
+      <% } %>
+      <% if (enableValine){ %>
+        pjax_valine();
+      <% } %>
+      <% if (theme.plugins.fancybox) { %>
+        pjax_fancybox();
+      <% } %>
+    } catch (e) {
+      console.log(e);
+    }
+
+    NProgress.done();
+  });
+
+  document.addEventListener('pjax:error', function () {
+    NProgress.done();
+    window.location.href = event.triggerElement.href;
+  });
+
+</script>
