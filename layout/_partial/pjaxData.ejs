@@ -1,0 +1,38 @@
+<!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<%
+var changeValinePath = 'none';
+var changeValinePlaceholder = 'none';
+var frontMatterCover = 'none';
+
+var enableValine = false;
+if (theme.comments && page && page.comments == true && theme.comments.valine && theme.comments.valine.appId) {
+    enableValine = true;
+}
+
+if (page && page.comments == true) {
+    if (enableValine && page.valine && page.valine.path) {
+        changeValinePath = page.valine.path;
+    }
+    if (enableValine && page.valine && page.valine.placeholder) {
+        changeValinePlaceholder = page.valine.placeholder;
+    }
+}
+
+if (page && page.cover) {
+    frontMatterCover = page.cover;
+}
+
+%>
+
+<div id="pjax-data" style="display: none">
+
+    <div id="page-cover"><%=frontMatterCover%></div>
+
+    <% if (enableValine){ %>
+    <div id="valine-path"><%=changeValinePath%></div>
+    <div id="valine-placeholder"><%=changeValinePlaceholder%></div>
+    <% } %>
+</div>
+

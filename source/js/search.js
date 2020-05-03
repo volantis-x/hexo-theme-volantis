@@ -60,7 +60,8 @@ var SearchService = "";
     self.beforeQuery = function() {
       if (!self.open) {
         self.dom.container.fadeIn();
-        self.dom.body.addClass('modal-active');
+        // self.dom.body.addClass('modal-active');
+        // 上面的是去除了文章的滚动条，我觉得没必要
       }
       self.dom.input.each(function(index,elem) {
         $(elem).val(self.queryText);
@@ -122,19 +123,29 @@ var SearchService = "";
       }
     };
 
+    self.getUrlRelativePath = function (url) {
+      var arrUrl = url.split("//");
+      var start = arrUrl[1].indexOf("/");
+      var relUrl = arrUrl[1].substring(start);
+      if (relUrl.indexOf("?") != -1) {
+        relUrl = relUrl.split("?")[0];
+      }
+      return relUrl;
+    }
+
     /**
      * Generate html for one result
      * @param url : (string) url
      * @param title : (string) title
      * @param digest : (string) digest
-     * @param index : 标号
      */
-    self.buildResult = function(url, title, digest, index) {
+    self.buildResult = function (url, title, digest) {
+      var result = self.getUrlRelativePath(url);
       var html = "";
       html = "<li>";
-      html += "<a class='result' href='" +url+ "'>";
-      html += "<span class='title'>" +title+ "</span>";
-      if (digest !== "") html += "<span class='digest'>" +digest+ "</span>";
+      html += "<a class='result search-result-fix' value='" + result + "'>";
+      html += "<span class='title'>" + title + "</span>";
+      if (digest !== "") html += "<span class='digest'>" + digest + "</span>";
       html += "</a>";
       html += "</li>";
       return html;
@@ -265,6 +276,7 @@ var AlgoliaSearch;
         var digest = "";
         html += self.buildResult(url, title, digest, index+1);
       });
+      html += "<script>$('.result.search-result-fix').click(function(event){var url = this.getAttribute('value');try{pjax.loadUrl(url)}catch(e){$(location).attr('href', url)}setTimeout(function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active');}, 300);});</script>";
       return html;
     };
 
@@ -366,6 +378,7 @@ var AzureSearch;
         var digest = row.excerpt || "";
         html += self.buildResult(url, title, digest);
       });
+      html += "<script>$('.result.search-result-fix').click(function(event){var url = this.getAttribute('value');try{pjax.loadUrl(url)}catch(e){$(location).attr('href', url)}setTimeout(function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active');}, 300);});</script>";
       return html;
     };
 
@@ -473,6 +486,7 @@ var BaiduSearch;
         if (self.contentSearch(post, queryText))
           html += self.buildResult(post.linkUrl, post.title, post.abstract);
       });
+      html += "<script>$('.result.search-result-fix').click(function(event){var url = this.getAttribute('value');try{pjax.loadUrl(url)}catch(e){$(location).attr('href', url)}setTimeout(function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active');}, 300);});</script>";
       return html;
     };
 
@@ -567,6 +581,7 @@ var GoogleCustomSearch = "";
         var digest = (row.htmlSnippet || "").replace('<br>','');
         html += self.buildResult(url, title, digest);
       });
+      html += "<script>$('.result.search-result-fix').click(function(event){var url = this.getAttribute('value');try{pjax.loadUrl(url)}catch(e){$(location).attr('href', url)}setTimeout(function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active');}, 300);});</script>";
       return html;
     };
 
@@ -710,12 +725,12 @@ var HexoSearch;
      */
     self.buildResultList = function(data, queryText) {
       var results = [],
-          html = "";
-      var i = 1;
-      $.each(data, function(index, post) {
+        html = "";
+      $.each(data, function (index, post) {
         if (self.contentSearch(post, queryText))
-          html += self.buildResult(post.permalink, post.title, post.digest, i++);
+          html += self.buildResult(post.permalink, post.title, post.digest);
       });
+      html += "<script>$('.result.search-result-fix').click(function(event){var url = this.getAttribute('value');try{pjax.loadUrl(url)}catch(e){$(location).attr('href', url)}setTimeout(function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active');}, 300);});</script>";
       return html;
     };
 

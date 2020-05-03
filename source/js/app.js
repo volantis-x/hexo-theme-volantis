@@ -6,12 +6,21 @@ var customSearch;
 
 	// 校正页面定位（被导航栏挡住的区域）
 	var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
-	const $headerAnchor = $('.l_header', '.cover-wrapper');
+	var $headerAnchor = $('.l_header', '.cover-wrapper');
 	if ($headerAnchor[0]) {
 		scrollCorrection = $headerAnchor[0].clientHeight + 16;
 	}
 
-	// 滚动到指定元素位置
+	// 尝试： 重设数据值                                   // 真的有用吗？不知道啊啊
+	function restData() {
+		scrollCorrection = 80;
+		$headerAnchor = $('.l_header', '.cover-wrapper');
+		if ($headerAnchor[0]) {
+			scrollCorrection = $headerAnchor[0].clientHeight + 16;
+		}
+	}
+
+	// 校正页面定位（被导航栏挡住的区域）
 	function scrolltoElement(elem, correction = scrollCorrection) {
 		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
 		$('html, body').animate({
@@ -21,35 +30,40 @@ var customSearch;
 
 	// 设置滚动锚点
 	function setScrollAnchor() {
-		// button
-		const $postsBtn = $('.menu .active');
-		const $topBtn = $('.s-top');
-		const $titleBtn = $('h1.title', '#header-meta');
-		// anchor
-		const $bodyAnchor = $('.l_body');
-		// action
+		const $postsBtn = $('.menu .active');            // 一级导航上的当前激活的按钮
+		const $topBtn = $('.s-top');                     // 向上
+		const $titleBtn = $('h1.title', '#header-meta'); // 文章内标题
+		const $bodyAnchor = $('.l_body');                // 页面主体
+
 		if ($postsBtn.length && $bodyAnchor) {
-			$postsBtn.click(e => {
+			$postsBtn.click(e => {                 // 挺好奇这个的点击的作用  感觉没啥用
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
+				e.stopImmediatePropagation();
 			});
 		}
 		if ($titleBtn.length && $bodyAnchor) {
-			$titleBtn.click(e => {
+			$titleBtn.click(e => {                // +1 好奇
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
+				e.stopImmediatePropagation();
 			});
 		}
 		if ($topBtn.length && $bodyAnchor) {
-			$topBtn.click(e => {
+			$topBtn.click(e => {                  // 天天向上 呱~
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
+				e.stopImmediatePropagation();
 			});
 		}
 
+		//==========================================
+		// 这里几乎不用处理 👇👇👇👇👇👇👇👇👇                                TODO： fix it
+		// @xaoxuxu 我的观点是，提供一个可以手动控制封面显示出现的样式，
+		//                    类似其它的 addClass 和 removeClass
 		const $coverAnchor = $('.cover-wrapper');
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
@@ -76,40 +90,58 @@ var customSearch;
 				$headerAnchor.removeClass('show');
 			}
 		});
+		//==========================================
 	}
 
-	// 设置导航栏
+	// 设置导航栏  fix √
 	function setHeader() {
 		if (!window.subData) return;
-		const $wrapper = $('header .wrapper');
-		const $comment = $('.s-comment', $wrapper);
-		const $toc = $('.s-toc', $wrapper);
+		const $wrapper = $('header .wrapper');        // 整个导航栏
+		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
+		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
 
-		$wrapper.find('.nav-sub .title').text(window.subData.title);
+		// 判断文章用的，只有在文章页面才需要进行一二级导航的切换
+		const pathname = window.location.pathname;
+		const parm1 = pathname == "/" ? "index" : pathname.split('/')[1];
+		const parm2 = HEXO_PERMALINK.split('/')[0];
+		const isArticle = (parm1 == "" || parm1 == parm2) ? true : false;
+
+		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
+
+		// 决定一二级导航栏的切换
 		let pos = document.body.scrollTop;
-		$(document, window).scroll(() => {
-			const scrollTop = $(window).scrollTop();
-			const del = scrollTop - pos;
-			if (del >= 50 && scrollTop > 100) {
-				pos = scrollTop;
-				$wrapper.addClass('sub');
-			} else if (del <= -50) {
-				pos = scrollTop;
-				$wrapper.removeClass('sub');
-			}
-		});
+		if (isArticle){
+			$(document, window).scroll(() => {
+				const scrollTop = $(window).scrollTop();
+				const del = scrollTop - pos;
+				if (del >= 50 && scrollTop > 100) {
+					pos = scrollTop;
+					$wrapper.addClass('sub');
+				} else if (del <= -50) {
+					pos = scrollTop;
+					$wrapper.removeClass('sub');  // <---- 取消二级导航显示
+				}
+			});
+		}
 
 		// bind events to every btn
-		const $commentTarget = $('.l_body .comments');
+		let $commentTarget = $('.l_body .comments');  // 评论区域
 		if ($commentTarget.length) {
-			$comment.click(e => {
+			$comment.click(e => {                         // 评论按钮点击后 跳转到评论区域
 				e.preventDefault();
 				e.stopPropagation();
-				scrolltoElement($commentTarget);
+				scrolltoElement($('.l_body .comments'));
+				e.stopImmediatePropagation();
 			});
-		} else $comment.remove();
+		}
+		// else $comment.remove();   // bug：进入到没有评论的页面后，评论按钮被移除的   （👇 咋加？）
+		// TODO： 或许可以尝试在 pjax 完成事件里手动添加评论按钮
+		// ==============================================
 
-		const $tocTarget = $('.l_body .toc-wrapper');
+
+		// -------------------------hello world------------------------- //
+
+		const $tocTarget = $('.l_body .toc-wrapper');         // 侧边栏的目录列表  PC
 		if ($tocTarget.length && $tocTarget.children().length) {
 			$toc.click((e) => {
 				e.stopPropagation();
@@ -117,6 +149,7 @@ var customSearch;
 				$toc.toggleClass('active');
 			});
 			$(document).click(function (e) {
+				e.stopPropagation();
 				$tocTarget.removeClass('active');
 				$toc.removeClass('active');
 			});
@@ -125,12 +158,9 @@ var customSearch;
 				$toc.removeClass('active');
 			});
 		} else $toc.remove();
-
-
-
 	}
 
-	// 设置导航栏菜单选中状态
+	// 设置导航栏菜单选中状态            <-------------- 重新加载下即可
 	function setHeaderMenuSelection() {
 		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
@@ -165,22 +195,23 @@ var customSearch;
 		}
 	}
 
-	// 设置导航栏搜索框
+	// 设置导航栏搜索框   fix √
 	function setHeaderSearch() {
-		var $switcher = $('.l_header .switcher .s-search');
-		var $header = $('.l_header');
-		var $search = $('.l_header .m_search');
+		var $switcher = $('.l_header .switcher .s-search');   // 搜索按钮   移动端
+		var $header = $('.l_header');                         // 移动端导航栏
+		var $search = $('.l_header .m_search');               // 搜索框 桌面端
 		if ($switcher.length === 0) return;
 		$switcher.click(function (e) {
-			e.stopPropagation();
-			$header.toggleClass('z_search-open');
+			// e.stopPropagation();
+			$header.toggleClass('z_search-open');   // 激活移动端搜索框
+			$switcher.toggleClass('active');        // 搜索按钮
 			$search.find('input').focus();
-			$switcher.toggleClass('active');
 		});
 		$(document).click(function (e) {
 			$header.removeClass('z_search-open');
 			$switcher.removeClass('active');
 		});
+
 		$search.click(function (e) {
 			e.stopPropagation();
 		});
@@ -213,16 +244,17 @@ var customSearch;
 		});
 	}
 
-	// 设置toc
+	// 设置导航栏搜索框
 	function setTocToggle() {
-		const $toc = $('.toc-wrapper');
+		const $toc = $('.toc-wrapper');   // 侧边栏 TOC 移动端
 		if ($toc.length === 0) return;
 		$toc.click((e) => {
-		    e.stopPropagation();
-		    $toc.addClass('active');
+			e.stopPropagation();
+			$toc.addClass('active');
 		});
 		$(document).click(() => $toc.removeClass('active'));
 
+		// 👇  不知道是干嘛的  懒得看了
 		$toc.on('click', 'a', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
@@ -259,10 +291,10 @@ var customSearch;
 			$(liElements).removeClass('active').eq(l).addClass('active');
 		}
 		$(window)
-			.resize(() => {
-				anchor = getAnchor();
-				scrollListener();
-			})
+			// .resize(() => {           // resize 事件解绑不掉，在没有目录的界面上时，此处疯狂报错 主要是报 offset().top <--
+			// 	anchor = getAnchor();    // @xaoxuxu 这里监听浏览器窗口大小干嘛？
+			// 	scrollListener();        // TODO: 需要检查
+			// })
 			.scroll(() => {
 				scrollListener()
 			});
@@ -334,12 +366,28 @@ var customSearch;
 		setSearchService();
 		setTabs();
 
+		// 全屏封面底部箭头 无需处理
 		$('.scroll-down').on('click', function () {
-	    scrolltoElement('.l_body');
-	  });
-		setTimeout(function () {
-			$('#loading-bar-wrapper').fadeOut(500);
-		}, 300);
+			scrolltoElement('.l_body');
+		});
+
+
+		// addEventListener是先绑定先执行，此处的绑定后执行
+		document.addEventListener('pjax:complete', function () {
+			try {
+				$(function () {
+					restData();
+					setHeader();
+					setHeaderMenuSelection();
+					setTocToggle();
+					setScrollAnchor();
+					setTabs();
+				});
+			} catch (error) {
+				console.log(error);
+			}
+		});
 	});
+
 
 })(jQuery);
