@@ -492,7 +492,7 @@ comments:
   valine:
     appId: dogUA2FSKGTo029M1SEwGROT-MdYXbMMI # your appId
     appKey: u0NdtQ8nvHoMdJPSYqm1LRxE # your appKey
-    js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
+    js: 
     path: # All pages use the same path (share the same comments data)
     meta: nick,mail,link # valine comment header info
     requiredFields: ['nick','mail']
@@ -520,7 +520,7 @@ comments:
     # Available values: en  | zh-CN | (and many more)
     # More i18n info: https://github.com/MiniValine/minivaline-i18n
     lang:
-    NoRecordIP: false # Do not record commenter IP.
+    NoRecordIP: true # Do not record commenter IP.
     maxNest: 6 # Sub-comment maximum nesting depth.
     pageSize: 6 # Pagination size.
     # Expression Url.
