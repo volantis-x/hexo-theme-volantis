@@ -1,6 +1,6 @@
 ############################### Style ###############################
 style:
-  font_smoothing: fasse # font-smoothing for webkit
+  font_smoothing: false # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
     size: 4px
@@ -99,7 +99,7 @@ cover:
   display:
     home: true
     archive: true
-    others: fasse # can be written in front-matter 'cover: true'
+    others: false # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
   title: Volantis
   subtitle: 'A Wonderful Theme for Hexo'
@@ -168,7 +168,7 @@ layout:
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
     body: [article, comments]
-    # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为fasse则不显示
+    # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:

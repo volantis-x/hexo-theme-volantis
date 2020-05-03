@@ -89,7 +89,7 @@
   var enableGitalk = false;
   var enableValine = false;
   var enableMiniValine = false;
-  if (theme.comments && page && page.comments == true) {
+  if (theme.comments) {
     if (theme.comments.disqus && theme.comments.disqus.shortname) {
       enableDisqus = true;
     }
@@ -105,9 +105,6 @@
     if (theme.comments.minivaline && theme.comments.minivaline.appId) {
       enableMiniValine = true;
     }
-  }
-  if (theme.comments.valine && theme.comments.valine.appId && theme.comments.valine.visitor && (theme.layout.on_list.meta.indexOf('counter') > -1)) {
-    enableValine = true;
   }
 %>
 
@@ -281,12 +278,6 @@
 <% } %>
 <!-- ================================== -->
 
-<!-- lazyload -fix -->
-<% if (config.lazyload.enable){ %>
-  <%- partial('_third-party/lazyload') %>
-<% } %>
-<!-- ================================== -->
-
 <!--主要的 JS 文件-->
 <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.js) { %>
   <%- js(theme.info.cdn.js) %>
@@ -380,9 +371,6 @@
     });
 
     try{
-      <% if (config.lazyload.enable){ %>
-        pjax_lazyload();
-      <% } %>
       <% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
         pjax_scrollrebeal();
       <% } %>
