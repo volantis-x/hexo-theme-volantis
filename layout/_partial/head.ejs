@@ -146,4 +146,15 @@
     })();
     </script>
   <% } %>
+  <script>
+    // 加个备注防误删，这串用途为，从邮件里的查看链接过来时，直接跳转到相应的评论部分
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+  </script>
 </head>
