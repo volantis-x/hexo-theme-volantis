@@ -1,4 +1,6 @@
 <%- js('https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js') %>
+<%- js('https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js') %>
+
 <% if (theme.search && theme.search.enable) { %>
   <script>
     <% if(theme.search.service === 'baidu') { %>
@@ -306,3 +308,41 @@
 <% (config.import.script||[]).forEach(function(item){ %>
 <%- item %><% }) %>
 <% } %>
+
+<script>
+  $(document).ready(function () {
+    NProgress.done();
+  });
+
+  var pjax;
+  document.addEventListener('DOMContentLoaded', function () {
+    pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+      selectors: [
+        "title",
+        "meta[name=description]",
+        "meta[name=keywords]",
+        "#pjax-container"
+      ],
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: '5000'
+    });
+  });
+
+  document.addEventListener('pjax:send', function () {
+    NProgress.start();
+  });
+  document.addEventListener('pjax:complete', function () {
+    $('script[data-pjax], .pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    NProgress.done();
+  });
+
+  document.addEventListener('pjax:error', function () {
+    NProgress.done();
+    window.location.href = event.triggerElement.href;
+  });
+
+</script>
