@@ -190,6 +190,9 @@
       var valinePlaceholder = $.trim($('#valine-placeholder').text()) === "none" ?
               "<%= theme.comments.valine.placeholder %>" : $.trim($('#valine-placeholder').text());
 
+      var ALLPATH = '<%= theme.comments.valine.path %>';
+      if(ALLPATH != '') valinePath = ALLPATH;
+
       var valine = new Valine();
       valine.init({
         el: '#valine_container',
@@ -338,9 +341,6 @@
     NProgress.done();
   });
 
-  var HEXO_URL = "<%- config.url %>";
-  var HEXO_PERMALINK = "<%- config.permalink %>";
-
   var pjax;
   document.addEventListener('DOMContentLoaded', function () {
     pjax = new Pjax({
@@ -357,12 +357,17 @@
   });
 
   document.addEventListener('pjax:send', function () {
+
+    window.subData = null; // 移除标题
     $.fancybox.close();    // 关闭弹窗，曾经有人提过个BUG，在查看图片时浏览器返回上一页后，弹窗无法关闭了
+
     $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
     $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
     $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
     $(document, window).unbind('scroll');    // 解绑
     $(document, window).unbind('click');     // 解绑
+
+    $('header.l_header.shadow.blur').removeClass('show'); // 移除导航栏，为了封面特意处理的
     NProgress.start();
   });
   document.addEventListener('pjax:complete', function () {

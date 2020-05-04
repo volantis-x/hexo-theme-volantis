@@ -95,34 +95,33 @@ var customSearch;
 
 	// 设置导航栏  fix √
 	function setHeader() {
+		var HEXO_ISPAGE = $.trim($('#pjax-ispage').text());
+		if(HEXO_ISPAGE == 'true')
+		  window.subData = {
+			title: $.trim($('#pjax-pageTitle').text()),
+			tools: true
+		  }
+
 		if (!window.subData) return;
 		const $wrapper = $('header .wrapper');        // 整个导航栏
 		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
 		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
 
-		// 判断文章用的，只有在文章页面才需要进行一二级导航的切换
-		const pathname = window.location.pathname;
-		const parm1 = pathname == "/" ? "index" : pathname.split('/')[1];
-		const parm2 = HEXO_PERMALINK.split('/')[0];
-		const isArticle = (parm1 == "" || parm1 == parm2) ? true : false;
-
 		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
 
 		// 决定一二级导航栏的切换
 		let pos = document.body.scrollTop;
-		if (isArticle){
-			$(document, window).scroll(() => {
-				const scrollTop = $(window).scrollTop();
-				const del = scrollTop - pos;
-				if (del >= 50 && scrollTop > 100) {
-					pos = scrollTop;
-					$wrapper.addClass('sub');
-				} else if (del <= -50) {
-					pos = scrollTop;
-					$wrapper.removeClass('sub');  // <---- 取消二级导航显示
-				}
-			});
-		}
+		$(document, window).scroll(() => {
+			const scrollTop = $(window).scrollTop();
+			const del = scrollTop - pos;
+			if (del >= 50 && scrollTop > 100) {
+				pos = scrollTop;
+				$wrapper.addClass('sub');
+			} else if (del <= -50) {
+				pos = scrollTop;
+				$wrapper.removeClass('sub');  // <---- 取消二级导航显示
+			}
+		});
 
 		// bind events to every btn
 		let $commentTarget = $('.l_body .comments');  // 评论区域
