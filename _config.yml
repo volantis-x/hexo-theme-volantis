@@ -489,6 +489,8 @@ comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
   service: valine # valine, minivaline, disqus, gitalk, livere
+  # Valine
+  # https://valine.js.org/
   valine:
     appId: dogUA2FSKGTo029M1SEwGROT-MdYXbMMI # your appId
     appKey: u0NdtQ8nvHoMdJPSYqm1LRxE # your appKey
@@ -505,7 +507,7 @@ comments:
     visitor: true
     mathJax: false
   # MiniValine
-  # See: https://github.com/MiniValine/MiniValine
+  # https://github.com/MiniValine/MiniValine
   minivaline:
     appId: # Your leancloud application appid
     appKey: # Your leancloud application appkey
@@ -528,20 +530,27 @@ comments:
     emoticonUrl:
       - https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@master
       - https://cdn.jsdelivr.net/npm/alus
-
+  # Disqus
+  # https://disqus.com
   disqus:
     shortname:
+  # Gitalk
+  # https://gitalk.github.io/
   gitalk:
     clientID:
     clientSecret:
     repo:
     owner:
     admin: # []
+  # Vssue
+  # https://vssue.js.org/zh/
   vssue:
     owner:
     repo:
     clientId:
     clientSecret:
+  # LiveRe
+  # https://www.livere.com
   livere:
     uid:
 
