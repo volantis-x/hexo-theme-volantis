@@ -537,6 +537,11 @@ comments:
     repo:
     owner:
     admin: # []
+  vssue:
+    owner:
+    repo:
+    clientId:
+    clientSecret:
   livere:
     uid:
 
