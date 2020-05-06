@@ -99,6 +99,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
   <% } %>
 
+  <% if (theme.comments.vssue && theme.comments.vssue.clientId) { %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.3/packages/vssue/dist/vssue.min.css">
+  <% } %>
+
   <!-- import link -->
   <% if (config.import && config.import.link){ %>
   <% (config.import.link||[]).forEach(function(item){ %>
