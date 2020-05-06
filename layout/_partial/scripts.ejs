@@ -318,7 +318,7 @@
 
 <!--fix-->
 <% if (theme.search && theme.search.enable) { %>
-  <% if (theme.info.cdn) { %>
+  <% if (theme.search.js) { %>
     <%- js(theme.search.js) %>
   <% } else { %>
     <%- js(['js/search.js']) %>
