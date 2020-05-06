@@ -5,6 +5,8 @@
 var changeValinePath = 'none';
 var changeValinePlaceholder = 'none';
 var frontMatterCover = 'none';
+var ispage = false;
+var postTitle = '';
 
 var enableValine = false;
 if (theme.comments && page && page.comments == true && theme.comments.valine && theme.comments.valine.appId) {
@@ -24,11 +26,19 @@ if (page && page.cover) {
     frontMatterCover = page.cover;
 }
 
+if (page && page.layout == 'post' && page.title) {
+    ispage = true;
+    postTitle = page.title;
+}
+
 %>
 
 <div id="pjax-data" style="display: none">
 
     <div id="page-cover"><%=frontMatterCover%></div>
+
+    <div id="pjax-ispage"><%=ispage%></div>
+    <div id="pjax-pageTitle"><%=postTitle%></div>
 
     <% if (enableValine){ %>
     <div id="valine-path"><%=changeValinePath%></div>
