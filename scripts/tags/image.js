@@ -5,10 +5,13 @@ function postImage(args) {
   let url = (args[0]||'').trim()
   let title = ''
   let width = ''
+  let cls = ''
   function getP2(p2) {
     let px = p2.match(/^[0-9]*px$/g)
     if (px) {
       width = px[0]
+    } else if (p2 == 'inline') {
+      cls = 'class="inline"'
     } else {
       title = p2
     }
@@ -21,25 +24,15 @@ function postImage(args) {
   }
   if (width.length > 0) {
     if (title.length > 0) {
-      return `<div class="fancybox caption">
-                <img src='${url}' style='width:${width}'>
-                <span class='image-caption'>${title}</span>
-              </div>`;
+      return `<img src='${url}' alt='${title}' style='width:${width}'>`;
     } else {
-      return `<div class="fancybox caption">
-                <img src='${url}' style='width:${width}'>
-              </div>`;
+      return `<img src='${url}' style='width:${width}'>`;
     }
   } else {
     if (title.length > 0) {
-      return `<div class="fancybox caption">
-                <img src='${url}'>
-                <span class='image-caption'>${title}</span>
-              </div>`;
+      return `<img src='${url}' alt='${title}'>`;
     } else {
-      return `<div class="fancybox caption">
-                <img src='${url}'>
-              </div>`;
+      return `<img src='${url}'>`;
     }
   }
 }
