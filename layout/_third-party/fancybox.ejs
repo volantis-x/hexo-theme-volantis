@@ -10,30 +10,25 @@
       }
 
       $(element).attr("data-fancybox", "images");
-
-      var caption = "";   // 描述信息
-      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
-        $(element).attr('data-caption', $(this).attr('alt'));
-        caption = $(this).attr('alt');
-      }
+      
       if ($(this).next().text()) {  // hexo 图片标签描述信息
         $(element).attr('data-caption', $(this).next().text());  // 给 fancybox 用
       }
 
-      // 最外层套 div ，其实主要作用还是那个 class ，懒得写样式
-      var div = document.createElement("div");
-      $(div).addClass("fancybox caption");
-      $(this).wrap(div);
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));  // 获取描述信息
 
-      if(caption != '') {  // 如果存在描述信息
+        var div = document.createElement("div");
+        $(div).addClass("fancybox caption");
+        $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+
         var span = document.createElement("span");
         $(span).addClass("image-caption");
-        $(span).text(caption); // 加描述
+        $(span).text($(this).attr('alt')); // 加描述
         $(this).after(span);  // 再套一层描述
       }
 
       $(this).wrap(element);  // 最后套 a 标签
-
     })
 
     $(".article-entry").find("img").fancybox({
