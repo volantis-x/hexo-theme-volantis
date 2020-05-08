@@ -1,8 +1,14 @@
 <% if (theme.comments.valine && theme.comments.valine.appId && (theme.comments.valine.visitor == true)) { %>
+  <%
+      var path = post.path || page.path;
+      if(path.substring(path.length - 10) == 'index.html') {
+        path = path.substring(0, path.length - 10);
+      }
+  %>
   <div class="new-meta-item browse valine">
     <a class='notlink'>
       <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
-      <span id="<%- url_for(post.path || page.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title || page.title %>">
+      <span id="<%- url_for(path) %>" class="leancloud_visitors" data-flag-title="<%- post.title || page.title %>">
       <p>
         <span class="leancloud-visitors-count"></span>
       </p>
