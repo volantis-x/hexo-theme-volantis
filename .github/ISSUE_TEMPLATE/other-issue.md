@@ -1,6 +1,6 @@
 ---
 name: Other Issue
-about: Others
+about: 要表述的内容不属于上述模板的范围
 title: ''
 labels: ''
 assignees: ''
