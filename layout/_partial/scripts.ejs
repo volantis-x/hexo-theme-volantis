@@ -165,7 +165,7 @@
   <script>
     new Vue({
       el: '#vssue',
-  
+
       render: h => h('Vssue', {
         props: {
           title: "<%- (page.seo_title || page.title) + ' - ' + config.title %>",
@@ -318,7 +318,7 @@
 
 <!--fix-->
 <% if (theme.search && theme.search.enable) { %>
-  <% if (theme.info.cdn) { %>
+  <% if (theme.search.js) { %>
     <%- js(theme.search.js) %>
   <% } else { %>
     <%- js(['js/search.js']) %>

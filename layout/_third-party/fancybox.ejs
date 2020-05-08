@@ -23,7 +23,6 @@
       $(this).after(span);  // 再套一层描述
       $(this).wrap(element);  // 最后套 a 标签
     })
-
     $(".article-entry").find("img").fancybox({
       selector: '[data-fancybox="images"]',
       hash: false,
@@ -38,9 +37,7 @@
       ]
     });
   };
-
   $(function () {
     pjax_fancybox();
   });
-
 </script>
