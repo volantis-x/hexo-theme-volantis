@@ -189,7 +189,7 @@
   <script>
     new Vue({
       el: '#vssue',
-  
+
       render: h => h('Vssue', {
         props: {
           title: "<%- (page.seo_title || page.title) + ' - ' + config.title %>",
@@ -324,10 +324,7 @@
 
 
 <!-- fancybox -->
-<% if (theme.plugins.fancybox) { %>
-  <%- partial('_third-party/fancybox') %>
-<% } %>
-
+<%- partial('_third-party/fancybox') %>
 
 <% if (config.import && config.import.script){ %>
 <% (config.import.script||[]).forEach(function(item){ %>
