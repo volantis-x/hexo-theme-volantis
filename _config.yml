@@ -403,10 +403,6 @@ plugins:
     js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js
     css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
-  # Picture Zoom
-  fancybox:
-    css: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
-    js: https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
@@ -489,6 +485,8 @@ comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
   service: valine # valine, minivaline, disqus, gitalk, livere
+  # Valine
+  # https://valine.js.org/
   valine:
     appId: dogUA2FSKGTo029M1SEwGROT-MdYXbMMI # your appId
     appKey: u0NdtQ8nvHoMdJPSYqm1LRxE # your appKey
@@ -505,7 +503,7 @@ comments:
     visitor: true
     mathJax: false
   # MiniValine
-  # See: https://github.com/MiniValine/MiniValine
+  # https://github.com/MiniValine/MiniValine
   minivaline:
     appId: # Your leancloud application appid
     appKey: # Your leancloud application appkey
@@ -528,15 +526,27 @@ comments:
     emoticonUrl:
       - https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@master
       - https://cdn.jsdelivr.net/npm/alus
-
+  # Disqus
+  # https://disqus.com
   disqus:
     shortname:
+  # Gitalk
+  # https://gitalk.github.io/
   gitalk:
     clientID:
     clientSecret:
     repo:
     owner:
     admin: # []
+  # Vssue
+  # https://vssue.js.org/zh/
+  vssue:
+    owner:
+    repo:
+    clientId:
+    clientSecret:
+  # LiveRe
+  # https://www.livere.com
   livere:
     uid:
 
@@ -549,7 +559,7 @@ comments:
 search:
   enable: true
   service: hexo  # hexo, google, algolia, azure, baidu
-  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.4/js/search.js
+  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js
   google:
     apiKey:
     engineId:
@@ -569,8 +579,8 @@ search:
 ############################### Theme Information ###############################
 info:
   name: Volantis # This is theme's name.
-  version: '2.6.5' # This is theme's version.
+  version: '2.6.6' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
   cdn:
-    # css: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.4/css/style.css
-    # js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.4/js/app.js
+    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/app.js
+    css:

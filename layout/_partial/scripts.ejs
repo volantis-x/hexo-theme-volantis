@@ -109,6 +109,7 @@
   var enableDisqus = false;
   var enableLivere = false;
   var enableGitalk = false;
+  var enableVssue = false;
   var enableValine = false;
   var enableMiniValine = false;
   if (theme.comments && page && page.comments == true) {
@@ -120,6 +121,9 @@
     }
     if (theme.comments.gitalk && theme.comments.gitalk.clientID) {
       enableGitalk = true;
+    }
+    if (theme.comments.vssue && theme.comments.vssue.clientId) {
+      enableVssue = true;
     }
     if (theme.comments.valine && theme.comments.valine.appId) {
       enableValine = true;
@@ -177,6 +181,29 @@
       distractionFreeMode: false  // Facebook-like distraction free mode
     });
     gitalk.render('gitalk-container');
+  </script>
+<% } %>
+<% if (enableVssue) { %>
+  <script src="https://cdn.jsdelivr.net/gh/vuejs/vue@2.6.11/dist/vue.runtime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.github.min.js"></script>
+  <script>
+    new Vue({
+      el: '#vssue',
+
+      render: h => h('Vssue', {
+        props: {
+          title: "<%- (page.seo_title || page.title) + ' - ' + config.title %>",
+          options: {
+            owner: '<%- theme.comments.vssue.owner %>',
+            repo: '<%- theme.comments.vssue.repo %>',
+            clientId: '<%- theme.comments.vssue.clientId %>',
+            clientSecret: '<%- theme.comments.vssue.clientSecret %>',
+            prefix: '',
+            autoCreateIssue: true,
+          },
+        }
+      })
+    })
   </script>
 <% } %>
 
@@ -297,10 +324,7 @@
 
 
 <!-- fancybox -->
-<% if (theme.plugins.fancybox) { %>
-  <%- partial('_third-party/fancybox') %>
-<% } %>
-
+<%- partial('_third-party/fancybox') %>
 
 <% if (config.import && config.import.script){ %>
 <% (config.import.script||[]).forEach(function(item){ %>
