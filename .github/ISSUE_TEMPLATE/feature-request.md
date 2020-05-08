@@ -1,6 +1,6 @@
 ---
 name: 提交一个建议
-about: Suggest an idea for this project
+about: 希望增加或者调整某项功能
 title: ''
 labels: 'suggest'
 assignees: ''
@@ -17,3 +17,5 @@ assignees: ''
 - [ ] 我已阅读Hexo官方文档，确认不存在此功能。
 
 ## 需求描述
+
+<!-- 如果能够提供参考链接或者示意图更好 -->
