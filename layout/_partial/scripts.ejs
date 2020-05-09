@@ -383,7 +383,6 @@
   });
 
   document.addEventListener('pjax:send', function () {
-
     window.stop(); // 相当于点击了浏览器的停止按钮
     window.subData = null; // 移除标题（用于一二级导航栏切换处）
     $.fancybox.close();    // 关闭弹窗，曾经有人提过个BUG，在查看图片时浏览器返回上一页后，弹窗无法关闭了
@@ -392,14 +391,16 @@
     $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
     $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
 
-    $(document, window).unbind('resize');     // 解绑
     $(document, window).unbind('scroll');    // 解绑
     $(document, window).unbind('click');     // 解绑
 
     $('header.l_header.shadow.blur').removeClass('show'); // 移除导航栏
+
     NProgress.start();
   });
+
   document.addEventListener('pjax:complete', function () {
+    
     $('script[data-pjax], .pjax-reload script').each(function () {
       $(this).parent().append($(this).remove());
     });

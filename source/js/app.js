@@ -289,6 +289,7 @@ var customSearch;
 			}
 			$(liElements).removeClass('active').eq(l).addClass('active');
 		};
+
 		$(window).scroll(() => {
 			scrollListener();
 		});
@@ -306,6 +307,8 @@ var customSearch;
 				}
 			} , 100);
 		});
+
+		// TODO: 图片懒加载也会影响 DOM 高度改变，试试 MutationObserver
 					
 		scrollListener();
 	}
