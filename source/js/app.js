@@ -288,15 +288,28 @@ var customSearch;
 				else r = mid - 1;
 			}
 			$(liElements).removeClass('active').eq(l).addClass('active');
-		}
-		$(window)
-			// .resize(() => {           // resize 事件解绑不掉，在没有目录的界面上时，此处疯狂报错 主要是报 offset().top <--
-			// 	anchor = getAnchor();    // @xaoxuxu 这里监听浏览器窗口大小干嘛？
-			// 	scrollListener();        // TODO: 需要检查
-			// })
-			.scroll(() => {
-				scrollListener()
-			});
+		};
+
+		$(window).scroll(() => {
+			scrollListener();
+		});
+
+		// 监听窗口改变事件
+		var resizeTimer = null;
+		$(window).bind('resize', function (){
+			if (resizeTimer) clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(function(){
+				try {
+					anchor = getAnchor();
+					scrollListener();
+				} catch (error) {
+					$(window).unbind('resize');
+				}
+			} , 100);
+		});
+
+		// TODO: 图片懒加载也会影响 DOM 高度改变，试试 MutationObserver
+					
 		scrollListener();
 	}
 
