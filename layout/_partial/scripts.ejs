@@ -1,4 +1,4 @@
-<%- js('https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js') %>
+<%- js({src:'https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js',aysc:true}) %>
 <% if (theme.search && theme.search.enable) { %>
   <script>
     <% if(theme.search.service === 'baidu') { %>
@@ -24,7 +24,7 @@
   <script async src="<%- theme.plugins.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 <% } %>
 <% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
-  <script src="<%- theme.plugins.scrollreveal.js %>"></script>
+  <script aysc src="<%- theme.plugins.scrollreveal.js %>"></script>
   <script type="text/javascript">
     $(function() {
       ScrollReveal().reveal('.l_main .reveal', {
@@ -37,7 +37,7 @@
   </script>
 <% } %>
 <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.js) { %>
-  <%- js({src: theme.plugins.nodewaves.js}) %>
+  <%- js({src: theme.plugins.nodewaves.js,aysc:true}) %>
   <script type="text/javascript">
     $(function() {
       Waves.attach('.flat-btn', ['waves-button']);
@@ -62,7 +62,7 @@
   }
    %>
   <% if (imgs != undefined && theme.plugins.backstretch.position != undefined){ %>
-    <%- js(theme.plugins.backstretch.js) %>
+    <%- js({src:theme.plugins.backstretch.js,aysc:true}) %>
     <script type="text/javascript">
       $(function(){
         var imgs=<%- '["' + imgs.join('", "') + '"]' %>;
@@ -101,7 +101,7 @@
 
 <% if (theme.plugins.aplayer && theme.plugins.aplayer.enable && theme.plugins.aplayer.js) { %>
   <% (theme.plugins.aplayer.js||[]).forEach(function(item){ %>
-    <%- js({src:item}) %>
+    <%- js({src:item,aysc:true}) %>
   <% }) %>
 <% } %>
 
@@ -303,15 +303,15 @@
   <%- js(['js/app.js']) %>
 <% } %>
 <% if (theme.search && theme.search.enable && theme.search.js) { %>
-  <%- js(theme.search.js) %>
+  <%- js({src:theme.search.js,defer:true}) %>
 <% } %>
 <% if (theme.plugins.comment_typing) { %>
-  <%- js(theme.plugins.comment_typing) %>
+  <%- js({src:theme.plugins.comment_typing,aysc:true}) %>
 <% } %>
 
 <% if (config.highlight.enable != true) { %>
   <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.js) { %>
-    <%- js(theme.plugins.highlightjs.js) %>
+    <%- js({src:theme.plugins.highlightjs.js,aysc:true}) %>
     <script>hljs.initHighlightingOnLoad();</script>
   <% } %>
 <% } %>
