@@ -396,6 +396,7 @@
     $(window).unbind('resize');    // 解绑
     $(window).unbind('scroll');    // 解绑
     $(window).unbind('click');     // 解绑
+    $(document).unbind('scroll');  // 解绑
 
     NProgress.start();
   });
@@ -407,6 +408,7 @@
     });
 
     try{
+      pjax_fancybox();
       <% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
         pjax_scrollrebeal();
       <% } %>
@@ -415,9 +417,6 @@
       <% } %>
       <% if (enableValine){ %>
         pjax_valine();
-      <% } %>
-      <% if (theme.plugins.fancybox) { %>
-        pjax_fancybox();
       <% } %>
     } catch (e) {
       console.log(e);
