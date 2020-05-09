@@ -83,23 +83,28 @@
   <% } %>
 
   <!-- link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
-  <%- css('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css') %>
+  <script src="https://cdn.jsdelivr.net/npm/fg-loadcss@3.1.0/src/loadCSS.min.js"></script>
+  <script id="loadcss">
+    loadCSS( "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css", document.getElementById("loadcss") );
+    loadCSS( "https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss") );
+	<% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
+	loadCSS( "<%- theme.plugins.nodewaves.css %>", document.getElementById("loadcss") );
+    <% } %>
+	<% if (theme.plugins.aplayer.enable) { %>
+	loadCSS( "https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", document.getElementById("loadcss") );
+    <% } %>
+    <% if (theme.comments.vssue && theme.comments.vssue.clientId) { %>
+    loadCSS( "https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css", document.getElementById("loadcss") );
+    <% } %>
+	<% if (config.highlight.enable != true) { %>
+      <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.css) { %>
+	  loadCSS( "<%- theme.plugins.highlightjs.css %>", document.getElementById("loadcss") );
+      <% } %>
+    <% } %>
+  </script>
   
-  <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
-    <%- css(theme.plugins.nodewaves.css) %>
-  <% } %>
-
   <% if (config.favicon) { %>
   <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
-  <% } %>
-
-  <% if (theme.plugins.aplayer.enable) { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
-  <% } %>
-
-  <% if (theme.comments.vssue && theme.comments.vssue.clientId) { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css">
   <% } %>
 
   <!-- import link -->
@@ -108,11 +113,6 @@
   <%- item %><% }) %>
   <% } %>
 
-  <% if (config.highlight.enable != true) { %>
-    <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.css) { %>
-      <%- css(theme.plugins.highlightjs.css) %>
-    <% } %>
-  <% } %>
   <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.css) { %>
     <%- css(theme.info.cdn.css) %>
   <% } else { %>
