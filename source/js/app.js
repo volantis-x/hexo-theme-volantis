@@ -253,7 +253,6 @@ var customSearch;
 		});
 		$(document).click(() => $toc.removeClass('active'));
 
-		// 👇  不知道是干嘛的  懒得看了
 		$toc.on('click', 'a', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
@@ -274,8 +273,14 @@ var customSearch;
 		let getAnchor = () => liElements.map(elem => Math.floor($(elem.getAttribute('href')).offset().top - scrollCorrection));
 
 		let anchor = getAnchor();
+		let domHeigth = $(document).height();
 		let scrollListener = () => {
-			const scrollTop = $('html').scrollTop() || $('body').scrollTop();
+			let scrollTop = $('html').scrollTop() || $('body').scrollTop();
+			if ($(document).height() != domHeigth) { // dom 高度发生变化： 普遍来说，是图片懒加载造成的
+				scrollTop = $('html').scrollTop() || $('body').scrollTop();
+				domHeigth = $(document).height();
+				anchor = getAnchor();
+			}
 			if (!anchor) return;
 			//binary search.
 			let l = 0,
@@ -295,20 +300,14 @@ var customSearch;
 		});
 
 		// 监听窗口改变事件
-		var resizeTimer = null;
+		let resizeTimer = null;
 		$(window).bind('resize', function (){
 			if (resizeTimer) clearTimeout(resizeTimer);
 			resizeTimer = setTimeout(function(){
-				try {
-					anchor = getAnchor();
-					scrollListener();
-				} catch (error) {
-					$(window).unbind('resize');
-				}
+				anchor = getAnchor();
+				scrollListener();
 			} , 100);
 		});
-
-		// TODO: 图片懒加载也会影响 DOM 高度改变，试试 MutationObserver
 					
 		scrollListener();
 	}
