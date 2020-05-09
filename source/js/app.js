@@ -253,7 +253,6 @@ var customSearch;
 		});
 		$(document).click(() => $toc.removeClass('active'));
 
-		// 👇  不知道是干嘛的  懒得看了
 		$toc.on('click', 'a', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
@@ -269,13 +268,19 @@ var customSearch;
 			}
 		});
 
-		const liElements = Array.from($toc.find('li a'));
+		let liElements = Array.from($toc.find('li a'));
 		//function animate above will convert float to int.
-		const getAnchor = () => liElements.map(elem => Math.floor($(elem.getAttribute('href')).offset().top - scrollCorrection));
+		let getAnchor = () => liElements.map(elem => Math.floor($(elem.getAttribute('href')).offset().top - scrollCorrection));
 
 		let anchor = getAnchor();
-		const scrollListener = () => {
-			const scrollTop = $('html').scrollTop() || $('body').scrollTop();
+		let domHeigth = $(document).height();
+		let scrollListener = () => {
+			let scrollTop = $('html').scrollTop() || $('body').scrollTop();
+			if ($(document).height() != domHeigth) { // dom 高度发生变化： 普遍来说，是图片懒加载造成的
+				scrollTop = $('html').scrollTop() || $('body').scrollTop();
+				domHeigth = $(document).height();
+				anchor = getAnchor();
+			}
 			if (!anchor) return;
 			//binary search.
 			let l = 0,
@@ -288,15 +293,22 @@ var customSearch;
 				else r = mid - 1;
 			}
 			$(liElements).removeClass('active').eq(l).addClass('active');
-		}
-		$(window)
-			// .resize(() => {           // resize 事件解绑不掉，在没有目录的界面上时，此处疯狂报错 主要是报 offset().top <--
-			// 	anchor = getAnchor();    // @xaoxuxu 这里监听浏览器窗口大小干嘛？
-			// 	scrollListener();        // TODO: 需要检查
-			// })
-			.scroll(() => {
-				scrollListener()
-			});
+		};
+
+		$(window).scroll(() => {
+			scrollListener();
+		});
+
+		// 监听窗口改变事件
+		let resizeTimer = null;
+		$(window).bind('resize', function (){
+			if (resizeTimer) clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(function(){
+				anchor = getAnchor();
+				scrollListener();
+			} , 100);
+		});
+
 		scrollListener();
 	}
 
