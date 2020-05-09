@@ -281,7 +281,7 @@
 <% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
   <%- partial('_third-party/clipboard') %>
 <% } %>
-<!-- ================================== -->
+<!-- ******************************** -->
 
 <!--scrollreveal -fix -->
 <% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
@@ -301,13 +301,11 @@
     });
   </script>
 <% } %>
-<!-- ================================== -->
+<!-- ******************************** -->
 
 <!-- fancybox -fix -->
-<% if (theme.plugins.fancybox) { %>
-  <%- partial('_third-party/fancybox') %>
-<% } %>
-<!-- ================================== -->
+<%- partial('_third-party/fancybox') %>
+<!-- ******************************** -->
 
 <!--主要的 JS 文件-->
 <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.js) { %>

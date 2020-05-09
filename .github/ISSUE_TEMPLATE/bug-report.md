@@ -1,67 +1,72 @@
 ---
-name: Bug Report
-about: Something isn't working as expected
+name: 反馈一个明确的BUG
+about: 此流程适用于您已经定位到了问题的具体所在，不需要协助定位问题。希望开发者予以修正。
 title: ''
-labels: 'new,question'
+labels: 'bug-report'
 assignees: ''
 
 ---
 
-If you delete this template, we may close your issue without conducting an investigation.
-如果您删除此模版，我们可能会在不进行调查的情况下关闭您的 Issue。
+<!-- 如果您删除此模版，我们可能会在不进行调查的情况下关闭您的 Issue。 -->
 
-Please check if your Issue fulfills the following requirements. This will guide you to resolve the issue quickly.
-请务必确认您在提交此 Issue 前已经查看并完成了下列检查单中的所有事项。这会指导您快速地解决问题。
+## BUG描述
 
-## Issue Checklist <!-- 我确认我已经查看了 -->
-<!-- Change [ ] to [x] to select (将 [ ] 换成 [x] 来选择) -->
+<!-- 尽可能详细地描述您的问题，包括预期与实际表现的区别 -->
 
-- [ ] I am using [the latest](https://github.com/xaoxuu/hexo-theme-volantis/releases/latest) version of Volantis.
-- [ ] I have reviewed [guidelines for Volantis](https://volantis.js.org), which does not help me.
-- [ ] I have reviewed the latest Roadmap on GitHub and searched for current issues, which does not help me.
+## 复现报告
 
-***
+分类：反馈一个明确的BUG
 
-## Expected behavior <!-- 预期行为 -->
+<!-- 如果您未按照模板中的步骤进行自检，我们可能不会阅读您的 Issue。 -->
+
+<!-- Change [ ] to [x] to select (将 [ ] 换成 [x] 来完成选择) -->
+
+- [ ] 将主题升级至最新版本。
+- [ ] 下载主题官网源码运行，经过一定的步骤，可以复现此BUG。
+
+### 复现步骤
+
+1. xxx
+2. xxx
+3. xxx
+
+## 环境信息
+
+<!-- 请务必提供以下信息 -->
+
+### 复现地址：
+<!-- 如果使用文档官网源码本地运行也存在异常，可以不用提供复现地址。 -->
+
+### 截图：
+<!-- 不同系统、浏览器效果可能不同，提供截图有助于发现问题所在。 -->
+
+### 浏览器、操作系统
 
 
-## Actual behavior <!-- 实际行为 -->
-<!-- Please provide at least one of the following information (请至少提供以下的一项信息) -->
-
-- Links to demo site with this issue: N/A
-- Links to repository or source code of the blog: N/A
-
-
-## Steps to reproduce the behavior <!-- 重现步骤 -->
-1. N/A
-2. N/A
-3. N/A
-
-
-## Environment Information
-
-### Node.js and NPM Information
-<!-- Paste output from `node -v && npm -v` (粘贴 `node -v && npm -v` 输出的信息) -->
-```
-
-```
-
-### Package dependencies Information
-<!-- Paste output from `npm ls --depth 0` (粘贴 `npm ls --depth 0` 输出的信息) -->
-```
-
-```
-
-### Hexo Configuration
-<!-- Paste configuration from Hexo `_config.yml` (粘贴 Hexo `_config.yml` 中的内容) -->
+### 站点配置文件
+<!-- 只粘贴 `blog/_config.yml` 中修改过的部分 -->
 ```yml
 
 ```
 
-### Volantis Configuration
-<!-- Paste ONLY CHANGED CONFIGURATION from Volantis `_config.yml` (只粘贴 Volantis 主题配置文件 `_config.yml` 中修改过的部分) -->
+### 主题配置文件
+<!-- 只粘贴 `themes/volantis/_config.yml` 中修改过的部分 -->
 ```yml
 
 ```
 
-## Other Information <!-- (Like Browser, System, Screenshots) -->
+#### 更多信息
+
+<!-- 要求提供时再回来补全即可 -->
+
+#### node.js & npm
+<!-- 粘贴 `node -v && npm -v` 输出的信息 -->
+```
+
+```
+
+#### package.json
+<!-- 粘贴 `npm ls --depth 0` 输出的信息 -->
+```
+
+```
