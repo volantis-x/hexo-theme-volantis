@@ -201,7 +201,7 @@ var customSearch;
 		var $search = $('.l_header .m_search');               // 搜索框 桌面端
 		if ($switcher.length === 0) return;
 		$switcher.click(function (e) {
-			// e.stopPropagation();
+			e.stopPropagation();
 			$header.toggleClass('z_search-open');   // 激活移动端搜索框
 			$switcher.toggleClass('active');        // 搜索按钮
 			$search.find('input').focus();
