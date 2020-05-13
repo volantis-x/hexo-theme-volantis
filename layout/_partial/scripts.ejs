@@ -362,9 +362,27 @@
 <%- item %><% }) %>
 <% } %>
 
+<%- js(['js/message.js']) %>
+
 <script>
   $(document).ready(function () {
     NProgress.done();
+
+    <% if (theme.plugins.aplayer.enable == true && theme.plugins.aplayer.autoplay == true) { %>
+      if($(window).width() > 500) {
+        var isplay = true;
+        $.message({title:'音乐播放',message:"即将自动播放，点击<a class='stopMusic'>停止播放</a>",type:'warning'});
+        setTimeout(function() {
+          if(isplay)
+            document.querySelector('meting-js').aplayer.play();
+        }, 3050)
+        $(".stopMusic").click(function() {
+          $(".c-message--close").click();
+          isplay = false;
+          // document.querySelector('meting-js').aplayer.pause();
+        })
+      }
+    <% } %>
   });
 
   var pjax;
