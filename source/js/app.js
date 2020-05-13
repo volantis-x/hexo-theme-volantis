@@ -61,17 +61,20 @@ var customSearch;
 		}
 
 		//==========================================
-		// 这里几乎不用处理 👇👇👇👇👇👇👇👇👇                                TODO： fix it
-		// @xaoxuxu 我的观点是，提供一个可以手动控制封面显示出现的样式，
-		//                    类似其它的 addClass 和 removeClass
+
 		const $coverAnchor = $('.cover-wrapper');
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
-			showHeaderPoint = $coverAnchor[0].clientHeight - 180;
+			if($('.cover.half').css('display') !== 'none')
+				showHeaderPoint = $coverAnchor[0].clientHeight - 180;
 		}
 		var pos = document.body.scrollTop;
+		if($('.cover.half').css('display') === 'none')
+			pos += 180;
 		$(document, window).scroll(() => {
-			const scrollTop = $(window).scrollTop();
+			let scrollTop = $(window).scrollTop();
+			if($('.cover.half').css('display') === 'none')
+				scrollTop += 180; 
 			const del = scrollTop - pos;
 			pos = scrollTop;
 			if (scrollTop > 180) {
@@ -136,9 +139,6 @@ var customSearch;
 		// else $comment.remove();   // bug：进入到没有评论的页面后，评论按钮被移除的   （👇 咋加？）
 		// TODO： 或许可以尝试在 pjax 完成事件里手动添加评论按钮
 		// ==============================================
-
-
-		// -------------------------hello world------------------------- //
 
 		const $tocTarget = $('.l_body .toc-wrapper');         // 侧边栏的目录列表  PC
 		if ($tocTarget.length && $tocTarget.children().length) {

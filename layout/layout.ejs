@@ -5,8 +5,8 @@
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
     <div class='body-wrapper' id="pjax-container">
-      <%- body %>
       <%- partial('_partial/pjaxData') %>
+      <%- body %>
     </div>
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>

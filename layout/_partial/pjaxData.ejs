@@ -24,6 +24,11 @@ if (page && page.comments == true) {
 
 if (page && page.cover) {
     frontMatterCover = page.cover;
+    if (is_home() && page.prev == 0 && theme.cover.scheme == 'docs') {
+        // 待定，此处为全封面
+    } else {
+        frontMatterCover = 'true';
+    }
 }
 
 if (page && page.layout == 'post' && page.title) {
@@ -46,3 +51,24 @@ if (page && page.layout == 'post' && page.title) {
     <% } %>
 </div>
 
+<script>
+    if(document.getElementById('page-cover').innerHTML == "none") {
+        document.getElementsByClassName('cover','half')[0].style.display = "none";
+        document.getElementsByClassName('l_body')[0].classList.add("nocover");
+        document.getElementsByClassName('l_header','cover-wrapper')[0].classList.add("show");
+    } else {
+        document.getElementsByClassName('cover','half')[0].style.display = "";
+        document.getElementsByClassName('l_body','show')[0].classList.remove("nocover");
+        document.getElementsByClassName('l_header','cover-wrapper')[0].classList.remove("show");
+    }
+// $headerAnchor = $('.l_header', '.cover-wrapper'); 
+// if($('#page-cover').text() == "none") {
+//     $('.cover.half').hide();
+//     $('.l_body').addClass('nocover');
+//     $headerAnchor.addClass('show');
+// } else {
+//     $('.cover.half').show();
+//     $('.l_body').removeClass('nocover');
+//     $headerAnchor.removeClass('show');
+// }
+</script>

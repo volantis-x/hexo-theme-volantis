@@ -407,7 +407,6 @@
     $.fancybox.close();    // 关闭弹窗，曾经有人提过个BUG，在查看图片时浏览器返回上一页后，弹窗无法关闭了
 
     $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
-    $('header.l_header.shadow.blur').removeClass('show'); // 移除导航栏
     $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
     $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
 
@@ -445,6 +444,7 @@
 
   document.addEventListener('pjax:error', function () {
     NProgress.done();
+    $.message({title:'事件通知',message:"链接加载失败，执行强制刷新！",type:'warning'});
     window.location.href = event.triggerElement.href;
   });
 
