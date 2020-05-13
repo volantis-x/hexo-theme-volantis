@@ -211,6 +211,8 @@ meta:
   # 文章浏览计数
   counter:
     icon: fal fa-eye
+  commentsCount:
+    icon: fal fa-comment-lines
   # 文章字数和阅读时长
   wordcount:
     icon_wordcount: fal fa-keyboard

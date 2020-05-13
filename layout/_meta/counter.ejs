@@ -1,10 +1,4 @@
 <% if (theme.comments.valine && theme.comments.valine.appId && (theme.comments.valine.visitor == true)) { %>
-  <%
-      var path = post.path || page.path;
-      if(path.substring(path.length - 10) == 'index.html') {
-        path = path.substring(0, path.length - 10);
-      }
-  %>
   <div class="new-meta-item browse valine">
     <a class='notlink'>
       <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
