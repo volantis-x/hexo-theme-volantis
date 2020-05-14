@@ -39,7 +39,8 @@ var customSearch;
 			$postsBtn.click(e => {
 				e.preventDefault();
 				e.stopPropagation();
-				scrolltoElement($bodyAnchor);
+				if($postsBtn.attr("href") != "/")       // TODO: 存在封面时，首页的返回有点问题，先这么处理着，无伤大雅。
+					scrolltoElement($bodyAnchor);
 				e.stopImmediatePropagation();
 			});
 		}
