@@ -2,11 +2,12 @@
 <!--思路大概是将值藏到重加载的区域内-->
 
 <%
-var changeValinePath = 'none';
-var changeValinePlaceholder = 'none';
-var frontMatterCover = 'none';
-var ispage = false;
-var postTitle = '';
+var changeValinePath = 'none';                // 自定义的 valine 评论路径
+var changeValinePlaceholder = 'none';         // 自定义的 valine 评论描述 
+var ispage = false;                           // 一二级导航栏切换控制
+var postTitle = '';                           // 当前文章标题，用于二级导航栏赋值
+var enableCover = false;                      // 封面是否开启
+var frontMatterCover = 'none';                // 封面控制
 
 var enableValine = false;
 if (theme.comments && page && page.comments == true && theme.comments.valine && theme.comments.valine.appId) {
@@ -22,12 +23,16 @@ if (page && page.comments == true) {
     }
 }
 
-if (page && page.cover) {
+if(theme.cover && theme.cover.scheme) {
+    enableCover = true;
+}
+
+if (enableCover && page && page.cover) {
     frontMatterCover = page.cover;
     if (is_home() && page.prev == 0 && theme.cover.scheme == 'docs') {
-        // 待定，此处为全封面
+        frontMatterCover = 'docs';
     } else {
-        frontMatterCover = 'true';
+        frontMatterCover = 'blog';
     }
 }
 
@@ -39,36 +44,35 @@ if (page && page.layout == 'post' && page.title) {
 %>
 
 <div id="pjax-data" style="display: none">
-
-    <div id="page-cover"><%=frontMatterCover%></div>
-
     <div id="pjax-ispage"><%=ispage%></div>
     <div id="pjax-pageTitle"><%=postTitle%></div>
-
+    <div id="pjax-enable-cover"><%=enableCover%></div>
     <% if (enableValine){ %>
     <div id="valine-path"><%=changeValinePath%></div>
     <div id="valine-placeholder"><%=changeValinePlaceholder%></div>
     <% } %>
 </div>
 
+<% if (enableCover) { %>
 <script>
-    if(document.getElementById('page-cover').innerHTML == "none") {
-        document.getElementsByClassName('cover','half')[0].style.display = "none";
+    // 处理封面 - blog    此时 jquery 还没加载，线用原生顶着
+    if("<%=frontMatterCover%>" == "none") {  // 移除封面
+        document.getElementsByClassName('cover')[0].style.display = "none";  
         document.getElementsByClassName('l_body')[0].classList.add("nocover");
-        document.getElementsByClassName('l_header','cover-wrapper')[0].classList.add("show");
+        document.getElementsByClassName('l_header','cover-wrapper')[0].classList.add("show"); 
     } else {
-        document.getElementsByClassName('cover','half')[0].style.display = "";
+        if("<%=frontMatterCover%>" == "blog") {  // 半屏
+            document.getElementsByClassName('cover')[0].classList.remove("full");
+            document.getElementsByClassName('cover')[0].classList.add("half");
+            document.getElementsByClassName('scroll-down')[0].style.display = "none";
+        } else if("<%=frontMatterCover%>" == "docs") { // 全屏
+            document.getElementsByClassName('cover')[0].classList.remove("half");
+            document.getElementsByClassName('cover')[0].classList.add("full");
+            document.getElementsByClassName('scroll-down')[0].style.display = "";
+        }
+        document.getElementsByClassName('cover')[0].style.display = "";
         document.getElementsByClassName('l_body','show')[0].classList.remove("nocover");
         document.getElementsByClassName('l_header','cover-wrapper')[0].classList.remove("show");
     }
-// $headerAnchor = $('.l_header', '.cover-wrapper'); 
-// if($('#page-cover').text() == "none") {
-//     $('.cover.half').hide();
-//     $('.l_body').addClass('nocover');
-//     $headerAnchor.addClass('show');
-// } else {
-//     $('.cover.half').show();
-//     $('.l_body').removeClass('nocover');
-//     $headerAnchor.removeClass('show');
-// }
 </script>
+<% } %>

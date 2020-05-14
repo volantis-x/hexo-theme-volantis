@@ -11,7 +11,7 @@ var customSearch;
 		scrollCorrection = $headerAnchor[0].clientHeight + 16;
 	}
 
-	// 尝试： 重设数据值                                   // 真的有用吗？不知道啊啊
+	// 尝试： 重设数据值
 	function restData() {
 		scrollCorrection = 80;
 		$headerAnchor = $('.l_header', '.cover-wrapper');
@@ -36,7 +36,7 @@ var customSearch;
 		const $bodyAnchor = $('.l_body');                // 页面主体
 
 		if ($postsBtn.length && $bodyAnchor) {
-			$postsBtn.click(e => {                 // 挺好奇这个的点击的作用  感觉没啥用
+			$postsBtn.click(e => {
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
@@ -44,7 +44,7 @@ var customSearch;
 			});
 		}
 		if ($titleBtn.length && $bodyAnchor) {
-			$titleBtn.click(e => {                // +1 好奇
+			$titleBtn.click(e => {
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
@@ -52,7 +52,7 @@ var customSearch;
 			});
 		}
 		if ($topBtn.length && $bodyAnchor) {
-			$topBtn.click(e => {                  // 天天向上 呱~
+			$topBtn.click(e => {
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
@@ -63,18 +63,25 @@ var customSearch;
 		//==========================================
 
 		const $coverAnchor = $('.cover-wrapper');
+
+		var enableCover = $('#pjax-enable-cover').text(); // Pjax 处理
+
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
-			if($('.cover.half').css('display') !== 'none')
-				showHeaderPoint = $coverAnchor[0].clientHeight - 180;
+			if(enableCover == "true" && $('.cover.half').css('display') !== 'none') // Pjax 处理
+				showHeaderPoint = $coverAnchor[0].clientHeight - 180; 
 		}
+
 		var pos = document.body.scrollTop;
-		if($('.cover.half').css('display') === 'none')
-			pos += 180;
+		if(enableCover == "true" && $('.cover.half').css('display') === 'none')
+			pos += 180; // Pjax 处理
+
 		$(document, window).scroll(() => {
-			let scrollTop = $(window).scrollTop();
-			if($('.cover.half').css('display') === 'none')
-				scrollTop += 180; 
+			let scrollTop = $(window).scrollTop();  // 滚动条距离顶部的距离
+
+			if(enableCover == "true" && $('.cover.half').css('display') === 'none')
+				scrollTop += 180; // Pjax 处理
+			
 			const del = scrollTop - pos;
 			pos = scrollTop;
 			if (scrollTop > 180) {
@@ -110,6 +117,7 @@ var customSearch;
 		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
 		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
 
+		$comment.show(); // 显示 (某些也没可能关闭了评论，故先行显示)
 		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
 
 		// 决定一二级导航栏的切换
@@ -129,18 +137,16 @@ var customSearch;
 		// bind events to every btn
 		let $commentTarget = $('.l_body .comments');  // 评论区域
 		if ($commentTarget.length) {
-			$comment.click(e => {                         // 评论按钮点击后 跳转到评论区域
+			$comment.click(e => {                     // 评论按钮点击后 跳转到评论区域
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($('.l_body .comments'));
 				e.stopImmediatePropagation();
 			});
-		}
-		// else $comment.remove();   // bug：进入到没有评论的页面后，评论按钮被移除的   （👇 咋加？）
-		// TODO： 或许可以尝试在 pjax 完成事件里手动添加评论按钮
+		} else $comment.hide();   // 关闭了评论，则隐藏
 		// ==============================================
 
-		const $tocTarget = $('.l_body .toc-wrapper');         // 侧边栏的目录列表  PC
+		const $tocTarget = $('.l_body .toc-wrapper');     // 侧边栏的目录列表  PC
 		if ($tocTarget.length && $tocTarget.children().length) {
 			$toc.click((e) => {
 				e.stopPropagation();
@@ -159,7 +165,7 @@ var customSearch;
 		} else $toc.remove();
 	}
 
-	// 设置导航栏菜单选中状态            <-------------- 重新加载下即可
+	// 设置导航栏菜单选中状态 
 	function setHeaderMenuSelection() {
 		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
