@@ -68,6 +68,7 @@
   <% } else { %>
     <meta name="keywords" content="<%- config.keywords || '' %>">
   <% } %>
+
   <% if (description){ %>
     <meta name="description" content="<%- description %>">
   <% } else { %>
@@ -128,12 +129,17 @@
 
   <% if (config.google_analytics_key) { %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>"></script>
     <script>
+	setTimeout(function() {
+	  let script = document.createElement('script');
+	  script.src = "https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>";
+	  script.defer=true;
+	  document.body.appendChild(script);
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', '<%- config.google_analytics_key %>');
+	}, 5000);
     </script>
   <% } %>
   <% if (config.baidu_analytics_key) { %>
@@ -141,11 +147,25 @@
     <script>
     var _hmt = _hmt || [];
     (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
+	  setTimeout(function() { 
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
+		hm.defer=true;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+	  }, 5000);
     })();
     </script>
   <% } %>
+  <script>
+    // 加个备注防误删，这串用途为，从邮件里的查看链接过来时，直接跳转到相应的评论部分
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+  </script>
 </head>
