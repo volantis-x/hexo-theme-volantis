@@ -62,12 +62,17 @@
       }
     }
   %>
-    <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
+  <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
   <% if (keywords){ %>
     <meta name="keywords" content="<%- keywords %>">
+  <% } else { %>
+    <meta name="keywords" content="<%- config.keywords || '' %>">
   <% } %>
+
   <% if (description){ %>
     <meta name="description" content="<%- description %>">
+  <% } else { %>
+    <meta name="description" content="<%- config.description || '' %>">
   <% } %>
 
   <!-- feed -->
@@ -85,13 +90,13 @@
   <!-- link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
   <%- css('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css') %>
-  
+
   <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
     <%- css(theme.plugins.nodewaves.css) %>
   <% } %>
 
   <% if (config.favicon) { %>
-  <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
+    <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <% } %>
 
   <% if (theme.plugins.aplayer.enable) { %>
@@ -119,11 +124,7 @@
     <%- css('css/style.css') %>
   <% } %>
 
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 
   <% if (config.google_analytics_key) { %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
