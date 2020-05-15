@@ -3,6 +3,8 @@ pre
 .hljs
   margin: 0 - $gap !important
   padding: $gap !important
+  -webkit-font-smoothing: auto
+  -moz-osx-font-smoothing: auto
   scrollbar()
   if hexo-config('style.body.highlight.language') == true
     &:before
@@ -77,6 +79,9 @@ pre
   font-family: $fontfamily-code
   border-radius: $border-codeblock
   border: 1px solid darken($color-codeblock, 6)
+  line-height: 1.5
+  -webkit-font-smoothing: auto
+  -moz-osx-font-smoothing: auto
   trans()
   figcaption
     position: sticky
@@ -92,6 +97,7 @@ pre
     td,th
       padding: 0
       border: none
+      line-height: 1.5
     margin: 0
     background-color: transparent
     border: none
@@ -203,7 +209,6 @@ $hl-amber = #FD8607
 $hl-text = alpha($color-text, .9)
 .highlight pre
   // 行
-  // line-height: 1.5
   .line,.params
     color: $hl-text
 
@@ -260,7 +265,7 @@ $hl-text = alpha($color-text, .9)
       color: $hl-cyan
 
 
-.highlight.objc,.highlight.objectivec,.highlight.swift
+.highlight.objc,.highlight.objectivec,.highlight.swift,.highlight.c
   .line
     .meta
       color: $hl-keyword

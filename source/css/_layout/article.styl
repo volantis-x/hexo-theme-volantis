@@ -6,7 +6,7 @@
     >a,>p>a,blockquote a,div.note a
       underline()
     >ul>li,>ol>li,tbody tr td
-      >a
+      >a,>p>a
         underline()
     div.tab-pane
       >p,li
@@ -18,6 +18,8 @@
   // word-break: break-all
   word-wrap: break-word
   img
+    &.inline
+      display: inline
     position: relative
     trans()
     @media screen and (max-width: $device-mobile)
@@ -33,6 +35,8 @@
       display: inline
       margin: auto
 
+  a
+    word-break: break-word
   h1,h2,h3,h4,h5,h6
     &:first-child
       margin-top: $gap-row
@@ -105,18 +109,11 @@
       background: $color-theme
       color: $color-inner
   p
-    margin-top: $gap-row
-    margin-bottom: $gap-row
+    margin-top: $gap-paragraph
+    margin-bottom: $gap-paragraph
     text-align: $textalign-p
     max-width: 100%
-    overflow: auto
-    &.has-jax
-      font-family: $fontfamily-code
-      background: $color-mathjax
-      padding: $gap $gap * 0.5
-      border-radius: $border-codeblock
-      .mjx-chtml.MJXc-display
-        margin: 0
+    line-height: inherit
 
 
   ul,ol
@@ -129,7 +126,15 @@
     ul,ol
       margin-top: 0
       margin-bottom: 0
-
+    li
+      margin-top: 2px
+      margin-bottom: 2px
+      li
+        margin-top: 0
+        margin-bottom: 0
+      p
+        margin-top: $gap-row
+        margin-bottom: $gap-row
     &.task-list
       padding-left: 0
       margin-left: 4px
@@ -140,9 +145,9 @@
 
 
   ul>li
-      list-style: initial
+    list-style: initial
   ol>li
-      list-style: decimal
+    list-style: decimal
 
   .subtitle
     h6
@@ -170,7 +175,7 @@
       margin-bottom: $gap-row
     position: relative
     width: 100%
-    padding: .7em 1.2em
+    padding: $gap-row + $fontoffset  $gap $gap-row $gap
     trans()
     footer
       padding: 0
@@ -216,29 +221,23 @@
       margin: 0
       background: transparent
       color: alpha($color-text, 90%)
-
   code
     font-family: $fontfamily-code
     &:not([class])
       padding: 3px 4px 1px 4px
-      margin: 0
       vertical-align: middle
       font-size: $fontsize-code
       background: $color-inlinecode
       border-radius: $border-codeblock * 0.5
       border: 1px solid darken($color-inlinecode, 6)
 
-  table:not('.highlight table')
-    width: 100%
-    td,th
-      padding: 12px 24px
 
   @media screen and (max-width: $device-mobile)
     ul,ol
       font-size: $fontsize-meta
     figure
       font-size: 13px
-      line-height: 1.6em
+      line-height: 1.5
 
 
   .widget
@@ -320,6 +319,8 @@
       margin-bottom: 4px
 
 
+  .article_footer
+    margin-top: $gap * 4
   .widget-blur
     backdrop-filter: none
 
@@ -353,9 +354,6 @@
       margin-top: $gap-h4 - $navbar-height - $gap
   h5
     font-weight: bold
-  p
-    margin-top: $gap-paragraph
-    margin-bottom: $gap-paragraph
 
 article .readmore
   margin-top: $gap-paragraph

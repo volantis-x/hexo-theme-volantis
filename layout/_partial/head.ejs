@@ -28,7 +28,7 @@
 
   <!-- 页面元数据 -->
   <%
-    var title = page.seotitle || page.title;
+    var title = page.seo_title || page.title;
     var keywords = page.keywords || '';
     var description = page.description || '';
     if (is_archive()) {
@@ -84,9 +84,8 @@
 
   <!-- link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
-  <% if (theme.plugins.fancybox && theme.plugins.fancybox.css) { %>
-    <%- css(theme.plugins.fancybox.css) %>
-  <% } %>
+  <%- css('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css') %>
+  
   <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
     <%- css(theme.plugins.nodewaves.css) %>
   <% } %>
@@ -97,6 +96,10 @@
 
   <% if (theme.plugins.aplayer.enable) { %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  <% } %>
+
+  <% if (theme.comments.vssue && theme.comments.vssue.clientId) { %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css">
   <% } %>
 
   <!-- import link -->
@@ -110,7 +113,7 @@
       <%- css(theme.plugins.highlightjs.css) %>
     <% } %>
   <% } %>
-  <% if (theme.info.cdn && theme.info.cdn.css) { %>
+  <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.css) { %>
     <%- css(theme.info.cdn.css) %>
   <% } else { %>
     <%- css('css/style.css') %>
@@ -124,12 +127,17 @@
 
   <% if (config.google_analytics_key) { %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>"></script>
     <script>
+	setTimeout(function() {
+	  let script = document.createElement('script');
+	  script.src = "https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>";
+	  script.defer=true;
+	  document.body.appendChild(script);
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', '<%- config.google_analytics_key %>');
+	}, 5000);
     </script>
   <% } %>
   <% if (config.baidu_analytics_key) { %>
@@ -137,10 +145,13 @@
     <script>
     var _hmt = _hmt || [];
     (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
+	  setTimeout(function() { 
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
+		hm.defer=true;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+	  }, 5000);
     })();
     </script>
   <% } %>

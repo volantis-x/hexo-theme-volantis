@@ -24,8 +24,13 @@ div.tabs
     padding: 8px 8px 0 8px
     background: $color-block
     border-radius: $tbr $tbr 0 0
+    line-height: 1.5
     li.tab
       list-style-type: none
+      margin-top: 0
+      margin-bottom: 0
+      &:last-child
+        padding-right: $gap
       a
         display: block
         cursor: pointer
@@ -39,6 +44,8 @@ div.tabs
         border: 1px solid transparent
         &:hover
           color: $color-p
+        i
+          pointer-events: none
       &.active a
         cursor: default
         color: $color-p
@@ -56,7 +63,7 @@ div.tabs
       &.active
         display: block
       >
-        p,.tabs,ul,ol,.highlight,div.note
+        p,.tabs,ul,ol,.highlight,.note,.fancybox
           &:first-child
             margin-top: 0
           &:last-child

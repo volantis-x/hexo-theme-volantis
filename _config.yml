@@ -1,15 +1,6 @@
-############################### Theme Information ###############################
-info:
-  name: Volantis # This is theme's name, not your blog's name.
-  version: '2.4.3' # This is theme's version.
-  docs: https://volantis.js.org/ # This is theme's URL.
-  cdn:
-    css:
-    js:
-
-
 ############################### Style ###############################
 style:
+  font_smoothing: false # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
     size: 4px
@@ -36,12 +27,16 @@ style:
     note: # style for default note: {% note text %}
       icon: '\f054'
       color: ''
+    checkbox:
+      enable: true # enable for user
+      color: '' # color for default checkbox
   gap:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 24px # Spacing above H3 (only px unit)
     h4: 16px # Spacing above H4 (only px unit)
     paragraph: 1rem # Paragraph spacing between paragraphs
     row: .5rem # Paragraph spacing between other elements
+    line_height: 1.65 # normal, 1.5, 1.75, 2 ...
   border_radius:
     card: 8px
     codeblock: 4px
@@ -73,6 +68,7 @@ style:
       url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
       weight: normal
       style: normal
+      offset: 0.1rem # Correct baseline for zh-CN
     codefont:
       fontfamily: 'Menlo, UbuntuMono, Monaco'
       # name: 'Monaco'
@@ -82,6 +78,7 @@ style:
   # color:
   #   site: '#21232F' # Website background color
   #   site_inner: '#fff' # Text color inside the website background
+  #   site_footer: '#666' # Footer text color inside the website background
   #   card: '#444' # Card background color
   #   text: '#fff' # The color of the text on the card.
   #   theme: '#ff9800' # Main color
@@ -182,7 +179,7 @@ layout:
   # 文章布局，参数继承自 on_page
   on_post:
     # 文章页脚，自动在每一篇文章末尾添加
-    article_footer: [references, copyright, donate]
+    article_footer: [references, related_repos, copyright, donate]
   # 其他的页面布局暂时等于 on_list
 
 
@@ -231,6 +228,8 @@ meta:
       img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png
     # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
     #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png
+    # - id: telegram
+    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/telegram.png
   # 链接
   btns:
     edit:
@@ -269,8 +268,10 @@ widget:
   # blogger info widget
   blogger:
     class: blogger
-    display: [desktop] # [desktop, mobile]
+    display: [desktop, mobile] # [desktop, mobile]
     avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
+    shape: rectangle # circle, rectangle
+    url: /about/
     title:
     subtitle:
     jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
@@ -346,6 +347,12 @@ widget:
     header:
       icon: fas fa-quote-left
       title: 参考资料
+  related_repos:
+    class: references # is subclass of list
+    display: [desktop, mobile] # [desktop, mobile]
+    header:
+      icon: fab fa-github
+      title: 源码链接
 
   # You can add your own widget here or 'blog/source/_data/widget.yml'
   # class: text, list, grid, qrcode, page, ... see more at https://volantis.js.org/
@@ -396,19 +403,17 @@ plugins:
     js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js
     css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
-  # Picture Zoom
-  fancybox:
-    css: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
-    js: https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
 
-  # Page Scrolling Animation
-  scrollreveal: #https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js
+  # https://scrollrevealjs.org/api/reveal.html
+  scrollreveal:
+    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
+    distance: 8px
+    duration: 800 # ms
+    interval: 100 # ms
+    scale: 1 # 0.1~1
 
   # Codeblock Copy Button
   clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
-
-  # mathjax
-  mathjax: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
   ######## Plugins for SEO:
   # Traffic statistics (very slow loading)
@@ -438,6 +443,7 @@ plugins:
       - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg
+      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/35F12181-F0E9-45BD-B134-37E4B4A660CF.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg
@@ -475,29 +481,69 @@ plugins:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, disqus, gitalk, livere
+  service: valine # valine, minivaline, disqus, gitalk, livere
+  # Valine
+  # https://valine.js.org/
   valine:
-    appId: # your appId
-    appKey: # your appKey
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4.2/js/valine.js
+    appId: dogUA2FSKGTo029M1SEwGROT-MdYXbMMI # your appId
+    appKey: u0NdtQ8nvHoMdJPSYqm1LRxE # your appKey
+    js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
     path: # All pages use the same path (share the same comments data)
-    meta: nick,mail,link #valine comment header info
+    meta: nick,mail,link # valine comment header info
+    requiredFields: ['nick','mail']
+    enableQQ: true # Unstable avatar link
     placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
-    avatar: mp # gravatar style https://valine.js.org/avatar
+    avatar: robohash # gravatar style https://valine.js.org/avatar
     pageSize: 10 # comment list page size
-    verify: true # valine verify code (true/false)
-    notify: true # valine mail notify (true/false)
     lang: zh-cn
     highlight: true
-    visitor: false # unavailable for now...
+    visitor: true
+    mathJax: false
+  # MiniValine
+  # https://github.com/MiniValine/MiniValine
+  minivaline:
+    appId: # Your leancloud application appid
+    appKey: # Your leancloud application appkey
+    js: https://unpkg.com/minivaline@latest/dist/MiniValine.min.js
+    placeholder: Write a Comment # Comment box placeholder
+    path: # All pages use the same path (share the same comments data)
+    adminEmailMd5: # The MD5 of Admin Email to show Admin Flag.
+    math: true # Support MathJax.
+    md: true # Support Markdown.
+    # MiniValine's display language depends on user's browser or system environment
+    # If you want everyone visiting your site to see a uniform language, you can set a force language value
+    # Available values: en  | zh-CN | (and many more)
+    # More i18n info: https://github.com/MiniValine/minivaline-i18n
+    lang:
+    NoRecordIP: false # Do not record commenter IP.
+    maxNest: 6 # Sub-comment maximum nesting depth.
+    pageSize: 6 # Pagination size.
+    # Expression Url.
+    # https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-customize-emoticons
+    emoticonUrl:
+      - https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@master
+      - https://cdn.jsdelivr.net/npm/alus
+  # Disqus
+  # https://disqus.com
   disqus:
     shortname:
+  # Gitalk
+  # https://gitalk.github.io/
   gitalk:
     clientID:
     clientSecret:
     repo:
     owner:
     admin: # []
+  # Vssue
+  # https://vssue.js.org/zh/
+  vssue:
+    owner:
+    repo:
+    clientId:
+    clientSecret:
+  # LiveRe
+  # https://www.livere.com
   livere:
     uid:
 
@@ -510,7 +556,7 @@ comments:
 search:
   enable: true
   service: hexo  # hexo, google, algolia, azure, baidu
-  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.4/js/search.js
+  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js
   google:
     apiKey:
     engineId:
@@ -524,3 +570,14 @@ search:
     queryKey:
   baidu:
     apiId:
+
+
+
+############################### Theme Information ###############################
+info:
+  name: Volantis # This is theme's name.
+  version: '2.6.6' # This is theme's version.
+  docs: https://volantis.js.org/ # This is theme's URL.
+  cdn:
+    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/app.js
+    css:
