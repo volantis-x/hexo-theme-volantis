@@ -4,13 +4,14 @@
 <body>
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
-    <div class='body-wrapper'>
+    <div class='body-wrapper' id="pjax-container">
+      <%- partial('_third-party/pjaxdata') %>
       <%- body %>
-      <script>setLoadingBarProgress(60);</script>
     </div>
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
-  <%- partial('_partial/scripts') %>
-  <script>setLoadingBarProgress(100);</script>
+  <div>
+    <%- partial('_partial/scripts') %>
+  </div>
 </body>
 </html>
