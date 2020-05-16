@@ -4,6 +4,8 @@
 <%
 var changeValinePath = 'none';                // 自定义的 valine 评论路径
 var changeValinePlaceholder = 'none';         // 自定义的 valine 评论描述 
+var changeMiniValinePath = 'none';                // 自定义的 Minivaline 评论路径
+var changeMiniValinePlaceholder = 'none';         // 自定义的 Minivaline 评论描述
 var ispage = false;                           // 一二级导航栏切换控制
 var postTitle = '';                           // 当前文章标题，用于二级导航栏赋值
 var enableCover = false;                      // 封面是否开启
@@ -20,6 +22,19 @@ if (page && page.comments == true) {
     }
     if (enableValine && page.valine && page.valine.placeholder) {
         changeValinePlaceholder = page.valine.placeholder;
+    }
+}
+
+var enableMiniValine = false;
+if (theme.comments && page && page.comments == true && theme.comments.minivaline && theme.comments.minivaline.appId) {
+    enableMiniValine = true;
+}
+if (page && page.comments == true) {
+    if (enableMiniValine && page.valine && page.valine.path) {
+        changeMiniValinePath = page.valine.path;
+    }
+    if (enableMiniValine && page.valine && page.valine.placeholder) {
+        changeMiniValinePlaceholder = page.valine.placeholder;
     }
 }
 
@@ -50,6 +65,10 @@ if (page && page.layout == 'post' && page.title) {
     <% if (enableValine){ %>
     <div id="valine-path"><%=changeValinePath%></div>
     <div id="valine-placeholder"><%=changeValinePlaceholder%></div>
+    <% } %>
+    <% if (enableMiniValine){ %>
+    <div id="minivaline-path"><%=changeMiniValinePath%></div>
+    <div id="minivaline-placeholder"><%=changeMiniValinePlaceholder%></div>
     <% } %>
 </div>
 
