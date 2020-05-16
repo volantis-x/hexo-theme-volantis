@@ -1,6 +1,9 @@
 .l_body
   position: relative
   margin: $gap
+  if hexo-config('style.font_smoothing') == true
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
   &.nocover
     margin-top: $navbar-height
   @media screen and (max-width: $device-mobile-l)
@@ -72,7 +75,6 @@
   mobile-post()
     .post
       div.meta
-        margin-bottom: $gap
         .title
           font-size: $fontsize-h3
       @media screen and (max-width: $device-mobile)
@@ -128,6 +130,8 @@
       font-size: $fontsize-h1
     section.meta
       color: $color-meta
+      margin-bottom: $gap
+      line-height: normal
       &#header-meta
         margin-top: 0
         margin-bottom: 1 * $gap
@@ -167,6 +171,7 @@
         p
           &.h1,&.h2
             margin-top: $gap-paragraph + $gap-row
+            border-bottom: none
           &.h1
             font-size: $fontsize-h1 * 1.1
           &.h2
@@ -185,6 +190,8 @@
         display: flex
         align-items: center
         flex-wrap: wrap
+        -webkit-font-smoothing: auto
+        -moz-osx-font-smoothing: auto
         &,p,i
           font-size: $fontsize-code
         .new-meta-item
@@ -198,13 +205,15 @@
               padding: 1px 4px
               border-radius: 2px
               margin: 2px
+              line-height: 1.5
               &:hover
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 16px 0 rgba(0, 0, 0, 0.1)
               i
                 padding-left: 3px
               p
                 color: white
-                padding-top: 2px
+                padding-top: 3px
+                padding-right: 2px
               &:hover
                 color: white
                 p
@@ -216,11 +225,9 @@
               p
                 color: $color-meta
           display: flex
-          align-items: center
+          align-items: baseline
           justify-content: center
-          padding: 2px
-          margin: 0 8px 0 0
-          border-radius: 4px
+          margin: 0 $gap 0 0
           &:last-child
             margin-right: 0
           img,i
@@ -232,17 +239,15 @@
               margin-right: 2px
           p,a
             color: $color-meta
-            padding-left: 0
-            padding-right: 4px
+            padding: 3px 0
           a
             display: flex
             justify-content: center
             align-items: center
             img
-              height: 1.2em
-              width: 1.2em
+              height: 16px
+              width: 16px
               margin-right: 5px
-              transform: translateY(-1px)
             p
               margin: 0
               font-weight: normal
@@ -255,14 +260,31 @@
         .author
           img,i
             border-radius: 100%
+          img
+            transform: translateY(-0.5px)
+
+        @media screen and (max-width: $device-mobile)
+          .share
+            width: 100%
+            margin-top: $gap
+            background: $color-codeblock
 
         .share-body
+          position: relative
           display: flex
+          justify-content: center;
+          margin: 0
+          padding: 0 2px
+          border-radius: 2px
           a
             padding: 0
-            margin-right: 4px
+            margin: 0 1px
             img
-              height: 1.8em
+              margin: 2px
+              height: 24px
+              @media screen and (max-width: $device-mobile)
+                height: 32px
+                margin: 8px
               width: auto
               background: transparent
 
@@ -298,10 +320,11 @@
 
 
 div.hoverbox
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
+  // display: flex
+  // flex-direction: column
+  // justify-content: center
+  // align-items: center
+
   >div.target
     display: none
     position: absolute
@@ -309,16 +332,24 @@ div.hoverbox
     border-radius: $border-card
     box-shadow: $boxshadow-card-float
     padding: 8px
-    margin-left: -4px
-    margin-top: 0 - 4px - 64px - 40px
+    left: 50%
+    top: -20px
+    // margin-left: 50%
+    transform: translate(-50%, -100%)
+    // margin-left: -4px
+    // margin-top: 0 - 4px - 64px - 40px
     >img
       margin: 0
       padding: 0
       height: 128px
       width: 128px
+      min-width: 128px
   &:hover
     >div.target
       display: flex
+  @media screen and (max-width: $device-mobile)
+    >div.target
+      position: absolute
 
 .comments
   .article
@@ -335,3 +366,7 @@ div.hoverbox
 
 .white-box
   background: $color-card
+
+if hexo-config('plugins.scrollreveal.js')
+  .reveal
+    visibility: hidden

@@ -3,6 +3,7 @@
   var enableDisqus = false;
   var enableLivere = false;
   var enableGitalk = false;
+  var enableVssue = false;
   var enableValine = false;
   var enableMiniValine = false;
   if (theme.comments && page && page.comments == true) {
@@ -15,6 +16,9 @@
     if (theme.comments.gitalk && theme.comments.gitalk.clientID) {
       enableGitalk = true;
     }
+    if (theme.comments.vssue && theme.comments.vssue.clientId) {
+      enableVssue = true;
+    }
     if (theme.comments.valine && theme.comments.valine.appId) {
       enableValine = true;
     }
@@ -24,8 +28,8 @@
   }
 %>
 
-<% if (enableDisqus || enableLivere || enableGitalk || enableValine || enableMiniValine) { %>
-  <article class="post white-box comments <%- theme.style.body.effect.join(' ') %>">
+<% if (enableDisqus || enableLivere || enableGitalk || enableVssue || enableValine || enableMiniValine) { %>
+  <article class="post white-box reveal comments <%- theme.style.body.effect.join(' ') %>">
     <section class="article typo">
       <p ct><%- theme.comments && theme.comments.title %></p>
       <% if (theme.comments && theme.comments.subtitle) { %>
@@ -50,17 +54,22 @@
           <div id="gitalk-container"></div>
         </section>
       <% } %>
+      <% if (enableVssue){ %>
+        <section id="comments">
+          <div id="vssue"></div>
+        </section>
+      <% } %>
       <% if (enableValine){ %>
         <section id="comments">
           <div id="valine_container" class="valine_thread">
-            <i class="fas fa-spinner fa-spin fa-fw"></i>
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
           </div>
         </section>
       <% } %>
       <% if (enableMiniValine){ %>
         <section id="comments">
           <div id="minivaline_container">
-            <i class="fas fa-spinner fa-spin fa-fw"></i>
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
           </div>
         </section>
       <% } %>
