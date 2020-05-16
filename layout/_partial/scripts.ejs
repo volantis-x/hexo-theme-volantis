@@ -386,6 +386,8 @@
     window.stop(); // 相当于点击了浏览器的停止按钮
     window.subData = null; // 移除标题（用于一二级导航栏切换处）
     $.fancybox.close();    // 关闭弹窗
+    $('.nav-main').find('.list-v').not('.menu-phone').css("display","none"); // 移除小尾巴
+    $('.menu-phone.list-v').css("display","none"); // 移除小尾巴
     $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
     $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
     $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
@@ -397,7 +399,8 @@
   });
 
   document.addEventListener('pjax:complete', function () {
-    
+    $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+    $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
     $('script[data-pjax], .pjax-reload script').each(function () {
       $(this).parent().append($(this).remove());
     });

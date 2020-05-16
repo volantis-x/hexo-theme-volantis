@@ -5,7 +5,6 @@ let aplayer = theme.plugins.aplayer;
   <% if (post && post.music) { %>
     <meting-js
       mini='true'
-      autoplay='<%- post.music.autoplay || aplayer.autoplay %>'
       volume='<%- post.music.volume || aplayer.volume %>'
       loop='<%- post.music.loop || aplayer.loop %>'
       order='<%- post.music.order || aplayer.order %>'
