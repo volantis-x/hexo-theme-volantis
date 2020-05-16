@@ -247,42 +247,49 @@
   <% if (theme.comments.minivaline.js) { %>
     <%- js(theme.comments.minivaline.js) %>
   <% } else { %>
-    <script src="https://cdn.jsdelivr.net/npm/minivaline@2/dist/MiniValine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js"></script>
   <% } %>
   <% var emoticonUrl = theme.comments.minivaline.emoticonUrl || [] %>
   <% var tagMeta = theme.comments.minivaline.tagMeta || [] %>
   <% var master = theme.comments.minivaline.master || [] %>
   <% var friends = theme.comments.minivaline.friends  || []  %>
   <script>
-  new MiniValine({
-	el: '#minivaline_container',
-	appId: '<%= theme.comments.minivaline.appId %>',
-	appKey: '<%= theme.comments.minivaline.appKey %>',
-	mode: '<%= theme.comments.minivaline.mode %>',
-	placeholder: "<%= (page.valine && page.valine.placeholder) ? page.valine.placeholder : theme.comments.minivaline.placeholder %>",
-	<% if (page.minivaline && page.valine.path) { %>
-      pathname: "<%= page.valine.path %>",
-	<% } else if (theme.comments.minivaline.path) { %>
-      pathname: "<%= theme.comments.minivaline.path %>",
-	<% } else { %>
-	  pathname: location.pathname,
-	<% } %>
-	lang: '<%= theme.comments.minivaline.lang %>',
-	adminEmailMd5: '<%= theme.comments.minivaline.adminEmailMd5 %>',
-	tagMeta: <%- '["' + tagMeta.join('", "') + '"]' %>,
-	master: <%- '["' + master.join('", "') + '"]' %>,
-	friends: <%- '["' + friends.join('", "') + '"]' %>,
-	math: <%= theme.comments.minivaline.math %>,  /*布尔值 字符串无效 下同*/
-	md: <%= theme.comments.minivaline.md %>,
-	enableQQ: <%= theme.comments.minivaline.enableQQ %>,
-	NoRecordIP: <%= theme.comments.minivaline.NoRecordIP %>,
-	visitor: <%= theme.comments.minivaline.visitor %>,
-	maxNest: <%= theme.comments.minivaline.maxNest %>,
-	pageSize: <%= theme.comments.minivaline.pageSize %>,
-	emoticonUrl: <%- '["' + emoticonUrl.join('", "') + '"]' %>
-  });
+  function pjax_minivaline() {
+    var minivalinePath = $.trim($('#minivaline-path').text()) === "none" ?
+        window.location.pathname : $.trim($('#minivaline-path').text());
+    var minivalinePlaceholder = $.trim($('#minivaline-placeholder').text()) === "none" ?
+        "<%= theme.comments.minivaline.placeholder %>" : $.trim($('#minivaline-placeholder').text());
+    var ALLPATH = '<%= theme.comments.minivaline.path %>';
+    if(ALLPATH != '') minivalinePath = ALLPATH;
+	new MiniValine({
+		el: '#minivaline_container',
+		appId: '<%= theme.comments.minivaline.appId %>',
+		appKey: '<%= theme.comments.minivaline.appKey %>',
+		mode: '<%= theme.comments.minivaline.mode %>',
+		placeholder: minivalinePlaceholder,
+		pathname: minivalinePath,
+		lang: '<%= theme.comments.minivaline.lang %>',
+		adminEmailMd5: '<%= theme.comments.minivaline.adminEmailMd5 %>',
+		tagMeta: <%- '["' + tagMeta.join('", "') + '"]' %>,
+		master: <%- '["' + master.join('", "') + '"]' %>,
+		friends: <%- '["' + friends.join('", "') + '"]' %>,
+		math: <%= theme.comments.minivaline.math %>,  /*布尔值 字符串无效 下同*/
+		md: <%= theme.comments.minivaline.md %>,
+		enableQQ: <%= theme.comments.minivaline.enableQQ %>,
+		NoRecordIP: <%= theme.comments.minivaline.NoRecordIP %>,
+		visitor: <%= theme.comments.minivaline.visitor %>,
+		maxNest: <%= theme.comments.minivaline.maxNest %>,
+		pageSize: <%= theme.comments.minivaline.pageSize %>,
+		emoticonUrl: <%- '["' + emoticonUrl.join('", "') + '"]' %>,
+		serverURLs: '<%= theme.comments.minivaline.serverURLs %>'
+	  });
+	}
+    $(function () {
+      pjax_minivaline();
+    });
   </script>
 <% } %>
+
 
 <!-- 复制 -->
 <% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
@@ -415,6 +422,9 @@
       <% } %>
       <% if (enableValine){ %>
         pjax_valine();
+      <% } %>
+      <% if (enableMiniValine){ %>
+        pjax_minivaline();
       <% } %>
     } catch (e) {
       console.log(e);
