@@ -54,10 +54,11 @@
         <br><br>
         <%- page.more %>
       </section>
+        <%- partial('_partial/meta',{post:page, position:'footer'}) %>
   </article>
 
   <%- partial('_third-party/comments') %>
 
 </div>
 <%- partial('_partial/side') %>
-<%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+
