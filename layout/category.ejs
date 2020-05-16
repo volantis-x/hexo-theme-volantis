@@ -5,7 +5,7 @@
     <% if (page.layout == 'category') { %>
       <section class="post-list <%- theme.layout.multiple_columns ? 'multiple-columns' : '' %>">
         <div class='post-wrapper'>
-          <article id="archive-page" class="post article white-box <%- theme.style.body.effect.join(' ') %>">
+          <article id="archive-page" class="post article white-box reveal <%- theme.style.body.effect.join(' ') %>">
             <section class="archive">
               <div class="archive-item archive-year mark">
                 <h2><%- page.title %></h2>
@@ -35,4 +35,4 @@
 
 </div>
 <%- partial('_partial/side') %>
-<%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+

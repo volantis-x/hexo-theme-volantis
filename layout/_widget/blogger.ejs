@@ -1,11 +1,17 @@
 <%- partial('_pre') %>
 <section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
   <div class='content'>
-    <% if(item.avatar) { %>
-      <div class='avatar'>
-        <img class='avatar' src='<%- item.avatar %>'/>
-      </div>
-    <%} %>
+    <% if (item.avatar) { %>
+      <% if (item.url) { %>
+        <a class='avatar flat-box' href='<%- url_for(item.url) %>'>
+          <img no-lazy src='<%- item.avatar %>'/>
+        </a>
+      <% } else { %>
+        <div class='avatar'>
+          <img no-lazy src='<%- item.avatar %>'/>
+        </div>
+      <% } %>
+    <% } %>
     <% if (item.title || item.subtitle || item.jinrishici) { %>
       <div class='text'>
         <% if (item.title){ %>
