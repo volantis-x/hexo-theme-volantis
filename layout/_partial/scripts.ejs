@@ -200,8 +200,17 @@
     }
 
     var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
     for (var i = 1; i <= 101; i++) {
       emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
     }
     for (var i = 1; i <= 4; i++) {
       emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');

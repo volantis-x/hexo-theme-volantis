@@ -70,7 +70,7 @@ var customSearch;
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
 			if(enableCover == "true" && $('.cover.half').css('display') !== 'none') // Pjax 处理
-				showHeaderPoint = $coverAnchor[0].clientHeight - 180; 
+				showHeaderPoint = $coverAnchor[0].clientHeight - 180;
 		}
 
 		var pos = document.body.scrollTop;
@@ -82,7 +82,7 @@ var customSearch;
 
 			if(enableCover == "true" && $('.cover.half').css('display') === 'none')
 				scrollTop += 180; // Pjax 处理
-			
+
 			const del = scrollTop - pos;
 			pos = scrollTop;
 			if (scrollTop > 180) {
@@ -165,7 +165,7 @@ var customSearch;
 		} else $toc.remove();
 	}
 
-	// 设置导航栏菜单选中状态 
+	// 设置导航栏菜单选中状态
 	function setHeaderMenuSelection() {
 		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活

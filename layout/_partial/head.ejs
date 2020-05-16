@@ -65,14 +65,10 @@
   <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
   <% if (keywords){ %>
     <meta name="keywords" content="<%- keywords %>">
-  <% } else { %>
-    <meta name="keywords" content="<%- config.keywords || '' %>">
   <% } %>
 
   <% if (description){ %>
     <meta name="description" content="<%- description %>">
-  <% } else { %>
-    <meta name="description" content="<%- config.description || '' %>">
   <% } %>
 
   <!-- feed -->
@@ -146,7 +142,7 @@
     <script>
     var _hmt = _hmt || [];
     (function() {
-	  setTimeout(function() { 
+	  setTimeout(function() {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
 		hm.defer=true;
