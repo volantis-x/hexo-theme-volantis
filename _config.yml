@@ -213,7 +213,7 @@ meta:
     icon: fas fa-eye
   # 文章评论数量：只支持 valine
   valinecount:
-    icon: fal fa-comment-lines
+    icon: fas fa-comment-dots
     desc: '条评论'
   # 文章字数和阅读时长
   wordcount:
