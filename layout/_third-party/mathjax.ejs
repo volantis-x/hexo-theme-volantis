@@ -1,7 +1,5 @@
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js"></script>
-<!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-
 <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
   if (typeof MathJax === 'undefined') {
     window.MathJax = {
       loader: {
@@ -45,6 +43,7 @@
       document.head.appendChild(script);
     })();
   } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
     MathJax.startup.document.state(0);
     MathJax.texReset();
     MathJax.typeset();
