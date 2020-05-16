@@ -1,6 +1,6 @@
 ---
 name: 提交一个建议
-about: 希望增加或者调整某项功能
+about: 此流程用于建议以及讨论是否新增功能或者对现有功能作出调整。
 title: ''
 labels: 'suggest'
 assignees: ''
@@ -9,7 +9,7 @@ assignees: ''
 
 <!-- 如果您删除此模版，我们可能会在不进行调查的情况下关闭您的 Issue。 -->
 
-### 自检报告
+## 自检报告
 
 <!-- Change [ ] to [x] to select (将 [ ] 换成 [x] 来选择) -->
 
