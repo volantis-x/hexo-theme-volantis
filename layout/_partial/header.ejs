@@ -1,146 +1,114 @@
 <div id="loading-bar-wrapper">
-	<div id="loading-bar"></div>
+    <div id="loading-bar"></div>
 </div>
 <header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%- theme.style.navbar.effect.join(' ') %>">
-	<div class='container'>
-		<div class='wrapper'>
-			<div class='nav-sub'>
-				<p class="title"></p>
-				<ul class='switcher nav-list-h'>
-					<li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
-					<% if (page.sidebar == undefined || page.sidebar != false) { %>
-					<li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
-					<% } %>
-				</ul>
-			</div>
-			<div class="nav-main">
-				<% if (theme.navbar.logo) { %>
-				<% let logo = theme.navbar.logo %>
-				<a class="title flat-box" target="_self" href='<%- url_for("/") %>'>
-					<% if (logo.img) { %>
-					<img class='logo' src='<%- logo.img %>' />
-					<% } %>
-					<% if (logo.icon) { %>
-					<i class='<%- logo.icon %>'></i>
-					<% } %>
-					<% if (logo.title) { %>
-					<%- logo.title %>
-					<% } %>
-					<% if (logo.title == undefined && logo.icon == undefined && logo.img == undefined) { %>
-					<%- theme.info.name.toUpperCase() %> <b><sup
-							style='color:<%- theme.info.version.indexOf('beta') > 0 ? '#ff9800':'#3AA757' %>'><%- theme.info.version %></sup></b>
-					<% } %>
-				</a>
-				<% } %>
+    <div class='container'>
+        <div class='wrapper'>
+            <div class='nav-sub'>
+                <p class="title"></p>
+                <ul class='switcher nav-list-h'>
+                    <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+                    <% if (page.sidebar == undefined || page.sidebar != false) { %>
+                    <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="nav-main">
+                <% if (theme.navbar.logo) { %>
+                <% let logo = theme.navbar.logo %>
+                <a class="title flat-box" target="_self" href='<%- url_for("/") %>'>
+                    <% if (logo.img) { %>
+                    <img class='logo' src='<%- logo.img %>' />
+                    <% } %>
+                    <% if (logo.icon) { %>
+                    <i class='<%- logo.icon %>'></i>
+                    <% } %>
+                    <% if (logo.title) { %>
+                    <%- logo.title %>
+                    <% } %>
+                    <% if (logo.title == undefined && logo.icon == undefined && logo.img == undefined) { %>
+                    <%- theme.info.name.toUpperCase() %> <b><sup
+                            style='color:#3AA757'><%- theme.info.version %></sup></b>
+                    <% } %>
+                </a>
+                <% } %>
 
-				<div class='menu navigation'>
-					<ul class='nav-list-h'>
-						<%
-          let menu_list;
-          if (site.data && site.data.menu && site.data.menu) {
-            menu_list = site.data.menu;
-          } else {
-            menu_list = theme.navbar.menu;
-          }
-          menu_list = menu_list || [];
-          %>
-						<% function menu(value) { %>
-						<% if (value.name == 'hr') { %>
-						<hr>
-						<% } else if (value.icon && value.icon.indexOf('fa-compact-disc') > -1 && value.url  == undefined && value.rows  == undefined) { %>
-						<li>
-							<a class="flat-box">
-								<i class='<%= value.icon %> fa-fw music'></i><%- value.name %>
-							</a>
-							<ul class="list-v">
-								<li>
-									<div class="aplayer-container">
-										<%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
-									</div>
-								</li>
-							</ul>
-						<li>
-							<% } else if (value.name != undefined && value.url  == undefined && value.rows == undefined) { %>
-						<li class='header'>
-							<% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
-						</li>
-						<% } else { %>
-						<li>
-							<a class="flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%> <% if (value.rel) { %>
-								rel="<%- value.rel %>" <% } %> <% if (value.target) { %> target="<%- value.target %>" <% } %>
-								<% if (value.url) { %>
-								id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>"
-								<% } %>>
-								<% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
-							</a>
-							<% if (value.rows) { %>
-							<ul class="list-v">
-								<% value.rows.forEach(function(value){ %>
-								<% menu(value) %>
-								<%})%>
-							</ul>
-							<% } %>
-						</li>
-					</ul>
-					<li>
-						<% } else if (value.name != undefined && value.url  == undefined && value.rows == undefined) { %>
-					<li class='header'>
-						<% if (value.icon) { %>
-						<i class='<%= value.icon %> fa-fw'></i>
-						<% } %>
-						<%- value.name %>
-					</li>
-					<% } else { %>
-					<li>
-						<a class="flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%> <% if (value.rel) { %>
-							rel="<%- value.rel %>" <% } %> <% if (value.target) { %> target="<%- value.target %>" <% } %>
-							<% if (value.url) { %>
-							id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>"
-							<% } %>>
-							<% if (value.icon) { %>
-							<i class='<%= value.icon %> fa-fw'></i>
-							<% } %>
-							<%- value.name %>
-						</a>
-						<% if (value.rows) { %>
-						<ul class="submenu">
-							<% value.rows.forEach(function(value){ %>
-							<% menu(value) %>
-							<%})%>
-						</ul>
-						<% } %>
-					</li>
-					<% } %>
-					<% } %>
-					<% menu_list.forEach(function(value){ %>
-					<% menu(value) %>
-					<%})%>
-					</ul>
-				</div>
+                <div class='menu navigation'>
+                    <ul class='nav-list-h'>
+                        <%
+            let menu_list;
+            if (site.data && site.data.menu && site.data.menu) {
+              menu_list = site.data.menu;
+            } else {
+              menu_list = theme.navbar.menu;
+            }
+            menu_list = menu_list || [];
+            %>
+                        <% function menu(value) { %>
+                        <% if (value.name == 'hr') { %>
+                        <hr>
+                        <% } else if (value.icon && value.icon.indexOf('fa-compact-disc') > -1 && value.url  == undefined && value.rows  == undefined) { %>
+                        <li>
+                            <a class="flat-box">
+                                <i class='<%= value.icon %> fa-fw music'></i><%- value.name %>
+                            </a>
+                            <ul class="list-v">
+                                <li>
+                                    <div class="aplayer-container">
+                                        <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
+                                    </div>
+                                </li>
+                            </ul>
+                        <li>
+                            <% } else if (value.name != undefined && value.url  == undefined && value.rows == undefined) { %>
+                        <li class='header'>
+                            <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
+                        </li>
+                        <% } else { %>
+                        <li>
+                            <a class="flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
+                                <% if (value.rel) { %> rel="<%- value.rel %>" <% } %> <% if (value.target) { %>
+                                target="<%- value.target %>" <% } %> <% if (value.url) { %>
+                                id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>"
+                                <% } %>>
+                                <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
+                            </a>
+                            <% if (value.rows) { %>
+                            <ul class="list-v">
+                                <% value.rows.forEach(function(value){ %>
+                                <% menu(value) %>
+                                <%})%>
+                            </ul>
+                            <% } %>
+                        </li>
+                        <% } %>
+                        <% } %>
 
-				<div class="m_search">
-					<form name="searchform" class="form u-search-form">
-						<i class="icon fas fa-search fa-fw"></i>
-						<input type="text" class="input u-search-input" placeholder="<%- theme.navbar && theme.navbar.search %>" />
-					</form>
-				</div>
+                    </ul>
+                </div>
 
-				<ul class='switcher nav-list-h'>
-					<% if (theme.search.enable === true) { %>
-					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
-					<% } %>
-					<li>
-						<a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
-						<ul class="menu-phone list-v navigation white-box">
-							<% menu_list.forEach(function(value){ %>
-							<% menu(value) %>
-							<%})%>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+                <div class="m_search">
+                    <form name="searchform" class="form u-search-form">
+                        <i class="icon fas fa-search fa-fw"></i>
+                        <input type="text" class="input u-search-input"
+                            placeholder="<%- theme.navbar && theme.navbar.search %>" />
+                    </form>
+                </div>
+
+                <ul class='switcher nav-list-h'>
+                    <% if (theme.search.enable === true) { %>
+                    <li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+                    <% } %>
+                    <li>
+                        <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+                        <ul class="menu-phone list-v navigation white-box">
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </header>
 
 <script>setLoadingBarProgress(40);</script>

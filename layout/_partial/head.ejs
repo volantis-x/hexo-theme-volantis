@@ -1,33 +1,37 @@
 <head hexo-theme='https://volantis.js.org/#<%- theme.info.version %>'>
-  <meta charset="utf-8">
-  <!-- SEO相关 -->
-  <% if (page.robots) { %>
+    <meta charset="utf-8">
+    <!-- favicom.ioc -->
+    <link href="./img/favicon_circle32.ico" mce_href="favicon.ico" rel="bookmark" type="image/x-icon" />
+    <link href="./img/favicon_circle32.ico" mce_href="favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="./img/favicon_circle32.ico" mce_href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- SEO相关 -->
+    <% if (page.robots) { %>
     <meta name="robots" content="<%- page.robots %>">
-  <% } else if (theme.seo && theme.seo.robots) { %>
+    <% } else if (theme.seo && theme.seo.robots) { %>
     <% if (is_home()) { %>
-      <% if (page.prev == 0) { %>
-        <meta name="robots" content="<%- theme.seo.robots.home_first_page %>">
-      <% } else { %>
-        <meta name="robots" content="<%- theme.seo.robots.home_other_pages %>">
-      <% } %>
-    <% } else if (is_archive()) { %>
-      <meta name="robots" content="<%- theme.seo.robots.archive %>">
-    <% } else if (is_category()) { %>
-      <meta name="robots" content="<%- theme.seo.robots.category %>">
-    <% } else if (is_tag()) { %>
-      <meta name="robots" content="<%- theme.seo.robots.tag %>">
+    <% if (page.prev == 0) { %>
+    <meta name="robots" content="<%- theme.seo.robots.home_first_page %>">
+    <% } else { %>
+    <meta name="robots" content="<%- theme.seo.robots.home_other_pages %>">
     <% } %>
-  <% } %>
-  <!-- 渲染优化 -->
-  <meta name="renderer" content="webkit">
-  <meta name="force-rendering" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <meta name="HandheldFriendly" content="True" >
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <% } else if (is_archive()) { %>
+    <meta name="robots" content="<%- theme.seo.robots.archive %>">
+    <% } else if (is_category()) { %>
+    <meta name="robots" content="<%- theme.seo.robots.category %>">
+    <% } else if (is_tag()) { %>
+    <meta name="robots" content="<%- theme.seo.robots.tag %>">
+    <% } %>
+    <% } %>
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- 页面元数据 -->
-  <%
+    <!-- 页面元数据 -->
+    <%
     var title = page.seotitle || page.title;
     var keywords = page.keywords || '';
     var description = page.description || '';
@@ -63,85 +67,85 @@
     }
   %>
     <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
-  <% if (keywords){ %>
+    <% if (keywords){ %>
     <meta name="keywords" content="<%- keywords %>">
-  <% } %>
-  <% if (description){ %>
-    <meta name="description" content="<%- description %>">
-  <% } %>
-
-  <!-- feed -->
-  <% if (config.feed && config.feed.path){ %>
-    <%- feed_tag(config.feed.path, {title: config.title}) %>
-  <% } %>
-
-  <!-- import meta -->
-  <% if (config.import && config.import.meta){ %>
-    <% (config.import.meta||[]).forEach(function(item){ %>
-      <%- item %>
-    <% }) %>
-  <% } %>
-
-  <!-- link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
-  <% if (theme.plugins.fancybox && theme.plugins.fancybox.css) { %>
-    <%- css(theme.plugins.fancybox.css) %>
-  <% } %>
-  <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
-    <%- css(theme.plugins.nodewaves.css) %>
-  <% } %>
-
-  <% if (config.favicon) { %>
-  <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
-  <% } %>
-
-  <% if (theme.plugins.aplayer.enable) { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
-  <% } %>
-
-  <!-- import link -->
-  <% if (config.import && config.import.link){ %>
-  <% (config.import.link||[]).forEach(function(item){ %>
-  <%- item %><% }) %>
-  <% } %>
-
-  <% if (config.highlight.enable != true) { %>
-    <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.css) { %>
-      <%- css(theme.plugins.highlightjs.css) %>
     <% } %>
-  <% } %>
-  <% if (theme.info.cdn && theme.info.cdn.css) { %>
+    <% if (description){ %>
+    <meta name="description" content="<%- description %>">
+    <% } %>
+
+    <!-- feed -->
+    <% if (config.feed && config.feed.path){ %>
+    <%- feed_tag(config.feed.path, {title: config.title}) %>
+    <% } %>
+
+    <!-- import meta -->
+    <% if (config.import && config.import.meta){ %>
+    <% (config.import.meta||[]).forEach(function(item){ %>
+    <%- item %>
+    <% }) %>
+    <% } %>
+
+    <!-- link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+    <% if (theme.plugins.fancybox && theme.plugins.fancybox.css) { %>
+    <%- css(theme.plugins.fancybox.css) %>
+    <% } %>
+    <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
+    <%- css(theme.plugins.nodewaves.css) %>
+    <% } %>
+
+    <% if (config.favicon) { %>
+    <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
+    <% } %>
+
+    <% if (theme.plugins.aplayer.enable) { %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+    <% } %>
+
+    <!-- import link -->
+    <% if (config.import && config.import.link){ %>
+    <% (config.import.link||[]).forEach(function(item){ %>
+    <%- item %><% }) %>
+    <% } %>
+
+    <% if (config.highlight.enable != true) { %>
+    <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.css) { %>
+    <%- css(theme.plugins.highlightjs.css) %>
+    <% } %>
+    <% } %>
+    <% if (theme.info.cdn && theme.info.cdn.css) { %>
     <%- css(theme.info.cdn.css) %>
-  <% } else { %>
+    <% } else { %>
     <%- css('css/style.css') %>
-  <% } %>
+    <% } %>
 
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
+    <script>
+        function setLoadingBarProgress(num) {
+            document.getElementById('loading-bar').style.width = num + "%";
+        }
+    </script>
 
-  <% if (config.google_analytics_key) { %>
+    <% if (config.google_analytics_key) { %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '<%- config.google_analytics_key %>');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', '<%- config.google_analytics_key %>');
     </script>
-  <% } %>
-  <% if (config.baidu_analytics_key) { %>
+    <% } %>
+    <% if (config.baidu_analytics_key) { %>
     <!-- ba -->
     <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
     </script>
-  <% } %>
+    <% } %>
 </head>
