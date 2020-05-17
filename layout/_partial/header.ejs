@@ -28,7 +28,7 @@
                     <% } %>
                     <% if (logo.title == undefined && logo.icon == undefined && logo.img == undefined) { %>
                     <%- theme.info.name.toUpperCase() %> <b><sup
-                            style='color:#3AA757'><%- theme.info.version %></sup></b>
+                            style='color:<%- theme.info.version.indexOf('beta') > 0 ? '#ff9800':'#3AA757' %>'><%- theme.info.version %></sup></b>
                     <% } %>
                 </a>
                 <% } %>
@@ -37,6 +37,7 @@
                     <ul class='nav-list-h'>
                         <%
             let menu_list;
+            
             if (site.data && site.data.menu && site.data.menu) {
               menu_list = site.data.menu;
             } else {
@@ -44,10 +45,11 @@
             }
             menu_list = menu_list || [];
             %>
-                        <% function menu(value) { %>
+                        <% function menu(value, type) { %>
                         <% if (value.name == 'hr') { %>
                         <hr>
                         <% } else if (value.icon && value.icon.indexOf('fa-compact-disc') > -1 && value.url  == undefined && value.rows  == undefined) { %>
+                        <% if (type == 'pc') { %>
                         <li>
                             <a class="flat-box">
                                 <i class='<%= value.icon %> fa-fw music'></i><%- value.name %>
@@ -60,6 +62,7 @@
                                 </li>
                             </ul>
                         <li>
+                            <% } %>
                             <% } else if (value.name != undefined && value.url  == undefined && value.rows == undefined) { %>
                         <li class='header'>
                             <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
@@ -76,14 +79,16 @@
                             <% if (value.rows) { %>
                             <ul class="list-v">
                                 <% value.rows.forEach(function(value){ %>
-                                <% menu(value) %>
+                                <% menu(value, type) %>
                                 <%})%>
                             </ul>
                             <% } %>
                         </li>
                         <% } %>
                         <% } %>
-
+                        <% menu_list.forEach(function(value){ %>
+                        <% menu(value, 'pc') %>
+                        <% }) %>
                     </ul>
                 </div>
 
@@ -102,7 +107,9 @@
                     <li>
                         <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
                         <ul class="menu-phone list-v navigation white-box">
-
+                            <% menu_list.forEach(function(value){ %>
+                            <% menu(value, 'mobile') %>
+                            <% }) %>
                         </ul>
                     </li>
                 </ul>
