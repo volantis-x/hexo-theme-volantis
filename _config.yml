@@ -163,7 +163,7 @@ layout:
     # 列表类页面的侧边栏
     sidebar: [blogger, category, tagcloud, qrcode]
     # read more button
-    readmore: Read More <i class="fas fa-chevron-right"></i>
+    readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
   # 页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
@@ -415,9 +415,6 @@ plugins:
   # Codeblock Copy Button
   clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
-  # mathjax
-  mathjax: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
   ######## Plugins for SEO:
   # Traffic statistics (very slow loading)
   busuanzi: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
@@ -505,27 +502,45 @@ comments:
   # MiniValine
   # https://github.com/MiniValine/MiniValine
   minivaline:
-    appId: # Your leancloud application appid
-    appKey: # Your leancloud application appkey
-    js: https://unpkg.com/minivaline@latest/dist/MiniValine.min.js
-    placeholder: Write a Comment # Comment box placeholder
+    appId: # your appId
+    appKey: # your appKey
+    js: https://cdn.jsdelivr.net/npm/minivaline@2/dist/MiniValine.min.js
+    mode: xCss # DesertsP or xCss
+    placeholder: 快来评论吧~ # Comment box placeholder
     path: # All pages use the same path (share the same comments data)
-    adminEmailMd5: # The MD5 of Admin Email to show Admin Flag.
     math: true # Support MathJax.
     md: true # Support Markdown.
+    enableQQ: false # Enable QQ avatar API.
+    NoRecordIP: false # Do not record commenter IP.
+    visitor: true # Article reading statistics.
+    maxNest: 6 # Sub-comment maximum nesting depth.
+    pageSize: 6 # Pagination size.
+    adminEmailMd5: de8a7aa53d07e6b6bceb45c64027763d # The MD5 of Admin Email to show Admin Flag.[ Just Only DesertsP Style mode]
+    tagMeta: # The String Array of Words to show Flag.[ Just Only xCss Style mode]
+      - 管理员
+      - 小伙伴
+      - 访客
+    master: # The MD5 String Array of master Email to show master Flag.[ Just Only xCss Style mode]
+      - de8a7aa53d07e6b6bceb45c64027763d
+    friends: # The MD5 String Array of friends Email to show friends Flag. [ Just Only xCss Style mode]
+      - b5bd5d836c7a0091aa8473e79ed4c25e
+      - adb7d1cd192658a55c0ad22a3309cecf
+      - 3ce1e6c77b4910f1871106cb30dc62b0
+      - cfce8dc43725cc14ffcd9fb4892d5bfc
     # MiniValine's display language depends on user's browser or system environment
     # If you want everyone visiting your site to see a uniform language, you can set a force language value
     # Available values: en  | zh-CN | (and many more)
     # More i18n info: https://github.com/MiniValine/minivaline-i18n
     lang:
-    NoRecordIP: false # Do not record commenter IP.
-    maxNest: 6 # Sub-comment maximum nesting depth.
-    pageSize: 6 # Pagination size.
     # Expression Url.
     # https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-customize-emoticons
     emoticonUrl:
-      - https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@master
-      - https://cdn.jsdelivr.net/npm/alus
+      - https://cdn.jsdelivr.net/npm/alus@latest
+      - https://cdn.jsdelivr.net/gh/MiniValine/qq@latest
+      - https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest
+      - https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest
+      - https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest
+      - https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest
   # Disqus
   # https://disqus.com
   disqus:
