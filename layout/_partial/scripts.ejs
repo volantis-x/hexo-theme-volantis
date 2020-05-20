@@ -269,6 +269,7 @@
     var minivalinePlaceholder = $.trim($('#minivaline-placeholder').text()) === "none" ?
         "<%= theme.comments.minivaline.placeholder %>" : $.trim($('#minivaline-placeholder').text());
     var ALLPATH = '<%= theme.comments.minivaline.path %>';
+	var vispath = $(".leancloud_visitors")[0].id;
     if(ALLPATH != '') minivalinePath = ALLPATH;
 	new MiniValine({
 		el: '#minivaline_container',
@@ -287,6 +288,7 @@
 		enableQQ: <%= theme.comments.minivaline.enableQQ %>,
 		NoRecordIP: <%= theme.comments.minivaline.NoRecordIP %>,
 		visitor: <%= theme.comments.minivaline.visitor %>,
+		vispath: vispath,
 		maxNest: <%= theme.comments.minivaline.maxNest %>,
 		pageSize: <%= theme.comments.minivaline.pageSize %>,
 		emoticonUrl: <%- '["' + emoticonUrl.join('", "') + '"]' %>,
