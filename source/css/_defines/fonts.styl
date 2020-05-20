@@ -1,27 +1,41 @@
-// body font
-$fontfamily = "Microsoft YaHei", "Source Sans Pro", "Helvetica Neue", Menlo, Monaco, monospace, "Lucida Console", sans-serif, Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, Arial, sans-serif
-// inline code & codeblock font
-$fontfamily-code = Menlo, Monaco, courier, monospace, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu'
-
-
+$fontfamily = "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, "Lucida Console", sans-serif
 if hexo-config('style.fontfamily.bodyfont')
-  @font-face
-    font-family: hexo-config('style.fontfamily.bodyfont.name')
-    src: url(hexo-config('style.fontfamily.bodyfont.url'))
-    font-weight: hexo-config('style.fontfamily.bodyfont.weight')
-    font-style: hexo-config('style.fontfamily.bodyfont.style')
-  $fontfamily = hexo-config('style.fontfamily.bodyfont.name'), $fontfamily
+  if hexo-config('style.fontfamily.bodyfont.name')
+    @font-face
+      font-family: hexo-config('style.fontfamily.bodyfont.name')
+      src: url(hexo-config('style.fontfamily.bodyfont.url'))
+      font-weight: hexo-config('style.fontfamily.bodyfont.weight')
+      font-style: hexo-config('style.fontfamily.bodyfont.style')
+  if hexo-config('style.fontfamily.bodyfont.fontfamily')
+    $fontfamily = convert(hexo-config('style.fontfamily.bodyfont.fontfamily')), Menlo, Monaco, monospace, sans-serif
 
+
+$fontfamily-code = Menlo, Monaco, monospace, courier, sans-serif
 if hexo-config('style.fontfamily.codefont')
-  @font-face
-    font-family: hexo-config('style.fontfamily.codefont.name')
-    src: url(hexo-config('style.fontfamily.codefont.url'))
-    font-weight: hexo-config('style.fontfamily.codefont.weight')
-    font-style: hexo-config('style.fontfamily.codefont.style')
-  $fontfamily-code = hexo-config('style.fontfamily.codefont.name'), $fontfamily-code
+  if hexo-config('style.fontfamily.codefont.name')
+    @font-face
+      font-family: hexo-config('style.fontfamily.codefont.name')
+      src: url(hexo-config('style.fontfamily.codefont.url'))
+      font-weight: hexo-config('style.fontfamily.codefont.weight')
+      font-style: hexo-config('style.fontfamily.codefont.style')
+  if hexo-config('style.fontfamily.codefont.fontfamily')
+    $fontfamily-code = convert(hexo-config('style.fontfamily.codefont.fontfamily')), monospace, courier, sans-serif
 
-// logo font
+
+
 $fontfamily-logo = $fontfamily
+if hexo-config('style.fontfamily.logofont')
+  if hexo-config('style.fontfamily.logofont.name')
+    @font-face
+      font-family: hexo-config('style.fontfamily.logofont.name')
+      src: url(hexo-config('style.fontfamily.logofont.url'))
+      font-weight: hexo-config('style.fontfamily.logofont.weight')
+      font-style: hexo-config('style.fontfamily.logofont.style')
+  if hexo-config('style.fontfamily.logofont.fontfamily')
+    $fontfamily-logo = convert(hexo-config('style.fontfamily.logofont.fontfamily')), Helvetica, monospace
+
+
+
 
 // font size
 $fontsize = convert(hexo-config('style.fontsize.root')) || 16px
@@ -38,7 +52,9 @@ $fontsize-code = convert(hexo-config('style.fontsize.code')) || .8125rem  // 13p
 $fontsize-footnote = convert(hexo-config('style.fontsize.footnote')) || .75rem  // the smallest (12px)
 
 // line-height
-$lineheight = 1.5
+$lineheight = hexo-config('style.gap.line_height') || 1.7
+
+$fontoffset = hexo-config('style.fontfamily.bodyfont.offset') || 0rem
 
 $fontsize-large = 3rem
 $fontsize-huge = 4rem

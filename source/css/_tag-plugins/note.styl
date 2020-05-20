@@ -3,11 +3,11 @@ div.note
   bg($c)
     return mix($c, $color-card, 10)
   border($c)
-    return mix($c, $color-card, 80)
+    return mix($c, $color-card, 100)
   position: relative
-  margin-top: $gap-block
-  margin-bottom: $gap-block
-  padding: $gap-p $gap
+  margin-top: $gap-row
+  margin-bottom: $gap-row
+  padding: $gap-row + $fontoffset  $gap $gap-row $gap
   padding-left: "calc(16px + %s)" % $gap
   border-radius: $border-codeblock
 
@@ -28,13 +28,11 @@ div.note
   p,
   ul,
   ol,
-  table,
-  pre,
   blockquote,
   img
     font-size: $fontsize-list
-    margin-top: $gap-p
-    margin-bottom: $gap-p
+    margin-top: $gap-row
+    margin-bottom: $gap-row
 
   &::before
     position: absolute
@@ -53,6 +51,15 @@ div.note
   &::before
     color: mix($color-text, $color-card, 80)
     content: '\f054'
+  if hexo-config('style.body.note') && hexo-config('style.body.note.icon')
+    &::before
+      content: hexo-config('style.body.note.icon') || '\f054'
+    if hexo-config('style.body.note.color')
+      $c = convert(hexo-config('style.body.note.color')) || mix($color-text, $color-card, 80)
+      background: bg($c)
+      border-color: border($c)
+      &::before
+        color: border($c)
 
   &.quote
     background: bg($color-md-blue)

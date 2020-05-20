@@ -10,23 +10,23 @@ html
   height: 100%
   font-family: $fontfamily
   font-size: $fontsize
-  line-height: $lineheight
-  -webkit-text-size-adjust: 100%
-  -ms-text-size-adjust: 100%
-  text-rendering: optimizelegibility
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-  // >
-  //   ::-webkit-scrollbar
-  //     width: 8px
-  //     height: 8px
-  //   ::-webkit-scrollbar-thumb
-  //     background: $color-theme
-  //     border-radius: 2px
-  //   ::-webkit-scrollbar-track
-  //     background: transparent
+  >
+    if hexo-config('style.scrollbar.size')
+      if hexo-config('style.scrollbar.color')
+        if hexo-config('style.scrollbar.hover')
+          scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px, convert(hexo-config('style.scrollbar.color')), convert(hexo-config('style.scrollbar.hover')))
+        else
+          scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px, convert(hexo-config('style.scrollbar.color')))
+      else
+        scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px)
 
 body
   background-color: $color-site
+  text-rendering: optimizelegibility
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  line-height: $lineheight
+  -webkit-text-size-adjust: 100%
+  -ms-text-size-adjust: 100%
   &.modal-active
     overflow: hidden
     @media screen and (max-width: $modal-threshold)
@@ -36,18 +36,6 @@ body
       bottom: 0
       left: 0
 
-
-// *::-webkit-scrollbar
-//   height: 2px
-//   width: 8px
-// *::-webkit-scrollbar-track-piece
-//   background: transparent
-// *::-webkit-scrollbar-thumb
-//   background: alpha($color-text, .3)
-//   cursor: pointer
-//   trans()
-//   &:hover
-//     background: alpha($color-text, .6)
 
 
 ::-moz-selection {
@@ -84,7 +72,8 @@ a
     color: $color-hover
   &:active,&:hover
     outline: 0
-
+  &:not([href])
+    cursor: default
 
 
 pre
@@ -122,21 +111,8 @@ img
 
 ul,ol
   padding-left: 0
-
-li
-  list-style: none
-
-
-ul.h-list
-  display: flex
-  align-items: center
-  height: 100%
-  &>li
-    height: 100%
-    justify-content: center
-
-
-
+  li
+    list-style: none
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary
   display: block
@@ -223,9 +199,6 @@ input::-moz-focus-inner
   padding: 0
 
 
-input
-  line-height: normal
-
 input[type="checkbox"],
 input[type="radio"]
   box-sizing: border-box /* 1 */
@@ -266,23 +239,27 @@ optgroup
 
 table
   border-collapse: collapse
-  margin-top: .7em
-  margin-bottom: .7em
   overflow: auto
-  display: block
+  display: inline-block
+  max-width: 100%
+  scrollbar()
+  margin-right: $gap-row
+  vertical-align: text-top
   th
     background-color: darken($color-block, 2)
   td,th
-    padding: 6px 16px
-    border: 1px solid darken($color-block, 3)
+    padding: 8px 16px
+    border: 2px solid darken($color-block, 2)
+    line-height: 1.5
+    font-size: 90%
   tr
     word-break: keep-all
     background-color: lighten($color-block, 3)
-  tbody>tr
-    trans()
-    &:hover
-      background-color: darken($color-block, 2)
-
+  tbody
+    >tr
+      trans()
+      &:hover
+        background-color: darken($color-block, 2)
 
 td,th
   padding: 0

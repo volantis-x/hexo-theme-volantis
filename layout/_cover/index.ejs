@@ -20,7 +20,7 @@
       </div>
     <% } %>
     <div class='menu navigation'>
-      <ul class='h-list'>
+      <ul class='cover-list-h'>
         <% if (theme.cover.features) { %>
           <% (theme.cover.features || []).forEach(function(value){ %>
             <li>
@@ -33,7 +33,7 @@
                   target="<%- value.target %>"
                 <% } %>
                 id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>">
-                <i class='<%= value.icon %> fa-fw'></i>&nbsp;<%= __('navbar.'+value.name) == ('navbar.'+value.name) ? value.name : __('navbar.'+value.name) %>
+                <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
               </a>
             </li>
           <%})%>

@@ -6,23 +6,23 @@ $device-mobile = 500px
 $device-tablet = 768px
 $device-laptop = 1024px
 $device-desktop = 1440px
+$device-2k = 2048px
 $device-4k = 2560px
 
 
 // site layout
 $layout-width = convert(hexo-config('style.max_width')) || 1080px
-$sidebar-s = 240px
-$sidebar = 285px
+$sidebar = 240px
 $modal-threshold = 680px
 $navbar-height = convert(hexo-config('style.navbar.height')) || 64px
 
 // gap
-$gap = convert(hexo-config('style.gap.base')) || 16px
+$gap = convert(hexo-config('style.gap.base')) || 16px // base gap
 $gap-h2 = convert(hexo-config('style.gap.h2')) || 48px
 $gap-h3 = convert(hexo-config('style.gap.h3')) || 32px
 $gap-h4 = convert(hexo-config('style.gap.h4')) || 16px
-$gap-block = convert(hexo-config('style.gap.block')) || 1rem  // 区块间距
-$gap-p = convert(hexo-config('style.gap.p')) || .5rem         // 段落间距
+$gap-paragraph = convert(hexo-config('style.gap.paragraph')) || 1rem  // 区块间距
+$gap-row = convert(hexo-config('style.gap.row')) || .5rem       // 行间距
 $gap-card = $gap
 
 // border width

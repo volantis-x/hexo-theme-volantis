@@ -1,32 +1,103 @@
-// https://github.com/equinusocio/vsc-material-theme
-@require 'theme'
-@require 'diff'
+pre
+  position: relative
+.hljs
+  margin: 0 - $gap !important
+  padding: $gap !important
+  -webkit-font-smoothing: auto
+  -moz-osx-font-smoothing: auto
+  scrollbar()
+  if hexo-config('style.body.highlight.language') == true
+    &:before
+      position: absolute
+      top: 0
+      right: 0
+      color: $color-meta
+      font-size: $fontsize-footnote
+      padding: 4px 8px
+    &.md:before,&.markdown:before
+      content: "md"
+    &.yaml:before
+      content: "YAML"
+    &.json:before
+      content: "JSON"
 
+    &.html:before
+      content: "HTML"
+    &.js:before,&.javascript:before
+      content: "JS"
+    &.css:before
+      content: "CSS"
+    &.less:before
+      content: "Less"
+    &.stylus:before
+      content: "Stylus"
+
+    &.bash:before
+      content: "bash"
+    &.shell:before
+      content: "shell"
+    &.sh:before
+      content: "sh"
+    &.ini:before
+      content: "ini"
+
+    &.c:before
+      content: "C"
+    &.cpp:before
+      content: "C++"
+    &.objc:before,&.objectivec:before
+      content: "Objective-C"
+    &.swift:before
+      content: "Swift"
+
+    &.java:before
+      content: "Java"
+    &.python:before
+      content: "Python"
+    &.php:before
+      content: "PHP"
+    &.rust:before
+      content: "Rust"
+    &.sql:before
+      content: "SQL"
+    &.ruby:before
+      content: "Ruby"
+    &.makefile:before
+      content: "Makefile"
+    &.go:before
+      content: "Go"
+    &.typescript:before
+      content: "TypeScript"
 
 .highlight
   position: relative
   width: 100%
-  margin: $gap-block 0
+  margin: $gap-row 0
   display: block
   background: $color-codeblock
   font-size: $fontsize-code
   font-family: $fontfamily-code
   border-radius: $border-codeblock
   border: 1px solid darken($color-codeblock, 6)
+  line-height: 1.5
+  -webkit-font-smoothing: auto
+  -moz-osx-font-smoothing: auto
   trans()
   figcaption
     position: sticky
     left: 0
     padding: $gap * 0.25 $gap * 0.5 $gap * 0.25 $gap * 0.5
     background-color: darken($color-codeblock, 5%)
+    border-top-left-radius: $border-codeblock
+    border-top-right-radius: $border-codeblock
 
-
-  table
+  >table
     overflow: auto
     display: block
     td,th
       padding: 0
       border: none
+      line-height: 1.5
     margin: 0
     background-color: transparent
     border: none
@@ -44,7 +115,8 @@
       margin-left: 0
       position: sticky
       left: 0
-      background-color: darken($color-codeblock, 5%)
+      z-index: 1
+      background-color: darken($color-codeblock, 5)
       pre
         color: $color-meta
 
@@ -69,64 +141,60 @@
         padding: 4px 8px
 
   if hexo-config('style.body.highlight.language') == true
-    &.html .code:before
-        content: "HTML"
+    &.md .code:before,&.markdown .code:before
+      content: "md"
+    &.yaml .code:before
+      content: "YAML"
+    &.json .code:before
+      content: "JSON"
 
-    &.js .code:before
-        content: "JS"
+    &.html .code:before
+      content: "HTML"
+    &.js .code:before,&.javascript .code:before
+      content: "JS"
+    &.css .code:before
+      content: "CSS"
+    &.less .code:before
+      content: "Less"
+    &.stylus .code:before
+      content: "Stylus"
 
     &.bash .code:before
-        content: "bash"
-
+      content: "bash"
     &.shell .code:before
-        content: "shell"
-
-    &.css .code:before
-        content: "css"
-
-    &.less .code:before
-        content: "less"
-
-    &.stylus .code:before
-        content: "stylus"
-
-    &.swift .code:before
-        content: "Swift"
-
-    &.objc .code:before
-        content: "ObjC"
+      content: "shell"
+    &.sh .code:before
+      content: "sh"
+    &.ini .code:before
+      content: "ini"
 
     &.c .code:before
-        content: "C"
-
+      content: "C"
     &.cpp .code:before
-        content: "C++"
+      content: "C++"
+    &.objc .code:before,&.objectivec .code:before
+      content: "Objective-C"
+    &.swift .code:before
+      content: "Swift"
 
     &.java .code:before
-        content: "Java"
-
+      content: "Java"
     &.python .code:before
-        content: "Python"
-
-    &.yaml .code:before
-        content: "YAML"
-
-    &.plain .code:before
-        content: ""
-
-
-  // &::-webkit-scrollbar
-  //   height: $border-line
-  //   width: $border-line
-  // &::-webkit-scrollbar-track-piece
-  //   background: transparent
-  // &::-webkit-scrollbar-thumb
-  //   background: alpha($color-text, .3)
-  //   cursor: pointer
-  //   border-radius: $border-codeblock
-  //   trans()
-  //   &:hover
-  //     background: alpha($color-text, .6)
+      content: "Python"
+    &.php .code:before
+      content: "PHP"
+    &.rust .code:before
+      content: "Rust"
+    &.sql .code:before
+      content: "SQL"
+    &.ruby .code:before
+      content: "Ruby"
+    &.makefile .code:before
+      content: "Makefile"
+    &.go .code:before
+      content: "Go"
+    &.typescript .code:before
+      content: "TypeScript"
 
 
 
@@ -139,42 +207,41 @@ $hl-light-blue = #6ECDF9
 $hl-red = #EE2B29
 $hl-orange = #FB3F1B
 $hl-amber = #FD8607
-
-pre
+$hl-text = alpha($color-text, .9)
+.highlight pre
   // 行
-  // line-height: 1.5
-  .line
-    color: alpha($color-text, 90%)
+  .line,.params
+    color: $hl-text
 
   .marked
-    background-color: alpha(#FED542, 40%)
+    background-color: alpha(#FED542, .4)
     padding: 2px 8px 2px 0
     border-radius: 2px
     width: 100%
 
-  .title
+  .title, .attr, .attribute
     color: $color-md-indigo
 
   // 注释
   .comment
-    color: alpha(darken($color-md-green, 10%), 70%)
+    color: alpha($color-p, .5)
 
-  .keyword, .javascript .function, .attr
+  .keyword, .meta-keyword, .javascript .function
     color: $hl-keyword
 
   .type, .built_in, .tag .name
     color: $color-md-light-blue
 
-  .variable, .attribute, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo
+  .variable, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo
     color: $hl-amber
 
-  .number, .preprocessor, .literal, .params, .constant
+  .number, .preprocessor, .literal, .constant
     color: $hl-amber
 
   .class, .ruby .class .title, .css .rules .attribute
     color: $color-md-orange
 
-  .string
+  .string, .meta-string
     color: darken($color-md-green, 10%)
 
   .value, .inheritance, .header, .ruby .symbol, .xml .cdata
@@ -187,7 +254,39 @@ pre
     color: #6699cc
 
 
+.highlight.html,.highlight.css,.highlight.less,.highlight.stylus
+  .line
+    .tag .name, .selector-tag
+      color: $hl-red
+    .selector-class, .selector-attr
+      color: $hl-amber
+    .attribute
+      color: $color-md-indigo
+    .number
+      color: $hl-cyan
 
-.html
-  .tag .name
-    color: $hl-red
+
+.highlight.objc,.highlight.objectivec,.highlight.swift,.highlight.c
+  .line
+    .meta
+      color: $hl-keyword
+    .meta-string,.string
+      color: $hl-orange
+    .class
+      color: $hl-text
+      .title
+        color: $hl-blue
+    .comment
+      color: $hl-green
+
+.highlight.json
+  .line
+    .attr
+      color: #E24F5A
+    .literal
+      color: $color-md-indigo
+
+.highlight.yaml
+  .line
+    .attr
+      color: #E24F5A

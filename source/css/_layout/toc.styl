@@ -5,6 +5,7 @@
   position: sticky
   top: $navbar-height + $gap
   trans()
+  line-height: 1.6
   header
     position: sticky
     width: 100%
@@ -12,7 +13,6 @@
     padding-bottom: $gap * 0.25
   .content
     max-height: "calc(100vh - %s)" % ($gap * 5 + $navbar-height)
-    overflow: auto
     a
       border-left: $border-line solid transparent
       &:hover
@@ -27,19 +27,22 @@
 
   trans()
   @media screen and (max-width: $device-tablet)
+    z-index: 1001
     position: fixed
     max-height: 1000px
     width: auto
     max-width: "calc(100% - 2 * %s)" % $gap
-    top: $navbar-height
+    top: $navbar-height - $gap * 2
     right: $gap
-    box-shadow: $boxshadow-card-float
+    border-radius: $border-card * 0.5
+    box-shadow: $boxshadow-float
+    border: 1px solid darken($color-codeblock, 6)
     visibility: hidden
-    transform: scale(0,0) rotate(12deg)
+    transform: scale(0,0)
     transform-origin: right top
     &.active
       visibility: visible
-      transform: scale(1,1) rotate(0)
+      transform: scale(1,1)
   @media screen and (max-width: $device-mobile-l)
     right: 0
 
@@ -50,30 +53,26 @@
     display: inline-block
 
   ul,ol
+    .toc-child a
+      font-weight: normal
     .toc-item.toc-level-1
       .toc-child a
         padding-left: 0.8 * $gap
-        font-weight: normal
     .toc-item.toc-level-2
       .toc-child a
         padding-left: 1.6 * $gap
-        font-weight: normal
     .toc-item.toc-level-3
       .toc-child a
         padding-left: 2.4 * $gap
-        font-weight: normal
     .toc-item.toc-level-4
       .toc-child a
         padding-left: 3.2 * $gap
-        font-weight: normal
     .toc-item.toc-level-5
       .toc-child a
         padding-left: 4 * $gap
-        font-weight: normal
     .toc-item.toc-level-6
       .toc-child a
-        padding-left: 4 * $gap
-        font-weight: normal
+        padding-left: 4.8 * $gap
 
     li
       a
