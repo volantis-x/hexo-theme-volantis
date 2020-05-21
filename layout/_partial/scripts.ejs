@@ -269,7 +269,7 @@
     var minivalinePlaceholder = $.trim($('#minivaline-placeholder').text()) === "none" ?
         "<%= theme.comments.minivaline.placeholder %>" : $.trim($('#minivaline-placeholder').text());
     var ALLPATH = '<%= theme.comments.minivaline.path %>';
-	var vispath = $(".leancloud_visitors")[0].id;
+    var vispath = $(".leancloud_visitors")[0].id;
     if(ALLPATH != '') minivalinePath = ALLPATH;
 	new MiniValine({
 		el: '#minivaline_container',
