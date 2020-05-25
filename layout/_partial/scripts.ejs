@@ -436,6 +436,13 @@
 
     try{
       pjax_fancybox();
+      <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable && theme.plugins.backstretch.images) { %>
+        if ('<%- posi %>') {
+          $('<%- posi %>').backstretch("resize");
+        } else {
+          $.backstretch("resize");
+        }
+      <% } %>
       <% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
         pjax_scrollrebeal();
       <% } %>
