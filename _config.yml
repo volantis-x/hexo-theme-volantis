@@ -607,6 +607,7 @@ info:
 # 配置过程请参考：https://artitalk.js.org/doc.html
 # 除appID和appKEY外均为选填项
 Artitalk:
+  enable: true # true为开启，false为关闭
   appID: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
   appKEY: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
   # severurl:  #leancloud绑定的安全域名，使用国际版的话不需要填写
