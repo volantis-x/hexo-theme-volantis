@@ -1,47 +1,9 @@
 <%- partial('_pre') %>
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <%- partial('_partial/article', {post: page, index: false}) %>
-  <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <body>
-        <script>
-            var appID ="<%=  theme.Artitalk.appID  %>";
-            var appKEY ="<%=  theme.Artitalk.appKEY  %>";
-            <% if(theme.Artitalk.severurl){ %>
-                var severurl="<%=  theme.Artitalk.severurl  %>";
-            <% } %>
-            <% if(theme.Artitalk.slanguage){ %>
-                var slanguage="<%=  theme.Artitalk.slanguage  %>";
-            <% } %>
-            <% if(theme.Artitalk.per){ %>
-                var per="<%=  theme.Artitalk.per  %>";
-            <% } %>
-            <% if(theme.Artitalk.placeholder1){ %>
-                var placeholder1="<%=  theme.Artitalk.placeholder1  %>";
-            <% } %>
-            <% if(theme.Artitalk.placeholder2){ %>
-                var placeholder2="<%=  theme.Artitalk.placeholder2  %>";
-            <% } %>
-            <% if(theme.Artitalk.lazy==0){ %>
-                var lazy=0;
-            <% }else{ %>
-                var lazy=1;
-            <% }  %>
-            <% if(theme.Artitalk.bgimg){ %>
-                var bgimg="<%=  theme.Artitalk.bgimg  %>";
-            <% } %>
-            <% if(theme.Artitalk.color1){ %>
-                var color1="<%=  theme.Artitalk.color1  %>";
-            <% } %>
-            <% if(theme.Artitalk.color2){ %>
-                var color2="<%=  theme.Artitalk.color2  %>";
-            <% } %>
-            <% if(theme.Artitalk.color3){ %>
-                var color3="<%=  theme.Artitalk.color3  %>";
-            <% } %>
-        </script>
         <div id="lazy"></div>
         <div id="artitalk"></div>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/artitalk"></script>
     </body>
 </div>
 <%- partial('_partial/side') %>
