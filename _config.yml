@@ -473,13 +473,12 @@ plugins:
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 340px # list max height
     list_folded: true
-  ############################### Shuoshuo ###############################      
-  # Artitalk
-  # https://artitalk.js.org
+
+  # Artitalk https://artitalk.js.org
   # 配置过程请参考：https://artitalk.js.org/doc.html
   # 除appID和appKEY外均为选填项
   Artitalk:
-    enable: true # true为开启，false为关闭
+    enable: false # true为开启，false为关闭
     appID: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
     appKEY: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
     # severurl:  #leancloud绑定的安全域名，使用国际版的话不需要填写
@@ -503,7 +502,7 @@ comments:
   service: valine # valine, minivaline, disqus, gitalk, livere
   # Valine
   # https://valine.js.org/
-  valine:
+  valine: # 请将 appId appKey 修改为自己的，否则评论数据是共享的。
     appId: dogUA2FSKGTo029M1SEwGROT-MdYXbMMI # your appId
     appKey: u0NdtQ8nvHoMdJPSYqm1LRxE # your appKey
     js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
