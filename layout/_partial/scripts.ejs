@@ -21,7 +21,7 @@
   </script>
 <% } %>
 
-<% if (theme.plugins.Artitalk && theme.plugins.Artitalk.enable) { %>
+<% if (theme.plugins.Artitalk && theme.plugins.Artitalk.enable && page.layout == "artitalk") { %>
   <script>
     var appID ="<%=  theme.plugins.Artitalk.appID  %>";
     var appKEY ="<%=  theme.plugins.Artitalk.appKEY  %>";
