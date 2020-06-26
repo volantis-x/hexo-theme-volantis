@@ -147,6 +147,9 @@ pre
     &.json .code:before
       content: "JSON"
 
+    &.diff .code:before
+      content: "diff"
+
     &.html .code:before
       content: "HTML"
     &.js .code:before,&.javascript .code:before
@@ -211,6 +214,11 @@ $hl-text = alpha($color-text, .9)
   // 行
   .line,.params
     color: $hl-text
+
+  .line .addition
+    color: $hl-green
+  .line .deletion
+    color: $hl-red
 
   .marked
     background-color: alpha(#FED542, .4)
