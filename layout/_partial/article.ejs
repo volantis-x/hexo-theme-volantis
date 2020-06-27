@@ -5,6 +5,8 @@
       <%- partial('meta', {post: post, position: 'header'}) %>
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
+          <% if (page.layout=='artitalk') %> 
+              <div id="artitalk_main"></div>
           <% (post.photos||[]).forEach(function(photo){ %>
             <div class='fancybox'><img src='<%- url_for(photo) %>'/></div>
           <% }) %>
