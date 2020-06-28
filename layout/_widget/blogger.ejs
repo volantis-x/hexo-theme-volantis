@@ -4,11 +4,11 @@
     <% if (item.avatar) { %>
       <% if (item.url) { %>
         <a class='avatar flat-box' href='<%- url_for(item.url) %>'>
-          <img no-lazy src='<%- item.avatar %>'/>
+          <img no-lazy src='<%- item.avatar %>' alt />
         </a>
       <% } else { %>
         <div class='avatar'>
-          <img no-lazy src='<%- item.avatar %>'/>
+          <img no-lazy src='<%- item.avatar %>' alt />
         </div>
       <% } %>
     <% } %>
