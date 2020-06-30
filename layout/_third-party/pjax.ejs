@@ -56,7 +56,7 @@
       $(window).unbind('scroll');    // 解绑
       $(window).unbind('click');     // 解绑
       $(document).unbind('scroll');  // 解绑
-      setLoading('show');
+      window.ShowLoading();
     });
   
     document.addEventListener('pjax:complete', function () {
@@ -111,11 +111,11 @@
       } catch (e) {
         console.log(e);
       }
-      setLoading('hide');
+      window.HideLoading();
     });
   
     document.addEventListener('pjax:error', function () {
-      setLoading('hide');
+      window.HideLoading();
       window.location.href = event.triggerElement.href;
     });
 </script>
