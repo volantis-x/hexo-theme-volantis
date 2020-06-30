@@ -5,7 +5,9 @@
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
     <div class='body-wrapper' id="pjax-container">
-      <%- partial('_third-party/pjaxdata') %>
+      <% if (theme.plugins.pjax.enable) { %>
+        <%- partial('_third-party/pjaxdata') %>
+      <% } %>
       <%- body %>
     </div>
     <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
@@ -13,6 +15,9 @@
   </div>
   <div>
     <%- partial('_partial/scripts') %>
+    <% if (theme.plugins.pjax.enable) { %>
+      <%- partial('_third-party/pjax') %>
+    <% } %>
   </div>
 </body>
 </html>

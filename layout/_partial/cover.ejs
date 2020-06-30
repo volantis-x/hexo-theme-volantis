@@ -1,18 +1,37 @@
-<%
-var enableCover = false;                      // 封面是否开启
-if(theme.cover && theme.cover.scheme) {
-  enableCover = true;
-}
-%>
-
-<% if (enableCover) { %>
-<div class="cover-wrapper">
-  <cover class='cover <%- page.layout %>' style="display: none;">
-    <%- partial('../_cover/index') %>
-    <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-  </cover>
-  <%- partial('header', null, {cache: false, path: path}) %>
-</div>
-<% } else { %> 
-  <%- partial('header', null, {cache: false, path: path}) %>
+<% if (theme.plugins.pjax.enable) { %>
+  <%
+    var enableCover = false; // 封面是否开启
+    if(theme.cover && theme.cover.scheme) {
+      enableCover = true;
+    }
+  %>
+  <% if (enableCover) { %>
+  <div class="cover-wrapper">
+    <cover class='cover <%- page.layout %>' style="display: none;">
+      <%- partial('../_cover/index') %>
+      <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+    </cover>
+    <%- partial('header', null, {cache: false, path: path}) %>
+  </div>
+  <% } else { %> 
+    <%- partial('header', null, {cache: false, path: path}) %>
+  <% } %>
+<% } else { %>
+  <% if (page.cover == true) { %>
+    <div class="cover-wrapper">
+      <% if (is_home() && page.prev == 0 && theme.cover.scheme == 'docs') { %>
+        <cover class='cover <%- page.layout %> full'>
+          <%- partial('../_cover/index') %>
+          <div class="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </cover>
+      <% } else { %>
+        <cover class='cover <%- page.layout %> half'>
+          <%- partial('../_cover/index') %>
+        </cover>
+      <% } %>
+      <%- partial('header', null, {cache: false, path: path}) %>
+    </div>
+  <% } else { %>
+    <%- partial('header', null, {cache: false, path: path}) %>
+  <% } %>
 <% } %>
