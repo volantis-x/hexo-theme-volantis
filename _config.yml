@@ -481,7 +481,7 @@ plugins:
     enable: true
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
-    animation: circle    # nprogress, circle
+    animation: nprogress    # nprogress, circle
 
 
 
