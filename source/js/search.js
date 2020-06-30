@@ -60,7 +60,8 @@ var SearchService = "";
     self.beforeQuery = function() {
       if (!self.open) {
         self.dom.container.fadeIn();
-        self.dom.body.addClass('modal-active');
+        // self.dom.body.addClass('modal-active');
+        // 上面的是去除了文章的滚动条，我觉得没必要
       }
       self.dom.input.each(function(index,elem) {
         $(elem).val(self.queryText);
@@ -142,7 +143,7 @@ var SearchService = "";
       var result = self.getUrlRelativePath(url);
       var html = "";
       html = "<li>";
-      html += "<a class='result search-result-fix' value='" + result + "'>";
+      html += "<a class='result' href='" + result + "'>";
       html += "<span class='title'>" + title + "</span>";
       if (digest !== "") html += "<span class='digest'>" + digest + "</span>";
       html += "</a>";
@@ -243,7 +244,7 @@ var SearchService = "";
     self.init();
   };
 
-  var template = '<div id="u-search"><div class="modal"> <header class="modal-header" class="clearfix"><form id="u-search-modal-form" class="u-search-form" name="uSearchModalForm"> <input type="text" id="u-search-modal-input" class="u-search-input" /> <button type="submit" id="u-search-modal-btn-submit" class="u-search-btn-submit"> <span class="fal fa-search"></span> </button></form> <a class="btn-close"> <span class="fal fa-times"></span> </a><div class="modal-loading"><div class="modal-loading-bar"></div></div> </header> <main class="modal-body"><ul class="modal-results modal-ajax-content"></ul> </main> <footer class="modal-footer clearfix"><div class="modal-metadata modal-ajax-content"> <strong class="range"></strong> of <strong class="total"></strong></div><div class="modal-error"></div> <div class="logo"></div> <a class="nav btn-next modal-ajax-content"> <span class="text">NEXT</span> <span class="fal fa-chevron-right"></span> </a> <a class="nav btn-prev modal-ajax-content"> <span class="fal fa-chevron-left"></span> <span class="text">PREV</span> </a> </footer></div><div class="modal-overlay"></div></div>';
+  var template = '<div id="u-search"><div class="modal"> <header class="modal-header" class="clearfix"><form id="u-search-modal-form" class="u-search-form" name="uSearchModalForm"> <input type="text" id="u-search-modal-input" class="u-search-input" /> <button type="submit" id="u-search-modal-btn-submit" class="u-search-btn-submit"> <span class="fad fa-search"></span> </button></form> <a class="btn-close"> <span class="fad fa-times"></span> </a><div class="modal-loading"><div class="modal-loading-bar"></div></div> </header> <main class="modal-body"><ul class="modal-results modal-ajax-content"></ul> </main> <footer class="modal-footer clearfix"><div class="modal-metadata modal-ajax-content"> <strong class="range"></strong> of <strong class="total"></strong></div><div class="modal-error"></div> <div class="logo"></div> <a class="nav btn-next modal-ajax-content"> <span class="text">NEXT</span> <span class="fal fa-chevron-right"></span> </a> <a class="nav btn-prev modal-ajax-content"> <span class="fal fa-chevron-left"></span> <span class="text">PREV</span> </a> </footer></div><div class="modal-overlay"></div></div>';
 })(jQuery);
 
 var AlgoliaSearch;
@@ -275,7 +276,8 @@ var AlgoliaSearch;
         var digest = "";
         html += self.buildResult(url, title, digest, index+1);
       });
-      html += "<script>$('.result.search-result-fix').click(function(event){var url = this.getAttribute('value');try{pjax.loadUrl(url)}catch(e){$(location).attr('href', url)}setTimeout(function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active');}, 300);});</script>";
+      html += "<script>try{pjax.refresh(document.querySelector('#u-search'))}catch(e){}</script>";
+      html += "<script>document.addEventListener('pjax:send',function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active')});</script>";
       return html;
     };
 
@@ -377,7 +379,8 @@ var AzureSearch;
         var digest = row.excerpt || "";
         html += self.buildResult(url, title, digest);
       });
-      html += "<script>$('.result.search-result-fix').click(function(event){var url = this.getAttribute('value');try{pjax.loadUrl(url)}catch(e){$(location).attr('href', url)}setTimeout(function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active');}, 300);});</script>";
+      html += "<script>try{pjax.refresh(document.querySelector('#u-search'))}catch(e){}</script>";
+      html += "<script>document.addEventListener('pjax:send',function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active')});</script>";
       return html;
     };
 
@@ -485,7 +488,8 @@ var BaiduSearch;
         if (self.contentSearch(post, queryText))
           html += self.buildResult(post.linkUrl, post.title, post.abstract);
       });
-      html += "<script>$('.result.search-result-fix').click(function(event){var url = this.getAttribute('value');try{pjax.loadUrl(url)}catch(e){$(location).attr('href', url)}setTimeout(function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active');}, 300);});</script>";
+      html += "<script>try{pjax.refresh(document.querySelector('#u-search'))}catch(e){}</script>";
+      html += "<script>document.addEventListener('pjax:send',function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active')});</script>";
       return html;
     };
 
@@ -580,7 +584,8 @@ var GoogleCustomSearch = "";
         var digest = (row.htmlSnippet || "").replace('<br>','');
         html += self.buildResult(url, title, digest);
       });
-      html += "<script>$('.result.search-result-fix').click(function(event){var url = this.getAttribute('value');try{pjax.loadUrl(url)}catch(e){$(location).attr('href', url)}setTimeout(function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active');}, 300);});</script>";
+      html += "<script>try{pjax.refresh(document.querySelector('#u-search'))}catch(e){}</script>";
+      html += "<script>document.addEventListener('pjax:send',function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active')});</script>";
       return html;
     };
 
@@ -729,7 +734,8 @@ var HexoSearch;
         if (self.contentSearch(post, queryText))
           html += self.buildResult(post.permalink, post.title, post.digest);
       });
-      html += "<script>$('.result.search-result-fix').click(function(event){var url = this.getAttribute('value');try{pjax.loadUrl(url)}catch(e){$(location).attr('href', url)}setTimeout(function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active');}, 300);});</script>";
+      html += "<script>try{pjax.refresh(document.querySelector('#u-search'))}catch(e){}</script>";
+      html += "<script>document.addEventListener('pjax:send',function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active')});</script>";
       return html;
     };
 

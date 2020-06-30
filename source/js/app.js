@@ -389,9 +389,9 @@ var customSearch;
 		});
 
 
-		// addEventListener是先绑定先执行，此处的绑定后执行
-		document.addEventListener('pjax:complete', function () {
-			try {
+		try {
+			// addEventListener是先绑定先执行，此处的绑定后执行
+			document.addEventListener('pjax:complete', function () {
 				$(function () {
 					restData();
 					setHeader();
@@ -400,10 +400,11 @@ var customSearch;
 					setScrollAnchor();
 					setTabs();
 				});
-			} catch (error) {
-				console.log(error);
-			}
-		});
+				
+			});
+		} catch (error) {
+			// console.log(error);
+		}
 	});
 
 
