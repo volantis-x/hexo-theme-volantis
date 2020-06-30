@@ -3,27 +3,38 @@
   var enableDisqus = false;
   var enableLivere = false;
   var enableGitalk = false;
+  var enableVssue = false;
   var enableValine = false;
-  if (page && page.comments != false) {
-    if (config.disqus_shortname) {
+  var enableMiniValine = false;
+  if (theme.comments && page && page.comments == true) {
+    if (theme.comments.disqus && theme.comments.disqus.shortname) {
       enableDisqus = true;
     }
-    if (config.livere_uid) {
+    if (theme.comments.livere && theme.comments.livere.uid) {
       enableLivere = true;
     }
-    if (config.gitalk) {
+    if (theme.comments.gitalk && theme.comments.gitalk.clientID) {
       enableGitalk = true;
     }
-    if (theme.valine.enable && config.leancloud) {
+    if (theme.comments.vssue && theme.comments.vssue.clientId) {
+      enableVssue = true;
+    }
+    if (theme.comments.valine && theme.comments.valine.appId) {
       enableValine = true;
+    }
+	if (theme.comments.minivaline && theme.comments.minivaline.appId) {
+      enableMiniValine = true;
     }
   }
 %>
 
-<% if (enableDisqus || enableLivere || enableGitalk || enableValine) { %>
-  <article class="post white-box comments <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.body ? 'body-blur' : '' %>">
+<% if (enableDisqus || enableLivere || enableGitalk || enableVssue || enableValine || enableMiniValine) { %>
+  <article class="post white-box reveal comments <%- theme.style.body.effect.join(' ') %>">
     <section class="article typo">
-      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;<%- __('post.comments') %></h4>
+      <p ct><%- theme.comments && theme.comments.title %></p>
+      <% if (theme.comments && theme.comments.subtitle) { %>
+        <p cst><%- theme.comments.subtitle %></p>
+      <% } %>
       <% if (enableDisqus) { %>
         <section id="comments">
           <div id="disqus_thread">
@@ -33,7 +44,7 @@
       <% } %>
       <% if (enableLivere){ %>
         <section id="comments">
-          <div id="lv-container" data-id="city" data-uid="<%= config.livere_uid %>">
+          <div id="lv-container" data-id="city" data-uid="<%= theme.comments.livere.uid %>">
             <noscript><div><i class='fas fa-exclamation-triangle'>&nbsp;<%- __('post.comments_placeholder', 'Livere') %></div></noscript>
           </div>
         </section>
@@ -43,10 +54,22 @@
           <div id="gitalk-container"></div>
         </section>
       <% } %>
+      <% if (enableVssue){ %>
+        <section id="comments">
+          <div id="vssue"></div>
+        </section>
+      <% } %>
       <% if (enableValine){ %>
         <section id="comments">
           <div id="valine_container" class="valine_thread">
-            <i class="fas fa-spinner fa-spin fa-fw"></i>
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      <% } %>
+      <% if (enableMiniValine){ %>
+        <section id="comments">
+          <div id="minivaline_container">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
           </div>
         </section>
       <% } %>

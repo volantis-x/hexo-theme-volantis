@@ -6,32 +6,37 @@ $device-mobile = 500px
 $device-tablet = 768px
 $device-laptop = 1024px
 $device-desktop = 1440px
+$device-2k = 2048px
 $device-4k = 2560px
 
 
 // site layout
-$layout-width = 1080px
-$sidebar-s = 240px
-$sidebar = 285px
+$layout-width = convert(hexo-config('style.max_width')) || 1080px
+$sidebar = 240px
 $modal-threshold = 680px
-$navbar-height = 64px
+$navbar-height = convert(hexo-config('style.navbar.height')) || 64px
 
 // gap
-$gap = 16px
-$gap-h2 = 2.5rem
-$gap-h3 = 1.5rem
-$gap-line = .5rem
+$gap = convert(hexo-config('style.gap.base')) || 16px // base gap
+$gap-h2 = convert(hexo-config('style.gap.h2')) || 48px
+$gap-h3 = convert(hexo-config('style.gap.h3')) || 32px
+$gap-h4 = convert(hexo-config('style.gap.h4')) || 16px
+$gap-paragraph = convert(hexo-config('style.gap.paragraph')) || 1rem  // 区块间距
+$gap-row = convert(hexo-config('style.gap.row')) || .5rem       // 行间距
 $gap-card = $gap
 
-// border radius
-$border-radius = 12px
-$border-radius-codeblock = 4px
-$border-radius-line = 2px
-$border-radius-searchbar = 8px
-$border-radius-button = 2px
-// align
-$text-align-h1 = left
-$text-align-h2 = left
-$text-align-h3 = left
+// border width
+$border-line = 2px
 
-$text-align-body = justify
+// border radius
+$border-card = convert(hexo-config('style.border_radius.card')) || 12px
+$border-codeblock = convert(hexo-config('style.border_radius.codeblock')) || 4px
+$border-searchbar = convert(hexo-config('style.border_radius.searchbar')) || 8px
+$border-button = convert(hexo-config('style.border_radius.button')) || 2px
+
+// text align
+$textalign-h1 = convert(hexo-config('style.body.text_align.h1')) || left
+$textalign-h2 = convert(hexo-config('style.body.text_align.h2')) || left
+$textalign-h3 = convert(hexo-config('style.body.text_align.h3')) || left
+$textalign-h4 = convert(hexo-config('style.body.text_align.h4')) || left
+$textalign-p = convert(hexo-config('style.body.text_align.p')) || justify

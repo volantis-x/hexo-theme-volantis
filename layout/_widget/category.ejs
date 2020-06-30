@@ -7,7 +7,7 @@
         <% site.categories.sort('path').each(function(category){ %>
           <li><a class="flat-box<%= category.parent ? ' child' : ''%>"
             title="<%- url_for(category.path) %>" href="<%- url_for(category.path) %>"
-            id="<%= url_for(category.path).replace(/\/|%/g, "")?url_for(category.path).replace(/\/|%/g, ""):"home" %>"
+            id="<%= url_for(category.path).replace(/\/|%|\./g, "")?url_for(category.path).replace(/\/|%|\./g, ""):"home" %>"
             ><div class='name'><%- category.name %></div><div class='badge'>(<%- category.posts.length %>)</div></a></li>
         <% }) %>
       </ul>

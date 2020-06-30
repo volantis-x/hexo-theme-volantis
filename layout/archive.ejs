@@ -3,7 +3,7 @@
 	<% if (page.year || page.month) { %>
 		<%- partial('_partial/archive') %>
 	<% } else { %>
-	  <article id="archive-page" class="post article white-box <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.body ? 'widget-blur' : '' %>">
+	  <article id="archive-page" class="post article white-box reveal <%- theme.style.body.effect.join(' ') %>">
 	    <section class="archive">
 	      <%
 	        var year = -1, postid = -1;
@@ -25,7 +25,7 @@
 	                <% } else if (post.date) { %>
 	                  <%= date(post.date, config.date_format) %>
 	                <% } %>
-	                <% if(post.music && post.music.enable != false){ %>
+	                <% if(theme.plugins.aplayer && theme.plugins.aplayer.enable && post.music && post.music.enable != false){ %>
 	                  &nbsp;<i class="fas fa-headphones-alt music" aria-hidden="true"></i>
 	                <% } %>
 									<% if (post.icon) { %>
@@ -43,7 +43,7 @@
 	<% } %>
 </div>
 <%- partial('_partial/side') %>
-<%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+
 
 
 <% if (page && page.posts) { %>
@@ -60,6 +60,6 @@
 	%>
 
 	<% if (need_mathjax){ %>
-	    <%- partial('_partial/mathjax') %>
+	    <%- partial('_third-party//mathjax') %>
 	<% } %>
 <% } %>

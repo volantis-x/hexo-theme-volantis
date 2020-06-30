@@ -1,146 +1,33 @@
-.cover-wrapper
-  padding-bottom: 2px
-  .cover
-    top: 0
-    left: 0
-    max-width: 100%
-    height: 100vh
-    display: flex
-    flex-wrap: nowrap
-    flex-direction: column
-    align-items: center
-    align-self: center
-    align-content: center
-    color: alpha($color-text, .75)
-    padding: $gap
-    .title, .logo
-      margin-top: 28vh
-      text-align: center
-    .title
-      font-size: $font-size-large
-      line-height: 1.2
-    .subtitle
-      font-size: $font-size-body
-    .logo
-      max-height: 100px
-      max-width: "calc(100% - 4 * %s)" % $gap
-
-    .white
-      color: white
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+.cover-wrapper .cover
+  top: 0
+  left: 0
+  max-width: 100%
+  height: 100vh
+  display: flex
+  flex-wrap: nowrap
+  flex-direction: column
+  align-items: center
+  align-self: center
+  align-content: center
+  color: $color-site-inner
+  padding: $gap
+  .cover-body
+    div.b
+      margin-top: 8vh
+      margin-bottom: 8vh
+  &.half
+    margin-bottom: -100px
+    max-height: 640px
+    min-height: 400px
+    .cover-body
+      div.b
+        margin-top: 10%
+        margin-bottom: 0
+    height: "calc(36vh - %s + 200px)" % $navbar-height
     @media screen and (max-width: $device-mobile)
-      .title,.logo
-        font-size: $font-size-large
-
-    .m_search
-      $iconW = 32px
-      $iconMargin = 4px
-      margin-top: 10vh
-      position: relative
-      max-width: "calc(100% - %s)" % 32px
-      width: 320px
-      vertical-align: middle
-      .form
-        position: relative
-        display: block
-        width: 100%
-
-      .icon,.input
-        trans()
-      .icon
-        position: absolute
-        display:block
-        line-height: 2.8rem
-        width: $iconW
-        top: 0
-        left: $iconMargin+1px
-        color: alpha($color-text, .6)
-
-      .input
-        display: block
-        height: 2.8rem
-        width: 100%
-        box-shadow: none
-        box-sizing: border-box
-        font-size: $font-size-body
-        -webkit-appearance: none
-        padding-left: $iconW + $iconMargin
-        @media screen and (max-width: $device-mobile)
-          padding-left: $iconW + $iconMargin
-        border-radius: 1.4rem
-        background: alpha(white, .6)
-        backdrop-filter: blur(10px)
-        border: none
-        color: $color-text
-        &:hover
-          background: alpha(white, .8)
-        &:focus
-          background: alpha(white, 1)
-
-    &.half
-      margin-bottom: -100px
-      height: "calc(60vh - %s + 120px)" % $navbar-height
-      .title, .logo
-        margin-top: "calc(28vh - %s)" % 80px
-
-      .m_search
-        margin-top: $gap * 2
-
-      @media screen and (max-width: $device-laptop)
-        height: "calc(36vh - %s + 200px)" % $navbar-height
-        .title, .logo
-          margin-top: "calc(22vh - %s)" % 90px
-
-      @media screen and (max-width: $device-tablet)
-        height: "calc(40vh - %s + 160px)" % $navbar-height
-        .title, .logo
-          margin-top: "calc(22vh - %s)" % 90px
-
-
-      @media screen and (max-width: $device-mobile)
-        height: "calc(24vh - %s + 280px)" % $navbar-height
-        .title, .logo
-          margin-top: "calc(22vh - %s)" % 70px
-
-
-
-    .menu
-      margin-top: $gap
-      ul
-        display: flex
-        flex-wrap: wrap
-        align-items: baseline
-        justify-content: center
-        li
-          display: flex
-          flex-wrap: wrap
-          align-items: center
-          padding: 0
-          height: auto
-
-      ul>li>a
-        font-size: $font-size-body
-        padding: 2px
-        margin: 4px
-        trans()
-        color: $color-meta
-        border-bottom: 1px solid transparent
-        &:hover, &.active, &:active
-          color: $color-theme
-          border-bottom: 1px solid $color-theme
-        &.white
-          color: alpha(white, .7)
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
-          &:hover, &.active, &:active
-            color: white
-            border-bottom: 1px solid white
-
-    .switcher
-      & > li
-        a
-          &:hover
-            background: alpha($color-text, .15)
-
+      .cover-body
+        div.a
+          margin-top: 10%
 
   .scroll-down
     width: 100%
@@ -154,6 +41,8 @@
       font-size: 24px
       line-height: 64px
       position: absolute
+      width: 24px
+      left: "calc(50% - %s)" % 12px
       text-shadow: 0 1px 2px rgba(0, 0, 0, .1)
       animation: scroll-down-effect 1.5s infinite
       @keyframes scroll-down-effect
@@ -166,3 +55,101 @@
         100%
           top: 0
           opacity: 1
+
+
+.cover-wrapper .cover .cover-body
+  margin: auto
+  &,div.a,div.b
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    max-width: 100%
+  .title
+    font-family: $fontfamily-logo
+    font-size: $fontsize-large
+    line-height: 1.2
+  .subtitle
+    font-size: $fontsize-meta
+  .logo
+    max-height: 100px
+    max-width: "calc(100% - 4 * %s)" % $gap
+  @media screen and (min-height: 1024px)
+    .title
+      font-size: $fontsize-large * 1.2
+    .subtitle
+      font-size: $fontsize-meta * 1.2
+    .logo
+      max-height: 150px
+  .m_search
+    $iconW = 32px
+    $iconMargin = 4px
+    position: relative
+    max-width: "calc(100% - %s)" % 16px
+    width: 320px
+    vertical-align: middle
+    .form
+      position: relative
+      display: block
+      width: 100%
+    .icon,.input
+      trans()
+    .icon
+      position: absolute
+      display:block
+      line-height: 2.5rem
+      width: $iconW
+      top: 0
+      left: $iconMargin+1px
+      color: alpha($color-p, .75)
+    .input
+      display: block
+      height: 2.5rem
+      width: 100%
+      box-shadow: none
+      box-sizing: border-box
+      font-size: $fontsize-meta
+      -webkit-appearance: none
+      padding-left: $iconW + $iconMargin
+      @media screen and (max-width: $device-mobile)
+        padding-left: $iconW + $iconMargin
+      border-radius: 1.4rem
+      background: alpha($color-card, .6)
+      backdrop-filter: blur(10px)
+      border: none
+      color: $color-text
+      &:hover
+        background: alpha($color-card, .8)
+      &:focus
+        background: alpha($color-card, 1)
+  .menu
+    margin-top: $gap
+    ul
+      display: flex
+      flex-wrap: wrap
+      align-items: baseline
+      justify-content: center
+      li
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        padding: 0
+        height: auto
+    ul>li>a
+      font-size: $fontsize-meta
+      padding: 2px
+      margin: 4px
+      trans()
+      color: alpha($color-site-inner, .65)
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
+      border-bottom: 2px solid transparent
+      i
+        margin-right: 4px
+      &:hover, &.active, &:active
+        color: $color-site-inner
+        border-bottom: 2px solid $color-site-inner
+  .switcher
+    & > li
+      a
+        &:hover
+          background: alpha($color-text, .15)

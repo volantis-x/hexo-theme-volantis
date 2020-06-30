@@ -1,0 +1,97 @@
+<!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<%
+var changeValinePath = 'none';                // 自定义的 valine 评论路径
+var changeValinePlaceholder = 'none';         // 自定义的 valine 评论描述 
+var changeMiniValinePath = 'none';            // 自定义的 Minivaline 评论路径
+var changeMiniValinePlaceholder = 'none';     // 自定义的 Minivaline 评论描述
+var ispage = false;                           // 一二级导航栏切换控制
+var postTitle = '';                           // 当前文章标题，用于二级导航栏赋值
+var enableCover = false;                      // 封面是否开启
+var frontMatterCover = 'none';                // 封面控制
+
+var enableValine = false;
+if (theme.comments && page && page.comments == true && theme.comments.valine && theme.comments.valine.appId) {
+  enableValine = true;
+}
+
+if (page && page.comments == true) {
+  if (enableValine && page.valine && page.valine.path) {
+    changeValinePath = page.valine.path;
+  }
+  if (enableValine && page.valine && page.valine.placeholder) {
+    changeValinePlaceholder = page.valine.placeholder;
+  }
+}
+
+var enableMiniValine = false;
+if (theme.comments && page && page.comments == true && theme.comments.minivaline && theme.comments.minivaline.appId) {
+  enableMiniValine = true;
+}
+if (page && page.comments == true) {
+  if (enableMiniValine && page.valine && page.valine.path) {
+    changeMiniValinePath = page.valine.path;
+  }
+  if (enableMiniValine && page.valine && page.valine.placeholder) {
+    changeMiniValinePlaceholder = page.valine.placeholder;
+  }
+}
+
+if(theme.cover && theme.cover.scheme) {
+  enableCover = true;
+}
+
+if (enableCover && page && page.cover) {
+  frontMatterCover = page.cover;
+  if (is_home() && page.prev == 0 && theme.cover.scheme == 'docs') {
+    frontMatterCover = 'docs';
+  } else {
+    frontMatterCover = 'blog';
+  }
+}
+
+if (page && page.layout == 'post' && page.title) {
+  ispage = true;
+  postTitle = page.title;
+}
+
+%>
+
+<div id="pjax-data" style="display: none">
+  <div id="pjax-ispage"><%=ispage%></div>
+  <div id="pjax-pageTitle"><%=postTitle%></div>
+  <div id="pjax-enable-cover"><%=enableCover%></div>
+  <% if (enableValine){ %>
+  <div id="valine-path"><%=changeValinePath%></div>
+  <div id="valine-placeholder"><%=changeValinePlaceholder%></div>
+  <% } %>
+  <% if (enableMiniValine){ %>
+  <div id="minivaline-path"><%=changeMiniValinePath%></div>
+  <div id="minivaline-placeholder"><%=changeMiniValinePlaceholder%></div>
+  <% } %>
+</div>
+
+<% if (enableCover) { %>
+<script>
+  // 处理封面 此时 jquery 还没加载
+  if ("<%=frontMatterCover%>" == "none") { // 移除封面
+    document.getElementsByClassName('cover')[0].style.display = "none";
+    document.getElementsByClassName('l_body')[0].classList.add("nocover");
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
+  } else {
+    if ("<%=frontMatterCover%>" == "blog") { // 半屏
+      document.getElementsByClassName('cover')[0].classList.remove("full");
+      document.getElementsByClassName('cover')[0].classList.add("half");
+      document.getElementsByClassName('scroll-down')[0].style.display = "none";
+    } else if ("<%=frontMatterCover%>" == "docs") { // 全屏
+      document.getElementsByClassName('cover')[0].classList.remove("half");
+      document.getElementsByClassName('cover')[0].classList.add("full");
+      document.getElementsByClassName('scroll-down')[0].style.display = "";
+    }
+    document.getElementsByClassName('cover')[0].style.display = "";
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover");
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
+  }
+</script>
+<% } %>

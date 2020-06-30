@@ -2,21 +2,12 @@ footer
   position: relative
   padding: 40px 10px 120px 10px
   width: 100%
-  color: $color-meta
+  color: alpha($color-site-footer, .5)
   margin: 0px auto
   &,p
-    font-size: $font-size-code
+    font-size: $fontsize-code
   overflow: hidden
   text-align: center
-  &.white, &.white a
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
-
-  &.white
-    color: fade(white, 50%)
-
-  &.white a
-    color: fade(white, 80%)
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
 
   .licenses
     color: fade(@color_text_main, 50%)
@@ -30,13 +21,14 @@ footer
     justify-content: center
     flex-wrap: wrap
     margin: 4px $gap * 0.5
-    font-size: $font-size
+    font-size: $fontsize
 
   a
-    color: $color-meta
+    color: alpha($color-site-footer, .75)
     padding: 0
     trans()
-
+    &:hover
+      color: $color-site-footer
     &.social
       position: relative
       display: inline-block
@@ -44,19 +36,21 @@ footer
       display: flex
       justify-content: center
       align-items: center
-      width: 32px
-      height: 32px
+      width: 36px
+      height: 36px
       margin: 4px
       border-radius: 100px
+      color: alpha($color-site-footer, .75)
       &:hover
-        background: bgcolor($color-theme)
-        color: $color-theme
+        background: alpha($color-site-footer, .1)
+        color: $color-site-footer
 
 
 
   .copyright
     margin-top: $gap
-    font-size: $font-size-footnote
+    p
+      font-size: $fontsize-footnote
 
   @media screen and (max-width: $device-tablet)
     justify-content: center

@@ -1,11 +1,10 @@
 <%
-let aplayer = theme.footer.aplayer;
+let aplayer = theme.plugins.aplayer;
 %>
-<% if (theme.footer.aplayer.enable == true) { %>
+<% if (theme.plugins.aplayer.enable == true) { %>
   <% if (post && post.music) { %>
     <meting-js
       mini='true'
-      autoplay='<%- post.music.autoplay || aplayer.autoplay %>'
       volume='<%- post.music.volume || aplayer.volume %>'
       loop='<%- post.music.loop || aplayer.loop %>'
       order='<%- post.music.order || aplayer.order %>'

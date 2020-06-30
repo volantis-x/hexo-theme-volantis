@@ -1,15 +1,13 @@
 <% if(isPostList){ %>
   <h2 class="title">
     <a href="<%- url_for(post.link || post.path) %>">
-      <%- post.title ? post.title : date(post.date, theme.meta.date.format) %>
+      <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.meta.date.format) %>
     </a>
   </h2>
 <% } else { %>
-  <% if (post.title || page.title || config.title) { %>
-    <h1 class="title">
-      <a href="<%- url_for(post.link || post.path) %>">
-        <%- post.title ? post.title : date(post.date, theme.meta.date.format) %>
-      </a>
-    </h1>
-  <% } %>
+  <h1 class="title">
+    <a href="<%- url_for(post.link || post.path) %>">
+      <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.meta.date.format) %>
+    </a>
+  </h1>
 <% } %>

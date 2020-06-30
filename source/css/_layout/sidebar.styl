@@ -4,21 +4,32 @@
   position: relative
   display: flex
   flex-direction: column
-  @media screen and (max-width: $device-desktop)
-    width: $sidebar-s
-
   @media screen and (max-width: $device-tablet)
-    // margin: $gap 0 0
     width: 100%
+  .widget
+    overflow: hidden
+    >.content
+      max-height: "calc(100vh - %s)" % ($gap * 5 + $navbar-height)
+      @media screen and (max-width: $device-tablet)
+        max-height: none
+      overflow: auto
+      scrollbar()
+      text-align: justify
+      font-size: $fontsize-meta
+      max-width: 100%
 
 
 .widget
   z-index: 0
   background: $color-card
   margin-top: $gap
-  border-radius: $border-radius
+  border-radius: $border-card
   width: 100%
   display: none
+  ul,ol
+    li
+      margin-top: 0
+      margin-bottom: 0
   &.desktop
     display: block
   @media screen and (max-width: $device-tablet)
@@ -26,7 +37,7 @@
     &.mobile
       display: block !important
 
-  @media screen and (max-width: $device-mobile)
+  @media screen and (max-width: $device-mobile-l)
     width: "calc(100% - 2 * %s)" % $gap
     margin: $gap $gap 0 $gap
     display: none !important
@@ -35,11 +46,10 @@
 
 
   header
-    border-top-left-radius: $border-radius
-    border-top-right-radius: $border-radius
-    font-weight: bold
-    line-height: 1.5em
+    border-top-left-radius: $border-card
+    border-top-right-radius: $border-card
     padding: "calc(%s - 2px)" % $gap
+    font-weight: bold
     padding-bottom: 0
     &,a
       color: $color-theme
@@ -50,16 +60,11 @@
       margin-left: $gap * 0.5
 
 
-  .content
-    text-align: justify
-    font-size: $font-size-body
+  >.content
     padding: $gap * 0.5 0
-    $offset = $navbar-height + 12.5 * $gap
-    max-height: "calc(100% - %s)" % $offset
-    max-width: 100%
     p
-      margin: $gap-line 0
-
+      margin-top: $gap-row
+      margin-bottom: $gap-row
     ul>li
       a
         color: $color-meta
@@ -69,26 +74,27 @@
         display: flex
         justify-content: space-between
         align-content: center
-        border-left: $border-radius-line solid transparent
+        border-left: $border-line solid transparent
         trans()
     ul.entry, ul.popular-posts
+      list-style: none
       a
         .name
-          flex:auto
-          txt-ellipsis()
+          flex: auto
+          // txt-ellipsis()
           color: alpha($color-text, .8)
         .badge
           flex:none
           font-weight: normal
-          font-size: $font-size-meta
+          font-size: $fontsize-meta
           color: alpha($color-text, .7)
 
         &:hover
-          border-left: $border-radius-line solid $color-theme
-          background: alpha($color-theme, .1)
+          border-left: $border-line solid $color-theme
+          background: bgcolor($color-theme)
 
         &.active
-          border-left: $border-radius-line solid $color-theme
+          border-left: $border-line solid $color-theme
           .name
             color: $color-theme
           .badge
@@ -96,7 +102,7 @@
 
 
         &:active
-          border-left: $border-radius-line * 2 solid $color-theme
+          border-left: $border-line * 2 solid $color-theme
 
         &.child
           padding-left: $gap * 2
@@ -106,45 +112,52 @@
     trans()
     .content
       padding: 0
-      div.avatar
-        display: flex
-        justify-content: center
-
-      img
-        padding: 0
-        margin: 0
-        display: flex
-        justify-content: center
-        width: $sidebar
-        height: $sidebar
-        border-top-left-radius: $border-radius
-        border-top-right-radius: $border-radius
-        @media screen and (max-width: $device-desktop)
-          width: $sidebar-s
-          height: $sidebar-s
-
-        @media screen and (max-width: $device-tablet)
-          width: 96px
-          height: 96px
+      text-align: center
+      display: flex
+      flex-direction: column
+      align-items: stretch
+      >.avatar
+        align-self: center
+        overflow: hidden
+        position: relative
+        border-top-left-radius: $border-card
+        border-top-right-radius: $border-card
+        line-height: 0
+        if hexo-config('widget.blogger.shape') == 'circle'
           border-radius: 100%
-          margin-top: $gap * 0.5
-          padding: $gap * 0.5
-
+          width: 128px
+          height: 128px
+          margin-top: $gap * 2
+          margin-bottom: $gap-row
+          img
+            display: block
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+        @media screen and (max-width: $device-tablet)
+          width: 80px
+          height: 80px
+          border-radius: 100%
+          border: 2px solid white
+          img
+            display: block
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            position: absolute
+      .text
+        :first-child
+          margin-top: $gap
       h2
-        text-align: center
         font-weight: bold
         margin: $gap * 0.5
-        margin-top: $gap
         @media screen and (max-width: $device-tablet)
           margin: $gap * 0.5
-
-
       p
         font-weight: bold
-        text-align: center
         margin: $gap * 0.5 $gap * 0.5 0 $gap * 0.5
         empty-cells: hide
-
       .social-wrapper
         display: flex
         justify-content: space-between
@@ -158,6 +171,7 @@
             color: $color-hover
 
           &.social
+            font-size: $fontsize-body
             display: flex
             justify-content: center
             align-items: center
@@ -169,26 +183,24 @@
               background: bgcolor($color-theme)
               color: $color-theme
 
-
-
         @media screen and (max-width: $device-tablet)
           justify-content: center
           display: none
-
-
 
     @media screen and (max-width: $device-tablet)
       box-shadow: none
       background: transparent !important
       margin-top: 2 * $gap
       backdrop-filter: none
+      color: $color-site-inner
 
 
 
   &.text
     .content
-      font-size: $font-size-meta
-      word-break: break-all
+      &,p
+        font-size: $fontsize-meta
+        word-break: break-all
       padding: $gap * 0.25 $gap
       a
         color: $color-link
@@ -205,42 +217,45 @@
     .content
       padding: $gap * 0.5 0
       a
-        font-size: $font-size-meta
+        font-size: $fontsize-meta
         font-weight: bold
-        line-height: 2.4em
-        &:hover
-          text-decoration: none
+        line-height: 1.5
+        padding-top: 6px
+        padding-bottom: 6px
+        img,i
+          margin-right: 4px
         i
           margin-left: 1px
         img
-          display: inline
           vertical-align: middle
-          height: 2em
-          width: 2em
+          height: 20px
+          width: 20px
+          margin-bottom: 4px
           &#round
             border-radius: 100%
 
 
   &.grid
     .content
-      ul.grid
+      .grid
         border: none
         display: flex
         flex-wrap: wrap
         justify-content: space-around
-        padding: 0 $gap
+        padding: $gap * 0.25 $gap
         a
           text-align: center
-          border-radius: $border-radius
-          margin: 4px 0
+          border-radius: $border-line
+          margin: 0
           padding: 4px 8px
           display: flex
           flex-direction: column
           align-items: center
-          font-size: $font-size-footnote
+          font-size: $fontsize-footnote
           font-weight: bold
           color: alpha($color-text, 70%)
           line-height: 1.5
+          word-wrap: break-word
           i
             margin-top: .3em
             margin-bottom: .3em
@@ -253,34 +268,33 @@
             &#round
               border-radius: 100%
 
-
-          border: 1px solid transparent
-          &:hover
-            color: $color-theme
-            background: bgcolor($color-theme)
-            border-radius: 4px
-
-          &:active
-            color: $color-theme
-
           &.active
             color: $color-theme
-            border: 1px solid $color-theme
+            background: bgcolor($color-theme)
+          &:hover
+            color: $color-theme
+            border-radius: $border-line
+            background: bgcolor($color-theme)
 
 
+        &.fixed a
+          width: "calc(100%/3 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-tablet)
+            width: "calc(100%/6 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile)
+            width: "calc(100%/5 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile-l)
+            width: "calc(100%/4 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile-m)
+            width: "calc(100%/3 - 0 * %s)" % $gap
 
-
-
-  // &.category
-  //   .content
-  //     font-weight: bold
 
   &.tagcloud
     .content
       text-align: justify
       padding: $gap * 0.5 $gap
       a
-        display:inline-block
+        display: inline-block
         trans()
         line-height: 1.6em
         &:hover
@@ -292,8 +306,11 @@
   &.related_posts
     .content
       font-weight: bold
+      ul
+        margin-top: $gap * 0.5
+        margin-bottom: $gap * 0.5
       h3
-        font-size: $font-size-meta
+        font-size: $fontsize-meta
         font-weight: bold
         margin: 0
         a
@@ -318,7 +335,7 @@
 
 
 .l_side>.widget.page
-  .content
+  >.content
     padding-top: 0
     padding-left: $gap - 4px
     padding-right: $gap - 4px
@@ -337,8 +354,8 @@
   max-width: 500px
   border-radius: 4px
   color: $color-text
-  font-family: $font-family
+  font-family: $fontfamily
   .aplayer-list
     text-align: left
   @media screen and (max-width: $device-mobile)
-    border-radius: $border-radius
+    border-radius: $border-card

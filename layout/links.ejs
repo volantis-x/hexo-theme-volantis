@@ -1,8 +1,8 @@
 <%- partial('_pre') %>
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
-  <article id="<%= page.layout %>" class="post white-box <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.body ? 'body-blur' : '' %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
+  <article id="<%= page.layout %>" class="post white-box reveal <%- theme.style.body.effect.join(' ') %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
     <%- partial('_partial/meta',{post:page, position:'header'}) %>
-      <section class="article typo l_friends">
+      <section class="article article-entry l_friends">
         <%- page.excerpt %>
         <% if (page.links){ %>
           <% (page.links||[]).forEach(function(group){ %>
@@ -16,14 +16,17 @@
                     <%} %>
                     <%= group.group %>
                   </h3>
+                  <% if(group.desc) { %>
+                    <%- markdown(group.desc) %>
+                  <%} %>
                 <%} %>
                 <div class='friend-content'>
                   <% (group.items||[]).forEach(function(item){ %>
                     <a class='friend-card' style='background:<%- item.backgroundColor %>; color:<%- item.textColor %>'
                       target="_blank" rel="external nofollow noopener noreferrer" href='<%- url_for(item.url || '') %>'>
                       <div class='friend-left'>
-                        <% if(item.avatar){ %>
-                          <img class='avatar' src='<%- item.avatar %>'/>
+                        <% if(item.avatar || (config.lazyload && config.lazyload.loadingImg)){ %>
+                          <img class='avatar' src='<%- item.avatar || (config.lazyload && config.lazyload.loadingImg) %>'/>
                         <% } %>
                       </div>
                       <div class='friend-right'>
@@ -51,10 +54,11 @@
         <br><br>
         <%- page.more %>
       </section>
+        <%- partial('_partial/meta',{post:page, position:'footer'}) %>
   </article>
 
   <%- partial('_third-party/comments') %>
 
 </div>
 <%- partial('_partial/side') %>
-<%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+

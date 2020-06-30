@@ -1,0 +1,27 @@
+<div class="pjax-animate">
+  <% if (theme.plugins.pjax.animation == 'nprogress') { %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper"})</script></div>
+    <script>
+      function setLoading(type) {
+        if (type == "show") {
+          NProgress.start();
+        } else if (type == "hide") {
+          NProgress.done();
+        }
+      }
+    </script>
+  <%} else if (theme.plugins.pjax.animation == 'circle') { %>
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      function setLoading(type) {
+        if (type == "show") {
+          $(".loading-circle").css("display", "block");
+        } else if (type == "hide") {
+          $(".loading-circle").css("display", "none");
+        }
+      }
+    </script>
+  <% } %>
+</div>

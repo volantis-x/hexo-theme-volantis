@@ -6,6 +6,7 @@
     align-items: baseline
     color: $color-meta
     margin: 0
+    font-size: $fontsize-body
     .prev
       text-align: left
       border-top-right-radius: 32px
@@ -22,12 +23,12 @@
     section
       color: $color-meta
       padding: $gap
-      border-radius: $border-radius
+      border-radius: $border-card
       &:hover
         color: $color-hover
 
 
-    @media screen and (max-width: $device-mobile)
+    @media screen and (max-width: $device-mobile-l)
       section
         border-radius: 0
 
@@ -38,51 +39,39 @@
       display: flex
       justify-content: space-between
       align-content: flex-start
-      section
+      margin-top: $gap * 0.5
+      >a
         width: 100%
         padding: $gap * 0.5
         color: $color-meta
         background: $color-block
-        border-radius: $border-radius-codeblock
-        a:hover
-          text-decoration: none
-        p
-          margin: 0
-        h4
-          margin-top: $gap * 0.5
-          margin-bottom: $gap * 0.5
-          position: relative
+        border-radius: $border-codeblock
+        &:hover
+          background: bgcolor($color-hover)
+          p.title
+            color: $color-hover
+        p.title
+          margin: $gap * 0.5 .5rem
           font-weight: bold
-          font-size: $font-size-body
-          @media screen and (max-width:$device-mobile)
-            letter-spacing: -1px
-        h6
-          margin: 0
-          word-spacing: normal
-        trans(.1s)
-        .tags
-          background: transparent
-          margin: $gap * 0.5
-          margin-bottom: 0
-          font-size: $font-size-code
-          word-spacing: 4px
-          a
-            color: $color-meta
-            &:hover
-              color: $color-hover
-              text-decoration: none
-            i
-              margin-right: 2px
-        &:first-child
+          font-size: $fontsize-h5
+          >i
+            width: 1rem
+        p.content
+          font-size: $fontsize-meta
+          margin: 0 .5rem
+          text-align: justify
+          word-break: break-all
+        &:only-child
           margin-left: 0
           margin-right: 0
-
       .prev
-        text-align: left
+        p.title
+          text-align: left
         margin-left: 0
         margin-right: $gap * 0.5
 
       .next
-        text-align: right
+        p.title
+          text-align: right
         margin-left: $gap * 0.5
         margin-right: 0

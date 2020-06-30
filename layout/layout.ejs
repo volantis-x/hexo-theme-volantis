@@ -4,13 +4,20 @@
 <body>
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
-    <div class='body-wrapper'>
+    <div class='body-wrapper' id="pjax-container">
+      <% if (theme.plugins.pjax.enable) { %>
+        <%- partial('_third-party/pjaxdata') %>
+      <% } %>
       <%- body %>
-      <script>setLoadingBarProgress(60);</script>
     </div>
+    <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
-  <%- partial('_partial/scripts') %>
-  <script>setLoadingBarProgress(100);</script>
+  <div>
+    <%- partial('_partial/scripts') %>
+    <% if (theme.plugins.pjax.enable) { %>
+      <%- partial('_third-party/pjax') %>
+    <% } %>
+  </div>
 </body>
 </html>

@@ -1,0 +1,100 @@
+details
+  display: block
+  padding: $gap
+  margin: $gap-row 0
+  border-radius: $border-codeblock
+  background: $color-card
+  font-size: $fontsize-list
+  trans()
+  summary
+    cursor: pointer
+    padding: $gap
+    margin: 0 - $gap
+    border-radius: $border-codeblock
+    color: alpha($color-p, .7)
+    font-size: $fontsize-meta
+    font-weight: bold
+    position: relative
+    line-height: normal
+    >
+      p,h1,h2,h3,h4,h5,h6
+        display: inline
+        border-bottom: none !important
+    &:hover
+      color: $color-p
+      &:after
+        position: absolute
+        content: '+'
+        text-align: center
+        top: 50%
+        transform: translateY(-50%)
+        right: $gap
+
+  border: 1px solid $color-block
+  >summary
+    background: $color-block
+  &[blue]
+    border-color: bgcolor($color-md-blue)
+    >summary
+      background: bgcolor($color-md-blue)
+  &[cyan]
+    border-color: bgcolor($color-mac-cyan)
+    >summary
+      background: bgcolor($color-mac-cyan)
+  &[green]
+    border-color: bgcolor($color-mac-green)
+    >summary
+      background: bgcolor($color-mac-green)
+  &[yellow]
+    border-color: bgcolor($color-mac-yellow)
+    >summary
+      background: bgcolor($color-mac-yellow)
+  &[red]
+    border-color: bgcolor($color-mac-red)
+    >summary
+      background: bgcolor($color-mac-red)
+
+details[open]
+  border-color: alpha($color-p, .2)
+  >summary
+    border-bottom: 1px solid alpha($color-p, .2)
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
+  &[blue]
+    border-color: alpha($color-md-blue, .3)
+    >summary
+      border-bottom-color: alpha($color-md-blue, .3)
+  &[cyan]
+    border-color: alpha($color-mac-cyan, .3)
+    >summary
+      border-bottom-color: alpha($color-mac-cyan, .3)
+  &[green]
+    border-color: alpha($color-mac-green, .3)
+    >summary
+      border-bottom-color: alpha($color-mac-green, .3)
+  &[yellow]
+    border-color: alpha($color-mac-yellow, .3)
+    >summary
+      border-bottom-color: alpha($color-mac-yellow, .3)
+  &[red]
+    border-color: alpha($color-mac-red, .3)
+    >summary
+      border-bottom-color: alpha($color-mac-red, .3)
+  >summary
+    color: $color-p
+    margin-bottom: 0
+    &:hover
+      &:after
+        content: '-'
+  >div.content
+    padding: $gap
+    margin: 0 - $gap
+    margin-top: 0
+    p>a:hover
+      text-decoration: underline
+    >
+      p,.tabs,ul,ol,.highlight,.note,.fancybox,details
+        &:first-child
+          margin-top: 0
+        &:last-child
+          margin-bottom: 0

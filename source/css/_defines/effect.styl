@@ -1,32 +1,24 @@
 @require('func')
 // shadow
-$box-shadow-card = 0 1px 2px 0px rgba(0, 0, 0, 0.1)
-$box-shadow-card-float = 0 2px 4px 0px rgba(0, 0, 0, 0.1), 0 4px 8px 0px rgba(0, 0, 0, 0.1), 0 8px 16px 0px rgba(0, 0, 0, 0.1)
+$boxshadow-card = 0 1px 2px 0px rgba(0, 0, 0, 0.1)
+$boxshadow-card-float = 0 2px 4px 0px rgba(0, 0, 0, 0.1), 0 4px 8px 0px rgba(0, 0, 0, 0.1), 0 8px 16px 0px rgba(0, 0, 0, 0.1)
 
-$box-shadow-float = 0 4px 8px 0px rgba(0, 0, 0, 0.1)
+$boxshadow-float = 0 4px 8px 0px rgba(0, 0, 0, 0.1)
 
-$text-shadow = 0 1px 2px 0px rgba(0, 0, 0, 0.1)
+$boxshadow-dropmenu = 0 0 1px 0px rgba(0, 0, 0, 0.1), $boxshadow-float
 
-
-
-// blur
-
-// trans
+$textshadow = 0 1px 2px 0px rgba(0, 0, 0, 0.1)
 
 
-// 导航栏毛玻璃效果
-.nav-blur
-  background: alpha($color-card, .85) !important
-  backdrop-filter: blur(20px)
+.blur
+  @supports (backdrop-filter: blur(20px))
+    background: alpha($color-card, .9) !important
+    backdrop-filter: saturate(200%) blur(20px)
 
-// 卡片毛玻璃效果
-.body-blur,.widget-blur
-  background: alpha($color-card, .85) !important
-  backdrop-filter: blur(20px)
 
-// 卡片阴影
-.card-shadow
-  trans()
-  box-shadow: $box-shadow-card
-  &:hover
-    box-shadow: $box-shadow-card-float
+.shadow
+  box-shadow: $boxshadow-card
+  &.floatable
+    trans()
+    &:hover
+      box-shadow: $boxshadow-card-float

@@ -4,10 +4,10 @@
   <div class='content article-entry'>
     <% (item.images||[]).forEach(function(url){ %>
       <% if (item.fancybox == true) { %>
-        <fancybox><img src='<%- url_for(url) %>'
+        <div class='fancybox'><img src='<%- url_for(url) %>'
         <% if (item.height) { %>
           height='<%- item.height %>'
-        <% } %>></fancybox>
+        <% } %>></div>
       <% } else { %>
         <img src='<%- url_for(url) %>'
         <% if (item.height) { %>

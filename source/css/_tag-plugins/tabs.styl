@@ -1,0 +1,70 @@
+$border-color = alpha($color-p, .2)
+$tbr = 4px
+
+div.tabs
+  display: block
+  position: relative
+  margin-top: $gap-row
+  margin-bottom: $gap-row
+  border-radius: $tbr
+  background: $color-card
+  border: 1px solid $border-color
+  font-size: $fontsize-list
+  .highlight,p,ul,ol,div.note,details
+    margin-top: $gap-row
+    margin-bottom: $gap-row
+
+div.tabs
+  ul.nav-tabs
+    display: flex
+    overflow-x: auto
+    white-space: nowrap
+    justify-content: flex-start
+    margin: 0 !important
+    padding: 8px 8px 0 8px
+    background: $color-block
+    border-radius: $tbr $tbr 0 0
+    line-height: 1.5
+    li.tab
+      list-style-type: none
+      margin-top: 0
+      margin-bottom: 0
+      &:last-child
+        padding-right: $gap
+      a
+        display: block
+        cursor: pointer
+        border-radius: $tbr $tbr 0 0
+        padding: $gap * 0.5
+        text-align: center
+        font-size: $fontsize-meta
+        line-height: inherit
+        font-weight: bold
+        color: $color-meta
+        border: 1px solid transparent
+        &:hover
+          color: $color-p
+        i
+          pointer-events: none
+      &.active a
+        cursor: default
+        color: $color-p
+        background: $color-card
+        border: 1px solid $border-color
+        border-bottom: 1px solid $color-card
+
+  .tab-content
+    border-top: 1px solid $border-color
+    margin-top: -1px
+    .tab-pane
+      padding: $gap
+      &:not(.active)
+        display: none
+      &.active
+        display: block
+      >
+        p,.tabs,ul,ol,.highlight,.note,.fancybox
+          &:first-child
+            margin-top: 0
+          &:last-child
+            margin-bottom: 0

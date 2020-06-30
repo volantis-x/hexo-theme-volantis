@@ -1,5 +1,5 @@
 #u-search
-  $border-radius = 4px
+  $border-card = 4px
   display: none
   position: fixed
   top: 0
@@ -7,9 +7,7 @@
   width: 100%
   height: 100%
   padding: 60px 20px
-  z-index: 999999
-  ::-webkit-scrollbar-thumb
-    background: $color-theme
+  z-index: 1001
   @media screen and (max-width: $modal-threshold)
     padding: 0px
   .modal
@@ -22,7 +20,7 @@
     margin: 64px 0px 0px -320px
     background: $color-card
     z-index: 3
-    border-radius: $border-radius
+    border-radius: $border-card
     overflow: hidden
     @media screen and (max-width: $modal-threshold)
       box-shadow: none
@@ -49,10 +47,11 @@
       width: 100%
       height: $navbar-height
       z-index: 3
-      border-top-left-radius: $border-radius
-      border-top-right-radius: $border-radius
-      font-size: $font-size
-      box-shadow: $box-shadow-card
+      border-top-left-radius: $border-card
+      border-top-right-radius: $border-card
+      font-size: $fontsize
+      box-shadow: $boxshadow-card
+      background: lighten($color-card, 5)
       @media screen and (max-width: $modal-threshold)
         border-radius: 0
         padding: 0px
@@ -106,7 +105,7 @@
           @media screen and (max-width: $modal-threshold)
             padding: 0
           line-height: 2rem
-          border-radius: $border-radius
+          border-radius: $border-card
           vertical-align: middle
           border: none
           appearance: none
@@ -114,8 +113,8 @@
           background: transparent
           trans()
           &:focus
-            border-top-left-radius: $border-radius
-            border-top-right-radius: $border-radius
+            border-top-left-radius: $border-card
+            border-top-right-radius: $border-card
 
       #u-search-modal-btn-submit
         position: absolute
@@ -134,14 +133,13 @@
 
     .modal-footer
       position: absolute
+      display: none
       bottom: 0
       left: 0
       width: 100%
       height: 50px
       padding: 0px 15px
-      background: #fff
-      border-top: 1px solid lighten(black,60%)
-
+      background: $color-card
       .logo
         position: absolute
         top: 0
@@ -150,26 +148,21 @@
         height: 100%
         text-align: center
         z-index: 0
-
         a
           display: inline-block
-
+          height: 50px
         &.google img
           height: 24px
           margin-top: 13px
-
         &.baidu img
           height: 22px
           margin-top: 14px
-
         img
           position: relative
           display: inline-block
           width: auto
           height: 18px
           margin-top: 16px
-
-
       .modal-error
         position: relative
         float: left
@@ -191,22 +184,21 @@
         display: block
         float: right
         vertical-align: middle
-        font-size: 13px
-        font-weight: 500
+        font-size: $fontsize-meta
+        font-weight: bold
         line-height: 50px
-        color: red
+        color: $color-meta
         cursor: pointer
         z-index: 1
         &:hover
-          color: black
+          color: $color-hover
         &.btn-next
-          margin-left: 10px
+          margin-left: $gap
         .icon
-          font-size: 12px
+          font-size: $fontsize-meta
 
     .modal-body
       position: absolute
-      // padding: 64px 50px 80px 50px
       padding: $gap
       width: 100%
       height: "calc(100% - %s)" % $navbar-height
@@ -215,26 +207,20 @@
       overflow-y: scroll
       -webkit-overflow-scrolling: touch
       background: $color-card
-      border-radius: $border-radius
-
+      border-radius: $border-card
+      scrollbar()
       .modal-results
         list-style: none
-        
         .result
           position: relative
           display: block
           padding: $gap
-          text-decoration: none
-          border-radius: $border-radius
+          border-radius: $border-card
           b[mark]
-            color: darken($color-md-blue, 10)
+            color: darken($color-theme, 10)
             text-decoration: underline
           &:hover
             background: bgcolor($color-theme)
-            // .digest, .icon
-            //   color: $color-hover
-            // .title
-            //   color: $color-hover
 
 
 
@@ -248,15 +234,15 @@
             white-space: normal
             overflow: hidden
             text-overflow: ellipsis
-            font-size: $font-size-h4
+            font-size: $fontsize-h4
           .digest
             display: block
             white-space: inherit
             overflow: hidden
             word-break: break-all
             text-overflow: ellipsis
-            font-size: $font-size-code
-            color: lighten($color-text, 30)
+            font-size: $fontsize-code
+            color: $color-meta
           .icon
             position: absolute
             top: 50%

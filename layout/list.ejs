@@ -37,11 +37,11 @@
       });
       %>
       <% if (need_mathjax){ %>
-        <%- partial('mathjax') %>
+        <%- partial('_third-party/mathjax') %>
       <% } %>
 
     <% } %>
   <% } %>
 </div>
 <%- partial('_partial/side') %>
-<%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+

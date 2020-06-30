@@ -1,17 +1,22 @@
 <% var sections = page.body ? page.body : theme.layout.on_page.body; %>
 <% sections.forEach(function(widget_id){ %>
   <% if (widget_id == 'article') { %>
-    <article id="<%= post.layout %>" class="post white-box <%- theme.style.shadow.card ? 'card-shadow' : '' %> <%- theme.style.blur && theme.style.blur.body ? 'body-blur' : '' %> article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <article id="<%= post.layout %>" class="post white-box reveal <%- theme.style.body.effect.join(' ') %> article-type-<%= post.layout %>" itemscope itemprop="blogPost">
       <%- partial('meta', {post: post, position: 'header'}) %>
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           <% (post.photos||[]).forEach(function(photo){ %>
-            <fancybox><img src='<%- url_for(photo) %>'/></fancybox>
+            <div class='fancybox'><img src='<%- url_for(photo) %>'/></div>
           <% }) %>
           <%- post.content %>
-          <% if(theme.layout.on_post.article_footer && (page.layout == 'post')){ %>
-            <br>
-            <%- partial('../_widget/load', {widgets: theme.layout.on_post.article_footer, where: 'article'}) %>
+          <% if ((page.meta && page.meta.article_footer && page.meta.article_footer.length > 0) || (theme.layout.on_post.article_footer && (page.layout == 'post'))) { %>
+            <div class='article_footer'>
+              <% if (page.meta && page.meta.article_footer && page.meta.article_footer.length > 0) { %>
+                <%- partial('../_widget/load', {widgets: page.meta.article_footer, where: 'article'}) %>
+              <% } else { %>
+                <%- partial('../_widget/load', {widgets: theme.layout.on_post.article_footer, where: 'article'}) %>
+              <% } %>
+            </div>
           <% } %>
         </div>
         <% if(post.layout == 'post' || post.layout == 'page'){ %>
@@ -20,58 +25,16 @@
         <% if(post.prev || post.next){ %>
           <div class="prev-next">
             <% if(post.prev){ %>
-              <section class="prev">
-                <span class="art-item-left">
-                  <h4>
-                    <a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
-                      <i class="fas fa-chevron-left" aria-hidden="true"></i>
-                      <% if(post.prev.title){ %>
-                        <%= post.prev.title %>
-                      <% } else if (post.prev.date) { %>
-                        <%= date(post.prev.date, config.date_format) %>
-                      <% } %>
-                    </a>
-                  </h4>
-                  <% if (post.prev.tags && post.prev.tags.length && post.prev.tags.each) { %>
-                    <%
-                    var items = [];
-                    post.prev.tags.each(function(item){
-                      items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="'+theme.meta.tags.icon+'" aria-hidden="true"></i>' + item.name + '</a>');
-                    });
-                    %>
-                    <h6 class="tags">
-                      <%- items.join(' ') %>
-                    </h6>
-                  <% } %>
-                </span>
-              </section>
+              <a class='prev' href='<%- url_for(post.prev.path) %>'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i><%- post.prev.title || '' %></p>
+                <p class='content'><%- truncate(strip_html(page.prev.content), {length: 100}) %></p>
+              </a>
             <% } %>
             <% if(post.next){ %>
-              <section class="next">
-                <span class="art-item-right" aria-hidden="true">
-                  <h4>
-                    <a href="<%=url_for(post.next.path)%>" rel="prev" title="<%=post.next.title%>">
-                      <% if(post.next.title){ %>
-                        <%= post.next.title %>
-                      <% } else if (post.next.date) { %>
-                        <%= date(post.next.date, config.date_format) %>
-                      <% } %>
-                      <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                    </a>
-                  </h4>
-                  <% if (post.next.tags && post.next.tags.length && post.next.tags.each) { %>
-                    <%
-                    var items = [];
-                    post.next.tags.each(function(item){
-                      items.push('<a class="tag" href="'+url_for(item.path)+'"><i class="'+theme.meta.tags.icon+'" aria-hidden="true"></i>' + item.name + '</a>');
-                    });
-                    %>
-                    <h6 class="tags">
-                      <%- items.join(' ') %>
-                    </h6>
-                  <% } %>
-                </span>
-              </section>
+              <a class='next' href='<%- url_for(post.next.path) %>'>
+                <p class='title'><%- post.next.title || '' %><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'><%- truncate(strip_html(page.next.content), {length: 100}) %></p>
+              </a>
             <%} %>
           </div>
         <%} %>
@@ -92,14 +55,6 @@
 
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 <% if (page.mathjax){ %>
-  <%- partial('mathjax') %>
+  <%- partial('../_third-party/mathjax') %>
 <% } %>
 
-<% if (page.layout == 'post'){ %>
-  <script>
-    window.subData = {
-      title: '<%- post.title %>',
-      tools: true
-    }
-  </script>
-<% } %>
