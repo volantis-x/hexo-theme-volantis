@@ -481,7 +481,9 @@ plugins:
     enable: true
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
-    animation: nprogress    # nprogress, circle
+    animation: nprogress # nprogress, circle
+    banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
+      # - '/about/index.html'
 
 
 

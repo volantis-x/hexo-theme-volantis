@@ -25,11 +25,13 @@
       enableMiniValine = true;
     }
   }
+
+  var banUrl = theme.plugins.pjax.banUrl || [];
 %>
 
 <%- js('https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js') %>
 <%- partial('pjaxanimate') %>
-<script>  
+<script>
     var pjax;
     document.addEventListener('DOMContentLoaded', function () {
       pjax = new Pjax({
@@ -43,8 +45,18 @@
       });
     });
   
-    document.addEventListener('pjax:send', function () {
+    document.addEventListener('pjax:send', function (e) {
       window.stop(); // 相当于点击了浏览器的停止按钮
+      var currentUrl = window.location.pathname;
+      var targetUrl = e.triggerElement.href;
+      var banUrl = <%- '["' + banUrl.join('", "') + '"]' %>;
+      if (banUrl[0] != "") {
+        banUrl.forEach(item => {
+          if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+            window.location.href = targetUrl;
+          }
+        });
+      }
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
       $.fancybox.close();    // 关闭弹窗
       $('.nav-main').find('.list-v').not('.menu-phone').css("display","none"); // 移除小尾巴
@@ -114,9 +126,9 @@
       window.HideLoading();
     });
   
-    document.addEventListener('pjax:error', function () {
-      window.HideLoading();
-      window.location.href = event.triggerElement.href;
-    });
+    document.addEventListener('pjax:error', function (e) { 
+      window.HideLoading(); 
+      window.location.href = e.triggerElement.href; 
+    }); 
 </script>
   
