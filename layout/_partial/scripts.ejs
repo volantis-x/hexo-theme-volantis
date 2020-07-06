@@ -298,6 +298,70 @@
   </script>
 <% } %>
 
+<!--darkmodejs -->
+<% if (config.darkmode) { %>
+  <script aysc src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js"></script>
+  <script type="text/javascript">
+	function supportCss3(style) {  
+		var prefix = ['webkit', 'Moz', 'ms', 'o'],  
+		i,  
+		humpString = [],  
+		htmlStyle = document.documentElement.style,  
+		_toHumb = function (string) {  
+		return string.replace(/-(\w)/g, function ($0, $1) {  
+		return $1.toUpperCase();  
+		});  
+		};  
+		for (i in prefix)  
+		humpString.push(_toHumb(prefix[i] + '-' + style));  
+		humpString.push(_toHumb(style));  
+		for (i in humpString)  
+		if (humpString[i] in htmlStyle) return true;  
+		return false;  
+	};
+	//配置信息
+	var options = {
+	  bottom: '64px', // default: '32px'
+	  right: 'unset', // default: '32px'
+	  left: '32px', // default: 'unset'
+	  time: '0.5s', // default: '0.3s'
+	  mixColor: '#fff', // default: '#fff'
+	  backgroundColor: '#fff',  // default: '#fff'
+	  buttonColorDark: '#100f2c',  // default: '#100f2c'
+	  buttonColorLight: '#fff', // default: '#fff'
+	  saveInCookies: true, // default: true,
+	  label: '🌓', // default: ''
+	  autoMatchOsTheme: true // default: true
+	};
+	// 卡片兼容处理
+	function pjax_darkmodejs(){
+		if(!supportCss3('mix-blend-mode'))return;
+		var checkExist2 = setInterval(function() {
+		   if (typeof jQuery == 'undefined'){return;}
+		   clearInterval(checkExist2);
+		   var TopFlag=document.documentElement.scrollHeight+500;
+			$(window).scroll(function(){
+				var top = $(document).scrollTop();
+				if(top > TopFlag) {
+					$(".darkmode-layer").css("mix-blend-mode","normal");
+					$(".darkmode-layer").css("background-color","#000");
+				}else{
+					$(".darkmode-layer").css("mix-blend-mode","difference");
+					$(".darkmode-layer").css("background-color","");
+				}
+			})
+		}, 100);
+	}
+	// mix-blend-mode support?
+	if(supportCss3('mix-blend-mode')){
+		const darkmode = new Darkmode(options);
+		darkmode.showWidget();
+		pjax_darkmodejs();
+	}
+  </script>
+<% } %>
+
+
 <!-- 复制 -->
 <% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
   <%- partial('_third-party/clipboard') %>
