@@ -159,7 +159,7 @@ layout:
   # 文章列表（主页、自定义的列表）布局
   on_list:
     # 列表中每一篇文章的meta信息
-    meta: [title, author, category, date, wordcount, top]
+    meta: [title, author, category, date, wordcount, counter, valinecount, top]
     # 列表类页面的侧边栏
     sidebar: [blogger, category, tagcloud, qrcode]
     # read more button
@@ -214,7 +214,7 @@ meta:
   # 文章评论数量：只支持 valine
   valinecount:
     icon: fas fa-comment-dots
-    desc: '条评论'
+    desc: '' # 条评论
   # 文章字数和阅读时长
   wordcount:
     icon_wordcount: fas fa-keyboard
