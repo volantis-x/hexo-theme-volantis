@@ -108,6 +108,9 @@
         <% if (enableMiniValine){ %>
           pjax_minivaline();
         <% } %>
+		<% if (config.darkmode) { %>
+		  pjax_darkmodejs();
+		 <% } %>
       } catch (e) {
         console.log(e);
       }
