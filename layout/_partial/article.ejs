@@ -44,7 +44,7 @@
       </section>
     </article>
   <% } else if (widget_id == 'comments') { %>
-    <%- partial('../_third-party/comments') %>
+    <%- partial('../_third-party/comments/index') %>
   <% } else { %>
     <%- partial('../_widget/load', {widgets: [widget_id], where: 'body'}) %>
   <% } %>
@@ -60,4 +60,3 @@
 <% if (page.mathjax){ %>
   <%- partial('../_third-party/mathjax') %>
 <% } %>
-

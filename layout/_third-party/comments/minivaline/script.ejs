@@ -1,0 +1,44 @@
+<% if (theme.comments.minivaline.js) { %>
+  <%- js(theme.comments.minivaline.js) %>
+<% } else { %>
+  <script src="https://cdn.jsdelivr.net/npm/minivaline@2/dist/MiniValine.min.js"></script>
+<% } %>
+<% var emoticonUrl = theme.comments.minivaline.emoticonUrl || [] %>
+<% var tagMeta = theme.comments.minivaline.tagMeta || [] %>
+<% var master = theme.comments.minivaline.master || [] %>
+<% var friends = theme.comments.minivaline.friends  || []  %>
+<script>
+function pjax_minivaline() {
+  var minivalinePath = $.trim($('#minivaline-path').text()) === "none" ?
+      window.location.pathname : $.trim($('#minivaline-path').text());
+  var minivalinePlaceholder = $.trim($('#minivaline-placeholder').text()) === "none" ?
+      "<%= theme.comments.minivaline.placeholder %>" : $.trim($('#minivaline-placeholder').text());
+  var ALLPATH = '<%= theme.comments.minivaline.path %>';
+  if(ALLPATH != '') minivalinePath = ALLPATH;
+new MiniValine({
+  el: '#minivaline_container',
+  appId: '<%= theme.comments.minivaline.appId %>',
+  appKey: '<%= theme.comments.minivaline.appKey %>',
+  mode: '<%= theme.comments.minivaline.mode %>',
+  placeholder: minivalinePlaceholder,
+  pathname: minivalinePath,
+  lang: '<%= theme.comments.minivaline.lang %>',
+  adminEmailMd5: '<%= theme.comments.minivaline.adminEmailMd5 %>',
+  tagMeta: <%- '["' + tagMeta.join('", "') + '"]' %>,
+  master: <%- '["' + master.join('", "') + '"]' %>,
+  friends: <%- '["' + friends.join('", "') + '"]' %>,
+  math: <%= theme.comments.minivaline.math %>,  /*布尔值 字符串无效 下同*/
+  md: <%= theme.comments.minivaline.md %>,
+  enableQQ: <%= theme.comments.minivaline.enableQQ %>,
+  NoRecordIP: <%= theme.comments.minivaline.NoRecordIP %>,
+  visitor: <%= theme.comments.minivaline.visitor %>,
+  maxNest: <%= theme.comments.minivaline.maxNest %>,
+  pageSize: <%= theme.comments.minivaline.pageSize %>,
+  emoticonUrl: <%- '["' + emoticonUrl.join('", "') + '"]' %>,
+  serverURLs: '<%= theme.comments.minivaline.serverURLs %>'
+  });
+}
+  $(function () {
+    pjax_minivaline();
+  });
+</script>
