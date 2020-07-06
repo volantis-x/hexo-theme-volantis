@@ -22,9 +22,48 @@
   </script>
 <% } %>
 
+<% if (theme.plugins.Artitalk && theme.plugins.Artitalk.enable && page.layout == "artitalk") { %>
+  <script>
+    var appID ="<%=  theme.plugins.Artitalk.appID  %>";
+    var appKEY ="<%=  theme.plugins.Artitalk.appKEY  %>";
+    <% if(theme.plugins.Artitalk.severurl){ %>
+        var severurl="<%=  theme.plugins.Artitalk.severurl  %>";
+    <% } %>
+    <% if(theme.plugins.Artitalk.slanguage){ %>
+        var slanguage="<%=  theme.plugins.Artitalk.slanguage  %>";
+    <% } %>
+    <% if(theme.plugins.Artitalk.per){ %>
+        var per="<%=  theme.plugins.Artitalk.per  %>";
+    <% } %>
+    <% if(theme.plugins.Artitalk.placeholder1){ %>
+        var placeholder1="<%=  theme.plugins.Artitalk.placeholder1  %>";
+    <% } %>
+    <% if(theme.plugins.Artitalk.placeholder2){ %>
+        var placeholder2="<%=  theme.plugins.Artitalk.placeholder2  %>";
+    <% } %>
+    <% if(theme.plugins.Artitalk.lazy==0){ %>
+        var lazy=0;
+    <% }else{ %>
+        var lazy=1;
+    <% }  %>
+    <% if(theme.plugins.Artitalk.bgimg){ %>
+        var bgimg="<%=  theme.plugins.Artitalk.bgimg  %>";
+    <% } %>
+    <% if(theme.plugins.Artitalk.color1){ %>
+        var color1="<%=  theme.plugins.Artitalk.color1  %>";
+    <% } %>
+    <% if(theme.plugins.Artitalk.color2){ %>
+        var color2="<%=  theme.plugins.Artitalk.color2  %>";
+    <% } %>
+    <% if(theme.plugins.Artitalk.color3){ %>
+        var color3="<%=  theme.plugins.Artitalk.color3  %>";
+    <% } %>
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/artitalk"></script>
+<% } %>
+
 <% if (theme.plugins.instant_page) { %>
-  <script async src="<%- theme.plugins.instant_page %>" type="module" defer
-          integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <script async src="<%- theme.plugins.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 <% } %>
 
 <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable && (theme.plugins.backstretch.images || page.images)) { %>
@@ -302,22 +341,22 @@
 <% if (config.darkmode) { %>
   <script aysc src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js"></script>
   <script type="text/javascript">
-	function supportCss3(style) {  
-		var prefix = ['webkit', 'Moz', 'ms', 'o'],  
-		i,  
-		humpString = [],  
-		htmlStyle = document.documentElement.style,  
-		_toHumb = function (string) {  
-		return string.replace(/-(\w)/g, function ($0, $1) {  
-		return $1.toUpperCase();  
-		});  
-		};  
-		for (i in prefix)  
-		humpString.push(_toHumb(prefix[i] + '-' + style));  
-		humpString.push(_toHumb(style));  
-		for (i in humpString)  
-		if (humpString[i] in htmlStyle) return true;  
-		return false;  
+	function supportCss3(style) {
+		var prefix = ['webkit', 'Moz', 'ms', 'o'],
+		i,
+		humpString = [],
+		htmlStyle = document.documentElement.style,
+		_toHumb = function (string) {
+		return string.replace(/-(\w)/g, function ($0, $1) {
+		return $1.toUpperCase();
+		});
+		};
+		for (i in prefix)
+		humpString.push(_toHumb(prefix[i] + '-' + style));
+		humpString.push(_toHumb(style));
+		for (i in humpString)
+		if (humpString[i] in htmlStyle) return true;
+		return false;
 	};
 	//配置信息
 	var options = {

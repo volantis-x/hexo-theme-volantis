@@ -1,9 +1,10 @@
 <%- partial('_pre') %>
-<% if(page.content && page.toc != false && toc(page.content).length > 0){ %>
-  <section class="widget toc-wrapper <%- page.widget_style %> <%- page.widget_platform %>">
+<% var realcontent = (page.encrypt == true) ? page.origin : page.content; %>
+<% if (realcontent && page.toc != false && toc(realcontent).length > 0) { %>
+  <section class="widget toc-wrapper <%- page.widget_style %> <%- page.widget_platform %>" id="toc-div" <% if (page.encrypt == true) { %>style="display:none" <% } %>>
     <%- partial('header', {item: item}) %>
     <div class='content'>
-      <%- toc(page.content, {list_number: item.list_number, min_depth: item.min_depth, max_depth: item.max_depth}) %>
+        <%- toc(realcontent, {list_number: item.list_number, min_depth: item.min_depth, max_depth: item.max_depth}) %>
     </div>
   </section>
 <% } %>
