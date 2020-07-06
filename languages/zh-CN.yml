@@ -3,7 +3,7 @@ navbar:
   category: 分类
   tag: 标签
 post:
-  top: 置顶
+  pin: 置顶
   read_more: 阅读全文
   sticky: 置顶
   wordcount: '字数：%s字'

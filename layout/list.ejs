@@ -6,7 +6,7 @@
       <% if (!page.prev) { %>
         <% site.pages.sort("-date").each(function(post){ %>
           <% if (post.group && post.group == page.group && post.layout != 'list') { %>
-            <% if (post.top) { %>
+            <% if (post.pin) { %>
               <div class='post-wrapper'>
                 <%- partial('_partial/post', {post: post, index: false}) %>
               </div>
@@ -16,7 +16,7 @@
       <% } %>
       <% site.pages.sort("-date").each(function(post){ %>
         <% if (post.group && post.group == page.group && post.layout != 'list') { %>
-          <% if (!post.top) { %>
+          <% if (!post.pin) { %>
             <div class='post-wrapper'>
               <%- partial('_partial/post', {post: post, index: false}) %>
             </div>
