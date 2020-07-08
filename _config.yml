@@ -4,8 +4,7 @@ info:
   version: ''
   docs: '' #https://volantis.js.org/
   cdn: # To use CDN, write 'use_cdn: true' in 'blog/_config.yml'.
-    css: ##https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0.2/css/style.css //2.61版本取消
-    js: ##https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0.2/js/app.js
+
 
 
 ############################### Style ###############################
