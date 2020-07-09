@@ -6,6 +6,7 @@
   var enableVssue = false;
   var enableValine = false;
   var enableMiniValine = false;
+  var enableIsso = false;
   if (theme.comments && page && page.comments == true) {
     if (theme.comments.disqus && theme.comments.disqus.shortname) {
       enableDisqus = true;
@@ -25,10 +26,13 @@
 	if (theme.comments.minivaline && theme.comments.minivaline.appId) {
       enableMiniValine = true;
     }
+  if (theme.comments.isso && theme.comments.isso.url && theme.comments.isso.src) {
+      enableIsso = true;
+    }
   }
 %>
 
-<% if (enableDisqus || enableLivere || enableGitalk || enableVssue || enableValine || enableMiniValine) { %>
+<% if (enableDisqus || enableLivere || enableGitalk || enableVssue || enableValine || enableMiniValine || enableIsso) { %>
   <article class="post white-box reveal comments <%- theme.style.body.effect.join(' ') %>">
     <section class="article typo">
       <p ct><%- theme.comments && theme.comments.title %></p>
@@ -72,6 +76,9 @@
             <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
           </div>
         </section>
+      <% } %>
+      <% if (enableIsso){ %>
+        <section id="isso-thread"></section>
       <% } %>
     </section>
   </article>

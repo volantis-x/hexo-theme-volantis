@@ -153,6 +153,7 @@
   var enableVssue = false;
   var enableValine = false;
   var enableMiniValine = false;
+  var enableIsso = false;
   if (theme.comments && page && page.comments == true) {
     if (theme.comments.disqus && theme.comments.disqus.shortname) {
       enableDisqus = true;
@@ -171,6 +172,9 @@
     }
     if (theme.comments.minivaline && theme.comments.minivaline.appId) {
       enableMiniValine = true;
+    }
+    if (theme.comments.isso && theme.comments.isso.url && theme.comments.isso.src) {
+      enableIsso = true;
     }
   }
   if (theme.comments.valine && theme.comments.valine.appId && theme.comments.valine.visitor && (theme.layout.on_list.meta.indexOf('counter') > -1)) {
@@ -347,6 +351,11 @@
 	emoticonUrl: <%- '["' + emoticonUrl.join('", "') + '"]' %>
   });
   </script>
+<% } %>
+
+<% if (enableIsso) { %>
+  <script data-isso=<%= theme.comments.isso.url %>
+    src=<%= theme.comments.isso.src %> </script>
 <% } %>
 
 <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.js) { %>
