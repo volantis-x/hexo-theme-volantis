@@ -116,7 +116,7 @@ cover:
       url: https://volantis.js.org/examples/
     - name: 源码
       icon: fas fa-file-code
-      url: https://github.com/theme-volantis/hexo-theme-volantis/
+      url: https://github.com/volantis-x/hexo-theme-volantis/
       rel: external nofollow noopener noreferrer
       target: _blank
     - name: 鸣谢
@@ -129,7 +129,7 @@ navbar:
   logo: # choose [img] or [icon + title]
     img:
     icon:
-    title:
+    title: Volantis
   menu:
     # The following can be written in `blog/source/_data/menu.yml`
     - name: 博客
@@ -633,6 +633,7 @@ info:
   name: Volantis # This is theme's name.
   version: '3.0-beta1' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
+  repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:
     js:
     css:
