@@ -510,7 +510,7 @@ plugins:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso
+  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover
   # Valine
   # https://valine.js.org/
   valine: # 请将 appId appKey 修改为自己的，否则评论数据是共享的。
