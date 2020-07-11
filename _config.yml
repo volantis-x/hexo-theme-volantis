@@ -598,7 +598,10 @@ comments:
   isso:
     url: https://example.com/(path/)
     src: https://example.com/(path/)js/embed.min.js
-
+  # HashOver
+  # https://www.barkdull.org/software/hashover
+  hashover:
+    src: https://example.com/(path/)comments.php
 
 
 
