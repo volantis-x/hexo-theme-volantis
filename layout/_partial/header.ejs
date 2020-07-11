@@ -23,9 +23,6 @@
           <% if (logo.title) { %>
             <%- logo.title %>
           <% } %>
-          <% if (logo.title == undefined && logo.icon == undefined && logo.img == undefined) { %>
-            <%- theme.info.name.toUpperCase() %> <b><sup style='color:<%- theme.info.version.indexOf('beta') > 0 ? '#ff9800':'#3AA757' %>'><%- theme.info.version %></sup></b>
-          <% } %>
         </a>
       <% } %>
 
