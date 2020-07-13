@@ -3,7 +3,7 @@ navbar:
   category: Category
   tag: Tag
 post:
-  top: Top
+  pin: Top
   read_more: Read More
   sticky: Sticky
   wordcount: '%s words'

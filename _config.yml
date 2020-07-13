@@ -116,7 +116,7 @@ cover:
       url: https://volantis.js.org/examples/
     - name: 源码
       icon: fas fa-file-code
-      url: https://github.com/xaoxuu/hexo-theme-volantis/
+      url: https://github.com/volantis-x/hexo-theme-volantis/
       rel: external nofollow noopener noreferrer
       target: _blank
     - name: 鸣谢
@@ -129,7 +129,7 @@ navbar:
   logo: # choose [img] or [icon + title]
     img:
     icon:
-    title:
+    title: Volantis
   menu:
     # The following can be written in `blog/source/_data/menu.yml`
     - name: 博客
@@ -159,7 +159,7 @@ layout:
   # 文章列表（主页、自定义的列表）布局
   on_list:
     # 列表中每一篇文章的meta信息
-    meta: [title, author, category, date, wordcount, top]
+    meta: [title, author, category, date, wordcount, counter, valinecount, pin]
     # 列表类页面的侧边栏
     sidebar: [blogger, category, tagcloud, qrcode]
     # read more button
@@ -172,7 +172,7 @@ layout:
     # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
     # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
     meta:
-      header: [title, author, category, date, top]
+      header: [title, author, category, date, pin]
       footer: [updated, tags, btns, share]
     # 文章页面的侧边栏
     sidebar: [qrcode, toc]
@@ -206,11 +206,15 @@ meta:
   category:
     icon: fas fa-folder-open
   # 文章置顶
-  top:
+  pin:
     icon: fas fa-angle-double-up
   # 文章浏览计数
   counter:
     icon: fas fa-eye
+  # 文章评论数量：只支持 valine
+  valinecount:
+    icon: fas fa-comment-dots
+    desc: '' # 条评论
   # 文章字数和阅读时长
   wordcount:
     icon_wordcount: fas fa-keyboard
@@ -407,9 +411,9 @@ plugins:
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
     js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
-    distance: 8px
+    distance: 32px
     duration: 800 # ms
-    interval: 100 # ms
+    interval: 20 # ms
     scale: 1 # 0.1~1
 
   # Codeblock Copy Button
@@ -473,6 +477,13 @@ plugins:
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 340px # list max height
     list_folded: true
+  pjax:
+    enable: true
+    timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
+    cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
+    animation: nprogress # nprogress, circle
+    banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
+      # - '/about/index.html'
 
   # Artitalk https://artitalk.js.org
   # 配置过程请参考：https://artitalk.js.org/doc.html
@@ -499,13 +510,13 @@ plugins:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, minivaline, disqus, gitalk, livere
+  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover
   # Valine
   # https://valine.js.org/
   valine: # 请将 appId appKey 修改为自己的，否则评论数据是共享的。
     appId: dogUA2FSKGTo029M1SEwGROT-MdYXbMMI # your appId
     appKey: u0NdtQ8nvHoMdJPSYqm1LRxE # your appKey
-    js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
+    # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
     path: # All pages use the same path (share the same comments data)
     meta: nick,mail,link # valine comment header info
     requiredFields: ['nick','mail']
@@ -582,7 +593,15 @@ comments:
   # https://www.livere.com
   livere:
     uid:
-
+  # Isso
+  # https://posativ.org/isso/
+  isso:
+    url: https://example.com/(path/)
+    src: https://example.com/(path/)js/embed.min.js
+  # HashOver
+  # https://www.barkdull.org/software/hashover
+  hashover:
+    src: https://example.com/(path/)comments.php
 
 
 
@@ -592,7 +611,7 @@ comments:
 search:
   enable: true
   service: hexo  # hexo, google, algolia, azure, baidu
-  js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js
+  # js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@3.0/js/search.js
   google:
     apiKey:
     engineId:
@@ -612,8 +631,9 @@ search:
 ############################### Theme Information ###############################
 info:
   name: Volantis # This is theme's name.
-  version: '2.6.6' # This is theme's version.
+  version: '3.0-beta1' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
+  repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:
-    js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/app.js
+    js:
     css:

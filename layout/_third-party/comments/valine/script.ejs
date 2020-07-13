@@ -1,0 +1,71 @@
+<% if (theme.comments.valine.js) { %>
+  <%- js(theme.comments.valine.js) %>
+<% } else { %>
+  <%- js(['js/valine.js']) %>
+<% } %>
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = '<%= theme.comments.valine.meta %>'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = '<%= theme.comments.valine.requiredFields %>'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    var valinePath = $.trim($('#valine-path').text()) === "none" ?
+            window.location.pathname : $.trim($('#valine-path').text());
+
+    var valinePlaceholder = $.trim($('#valine-placeholder').text()) === "none" ?
+            "<%= theme.comments.valine.placeholder %>" : $.trim($('#valine-placeholder').text());
+
+    var ALLPATH = '<%= theme.comments.valine.path %>';
+    if(ALLPATH != '') valinePath = ALLPATH;
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: valinePlaceholder,
+      path: valinePath,
+      appId: "<%= theme.comments.valine.appId %>",
+      appKey: "<%= theme.comments.valine.appKey %>",
+      pageSize: '<%= theme.comments.valine.pageSize %>',
+      avatar: '<%= theme.comments.valine.avatar %>',
+      lang: '<%= theme.comments.valine.lang %>',
+      visitor: '<%= theme.comments.valine.visitor %>',
+      highlight: '<%= theme.comments.valine.highlight %>',
+      mathJax: '<%= theme.comments.valine.mathJax %>',
+      enableQQ: '<%= theme.comments.valine.enableQQ %>',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>

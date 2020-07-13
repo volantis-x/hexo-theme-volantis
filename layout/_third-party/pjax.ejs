@@ -1,0 +1,137 @@
+<%
+  var enableDisqus = false;
+  var enableLivere = false;
+  var enableGitalk = false;
+  var enableVssue = false;
+  var enableValine = false;
+  var enableMiniValine = false;
+  if (theme.comments) {
+    if (theme.comments.disqus && theme.comments.disqus.shortname) {
+      enableDisqus = true;
+    }
+    if (theme.comments.livere && theme.comments.livere.uid) {
+      enableLivere = true;
+    }
+    if (theme.comments.gitalk && theme.comments.gitalk.clientID) {
+      enableGitalk = true;
+    }
+    if (theme.comments.vssue && theme.comments.vssue.clientId) {
+      enableVssue = true;
+    }
+    if (theme.comments.valine && theme.comments.valine.appId) {
+      enableValine = true;
+    }
+    if (theme.comments.minivaline && theme.comments.minivaline.appId) {
+      enableMiniValine = true;
+    }
+  }
+
+  var banUrl = theme.plugins.pjax.banUrl || [];
+%>
+
+<%- js('https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js') %>
+<%- partial('pjaxanimate') %>
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#pjax-container"
+        ],
+        cacheBust: <%= theme.plugins.pjax.cacheBust %>,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: <%= theme.plugins.pjax.timeout %>
+      });
+    });
+  
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+      var currentUrl = window.location.pathname;
+      var targetUrl = e.triggerElement.href;
+      var banUrl = <%- '["' + banUrl.join('", "') + '"]' %>;
+      if (banUrl[0] != "") {
+        banUrl.forEach(item => {
+          if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+            window.location.href = targetUrl;
+          }
+        });
+      }
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      $.fancybox.close();    // 关闭弹窗
+      $('.nav-main').find('.list-v').not('.menu-phone').css("display","none"); // 移除小尾巴
+      $('.menu-phone.list-v').css("display","none"); // 移除小尾巴
+      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+      $(window).unbind('resize');    // 解绑
+      $(window).unbind('scroll');    // 解绑
+      $(window).unbind('click');     // 解绑
+      $(document).unbind('scroll');  // 解绑
+      window.ShowLoading();
+    });
+  
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+      // <% if (config.baidu_analytics_key) { %>
+      // _hmt.push(['_trackPageview', document.location.pathname]);
+      // <% } %>
+  
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      <% if (config.google_analytics_key) { %>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('config', '<%- config.google_analytics_key %>', {'page_path': document.location.pathname});
+      <% } %>
+      
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+  
+      try{
+        pjax_fancybox();
+        <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable && theme.plugins.backstretch.images) { %>
+          <% var posi = null;
+            if (theme.plugins.backstretch.position == 'cover') {
+              posi = '.cover';
+            }
+          %>
+          if ('<%- posi %>') {
+            $('<%- posi %>').backstretch("resize");
+          } else {
+            $.backstretch("resize");
+          }
+        <% } %>
+        <% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
+          pjax_scrollrebeal();
+        <% } %>
+        <% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
+          pjax_initCopyCode();
+        <% } %>
+        <% if (enableValine){ %>
+          pjax_valine();
+        <% } %>
+        <% if (enableMiniValine){ %>
+          pjax_minivaline();
+        <% } %>
+        <% if (config.darkmode) { %>
+          pjax_darkmodejs();
+        <% } %>
+      } catch (e) {
+        console.log(e);
+      }
+      window.HideLoading();
+    });
+  
+    document.addEventListener('pjax:error', function (e) { 
+      window.HideLoading(); 
+      window.location.href = e.triggerElement.href; 
+    }); 
+</script>
+  

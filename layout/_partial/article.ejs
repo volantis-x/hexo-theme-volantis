@@ -5,6 +5,9 @@
       <%- partial('meta', {post: post, position: 'header'}) %>
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
+          <% if (page.layout=='artitalk') { %>
+              <div id="artitalk_main"></div>
+          <% } %>
           <% (post.photos||[]).forEach(function(photo){ %>
             <div class='fancybox'><img src='<%- url_for(photo) %>'/></div>
           <% }) %>
@@ -41,7 +44,7 @@
       </section>
     </article>
   <% } else if (widget_id == 'comments') { %>
-    <%- partial('../_third-party/comments') %>
+    <%- partial('../_third-party/comments/index') %>
   <% } else { %>
     <%- partial('../_widget/load', {widgets: [widget_id], where: 'body'}) %>
   <% } %>
@@ -56,13 +59,4 @@
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 <% if (page.mathjax){ %>
   <%- partial('../_third-party/mathjax') %>
-<% } %>
-
-<% if (page.layout == 'post' && page.title){ %>
-  <script>
-    window.subData = {
-      title: '<%- post.title %>',
-      tools: true
-    }
-  </script>
 <% } %>

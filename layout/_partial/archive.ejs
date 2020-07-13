@@ -2,8 +2,17 @@
   <section class="post-list <%- theme.layout.multiple_columns ? 'multiple-columns' : '' %>">
     <% if (!page.prev) { %>
       <% if (is_home()) { %>
+        <% site.pages.each(function(post){ %>
+          <% if (post.pin) { %>
+            <% if (page.group == undefined || post.group == page.group) { %>
+              <div class='post-wrapper'>
+                <%- partial('post', {post: post}) %>
+              </div>
+            <% } %>
+          <% } %>
+        <% }) %>
         <% site.posts.each(function(post){ %>
-          <% if (post.top) { %>
+          <% if (post.pin) { %>
             <% if (page.group == undefined || post.group == page.group) { %>
               <div class='post-wrapper'>
                 <%- partial('post', {post: post}) %>
@@ -13,7 +22,7 @@
         <% }) %>
       <% } else if (page.posts && page.posts.length > 0) { %>
         <% page.posts.each(function(post){ %>
-          <% if (post.top) { %>
+          <% if (post.pin) { %>
             <div class='post-wrapper'>
               <%- partial('post', {post: post}) %>
             </div>
@@ -23,7 +32,7 @@
     <% } %>
     <% if (page.posts && page.posts.length > 0) { %>
       <% page.posts.each(function(post){ %>
-        <% if (!post.top) { %>
+        <% if (!post.pin) { %>
           <div class='post-wrapper'>
             <%- partial('post', {post: post}) %>
           </div>

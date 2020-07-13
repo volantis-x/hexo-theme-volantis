@@ -15,4 +15,4 @@ function postFancybox(args, content) {
   }
 }
 
-hexo.extend.tag.register('fancybox', postFancybox, {ends: true});
+hexo.extend.tag.register('gallery', postFancybox, {ends: true});

@@ -62,10 +62,11 @@
       }
     }
   %>
-    <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
+  <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
   <% if (keywords){ %>
     <meta name="keywords" content="<%- keywords %>">
   <% } %>
+
   <% if (description){ %>
     <meta name="description" content="<%- description %>">
   <% } %>
@@ -85,20 +86,20 @@
   <!-- link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
   <%- css('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css') %>
-  
+
   <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
     <%- css(theme.plugins.nodewaves.css) %>
   <% } %>
 
   <% if (config.favicon) { %>
-  <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
+    <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <% } %>
 
   <% if (theme.plugins.aplayer.enable) { %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
   <% } %>
 
-  <% if (theme.comments.vssue && theme.comments.vssue.clientId) { %>
+  <% if (theme.comments.service == 'vssue') { %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css">
   <% } %>
 
@@ -118,12 +119,6 @@
   <% } else { %>
     <%- css('css/style.css') %>
   <% } %>
-
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
 
   <% if (config.google_analytics_key) { %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -145,7 +140,7 @@
     <script>
     var _hmt = _hmt || [];
     (function() {
-	  setTimeout(function() { 
+	  setTimeout(function() {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
 		hm.defer=true;

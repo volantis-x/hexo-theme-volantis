@@ -1,0 +1,8 @@
+<% if(isPostList && post.pin){ %>
+  <div class="new-meta-item top-post">
+    <a class='notlink'>
+      <i class="<%- theme.meta.pin.icon %> fa-fw" aria-hidden="true"></i>
+      <p><%- post.pin != true ? post.pin : __('post.pin') %></p>
+    </a>
+  </div>
+<% } %>

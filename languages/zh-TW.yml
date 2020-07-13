@@ -3,7 +3,7 @@ navbar:
   category: 分類
   tag: 標籤
 post:
-  top: 置頂
+  pin: 置頂
   read_more: 閱讀全文
   sticky: 置頂
   wordcount: '字數：%s字'
