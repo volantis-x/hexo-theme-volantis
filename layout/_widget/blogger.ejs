@@ -3,7 +3,7 @@
   <div class='content'>
     <% if (item.avatar) { %>
       <% if (item.url) { %>
-        <a class='avatar flat-box' href='<%- url_for(item.url) %>'>
+        <a class='avatar flat-box <%- item.shape %>' href='<%- url_for(item.url) %>'>
           <img no-lazy src='<%- item.avatar %>'/>
         </a>
       <% } else { %>
