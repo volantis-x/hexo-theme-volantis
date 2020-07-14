@@ -30,7 +30,7 @@
 %>
 
 <%- js('https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js') %>
-<%- partial('pjaxanimate') %>
+<%- partial('animate') %>
 <script>
     var pjax;
     document.addEventListener('DOMContentLoaded', function () {
@@ -127,9 +127,11 @@
         console.log(e);
       }
       // 刷新 hljs
-      document.querySelectorAll('pre code').forEach((block) => {
-        hljs.highlightBlock(block);
-      });
+      <% if (config.highlight.enable != true && theme.plugins.highlightjs && theme.plugins.highlightjs.js) { %>
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+      <% } %>
       window.HideLoading();
     });
 
