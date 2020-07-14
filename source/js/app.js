@@ -42,6 +42,7 @@ var customSearch;
 				if($postsBtn.attr("href") != "/")       // TODO: fix it
 					scrolltoElement($bodyAnchor);
 				e.stopImmediatePropagation();
+				$postsBtn.unbind('click');
 			});
 		}
 		if ($titleBtn.length && $bodyAnchor) {
@@ -50,6 +51,7 @@ var customSearch;
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
 				e.stopImmediatePropagation();
+				$titleBtn.unbind('click');
 			});
 		}
 		if ($topBtn.length && $bodyAnchor) {
@@ -399,8 +401,18 @@ var customSearch;
 					setTocToggle();
 					setScrollAnchor();
 					setTabs();
+
+					// 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件
+					var $switcher = $('.l_header .switcher .s-search'); // 搜索按钮   移动端
+					var $header = $('.l_header'); // 移动端导航栏
+					if ($switcher.length !== 0) {
+						$(document).click(function (e) {
+							$header.removeClass('z_search-open');
+							$switcher.removeClass('active');
+						});
+					}
 				});
-				
+
 			});
 		} catch (error) {
 			// console.log(error);
