@@ -1,10 +1,14 @@
 <script src="<%- theme.plugins.clipboard %>"></script>
 <script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
     function wait(callback, seconds) {
         var timelag = null;
         timelag = window.setTimeout(callback, seconds)
     }
-
     function pjax_initCopyCode() {
         var copyHtml = '';
         copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
@@ -12,12 +16,7 @@
         copyHtml += '</button>';
         $(".highlight .code pre").before(copyHtml);
         $(".article pre code").before(copyHtml);
-        var clipboard = new ClipboardJS('.btn-copy', {
-            target: function (trigger) {
-                return trigger.nextElementSibling
-            }
-        });
-        clipboard.on('success', function (e) {
+        clipboard.off('success').on('success', function (e) {
             let $btn = $(e.trigger);
             $btn.addClass('copied');
             let $icon = $($btn.find('i'));
@@ -31,7 +30,7 @@
                 $span[0].innerText = 'COPY'
             }, 2000)
         });
-        clipboard.on('error', function (e) {
+        clipboard.off('error').on('error', function (e) {
             e.clearSelection();
             let $btn = $(e.trigger);
             $btn.addClass('copy-failed');

@@ -1,27 +1,11 @@
 <%
-  var enableDisqus = false;
-  var enableLivere = false;
-  var enableGitalk = false;
-  var enableVssue = false;
   var enableValine = false;
   var enableMiniValine = false;
-  if (theme.comments) {
-    if (theme.comments.disqus && theme.comments.disqus.shortname) {
-      enableDisqus = true;
-    }
-    if (theme.comments.livere && theme.comments.livere.uid) {
-      enableLivere = true;
-    }
-    if (theme.comments.gitalk && theme.comments.gitalk.clientID) {
-      enableGitalk = true;
-    }
-    if (theme.comments.vssue && theme.comments.vssue.clientId) {
-      enableVssue = true;
-    }
-    if (theme.comments.valine && theme.comments.valine.appId) {
+  if (theme.comments.service && theme.comments.service.length > 0) {
+    if (theme.comments.service == 'valine') {
       enableValine = true;
     }
-    if (theme.comments.minivaline && theme.comments.minivaline.appId) {
+    if (theme.comments.service == 'minivaline') {
       enableMiniValine = true;
     }
   }
@@ -30,7 +14,7 @@
 %>
 
 <%- js('https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js') %>
-<%- partial('pjaxanimate') %>
+<%- partial('animate') %>
 <script>
     var pjax;
     document.addEventListener('DOMContentLoaded', function () {
@@ -38,13 +22,14 @@
         elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
         selectors: [
           "title",
-          "#pjax-container"
+          "#pjax-container",
+          "#pjax-header-nav-list"
         ],
         cacheBust: <%= theme.plugins.pjax.cacheBust %>,   // url 地址追加时间戳，用以避免浏览器缓存
         timeout: <%= theme.plugins.pjax.timeout %>
       });
     });
-  
+
     document.addEventListener('pjax:send', function (e) {
       window.stop(); // 相当于点击了浏览器的停止按钮
       var currentUrl = window.location.pathname;
@@ -64,13 +49,17 @@
       $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+      $('.s-top').unbind('click');   // 解绑
+      $('.menu a').unbind('click');  // 解绑
       $(window).unbind('resize');    // 解绑
       $(window).unbind('scroll');    // 解绑
-      $(window).unbind('click');     // 解绑
       $(document).unbind('scroll');  // 解绑
+      $(document).unbind('click');   // 解绑
+      $('body').unbind('click');     // 解绑
       window.ShowLoading();
     });
-  
+
     document.addEventListener('pjax:complete', function () {
       // 关于百度统计对 SPA 页面的处理：
       // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
@@ -78,7 +67,7 @@
       // <% if (config.baidu_analytics_key) { %>
       // _hmt.push(['_trackPageview', document.location.pathname]);
       // <% } %>
-  
+
       // 关于谷歌统计对 SPA 页面的处理：
       // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
       // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
@@ -87,13 +76,13 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('config', '<%- config.google_analytics_key %>', {'page_path': document.location.pathname});
       <% } %>
-      
+
       $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
       $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
       $('script[data-pjax], .pjax-reload script').each(function () {
         $(this).parent().append($(this).remove());
       });
-  
+
       try{
         pjax_fancybox();
         <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable && theme.plugins.backstretch.images) { %>
@@ -107,6 +96,11 @@
           } else {
             $.backstretch("resize");
           }
+        <% } %>
+        <% if (config.highlight.enable != true && theme.plugins.highlightjs && theme.plugins.highlightjs.js) { %>
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         <% } %>
         <% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
           pjax_scrollrebeal();
@@ -128,10 +122,9 @@
       }
       window.HideLoading();
     });
-  
-    document.addEventListener('pjax:error', function (e) { 
-      window.HideLoading(); 
-      window.location.href = e.triggerElement.href; 
-    }); 
+
+    document.addEventListener('pjax:error', function (e) {
+      window.HideLoading();
+      window.location.href = e.triggerElement.href;
+    });
 </script>
-  

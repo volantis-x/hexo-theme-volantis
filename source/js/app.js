@@ -42,6 +42,7 @@ var customSearch;
 				if($postsBtn.attr("href") != "/")       // TODO: fix it
 					scrolltoElement($bodyAnchor);
 				e.stopImmediatePropagation();
+				$postsBtn.unbind('click');
 			});
 		}
 		if ($titleBtn.length && $bodyAnchor) {
@@ -50,6 +51,7 @@ var customSearch;
 				e.stopPropagation();
 				scrolltoElement($bodyAnchor);
 				e.stopImmediatePropagation();
+				$titleBtn.unbind('click');
 			});
 		}
 		if ($topBtn.length && $bodyAnchor) {
@@ -117,8 +119,7 @@ var customSearch;
 		const $wrapper = $('header .wrapper');        // 整个导航栏
 		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
 		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
-
-		$comment.show(); // 显示 (某些文章可能关闭了评论，故先行显示)
+		
 		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
 
 		// 决定一二级导航栏的切换
@@ -144,7 +145,7 @@ var customSearch;
 				scrolltoElement($('.l_body .comments'));
 				e.stopImmediatePropagation();
 			});
-		} else $comment.hide();   // 关闭了评论，则隐藏
+		} else $comment.remove(); // 关闭了评论，则隐藏
 
 		const $tocTarget = $('.l_body .toc-wrapper');     // 侧边栏的目录列表  PC
 		if ($tocTarget.length && $tocTarget.children().length) {
@@ -399,8 +400,18 @@ var customSearch;
 					setTocToggle();
 					setScrollAnchor();
 					setTabs();
+
+					// 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件
+					var $switcher = $('.l_header .switcher .s-search'); // 搜索按钮   移动端
+					var $header = $('.l_header'); // 移动端导航栏
+					if ($switcher.length !== 0) {
+						$(document).click(function (e) {
+							$header.removeClass('z_search-open');
+							$switcher.removeClass('active');
+						});
+					}
 				});
-				
+
 			});
 		} catch (error) {
 			// console.log(error);

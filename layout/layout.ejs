@@ -6,7 +6,7 @@
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
     <div class='body-wrapper' id="pjax-container">
       <% if (theme.plugins.pjax.enable) { %>
-        <%- partial('_third-party/pjaxdata') %>
+        <%- partial('_third-party/pjax/data') %>
       <% } %>
       <%- body %>
     </div>
@@ -16,7 +16,7 @@
   <div>
     <%- partial('_partial/scripts') %>
     <% if (theme.plugins.pjax.enable) { %>
-      <%- partial('_third-party/pjax') %>
+      <%- partial('_third-party/pjax/index') %>
     <% } %>
   </div>
 </body>
