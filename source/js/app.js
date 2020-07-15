@@ -119,8 +119,7 @@ var customSearch;
 		const $wrapper = $('header .wrapper');        // 整个导航栏
 		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
 		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
-
-		$comment.show(); // 显示 (某些文章可能关闭了评论，故先行显示)
+		
 		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
 
 		// 决定一二级导航栏的切换
@@ -146,7 +145,7 @@ var customSearch;
 				scrolltoElement($('.l_body .comments'));
 				e.stopImmediatePropagation();
 			});
-		} else $comment.hide();   // 关闭了评论，则隐藏
+		} else $comment.remove(); // 关闭了评论，则隐藏
 
 		const $tocTarget = $('.l_body .toc-wrapper');     // 侧边栏的目录列表  PC
 		if ($tocTarget.length && $tocTarget.children().length) {

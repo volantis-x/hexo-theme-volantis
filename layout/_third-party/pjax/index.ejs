@@ -22,7 +22,8 @@
         elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
         selectors: [
           "title",
-          "#pjax-container"
+          "#pjax-container",
+          "#pjax-header-nav-list"
         ],
         cacheBust: <%= theme.plugins.pjax.cacheBust %>,   // url 地址追加时间戳，用以避免浏览器缓存
         timeout: <%= theme.plugins.pjax.timeout %>
@@ -49,10 +50,8 @@
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
 
-      $('.s-top').unbind('click'); // 解绑
+      $('.s-top').unbind('click');   // 解绑
       $('.menu a').unbind('click');  // 解绑
-      $('.s-toc', $('header .wrapper')).unbind('click'); // 解绑
-      $('.s-comment', $('header .wrapper')).unbind('click'); // 解绑
       $(window).unbind('resize');    // 解绑
       $(window).unbind('scroll');    // 解绑
       $(document).unbind('scroll');  // 解绑
