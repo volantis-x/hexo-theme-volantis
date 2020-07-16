@@ -23,6 +23,7 @@ assignees: ''
 
 - [ ] 将主题升级至最新版本。
 - [ ] 下载主题官网源码运行，经过一定的步骤，可以复现此BUG。
+- [ ] 我已经查看了[Volantis的最新路线图](https://github.com/volantis-x/hexo-theme-volantis/projects)，并搜索了当前的 [issues](https://github.com/volantis-x/hexo-theme-volantis/issues), 但是并不能够帮助我。
 
 ### 复现步骤
 
