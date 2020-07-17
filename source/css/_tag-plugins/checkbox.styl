@@ -1,7 +1,9 @@
 article .checkbox
   display: flex
+  font-size: $fontsize-body
   align-items: center
   input
+    transform: translate(0, -1px)
     -webkit-appearance: none
     -moz-appearance: none
     -ms-appearance: none
@@ -10,7 +12,7 @@ article .checkbox
     position: relative
     height: 16px
     width: 16px
-    transition:all .15s ease-out 0s
+    transition: all .15s ease-out 0s
     cursor: pointer
     display: inline-block
     outline: none
@@ -187,5 +189,5 @@ article .checkbox
 article .checkbox
   p
     display: inline-block
-    margin-top: 2px !important
+    margin-top: 0 !important
     margin-bottom: 0 !important

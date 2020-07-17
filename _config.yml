@@ -34,8 +34,8 @@ style:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 24px # Spacing above H3 (only px unit)
     h4: 16px # Spacing above H4 (only px unit)
-    paragraph: 1rem # Paragraph spacing between paragraphs
-    row: .5rem # Paragraph spacing between other elements
+    paragraph: .6rem # Paragraph spacing between paragraphs
+    row: .4rem # Paragraph spacing between other elements
     line_height: 1.65 # normal, 1.5, 1.75, 2 ...
   border_radius:
     card: 8px
@@ -50,8 +50,8 @@ style:
     h4: 1.125rem
     h5: 1rem
     h6: 1rem
-    body: 1rem
-    list: .9375rem
+    body: .9375rem
+    list: 95%
     meta: .875rem
     code: .8125rem
     footnote: .75rem
