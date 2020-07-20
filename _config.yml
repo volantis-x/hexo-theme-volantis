@@ -18,6 +18,7 @@ style:
     highlight:
       language: true # show language of codeblock
       copy_btn: true
+      grayscale: true # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
       h2: left
