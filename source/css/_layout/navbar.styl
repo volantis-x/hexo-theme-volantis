@@ -281,15 +281,15 @@ ul.list-v
   &.current
     border-left-color: alpha($color-theme, 80%)
     border-bottom-color: alpha($color-theme, 80%)
-  &:hover
-    color: $color-theme
-    border-left-color: $color-theme
-    border-bottom-color: $color-theme
-    background: bgcolor($color-theme)
   &:active,&.active
     color: $color-theme
     border-left-color: $color-theme
     border-bottom-color: $color-theme
+  &:hover
+    color: mix($color-theme, $color-text, 70)
+    border-left-color: $color-theme
+    border-bottom-color: $color-theme
+    background: bgcolor($color-theme)
   i.music
     animation: rotate-effect 1.5s linear infinite
     @keyframes rotate-effect
