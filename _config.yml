@@ -52,7 +52,7 @@ style:
     h5: 1rem
     h6: 1rem
     body: .9375rem
-    list: 95%
+    list: .9375rem
     meta: .875rem
     code: .8125rem
     footnote: .75rem
