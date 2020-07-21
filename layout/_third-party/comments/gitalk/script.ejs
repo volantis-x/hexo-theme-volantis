@@ -10,7 +10,7 @@
     <% if(page.gitalk && page.gitalk.id) { %>
       id: "<%= page.gitalk.id %>",
     <% } else { %>
-      id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: decodeURI(location.pathname),      // Ensure uniqueness and length less than 50
     <% } %>
     distractionFreeMode: false  // Facebook-like distraction free mode
   });
