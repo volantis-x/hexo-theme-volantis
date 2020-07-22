@@ -246,6 +246,10 @@ ul.list-v
     font-size: $fontsize-meta
     font-weight: bold
     line-height: 36px
+    @media screen and (max-width: $device-laptop)
+      line-height: 40px
+    @media screen and (max-width: $device-tablet)
+      line-height: 44px
     padding: 0 $gap + $border-line + 2px 0 $gap
     text-overflow: ellipsis
     margin: 0 4px
@@ -259,8 +263,6 @@ ul.list-v
       border-bottom-color: alpha($color-theme, 80%)
     &:hover
       color: mix($color-theme, $color-text, 70)
-      border-left-color: $color-theme
-      border-bottom-color: $color-theme
       background: bgcolor($color-theme)
 
     &:active,&.active
@@ -276,7 +278,7 @@ ul.list-v
       >i
         margin-right: 4px
 
-.l_header ul>li>a
+.l_header ul.nav-list-h>li>a
   color: mix($color-text, $color-card, 80)
   &.current
     border-left-color: alpha($color-theme, 80%)
