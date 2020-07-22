@@ -123,8 +123,8 @@
       &:focus
         background: alpha($color-card, 1)
   .menu
-    margin-top: $gap
     ul
+      trans()
       display: flex
       flex-wrap: wrap
       align-items: baseline
@@ -137,19 +137,47 @@
         height: auto
     ul>li>a
       font-size: $fontsize-meta
-      padding: 2px
-      margin: 4px
       trans()
-      color: alpha($color-site-inner, .65)
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
-      border-bottom: 2px solid transparent
-      i
-        margin-right: 4px
-      &:hover, &.active, &:active
-        color: $color-site-inner
-        border-bottom: 2px solid $color-site-inner
+
   .switcher
     & > li
       a
         &:hover
           background: alpha($color-text, .15)
+
+.cover-wrapper .cover .cover-body .menu.search
+  margin-top: $gap
+  ul>li>a
+    padding: 2px
+    margin: 4px
+    color: alpha($color-site-inner, .65)
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
+    border-bottom: 2px solid transparent
+    i
+      margin-right: 4px
+    &:hover, &.active, &:active
+      color: $color-site-inner
+      border-bottom: 2px solid $color-site-inner
+
+.cover-wrapper .cover .cover-body .menu.featured
+  ul
+    border-radius: $border-button + 2px
+    border: 2px solid transparent
+    @media screen and (min-width: $device-mobile)
+      &:hover
+        background: alpha($color-card, 0.25)
+  ul>li>a
+    padding: $gap
+    margin: 2px
+    border-radius: $border-button
+    color: alpha($color-site-inner, .65)
+    border-bottom: none
+    text-align: center
+    background: alpha($color-card, 0)
+    i
+      font-size: 1.5rem
+      margin: $gap * 0.5
+      display: block
+    &:hover, &.active, &:active
+      color: $color-site-inner
+      background: alpha($color-card, .75)
