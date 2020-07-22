@@ -8,6 +8,10 @@
     width: 100%
   .widget
     overflow: hidden
+    &.sticky
+      position: sticky
+      top: $navbar-height + $gap
+      z-index: 1
     >.content
       max-height: "calc(100vh - %s)" % ($gap * 5 + $navbar-height)
       @media screen and (max-width: $device-tablet)

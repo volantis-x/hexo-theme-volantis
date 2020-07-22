@@ -5,7 +5,6 @@ navbar:
 post:
   pin: Top
   read_more: Read More
-  sticky: Sticky
   wordcount: '%s words'
   duration: '%s min'
   comments: Comments
