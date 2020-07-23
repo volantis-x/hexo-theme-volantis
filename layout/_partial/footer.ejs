@@ -33,11 +33,11 @@
         <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
         <%- __('footer.theme') %><% if (theme.plugins.busuanzi) { %><%- __('symbol.comma') %><%- __('footer.total_views') %>
           <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          <%- __('footer.times') %>，访客数为<span id="busuanzi_value_site_uv"></span>人次<div></div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<!--          <%- __('footer.times') %>，访客数为<span id="busuanzi_value_site_uv"></span>人次<div></div><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
 <script>
     var now = new Date(); 
     function createtime() { 
-        var grt= new Date("07/14/2020 22:00:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        var grt= new Date("07/14/2020 00:00:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
         now.setTime(now.getTime()+250); 
         days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
         hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
@@ -49,7 +49,7 @@
         document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
     } 
 setInterval("createtime()",250);
-</script><div class='copyright'> </div>
+</script><div class='copyright'></div>-->
         <% } %>
       <% } else if (item == 'copyright') { %>
         <div class='copyright'>

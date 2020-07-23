@@ -164,7 +164,7 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, category, date, wordcount, counter, valinecount, pin]
     # 列表类页面的侧边栏
-    sidebar: [blogger, category, tagcloud, qrcode]
+    sidebar: [blogger, category, tagcloud, qrcode, showWebsite]
     # read more button
     readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
   # 页面布局
@@ -373,7 +373,7 @@ widget:
         unit: '篇'
       runtime:
         enable: true
-        data: '2020/01/01'    # 填写建站日期
+        data: '2020/07/14'    # 填写建站日期
         text: '已运行时间 :'
         unit: '天'
       wordcount:
