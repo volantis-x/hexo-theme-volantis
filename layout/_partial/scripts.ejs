@@ -1,8 +1,5 @@
 <%- js('https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js') %>
-<%- console.log(is_current('history')) %> 
-<% if (is_current('history')) { %>
-  <%- js('https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/jquery/js/timeline.js') %>
-<% } %>
+<%- js('js/timeline.js') %>
 <% if (theme.search && theme.search.enable) { %>
   <script>
     <% if(theme.search.service === 'baidu') { %>
