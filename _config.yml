@@ -363,7 +363,7 @@ widget:
     class: website
     display: [desktop]
     header:
-      icon: fal fa-award
+      icon: fas fa-award
       title: 站点信息
     type:
       article: 
