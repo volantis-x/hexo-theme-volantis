@@ -70,6 +70,7 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
     <div class='new-meta-box'>
       <% (bottomMetas).forEach(function(meta){ %>
         <% if((meta != 'title') && (meta in theme.meta)){ %>
+          <!-- updated: 更新日期, tags标签等 -->
           <%- partial('../_meta/' + meta, {post: post, isPostList: isPostList}) %>
         <% } %>
       <% }) %>

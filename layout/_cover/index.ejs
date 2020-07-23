@@ -19,26 +19,29 @@
         </form>
       </div>
     <% } %>
-    <div class='menu navigation'>
-      <ul class='cover-list-h'>
-        <% if (theme.cover.features) { %>
-          <% (theme.cover.features || []).forEach(function(value){ %>
-            <li>
-              <a class="nav home"
-                href="<%= url_for(value.url) %>"
-                <% if (value.rel) { %>
-                  rel="<%- value.rel %>"
-                <% } %>
-                <% if (value.target) { %>
-                  target="<%- value.target %>"
-                <% } %>
-                id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>">
-                <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
-              </a>
-            </li>
-          <%})%>
-        <% } %>
-      </ul>
-    </div>
+    <!-- 如果404页面不要这个 -->
+    <% if (!is_current('/404')) { %>
+      <div class='menu navigation'>
+        <ul class='cover-list-h'>
+          <% if (theme.cover.features) { %>
+            <% (theme.cover.features || []).forEach(function(value){ %>
+              <li>
+                <a class="nav home"
+                  href="<%= url_for(value.url) %>"
+                  <% if (value.rel) { %>
+                    rel="<%- value.rel %>"
+                  <% } %>
+                  <% if (value.target) { %>
+                    target="<%- value.target %>"
+                  <% } %>
+                  id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>">
+                  <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
+                </a>
+              </li>
+            <%})%>
+          <% } %>
+        </ul>
+      </div>
+    <% } %>
   </div>
 </div>
