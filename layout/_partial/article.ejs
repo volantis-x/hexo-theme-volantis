@@ -3,6 +3,10 @@
   <% if (widget_id == 'article') { %>
     <article id="<%= post.layout %>" class="post white-box reveal <%- theme.style.body.effect.join(' ') %> article-type-<%= post.layout %>" itemscope itemprop="blogPost">
       <%- partial('meta', {post: post, position: 'header'}) %>
+      <!-- 加载时间轴 -->
+      <% if (is_current('history')) { %>
+        <%- partial('../_custom/timeline') %>
+      <% } %>
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           <% if (page.layout=='artitalk') { %>
