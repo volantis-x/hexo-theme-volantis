@@ -28,6 +28,8 @@
       .cover-body
         div.a
           margin-top: 10%
+        div.b
+          overflow-x: scroll
 
   .scroll-down
     width: 100%
@@ -161,23 +163,32 @@
 
 .cover-wrapper .cover .cover-body .menu.featured
   ul
+    flex-wrap: nowrap
     border-radius: $border-button + 2px
     border: 2px solid transparent
-    @media screen and (min-width: $device-mobile)
-      &:hover
-        background: alpha($color-card, 0.25)
+    @media screen and (max-width: $device-mobile)
+      padding: 0 $gap
   ul>li>a
     padding: $gap
+    @media screen and (max-width: $device-mobile)
+      padding: $gap * 0.5
     margin: 2px
     border-radius: $border-button
-    color: alpha($color-site-inner, .65)
     border-bottom: none
     text-align: center
-    background: alpha($color-card, 0)
+    color: alpha($color-site-inner, .75)
+    background: alpha($color-card, .75)
+    @supports (backdrop-filter: blur(20px))
+      background: alpha($color-card, .6)
+      backdrop-filter: saturate(200%) blur(20px)
     i
       font-size: 1.5rem
       margin: $gap * 0.5
       display: block
-    &:hover, &.active, &:active
-      color: $color-site-inner
-      background: alpha($color-card, .75)
+    &.active, &:active
+      color: $color-theme
+      background: $color-card
+      backdrop-filter: none
+    &:hover
+      opacity: 1
+      background: $color-card
