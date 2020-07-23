@@ -359,6 +359,39 @@ widget:
     header:
       icon: fab fa-github
       title: 源码链接
+  showWebsite:
+    class: website
+    display: [desktop]
+    header:
+      icon: fas fa-award
+      title: 站点信息
+    type:
+      article: 
+        enable: true
+        text: '文章数目 :'
+        unit: '篇'
+      runtime:
+        enable: true
+        data: '2020/01/01'    # 填写建站日期
+        text: '已运行时间 :'
+        unit: '天'
+      wordcount:
+        enable: true
+        text: '本站总字数 :'   # 需要启用 wordcount
+        unit: '字'
+      siteuv:
+        enable: true
+        text: '本站访客数 :'   # 需要启用 busuanzi
+        unit: '人'
+      sitepv:
+        enable: true
+        text: '本站总访问量 :' # 需要启用 busuanzi
+        unit: '次'
+      lastupd:
+        enable: true
+        friendlyShow: true    # 更友好的时间显示
+        text: '最后活动时间 :'
+        unit: '日'
 
   # You can add your own widget here or 'blog/source/_data/widget.yml'
   # class: text, list, grid, qrcode, page, ... see more at https://volantis.js.org/
