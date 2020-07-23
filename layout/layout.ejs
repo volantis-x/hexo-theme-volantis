@@ -16,10 +16,14 @@ var $i = $("<span/>").text(a[a_idx]); a_idx = (a_idx + 1) % a.length; var x = e.
  </script>-->
 
 <!--鼠标烟花特效-->
-<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+
+<!--<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
 <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-<script type="text/javascript" src="/js/fireworks.js"></script>
+<script type="text/javascript" src="/js/fireworks.js"></script> -->
+
 <body>
+  <div id="clickCanvas" style=" position:fixed;left:0;top:0;z-index:999999999;pointer-events:none;"><canvas class=" sketch" height="0" width="0"></canvas></div>
+  <script src="js/dj.js"></script>
     <!--game
     <link rel="stylesheet" href="/css/game.css">
     <script>
@@ -32,7 +36,7 @@ var $i = $("<span/>").text(a[a_idx]); a_idx = (a_idx + 1) % a.length; var x = e.
       }
      </script> -->
    <!--粒子特效-->
-  <script type="text/javascript" color="25, 179, 166" opacity='0.5' zIndex="-1" count="150" src="https://cdn.jsdelivr.net/gh/waxll/blog-js/lizi.js"></script><!--51,245,255-->
+  <script type="text/javascript" color="255,51,0" opacity='0.4' zIndex="-1" count="120" src="https://cdn.jsdelivr.net/gh/waxll/blog-js/lizi.js"></script><!--51,245,255-->
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
     <div class='body-wrapper' id="pjax-container">
