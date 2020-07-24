@@ -120,7 +120,6 @@
     <%- css('css/style.css') %>
   <% } %>
   <!-- 加载自定义css -->
-  <%- css('https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/jquery/css/timelineaaa.css') %>
   <% if (config.google_analytics_key) { %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script>
@@ -151,5 +150,7 @@
     })();
     </script>
   <% } %>
-  <!-- 载入自定义插件, 次处jquery加载的位置在之后 -->
+  <!-- 载入自定义插件 -->
+  <%- js('https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js') %>
+
 </head>

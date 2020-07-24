@@ -7,7 +7,7 @@
       <% if (is_current('history')) { %>
         <%- partial('../_custom/timeline') %>
       <% } %>
-      <section class="article typo">
+      <section class="article typo <%- is_current('/about') ? 'about' : null %>">
         <div class="article-entry" itemprop="articleBody">
           <% if (page.layout=='artitalk') { %>
               <div id="artitalk_main"></div>

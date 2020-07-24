@@ -5,6 +5,9 @@
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
     <div class='body-wrapper' id="pjax-container">
+      <% if (is_current('history')) { %>
+        <%- js({ src: 'js/timeline.js', id: 'timeline' }) %>
+      <% } %>
       <% if (theme.plugins.pjax.enable) { %>
         <%- partial('_third-party/pjax/data') %>
       <% } %>

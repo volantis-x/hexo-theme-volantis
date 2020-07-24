@@ -1,0 +1,125 @@
+.history 
+  background url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/line04.gif) repeat-y 187px 0
+  overflow hidden
+  position relative
+.history-date 
+  overflow hidden
+  position relative
+  h2 
+    background #fff url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/icon06.gif) no-repeat 158px 0
+    height 59px
+    font-size 25px
+    margin-bottom 20px
+    padding-left 45px
+    font-weight normal
+    &.first 
+      // position absolute
+      left 0
+      top 0
+      width 935px
+      z-index 99
+      .more-history 
+        font-size 16px
+        background transparent
+        margin-left 30px
+        &:hover 
+          text-decoration underline
+    a 
+      color #00bbff
+      display inline-block
+      *display inline
+      zoom 1
+      background url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/icon08.gif) no-repeat right 50%
+      padding-right 17px
+      margin 21px 97px 0 0
+      &:hover 
+        text-decoration none
+    img 
+      vertical-align -5px
+    &.date02 
+      background none
+  ul 
+    li 
+      background url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/icon07.gif) no-repeat 180px 0
+      padding-bottom 50px
+      zoom 1
+      display flex
+      &.last 
+        padding-bottom 0
+      &:after 
+        content " "
+        display block
+        height 0
+        clear both
+        visibility hidden
+      h3 
+        float left
+        width 168px
+        text-align right
+        padding-right 19px
+        color #c3c3c3
+        font normal 18px/16px Arial
+        span 
+          display block
+          color #d0d0d0
+          font-size 12px
+      dl 
+        float left
+        padding-left 41px
+        margin-top -5px
+        dt 
+          line-height 22px
+          color #737373
+          font-size 16px
+          span 
+            display block
+            color #787878
+            font-size 12px
+      &.green 
+        h3 
+          color #1db702
+          span 
+            color #a8dda3
+        dl 
+          margin-top -8px
+          dt 
+            font-size 20px
+            line-height 28px
+            a 
+              display inline-block
+              *display inline
+              zoom 1
+              overflow hidden
+              vertical-align middle
+              margin-left 12px
+          dd 
+            padding-top 20px
+            display none
+            img 
+              float left
+            p 
+              overflow hidden
+              zoom 1
+              line-height 21px
+              color #787878
+*body 
+  .history-date 
+    ul 
+      li 
+        dl 
+          dt 
+            _font-size 12px!important
+            _font-weight bold
+            span 
+              _font-weight normal!important
+        &.green 
+          dl 
+            dt 
+              a 
+                _background transparent!important
+                *background transparent!important
+                *font-size 12px!important
+                _font-weight normal!important
+.about 
+  li 
+    font-size 15px
