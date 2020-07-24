@@ -20,6 +20,11 @@ html
       else
         scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px)
 
+:root
+  if hexo-config('style.scrollbar.color')  
+    scrollbar-width: thin;
+    scrollbar-color: convert(hexo-config('style.scrollbar.color')) #fff;
+
 body
   background-color: $color-site
   text-rendering: optimizelegibility
