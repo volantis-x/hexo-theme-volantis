@@ -30,13 +30,29 @@
             <% if(post.prev){ %>
               <a class='prev' href='<%- url_for(post.prev.path) %>'>
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i><%- post.prev.title || '' %></p>
-                <p class='content'><%- truncate(strip_html(page.prev.content), {length: 100}) %></p>
+  
+                <% if (post.prev.excerpt) { %>
+                  <p class='content'><%- truncate(strip_html(post.prev.excerpt), {length: 100}) %></p>
+                <% } else if (post.description) { %>
+                  <p><%- post.prev.description %></p>
+                <% } else { %>
+                  <p class='content'><%- truncate(strip_html(page.prev.content), {length: 100}) %></p>
+                <% } %>
+
               </a>
             <% } %>
             <% if(post.next){ %>
               <a class='next' href='<%- url_for(post.next.path) %>'>
                 <p class='title'><%- post.next.title || '' %><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'><%- truncate(strip_html(page.next.content), {length: 100}) %></p>
+
+                <% if (post.next.excerpt) { %>
+                  <p class='content'><%- truncate(strip_html(post.next.excerpt), {length: 100}) %></p>
+                <% } else if (post.description) { %>
+                  <p><%- post.next.description %></p>
+                <% } else { %>
+                  <p class='content'><%- truncate(strip_html(page.next.content), {length: 100}) %></p>
+                <% } %>
+
               </a>
             <%} %>
           </div>
