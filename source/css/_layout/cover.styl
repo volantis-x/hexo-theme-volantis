@@ -163,8 +163,9 @@
 .cover-wrapper .cover .cover-body
   .menu.dock, .menu.featured, .menu.focus
     max-width: 100%
-    overflow-x: scroll
-    scrollbar(0, 0)
+    @media screen and (max-width: $device-mobile)
+      overflow-x: scroll
+      scrollbar(0, 0)
     border-radius: $border-button + 2px
     ul
       margin: 2px
@@ -180,7 +181,7 @@
       border-radius: $border-button
       border-bottom: none
       text-align: center
-      color: alpha($color-site-inner, .75)
+      color: alpha($color-site-inner, 1)
       img
         display: block
         border-radius: 2px
@@ -203,13 +204,14 @@
         background: $color-card
 
 .cover-wrapper .cover .cover-body .menu.dock
+  background: alpha($color-card, .5)
   @supports (backdrop-filter: blur(20px))
     background: alpha($color-card, .5)
     backdrop-filter: saturate(200%) blur(20px)
 
 .cover-wrapper .cover .cover-body .menu.featured
   ul>li>a
-    color: alpha($color-site-inner, .75)
+    background: alpha($color-card, .5)
     @supports (backdrop-filter: blur(20px))
       background: alpha($color-card, .5)
       backdrop-filter: saturate(200%) blur(20px)
@@ -218,6 +220,7 @@
   @media screen and (min-width: $device-mobile)
     trans()
     &:hover
+      background: alpha($color-card, .5)
       @supports (backdrop-filter: blur(20px))
         background: alpha($color-card, .5)
         backdrop-filter: saturate(200%) blur(20px)
