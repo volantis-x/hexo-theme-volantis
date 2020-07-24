@@ -170,8 +170,10 @@
       margin: 2px
       flex-wrap: nowrap
       overflow: hidden
+      align-items: stretch
     ul>li>a
-      padding: $gap
+      align-self: stretch
+      padding: $gap * 0.75
       @media screen and (max-width: $device-mobile)
         padding: $gap * 0.75 $gap * 0.5
       margin: 2px
@@ -179,9 +181,18 @@
       border-bottom: none
       text-align: center
       color: alpha($color-site-inner, .75)
+      img
+        display: block
+        border-radius: 2px
+        margin: $gap * 0.5 $gap * 0.25 $gap * 0.25 $gap * 0.25
+        width: 50px
+        @media screen and (max-width: $device-mobile)
+          width: 40px
+        @media screen and (max-width: $device-mobile-m)
+          width: 32px
       i
         font-size: 1.5rem
-        margin: $gap * 0.35 $gap * 0.5 $gap * 0.5 $gap * 0.5
+        margin: $gap * 0.5
         display: block
       &.active, &:active
         color: $color-theme
@@ -192,6 +203,10 @@
         background: $color-card
 
 .cover-wrapper .cover .cover-body .menu.dock
+  ul
+    margin: 4px
+  ul>li>a
+    margin: 0
   @supports (backdrop-filter: blur(20px))
     background: alpha($color-card, .5)
     backdrop-filter: saturate(200%) blur(20px)
