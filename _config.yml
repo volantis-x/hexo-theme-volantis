@@ -164,7 +164,7 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, category, date, wordcount, counter, valinecount, pin]
     # 列表类页面的侧边栏
-    sidebar: [blogger, category, tagcloud, qrcode, showWebsite]
+    sidebar: [blogger, category, tagcloud, qrcode, webinfo]
     # read more button
     readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
   # 页面布局
