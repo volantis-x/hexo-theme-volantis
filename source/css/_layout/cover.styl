@@ -159,34 +159,72 @@
       color: $color-site-inner
       border-bottom: 2px solid $color-site-inner
 
-.cover-wrapper .cover .cover-body .menu.featured
-  max-width: 100%
-  overflow-x: scroll
-  scrollbar(0, 0)
-  border-radius: $border-button + 2px
-  border: 2px solid transparent
+
+.cover-wrapper .cover .cover-body
+  .menu.dock, .menu.featured, .menu.focus
+    max-width: 100%
+    @media screen and (max-width: $device-mobile)
+      overflow-x: scroll
+      scrollbar(0, 0)
+    border-radius: $border-button + 2px
+    ul
+      margin: 2px
+      flex-wrap: nowrap
+      overflow: hidden
+      align-items: stretch
+    ul>li>a
+      align-self: stretch
+      padding: $gap * 0.75
+      @media screen and (max-width: $device-mobile)
+        padding: $gap * 0.75 $gap * 0.5
+      margin: 2px
+      border-radius: $border-button
+      border-bottom: none
+      text-align: center
+      color: alpha($color-site-inner, 1)
+      img
+        display: block
+        border-radius: 2px
+        margin: $gap * 0.5 $gap * 0.25 $gap * 0.25 $gap * 0.25
+        width: 50px
+        @media screen and (max-width: $device-mobile)
+          width: 40px
+        @media screen and (max-width: $device-mobile-m)
+          width: 32px
+      i
+        font-size: 1.5rem
+        margin: $gap * 0.5
+        display: block
+      &.active
+        color: $color-theme
+        background: $color-card
+        backdrop-filter: none
+      &:hover
+        opacity: 1
+        background: $color-card
+
+.cover-wrapper .cover .cover-body .menu.dock
+  background: alpha($color-card, .5)
   @supports (backdrop-filter: blur(20px))
     background: alpha($color-card, .5)
     backdrop-filter: saturate(200%) blur(20px)
-  ul
-    flex-wrap: nowrap
+
+.cover-wrapper .cover .cover-body .menu.featured
   ul>li>a
-    padding: $gap
-    @media screen and (max-width: $device-mobile)
-      padding: $gap * 0.5
-    margin: 2px
-    border-radius: $border-button
-    border-bottom: none
-    text-align: center
-    color: alpha($color-site-inner, .75)
-    i
-      font-size: 1.5rem
-      margin: $gap * 0.25 $gap * 0.5 $gap * 0.5 $gap * 0.5
-      display: block
-    &.active, &:active
-      color: $color-theme
-      background: $color-card
-      backdrop-filter: none
+    background: alpha($color-card, .5)
+    @supports (backdrop-filter: blur(20px))
+      background: alpha($color-card, .5)
+      backdrop-filter: saturate(200%) blur(20px)
+
+.cover-wrapper .cover .cover-body .menu.focus
+  @media screen and (min-width: $device-mobile)
+    trans()
+    &:hover
+      background: alpha($color-card, .5)
+      @supports (backdrop-filter: blur(20px))
+        background: alpha($color-card, .5)
+        backdrop-filter: saturate(200%) blur(20px)
+  ul>li>a
     &:hover
       opacity: 1
       background: $color-card
