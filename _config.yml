@@ -97,7 +97,7 @@ style:
 ############################### Layout ###############################
 cover:
   scheme: docs # docs, blog
-  layout: featured # search (搜索), featured (精选)
+  layout: featured # search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
