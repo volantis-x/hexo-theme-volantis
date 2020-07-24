@@ -194,7 +194,7 @@
         font-size: 1.5rem
         margin: $gap * 0.5
         display: block
-      &.active, &:active
+      &.active
         color: $color-theme
         background: $color-card
         backdrop-filter: none
@@ -203,10 +203,6 @@
         background: $color-card
 
 .cover-wrapper .cover .cover-body .menu.dock
-  ul
-    margin: 4px
-  ul>li>a
-    margin: 0
   @supports (backdrop-filter: blur(20px))
     background: alpha($color-card, .5)
     backdrop-filter: saturate(200%) blur(20px)
