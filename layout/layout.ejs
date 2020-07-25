@@ -8,12 +8,18 @@
       <% if (is_current('history')) { %>
         <%- js({ src: 'js/timeline.js', id: 'timeline' }) %>
       <% } %>
+      <% if (is_current('needs')) { %>
+        <%- js({ src: 'js/needs.js', id: 'needs' }) %>
+      <% } %>
+      <!-- pjax-data区域 -->
       <% if (theme.plugins.pjax.enable) { %>
         <%- partial('_third-party/pjax/data') %>
       <% } %>
+      <!-- layout的动态内容,pjax内每次必会重新加载 -->
       <%- body %>
     </div>
     <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+    <!-- 向上箭头 -->
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
   <div>

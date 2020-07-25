@@ -1,7 +1,7 @@
 <% var sections = page.body ? page.body : theme.layout.on_page.body; %>
 <% sections.forEach(function(widget_id){ %>
   <% if (widget_id == 'article') { %>
-    <article id="<%= post.layout %>" class="post white-box reveal <%- theme.style.body.effect.join(' ') %> article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+    <article id="<%= post.layout %>" class="<%- is_current('/about') ? 'about-article' : null %> post white-box reveal <%- theme.style.body.effect.join(' ') %> article-type-<%= post.layout %>" itemscope itemprop="blogPost">
       <%- partial('meta', {post: post, position: 'header'}) %>
       <!-- 加载时间轴, jq位置有问题 -->
       <% if (is_current('history')) { %>

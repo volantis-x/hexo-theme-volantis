@@ -1,9 +1,11 @@
 <%- partial('_pre') %>
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
 	<% if (page.year || page.month) { %>
+		<!-- 相当于首页的文章列表 -->
 		<%- partial('_partial/archive') %>
 	<% } else { %>
-	  <article id="archive-page" class="post article white-box reveal <%- theme.style.body.effect.join(' ') %>">
+		<article id="archive-page" class="post article white-box reveal <%- theme.style.body.effect.join(' ') %>">
+			<div>现存文章<%- site.posts.length %>条,继续努力!</div>
 	    <section class="archive">
 	      <% var year = -1, postid = -1; %>
 	        <% site.posts.sort('date', -1).each(function(post) { %>

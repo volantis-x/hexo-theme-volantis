@@ -31,7 +31,7 @@
       zoom 1
       background url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/icon08.gif) no-repeat right 50%
       padding-right 17px
-      margin 21px 97px 0 0
+      // margin 21px 97px 0 0
       &:hover 
         text-decoration none
     img 
@@ -40,10 +40,21 @@
       background none
   ul 
     li 
-      background url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/icon07.gif) no-repeat 180px 0
+      // background url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/icon07.gif) no-repeat 180px 0
       padding-bottom 50px
       zoom 1
       display flex
+      position relative
+      .node 
+        display inline-block
+        width 15px
+        height 15px
+        background url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/icon07.gif) no-repeat
+        position absolute
+        left 187px - 7.5px
+      h2,h3 
+        width 187px - 7.5px
+        flex 0 0 auto
       &.last 
         padding-bottom 0
       &:after 
@@ -54,7 +65,7 @@
         visibility hidden
       h3 
         float left
-        width 168px
+        // width 168px
         text-align right
         padding-right 19px
         color #c3c3c3
@@ -66,7 +77,7 @@
       dl 
         float left
         padding-left 41px
-        margin-top -5px
+        // margin-top -5px
         dt 
           line-height 22px
           color #737373
@@ -120,6 +131,28 @@
                 *background transparent!important
                 *font-size 12px!important
                 _font-weight normal!important
-.about 
+.about-article 
+  z-index 10
+  .about 
   li 
     font-size 15px
+  .icon-erweima 
+    display inline-block
+    font-size 20px
+    color #1CC09E
+    &:hover + #gongzhonghao
+      width 400px
+      height 400px
+      
+  #gongzhonghao 
+    width 0
+    height 0
+    background url('https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/dfca5b720de4970eb67179b49e8ed895.png')
+    position absolute
+    top 0
+    left 80px
+    z-index 100
+    // display none
+    transition-property all 
+    transition-duration 0.4s
+    // -moz-transition-delay: 1s
