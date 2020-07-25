@@ -114,7 +114,7 @@
         <% if (enableMiniValine){ %>
           pjax_minivaline();
         <% } %>
-        <% if (config.darkmode) { %>
+        <% if (theme.plugins.darkmodejs.enable) { %>
           pjax_darkmodejs();
         <% } %>
       } catch (e) {
