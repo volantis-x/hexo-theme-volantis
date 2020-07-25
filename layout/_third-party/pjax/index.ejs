@@ -1,15 +1,4 @@
 <%
-  var enableValine = false;
-  var enableMiniValine = false;
-  if (theme.comments.service && theme.comments.service.length > 0) {
-    if (theme.comments.service == 'valine') {
-      enableValine = true;
-    }
-    if (theme.comments.service == 'minivaline') {
-      enableMiniValine = true;
-    }
-  }
-
   var banUrl = theme.plugins.pjax.banUrl || [];
 %>
 
@@ -108,11 +97,17 @@
         <% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
           pjax_initCopyCode();
         <% } %>
-        <% if (enableValine){ %>
+        <% if (theme.comments.service == 'valine'){ %>
           pjax_valine();
         <% } %>
-        <% if (enableMiniValine){ %>
+        <% if (theme.comments.service == 'minivaline'){ %>
           pjax_minivaline();
+        <% } %>
+        <% if (theme.comments.service == 'gitalk'){ %>
+          pjax_gitalk();
+        <% } %>
+        <% if (theme.comments.service == 'disqus'){ %>
+          pjax_disqus();
         <% } %>
         <% if (config.darkmode) { %>
           pjax_darkmodejs();
