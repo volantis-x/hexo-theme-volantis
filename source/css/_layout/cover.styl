@@ -219,11 +219,11 @@
 .cover-wrapper .cover .cover-body .menu.focus
   @media screen and (min-width: $device-mobile)
     trans()
-    &:hover
-      background: alpha($color-card, .5)
+
       @supports (backdrop-filter: blur(20px))
         background: alpha($color-card, .5)
-        backdrop-filter: saturate(200%) blur(20px)
+       /*backdrop-filter: saturate(200%) blur(20px)    &:hover
+      background: alpha($color-card, .5) line(222) */
   ul>li>a
     &:hover
       opacity: 1
