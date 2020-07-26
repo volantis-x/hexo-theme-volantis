@@ -97,10 +97,10 @@ style:
 ############################### Layout ###############################
 cover:
   scheme: blog # docs, blog
-  layout: featured # search (搜索), dock (坞), featured (精选), focus (焦点)
+  layout: focus # search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
-    archive: true
+    archive: false
     others: true # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
   title: Waxll 
@@ -275,7 +275,7 @@ widget:
   # blogger info widget
   blogger:
     class: blogger
-    display: [desktop, mobile] # [desktop, mobile]
+    display: [desktop] # [desktop, mobile]
     avatar: https://7bu.top/2020/07/14/8ba61fac048a2.jpeg
     shape: rectangle # circle, rectangle
     url: /about/
@@ -482,6 +482,7 @@ plugins:
     duration: 20000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
+      - https://cdn.jsdelivr.net/gh/Colsrch/CDN/wallpaper.jpg
       - https://7bu.top/2020/07/15/708959debae93.jpg
       - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
       - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
