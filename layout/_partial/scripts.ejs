@@ -167,8 +167,9 @@
 	  label: '<%- theme.plugins.darkmodejs.label %>',
 	  autoMatchOsTheme: <%- theme.plugins.darkmodejs.autoMatchOsTheme %>
 	};
-	// 卡片兼容处理
+	// 卡片兼容处理 mix-blend-mode 与 effect: [shadow, floatable, blur] 冲突???
 	function pjax_darkmodejs(){
+		<% if (theme.plugins.darkmodejs.compatible) { %>
 		if(!supportCss3('mix-blend-mode'))return;
 		var checkExist2 = setInterval(function() {
 		   if (typeof jQuery == 'undefined'){return;}
@@ -185,6 +186,7 @@
 				}
 			})
 		}, 100);
+		<% } %>
 	}
 	// mix-blend-mode support?
 	if(supportCss3('mix-blend-mode')){

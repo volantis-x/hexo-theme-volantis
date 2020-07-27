@@ -46,10 +46,10 @@ div.note
     vertical-align: middle
     font-family: 'Font Awesome 5 Free'
 
-  background: mix($color-text, $color-card, 5)
-  border-left: $border-codeblock solid mix($color-text, $color-card, 80)
+  background: bgcolor($color-blockquote)
+  border-left: $border-codeblock solid $color-blockquote
   &::before
-    color: mix($color-text, $color-card, 80)
+    color: $color-blockquote
     content: '\f054'
   if hexo-config('style.body.note') && hexo-config('style.body.note.icon')
     &::before
@@ -130,6 +130,11 @@ div.note
     border-color: mix($color-text, $color-card, 80)
     &::before
       color: mix($color-text, $color-card, 80)
+  &.theme
+    background: bg($color-theme)
+    border-color: border($color-theme)
+    &::before
+      color: border($color-theme)
   &.red
     background: bg($color-mac-red)
     border-color: border($color-mac-red)

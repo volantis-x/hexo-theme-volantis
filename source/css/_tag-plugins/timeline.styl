@@ -41,6 +41,8 @@ div.timenode
       width: 12px
       height: 12px
       border-radius: 6px
+      transform: scale(0.5)
+      trans()
     p
       font-weight: bold
       margin: 0 0 0 16px + 8px
@@ -52,13 +54,10 @@ div.timenode
     display: inline-block
 
 div.timenode:hover
-  &:before, &:after
-    background: alpha($color-hover, .5)
   .meta
     color: $color-text
     &:before
       background: alpha($color-hover, .5)
     &:after
       background: $color-hover
-  .body
-    color: $color-text
+      transform: scale(1)
