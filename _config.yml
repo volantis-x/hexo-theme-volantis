@@ -108,7 +108,7 @@ cover:
   search: Search...
   features:
     - name: 文档
-      img: https://i.loli.net/2020/07/24/GaeXvVAdtJkCYT3.png
+      #img: https://i.loli.net/2020/07/24/GaeXvVAdtJkCYT3.png
       icon: fas fa-book
       url: 404/
     - name: 博文
