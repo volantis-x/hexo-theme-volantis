@@ -1,7 +1,7 @@
 <div class='cover-body'>
   <div class='a'>
     <% if (theme.cover.logo) { %>
-      <img class='logo' src='<%- url_for(theme.cover.logo) %>'/>
+      <img no-lazy class='logo' src='<%- url_for(theme.cover.logo) %>'/>
     <% } %>
     <% if (theme.cover.title) { %>
       <p class="title"><%- theme.cover.title ? theme.cover.title : config.title %></p>
@@ -11,15 +11,7 @@
     <% } %>
   </div>
   <div class='b'>
-    <% if (theme.search.enable === true) { %>
-      <div class="m_search">
-        <form name="searchform" class="form u-search-form">
-          <input type="text" class="input u-search-input" placeholder="<%- theme.cover && theme.cover.search %>" />
-          <i class="icon fas fa-search fa-fw"></i>
-        </form>
-      </div>
-    <% } %>
-    <div class='menu navigation'>
+    <div class='menu navigation focus'>
       <ul class='cover-list-h'>
         <% if (theme.cover.features) { %>
           <% (theme.cover.features || []).forEach(function(value){ %>
@@ -33,7 +25,7 @@
                   target="<%- value.target %>"
                 <% } %>
                 id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>">
-                <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
+                <% if (value.img) { %><img src='<%= value.img %>'><% } else if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
               </a>
             </li>
           <%})%>

@@ -5,7 +5,6 @@ navbar:
 post:
   pin: 置頂
   read_more: 閱讀全文
-  sticky: 置頂
   wordcount: '字數：%s字'
   duration: '時長：%s分鐘'
   comments: 評論

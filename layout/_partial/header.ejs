@@ -15,7 +15,7 @@
         <% let logo = theme.navbar.logo %>
         <a class="title flat-box" target="_self" href='<%- url_for("/") %>'>
           <% if (logo.img) { %>
-            <img class='logo' src='<%- logo.img %>'/>
+            <img no-lazy class='logo' src='<%- logo.img %>'/>
           <% } %>
           <% if (logo.icon) { %>
             <i class='<%- logo.icon %>'></i>

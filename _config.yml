@@ -18,6 +18,7 @@ style:
     highlight:
       language: true # show language of codeblock
       copy_btn: true
+      grayscale: true # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
       h2: left
@@ -34,8 +35,8 @@ style:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 24px # Spacing above H3 (only px unit)
     h4: 16px # Spacing above H4 (only px unit)
-    paragraph: 1rem # Paragraph spacing between paragraphs
-    row: .5rem # Paragraph spacing between other elements
+    paragraph: .6rem # Paragraph spacing between paragraphs
+    row: .4rem # Paragraph spacing between other elements
     line_height: 1.65 # normal, 1.5, 1.75, 2 ...
   border_radius:
     card: 8px
@@ -50,7 +51,7 @@ style:
     h4: 1.125rem
     h5: 1rem
     h6: 1rem
-    body: 1rem
+    body: .9375rem
     list: .9375rem
     meta: .875rem
     code: .8125rem
@@ -96,14 +97,15 @@ style:
 ############################### Layout ###############################
 cover:
   scheme: docs # docs, blog
+  layout: featured # search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
-  title: Volantis
-  subtitle: 'A Wonderful Theme for Hexo'
-  search: # search bar placeholder
+  logo: https://i.loli.net/2020/07/22/2OYbPxZjhdFce3L.png
+  title: ''
+  subtitle: ''
+  search: A Wonderful Theme for Hexo # search bar placeholder
   features:
     - name: 文档
       icon: fas fa-book
@@ -127,9 +129,9 @@ cover:
 # Navigation Bar
 navbar:
   logo: # choose [img] or [icon + title]
-    img:
+    img: https://i.loli.net/2020/07/22/Xw9pZTkyhSPOY8M.png
     icon:
-    title: Volantis
+    title:
   menu:
     # The following can be written in `blog/source/_data/menu.yml`
     - name: 博客
@@ -357,6 +359,41 @@ widget:
     header:
       icon: fab fa-github
       title: 源码链接
+  # ---------------------------------------
+  # webinfo widget
+  webinfo:
+    class: webinfo
+    display: [desktop]
+    header:
+      icon: fas fa-award
+      title: 站点信息
+    type:
+      article:
+        enable: true
+        text: '文章数目：'
+        unit: '篇'
+      runtime:
+        enable: true
+        data: '2020/01/01'    # 填写建站日期
+        text: '已运行时间：'
+        unit: '天'
+      wordcount:
+        enable: true
+        text: '本站总字数：'   # 需要启用 wordcount
+        unit: '字'
+      siteuv:
+        enable: true
+        text: '本站访客数：'   # 需要启用 busuanzi
+        unit: '人'
+      sitepv:
+        enable: true
+        text: '本站总访问量：' # 需要启用 busuanzi
+        unit: '次'
+      lastupd:
+        enable: true
+        friendlyShow: true    # 更友好的时间显示
+        text: '最后活动时间：'
+        unit: '日'
 
   # You can add your own widget here or 'blog/source/_data/widget.yml'
   # class: text, list, grid, qrcode, page, ... see more at https://volantis.js.org/
@@ -444,12 +481,12 @@ plugins:
     duration: 20000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
+      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/35F12181-F0E9-45BD-B134-37E4B4A660CF.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg
+      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/AEB33F9D-7294-4CF1-B8C5-3020748A9D45.jpeg
       # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/2884F904-F1F3-479E-AE27-5EBC291B63B0.jpeg
@@ -502,7 +539,24 @@ plugins:
     # color1: #说说背景颜色1&按钮颜色1
     # color2: #说说背景颜色2&按钮颜色2
     # color3: #说说字体颜色
-
+  ##################################
+  # 暗黑模式 darkmodejs
+  # https://darkmodejs.learn.uno
+  # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
+  darkmodejs:
+    enable: true
+    js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
+    bottom: 8px
+    right: unset
+    left: 8px
+    time: 0.25s
+    mixColor: '#f4f4f4'
+    backgroundColor: '#f4f4f4'
+    buttonColorDark: '#100f2c'
+    buttonColorLight: '#f4f4f4'
+    saveInCookies: true
+    label: 🌓
+    autoMatchOsTheme: true
 
 
 
@@ -631,7 +685,7 @@ search:
 ############################### Theme Information ###############################
 info:
   name: Volantis # This is theme's name.
-  version: '3.0-beta1' # This is theme's version.
+  version: '3.0-beta2' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
   repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:

@@ -98,6 +98,12 @@
     opacity: 0.7
   u
     color: $color-hover
+  psw
+    color: lighten($color-p, 10)
+    background: lighten($color-p, 10)
+    border-radius: 2px
+    &:hover
+      background: none
   kbd
     border-radius: $border-codeblock * 0.5
     border: 1px solid darken($color-inlinecode, 6)
@@ -117,26 +123,25 @@
     max-width: 100%
     line-height: inherit
 
-
   ul,ol
     font-size: $fontsize-list
     list-style: initial
     padding-left: 8px
     margin-left: $gap
-    margin-top: $gap-row
-    margin-bottom: $gap-row
+    margin-top: 2px
+    margin-bottom: 2px
     ul,ol
       margin-top: 0
       margin-bottom: 0
     li
-      margin-top: 2px
-      margin-bottom: 2px
+      margin-top: 0px
+      margin-bottom: 0px
       li
         margin-top: 0
         margin-bottom: 0
       p
-        margin-top: $gap-row
-        margin-bottom: $gap-row
+        margin-top: 4px
+        margin-bottom: 0
     &.task-list
       padding-left: 0
       margin-left: 4px
@@ -177,7 +182,7 @@
       margin-bottom: $gap-row
     position: relative
     width: 100%
-    padding: $gap-row + $fontoffset  $gap $gap-row $gap
+    padding: $gap + $fontoffset  $gap $gap $gap
     trans()
     footer
       padding: 0
@@ -231,7 +236,6 @@
       font-size: $fontsize-code
       background: $color-inlinecode
       border-radius: $border-codeblock * 0.5
-      border: 1px solid darken($color-inlinecode, 6)
 
 
   @media screen and (max-width: $device-mobile)
@@ -356,6 +360,7 @@
       margin-top: $gap-h4 - $navbar-height - $gap
   h5
     font-weight: bold
+
 
 article .readmore
   margin-top: $gap-paragraph

@@ -23,6 +23,7 @@ assignees: ''
 
 - [ ] 将主题升级至最新版本。
 - [ ] 下载主题官网源码运行，经过一定的步骤，可以复现此BUG。
+- [ ] 我已经查看了[Volantis的最新路线图](https://github.com/volantis-x/hexo-theme-volantis/projects)，并搜索了当前的 [issues](https://github.com/volantis-x/hexo-theme-volantis/issues), 但是并不能够帮助我。
 
 ### 复现步骤
 
@@ -32,43 +33,42 @@ assignees: ''
 2. xxx
 3. xxx
 
-## 环境信息
-
-<!-- 请务必提供以下信息 -->
+## 环境信息 <!-- 请务必提供以下信息 -->
 
 ### 复现地址：
 <!-- 如果使用文档官网源码本地运行也存在异常，可以不用提供复现地址。 -->
 
-### 截图：
-<!-- 不同系统、浏览器效果可能不同，提供截图有助于发现问题所在。 -->
+### 截图
+<!-- 不同系统、浏览器效果可能不同，提供截图有助于发现问题。 -->
+<details><summary>相关截图:</summary>
+
+<!-- 在这里粘贴截图 -->
+
+</details>
 
 ### 浏览器、操作系统
 
+### 配置文件 <!-- 要求提供时再回来补全即可，如果想快速解决问题，可以直接写上 -->
+<details><summary>配置文件</summary>
 
-### 站点配置文件
-<!-- 只粘贴 `blog/_config.yml` 中修改过的部分 -->
+#### 站点配置文件
 ```yml
-
+在这里粘贴 `blog/_config.yml` 中修改过的部分
 ```
 
-### 主题配置文件
-<!-- 只粘贴 `themes/volantis/_config.yml` 中修改过的部分 -->
+#### 主题配置文件
 ```yml
-
+在这里粘贴 `themes/volantis/_config.yml` 中修改过的部分
 ```
-
-#### 更多信息
-
-<!-- 要求提供时再回来补全即可 -->
 
 #### node.js & npm
-<!-- 粘贴 `node -v && npm -v` 输出的信息 -->
 ```
-
+在这里粘贴 `node -v && npm -v` 输出的信息
 ```
 
 #### package.json
-<!-- 粘贴 `npm ls --depth 0` 输出的信息 -->
+```
+在这里粘贴 `npm ls --depth 0` 输出的信息
 ```
 
-```
+</details>

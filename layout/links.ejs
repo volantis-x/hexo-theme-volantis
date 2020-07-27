@@ -6,16 +6,16 @@
         <%- page.excerpt %>
         <% if (page.links){ %>
           <% (page.links||[]).forEach(function(group){ %>
-            <% if(group.items) { %>
+            <% if (group.items) { %>
               <div class='friends-group'>
-                <% if(group.group) { %>
+                <% if (group.group) { %>
                   <br>
-                  <h3 class='friend-header'>
+                  <h2 class='friend-header'>
                     <% if (group.icon) { %>
                       <i class="<%= group.icon %> fa-fw" aria-hidden="true"></i>
                     <%} %>
-                    <%= group.group %>
-                  </h3>
+                    <%- group.group %>
+                  </h2>
                   <% if(group.desc) { %>
                     <%- markdown(group.desc) %>
                   <%} %>
