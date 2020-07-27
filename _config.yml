@@ -108,22 +108,22 @@ cover:
   search: A Wonderful Theme for Hexo # search bar placeholder
   features:
     - name: 文档
+      img: https://i.loli.net/2020/07/24/GaeXvVAdtJkCYT3.png
       icon: fas fa-book
-      url: https://volantis.js.org/getting-started/
-    - name: 博文
-      icon: fas fa-rss
-      url: https://volantis.js.org/archives/
+      url: /v3/getting-started/
+    - name: 帮助
+      img: https://i.loli.net/2020/07/24/cxRslyWzk2OTP9r.png
+      icon: fas fa-question-circle
+      url: faqs/
     - name: 示例
+      img: https://i.loli.net/2020/07/24/9kHJZNA8m4RBxhp.png
       icon: fas fa-play-circle
-      url: https://volantis.js.org/examples/
-    - name: 源码
-      icon: fas fa-file-code
-      url: https://github.com/volantis-x/hexo-theme-volantis/
-      rel: external nofollow noopener noreferrer
-      target: _blank
-    - name: 鸣谢
-      icon: fas fa-handshake
-      url: https://volantis.js.org/contributors/
+      url: /examples/
+    - name: 社区
+      img: https://i.loli.net/2020/07/24/skczZ1VdMGRbTLi.png
+      icon: fas fa-fan fa-spin
+      url: /contributors/
+
 
 
 # Navigation Bar

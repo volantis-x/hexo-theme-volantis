@@ -12,25 +12,22 @@
   </div>
   <div class='b'>
     <div class='menu navigation featured'>
-      <ul class='cover-list-h'>
+      <div class='list-h'>
         <% if (theme.cover.features) { %>
           <% (theme.cover.features || []).forEach(function(value){ %>
-            <li>
-              <a class="nav home"
-                href="<%= url_for(value.url) %>"
-                <% if (value.rel) { %>
-                  rel="<%- value.rel %>"
-                <% } %>
-                <% if (value.target) { %>
-                  target="<%- value.target %>"
-                <% } %>
-                id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>">
-                <% if (value.img) { %><img src='<%= value.img %>'><% } else if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
-              </a>
-            </li>
+            <a href="<%= url_for(value.url) %>"
+              <% if (value.rel) { %>
+                rel="<%- value.rel %>"
+              <% } %>
+              <% if (value.target) { %>
+                target="<%- value.target %>"
+              <% } %>
+              id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>">
+              <% if (value.img) { %><img src='<%= value.img %>'><% } else if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><p><%- value.name %></p>
+            </a>
           <%})%>
         <% } %>
-      </ul>
+      </div>
     </div>
   </div>
 </div>
