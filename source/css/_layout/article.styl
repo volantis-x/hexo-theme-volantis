@@ -1,17 +1,8 @@
 .article
   underline()
-    &:hover
-      text-decoration: underline
-  .article-entry
-    >a,>p>a,blockquote a,div.note a
-      underline()
-    >ul>li,>ol>li,tbody tr td
-      >a,>p>a
-        underline()
-    div.tab-pane
-      >p,li
-        >a
-          underline()
+    text-decoration: underline
+  a:not([class])
+    underline()
 
 .article
   color: $color-p
