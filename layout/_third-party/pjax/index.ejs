@@ -106,14 +106,14 @@
         <% } %>
         <% if (theme.comments.service == 'minivaline'){ %>
           pjax_minivaline();
-        <% } %>
+        <% } %
         <% if (theme.comments.service == 'gitalk'){ %>
           pjax_gitalk();
         <% } %>
         <% if (theme.comments.service == 'disqus'){ %>
           pjax_disqus();
         <% } %>
-        <% if (config.darkmode) { %>
+        <% if (theme.plugins.darkmodejs.enable) { %
           pjax_darkmodejs();
         <% } %>
       } catch (e) {

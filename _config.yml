@@ -539,7 +539,24 @@ plugins:
     # color1: #说说背景颜色1&按钮颜色1
     # color2: #说说背景颜色2&按钮颜色2
     # color3: #说说字体颜色
-
+  ##################################
+  # 暗黑模式 darkmodejs
+  # https://darkmodejs.learn.uno
+  # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
+  darkmodejs:
+    enable: true
+    js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
+    bottom: 8px
+    right: unset
+    left: 8px
+    time: 0.25s
+    mixColor: '#f4f4f4'
+    backgroundColor: '#f4f4f4'
+    buttonColorDark: '#100f2c'
+    buttonColorLight: '#f4f4f4'
+    saveInCookies: true
+    label: 🌓
+    autoMatchOsTheme: true
 
 
 
