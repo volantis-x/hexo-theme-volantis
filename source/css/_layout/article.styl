@@ -97,25 +97,26 @@
   s,del
     opacity: 0.7
   u
-    color: $color-hover
+    color: $color-text
+    text-decoration: none
+    border-bottom: 1px solid $color-mac-red
+  emp
+    color: $color-text
+    border-bottom: 4px dotted $color-mac-red
   psw
-    color: lighten($color-p, 10)
-    background: lighten($color-p, 10)
+    color: transparent
+    background: mix($color-p, $color-card, 50)
     border-radius: 2px
+    trans()
     &:hover
+      color: $color-p
       background: none
   kbd
     border-radius: $border-codeblock * 0.5
-    border: 1px solid darken($color-inlinecode, 6)
-    background: $color-inlinecode
+    border: 1px solid mix($color-block, $color-text, 90)
+    background: $color-block
     padding-left: 4px
     padding-right: 4px
-    trans()
-    &:hover
-      cursor: default
-      border-color: $color-theme
-      background: $color-theme
-      color: $color-inner
   p
     margin-top: $gap-paragraph
     margin-bottom: $gap-paragraph
@@ -231,10 +232,7 @@
   code
     font-family: $fontfamily-code
     &:not([class])
-      padding: 3px 4px 1px 4px
-      vertical-align: middle
       font-size: $fontsize-code
-      background: $color-inlinecode
       border-radius: $border-codeblock * 0.5
 
 
