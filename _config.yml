@@ -546,10 +546,10 @@ plugins:
   darkmodejs:
     enable: true
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
-    bottom: 8px
+    bottom: 32px
     right: unset
-    left: 8px
-    time: 0.25s
+    left: 16px
+    time: 0s
     mixColor: '#f4f4f4'
     backgroundColor: '#f4f4f4'
     buttonColorDark: '#100f2c'
