@@ -154,7 +154,7 @@ navbar:
     - name: 关于
       icon: fas fa-info-circle
       url: about/
-  search: Search...   # Search bar placeholder
+  search: 搜索本站...   # Search bar placeholder
 
 
 
@@ -533,10 +533,10 @@ plugins:
     type: playlist    # song, playlist, album, search, artist
     id: 5119353317    # song id / playlist id / album id / search keyword
     # Optional
-    fixed: true      # enable fixed mode
+    fixed: false      # enable fixed mode
     theme: '#1BCDFC'  # main color
     autoplay: true   # audio autoplay
-    order: list       # player play order, values: 'list', 'random'
+    order: random       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
     volume: 0.1      # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 340px # list max height
@@ -573,7 +573,7 @@ plugins:
   darkmodejs:
     enable: true
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
-    bottom: 32px
+    bottom: 20px
     right: unset
     left: 16px
     time: 0s
