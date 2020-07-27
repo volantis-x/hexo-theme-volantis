@@ -124,9 +124,18 @@
 
 
 <!-- darkmodejs -->
-<% if (config.darkmode) { %>
-  <script aysc src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js"></script>
+<% if (theme.plugins.darkmodejs.enable) { %>
+  <%- js({src: theme.plugins.darkmodejs.js,aysc:true}) %>
   <script type="text/javascript">
+	function getClientHeight(){
+	  var clientHeight=0;
+	  if(document.body.clientHeight&&document.documentElement.clientHeight){
+	  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+	  }else{
+	  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+	  }
+	  return clientHeight;
+	}
 	function supportCss3(style) {
 		var prefix = ['webkit', 'Moz', 'ms', 'o'],
 		i,
@@ -146,17 +155,17 @@
 	};
 	//配置信息
 	var options = {
-	  bottom: '64px', // default: '32px'
-	  right: 'unset', // default: '32px'
-	  left: '32px', // default: 'unset'
-	  time: '0.5s', // default: '0.3s'
-	  mixColor: '#fff', // default: '#fff'
-	  backgroundColor: '#fff',  // default: '#fff'
-	  buttonColorDark: '#100f2c',  // default: '#100f2c'
-	  buttonColorLight: '#fff', // default: '#fff'
-	  saveInCookies: true, // default: true,
-	  label: '🌓', // default: ''
-	  autoMatchOsTheme: true // default: true
+	  bottom: '<%- theme.plugins.darkmodejs.bottom %>',
+	  right: '<%- theme.plugins.darkmodejs.right %>',
+	  left: '<%- theme.plugins.darkmodejs.left %>',
+	  time: '<%- theme.plugins.darkmodejs.time %>',
+	  mixColor: '<%- theme.plugins.darkmodejs.mixColor %>',
+	  backgroundColor: '<%- theme.plugins.darkmodejs.backgroundColor %>',
+	  buttonColorDark: '<%- theme.plugins.darkmodejs.buttonColorDark %>',
+	  buttonColorLight: '<%- theme.plugins.darkmodejs.buttonColorLight %>',
+	  saveInCookies: <%- theme.plugins.darkmodejs.saveInCookies %>,
+	  label: '<%- theme.plugins.darkmodejs.label %>',
+	  autoMatchOsTheme: <%- theme.plugins.darkmodejs.autoMatchOsTheme %>
 	};
 	// 卡片兼容处理
 	function pjax_darkmodejs(){
@@ -164,7 +173,7 @@
 		var checkExist2 = setInterval(function() {
 		   if (typeof jQuery == 'undefined'){return;}
 		   clearInterval(checkExist2);
-		   var TopFlag=document.documentElement.scrollHeight+500;
+		   var TopFlag=getClientHeight();
 			$(window).scroll(function(){
 				var top = $(document).scrollTop();
 				if(top > TopFlag) {
@@ -185,7 +194,6 @@
 	}
   </script>
 <% } %>
-
 
 <!-- 复制 -->
 <% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
