@@ -1,7 +1,42 @@
 <!DOCTYPE html>
 <html>
 <%- partial('_partial/head') %>
+<!--<script src="https://cdn.jsdelivr.net/gh/waxll/blog-js/backtop.js"></script>-->
+<script src="https://cdn.jsdelivr.net/gh/waxll/blog-js/piao.js" defer="defer"></script>
+<script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/gh/waxll/blog-js/jquery.js"></script>
+<!--<script type="text/javascript">
+ 
+ /* 鼠标特效 */ 
+ 
+ var a_idx = 0; jQuery(document).ready(function($) { $("body").click(function(e) { var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"); 
+ 
+var $i = $("<span/>").text(a[a_idx]); a_idx = (a_idx + 1) % a.length; var x = e.pageX, y = e.pageY; $i.css({ "z-index": 99, "top": y - 20, "left": x, "position": "absolute", "font-weight": "bold", 
+ 
+"color": "#ff6651" }); $("body").append($i); $i.animate({ "top": y - 180, "opacity": 0 }, 1500, function() { $i.remove(); }); }); });
+ </script>-->
+
+<!--鼠标烟花特效-->
+
+<!--<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script> -->
+
 <body>
+  <div id="clickCanvas" style=" position:fixed;left:0;top:0;z-index:999999999;pointer-events:none;"><canvas class=" sketch" height="0" width="0"></canvas></div>
+  <script src="js/dj.js"></script>
+    <!--game
+    <link rel="stylesheet" href="/css/game.css">
+    <script>
+      function game() {
+          var s = document.createElement('script');
+          s.type = 'text/javascript';
+          document.body.appendChild(s);
+          s.src = 'js/game.js';
+          document.getElementById('game').style.display = 'none';
+      }
+     </script> -->
+   <!--粒子特效-->
+  <script type="text/javascript" color="255,51,0" opacity='0.4' zIndex="-1" count="120" src="https://cdn.jsdelivr.net/gh/waxll/blog-js/lizi.js"></script><!--51,245,255-->
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
     <div class='body-wrapper' id="pjax-container">
