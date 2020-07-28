@@ -47,3 +47,20 @@ scrollbar($w = 4px, $b = 2px, $c = alpha(mix($color-p, $color-card, 80), .4), $h
     border-radius: $b
     &:hover
       background: $h
+
+
+scrollbar-codeblock()
+  &::-webkit-scrollbar
+    height: 4px
+    width: 4px
+  &::-webkit-scrollbar-track-piece
+    background: transparent
+  &::-webkit-scrollbar-thumb
+    background: transparent
+    cursor: pointer
+    border-radius: $border-codeblock
+  &:hover
+    &::-webkit-scrollbar-thumb
+      background: alpha($color-text, .5)
+      &:hover
+        background: $color-hover
