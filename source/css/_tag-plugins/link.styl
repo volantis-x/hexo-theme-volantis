@@ -1,0 +1,49 @@
+.article div.link-card
+  text-align: center
+  margin: $gap-row auto
+
+.article a.link-card
+  background: $color-block
+  display: inline-flex
+  align-items: center
+  cursor: pointer
+  text-align: center
+  max-width: 320px
+  @media screen and (max-width: $device-mobile-m)
+    max-width: 100%
+  color: $color-p
+  border-radius: $border-card
+  &:hover
+    box-shadow: $boxshadow-float
+
+
+.article a.link-card
+  div.left
+    width: 48px
+    height: 48px
+    margin: 12px
+    overflow: hidden
+    flex-shrink: 0
+    position: relative
+    i
+      font-size: 32px
+      line-height: 48px
+      margin-left: 4px
+    img
+      display: block
+      position: absolute
+      border-radius: $border-card / 4
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+  div.right
+    overflow: hidden
+    margin-right: 12px
+  p
+    margin: 0
+    txt-ellipsis()
+  p.text
+    font-weight: bold
+  p.url
+    color: $color-meta
+    font-size: $fontsize-meta
