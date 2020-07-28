@@ -80,8 +80,32 @@
       align-items: baseline
       word-spacing: $gap * 0.5
       text-align: center
-      >a
-        color: $color-meta
-        margin-right: $gap
-        &:hover,&:active,&.active
-          color: $color-hover !important
+      ul
+        margin: 0 -4px
+        padding: 0
+        display: flex
+        flex-wrap: wrap
+        li
+          list-style: none
+          background: $color-block
+          margin: $gap-row 4px
+          border-radius: $border-button
+          overflow: hidden
+          display: flex
+          a
+            display: inline-block
+            color: $color-text
+            padding: 4px 8px 4px 12px
+            &:hover
+              color: $color-hover !important
+          span
+            padding: 4px 8px
+            color: alpha($color-meta, .5)
+            background: darken($color-block, 5)
+            pointer-events: none
+          &:hover
+            background: bgcolor($color-hover)
+            a
+              color: $color-hover
+            span
+              background: bgcolor($color-hover)
