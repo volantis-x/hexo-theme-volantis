@@ -191,9 +191,9 @@ meta:
   title: # 暂无配置
   # 默认文章作者（可在front-matter中覆盖）
   author:
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
-    name: Mr. X
-    url: https://xaoxuu.com
+    avatar:
+    name: 请设置文章作者
+    url: /
   # 文章创建日期
   date:
     icon: fas fa-calendar-alt
@@ -275,7 +275,7 @@ widget:
   blogger:
     class: blogger
     display: [desktop, mobile] # [desktop, mobile]
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
+    avatar: https://i.loli.net/2020/07/22/Xw9pZTkyhSPOY8M.png
     shape: rectangle # circle, rectangle
     url: /about/
     title:
@@ -407,12 +407,12 @@ footer:
     - icon: fas fa-rss
       url: atom.xml
     - icon: fas fa-envelope
-      url: mailto:me@xaoxuu.com
+      url: mailto:me@xxx.com
     - icon: fab fa-github
       url: https://github.com/xaoxuu
     - icon: fas fa-headphones-alt
       url: https://music.163.com/#/user/home?id=63035382
-  copyright: '[Copyright © 2017-2020 Mr. X](https://xaoxuu.com)'
+  copyright: '[Copyright © 2017-2020 XXX](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
