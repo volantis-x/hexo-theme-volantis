@@ -195,7 +195,7 @@ meta:
   author:
     avatar: https://7bu.top/2020/07/14/8ba61fac048a2.jpeg
     name: XieSenshi
-    url: https://gogocool.ml
+    url: https://waxll.ml
   # 文章创建日期
   date:
     icon: fas fa-calendar-alt
@@ -277,7 +277,7 @@ widget:
   blogger:
     class: blogger
     display: [desktop] # [desktop, mobile]
-    avatar: https://7bu.top/2020/07/14/8ba61fac048a2.jpeg
+    avatar: https://cdn.jsdelivr.net/gh/waxll/Imag/gif-2.png #https://7bu.top/2020/07/14/8ba61fac048a2.jpeg
     shape: rectangle # circle, rectangle
     url: /about/
     title: 
@@ -414,7 +414,7 @@ footer:
       url: https://github.com/waxll
     - icon: fas fa-headphones-alt
       url: https://music.163.com/#/user/home?id=300345527
-  copyright: '[Copyright © 2019-2020 XieSenshi](https://gogocool.ml)'
+  copyright: '[Copyright © 2019-2020 XieSenshi](https://waxll.ml)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
