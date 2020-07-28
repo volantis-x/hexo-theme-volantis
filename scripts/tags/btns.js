@@ -25,9 +25,9 @@ function postCell(args, content) {
     }
   }
   if (icon.length > 0) {
-    return `<a ${url} title='${text}'><i class='${icon}'></i>${text}</a>`
+    return `<a class="button" ${url} title='${text}'><i class='${icon}'></i>${text}</a>`
   } else {
-    return `<a ${url} title='${text}'><img src='${img}'>${text}</a>`
+    return `<a class="button" ${url} title='${text}'><img src='${img}'>${text}</a>`
   }
 }
 

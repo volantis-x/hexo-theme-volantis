@@ -1,8 +1,13 @@
 .article
   underline()
-    text-decoration: underline
-  a:not([class])
-    underline()
+    // text-decoration: underline
+    border-bottom: 1px solid $color-link
+  a
+    &:not([class])
+      underline()
+      &:hover
+        border-bottom-color: $color-hover
+
 
 .article
   color: $color-p
@@ -352,6 +357,6 @@
 
 
 article .readmore
+  display: block
   margin-top: $gap-paragraph
-  >a
-    font-size: $fontsize-meta
+  font-size: $fontsize-meta
