@@ -4,7 +4,7 @@
       <% if (item.id == 'qrcode'){ %>
         <% var src = qrcode(url,{margin:1,size:8}); %>
         <div class='hoverbox'>
-          <a><img src="<%- item.img %>"></a>
+          <a class='share'><img src="<%- item.img %>"></a>
           <div class='target'>
             <img src="<%- src %>">
           </div>

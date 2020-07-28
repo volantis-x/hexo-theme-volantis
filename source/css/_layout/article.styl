@@ -1,8 +1,14 @@
 .article
   underline()
-    text-decoration: underline
-  a:not([class])
-    underline()
+    // text-decoration: underline
+    border-bottom: 1px solid $color-link
+  a
+    &:not([class])
+      underline()
+      trans(0.1s)
+      &:hover
+        border-bottom-color: $color-hover
+
 
 .article
   color: $color-p
@@ -274,6 +280,7 @@
         padding-left: 9px
         margin-left: $gap
         a
+          trans(0.1s)
           display: inline
           border-left: none
           padding: 0
@@ -281,8 +288,8 @@
           color: $color-link
           font-weight: normal
           &:hover
-            text-decoration: underline
             color: $color-hover
+            text-decoration: underline
           &:hover,&.active,&:active
             border-left: none !important
             background: none !important
@@ -352,6 +359,6 @@
 
 
 article .readmore
+  display: block
   margin-top: $gap-paragraph
-  >a
-    font-size: $fontsize-meta
+  font-size: $fontsize-meta

@@ -127,13 +127,10 @@
 .cover .list-h
   display: flex
   flex-direction: row
-  justify-content: center
   flex-wrap: wrap
   align-items: stretch
-  margin: 2px
   border-radius: $border-button
   a
-    margin: 2px
     flex: 1
     display: flex
     img
@@ -141,10 +138,16 @@
       border-radius: 2px
       margin: $gap * 0.5 $gap * 0.25
       min-width: 40px
-      max-width: 50px
-      @media screen and (max-width: $device-mobile-m)
-        min-width: 32px
+      max-width: 44px
+      @media screen and (max-width: $device-tablet)
+        min-width: 36px
         max-width: 40px
+      @media screen and (max-width: $device-mobile)
+        min-width: 32px
+        max-width: 36px
+      @media screen and (max-width: $device-mobile-m)
+        min-width: 28px
+        max-width: 32px
 
 
 .cover-wrapper .cover .cover-body .menu
@@ -185,7 +188,6 @@
       i
         margin: $gap * 0.5
       p
-        font-weight: bold
         font-size: $fontsize-meta
       &.active
         i, i+p
@@ -203,36 +205,38 @@
   background: alpha($color-card, .5)
   .list-h
     flex-wrap: nowrap
+    margin: 4px
+    a+a
+      margin-left: 4px
     @media screen and (max-width: $device-mobile)
       overflow-x: scroll
       scrollbar(0, 0)
-      margin: 4px
-      a
-        margin: 0
-      a+a
-        margin-left: 4px
   @supports (backdrop-filter: blur(20px))
     background: alpha($color-card, .5)
     backdrop-filter: saturate(200%) blur(20px)
 
 .cover-wrapper .cover .cover-body .menu.featured
+  .list-h
+    margin: -2px
   .list-h a
+    margin: 2px
     background: alpha($color-card, .5)
     @supports (backdrop-filter: blur(20px))
       background: alpha($color-card, .5)
       backdrop-filter: saturate(200%) blur(20px)
 
 .cover-wrapper .cover .cover-body .menu.focus
-  @media screen and (min-width: $device-mobile)
-    trans()
+  .list-h
+    margin: 2px
+  trans()
 
-      @supports (backdrop-filter: blur(20px))
-        background: alpha($color-card, .5)
-       /*backdrop-filter: saturate(200%) blur(20px)    &:hover
-      background: alpha($color-card, .5) line(222) */
-  ul>li>a
+    background: alpha($color-card, .5)
+    @supports (backdrop-filter: blur(20px))
+      background: alpha($color-card, .5)
+      backdrop-filter: saturate(200%) blur(20px)
+  .list-h a
+    margin: 2px
     &:hover
       opacity: 1
       background: $color-card
-/*        backdrop-filter: saturate(200%) blur(20px)
-  .list-h a line(232)*/
+/*  &:hover
