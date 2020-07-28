@@ -83,6 +83,7 @@
     ul.entry, ul.popular-posts
       list-style: none
       a
+        border-bottom: 1px solid transparent
         .name
           flex: auto
           // txt-ellipsis()
@@ -364,14 +365,14 @@
   @media screen and (max-width: $device-mobile)
     border-radius: $border-card
 
-.webinfo 
+.webinfo
   padding 0.2rem 1rem
-  .webinfo-item 
+  .webinfo-item
     display block
     padding 4px 0 0
-    div 
-      &:first-child 
+    div
+      &:first-child
         display inline-block
-      &:last-child 
+      &:last-child
         display inline-block
         float right
