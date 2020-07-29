@@ -462,6 +462,9 @@ plugins:
 
   # npm i --save hexo-wordcount
   wordcount: #true
+  
+  # 右键菜单
+  rightmenu: true
 
   ######## Plugins for ...
   # Button Ripple Effect
