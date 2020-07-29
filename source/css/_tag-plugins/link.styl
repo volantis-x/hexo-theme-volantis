@@ -5,9 +5,11 @@
   align-items: center
   cursor: pointer
   text-align: center
-  max-width: 320px
-  @media screen and (max-width: $device-mobile-m)
+  min-width: 200px
+  max-width: $device-mobile-l - 4 * $gap
+  @media screen and (max-width: $device-mobile-l)
     max-width: 100%
+  @media screen and (max-width: $device-mobile-m)
     width: 100%
   color: $color-p
   border-radius: $border-card
@@ -43,5 +45,6 @@
   p.text
     font-weight: bold
   p.url
+    flex-shrink: 0
     color: $color-meta
-    font-size: $fontsize-meta
+    font-size: $fontsize-code

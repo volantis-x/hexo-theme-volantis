@@ -45,8 +45,8 @@
       &:before
         content: none
   h1,h2
-    padding-bottom: .2em
-    margin-bottom: .5em
+    padding-bottom: .2rem
+    margin-bottom: 1rem
     border-bottom: 1px solid alpha($color-text, 10%)
   h1
     text-align: $textalign-h1
@@ -339,7 +339,6 @@
     position: relative
     pointer-events: none
     margin-top: 0
-    margin-bottom: $gap-paragraph
     >a
       color: inherit
       pointer-events: auto
@@ -355,6 +354,8 @@
   h1,h2
     &:before
       margin-top: $gap-h2 - $navbar-height - $gap
+  h3,h4,h5,h6
+    margin-bottom: $gap-paragraph
   h3
     &:before
       margin-top: $gap-h3 - $navbar-height - $gap
