@@ -1,13 +1,13 @@
 .article
   underline()
-    // text-decoration: underline
-    border-bottom: 1px solid $color-link
+    text-decoration: underline
+    // border-bottom: 1px solid $color-link
   a
     &:not([class])
       underline()
       trans(0.1s)
-      &:hover
-        border-bottom-color: $color-hover
+      // &:hover
+      //   border-bottom-color: $color-hover
 
 
 .article
@@ -92,9 +92,8 @@
       margin: 0
       box-shadow: none
   s,del
-    opacity: 0.7
-    text-decoration-color: $color-mac-red
-    text-decoration-skip: spaces;
+    color: mix($color-p, $color-card, 60)
+    text-decoration-color: mix($color-mac-red, $color-card, 60)
   u
     color: $color-text
     text-decoration: none
@@ -237,6 +236,7 @@
     font-family: $fontfamily-code
     &:not([class])
       font-size: $fontsize-code
+      color: $color-inlinecode
       border-radius: $border-codeblock * 0.5
 
 

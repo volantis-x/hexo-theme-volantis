@@ -102,7 +102,7 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  logo: https://i.loli.net/2020/07/22/2OYbPxZjhdFce3L.png
+  logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: ''
   subtitle: ''
   search: A Wonderful Theme for Hexo # search bar placeholder
@@ -129,7 +129,7 @@ cover:
 # Navigation Bar
 navbar:
   logo: # choose [img] or [icon + title]
-    img: https://i.loli.net/2020/07/22/Xw9pZTkyhSPOY8M.png
+    img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     icon:
     title:
   menu:
@@ -275,7 +275,7 @@ widget:
   blogger:
     class: blogger
     display: [desktop, mobile] # [desktop, mobile]
-    avatar: https://i.loli.net/2020/07/22/Xw9pZTkyhSPOY8M.png
+    avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     shape: rectangle # circle, rectangle
     url: /about/
     title:
