@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <%- partial('_partial/head') %>
+<% if (theme.plugins.rightmenu) { %>
+<body oncontextmenu="return popMenu(event);">
+<% } else { %>
 <body>
+<% } %>
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
     <div class='body-wrapper' id="pjax-container">
@@ -14,10 +18,12 @@
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
   <div>
+    <%- partial('_partial/rightmenu') %>
     <%- partial('_partial/scripts') %>
     <% if (theme.plugins.pjax.enable) { %>
       <%- partial('_third-party/pjax/index') %>
     <% } %>
   </div>
+  <script src="https://cdn.jsdelivr.net/gh/inkss/common@master/hexo/js/cookie.min.js"></script>
 </body>
 </html>
