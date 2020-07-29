@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <%- partial('_partial/head') %>
-<body>
+<body oncontextmenu="return popMenu(event);">
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
     <div class='body-wrapper' id="pjax-container">
@@ -14,6 +14,7 @@
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
   <div>
+    <%- partial('_partial/rightmenu') %>
     <%- partial('_partial/scripts') %>
     <% if (theme.plugins.pjax.enable) { %>
       <%- partial('_third-party/pjax/index') %>
