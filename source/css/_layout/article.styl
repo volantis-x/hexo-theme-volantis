@@ -93,6 +93,8 @@
       box-shadow: none
   s,del
     opacity: 0.7
+    text-decoration-color: $color-mac-red
+    text-decoration-skip: spaces;
   u
     color: $color-text
     text-decoration: none
@@ -100,9 +102,14 @@
   emp
     color: $color-text
     border-bottom: 4px dotted $color-mac-red
+  wavy
+    color: $color-text
+    text-decoration-style: wavy
+    text-decoration-line: underline
+    text-decoration-color: $color-mac-red
   psw
     color: transparent
-    background: mix($color-p, $color-card, 50)
+    background: mix($color-p, $color-card, 75)
     border-radius: 2px
     trans()
     &:hover

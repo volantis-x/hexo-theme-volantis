@@ -2,24 +2,41 @@
 
 function postMenu(args, content) {
   args = args.join(' ').split(',')
-  let text = args[0] || ''
-  let icon = args[1] || ''
-  if (icon.length > 0) {
-    return `<div class='dropmenu'>
-              <i class='${icon} fa-fw'></i>
-              <span>${text}</span>
-              <i class='fas fa-caret-down'></i>
-              <ul class='list-v'>
-                ${content}
-              </ul>
+  if (args.length == 1) {
+    let title = args[0].trim()
+    return `<div class='dropmenu-wrapper'>
+              <div class='dropmenu'>
+                <a>${title}</a>
+                <ul class='list-v'>
+                  ${content}
+                </ul>
+              </div>
             </div>`
-  } else {
-    return `<div class='dropmenu'>
-              <span>${text}</span>
-              <i class='fas fa-caret-down'></i>
-              <ul class='list-v'>
-                ${content}
-              </ul>
+  } else if (args.length == 2) {
+    let prefix = args[0].trim()
+    let title = args[1].trim()
+    return `<div class='dropmenu-wrapper'>
+              <span>${prefix}</span>
+              <div class='dropmenu'>
+                <a>${title}</a>
+                <ul class='list-v'>
+                  ${content}
+                </ul>
+              </div>
+            </div>`
+  } else if (args.length == 3) {
+    let prefix = args[0].trim()
+    let title = args[1].trim()
+    let suffix = args[2].trim()
+    return `<div class='dropmenu-wrapper'>
+              <span>${prefix}</span>
+              <div class='dropmenu'>
+                <a>${title}</a>
+                <ul class='list-v'>
+                  ${content}
+                </ul>
+              </div>
+              <span>${suffix}</span>
             </div>`
   }
 }
@@ -29,7 +46,7 @@ function postSubmenu(args, content) {
   let icon = args[1] || ''
   if (icon.length > 0) {
     return `<li>
-              <a>
+              <a class='menuitem'>
                 <i class='${icon} fa-fw'></i>
                 ${text}
               </a>
@@ -39,7 +56,7 @@ function postSubmenu(args, content) {
             </li>`
   } else {
     return `<li>
-              <a>${text}</a>
+              <a class='menuitem'>${text}</a>
               <ul class='list-v'>
                 ${content}
               </ul>
@@ -63,14 +80,14 @@ function postMenuItem(args) {
   if (url.length > 0) {
     if (icon.length > 0) {
       return `<li>
-                <a ${url} title='${text}'>
+                <a class='menuitem' ${url} title='${text}'>
                   <i class='${icon} fa-fw'></i>
                   ${text}
                 </a>
               </li>`
     } else {
       return `<li>
-                <a ${url} title='${text}'>
+                <a class='menuitem' ${url} title='${text}'>
                   ${text}
                 </a>
               </li>`
@@ -83,6 +100,9 @@ function postMenuItem(args) {
 
 }
 
+// {% menu 标题 %}
+// {% menu 前缀, 标题 %}
+// {% menu 前缀, 标题, 后缀 %}
 hexo.extend.tag.register('menu', postMenu, {ends: true});
 hexo.extend.tag.register('submenu', postSubmenu, {ends: true});
 hexo.extend.tag.register('menuitem', postMenuItem);
