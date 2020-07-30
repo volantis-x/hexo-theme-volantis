@@ -111,7 +111,7 @@ cover:
     home: true
     archive: false
     others: true # can be written in front-matter 'cover: true'
-  logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
+  logo: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: Waxll 
   subtitle: 'love快马加鞭'
   search: Search...
