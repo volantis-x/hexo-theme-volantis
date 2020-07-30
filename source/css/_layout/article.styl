@@ -1,13 +1,13 @@
 .article
   underline()
-    // text-decoration: underline
-    border-bottom: 1px solid $color-link
+    text-decoration: underline
+    // border-bottom: 1px solid $color-link
   a
     &:not([class])
       underline()
       trans(0.1s)
-      &:hover
-        border-bottom-color: $color-hover
+      // &:hover
+      //   border-bottom-color: $color-hover
 
 
 .article
@@ -45,8 +45,8 @@
       &:before
         content: none
   h1,h2
-    padding-bottom: .2em
-    margin-bottom: .5em
+    padding-bottom: .2rem
+    margin-bottom: 1rem
     border-bottom: 1px solid alpha($color-text, 10%)
   h1
     text-align: $textalign-h1
@@ -92,7 +92,8 @@
       margin: 0
       box-shadow: none
   s,del
-    opacity: 0.7
+    color: mix($color-p, $color-card, 60)
+    text-decoration-color: mix($color-mac-red, $color-card, 60)
   u
     color: $color-text
     text-decoration: none
@@ -100,9 +101,14 @@
   emp
     color: $color-text
     border-bottom: 4px dotted $color-mac-red
+  wavy
+    color: $color-text
+    text-decoration-style: wavy
+    text-decoration-line: underline
+    text-decoration-color: $color-mac-red
   psw
     color: transparent
-    background: mix($color-p, $color-card, 50)
+    background: mix($color-p, $color-card, 75)
     border-radius: 2px
     trans()
     &:hover
@@ -230,6 +236,7 @@
     font-family: $fontfamily-code
     &:not([class])
       font-size: $fontsize-code
+      color: $color-inlinecode
       border-radius: $border-codeblock * 0.5
 
 
@@ -332,7 +339,6 @@
     position: relative
     pointer-events: none
     margin-top: 0
-    margin-bottom: $gap-paragraph
     >a
       color: inherit
       pointer-events: auto
@@ -348,6 +354,8 @@
   h1,h2
     &:before
       margin-top: $gap-h2 - $navbar-height - $gap
+  h3,h4,h5,h6
+    margin-bottom: $gap-paragraph
   h3
     &:before
       margin-top: $gap-h3 - $navbar-height - $gap

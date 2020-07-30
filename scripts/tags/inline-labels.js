@@ -7,6 +7,9 @@ hexo.extend.tag.register('u', function(args) {
 hexo.extend.tag.register('emp', function(args) {
   return `<emp>${args.join(' ')}</emp>`;
 });
+hexo.extend.tag.register('wavy', function(args) {
+  return `<wavy>${args.join(' ')}</wavy>`;
+});
 hexo.extend.tag.register('del', function(args) {
   return `<del>${args.join(' ')}</del>`;
 });
