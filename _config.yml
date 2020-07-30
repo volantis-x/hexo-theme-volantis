@@ -1,5 +1,14 @@
 ############################### Style ###############################
 style:
+  cursor:
+    enable: true
+    text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png
+    pointer: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/pointer.png
+    default: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/left_ptr.png
+    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/circle.png
+    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-out.png
+    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-in.png
+    grab: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/openhand.png
   font_smoothing: false # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
