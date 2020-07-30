@@ -1,7 +1,7 @@
 <% if (theme.rightmenu && theme.rightmenu.enable == true && theme.rightmenu.layout.length > 0) { %>
   <% function loadmenu(obj) { %>
     <li>
-      <a class="vlts-menu" <%= obj.url ? 'href='+ url_for(obj.url)+'' : ''%>
+      <a class='vlts-menu' <%= obj.url ? 'href='+ url_for(obj.url)+'' : ''%>
         <% if (obj.rel) { %>
           rel="<%- obj.rel %>"
         <% } %>
@@ -18,21 +18,21 @@
         <% } %>>
         <% if (obj.icon) { %><i class='<%= obj.icon %> fa-fw'></i><% } %> <%- obj.name %>
       </a>
-      <% if (obj.rows) { %>
-        <ul class="list-v" id="rightmenu-submenu">
-          <% obj.rows.forEach(function(row){ %>
-            <% loadmenu(row) %>
-          <%})%>
-        </ul>
-      <% } %>
     </li>
   <% } %>
 
-  <div id="rightmenu-wrapper" style="display: none;position:fixed;z-index: 2000;">
-    <ul class="rightmenu list-v" id="rightmenu-content" style="display: block;width: 120px;">
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
       <% theme.rightmenu.layout.forEach(function(item){ %>
         <% if (item == 'hr') { %>
           <hr>
+        <% } else if (item == 'navigation') { %>
+          <li class='navigation'>
+            <a class='nav' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+            <a class='nav' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+            <a class='nav' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+            <a class='nav' href='/'><i class='fa fa-home fa-fw'></i></a>
+          </li>
         <% } else if (item in theme.rightmenu) { %>
           <% loadmenu(theme.rightmenu[item]) %>
         <% } %>
@@ -54,10 +54,9 @@
       copy.style.display = select == "" ? "none" : "block";
       var mymenu = document.getElementById('rightmenu-wrapper');
       var menuContent = document.getElementById('rightmenu-content');
-      var menuMusicCard = document.getElementById('rightmenu-submenu');
       var mouseClientX = event.clientX;
       var mouseClientY = event.clientY;
-      var menuWidth = menuContent.offsetWidth == 0 ? 120 : menuContent.offsetWidth;
+      var menuWidth = menuContent.offsetWidth == 0 ? 150 : menuContent.offsetWidth;
       var menuHeight = menuContent.offsetHeight == 0 ? 242 : menuContent.offsetHeight;
       var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
       var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
@@ -66,20 +65,10 @@
       mymenu.style.left = showLeft + "px"; // 获取鼠标位置
       mymenu.style.top = showTop + "px";
       mymenu.style.display = 'block';
-      if (mouseClientY + menuHeight  + 100 > screenHeight) {
-        menuMusicCard.style.marginTop = '-150px';
-      } else {
-        menuMusicCard.style.marginTop = '';
-      }
-      if (mouseClientX + menuWidth  + 110 > screenWidth) {
-        menuMusicCard.style.marginLeft = '-100px';
-      } else {
-        menuMusicCard.style.marginLeft = '110px';
-      }
       return false; // 该行代码确保系统自带的右键菜单不会被调出
     }
     function hideMenu() {
-      document.getElementById('menu-div').style.display = 'none';
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
     }
     function menuCopy() {
       document.execCommand("Copy");

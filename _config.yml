@@ -162,7 +162,7 @@ navbar:
       icon: fas fa-info-circle
       url: about/
   search: Search...   # Search bar placeholder
-  
+
 
 
 layout:
@@ -471,7 +471,7 @@ plugins:
 
   # npm i --save hexo-wordcount
   wordcount: #true
-  
+
   ######## Plugins for ...
   # Button Ripple Effect
   nodewaves:
@@ -675,49 +675,35 @@ comments:
 # 自定义右键菜单
 rightmenu:
   enable: true
-  layout: [copy, hr, backward, forward, refresh, hr, home, help, examples, contributors, more]
+  # hr: 分割线, navigation: 导航按钮
+  layout: [copy, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme]
+  # 复制
   copy:
     name: 复制
     icon: fa fa-copy
     id: menu-copy
     onclick: menuCopy()
-  backward:
-    name: 返回
-    icon: fa fa-arrow-left
-    onclick: history.back()
-  forward:
-    name: 前进
-    icon: fa fa-arrow-right
-    onclick: history.forward()
-  refresh:
-    name: 刷新
-    icon: fa fa-redo
-    onclick: window.location.reload()
-  home:
-    name: 主页
-    icon: fa fa-home
-    url: /
   # 自定义菜单的格式如下
   help:
-    name: 帮助
-    icon: fa fa-question-circle
+    name: 常见问题
+    icon: fa fa-question
     url: https://volantis.js.org/faqs/
   examples:
-    name: 示例
-    icon: fa fa-play
+    name: 示例博客
+    icon: fa fa-rss
     url: https://volantis.js.org/examples/
   contributors:
-    name: 社区
+    name: 加入社区
     icon: fa fa-fan fa-spin
     url: https://volantis.js.org/contributors/
-  more:
-    name: 更多
-    icon: fa fa-ellipsis-v
-    rows:
-      - name: 本站源码
-        url: https://github.com/volantis-x/volantis-docs/
-      - name: 主题源码
-        url: https://github.com/volantis-x/hexo-theme-volantis/
+  source_docs:
+    name: 本站源码
+    icon: fa fa-code-branch
+    url: https://github.com/volantis-x/volantis-docs/
+  source_theme:
+    name: 主题源码
+    icon: fa fa-code-branch
+    url: https://github.com/volantis-x/hexo-theme-volantis/
 
 
 ############################### Search ###############################

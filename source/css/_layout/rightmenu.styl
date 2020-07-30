@@ -1,0 +1,18 @@
+div#rightmenu-wrapper
+  display: none
+  position:fixed
+  z-index: 2000
+  disable-user-select()
+ul.list-v.rightmenu
+  display: block
+  li.navigation
+    display: flex
+    .nav
+      margin: 0
+      padding: 0 $gap * 0.5
+      i
+        margin: 0
+      &:first-child
+        margin-left: 4px + $gap * 0.5
+      &:last-child
+        margin-right: 4px + $gap * 0.5
