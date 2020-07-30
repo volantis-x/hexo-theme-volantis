@@ -612,7 +612,7 @@ comments:
     pageSize: 6 # Pagination size.
     barrager: 0
     role: admin
-    cloudflag: true
+    cloudflag: false
     adminEmailMd5: de8a7aa53d07e6b6bceb45c64027763d # The MD5 of Admin Email to show Admin Flag.[ Just Only DesertsP Style mode]
     tagMeta: # The String Array of Words to show Flag.[ Just Only xCss Style mode]
       - 管理员
