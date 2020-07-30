@@ -107,20 +107,21 @@ cover:
   subtitle: 'love快马加鞭'
   search: Search...
   features:
-    - name: 文档
-      #img: https://i.loli.net/2020/07/24/GaeXvVAdtJkCYT3.png
-      icon: fas fa-book
-      url: 404/
     - name: 博文
-      icon: fas fa-rss
+      icon: fas fa-book
       url: archives/
-
+    - name: 标签
+      icon: fa fa-map-signs
+      url: tags/
     - name: 图库
       icon: fas fa-images
       url: photo/
     - name: 更新日志
       url: journal/
       icon: fas fa-calendar
+    - name: 友链
+      url: friends/
+      icon: fa fa-users
     #- name: 源码
     #  icon: fas fa-file-code
     #  url: https://github.com/waxll/waxll.github.io/
@@ -165,7 +166,7 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, category, date, wordcount, counter, valinecount, pin]
     # 列表类页面的侧边栏
-    sidebar: [blogger, category, tagcloud, qrcode, webinfo]
+    sidebar: [blogger, tagcloud, category, qrcode, webinfo]
     # read more button
     readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
   # 页面布局
@@ -179,7 +180,7 @@ layout:
       header: [title, author, category, date, pin]
       footer: [updated, tags, btns, share]
     # 文章页面的侧边栏
-    sidebar: [qrcode, toc]
+    sidebar: [qrcode, tagcloud, category, toc]
   # 文章布局，参数继承自 on_page
   on_post:
     # 文章页脚，自动在每一篇文章末尾添加
@@ -211,7 +212,7 @@ meta:
     icon: fas fa-folder-open
   # 文章置顶
   pin: 
-    icon: fas fa-angle-double-up
+    icon: fas fa-thumbtack
   # 文章浏览计数
   counter:
     icon: fas fa-eye
