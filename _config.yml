@@ -509,6 +509,7 @@ plugins:
     js:
       - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
       - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
+      - js/aplayer.js
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
@@ -675,7 +676,7 @@ comments:
 rightmenu:
   enable: true
   # hr: 分割线, navigation: 导航按钮
-  layout: [copy, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme]
+  layout: [copy, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, music]
   # 复制
   copy:
     name: 复制文本
