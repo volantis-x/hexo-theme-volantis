@@ -112,12 +112,15 @@
 <% } %>
 
 <% if (theme.plugins.aplayer && theme.plugins.aplayer.enable && theme.plugins.aplayer.js) { %>
+  <script>
+    window.Aplayer_ID = '<%= theme.plugins.aplayer.id %>';  // 设定全局音乐播放ID
+  </script>
   <% (theme.plugins.aplayer.js||[]).forEach(function(item){ %>
     <%- js({src:item}) %>
   <% }) %>
 <% } %>
 
-<!-- 评论 （PS：只对 valine 做了 Pjax 兼容） -->
+
 <% if (theme.comments.service && theme.comments.service.length > 0) { %>
   <%- partial('../_third-party/comments/' + theme.comments.service + '/script') %>
 <% } %>
