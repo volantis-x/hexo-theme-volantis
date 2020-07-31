@@ -1,34 +1,104 @@
+// 检查 Aplayer 对象状态
+function checkAPlayer() {
+	if (APlayerController.aplayer == undefined) {
+		setAPlayerObject();
+	} else {
+		if (APlayerController.observer == undefined) {
+			setAPlayerObserver();
+		}
+	}
+}
+
 // 设置全局播放器所对应的 aplyer 对象
-function setGlobalAplayer() {
-	window.AplayerFlag = false;
-	if(window.Aplayer_ID == undefined) return;
+function setAPlayerObject() {
+	if (APlayerController.id == undefined) return;
 	document.querySelectorAll('meting-js').forEach((item, index)=>{
-		if (item.meta.id == window.Aplayer_ID) {
+		if (item.meta.id == APlayerController.id) {
 			if (document.querySelectorAll('meting-js')[index].aplayer != undefined) {
-				window.AplayerObject = document.querySelectorAll('meting-js')[index].aplayer;
-				window.AplayerFlag = true;  // 通过此值判断是否设置成功
+ 				APlayerController.aplayer = document.querySelectorAll('meting-js')[index].aplayer;
+				setAPlayerObserver();
 			}
 		}
 	})
 }
 
-// 检查 Aplayer 对象状态
-function checkAplayer() {
-	let flag = window.AplayerFlag == undefined ? false : window.AplayerFlag;
-	if (!flag) {
-		setGlobalAplayer();
+// 事件监听
+function setAPlayerObserver() {
+	try {
+		APlayerController.aplayer.on('play', function (e) {
+			updateAPlayerControllerStatus();
+		});
+		APlayerController.aplayer.on('pause', function (e) {
+			updateAPlayerControllerStatus();
+		});
+		APlayerController.aplayer.on('volumechange', function (e) {
+			onUpdateAPlayerVolume();
+		});
+
+		// 监听音量手势
+		APlayerController.volumeBarWrap = document.getElementsByClassName('nav volume')[0].children[0];
+		APlayerController.volumeBar = APlayerController.volumeBarWrap.children[0]
+		function updateAPlayerVolume(e) {
+			let percentage = ((e.clientX || e.changedTouches[0].clientX) - APlayerController.volumeBar.getBoundingClientRect().left) / APlayerController.volumeBar.clientWidth;
+			percentage = Math.max(percentage, 0);
+			percentage = Math.min(percentage, 1);
+			APlayerController.aplayer.volume(percentage);
+		}
+		const thumbMove = (e) => {
+				updateAPlayerVolume(e);
+	  };
+	  const thumbUp = (e) => {
+	      APlayerController.volumeBarWrap.classList.remove('aplayer-volume-bar-wrap-active');
+	      document.removeEventListener('mouseup', thumbUp);
+	      document.removeEventListener('mousemove', thumbMove);
+	      updateAPlayerVolume(e);
+	  };
+
+	  APlayerController.volumeBarWrap.addEventListener('mousedown', () => {
+	      APlayerController.volumeBarWrap.classList.add('aplayer-volume-bar-wrap-active');
+	      document.addEventListener('mousemove', thumbMove);
+	      document.addEventListener('mouseup', thumbUp);
+	  });
+
+
+		// 设置完监听就立即更新一次
+		updateAPlayerControllerStatus();
+		onUpdateAPlayerVolume();
+		APlayerController.observer = true;
+		console.log('APlayerController ready!');
+
+	} catch (error) {
+		delete APlayerController.observer;
 	}
-	let linster = window.aplayerLinster == undefined ? false : window.aplayerLinster;
-	if (!linster) {
-		aplayerOn();
+}
+
+// 更新控制器状态
+function updateAPlayerControllerStatus() {
+	try {
+		if (APlayerController.aplayer.audio.paused) {
+			document.getElementsByClassName('nav toggle')[0].children[0].classList.add("fa-play");
+			document.getElementsByClassName('nav toggle')[0].children[0].classList.remove("fa-pause");
+		} else {
+			document.getElementsByClassName('nav toggle')[0].children[0].classList.remove("fa-play");
+			document.getElementsByClassName('nav toggle')[0].children[0].classList.add("fa-pause");
+		}
+	} catch (error) {
+		console.log(error);
+	}
+}
+function onUpdateAPlayerVolume() {
+	try {
+		APlayerController.volumeBar.children[0].style.width = APlayerController.aplayer.audio.volume * 100 + '%'
+	} catch (error) {
+		console.log(error);
 	}
 }
 
 // 播放/暂停
 function aplayerToggle() {
-	checkAplayer();
+	checkAPlayer();
 	try {
-		window.AplayerObject.toggle();
+		APlayerController.aplayer.toggle();
 	} catch (error) {
 		console.log(error);
 	}
@@ -36,10 +106,10 @@ function aplayerToggle() {
 
 // 上一曲
 function aplayerBackward() {
-	checkAplayer();
+	checkAPlayer();
 	try {
-		window.AplayerObject.skipBack();
-		window.AplayerObject.play();
+		APlayerController.aplayer.skipBack();
+		APlayerController.aplayer.play();
 	} catch (error) {
 		console.log(error);
 	}
@@ -47,10 +117,10 @@ function aplayerBackward() {
 
 // 下一曲
 function aplayerForward() {
-	checkAplayer();
+	checkAPlayer();
 	try {
-		window.AplayerObject.skipForward();
-		window.AplayerObject.play();
+		APlayerController.aplayer.skipForward();
+		APlayerController.aplayer.play();
 	} catch (error) {
 		console.log(error);
 	}
@@ -58,29 +128,38 @@ function aplayerForward() {
 
 // 调节音量
 function aplayerVolume(percent) {
-	checkAplayer();
+	checkAPlayer();
 	try {
-		window.AplayerObject.volume(percent);
-		window.AplayerObject.play();
+		APlayerController.aplayer.volume(percent);
 	} catch (error) {
 		console.log(error);
 	}
 }
-
-// 事件监听
-function aplayerOn() {
-	window.aplayerLinster = true;
-	try {
-		window.AplayerObject.on('play', function (e) {
-			document.getElementsByClassName('nav toggle')[0].children[0].classList.remove("fa-play");
-			document.getElementsByClassName('nav toggle')[0].children[0].classList.add("fa-pause");
-		});
-		window.AplayerObject.on('pause', function (e) {
-			document.getElementsByClassName('nav toggle')[0].children[0].classList.add("fa-play");
-			document.getElementsByClassName('nav toggle')[0].children[0].classList.remove("fa-pause");
-		});
-	} catch (error) {
-		delete window.aplayerLinster;
-		checkAplayer();
-	}
+// 调节音量 测试
+function aplayerVolumeToggle() {
+	// checkAPlayer();
+	// try {
+	// 	if (APlayerController.aplayer.audio.volume == 0) {
+	// 		aplayerVolume(0.7);
+	// 	} else {
+	// 		aplayerVolume(0);
+	// 	}
+	// } catch (error) {
+	// 	console.log(error);
+	// }
 }
+
+(function ($) {
+	// 网速快
+	checkAPlayer();
+	// 网速一般
+	setTimeout(function(){
+		checkAPlayer();
+	}, 3000);
+	// 网速较慢
+	setTimeout(function(){
+		checkAPlayer();
+	}, 10000);
+
+
+})(jQuery);

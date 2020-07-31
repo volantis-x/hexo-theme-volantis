@@ -26,7 +26,13 @@ ul.list-v.rightmenu
         position: relative
         height: 8px
         width: 120px
-        background: $color-block
-        border-radius: 4px
+        background: mix($color-block, $color-text, 95)
+        border-radius: 8px
+        overflow: hidden
+        trans()
+        &:hover
+          height: 16px
         .aplayer-volume
           background: $color-theme
+          height: 100%
+          width: 100%
