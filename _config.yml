@@ -27,7 +27,7 @@ style:
     highlight:
       language: true # show language of codeblock
       copy_btn: true
-      grayscale: true # Enable grayscale effect
+      grayscale: false # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
       h2: left
@@ -91,13 +91,12 @@ style:
   #   site_footer: '#666' # Footer text color inside the website background
   #   card: '#444' # Card background color
   #   text: '#fff' # The color of the text on the card.
-  #   theme: '#ff9800' # Main color
+  #   # theme: '#ff9800' # Main color
   #   link: '#1BCDFC' # Link color
   #   hover: '#ff5722' # Link highlight color
   #   inner: '#333' # Text color inside the button
   #   block: '#555' # Block color
-  #   inlinecode: '#555' # Inline code color
-  #   codeblock: '#555' # Codeblock color
+  #   codeblock: '#48371A' # Codeblock color
   #   p: '#ccc' # Paragraph color
 
 
@@ -553,7 +552,7 @@ plugins:
   # https://darkmodejs.learn.uno
   # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
   darkmodejs:
-    enable: true
+    enable: false
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
     bottom: 32px
     right: unset
@@ -679,7 +678,7 @@ rightmenu:
   layout: [copy, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme]
   # 复制
   copy:
-    name: 复制
+    name: 复制文本
     icon: fa fa-copy
     id: menu-copy
     onclick: menuCopy()
