@@ -36,7 +36,8 @@
         <% } else if (item == 'music-ctrl') { %>
           <li class='music ctrl'>
             <a class='nav backward' onclick='aplayerBackward()'><i class='fa fa-backward fa-fw'></i></a>
-            <a class='nav toggle' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav toggle' id='aplayerPlay' onclick='aplayerPlay()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav toggle' id='aplayerPause' onclick='aplayerPause()' style="display:none;"><i class='fa fa-pause fa-fw'></i></a>
             <a class='nav forward' onclick='aplayerForward()'><i class='fa fa-forward fa-fw'></i></a>
           </li>
         <% } else if (item == 'music-volume') { %>
