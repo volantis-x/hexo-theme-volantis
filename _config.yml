@@ -600,7 +600,7 @@ comments:
     placeholder: 快来评论吧~ # Comment box placeholder
     path: # All pages use the same path (share the same comments data)
     math: false # Support MathJax.
-    md: false # Support Markdown.
+    md: true # Support Markdown.
     enableQQ: false # Enable QQ avatar API.
     NoRecordIP: true # Do not record commenter IP.
     closeFlag: false
