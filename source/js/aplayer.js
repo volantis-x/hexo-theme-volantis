@@ -71,11 +71,11 @@ function aplayerVolume(percent) {
 function aplayerOn() {
 	window.aplayerLinster = true;
 	try {
-		document.querySelector('meting-js').aplayer.on('play', function (e) {
+		window.AplayerObject.on('play', function (e) {
 			document.getElementsByClassName('nav toggle')[0].children[0].classList.remove("fa-play");
 			document.getElementsByClassName('nav toggle')[0].children[0].classList.add("fa-pause");
 		});
-		document.querySelector('meting-js').aplayer.on('pause', function (e) {
+		window.AplayerObject.on('pause', function (e) {
 			document.getElementsByClassName('nav toggle')[0].children[0].classList.add("fa-play");
 			document.getElementsByClassName('nav toggle')[0].children[0].classList.remove("fa-pause");
 		});
