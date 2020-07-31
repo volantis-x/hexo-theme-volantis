@@ -33,12 +33,21 @@
             <a class='nav' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
             <a class='nav fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
           </li>
-        <% } else if (item == 'music') { %>
-          <li class='navigation'>
-            <a class='nav' onclick='menuBackward()'><i class='fa fa-backward fa-fw'></i></a>
-            <a class='nav' onclick='menuPlay()'><i class='fa fa-play fa-fw'></i></a>
-            <a class='nav' onclick='menuPause()'><i class='fa fa-pause fa-fw'></i></a>
-            <a class='nav' onclick='menuForward()'><i class='fa fa-forward fa-fw'></i></a>
+        <% } else if (item == 'music-ctrl') { %>
+          <li class='music ctrl'>
+            <a class='nav backward' onclick='menuBackward()'><i class='fa fa-backward fa-fw'></i></a>
+            <a class='nav play' onclick='menuPlay()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav forward' onclick='menuForward()'><i class='fa fa-forward fa-fw'></i></a>
+          </li>
+        <% } else if (item == 'music-volume') { %>
+          <li class='music volume'>
+            <a class='nav volume' onclick='menuPause()'>
+              <div class="aplayer-volume-bar-wrap">
+                <div class="aplayer-volume-bar">
+                  <div class="aplayer-volume"></div>
+                </div>
+              </div>
+            </a>
           </li>
         <% } else if (item in theme.rightmenu) { %>
           <% loadmenu(theme.rightmenu[item]) %>

@@ -676,7 +676,7 @@ comments:
 rightmenu:
   enable: true
   # hr: 分割线, navigation: 导航按钮
-  layout: [copy, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, music]
+  layout: [copy, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, music-ctrl, music-volume]
   # 复制
   copy:
     name: 复制文本
