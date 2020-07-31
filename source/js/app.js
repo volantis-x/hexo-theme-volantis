@@ -35,27 +35,25 @@ var customSearch;
 		const $titleBtn = $('h1.title', '#header-meta'); // 文章内标题
 		const $bodyAnchor = $('.l_body');                // 页面主体
 
-		if(window.pjax == undefined) {
-			if ($postsBtn.length && $bodyAnchor) {
-				$postsBtn.click(e => {
-					e.preventDefault();
-					e.stopPropagation();
+		if ($postsBtn.length && $bodyAnchor) {
+			$postsBtn.click(e => {
+				e.preventDefault();
+				e.stopPropagation();
+				if($postsBtn.attr("href") != "/")       // TODO: fix it
 					scrolltoElement($bodyAnchor);
-					e.stopImmediatePropagation();
-					$postsBtn.unbind('click');
-				});
-			}
-			if ($titleBtn.length && $bodyAnchor) {
-				$titleBtn.click(e => {
-					e.preventDefault();
-					e.stopPropagation();
-					scrolltoElement($bodyAnchor);
-					e.stopImmediatePropagation();
-					$titleBtn.unbind('click');
-				});
-			}
+				e.stopImmediatePropagation();
+				$postsBtn.unbind('click');
+			});
 		}
-
+		if ($titleBtn.length && $bodyAnchor) {
+			$titleBtn.click(e => {
+				e.preventDefault();
+				e.stopPropagation();
+				scrolltoElement($bodyAnchor);
+				e.stopImmediatePropagation();
+				$titleBtn.unbind('click');
+			});
+		}
 		if ($topBtn.length && $bodyAnchor) {
 			$topBtn.click(e => {
 				e.preventDefault();
@@ -393,21 +391,8 @@ var customSearch;
 
 
 		try {
+			// addEventListener是先绑定先执行，此处的绑定后执行
 			document.addEventListener('pjax:complete', function () {
-				if(window.location.hash){
-						var checkExist = setInterval(function() {
-						if (typeof jQuery == 'undefined'){return;}
-						if ($("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")).length) {
-							scrolltoElement( $("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")));
-							clearInterval(checkExist);
-						}
-					}, 100);
-				} else {
-					let $bodyAnchor = $('.l_body');
-					if ($bodyAnchor) {
-						scrolltoElement($bodyAnchor);
-					}
-				}
 				$(function () {
 					restData();
 					setHeader();
@@ -432,6 +417,8 @@ var customSearch;
 			// console.log(error);
 		}
 	});
+
+
 })(jQuery);
 
 /*锚点定位*/
