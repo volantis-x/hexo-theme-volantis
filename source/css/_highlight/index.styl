@@ -82,6 +82,7 @@ pre
   line-height: 1.5
   -webkit-font-smoothing: auto
   -moz-osx-font-smoothing: auto
+  overflow: hidden
   trans()
   if hexo-config('style.body.highlight.grayscale') == true
     filter: grayscale(100%)
@@ -92,6 +93,8 @@ pre
     figcaption
       trans()
       background: darken($color-codeblock, 5%)
+    .gutter
+      background: darken($color-codeblock, 5)
   figcaption
     font-size: 12px
     position: sticky
@@ -126,7 +129,7 @@ pre
       position: sticky
       left: 0
       z-index: 1
-      background-color: darken($color-codeblock, 5)
+      background: darken($color-block, 5)
       pre
         color: $color-meta
 
