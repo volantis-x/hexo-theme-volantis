@@ -1,33 +1,33 @@
-
-function menuPlay() {
-	var canplay = getCookie('canplay');
-	if (canplay == null || canplay == 'true') {
-		document.querySelector('meting-js').aplayer.play();
+// 播放/暂停
+function aplayerToggle() {
+	let ap = document.querySelector('meting-js').aplayer;
+	if (ap != undefined) {
+		ap.toggle();
 	}
 }
 
-function menuPause() {
-	var canplay = getCookie('canplay');
-	if (canplay == null || canplay == 'true') {
-		document.querySelector('meting-js').aplayer.pause();
-		var index = document.querySelector('meting-js').aplayer.list.index;
-		var title = document.querySelector('meting-js').aplayer.list.audios[index].title;
-		var artist = document.querySelector('meting-js').aplayer.list.audios[index].artist;
+// 上一曲
+function aplayerBackward() {
+	let ap = document.querySelector('meting-js').aplayer;
+	if (ap != undefined) {
+		ap.skipBack();
+		ap.play();
 	}
 }
 
-function menuBackward() {
-	var canplay = getCookie('canplay');
-	if (canplay == null || canplay == 'true') {
-		document.querySelector('meting-js').aplayer.skipBack();
-		document.querySelector('meting-js').aplayer.play();
+// 下一曲
+function aplayerForward() {
+	let ap = document.querySelector('meting-js').aplayer;
+	if (ap != undefined) {
+		ap.skipForward();
+		ap.play();
 	}
 }
 
-function menuForward() {
-	var canplay = getCookie('canplay');
-	if (canplay == null || canplay == 'true') {
-		document.querySelector('meting-js').aplayer.skipForward();
-		document.querySelector('meting-js').aplayer.play();
+// 调节音量
+function aplayerVolume(percent) {
+	let ap = document.querySelector('meting-js').aplayer;
+	if (ap != undefined) {
+		ap.volume(percent);
 	}
 }
