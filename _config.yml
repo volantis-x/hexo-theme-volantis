@@ -676,13 +676,21 @@ comments:
 rightmenu:
   enable: true
   # hr: 分割线, navigation: 导航按钮, music-ctrl: 音乐控制器
-  layout: [copy, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, music-ctrl]
+  layout: [copy_text, copy_src, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
   # 复制
-  copy:
+  copy_text:
     name: 复制文本
     icon: fa fa-copy
     id: menu-copy
-    onclick: menuCopy()
+    onclick: document.execCommand('copy')
+  copy_src:
+    name: 复制图片链接
+    icon: fa fa-link
+    id: menu-copy-img
+  print:
+    name: 打印页面
+    icon: fa fa-print
+    onclick: document.execCommand('print')
   # 自定义菜单的格式如下
   help:
     name: 常见问题
