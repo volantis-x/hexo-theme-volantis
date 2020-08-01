@@ -1,6 +1,6 @@
 // 检查 Aplayer 对象状态
 function checkAPlayer() {
-	if (APlayerController.aplayer == undefined) {
+	if (APlayerController.player == undefined) {
 		setAPlayerObject();
 	} else {
 		if (APlayerController.observer == undefined) {
@@ -15,7 +15,7 @@ function setAPlayerObject() {
 	document.querySelectorAll('meting-js').forEach((item, index)=>{
 		if (item.meta.id == APlayerController.id) {
 			if (document.querySelectorAll('meting-js')[index].aplayer != undefined) {
- 				APlayerController.aplayer = document.querySelectorAll('meting-js')[index].aplayer;
+ 				APlayerController.player = document.querySelectorAll('meting-js')[index].aplayer;
 				setAPlayerObserver();
 			}
 		}
@@ -25,13 +25,13 @@ function setAPlayerObject() {
 // 事件监听
 function setAPlayerObserver() {
 	try {
-		APlayerController.aplayer.on('play', function (e) {
+		APlayerController.player.on('play', function (e) {
 			updateAPlayerControllerStatus();
 		});
-		APlayerController.aplayer.on('pause', function (e) {
+		APlayerController.player.on('pause', function (e) {
 			updateAPlayerControllerStatus();
 		});
-		APlayerController.aplayer.on('volumechange', function (e) {
+		APlayerController.player.on('volumechange', function (e) {
 			onUpdateAPlayerVolume();
 		});
 
@@ -42,7 +42,7 @@ function setAPlayerObserver() {
 			let percentage = ((e.clientX || e.changedTouches[0].clientX) - APlayerController.volumeBar.getBoundingClientRect().left) / APlayerController.volumeBar.clientWidth;
 			percentage = Math.max(percentage, 0);
 			percentage = Math.min(percentage, 1);
-			APlayerController.aplayer.volume(percentage);
+			APlayerController.player.volume(percentage);
 		}
 		const thumbMove = (e) => {
 				updateAPlayerVolume(e);
@@ -75,7 +75,7 @@ function setAPlayerObserver() {
 // 更新控制器状态
 function updateAPlayerControllerStatus() {
 	try {
-		if (APlayerController.aplayer.audio.paused) {
+		if (APlayerController.player.audio.paused) {
 			document.getElementsByClassName('nav toggle')[0].children[0].classList.add("fa-play");
 			document.getElementsByClassName('nav toggle')[0].children[0].classList.remove("fa-pause");
 		} else {
@@ -88,7 +88,7 @@ function updateAPlayerControllerStatus() {
 }
 function onUpdateAPlayerVolume() {
 	try {
-		APlayerController.volumeBar.children[0].style.width = APlayerController.aplayer.audio.volume * 100 + '%'
+		APlayerController.volumeBar.children[0].style.width = APlayerController.player.audio.volume * 100 + '%'
 	} catch (error) {
 		console.log(error);
 	}
@@ -98,7 +98,7 @@ function onUpdateAPlayerVolume() {
 function aplayerToggle() {
 	checkAPlayer();
 	try {
-		APlayerController.aplayer.toggle();
+		APlayerController.player.toggle();
 	} catch (error) {
 		console.log(error);
 	}
@@ -108,8 +108,8 @@ function aplayerToggle() {
 function aplayerBackward() {
 	checkAPlayer();
 	try {
-		APlayerController.aplayer.skipBack();
-		APlayerController.aplayer.play();
+		APlayerController.player.skipBack();
+		APlayerController.player.play();
 	} catch (error) {
 		console.log(error);
 	}
@@ -119,8 +119,8 @@ function aplayerBackward() {
 function aplayerForward() {
 	checkAPlayer();
 	try {
-		APlayerController.aplayer.skipForward();
-		APlayerController.aplayer.play();
+		APlayerController.player.skipForward();
+		APlayerController.player.play();
 	} catch (error) {
 		console.log(error);
 	}
@@ -130,23 +130,22 @@ function aplayerForward() {
 function aplayerVolume(percent) {
 	checkAPlayer();
 	try {
-		APlayerController.aplayer.volume(percent);
+		APlayerController.player.volume(percent);
 	} catch (error) {
 		console.log(error);
 	}
 }
-// 调节音量 测试
-function aplayerVolumeToggle() {
-	// checkAPlayer();
-	// try {
-	// 	if (APlayerController.aplayer.audio.volume == 0) {
-	// 		aplayerVolume(0.7);
-	// 	} else {
-	// 		aplayerVolume(0);
-	// 	}
-	// } catch (error) {
-	// 	console.log(error);
-	// }
+
+// 更新音乐标题
+function updateTitle() {
+	checkAPlayer();
+	try {
+		let index = APlayerController.player.list.index;
+		let obj = APlayerController.player.list.audios[index];
+		document.getElementsByClassName('nav music-title')[0].innerHTML = obj.title;
+	} catch (error) {
+		console.log(error);
+	}
 }
 
 (function ($) {

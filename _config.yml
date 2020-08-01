@@ -521,7 +521,7 @@ plugins:
     order: list       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
-    list_max_height: 340px # list max height
+    list_max_height: 320px # list max height
     list_folded: true
   pjax:
     enable: true
@@ -675,8 +675,8 @@ comments:
 # 自定义右键菜单
 rightmenu:
   enable: true
-  # hr: 分割线, navigation: 导航按钮
-  layout: [copy, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, music-ctrl, music-volume]
+  # hr: 分割线, navigation: 导航按钮, music-ctrl: 音乐控制器
+  layout: [copy, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, music-ctrl]
   # 复制
   copy:
     name: 复制文本
