@@ -18,8 +18,6 @@ pre > span
 //index.styl
 a
   cursor $pointer,pointer
-  p
-    cursor $pointer,pointer
   &:not([href])
     cursor $default,default
     p
@@ -31,6 +29,9 @@ input[type="submit"]
   cursor: $pointer,pointer
 button[disabled],html input[disabled]
   cursor: $default,default
+table
+  &::-webkit-scrollbar-thumb
+    cursor $pointer,pointer
 
 //func.styl
 scrollbar
@@ -39,9 +40,6 @@ scrollbar
 
 //article.styl
 .article
-  kbd
-    &:hover
-      cursor: $default,default
   .widget
     cursor: $default,default
 
@@ -84,16 +82,14 @@ article .checkbox
   input
     cursor: $pointer,pointer
 
-//dropmenu.styl
-div.dropmenu
-  cursor: $default,default
-
 //folding.styl
 details
   summary
     cursor: $pointer,pointer
-    p
-      cursor: $pointer,pointer
+
+//link.styl
+.article a.link-card
+  cursor: $pointer,pointer
 
 //tabs.styl
 div.tabs
