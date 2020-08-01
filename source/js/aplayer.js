@@ -34,6 +34,10 @@ function setAPlayerObserver() {
 		APlayerController.player.on('volumechange', function (e) {
 			onUpdateAPlayerVolume();
 		});
+		APlayerController.player.on('loadstart', function (e) {
+			// 跳到下一曲时更新标题
+			updateTitle();
+		});
 
 		// 监听音量手势
 		APlayerController.volumeBarWrap = document.getElementsByClassName('nav volume')[0].children[0];
