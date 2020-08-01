@@ -1,0 +1,106 @@
+<% if (theme.rightmenu && theme.rightmenu.enable == true && theme.rightmenu.layout.length > 0) { %>
+  <% function loadmenu(obj) { %>
+    <li>
+      <a class='vlts-menu fix-cursor-default' <%= obj.url ? 'href='+ url_for(obj.url)+'' : ''%>
+        <% if (obj.rel) { %>
+          rel="<%- obj.rel %>"
+        <% } %>
+        <% if (obj.target) { %>
+          target="<%- obj.target %>"
+        <% } %>
+        <% if (obj.onclick) { %>
+          onclick="<%- obj.onclick %>"
+        <% } %>
+        <% if (obj.id) { %>
+          id="<%- obj.id %>"
+        <% } else if (obj.url) { %>
+          id="<%= url_for(obj.url).replace(/\/|%|\./g, "")?url_for(obj.url).replace(/\/|%|\./g, ""):"home" %>"
+        <% } %>>
+        <% if (obj.icon) { %><i class='<%= obj.icon %> fa-fw'></i><% } %> <%- obj.name %>
+      </a>
+    </li>
+  <% } %>
+
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <% theme.rightmenu.layout.forEach(function(item){ %>
+        <% if (item == 'hr') { %>
+          <hr>
+        <% } else if (item == 'navigation') { %>
+          <li class='navigation'>
+            <a class='nav' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+            <a class='nav' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+            <a class='nav' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+            <a class='nav fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+          </li>
+        <% } else if (item == 'music-ctrl' && theme.plugins.aplayer.enable == true) { %>
+          <li class='music name'>
+            <p class='nav music-title'></p>
+          </li>
+          <li class='music ctrl'>
+            <a class='nav backward' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
+            <a class='nav toggle' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav forward' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
+          </li>
+          <li class='music volume'>
+            <a class='nav volume'>
+              <div class="aplayer-volume-bar-wrap">
+                <div class="aplayer-volume-bar fix-cursor-pointer">
+                  <div class="aplayer-volume"></div>
+                  <i class='left fa fa-volume-off fa-fw'></i>
+                  <i class='right fa fa-volume-up fa-fw'></i>
+                </div>
+              </div>
+            </a>
+          </li>
+        <% } else if (item in theme.rightmenu) { %>
+          <% loadmenu(theme.rightmenu[item]) %>
+        <% } %>
+      <% }) %>
+    </ul>
+  </div>
+
+  <script>
+    window.document.oncontextmenu = function () {
+      return false;
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var copy = document.getElementById('menu-copy');
+      var select = window.getSelection().toString(); // 鼠标选中的文本
+      copy.style.display = select == "" ? "none" : "block";
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var mouseClientX = event.clientX;
+      var mouseClientY = event.clientY;
+      var menuWidth = menuContent.offsetWidth == 0 ? 150 : menuContent.offsetWidth;
+      var menuHeight = menuContent.offsetHeight == 0 ? 242 : menuContent.offsetHeight;
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      var showLeft = mouseClientX + menuWidth > screenWidth ? mouseClientX - menuWidth + 10 : mouseClientX;
+      var showTop = mouseClientY + menuHeight > screenHeight ? mouseClientY - menuHeight + 10 : mouseClientY;
+      mymenu.style.left = showLeft + "px"; // 获取鼠标位置
+      mymenu.style.top = showTop + "px";
+      mymenu.style.display = 'block';
+      if (<%= theme.plugins.aplayer.enable %> == true) {
+        // 如果有aplayer，初始化一下
+      	try {
+      		checkAPlayer();
+          updateTitle();
+      	} catch (error) {
+      		console.log(error);
+      	}
+      }
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function menuCopy() {
+      document.execCommand("Copy");
+    }
+  </script>
+<% } %>

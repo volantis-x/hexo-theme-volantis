@@ -74,27 +74,33 @@ pre
   width: 100%
   margin: $gap-row 0
   display: block
-  background: $color-codeblock
+  background: $color-block
   font-size: $fontsize-code
   font-family: $fontfamily-code
   border-radius: $border-codeblock
-  border: 1px solid transparent
+  // border: 1px solid transparent
   line-height: 1.5
   -webkit-font-smoothing: auto
   -moz-osx-font-smoothing: auto
+  overflow: hidden
   trans()
   if hexo-config('style.body.highlight.grayscale') == true
     filter: grayscale(100%)
   &:hover
-    border-color: darken($color-codeblock, 10)
+    background: $color-codeblock
     if hexo-config('style.body.highlight.grayscale') == true
       filter: grayscale(0%)
+    figcaption
+      trans()
+      background: darken($color-codeblock, 5%)
+    .gutter
+      background: darken($color-codeblock, 5)
   figcaption
     font-size: 12px
     position: sticky
     left: 0
     padding: $gap * 0.25 $gap * 0.5 $gap * 0.25 $gap * 0.5
-    background-color: darken($color-codeblock, 5%)
+    background: darken($color-block, 5%)
     border-top-left-radius: "calc(%s - 1px)" % $border-codeblock
     border-top-right-radius: "calc(%s - 1px)" % $border-codeblock
 
@@ -123,7 +129,7 @@ pre
       position: sticky
       left: 0
       z-index: 1
-      background-color: darken($color-codeblock, 5)
+      background: darken($color-block, 5)
       pre
         color: $color-meta
 

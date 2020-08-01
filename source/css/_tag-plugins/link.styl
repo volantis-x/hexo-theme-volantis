@@ -1,0 +1,52 @@
+.article a.link-card
+  margin: $gap-row * 0.5 auto
+  background: $color-block
+  display: inline-flex
+  align-items: center
+  cursor: pointer
+  text-align: center
+  min-width: 200px
+  max-width: $device-mobile-l - 4 * $gap
+  @media screen and (max-width: $device-mobile-l)
+    max-width: 100%
+  @media screen and (max-width: $device-mobile-m)
+    width: 100%
+  color: $color-p
+  border-radius: $border-card
+  &:hover
+    box-shadow: $boxshadow-float
+
+
+.article a.link-card
+  div.left,div.right
+    pointer-events: none
+  div.left
+    width: 48px
+    height: 48px
+    margin: 12px
+    overflow: hidden
+    flex-shrink: 0
+    position: relative
+    i
+      font-size: 32px
+      line-height: 48px
+      margin-left: 4px
+    img
+      display: block
+      position: absolute
+      border-radius: $border-card / 4
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+  div.right
+    overflow: hidden
+    margin-right: 12px
+  p
+    margin: 0
+    txt-ellipsis()
+  p.text
+    font-weight: bold
+  p.url
+    flex-shrink: 0
+    color: $color-meta
+    font-size: $fontsize-code

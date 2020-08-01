@@ -43,7 +43,7 @@
             <% } else if (value.icon && value.icon.indexOf('fa-compact-disc') > -1 && value.url  == undefined && value.rows  == undefined) { %>
               <% if (type == 'pc') { %>
                 <li>
-                  <a class="flat-box">
+                  <a class="menuitem flat-box">
                     <i class='<%= value.icon %> fa-fw music'></i><%- value.name %>
                   </a>
                   <ul class="list-v">
@@ -61,7 +61,7 @@
               </li>
             <% } else { %>
               <li>
-                <a class="flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
+                <a class="menuitem flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
                   <% if (value.rel) { %>
                     rel="<%- value.rel %>"
                   <% } %>

@@ -40,9 +40,9 @@ function postBtn(args) {
     cls = ' ' + cls
   }
   if (icon.length > 0) {
-    return `<span class='btn${cls}'><a ${url} title='${text}'><i class='${icon}'></i>${text}</a></span>`;
+    return `<span class='btn${cls}'><a class="button" ${url} title='${text}'><i class='${icon}'></i>${text}</a></span>`;
   } else {
-    return `<span class='btn${cls}'><a ${url} title='${text}'>${text}</a></span>`;
+    return `<span class='btn${cls}'><a class="button" ${url} title='${text}'>${text}</a></span>`;
   }
 }
 

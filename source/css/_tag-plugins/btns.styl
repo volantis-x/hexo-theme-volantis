@@ -1,6 +1,9 @@
 // inline btn
-span.btn
+.article span.btn
   display: inline
+  a
+    text-decoration: none
+    border-bottom: none
   >a
     display: inline-block
     background: $color-theme
@@ -18,7 +21,7 @@ span.btn
     &:not([href])
       opacity: 0.5
       &:hover
-        cursor: not-allowed
+        cursor: $not-allowed,not-allowed
 
   &.regular
     >a
@@ -36,7 +39,7 @@ span.btn
 
 
 // btns
-div.btns
+.article div.btns
   margin: 0 -0.5 * $gap
   &,p,a
     font-size: $fontsize-code
@@ -92,6 +95,8 @@ div.btns
       width: "calc(100%/2 - %s)" % $gap
   a
     trans()
+    text-decoration: none
+    border-bottom: none
     margin: $gap * 0.5
     margin-top: "calc(1.25 * %s + 32px)" % $gap
     min-width: 120px

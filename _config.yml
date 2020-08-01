@@ -1,5 +1,14 @@
 ############################### Style ###############################
 style:
+  cursor:
+    enable: true
+    text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png
+    pointer: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/pointer.png
+    default: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/left_ptr.png
+    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/circle.png
+    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-out.png
+    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-in.png
+    grab: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/openhand.png
   font_smoothing: false # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
@@ -18,7 +27,7 @@ style:
     highlight:
       language: true # show language of codeblock
       copy_btn: true
-      grayscale: true # Enable grayscale effect
+      grayscale: false # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
       h2: left
@@ -82,13 +91,12 @@ style:
   #   site_footer: '#666' # Footer text color inside the website background
   #   card: '#444' # Card background color
   #   text: '#fff' # The color of the text on the card.
-  #   theme: '#ff9800' # Main color
+  #   # theme: '#ff9800' # Main color
   #   link: '#1BCDFC' # Link color
   #   hover: '#ff5722' # Link highlight color
   #   inner: '#333' # Text color inside the button
   #   block: '#555' # Block color
-  #   inlinecode: '#555' # Inline code color
-  #   codeblock: '#555' # Codeblock color
+  #   codeblock: '#48371A' # Codeblock color
   #   p: '#ccc' # Paragraph color
 
 
@@ -97,12 +105,12 @@ style:
 ############################### Layout ###############################
 cover:
   scheme: docs # docs, blog
-  layout: featured # search (搜索), dock (坞), featured (精选), focus (焦点)
+  layout: dock # search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  logo: https://i.loli.net/2020/07/22/2OYbPxZjhdFce3L.png
+  logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: ''
   subtitle: ''
   search: A Wonderful Theme for Hexo # search bar placeholder
@@ -129,7 +137,7 @@ cover:
 # Navigation Bar
 navbar:
   logo: # choose [img] or [icon + title]
-    img: https://i.loli.net/2020/07/22/Xw9pZTkyhSPOY8M.png
+    img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     icon:
     title:
   menu:
@@ -191,9 +199,9 @@ meta:
   title: # 暂无配置
   # 默认文章作者（可在front-matter中覆盖）
   author:
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
-    name: Mr. X
-    url: https://xaoxuu.com
+    avatar:
+    name: 请设置文章作者
+    url: /
   # 文章创建日期
   date:
     icon: fas fa-calendar-alt
@@ -227,15 +235,15 @@ meta:
   # 分享
   share:
     - id: qq
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png
+      img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png
     - id: qzone
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png
+      img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
     - id: weibo
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png
+      img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
     # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
-    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png
+    #   img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
     # - id: telegram
-    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/telegram.png
+    #   img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
   # 链接
   btns:
     edit:
@@ -275,7 +283,7 @@ widget:
   blogger:
     class: blogger
     display: [desktop, mobile] # [desktop, mobile]
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
+    avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     shape: rectangle # circle, rectangle
     url: /about/
     title:
@@ -343,8 +351,8 @@ widget:
     height: 64px  # Automatic height if not set
     fancybox: true
     images:
-      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
-      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
   # ---------------------------------------
   # references widget
   references:
@@ -407,12 +415,12 @@ footer:
     - icon: fas fa-rss
       url: atom.xml
     - icon: fas fa-envelope
-      url: mailto:me@xaoxuu.com
+      url: mailto:me@xxx.com
     - icon: fab fa-github
       url: https://github.com/xaoxuu
     - icon: fas fa-headphones-alt
       url: https://music.163.com/#/user/home?id=63035382
-  copyright: '[Copyright © 2017-2020 Mr. X](https://xaoxuu.com)'
+  copyright: '[Copyright © 2017-2020 XXX](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
@@ -447,7 +455,7 @@ plugins:
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
+    # js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
     interval: 20 # ms
@@ -458,7 +466,7 @@ plugins:
 
   ######## Plugins for SEO:
   # Traffic statistics (very slow loading)
-  busuanzi: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
+  busuanzi: https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
 
   # npm i --save hexo-wordcount
   wordcount: #true
@@ -501,6 +509,7 @@ plugins:
     js:
       - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
       - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
+      - js/aplayer.js
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
@@ -512,7 +521,7 @@ plugins:
     order: list       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
-    list_max_height: 340px # list max height
+    list_max_height: 320px # list max height
     list_folded: true
   pjax:
     enable: true
@@ -544,7 +553,7 @@ plugins:
   # https://darkmodejs.learn.uno
   # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
   darkmodejs:
-    enable: true
+    enable: false
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
     bottom: 32px
     right: unset
@@ -568,8 +577,8 @@ comments:
   # Valine
   # https://valine.js.org/
   valine: # 请将 appId appKey 修改为自己的，否则评论数据是共享的。
-    appId: dogUA2FSKGTo029M1SEwGROT-MdYXbMMI # your appId
-    appKey: u0NdtQ8nvHoMdJPSYqm1LRxE # your appKey
+    appId: # your appId
+    appKey: # your appKey
     # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
     path: # All pages use the same path (share the same comments data)
     meta: nick,mail,link # valine comment header info
@@ -587,17 +596,23 @@ comments:
   minivaline:
     appId: # your appId
     appKey: # your appKey
-    js: https://cdn.jsdelivr.net/npm/minivaline@2/dist/MiniValine.min.js
+    js: https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js
     mode: xCss # DesertsP or xCss
     placeholder: 快来评论吧~ # Comment box placeholder
     path: # All pages use the same path (share the same comments data)
-    math: true # Support MathJax.
+    math: false # Support MathJax.
     md: true # Support Markdown.
     enableQQ: false # Enable QQ avatar API.
-    NoRecordIP: false # Do not record commenter IP.
-    visitor: true # Article reading statistics.
+    NoRecordIP: true # Do not record commenter IP.
+    closeFlag: false
+    closeUA: false
+    region: false
+    visitor: false # Article reading statistics.
     maxNest: 6 # Sub-comment maximum nesting depth.
     pageSize: 6 # Pagination size.
+    barrager: 0
+    role: admin
+    cloudflag: false
     adminEmailMd5: de8a7aa53d07e6b6bceb45c64027763d # The MD5 of Admin Email to show Admin Flag.[ Just Only DesertsP Style mode]
     tagMeta: # The String Array of Words to show Flag.[ Just Only xCss Style mode]
       - 管理员
@@ -657,6 +672,38 @@ comments:
   hashover:
     src: https://example.com/(path/)comments.php
 
+# 自定义右键菜单
+rightmenu:
+  enable: true
+  # hr: 分割线, navigation: 导航按钮, music-ctrl: 音乐控制器
+  layout: [copy, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, music-ctrl]
+  # 复制
+  copy:
+    name: 复制文本
+    icon: fa fa-copy
+    id: menu-copy
+    onclick: menuCopy()
+  # 自定义菜单的格式如下
+  help:
+    name: 常见问题
+    icon: fa fa-question
+    url: https://volantis.js.org/faqs/
+  examples:
+    name: 示例博客
+    icon: fa fa-rss
+    url: https://volantis.js.org/examples/
+  contributors:
+    name: 加入社区
+    icon: fa fa-fan fa-spin
+    url: https://volantis.js.org/contributors/
+  source_docs:
+    name: 本站源码
+    icon: fa fa-code-branch
+    url: https://github.com/volantis-x/volantis-docs/
+  source_theme:
+    name: 主题源码
+    icon: fa fa-code-branch
+    url: https://github.com/volantis-x/hexo-theme-volantis/
 
 
 ############################### Search ###############################

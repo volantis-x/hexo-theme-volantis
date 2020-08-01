@@ -12,13 +12,7 @@
               </div>
               <div class="archive-item all-tags">
                 <% let tc = theme.widget.tagcloud; %>
-                <%- tagcloud(site.tags, {
-                    min_font: tc.min_font,
-                    max_font: tc.max_font,
-                    color: tc.color,
-                    start_color: tc.start_color,
-                    end_color: tc.end_color,
-                }) %>
+                <%- list_tags({}) %>
               </div>
               <br>
               <%- page.content %>
@@ -32,4 +26,3 @@
   <% } %>
 </div>
 <%- partial('_partial/side') %>
-

@@ -1,24 +1,18 @@
-div.dropmenu
+div.dropmenu-wrapper
   display: inline-block
+
+div.dropmenu
   position: relative
-  line-height: 2.4
-  cursor: default
+  display: inline-block
   trans()
-  color: alpha($color-text, 85%)
-  background: mix($color-card, $color-text, 97)
-  border-radius: $border-codeblock
-  border: 1px solid darken($color-card, 6)
-  padding: 0 $gap
-  padding-top: 1px
-  font-size: $fontsize-meta
-  font-weight: bold
+  color: $color-link
   &:hover
-    background: bgcolor($color-theme)
-    border-color: darken(bgcolor($color-theme), 6)
+    color: inherit
     >ul
       display: block
-      margin-left: 0 - $gap * 0.5
-      margin-top: 0 - $border-codeblock
+      left: 0
+      margin-left: 0
+      margin-top: 0px
   ul>li
     list-style: none
     >a

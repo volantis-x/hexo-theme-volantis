@@ -1,17 +1,14 @@
 .article
   underline()
-    &:hover
-      text-decoration: underline
-  .article-entry
-    >a,>p>a,blockquote a,div.note a
+    text-decoration: underline
+    // border-bottom: 1px solid $color-link
+  a
+    &:not([class])
       underline()
-    >ul>li,>ol>li,tbody tr td
-      >a,>p>a
-        underline()
-    div.tab-pane
-      >p,li
-        >a
-          underline()
+      trans(0.1s)
+      // &:hover
+      //   border-bottom-color: $color-hover
+
 
 .article
   color: $color-p
@@ -48,8 +45,8 @@
       &:before
         content: none
   h1,h2
-    padding-bottom: .2em
-    margin-bottom: .5em
+    padding-bottom: .2rem
+    margin-bottom: 1rem
     border-bottom: 1px solid alpha($color-text, 10%)
   h1
     text-align: $textalign-h1
@@ -95,27 +92,34 @@
       margin: 0
       box-shadow: none
   s,del
-    opacity: 0.7
+    color: mix($color-p, $color-card, 60)
+    text-decoration-color: mix($color-mac-red, $color-card, 60)
   u
-    color: $color-hover
+    color: $color-text
+    text-decoration: none
+    border-bottom: 1px solid $color-mac-red
+  emp
+    color: $color-text
+    border-bottom: 4px dotted $color-mac-red
+  wavy
+    color: $color-text
+    text-decoration-style: wavy
+    text-decoration-line: underline
+    text-decoration-color: $color-mac-red
   psw
-    color: lighten($color-p, 10)
-    background: lighten($color-p, 10)
+    color: transparent
+    background: mix($color-p, $color-card, 75)
     border-radius: 2px
+    trans()
     &:hover
+      color: $color-p
       background: none
   kbd
     border-radius: $border-codeblock * 0.5
-    border: 1px solid darken($color-inlinecode, 6)
-    background: $color-inlinecode
+    border: 1px solid mix($color-block, $color-text, 90)
+    background: $color-block
     padding-left: 4px
     padding-right: 4px
-    trans()
-    &:hover
-      cursor: default
-      border-color: $color-theme
-      background: $color-theme
-      color: $color-inner
   p
     margin-top: $gap-paragraph
     margin-bottom: $gap-paragraph
@@ -231,10 +235,8 @@
   code
     font-family: $fontfamily-code
     &:not([class])
-      padding: 3px 4px 1px 4px
-      vertical-align: middle
       font-size: $fontsize-code
-      background: $color-inlinecode
+      color: $color-inlinecode
       border-radius: $border-codeblock * 0.5
 
 
@@ -285,6 +287,7 @@
         padding-left: 9px
         margin-left: $gap
         a
+          trans(0.1s)
           display: inline
           border-left: none
           padding: 0
@@ -292,8 +295,8 @@
           color: $color-link
           font-weight: normal
           &:hover
-            text-decoration: underline
             color: $color-hover
+            text-decoration: underline
           &:hover,&.active,&:active
             border-left: none !important
             background: none !important
@@ -336,7 +339,6 @@
     position: relative
     pointer-events: none
     margin-top: 0
-    margin-bottom: $gap-paragraph
     >a
       color: inherit
       pointer-events: auto
@@ -352,6 +354,8 @@
   h1,h2
     &:before
       margin-top: $gap-h2 - $navbar-height - $gap
+  h3,h4,h5,h6
+    margin-bottom: $gap-paragraph
   h3
     &:before
       margin-top: $gap-h3 - $navbar-height - $gap
@@ -363,6 +367,6 @@
 
 
 article .readmore
+  display: block
   margin-top: $gap-paragraph
-  >a
-    font-size: $fontsize-meta
+  font-size: $fontsize-meta

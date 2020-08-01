@@ -1,7 +1,7 @@
 <% if (theme.comments.minivaline.js) { %>
   <%- js(theme.comments.minivaline.js) %>
 <% } else { %>
-  <script src="https://cdn.jsdelivr.net/npm/minivaline@2/dist/MiniValine.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
 <% } %>
 <% var emoticonUrl = theme.comments.minivaline.emoticonUrl || [] %>
 <% var tagMeta = theme.comments.minivaline.tagMeta || [] %>
@@ -34,6 +34,12 @@ new MiniValine({
   visitor: <%= theme.comments.minivaline.visitor %>,
   maxNest: <%= theme.comments.minivaline.maxNest %>,
   pageSize: <%= theme.comments.minivaline.pageSize %>,
+  barrager: <%= theme.comments.minivaline.barrager %>,
+  role: '<%= theme.comments.minivaline.role %>',
+  closeFlag: <%= theme.comments.minivaline.closeFlag %>,
+  cloudflag: <%= theme.comments.minivaline.cloudflag %>,
+  region: <%= theme.comments.minivaline.region %>,
+  closeUA: <%= theme.comments.minivaline.closeUA %>,
   emoticonUrl: <%- '["' + emoticonUrl.join('", "') + '"]' %>,
   serverURLs: '<%= theme.comments.minivaline.serverURLs %>'
   });

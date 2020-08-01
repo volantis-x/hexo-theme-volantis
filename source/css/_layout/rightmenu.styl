@@ -1,0 +1,74 @@
+div#rightmenu-wrapper
+  display: none
+  position:fixed
+  z-index: 2000
+  disable-user-select()
+ul.list-v.rightmenu
+  display: block
+  $cellH = 36px
+  li.navigation, li.music
+    display: flex
+    justify-content: space-between
+    a.vlts-menu
+      padding: 0 $gap * 1 0 $gap * 0.5
+    a.nav
+      margin: 0
+      padding: 0
+      border-radius: $cellH
+      overflow: hidden
+      i
+        margin: 0
+        width: $cellH
+        line-height: $cellH
+      &:first-child
+        margin-left: 4px + $gap * 0.5
+      &:last-child
+        margin-right: 4px + $gap * 0.5
+  li.music
+    &.name
+      display: flex
+      flex-direction: column
+      align-items: center
+      p.nav.music-title
+        color: mix($color-text, $color-card, 80)
+        font-size: $fontsize-meta
+        max-width: 128px
+        margin: 0 4px + $gap
+        overflow: hidden
+        &:hover
+          background: none
+    a.nav.volume
+      width: 100%
+      padding: 0 $gap * 0.5
+      &:hover
+        background: transparent
+      .aplayer-volume-bar
+        margin: $gap * 0.25 0 $gap * 0.5
+        position: relative
+        height: 8px
+        width: 100%
+        background: mix($color-block, $color-text, 95)
+        border-radius: $cellH
+        overflow: hidden
+        i.left, i.right
+          color: mix($color-text, $color-card, 80)
+          position: absolute
+          top: 0
+          width: $cellH
+          trans()
+          opacity: 0
+          transform: scale(0.5) translateY(-0.5 * $cellH - 8px)
+        i.left
+          left: 0
+        i.right
+          right: 0
+        trans()
+        &:hover
+          height: $cellH - 2px
+          i
+            opacity: 1
+            transform: scale(1) translateY(0)
+        .aplayer-volume
+          background: $color-theme
+          height: 100%
+          width: 100%

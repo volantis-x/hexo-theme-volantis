@@ -12,11 +12,9 @@
     </div>
     <% if (theme.layout.on_list.readmore) { %>
       <% if ((post.readmore != false) && (post.excerpt || post.description || post.link)) { %>
-        <div class="button readmore">
-          <a href="<%- url_for(post.link || post.path) %>">
-            <%- theme.layout.on_list.readmore %>
-          </a>
-        </div>
+        <a class= "readmore" href="<%- url_for(post.link || post.path) %>">
+          <%- theme.layout.on_list.readmore %>
+        </a>
       <% } %>
     <% } %>
   </section>

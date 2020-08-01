@@ -83,6 +83,7 @@
     ul.entry, ul.popular-posts
       list-style: none
       a
+        border-bottom: 1px solid transparent
         .name
           flex: auto
           // txt-ellipsis()
@@ -300,10 +301,12 @@
       a
         display: inline-block
         trans()
-        line-height: 1.6em
+        line-height: 1.2em
+        margin: 4px 0
+        border-bottom: 1px solid transparent
         &:hover
           color: $color-hover !important //to cover inline style.
-          text-decoration: underline
+          border-bottom: 1px solid $color-hover
 
 
 
@@ -364,14 +367,14 @@
   @media screen and (max-width: $device-mobile)
     border-radius: $border-card
 
-.webinfo 
+.webinfo
   padding 0.2rem 1rem
-  .webinfo-item 
+  .webinfo-item
     display block
     padding 4px 0 0
-    div 
-      &:first-child 
+    div
+      &:first-child
         display inline-block
-      &:last-child 
+      &:last-child
         display inline-block
         float right
