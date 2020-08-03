@@ -61,16 +61,13 @@
   </div>
 
   <script>
-    window.document.oncontextmenu = function () {
-      return false;
-    };
     document.addEventListener("click", function (event) {
       var mymenu = document.getElementById('rightmenu-wrapper');
       mymenu.style.display = "none";
     });
     window.document.oncontextmenu = function (event) {
       if (event.ctrlKey) return true;
-      if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) return true;
+      if(/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
       return popMenu(event);
     };
     function popMenu(event) {
