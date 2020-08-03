@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
 <%- partial('_partial/head') %>
-<% if (theme.rightmenu && theme.rightmenu.enable == true) { %>
-<body oncontextmenu="return popMenu(event);">
-<% } else { %>
 <body>
-<% } %>
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
     <div class='body-wrapper' id="pjax-container">

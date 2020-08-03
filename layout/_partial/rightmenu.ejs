@@ -61,8 +61,10 @@
   </div>
 
   <script>
-    window.document.oncontextmenu = function () {
-      return false;
+    window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
     };
     document.addEventListener("click", function (event) {
       var mymenu = document.getElementById('rightmenu-wrapper');
