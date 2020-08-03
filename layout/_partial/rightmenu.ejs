@@ -99,7 +99,7 @@
         document.getElementById('menu-copy-img').style.display = 'block';
         document.getElementById('menu-copy-img').addEventListener("click", function (e) {
           copyString(event.toElement.currentSrc);
-        });
+        },{once: true});
       } else {
         document.getElementById('menu-copy-img').style.display = 'none';
       }
