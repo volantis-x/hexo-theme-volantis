@@ -49,10 +49,16 @@ var $i = $("<span/>").text(a[a_idx]); a_idx = (a_idx + 1) % a.length; var x = e.
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
   <div>
+    <% if (theme.rightmenu && theme.rightmenu.enable == true) { %>
+      <%- partial('_partial/rightmenu') %>
+    <% } %>
     <%- partial('_partial/scripts') %>
     <% if (theme.plugins.pjax.enable) { %>
       <%- partial('_third-party/pjax/index') %>
     <% } %>
   </div>
+  <% if (theme.rightmenu && theme.rightmenu.enable == true) { %>
+    <script src="https://cdn.jsdelivr.net/gh/inkss/common@master/hexo/js/cookie.min.js"></script>
+  <% } %>
 </body>
 </html>

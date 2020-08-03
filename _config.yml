@@ -27,7 +27,7 @@ style:
     highlight:
       language: true # show language of codeblock
       copy_btn: true
-      grayscale: true # Enable grayscale effect
+      grayscale: false # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
       h2: left
@@ -91,13 +91,12 @@ style:
   #   site_footer: '#666' # Footer text color inside the website background
   #   card: '#444' # Card background color
   #   text: '#fff' # The color of the text on the card.
-  #   theme: '#ff9800' # Main color
+  #   # theme: '#ff9800' # Main color
   #   link: '#1BCDFC' # Link color
   #   hover: '#ff5722' # Link highlight color
   #   inner: '#333' # Text color inside the button
   #   block: '#555' # Block color
-  #   inlinecode: '#555' # Inline code color
-  #   codeblock: '#555' # Codeblock color
+  #   codeblock: '#48371A' # Codeblock color
   #   p: '#ccc' # Paragraph color
 
 
@@ -459,7 +458,7 @@ plugins:
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
+    # js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
     interval: 20 # ms
@@ -530,6 +529,28 @@ plugins:
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/landscape/10A0FCE5-36A1-4AD0-8CF0-019259A89E03.jpeg
       #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/landscape/250662D4-5A21-4AAA-BB63-CD25CF97CFF1.jpeg
       #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/landscape/298468D7-E388-44A8-8CC5-8213BDC33CED.jpeg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/001.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/002.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/003.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/004.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/005.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/006.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/012.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/016.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/019.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/025.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/033.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/034.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/035.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/038.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/039.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/042.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/042.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/046.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/051.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/052.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/054.jpg
+      - https://gitee.com/wallpapers/minimalist/raw/master/2020/056.jpg
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
@@ -538,6 +559,7 @@ plugins:
     js:
       - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
       - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
+      - js/aplayer.js
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
@@ -548,8 +570,8 @@ plugins:
     autoplay: true   # audio autoplay
     order: random       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
-    volume: 0.1      # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
-    list_max_height: 340px # list max height
+    volume: 0.1       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+    list_max_height: 320px # list max height
     list_folded: true
   pjax:
     enable: true
@@ -581,7 +603,7 @@ plugins:
   # https://darkmodejs.learn.uno
   # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
   darkmodejs:
-    enable: true
+    enable: false
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
     bottom: 20px
     right: unset
@@ -636,7 +658,7 @@ comments:
     placeholder: 快来评论吧~ # Comment box placeholder
     path: # All pages use the same path (share the same comments data)
     math: false # Support MathJax.
-    md: false # Support Markdown.
+    md: true # Support Markdown.
     enableQQ: false # Enable QQ avatar API.
     NoRecordIP: true # Do not record commenter IP.
     closeFlag: false
@@ -647,8 +669,8 @@ comments:
     pageSize: 6 # Pagination size.
     barrager: 0
     role: admin
-    cloudflag: true
-    adminEmailMd5: 4ae6fa384e752562ded2b3f7eb50af57 # The MD5 of Admin Email to show Admin Flag.[ Just Only DesertsP Style mode]
+    cloudflag: false
+    adminEmailMd5: de8a7aa53d07e6b6bceb45c64027763d # The MD5 of Admin Email to show Admin Flag.[ Just Only DesertsP Style mode]
     tagMeta: # The String Array of Words to show Flag.[ Just Only xCss Style mode]
       - 管理员
       - 小伙伴
@@ -707,6 +729,46 @@ comments:
   hashover:
     src: https://example.com/(path/)comments.php
 
+# 自定义右键菜单
+rightmenu:
+  enable: true
+  # hr: 分割线, navigation: 导航按钮, music-ctrl: 音乐控制器
+  layout: [copy_text, copy_src, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
+  # 复制
+  copy_text:
+    name: 复制文本
+    icon: fa fa-copy
+    id: menu-copy
+    onclick: document.execCommand('copy')
+  copy_src:
+    name: 复制图片链接
+    icon: fa fa-link
+    id: menu-copy-img
+  print:
+    name: 打印页面
+    icon: fa fa-print
+    onclick: document.execCommand('print')
+  # 自定义菜单的格式如下
+  help:
+    name: 常见问题
+    icon: fa fa-question
+    url: https://volantis.js.org/faqs/
+  examples:
+    name: 示例博客
+    icon: fa fa-rss
+    url: https://volantis.js.org/examples/
+  contributors:
+    name: 加入社区
+    icon: fa fa-fan fa-spin
+    url: https://volantis.js.org/contributors/
+  source_docs:
+    name: 本站源码
+    icon: fa fa-code-branch
+    url: https://github.com/volantis-x/volantis-docs/
+  source_theme:
+    name: 主题源码
+    icon: fa fa-code-branch
+    url: https://github.com/volantis-x/hexo-theme-volantis/
 
 
 ############################### Search ###############################
