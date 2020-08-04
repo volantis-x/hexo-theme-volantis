@@ -171,6 +171,7 @@ var customSearch;
 		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
 		$headerMenu.find('li a.active').removeClass('active');
+		$headerMenu.find('div a.active').removeClass('active');
 		// var $underline = $headerMenu.find('.underline');
 		function setUnderline($item) {
 			// if (!transition) $underline.addClass('disable-trans');
