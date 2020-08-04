@@ -91,19 +91,54 @@
 
       // 选中文本
       if (window.getSelection().toString()) {
-        document.getElementById('menu-copy').style.display = 'block';
+        document.getElementById('menu-copy-text').style.display = 'block';
       } else {
-        document.getElementById('menu-copy').style.display = 'none';
+        document.getElementById('menu-copy-text').style.display = 'none';
       }
 
       // 选中图片
-      if (event.toElement.currentSrc) {
-        document.getElementById('menu-copy-img').style.display = 'block';
-        document.getElementById('menu-copy-img').addEventListener("click", function (e) {
-          copyString(event.toElement.currentSrc);
+      if (event.target.currentSrc) {
+        document.getElementById('menu-copy-src').style.display = 'block';
+        document.getElementById('menu-copy-src').addEventListener("click", function (e) {
+          copyString(event.target.currentSrc);
         },{once: true});
       } else {
-        document.getElementById('menu-copy-img').style.display = 'none';
+        document.getElementById('menu-copy-src').style.display = 'none';
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+      if (href.length > 0) {
+        // 在新标签页打开
+        let openNew = document.getElementById('menu-open-new');
+        if (openNew != undefined) {
+          openNew.style.display = 'block';
+          openNew.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+        }
+        // 复制链接
+        let copyHref = document.getElementById('menu-copy-href');
+        if (copyHref != undefined) {
+          if (href.length > 0) {
+            copyHref.style.display = 'block';
+          } else {
+            copyHref.style.display = 'none';
+          }
+        }
+      } else {
+        let openNew = document.getElementById('menu-open-new');
+        if (openNew != undefined) {
+          openNew.style.display = 'none';
+        }
       }
 
       // 有音乐播放器
@@ -116,7 +151,7 @@
       		console.log(error);
       	}
       }
-      
+
       return false; // 该行代码确保系统自带的右键菜单不会被调出
     }
     function hideMenu() {

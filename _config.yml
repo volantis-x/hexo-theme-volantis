@@ -686,17 +686,25 @@ comments:
 rightmenu:
   enable: true
   # hr: 分割线, navigation: 导航按钮, music-ctrl: 音乐控制器
-  layout: [copy_text, copy_src, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
+  layout: [copy_text, copy_src, copy_href, open_new, navigation, hr, home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
   # 复制
   copy_text:
     name: 复制文本
     icon: fa fa-copy
-    id: menu-copy
+    id: menu-copy-text
     onclick: document.execCommand('copy')
   copy_src:
-    name: 复制图片链接
+    name: 复制图片地址
+    icon: fa fa-image
+    id: menu-copy-src
+  copy_href:
+    name: 复制链接
     icon: fa fa-link
-    id: menu-copy-img
+    id: menu-copy-href
+  open_new:
+    name: 在新标签页打开
+    icon: fa fa-external-link-square-alt
+    id: menu-open-new
   print:
     name: 打印页面
     icon: fa fa-print
