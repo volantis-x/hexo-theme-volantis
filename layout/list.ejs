@@ -3,24 +3,18 @@
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.pages && site.pages.length > 0) { %>
     <section class="post-list <%- theme.layout.multiple_columns ? 'multiple-columns' : '' %>">
-      <% if (!page.prev) { %>
-        <% site.pages.sort("-date").each(function(post){ %>
-          <% if (post.group && post.group == page.group && post.layout != 'list') { %>
-            <% if (post.pin) { %>
-              <div class='post-wrapper'>
-                <%- partial('_partial/post', {post: post, index: false}) %>
-              </div>
-            <% } %>
-          <% } %>
-        <% }) %>
-      <% } %>
       <% site.pages.sort("-date").each(function(post){ %>
         <% if (post.group && post.group == page.group && post.layout != 'list') { %>
-          <% if (!post.pin) { %>
-            <div class='post-wrapper'>
-              <%- partial('_partial/post', {post: post, index: false}) %>
-            </div>
-          <% } %>
+          <div class='post-wrapper'>
+            <%- partial('_partial/post', {post: post, index: false}) %>
+          </div>
+        <% } %>
+      <% }) %>
+      <% site.posts.sort("-date").each(function(post){ %>
+        <% if (post.group && post.group == page.group && post.layout != 'list') { %>
+          <div class='post-wrapper'>
+            <%- partial('_partial/post', {post: post, index: false}) %>
+          </div>
         <% } %>
       <% }) %>
     </section>
@@ -44,4 +38,3 @@
   <% } %>
 </div>
 <%- partial('_partial/side') %>
-
