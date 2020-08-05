@@ -189,3 +189,31 @@ kbd,
 
 .fix-cursor-default
   cursor $default,default !important
+
+//gitalk
+.gt-container
+  // common
+  a
+    &.is--active
+      cursor: $default,default !important
+  // avatar
+  .gt-avatar
+    &-github
+      cursor: $pointer,pointer !important
+  // button
+  .gt-btn
+    cursor: $pointer,pointer !important
+    &.is--disable
+      cursor: $not-allowed,not-allowed !important
+  .gt-user
+    &-inner
+      cursor: $pointer,pointer !important
+  /* popup */
+  .gt-popup
+    .gt-action
+      cursor: $pointer,pointer !important
+  /* comment */
+  .gt-comment
+    &-like, &-edit, &-reply
+      &:hover
+        cursor: $pointer,pointer !important

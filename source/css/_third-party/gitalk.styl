@@ -58,7 +58,7 @@ $gt-size-avatar-mobi := em(32px)
       border-color: lighten($gt-color-main, 20%)
     &.is--active
       color: $gt-color-link-active
-      cursor: $default,default !important
+      cursor: default
       &:hover
         color: $gt-color-link-active
   .hide
@@ -140,7 +140,7 @@ $gt-size-avatar-mobi := em(32px)
     &-github
       width: $gt-size-avatar - em(2px)
       height: $gt-size-avatar - em(2px)
-      cursor: $pointer,pointer
+      cursor: pointer
       +mobile()
         width: $gt-size-avatar-mobi - em(2px)
         height: $gt-size-avatar-mobi - em(2px)
@@ -151,7 +151,7 @@ $gt-size-avatar-mobi := em(32px)
     line-height: 1
     text-decoration: none
     white-space: nowrap
-    cursor: $pointer,pointer
+    cursor: pointer
     border: 1px solid $gt-color-main
     border-radius: $gt-size-border-radius
     background-color: $gt-color-main
@@ -168,7 +168,7 @@ $gt-size-avatar-mobi := em(32px)
       height: em(16px)
       vertical-align: top
     &.is--disable
-      cursor: $not-allowed,not-allowed
+      cursor: not-allowed
       opacity: 0.5
     &-login
       margin-right: 0
@@ -235,7 +235,7 @@ $gt-size-avatar-mobi := em(32px)
       margin-right: em(8px)
     &-inner
       display: inline-block
-      cursor: $pointer,pointer
+      cursor: pointer
     .gt-ico
       margin: 0 0 0 em(5px)
       svg
@@ -266,7 +266,7 @@ $gt-size-avatar-mobi := em(32px)
     font-size: em(14px)
     letter-spacing: .5px
     .gt-action
-      cursor: $pointer,pointer
+      cursor: pointer
       display: block
       margin: em(8px) 0
       padding: 0 em(18px)
@@ -412,7 +412,7 @@ $gt-size-avatar-mobi := em(32px)
       position: absolute
       height: em(22px)
       &:hover
-        cursor: $pointer,pointer
+        cursor: pointer
     &-like
       top: 0
       right: em(32px)
@@ -454,3 +454,14 @@ $gt-size-avatar-mobi := em(32px)
     transform: rotate(0)
   100%
     transform: rotate(360deg)
+.gt-initing-text
+	color: $gt-color-main !important
+	text-align: center !important
+.markdown-body blockquote
+    border-left: .25em solid $gt-color-main !important
+    padding: 16.1px 16px 16px  !important
+    transition: all .28s ease  !important
+    -moz-transition: all .28s ease  !important
+    -webkit-transition: all .28s ease  !important
+    -o-transition: all .28s ease  !important
+
