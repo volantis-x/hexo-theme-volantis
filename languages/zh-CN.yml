@@ -33,3 +33,9 @@ symbol:
   colon: "："
   brackets_l: "（"
   brackets_r: "）"
+
+rightmenu:
+  copy_text: "复制文本"
+  copy_image_src: "复制图片地址"
+  copy_link: "复制链接"
+  open_in_new_tab: "在新标签页打开"

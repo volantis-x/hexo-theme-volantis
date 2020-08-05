@@ -23,16 +23,25 @@
 
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='option'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i><%- __('rightmenu.copy_text') %></a>
+        <hr id='hr-text'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i><%- __('rightmenu.copy_link') %></a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i><%- __('rightmenu.open_in_new_tab') %></a>
+        <hr id='hr-href'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i><%- __('rightmenu.copy_image_src') %></a>
+        <hr id='hr-src'>
+      </li>
+      <li class='navigation'>
+        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+      </li>
+      <hr>
       <% theme.rightmenu.layout.forEach(function(item){ %>
         <% if (item == 'hr') { %>
           <hr>
-        <% } else if (item == 'navigation') { %>
-          <li class='navigation'>
-            <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
-            <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
-            <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
-            <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
-          </li>
         <% } else if (item == 'music' && theme.plugins.aplayer.enable == true) { %>
           <li class='music name'>
             <p class='nav music-title fix-cursor-default'></p>
@@ -89,21 +98,23 @@
         menuContent.classList.remove('top');
       }
 
-      // 选中文本
-      if (window.getSelection().toString()) {
-        document.getElementById('menu-copy-text').style.display = 'block';
-      } else {
-        document.getElementById('menu-copy-text').style.display = 'none';
-      }
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
 
       // 选中图片
-      if (event.target.currentSrc) {
-        document.getElementById('menu-copy-src').style.display = 'block';
-        document.getElementById('menu-copy-src').addEventListener("click", function (e) {
-          copyString(event.target.currentSrc);
-        },{once: true});
-      } else {
-        document.getElementById('menu-copy-src').style.display = 'none';
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
       }
 
       // 选中按钮
@@ -116,28 +127,42 @@
           }
         }
       }
-      if (href.length > 0) {
-        // 在新标签页打开
-        let openNew = document.getElementById('menu-open-new');
-        if (openNew != undefined) {
-          openNew.style.display = 'block';
-          openNew.addEventListener("click", function (e) {
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          copyText.style.display = 'block';
+          hrText.style.display = 'block';
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
             window.open(href);
           },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
         }
-        // 复制链接
-        let copyHref = document.getElementById('menu-copy-href');
-        if (copyHref != undefined) {
-          if (href.length > 0) {
-            copyHref.style.display = 'block';
-          } else {
-            copyHref.style.display = 'none';
-          }
-        }
-      } else {
-        let openNew = document.getElementById('menu-open-new');
-        if (openNew != undefined) {
-          openNew.style.display = 'none';
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
         }
       }
 
