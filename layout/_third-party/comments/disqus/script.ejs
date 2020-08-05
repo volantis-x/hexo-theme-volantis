@@ -1,20 +1,33 @@
 <script>
   var disqus_shortname = '<%= theme.comments.disqus.shortname %>';
   var disqus_script = 'embed.js';
-  
+
   function checkDisqus() {
     setTimeout(() => {
       if (document.getElementById('notShowDisqus') == null) {return;}
       if (window.DISQUS == undefined) {
         document.getElementById('notShowDisqus').style.display = 'block';
+        document.getElementById('load-btns').style.display = "block";
       } else {
         document.getElementById('notShowDisqus').style.display = 'none';
+        document.getElementById('load-btns').style.display = "none";
       }
+      document.getElementById('loading-comments').style.display = "none";
     }, 3000);
   }
-
+  function enableDisqus() {
+    CommentsSetting.loadDisqus = true;
+    pjax_disqus();
+  }
   function pjax_disqus() {
+    console.log(CommentsSetting);
+    if (CommentsSetting.loadDisqus == undefined || CommentsSetting.loadDisqus == false) {
+      return;
+    }
     if (document.getElementById('notShowDisqus') == null) {return;}
+
+    document.getElementById('loading-comments').style.display = "block";
+    document.getElementById('load-btns').style.display = "none";
     try {
       if (!window.DISQUS) {
         (function(d,s) {
@@ -40,5 +53,5 @@
     checkDisqus();
   }
 
-  pjax_disqus();
+  // pjax_disqus();
 </script>

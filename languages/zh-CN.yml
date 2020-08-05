@@ -8,7 +8,8 @@ post:
   wordcount: '字数：%s字'
   duration: '时长：%s分钟'
   comments: 评论
-  comments_placeholder: 无法加载%s评论系统，请确保您的网络能够正常访问。
+  comments_load: 点击加载 %s 评论
+  comments_placeholder: 无法加载 %s 评论系统，请确保您的网络能够正常访问。
   copy_button: 复制
   copy_success: 复制成功
   copy_failure: 复制失败

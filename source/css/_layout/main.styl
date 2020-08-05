@@ -362,7 +362,21 @@ div.hoverbox
       margin-top: $gap-row
       margin-bottom: $gap-row
       font-size: $fontsize-meta
-
+  #load-btns, #loading-comments
+    text-align: center
+    margin: $gap 0
+    &,a,i
+      line-height: $fontsize-body * 3
+    a.load-comments
+      display: inline-block
+      border-radius: $border-button
+      cursor: pointer
+      background: $color-theme
+      color: $color-inner
+      padding-left: $gap * 2
+      padding-right: $gap * 2
+      &:hover
+        background: $color-hover
 
 .white-box
   background: $color-card
