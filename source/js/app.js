@@ -119,7 +119,7 @@ var customSearch;
 		const $wrapper = $('header .wrapper');        // 整个导航栏
 		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
 		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
-		
+
 		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
 
 		// 决定一二级导航栏的切换
@@ -200,6 +200,27 @@ var customSearch;
 			$active_link = $('#' + idname, $headerMenu);
 			setUnderline($active_link);
 		}
+	}
+	
+	function setHeaderMenuPhone() {
+		// PC端 hover时展开子菜单，点击时隐藏子菜单
+		$('.m-pc li').click(function (e) {
+			e.stopPropagation();
+			$('.m-pc .list-v').css("display", "none");
+		});
+		// 手机端 点击展开子菜单
+		$('.m-phone li').click(function (e) {
+			e.stopPropagation();
+			$($(e.currentTarget)[0].children[1]).css("display", "block");
+		});
+		// 手机端 点击空白处隐藏子菜单
+		$(document).click(function (e) {
+			$('.m-phone .list-v').css("display", "none");
+		});
+		// 手机端 滚动时隐藏子菜单
+		$(window).scroll(() => {
+			$('.m-phone .list-v').css("display", "none");
+		});
 	}
 
 	// 设置导航栏搜索框   fix √
@@ -379,6 +400,7 @@ var customSearch;
 	$(function () {
 		setHeader();
 		setHeaderMenuSelection();
+		setHeaderMenuPhone();
 		setHeaderSearch();
 		setTocToggle();
 		setScrollAnchor();
