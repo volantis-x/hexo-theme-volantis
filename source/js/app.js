@@ -201,7 +201,7 @@ var customSearch;
 			setUnderline($active_link);
 		}
 	}
-	
+
 	function setHeaderMenuPhone() {
 		// PC端 hover时展开子菜单，点击时隐藏子菜单
 		$('.m-pc li').click(function (e) {
@@ -420,6 +420,7 @@ var customSearch;
 					restData();
 					setHeader();
 					setHeaderMenuSelection();
+					setHeaderMenuPhone();
 					setTocToggle();
 					setScrollAnchor();
 					setTabs();
