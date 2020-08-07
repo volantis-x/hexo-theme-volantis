@@ -491,7 +491,7 @@ plugins:
     duration: 20000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-	  - https://cdn.jsdelivr.net/gh/zyoushuo/Blog/images/bg1.jpg 
+      - https://cdn.jsdelivr.net/gh/zyoushuo/Blog/images/bg1.jpg 
       # - https://gitee.com/wallpapers/minimalist/raw/master/2020/001.jpg
       # - https://gitee.com/wallpapers/minimalist/raw/master/2020/002.jpg
       # - https://gitee.com/wallpapers/minimalist/raw/master/2020/003.jpg
