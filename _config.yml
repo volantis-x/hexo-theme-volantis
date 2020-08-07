@@ -10,9 +10,9 @@ style:
     zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-in.png
     grab: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/openhand.png
   font_smoothing: false # font-smoothing for webkit
-  max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
+  max_width: 1210px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
-    size: 4px
+    size: 5px
     border: 2px
     color: '#2196f3'
     hover: '#ff5722'
@@ -21,9 +21,9 @@ style:
     width: auto # auto, max
     effect: [shadow, blur] # [shadow, floatable, blur]
   sidebar:
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [] # [shadow, floatable, blur]
   body:
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
       copy_btn: true
@@ -105,15 +105,15 @@ style:
 ############################### Layout ###############################
 cover:
   scheme: docs # docs, blog
-  layout: dock # search (搜索), dock (坞), featured (精选), focus (焦点)
+  layout: featured # search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
+  logo: https://cdn.jsdelivr.net/gh/zyoushuo/Blog/images/logo.png
   title: ''
   subtitle: ''
-  search: A Wonderful Theme for Hexo # search bar placeholder
+  search: 发现世界 # search bar placeholder
   features:
     - name: 文档
       img: https://i.loli.net/2020/07/24/GaeXvVAdtJkCYT3.png
@@ -137,29 +137,29 @@ cover:
 # Navigation Bar
 navbar:
   logo: # choose [img] or [icon + title]
-    img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     icon:
-    title:
+    title: 阳光派Plus
   menu:
     # The following can be written in `blog/source/_data/menu.yml`
-    - name: 博客
-      icon: fas fa-rss
-      url: /
-    - name: 分类
-      icon: fas fa-folder-open
-      url: categories/
-    - name: 标签
-      icon: fas fa-tags
-      url: tags/
-    - name: 归档
-      icon: fas fa-archive
-      url: archives/
-    - name: 友链
-      icon: fas fa-link
-      url: friends/
-    - name: 关于
-      icon: fas fa-info-circle
-      url: about/
+    # - name: 博客
+      # icon: fas fa-rss
+      # url: /
+    # - name: 分类
+      # icon: fas fa-folder-open
+      # url: categories/
+    # - name: 标签
+      # icon: fas fa-tags
+      # url: tags/
+    # - name: 归档
+      # icon: fas fa-archive
+      # url: archives/
+    # - name: 友链
+      # icon: fas fa-link
+      # url: friends/
+    # - name: 关于
+      # icon: fas fa-info-circle
+      # url: about/
   search: Search...   # Search bar placeholder
 
 
@@ -169,11 +169,11 @@ layout:
   # 文章列表（主页、自定义的列表）布局
   on_list:
     # 列表中每一篇文章的meta信息
-    meta: [title, author, category, date, wordcount, counter, valinecount, pin]
+    meta: [title, author, category, date, wordcount, pin]
     # 列表类页面的侧边栏
-    sidebar: [blogger, category, tagcloud, qrcode]
+    sidebar: [blogger, notice, wiki-hexo-theme, category, tagcloud, qrcode,webinfo]
     # read more button
-    readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
+    # readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
   # 页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
@@ -199,8 +199,8 @@ meta:
   title: # 暂无配置
   # 默认文章作者（可在front-matter中覆盖）
   author:
-    avatar:
-    name: 请设置文章作者
+    avatar: https://cdn.jsdelivr.net/gh/zyoushuo/Blog/images/photo.jpg
+    name: 阳光派Plus
     url: /
   # 文章创建日期
   date:
@@ -286,8 +286,8 @@ widget:
     avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     shape: rectangle # circle, rectangle
     url: /about/
-    title:
-    subtitle:
+    title: 阳光派Plus
+    subtitle: 相聚有时，后会无期
     jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
     social: true
   # ---------------------------------------
@@ -351,8 +351,8 @@ widget:
     height: 64px  # Automatic height if not set
     fancybox: true
     images:
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+      - https://cdn.jsdelivr.net/gh/zyoushuo/Blog/images/wechatpay.jpg
+      - https://cdn.jsdelivr.net/gh/zyoushuo/Blog/images/alipay.jpg
   # ---------------------------------------
   # references widget
   references:
@@ -398,7 +398,7 @@ widget:
         text: '本站总访问量：' # 需要启用 busuanzi
         unit: '次'
       lastupd:
-        enable: true
+        enable: false
         friendlyShow: true    # 更友好的时间显示
         text: '最后活动时间：'
         unit: '日'
@@ -410,17 +410,19 @@ widget:
 
 footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, info, copyright]
+  layout: [social, license, info, copyright]
   social:
-    - icon: fas fa-rss
-      url: atom.xml
-    - icon: fas fa-envelope
-      url: mailto:me@xxx.com
+    - icon: fab fa-cuttlefish
+      url: https://blog.csdn.net/qq_45428737
+    - icon: fab fa-qq
+      url: https://wpa.qq.com/msgrd?v=3&uin=914894296&site=qq&menu=yes
     - icon: fab fa-github
-      url: https://github.com/xaoxuu
+      url: https://github.com/zyoushuo
+    - icon: fas fa-envelope
+      url: http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=LRQcGRUUGR8UG21cXANOQkA
     - icon: fas fa-headphones-alt
-      url: https://music.163.com/#/user/home?id=63035382
-  copyright: '[Copyright © 2017-2020 XXX](/)'
+      url: https://music.163.com/#/user/home?id=400795896
+  copyright: '[2020 by 阳光派Plus](https://www.zyoushuo.cn)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
@@ -469,7 +471,7 @@ plugins:
   busuanzi: https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
 
   # npm i --save hexo-wordcount
-  wordcount: #true
+  wordcount: true
 
   ######## Plugins for ...
   # Button Ripple Effect
@@ -489,28 +491,29 @@ plugins:
     duration: 20000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/001.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/002.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/003.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/004.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/005.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/006.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/012.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/016.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/019.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/025.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/033.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/034.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/035.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/038.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/039.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/042.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/042.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/046.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/051.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/052.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/054.jpg
-      - https://gitee.com/wallpapers/minimalist/raw/master/2020/056.jpg
+	  - https://cdn.jsdelivr.net/gh/zyoushuo/Blog/images/bg1.jpg 
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/001.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/002.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/003.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/004.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/005.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/006.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/012.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/016.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/019.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/025.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/033.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/034.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/035.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/038.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/039.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/042.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/042.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/046.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/051.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/052.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/054.jpg
+      # - https://gitee.com/wallpapers/minimalist/raw/master/2020/056.jpg
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
@@ -589,9 +592,10 @@ comments:
   # Valine
   # https://valine.js.org/
   valine: # 请将 appId appKey 修改为自己的，否则评论数据是共享的。
-    appId: # your appId
-    appKey: # your appKey
+    appId: 4HWesEEPvMGtYCpj0AV9fL4a-gzGzoHsz # your appId
+    appKey: NBn0vB9DUSWlc5kwYV1ErOt0 # your appKey
     # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
+    js: https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js
     meta: nick,mail,link # valine comment header info
     requiredFields: ['nick','mail']
     enableQQ: true # Unstable avatar link
@@ -601,6 +605,27 @@ comments:
     highlight: true
     visitor: true
     mathJax: false
+    metaPlaceholder:
+      - nick: 阳光派Plus
+      - mail: 914894296@qq.com
+    tagMeta: 博主,小伙伴,访客
+    master: 
+      - 98373fd6b6528b52cfcfa5e26c6390f5
+    friends: 
+      - 023785cc79b11c3a7a9f0a5b4370dd51
+      - 71755015fd9848d56c193464860f067a
+      - cb4fd5c997958b8105690f0477fe51d0
+      - 706247eba79000f5ac6f36813e2f2b7f # Lang 的自留地
+      - 48c8f1e79dd340e4b247820fee013082 # Sanarous
+      - 8e34e75870ea2d4593d16544e6b988d1 # 迷鹿
+      - adf9ee86dd7d730c370bb2cfef9f1586 # best-yz
+      - 4689389d64d121c47f8f15d4ae404653 # 乐心湖
+      - 3923b554a4c653a1df75067d28ef4cf1 # 闻鸡起舞
+      - d06adebbcbaa24413cc1b53dc8576ed0 # Uncle_drew
+      # - 295a634729c0d4ce7883ce348ff1436e # 逍遥灰灰
+      - 11a24387fd883e96428c9410db2b60f4 # 鱼跃此时海
+      - f03ef4cd1728b39a2b1d24cb0c7c4ac8 #CyChan811
+      - 8eb48fa2f98b471118ac828f7421428a # Haunting
   # MiniValine
   # https://github.com/MiniValine/MiniValine
   minivaline:
