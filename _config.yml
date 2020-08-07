@@ -651,6 +651,8 @@ comments:
   # https://disqus.com
   disqus:
     shortname:
+    # optional
+    autoload: false
   # Gitalk
   # https://gitalk.github.io/
   gitalk:

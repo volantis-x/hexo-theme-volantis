@@ -1,5 +1,6 @@
 <script>
   const disqus_shortname = '<%= theme.comments.disqus.shortname %>';
+  const autoload = '<%= theme.comments.disqus.autoload %>';
 
   function checkDisqus() {
     // 正在检查 Disqus 能否访问...
@@ -22,17 +23,16 @@
         })
     }
     return Promise.all([
-        runcheck('disqus.com'),
         runcheck('<%= theme.comments.disqus.shortname %>.disqus.com')
     ]).then(useDisqus,showError);
   }
 
   function loadDisqus() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ?
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    
+
     let ALLPATH = '<%= theme.comments.path %>';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+    if (ALLPATH != '') pageUrl = ALLPATH;
 
     if (window.DISQUS) {
       window.DISQUS.reset({
