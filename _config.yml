@@ -478,7 +478,7 @@ plugins:
     js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
 
   # Typing Effects
-  comment_typing: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
+  comment_typing: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
 
   # Slide Background
   backstretch:

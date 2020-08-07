@@ -24,7 +24,7 @@
     }
     return Promise.all([
         runcheck('<%= theme.comments.disqus.shortname %>.disqus.com')
-    ]).then(useDisqus,showError);
+    ]).then(loadDisqus,showError);
   }
 
   function loadDisqus() {
@@ -55,38 +55,36 @@
     }
   }
 
-  function useDisqus() {
-      console.log('Disqus 评论系统开始加载');
-      loadDisqus();
-  }
-
+  // 加载错误
   function showError() {
-    window.FileLoadDisqus = true;
     $('#loading-comments').hide();
     $('#notShowDisqus').show();
   }
 
-  function enableDisqus() {
+  // 点击了加载
+  function needLoadDisqus() {
     checkDisqus();
     $('#load-btns').hide();
     $('#loading-comments').show();
   }
 
+  // pjax 重载
   function pjax_disqus() {
     // 排除当前页面不存在评论框的情形
-    // if ($('#disqus_thread').length == 0) {return}
+    if ($('#disqus_thread').length == 0) {return}
     // 如果 DISQUS 已被实例化，则可直接加载
-    // if (window.DISQUS) {
-    //   $('#load-btns').hide();
-    //   $('#notShowDisqus').hide();
-    //   $('#loading-comments').hide();
-    //   loadDisqus();
-    // }
-    // 存在 FileLoadDisqus ，直接展示网络失败
-    // else if(window.FileLoadDisqus) {
-    //   $('#load-btns').hide();
-    //   $('#notShowDisqus').show();
-    //   $('#loading-comments').hide();
-    // }
+    if (window.DISQUS) {
+      $('#load-btns').hide();
+      $('#notShowDisqus').hide();
+      $('#loading-comments').hide();
+      loadDisqus();
+    } else if (autoload == 'true') {
+      // 设置自动加载但是上个页面加载失败了
+      needLoadDisqus();
+    }
   }
+  if (autoload == 'true') {
+    needLoadDisqus();
+  }
+
 </script>

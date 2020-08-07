@@ -9,6 +9,7 @@ post:
   duration: '%s min'
   comments: Comments
   comments_load: Load %s
+  comments_check: Checking if %s is accessible...
   comments_placeholder: Unable to load %s, please make sure your network can access.
   copy_button: Copy
   copy_success: Copied
