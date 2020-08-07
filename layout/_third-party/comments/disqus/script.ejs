@@ -73,15 +73,20 @@
   }
 
   function pjax_disqus() {
-    if (window.DISQUS) {
-      $('#load-btns').hide();
-      $('#notShowDisqus').hide();
-      $('#loading-comments').hide();
-      loadDisqus();
-    } else if(window.FileLoadDisqus) {
-      $('#load-btns').hide();
-      $('#notShowDisqus').show();
-      $('#loading-comments').hide();
-    }
+    // 排除当前页面不存在评论框的情形
+    // if ($('#disqus_thread').length == 0) {return}
+    // 如果 DISQUS 已被实例化，则可直接加载
+    // if (window.DISQUS) {
+    //   $('#load-btns').hide();
+    //   $('#notShowDisqus').hide();
+    //   $('#loading-comments').hide();
+    //   loadDisqus();
+    // }
+    // 存在 FileLoadDisqus ，直接展示网络失败
+    // else if(window.FileLoadDisqus) {
+    //   $('#load-btns').hide();
+    //   $('#notShowDisqus').show();
+    //   $('#loading-comments').hide();
+    // }
   }
 </script>
