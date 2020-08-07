@@ -205,7 +205,7 @@ var customSearch;
 	// 设置全局事件
 	function setGlobalHeaderMenuEvent() {
 		// PC端 hover时展开子菜单，点击时隐藏子菜单
-		$('.m-pc li').click(function (e) {
+		$('.m-pc li > a[href]').parent().click(function (e) {
 			e.stopPropagation();
 			$('.m-pc .list-v').hide();
 		});
