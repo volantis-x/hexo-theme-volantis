@@ -1,6 +1,8 @@
 <script>
   const disqus_shortname = '<%= theme.comments.disqus.shortname %>';
   const autoload = '<%= theme.comments.disqus.autoload %>';
+  const global_url = '<%= config.url %>';  //  must use an absolute URL; relative URLs won’t work.
+
 
   function checkDisqus() {
     // 正在检查 Disqus 能否访问...
@@ -38,14 +40,14 @@
       window.DISQUS.reset({
           reload: true,
           config() {
-            this.page.identifier = pageUrl;
-            this.page.url = pageUrl;
+            this.page.identifier = global_url + pageUrl;
+            this.page.url = global_url + pageUrl;
           }
       });
     } else {
         window.disqus_config = function () {
-          this.page.url = pageUrl;
-          this.page.identifier = pageUrl;
+          this.page.url = global_url + pageUrl;
+          this.page.identifier = global_url + pageUrl;
         };
         let d = document, s = d.createElement('script');
         s.async = true;
