@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-volantis",
-  "version": "0.0.0-alpha-2",
+  "version": "3.0.0-rc.1",
   "description": "Elegant and powerful theme for Hexo.",
   "main": "package.json",
   "scripts": {
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "hexo",
-    "theme"
+    "theme",
+    "volantis"
   ],
   "author": "Volantis X (https://volantis.js.org)",
   "license": "MIT",
