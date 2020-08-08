@@ -17,8 +17,8 @@ jobs:
     - name: Publish
       uses: MHuiG/npm-publish-action@master
       with:
-        tag_name: "v%s"
-        tag_message: "v%s"
+        tag_name: "%s"
+        tag_message: "%s"
         commit_pattern: "^Release\\:(.*)"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
