@@ -718,7 +718,7 @@ comments:
 rightmenu:
   enable: true
   # hr: 分割线, navigation: 导航按钮, music-ctrl: 音乐控制器
-  layout: [home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
+  layout: [home, friends, journal, about, hr, photos, hr, music]
   # 复制
   copy_text:
     name: 复制文本
