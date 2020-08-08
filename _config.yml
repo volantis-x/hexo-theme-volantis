@@ -440,13 +440,21 @@ seo:
 
 ############################### Plugins ###############################
 plugins:
-  # required plugins
-  fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css
-  fontawesomeanimation: https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
-  fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
+  ################ required plugins ################
+
+  # jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
 
-  # optional plugins
+  ################ optional plugins ################
+
+  # fontawesome
+  fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css
+  # fontawesome animation
+  fontawesome_animation: https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
+  # fancybox
+  fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
+
+
   ######## Plugins to improve loading speed:
   # Preload (The menu's url must end with ‘/’)
   instant_page: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
@@ -460,7 +468,7 @@ plugins:
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    # js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
+    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
     interval: 20 # ms
