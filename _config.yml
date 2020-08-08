@@ -85,6 +85,8 @@ style:
       # url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
       # weight: normal
       # style: normal
+    note-tag:
+      fontfamily: 'Font Awesome 5 Free'
   # color:
   #   site: '#21232F' # Website background color
   #   site_inner: '#fff' # Text color inside the website background
@@ -440,6 +442,7 @@ seo:
 plugins:
   # required plugins
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css
+  fontawesomeanimation: https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
   fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
 
