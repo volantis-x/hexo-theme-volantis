@@ -745,7 +745,7 @@ search:
 ############################### Theme Information ###############################
 info:
   name: Volantis # This is theme's name.
-  version: '3.0-beta6' # This is theme's version.
+  version: '3.0.0-rc.1' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
   repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:
