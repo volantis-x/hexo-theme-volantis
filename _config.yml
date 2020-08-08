@@ -126,7 +126,7 @@ cover:
     - name: 图库
       icon: fas fa-images
       url: photo/
-    - name: 更新日志
+    - name: 日志
       url: journal/
       icon: fas fa-calendar
     - name: 友链
@@ -588,7 +588,7 @@ plugins:
   # https://darkmodejs.learn.uno
   # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
   darkmodejs:
-    enable: false
+    enable: true
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
     bottom: 20px
     right: unset
@@ -717,30 +717,39 @@ comments:
 # 自定义右键菜单
 rightmenu:
   enable: true
-  # hr: 分割线, navigation: 导航按钮, music: 音乐控制器
+  # hr: 分割线, navigation: 导航按钮, music-ctrl: 音乐控制器
   layout: [home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
-  # 可选功能项
+  # 复制
+  copy_text:
+    name: 复制文本
+    icon: fa fa-copy
+    id: menu-copy
+    onclick: document.execCommand('copy')
+  copy_src:
+    name: 复制图片链接
+    icon: fa fa-link
+    id: menu-copy-img
   print:
     name: 打印页面
     icon: fa fa-print
     onclick: document.execCommand('print')
   # 自定义菜单的格式如下
-  help:
-    name: 常见问题
-    icon: fa fa-question
-    url: https://volantis.js.org/faqs/
-  examples:
-    name: 示例博客
-    icon: fa fa-rss
-    url: https://volantis.js.org/examples/
-  contributors:
-    name: 加入社区
+  friends:
+    name: 友链
+    icon: fa fa-users
+    url: friends/
+  journal:
+    name: 日志
+    icon: fa fa-calendar
+    url: journal/
+  about:
+    name: 关于
     icon: fa fa-fan fa-spin
-    url: https://volantis.js.org/contributors/
-  source_docs:
-    name: 本站源码
-    icon: fa fa-code-branch
-    url: https://github.com/volantis-x/volantis-docs/
+    url: about/
+  photos:
+    name: 图片库
+    icon: fa fa-images
+    url: photo/
   source_theme:
     name: 主题源码
     icon: fa fa-code-branch
