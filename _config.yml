@@ -113,7 +113,7 @@ cover:
     archive: false
     others: true # can be written in front-matter 'cover: true'
   logo: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
-  title: Waxll 
+  title: Waxll's Blog
   subtitle: 'love快马加鞭'
   search: Search...
   features:
