@@ -104,8 +104,8 @@ style:
 
 ############################### Layout ###############################
 cover:
-  scheme: blog # docs, blog
-  layout: focus # search (搜索), dock (坞), featured (精选), focus (焦点)
+  scheme: docs # docs, blog
+  layout: dock # search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: false
@@ -485,9 +485,9 @@ plugins:
 
   # Slide Background
   backstretch:
-    enable: false
+    enable: true
     js: https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js
-    position: fixed       # cover: sticky on the cover.   fixed: Fixed as background for the site.
+    position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
     shuffle: true       # shuffle playlist
     duration: 20000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
@@ -497,29 +497,6 @@ plugins:
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg
-      - https://7bu.top/2020/07/14/cc4fb77a06b3b.jpg
-      - https://7bu.top/2020/07/14/e084d1750abe5.png
-     # - https://7bu.top/2020/07/14/493eb7ebb8232.png
-     # - https://7bu.top/2020/07/14/7b20a9c89ffdc.png
-     # - https://7bu.top/2020/07/14/f80dcbe43319a.jpg
-     # - https://7bu.top/2020/07/15/1eaba148cf5e9.jpg
-     # - https://7bu.top/2020/07/15/78bcd7f9d6c92.jpg
-     # - https://7bu.top/2020/07/15/f7d278af38d3d.jpg
-     # - https://7bu.top/2020/07/15/5ad8da41171bb.png
-     # - https://7bu.top/2020/07/15/54e4fada883ad.jpg
-     # - https://7bu.top/2020/07/15/b1206aff4120d.jpg
-      - https://7bu.top/2020/07/15/b2cfcbb2081d3.png
-     # - https://7bu.top/2020/07/15/902ade58d1126.jpg
-      - https://7bu.top/2020/07/15/20b8368523b6b.png
-     # - https://7bu.top/2020/07/15/fb477357b0616.jpg
-     # - https://7bu.top/2020/07/15/c67de335925a7.jpg
-     # - https://7bu.top/2020/07/15/3b4091dcf9ec7.jpg
-     # - https://7bu.top/2020/07/15/fb4ae2fadd9c7.jpg
-     # - https://7bu.top/2020/07/15/ae1c7cd904f83.jpg
-     # - https://7bu.top/2020/07/15/25ebc031714ce.png
-      - https://7bu.top/2020/07/15/b5aaf3ab21ea9.jpg
-      - https://7bu.top/2020/07/15/03a364c90ef65.jpg
-      - https://7bu.top/2020/07/15/24b44a27cd294.png
       #- https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/35F12181-F0E9-45BD-B134-37E4B4A660CF.jpeg
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg
@@ -570,7 +547,7 @@ plugins:
     autoplay: true   # audio autoplay
     order: random       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
-    volume: 0.1       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+    volume: 0.03       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
     list_folded: true
   pjax:
