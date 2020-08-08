@@ -11,7 +11,7 @@
             <% } %>
           <% } %>
         <% }) %>
-        <% site.posts.each(function(post){ %>
+        <% site.posts.sort('date', -1).each(function(post){ %>
           <% if (post.pin) { %>
             <% if (page.group == undefined || post.group == page.group) { %>
               <div class='post-wrapper'>

@@ -115,9 +115,10 @@
       color: $color-p
       background: none
   kbd
-    border-radius: $border-codeblock * 0.5
-    border: 1px solid mix($color-block, $color-text, 90)
-    background: $color-block
+    border-radius: 4px
+    border: 1px solid mix($color-block, $color-text, 80)
+    border-bottom-width: 2px
+    background: mix($color-block, $color-card, 50)
     padding-left: 4px
     padding-right: 4px
   p
@@ -284,7 +285,7 @@
       padding: 0 .6em
       margin: 0
       ul
-        padding-left: 9px
+        padding-left: 8px
         margin-left: $gap
         a
           trans(0.1s)
@@ -294,6 +295,7 @@
           padding-left: 4px
           color: $color-link
           font-weight: normal
+          text-decoration: none
           &:hover
             color: $color-hover
             text-decoration: underline

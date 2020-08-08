@@ -57,6 +57,15 @@ scrollbar
           .notlink
             cursor: $default,default
 
+//rightmenu.styl
+ul.list-v.rightmenu
+  a
+    cursor: $default,default
+  li.music
+    a.nav.volume
+      .aplayer-volume-bar
+        cursor: $pointer,pointer
+
 //search.styl
 #u-search
   .modal
@@ -133,6 +142,20 @@ if hexo-config('style.body.highlight.copy_btn') == true
 a.result.search-result-fix
   cursor $pointer,pointer
 
+kbd,
+.a > p,
+.not-select,
+.not-select p,
+.MiniValine *,
+.aplayer .aplayer-info .aplayer-music
+  cursor: $default,default !important
+
+.tag > p,
+.prev > p,
+.next > p,
+.author > p,
+.list-h > a > p,
+.category > a > p,
 .v[data-class=v] a,
 .v[data-class=v] .vbtn,
 .v[data-class=v] .vicon,
@@ -146,12 +169,17 @@ a.result.search-result-fix
 .aplayer .aplayer-list ol li,
 .aplayer .aplayer-list ol li .aplayer-list-author,
 .aplayer .aplayer-list ol li .aplayer-list-index,
+.waves-button, .waves-button-input, .waves-button:hover, .waves-button:visited,
 .fancybox-button,
-.waves-button, .waves-button-input, .waves-button:hover, .waves-button:visited
+.MiniValine .vbtn,
+.MiniValine .vcancel-comment-reply,
+.MiniValine .vcancel-comment-reply svg,
+.MiniValine .vlist .vcard .vcomment-body .vat,
+.MiniValine .vlist .vcard .vcomment-body .vhead .vname,
+.MiniValine .vinputs-area .btn-wrap .vfunction-btn svg,
+.MiniValine .vinputs-area .vextra-area .vsmile-icons img,
+.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment a
   cursor: $pointer,pointer !important
-
-.aplayer .aplayer-info .aplayer-music
-  cursor: $default,default !important
 
 .fancybox-button[disabled], .fancybox-button[disabled]:hover
   cursor: $not-allowed,not-allowed !important
@@ -161,3 +189,31 @@ a.result.search-result-fix
 
 .fix-cursor-default
   cursor $default,default !important
+
+//gitalk
+.gt-container
+  // common
+  a
+    &.is--active
+      cursor: $default,default !important
+  // avatar
+  .gt-avatar
+    &-github
+      cursor: $pointer,pointer !important
+  // button
+  .gt-btn
+    cursor: $pointer,pointer !important
+    &.is--disable
+      cursor: $not-allowed,not-allowed !important
+  .gt-user
+    &-inner
+      cursor: $pointer,pointer !important
+  /* popup */
+  .gt-popup
+    .gt-action
+      cursor: $pointer,pointer !important
+  /* comment */
+  .gt-comment
+    &-like, &-edit, &-reply
+      &:hover
+        cursor: $pointer,pointer !important

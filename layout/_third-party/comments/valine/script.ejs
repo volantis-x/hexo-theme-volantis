@@ -35,21 +35,20 @@
   }
 
   function pjax_valine() {
-    var valinePath = $.trim($('#valine-path').text()) === "none" ?
-            window.location.pathname : $.trim($('#valine-path').text());
+    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
+      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+    let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+      "<%= theme.comments.placeholder %>" : $.trim($('#"pjax-comment-placeholder').text());
 
-    var valinePlaceholder = $.trim($('#valine-placeholder').text()) === "none" ?
-            "<%= theme.comments.valine.placeholder %>" : $.trim($('#valine-placeholder').text());
-
-    var ALLPATH = '<%= theme.comments.valine.path %>';
-    if(ALLPATH != '') valinePath = ALLPATH;
+    let ALLPATH = '<%= theme.comments.path %>';
+    if(ALLPATH != '') pageUrl = ALLPATH;
 
     var valine = new Valine();
     valine.init({
       el: '#valine_container',
       meta: meta,
-      placeholder: valinePlaceholder,
-      path: valinePath,
+      placeholder: pagePlaceholder,
+      path: pageUrl,
       appId: "<%= theme.comments.valine.appId %>",
       appKey: "<%= theme.comments.valine.appKey %>",
       pageSize: '<%= theme.comments.valine.pageSize %>',
