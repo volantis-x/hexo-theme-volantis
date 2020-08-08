@@ -8,6 +8,8 @@ post:
   wordcount: '%s words'
   duration: '%s min'
   comments: Comments
+  comments_load: Load %s
+  comments_check: Checking if %s is accessible...
   comments_placeholder: Unable to load %s, please make sure your network can access.
   copy_button: Copy
   copy_success: Copied
@@ -33,3 +35,9 @@ symbol:
   colon: ": "
   brackets_l: "("
   brackets_r: ")"
+
+rightmenu:
+  copy_text: "Copy Text"
+  copy_image_src: "Copy Image Link"
+  copy_link: "Copy Link"
+  open_in_new_tab: "Open Link in New Tab"

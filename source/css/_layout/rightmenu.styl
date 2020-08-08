@@ -11,12 +11,13 @@ ul.list-v.rightmenu
     right: 0
   &.top
     bottom: 0
-  $cellH = 36px
+  $cellH = 32px
   a
     cursor: default
   a.vlts-menu
     text-overflow: ellipsis
     overflow: hidden
+    line-height: $cellH
   li.navigation, li.music
     display: flex
     justify-content: space-between
@@ -68,18 +69,18 @@ ul.list-v.rightmenu
           color: mix($color-text, $color-card, 80)
           position: absolute
           top: 0
-          width: 32px
-          line-height: 32px
+          width: $cellH - 4px
+          line-height: $cellH - 4px
           trans()
           opacity: 0
-          transform: scale(0.5) translateY(-0.5 * $cellH - 4px)
+          transform: scale(0.5) translateY(-0.5 * $cellH - 2px)
         i.left
           left: 0
         i.right
           right: 0
         trans()
         &:hover
-          height: 32px
+          height: $cellH - 4px
           i
             opacity: 1
             transform: scale(1) translateY(0)

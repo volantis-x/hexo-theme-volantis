@@ -22,7 +22,7 @@ var customSearch;
 
 	// 校正页面定位（被导航栏挡住的区域）
 	function scrolltoElement(elem, correction = scrollCorrection) {
-		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
+		const $elem = elem.href ? $(decodeURI(elem.getAttribute('href'))) : $(elem);
 		$('html, body').animate({
 			'scrollTop': $elem.offset().top - correction
 		}, 500);
@@ -119,7 +119,7 @@ var customSearch;
 		const $wrapper = $('header .wrapper');        // 整个导航栏
 		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
 		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
-		
+
 		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
 
 		// 决定一二级导航栏的切换
@@ -171,6 +171,7 @@ var customSearch;
 		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
 		$headerMenu.find('li a.active').removeClass('active');
+		$headerMenu.find('div a.active').removeClass('active');
 		// var $underline = $headerMenu.find('.underline');
 		function setUnderline($item) {
 			// if (!transition) $underline.addClass('disable-trans');
@@ -201,6 +202,31 @@ var customSearch;
 		}
 	}
 
+	// 设置全局事件
+	function setGlobalHeaderMenuEvent() {
+		// PC端 hover时展开子菜单，点击时隐藏子菜单
+		$('.m-pc li > a[href]').parent().click(function (e) {
+			e.stopPropagation();
+			$('.m-pc .list-v').hide();
+		});
+		// 手机端 点击展开子菜单
+		$('.m-phone li').click(function (e) {
+			e.stopPropagation();
+			$($(e.currentTarget).children('ul')).show();
+		});
+		setPageHeaderMenuEvent();
+	}
+
+	function setPageHeaderMenuEvent() {
+		// 手机端 点击空白处隐藏子菜单
+		$(document).click(function (e) {
+			$('.m-phone .list-v').hide();
+		});
+		// 手机端 滚动时隐藏子菜单
+		$(window).scroll(() => {
+			$('.m-phone .list-v').hide();
+		});
+	}
 	// 设置导航栏搜索框   fix √
 	function setHeaderSearch() {
 		var $switcher = $('.l_header .switcher .s-search');   // 搜索按钮   移动端
@@ -277,7 +303,7 @@ var customSearch;
 
 		let liElements = Array.from($toc.find('li a'));
 		//function animate above will convert float to int.
-		let getAnchor = () => liElements.map(elem => Math.floor($(elem.getAttribute('href')).offset().top - scrollCorrection));
+		let getAnchor = () => liElements.map(elem => Math.floor($(decodeURI(elem.getAttribute('href'))).offset().top - scrollCorrection));
 
 		let anchor = getAnchor();
 		let domHeigth = $(document).height();
@@ -378,6 +404,7 @@ var customSearch;
 	$(function () {
 		setHeader();
 		setHeaderMenuSelection();
+		setGlobalHeaderMenuEvent();
 		setHeaderSearch();
 		setTocToggle();
 		setScrollAnchor();
@@ -397,6 +424,7 @@ var customSearch;
 					restData();
 					setHeader();
 					setHeaderMenuSelection();
+					setPageHeaderMenuEvent();
 					setTocToggle();
 					setScrollAnchor();
 					setTabs();

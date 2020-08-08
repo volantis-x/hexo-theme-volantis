@@ -192,7 +192,7 @@
         .input
           width: "calc(100% - %s)" % (3 * $gap + 2 * $iconW)
 
-ul.nav-list-h,ul.list-v
+ul.m-pc,ul.list-v
   li:hover
     >ul.list-v
       display: block
@@ -212,13 +212,15 @@ ul.nav-list-h
 ul.list-v
   z-index: 1
   display: none
+  &.show
+    display: block
   position: absolute
   background: $color-card
   box-shadow: $boxshadow-dropmenu
   margin-top: -2px - $border-card * 0.5
   border-radius: $border-card * 0.5
   padding: $gap * 0.5 0
-  >hr
+  hr
     margin-top: $gap * 0.5
     margin-bottom: $gap * 0.5
   >li
