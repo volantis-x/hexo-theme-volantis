@@ -84,9 +84,15 @@
   <% } %>
 
   <!-- link -->
-  <%- css(theme.plugins.fontawesome) %>
-  <%- css(theme.plugins.fontawesomeanimation) %>
-  <%- css(theme.plugins.fancybox) %>
+  <% if (theme.plugins.fontawesome) { %>
+    <%- css(theme.plugins.fontawesome) %>
+  <% } %>
+  <% if (theme.plugins.fontawesomeanimation) { %>
+    <%- css(theme.plugins.fontawesomeanimation) %>
+  <% } %>
+  <% if (theme.plugins.fancybox) { %>
+    <%- css(theme.plugins.fancybox) %>
+  <% } %>
 
   <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
     <%- css(theme.plugins.nodewaves.css) %>
