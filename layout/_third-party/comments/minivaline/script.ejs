@@ -12,7 +12,7 @@ function pjax_minivaline() {
   let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
   let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-    "<%= theme.comments.placeholder %>" : $.trim($('#"pjax-comment-placeholder').text());
+    "<%= theme.comments.placeholder %>" : $.trim($('#pjax-comment-placeholder').text());
 
   let ALLPATH = '<%= theme.comments.path %>';
   if(ALLPATH != '') pageUrl = ALLPATH;
