@@ -22,7 +22,5 @@
   },
   "homepage": "https://volantis.js.org",
   "devDependencies": {
-    "hexo": "5.0.0",
-    "hexo-renderer-marked": "3.0.0"
   }
 }
