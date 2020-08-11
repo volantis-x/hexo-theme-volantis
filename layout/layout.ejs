@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <%- partial('_partial/head') %>
+
 <body>
+  <!-- created by JasonHuang -->
   <%- partial('_partial/cover') %>
   <div class="l_body<%- page.cover ? '' : ' nocover' %>">
     <div class='body-wrapper' id="pjax-container">
       <% if (is_current('history')) { %>
-        <%- js({ src: 'js/timeline.js', id: 'timeline' }) %>
+      <%- js({ src: 'js/timeline.js', id: 'timeline' }) %>
       <% } %>
       <% if (is_current('needs')) { %>
-        <%- js({ src: 'js/needs.js', id: 'needs' }) %>
+      <%- js({ src: 'js/needs.js', id: 'needs' }) %>
       <% } %>
       <!-- pjax-data区域 -->
       <% if (theme.plugins.pjax.enable) { %>
-        <%- partial('_third-party/pjax/data') %>
+      <%- partial('_third-party/pjax/data') %>
       <% } %>
       <!-- layout的动态内容,pjax内每次必会重新加载 -->
       <%- body %>
@@ -25,8 +27,9 @@
   <div>
     <%- partial('_partial/scripts') %>
     <% if (theme.plugins.pjax.enable) { %>
-      <%- partial('_third-party/pjax/index') %>
+    <%- partial('_third-party/pjax/index') %>
     <% } %>
   </div>
 </body>
+
 </html>

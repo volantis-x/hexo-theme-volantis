@@ -191,6 +191,8 @@
         width: 100%
         .input
           width: "calc(100% - %s)" % (3 * $gap + 2 * $iconW)
+        .s-menu
+          display: none
 
 ul.nav-list-h,ul.list-v
   li:hover
@@ -387,3 +389,8 @@ ul.list-v
   .list-v
     li
       max-width: 270px
+      min-width: 100px
+      text-indent: 25px
+      a
+        padding-right: 0 !important
+        justify-content: space-between
