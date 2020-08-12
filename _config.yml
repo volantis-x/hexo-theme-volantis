@@ -418,6 +418,9 @@ footer:
       url: https://github.com/volantis-x/
     - icon: fas fa-headphones-alt
       url: https://music.163.com/#/user/home?id=63035382
+  # site source
+  source: https://github.com/volantis-x/volantis-docs/
+  # site copyright
   copyright: '[Copyright © 2017-2020 XXX](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'

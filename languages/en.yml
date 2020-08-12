@@ -29,6 +29,7 @@ footer:
   total_views: total visits
   total_visitors: total visitors
   times: times
+  site_source: Uses %s as theme. You can find [source](%s) in %s.
 symbol:
   comma: ", "
   period: ". "

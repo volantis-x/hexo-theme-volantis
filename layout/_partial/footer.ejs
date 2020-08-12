@@ -29,11 +29,13 @@
         <div><%- markdown(__('footer.license')) %></div>
       <% } else if (item == 'info') { %>
         <%- __('footer.use') %>
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/" target="_blank" class="codename">Volantis</a>
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/<%- theme.info.version %>" target="_blank" class="codename">Volantis</a>
         <%- __('footer.theme') %><% if (theme.plugins.busuanzi) { %><%- __('symbol.comma') %><%- __('footer.total_views') %>
           <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
           <%- __('footer.times') %>
         <% } %>
+      <% } else if (item == 'source') { %>
+        <%- markdown(__('footer.site_source', '[Volantis](https://github.com/volantis-x/hexo-theme-volantis/releases/tag/'+theme.info.version+')', 'GitHub', 'https://github.com/volantis-x/volantis-docs')) %>
       <% } else if (item == 'copyright') { %>
         <div class='copyright'>
         <%- markdown(theme.footer.copyright) %>

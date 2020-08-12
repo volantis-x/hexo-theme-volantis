@@ -29,6 +29,7 @@ footer:
   total_views: 总访问量为
   total_visitors: 总访客量
   times: 次
+  site_source: 本站使用 %s 作为主题，您可以在 %s 找到[本站源码](%s)。
 symbol:
   comma: "，"
   period: "。"
