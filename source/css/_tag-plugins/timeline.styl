@@ -59,6 +59,15 @@ div.timenode
         margin-top: 0
       &:last-child
         margin-bottom: 0
+    .highlight
+      background: $color-codeblock
+      if hexo-config('style.body.highlight.grayscale') == true
+        filter: grayscale(0%)
+      figcaption
+        trans()
+        background: darken($color-codeblock, 5%)
+      .gutter
+        background: darken($color-codeblock, 5)
 
 
 div.timenode:hover
