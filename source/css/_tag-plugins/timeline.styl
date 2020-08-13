@@ -60,14 +60,7 @@ div.timenode
       &:last-child
         margin-bottom: 0
     .highlight
-      background: $color-codeblock
-      if hexo-config('style.body.highlight.grayscale') == true
-        filter: grayscale(0%)
-      figcaption
-        trans()
-        background: darken($color-codeblock, 5%)
-      .gutter
-        background: darken($color-codeblock, 5)
+      border: 1px solid mix($color-block, $color-text, 90)
 
 
 div.timenode:hover
