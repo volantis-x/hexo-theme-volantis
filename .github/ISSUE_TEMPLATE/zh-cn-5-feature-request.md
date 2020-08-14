@@ -2,7 +2,7 @@
 name: 建议：新增或优化某一项功能
 about: 此模板适用于建议以及讨论是否新增功能或者对现有功能作出调整。
 title: ''
-labels: 'suggest'
+labels: 'feature-request'
 assignees: ''
 
 ---
