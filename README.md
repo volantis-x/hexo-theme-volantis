@@ -1,12 +1,39 @@
 <p align="center">
   <a href='https://volantis.js.org'><img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png' height='120px'></a>
-  <br>
-  <a href="https://volantis.js.org" target="_blank"><img src="https://i.loli.net/2020/07/23/OQljs865Ba3WiIt.png" width='100px'></a> <a href="https://volantis.js.org/examples/" target="_blank"><img src="https://i.loli.net/2020/07/23/lAB1GiNXr7ST2Q6.png" width='100px'></a> <a href="https://github.com/volantis-x/forum/issues" target="_blank"><img src="https://i.loli.net/2020/07/23/B4s1fDESC3pVdwv.png" width='100px'></a>
 </p>
 
+## Getting Started
 
-Docs: https://volantis.js.org or https://volantis.vercel.app
-Examples: https://github.com/volantis-x/examples/issues/
+```yaml
+Hexo: 4.2 ~ 5.x
+hexo-cli: 3.1 ~ 4.x
+node.js: 12.16 ~ latest # LTS
+npm: 6.13 ~ latest
+```
+
+```bash
+npm i hexo-theme-volantis
+```
+
+## Usage
+
+See docs: https://volantis.js.org
+
+or:  https://volantis.vercel.app
+
+## Examples
+
+See examples: https://volantis.js.org/examples/
+
+Add your blog to examples page: https://github.com/volantis-x/examples/issues/
+
+## Feedback
+
+Feedback to developer: https://github.com/volantis-x/hexo-theme-volantis/issues/
+
+Discuss with other users: https://github.com/volantis-x/forum/issues/
+
+## Screenshot
 
 ![](https://i.loli.net/2020/03/18/f5PQlWisvm9zbgK.jpg)
 
