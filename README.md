@@ -4,12 +4,22 @@
 
 ## Getting Started
 
+Check your environment:
+
 ```yaml
 Hexo: 4.2 ~ 5.x
 hexo-cli: 3.1 ~ 4.x
-node.js: 12.16 ~ latest # LTS
-npm: 6.13 ~ latest
+node.js: 12.16 LTS ~ latest LTS
+npm: 6.13 ~ latest LTS
 ```
+
+Edit your `_config.yml`:
+
+```yaml
+theme: volantis
+```
+
+Install Volantis in terminal:
 
 ```bash
 npm i hexo-theme-volantis
