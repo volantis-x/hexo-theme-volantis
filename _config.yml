@@ -700,7 +700,7 @@ comments:
 # 自定义右键菜单
 rightmenu:
   enable: true
-  # hr: 分割线, navigation: 导航按钮, music: 音乐控制器
+  # hr: 分割线, music: 音乐控制器
   layout: [home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
   # 可选功能项
   print:
