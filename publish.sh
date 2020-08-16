@@ -4,7 +4,7 @@
 # 1. 输入要发布的版本号
 # 2. 修改主题 _config.yml 中的 info.version
 # 3. 修改主题 package.json 中的 version
-# 3. 提交 commit
+# 4. 提交 commit
 
 VERSION=$1
 
