@@ -34,16 +34,16 @@ labels:
           您的疑问在 [Volantis](https://volantis.js.org) 和 [Hexo](https://hexo.io) 的官方文档有答案，如果找不到可以尝试进行搜索。
           Your question is answered in the official documents of [Volantis](https://volantis.js.org) and [Hexo](https://hexo.io), if you can’t find it, you can try to search.
   # 采纳的建议
-  - name: intend
+  - name: adopted suggestion
     labeled:
       issue:
         body: |
           :wave: Hello,
-          您的建议已经在计划中了，非常感谢！
-          Your suggestion is already in the plan, thank you very much!
+          您的建议很棒，我们将会在后续版本中加入这个功能，非常感谢！
+          Your suggestion is great, we will add this feature in subsequent versions, thank you very much!
 
   # 迟迟没有回复
-  - name: waiting feedback
+  - name: waiting response
     labeled:
       issue:
         body: |
