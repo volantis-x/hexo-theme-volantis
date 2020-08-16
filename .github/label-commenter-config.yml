@@ -1,0 +1,63 @@
+# .github/label-commenter-config.yml
+
+labels:
+  - name: Smart
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          [提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)将教你如何正确的提问以获得你满意的答案。
+          [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html) will teach you how to ask questions in a way more likely to get you a satisfactory answer.
+        action: close
+  - name: 等待完成自检
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          请参照自检报告的步骤完成自检，如果您不知道如何完成它请参阅[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)。
+          Please refer to the steps in the Self-inspection Report to complete the Self-inspection Report. If you don’t know how to complete it, please refer to [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html).
+  - name: duplicate
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          这是一个重复的问题，但我们感谢您的贡献。
+          This is a duplicate question, but we appreciate your contribution.
+        action: close
+  - name: wontfix
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          由于设计如此，或者是外界问题，这将无法进行，但我们感谢您的贡献。
+          Because of the design, or external problems, this will not be worked on but we appreciate your contribution.
+        action: close
+  - name: read docs
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          阅读文档即可以解决您的问题,请认真阅读文档。如果您不知道如何完成它请参阅[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)。
+          Reading the document can solve your problem, please read the document carefully. If you don’t know how to complete it, please refer to [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html).
+  - name: intend
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          相关建议及方案已经在计划之中了，感谢您的贡献。
+          Relevant suggestions and solutions are already planned, thank you for your contribution.
+  - name: need more info
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          问题无法复现，需要提供更多信息。
+          The problem cannot be reproduced and more information is needed.
+  - name: waiting feedback
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          我们正等待您的回馈。
+          We are waiting for your feedback.
+          
