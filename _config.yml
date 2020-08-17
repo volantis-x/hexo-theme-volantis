@@ -14,8 +14,6 @@ style:
   scrollbar:
     size: 4px
     border: 2px
-    color: '#2196f3'
-    hover: '#ff5722'
   navbar:
     height: 64px
     width: auto # auto, max
