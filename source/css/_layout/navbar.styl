@@ -357,17 +357,18 @@ ul.list-v
 
 
 .l_header
-  max-width: 65vw
-  left: "calc((100% - %s) * 0.5)" % @max-width
-  border-bottom-left-radius: $border-card
-  border-bottom-right-radius: $border-card
-  @media screen and (max-width: $device-2k)
-    max-width: $layout-width + 2 * $gap
+  if hexo-config('style.navbar.width') == 'auto'
+    max-width: 65vw
     left: "calc((100% - %s) * 0.5)" % @max-width
-  @media screen and (max-width: $layout-width + 2 * $gap)
-    left: 0
-    border-radius: 0
-    max-width: 100%
+    border-bottom-left-radius: $border-card
+    border-bottom-right-radius: $border-card
+    @media screen and (max-width: $device-2k)
+      max-width: $layout-width + 2 * $gap
+      left: "calc((100% - %s) * 0.5)" % @max-width
+    @media screen and (max-width: $layout-width + 2 * $gap)
+      left: 0
+      border-radius: 0
+      max-width: 100%
   @media screen and (max-width: $device-mobile)
     .container
       margin-left: 0
