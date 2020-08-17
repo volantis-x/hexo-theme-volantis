@@ -107,7 +107,7 @@ style:
 ############################### Layout ###############################
 cover:
   scheme: blog # docs, blog
-  layout: dock # search (搜索), dock (坞), featured (精选), focus (焦点)
+  layout: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
