@@ -1,0 +1,70 @@
+<%- js({src: theme.plugins.darkmodejs.js,aysc:true}) %>
+<script type="text/javascript">
+function getClientHeight(){
+  var clientHeight=0;
+  if(document.body.clientHeight&&document.documentElement.clientHeight){
+  var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }else{
+  var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+  }
+  return clientHeight;
+}
+function supportCss3(style) {
+  var prefix = ['webkit', 'Moz', 'ms', 'o'],
+  i,
+  humpString = [],
+  htmlStyle = document.documentElement.style,
+  _toHumb = function (string) {
+  return string.replace(/-(\w)/g, function ($0, $1) {
+  return $1.toUpperCase();
+  });
+  };
+  for (i in prefix)
+  humpString.push(_toHumb(prefix[i] + '-' + style));
+  humpString.push(_toHumb(style));
+  for (i in humpString)
+  if (humpString[i] in htmlStyle) return true;
+  return false;
+};
+//配置信息
+var options = {
+  bottom: '<%- theme.plugins.darkmodejs.bottom %>',
+  right: '<%- theme.plugins.darkmodejs.right %>',
+  left: '<%- theme.plugins.darkmodejs.left %>',
+  time: '<%- theme.plugins.darkmodejs.time %>',
+  mixColor: '<%- theme.plugins.darkmodejs.mixColor %>',
+  backgroundColor: '<%- theme.plugins.darkmodejs.backgroundColor %>',
+  buttonColorDark: '<%- theme.plugins.darkmodejs.buttonColorDark %>',
+  buttonColorLight: '<%- theme.plugins.darkmodejs.buttonColorLight %>',
+  saveInCookies: <%- theme.plugins.darkmodejs.saveInCookies %>,
+  label: '<%- theme.plugins.darkmodejs.label %>',
+  autoMatchOsTheme: <%- theme.plugins.darkmodejs.autoMatchOsTheme %>
+};
+// 卡片兼容处理 mix-blend-mode 与 effect: [shadow, floatable, blur] 冲突???
+function pjax_darkmodejs(){
+  <% if (theme.plugins.darkmodejs.compatible) { %>
+  if(!supportCss3('mix-blend-mode'))return;
+  var checkExist2 = setInterval(function() {
+     if (typeof jQuery == 'undefined'){return;}
+     clearInterval(checkExist2);
+     var TopFlag=getClientHeight();
+    $(window).scroll(function(){
+      var top = $(document).scrollTop();
+      if(top > TopFlag) {
+        $(".darkmode-layer").css("mix-blend-mode","normal");
+        $(".darkmode-layer").css("background-color","#000");
+      }else{
+        $(".darkmode-layer").css("mix-blend-mode","difference");
+        $(".darkmode-layer").css("background-color","");
+      }
+    })
+  }, 100);
+  <% } %>
+}
+// mix-blend-mode support?
+if(supportCss3('mix-blend-mode')){
+  const darkmode = new Darkmode(options);
+  darkmode.showWidget();
+  pjax_darkmodejs();
+}
+</script>
