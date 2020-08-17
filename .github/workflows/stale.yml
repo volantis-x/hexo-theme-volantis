@@ -12,8 +12,12 @@ jobs:
     - uses: DeMoorJasper/stale@v1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-message: 'This issue is stale because it has been open 30 days with no activity. Remove stale label or comment or this will be closed in 5 days'
+        stale-message: >
+          :wave: Hello,
+          This issue has been automatically marked as stale because lack of recent activity. 
+          It will be closed if no further activity occurs. 
+          Thank you for your contributions. 
         days-before-stale: 30
-        days-before-close: 5
+        days-before-close: 1
         stale-label: 'no-activity'
         exempt-labels: 'adopted suggestion,bug,debugging,waiting response,todo'
