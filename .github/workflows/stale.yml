@@ -3,7 +3,8 @@ on:
   schedule:
   - cron: "0 0 * * *"
   issue_comment:
-  - types: [created]
+    types:
+      - created
 jobs:
   stale:
     runs-on: ubuntu-latest
