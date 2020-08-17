@@ -46,7 +46,17 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
         <%- partial('../_third-party/aplayer/layout', {post: post, where: 'meta'}) %>
       <% } %>
       <% if(post.thumbnail && post.thumbnail.length){ %>
-        <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'><img class='thumbnail lazyload' src='<%- post.thumbnail %>'></a>
+        <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
+          <% if (config.lazyload && config.lazyload.enable) { %>
+            <% if (config.lazyload.loadingImg) { %>
+              <img class='thumbnail lazyload placeholder' src='<%- post.thumbnail %>'>
+            <% } else { %>
+              <img class='thumbnail lazyload' src='<%- post.thumbnail %>'>
+            <% } %>
+          <% } else { %>
+            <img class='thumbnail' src='<%- post.thumbnail %>'>
+          <% } %>
+        </a>
       <% } %>
       <div class="meta" id="header-meta">
         <% if((topMetas).indexOf('title') > -1){ %>
