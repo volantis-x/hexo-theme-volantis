@@ -12,7 +12,30 @@
   color: $color-site-inner
   padding: $gap
   disable-user-select()
+  position: relative
+  .cover-bg
+    position: absolute
+    width: 100%
+    height: 100%
+    background-position: center
+    background-size: cover
+    &.lazyload
+      &:not(.loaded)
+        opacity: 0
+      &.loaded
+        animation-delay: 0s
+        animation-duration: 2s
+        animation-fill-mode: forwards
+        animation-timing-function: ease
+        animation-name: fadeIn
+        @keyframes fadeIn
+          0%
+            opacity: 0
+          100%
+            opacity: 1
+
   .cover-body
+    z-index: 1
     div.b
       margin-top: 8vh
       margin-bottom: 8vh

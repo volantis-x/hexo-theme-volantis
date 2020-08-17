@@ -7,10 +7,11 @@
   %>
   <% if (enableCover) { %>
   <div class="cover-wrapper">
-    <cover class='cover <%- page.layout %>' style="display: none;">
+    <div class='cover<%- page.layout %>' style="display: none;">
+      <div class='cover-bg lazyload' data-bg="<%- theme.cover.background %>"></div>
       <%- partial('../_cover/' + theme.cover.layout) %>
       <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-    </cover>
+    </div>
     <%- partial('header', null, {cache: false, path: path}) %>
   </div>
   <% } else { %>
@@ -20,14 +21,14 @@
   <% if (page.cover == true) { %>
     <div class="cover-wrapper">
       <% if (is_home() && page.prev == 0 && theme.cover.scheme == 'docs') { %>
-        <cover class='cover <%- page.layout %> full'>
+        <div class='cover lazyload <%- page.layout %> full' data-bg="<%- theme.cover.background %>">
           <%- partial('../_cover/' + theme.cover.layout) %>
           <div class="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-        </cover>
+        </div>
       <% } else { %>
-        <cover class='cover <%- page.layout %> half'>
+        <div class='cover lazyload <%- page.layout %> half' data-bg="<%- theme.cover.background %>">
           <%- partial('../_cover/' + theme.cover.layout) %>
-        </cover>
+        </div>
       <% } %>
       <%- partial('header', null, {cache: false, path: path}) %>
     </div>
