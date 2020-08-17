@@ -173,7 +173,7 @@
       }
 
       // 有音乐播放器
-      if (<%= theme.plugins.aplayer.enable %> == true) {
+      if (<%= theme.plugins.aplayer.enable %> == true && ('<%- theme.rightmenu.layout %>'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
