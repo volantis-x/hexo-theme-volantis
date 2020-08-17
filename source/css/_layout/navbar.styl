@@ -2,17 +2,20 @@
   $iconW = 32px
   $iconMargin = 4px
   position: fixed
+  &.absolute
+    position: absolute
   z-index: 1000
   top: 0
   width: 100%
   height: $navbar-height
   background: $color-card
   box-shadow: $boxshadow-card
-  transition: opacity .4s ease
-  visibility: hidden
-  &.show
-    opacity: 1 !important
-    visibility: visible
+  &.auto
+    transition: opacity .4s ease
+    visibility: hidden
+    &.show
+      opacity: 1 !important
+      visibility: visible
   .container
     margin-left: $gap
     margin-right: $gap
