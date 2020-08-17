@@ -38,6 +38,9 @@ symbol:
   brackets_r: "）"
 
 rightmenu:
+  back: "返回"
+  forward: "前进"
+  reload: "刷新"
   copy_text: "复制文本"
   copy_image_src: "复制图片地址"
   copy_link: "复制链接"
