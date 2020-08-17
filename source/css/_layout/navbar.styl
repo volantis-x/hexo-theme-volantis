@@ -8,10 +8,11 @@
   height: $navbar-height
   background: $color-card
   box-shadow: $boxshadow-card
-  &.hide
-    transform: translateY(100px) scale(0)
+  transition: opacity .4s ease
+  visibility: hidden
   &.show
-    transform: translateY(0) scale(1)
+    opacity: 1 !important
+    visibility: visible
   .container
     margin-left: $gap
     margin-right: $gap

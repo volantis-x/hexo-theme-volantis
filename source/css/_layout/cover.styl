@@ -13,6 +13,7 @@
   padding: 0 $gap
   disable-user-select()
   position: relative
+  overflow: hidden
   .cover-bg
     position: absolute
     width: 100%
@@ -24,13 +25,15 @@
         opacity: 0
       &.loaded
         animation-delay: 0s
-        animation-duration: 2s
+        animation-duration: .5s
         animation-fill-mode: forwards
-        animation-timing-function: ease
+        animation-timing-function: ease-out
         animation-name: fadeIn
         @keyframes fadeIn
           0%
             opacity: 0
+            filter blur(12px)
+            transform: scale(1.05)
           100%
             opacity: 1
 
