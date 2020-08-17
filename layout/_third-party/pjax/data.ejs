@@ -1,80 +1,80 @@
-<!--此文件用来存放一些不方便取值的变量--> 
-<!--思路大概是将值藏到重加载的区域内--> 
- 
-<% 
-var commentPath = 'none';                     // 自定义的评论路径 
-var commentPlaceholder = 'none';              // 自定义的评论描述 
-var ispage = false;                           // 一二级导航栏切换控制 
-var postTitle = '';                           // 当前文章标题，用于二级导航栏赋值 
-var enableCover = false;                      // 封面是否开启 
-var frontMatterCover = 'none';                // 封面控制 
- 
-if (page && page.comments == true && page.comment) { 
-  if (page.comment.path) { 
-    commentPath = page.comment.path; 
-  } 
-  if (page.comment.placeholder) { 
-    commentPlaceholder = page.comment.placeholder; 
-  } 
-} 
- 
-var enableValine = false; 
-if (theme.comments.service == 'valine') { 
-  enableValine = true; 
-} 
-var enableMiniValine = false; 
-if (theme.comments.service == 'minivaline') { 
-  enableMiniValine = true; 
-} 
- 
-if(theme.cover && theme.cover.scheme) { 
-  enableCover = true; 
-} 
- 
-if (enableCover && page && page.cover) { 
-  frontMatterCover = page.cover; 
-  if (is_home() && page.prev == 0 && theme.cover.scheme == 'docs') { 
-    frontMatterCover = 'docs'; 
-  } else { 
-    frontMatterCover = 'blog'; 
-  } 
-} 
- 
-if (page && page.layout == 'post' && page.title) { 
-  ispage = true; 
-  postTitle = page.title; 
-} 
- 
-%> 
- 
-<div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage"><%=ispage%></div> 
-  <div id="pjax-pageTitle"><%=postTitle%></div> 
-  <div id="pjax-enable-cover"><%=enableCover%></div> 
-  <div id="pjax-comment-path"><%=commentPath%></div> 
-  <div id="pjax-comment-placeholder"><%=commentPlaceholder%></div> 
-</div> 
- 
-<% if (enableCover) { %> 
-<script> 
-  // 处理封面 此时 jquery 还没加载 
-  if ("<%=frontMatterCover%>" == "none") { // 移除封面 
+<!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<%
+var commentPath = 'none';                     // 自定义的评论路径
+var commentPlaceholder = 'none';              // 自定义的评论描述
+var ispage = false;                           // 一二级导航栏切换控制
+var postTitle = '';                           // 当前文章标题，用于二级导航栏赋值
+var enableCover = false;                      // 封面是否开启
+var frontMatterCover = 'none';                // 封面控制
+
+if (page && page.comments == true && page.comment) {
+  if (page.comment.path) {
+    commentPath = page.comment.path;
+  }
+  if (page.comment.placeholder) {
+    commentPlaceholder = page.comment.placeholder;
+  }
+}
+
+var enableValine = false;
+if (theme.comments.service == 'valine') {
+  enableValine = true;
+}
+var enableMiniValine = false;
+if (theme.comments.service == 'minivaline') {
+  enableMiniValine = true;
+}
+
+if(theme.cover && theme.cover.scheme) {
+  enableCover = true;
+}
+
+if (enableCover && page && page.cover) {
+  frontMatterCover = page.cover;
+  if (is_home() && page.prev == 0 && theme.cover.scheme == 'docs') {
+    frontMatterCover = 'docs';
+  } else {
+    frontMatterCover = 'blog';
+  }
+}
+
+if (page && page.layout == 'post' && page.title) {
+  ispage = true;
+  postTitle = page.title;
+}
+
+%>
+
+<div id="pjax-data" style="display: none">
+  <div id="pjax-ispage"><%=ispage%></div>
+  <div id="pjax-pageTitle"><%=postTitle%></div>
+  <div id="pjax-enable-cover"><%=enableCover%></div>
+  <div id="pjax-comment-path"><%=commentPath%></div>
+  <div id="pjax-comment-placeholder"><%=commentPlaceholder%></div>
+</div>
+
+<% if (enableCover) { %>
+<script>
+  // 处理封面 此时 jquery 还没加载
+  if ("<%=frontMatterCover%>" == "none") { // 移除封面
     document.getElementsByClassName('cover')[0].style.display = "none"; 
-    document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
-    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
-  } else { 
-    if ("<%=frontMatterCover%>" == "blog") { // 半屏 
-      document.getElementsByClassName('cover')[0].classList.remove("full"); 
-      document.getElementsByClassName('cover')[0].classList.add("half"); 
-      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("<%=frontMatterCover%>" == "docs") { // 全屏 
-      document.getElementsByClassName('cover')[0].classList.remove("half"); 
-      document.getElementsByClassName('cover')[0].classList.add("full"); 
-      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
-    } 
-    document.getElementsByClassName('cover')[0].style.display = ""; 
-    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover"); 
-    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
-  } 
-</script> 
+    document.getElementsByClassName('l_body')[0].classList.add("nocover");
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
+  } else {
+    if ("<%=frontMatterCover%>" == "blog") { // 半屏
+      document.getElementsByClassName('cover')[0].classList.remove("full");
+      document.getElementsByClassName('cover')[0].classList.add("half");
+      document.getElementsByClassName('scroll-down')[0].style.display = "none";
+    } else if ("<%=frontMatterCover%>" == "docs") { // 全屏
+      document.getElementsByClassName('cover')[0].classList.remove("half");
+      document.getElementsByClassName('cover')[0].classList.add("full");
+      document.getElementsByClassName('scroll-down')[0].style.display = "";
+    }
+    document.getElementsByClassName('cover')[0].style.display = "";
+    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover");
+    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
+  }
+</script>
 <% } %>
