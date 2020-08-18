@@ -1,15 +1,12 @@
+.safearea
+  margin: $gap
+  @media screen and (max-width: $device-mobile-l)
+    margin: $gap 0 0
 .l_body
   position: relative
-  margin: $gap
   if hexo-config('style.font_smoothing') == true
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
-  &.nocover
-    margin-top: $navbar-height
-  @media screen and (max-width: $device-mobile-l)
-    margin: $navbar-height + $gap 0 $gap
-    &.nocover
-      margin-top: $navbar-height - $gap
   div.loading
     margin: $gap 0
     width: 100%
@@ -127,11 +124,12 @@
 
   .post
     position: relative
-    margin: $gap auto
+    margin-bottom: $gap
     padding: 1.5 * $gap
     border-radius: $border-card
     @media screen and (max-width: $device-mobile-l)
       border-radius: 0
+      margin-bottom: 0
     h1
       font-weight: normal
       font-size: $fontsize-h1

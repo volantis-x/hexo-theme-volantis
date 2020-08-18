@@ -59,8 +59,7 @@ if (page && page.layout == 'post' && page.title) {
 <script>
   // 处理封面 此时 jquery 还没加载
   if ("<%=frontMatterCover%>" == "none") { // 移除封面
-    document.getElementsByClassName('cover')[0].style.display = "none"; 
-    document.getElementsByClassName('l_body')[0].classList.add("nocover");
+    document.getElementsByClassName('cover')[0].style.display = "none";
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
     if ("<%=frontMatterCover%>" == "blog") { // 半屏
@@ -73,7 +72,6 @@ if (page && page.layout == 'post' && page.title) {
       document.getElementsByClassName('scroll-down')[0].style.display = "";
     }
     document.getElementsByClassName('cover')[0].style.display = "";
-    document.getElementsByClassName('l_body', 'show')[0].classList.remove("nocover");
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
   }
 </script>

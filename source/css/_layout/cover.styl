@@ -1,3 +1,7 @@
+.cover-wrapper
+  min-height: $navbar-height
+  @media screen and (max-width: $device-mobile-l)
+    min-height: $navbar-height - $gap
 .cover-wrapper .cover
   top: 0
   left: 0
@@ -247,6 +251,7 @@
     backdrop-filter: saturate(200%) blur(20px)
 
 .cover-wrapper .cover .cover-body .menu.featured
+  margin-bottom: $gap * 2
   .list-h
     margin: -2px
   .list-h a
@@ -257,6 +262,7 @@
       backdrop-filter: saturate(200%) blur(20px)
 
 .cover-wrapper .cover .cover-body .menu.focus
+  margin-bottom: $gap * 2
   .list-h
     margin: 2px
   trans()

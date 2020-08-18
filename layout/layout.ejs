@@ -3,16 +3,18 @@
 <%- partial('_partial/head') %>
 <body>
   <%- partial('_partial/header', null, {cache: false, path: path}) %>
-  <%- partial('_partial/cover') %>
-  <div class="l_body<%- page.cover ? '' : ' nocover' %>">
-    <div class='body-wrapper' id="pjax-container">
-      <% if (theme.plugins.pjax.enable) { %>
-        <%- partial('_third-party/pjax/data') %>
-      <% } %>
-      <%- body %>
+  <div class="l_body">
+    <%- partial('_partial/cover') %>
+    <div class='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        <% if (theme.plugins.pjax.enable) { %>
+          <%- partial('_third-party/pjax/data') %>
+        <% } %>
+        <%- body %>
+      </div>
+      <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
     </div>
-    <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
   <div>
     <% if (theme.rightmenu && theme.rightmenu.enable == true) { %>
