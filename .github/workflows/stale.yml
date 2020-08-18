@@ -11,7 +11,7 @@ jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-    - uses: DeMoorJasper/stale@v2
+    - uses: DeMoorJasper/stale@master
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         stale-message: >
