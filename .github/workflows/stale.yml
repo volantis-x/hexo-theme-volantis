@@ -5,6 +5,8 @@ on:
   issue_comment:
     types:
       - created
+  watch:
+    types: started
 jobs:
   stale:
     runs-on: ubuntu-latest
@@ -12,12 +14,12 @@ jobs:
     - uses: DeMoorJasper/stale@v1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-message: >
+        stale-issue-message: >
           :wave: Hello,
           This issue has been automatically marked as stale because lack of recent activity. 
           It will be closed if no further activity occurs. 
           Thank you for your contributions. 
         days-before-stale: 30
         days-before-close: 1
-        stale-label: 'no-activity'
-        exempt-labels: 'adopted suggestion,bug,debugging,waiting response,todo'
+        stale-issue-label: 'no-activity'
+        exempt-issue-label: 'adopted suggestion,bug,debugging,waiting response,todo'
