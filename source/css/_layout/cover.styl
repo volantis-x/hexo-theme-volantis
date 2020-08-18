@@ -46,6 +46,9 @@
     div.b
       margin-top: 8vh
       margin-bottom: 8vh
+  &.full
+    height: "calc(%s + 100px)" % 100vh
+    margin-bottom: -100px
   &.half
     margin-bottom: -100px
     max-height: 640px
@@ -64,7 +67,7 @@
     width: 100%
     height: 64px
     position: absolute
-    bottom: 0
+    bottom: 100px
     text-align: center
     cursor: pointer
     .scroll-down-effects
