@@ -1,6 +1,7 @@
 <!-- required -->
 <%- js(theme.plugins.jquery) %>
 
+<%- partial('counter') %>
 <!-- optional -->
 <%- partial('cover') %>
 <% if (theme.search && theme.search.enable) { %>
@@ -36,8 +37,8 @@
   <%- partial('darkmode') %>
 <% } %>
 
-<% if (theme.plugins.busuanzi) { %>
-  <script defer src="<%- theme.plugins.busuanzi %>" data-pjax></script>
+<% if (theme.analytics.busuanzi) { %>
+  <script defer src="<%- theme.analytics.busuanzi %>" data-pjax></script>
 <% } %>
 <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.js) { %>
   <%- js(theme.info.cdn.js) %>

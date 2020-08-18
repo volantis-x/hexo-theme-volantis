@@ -1,21 +1,19 @@
-<% if ((theme.comments.service == 'valine') || (theme.comments.service == 'minivaline')) { %>
-  <div class="new-meta-item browse valine">
+<% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>
+  <div class="new-meta-item browse leancloud">
     <a class='notlink'>
-      <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
       <%
         var path = post.path || page.path;
         if (path.length > 9 && (path.substring(path.length - 10) == 'index.html')) {
           path = path.substring(0, path.length - 10);
         }
       %>
-      <span id="<%- url_for(path) %>" class="leancloud_visitors" data-flag-title="<%- post.title || page.title %>">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
+      <div id="lc-pv" data-title="<%- post.title || page.title %>" data-path="<%- url_for(path) %>">
+        <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+      </div>
     </a>
   </div>
-<% } else if (theme.plugins.busuanzi) { %>
+<% } else if (theme.analytics.busuanzi) { %>
   <% if(!isPostList){ %>
     <div class="new-meta-item browse busuanzi">
       <a class='notlink'>

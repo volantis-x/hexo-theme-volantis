@@ -482,8 +482,6 @@ plugins:
   clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
-  # Traffic statistics (very slow loading)
-  busuanzi: https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
 
   # npm i --save hexo-wordcount
   wordcount: #true
@@ -751,7 +749,12 @@ search:
   baidu:
     apiId:
 
-
+analytics:
+  busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
+  leancloud:
+    app_id: XOozn7rRukL6RdvuG5C9kowy-MdYXbMMI
+    app_key: Fw2VrxbRHeIEuuNm2Xu4zkz1
+    server_url:
 
 ############################### Theme Information ###############################
 info:
