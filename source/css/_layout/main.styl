@@ -143,6 +143,21 @@
       &#footer-meta
         margin-top: 2 * $gap
         margin-bottom: 0.5 * $gap
+      .post-img
+        width: "calc(100% + 3 * %s)" % $gap
+        margin-left: 0 - 1.5 * $gap
+        margin-top: 0 - 1.5 * $gap
+        margin-bottom: 1.5 * $gap
+        height: 280px
+        background-position: center
+        background-size: cover
+        @media screen and (max-width: $device-tablet)
+          height: 250px
+        @media screen and (max-width: $device-mobile)
+          height: 220px
+        @media screen and (max-width: $device-mobile-l)
+          height: 190px
+
       .aplayer,.thumbnail
         trans()
         width: 65px
