@@ -1,6 +1,47 @@
+<%
+function timeago(time) {
+  var now = new Date().getTime();
+  var minute = 1000 * 60;
+  var hour = minute * 60;
+  var day = hour * 24;
+  var week = day * 7;
+  var month = day * 30;
+  var year = day * 365;
+  var diffValue = now - time;
+  if (diffValue < 0) {
+    return;
+  }
+  var yearC = diffValue / year;
+  var monthC = diffValue / month;
+  var weekC = diffValue / week;
+  var dayC = diffValue / day;
+  var hourC = diffValue / hour;
+  var minC = diffValue / minute;
+  var result;
+  switch (true) {
+    case yearC >= 1:
+      result = date(time, theme.meta.updated.format);
+      break;
+    case monthC >= 1:
+      result = "" + parseInt(monthC) + " 月前";
+      break;
+    case weekC >= 1:
+      result = "" + parseInt(weekC) + " 周前";
+      break;
+    case dayC >= 1:
+      result = "" + parseInt(dayC) + " 天前";
+      break;
+    case hourC >= 1:
+      result = "" + parseInt(hourC) + " 小时前";
+      break;
+    default: 
+  }
+  return result;
+}
+%>
 <div class="new-meta-item date">
   <a class='notlink'>
     <i class="<%- theme.meta.date.icon %> fa-fw" aria-hidden="true"></i>
-    <p><%- theme.meta.date.title + date(post.date, theme.meta.date.format) %></p>
+    <p><%- theme.meta.date.title + timeago(post.date)%></p>
   </a>
 </div>
