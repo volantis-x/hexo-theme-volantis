@@ -160,9 +160,16 @@ cover:
       icon: fas fa-fan fa-spin
       url: /contributors/
 
+# 文章布局
+article:
+  # 文章列表页面的文章卡片布局方案
+  preview:
+    scheme: landscape # landscape
+    auto_excerpt: false # 0, 200, 500
+  # 文章详情页面的文章卡片本体布局方案
 
 
-
+# 不久后将被其它设置替代
 layout:
   # The following can be written in `blog/source/_data/layout.yml`
   # 文章列表（主页、自定义的列表）布局

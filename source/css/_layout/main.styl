@@ -1,6 +1,6 @@
 .safearea
   margin: $gap
-  @media screen and (max-width: $device-mobile-l)
+  @media screen and (max-width: $device-mobile-m)
     margin: $gap 0 0
 .l_body
   position: relative
@@ -127,7 +127,7 @@
     margin-bottom: $gap
     padding: 1.5 * $gap
     border-radius: $border-card
-    @media screen and (max-width: $device-mobile-l)
+    @media screen and (max-width: $device-mobile-m)
       border-radius: 0
       margin-bottom: 0
     h1
@@ -143,11 +143,11 @@
       &#footer-meta
         margin-top: 2 * $gap
         margin-bottom: 0.5 * $gap
-      .post-img
+      .headimg
         width: "calc(100% + 3 * %s)" % $gap
         margin-left: 0 - 1.5 * $gap
         margin-top: 0 - 1.5 * $gap
-        margin-bottom: 1 * $gap
+        margin-bottom: 1.5 * $gap
         height: 280px
         background-position: center
         background-size: cover
@@ -410,8 +410,8 @@ if hexo-config('plugins.scrollreveal.js')
 img
   max-width 100%
   &.lazyload:not(.placeholder)
-    transition filter .25s ease-out 0s
+    transition opacity .5s ease-out 0s
     &:not(.loaded)
-      filter blur(8px)
+      opacity: 0
     &.loaded
-      filter none
+      opacity: 1

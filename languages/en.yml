@@ -4,7 +4,7 @@ navbar:
   tag: Tag
 post:
   pin: Top
-  read_more: Read More
+  readmore: Read More
   wordcount: '%s words'
   duration: '%s min'
   comments: Comments

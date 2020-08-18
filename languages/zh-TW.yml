@@ -4,7 +4,7 @@ navbar:
   tag: 標籤
 post:
   pin: 置頂
-  read_more: 閱讀全文
+  readmore: 閱讀全文
   wordcount: '字數：%s字'
   duration: '時長：%s分鐘'
   comments: 評論
