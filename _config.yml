@@ -84,9 +84,9 @@ style:
       # style: normal
     iconfont:
       fontfamily: 'Font Awesome 5 Free'
-  # color:
+  color:
   #   site: '#21232F' # Website background color
-  #   site_inner: '#fff' # Text color inside the website background
+    site_inner: '#fff' # Text color inside the website background
   #   site_footer: '#666' # Footer text color inside the website background
   #   card: '#444' # Card background color
   #   text: '#fff' # The color of the text on the card.
@@ -147,9 +147,9 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
-  logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
-  title: ''
+  background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
+  logo: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
+  title: 'Volantis'
   subtitle: ''
   search: A Wonderful Theme for Hexo # search bar placeholder
   features:
