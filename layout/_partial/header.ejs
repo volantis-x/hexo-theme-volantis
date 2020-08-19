@@ -1,4 +1,4 @@
-<header class="l_header <%- theme.navbar.visiable %> <%- theme.style.navbar.effect.join(' ') %>" <%- theme.navbar.visiable == 'auto' ? "style='opacity: 0'" : "" %> >
+<header class="l_header <%- theme.navbar.visiable %> <%- theme.style.navbar.effect.join(' ') %>" <%- (theme.navbar.visiable == 'auto' && theme.cover.use_for) ? "style='opacity: 0'" : "" %> >
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>

@@ -1,5 +1,5 @@
 <div class='cover-body'>
-  <div class='a'>
+  <div class='top'>
     <% if (theme.cover.logo) { %>
       <img no-lazy class='logo' src='<%- url_for(theme.cover.logo) %>'/>
     <% } %>
@@ -10,8 +10,8 @@
       <p class="subtitle"><%- theme.cover.subtitle%></p>
     <% } %>
   </div>
-  <div class='b'>
-    <div class='menu navigation focus'>
+  <div class='bottom'>
+    <div class='menu navigation'>
       <div class='list-h'>
         <% if (theme.cover.features) { %>
           <% (theme.cover.features || []).forEach(function(value){ %>

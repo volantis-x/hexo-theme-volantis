@@ -135,13 +135,13 @@ navbar:
 
 ############################### Layout ###############################
 cover:
-  scheme: blog # docs, blog
-  layout: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  use_for: blog # docs, blog
+  scheme: featured # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background:
+  background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
   logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: ''
   subtitle: ''
@@ -515,7 +515,7 @@ plugins:
 
   # Slide Background
   backstretch:
-    enable: true
+    enable: # true
     js: https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js
     position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
     shuffle: true         # shuffle playlist

@@ -71,18 +71,18 @@ var customSearch;
 
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
-			if(enableCover == "true" && $('.cover.half').css('display') !== 'none') // Pjax 处理
+			if(enableCover == "true" && $('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
 				showHeaderPoint = $coverAnchor[0].clientHeight - 240;
 		}
 
 		var pos = document.body.scrollTop;
-		if(enableCover == "true" && $('.cover.half').css('display') === 'none')
+		if(enableCover == "true" && $('.cover-wrapper#half').css('display') === 'none')
 			pos += 240; // Pjax 处理
 
 		$(document, window).scroll(() => {
 			let scrollTop = $(window).scrollTop();  // 滚动条距离顶部的距离
 
-			if(enableCover == "true" && $('.cover.half').css('display') === 'none')
+			if(enableCover == "true" && $('.cover-wrapper#half').css('display') === 'none')
 				scrollTop += 240; // Pjax 处理
 
 			const del = scrollTop - pos;
@@ -97,7 +97,7 @@ var customSearch;
 			} else {
 				$topBtn.removeClass('show').removeClass('hl');
 			}
-			if (scrollTop > showHeaderPoint) {
+			if (scrollTop - showHeaderPoint > -1) {
 				$headerAnchor.addClass('show');
 			} else {
 				$headerAnchor.removeClass('show');

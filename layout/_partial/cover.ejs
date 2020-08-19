@@ -1,34 +1,44 @@
+<div class="l_cover">
 <% if (theme.plugins.pjax.enable) { %>
   <%
     var enableCover = false; // 封面是否开启
-    if(theme.cover && theme.cover.scheme) {
+    if(theme.cover && theme.cover.use_for) {
       enableCover = true;
     }
   %>
   <% if (enableCover) { %>
-    <div class="cover-wrapper">
-      <div class='cover <%- page.layout %>' style="display: none;">
-        <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
-        <%- partial('../_cover/' + theme.cover.layout) %>
+      <div class='cover-wrapper <%- page.layout %> <%- theme.cover.scheme %>' style="display: none;">
+        <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable) { %>
+          <div class='cover-backstretch'></div>
+        <% } else { %>
+          <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
+        <% } %>
+        <%- partial('../_cover/' + theme.cover.scheme) %>
         <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
       </div>
-    </div>
   <% } %>
 <% } else { %>
-  <% if (page.cover == true) { %>
-    <div class="cover-wrapper">
-      <% if (is_home() && page.prev == 0 && theme.cover.scheme == 'docs') { %>
-        <div class='cover <%- page.layout %> full'>
-          <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
-          <%- partial('../_cover/' + theme.cover.layout) %>
+    <% if (page.cover == true) { %>
+      <% if (is_home() && page.prev == 0 && theme.cover.use_for == 'docs') { %>
+        <div class="cover-wrapper" id='full'>
+          <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable) { %>
+            <div class='cover-backstretch'></div>
+          <% } else { %>
+            <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
+          <% } %>
+          <%- partial('../_cover/' + theme.cover.scheme) %>
           <div class="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
         </div>
       <% } else { %>
-        <div class='cover <%- page.layout %> half'>
-          <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
-          <%- partial('../_cover/' + theme.cover.layout) %>
+        <div class="cover-wrapper" id='half'>
+          <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable) { %>
+            <div class='cover-backstretch'></div>
+          <% } else { %>
+            <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
+          <% } %>
+          <%- partial('../_cover/' + theme.cover.scheme) %>
         </div>
       <% } %>
-    </div>
-  <% } %>
+    <% } %>
 <% } %>
+</div>

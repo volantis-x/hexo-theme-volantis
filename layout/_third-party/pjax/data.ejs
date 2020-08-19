@@ -27,13 +27,13 @@ if (theme.comments.service == 'minivaline') {
   enableMiniValine = true;
 }
 
-if(theme.cover && theme.cover.scheme) {
+if(theme.cover && theme.cover.use_for) {
   enableCover = true;
 }
 
 if (enableCover && page && page.cover) {
   frontMatterCover = page.cover;
-  if (is_home() && page.prev == 0 && theme.cover.scheme == 'docs') {
+  if (is_home() && page.prev == 0 && theme.cover.use_for == 'docs') {
     frontMatterCover = 'docs';
   } else {
     frontMatterCover = 'blog';
@@ -59,19 +59,17 @@ if (page && page.layout == 'post' && page.title) {
 <script>
   // 处理封面 此时 jquery 还没加载
   if ("<%=frontMatterCover%>" == "none") { // 移除封面
-    document.getElementsByClassName('cover')[0].style.display = "none";
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "none";
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
     if ("<%=frontMatterCover%>" == "blog") { // 半屏
-      document.getElementsByClassName('cover')[0].classList.remove("full");
-      document.getElementsByClassName('cover')[0].classList.add("half");
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half');
       document.getElementsByClassName('scroll-down')[0].style.display = "none";
     } else if ("<%=frontMatterCover%>" == "docs") { // 全屏
-      document.getElementsByClassName('cover')[0].classList.remove("half");
-      document.getElementsByClassName('cover')[0].classList.add("full");
+      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full');
       document.getElementsByClassName('scroll-down')[0].style.display = "";
     }
-    document.getElementsByClassName('cover')[0].style.display = "";
+    document.getElementsByClassName('cover-wrapper')[0].style.display = "";
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
   }
 </script>

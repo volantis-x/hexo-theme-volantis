@@ -1,8 +1,8 @@
-.cover-wrapper
+.l_cover
   min-height: $navbar-height
   @media screen and (max-width: $device-mobile-m)
     min-height: $navbar-height - $gap
-.cover-wrapper .cover
+.cover-wrapper
   top: 0
   left: 0
   max-width: 100%
@@ -18,7 +18,8 @@
   disable-user-select()
   position: relative
   overflow: hidden
-  .cover-bg
+  margin-bottom: -100px
+  .cover-bg,.cover-backstretch
     position: absolute
     width: 100%
     height: 100%
@@ -43,22 +44,15 @@
 
   .cover-body
     z-index: 1
-    div.b
-      margin-top: 8vh
-      margin-bottom: 8vh
-  &.full
+    position: relative
+    width: 100%
+    height: 100%
+  &#full
     height: "calc(%s + 100px)" % 100vh
-    margin-bottom: -100px
-  &.half
-    margin-bottom: -100px
+    padding-bottom: 100px
+  &#half
     max-height: 640px
     min-height: 400px
-    .cover-body
-      div.a
-        margin-bottom: 10%
-      div.b
-        margin-top: 10%
-        margin-bottom: 0
     height: "calc(36vh - %s + 200px)" % $navbar-height
 
   .scroll-down
@@ -89,14 +83,17 @@
           opacity: 1
 
 
-.cover-wrapper .cover .cover-body
-  margin: auto
-  &,div.a,div.b
+.cover-wrapper .cover-body
+  margin-top: $navbar-height
+  margin-bottom: 100px
+  &,.top,.bottom
     display: flex
     flex-direction: column
     align-items: center
     justify-content: center
     max-width: 100%
+  .bottom
+    margin-top: $gap * 2
   .title
     font-family: $fontfamily-logo
     font-size: $fontsize-large
@@ -156,7 +153,7 @@
         background: alpha($color-card, 1)
 
 
-.cover .list-h
+.cover-wrapper .list-h
   display: flex
   flex-direction: row
   flex-wrap: wrap
@@ -183,9 +180,9 @@
         max-width: 32px
 
 
-.cover-wrapper .cover .cover-body .menu
+.cover-wrapper
   max-width: 100%
-  &.search
+  &.search .bottom .menu
     margin-top: $gap
     .list-h a
       white-space: nowrap
@@ -204,7 +201,7 @@
       &:hover, &.active, &:active
         color: $color-site-inner
         border-bottom: 2px solid $color-site-inner
-  &.dock, &.featured, &.focus
+  &.dock .menu, &.featured .menu, &.focus .menu
     border-radius: $border-button + 2px
     .list-h a
       flex-direction: column
@@ -234,11 +231,12 @@
         background: $color-card
 
 
-
-.cover-wrapper .cover .cover-body .menu.dock
+.cover-wrapper.dock .top
+  margin-bottom: $gap * 3
+.cover-wrapper.dock .menu
   background: alpha($color-card, .5)
   position: absolute
-  bottom: 100px
+  bottom: 0
   .list-h
     flex-wrap: nowrap
     margin: 4px
@@ -251,8 +249,7 @@
     background: alpha($color-card, .5)
     backdrop-filter: saturate(200%) blur(20px)
 
-.cover-wrapper .cover .cover-body .menu.featured
-  margin-bottom: $gap * 2
+.cover-wrapper.featured .menu
   .list-h
     margin: -2px
   .list-h a
@@ -262,8 +259,7 @@
       background: alpha($color-card, .5)
       backdrop-filter: saturate(200%) blur(20px)
 
-.cover-wrapper .cover .cover-body .menu.focus
-  margin-bottom: $gap * 2
+.cover-wrapper.focus .menu
   .list-h
     margin: 2px
   trans()
