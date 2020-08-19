@@ -30,13 +30,26 @@
     transition: transform 1s ease-out
     &:hover
       transform: scale(1.02)
+  .pin
+    position: absolute
+    width: 20px
+    height: 20px
+    border-radius: 20px
+    right: $gap * 1.5
+    top: $gap * 1.5
+    z-index: 1
+    pointer-events: none
+
 .meta-v3
   border-top: 1px solid alpha($color-text, 0.1)
   margin-top: $gap
   padding-top: $gap * 0.75
   display: flex
+  flex-wrap: wrap
   justify-content: space-between
   color: $color-meta
+  time
+    font-size: $fontsize-meta
   .dot,.sep
     font-size: 0.9em
     margin: 0 .2rem
@@ -45,6 +58,7 @@
   .sep:before
     content: '/'
   .category-link
+    font-size: $fontsize-meta
     font-weight: bold
     color: $color-meta
     &:hover

@@ -165,7 +165,8 @@ article:
   # 文章列表页面的文章卡片布局方案
   preview:
     scheme: landscape # landscape
-    auto_excerpt: false # 0, 200, 500
+    auto_excerpt: # false, 200, 500
+    pin_icon: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg # pin icon
   # 文章详情页面的文章卡片本体布局方案
 
 

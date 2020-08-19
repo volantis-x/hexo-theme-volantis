@@ -1,4 +1,9 @@
 <div class="post post-v3 white-box reveal <%- theme.style.body.effect.join(' ') %>">
+  <% if (post.pin && theme.article.preview.pin_icon) { %>
+    <div class='pin'>
+      <img src='<%- theme.article.preview.pin_icon %>'/>
+    </div>
+  <% } %>
   <% if (post.headimg) { %>
     <div class='headimg-div'>
       <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
@@ -30,13 +35,6 @@
   </div>
   <div class='meta-v3'>
     <div>
-      <% if (post.author && post.author.url) { %>
-        <a class='author' href="<%- post.author.url %>" rel="nofollow">
-          <img class='lazyload' src="<%- post.author.avatar %>"/>
-          <p><%- post.author.name %></p>
-        </a>
-        <span class="dot"></span>
-      <% } %>
       <time><%= date(post.date, config.date_format) %></time>
       <span class="dot"></span>
       <%- list_categories(post.categories, {
