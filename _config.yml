@@ -142,7 +142,7 @@ navbar:
 ############################### Layout ###############################
 cover:
   use_for: blog # docs, blog
-  scheme: featured # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
@@ -154,17 +154,23 @@ cover:
   search: A Wonderful Theme for Hexo # search bar placeholder
   features:
     - name: 文档
-      icon: fas fa-book
+      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
       url: /v3/getting-started/
     - name: 帮助
-      icon: fas fa-question-circle
+      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
       url: faqs/
     - name: 示例
-      icon: fas fa-play-circle
+      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
       url: /examples/
     - name: 社区
-      icon: fas fa-fan fa-spin
+      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
       url: /contributors/
+    - name: 博客
+      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
+      url: /archives/
+    - name: 源码
+      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
+      url: https://github.com/volantis-x/hexo-theme-volantis/
 
 # 文章布局
 article:
