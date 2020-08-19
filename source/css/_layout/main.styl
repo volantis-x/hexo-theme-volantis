@@ -128,7 +128,30 @@
           height: 220px
         @media screen and (max-width: $device-mobile-l)
           height: 190px
-
+      .title
+        trans(.1s)
+        margin: 0
+        color: $color-text
+        border-bottom: none
+        padding-top: 8px
+        padding-bottom: 4px
+        p
+          &.h1,&.h2
+            margin-top: $gap * 3
+            margin-bottom: $gap * 1.5
+            border-bottom: none
+          &.h1
+            font-size: $fontsize-h1 * 1.1
+          &.h2
+            font-size: $fontsize-h2 * 1.1
+        a
+          display: inline
+          font-weight: normal
+          color: $color-text
+          text-decoration: none
+          font-size: $fontsize-h1 * 1.1
+          &:hover
+            color: $color-hover
     .article-meta
       color: $color-meta
       margin-bottom: $gap
@@ -166,30 +189,7 @@
           border-radius: 4px
           transform: scale(1.1) rotate(4deg)
           box-shadow: none
-      .title
-        trans(.1s)
-        margin: 0
-        color: $color-text
-        border-bottom: none
-        padding-top: 8px
-        padding-bottom: 4px
-        p
-          &.h1,&.h2
-            margin-top: $gap * 4
-            margin-bottom: $gap * 2
-            border-bottom: none
-          &.h1
-            font-size: $fontsize-h1 * 1.1
-          &.h2
-            font-size: $fontsize-h2 * 1.1
-        a
-          display: inline
-          font-weight: normal
-          color: $color-text
-          text-decoration: none
-          font-size: $fontsize-h1 * 1.1
-          &:hover
-            color: $color-hover
+
 
 
       .new-meta-box
