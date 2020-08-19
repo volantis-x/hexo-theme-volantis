@@ -400,3 +400,9 @@ img
       opacity: 0
     &.loaded
       opacity: 1
+    if hexo-config('lazyload.blurIn') == true
+      transition filter .25s ease-out 0s
+      &:not(.loaded)
+        filter blur(8px)
+      &.loaded
+        filter none

@@ -100,6 +100,13 @@ style:
   #   p: '#ccc' # Paragraph color
 
 
+# 图片懒加载，请复制到站点配置文件中使用。
+lazyload:
+  enable: true
+  onlypost: false
+  loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
+  blurIn: true # 模糊加载效果 （loadingImg为空时有效）
+
 
 # Navigation Bar
 navbar:
