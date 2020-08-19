@@ -3,12 +3,12 @@
   const LCCounter = {
     app_id: '<%= theme.analytics.leancloud.app_id %>',
     app_key: '<%= theme.analytics.leancloud.app_key %>',
-    server_url: '<%= theme.analytics.leancloud.server_url %>',
+    custom_api_server: '<%= theme.analytics.leancloud.custom_api_server %>',
 
     // 查询存储的记录
-    getRecord(Counter, target, title) {
+    getRecord(Counter, url, title) {
       return new Promise(function (resolve, reject) {
-        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({target})))
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
           .then(resp => resp.json())
           .then(({results, code, error}) => {
             if (code === 401) {
@@ -18,7 +18,7 @@
               var record = results[0];
               resolve(record);
             } else {
-              Counter('post', '/classes/Counter', {target, title: title, times: 0})
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
                 .then(resp => resp.json())
                 .then((record, error) => {
                   if (error) {
@@ -91,7 +91,7 @@
       // 请求 PV 并自增
       var pvCtn = document.querySelector('#lc-sv');
       if (pvCtn || enableIncr) {
-        var pvGetter = this.getRecord(Counter, 'lc-sv').then((record) => {
+        var pvGetter = this.getRecord(Counter, window.location.hostname + '/#lc-sv', 'Visits').then((record) => {
           incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-sv #number');
           if (eles.length > 0) {
@@ -109,7 +109,7 @@
       // 请求 UV 并自增
       var uvCtn = document.querySelector('#lc-uv');
       if (uvCtn || enableIncr) {
-        var uvGetter = this.getRecord(Counter, 'lc-uv').then((record) => {
+        var uvGetter = this.getRecord(Counter, window.location.hostname + '/#lc-uv', 'Visitors').then((record) => {
           var vuv = this.validUV();
           vuv && incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-uv #number');
@@ -131,9 +131,9 @@
         for (i = 0; i < allPV.length; i++) {
           let pv = allPV[i];
           let title = pv.getAttribute('data-title');
-          var target = pv.getAttribute('data-path');
-          if (target) {
-            var viewGetter = this.getRecord(Counter, target, title).then((record) => {
+          var url = window.location.hostname + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
               // 是当前页面就自增
               if (pv.getAttribute('data-path') == window.location.pathname) {
                 incrArr.push(this.buildIncrement(record.objectId));
@@ -181,7 +181,7 @@
     },
 
     refreshCounter() {
-      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
       if (api_server) {
         this.fetchData(api_server);
       } else {

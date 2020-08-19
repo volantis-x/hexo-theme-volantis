@@ -767,12 +767,13 @@ search:
   baidu:
     apiId:
 
+
 analytics:
   busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   leancloud:
-    app_id: XOozn7rRukL6RdvuG5C9kowy-MdYXbMMI
-    app_key: Fw2VrxbRHeIEuuNm2Xu4zkz1
-    server_url:
+    app_id: u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
+    app_key: jfHtEKVE24j0IVCGHbvuFClp
+    custom_api_server: # 一般不需要写，除非自定义了 API Server
 
 ############################### Theme Information ###############################
 info:
