@@ -1,7 +1,7 @@
 <!-- required -->
 <%- js(theme.plugins.jquery) %>
 
-<%- partial('counter') %>
+
 <!-- optional -->
 <%- partial('cover') %>
 <% if (theme.search && theme.search.enable) { %>
@@ -81,6 +81,9 @@
   <% } %>
 <% } %>
 
+<% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>
+  <%- partial('counter') %>
+<% } %>
 
 <!-- more -->
 <% if (config.import && config.import.script) { %>

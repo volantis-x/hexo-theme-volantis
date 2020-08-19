@@ -1,5 +1,23 @@
 <div class="post post-v3 white-box reveal <%- theme.style.body.effect.join(' ') %>">
-  <% if (post.pin && (post.title || theme.article.preview.auto_title) && theme.article.preview.pin_icon) { %>
+  <%
+  let showPin = false;
+  if (post.pin && (post.title || theme.article.preview.auto_title) && theme.article.preview.pin_icon) {
+    showPin = true;
+  }
+  let showTitle = false;
+  if (theme.article.preview.auto_title || (post.title && (post.link || post.path))) {
+    showTitle = true;
+  }
+  let showCat = false;
+  if (post.categories && post.categories.length > 0) {
+    showCat = true;
+  }
+  let showReadmore = false;
+  if (theme.article.preview.readmore == 'always' || theme.article.preview.auto_excerpt || ((post.readmore != false) && (post.excerpt || post.description || post.link))) {
+    showReadmore = true;
+  }
+  %>
+  <% if (showPin == true) { %>
     <div class='pin'>
       <img src='<%- theme.article.preview.pin_icon %>'/>
     </div>
@@ -19,8 +37,14 @@
       </a>
     </div>
   <% } %>
-  <% if (theme.article.preview.auto_title || (post.title && (post.link || post.path))) { %>
-    <h2 class="article-title">
+  <% if (showTitle) { %>
+    <%
+    let pinTitle = false;
+    if (showPin && !post.headimg) {
+      pinTitle = true;
+    }
+    %>
+    <h2 class="article-title" <%- pinTitle ? 'pin' : '' %>>
       <a href="<%- url_for(post.link || post.path) %>">
         <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.meta.date.format) %>
       </a>
@@ -39,7 +63,7 @@
       <% } %>
     <% } %>
   </div>
-  <% if (theme.article.preview.readmore == 'always' || theme.article.preview.auto_excerpt || (post.categories && post.categories.length > 0) || (post.readmore != false) && (post.excerpt || post.description || post.link)) { %>
+  <% if (showCat || showReadmore) { %>
     <div class='meta-v3' line_style='<%- theme.article.preview.line_style %>'>
       <div>
         <time><%= date(post.date, config.date_format) %></time>
@@ -52,7 +76,7 @@
               }) %>
         <% } %>
       </div>
-      <% if (theme.article.preview.readmore == 'always' || theme.article.preview.auto_excerpt || ((post.readmore != false) && (post.excerpt || post.description || post.link))) { %>
+      <% if (showReadmore) { %>
         <div>
             <a class='readmore' href='<%- url_for(post.link || post.path) %>'>
             <%- __('post.readmore') %>

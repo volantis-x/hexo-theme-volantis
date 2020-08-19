@@ -1,11 +1,13 @@
 .article-title
-  font-weight: bold
+  font-weight: 500
   margin-bottom: $gap * 0.75
   line-height: 1.4
   a
     color: inherit
     &:hover
       color: $color-hover
+  &[pin]
+    margin-right: 36px
 .post-v3
   overflow: hidden
   text-align: justify
@@ -56,17 +58,11 @@
   color: $color-meta
   time
     font-size: $fontsize-meta
-  .dot,.sep
-    font-size: 0.9em
-    margin: 0 .2rem
-  .dot:before
-    content: '·'
-  .sep:before
-    content: '/'
   .category-link
     font-size: $fontsize-meta
-    font-weight: bold
     color: $color-meta
+    -webkit-font-smoothing: auto
+    -moz-osx-font-smoothing: auto
     &:hover
       color: $color-hover
   .readmore

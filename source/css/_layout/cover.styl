@@ -1,7 +1,6 @@
 .l_cover
   min-height: $navbar-height
-  @media screen and (max-width: $device-mobile-m)
-    min-height: $navbar-height - $gap
+
 .cover-wrapper
   top: 0
   left: 0
@@ -163,16 +162,18 @@
   a
     flex: 1
     display: flex
+    font-weight: 600
     img
       display: block
       border-radius: 2px
-      margin: $gap * 0.5 $gap * 0.25
+      margin: $gap * 0.25
       min-width: 40px
       max-width: 44px
       @media screen and (max-width: $device-tablet)
         min-width: 36px
         max-width: 40px
       @media screen and (max-width: $device-mobile)
+        margin: 2px $gap * 0.25
         min-width: 32px
         max-width: 36px
       @media screen and (max-width: $device-mobile-m)
@@ -224,7 +225,7 @@
         i, i+p
           color: $color-theme
         img+p
-          color: $color-site-inner
+          color: $color-text
         background: $color-card
         backdrop-filter: none
       &:hover
