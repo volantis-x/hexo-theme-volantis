@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-volantis",
-  "version": "3.0.0-rc.1",
+  "version": "3.0.0",
   "description": "Elegant and powerful theme for Hexo.",
   "main": "package.json",
   "scripts": {
@@ -15,14 +15,12 @@
     "theme",
     "volantis"
   ],
-  "author": "Volantis X (https://volantis.js.org)",
+  "author": "Volantis X (https://github.com/volantis-x/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/volantis-x/hexo-theme-volantis/issues"
   },
   "homepage": "https://volantis.js.org",
   "devDependencies": {
-    "hexo": "5.0.0",
-    "hexo-renderer-marked": "3.0.0"
   }
 }

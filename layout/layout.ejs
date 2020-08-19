@@ -38,22 +38,25 @@ var $i = $("<span/>").text(a[a_idx]); a_idx = (a_idx + 1) % a.length; var x = e.
 
    <!--粒子特效-->
  <!-- <script type="text/javascript" color="255,51,0" opacity='0.4' zIndex="-1" count="120" src="https://cdn.jsdelivr.net/gh/waxll/blog-js/lizi.js"></script><!--51,245,255-->
-  <%- partial('_partial/cover') %>
-  <div class="l_body<%- page.cover ? '' : ' nocover' %>">
-    <div class='body-wrapper' id="pjax-container">
-      <% if (theme.plugins.pjax.enable) { %>
-        <%- partial('_third-party/pjax/data') %>
-      <% } %>
-      <%- body %>
+ <%- partial('_partial/header', null, {cache: false, path: path}) %>
+ <div class="l_body">
+   <%- partial('_partial/cover') %>
+   <div class='safearea'>
+     <div class='body-wrapper' id="pjax-container">
+       <% if (theme.plugins.pjax.enable) { %>
+         <%- partial('_third-party/pjax/data') %>
+       <% } %>
+       <%- body %>
+     </div>
+     <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
     </div>
-    <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
   <div>
     <% if (theme.rightmenu && theme.rightmenu.enable == true) { %>
       <%- partial('_partial/rightmenu') %>
     <% } %>
-    <%- partial('_partial/scripts') %>
+    <%- partial('_partial/scripts/index') %>
     <% if (theme.plugins.pjax.enable) { %>
       <%- partial('_third-party/pjax/index') %>
     <% } %>

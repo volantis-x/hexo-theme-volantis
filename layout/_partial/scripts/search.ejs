@@ -1,0 +1,19 @@
+<script>
+  <% if(theme.search.service === 'baidu') { %>
+    var BAIDU_API_ID = "<%- theme.search.baidu.apiId %>";
+  <%} else if(theme.search.service === 'algolia') { %>
+    var ALGOLIA_API_KEY = "<%- theme.search.algolia.apiKey %>";
+    var ALGOLIA_APP_ID = "<%- theme.search.algolia.applicationID %>";
+    var ALGOLIA_INDEX_NAME = "<%- theme.search.algolia.indexName %>";
+  <%} else if(theme.search.service === 'azure') { %>
+    var AZURE_QUERY_KEY = "<%- theme.search.azure.queryKey %>";
+    var AZURE_INDEX_NAME = "<%- theme.search.azure.indexName %>";
+    var AZURE_SERVICE_NAME = "<%- theme.search.azure.serviceName %>";
+  <%} else if(theme.search.service === 'google') { %>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google.apiKey %>";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google.engineId %>";
+  <%}%>
+  var SEARCH_SERVICE = "<%- theme.search.service %>" || "hexo";
+  var ROOT = "<%- config.root %>" || "/";
+  if (!ROOT.endsWith('/')) ROOT += '/';
+</script>

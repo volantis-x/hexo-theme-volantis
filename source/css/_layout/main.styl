@@ -1,20 +1,18 @@
+.safearea
+  margin: $gap
+  @media screen and (max-width: $device-mobile-m)
+    margin: $gap 0 0
 .l_body
   position: relative
-  margin: $gap
   if hexo-config('style.font_smoothing') == true
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
-  &.nocover
-    margin-top: $navbar-height
-  @media screen and (max-width: $device-mobile-l)
-    margin: $navbar-height + $gap 0 $gap
-    &.nocover
-      margin-top: $navbar-height - $gap
   div.loading
     margin: $gap 0
     width: 100%
     display: block
-    text-align: center
+    &,p
+      text-align: center
     i
       line-height: $fontsize-body * 3
   .s-top
@@ -65,7 +63,7 @@
   float: left
   .post-list
     position: relative
-    margin: $gap auto
+    margin-bottom: $gap
     column-gap: $gap
     // @media screen and (max-width: $device-mobile)
     //   margin: 0
@@ -126,11 +124,12 @@
 
   .post
     position: relative
-    margin: $gap auto
+    margin-bottom: $gap
     padding: 1.5 * $gap
     border-radius: $border-card
-    @media screen and (max-width: $device-mobile-l)
+    @media screen and (max-width: $device-mobile-m)
       border-radius: 0
+      margin-bottom: 0
     h1
       font-weight: normal
       font-size: $fontsize-h1
@@ -144,6 +143,21 @@
       &#footer-meta
         margin-top: 2 * $gap
         margin-bottom: 0.5 * $gap
+      .headimg
+        width: "calc(100% + 3 * %s)" % $gap
+        margin-left: 0 - 1.5 * $gap
+        margin-top: 0 - 1.5 * $gap
+        margin-bottom: 1.5 * $gap
+        height: 280px
+        background-position: center
+        background-size: cover
+        @media screen and (max-width: $device-tablet)
+          height: 250px
+        @media screen and (max-width: $device-mobile)
+          height: 220px
+        @media screen and (max-width: $device-mobile-l)
+          height: 190px
+
       .aplayer,.thumbnail
         trans()
         width: 65px
@@ -176,7 +190,8 @@
         color: $color-text
         p
           &.h1,&.h2
-            margin-top: $gap-paragraph + $gap-row
+            margin-top: $gap * 4
+            margin-bottom: $gap * 2
             border-bottom: none
           &.h1
             font-size: $fontsize-h1 * 1.1
@@ -377,7 +392,7 @@ div.hoverbox
       display: inline-block
       border-radius: 2px
       cursor: pointer
-      background: $color-theme
+      background: $color-link
       color: $color-inner
       padding-top: 2px
       padding-left: $gap * 3
@@ -391,3 +406,12 @@ div.hoverbox
 if hexo-config('plugins.scrollreveal.js')
   .reveal
     visibility: hidden
+
+img
+  max-width 100%
+  &.lazyload:not(.placeholder)
+    transition opacity .5s ease-out 0s
+    &:not(.loaded)
+      opacity: 0
+    &.loaded
+      opacity: 1

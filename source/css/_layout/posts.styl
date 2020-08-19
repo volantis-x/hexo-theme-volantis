@@ -1,0 +1,67 @@
+.article-title
+  font-weight: bold
+  margin-bottom: $gap * 0.75
+  line-height: 1.4
+  a
+    color: inherit
+    &:hover
+      color: $color-hover
+.post-v3
+  overflow: hidden
+  text-align: justify
+  .md-v3
+    color: mix($color-p, $color-card, 85)
+  .headimg-div
+    overflow: hidden
+    margin-left: 0 - 1.5 * $gap
+    margin-top: 0 - 1.5 * $gap
+    margin-bottom: 1.25 * $gap
+    width: "calc(100% + 3 * %s)" % $gap
+  .headimg
+    background-position: center
+    background-size: cover
+    height: 280px
+    @media screen and (max-width: $device-tablet)
+      height: 250px
+    @media screen and (max-width: $device-mobile)
+      height: 220px
+    @media screen and (max-width: $device-mobile-l)
+      height: 190px
+    transition: transform 1s ease-out
+    &:hover
+      transform: scale(1.02)
+  .pin
+    position: absolute
+    width: 20px
+    height: 20px
+    border-radius: 20px
+    right: $gap * 1.5
+    top: $gap * 1.5
+    z-index: 1
+    pointer-events: none
+
+.meta-v3
+  border-top: 1px solid alpha($color-text, 0.1)
+  margin-top: $gap
+  padding-top: $gap * 0.75
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  color: $color-meta
+  time
+    font-size: $fontsize-meta
+  .dot,.sep
+    font-size: 0.9em
+    margin: 0 .2rem
+  .dot:before
+    content: '·'
+  .sep:before
+    content: '/'
+  .category-link
+    font-size: $fontsize-meta
+    font-weight: bold
+    color: $color-meta
+    &:hover
+      color: $color-hover
+  .readmore
+    font-weight: bold

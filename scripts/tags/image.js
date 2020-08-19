@@ -47,7 +47,7 @@ function postInlineImage(args) {
   if (args.length > 1) {
     getP2(args[1].trim())
   }
-  return `<img class='inline' src='${url}' style='height:${height}'>`;
+  return `<img no-lazy class='inline' src='${url}' style='height:${height}'>`;
 }
 
 

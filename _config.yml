@@ -1,7 +1,7 @@
  ############################### Style ###############################
 style:
   cursor:
-    enable: true
+    enable: false
     text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png
     pointer: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/pointer.png
     default: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/left_ptr.png
@@ -9,13 +9,11 @@ style:
     zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-out.png
     zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-in.png
     grab: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/openhand.png
-  font_smoothing: false # font-smoothing for webkit
+  font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
     size: 4px
     border: 2px
-    color: '#2196f3'
-    hover: '#ff5722'
   navbar:
     height: 64px
     width: auto # auto, max
@@ -85,7 +83,7 @@ style:
       # url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
       # weight: normal
       # style: normal
-    note-tag:
+    iconfont:
       fontfamily: 'Font Awesome 5 Free'
   # color:
   #   site: '#21232F' # Website background color
@@ -141,6 +139,7 @@ cover:
 
 # Navigation Bar
 navbar:
+  visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
     img:
     icon: fas fa-home
@@ -169,6 +168,45 @@ navbar:
 
 
 
+
+############################### Layout ###############################
+cover:
+  scheme: blog # docs, blog
+  layout: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  display:
+    home: true
+    archive: true
+    others: false # can be written in front-matter 'cover: true'
+  background:
+  logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
+  title: ''
+  subtitle: ''
+  search: A Wonderful Theme for Hexo # search bar placeholder
+  features:
+    - name: 文档
+      icon: fas fa-book
+      url: /v3/getting-started/
+    - name: 帮助
+      icon: fas fa-question-circle
+      url: faqs/
+    - name: 示例
+      icon: fas fa-play-circle
+      url: /examples/
+    - name: 社区
+      icon: fas fa-fan fa-spin
+      url: /contributors/
+
+# 文章布局
+article:
+  # 文章列表页面的文章卡片布局方案
+  preview:
+    scheme: landscape # landscape
+    auto_excerpt: # false, 200, 500
+    pin_icon: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg # pin icon
+  # 文章详情页面的文章卡片本体布局方案
+
+
+# 不久后将被其它设置替代
 layout:
   # The following can be written in `blog/source/_data/layout.yml`
   # 文章列表（主页、自定义的列表）布局
@@ -415,7 +453,7 @@ widget:
 
 footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, info, copyright]
+  layout: [aplayer, social, license, analytics, info, copyright]
   social:
     - icon: fas fa-rss
       url: atom.xml
@@ -425,6 +463,13 @@ footer:
       url: https://github.com/waxll
     - icon: fas fa-headphones-alt
       url: https://music.163.com/#/user/home?id=300345527
+  # site source
+  source: https://github.com/volantis-x/volantis-docs/
+  # sv
+  analytics: >
+    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
+    <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+  # site copyright    
   copyright: '[Copyright © 2019-2020 XieSenshi](https://waxll.ml)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
@@ -447,13 +492,21 @@ seo:
     
 ############################### Plugins ###############################
 plugins:
-  # required plugins
-  fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css
-  fontawesomeanimation: https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
-  fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
+  ################ required plugins ################
+
+  # jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
 
-  # optional plugins
+  ################ optional plugins ################
+
+  # fontawesome
+  fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css
+  # fontawesome animation
+  fontawesome_animation: https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
+  # fancybox
+  fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
+
+
   ######## Plugins to improve loading speed:
   # Preload (The menu's url must end with ‘/’)
   instant_page: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
@@ -467,7 +520,7 @@ plugins:
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    # js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
+    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
     interval: 20 # ms
@@ -477,8 +530,6 @@ plugins:
   clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
-  # Traffic statistics (very slow loading)
-  busuanzi: https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
 
   # npm i --save hexo-wordcount
   wordcount: true
@@ -544,7 +595,6 @@ plugins:
     js:
       - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
       - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
-      - js/aplayer.js
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
@@ -777,12 +827,17 @@ search:
   baidu:
     apiId:
 
-
+analytics:
+  busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
+  leancloud:
+    app_id: XOozn7rRukL6RdvuG5C9kowy-MdYXbMMI
+    app_key: Fw2VrxbRHeIEuuNm2Xu4zkz1
+    server_url:
 
 ############################### Theme Information ###############################
 info:
   name: Volantis # This is theme's name.
-  version: '3.0.0-rc.1' # This is theme's version.
+  version: '3.0.0' # This is theme's version.
   docs: https://volantis.js.org/ # This is theme's URL.
   repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:

@@ -1,0 +1,15 @@
+<script src="<%- theme.plugins.scrollreveal.js %>"></script>
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.l_main .reveal', {
+      distance: '<%- theme.plugins.scrollreveal.distance %>',
+      duration: '<%- theme.plugins.scrollreveal.duration %>',
+      interval: '<%- theme.plugins.scrollreveal.interval %>',
+      scale: '<%- theme.plugins.scrollreveal.scale %>',
+      easing: 'ease-out'
+    });
+  }
+  $(function () {
+    pjax_scrollrebeal();
+  });
+</script>

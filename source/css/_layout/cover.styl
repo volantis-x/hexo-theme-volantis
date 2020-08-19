@@ -1,3 +1,7 @@
+.cover-wrapper
+  min-height: $navbar-height
+  @media screen and (max-width: $device-mobile-m)
+    min-height: $navbar-height - $gap
 .cover-wrapper .cover
   top: 0
   left: 0
@@ -10,31 +14,58 @@
   align-self: center
   align-content: center
   color: $color-site-inner
-  padding: $gap
+  padding: 0 $gap
   disable-user-select()
+  position: relative
+  overflow: hidden
+  .cover-bg
+    position: absolute
+    width: 100%
+    height: 100%
+    background-position: center
+    background-size: cover
+    &.lazyload
+      &:not(.loaded)
+        opacity: 0
+      &.loaded
+        animation-delay: 0s
+        animation-duration: .5s
+        animation-fill-mode: forwards
+        animation-timing-function: ease-out
+        animation-name: fadeIn
+        @keyframes fadeIn
+          0%
+            opacity: 0
+            filter blur(12px)
+            transform: scale(1.02)
+          100%
+            opacity: 1
+
   .cover-body
+    z-index: 1
     div.b
       margin-top: 8vh
       margin-bottom: 8vh
+  &.full
+    height: "calc(%s + 100px)" % 100vh
+    margin-bottom: -100px
   &.half
     margin-bottom: -100px
     max-height: 640px
     min-height: 400px
     .cover-body
+      div.a
+        margin-bottom: 10%
       div.b
         margin-top: 10%
         margin-bottom: 0
     height: "calc(36vh - %s + 200px)" % $navbar-height
-    @media screen and (max-width: $device-mobile)
-      .cover-body
-        div.a
-          margin-top: 10%
 
   .scroll-down
     width: 100%
     height: 64px
     position: absolute
-    bottom: 0
+    bottom: 100px
     text-align: center
     cursor: pointer
     .scroll-down-effects
@@ -179,6 +210,7 @@
       flex-direction: column
       align-items: center
       padding: $gap * 0.75
+      line-height: 24px
       @media screen and (max-width: $device-mobile)
         padding: $gap * 0.75 $gap * 0.5
       border-radius: $border-button
@@ -205,6 +237,8 @@
 
 .cover-wrapper .cover .cover-body .menu.dock
   background: alpha($color-card, .5)
+  position: absolute
+  bottom: 100px
   .list-h
     flex-wrap: nowrap
     margin: 4px
@@ -218,6 +252,7 @@
     backdrop-filter: saturate(200%) blur(20px)
 
 .cover-wrapper .cover .cover-body .menu.featured
+  margin-bottom: $gap * 2
   .list-h
     margin: -2px
   .list-h a
@@ -228,6 +263,7 @@
       backdrop-filter: saturate(200%) blur(20px)
 
 .cover-wrapper .cover .cover-body .menu.focus
+  margin-bottom: $gap * 2
   .list-h
     margin: 2px
   trans()

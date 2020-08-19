@@ -24,7 +24,7 @@
         </div>
       <% } else if (item == 'aplayer') { %>
         <div class="aplayer-container">
-          <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
+          <%- partial('../_third-party/aplayer/layout', {post: null, where: 'footer'}) %>
         </div>
       <% } else if (item == 'license') { %>
         <div><%- markdown(__('footer.license')) %></div>
@@ -51,6 +51,8 @@
 setInterval("createtime()",250);
 </script><div class='copyright'></div>-->
         <% } %>
+      <% } else if (item == 'source') { %>
+        <%- markdown(__('footer.site_source', '[Volantis](https://github.com/volantis-x/hexo-theme-volantis/tree/'+theme.info.version+')', 'GitHub', 'https://github.com/volantis-x/volantis-docs')) %>
       <% } else if (item == 'copyright') { %>
         <div class='copyright'>
         <%- markdown(theme.footer.copyright) %>

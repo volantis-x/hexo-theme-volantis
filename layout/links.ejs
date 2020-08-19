@@ -25,8 +25,16 @@
                     <a class='friend-card' style='background:<%- item.backgroundColor %>; color:<%- item.textColor %>'
                       target="_blank" rel="external nofollow noopener noreferrer" href='<%- url_for(item.url || '') %>'>
                       <div class='friend-left'>
-                        <% if(item.avatar || (config.lazyload && config.lazyload.loadingImg)){ %>
-                          <img class='avatar' src='<%- item.avatar || (config.lazyload && config.lazyload.loadingImg) %>'/>
+                        <% if (item.avatar) { %>
+                          <% if (config.lazyload && config.lazyload.enable) { %>
+                            <% if (config.lazyload.loadingImg) { %>
+                              <img class='avatar lazyload placeholder' src='<%- item.avatar || (config.lazyload && config.lazyload.loadingImg) %>'/>
+                            <% } else { %>
+                              <img class='avatar lazyload' src='<%- item.avatar || (config.lazyload && config.lazyload.loadingImg) %>'/>
+                            <% } %>
+                          <% } else { %>
+                            <img class='avatar' src='<%- item.avatar || (config.lazyload && config.lazyload.loadingImg) %>'/>
+                          <% } %>
                         <% } %>
                       </div>
                       <div class='friend-right'>

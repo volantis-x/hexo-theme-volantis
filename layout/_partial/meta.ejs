@@ -37,16 +37,48 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
       <% if(isPostList){ %>
         <h2 class="title"><p class="p center h2"><%- post.title || post.seo_title %></p></h2><br>
       <% } else { %>
+        <% if (post.headimg) { %>
+          <% if (config.lazyload && config.lazyload.enable) { %>
+            <% if (config.lazyload.loadingImg) { %>
+              <div class='headimg lazyload placeholder' data-bg='<%- post.headimg %>'></div>
+            <% } else { %>
+              <div class='headimg lazyload' data-bg='<%- post.headimg %>'></div>
+            <% } %>
+          <% } else { %>
+            <div class='headimg' data-bg='<%- post.headimg %>'></div>
+          <% } %>
+        <% } %>
         <% if (post.title || page.title || config.title) { %>
           <h1 class="title"><p class="p center h1"><%- post.title || post.seo_title %></p></h1><br>
         <% } %>
       <% } %>
     <% } else { %>
       <% if (post.music && post.music.enable != false) { %>
-        <%- partial('../_third-party/aplayer', {post: post, where: 'meta'}) %>
+        <%- partial('../_third-party/aplayer/layout', {post: post, where: 'meta'}) %>
       <% } %>
-      <% if(post.thumbnail && post.thumbnail.length){ %>
-        <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'><img class='thumbnail' src='<%- post.thumbnail %>'></a>
+      <% if (post.headimg) { %>
+        <% if (config.lazyload && config.lazyload.enable) { %>
+          <% if (config.lazyload.loadingImg) { %>
+            <div class='headimg lazyload placeholder' data-bg='<%- post.headimg %>'></div>
+          <% } else { %>
+            <div class='headimg lazyload' data-bg='<%- post.headimg %>'></div>
+          <% } %>
+        <% } else { %>
+          <div class='headimg' data-bg='<%- post.headimg %>'></div>
+        <% } %>
+      <% } %>
+      <% if (post.thumbnail && post.thumbnail.length){ %>
+        <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
+          <% if (config.lazyload && config.lazyload.enable) { %>
+            <% if (config.lazyload.loadingImg) { %>
+              <img class='thumbnail lazyload placeholder' src='<%- post.thumbnail %>'>
+            <% } else { %>
+              <img class='thumbnail lazyload' src='<%- post.thumbnail %>'>
+            <% } %>
+          <% } else { %>
+            <img class='thumbnail' src='<%- post.thumbnail %>'>
+          <% } %>
+        </a>
       <% } %>
       <div class="meta" id="header-meta">
         <% if((topMetas).indexOf('title') > -1){ %>

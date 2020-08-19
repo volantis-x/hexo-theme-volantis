@@ -32,12 +32,18 @@
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i><%- __('rightmenu.copy_image_src') %></a>
         <hr id='hr-src'>
       </li>
-      <li class='navigation'>
-        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
-      </li>
+      <% if (theme.plugins.fontawesome) { %>
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      <% } else { %>
+        <li class='option'><a class='vlts-menu opt fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i><%- __('rightmenu.back') %></a></li>
+        <li class='option'><a class='vlts-menu opt fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i><%- __('rightmenu.forward') %></a></li>
+        <li class='option'><a class='vlts-menu opt fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i><%- __('rightmenu.reload') %></a></li>
+      <% } %>
       <hr>
       <% theme.rightmenu.layout.forEach(function(item){ %>
         <% if (item == 'hr') { %>
@@ -167,7 +173,7 @@
       }
 
       // 有音乐播放器
-      if (<%= theme.plugins.aplayer.enable %> == true) {
+      if (<%= theme.plugins.aplayer.enable %> == true && ('<%- theme.rightmenu.layout %>'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
