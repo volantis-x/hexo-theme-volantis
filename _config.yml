@@ -165,8 +165,14 @@ article:
   # 文章列表页面的文章卡片布局方案
   preview:
     scheme: landscape # landscape
-    auto_excerpt: # false, 200, 500
-    pin_icon: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg # pin icon
+    # pin icon for post
+    pin_icon: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg
+    # auto generate title if not exist
+    auto_title: true # false, true
+    # auto generate excerpt if not exist
+    auto_excerpt: true # false, true
+    # show readmore button
+    readmore: auto # auto, always
   # 文章详情页面的文章卡片本体布局方案
 
 
@@ -429,7 +435,7 @@ footer:
       url: https://music.163.com/#/user/home?id=63035382
   # site source
   source: https://github.com/volantis-x/volantis-docs/
-  # sv
+  # analytics using leancloud
   analytics: >
     <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
     <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
