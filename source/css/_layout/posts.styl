@@ -40,8 +40,14 @@
     z-index: 1
     pointer-events: none
 
-.meta-v3
+.meta-v3[line_style='solid']
   border-top: 1px solid alpha($color-text, 0.1)
+.meta-v3[line_style='dashed']
+  border-top: 2px dashed alpha($color-text, 0.1)
+.meta-v3[line_style='dotted']
+  border-top: 4px dotted alpha($color-text, 0.1)
+
+.meta-v3
   margin-top: $gap
   padding-top: $gap * 0.75
   display: flex

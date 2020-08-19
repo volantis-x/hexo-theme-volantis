@@ -171,9 +171,19 @@ article:
     auto_title: true # false, true
     # auto generate excerpt if not exist
     auto_excerpt: true # false, true
+    # show split line or not
+    line_style: solid # hidden, solid, dashed, dotted
     # show readmore button
     readmore: auto # auto, always
   # 文章详情页面的文章卡片本体布局方案
+  body:
+    # 文章顶部信息
+    top_meta:
+    # 页脚组件
+    footer_widget:
+    # 文章底部信息
+    bottom_meta:
+
 
 
 # 不久后将被其它设置替代
@@ -228,12 +238,10 @@ meta:
   # 文章分类
   category:
     icon: fas fa-folder-open
-  # 文章置顶
-  pin:
-    icon: fas fa-angle-double-up
   # 文章浏览计数
   counter:
     icon: fas fa-eye
+    unit: '次浏览'
   # 文章评论数量：只支持 valine
   valinecount:
     icon: fas fa-comment-dots

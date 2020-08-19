@@ -40,7 +40,7 @@
     <% } %>
   </div>
   <% if (theme.article.preview.readmore == 'always' || theme.article.preview.auto_excerpt || (post.categories && post.categories.length > 0) || (post.readmore != false) && (post.excerpt || post.description || post.link)) { %>
-    <div class='meta-v3'>
+    <div class='meta-v3' line_style='<%- theme.article.preview.line_style %>'>
       <div>
         <time><%= date(post.date, config.date_format) %></time>
         <% if (post.categories && post.categories.length > 0) { %>
