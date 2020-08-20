@@ -1,7 +1,45 @@
 #archive-page
   margin-bottom: $gap * 2
+  padding-top: $gap * 3
+  padding-bottom: $gap * 4
+  .timenode
+    .meta
+      padding: 6px 0
+      line-height: 1.5
+      height: auto
+      max-width: 100%
+      display: flex
+      font-size: $fontsize-body
+      font-weight: 500
+      time
+        color: $color-meta
+        margin-left: $gap * 0.25 + 20px
+        margin-right: $gap * 1
+        flex-shrink: 0
+      a
+        color: $color-list
+        &:hover
+          color: $color-hover
+        i
+          color: $color-hover
+          &.red
+            color: $color-mac-red
+          &.green
+            color: $color-mac-green
+          &.yellow
+            color: $color-mac-yellow
+          &.blue
+            color: $color-mac-cyan
+          &.theme
+            color: $color-theme
+          &.accent
+            color: $color-hover
+          &.orange
+            color: $color-md-deep-orange
+
   .archive
 
+    // 分类页面
     .archive-year
       margin-top: 4em
       margin-bottom: 1em
@@ -26,6 +64,7 @@
         border-radius: $border-line
         vertical-align: middle
         font-size: $fontsize-meta
+        font-weight: 500
         &.child
           padding-left: 2 * $gap
 
