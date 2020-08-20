@@ -499,8 +499,9 @@ plugins:
 
 
   ######## Plugins to improve loading speed:
-  # Preload (The menu's url must end with ‘/’)
-  instant_page: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
+  # Preload (The menu's url must end with ‘/’) 选择一个即可
+  instant_page: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
+  flying_pages: https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
 
   ######## Plugins to optimize the experience:
   # highlight.js
