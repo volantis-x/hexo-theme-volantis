@@ -16,6 +16,18 @@
   <script async src="<%- theme.plugins.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 <% } %>
 
+<% if (theme.plugins.flying_pages) { %>
+<script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="<%- theme.plugins.flying_pages %>"></script>
+<% } %>
+
 <%- partial('../../_third-party/fancybox/script') %>
 <% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
   <%- partial('../../_third-party/clipboard/script') %>
