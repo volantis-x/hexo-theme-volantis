@@ -4,11 +4,13 @@ navbar:
   tag: 标签
 post:
   pin: 置顶
-  read_more: 阅读全文
+  readmore: 阅读全文
   wordcount: '字数：%s字'
   duration: '时长：%s分钟'
   comments: 评论
-  comments_placeholder: 无法加载%s评论系统，请确保您的网络能够正常访问。
+  comments_load: 点击加载 %s 评论
+  comments_check: 正在检查 %s 能否访问...
+  comments_placeholder: 无法加载 %s 评论系统，请确保您的网络能够正常访问。
   copy_button: 复制
   copy_success: 复制成功
   copy_failure: 复制失败
@@ -27,9 +29,20 @@ footer:
   total_views: 总访问量为
   total_visitors: 总访客量
   times: 次
+  site_source: 本站使用 %s 作为主题，您可以在 %s 找到[本站源码](%s)。
+  site_views: 总访问量约为 %s 次，访问人数约为 %s 人。
 symbol:
   comma: "，"
   period: "。"
   colon: "："
   brackets_l: "（"
   brackets_r: "）"
+
+rightmenu:
+  back: "返回"
+  forward: "前进"
+  reload: "刷新"
+  copy_text: "复制文本"
+  copy_image_src: "复制图片地址"
+  copy_link: "复制链接"
+  open_in_new_tab: "在新标签页打开"

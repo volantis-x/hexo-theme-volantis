@@ -37,19 +37,18 @@
 
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
       $.fancybox.close();    // 关闭弹窗
-      $('.nav-main').find('.list-v').not('.menu-phone').css("display","none"); // 移除小尾巴
-      $('.menu-phone.list-v').css("display","none"); // 移除小尾巴
       $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
       $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
       $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
 
-      $('.s-top').unbind('click');   // 解绑
-      $('.menu a').unbind('click');  // 解绑
-      $(window).unbind('resize');    // 解绑
-      $(window).unbind('scroll');    // 解绑
-      $(document).unbind('scroll');  // 解绑
-      $(document).unbind('click');   // 解绑
-      $('body').unbind('click');     // 解绑
+      // 解绑事件 避免重复监听
+      $('.s-top').unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
       window.ShowLoading();
     });
 
@@ -75,7 +74,6 @@
       $('script[data-pjax], .pjax-reload script').each(function () {
         $(this).parent().append($(this).remove());
       });
-
       try{
         pjax_fancybox();
         <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable && theme.plugins.backstretch.images) { %>

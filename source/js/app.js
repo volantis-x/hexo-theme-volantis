@@ -6,7 +6,7 @@ var customSearch;
 
 	// 校正页面定位（被导航栏挡住的区域）
 	var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
-	var $headerAnchor = $('.l_header', '.cover-wrapper');
+	var $headerAnchor = $('.l_header');
 	if ($headerAnchor[0]) {
 		scrollCorrection = $headerAnchor[0].clientHeight + 16;
 	}
@@ -14,7 +14,7 @@ var customSearch;
 	// 尝试： 重设数据值
 	function restData() {
 		scrollCorrection = 80;
-		$headerAnchor = $('.l_header', '.cover-wrapper');
+		$headerAnchor = $('.l_header');
 		if ($headerAnchor[0]) {
 			scrollCorrection = $headerAnchor[0].clientHeight + 16;
 		}
@@ -22,7 +22,7 @@ var customSearch;
 
 	// 校正页面定位（被导航栏挡住的区域）
 	function scrolltoElement(elem, correction = scrollCorrection) {
-		const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
+		const $elem = elem.href ? $(decodeURI(elem.getAttribute('href'))) : $(elem);
 		$('html, body').animate({
 			'scrollTop': $elem.offset().top - correction
 		}, 500);
@@ -33,7 +33,7 @@ var customSearch;
 		const $postsBtn = $('.menu .active');            // 一级导航上的当前激活的按钮
 		const $topBtn = $('.s-top');                     // 向上
 		const $titleBtn = $('h1.title', '#header-meta'); // 文章内标题
-		const $bodyAnchor = $('.l_body');                // 页面主体
+		const $bodyAnchor = $('.safearea');                // 页面主体
 
 		if ($postsBtn.length && $bodyAnchor) {
 			$postsBtn.click(e => {
@@ -71,23 +71,23 @@ var customSearch;
 
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
-			if(enableCover == "true" && $('.cover.half').css('display') !== 'none') // Pjax 处理
-				showHeaderPoint = $coverAnchor[0].clientHeight - 180;
+			if(enableCover == "true" && $('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
+				showHeaderPoint = $coverAnchor[0].clientHeight - 240;
 		}
 
 		var pos = document.body.scrollTop;
-		if(enableCover == "true" && $('.cover.half').css('display') === 'none')
-			pos += 180; // Pjax 处理
+		if(enableCover == "true" && $('.cover-wrapper#half').css('display') === 'none')
+			pos += 240; // Pjax 处理
 
 		$(document, window).scroll(() => {
 			let scrollTop = $(window).scrollTop();  // 滚动条距离顶部的距离
 
-			if(enableCover == "true" && $('.cover.half').css('display') === 'none')
-				scrollTop += 180; // Pjax 处理
+			if(enableCover == "true" && $('.cover-wrapper#half').css('display') === 'none')
+				scrollTop += 240; // Pjax 处理
 
 			const del = scrollTop - pos;
 			pos = scrollTop;
-			if (scrollTop > 180) {
+			if (scrollTop > 240) {
 				$topBtn.addClass('show');
 				if (del > 0) {
 					$topBtn.removeClass('hl');
@@ -97,7 +97,7 @@ var customSearch;
 			} else {
 				$topBtn.removeClass('show').removeClass('hl');
 			}
-			if (scrollTop > showHeaderPoint) {
+			if (scrollTop - showHeaderPoint > -1) {
 				$headerAnchor.addClass('show');
 			} else {
 				$headerAnchor.removeClass('show');
@@ -119,7 +119,7 @@ var customSearch;
 		const $wrapper = $('header .wrapper');        // 整个导航栏
 		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
 		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
-		
+
 		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
 
 		// 决定一二级导航栏的切换
@@ -171,6 +171,7 @@ var customSearch;
 		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
 		$headerMenu.find('li a.active').removeClass('active');
+		$headerMenu.find('div a.active').removeClass('active');
 		// var $underline = $headerMenu.find('.underline');
 		function setUnderline($item) {
 			// if (!transition) $underline.addClass('disable-trans');
@@ -201,6 +202,31 @@ var customSearch;
 		}
 	}
 
+	// 设置全局事件
+	function setGlobalHeaderMenuEvent() {
+		// PC端 hover时展开子菜单，点击时隐藏子菜单
+		$('.m-pc li > a[href]').parent().click(function (e) {
+			e.stopPropagation();
+			$('.m-pc .list-v').hide();
+		});
+		// 手机端 点击展开子菜单
+		$('.m-phone li').click(function (e) {
+			e.stopPropagation();
+			$($(e.currentTarget).children('ul')).show();
+		});
+		setPageHeaderMenuEvent();
+	}
+
+	function setPageHeaderMenuEvent() {
+		// 手机端 点击空白处隐藏子菜单
+		$(document).click(function (e) {
+			$('.m-phone .list-v').hide();
+		});
+		// 手机端 滚动时隐藏子菜单
+		$(window).scroll(() => {
+			$('.m-phone .list-v').hide();
+		});
+	}
 	// 设置导航栏搜索框   fix √
 	function setHeaderSearch() {
 		var $switcher = $('.l_header .switcher .s-search');   // 搜索按钮   移动端
@@ -277,7 +303,7 @@ var customSearch;
 
 		let liElements = Array.from($toc.find('li a'));
 		//function animate above will convert float to int.
-		let getAnchor = () => liElements.map(elem => Math.floor($(elem.getAttribute('href')).offset().top - scrollCorrection));
+		let getAnchor = () => liElements.map(elem => Math.floor($(decodeURI(elem.getAttribute('href'))).offset().top - scrollCorrection));
 
 		let anchor = getAnchor();
 		let domHeigth = $(document).height();
@@ -321,34 +347,35 @@ var customSearch;
 
 	// 设置搜索服务
 	function setSearchService() {
+		var SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/"
 		if (SEARCH_SERVICE === 'google') {
 			customSearch = new GoogleCustomSearch({
 				apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
 				engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
-				imagePath: "/img/"
+				imagePath: SearchServiceimagePath
 			});
 		} else if (SEARCH_SERVICE === 'algolia') {
 			customSearch = new AlgoliaSearch({
 				apiKey: ALGOLIA_API_KEY,
 				appId: ALGOLIA_APP_ID,
 				indexName: ALGOLIA_INDEX_NAME,
-				imagePath: "/img/"
+				imagePath: SearchServiceimagePath
 			});
 		} else if (SEARCH_SERVICE === 'hexo') {
 			customSearch = new HexoSearch({
-				imagePath: "/img/"
+				imagePath: SearchServiceimagePath
 			});
 		} else if (SEARCH_SERVICE === 'azure') {
 			customSearch = new AzureSearch({
 				serviceName: AZURE_SERVICE_NAME,
 				indexName: AZURE_INDEX_NAME,
 				queryKey: AZURE_QUERY_KEY,
-				imagePath: "/img/"
+				imagePath: SearchServiceimagePath
 			});
 		} else if (SEARCH_SERVICE === 'baidu') {
 			customSearch = new BaiduSearch({
 				apiId: BAIDU_API_ID,
-				imagePath: "/img/"
+				imagePath: SearchServiceimagePath
 			});
 		}
 	}
@@ -378,6 +405,7 @@ var customSearch;
 	$(function () {
 		setHeader();
 		setHeaderMenuSelection();
+		setGlobalHeaderMenuEvent();
 		setHeaderSearch();
 		setTocToggle();
 		setScrollAnchor();
@@ -386,7 +414,7 @@ var customSearch;
 
 		// 全屏封面底部箭头
 		$('.scroll-down').on('click', function () {
-			scrolltoElement('.l_body');
+			scrolltoElement('.safearea');
 		});
 
 
@@ -397,6 +425,7 @@ var customSearch;
 					restData();
 					setHeader();
 					setHeaderMenuSelection();
+					setPageHeaderMenuEvent();
 					setTocToggle();
 					setScrollAnchor();
 					setTabs();

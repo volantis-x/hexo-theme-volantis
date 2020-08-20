@@ -1,0 +1,15 @@
+@import 'mathjax'
+if hexo-config('plugins.aplayer.enable')
+    @import 'aplayer'
+if hexo-config('plugins.clipboard')
+    @import 'clipboard'
+if hexo-config('plugins.darkmodejs.enable')
+    @import 'darkmode'
+if hexo-config('plugins.fancybox')
+    @import 'fancybox'
+if hexo-config('plugins.pjax.enable')
+    @import 'pjaxanimate'
+if hexo-config('comments.service')=='valine'
+    @import 'valine'
+if hexo-config('comments.service')=='gitalk'
+    @import 'gitalk'

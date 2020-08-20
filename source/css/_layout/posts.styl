@@ -1,0 +1,69 @@
+.article-title
+  font-weight: 500
+  margin-bottom: $gap * 0.75
+  line-height: 1.4
+  a
+    color: inherit
+    &:hover
+      color: $color-hover
+  &[pin]
+    margin-right: 36px
+.post-v3
+  overflow: hidden
+  text-align: justify
+  .md
+    color: mix($color-p, $color-card, 85)
+  .headimg-div
+    overflow: hidden
+    margin-left: 0 - 1.5 * $gap
+    margin-top: 0 - 1.5 * $gap
+    margin-bottom: 1.25 * $gap
+    width: "calc(100% + 3 * %s)" % $gap
+  .headimg
+    background-position: center
+    background-size: cover
+    height: 280px
+    @media screen and (max-width: $device-tablet)
+      height: 250px
+    @media screen and (max-width: $device-mobile)
+      height: 220px
+    @media screen and (max-width: $device-mobile-l)
+      height: 190px
+    transition: transform 1s ease-out
+    &:hover
+      transform: scale(1.02)
+  .pin
+    position: absolute
+    width: 20px
+    height: 20px
+    border-radius: 20px
+    right: $gap * 1.5
+    top: $gap * 1.5
+    z-index: 1
+    pointer-events: none
+
+.meta-v3[line_style='solid']
+  border-top: 1px solid alpha($color-text, 0.1)
+.meta-v3[line_style='dashed']
+  border-top: 2px dashed alpha($color-text, 0.1)
+.meta-v3[line_style='dotted']
+  border-top: 4px dotted alpha($color-text, 0.1)
+
+.meta-v3
+  margin-top: $gap
+  padding-top: $gap * 0.75
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  color: $color-meta
+  time
+    font-size: $fontsize-meta
+  .category-link
+    font-size: $fontsize-meta
+    color: $color-meta
+    -webkit-font-smoothing: auto
+    -moz-osx-font-smoothing: auto
+    &:hover
+      color: $color-hover
+  .readmore
+    font-weight: bold

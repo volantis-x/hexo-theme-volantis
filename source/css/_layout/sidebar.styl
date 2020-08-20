@@ -26,7 +26,7 @@
 .widget
   z-index: 0
   background: $color-card
-  margin-top: $gap
+  margin-bottom: $gap
   border-radius: $border-card
   width: 100%
   display: none
@@ -41,7 +41,7 @@
     &.mobile
       display: block !important
 
-  @media screen and (max-width: $device-mobile-l)
+  @media screen and (max-width: $device-mobile-m)
     width: "calc(100% - 2 * %s)" % $gap
     margin: $gap $gap 0 $gap
     display: none !important
@@ -54,9 +54,10 @@
     border-top-right-radius: $border-card
     padding: "calc(%s - 2px)" % $gap
     font-weight: bold
+    font-size: $fontsize-meta
     padding-bottom: 0
     &,a
-      color: $color-theme
+      color: $color-meta
     >a:hover
       color: $color-hover
 

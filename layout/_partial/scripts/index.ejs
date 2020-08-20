@@ -1,0 +1,91 @@
+<!-- required -->
+<%- js(theme.plugins.jquery) %>
+
+
+<!-- optional -->
+<%- partial('cover') %>
+<% if (theme.search && theme.search.enable) { %>
+  <%- partial('search') %>
+<% } %>
+
+<% if (config.lazyload && config.lazyload.enable) { %>
+  <%- partial('../../_third-party/lazyload/script') %>
+<% } %>
+
+<% if (theme.plugins.instant_page) { %>
+  <script async src="<%- theme.plugins.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<% } %>
+
+<%- partial('../../_third-party/fancybox/script') %>
+<% if (theme.plugins.clipboard && (theme.style.body.highlight.copy_btn == true)) { %>
+  <%- partial('../../_third-party/clipboard/script') %>
+<% } %>
+
+<% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
+   <%- partial('../../_third-party/scrollreveal/script') %>
+<% } %>
+
+<% if (theme.plugins.aplayer && theme.plugins.aplayer.enable && theme.plugins.aplayer.js) { %>
+  <%- partial('../../_third-party/aplayer/script') %>
+<% } %>
+
+<% if (theme.comments.service && theme.comments.service.length > 0) { %>
+  <%- partial('../../_third-party/comments/' + theme.comments.service + '/script') %>
+<% } %>
+
+<% if (theme.plugins.darkmodejs.enable) { %>
+  <%- partial('darkmode') %>
+<% } %>
+
+<% if (theme.analytics.busuanzi) { %>
+  <script defer src="<%- theme.analytics.busuanzi %>" data-pjax></script>
+<% } %>
+<% if (config.use_cdn && theme.info.cdn && theme.info.cdn.js) { %>
+  <%- js(theme.info.cdn.js) %>
+<% } else { %>
+  <%- js(['js/app.js']) %>
+<% } %>
+
+<% if (theme.search && theme.search.enable) { %>
+  <% if (theme.search.js) { %>
+    <%- js(theme.search.js) %>
+  <% } else { %>
+    <%- js(['js/search.js']) %>
+  <% } %>
+<% } %>
+
+
+<% if (theme.plugins.nodewaves && theme.plugins.nodewaves.js) { %>
+  <%- js({src: theme.plugins.nodewaves.js}) %>
+  <script type="text/javascript">
+    $(function () {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+<% } %>
+
+<% if (theme.plugins.comment_typing) { %>
+  <%- js(theme.plugins.comment_typing) %>
+<% } %>
+
+<% if (config.highlight.enable != true) { %>
+  <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.js) { %>
+    <%- js(theme.plugins.highlightjs.js) %>
+    <script>hljs.initHighlightingOnLoad();</script>
+  <% } %>
+<% } %>
+
+<% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>
+  <%- partial('counter') %>
+<% } %>
+
+<!-- more -->
+<% if (config.import && config.import.script) { %>
+  <%- partial('import') %>
+<% } %>

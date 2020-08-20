@@ -1,0 +1,44 @@
+<% if (theme.plugins.backstretch && theme.plugins.backstretch.enable && (theme.plugins.backstretch.images || page.images)) { %>
+  <% var imgs = theme.plugins.backstretch.images || page.images; %>
+  <% var posi = null;
+  if (theme.plugins.backstretch.position == 'cover') {
+    posi = '.cover-backstretch';
+  }
+   %>
+  <% if (imgs != undefined && theme.plugins.backstretch.position != undefined){ %>
+    <%- js(theme.plugins.backstretch.js) %>
+    <script type="text/javascript">
+      $(function(){
+        var imgs=<%- '["' + imgs.join('", "') + '"]' %>;
+        if ('<%- theme.plugins.backstretch.shuffle %>' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('<%- posi %>') {
+          $('<%- posi %>').backstretch(
+            imgs,
+          {
+            duration: "<%- theme.plugins.backstretch.duration %>",
+            fade: "<%- theme.plugins.backstretch.fade %>"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "<%- theme.plugins.backstretch.duration %>",
+            fade: "<%- theme.plugins.backstretch.fade %>"
+          });
+        }
+      });
+    </script>
+  <% } %>
+<% } %>

@@ -1,0 +1,12 @@
+<script>
+  let APlayerController = new Object();
+  APlayerController.id = '<%= theme.plugins.aplayer.id %>';  // 设定全局音乐播放ID
+  APlayerController.volume = '<%= theme.plugins.aplayer.volume %>';
+</script>
+<% (theme.plugins.aplayer.js||[]).forEach(function(item){ %>
+  <%- js({src:item}) %>
+<% }) %>
+
+<% if (theme.rightmenu && theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
+  <%- js('js/aplayer.js') %>
+<% } %>

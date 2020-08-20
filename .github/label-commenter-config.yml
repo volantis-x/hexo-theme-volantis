@@ -1,0 +1,130 @@
+# .github/label-commenter-config.yml
+
+labels:
+
+  # 等待完成自检
+  - name: waiting checklist
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          Please follow the steps in the issue template for self-check, and then tell us the result of your operation, which will help us to help you solve the problem.
+
+          :wave: 您好，
+          请按照模板中的操作步骤进行自检，然后告诉我们您的操作结果，这将有助于我们协助您解决问题。
+
+  # 需要更多信息
+  - name: need more info
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          We need more information to make suggestions. Please edit your issue again, complete the information requested in the template, and describe your issue in as much detail as possible.
+
+          :wave: 您好，
+          我们需要更多信息才能给出建议，请重新编辑您的 issue ，完善模板中要求提供的信息，并尽可能详细地描述您的问题。
+
+  # 请描述详细一点
+  - name: describe in detail
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          Please describe your problem in as much detail as possible. If you don’t know how to describe the problem in detail, this article can help you: [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html).
+
+          :wave: 您好，
+          请尽可能详细地描述您的问题。如果不知道如何详细地描述问题，这份教程可以帮助到您：[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md) 。
+
+  # 文档中有答案
+  - name: read docs
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          Your question is answered in the official documents of [Volantis](https://volantis.js.org) and [Hexo](https://hexo.io), if you can’t find it, you can try to search.
+
+          :wave: 您好，
+          您的疑问在 [Volantis](https://volantis.js.org) 和 [Hexo](https://hexo.io) 的官方文档有答案，如果找不到可以尝试进行搜索。
+
+  # 采纳的建议
+  - name: adopted suggestion
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          Your suggestion is great, we will add this feature in subsequent versions, thank you very much!
+
+          :wave: 您好，
+          您的建议很棒，我们将会在后续版本中加入这个功能，非常感谢！
+
+  # 迟迟没有回复
+  - name: waiting response
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          Are you still there? We are waiting for your response. If you do not reply, we will close this issue.
+
+          :wave: 您好，
+          还在吗？我们正等待您的回应，如果您迟迟没有回复，我们将会关闭这个 issue 。
+
+  ################ 关闭 ################
+  # 重复的问题
+  - name: duplicate
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          This is a duplicate issue, but we still appreciate your feedback.
+
+          :wave: 您好，
+          这是一个重复的问题，但我们仍然感谢您的反馈。
+        action: close
+
+  # 不予修复
+  - name: wontfix
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          Due to the design or external issues, we will not deal with this, but we still appreciate your feedback.
+
+          :wave: 您好，
+          由于设计如此，或者是外界问题导致，我们不会对此进行处理，但仍然感谢您的反馈！
+        action: close
+
+  # 由于没有回复而被关闭
+  - name: losing contact
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          Due to your delay in replying, we closed this issue.
+
+          :wave: 您好，
+          由于您迟迟没有回复，我们关闭了这个 issue 。
+        action: close
+
+  # 问题得以解决
+  - name: resolved
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          This issue has been marked as resolved. If there are other issues, please contact us with a new issue.
+
+          :wave: 您好，
+          此 issue 已经被标记为已解决，如果还有其它问题，请提出新的 issue 联系我们。
+        action: close
+
+  # BUG得以修复
+  - name: fixed
+    labeled:
+      issue:
+        body: |
+          :wave: Hello,
+          This bug has been fixed, please update your volantis.
+
+          :wave: 您好，
+          此 BUG 已经被修复，请更新您的 Volantis 版本。
+        action: close

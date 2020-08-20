@@ -5,25 +5,39 @@ div#rightmenu-wrapper
   disable-user-select()
 ul.list-v.rightmenu
   display: block
-  $cellH = 36px
+  max-width: 240px
+  overflow: hidden
+  &.left
+    right: 0
+  &.top
+    bottom: 0
+  $cellH = 32px
+  a
+    cursor: default
+  a.vlts-menu
+    text-overflow: ellipsis
+    overflow: hidden
+    line-height: $cellH
   li.navigation, li.music
     display: flex
     justify-content: space-between
-    a.vlts-menu
-      padding: 0 $gap * 1 0 $gap * 0.5
-    a.nav
+    a.icon-only
+      line-height: 0
       margin: 0
       padding: 0
       border-radius: $cellH
       overflow: hidden
+      width: $cellH
+      height: $cellH
+    a.nav
       i
         margin: 0
         width: $cellH
         line-height: $cellH
       &:first-child
-        margin-left: 4px + $gap * 0.5
+        margin-left: 2px + $gap * 0.5
       &:last-child
-        margin-right: 4px + $gap * 0.5
+        margin-right: 2px + $gap * 0.5
   li.music
     &.name
       display: flex
@@ -50,21 +64,23 @@ ul.list-v.rightmenu
         background: mix($color-block, $color-text, 95)
         border-radius: $cellH
         overflow: hidden
+        cursor: pointer
         i.left, i.right
           color: mix($color-text, $color-card, 80)
           position: absolute
           top: 0
-          width: $cellH
+          width: $cellH - 4px
+          line-height: $cellH - 4px
           trans()
           opacity: 0
-          transform: scale(0.5) translateY(-0.5 * $cellH - 8px)
+          transform: scale(0.5) translateY(-0.5 * $cellH - 2px)
         i.left
           left: 0
         i.right
           right: 0
         trans()
         &:hover
-          height: $cellH - 2px
+          height: $cellH - 4px
           i
             opacity: 1
             transform: scale(1) translateY(0)

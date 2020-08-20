@@ -4,10 +4,12 @@ navbar:
   tag: Tag
 post:
   pin: Top
-  read_more: Read More
+  readmore: Read More
   wordcount: '%s words'
   duration: '%s min'
   comments: Comments
+  comments_load: Load %s
+  comments_check: Checking if %s is accessible...
   comments_placeholder: Unable to load %s, please make sure your network can access.
   copy_button: Copy
   copy_success: Copied
@@ -27,9 +29,20 @@ footer:
   total_views: total visits
   total_visitors: total visitors
   times: times
+  site_source: Uses %s as theme. You can find [source](%s) in %s.
+  site_views: The visits is about %s, and the visitors is about %s.
 symbol:
   comma: ", "
   period: ". "
   colon: ": "
   brackets_l: "("
   brackets_r: ")"
+
+rightmenu:
+  back: "Back"
+  forward: "Forward"
+  reload: "Reload"
+  copy_text: "Copy Text"
+  copy_image_src: "Copy Image Link"
+  copy_link: "Copy Link"
+  open_in_new_tab: "Open Link in New Tab"

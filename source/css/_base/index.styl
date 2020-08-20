@@ -12,13 +12,7 @@ html
   font-size: $fontsize-body
   >
     if hexo-config('style.scrollbar.size')
-      if hexo-config('style.scrollbar.color')
-        if hexo-config('style.scrollbar.hover')
-          scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px, convert(hexo-config('style.scrollbar.color')), convert(hexo-config('style.scrollbar.hover')))
-        else
-          scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px, convert(hexo-config('style.scrollbar.color')))
-      else
-        scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px)
+      scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px)
 
 body
   background-color: $color-site
@@ -117,6 +111,8 @@ ul,ol
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary
   display: block
 
+article
+  overflow: hidden
 
 abbr[title]
   border-bottom: 1px dotted
@@ -162,6 +158,13 @@ hr
 pre
   overflow: auto
 
+span.dot,span.sep
+  font-size: 0.9em
+  margin: 0 .2rem
+span.dot:before
+  content: '·'
+span.sep:before
+  content: '/'
 
 code,kbd,pre,samp
   font-family: monospace, monospace
