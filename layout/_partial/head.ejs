@@ -126,22 +126,6 @@
   <% } else { %>
     <%- css('css/style.css') %>
   <% } %>
-<!--
-  <% if (config.google_analytics_key) { %>
-    <script>
-	setTimeout(function() {
-	  let script = document.createElement('script');
-	  script.src = "https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>";
-	  script.defer=true;
-	  document.body.appendChild(script);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '<%- config.google_analytics_key %>');
-	}, 5000);
-    </script>
-  <% } %>
--->
   <% if (config.google_analytics_key) { %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script>
@@ -153,14 +137,6 @@
 	      var s = document.getElementsByTagName("script")[0];
 	      s.parentNode.insertBefore(dga, s);
 	  })();
-	  /*var script = document.createElement('script');
-	  script.src = "https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>";
-	  script.defer=true;
-	  document.body.appendChild(script);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '<%- config.google_analytics_key %>');*/
 	}, 5000);
     </script>
   <% } %>
