@@ -1,6 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script type="text/javascript">
   function pjax_gitalk() {
+    if(!document.querySelectorAll("#gitalk-container")[0])return;
     let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
     

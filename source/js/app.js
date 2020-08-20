@@ -416,11 +416,63 @@ var customSearch;
 		$('.scroll-down').on('click', function () {
 			scrolltoElement('.safearea');
 		});
-
-
+		//////////////////////////////////////////////////////////////////////
+	   var scrollFunc = function (e) {
+			var direct = 0;
+			e = e || window.event;
+			if(document.location.pathname!="/") return;
+			if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件             
+				if (e.wheelDelta > 0) { //当滑轮向上滚动时
+					//console.log("滑轮向上滚动");
+					if($(document).scrollTop()<$('.cover-wrapper').height()-280){
+						scrolltoElement('.l_body');
+					}
+				}
+				if (e.wheelDelta < 0) { //当滑轮向下滚动时
+					//console.log("滑轮向下滚动");
+					if($(document).scrollTop()<$('.cover-wrapper').height()-280){
+						scrolltoElement('.safearea');
+					}
+				}
+			} else if (e.detail) {  //Firefox滑轮事件
+				if (e.detail> 0) { //当滑轮向上滚动时
+					//console.log("滑轮向上滚动");
+					if($(document).scrollTop()<$('.cover-wrapper').height()-280){
+						scrolltoElement('.l_body');
+					}
+				}
+				if (e.detail< 0) { //当滑轮向下滚动时
+					//console.log("滑轮向下滚动");
+					if($(document).scrollTop()<$('.cover-wrapper').height()-280){
+						scrolltoElement('.safearea');
+					}
+				}
+			}
+		}
+		//给页面绑定滑轮滚动事件
+		if (document.addEventListener) {
+			document.addEventListener('DOMMouseScroll', scrollFunc, {passive: true});
+		}
+		//滚动滑轮触发scrollFunc方法
+		window.onmousewheel = document.onmousewheel = scrollFunc;  
+		//////////////////////////////////////////////////////////////////////
 		try {
 			// addEventListener是先绑定先执行，此处的绑定后执行
 			document.addEventListener('pjax:complete', function () {
+				if(window.location.hash){
+						var checkExist = setInterval(function() {
+						if (typeof jQuery == 'undefined'){return;}
+						if ($("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")).length) {
+							scrolltoElement( $("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")));
+							clearInterval(checkExist);
+						}
+					}, 100);
+				} else {
+					let $bodyAnchor = $('.l_body');
+					if ($bodyAnchor) {
+						scrolltoElement($bodyAnchor);
+					}
+				}
 				$(function () {
 					restData();
 					setHeader();

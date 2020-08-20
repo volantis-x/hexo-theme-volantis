@@ -35,6 +35,7 @@
   }
 
   function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
     let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
     let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?

@@ -1,14 +1,27 @@
-<% if (theme.comments.minivaline.js) { %>
-  <%- js(theme.comments.minivaline.js) %>
-<% } else { %>
-  <script src="https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js"></script>
-<% } %>
 <% var emoticonUrl = theme.comments.minivaline.emoticonUrl || [] %>
 <% var tagMeta = theme.comments.minivaline.tagMeta || [] %>
 <% var master = theme.comments.minivaline.master || [] %>
 <% var friends = theme.comments.minivaline.friends  || []  %>
 <script>
-function pjax_minivaline() {
+  function load_minivaline() {
+	window.onload = function () {
+    var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+	<% if (theme.comments.minivaline.js) { %>
+	  var src = '<%- theme.comments.minivaline.js %>'
+	<% } else { %>
+	  var src = 'https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js'
+	<% } %>
+    var script = document.createElement('script')
+    script.setAttribute('type','text/javascript')
+    script.onload = function() {
+       pjax_minivaline()
+    }
+    script.setAttribute('src', src)
+    HEAD.appendChild(script)
+	}
+  };
+  function pjax_minivaline() {
+  if(!document.querySelectorAll("#minivaline_container")[0])return;
   let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
       decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
   let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
@@ -43,10 +56,12 @@ function pjax_minivaline() {
     region: <%= theme.comments.minivaline.region %>,
     closeUA: <%= theme.comments.minivaline.closeUA %>,
     emoticonUrl: <%- '["' + emoticonUrl.join('", "') + '"]' %>,
-    serverURLs: '<%= theme.comments.minivaline.serverURLs %>'
+    serverURLs: '<%= theme.comments.minivaline.serverURLs %>',
+    vc: '<%= theme.comments.minivaline.vc %>',
+    region: '<%= theme.comments.minivaline.region %>',
     });
   }
   $(function () {
-    pjax_minivaline();
+    load_minivaline();
   });
 </script>
