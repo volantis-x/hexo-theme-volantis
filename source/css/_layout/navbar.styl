@@ -260,21 +260,18 @@ ul.list-v
     text-overflow: ellipsis
     margin: 0 4px
     border-radius: 4px
-    &:hover,&.active,&:active
-      color: $color-theme
     >i
       margin-right: 8px
     &.current
       border-left-color: alpha($color-theme, 80%)
       border-bottom-color: alpha($color-theme, 80%)
-    &:hover
-      color: mix($color-theme, $color-text, 70)
-      background: bgcolor($color-theme)
-
     &:active,&.active
       color: $color-theme
       border-left-color: $color-theme
       border-bottom-color: $color-theme
+    &:hover
+      color: mix($color-theme, $color-text, 50)
+      background: bgcolor($color-theme, 15)
 
 .l_header
   .menu
