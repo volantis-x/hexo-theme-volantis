@@ -276,7 +276,7 @@
       padding: 0 .6em
       margin: 0
       ul
-        padding-left: 8px
+        padding-left: 4px
         margin-left: $gap
         a
           trans(0.1s)
@@ -293,6 +293,14 @@
           &:hover
             color: $color-hover
 
+      .list
+        a
+          .name
+            display: inline
+            color: $color-link
+          &:hover
+            .name
+              color: $color-hover
 
 
     &.qrcode > .content

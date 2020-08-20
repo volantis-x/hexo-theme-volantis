@@ -1,5 +1,5 @@
 <%
-if (item.rows == undefined) {
+if (item.rows == undefined || item.rows.length == 0) {
   item.rows = new Array();
   var itms = new Array();
   let id = item.id || 'references';
@@ -10,7 +10,6 @@ if (item.rows == undefined) {
       }
     })
   }
-
 }
 %>
 
