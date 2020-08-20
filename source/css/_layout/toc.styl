@@ -15,13 +15,11 @@
     max-height: "calc(100vh - %s)" % ($gap * 5 + $navbar-height)
     a
       border-left: $border-line solid transparent
-      &:hover
-        background: bgcolor($color-theme)
-        border-left: $border-line solid $color-theme
-      &:active
-        border-left: 2 * $border-line solid $color-theme
       &.active
-        color: $color-theme
+        list_active()
+        border-left: $border-line solid $color-theme
+      &:hover
+        list_hover()
         border-left: $border-line solid $color-theme
 
 

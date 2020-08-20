@@ -38,7 +38,7 @@ $color-card = convert(hexo-config('style.color.card')) || white
 $color-text = convert(hexo-config('style.color.text')) || #444
 $color-theme = convert(hexo-config('style.color.theme')) || #44D7B6
 $color-link = convert(hexo-config('style.color.link')) || #4688F1
-$color-button = convert(hexo-config('style.color.link')) || #32C5FF
+$color-button = convert(hexo-config('style.color.link')) || $color-theme
 $color-hover = convert(hexo-config('style.color.hover')) || #ff5722
 $color-inner = convert(hexo-config('style.color.inner')) || white
 $color-block = convert(hexo-config('style.color.block')) || #f6f6f6
@@ -64,3 +64,9 @@ $color-meta = alpha($color-text, .65)
 
 bgcolor($c, $mix = 10)
   return mix($c, $color-card, $mix)
+
+list_active()
+  color mix($color-theme, $color-text, 75)
+list_hover()
+  color: mix($color-theme, $color-text, 50)
+  background: bgcolor($color-theme, 15)

@@ -266,12 +266,11 @@ ul.list-v
       border-left-color: alpha($color-theme, 80%)
       border-bottom-color: alpha($color-theme, 80%)
     &:active,&.active
-      color: $color-theme
       border-left-color: $color-theme
       border-bottom-color: $color-theme
+      list_active()
     &:hover
-      color: mix($color-theme, $color-text, 50)
-      background: bgcolor($color-theme, 15)
+      list_hover()
 
 .l_header
   .menu
