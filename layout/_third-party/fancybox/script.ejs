@@ -22,6 +22,13 @@
       $(span).addClass("image-caption");
       $(span).text(caption); // 加描述
       $(this).after(span);  // 再套一层描述
+      // 背景层
+      var bgDiv = document.createElement("div");
+      $(bgDiv).addClass("bg");
+      if ($(this).attr('bg')) {
+        $(bgDiv).css('background', $(this).attr('bg'));
+      }
+      $(this).wrap(bgDiv); // 背景层
       $(this).wrap(element);  // 最后套 a 标签
     })
     $(".article-entry").find("img").fancybox({
