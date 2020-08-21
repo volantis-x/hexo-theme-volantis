@@ -1,0 +1,60 @@
+.site-card-group
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  margin: 0 -0.5 * $gap
+.site-card
+  margin: $gap * 0.5
+  width: "calc(100% / 4 - %s)" % $gap
+  @media screen and (min-width: $device-2k)
+      width: "calc(100% / 5 - %s)" % $gap
+  @media screen and (max-width: $device-tablet)
+      width: "calc(100% / 3 - %s)" % $gap
+  @media screen and (max-width: $device-mobile)
+      width: "calc(100% / 2 - %s)" % $gap
+  a 
+    width: 100%
+    height 100%
+    display: block
+    overflow: hidden
+    background: $color-block
+    border-radius: $border-card * 0.5
+    box-shadow: $boxshadow-card
+    line-height: 1.4
+    .img 
+      width: 100%
+      height 120px
+      @media screen and (max-width: $device-mobile)
+        height 80px
+      overflow: hidden
+      border-radius: $border-card * 0.5
+      img 
+        width: 100%
+        height 100%
+        trans(.75s)
+        object-fit: cover
+    .info
+      margin: $gap $gap * 0.5
+    span 
+      display: block
+      margin: $gap * 0.5 0
+    .title
+      font-size: $fontsize-body * 1.2
+      font-weight: 500
+      color: $color-p
+      display: -webkit-box
+      -webkit-box-orient: vertical
+      overflow: hidden
+      -webkit-line-clamp: 1
+      trans()
+    .desc
+      font-size: $fontsize-list
+      color: $color-meta
+      display: -webkit-box
+      -webkit-box-orient: vertical
+      overflow: hidden
+      -webkit-line-clamp: 3
+    &:hover 
+      box-shadow: $boxshadow-card-float
+      img 
+        transform: scale(1.1)

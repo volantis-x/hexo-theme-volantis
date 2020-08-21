@@ -1,8 +1,3 @@
-/**
- * note.js
- * transplant from hexo-theme-next
- */
-
 'use strict';
 
 function postNote(args) {
