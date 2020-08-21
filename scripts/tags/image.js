@@ -5,15 +5,24 @@ function postImage(args) {
   let url = (args[0]||'').trim()
   let title = ''
   let width = ''
+  let bg = 'fff0'
   function getP2(p2) {
     let px = p2.match(/^[0-9]*px$/g)
+    let color = p2.match(/color=[\S]*/g)
     if (px) {
       width = px[0]
+    } else if (color) {
+      bg = '#' + color[0].replace(/color=[#]?/g, '')
+      console.log(bg);
     } else {
       title = p2
     }
   }
-  if (args.length > 2) {
+  if (args.length > 3) {
+    getP2(args[1].trim())
+    getP2(args[2].trim())
+    getP2(args[3].trim())
+  } else if (args.length > 2) {
     getP2(args[1].trim())
     getP2(args[2].trim())
   } else if (args.length > 1) {
@@ -21,15 +30,15 @@ function postImage(args) {
   }
   if (width.length > 0) {
     if (title.length > 0) {
-      return `<img src='${url}' alt='${title}' style='width:${width}'>`;
+      return `<img bg='${bg}' src='${url}' alt='${title}' style='width:${width}'>`;
     } else {
-      return `<img src='${url}' style='width:${width}'>`;
+      return `<img bg='${bg}' src='${url}' style='width:${width}'>`;
     }
   } else {
     if (title.length > 0) {
-      return `<img src='${url}' alt='${title}'>`;
+      return `<img bg='${bg}' src='${url}' alt='${title}'>`;
     } else {
-      return `<img src='${url}'>`;
+      return `<img bg='${bg}' src='${url}'>`;
     }
   }
 }

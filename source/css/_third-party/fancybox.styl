@@ -77,9 +77,12 @@ div.gallery
     border-radius: 1px
   a
     line-height: 0
-    margin: 0
+    margin: 0 auto
     align-items: stretch
     cursor: zoom-in
+  .bg 
+    display: flex
+    width: 100%
   .gallery
     overflow: hidden
   .image-caption
@@ -87,3 +90,5 @@ div.gallery
     padding-top: $gap-row
     padding-bottom: $gap-row
     color: $color-meta
+    &:empty
+      display: none
