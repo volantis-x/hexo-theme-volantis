@@ -15,24 +15,28 @@ function postSiteCard(args) {
   
   if (args.length > 3) {
     let desc = args[3].trim()
-    return `<div class='site-card'><a href='${link}'>
-    <div class='img'>
-      <img src='${img}'/>
-    </div>
-    <div class='info'>
-      <span class='title'>${title}</span>
-      <span class='desc'>${desc}</span>
-    </div>
-    </a></div>`;
+    return `<div class='site-card'>
+      <a href='${link}'>
+        <div class='img'>
+          <img src='${img}'/>
+        </div>
+        <div class='info'>
+          <span class='title'>${title}</span>
+          <span class='desc'>${desc}</span>
+        </div>
+      </a>
+    </div>`;
   } else if (args.length == 3) {
-    return `<div class='site-card'><a href='${link}'>
-    <div class='img'>
-      <img src='${img}'/>
-    </div>
-    <div class='info'>
-      <span class='title'>${title}</span>
-    </div>
-    </a></div>`;
+    return `<div class='site-card'>
+      <a href='${link}'>
+        <div class='img'>
+          <img src='${img}'/>
+        </div>
+        <div class='info'>
+          <span class='title'>${title}</span>
+        </div>
+      </a>
+    </div>`;
   }
 }
 
