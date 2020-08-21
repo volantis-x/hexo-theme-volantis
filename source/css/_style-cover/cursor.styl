@@ -15,6 +15,10 @@ textarea,
 pre > span
   cursor $text,text
 
+/////////////////
+// 样式覆盖区域 //
+/////////////////
+
 //index.styl
 a
   cursor $pointer,pointer
@@ -142,12 +146,17 @@ if hexo-config('style.body.highlight.copy_btn') == true
 a.result.search-result-fix
   cursor $pointer,pointer
 
+/////////////////
+// 强制覆盖区域 //
+/////////////////
+
 kbd,
 .a > p,
 .not-select,
 .not-select p,
 .MiniValine *,
-.aplayer .aplayer-info .aplayer-music
+.aplayer .aplayer-info .aplayer-music,
+.gt-container a.is--active
   cursor: $default,default !important
 
 .tag > p,
@@ -156,6 +165,7 @@ kbd,
 .author > p,
 .list-h > a > p,
 .category > a > p,
+.friend-right p,
 .v[data-class=v] a,
 .v[data-class=v] .vbtn,
 .v[data-class=v] .vicon,
@@ -178,10 +188,18 @@ kbd,
 .MiniValine .vlist .vcard .vcomment-body .vhead .vname,
 .MiniValine .vinputs-area .btn-wrap .vfunction-btn svg,
 .MiniValine .vinputs-area .vextra-area .vsmile-icons img,
-.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment a
+.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment a,
+.gt-container .gt-btn,
+.gt-container .gt-user-inner,
+.gt-container .gt-avatar-github,
+.gt-container .gt-popup .gt-action,
+.gt-container .gt-comment-like:hover,
+.gt-container .gt-comment-edit:hover,
+.gt-container .gt-comment-reply:hover
   cursor: $pointer,pointer !important
 
-.fancybox-button[disabled], .fancybox-button[disabled]:hover
+.fancybox-button[disabled], .fancybox-button[disabled]:hover,
+.gt-container .gt-btn.is--disable
   cursor: $not-allowed,not-allowed !important
 
 .fix-cursor-pointer
@@ -189,31 +207,3 @@ kbd,
 
 .fix-cursor-default
   cursor $default,default !important
-
-//gitalk
-.gt-container
-  // common
-  a
-    &.is--active
-      cursor: $default,default !important
-  // avatar
-  .gt-avatar
-    &-github
-      cursor: $pointer,pointer !important
-  // button
-  .gt-btn
-    cursor: $pointer,pointer !important
-    &.is--disable
-      cursor: $not-allowed,not-allowed !important
-  .gt-user
-    &-inner
-      cursor: $pointer,pointer !important
-  /* popup */
-  .gt-popup
-    .gt-action
-      cursor: $pointer,pointer !important
-  /* comment */
-  .gt-comment
-    &-like, &-edit, &-reply
-      &:hover
-        cursor: $pointer,pointer !important
