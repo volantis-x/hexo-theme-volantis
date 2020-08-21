@@ -10,6 +10,7 @@
         timelag = window.setTimeout(callback, seconds)
     }
     function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
         var copyHtml = '';
         copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
         copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
