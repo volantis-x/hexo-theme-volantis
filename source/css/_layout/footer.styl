@@ -8,8 +8,6 @@ footer
     font-size: $fontsize-code
   overflow: hidden
   text-align: center
-  a:hover
-    text-decoration: underline
   .licenses
     color: fade(@color_text_main, 50%)
 
@@ -26,6 +24,8 @@ footer
     trans()
     &:hover
       color: var(--color-site-footer)
+    &:not(.social):hover
+      text-decoration: underline
     &.social
       position: relative
       display: inline-block
