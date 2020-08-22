@@ -11,7 +11,7 @@ pre
       position: absolute
       top: 0
       right: 0
-      color: $color-meta
+      color: var(--color-meta)
       font-size: 12px
       padding: 4px 8px
     &.md:before,&.markdown:before
@@ -74,7 +74,7 @@ pre
   width: 100%
   margin: $gap-row 0
   display: block
-  background: $color-block
+  background: var(--color-block)
   font-size: $fontsize-code
   font-family: $fontfamily-code
   border-radius: $border-codeblock
@@ -87,7 +87,7 @@ pre
   if hexo-config('style.body.highlight.grayscale') == true
     filter: grayscale(100%)
   &:hover
-    background: $color-codeblock
+    background: var(--color-codeblock)
     if hexo-config('style.body.highlight.grayscale') == true
       filter: grayscale(0%)
     figcaption
@@ -131,7 +131,7 @@ pre
       z-index: 1
       background: darken($color-block, 5)
       pre
-        color: $color-meta
+        color: var(--color-meta)
 
 
     pre
@@ -149,7 +149,7 @@ pre
         position: absolute
         top: 0
         right: 0
-        color: $color-meta
+        color: var(--color-meta)
         font-size: 12px
         padding: 4px 8px
 
@@ -241,7 +241,7 @@ $hl-text = alpha($color-text, .9)
     width: 100%
 
   .title, .attr, .attribute
-    color: $color-md-indigo
+    color: var(--color-md-indigo)
 
   // 注释
   .comment
@@ -251,7 +251,7 @@ $hl-text = alpha($color-text, .9)
     color: $hl-keyword
 
   .type, .built_in, .tag .name
-    color: $color-md-light-blue
+    color: var(--color-md-light-blue)
 
   .variable, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo
     color: $hl-amber
@@ -260,13 +260,13 @@ $hl-text = alpha($color-text, .9)
     color: $hl-amber
 
   .class, .ruby .class .title, .css .rules .attribute
-    color: $color-md-orange
+    color: var(--color-md-orange)
 
   .string, .meta-string
     color: darken($color-md-green, 10%)
 
   .value, .inheritance, .header, .ruby .symbol, .xml .cdata
-    color: $color-md-green
+    color: var(--color-md-green)
 
   .css .hexcolor
     color: #66cccc
@@ -282,7 +282,7 @@ $hl-text = alpha($color-text, .9)
     .selector-class, .selector-attr
       color: $hl-amber
     .attribute
-      color: $color-md-indigo
+      color: var(--color-md-indigo)
     .number
       color: $hl-cyan
 
@@ -305,7 +305,7 @@ $hl-text = alpha($color-text, .9)
     .attr
       color: #E24F5A
     .literal
-      color: $color-md-indigo
+      color: var(--color-md-indigo)
 
 .highlight.yaml
   .line

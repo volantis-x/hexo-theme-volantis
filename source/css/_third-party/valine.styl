@@ -12,27 +12,27 @@
       .vwrap
         border-radius: $border-card
         border-style: dashed
-        border: 1px dashed alpha($color-text, 30%)
+        border: 1px dashed alpha(var(--color-text), 30%)
         trans()
         &:hover
-          border: 1px dashed $color-theme
+          border: 1px dashed var(--color-theme)
         .cancel-reply
           margin-top: 0
           margin-bottom: 0
         .vheader
           .vinput
             border-radius: 0
-            border-bottom: 1px dashed alpha($color-text, 30%)
+            border-bottom: 1px dashed alpha(var(--color-text), 30%)
             &:hover
-              border-bottom: 1px dashed $color-theme
+              border-bottom: 1px dashed var(--color-theme)
             &:focus
-              border-bottom: 1px solid $color-theme
+              border-bottom: 1px solid var(--color-theme)
         .vedit
           .vicon
             height: 22px
         .vemojis,.vpreview
-          background: $color-block
-          border-radius: $border-codeblock
+          background: var(--color-block)
+          border-radius: var(--border-codeblock)
           padding: $gap * 0.5
           scrollbar()
           .vemoji
@@ -43,42 +43,42 @@
             padding: 8px
             border-radius: 4px
             transition: box-shadow .2s ease-out, background .2s ease-out
-            if luminosity($color-block) > 0.5
+            if luminosity(var(--color-block)) > 0.5
               &:hover
-                background: lighten($color-block, 2)
+                background: lighten(var(--color-block), 2)
                 box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1), -1px -1px 2px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.05), inset -8px -8px 16px rgba(255, 255, 255, 0.4)
               &:active
-                background: darken($color-block, 2)
+                background: darken(var(--color-block), 2)
                 box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1), -0px -0px 0px rgba(255, 255, 255, 0.8), inset 2px 2px 4px rgba(0, 0, 0, 0.1), inset -2px -2px 4px rgba(255, 255, 255, 1), inset -8px -8px 16px rgba(255, 255, 255, 0.4)
         .vedit
           .vctrl span
             padding: 0
             margin: 10px
           span
-            fill: $color-p
+            fill: var(--color-p)
             &.actived
-              fill: $color-theme
+              fill: var(--color-theme)
       .vcount
-        color: $color-p
+        color: var(--color-p)
         font-size: $fontsize-meta
         padding: 0
         font-weight: inherit
         .vnum
-          color: $color-p
+          color: var(--color-p)
           font-size: $fontsize-h2
 
       button
         border: none
         padding: 4px 2rem
         border-radius: $border-button
-        background: darken($color-block, 2)
-        color: $color-text
+        background: darken(var(--color-block), 2)
+        color: var(--color-text)
         line-height: 2
         font-size: 14px
         trans()
         &:hover
-          color: $color-hover
-          background: bgcolor($color-hover)
+          color: var(--color-hover)
+          background: bgcolor(var(--color-hover))
         &.vmore
           width: 100%
           padding: 8px 2rem
@@ -86,63 +86,63 @@
         .vquote
           border-left: none
         .vh
-          border-bottom: 1px dashed alpha($color-text, .1)
+          border-bottom: 1px dashed alpha(var(--color-text), .1)
         .vimg
           border: 1px solid white
           padding: 0
-          background: $color-block
+          background: var(--color-block)
         .vcontent.expand
           &:before
-            background: linear-gradient(180deg, alpha($color-card, .9), alpha($color-block, .9));
+            background: linear-gradient(180deg, alpha(var(--color-card), .9), alpha(var(--color-block), .9));
           &:after
-            background: alpha($color-block, .9)
-            color: $color-text
+            background: alpha(var(--color-block), .9)
+            color: var(--color-text)
         .vhead
           span
             &.vnick
-              color: lighten($color-p, 10)
+              color: lighten(var(--color-p), 10)
               cursor: default
           a
             &.vnick
               color: #ff9800
               font-weight: bold
               &:hover
-                color: $color-hover
+                color: var(--color-hover)
           .vsys
             margin: 2px
             padding: 1px 8px
-            background-color: $color-block
+            background-color: var(--color-block)
         .vmeta
           .vat
             font-weight: bold
-            color: $color-link
+            color: var(--color-link)
             trans()
             &:hover
-              color: $color-hover
+              color: var(--color-hover)
         .vcontent
           blockquote
             padding-top: $gap-row
             padding-bottom: $gap-row
-            background: $color-block
-            border-left: $border-codeblock solid $color-theme
+            background: var(--color-block)
+            border-left: $border-codeblock solid var(--color-theme)
             border-radius: $border-codeblock
             trans()
           code
-            color: $color-p
+            color: var(--color-p)
             font-family: $fontfamily-code
           pre
-            background: $color-codeblock
+            background: var(--color-codeblock)
             code
               border: none
           a
-            color: $color-link
+            color: var(--color-link)
             line-height: inherit
             trans()
             &:hover
-              color: $color-hover
+              color: var(--color-hover)
               text-decoration: underline
           p
-            color: $color-p
+            color: var(--color-p)
             margin-top: $gap-row
             margin-bottom: $gap-row
             line-height: inherit
@@ -152,16 +152,16 @@
             margin-top: -10px
             max-width: 100px
       .vempty
-        color: $color-meta
+        color: var(--color-meta)
       .vpower
         &,a
           font-size: $fontsize-footnote
         a
-          color: $color-p
+          color: var(--color-p)
           &:hover
             text-decoration: underline
-            color: $color-hover
+            color: var(--color-hover)
       .vinput
-        color: $color-text
+        color: var(--color-text)
       p
-        color: $color-text
+        color: var(--color-text)

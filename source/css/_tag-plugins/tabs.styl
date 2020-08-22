@@ -7,7 +7,7 @@ div.tabs
   margin-top: $gap-row
   margin-bottom: $gap-row
   border-radius: $tbr
-  background: $color-card
+  background: var(--color-card)
   border: 1px solid $border-color
   font-size: $fontsize-list
   .highlight,p,ul,ol,div.note,details
@@ -22,7 +22,7 @@ div.tabs
     justify-content: flex-start
     margin: 0 !important
     padding: 8px 8px 0 8px
-    background: $color-block
+    background: var(--color-block)
     border-radius: $tbr $tbr 0 0
     line-height: 1.5
     li.tab
@@ -40,18 +40,18 @@ div.tabs
         font-size: $fontsize-meta
         line-height: inherit
         font-weight: bold
-        color: $color-meta
+        color: var(--color-meta)
         border: 1px solid transparent
         &:hover
-          color: $color-p
+          color: var(--color-p)
         i
           pointer-events: none
       &.active a
         cursor: default
-        color: $color-p
+        color: var(--color-p)
         background: $color-card
         border: 1px solid $border-color
-        border-bottom: 1px solid $color-card
+        border-bottom: 1px solid var(--color-card)
 
   .tab-content
     border-top: 1px solid $border-color

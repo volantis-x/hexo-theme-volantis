@@ -25,20 +25,20 @@
     right: $gap*2
     transform: translateY(100px) scale(0)
     transform-origin: bottom
-    color: $color-text
+    color: var(--color-text)
     @media screen and (max-width: $device-tablet)
       right: $gap
     &.show
       transform: translateY(0) scale(1)
       &.hl
-        background: $color-theme
-        color: $color-inner
+        background: var(--color-theme)
+        color: var(--color-inner)
         box-shadow: $boxshadow-card
     @media screen and (min-width: $device-tablet)
       &:hover
         transform: scale(1.2)
         border-radius: 25%
-        background: $color-theme
+        background: var(--color-theme)
         color: white
         box-shadow: $boxshadow-card-float
         &.hl
@@ -126,7 +126,7 @@
       .title
         trans(.1s)
         margin: 0
-        color: $color-text
+        color: var(--color-text)
         border-bottom: none
         padding-bottom: 4px
         p
@@ -141,13 +141,13 @@
         a
           display: inline
           font-weight: bold
-          color: $color-text
+          color: var(--color-text)
           text-decoration: none
           font-size: $fontsize-h1
           &:hover
-            color: $color-hover
+            color: var(--color-hover)
     .article-meta
-      color: $color-meta
+      color: var(--color-meta)
       margin-bottom: $gap
       line-height: normal
       &#top
@@ -196,7 +196,7 @@
         &,p,i
           font-size: $fontsize-code
         .new-meta-item
-          color: $color-meta
+          color: var(--color-meta)
           &.link-btns
             display: flex
             flex-wrap: wrap
@@ -222,9 +222,9 @@
           .notlink
             cursor: default
             &:hover
-              color: $color-meta
+              color: var(--color-meta)
               p
-                color: $color-meta
+                color: var(--color-meta)
           display: flex
           align-items: baseline
           justify-content: center
@@ -239,7 +239,7 @@
             &.fa-hashtag
               margin-right: 2px
           p,a
-            color: $color-meta
+            color: var(--color-meta)
             padding: 3px 0
           a
             display: flex
@@ -254,9 +254,9 @@
               font-weight: normal
               trans()
             &:hover
-              color: $color-hover
+              color: var(--color-hover)
               p
-                color: $color-hover
+                color: var(--color-hover)
 
         .author
           img,i
@@ -268,7 +268,7 @@
           .share
             width: 100%
             margin-top: $gap
-            background: $color-block
+            background: var(--color-block)
             border-radius: $border-codeblock
 
         .share-body
@@ -292,7 +292,7 @@
             div.target
               display: none
               position: absolute
-              background: $color-card
+              background: var(--color-card)
               border-radius: $border-card
               box-shadow: $boxshadow-card-float
               padding: 8px
@@ -351,7 +351,7 @@
       margin-top: 0
       margin-bottom: $gap-row
       font-size: $fontsize-h4
-      color: $color-text
+      color: var(--color-text)
     p[cst]
       margin-top: $gap-row
       margin-bottom: $gap-row
@@ -365,15 +365,15 @@
       display: inline-block
       border-radius: 2px
       cursor: pointer
-      background: $color-button
-      color: $color-inner
+      background: var(--color-button)
+      color: var(--color-inner)
       padding-left: $gap * 3
       padding-right: $gap * 3
       &:hover
-        background: $color-hover
+        background: var(--color-hover)
 
 .white-box
-  background: $color-card
+  background: var(--color-card)
 
 if hexo-config('plugins.scrollreveal.js')
   .reveal

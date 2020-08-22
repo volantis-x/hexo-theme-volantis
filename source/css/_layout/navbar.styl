@@ -6,7 +6,7 @@
   top: 0
   width: 100%
   height: $navbar-height
-  background: $color-card
+  background: var(--color-card)
   box-shadow: $boxshadow-card
   &.auto
     transition: opacity .4s ease
@@ -43,7 +43,7 @@
       opacity: 1
     .title
       position: relative
-      color: $color-text
+      color: var(--color-text)
       padding-left: $gap * 1.5
       max-height: $navbar-height
 
@@ -98,7 +98,7 @@
         border-radius: 100px
         border: none
         trans()
-        color: $color-theme
+        color: var(--color-theme)
         &:hover
           border: none
         &.active,&:active
@@ -157,7 +157,7 @@
       padding-bottom: $gap * 0.5
       line-height: 1.3
       width: 100%
-      color: $color-text
+      color: var(--color-text)
       background: darken($color-card, 2)
       box-shadow: none
       box-sizing: border-box
@@ -170,7 +170,7 @@
         &:focus
           box-shadow: $boxshadow-float
       @media screen and (max-width: $device-mobile)
-        background: $color-block
+        background: var(--color-block)
         padding-left: $gap * 0.5
         border: none
         &:hover,&:focus
@@ -221,7 +221,7 @@ ul.list-v
   &.show
     display: block
   position: absolute
-  background: $color-card
+  background: var(--color-card)
   box-shadow: $boxshadow-dropmenu
   margin-top: -2px - $border-card * 0.5
   border-radius: $border-card * 0.5
@@ -236,7 +236,7 @@ ul.list-v
       font-size: $fontsize-footnote
       font-weight: bold
       line-height: 2em
-      color: $color-meta
+      color: var(--color-meta)
       margin: $gap * 0.5 $gap $gap * 0.25
       i
         margin-right: 8px
@@ -266,8 +266,8 @@ ul.list-v
       border-left-color: alpha($color-theme, 80%)
       border-bottom-color: alpha($color-theme, 80%)
     &:active,&.active
-      border-left-color: $color-theme
-      border-bottom-color: $color-theme
+      border-left-color: var(--color-theme)
+      border-bottom-color: var(--color-theme)
       list_active()
     &:hover
       list_hover()
@@ -286,13 +286,13 @@ ul.list-v
     border-left-color: alpha($color-theme, 80%)
     border-bottom-color: alpha($color-theme, 80%)
   &:active,&.active
-    color: $color-theme
-    border-left-color: $color-theme
-    border-bottom-color: $color-theme
+    color: var(--color-theme)
+    border-left-color: var(--color-theme)
+    border-bottom-color: var(--color-theme)
   &:hover
     color: mix($color-theme, $color-text, 70)
-    border-left-color: $color-theme
-    border-bottom-color: $color-theme
+    border-left-color: var(--color-theme)
+    border-bottom-color: var(--color-theme)
     background: bgcolor($color-theme)
   i.music
     animation: rotate-effect 1.5s linear infinite

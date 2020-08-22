@@ -12,7 +12,7 @@
   align-items: center
   align-self: center
   align-content: center
-  color: $color-site-inner
+  color: var(--color-site-inner)
   padding: 0 $gap
   disable-user-select()
   position: relative
@@ -146,7 +146,7 @@
       background: alpha($color-card, .6)
       backdrop-filter: blur(10px)
       border: none
-      color: $color-text
+      color: var(--color-text)
       &:hover
         background: alpha($color-card, .8)
       &:focus
@@ -201,8 +201,8 @@
       p
         font-size: $fontsize-body
       &:hover, &.active, &:active
-        color: $color-site-inner
-        border-bottom: 2px solid $color-site-inner
+        color: var(--color-site-inner)
+        border-bottom: 2px solid var(--color-site-inner)
   &.dock .menu, &.featured .menu, &.focus .menu
     border-radius: $border-button + 2px
     .list-h a
@@ -224,13 +224,13 @@
         font-size: $fontsize-meta
       &.active
         i, i+p
-          color: $color-theme
+          color: var(--color-theme)
         img+p
-          color: $color-text
-        background: $color-card
+          color: var(--color-text)
+        background: var(--color-card)
         backdrop-filter: none
       &:hover
-        background: $color-card
+        background: var(--color-card)
 
 
 .cover-wrapper.dock .top
@@ -275,4 +275,4 @@
     margin: 2px
     &:hover
       opacity: 1
-      background: $color-card
+      background: var(--color-card)

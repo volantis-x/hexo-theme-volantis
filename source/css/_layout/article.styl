@@ -1,6 +1,5 @@
-
 .article
-  color: $color-p
+  color: var(--color-p)
   // word-break: break-all
   word-wrap: break-word
   img
@@ -39,26 +38,26 @@
     border-bottom: 1px solid alpha($color-text, 10%)
   h1
     text-align: $textalign-h1
-    color: $color-h1
+    color: var(--color-h1)
     margin-top: $gap-h2
   h2
     text-align: $textalign-h2
-    color: $color-h2
+    color: var(--color-h2)
     margin-top: $gap-h2
   h3
     text-align: $textalign-h3
-    color: $color-h3
+    color: var(--color-h3)
     margin-top: $gap-h3
   h4
     text-align: $textalign-h4
-    color: $color-h4
+    color: var(--color-h4)
     margin-top: $gap-h4
   h5
     font-weight: bold
-    color: $color-h5
+    color: var(--color-h5)
     margin-top: $gap-paragraph
   h6
-    color: $color-h6
+    color: var(--color-h6)
     margin-top: $gap-paragraph
 
   center
@@ -84,24 +83,24 @@
     color: mix($color-p, $color-card, 60)
     text-decoration-color: @color
   u
-    color: $color-text
+    color: var(--color-text)
     text-decoration: none
-    border-bottom: 1px solid $color-mac-red
+    border-bottom: 1px solid var(--color-mac-red)
   emp
-    color: $color-text
-    border-bottom: 4px dotted $color-mac-red
+    color: var(--color-text)
+    border-bottom: 4px dotted var(--color-mac-red)
   wavy
-    color: $color-text
+    color: var(--color-text)
     text-decoration-style: wavy
     text-decoration-line: underline
-    text-decoration-color: $color-mac-red
+    text-decoration-color: var(--color-mac-red)
   psw
     color: transparent
     background: mix($color-text, $color-card, 50)
     border-radius: 2px
     trans()
     &:hover
-      color: $color-p
+      color: var(--color-p)
       background: none
   kbd
     border-radius: 4px
@@ -163,8 +162,8 @@
 
 
   blockquote
-    background: $color-block
-    border-left: $border-codeblock solid $color-theme
+    background: var(--color-block)
+    border-left: $border-codeblock solid var(--color-theme)
     border-radius: $border-codeblock
 
   blockquote
@@ -189,14 +188,14 @@
           content: '----'
           padding: 0 .3em
 
-        color: $color-meta
+        color: var(--color-meta)
         margin-left: 1em
 
 
     &.pullquote
       &.right
         border-left: none
-        border-right: $border-codeblock solid $color-theme
+        border-right: $border-codeblock solid var(--color-theme)
         p
           text-align: right
 
@@ -207,7 +206,7 @@
     margin-top: $gap-row
     margin-bottom: $gap-row
     overflow: auto
-    background: $color-codeblock
+    background: var(--color-codeblock)
     font-size: $fontsize-code
     font-family: $fontfamily-code
     border: 1px solid darken($color-codeblock, 6)
@@ -226,7 +225,7 @@
     font-family: $fontfamily-code
     &:not([class])
       font-size: $fontsize-code
-      color: $color-inlinecode
+      color: var(--color-inlinecode)
       border-radius: $border-codeblock * 0.5
 
 
@@ -244,7 +243,7 @@
     box-shadow: none
     border-radius: $border-codeblock
     cursor: auto
-    background: $color-block
+    background: var(--color-block)
     padding: $gap * 0.5 0
     trans()
     &:hover
@@ -271,9 +270,9 @@
       .content
         padding: 0 .6em !important
         a
-          color: $color-link
+          color: var(--color-link)
           &:hover
-            color: $color-hover
+            color: var(--color-hover)
     .content
       padding: 0 .6em
       margin: 0
@@ -286,23 +285,23 @@
           border-left: none
           padding: 0
           padding-left: 4px
-          color: $color-link
+          color: var(--color-link)
           font-weight: normal
           text-decoration: none
           &:hover,&.active,&:active
             border-left: none !important
             background: none !important
           &:hover
-            color: $color-hover
+            color: var(--color-hover)
 
       .list
         a
           .name
             display: inline
-            color: $color-link
+            color: var(--color-link)
           &:hover
             .name
-              color: $color-hover
+              color: var(--color-hover)
 
 
     &.qrcode > .content
@@ -336,7 +335,7 @@
       color: inherit
       pointer-events: auto
       &:hover
-        color: $color-hover
+        color: var(--color-hover)
     &:before
       content: ''
       display: block

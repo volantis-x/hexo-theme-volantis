@@ -17,8 +17,8 @@ if hexo-config('style.body.highlight.copy_btn') == true
     padding: $gap * 0.25 $gap * 0.5
     >i
       margin-right: 4px
-    color: $color-meta
-    background: $color-card
+    color: var(--color-meta)
+    background: var(--color-card)
     border-radius: 3px
     box-shadow: $boxshadow-card
     position: absolute
@@ -27,7 +27,7 @@ if hexo-config('style.body.highlight.copy_btn') == true
     opacity: 0
     trans()
     &:hover
-      color: $color-hover
+      color: var(--color-hover)
       background: bgcolor($color-hover)
 
   .highlight:hover .btn-copy

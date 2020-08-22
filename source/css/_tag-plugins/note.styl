@@ -46,10 +46,10 @@ div.note
     vertical-align: middle
     font-family: hexo-config('style.fontfamily.iconfont.fontfamily')
 
-  background: $color-block
-  border-left: $border-codeblock solid $color-theme
+  background: var(--color-block)
+  border-left: $border-codeblock solid var(--color-theme)
   &::before
-    color: $color-theme
+    color: var(--color-theme)
     content: '\f054'
   if hexo-config('style.body.note') && hexo-config('style.body.note.icon')
     &::before

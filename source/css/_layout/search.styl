@@ -18,7 +18,7 @@
     left: 50%
     top: 0
     margin: 64px 0px 0px -320px
-    background: $color-card
+    background: var(--color-card)
     z-index: 3
     border-radius: $border-card
     overflow: hidden
@@ -63,7 +63,7 @@
         height: $navbar-height
         top: 0
         right: 0
-        color: $color-theme
+        color: var(--color-theme)
         cursor: pointer
         text-align: center
         line-height: $navbar-height
@@ -89,7 +89,7 @@
           position: relative
           width: 0%
           height: 100%
-          background: $color-theme
+          background: var(--color-theme)
           trans()
 
       #u-search-modal-form
@@ -127,7 +127,7 @@
         width: 50px
         height: $navbar-height
         vertical-align: middle
-        color: $color-theme
+        color: var(--color-theme)
         z-index: 2
 
 
@@ -139,7 +139,7 @@
       width: 100%
       height: 50px
       padding: 0px 15px
-      background: $color-card
+      background: var(--color-card)
       .logo
         position: absolute
         top: 0
@@ -187,11 +187,11 @@
         font-size: $fontsize-meta
         font-weight: bold
         line-height: 50px
-        color: $color-meta
+        color: var(--color-meta)
         cursor: pointer
         z-index: 1
         &:hover
-          color: $color-hover
+          color: var(--color-hover)
         &.btn-next
           margin-left: $gap
         .icon
@@ -206,7 +206,7 @@
       left: 0
       overflow-y: scroll
       -webkit-overflow-scrolling: touch
-      background: $color-card
+      background: var(--color-card)
       border-radius: $border-card
       scrollbar()
       .modal-results
@@ -242,7 +242,7 @@
             word-break: break-all
             text-overflow: ellipsis
             font-size: $fontsize-code
-            color: $color-meta
+            color: var(--color-meta)
           .icon
             position: absolute
             top: 50%

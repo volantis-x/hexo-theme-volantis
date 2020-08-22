@@ -5,7 +5,7 @@
   a
     color: inherit
     &:hover
-      color: $color-hover
+      color: var(--color-hover)
   &[pin]
     margin-right: 36px
 .post-v3
@@ -55,15 +55,15 @@
   display: flex
   flex-wrap: wrap
   justify-content: space-between
-  color: $color-meta
+  color: var(--color-meta)
   time
     font-size: $fontsize-meta
   .category-link
     font-size: $fontsize-meta
-    color: $color-meta
+    color: var(--color-meta)
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
     &:hover
-      color: $color-hover
+      color: var(--color-hover)
   .readmore
     font-weight: bold

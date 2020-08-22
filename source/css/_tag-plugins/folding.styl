@@ -3,7 +3,7 @@ details
   padding: $gap
   margin: $gap-row 0
   border-radius: $border-codeblock
-  background: $color-card
+  background: var(--color-card)
   font-size: $fontsize-list
   p
     font-size: $fontsize-body
@@ -23,7 +23,7 @@ details
         display: inline
         border-bottom: none !important
     &:hover
-      color: $color-p
+      color: var(--color-p)
       &:after
         position: absolute
         content: '+'
@@ -32,9 +32,9 @@ details
         transform: translateY(-50%)
         right: $gap
 
-  border: 1px solid $color-block
+  border: 1px solid var(--color-block)
   >summary
-    background: $color-block
+    background: var(--color-block)
   &[blue]
     border-color: bgcolor($color-md-blue)
     >summary
