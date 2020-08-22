@@ -211,7 +211,7 @@ cover:
   features:
     - name: 文档
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
-      url: /v3/getting-started/
+      url: /v4/getting-started/
     - name: 帮助
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
       url: faqs/
