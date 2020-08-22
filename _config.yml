@@ -507,6 +507,14 @@ footer:
       url: https://github.com/volantis-x/
     - icon: fas fa-headphones-alt
       url: https://music.163.com/#/user/home?id=63035382
+    # - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/qq.png
+    #   url: /
+    # - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/qzone.png
+    #   url: /
+    # - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/weibo.png
+    #   url: /
+    # - avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/wechat.png
+    #   url: /
   # site source
   source: https://github.com/volantis-x/volantis-docs/
   # analytics using leancloud

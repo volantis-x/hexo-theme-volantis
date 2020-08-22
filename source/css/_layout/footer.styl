@@ -1,4 +1,4 @@
-footer
+.footer
   position: relative
   padding: 40px 10px 120px 10px
   width: 100%
@@ -33,11 +33,13 @@ footer
       display: flex
       justify-content: center
       align-items: center
-      width: 36px
-      height: 36px
+      min-width: 36px
+      min-height: 36px
       margin: 4px
-      border-radius: 100px
       color: alpha($color-site-footer, .75)
+      img
+        margin: 8px
+        height: 24px
       &:hover
         background: alpha($color-site-footer, .1)
         color: var(--color-site-footer)

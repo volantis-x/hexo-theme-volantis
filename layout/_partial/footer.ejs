@@ -5,18 +5,23 @@
     layout = config.theme_config.footer.layout;
   }
   %>
-  <footer class="clearfix">
+  <footer class="footer clearfix">
     <br><br>
     <% layout.forEach(function(item){ %>
       <% if (item == 'social') { %>
         <br>
         <div class="social-wrapper">
           <% (theme.footer.social||[]).forEach(function(value){ %>
-            <% if (value.url && value.icon) { %>
+            <% if (value.url) { %>
               <a href="<%= url_for(value.url) %>"
                 class="social <%- value.icon %> flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
+                <% if (value.img) { %>
+                  <img src="<%- value.img %>"/>
+                <% } else if (value.avatar) { %>
+                  <img src="<%- value.avatar %>" style="border-radius:120px"/>
+                <% } %>
               </a>
             <%}%>
           <%})%>
