@@ -616,19 +616,16 @@ plugins:
   # https://darkmodejs.learn.uno
   # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
   darkmodejs:
-    enable: false
+    enable: true
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
     bottom: 32px
     right: unset
     left: 16px
     time: 0s
-    mixColor: '#f4f4f4'
     backgroundColor: '#f4f4f4'
     buttonColorDark: '#100f2c'
-    buttonColorLight: '#f4f4f4'
-    saveInCookies: true
     label: 🌓
-    autoMatchOsTheme: true
+    compatible: false # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
 
 
 
