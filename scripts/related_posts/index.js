@@ -15,9 +15,7 @@ hexo.extend.helper.register('htmlGenerator', function(args){
 
     var ret = '';
     ret += '<a class="item" href="' + list.path + '" title="' + list.title + '" rel="bookmark ">';
-    if (list.path.indexOf('2016') > -1) {
-      list.img = 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/proj/prohud/screenshot13.png';
-    }
+    
     if (hexo.theme.config.article.body.footer_widget.related_posts.placeholder_img.length > 0) {
       if (list.img && list.img != "") {
         ret += '<img src="' + list.img + '" />';
