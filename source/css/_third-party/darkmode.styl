@@ -29,7 +29,7 @@
 	.l_header .wrapper .title
 		color: var(--color-meta)
 	.l_header ul>li>a:hover
-		background: alpha(convert(hexo-config('plugins.darkmodejs.color.site')),.2)
+		background: rgba($color-theme,.2)
 	.l_header ul.nav-list-h>li>a, ul.list-v >li>a
 		color: var(--color-meta)
 		&:hover
@@ -43,6 +43,10 @@
 		background: var(--color-block)
 		&:hover
 			background: var(--color-card)
+	#archive-page .archive .archive-post a:hover
+		background: rgba($color-theme,.2)
+	#archive-page .archive .all-tags ul li:hover 
+		background: rgba($color-theme,.2)
 	.article blockquote
 		background: var(--color-block)
 	.article-title a
@@ -62,11 +66,13 @@
 	#u-search .modal-body .modal-results .result:hover
 		background: var(--color-block) !important
 	.widget>.content ul.entry a:hover, .widget>.content ul.popular-posts a:hover
-		background: var(--color-block)
+		background: rgba($color-theme,.2)
+	.widget.blogger .content .social-wrapper a.social:hover
+		background: var(--color-card)
 	.content
 		color: var(--color-p)
 	.l_side .toc-wrapper .content a:hover
-		background: var(--color-block)
+		background: rgba($color-theme,.2)
 	.note
 		background: var(--color-block) !important
 	div.tabs ul.nav-tabs li.tab.active a
@@ -116,11 +122,17 @@
 			background: transparent
 		.MiniValine .vlist .vcard .vcomment-body .vhead
 			filter: brightness(85%)
+		.MiniValine .vbtn
+			background: var(--color-card)
+			&:hover
+				background: var(--color-block)
+		.MiniValine .vpage .more:hover
+			background: var(--color-card)
 	if hexo-config('plugins.aplayer.enable')
 		.aplayer
 			background: var(--color-site)
 		.aplayer .aplayer-list ol li:hover
-			background: var(--color-card)
+			background: rgba($color-theme,.2)
 		.aplayer .aplayer-list ol li.aplayer-list-light
 			background: var(--color-block)
 		.aplayer-info
@@ -131,3 +143,7 @@
 			background: linear-gradient(180deg,hsla(0,0%,0%,0) 0,hsla(0,0%,13%,.8))
 		.aplayer-pic
 			filter: brightness(50%)
+		.aplayer .aplayer-list ol li
+			border-top: 1px solid var(--color-card)
+		.aplayer.aplayer-withlist .aplayer-info
+			border-bottom: 1px solid var(--color-block)
