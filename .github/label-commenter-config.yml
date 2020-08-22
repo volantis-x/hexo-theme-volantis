@@ -47,7 +47,7 @@ labels:
           您的疑问在 [Volantis](https://volantis.js.org) 和 [Hexo](https://hexo.io) 的官方文档有答案，如果找不到可以尝试进行搜索。
 
   # 采纳的建议
-  - name: adopted suggestion
+  - name: todo
     labeled:
       issue:
         body: |
