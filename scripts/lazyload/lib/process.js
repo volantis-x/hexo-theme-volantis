@@ -1,13 +1,18 @@
-/**
- * lazyload.js | https://github.com/ChrAlpha/hexo-theme-cards
- */
-
 'use strict';
 
 const fs = require('hexo-fs');
 
-function lazyProcess(htmlContent)  {
-  let loadingImg = this.config.lazyload.loadingImg;
+function lazyProcess(htmlContent, target)  {
+  let cfg = this.theme.config.plugins.lazyload;
+  if (cfg == undefined || cfg.enable == false) {
+    return;
+  }
+  if (cfg.onlypost == true) {
+    if (target != 'post') {
+      return;
+    }
+  }
+  let loadingImg = cfg.loadingImg;
   return htmlContent.replace(/<img(.*?)src="(.*?)"(.*?)>/gi, function (str, p1, p2) {
     // might be duplicate
     if (/data-srcset/gi.test(str)){
@@ -28,10 +33,10 @@ function lazyProcess(htmlContent)  {
 }
 
 module.exports.processPost = function(data) {
-  data.content = lazyProcess.call(this, data.content);
+  data.content = lazyProcess.call(this, data.content, 'post');
   return data;
 };
 
 module.exports.processSite = function (htmlContent) {
-  return lazyProcess.call(this, htmlContent);
+  return lazyProcess.call(this, htmlContent, 'site');
 };

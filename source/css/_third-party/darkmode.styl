@@ -3,25 +3,31 @@
 .darkmode-background
 	z-index: -9999999 !important
 .darkmode--activated
-	--color-site: convert(hexo-config('plugins.darkmodejs.color.site'))
-	--color-site-inner: convert(hexo-config('plugins.darkmodejs.color.site_inner'))
-	--color-site-footer: convert(hexo-config('plugins.darkmodejs.color.site_footer'))
-	--color-card: convert(hexo-config('plugins.darkmodejs.color.card'))
-	--color-text: convert(hexo-config('plugins.darkmodejs.color.text'))
-	--color-link: convert(hexo-config('plugins.darkmodejs.color.link'))
-	--color-hover: convert(hexo-config('plugins.darkmodejs.color.hover'))
-	--color-inner: convert(hexo-config('plugins.darkmodejs.color.inner'))
-	--color-block: convert(hexo-config('plugins.darkmodejs.color.block'))
-	--color-codeblock: convert(hexo-config('plugins.darkmodejs.color.codeblock'))
-	--color-h1: convert(hexo-config('plugins.darkmodejs.color.h'))
-	--color-h2: convert(hexo-config('plugins.darkmodejs.color.h'))
-	--color-h3: convert(hexo-config('plugins.darkmodejs.color.h'))
-	--color-h4: convert(hexo-config('plugins.darkmodejs.color.h'))
-	--color-h5: convert(hexo-config('plugins.darkmodejs.color.h'))
-	--color-h6: convert(hexo-config('plugins.darkmodejs.color.h'))
-	--color-p: convert(hexo-config('plugins.darkmodejs.color.p'))
-	--color-meta: convert(hexo-config('plugins.darkmodejs.color.h'))
-	--color-list: convert(hexo-config('plugins.darkmodejs.color.h'))
+	--color-site: convert(hexo-config('color.dark.site'))
+	--color-site-inner: convert(hexo-config('color.dark.site_inner'))
+	--color-site-footer: convert(hexo-config('color.dark.site_footer'))
+	--color-card: convert(hexo-config('color.dark.card'))
+	--color-text: convert(hexo-config('color.dark.text'))
+	--color-theme: convert(hexo-config('color.dark.theme'))
+	--color-link: convert(hexo-config('color.dark.link'))
+	--color-button: convert(hexo-config('color.dark.button'))
+	--color-hover: convert(hexo-config('color.dark.hover'))
+	--color-inner: convert(hexo-config('color.dark.inner'))
+	--color-block: convert(hexo-config('color.dark.block'))
+	--color-codeblock: convert(hexo-config('color.dark.codeblock'))
+	--color-inlinecode: convert(hexo-config('color.dark.inlinecode'))
+	--color-h1: convert(hexo-config('color.dark.h1'))
+	--color-h2: convert(hexo-config('color.dark.h2'))
+	--color-h3: convert(hexo-config('color.dark.h3'))
+	--color-h4: convert(hexo-config('color.dark.h4'))
+	--color-h5: convert(hexo-config('color.dark.h5'))
+	--color-h6: convert(hexo-config('color.dark.h6'))
+	--color-p: convert(hexo-config('color.dark.p'))
+	--color-list: convert(hexo-config('color.dark.list'))
+	--color-meta: convert(hexo-config('color.dark.meta'))
+
+	.l_body
+		background-color: var(--color-site) !important
 	img
 		filter: brightness(70%) !important
 	.pdf
@@ -47,7 +53,7 @@
 	//archive-page
 	#archive-page .archive .archive-post a:hover
 		background: rgba($color-theme,.2)
-	#archive-page .archive .all-tags ul li:hover 
+	#archive-page .archive .all-tags ul li:hover
 		background: rgba($color-theme,.2)
 	.article blockquote
 		background: var(--color-block)
@@ -97,12 +103,12 @@
 		background-color: #21252b
 	.highlight
 		border: 1px solid #21252b !important
-	.highlight pre .line, .highlight pre .params 
+	.highlight pre .line, .highlight pre .params
 		color: rgba(158, 142, 142, 0.9)
 	//table
-	*:not(.highlight) >table tr 
+	*:not(.highlight) >table tr
 		background-color: var(--color-card)
-	*:not(.highlight) >table th 
+	*:not(.highlight) >table th
 		background: rgba(3, 8, 36, 0.56)
 	*:not(.highlight) >table tr:hover
 		background: var(--color-codeblock)

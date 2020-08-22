@@ -12,12 +12,65 @@
             <div class='fancybox'><img src='<%- url_for(photo) %>'/></div>
           <% }) %>
           <%- post.content %>
-          <% if ((page.meta && page.meta.article_footer && page.meta.article_footer.length > 0) || (theme.layout.on_post.article_footer && (page.layout == 'post'))) { %>
-            <div class='article_footer'>
-              <% if (page.meta && page.meta.article_footer && page.meta.article_footer.length > 0) { %>
-                <%- partial('../_widget/load', {widgets: page.meta.article_footer, where: 'article'}) %>
-              <% } else { %>
-                <%- partial('../_widget/load', {widgets: theme.layout.on_post.article_footer, where: 'article'}) %>
+          <% if (['post','docs'].includes(page.layout)) { %>
+            <% let footer_widget = theme.article.body.footer_widget; %>
+            <div class='footer'>
+              <% if (page.references && page.references.length > 0) { %>
+                <div class='references'>
+                  <section class='header'>
+                    <% if (footer_widget.references.icon) { %>
+                      <i class="<%- footer_widget.references.icon %> fa-fw" aria-hidden="true"></i>
+                    <% } %>
+                    <span><%- footer_widget.references.title %></span>
+                  </section>
+                  <section class='body'>
+                    <ul>
+                      <% (page.references||[]).forEach(function(row){ %>
+                        <li>
+                          <a href="<%- url_for(row.url) %>" rel="external nofollow noopener noreferrer" target="_blank">
+                          <%- row.title || url_for(row.url) %>
+                          </a>
+                        </li>
+                      <% }) %>
+                    </ul>
+                  </section>
+                </div>
+              <% } %>
+              <% if (['post'].includes(page.layout) && footer_widget.related_posts) { %>
+                <div class='related_posts'>
+                  <section class='header'>
+                    <i class="<%- footer_widget.related_posts.icon %> fa-fw" aria-hidden="true"></i><span><%- footer_widget.related_posts.title %></span>
+                  </section>
+                  <section class='body'>
+                    <%-
+                    htmlGenerator(
+                      popular_posts_json({ maxCount: footer_widget.related_posts.max_count , ulClass: 'vlts-rps' , PPMixingRate: 0.2 , isImage: true , isExcerpt: true} , post )
+                    )
+                    %>
+                  </section>
+                </div>
+              <% } %>
+              <% if (footer_widget.copyright) { %>
+                <div class='copyright'>
+                  <blockquote>
+                    <% (footer_widget.copyright.content||[]).forEach(function(row){ %>
+                      <% if (row == 'permalink') { %>
+                        <p><%- footer_widget.copyright.permalink %><a href=<%- page.permalink %>><%- page.permalink %></a></p>
+                      <% } else { %>
+                        <%- markdown(row) %>
+                      <% } %>
+                    <% }) %>
+                  </blockquote>
+                </div>
+              <% } %>
+              <% if (footer_widget.donate) { %>
+                <div class='donate'>
+                  <div class='imgs'>
+                    <% (footer_widget.donate||[]).forEach(function(url){ %>
+                      <img src='<%- url_for(url) %>'>
+                    <% }) %>
+                  </div>
+                </div>
               <% } %>
             </div>
           <% } %>

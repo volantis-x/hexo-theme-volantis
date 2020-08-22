@@ -10,8 +10,10 @@
       <div class='cover-wrapper <%- page.layout %> <%- theme.cover.scheme %>' style="display: none;">
         <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable) { %>
           <div class='cover-backstretch'></div>
-        <% } else { %>
+        <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
           <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
+        <% } else { %>
+          <div class='cover-bg' style='background-image:url(<%- theme.cover.background %>)'></div>
         <% } %>
         <%- partial('../_cover/' + theme.cover.scheme) %>
         <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
@@ -23,8 +25,10 @@
         <div class="cover-wrapper" id='full'>
           <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable) { %>
             <div class='cover-backstretch'></div>
-          <% } else { %>
+          <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
             <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
+          <% } else { %>
+            <div class='cover-bg' style='background-image:url(<%- theme.cover.background %>)'></div>
           <% } %>
           <%- partial('../_cover/' + theme.cover.scheme) %>
           <div class="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
@@ -33,8 +37,10 @@
         <div class="cover-wrapper" id='half'>
           <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable) { %>
             <div class='cover-backstretch'></div>
-          <% } else { %>
+          <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
             <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
+          <% } else { %>
+            <div class='cover-bg' style='background-image:url(<%- theme.cover.background %>)'></div>
           <% } %>
           <%- partial('../_cover/' + theme.cover.scheme) %>
         </div>

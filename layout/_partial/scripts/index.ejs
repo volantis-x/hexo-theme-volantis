@@ -8,7 +8,7 @@
   <%- partial('search') %>
 <% } %>
 
-<% if (config.lazyload && config.lazyload.enable) { %>
+<% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
   <%- partial('../../_third-party/lazyload/script') %>
 <% } %>
 

@@ -25,14 +25,14 @@
   <% if (post.headimg) { %>
     <div class='headimg-div'>
       <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
-        <% if (config.lazyload && config.lazyload.enable) { %>
-          <% if (config.lazyload.loadingImg) { %>
+        <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
+          <% if (theme.plugins.lazyload.loadingImg) { %>
             <div class='headimg lazyload placeholder' data-bg='<%- post.headimg %>'></div>
           <% } else { %>
             <div class='headimg lazyload' data-bg='<%- post.headimg %>'></div>
           <% } %>
         <% } else { %>
-          <div class='headimg' data-bg='<%- post.headimg %>'></div>
+          <div class='headimg' style='background-image:url(<%- post.headimg %>)'></div>
         <% } %>
       </a>
     </div>

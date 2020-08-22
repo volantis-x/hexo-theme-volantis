@@ -26,14 +26,14 @@
                       target="_blank" rel="external nofollow noopener noreferrer" href='<%- url_for(item.url || '') %>'>
                       <div class='friend-left'>
                         <% if (item.avatar) { %>
-                          <% if (config.lazyload && config.lazyload.enable) { %>
-                            <% if (config.lazyload.loadingImg) { %>
-                              <img class='avatar lazyload placeholder' src='<%- item.avatar || (config.lazyload && config.lazyload.loadingImg) %>'/>
+                          <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
+                            <% if (theme.plugins.lazyload.loadingImg) { %>
+                              <img class='avatar lazyload placeholder' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
                             <% } else { %>
-                              <img class='avatar lazyload' src='<%- item.avatar || (config.lazyload && config.lazyload.loadingImg) %>'/>
+                              <img class='avatar lazyload' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
                             <% } %>
                           <% } else { %>
-                            <img class='avatar' src='<%- item.avatar || (config.lazyload && config.lazyload.loadingImg) %>'/>
+                            <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
                           <% } %>
                         <% } %>
                       </div>

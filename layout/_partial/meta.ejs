@@ -21,14 +21,14 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
   <div class='article-header'>
     <% if (topMetas.length == 1 && topMetas.indexOf('centertitle') > -1) { %>
       <% if (post.headimg) { %>
-        <% if (config.lazyload && config.lazyload.enable) { %>
-          <% if (config.lazyload.loadingImg) { %>
+        <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
+          <% if (theme.plugins.lazyload.loadingImg) { %>
             <div class='headimg lazyload placeholder' data-bg='<%- post.headimg %>'></div>
           <% } else { %>
             <div class='headimg lazyload' data-bg='<%- post.headimg %>'></div>
           <% } %>
         <% } else { %>
-          <div class='headimg' data-bg='<%- post.headimg %>'></div>
+          <div class='headimg' style='background-image:url(<%- post.headimg %>)'></div>
         <% } %>
       <% } %>
       <% if (post.title || page.title || config.title) { %>
@@ -36,14 +36,14 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
       <% } %>
     <% } else { %>
       <% if (post.headimg) { %>
-        <% if (config.lazyload && config.lazyload.enable) { %>
-          <% if (config.lazyload.loadingImg) { %>
+        <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
+          <% if (theme.plugins.lazyload.loadingImg) { %>
             <div class='headimg lazyload placeholder' data-bg='<%- post.headimg %>'></div>
           <% } else { %>
             <div class='headimg lazyload' data-bg='<%- post.headimg %>'></div>
           <% } %>
         <% } else { %>
-          <div class='headimg' data-bg='<%- post.headimg %>'></div>
+          <div class='headimg' style='background-image:url(<%- post.headimg %>)'></div>
         <% } %>
       <% } %>
       <div class="article-meta" id="top">
@@ -52,8 +52,8 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
         <% } %>
         <% if (post.thumbnail && post.thumbnail.length){ %>
           <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
-            <% if (config.lazyload && config.lazyload.enable) { %>
-              <% if (config.lazyload.loadingImg) { %>
+            <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
+              <% if (theme.plugins.lazyload.loadingImg) { %>
                 <img class='thumbnail lazyload placeholder' src='<%- post.thumbnail %>'>
               <% } else { %>
                 <img class='thumbnail lazyload' src='<%- post.thumbnail %>'>

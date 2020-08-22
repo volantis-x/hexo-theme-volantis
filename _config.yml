@@ -84,29 +84,84 @@ style:
       # style: normal
     iconfont:
       fontfamily: 'Font Awesome 5 Free'
-  color:
-  #   site: '#21232F' # Website background color
-    site_inner: '#fff' # Text color inside the website background
-  #   site_footer: '#666' # Footer text color inside the website background
-  #   card: '#444' # Card background color
-  #   text: '#fff' # The color of the text on the card.
-  #   # theme: '#ff9800' # Main color
-  #   link: '#1BCDFC' # Link color
-  #   hover: '#ff5722' # Link highlight color
-  #   inner: '#333' # Text color inside the button
-  #   block: '#555' # Block color
-  #   codeblock: '#48371A' # Codeblock color
-  #   p: '#ccc' # Paragraph color
 
 
-# 图片懒加载，请复制到站点配置文件中使用。
-# https://www.npmjs.com/package/vanilla-lazyload
-lazyload:
-  enable: true
-  onlypost: false
-  loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
-  blurIn: true # 模糊加载效果 （loadingImg为空时有效）
-
+# 配色方案
+color:
+  light:
+    # 网站背景色
+    site: '#f4f4f4'
+    # 网站背景上的文字
+    site_inner: '#555'
+    # 网站页脚文字
+    site_footer: '#666'
+    # 卡片背景色
+    card: '#fff'
+    # 卡片上的普通文字
+    text: '#444'
+    # 主题色
+    theme: '#44D7B6'
+    # 链接色
+    link: '#2196f3'
+    # 按钮色
+    button: '#44D7B6'
+    # 鼠标放到交互元素上时的色
+    hover: '#ff5722'
+    # 主题色块内部的文字颜色
+    inner: '#fff'
+    # 区块和代码块背景色
+    block: '#f6f6f6'
+    # 代码块高亮时的背景色
+    codeblock: '#FFF7EA'
+    # 行内代码颜色
+    inlinecode: '#D56D28'
+    # 文章部分
+    h1: '#444'
+    h2: '#444'
+    h3: '#444'
+    h4: '#444'
+    h5: '#444'
+    h6: '#444'
+    p: '#444'
+    list: '#666'
+    meta: '#888'
+  dark:
+    # 网站背景色
+    site: '#222'
+    # 网站背景上的文字
+    site_inner: '#eee'
+    # 网站页脚文字
+    site_footer: '#eee'
+    # 卡片背景色
+    card: '#444'
+    # 卡片上的普通文字
+    text: '#eee'
+    # 主题色
+    theme: '#44D7B6'
+    # 链接色
+    link: '#2196f3'
+    # 按钮色
+    button: '#44D7B6'
+    # 鼠标放到交互元素上时的色
+    hover: '#ff5722'
+    # 主题色块内部的文字颜色
+    inner: '#fff'
+    # 区块和代码块背景色
+    block: '#3a3a3a'
+    # 代码块高亮时的背景色
+    codeblock: '#343a3c'
+    # 行内代码颜色
+    inlinecode: '#D56D28'
+    # 文章部分
+    h1: '#eee'
+    h2: '#eee'
+    h3: '#ddd'
+    h4: '#ddd'
+    h5: '#ddd'
+    h6: '#ddd'
+    p: '#bbb'
+    list: '#aaa'
+    meta: '#888'
 
 # Navigation Bar
 navbar:
@@ -173,6 +228,8 @@ cover:
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
       url: https://github.com/volantis-x/hexo-theme-volantis/
 
+
+
 # 文章布局
 article:
   # 文章列表页面的文章卡片布局方案
@@ -192,8 +249,41 @@ article:
   body:
     # 文章顶部信息
     top_meta:
+    # ----------------
     # 页脚组件
     footer_widget:
+      # ----------------
+      # 参考资料、相关资料等 (for layout: post/docs)
+      references:
+        title: 参考资料
+        icon: fas fa-quote-left
+        # 在 front-matter 中:
+        #   references:
+        #     - title: 某篇文章
+        #       url: https://
+        # 即可显示此组件。
+      # ----------------
+      # 相关文章，需要安装插件 (for layout: post)
+      # npm i -S hexo-related-popular-posts
+      related_posts:
+        enable: false
+        title: 相关文章
+        icon: fas fa-bookmark
+        max_count: 5
+        # 设为空则不使用文章头图
+        placeholder_img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg
+      # ----------------
+      # 版权声明组件 (for layout: post/docs)
+      copyright:
+        permalink: '本文永久链接是：'
+        content:
+          - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
+          - permalink
+      # ----------------
+      # 打赏组件 (for layout: post/docs)
+      donate:
+        - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+        - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # 文章底部信息
     bottom_meta:
 
@@ -204,12 +294,8 @@ layout:
   # The following can be written in `blog/source/_data/layout.yml`
   # 文章列表（主页、自定义的列表）布局
   on_list:
-    # 列表中每一篇文章的meta信息
-    meta: [title, author, category, date, wordcount, counter, valinecount, pin]
     # 列表类页面的侧边栏
     sidebar: [blogger, category, tagcloud, qrcode]
-    # read more button
-    readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
   # 页面布局
   on_page:
     # 文章页面主体元素，你也可以在页面的Front-matter中设置
@@ -222,11 +308,7 @@ layout:
       footer: [updated, tags, btns, share]
     # 文章页面的侧边栏
     sidebar: [qrcode, toc]
-  # 文章布局，参数继承自 on_page
-  on_post:
-    # 文章页脚，自动在每一篇文章末尾添加
-    article_footer: [references, related_repos, copyright, donate]
-  # 其他的页面布局暂时等于 on_list
+
 
 
 # meta library
@@ -358,25 +440,7 @@ widget:
     color: true
     start_color: '#999'
     end_color: '#555'
-  # ---------------------------------------
-  # related posts widget
-  related_posts:
-    class: related_posts # npm i -S hexo-related-popular-posts
-    display: [desktop, mobile] # [desktop, mobile]
-    header:
-      icon: fas fa-bookmark
-      title: 相关文章
-    max_count: 5
-  # ---------------------------------------
-  # copyright widget (valid only in articles)
-  copyright:
-    class: copyright
-    display: [desktop, mobile] # [desktop, mobile]
-    blockquote: true
-    permalink: '本文永久链接是：'
-    content:
-      - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
-      - permalink
+
   # ---------------------------------------
   # qrcode widget
   donate:
@@ -387,20 +451,6 @@ widget:
     images:
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-  # ---------------------------------------
-  # references widget
-  references:
-    class: references # is subclass of list
-    display: [desktop, mobile] # [desktop, mobile]
-    header:
-      icon: fas fa-quote-left
-      title: 参考资料
-  related_repos:
-    class: references # is subclass of list
-    display: [desktop, mobile] # [desktop, mobile]
-    header:
-      icon: fab fa-github
-      title: 源码链接
   # ---------------------------------------
   # webinfo widget
   webinfo:
@@ -502,6 +552,15 @@ plugins:
   # Preload (The menu's url must end with ‘/’) 选择一个即可
   instant_page: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
   flying_pages: https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
+
+  # 图片懒加载
+  # https://www.npmjs.com/package/vanilla-lazyload
+  lazyload:
+    enable: true
+    js: https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js
+    onlypost: false
+    loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
+    blurIn: true # 模糊加载效果 （loadingImg为空时有效）
 
   ######## Plugins to optimize the experience:
   # highlight.js
@@ -622,23 +681,11 @@ plugins:
     right: unset
     left: 16px
     time: 0s
-    backgroundColor: '#f4f4f4'
-    buttonColorDark: '#100f2c'
     label: 🌓
     compatible: false # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
-    color:
-      site: '#21232F' # Website background color
-      site_inner: '#efefef' # Text color inside the website background
-      site_footer: '#666' # Footer text color inside the website background
-      card: '#252d38' # Card background color
-      text: '#fff' # The color of the text on the card.
-      link: 'rgb(156,155,252)' # Link color
-      hover: '#ff5722' # Link highlight color
-      inner: '#21232f' # Text color inside the button
-      block: 'rgba(68,68,68,.65)' # Block color
-      codeblock: 'rgba(33,150,243,.2)' # Codeblock color
-      p: '#ffffff' # Paragraph color
-      h: '#efefef' # h1 h2 h3 h4 h5 h6
+    buttonDark: '#bbb'
+    buttonLight: '#444'
+    # 现存问题： 1. div的背景图片没有变暗（例如封面、头图） 2. 圆圈缩放动画要去掉，只留渐变动画，time对应渐变动画的时间，现在time对应的是圆圈缩放动画时间，开了 time 在动画过程中切换按钮无法再次点击，
 
 
 ############################### Comments ###############################

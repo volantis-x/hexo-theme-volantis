@@ -31,37 +31,35 @@ $color-google-red = #E8453C
 
 
 // common
-$color-site = convert(hexo-config('style.color.site')) || #f4f4f4
-$color-site-inner = convert(hexo-config('style.color.site_inner')) || #555
-$color-site-footer = convert(hexo-config('style.color.site_footer')) || #666
-$color-card = convert(hexo-config('style.color.card')) || white
-$color-text = convert(hexo-config('style.color.text')) || #444
-$color-theme = convert(hexo-config('style.color.theme')) || #44D7B6
-$color-link = convert(hexo-config('style.color.link')) || #2196f3
-$color-button = convert(hexo-config('style.color.link')) || $color-theme
-$color-hover = convert(hexo-config('style.color.hover')) || #ff5722
-$color-inner = convert(hexo-config('style.color.inner')) || white
-$color-block = convert(hexo-config('style.color.block')) || #f6f6f6
 $color-selection = alpha(#2196f3, 0.2)
 
-// code
-$color-inlinecode = convert(hexo-config('style.color.inlinecode')) || #D56D28
-$color-codeblock = convert(hexo-config('style.color.codeblock')) || #FFF7EA
+// -------- 配色方案 --------
+// 默认浅色
+$color-site = convert(hexo-config('color.light.site'))
+$color-site-inner = convert(hexo-config('color.light.site_inner'))
+$color-site-footer = convert(hexo-config('color.light.site_footer'))
+$color-card = convert(hexo-config('color.light.card'))
+$color-text = convert(hexo-config('color.light.text'))
+$color-theme = convert(hexo-config('color.light.theme'))
+$color-link = convert(hexo-config('color.light.link'))
+$color-button = convert(hexo-config('color.light.link'))
+$color-hover = convert(hexo-config('color.light.hover'))
+$color-inner = convert(hexo-config('color.light.inner'))
+$color-block = convert(hexo-config('color.light.block'))
+$color-codeblock = convert(hexo-config('color.light.codeblock'))
+$color-inlinecode = convert(hexo-config('color.light.inlinecode'))
+$color-h1 = convert(hexo-config('color.light.h1'))
+$color-h2 = convert(hexo-config('color.light.h2'))
+$color-h3 = convert(hexo-config('color.light.h3'))
+$color-h4 = convert(hexo-config('color.light.h4'))
+$color-h5 = convert(hexo-config('color.light.h5'))
+$color-h6 = convert(hexo-config('color.light.h6'))
+$color-p = convert(hexo-config('color.light.p'))
+$color-list = convert(hexo-config('color.light.list'))
+$color-meta = convert(hexo-config('color.light.meta'))
 
-// mathjax
-$color-mathjax = #fff0
 
-// title color
-$color-h1 = convert(hexo-config('style.color.h1')) || $color-text
-$color-h2 = convert(hexo-config('style.color.h2')) || $color-text
-$color-h3 = convert(hexo-config('style.color.h3')) || $color-text
-$color-h4 = convert(hexo-config('style.color.h4')) || $color-text
-$color-h5 = convert(hexo-config('style.color.h5')) || $color-text
-$color-h6 = convert(hexo-config('style.color.h6')) || $color-text
-$color-p = convert(hexo-config('style.color.p')) || #444
 
-$color-meta = alpha($color-text, .65)
-$color-list = alpha($color-text, .8)
 
 bgcolor($c, $mix = 10)
   return mix($c, $color-card, $mix)

@@ -13,7 +13,6 @@ function postImage(args) {
       width = px[0]
     } else if (color) {
       bg = '#' + color[0].replace(/color=[#]?/g, '')
-      console.log(bg);
     } else {
       title = p2
     }
