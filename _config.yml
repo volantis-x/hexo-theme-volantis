@@ -626,7 +626,19 @@ plugins:
     buttonColorDark: '#100f2c'
     label: 🌓
     compatible: false # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
-
+    color:
+      site: '#21232F' # Website background color
+      site_inner: '#efefef' # Text color inside the website background
+      site_footer: '#666' # Footer text color inside the website background
+      card: '#252d38' # Card background color
+      text: '#fff' # The color of the text on the card.
+      link: 'rgb(156,155,252)' # Link color
+      hover: '#ff5722' # Link highlight color
+      inner: '#21232f' # Text color inside the button
+      block: 'rgba(68,68,68,.65)' # Block color
+      codeblock: 'rgba(33,150,243,.2)' # Codeblock color
+      p: '#ffffff' # Paragraph color
+      h: '#efefef' # h1 h2 h3 h4 h5 h6
 
 
 ############################### Comments ###############################

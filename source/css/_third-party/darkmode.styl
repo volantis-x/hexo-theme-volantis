@@ -3,108 +3,131 @@
 .darkmode-background
 	z-index: -9999999 !important
 .darkmode--activated
+	--color-site: convert(hexo-config('plugins.darkmodejs.color.site'))
+	--color-site-inner: convert(hexo-config('plugins.darkmodejs.color.site_inner'))
+	--color-site-footer: convert(hexo-config('plugins.darkmodejs.color.site_footer'))
+	--color-card: convert(hexo-config('plugins.darkmodejs.color.card'))
+	--color-text: convert(hexo-config('plugins.darkmodejs.color.text'))
+	--color-link: convert(hexo-config('plugins.darkmodejs.color.link'))
+	--color-hover: convert(hexo-config('plugins.darkmodejs.color.hover'))
+	--color-inner: convert(hexo-config('plugins.darkmodejs.color.inner'))
+	--color-block: convert(hexo-config('plugins.darkmodejs.color.block'))
+	--color-codeblock: convert(hexo-config('plugins.darkmodejs.color.codeblock'))
+	--color-h1: convert(hexo-config('plugins.darkmodejs.color.h'))
+	--color-h2: convert(hexo-config('plugins.darkmodejs.color.h'))
+	--color-h3: convert(hexo-config('plugins.darkmodejs.color.h'))
+	--color-h4: convert(hexo-config('plugins.darkmodejs.color.h'))
+	--color-h5: convert(hexo-config('plugins.darkmodejs.color.h'))
+	--color-h6: convert(hexo-config('plugins.darkmodejs.color.h'))
+	--color-p: convert(hexo-config('plugins.darkmodejs.color.p'))
+	--color-meta: convert(hexo-config('plugins.darkmodejs.color.h'))
+	--color-list: convert(hexo-config('plugins.darkmodejs.color.h'))
 	img
-		filter: brightness(30%)
+		filter: brightness(70%) !important
 	.pdf
-		filter: brightness(30%)
-	.MiniValine .vpage .more
-		background: #21232F
-	.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before
-		background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
-	.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after
-		background: rgba(0,0,0,0.9)
-	.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre
-		background: #282c34
-		border: 1px solid #282c34
-	.MiniValine .vinputs-area .vextra-area .vsmile-icons
-		background: transparent
-	.MiniValine .vlist .vcard .vcomment-body .vhead
-		filter: brightness(85%)
-	.container
-		background: #21232F
+		filter: brightness(70%) !important
+	.l_header .wrapper .title
+		color: var(--color-meta)
+	.l_header ul>li>a:hover
+		background: alpha(convert(hexo-config('plugins.darkmodejs.color.site')),.2)
+	.l_header ul.nav-list-h>li>a, ul.list-v >li>a
+		color: var(--color-meta)
+		&:hover
+			background: var(--color-site) !important
 	.blur
-		background: #21232F !important
-	.loading-bar-wrapper
-		background: #21232F
+		background: var(--color-site) !important
 	.nav-main
 		.u-search-input
-			background: skyblue !important
-	.list-v
-		background: #21232F
-	.vsubmit
-		background: #21232F
-	.l_header ul>li>a:hover
-		background: rgba(33,150,243,.2)
-	#archive-page .archive .archive-post a:hover
-		background: rgba(33,150,243,.2)
+			background: var(--color-card) !important
 	.l_main .article .prev-next>a
-		background: #21232F
+		background: var(--color-block)
+		&:hover
+			background: var(--color-card)
 	.article blockquote
-		background: #21232F
-	table tr 
-		background-color: #cdcadc00
-	table th 
-		background: rgba(3, 8, 36, 0.56)
-	table tr:hover
-		background: rgba(33,150,243,.2)
-	.highlight>table
-		background: #282c34
+		background: var(--color-block)
+	.article-title a
+		color: var(--color-list)
+	details>summary
+		color: var(--color-p)
+		background: var(--color-site)
+	details
+		border: 1px solid var(--color-site)
+		background: var(--color-site)
+	#u-search .modal
+		background: var(--color-card) !important
+	#u-search .modal-header
+		background: var(--color-card) !important
+	#u-search .modal-body
+		background: var(--color-card) !important
+	#u-search .modal-body .modal-results .result:hover
+		background: var(--color-block) !important
+	.widget>.content ul.entry a:hover, .widget>.content ul.popular-posts a:hover
+		background: var(--color-block)
+	.content
+		color: var(--color-p)
+	.l_side .toc-wrapper .content a:hover
+		background: var(--color-block)
+	.note
+		background: var(--color-block) !important
+	div.tabs ul.nav-tabs li.tab.active a
+		color: var(--color-p)
+		background: var(--color-card)
+	kbd
+		background: var(--color-block) !important
+	.cover-wrapper.dock .menu .list-h a:hover, .cover-wrapper.featured .menu .list-h a:hover, .cover-wrapper.focus .menu .list-h a:hover
+		color: var(--color-text) !important
 	.gutter
-		background: #282c34 !important
-		background-color: #282c34 !important
+		background: var(--color-card) !important
+		background-color: var(--color-card) !important
 	.highlight figcaption
 		background-color: #21252b
 	.highlight
 		border: 1px solid #21252b !important
-		background: #282c34
-		table tr:hover
-			background: #282c34
-	details>summary
-		background: #282c34
-	details
-		border: 1px solid #282c34
-		background: #282c34
-	.note
-		background: #282c34 !important
-	.nav-tabs
-		background: #282c34 !important
-	.tabs
-		background: #282c34 !important
-	.btns a
-		background: #282c34 !important
-	.tab.active a
-		background: skyblue !important
-	.widget>.content ul.entry a:hover, .widget>.content ul.popular-posts a:hover
-		background: rgba(33,150,243,.2)
-	#u-search .modal
-		background: #282c34 !important
-	#u-search .modal-header
-		background: #282c34 !important
-	#u-search .modal-body
-		background: #282c34 !important
-	#u-search .modal-body .modal-results .result:hover
-		background: rgba(33,150,243,.2) !important
-	.aplayer-info
-		background: #282c34 !important
-	.aplayer .aplayer-lrc:before
-		background: linear-gradient(180deg,#282c34 0,hsla(0,0%,100%,0))
-	.aplayer .aplayer-lrc:after
-		background: linear-gradient(180deg,hsla(0,0%,0%,0) 0,hsla(0,0%,13%,.8))
-	.aplayer-pic
-		filter: brightness(30%)
-	.l_header ul.nav-list-h>li>a:hover
-		background: #282c34 !important
-	.white-box
-		background: #282c34 !important
-	.widget
-		background: #282c34 !important
-	.article code:not([class])
-		background: #221f29 !important
-	.cover-wrapper .cover .cover-body .menu.dock .list-h a:hover, .cover-wrapper .cover .cover-body .menu.featured .list-h a:hover, .cover-wrapper .cover .cover-body .menu.focus .list-h a:hover
-		background: #282c34 !important
-	.friend-card
-		background: #172233 !important
 	.highlight pre .line, .highlight pre .params 
 		color: rgba(158, 142, 142, 0.9)
-	div.timenode .body
-		background: #21232f !important
+	*:not(.highlight) >table tr 
+		background-color: var(--color-card)
+	*:not(.highlight) >table th 
+		background: rgba(3, 8, 36, 0.56)
+	*:not(.highlight) >table tr:hover
+		background: var(--color-codeblock)
+	if hexo-config('comments.service')=='gitalk'
+		.gt-container .gt-header-textarea
+			background-color: var(--color-card)
+			&:hover
+				background-color: var(--color-block)
+		.gt-container .gt-comment-content
+			background-color: var(--color-card)
+			&:hover
+				box-shadow: none
+		.gt-container .gt-comment-admin .gt-comment-content
+			background-color: var(--color-card)
+	if hexo-config('comments.service')=='minivaline'
+		.MiniValine .vpage .more
+			background: var(--color-site)
+		.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before
+			background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+		.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after
+			background: rgba(0,0,0,0.9)
+		.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre
+			background: var(--color-site)
+			border: 1px solid var(--color-site)
+		.MiniValine .vinputs-area .vextra-area .vsmile-icons
+			background: transparent
+		.MiniValine .vlist .vcard .vcomment-body .vhead
+			filter: brightness(85%)
+	if hexo-config('plugins.aplayer.enable')
+		.aplayer
+			background: var(--color-site)
+		.aplayer .aplayer-list ol li:hover
+			background: var(--color-card)
+		.aplayer .aplayer-list ol li.aplayer-list-light
+			background: var(--color-block)
+		.aplayer-info
+			background: var(--color-site) !important
+		.aplayer .aplayer-lrc:before
+			background: linear-gradient(180deg,#282c34 0,hsla(0,0%,100%,0))
+		.aplayer .aplayer-lrc:after
+			background: linear-gradient(180deg,hsla(0,0%,0%,0) 0,hsla(0,0%,13%,.8))
+		.aplayer-pic
+			filter: brightness(50%)
