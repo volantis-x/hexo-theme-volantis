@@ -34,6 +34,8 @@
 		color: var(--color-meta)
 		&:hover
 			background: var(--color-site) !important
+	.l_header .m_search
+		background: var(--color-card)
 	.blur
 		background: var(--color-site) !important
 	.nav-main
@@ -147,3 +149,10 @@
 			border-top: 1px solid var(--color-card)
 		.aplayer.aplayer-withlist .aplayer-info
 			border-bottom: 1px solid var(--color-block)
+	if hexo-config('comments.service')=='valine'
+		#valine_container button
+			background-color: var(--color-block) !important
+		#valine_container .vcards .vcontent.expand:before
+			background: none !important
+		#valine_container .vcards .vcontent.expand:after
+			background:	#393c40 !important
