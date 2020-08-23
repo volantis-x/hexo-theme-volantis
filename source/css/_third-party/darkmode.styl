@@ -29,9 +29,11 @@
 	.l_body
 		background-color: var(--color-site) !important
 	img
-		filter: brightness(70%) !important
+		filter: brightness(convert(hexo-config('color.dark.brightness'))) !important
+	.lazyload
+		filter: brightness(convert(hexo-config('color.dark.brightness'))) !important
 	.pdf
-		filter: brightness(70%) !important
+		filter: brightness(convert(hexo-config('color.dark.brightness'))) !important
 	//header
 	.l_header .wrapper .title
 		color: var(--color-meta)
@@ -157,7 +159,7 @@
 		.aplayer .aplayer-lrc:after
 			background: linear-gradient(180deg,hsla(0,0%,0%,0) 0,hsla(0,0%,13%,.8))
 		.aplayer-pic
-			filter: brightness(50%)
+			filter: brightness(convert(hexo-config('color.dark.brightness')))
 		.aplayer .aplayer-list ol li
 			border-top: 1px solid var(--color-card)
 		.aplayer.aplayer-withlist .aplayer-info
