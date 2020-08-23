@@ -688,13 +688,13 @@ plugins:
   # https://darkmodejs.learn.uno
   # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
   darkmodejs:
-    enable: true
+    enable: false
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
     button: # button 使用默认或自行开发
-        enable: false
-        label: 🌓
-        buttonDark: '#bbb'
-        buttonLight: '#444'
+      enable: true
+      label: 🌓
+      buttonDark: '#bbb'
+      buttonLight: '#444'
     compatible: true # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
 
 

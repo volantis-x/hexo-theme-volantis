@@ -65,7 +65,7 @@
 	.article blockquote
 		background: var(--color-block)
 	.article-title a
-		color: var(--color-list)
+		color: var(--color-h1)
 	details>summary
 		color: var(--color-p)
 		background: var(--color-site)
@@ -83,7 +83,8 @@
 		background: var(--color-block) !important
 	//phone search
 	.l_header .m_search
-		background: var(--color-site) !important
+		@media screen and (max-width: $device-mobile)
+			background: var(--color-site) !important
 	//side
 	.widget>.content ul.entry a:hover, .widget>.content ul.popular-posts a:hover
 		background: rgba($color-theme,.2)
@@ -108,8 +109,6 @@
 		background-color: var(--color-card) !important
 	.highlight figcaption
 		background-color: #21252b
-	.highlight
-		border: 1px solid #21252b !important
 	.highlight pre .line, .highlight pre .params
 		color: rgba(158, 142, 142, 0.9)
 	//table
