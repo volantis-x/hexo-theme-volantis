@@ -13,10 +13,15 @@ hexo.extend.tag.register('link', function(args) {
   } else {
     return
   }
-  if (args.length > 2) {
-    img = args[2].trim()
-    return `<div><a class='link-card' title='${url}' href='${url}'><div class='left'><img src=${img}></div><div class='right'><p class='text'>${text}</p><p class='url'>${url}</p></div></a></div>`;
-  } else {
-    return `<div><a class='link-card' title='${url}' href='${url}'><div class='left'><i class='fas fa-link'></i></div><div class='right'><p class='text'>${text}</p><p class='url'>${url}</p></div></a></div>`;
-  }
+  let result = '';
+  result += '<div><a class="link-card" title="' + text + '" href="' + url + '">';
+  // left
+  result += '<div class="left">';
+  result += '<img src="' + (img || hexo.theme.config.tag_plugins.link.placeholder) + '"/>';
+  result += '</div>';
+  // right
+  result += '<div class="right"><p class="text">' + text + '</p><p class="url">' + url + '</p></div>';
+  result += '</a></div>';
+
+  return result;
 });

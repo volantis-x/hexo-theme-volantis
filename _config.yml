@@ -315,6 +315,12 @@ layout:
     sidebar: [qrcode, toc]
 
 
+# 内置标签插件的配置
+tag_plugins:
+  # 外链卡片
+  link:
+    placeholder: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
+
 
 # meta library
 meta:
