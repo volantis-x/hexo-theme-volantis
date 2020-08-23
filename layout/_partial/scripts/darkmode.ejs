@@ -40,11 +40,10 @@ var options = {
   label: '<%- theme.plugins.darkmodejs.button.label %>',
   autoMatchOsTheme: true
 };
-// 卡片兼容处理 mix-blend-mode 与 effect: [shadow, floatable, blur] 冲突???
+// 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
 <% 
 if (theme.plugins.backstretch.position=='fixed') {
 	theme.plugins.darkmodejs.compatible=false;
-	theme.style.body.effect='[shadow]';
 } 
 %>
 function pjax_darkmodejs(){
