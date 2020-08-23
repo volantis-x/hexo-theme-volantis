@@ -41,6 +41,12 @@ var options = {
   autoMatchOsTheme: true
 };
 // 卡片兼容处理 mix-blend-mode 与 effect: [shadow, floatable, blur] 冲突???
+<% 
+if (theme.plugins.backstretch.position=='fixed') {
+	theme.plugins.darkmodejs.compatible=false;
+	theme.style.body.effect='[shadow]';
+} 
+%>
 function pjax_darkmodejs(){
   <% if (theme.plugins.darkmodejs.compatible) { %>
   if(!supportCss3('mix-blend-mode'))return;

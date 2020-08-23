@@ -26,8 +26,13 @@
 	--color-list: convert(hexo-config('color.dark.list'))
 	--color-meta: convert(hexo-config('color.dark.meta'))
 
-	.l_body
-		background-color: var(--color-site) !important
+
+	if hexo-config('plugins.backstretch.position') =='fixed'
+		.backstretch
+			mix-blend-mode: difference  !important
+	else
+		.l_body
+			background-color: var(--color-site) !important
 	img
 		filter: brightness(convert(hexo-config('color.dark.brightness'))) !important
 	.lazyload
