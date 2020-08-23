@@ -1,6 +1,6 @@
 ---
 name: 'Other Issues'
-about: This template is suitable for dealing with content other than those mentioned above.
+about: Using this template means that you don’t need help and developers don’t need to give priority to this issue.
 title: ''
 labels: ''
 assignees: ''
