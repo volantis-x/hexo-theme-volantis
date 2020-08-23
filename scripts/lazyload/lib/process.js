@@ -24,10 +24,35 @@ function lazyProcess(htmlContent, target)  {
     if (/no-lazy/gi.test(str)) {
         return str;
     }
+    let cls = '';
+    if (str.indexOf('class=') > -1) {
+      cls = str.substring(str.indexOf('class='));
+      if (cls.length > 7) {
+        let c = cls.substring(6, 7);
+        cls = cls.split(c);
+        if (cls.length > 1) {
+          cls = cls[0] + '"' + cls[1] + '"';
+        }
+      }
+    }
+    let result = str;
+    let newCls = '';
+    if (cls.length > 0 && result.includes('class=')) {
+      newCls = cls.replace(/(class=|[\"]*)/g,'') + ' ';
+    }
+    let oldCls = newCls.trim();
     if (loadingImg) {
-      return str.replace(p2, p2 + '" class="lazyload placeholder" ' + 'data-srcset="' + p2 + '" srcset="' + loadingImg);
+      newCls += 'lazyload placeholder';
     } else {
-      return str.replace(p2, p2 + '" class="lazyload" ' + 'data-srcset="' + p2 + '" srcset="' + 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=');
+      newCls += 'lazyload';
+    }
+    if (cls.length > 0) {
+      result = result.replace('"' + oldCls + '"', '"' + newCls + '"');
+    }
+    if (loadingImg) {
+      return result.replace(p2, p2 + '" class="lazyload placeholder" ' + 'data-srcset="' + p2 + '" srcset="' + loadingImg);
+    } else {
+      return result.replace(p2, p2 + '" class="lazyload" ' + 'data-srcset="' + p2 + '" srcset="' + 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=');
     }
   });
 }
