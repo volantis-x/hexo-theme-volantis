@@ -26,16 +26,26 @@ assignees: ''
 
 **Steps to reproduce**
 
-<!-- If you are unable to provide detailed steps to reproduce, it means that you are not clear about this, and it is recommended to follow the help process. (If you have located a specific code location, you don’t need to fill in the recurring steps. -->
+<!-- If you are unable to provide detailed steps to reproduce, it means that you are not clear about this, we may close your issue and it is recommended to follow the help process. (If you have located a specific code location, you don’t need to fill in the recurring steps. -->
+
+- [ ] Detailed reproduction steps
 
 1. xxx
 2. xxx
 3. xxx
 
+- [ ] Specific code location
+
+
+- [ ] Great, I can provide bug patches
+
 ## Environmental information <!-- Please provide the following information -->
 
 ### URL
 <!-- If there is an abnormality in the local operation using the source code of the official website of the document, you do not need to provide a the URL. -->
+
+- [ ] There is an exception in the local operation of the official source code of the document.
+- [ ] There is no exception in the local operation of the official source code of the document. Please give the duplicate address and source code repository address _________________
 
 ### Screenshots
 <!-- Different systems and browsers may have different effects. Provide screenshots to help find problems. -->
@@ -53,23 +63,40 @@ assignees: ''
 <details><summary>Configuration Files</summary>
 
 #### Site Config
-```yml
+
 Paste here the modified part in `blog/_config.yml`
+
+```yml
+
+
 ```
 
 #### Theme Config
-```yml
+
 Paste here the modified part in `themes/volantis/_config.yml`
+
+```yml
+
+
 ```
 
 #### node.js & npm
-```
+
 Paste the output by `node -v && npm -v`
+
+```
+
+
 ```
 
 #### package.json
-```
+
 Paste the output by `npm ls --depth 0` here
+
 ```
+
+
+```
+
 
 </details>

@@ -44,6 +44,7 @@ git clone https://github.com/volantis-x/demo.git && cd demo && npm i && hexo s
 
 ### 复现地址
 <!-- 如果使用文档官网源码本地运行也存在异常，可以不用提供复现地址。 -->
+
 - [ ] 文档官网源码本地运行存在异常。
 - [ ] 文档官网源码本地运行不存在异常。请给出复现地址及源码仓库地址 _________________
 
@@ -61,23 +62,39 @@ git clone https://github.com/volantis-x/demo.git && cd demo && npm i && hexo s
 <details><summary>配置文件</summary>
 
 #### 站点配置文件
-```yml
+
 在这里粘贴 `blog/_config.yml` 中修改过的部分
+
+```yml
+
+
+
 ```
 
 #### 主题配置文件
-```yml
+
 在这里粘贴 `themes/volantis/_config.yml` 中修改过的部分
+
+```yml
+
+
 ```
 
 #### node.js & npm
-```
+
 在这里粘贴 `node -v && npm -v` 输出的信息
+
+```
+
+
 ```
 
 #### package.json
-```
+
 在这里粘贴 `npm ls --depth 0` 输出的信息
+
+```
+
 ```
 
 </details>
