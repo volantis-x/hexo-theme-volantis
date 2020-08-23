@@ -266,7 +266,7 @@ article:
         # 即可显示此组件。
       # ----------------
       # 相关文章，需要安装插件 (for layout: post)
-      # npm i -S hexo-related-popular-posts
+      # npm i hexo-related-popular-posts
       related_posts:
         enable: false
         title: 相关文章
@@ -361,7 +361,7 @@ meta:
       img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
     - id: weibo
       img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
-    # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
+    # - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
     #   img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
     # - id: telegram
     #   img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
@@ -595,7 +595,7 @@ plugins:
 
   ######## Plugins for SEO:
 
-  # npm i --save hexo-wordcount
+  # npm i hexo-wordcount
   wordcount: #true
 
   ######## Plugins for ...
@@ -837,7 +837,7 @@ rightmenu:
 
 ############################### Search ###############################
 # To use hexo search, you need to install the following plugins:
-# npm i -S hexo-generator-search hexo-generator-json-content
+# npm i hexo-generator-search hexo-generator-json-content
 search:
   enable: true
   service: hexo  # hexo, google, algolia, azure, baidu

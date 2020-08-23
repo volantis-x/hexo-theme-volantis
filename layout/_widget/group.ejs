@@ -1,5 +1,5 @@
 <%
-if (page.layout == 'page' || page.layout == 'post') {
+if (page.layout == 'page' || page.layout == 'docs' || page.layout == 'post') {
   var rows = new Array();
   site.posts.each(function(post){
     if ((post.short_title || post.title) && post.path && (post.group == item.id)) {
