@@ -79,13 +79,23 @@
         <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable && theme.plugins.backstretch.images) { %>
           <% var posi = null;
             if (theme.plugins.backstretch.position == 'cover') {
-              posi = '.cover';
+              posi = '.cover-backstretch';
             }
           %>
           if ('<%- posi %>') {
             $('<%- posi %>').backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $('.cover-backstretch').backstretch("pause");
+            }else{
+              $('.cover-backstretch').backstretch("next");
+            }
           } else {
             $.backstretch("resize");
+            if($('.cover-wrapper').is(':hidden')){
+              $.backstretch("pause");
+            }else{
+              $.backstretch("next");
+            }
           }
         <% } %>
         <% if (config.highlight.enable != true && theme.plugins.highlightjs && theme.plugins.highlightjs.js) { %>
@@ -114,14 +124,6 @@
         <% if (theme.plugins.darkmodejs.enable) { %>
           pjax_darkmodejs();
         <% } %>
-	    <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable &&theme.cover && theme.cover.use_for) { %>
-	    //禁用cover的页面===>暂停backstretch切换以节省网络流量
-	    if(document.getElementsByClassName('cover-wrapper')[0].style.display == "none"){
-          $('.cover-backstretch').backstretch("pause");
-	    }else{
-          $('.cover-backstretch').backstretch("next");
-	    }
-	  <% } %>
       } catch (e) {
         console.log(e);
       }
