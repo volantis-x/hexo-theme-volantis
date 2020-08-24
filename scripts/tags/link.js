@@ -7,11 +7,15 @@ hexo.extend.tag.register('link', function(args) {
   let text = ''
   let url = ''
   let img = ''
-  if (args.length > 1) {
+  if (args.length < 2) {
+    return
+  } else if (args.length == 2) {
     text = args[0].trim()
     url = args[1].trim()
-  } else {
-    return
+  } else if (args.length == 3) {
+    text = args[0].trim()
+    url = args[1].trim()
+    img = args[2].trim()
   }
   let result = '';
   result += '<div><a class="link-card" title="' + text + '" href="' + url + '">';
