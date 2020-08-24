@@ -13,9 +13,8 @@
 						<h2><%= year %></h2>
 					<% } %>
 						<div class='timenode'>
-							<div class="meta">
-								<time><%= date(post.date, 'MM-DD') %></time>
-								<a href="<%= url_for(post.link || post.path) %>">
+								<a class="meta" href="<%= url_for(post.link || post.path) %>">
+									<time><%= date(post.date, 'MM-DD') %></time>
 									<% if(post.title){ %>
 										<%- post.title %>
 									<% } else if (post.date) { %>
@@ -31,7 +30,6 @@
 										&nbsp;<i class="<%- icon %>" aria-hidden="true"></i>
 									<% }) %>
 								</a>
-							</div>
 						</div>
 				<% } %>
 			<% }); %>

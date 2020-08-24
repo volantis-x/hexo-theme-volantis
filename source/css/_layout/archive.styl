@@ -8,6 +8,8 @@ article#arc
   margin-bottom: $gap * 2
   padding-bottom: $gap * 4
   .timenode
+    &:before,&:after
+      margin-left: 12px
     .meta
       padding: 6px 0
       line-height: 1.5
@@ -16,31 +18,38 @@ article#arc
       display: flex
       font-size: $fontsize-body
       font-weight: 500
+      border-radius: 2px
+      color: var(--color-list)
+      &:before
+        display: none
+      &:after
+        margin-left: 14px
+      &:hover
+        color: var(--color-p)
+        background: var(--color-site-bg)
       time
         color: var(--color-meta)
-        margin-left: $gap * 0.25 + 20px
+        margin-left: $gap * 0.25 + 30px
         margin-right: $gap * 1
         flex-shrink: 0
-      a
-        color: var(--color-list)
-        &:hover
+
+      i
+        line-height: 1.5
+        color: $color-hover
+        &.red
+          color: $color-mac-red
+        &.green
+          color: $color-mac-green
+        &.yellow
+          color: $color-mac-yellow
+        &.blue
+          color: $color-mac-cyan
+        &.theme
+          color: $color-theme
+        &.accent
           color: $color-hover
-        i
-          color: $color-hover
-          &.red
-            color: $color-mac-red
-          &.green
-            color: $color-mac-green
-          &.yellow
-            color: $color-mac-yellow
-          &.blue
-            color: $color-mac-cyan
-          &.theme
-            color: $color-theme
-          &.accent
-            color: $color-hover
-          &.orange
-            color: $color-md-deep-orange
+        &.orange
+          color: $color-md-deep-orange
 
 
 // 分类页面
