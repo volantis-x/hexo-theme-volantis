@@ -1,4 +1,5 @@
-#archive-page
+// 归档页面
+article#arc
   margin-bottom: $gap * 2
   padding-top: $gap * 3
   padding-bottom: $gap * 4
@@ -37,114 +38,168 @@
           &.orange
             color: $color-md-deep-orange
 
-  .archive
-
-    // 分类页面
-    .archive-year
-      margin-top: 4em
-      margin-bottom: 1em
-      &:first-child
-        margin-top: 0em
-        padding-top: 0
-
-      h2
-        margin-top: 1em
-
-
-    .archive-post
-      a
-        color: var(--color-text)
-        width: 100%
-        display: inline-flex
-        flex-flow: row nowrap
-        justify-content: flex-start
-        align-items: flex-start
-        background: transparent
-        border-left: $border-line solid transparent
-        border-radius: $border-line
-        vertical-align: middle
-        font-size: $fontsize-meta
-        font-weight: 500
-        &.child
-          padding-left: 2 * $gap
-
-        trans()
-        &:hover
-          background: bgcolor($color-theme)
-          border-left: $border-line solid $color-theme
-          // padding-top: 8px
-          // padding-bottom: 8px
-        &:active
-          border-left: $border-line * 2 solid $color-theme
-
-      time
-        flex: none
-        vertical-align: middle
-        padding: .4em
-        padding-left: 2em
-        color: var(--color-meta)
-        @media screen and (max-width: $device-mobile)
-          padding-left: 1em
-
-      .title
-        flex: auto
-        padding: .4em
-        i
-          color: $color-hover
-          &.red
-            color: $color-mac-red
-          &.green
-            color: $color-mac-green
-          &.yellow
-            color: $color-mac-yellow
-          &.blue
-            color: $color-mac-cyan
-          &.theme
-            color: $color-theme
-          &.accent
-            color: $color-hover
-          &.orange
-            color: $color-md-deep-orange
-    .all-categories
-      time
-        color: var(--color-text)
-      .title
-        color: var(--color-meta)
-
-    .all-tags
+// 分类页面
+article#cat
+  .all-cats
+    a
+      display: block
+      padding: $gap * 0.5 $gap
+      border-radius: $border-button
+      color: var(--color-list)
+      &:hover
+        list_hover()
+      &.child
+        padding-left: 2 * $gap
+        
+// 标签页面
+article#tag
+  .all-tags
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    justify-content: flex-start
+    align-items: baseline
+    word-spacing: $gap * 0.5
+    text-align: center
+    ul
+      margin: 0 -4px
+      padding: 0
       display: flex
       flex-wrap: wrap
-      align-items: flex-start
-      justify-content: flex-start
-      align-items: baseline
-      word-spacing: $gap * 0.5
-      text-align: center
-      ul
-        margin: 0 -4px
-        padding: 0
+      li
+        list-style: none
+        background: var(--color-block)
+        margin: $gap-row 4px
+        border-radius: $border-button
+        overflow: hidden
         display: flex
-        flex-wrap: wrap
-        li
-          list-style: none
-          background: var(--color-block)
-          margin: $gap-row 4px
-          border-radius: $border-button
-          overflow: hidden
-          display: flex
-          a
-            display: inline-block
-            color: var(--color-text)
-            padding: 4px 8px 4px 12px
-            &:hover
-              color: $color-hover !important
-          span
-            padding: 4px 8px
-            color: alpha($color-meta, .5)
-            background: darken($color-block, 5)
-            pointer-events: none
+        a
+          display: inline-block
+          color: var(--color-text)
+          padding: 4px 8px 4px 12px
           &:hover
+            color: $color-hover !important
+        span
+          padding: 4px 8px
+          color: alpha($color-meta, .5)
+          background: darken($color-block, 5)
+          pointer-events: none
+        &:hover
+          background: bgcolor($color-hover)
+          a
+            color: $color-hover
+          span
             background: bgcolor($color-hover)
-            a
-              color: $color-hover
-            span
-              background: bgcolor($color-hover)
+
+
+  // .archive
+  //
+  //   // 分类页面
+  //   .archive-year
+  //     margin-top: 4em
+  //     margin-bottom: 1em
+  //     &:first-child
+  //       margin-top: 0em
+  //       padding-top: 0
+  //
+  //     h2
+  //       margin-top: 1em
+  //
+  //
+  //   .archive-post
+  //     a
+  //       color: var(--color-text)
+  //       width: 100%
+  //       display: inline-flex
+  //       flex-flow: row nowrap
+  //       justify-content: flex-start
+  //       align-items: flex-start
+  //       background: transparent
+  //       border-left: $border-line solid transparent
+  //       border-radius: $border-line
+  //       vertical-align: middle
+  //       font-size: $fontsize-meta
+  //       font-weight: 500
+        // &.child
+        //   padding-left: 2 * $gap
+  //
+  //       trans()
+  //       &:hover
+  //         background: bgcolor($color-theme)
+  //         border-left: $border-line solid $color-theme
+  //         // padding-top: 8px
+  //         // padding-bottom: 8px
+  //       &:active
+  //         border-left: $border-line * 2 solid $color-theme
+  //
+  //     time
+  //       flex: none
+  //       vertical-align: middle
+  //       padding: .4em
+  //       padding-left: 2em
+  //       color: var(--color-meta)
+  //       @media screen and (max-width: $device-mobile)
+  //         padding-left: 1em
+  //
+  //     .title
+  //       flex: auto
+  //       padding: .4em
+  //       i
+  //         color: $color-hover
+  //         &.red
+  //           color: $color-mac-red
+  //         &.green
+  //           color: $color-mac-green
+  //         &.yellow
+  //           color: $color-mac-yellow
+  //         &.blue
+  //           color: $color-mac-cyan
+  //         &.theme
+  //           color: $color-theme
+  //         &.accent
+  //           color: $color-hover
+  //         &.orange
+  //           color: $color-md-deep-orange
+  //   .all-categories
+  //     time
+  //       color: var(--color-text)
+  //     .title
+  //       color: var(--color-meta)
+  //
+  //   .all-tags
+  //     display: flex
+  //     flex-wrap: wrap
+  //     align-items: flex-start
+  //     justify-content: flex-start
+  //     align-items: baseline
+  //     word-spacing: $gap * 0.5
+  //     text-align: center
+  //     ul
+  //       margin: 0 -4px
+  //       padding: 0
+  //       display: flex
+  //       flex-wrap: wrap
+  //       li
+  //         list-style: none
+  //         background: var(--color-block)
+  //         margin: $gap-row 4px
+  //         border-radius: $border-button
+  //         overflow: hidden
+  //         display: flex
+  //         a
+  //           display: inline-block
+  //           color: var(--color-text)
+  //           padding: 4px 8px 4px 12px
+  //           &:hover
+  //             color: $color-hover !important
+  //         span
+  //           padding: 4px 8px
+  //           color: alpha($color-meta, .5)
+  //           background: darken($color-block, 5)
+  //           pointer-events: none
+  //         &:hover
+  //           background: bgcolor($color-hover)
+  //           a
+  //             color: $color-hover
+  //           span
+  //             background: bgcolor($color-hover)

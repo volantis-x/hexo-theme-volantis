@@ -58,6 +58,7 @@ $color-h5 = convert(hexo-config('color.light.h5'))
 $color-h6 = convert(hexo-config('color.light.h6'))
 $color-p = convert(hexo-config('color.light.p'))
 $color-list = convert(hexo-config('color.light.list'))
+$color-list-hl = convert(hexo-config('color.light.list_hl'))
 $color-meta = convert(hexo-config('color.light.meta'))
 
 // 深色配色方案在 darkmode.styl 中按需加载
@@ -68,7 +69,9 @@ bgcolor($c, $mix = 10)
   return mix($c, $color-card, $mix)
 
 list_active()
-  color mix($color-theme, $color-text, 75)
+  font-weight: 500
+  color: var(--color-list-hl)
 list_hover()
-  color: mix($color-theme, $color-text, 50)
+  font-weight: 500
+  color: var(--color-list-hl)
   background: var(--color-site-bg)
