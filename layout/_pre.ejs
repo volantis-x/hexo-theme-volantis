@@ -46,13 +46,13 @@ if (config.theme_config && config.theme_config.style) {
   }
   // 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
   if(theme.plugins.darkmodejs.enable&&theme.plugins.backstretch.position=='fixed'){
-	Array.prototype.remove = function(val) { 
+	Array.prototype.removeblur = function(val) { 
 		var index = this.indexOf(val); 
 		if (index > -1) { 
 			this.splice(index, 1); 
 		} 
 	};
-	theme.style.body.effect.remove("blur")
+	theme.style.body.effect.removeblur("blur")
   }
 }
 
