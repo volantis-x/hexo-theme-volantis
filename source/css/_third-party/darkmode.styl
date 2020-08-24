@@ -32,7 +32,7 @@
 			mix-blend-mode: difference  !important
 	else
 		.l_body
-			background-color: var(--color-site) !important
+			background-color: var(--color-site-bg) !important
 	img
 		filter: brightness(convert(hexo-config('color.dark.brightness'))) !important
 	.lazyload
@@ -47,9 +47,9 @@
 	.l_header ul.nav-list-h>li>a, ul.list-v >li>a
 		color: var(--color-meta)
 		&:hover
-			background: var(--color-site) !important
+			background: var(--color-site-bg) !important
 	.blur
-		background: var(--color-site) !important
+		background: var(--color-site-bg) !important
 	.nav-main
 		.u-search-input
 			background: var(--color-card) !important
@@ -68,10 +68,10 @@
 		color: var(--color-h1)
 	details>summary
 		color: var(--color-p)
-		background: var(--color-site)
+		background: var(--color-site-bg)
 	details
-		border: 1px solid var(--color-site)
-		background: var(--color-site)
+		border: 1px solid var(--color-site-bg)
+		background: var(--color-site-bg)
 	//search
 	#u-search .modal
 		background: var(--color-card) !important
@@ -84,7 +84,7 @@
 	//phone search
 	.l_header .m_search
 		@media screen and (max-width: $device-mobile)
-			background: var(--color-site) !important
+			background: var(--color-site-bg) !important
 	//side
 	.widget>.content ul.entry a:hover, .widget>.content ul.popular-posts a:hover
 		background: rgba($color-theme,.2)
@@ -137,14 +137,14 @@
 			background-color: var(--color-card)
 	if hexo-config('comments.service')=='minivaline'
 		.MiniValine .vpage .more
-			background: var(--color-site)
+			background: var(--color-site-bg)
 		.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before
 			background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
 		.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after
 			background: rgba(0,0,0,0.9)
 		.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre
-			background: var(--color-site)
-			border: 1px solid var(--color-site)
+			background: var(--color-site-bg)
+			border: 1px solid var(--color-site-bg)
 		.MiniValine .vinputs-area .vextra-area .vsmile-icons
 			background: transparent
 		.MiniValine .vlist .vcard .vcomment-body .vhead
@@ -157,13 +157,13 @@
 			background: var(--color-card)
 	if hexo-config('plugins.aplayer.enable')
 		.aplayer
-			background: var(--color-site)
+			background: var(--color-site-bg)
 		.aplayer .aplayer-list ol li:hover
 			background: rgba($color-theme,.2)
 		.aplayer .aplayer-list ol li.aplayer-list-light
 			background: var(--color-block)
 		.aplayer-info
-			background: var(--color-site) !important
+			background: var(--color-site-bg) !important
 		.aplayer .aplayer-lrc:before
 			background: linear-gradient(180deg,#282c34 0,hsla(0,0%,100%,0))
 		.aplayer .aplayer-lrc:after

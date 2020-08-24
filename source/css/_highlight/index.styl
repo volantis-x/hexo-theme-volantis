@@ -241,7 +241,7 @@ $hl-text = alpha($color-text, .9)
     width: 100%
 
   .title, .attr, .attribute
-    color: var(--color-md-indigo)
+    color: $color-md-indigo
 
   // 注释
   .comment
@@ -251,7 +251,7 @@ $hl-text = alpha($color-text, .9)
     color: $hl-keyword
 
   .type, .built_in, .tag .name
-    color: var(--color-md-light-blue)
+    color: $color-md-light-blue
 
   .variable, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo
     color: $hl-amber
@@ -260,13 +260,13 @@ $hl-text = alpha($color-text, .9)
     color: $hl-amber
 
   .class, .ruby .class .title, .css .rules .attribute
-    color: var(--color-md-orange)
+    color: $color-md-orange
 
   .string, .meta-string
     color: darken($color-md-green, 10%)
 
   .value, .inheritance, .header, .ruby .symbol, .xml .cdata
-    color: var(--color-md-green)
+    color: $color-md-green
 
   .css .hexcolor
     color: #66cccc
@@ -282,7 +282,7 @@ $hl-text = alpha($color-text, .9)
     .selector-class, .selector-attr
       color: $hl-amber
     .attribute
-      color: var(--color-md-indigo)
+      color: $color-md-indigo
     .number
       color: $hl-cyan
 
@@ -305,7 +305,7 @@ $hl-text = alpha($color-text, .9)
     .attr
       color: #E24F5A
     .literal
-      color: var(--color-md-indigo)
+      color: $color-md-indigo
 
 .highlight.yaml
   .line

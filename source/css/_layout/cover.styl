@@ -193,7 +193,8 @@
       font-size: $fontsize-body
       padding: 2px
       margin: 4px
-      color: alpha($color-site-inner, .75)
+      color: var(--color-site-inner)
+      opacity: .75
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
       border-bottom: 2px solid transparent
       i
@@ -201,7 +202,7 @@
       p
         font-size: $fontsize-body
       &:hover, &.active, &:active
-        color: var(--color-site-inner)
+        opacity: 1
         border-bottom: 2px solid var(--color-site-inner)
   &.dock .menu, &.featured .menu, &.focus .menu
     border-radius: $border-button + 2px
