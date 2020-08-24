@@ -203,17 +203,16 @@ ul.m-pc,ul.list-v
 ul.nav-list-h
   display: flex
   align-items: stretch
-  height: $navbar-height
   &>li
     position: relative
     justify-content: center
+    height: 100%
+    line-height: 2.4
+    border-radius: $border-button
     >a
-      height: 100%
       -webkit-font-smoothing: antialiased
       -moz-osx-font-smoothing: grayscale
       font-weight: 600
-      line-height: $navbar-height
-      border-bottom: $border-line solid transparent
 
 ul.list-v
   z-index: 1
@@ -262,12 +261,7 @@ ul.list-v
     border-radius: 4px
     >i
       margin-right: 8px
-    &.current
-      border-left-color: alpha($color-theme, 80%)
-      border-bottom-color: alpha($color-theme, 80%)
     &:active,&.active
-      border-left-color: $color-theme
-      border-bottom-color: $color-theme
       list_active()
     &:hover
       list_hover()
@@ -280,20 +274,16 @@ ul.list-v
       >i
         margin-right: 4px
 
-.l_header ul.nav-list-h>li>a
-  color: mix($color-text, $color-card, 80)
-  &.current
-    border-left-color: alpha($color-theme, 80%)
-    border-bottom-color: alpha($color-theme, 80%)
-  &:active,&.active
-    color: $color-theme
-    border-left-color: $color-theme
-    border-bottom-color: $color-theme
-  &:hover
-    color: mix($color-theme, $color-text, 70)
-    border-left-color: $color-theme
-    border-bottom-color: $color-theme
-    background: var(--color-site-bg)
+.l_header ul.nav-list-h>li
+  color: var(--color-list)
+  line-height: $navbar-height - 2px
+  >a
+    color: inherit
+    &:active,&.active
+      color: $color-theme
+      border-bottom: 2px solid $color-theme
+  &:hover>a
+    color: var(--color-list-hl)
   i.music
     animation: rotate-effect 1.5s linear infinite
     @keyframes rotate-effect
