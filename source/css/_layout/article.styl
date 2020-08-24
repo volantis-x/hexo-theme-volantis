@@ -159,7 +159,7 @@
 
   blockquote
     background: var(--color-block)
-    border-left: $border-codeblock solid var(--color-theme)
+    border-left: $border-codeblock solid $color-theme
     border-radius: $border-codeblock
 
   blockquote
@@ -191,7 +191,7 @@
     &.pullquote
       &.right
         border-left: none
-        border-right: $border-codeblock solid var(--color-theme)
+        border-right: $border-codeblock solid $color-theme
         p
           text-align: right
 
@@ -266,9 +266,9 @@
       .content
         padding: 0 .6em !important
         a
-          color: var(--color-link)
+          color: $color-link
           &:hover
-            color: var(--color-hover)
+            color: $color-hover
     .content
       padding: 0 .6em
       margin: 0
@@ -281,23 +281,23 @@
           border-left: none
           padding: 0
           padding-left: 4px
-          color: var(--color-link)
+          color: $color-link
           font-weight: normal
           text-decoration: none
           &:hover,&.active,&:active
             border-left: none !important
             background: none !important
           &:hover
-            color: var(--color-hover)
+            color: $color-hover
 
       .list
         a
           .name
             display: inline
-            color: var(--color-link)
+            color: $color-link
           &:hover
             .name
-              color: var(--color-hover)
+              color: $color-hover
 
 
     &.qrcode > .content
@@ -403,7 +403,7 @@ article .footer
       color: inherit
       pointer-events: auto
       &:hover
-        color: var(--color-hover)
+        color: $color-hover
     &:before
       content: ''
       display: block

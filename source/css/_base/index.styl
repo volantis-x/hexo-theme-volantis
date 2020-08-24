@@ -4,13 +4,7 @@
   --color-site-footer: $color-site-footer
   --color-card: $color-card
   --color-text: $color-text
-  --color-theme: $color-theme
-  --color-link: $color-link
-  --color-button: $color-button
-  --color-hover: $color-hover
-  --color-inner: $color-inner
   --color-block: $color-block
-  --color-selection: $color-selection
   --color-inlinecode: $color-inlinecode
   --color-codeblock: $color-codeblock
   --color-h1: $color-h1
@@ -20,8 +14,8 @@
   --color-h5: $color-h5
   --color-h6: $color-h6
   --color-p: $color-p
-  --color-meta: $color-meta
   --color-list: $color-list
+  --color-meta: $color-meta
 
 *
   box-sizing: border-box
@@ -58,11 +52,11 @@ body
 
 
 ::-moz-selection {
-  background: var(--color-selection)
+  background: $color-selection
 }
 
 ::selection {
-  background: var(--color-selection)
+  background: $color-selection
 }
 
 
@@ -83,12 +77,12 @@ h1,h2,h3,h4,h6
   font-weight: normal
 
 a
-  color: var(--color-link)
+  color: $color-link
   cursor: pointer
   text-decoration: none
   trans()
   &:hover
-    color: var(--color-hover)
+    color: $color-hover
   &:active,&:hover
     outline: 0
   &:not([href])

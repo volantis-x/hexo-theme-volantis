@@ -18,11 +18,11 @@
         cursor: $not-allowed,not-allowed
 
   & a, &.regular a
-    color: var(--color-button)
+    color: $color-button
     border: 1px solid @color
     &:hover
-      color: var(--color-hover)
-      border-color: var(--color-hover)
+      color: $color-hover
+      border-color: $color-hover
     i
       margin-right: 4px
 
@@ -31,11 +31,11 @@
 
   &.solid a
     border: none
-    background: var(--color-button)
+    background: $color-button
     color: $color-inner
     &:hover
       color: $color-inner
-      background: var(--color-hover)
+      background: $color-hover
 
   &.large a
     font-size: 1rem
@@ -128,11 +128,11 @@
       margin: $gap $gap * 0.5 $gap * 0.25 $gap * 0.5
       margin-top: "calc(-1.25 * %s - 32px)" % $gap
       border: 2px solid var(--color-card)
-      background: var(--color-inner)
+      background: $color-inner
       line-height: 60px
       font-size: 28px
     &>i:first-child
-      color: var(--color-inner)
+      color: $color-inner
       background: $color-theme
     background: var(--color-block)
     border-radius: 4px
@@ -152,12 +152,12 @@
     &[href]:hover
       background: alpha($color-hover, 15%)
       &,b
-        color: var(--color-hover)
+        color: $color-hover
       &>img:first-child, &>i:first-child
         transform: scale(1.1) translateY(-8px)
         box-shadow: $boxshadow-float
       &>i:first-child
-        background: var(--color-hover)
+        background: $color-hover
   &.circle a
     &>img:first-child, &>i:first-child
       border-radius: 32px

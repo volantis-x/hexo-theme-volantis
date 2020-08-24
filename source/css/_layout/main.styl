@@ -31,14 +31,14 @@
     &.show
       transform: translateY(0) scale(1)
       &.hl
-        background: var(--color-theme)
-        color: var(--color-inner)
+        background: $color-theme
+        color: $color-inner
         box-shadow: $boxshadow-card
     @media screen and (min-width: $device-tablet)
       &:hover
         transform: scale(1.2)
         border-radius: 25%
-        background: var(--color-theme)
+        background: $color-theme
         color: white
         box-shadow: $boxshadow-card-float
         &.hl
@@ -145,7 +145,7 @@
           text-decoration: none
           font-size: $fontsize-h1
           &:hover
-            color: var(--color-hover)
+            color: $color-hover
     .article-meta
       color: var(--color-meta)
       margin-bottom: $gap
@@ -254,9 +254,9 @@
               font-weight: normal
               trans()
             &:hover
-              color: var(--color-hover)
+              color: $color-hover
               p
-                color: var(--color-hover)
+                color: $color-hover
 
         .author
           img,i
@@ -365,12 +365,12 @@
       display: inline-block
       border-radius: 2px
       cursor: pointer
-      background: var(--color-button)
-      color: var(--color-inner)
+      background: $color-button
+      color: $color-inner
       padding-left: $gap * 3
       padding-right: $gap * 3
       &:hover
-        background: var(--color-hover)
+        background: $color-hover
 
 .white-box
   background: var(--color-card)

@@ -15,7 +15,7 @@
         border: 1px dashed alpha($color-text, 30%)
         trans()
         &:hover
-          border: 1px dashed var(--color-theme)
+          border: 1px dashed $color-theme
         .cancel-reply
           margin-top: 0
           margin-bottom: 0
@@ -24,9 +24,9 @@
             border-radius: 0
             border-bottom: 1px dashed alpha($color-text, 30%)
             &:hover
-              border-bottom: 1px dashed var(--color-theme)
+              border-bottom: 1px dashed $color-theme
             &:focus
-              border-bottom: 1px solid var(--color-theme)
+              border-bottom: 1px solid $color-theme
         .vedit
           .vicon
             height: 22px
@@ -57,7 +57,7 @@
           span
             fill: var(--color-p)
             &.actived
-              fill: var(--color-theme)
+              fill: $color-theme
       .vcount
         color: var(--color-p)
         font-size: $fontsize-meta
@@ -77,7 +77,7 @@
         font-size: 14px
         trans()
         &:hover
-          color: var(--color-hover)
+          color: $color-hover
           background: bgcolor($color-hover)
         &.vmore
           width: 100%
@@ -107,7 +107,7 @@
               color: #ff9800
               font-weight: bold
               &:hover
-                color: var(--color-hover)
+                color: $color-hover
           .vsys
             margin: 2px
             padding: 1px 8px
@@ -115,16 +115,16 @@
         .vmeta
           .vat
             font-weight: bold
-            color: var(--color-link)
+            color: $color-link
             trans()
             &:hover
-              color: var(--color-hover)
+              color: $color-hover
         .vcontent
           blockquote
             padding-top: $gap-row
             padding-bottom: $gap-row
             background: var(--color-block)
-            border-left: $border-codeblock solid var(--color-theme)
+            border-left: $border-codeblock solid $color-theme
             border-radius: $border-codeblock
             trans()
           code
@@ -135,11 +135,11 @@
             code
               border: none
           a
-            color: var(--color-link)
+            color: $color-link
             line-height: inherit
             trans()
             &:hover
-              color: var(--color-hover)
+              color: $color-hover
               text-decoration: underline
           p
             color: var(--color-p)
@@ -160,7 +160,7 @@
           color: var(--color-p)
           &:hover
             text-decoration: underline
-            color: var(--color-hover)
+            color: $color-hover
       .vinput
         color: var(--color-text)
       p

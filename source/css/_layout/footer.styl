@@ -2,7 +2,7 @@ footer.footer
   position: relative
   padding: 40px 10px 120px 10px
   width: 100%
-  color: alpha($color-site-footer, .5)
+  color: var(--color-site-footer)
   margin: 0px auto
   &,p
     font-size: $fontsize-code
@@ -10,7 +10,6 @@ footer.footer
   text-align: center
   .licenses
     color: fade(@color_text_main, 50%)
-
   .social-wrapper
     display: flex
     justify-content: center
@@ -19,11 +18,11 @@ footer.footer
     font-size: $fontsize
 
   a
-    color: alpha($color-site-footer, .75)
+    color: var(--color-site-footer)
     padding: 0
     trans()
     &:hover
-      color: var(--color-site-footer)
+      color: $color-hover
     &:not(.social):hover
       text-decoration: underline
     &.social
@@ -36,13 +35,13 @@ footer.footer
       min-width: 36px
       min-height: 36px
       margin: 4px
-      color: alpha($color-site-footer, .75)
+      opacity: .75
       img
         margin: 8px
         height: 24px
       &:hover
-        background: alpha($color-site-footer, .1)
-        color: var(--color-site-footer)
+        color: $color-hover
+        background: alpha(@color, 0.1)
 
 
 

@@ -47,9 +47,9 @@ div.note
     font-family: hexo-config('style.fontfamily.iconfont.fontfamily')
 
   background: var(--color-block)
-  border-left: $border-codeblock solid var(--color-theme)
+  border-left: $border-codeblock solid $color-theme
   &::before
-    color: var(--color-theme)
+    color: $color-theme
     content: '\f054'
   if hexo-config('style.body.note') && hexo-config('style.body.note.icon')
     &::before

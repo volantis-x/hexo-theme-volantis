@@ -31,7 +31,12 @@ $color-google-red = #E8453C
 
 
 // common
-$color-selection = alpha(#2196f3, 0.2)
+$color-theme = convert(hexo-config('color.common.theme'))
+$color-link = convert(hexo-config('color.common.link'))
+$color-button = convert(hexo-config('color.common.button'))
+$color-hover = convert(hexo-config('color.common.hover'))
+$color-inner = convert(hexo-config('color.common.inner'))
+$color-selection = convert(hexo-config('color.common.selection'))
 
 
 // -------- 动态配色方案 --------
@@ -41,11 +46,7 @@ $color-site-inner = convert(hexo-config('color.light.site_inner'))
 $color-site-footer = convert(hexo-config('color.light.site_footer'))
 $color-card = convert(hexo-config('color.light.card'))
 $color-text = convert(hexo-config('color.light.text'))
-$color-theme = convert(hexo-config('color.light.theme'))
-$color-link = convert(hexo-config('color.light.link'))
-$color-button = convert(hexo-config('color.light.button'))
-$color-hover = convert(hexo-config('color.light.hover'))
-$color-inner = convert(hexo-config('color.light.inner'))
+
 $color-block = convert(hexo-config('color.light.block'))
 $color-codeblock = convert(hexo-config('color.light.codeblock'))
 $color-inlinecode = convert(hexo-config('color.light.inlinecode'))
@@ -70,4 +71,4 @@ list_active()
   color mix($color-theme, $color-text, 75)
 list_hover()
   color: mix($color-theme, $color-text, 50)
-  background: bgcolor($color-theme, 15)
+  background: var(--color-site-bg)

@@ -52,7 +52,7 @@
     &,a
       color: var(--color-meta)
     >a:hover
-      color: var(--color-hover)
+      color: $color-hover
 
     span.name
       margin-left: $gap * 0.5
@@ -86,14 +86,14 @@
           font-size: $fontsize-meta
           color: alpha($color-text, .7)
         &.active
-          border-left: $border-line solid var(--color-theme)
+          border-left: $border-line solid $color-theme
           list_active()
           .badge
             color: alpha($color-theme, .9)
         &.child
           padding-left: $gap * 2
         &:hover
-          border-left: $border-line solid var(--color-theme)
+          border-left: $border-line solid $color-theme
           list_hover()
 
 
@@ -158,7 +158,7 @@
           padding: 0
           trans()
           &:hover
-            color: var(--color-hover)
+            color: $color-hover
 
           &.social
             font-size: $fontsize-body
@@ -171,7 +171,7 @@
             border-radius: 100px
             &:hover
               background: bgcolor($color-theme)
-              color: var(--color-theme)
+              color: $color-theme
 
         @media screen and (max-width: $device-tablet)
           justify-content: center
@@ -193,10 +193,10 @@
         word-break: break-all
       padding: $gap * 0.25 $gap
       a
-        color: var(--color-link)
+        color: $color-link
         trans()
         &:hover
-          color: var(--color-hover)
+          color: $color-hover
         &:active
           color: darken($color-hover, 25%)
 
@@ -286,8 +286,8 @@
         margin: 4px 0
         border-bottom: 1px solid transparent
         &:hover
-          color: var(--color-hover) !important //to cover inline style.
-          border-bottom: 1px solid var(--color-hover)
+          color: $color-hover !important //to cover inline style.
+          border-bottom: 1px solid $color-hover
 
 
 

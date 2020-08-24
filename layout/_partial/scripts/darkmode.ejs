@@ -32,8 +32,8 @@ var options = {
   right: 'unset',
   left: '16px',
   time: '0s',
-  mixColor: '<%- theme.color.light.site %>',
-  backgroundColor: '<%- theme.color.light.site %>',
+  mixColor: '<%- theme.color.light.site_bg %>',
+  backgroundColor: '<%- theme.color.light.site_bg %>',
   buttonColorDark: '<%- theme.plugins.darkmodejs.button.buttonDark %>',
   buttonColorLight: '<%- theme.plugins.darkmodejs.button.buttonLight %>',
   saveInCookies: true,
@@ -41,10 +41,10 @@ var options = {
   autoMatchOsTheme: true
 };
 // 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
-<% 
+<%
 if (theme.plugins.backstretch.position=='fixed') {
 	theme.plugins.darkmodejs.compatible=false;
-} 
+}
 %>
 function pjax_darkmodejs(){
   <% if (theme.plugins.darkmodejs.compatible) { %>
@@ -57,7 +57,7 @@ function pjax_darkmodejs(){
       var top = $(document).scrollTop();
       if(top > TopFlag) {
         $(".darkmode-layer").css("mix-blend-mode","normal");
-        $(".darkmode-layer").css("background-color","<%- theme.color.dark.site %>");
+        $(".darkmode-layer").css("background-color","<%- theme.color.dark.site_bg %>");
       }else{
         $(".darkmode-layer").css("mix-blend-mode","difference");
         $(".darkmode-layer").css("background-color","");

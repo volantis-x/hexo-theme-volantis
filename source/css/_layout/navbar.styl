@@ -98,12 +98,12 @@
         border-radius: 100px
         border: none
         trans()
-        color: var(--color-theme)
+        color: $color-theme
         &:hover
           border: none
         &.active,&:active
           border: none
-          background: bgcolor($color-theme)
+          background: var(--color-site-bg)
         @media screen and (max-width: $device-mobile)
           width: $iconW
           height: $height
@@ -266,8 +266,8 @@ ul.list-v
       border-left-color: alpha($color-theme, 80%)
       border-bottom-color: alpha($color-theme, 80%)
     &:active,&.active
-      border-left-color: var(--color-theme)
-      border-bottom-color: var(--color-theme)
+      border-left-color: $color-theme
+      border-bottom-color: $color-theme
       list_active()
     &:hover
       list_hover()
@@ -286,14 +286,14 @@ ul.list-v
     border-left-color: alpha($color-theme, 80%)
     border-bottom-color: alpha($color-theme, 80%)
   &:active,&.active
-    color: var(--color-theme)
-    border-left-color: var(--color-theme)
-    border-bottom-color: var(--color-theme)
+    color: $color-theme
+    border-left-color: $color-theme
+    border-bottom-color: $color-theme
   &:hover
     color: mix($color-theme, $color-text, 70)
-    border-left-color: var(--color-theme)
-    border-bottom-color: var(--color-theme)
-    background: bgcolor($color-theme)
+    border-left-color: $color-theme
+    border-bottom-color: $color-theme
+    background: var(--color-site-bg)
   i.music
     animation: rotate-effect 1.5s linear infinite
     @keyframes rotate-effect
