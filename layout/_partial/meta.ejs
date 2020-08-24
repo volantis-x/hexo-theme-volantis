@@ -1,5 +1,5 @@
 <%
-var topMetas = theme.layout.on_page.meta.header || [];
+var topMetas = theme.article.body.top_meta || [];
 if (post.meta && (post.meta.header !== undefined && post.meta.header !== null)) {
   if (post.meta.header.length) {
     topMetas = post.meta.header;
@@ -7,7 +7,7 @@ if (post.meta && (post.meta.header !== undefined && post.meta.header !== null)) 
     topMetas = [];
   }
 }
-var bottomMetas = theme.layout.on_page.meta.footer || [];
+var bottomMetas = theme.article.body.bottom_meta || [];
 if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) {
   if (post.meta.footer.length) {
     bottomMetas = post.meta.footer;
