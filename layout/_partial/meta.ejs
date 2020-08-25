@@ -66,13 +66,13 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
         <% if ((topMetas).indexOf('title') > -1) { %>
           <h1 class="title">
             <a href="<%- url_for(post.link || post.path) %>">
-              <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.meta.date.format) %>
+              <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
             </a>
           </h1>
         <% } %>
         <div class='new-meta-box'>
           <% (topMetas).forEach(function(meta) { %>
-            <% if ((meta != 'title') && (meta in theme.meta)){ %>
+            <% if ((meta != 'title') && (meta in theme.article.body.meta_library)){ %>
               <%- partial('../_meta/' + meta, {post: post}) %>
             <% } %>
           <% }) %>
@@ -84,7 +84,7 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
   <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
       <% (bottomMetas).forEach(function(meta){ %>
-        <% if((meta != 'title') && (meta in theme.meta)){ %>
+        <% if((meta != 'title') && (meta in theme.article.body.meta_library)){ %>
           <%- partial('../_meta/' + meta, {post: post}) %>
         <% } %>
       <% }) %>

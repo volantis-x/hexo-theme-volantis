@@ -46,7 +46,7 @@
     %>
     <h2 class="article-title" <%- pinTitle ? 'pin' : '' %>>
       <a href="<%- url_for(post.link || post.path) %>">
-        <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.meta.date.format) %>
+        <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
       </a>
     </h2>
   <% } %>

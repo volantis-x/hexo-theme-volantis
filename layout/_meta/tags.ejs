@@ -2,7 +2,7 @@
   <%
   var items = [];
   post.tags.each(function(item){
-    items.push('<div class="new-meta-item meta-tags"><a class="tag" href="'+url_for(item.path)+'" rel="nofollow"><i class="' + theme.meta.tags.icon + ' fa-fw" aria-hidden="true"></i><p>' + item.name + '</p></a></div>');
+    items.push('<div class="new-meta-item meta-tags"><a class="tag" href="'+url_for(item.path)+'" rel="nofollow"><i class="' + theme.article.body.meta_library.tags.icon + ' fa-fw" aria-hidden="true"></i><p>' + item.name + '</p></a></div>');
   });
   %>
   <%- items.join(' ') %>

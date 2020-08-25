@@ -2,8 +2,8 @@
   <%  if (site.data.widget && (widget in site.data.widget)){ %>
     <% let w = site.data.widget[widget]; w.id = widget; %>
     <%- partial(w.class, {item: w, where: where}) %>
-  <% } else if (theme.widget && (widget in theme.widget)){ %>
-    <% let w = theme.widget[widget]; w.id = widget; %>
+  <% } else if (theme.sidebar.library && (widget in theme.sidebar.library)){ %>
+    <% let w = theme.sidebar.library[widget]; w.id = widget; %>
     <%- partial(w.class, {item: w, where: where}) %>
   <% } %>
 <% }) %>

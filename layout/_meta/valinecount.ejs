@@ -7,9 +7,9 @@
     }
   %>
   <a href="<%- url_for(path) %>#comments">
-    <i class="<%- theme.meta.valinecount.icon %> fa-fw"></i>
+    <i class="<%- theme.article.body.meta_library.valinecount.icon %> fa-fw"></i>
     <span class="valine-comment-count" data-xid="<%- url_for(path) %>">0</span>
-    <span class="leancloud-comments-count">&nbsp;<%- theme.meta.valinecount.desc %></span>
+    <span class="leancloud-comments-count">&nbsp;<%- theme.article.body.meta_library.valinecount.desc %></span>
   </a>
 </div>
 <% } %>

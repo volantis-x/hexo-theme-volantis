@@ -3,7 +3,7 @@
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.posts && site.posts.length > 0) { %>
     <% if (page.layout == 'category') { %>
-      <section class="post-list <%- theme.layout.multiple_columns ? 'multiple-columns' : '' %>">
+      <section class="post-list">
         <div class='post-wrapper'>
           <article id="cat" class="post article white-box reveal <%- theme.style.body.effect.join(' ') %>">
             <h2><%- page.title %></h2>

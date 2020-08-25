@@ -8,21 +8,21 @@
         }
       %>
       <div id="lc-pv" data-title="<%- post.title || page.title %>" data-path="<%- url_for(path) %>">
-        <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
+        <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-        <%- theme.meta.counter.unit %>
+        <%- theme.article.body.meta_library.counter.unit %>
       </div>
     </a>
   </div>
 <% } else if (theme.analytics.busuanzi) { %>
   <div class="new-meta-item browse busuanzi">
     <a class='notlink'>
-      <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
+      <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
       <p>
         <span id="busuanzi_value_page_pv">
           <i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
         </span>
-        <%- theme.meta.counter.unit %>
+        <%- theme.article.body.meta_library.counter.unit %>
       </p>
     </a>
   </div>
