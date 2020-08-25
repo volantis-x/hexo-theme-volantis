@@ -8,19 +8,27 @@ var util = require('hexo-util');
 // Examples of helper
 hexo.extend.helper.register('htmlGenerator', function(args){
   if (!args || !args.json || args.json.length == 0) return "";
-
+  const cfg = hexo.theme.config.article.body.footer_widget.related_posts;
   var returnHTML = "";
+  var div = `
+  <div class="related_posts">
+    <section class='header'>
+      <i class="${cfg.icon} fa-fw" aria-hidden="true"></i><span>${cfg.title}</span>
+    </section>
+    <section class='body'>
+      `;
+
 
   function generateHTML(list){
 
     var ret = '';
     ret += '<a class="item" href="' + list.path + '" title="' + list.title + '" rel="bookmark ">';
-    
-    if (hexo.theme.config.article.body.footer_widget.related_posts.placeholder_img.length > 0) {
+
+    if (cfg.placeholder_img.length > 0) {
       if (list.img && list.img != "") {
         ret += '<img src="' + list.img + '" />';
       } else {
-        ret += '<img src="' + hexo.theme.config.article.body.footer_widget.related_posts.placeholder_img + '" />';
+        ret += '<img src="' + cfg.placeholder_img + '" />';
       }
     }
 
@@ -38,7 +46,9 @@ hexo.extend.helper.register('htmlGenerator', function(args){
       returnHTML += generateHTML(args.json[i]);
   }
 
-  if (returnHTML != "") returnHTML = "<div class=\"" + args.class + "\">" + returnHTML + "</div>";
 
-  return returnHTML;
+  if (returnHTML != "") returnHTML = "<div class=\"" + args.class + "\">" + returnHTML + "</div>";
+  div += returnHTML;
+  div += '</section></div>';
+  return div;
 });
