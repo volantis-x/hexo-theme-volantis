@@ -1,7 +1,7 @@
 .darkmode-toggle
-	z-index: 100000
+	z-index: 2001
 .darkmode-background
-	z-index: -9999999 !important
+	z-index: -2001 !important
 .darkmode--activated
 	--color-site-bg: convert(hexo-config('color_scheme.dark.site_bg'))
 	--color-site-inner: convert(hexo-config('color_scheme.dark.site_inner'))
@@ -99,7 +99,9 @@
 	*:not(.highlight) >table tr
 		background-color: var(--color-card)
 	*:not(.highlight) >table th
-		background: rgba(3, 8, 36, 0.56)
+		background: var(--color-site-bg)
+	*:not(.highlight) table td,*:not(.highlight) table th
+		border-color: var(--color-site-bg)
 	*:not(.highlight) >table tr:hover
 		background: var(--color-codeblock)
 	blockquote p

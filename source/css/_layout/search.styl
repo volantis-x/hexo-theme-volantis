@@ -97,7 +97,8 @@
         width: 100%
         height: 100%
         z-index: 2
-
+        input
+          color: var(--color-text)
         #u-search-modal-input
           margin: $gap 50px
           padding: 0 $gap * 0.5
@@ -220,14 +221,15 @@
             color: darken($color-theme, 10)
             text-decoration: underline
           &:hover
-            background: bgcolor($color-theme)
-
+            background: var(--color-site-bg)
+            .title
+              color: var(--color-list-hl)
 
 
           .title
             display: inline-block
             max-width: 100%
-            color: lighten($color-text, 10)
+            color: var(--color-list)
             font-weight: bold
             padding: 1px
             margin-bottom: 2px
@@ -249,7 +251,7 @@
             right: 0
             margin-top: -4px
             font-size: 11px
-            color: gray
+            color: var(--color-meta)
 
 
   .modal-overlay

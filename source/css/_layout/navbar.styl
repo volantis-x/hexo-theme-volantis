@@ -149,7 +149,7 @@
       position: absolute
       width: $iconW
       left: $iconMargin + 1px
-      color: alpha($color-text, 70%)
+      color: var(--color-meta)
       @media screen and (max-width: $device-mobile)
         display: none
     .input
@@ -199,6 +199,7 @@
 ul.m-pc
   >li>a
     color: inherit
+    border-bottom: 2px solid transparent
     &:active,&.active
       border-bottom: 2px solid $color-theme
 ul.m-pc,ul.list-v
@@ -256,7 +257,7 @@ ul.list-v
   >li>a
     trans()
     display: block
-    color: mix($color-text, $color-card, 80)
+    color: var(--color-list)
     font-size: $fontsize-meta
     font-weight: bold
     line-height: 36px
