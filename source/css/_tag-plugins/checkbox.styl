@@ -19,7 +19,7 @@ article .checkbox, .md .checkbox
     border-radius: 2px
     flex-shrink: 0
     margin-right: 8px
-    if hexo-config('custom_css.body.checkbox.enable') != true
+    if hexo-config('tag_plugins.checkbox.interactive') != true
       pointer-events: none
   /* Checkbox */
   input[type=checkbox]
@@ -149,7 +149,7 @@ article .checkbox, .md .checkbox
       transform: scale(1)
   /* Colors */
   input
-    $c = convert(hexo-config('custom_css.body.checkbox.color')) || $color-theme
+    $c = convert(hexo-config('tag_plugins.checkbox.color')) || $color-theme
     border: 2px solid $c
     &[type=checkbox]:checked
       background: $c

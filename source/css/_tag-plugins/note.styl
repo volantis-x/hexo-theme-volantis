@@ -44,18 +44,18 @@ div.note
     font-weight: 600
     line-height: 24px
     vertical-align: middle
-    font-family: hexo-config('custom_css.fontfamily.iconfont.fontfamily')
+    font-family: hexo-config('tag_plugins.note.iconfont')
 
   background: var(--color-block)
   border-left: $border-codeblock solid $color-theme
   &::before
     color: $color-theme
     content: '\f054'
-  if hexo-config('custom_css.body.note') && hexo-config('custom_css.body.note.icon')
+  if hexo-config('tag_plugins.note') && hexo-config('tag_plugins.note.icon')
     &::before
-      content: hexo-config('custom_css.body.note.icon') || '\f054'
-    if hexo-config('custom_css.body.note.color')
-      $c = convert(hexo-config('custom_css.body.note.color')) || mix($color-text, $color-card, 80)
+      content: hexo-config('tag_plugins.note.icon') || '\f054'
+    if hexo-config('tag_plugins.note.color')
+      $c = convert(hexo-config('tag_plugins.note.color')) || mix($color-text, $color-card, 80)
       background: bg($c)
       border-color: border($c)
       &::before

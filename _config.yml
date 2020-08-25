@@ -1,7 +1,12 @@
 ############################### Volantis ###############################
-#
-# docs: https://volantis.js.org
-# github: https://github.com/volantis-x/hexo-theme-volantis
+info:
+  theme: Volantis # This is theme's name.
+  version: '4.0.0-beta.2' # This is theme's version.
+  docs: https://volantis.js.org/ # This is theme's URL.
+  repo: https://github.com/volantis-x/hexo-theme-volantis
+  cdn:
+    js:
+    css:
 #
 # 从 v4 开始不再支持数据文件，全部的自定义设置请写在 _config.volantis.yml 中
 #
@@ -405,7 +410,16 @@ sidebar:
 ############################### Tag Plugins ############################### > start
 # 内置标签插件的配置
 tag_plugins:
-  # 外链卡片
+  # {% note text %}
+  note: # style for default note:
+    icon: '\f054'
+    color: ''
+    iconfont: 'Font Awesome 5 Free'
+  # {% checkbox %}
+  checkbox:
+    interactive: true # enable interactive for user
+    color: '' # color for default checkbox
+  # {% link title, url, img %}
   link:
     placeholder: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
 ############################### Tag Plugins ############################### > end
@@ -601,7 +615,7 @@ plugins:
 ############################### Rightmenu ############################### > start
 # 自定义右键菜单
 rightmenu:
-  enable: true
+  enable: #true
   # hr: 分割线, music: 音乐控制器
   layout: [home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
   # 可选功能项
@@ -783,12 +797,6 @@ custom_css:
       h3: left
       h4: left
       p: justify
-    note: # style for default note: {% note text %}
-      icon: '\f054'
-      color: ''
-    checkbox:
-      enable: true # enable for user
-      color: '' # color for default checkbox
   gap:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 24px # Spacing above H3 (only px unit)
@@ -833,8 +841,6 @@ custom_css:
       # url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
       # weight: normal
       # style: normal
-    iconfont:
-      fontfamily: 'Font Awesome 5 Free'
 ############################### Custom css ############################### > end
 
 
@@ -861,14 +867,3 @@ seo:
     tag: noindex,follow
     # robots can be written in front-matter
 ############################### SEO ############################### > end
-
-############################### Theme Information ############################### > start
-info:
-  name: Volantis # This is theme's name.
-  version: '4.0.0-beta.2' # This is theme's version.
-  docs: https://volantis.js.org/ # This is theme's URL.
-  repo: https://github.com/volantis-x/hexo-theme-volantis
-  cdn:
-    js:
-    css:
-############################### Theme Information ############################### > end
