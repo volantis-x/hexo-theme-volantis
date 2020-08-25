@@ -8,36 +8,49 @@ function postSiteCardGroup(args, content) {
   }
 }
 function postSiteCard(args) {
-  args = args.join(' ').split(',')
-  let link = args[0].trim()
-  let img = args[1].trim()
-  let title = args[2].trim()
-  
-  if (args.length > 3) {
-    let desc = args[3].trim()
-    return `<div class='site-card'>
-      <a href='${link}'>
-        <div class='img'>
-          <img src='${img}'/>
-        </div>
-        <div class='info'>
-          <span class='title'>${title}</span>
-          <span class='desc'>${desc}</span>
-        </div>
-      </a>
-    </div>`;
-  } else if (args.length == 3) {
-    return `<div class='site-card'>
-      <a href='${link}'>
-        <div class='img'>
-          <img src='${img}'/>
-        </div>
-        <div class='info'>
-          <span class='title'>${title}</span>
-        </div>
-      </a>
-    </div>`;
+  args = args.join(' ').split(', ')
+  // 所有支持的参数
+  let title = args[0].trim();
+  let url = '';
+  let screenshot = '';
+  let avatar = '';
+  let description = '';
+  // 解析
+  if (args.length > 1) {
+    for (let i = 1; i < args.length; i++) {
+      let tmp = args[i].trim();
+      if (tmp.includes('url=')) {
+        url = tmp.substring(4, tmp.length);
+      } else if (tmp.includes('screenshot=')) {
+        screenshot = tmp.substring(11, tmp.length);
+      } else if (tmp.includes('avatar=')) {
+        avatar = tmp.substring(7, tmp.length);
+      } else if (tmp.includes('description=')) {
+        description = tmp.substring(12, tmp.length);
+      }
+    }
   }
+  // 布局
+  let result = '';
+  result += '<a class="site-card" href="' + url + '">';
+  result += '<div class="img"><img src="' + screenshot + '"/></div>';
+  result += '<div class="info">';
+  if (avatar.length > 0) {
+    result += '<img src="' + avatar + '"/>';
+  } else {
+
+  }
+
+  result += '<span class="title">' + title + '</span>';
+  if (description.length > 0) {
+    result += '<span class="desc">' + description + '</span>';
+  } else {
+
+  }
+
+  result += '</div></a>';
+  return result;
+
 }
 
 // {% site link, img, title %}
