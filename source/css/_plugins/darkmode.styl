@@ -3,25 +3,25 @@
 .darkmode-background
 	z-index: -9999999 !important
 .darkmode--activated
-	--color-site-bg: convert(hexo-config('color.dark.site_bg'))
-	--color-site-inner: convert(hexo-config('color.dark.site_inner'))
-	--color-site-footer: convert(hexo-config('color.dark.site_footer'))
-	--color-card: convert(hexo-config('color.dark.card'))
-	--color-text: convert(hexo-config('color.dark.text'))
+	--color-site-bg: convert(hexo-config('color_scheme.dark.site_bg'))
+	--color-site-inner: convert(hexo-config('color_scheme.dark.site_inner'))
+	--color-site-footer: convert(hexo-config('color_scheme.dark.site_footer'))
+	--color-card: convert(hexo-config('color_scheme.dark.card'))
+	--color-text: convert(hexo-config('color_scheme.dark.text'))
 
-	--color-block: convert(hexo-config('color.dark.block'))
-	--color-codeblock: convert(hexo-config('color.dark.codeblock'))
-	--color-inlinecode: convert(hexo-config('color.dark.inlinecode'))
-	--color-h1: convert(hexo-config('color.dark.h1'))
-	--color-h2: convert(hexo-config('color.dark.h2'))
-	--color-h3: convert(hexo-config('color.dark.h3'))
-	--color-h4: convert(hexo-config('color.dark.h4'))
-	--color-h5: convert(hexo-config('color.dark.h5'))
-	--color-h6: convert(hexo-config('color.dark.h6'))
-	--color-p: convert(hexo-config('color.dark.p'))
-	--color-list: convert(hexo-config('color.dark.list'))
-	--color-list-hl: convert(hexo-config('color.dark.list_hl'))
-	--color-meta: convert(hexo-config('color.dark.meta'))
+	--color-block: convert(hexo-config('color_scheme.dark.block'))
+	--color-codeblock: convert(hexo-config('color_scheme.dark.codeblock'))
+	--color-inlinecode: convert(hexo-config('color_scheme.dark.inlinecode'))
+	--color-h1: convert(hexo-config('color_scheme.dark.h1'))
+	--color-h2: convert(hexo-config('color_scheme.dark.h2'))
+	--color-h3: convert(hexo-config('color_scheme.dark.h3'))
+	--color-h4: convert(hexo-config('color_scheme.dark.h4'))
+	--color-h5: convert(hexo-config('color_scheme.dark.h5'))
+	--color-h6: convert(hexo-config('color_scheme.dark.h6'))
+	--color-p: convert(hexo-config('color_scheme.dark.p'))
+	--color-list: convert(hexo-config('color_scheme.dark.list'))
+	--color-list-hl: convert(hexo-config('color_scheme.dark.list_hl'))
+	--color-meta: convert(hexo-config('color_scheme.dark.meta'))
 
 
 	if hexo-config('plugins.backstretch.position') =='fixed'
@@ -31,11 +31,11 @@
 		.l_body
 			background-color: var(--color-site-bg) !important
 	img
-		filter: brightness(convert(hexo-config('color.dark.brightness'))) !important
+		filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
 	.lazyload
-		filter: brightness(convert(hexo-config('color.dark.brightness'))) !important
+		filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
 	.pdf
-		filter: brightness(convert(hexo-config('color.dark.brightness'))) !important
+		filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
 	//header
 	.l_header .wrapper .title
 		color: var(--color-meta)
@@ -153,7 +153,7 @@
 		.aplayer .aplayer-lrc:after
 			background: linear-gradient(180deg,hsla(0,0%,0%,0) 0,hsla(0,0%,13%,.8))
 		.aplayer-pic
-			filter: brightness(convert(hexo-config('color.dark.brightness')))
+			filter: brightness(convert(hexo-config('color_scheme.dark.brightness')))
 		.aplayer .aplayer-list ol li
 			border-top: 1px solid var(--color-card)
 		.aplayer.aplayer-withlist .aplayer-info
