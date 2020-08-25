@@ -8,189 +8,7 @@
 ########################################################################
 
 
-############################### Style | start
-style:
-  cursor:
-    enable: false
-    text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png
-    pointer: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/pointer.png
-    default: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/left_ptr.png
-    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/circle.png
-    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-out.png
-    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-in.png
-    grab: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/openhand.png
-  font_smoothing: true # font-smoothing for webkit
-  max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
-  scrollbar:
-    size: 4px
-    border: 2px
-  navbar:
-    height: 64px
-    width: auto # auto, max
-    effect: [shadow, blur] # [shadow, floatable, blur]
-  sidebar:
-    effect: [shadow] # [shadow, floatable, blur]
-  body:
-    effect: [shadow] # [shadow, floatable, blur]
-    highlight:
-      language: true # show language of codeblock
-      copy_btn: true
-      grayscale: false # Enable grayscale effect
-    text_align: # left, right, justify, center
-      h1: left
-      h2: left
-      h3: left
-      h4: left
-      p: justify
-    note: # style for default note: {% note text %}
-      icon: '\f054'
-      color: ''
-    checkbox:
-      enable: true # enable for user
-      color: '' # color for default checkbox
-  gap:
-    h2: 48px # Spacing above H2 (only px unit)
-    h3: 24px # Spacing above H3 (only px unit)
-    h4: 16px # Spacing above H4 (only px unit)
-    paragraph: 1rem # Paragraph spacing between paragraphs
-    row: .5rem # Paragraph spacing between other elements
-    line_height: 1.65 # normal, 1.5, 1.75, 2 ...
-  border_radius:
-    card: 8px
-    codeblock: 4px
-    searchbar: 8px
-    button: 4px
-  fontsize:
-    root: 16px
-    h1: 1.625rem
-    h2: 1.5rem
-    h3: 1.25rem
-    h4: 1.125rem
-    h5: 1rem
-    h6: 1rem
-    body: .9375rem
-    list: .9375rem
-    meta: .875rem
-    code: .8125rem
-    footnote: .75rem
-  fontfamily:
-    logofont:
-      fontfamily: '"Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
-      name: 'Varela Round'
-      url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
-      weight: normal
-      style: normal
-    bodyfont:
-      fontfamily: 'UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
-      name: 'UbuntuMono'
-      url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
-      weight: normal
-      style: normal
-    codefont:
-      fontfamily: 'Menlo, UbuntuMono, Monaco'
-      # name: 'Monaco'
-      # url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
-      # weight: normal
-      # style: normal
-    iconfont:
-      fontfamily: 'Font Awesome 5 Free'
-############################### Style | end
-
-############################### Color Scheme | start
-color_scheme:
-  # ------------
-  # 通用颜色
-  common:
-    # 主题色
-    theme: '#44D7B6'
-    # 链接色
-    link: '#2196f3'
-    # 按钮色
-    button: '#44D7B6'
-    # 鼠标放到交互元素上时的色
-    hover: '#ff5722'
-    # 主题色块内部的文字颜色
-    inner: '#fff'
-    # 选中区域文字的背景颜色
-    selection: 'alpha(#2196f3, 0.2)'
-  # ------------
-  # 亮色主题（默认）
-  light:
-    # 网站背景色
-    site_bg: '#f4f4f4'
-    # 网站背景上的文字
-    site_inner: '#fff'
-    # 网站页脚文字
-    site_footer: '#666'
-
-    # 卡片背景色
-    card: '#fff'
-    # 卡片上的普通文字
-    text: '#444'
-
-    # 区块和代码块背景色
-    block: '#f6f6f6'
-    # 代码块高亮时的背景色
-    codeblock: '#FFF7EA'
-    # 行内代码颜色
-    inlinecode: '#D56D28'
-
-    # 文章部分
-    h1: '#444'
-    h2: '#444'
-    h3: '#444'
-    h4: '#444'
-    h5: '#444'
-    h6: '#444'
-    p: '#444'
-
-    # 列表文字
-    list: '#666'
-    # 列表 hover 时的文字
-    list_hl: 'mix($color-theme, #000, 80)'
-    # 辅助性文字
-    meta: '#888'
-  # ------------
-  # 暗色主题
-  dark:
-    # 网站背景色
-    site_bg: '#222'
-    # 网站背景上的文字
-    site_inner: '#eee'
-    # 网站页脚文字
-    site_footer: '#eee'
-    # 卡片背景色
-    card: '#444'
-    # 卡片上的普通文字
-    text: '#eee'
-
-    # 区块和代码块背景色
-    block: '#3a3a3a'
-    # 代码块高亮时的背景色
-    codeblock: '#343a3c'
-    # 行内代码颜色
-    inlinecode: '#D56D28'
-
-    # 文章部分
-    h1: '#eee'
-    h2: '#eee'
-    h3: '#ddd'
-    h4: '#ddd'
-    h5: '#ddd'
-    h6: '#ddd'
-    p: '#bbb'
-
-    # 列表文字
-    list: '#aaa'
-    # 列表 hover 时的文字
-    list_hl: 'mix($color-theme, #fff, 80)'
-    # 辅助性文字
-    meta: '#888'
-    # 夜间图片亮度
-    brightness: 70%
-############################### Color Scheme | end
-
-############################### Navigation Bar | start
+############################### Navigation Bar ############################### > start
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
@@ -218,12 +36,10 @@ navbar:
       icon: fas fa-info-circle
       url: about/
   search: Search...   # Search bar placeholder
-
-############################### Navigation Bar | end
-
+############################### Navigation Bar ############################### > end
 
 
-############################### Cover | start
+############################### Cover ############################### > start
 cover:
   use_for: blog # docs, blog
   scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
@@ -261,10 +77,10 @@ cover:
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
       url: https://github.com/volantis-x/hexo-theme-volantis/
-############################### Cover | end
+############################### Cover ############################### > end
 
 
-############################### Article Layout | start
+############################### Article Layout ############################### > start
 # 文章布局
 article:
   # 文章列表页面的文章卡片布局方案
@@ -376,19 +192,19 @@ article:
         - id: # telegram
           img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
 
-############################### Article Layout | end
+############################### Article Layout ############################### > end
 
 
-############################### Comments | start
+############################### Comments ############################### > start
 comments:
-  path:                    # 全局评论地址 仅支持 valine , miniValine , disqus , gitalk
+  path:    # 全局评论地址 仅支持 valine , miniValine , disqus , gitalk
   placeholder: 快来评论吧~  # 评论占位提示 仅支持 valine & miniValine
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
   service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover
   # Valine
   # https://valine.js.org/
-  valine: # 请将 appId appKey 修改为自己的，否则评论数据是共享的。
+  valine:
     appId: # your appId
     appKey: # your appKey
     # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
@@ -481,16 +297,16 @@ comments:
   # https://www.barkdull.org/software/hashover
   hashover:
     src: https://example.com/(path/)comments.php
-############################### Comments | end
+############################### Comments ############################### > end
 
-############################### Sidebar | start
+############################### Sidebar ############################### > start
 sidebar:
   # 主页、分类、归档等独立页面
   for_page: [blogger, category, tagcloud, qrcode]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
-  library:
+  widget_library:
     # ---------------------------------------
     # blogger info widget
     blogger:
@@ -583,22 +399,20 @@ sidebar:
           friendlyShow: true    # 更友好的时间显示
           text: '最后活动时间：'
           unit: '日'
-############################### Sidebar | end
+############################### Sidebar ############################### > end
 
 
-############################### Tag Plugins | start
+############################### Tag Plugins ############################### > start
 # 内置标签插件的配置
 tag_plugins:
   # 外链卡片
   link:
     placeholder: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
-############################### Tag Plugins | end
+############################### Tag Plugins ############################### > end
 
 
-
-
-############################### Site Footer | start
-footer:
+############################### Site Footer ############################### > start
+site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
   layout: [aplayer, social, license, analytics, info, copyright]
   social:
@@ -608,16 +422,16 @@ footer:
       url: mailto:me@xxx.com
     - icon: fab fa-github
       url: https://github.com/volantis-x/
-    - icon: fas fa-headphones-alt
-      url: https://music.163.com/#/user/home?id=63035382
-    # - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/qq.png
-    #   url: /
-    # - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/qzone.png
-    #   url: /
-    # - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/weibo.png
-    #   url: /
-    # - avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/wechat.png
-    #   url: /
+    - icon: # fas fa-headphones-alt
+      url: #
+    - img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/qq.png
+      url: #
+    - img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/qzone.png
+      url: #
+    - img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/weibo.png
+      url: #
+    - avatar: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/wechat.png
+      url: #
   # site source
   source: https://github.com/volantis-x/volantis-docs/
   # analytics using leancloud
@@ -628,9 +442,9 @@ footer:
   copyright: '[Copyright © 2017-2020 XXX](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
-############################### Site Footer | end
+############################### Site Footer ############################### > end
 
-############################### Plugins | start
+############################### Plugins ############################### > start
 plugins:
   ################ required plugins ################
 
@@ -782,9 +596,9 @@ plugins:
       buttonDark: '#bbb'
       buttonLight: '#444'
     compatible: true # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
-############################### Plugins | end
+############################### Plugins ############################### > end
 
-############################### Rightmenu | start
+############################### Rightmenu ############################### > start
 # 自定义右键菜单
 rightmenu:
   enable: true
@@ -816,10 +630,10 @@ rightmenu:
     name: 主题源码
     icon: fa fa-code-branch
     url: https://github.com/volantis-x/hexo-theme-volantis/
-############################### Rightmenu | end
+############################### Rightmenu ############################### > end
 
 
-############################### Search | start
+############################### Search ############################### > start
 # To use hexo search, you need to install the following plugins:
 # npm i hexo-generator-search hexo-generator-json-content
 search:
@@ -839,18 +653,201 @@ search:
     queryKey:
   baidu:
     apiId:
-############################### Search | end
+############################### Search ############################### > end
 
-############################### Analytics | start
+############################### Color Scheme ############################### > start
+color_scheme:
+  # ------------
+  # 通用颜色
+  common:
+    # 主题色
+    theme: '#44D7B6'
+    # 链接色
+    link: '#2196f3'
+    # 按钮色
+    button: '#44D7B6'
+    # 鼠标放到交互元素上时的色
+    hover: '#ff5722'
+    # 主题色块内部的文字颜色
+    inner: '#fff'
+    # 选中区域文字的背景颜色
+    selection: 'alpha(#2196f3, 0.2)'
+  # ------------
+  # 亮色主题（默认）
+  light:
+    # 网站背景色
+    site_bg: '#f4f4f4'
+    # 网站背景上的文字
+    site_inner: '#fff'
+    # 网站页脚文字
+    site_footer: '#666'
+
+    # 卡片背景色
+    card: '#fff'
+    # 卡片上的普通文字
+    text: '#444'
+
+    # 区块和代码块背景色
+    block: '#f6f6f6'
+    # 代码块高亮时的背景色
+    codeblock: '#FFF7EA'
+    # 行内代码颜色
+    inlinecode: '#D56D28'
+
+    # 文章部分
+    h1: '#444'
+    h2: '#444'
+    h3: '#444'
+    h4: '#444'
+    h5: '#444'
+    h6: '#444'
+    p: '#444'
+
+    # 列表文字
+    list: '#666'
+    # 列表 hover 时的文字
+    list_hl: 'mix($color-theme, #000, 80)'
+    # 辅助性文字
+    meta: '#888'
+  # ------------
+  # 暗色主题
+  dark:
+    # 网站背景色
+    site_bg: '#222'
+    # 网站背景上的文字
+    site_inner: '#eee'
+    # 网站页脚文字
+    site_footer: '#eee'
+    # 卡片背景色
+    card: '#444'
+    # 卡片上的普通文字
+    text: '#eee'
+
+    # 区块和代码块背景色
+    block: '#3a3a3a'
+    # 代码块高亮时的背景色
+    codeblock: '#343a3c'
+    # 行内代码颜色
+    inlinecode: '#D56D28'
+
+    # 文章部分
+    h1: '#eee'
+    h2: '#eee'
+    h3: '#ddd'
+    h4: '#ddd'
+    h5: '#ddd'
+    h6: '#ddd'
+    p: '#bbb'
+
+    # 列表文字
+    list: '#aaa'
+    # 列表 hover 时的文字
+    list_hl: 'mix($color-theme, #fff, 80)'
+    # 辅助性文字
+    meta: '#888'
+    # 夜间图片亮度
+    brightness: 70%
+############################### Color Scheme ############################### > end
+
+############################### Custom css ############################### > start
+custom_css:
+  cursor:
+    enable: #true
+    text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png
+    pointer: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/pointer.png
+    default: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/left_ptr.png
+    not-allowed: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/circle.png
+    zoom-out: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-out.png
+    zoom-in: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/zoom-in.png
+    grab: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/openhand.png
+  font_smoothing: true # font-smoothing for webkit
+  max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
+  scrollbar:
+    size: 4px
+    border: 2px
+  navbar:
+    height: 64px
+    width: auto # auto, max
+    effect: [shadow, blur] # [shadow, floatable, blur]
+  sidebar:
+    effect: [shadow] # [shadow, floatable, blur]
+  body:
+    effect: [shadow] # [shadow, floatable, blur]
+    highlight:
+      language: true # show language of codeblock
+      copy_btn: true
+      grayscale: false # Enable grayscale effect
+    text_align: # left, right, justify, center
+      h1: left
+      h2: left
+      h3: left
+      h4: left
+      p: justify
+    note: # style for default note: {% note text %}
+      icon: '\f054'
+      color: ''
+    checkbox:
+      enable: true # enable for user
+      color: '' # color for default checkbox
+  gap:
+    h2: 48px # Spacing above H2 (only px unit)
+    h3: 24px # Spacing above H3 (only px unit)
+    h4: 16px # Spacing above H4 (only px unit)
+    paragraph: 1rem # Paragraph spacing between paragraphs
+    row: .5rem # Paragraph spacing between other elements
+    line_height: 1.65 # normal, 1.5, 1.75, 2 ...
+  border_radius:
+    card: 8px
+    codeblock: 4px
+    searchbar: 8px
+    button: 4px
+  fontsize:
+    root: 16px
+    h1: 1.625rem
+    h2: 1.5rem
+    h3: 1.25rem
+    h4: 1.125rem
+    h5: 1rem
+    h6: 1rem
+    body: .9375rem
+    list: .9375rem
+    meta: .875rem
+    code: .8125rem
+    footnote: .75rem
+  fontfamily:
+    logofont:
+      fontfamily: '"Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
+      name: 'Varela Round'
+      url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
+      weight: normal
+      style: normal
+    bodyfont:
+      fontfamily: 'UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
+      name: 'UbuntuMono'
+      url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
+      weight: normal
+      style: normal
+    codefont:
+      fontfamily: 'Menlo, UbuntuMono, Monaco'
+      # name: 'Monaco'
+      # url: https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
+      # weight: normal
+      # style: normal
+    iconfont:
+      fontfamily: 'Font Awesome 5 Free'
+############################### Custom css ############################### > end
+
+
+############################### Analytics ############################### > start
 analytics:
   busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   leancloud: # 请使用自己的 id & key 以防止数据丢失
     app_id: u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
     app_key: jfHtEKVE24j0IVCGHbvuFClp
     custom_api_server: # 一般不需要写，除非自定义了 API Server
-############################### Analytics | end
+############################### Analytics ############################### > end
 
-############################### SEO | start
+############################### SEO ############################### > start
 seo:
   # When there are no keywords in the article's front-matter, use tags as keywords.
   use_tags_as_keywords: true
@@ -863,9 +860,9 @@ seo:
     category: noindex,follow
     tag: noindex,follow
     # robots can be written in front-matter
-############################### SEO | end
+############################### SEO ############################### > end
 
-############################### Theme Information | start
+############################### Theme Information ############################### > start
 info:
   name: Volantis # This is theme's name.
   version: '4.0.0-beta.2' # This is theme's version.
@@ -874,4 +871,4 @@ info:
   cdn:
     js:
     css:
-############################### Theme Information | end
+############################### Theme Information ############################### > end

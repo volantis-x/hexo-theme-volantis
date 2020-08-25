@@ -32,13 +32,13 @@ if (page.sidebar == false) {
 if (config.theme_config && config.theme_config.style) {
   let style = config.theme_config.style;
   if (style.navbar && style.navbar.effect) {
-    theme.style.navbar.effect = style.navbar.effect;
+    theme.custom_css.navbar.effect = style.navbar.effect;
   }
   if (style.sidebar && style.sidebar.effect) {
-    theme.style.sidebar.effect = style.sidebar.effect;
+    theme.custom_css.sidebar.effect = style.sidebar.effect;
   }
   if (style.body && style.body.effect) {
-    theme.style.body.effect = style.body.effect;
+    theme.custom_css.body.effect = style.body.effect;
   }
   // 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
   if(theme.plugins.darkmodejs.enable&&theme.plugins.backstretch.position=='fixed'){
@@ -48,7 +48,7 @@ if (config.theme_config && config.theme_config.style) {
 			this.splice(index, 1);
 		}
 	};
-	theme.style.body.effect.removeblur("blur")
+	theme.custom_css.body.effect.removeblur("blur")
   }
 }
 

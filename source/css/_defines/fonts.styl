@@ -1,58 +1,58 @@
 $fontfamily = "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, "Lucida Console", sans-serif
-if hexo-config('style.fontfamily.bodyfont')
-  if hexo-config('style.fontfamily.bodyfont.name')
+if hexo-config('custom_css.fontfamily.bodyfont')
+  if hexo-config('custom_css.fontfamily.bodyfont.name')
     @font-face
-      font-family: hexo-config('style.fontfamily.bodyfont.name')
-      src: url(hexo-config('style.fontfamily.bodyfont.url'))
-      font-weight: hexo-config('style.fontfamily.bodyfont.weight')
-      font-style: hexo-config('style.fontfamily.bodyfont.style')
-  if hexo-config('style.fontfamily.bodyfont.fontfamily')
-    $fontfamily = convert(hexo-config('style.fontfamily.bodyfont.fontfamily')), Menlo, Monaco, monospace, sans-serif
+      font-family: hexo-config('custom_css.fontfamily.bodyfont.name')
+      src: url(hexo-config('custom_css.fontfamily.bodyfont.url'))
+      font-weight: hexo-config('custom_css.fontfamily.bodyfont.weight')
+      font-style: hexo-config('custom_css.fontfamily.bodyfont.style')
+  if hexo-config('custom_css.fontfamily.bodyfont.fontfamily')
+    $fontfamily = convert(hexo-config('custom_css.fontfamily.bodyfont.fontfamily')), Menlo, Monaco, monospace, sans-serif
 
 
 $fontfamily-code = Menlo, Monaco, monospace, courier, sans-serif
-if hexo-config('style.fontfamily.codefont')
-  if hexo-config('style.fontfamily.codefont.name')
+if hexo-config('custom_css.fontfamily.codefont')
+  if hexo-config('custom_css.fontfamily.codefont.name')
     @font-face
-      font-family: hexo-config('style.fontfamily.codefont.name')
-      src: url(hexo-config('style.fontfamily.codefont.url'))
-      font-weight: hexo-config('style.fontfamily.codefont.weight')
-      font-style: hexo-config('style.fontfamily.codefont.style')
-  if hexo-config('style.fontfamily.codefont.fontfamily')
-    $fontfamily-code = convert(hexo-config('style.fontfamily.codefont.fontfamily')), monospace, courier, sans-serif
+      font-family: hexo-config('custom_css.fontfamily.codefont.name')
+      src: url(hexo-config('custom_css.fontfamily.codefont.url'))
+      font-weight: hexo-config('custom_css.fontfamily.codefont.weight')
+      font-style: hexo-config('custom_css.fontfamily.codefont.style')
+  if hexo-config('custom_css.fontfamily.codefont.fontfamily')
+    $fontfamily-code = convert(hexo-config('custom_css.fontfamily.codefont.fontfamily')), monospace, courier, sans-serif
 
 
 
 $fontfamily-logo = $fontfamily
-if hexo-config('style.fontfamily.logofont')
-  if hexo-config('style.fontfamily.logofont.name')
+if hexo-config('custom_css.fontfamily.logofont')
+  if hexo-config('custom_css.fontfamily.logofont.name')
     @font-face
-      font-family: hexo-config('style.fontfamily.logofont.name')
-      src: url(hexo-config('style.fontfamily.logofont.url'))
-      font-weight: hexo-config('style.fontfamily.logofont.weight')
-      font-style: hexo-config('style.fontfamily.logofont.style')
-  if hexo-config('style.fontfamily.logofont.fontfamily')
-    $fontfamily-logo = convert(hexo-config('style.fontfamily.logofont.fontfamily')), Helvetica, monospace
+      font-family: hexo-config('custom_css.fontfamily.logofont.name')
+      src: url(hexo-config('custom_css.fontfamily.logofont.url'))
+      font-weight: hexo-config('custom_css.fontfamily.logofont.weight')
+      font-style: hexo-config('custom_css.fontfamily.logofont.style')
+  if hexo-config('custom_css.fontfamily.logofont.fontfamily')
+    $fontfamily-logo = convert(hexo-config('custom_css.fontfamily.logofont.fontfamily')), Helvetica, monospace
 
 
 
 
 // font size
-$fontsize = convert(hexo-config('style.fontsize.root')) || 16px
-$fontsize-h1 = convert(hexo-config('style.fontsize.h1')) || 1.625rem    // 26px
-$fontsize-h2 = convert(hexo-config('style.fontsize.h2')) || 1.5rem    // 24px bottom line
-$fontsize-h3 = convert(hexo-config('style.fontsize.h3')) || 1.25rem     // 20px colorful title
-$fontsize-h4 = convert(hexo-config('style.fontsize.h4')) || 1.125rem    // 18px
-$fontsize-h5 = convert(hexo-config('style.fontsize.h5')) || 1rem        // 16px bold
-$fontsize-h6 = convert(hexo-config('style.fontsize.h6')) || 1rem        // 16px
-$fontsize-body = convert(hexo-config('style.fontsize.body')) || 1rem      // 16px
-$fontsize-list = convert(hexo-config('style.fontsize.list')) || .9375rem  // 15px
-$fontsize-meta = convert(hexo-config('style.fontsize.meta')) || .875rem   // 14px
-$fontsize-code = convert(hexo-config('style.fontsize.code')) || .8125rem  // 13px
-$fontsize-footnote = convert(hexo-config('style.fontsize.footnote')) || .75rem  // the smallest (12px)
+$fontsize = convert(hexo-config('custom_css.fontsize.root')) || 16px
+$fontsize-h1 = convert(hexo-config('custom_css.fontsize.h1')) || 1.625rem    // 26px
+$fontsize-h2 = convert(hexo-config('custom_css.fontsize.h2')) || 1.5rem    // 24px bottom line
+$fontsize-h3 = convert(hexo-config('custom_css.fontsize.h3')) || 1.25rem     // 20px colorful title
+$fontsize-h4 = convert(hexo-config('custom_css.fontsize.h4')) || 1.125rem    // 18px
+$fontsize-h5 = convert(hexo-config('custom_css.fontsize.h5')) || 1rem        // 16px bold
+$fontsize-h6 = convert(hexo-config('custom_css.fontsize.h6')) || 1rem        // 16px
+$fontsize-body = convert(hexo-config('custom_css.fontsize.body')) || 1rem      // 16px
+$fontsize-list = convert(hexo-config('custom_css.fontsize.list')) || .9375rem  // 15px
+$fontsize-meta = convert(hexo-config('custom_css.fontsize.meta')) || .875rem   // 14px
+$fontsize-code = convert(hexo-config('custom_css.fontsize.code')) || .8125rem  // 13px
+$fontsize-footnote = convert(hexo-config('custom_css.fontsize.footnote')) || .75rem  // the smallest (12px)
 
 // line-height
-$lineheight = hexo-config('style.gap.line_height') || 1.7
+$lineheight = hexo-config('custom_css.gap.line_height') || 1.7
 
 $fontsize-large = 3rem
 $fontsize-huge = 4rem

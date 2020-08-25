@@ -6,7 +6,7 @@ pre
   -webkit-font-smoothing: auto
   -moz-osx-font-smoothing: auto
   scrollbar()
-  if hexo-config('style.body.highlight.language') == true
+  if hexo-config('custom_css.body.highlight.language') == true
     &:before
       position: absolute
       top: 0
@@ -84,11 +84,11 @@ pre
   -moz-osx-font-smoothing: auto
   overflow: hidden
   trans()
-  if hexo-config('style.body.highlight.grayscale') == true
+  if hexo-config('custom_css.body.highlight.grayscale') == true
     filter: grayscale(100%)
   &:hover
     background: var(--color-codeblock)
-    if hexo-config('style.body.highlight.grayscale') == true
+    if hexo-config('custom_css.body.highlight.grayscale') == true
       filter: grayscale(0%)
     figcaption
       trans()
@@ -153,7 +153,7 @@ pre
         font-size: 12px
         padding: 4px 8px
 
-  if hexo-config('style.body.highlight.language') == true
+  if hexo-config('custom_css.body.highlight.language') == true
     &.md .code:before,&.markdown .code:before
       content: "md"
     &.yaml .code:before

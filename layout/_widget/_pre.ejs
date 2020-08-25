@@ -13,9 +13,9 @@ if (item.sticky == true) {
   page.widget_style = ''
 }
 if (where == 'sidebar') {
-  page.widget_style += theme.style.sidebar.effect.join(' ');
+  page.widget_style += theme.custom_css.sidebar.effect.join(' ');
 } else if (where == 'body') {
-  page.widget_style += theme.style.body.effect.join(' ');
+  page.widget_style += theme.custom_css.body.effect.join(' ');
 }
 page.widget_platform = pf.join(' ');
 %>

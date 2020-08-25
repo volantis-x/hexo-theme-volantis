@@ -1,4 +1,4 @@
-<header class="l_header <%- theme.navbar.visiable %> <%- theme.style.navbar.effect.join(' ') %>" <%- (theme.navbar.visiable == 'auto' && theme.cover.use_for) ? "style='opacity: 0'" : "" %> >
+<header class="l_header <%- theme.navbar.visiable %> <%- theme.custom_css.navbar.effect.join(' ') %>" <%- (theme.navbar.visiable == 'auto' && theme.cover.use_for) ? "style='opacity: 0'" : "" %> >
   <div class='container'>
   <div class='wrapper'>
     <div class='nav-sub'>
@@ -29,13 +29,7 @@
 			<div class='menu navigation'>
 				<ul class='nav-list-h m-pc'>
           <%
-          let menu_list;
-          if (site.data && site.data.menu && site.data.menu) {
-            menu_list = site.data.menu;
-          } else {
-            menu_list = theme.navbar.menu;
-          }
-          menu_list = menu_list || [];
+          let menu_list = theme.navbar.menu;
           %>
           <% function menu(value, type) { %>
             <% if (value.name == 'hr') { %>

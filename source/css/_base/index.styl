@@ -31,8 +31,8 @@ html
   font-family: $fontfamily
   font-size: $fontsize-body
   >
-    if hexo-config('style.scrollbar.size')
-      scrollbar(convert(hexo-config('style.scrollbar.size')), convert(hexo-config('style.scrollbar.border')) || 0px)
+    if hexo-config('custom_css.scrollbar.size')
+      scrollbar(convert(hexo-config('custom_css.scrollbar.size')), convert(hexo-config('custom_css.scrollbar.border')) || 0px)
 
 body
   background-color: var(--color-site-bg)

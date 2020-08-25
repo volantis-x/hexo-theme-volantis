@@ -311,7 +311,7 @@ ul.list-v
     right: "calc(100% - 0.5 * %s)" % $gap
 
 .l_header .wrapper
-  if hexo-config('style.navbar.width') == 'auto'
+  if hexo-config('custom_css.navbar.width') == 'auto'
     max-width: $layout-width
     margin: auto
     @media screen and (min-width: $device-2k)
@@ -353,7 +353,7 @@ ul.list-v
 
 
 .l_header
-  if hexo-config('style.navbar.width') == 'auto'
+  if hexo-config('custom_css.navbar.width') == 'auto'
     max-width: 65vw
     left: "calc((100% - %s) * 0.5)" % @max-width
     border-bottom-left-radius: $border-card

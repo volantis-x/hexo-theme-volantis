@@ -1,6 +1,6 @@
-<% if (theme.footer) { %>
+<% if (theme.site_footer) { %>
   <%
-  var layout = theme.footer.layout;
+  var layout = theme.site_footer.layout;
   if (config.theme_config && config.theme_config.footer && config.theme_config.footer.layout) {
     layout = config.theme_config.footer.layout;
   }
@@ -11,8 +11,8 @@
       <% if (item == 'social') { %>
         <br>
         <div class="social-wrapper">
-          <% (theme.footer.social||[]).forEach(function(value){ %>
-            <% if (value.url) { %>
+          <% (theme.site_footer.social||[]).forEach(function(value){ %>
+            <% if (value.url && (value.icon || value.img || value.avatar)) { %>
               <a href="<%= url_for(value.url) %>"
                 class="social <%- value.icon %> flat-btn"
                 target="_blank"
@@ -23,8 +23,8 @@
                   <img src="<%- value.avatar %>" style="border-radius:120px"/>
                 <% } %>
               </a>
-            <%}%>
-          <%})%>
+            <% } %>
+          <% }) %>
         </div>
       <% } else if (item == 'aplayer') { %>
         <div class="aplayer-container">
@@ -43,11 +43,11 @@
         <%- markdown(__('footer.site_source', '[Volantis](https://github.com/volantis-x/hexo-theme-volantis/tree/'+theme.info.version+')', 'GitHub', 'https://github.com/volantis-x/volantis-docs')) %>
       <% } else if (item == 'copyright') { %>
         <div class='copyright'>
-        <%- markdown(theme.footer.copyright) %>
+        <%- markdown(theme.site_footer.copyright) %>
         </div>
       <% } else { %>
-        <% if (item in theme.footer) { %>
-          <div><%- markdown(theme.footer[item]) %></div>
+        <% if (item in theme.site_footer) { %>
+          <div><%- markdown(theme.site_footer[item]) %></div>
         <% } %>
       <% } %>
     <% }) %>

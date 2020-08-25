@@ -26,9 +26,9 @@
         <% } %>
       </div>
     <% } %>
-    <% if (item.social == true && theme.footer.social) { %>
+    <% if (item.social == true && theme.site_footer.social) { %>
       <div class="social-wrapper">
-        <% (theme.footer.social||[]).forEach(function(value){ %>
+        <% (theme.site_footer.social||[]).forEach(function(value){ %>
           <% if (value.url && value.icon) { %>
             <a href="<%- url_for(value.url) %>"
               class="social <%- value.icon %> flat-btn"

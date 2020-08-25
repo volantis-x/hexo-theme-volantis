@@ -3,7 +3,7 @@
 	<% if (page.year || page.month) { %>
 		<%- partial('_partial/archive') %>
 	<% } else { %>
-	  <article id="arc" class="post article white-box reveal <%- theme.style.body.effect.join(' ') %>">
+	  <article id="arc" class="post article white-box reveal <%- theme.custom_css.body.effect.join(' ') %>">
 			<% var year = -1, postid = -1; %>
 			<% site.posts.sort('date', -1).each(function(post) { %>
 				<% post.year = date(post.date, 'YYYY'); %>
