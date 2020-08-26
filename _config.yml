@@ -624,11 +624,10 @@ plugins:
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
     button: # button 使用默认或自行开发
       enable: true
-      label: 🌓
       left: '16px'
       bottom: '32px'
       buttonDark: '#333'
-      buttonLight: '#ccc'
+      buttonLight: '#ddd'
     compatible: true # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
 ############################### Plugins ############################### > end
 

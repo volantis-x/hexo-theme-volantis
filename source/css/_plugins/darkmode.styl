@@ -1,7 +1,20 @@
 .darkmode-layer
   display: none
 .darkmode-toggle
-	z-index: 1001
+  z-index: 1001
+  &:before
+    font-family: hexo-config('tag_plugins.note.iconfont')
+    font-weight: bold
+    content: '\f186'
+    color: white
+.darkmode--activated
+  .darkmode-toggle
+    z-index: 1001
+    &:before
+      content: '\f185'
+      transform: scale(1.4)
+      color: black
+
 .darkmode-background
 	z-index: -1001 !important
 .darkmode--activated
