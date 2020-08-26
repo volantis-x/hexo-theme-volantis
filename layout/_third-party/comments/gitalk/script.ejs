@@ -8,6 +8,14 @@
     let ALLPATH = '<%= theme.comments.path %>';
     if(ALLPATH != '') pageUrl = ALLPATH;
 
+    <% 
+      if (theme.plugins.pjax.enable == false) {
+        if (page && page.path) {  
+          %>pageUrl = "<%= page.path %>";<%  
+        }
+      }
+    %>
+
     if (document.getElementById('gitalk-container') != null) {
       var gitalk = new Gitalk({
         clientID: "<%- theme.comments.gitalk.clientID %>",

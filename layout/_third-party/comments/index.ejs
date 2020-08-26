@@ -1,10 +1,4 @@
-<%
-    var checkComment = true;
-    if (page.comment && page.comment.enable == false) {
-      checkComment = false;
-    }
-%>
-<% if (checkComment && theme.comments.service && theme.comments.service.length > 0) { %>
+<% if (theme.comments.service && theme.comments.service.length > 0) { %>
   <article class="post white-box reveal <%- theme.custom_css.body.effect.join(' ') %>" id="comments">
     <p ct><%- theme.comments && theme.comments.title %></p>
     <% if (theme.comments && theme.comments.subtitle) { %>
@@ -12,6 +6,4 @@
     <% } %>
     <%- partial(theme.comments.service + '/layout') %>
   </article>
-<% } else { %>
-  <% page.comments = false; %>
 <% } %>

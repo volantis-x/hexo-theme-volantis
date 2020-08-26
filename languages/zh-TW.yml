@@ -5,8 +5,8 @@ navbar:
 post:
   pin: 置頂
   readmore: 閱讀全文
-  wordcount: '字數：%s字'
-  duration: '時長：%s分鐘'
+  wordcount: '字數：%s 字'
+  duration: '時長：%s 分鐘'
   comments: 評論
   comments_load: 點擊加載 %s 評論
   comments_check: 正在檢查 %s 能否訪問...

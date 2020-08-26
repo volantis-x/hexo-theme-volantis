@@ -9,12 +9,12 @@ var postTitle = '';                           // 当前文章标题，用于二�
 var enableCover = false;                      // 封面是否开启
 var frontMatterCover = 'none';                // 封面控制
 
-if (page && page.comments == true && page.comment) {
-  if (page.comment.path) {
-    commentPath = page.comment.path;
+if (page) {
+  if (page.path) {
+    commentPath = page.path;
   }
-  if (page.comment.placeholder) {
-    commentPlaceholder = page.comment.placeholder;
+  if (page.placeholder) {
+    commentPlaceholder = page.placeholder;
   }
 }
 

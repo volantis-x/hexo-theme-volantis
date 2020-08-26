@@ -44,6 +44,17 @@
     let ALLPATH = '<%= theme.comments.path %>';
     if(ALLPATH != '') pageUrl = ALLPATH;
 
+    <% 
+      if (theme.plugins.pjax.enable == false) {
+        if (page && page.path) {  
+          %>pageUrl = "<%= page.path %>";<%  
+        }
+        if (page && page.placeholder) {
+          %>pagePlaceholder = "<%= page.placeholder %>";<% 
+        }
+      }
+    %>
+
     var valine = new Valine();
     valine.init({
       el: '#valine_container',

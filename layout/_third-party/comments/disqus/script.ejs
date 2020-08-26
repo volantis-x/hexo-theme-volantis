@@ -36,6 +36,14 @@
     let ALLPATH = '<%= theme.comments.path %>';
     if (ALLPATH != '') pageUrl = ALLPATH;
 
+    <% 
+      if (theme.plugins.pjax.enable == false) {
+        if (page && page.path) {  
+          %>pageUrl = "<%= page.path %>";<%  
+        }
+      }
+    %>
+
     if (window.DISQUS) {
       window.DISQUS.reset({
           reload: true,
