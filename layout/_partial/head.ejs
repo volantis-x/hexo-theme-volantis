@@ -87,14 +87,14 @@
   <% if (theme.plugins.fontawesome) { %>
     <%- css(theme.plugins.fontawesome) %>
   <% } %>
-  <% if (theme.plugins.fontawesome_animation) { %>
-    <%- css(theme.plugins.fontawesome_animation) %>
+  <% if (theme.plugins.fontawesome_animation.enable) { %>
+    <%- css(theme.plugins.fontawesome_animation.css) %>
   <% } %>
   <% if (theme.plugins.fancybox) { %>
     <%- css(theme.plugins.fancybox) %>
   <% } %>
 
-  <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
+  <% if (theme.plugins.nodewaves.enable) { %>
     <%- css(theme.plugins.nodewaves.css) %>
   <% } %>
 
@@ -116,8 +116,8 @@
   <%- item %><% }) %>
   <% } %>
 
-  <% if (config.highlight.enable != true) { %>
-    <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.css) { %>
+  <% if (theme.plugins.highlightjs.enable == true) { %>
+    <% if (theme.plugins.highlightjs.css) { %>
       <%- css(theme.plugins.highlightjs.css) %>
     <% } %>
   <% } %>

@@ -5,39 +5,40 @@
 <%- partial('_partial/side') %>
 
 <script>
-  var appID ="<%=  theme.plugins.Artitalk.appID  %>";
-  var appKEY ="<%=  theme.plugins.Artitalk.appKEY  %>";
-  <% if(theme.plugins.Artitalk.severurl){ %>
-      var severurl="<%=  theme.plugins.Artitalk.severurl  %>";
+
+  var appID ="<%=  theme.plugins.artitalk.appID  %>";
+  var appKEY ="<%=  theme.plugins.artitalk.appKEY  %>";
+  <% if(theme.plugins.artitalk.severurl){ %>
+      var severurl="<%=  theme.plugins.artitalk.severurl  %>";
   <% } %>
-  <% if(theme.plugins.Artitalk.slanguage){ %>
-      var slanguage="<%=  theme.plugins.Artitalk.slanguage  %>";
+  <% if(theme.plugins.artitalk.slanguage){ %>
+      var slanguage="<%=  theme.plugins.artitalk.slanguage  %>";
   <% } %>
-  <% if(theme.plugins.Artitalk.per){ %>
-      var per="<%=  theme.plugins.Artitalk.per  %>";
+  <% if(theme.plugins.artitalk.per){ %>
+      var per="<%=  theme.plugins.artitalk.per  %>";
   <% } %>
-  <% if(theme.plugins.Artitalk.placeholder1){ %>
-      var placeholder1="<%=  theme.plugins.Artitalk.placeholder1  %>";
+  <% if(theme.plugins.artitalk.placeholder1){ %>
+      var placeholder1="<%=  theme.plugins.artitalk.placeholder1  %>";
   <% } %>
-  <% if(theme.plugins.Artitalk.placeholder2){ %>
-      var placeholder2="<%=  theme.plugins.Artitalk.placeholder2  %>";
+  <% if(theme.plugins.artitalk.placeholder2){ %>
+      var placeholder2="<%=  theme.plugins.artitalk.placeholder2  %>";
   <% } %>
-  <% if(theme.plugins.Artitalk.lazy==0){ %>
+  <% if(theme.plugins.artitalk.lazy==0){ %>
       var lazy=0;
   <% }else{ %>
       var lazy=1;
   <% }  %>
-  <% if(theme.plugins.Artitalk.bgimg){ %>
-      var bgimg="<%=  theme.plugins.Artitalk.bgimg  %>";
+  <% if(theme.plugins.artitalk.bgimg){ %>
+      var bgimg="<%=  theme.plugins.artitalk.bgimg  %>";
   <% } %>
-  <% if(theme.plugins.Artitalk.color1){ %>
-      var color1="<%=  theme.plugins.Artitalk.color1  %>";
+  <% if(theme.plugins.artitalk.color1){ %>
+      var color1="<%=  theme.plugins.artitalk.color1  %>";
   <% } %>
-  <% if(theme.plugins.Artitalk.color2){ %>
-      var color2="<%=  theme.plugins.Artitalk.color2  %>";
+  <% if(theme.plugins.artitalk.color2){ %>
+      var color2="<%=  theme.plugins.artitalk.color2  %>";
   <% } %>
-  <% if(theme.plugins.Artitalk.color3){ %>
-      var color3="<%=  theme.plugins.Artitalk.color3  %>";
+  <% if(theme.plugins.artitalk.color3){ %>
+      var color3="<%=  theme.plugins.artitalk.color3  %>";
   <% } %>
 </script>
 <script async type="text/javascript" src="https://cdn.jsdelivr.net/npm/artitalk"></script>

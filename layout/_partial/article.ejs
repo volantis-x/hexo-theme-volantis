@@ -1,7 +1,7 @@
 <article class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= post.layout %>" id="<%= post.layout %>" itemscope itemprop="blogPost">
   <%- partial('meta', {post: post, position: 'top'}) %>
   <div class="article-entry" itemprop="articleBody">
-    <% if (page.layout=='artitalk') { %>
+    <% if (page.layout == 'artitalk') { %>
       <div id="artitalk_main"></div>
     <% } %>
     <% (post.photos||[]).forEach(function(photo){ %>
@@ -35,7 +35,7 @@
         <% if (['post'].includes(page.layout) && footer_widget.related_posts && footer_widget.related_posts.enable == true) { %>
           <%-
           htmlGenerator(
-            popular_posts_json({ a: '11', maxCount: footer_widget.related_posts.max_count , ulClass: 'vlts-rps' , PPMixingRate: 0.2 , isImage: true , isExcerpt: true} , post )
+            popular_posts_json({ maxCount: footer_widget.related_posts.max_count , ulClass: 'vlts-rps' , PPMixingRate: 0.2 , isImage: true , isExcerpt: true} , post )
           )
           %>
         <% } %>

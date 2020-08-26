@@ -465,24 +465,23 @@ site_footer:
 ############################### Plugins ############################### > start
 plugins:
   ################ required plugins ################
-
   # jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
-
-  ################ optional plugins ################
-
   # fontawesome
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
-  # fontawesome animation
-  fontawesome_animation: # https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
   # fancybox
   fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
 
+  ################ optional plugins ################
 
   ######## Plugins to improve loading speed:
-  # Preload (The menu's url must end with ‘/’) 选择一个即可
-  instant_page: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
-  flying_pages: https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
+
+  # 预加载
+  preload:
+    enable: true
+    service: flying_pages # instant_page, flying_pages
+    instant_page: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
+    flying_pages: https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
 
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
@@ -494,14 +493,17 @@ plugins:
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
 
   ######## Plugins to optimize the experience:
+
   # highlight.js
   highlightjs:
+    enable: #true # Please set hexo.config.highlight.enable = false !!!
     js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js
     css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
+    enable: #true
     js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
@@ -509,25 +511,36 @@ plugins:
     scale: 1 # 0.1~1
 
   # Codeblock Copy Button
-  clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
+  clipboard:
+    enable: true
+    js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
 
   # npm i hexo-wordcount
-  wordcount: #true
+  wordcount:
+    enable: #true
 
   ######## Plugins for ...
   # Button Ripple Effect
   nodewaves:
-    css: # https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
-    js: # https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
+    enable: #true
+    css: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
+    js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
+
+  # fontawesome animation
+  fontawesome_animation:
+    enable: #true
+    css: https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
 
   # Typing Effects
-  comment_typing: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
+  comment_typing:
+    enable: #true
+    js: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
 
   # Slide Background
   backstretch:
-    enable: # true
+    enable: #true
     js: https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js
     position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
     shuffle: true         # shuffle playlist
@@ -559,7 +572,7 @@ plugins:
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
-    enable: true
+    enable: #true
     js:
       - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
       - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
@@ -582,13 +595,14 @@ plugins:
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: nprogress # nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      # - '/about/index.html'
+      # - /artitalk/     # artitalk 不支持 pjax
+
 
   # Artitalk https://artitalk.js.org
   # 配置过程请参考：https://artitalk.js.org/doc.html
   # 除appID和appKEY外均为选填项
-  Artitalk:
-    enable: false # true为开启，false为关闭
+  artitalk:
+    # Set `layout: artitalk` to enable in page
     appID: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
     appKEY: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
     # severurl:  #leancloud绑定的安全域名，使用国际版的话不需要填写
@@ -606,13 +620,15 @@ plugins:
   # https://darkmodejs.learn.uno
   # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
   darkmodejs:
-    enable: true
+    enable: #true
     js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
     button: # button 使用默认或自行开发
       enable: true
       label: 🌓
-      buttonDark: '#bbb'
-      buttonLight: '#444'
+      left: '16px'
+      bottom: '32px'
+      buttonDark: '#333'
+      buttonLight: '#ccc'
     compatible: true # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
 ############################### Plugins ############################### > end
 
@@ -735,7 +751,7 @@ color_scheme:
     # 网站背景上的文字
     site_inner: '#eee'
     # 网站页脚文字
-    site_footer: '#eee'
+    site_footer: '#aaa'
     # 卡片背景色
     card: '#444'
     # 卡片上的普通文字
@@ -854,7 +870,7 @@ analytics:
   leancloud: # 请使用自己的 id & key 以防止数据丢失
     app_id: u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
     app_key: jfHtEKVE24j0IVCGHbvuFClp
-    custom_api_server: # 一般不需要写，除非自定义了 API Server
+    custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
 ############################### Analytics ############################### > end
 
 ############################### SEO ############################### > start

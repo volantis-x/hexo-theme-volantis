@@ -98,15 +98,15 @@
             }
           }
         <% } %>
-        <% if (config.highlight.enable != true && theme.plugins.highlightjs && theme.plugins.highlightjs.js) { %>
+        <% if (theme.plugins.highlightjs.enable) { %>
         document.querySelectorAll('pre code').forEach((block) => {
           hljs.highlightBlock(block);
         });
         <% } %>
-        <% if (theme.plugins.scrollreveal && theme.plugins.scrollreveal.js) { %>
+        <% if (theme.plugins.scrollreveal.enable) { %>
           pjax_scrollrebeal();
         <% } %>
-        <% if (theme.plugins.clipboard && (theme.custom_css.body.highlight.copy_btn == true)) { %>
+        <% if (theme.plugins.clipboard.enable && (theme.custom_css.body.highlight.copy_btn == true)) { %>
           pjax_initCopyCode();
         <% } %>
         <% if (theme.comments.service == 'valine'){ %>
