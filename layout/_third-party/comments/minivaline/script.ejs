@@ -22,13 +22,14 @@
   };
   function pjax_minivaline() {
   if(!document.querySelectorAll("#minivaline_container")[0])return;
-  let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
-      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
-    "<%= theme.comments.placeholder %>" : $.trim($('#pjax-comment-placeholder').text());
 
-  let ALLPATH = '<%= theme.comments.path %>';
-  if(ALLPATH != '') pageUrl = ALLPATH;
+  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "<%= theme.comments.minivaline.placeholder %>";
+
+  let path = $.trim($('#pjax-comment-path').text());
+  if (path.length == 0) {
+    let defaultPath = '<%= theme.comments.minivaline.path %>';
+    path = defaultPath || decodeURI(window.location.pathname);
+  }
 
   new MiniValine({
     el: '#minivaline_container',
@@ -36,7 +37,7 @@
     appKey: '<%= theme.comments.minivaline.appKey %>',
     mode: '<%= theme.comments.minivaline.mode %>',
     placeholder: pagePlaceholder,
-    path: pageUrl,
+    path: path,
     lang: '<%= theme.comments.minivaline.lang %>',
     adminEmailMd5: '<%= theme.comments.minivaline.adminEmailMd5 %>',
     tagMeta: <%- '["' + tagMeta.join('", "') + '"]' %>,

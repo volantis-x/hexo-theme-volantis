@@ -30,24 +30,25 @@
   }
 
   function loadDisqus() {
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ?
-      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
 
-    let ALLPATH = '<%= theme.comments.path %>';
-    if (ALLPATH != '') pageUrl = ALLPATH;
+    let path = $.trim($('#pjax-comment-path').text());
+    if (path.length == 0) {
+      let defaultPath = '<%= theme.comments.disqus.path %>';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
 
     if (window.DISQUS) {
       window.DISQUS.reset({
           reload: true,
           config() {
-            this.page.identifier = global_url + pageUrl;
-            this.page.url = global_url + pageUrl;
+            this.page.identifier = global_url + path;
+            this.page.url = global_url + path;
           }
       });
     } else {
         window.disqus_config = function () {
-          this.page.url = global_url + pageUrl;
-          this.page.identifier = global_url + pageUrl;
+          this.page.url = global_url + path;
+          this.page.identifier = global_url + path;
         };
         let d = document, s = d.createElement('script');
         s.async = true;

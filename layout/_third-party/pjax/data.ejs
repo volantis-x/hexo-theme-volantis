@@ -2,21 +2,27 @@
 <!--思路大概是将值藏到重加载的区域内-->
 
 <%
-var commentPath = 'none';                     // 自定义的评论路径
-var commentPlaceholder = 'none';              // 自定义的评论描述
+var commentPath = '';                     // 自定义的评论路径
+var commentPlaceholder = '';              // 自定义的评论描述
 var ispage = false;                           // 一二级导航栏切换控制
 var postTitle = '';                           // 当前文章标题，用于二级导航栏赋值
 var enableCover = false;                      // 封面是否开启
 var frontMatterCover = 'none';                // 封面控制
 
-if (page && page.comments == true && page.comment) {
-  if (page.comment.path) {
-    commentPath = page.comment.path;
-  }
-  if (page.comment.placeholder) {
-    commentPlaceholder = page.comment.placeholder;
+if (theme.comments.service && theme.comments.service.length > 0) {
+  let service = theme.comments.service;
+  if (page.comments == undefined || page.comments != false) {
+    if (service in page) {
+      if (page[service].path) {
+        commentPath = page[service].path;
+      }
+      if (page[service].placeholder) {
+        commentPath = page[service].placeholder;
+      }
+    }
   }
 }
+
 
 var enableValine = false;
 if (theme.comments.service == 'valine') {

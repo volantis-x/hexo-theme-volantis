@@ -202,8 +202,6 @@ article:
 
 ############################### Comments ############################### > start
 comments:
-  path:    # 全局评论地址 仅支持 valine , miniValine , disqus , gitalk
-  placeholder: 快来评论吧~  # 评论占位提示 仅支持 valine & miniValine
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
   service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover
@@ -213,6 +211,8 @@ comments:
     appId: # your appId
     appKey: # your appKey
     # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
+    path: # 全局评论地址
+    placeholder: 快来评论吧~  # 评论占位提示
     meta: nick,mail,link # valine comment header info
     requiredFields: ['nick','mail']
     enableQQ: true # Unstable avatar link
@@ -228,6 +228,8 @@ comments:
     appId: # your appId
     appKey: # your appKey
     js: https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js
+    path: # 全局评论地址
+    placeholder: 快来评论吧~  # 评论占位提示
     mode: xCss # DesertsP or xCss
     math: false # Support MathJax.
     md: true # Support Markdown.
@@ -274,6 +276,7 @@ comments:
     shortname:
     # optional
     autoload: false
+    path: # 全局评论地址
   # Gitalk
   # https://gitalk.github.io/
   gitalk:
@@ -282,6 +285,7 @@ comments:
     repo:
     owner:
     admin: # []
+    path: # 全局评论地址
   # Vssue
   # https://vssue.js.org/zh/
   vssue:

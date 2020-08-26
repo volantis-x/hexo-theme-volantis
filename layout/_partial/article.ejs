@@ -85,7 +85,7 @@
   <%} %>
 </article>
 
-<% if (page.comments == undefined || page.comments.enable != false) { %>
+<% if (page.comments == undefined || page.comments != false) { %>
   <%- partial('../_third-party/comments/index') %>
 <% } %>
 

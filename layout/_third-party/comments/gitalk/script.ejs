@@ -2,11 +2,12 @@
 <script type="text/javascript">
   function pjax_gitalk() {
     if(!document.querySelectorAll("#gitalk-container")[0])return;
-    let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ? 
-      decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
-    
-    let ALLPATH = '<%= theme.comments.path %>';
-    if(ALLPATH != '') pageUrl = ALLPATH;
+
+    let path = $.trim($('#pjax-comment-path').text());
+    if (path.length == 0) {
+      let defaultPath = '<%= theme.comments.gitalk.path %>';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
 
     if (document.getElementById('gitalk-container') != null) {
       var gitalk = new Gitalk({
@@ -15,7 +16,7 @@
         repo: "<%- theme.comments.gitalk.repo %>",
         owner: "<%- theme.comments.gitalk.owner %>",
         admin: "<%- theme.comments.gitalk.admin %>",
-        id: pageUrl,
+        id: path,
         distractionFreeMode: false  // Facebook-like distraction free mode
       });
       gitalk.render('gitalk-container');
