@@ -6,15 +6,11 @@
 %>
 <% if (checkComment && theme.comments.service && theme.comments.service.length > 0) { %>
   <article class="post white-box reveal <%- theme.custom_css.body.effect.join(' ') %>" id="comments">
-    <section class="article typo">
-      <p ct><%- theme.comments && theme.comments.title %></p>
-      <% if (theme.comments && theme.comments.subtitle) { %>
-        <p cst><%- theme.comments.subtitle %></p>
-      <% } %>
-      <section id="comments">
-        <%- partial(theme.comments.service + '/layout') %>
-      </section>
-    </section>
+    <p ct><%- theme.comments && theme.comments.title %></p>
+    <% if (theme.comments && theme.comments.subtitle) { %>
+      <p cst><%- theme.comments.subtitle %></p>
+    <% } %>
+    <%- partial(theme.comments.service + '/layout') %>
   </article>
 <% } else { %>
   <% page.comments = false; %>
