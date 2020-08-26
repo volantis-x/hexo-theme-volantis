@@ -1,90 +1,65 @@
 <%
 var topMetas = theme.article.body.top_meta || [];
-if (post.meta && (post.meta.header !== undefined && post.meta.header !== null)) {
-  if (post.meta.header.length) {
-    topMetas = post.meta.header;
-  } else {
-    topMetas = [];
-  }
+if (post.top_meta == false) {
+  topMetas = [];
 }
 var bottomMetas = theme.article.body.bottom_meta || [];
-if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) {
-  if (post.meta.footer.length) {
-    bottomMetas = post.meta.footer;
-  } else {
-    bottomMetas = [];
-  }
+if (post.bottom_meta == false) {
+  bottomMetas = [];
 }
 %>
 
 <% if (position == 'top') { %>
   <div class='article-header'>
-    <% if (topMetas.length == 1 && topMetas.indexOf('centertitle') > -1) { %>
-      <% if (post.headimg) { %>
-        <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
-          <% if (theme.plugins.lazyload.loadingImg) { %>
-            <div class='headimg lazyload placeholder' data-bg='<%- post.headimg %>'></div>
-          <% } else { %>
-            <div class='headimg lazyload' data-bg='<%- post.headimg %>'></div>
-          <% } %>
+    <% if (post.headimg) { %>
+      <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
+        <% if (theme.plugins.lazyload.loadingImg) { %>
+          <div class='headimg lazyload placeholder' data-bg='<%- post.headimg %>'></div>
         <% } else { %>
-          <div class='headimg' style='background-image:url(<%- post.headimg %>)'></div>
+          <div class='headimg lazyload' data-bg='<%- post.headimg %>'></div>
         <% } %>
+      <% } else { %>
+        <div class='headimg' style='background-image:url(<%- post.headimg %>)'></div>
       <% } %>
-      <% if (post.title || page.title || config.title) { %>
-        <h1 class="title"><p class="p center h1"><%- post.title || post.seo_title %></p></h1><br>
-      <% } %>
-    <% } else { %>
-      <% if (post.headimg) { %>
-        <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
-          <% if (theme.plugins.lazyload.loadingImg) { %>
-            <div class='headimg lazyload placeholder' data-bg='<%- post.headimg %>'></div>
-          <% } else { %>
-            <div class='headimg lazyload' data-bg='<%- post.headimg %>'></div>
-          <% } %>
-        <% } else { %>
-          <div class='headimg' style='background-image:url(<%- post.headimg %>)'></div>
-        <% } %>
-      <% } %>
-      <div class="article-meta" id="top">
-        <% if (post.music && post.music.enable != false) { %>
-          <%- partial('../_third-party/aplayer/layout', {post: post, where: 'meta'}) %>
-        <% } %>
-        <% if (post.thumbnail && post.thumbnail.length){ %>
-          <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
-            <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
-              <% if (theme.plugins.lazyload.loadingImg) { %>
-                <img class='thumbnail lazyload placeholder' src='<%- post.thumbnail %>'>
-              <% } else { %>
-                <img class='thumbnail lazyload' src='<%- post.thumbnail %>'>
-              <% } %>
-            <% } else { %>
-              <img class='thumbnail' src='<%- post.thumbnail %>'>
-            <% } %>
-          </a>
-        <% } %>
-        <% if ((topMetas).indexOf('title') > -1) { %>
-          <h1 class="title">
-            <a href="<%- url_for(post.link || post.path) %>">
-              <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
-            </a>
-          </h1>
-        <% } %>
-        <div class='new-meta-box'>
-          <% (topMetas).forEach(function(meta) { %>
-            <% if ((meta != 'title') && (meta in theme.article.body.meta_library)){ %>
-              <%- partial('../_meta/' + meta, {post: post}) %>
-            <% } %>
-          <% }) %>
-        </div>
-      </div>
     <% } %>
+    <div class="article-meta" id="top">
+      <% if (post.music && post.music.enable != false) { %>
+        <%- partial('../_third-party/aplayer/layout', {post: post, where: 'meta'}) %>
+      <% } %>
+      <% if (post.thumbnail && post.thumbnail.length){ %>
+        <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
+          <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
+            <% if (theme.plugins.lazyload.loadingImg) { %>
+              <img class='thumbnail lazyload placeholder' src='<%- post.thumbnail %>'>
+            <% } else { %>
+              <img class='thumbnail lazyload' src='<%- post.thumbnail %>'>
+            <% } %>
+          <% } else { %>
+            <img class='thumbnail' src='<%- post.thumbnail %>'>
+          <% } %>
+        </a>
+      <% } %>
+      <% if (post.title) { %>
+        <h1 class="title">
+          <a href="<%- url_for(post.link || post.path) %>">
+            <%- post.title %>
+          </a>
+        </h1>
+      <% } %>
+      <div class='new-meta-box'>
+        <% (topMetas).forEach(function(meta) { %>
+          <% if (meta in theme.article.body.meta_library){ %>
+            <%- partial('../_meta/' + meta, {post: post}) %>
+          <% } %>
+        <% }) %>
+      </div>
+    </div>
   </div>
 <% } else if (position == 'bottom') { %>
   <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
       <% (bottomMetas).forEach(function(meta){ %>
-        <% if((meta != 'title') && (meta in theme.article.body.meta_library)){ %>
+        <% if (meta in theme.article.body.meta_library) { %>
           <%- partial('../_meta/' + meta, {post: post}) %>
         <% } %>
       <% }) %>

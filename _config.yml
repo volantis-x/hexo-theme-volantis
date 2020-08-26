@@ -105,7 +105,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [title, author, category, date, counter]
+    top_meta: [author, category, date, counter]
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -149,8 +149,6 @@ article:
     bottom_meta: [updated, tags, share]
     # meta library
     meta_library:
-      # 文章标题
-      title: # 暂无配置
       # 默认文章作者（可在 front-matter 中覆盖）
       author:
         avatar:
