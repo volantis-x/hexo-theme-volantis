@@ -17,7 +17,7 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
 }
 %>
 
-<% if (position == 'header') { %>
+<% if (position == 'top') { %>
   <div class='article-header'>
     <% if (topMetas.length == 1 && topMetas.indexOf('centertitle') > -1) { %>
       <% if (post.headimg) { %>
@@ -80,7 +80,7 @@ if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) 
       </div>
     <% } %>
   </div>
-<% } else if (position == 'footer') { %>
+<% } else if (position == 'bottom') { %>
   <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
       <% (bottomMetas).forEach(function(meta){ %>
