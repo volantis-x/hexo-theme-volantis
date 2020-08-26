@@ -1,0 +1,69 @@
+<%- partial('_pre') %>
+<div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+  <article id="<%= page.layout %>" class="post article article-entry l_friends white-box reveal <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
+    <%- partial('_partial/meta',{post: page, position: 'top'}) %>
+    <%- page.excerpt %>
+    <% if (page.links){ %>
+      <% (page.links||[]).forEach(function(group){ %>
+        <% if (group.items) { %>
+          <div class='friends-group'>
+            <% if (group.group) { %>
+              <br>
+              <h2 class='friend-header'>
+                <% if (group.icon) { %>
+                  <i class="<%= group.icon %> fa-fw" aria-hidden="true"></i>
+                <%} %>
+                <%- group.group %>
+              </h2>
+              <% if(group.desc) { %>
+                <%- markdown(group.desc) %>
+              <%} %>
+            <%} %>
+            <div class='friend-content'>
+              <% (group.items||[]).forEach(function(item){ %>
+                <a class='friend-card' style='background:<%- item.backgroundColor %>; color:<%- item.textColor %>'
+                  target="_blank" rel="external nofollow noopener noreferrer" href='<%- url_for(item.url || '') %>'>
+                  <div class='friend-left'>
+                    <% if (item.avatar) { %>
+                      <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
+                        <% if (theme.plugins.lazyload.loadingImg) { %>
+                          <img class='avatar lazyload placeholder' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
+                        <% } else { %>
+                          <img class='avatar lazyload' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
+                        <% } %>
+                      <% } else { %>
+                        <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
+                      <% } %>
+                    <% } %>
+                  </div>
+                  <div class='friend-right'>
+                    <p class="friend-name"><%- item.name %></p>
+                    <% if(item.tags){ %>
+                      <div class='friend-tags-wrapper'>
+                      <% (item.tags||[]).forEach(function(tag){ %>
+                        <p class="tags"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><%= tag %></p>
+                      <% }) %>
+                      </div>
+                    <% } %>
+                    <% if(item.desc){ %>
+                      <div class='friend-tags-wrapper'>
+                        <p class="tags"><%= item.desc %></p>
+                      </div>
+                    <% } %>
+                  </div>
+                </a>
+              <% }) %>
+            </div>
+          </div>
+        <%} %>
+      <% }) %>
+    <% } %>
+    <br><br>
+    <%- page.more %>
+    <%- partial('_partial/meta',{post: page, position: 'bottom'}) %>
+  </article>
+
+  <%- partial('_third-party/comments/index') %>
+
+</div>
+<%- partial('_partial/side') %>

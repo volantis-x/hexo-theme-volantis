@@ -3,27 +3,25 @@
 <div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.posts && site.posts.length > 0) { %>
     <% if (page.layout == 'category') { %>
-      <section class="post-list">
-        <div class='post-wrapper'>
-          <article id="cat" class="post article white-box reveal <%- theme.custom_css.body.effect.join(' ') %>">
-            <h2><%- page.title %></h2>
-            <div class="all-cats">
-              <% if (site.categories.length){ %>
-                <% site.categories.sort('path').each(function(category){ %>
-                  <a class="<%= category.parent ? ' child' : ''%>" href="<%= url_for(category.path) %>">
-                    <span><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;<%= category.name %></span>
-                    <span class="title">
-                      (<%- category.posts.length %>)
-                    </span>
-                  </a>
-                <% }) %>
-              <% } %>
-            </div>
-            <br>
-            <%- page.content %>
-          </article>
-        </div>
-      </section>
+      <div class='post-wrapper'>
+        <article id="cat" class="post article white-box reveal <%- theme.custom_css.body.effect.join(' ') %>">
+          <h2><%- page.title %></h2>
+          <div class="all-cats">
+            <% if (site.categories.length){ %>
+              <% site.categories.sort('path').each(function(category){ %>
+                <a class="<%= category.parent ? ' child' : ''%>" href="<%= url_for(category.path) %>">
+                  <span><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;<%= category.name %></span>
+                  <span class="title">
+                    (<%- category.posts.length %>)
+                  </span>
+                </a>
+              <% }) %>
+            <% } %>
+          </div>
+          <br>
+          <%- page.content %>
+        </article>
+      </div>
     <% } else { %>
       <%- partial('_partial/archive') %>
     <% } %>
