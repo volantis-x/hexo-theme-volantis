@@ -432,12 +432,22 @@ site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
   layout: [aplayer, social, license, analytics, info, copyright]
   social:
-    - icon: fas fa-rss
+    - icon: #fas fa-rss
+      img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg
       url: atom.xml
-    - icon: fas fa-envelope
+    - icon: #fas fa-envelope
       url: mailto:me@xxx.com
-    - icon: fab fa-github
+    - icon: #fab fa-github
+      img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg
       url: https://github.com/volantis-x/
+    - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg
+      url: /
+    - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg
+      url: /
+    - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg
+      url: /
+    - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg
+      url: /
     - icon: # fas fa-headphones-alt
       url: #
     - img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/qq.png
