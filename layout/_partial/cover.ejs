@@ -8,7 +8,7 @@
   %>
   <% if (enableCover) { %>
       <div class='cover-wrapper <%- page.layout %> <%- theme.cover.scheme %>' style="display: none;">
-        <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable) { %>
+        <% if (theme.plugins.backstretch.enable) { %>
           <div class='cover-backstretch'></div>
         <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
           <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
@@ -23,7 +23,7 @@
     <% if (page.cover == true) { %>
       <% if (is_home() && page.prev == 0 && theme.cover.use_for == 'docs') { %>
         <div class="cover-wrapper" id='full'>
-          <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable) { %>
+          <% if (theme.plugins.backstretch.enable) { %>
             <div class='cover-backstretch'></div>
           <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
             <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
@@ -35,7 +35,7 @@
         </div>
       <% } else { %>
         <div class="cover-wrapper" id='half'>
-          <% if (theme.plugins.backstretch && theme.plugins.backstretch.enable) { %>
+          <% if (theme.plugins.backstretch.enable) { %>
             <div class='cover-backstretch'></div>
           <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
             <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
