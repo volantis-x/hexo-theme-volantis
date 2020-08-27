@@ -33,16 +33,16 @@ if (theme.comments.service == 'minivaline') {
   enableMiniValine = true;
 }
 
-if(theme.cover && theme.cover.use_for) {
+if(theme.cover && theme.cover.height_scheme) {
   enableCover = true;
 }
 
 if (enableCover && page && page.cover) {
   frontMatterCover = page.cover;
-  if (is_home() && page.prev == 0 && theme.cover.use_for == 'docs') {
-    frontMatterCover = 'docs';
+  if (is_home() && page.prev == 0 && theme.cover.height_scheme == 'full') {
+    frontMatterCover = 'full';
   } else {
-    frontMatterCover = 'blog';
+    frontMatterCover = 'half';
   }
 }
 
@@ -68,10 +68,10 @@ if (page && page.layout == 'post' && page.title) {
     document.getElementsByClassName('cover-wrapper')[0].style.display = "none";
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
-    if ("<%=frontMatterCover%>" == "blog") { // 半屏
+    if ("<%=frontMatterCover%>" == "half") { // 半屏
       document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half');
       document.getElementsByClassName('scroll-down')[0].style.display = "none";
-    } else if ("<%=frontMatterCover%>" == "docs") { // 全屏
+    } else if ("<%=frontMatterCover%>" == "full") { // 全屏
       document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full');
       document.getElementsByClassName('scroll-down')[0].style.display = "";
     }
