@@ -29,13 +29,18 @@
     <% if (item.social == true && theme.site_footer.social) { %>
       <div class="social-wrapper">
         <% (theme.site_footer.social||[]).forEach(function(value){ %>
-          <% if (value.url && value.icon) { %>
-            <a href="<%- url_for(value.url) %>"
+          <% if (value.url && (value.icon || value.img || value.avatar)) { %>
+            <a href="<%= url_for(value.url) %>"
               class="social <%- value.icon %> flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
+              <% if (value.img) { %>
+                <img src="<%- value.img %>"/>
+              <% } else if (value.avatar) { %>
+                <img src="<%- value.avatar %>" style="border-radius:120px"/>
+              <% } %>
             </a>
-          <%}%>
+          <% } %>
         <%})%>
       </div>
     <% } %>
