@@ -45,14 +45,14 @@ if (post.bottom_meta == false) {
             <%- post.title %>
           </a>
         </h1>
+        <div class='new-meta-box'>
+          <% (topMetas).forEach(function(meta) { %>
+            <% if (meta in theme.article.body.meta_library){ %>
+              <%- partial('../_meta/' + meta, {post: post}) %>
+            <% } %>
+          <% }) %>
+        </div>
       <% } %>
-      <div class='new-meta-box'>
-        <% (topMetas).forEach(function(meta) { %>
-          <% if (meta in theme.article.body.meta_library){ %>
-            <%- partial('../_meta/' + meta, {post: post}) %>
-          <% } %>
-        <% }) %>
-      </div>
     </div>
   </div>
 <% } else if (position == 'bottom') { %>
