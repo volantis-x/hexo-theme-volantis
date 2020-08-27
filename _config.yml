@@ -324,7 +324,15 @@ sidebar:
       title:
       subtitle:
       jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
-      social: true
+      social:
+        - icon: fas fa-rss
+          url: /atom.xml
+        - icon: fas fa-envelope
+          url: mailto:me@xxx.com
+        - icon: fab fa-github
+          url: https://github.com/volantis-x/
+        - icon: fas fa-headphones-alt
+          url: /
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
