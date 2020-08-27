@@ -129,7 +129,7 @@ article:
         # 设为空则不使用文章头图
         placeholder_img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg
       # ----------------
-      # 版权声明组件 (for layout: post/docs)
+      # 版权声明组件 (for layout: post)
       copyright:
         enable: true
         permalink: '本文永久链接是：'
@@ -137,7 +137,7 @@ article:
           - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
           - permalink
       # ----------------
-      # 打赏组件 (for layout: post/docs)
+      # 打赏组件 (for layout: post)
       donate:
         enable: false
         images:
