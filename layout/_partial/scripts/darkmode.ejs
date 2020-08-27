@@ -42,7 +42,7 @@ var options = {
 };
 // 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
 <%
-if (theme.plugins.backstretch.position=='fixed') {
+if (theme.plugins.backstretch.enable && (theme.plugins.backstretch.position == 'fixed')) {
 	theme.plugins.darkmodejs.compatible=false;
 }
 %>

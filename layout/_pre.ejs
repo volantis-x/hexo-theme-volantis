@@ -41,14 +41,14 @@ if (config.theme_config && config.theme_config.style) {
     theme.custom_css.body.effect = style.body.effect;
   }
   // 卡片兼容处理 mix-blend-mode 与 effect: [blur] 冲突
-  if(theme.plugins.darkmodejs.enable&&theme.plugins.backstretch.position=='fixed'){
-	Array.prototype.removeblur = function(val) {
-		var index = this.indexOf(val);
-		if (index > -1) {
-			this.splice(index, 1);
-		}
-	};
-	theme.custom_css.body.effect.removeblur("blur")
+  if (theme.plugins.darkmodejs.enable && theme.plugins.backstretch.enable && (theme.plugins.backstretch.position == 'fixed')) {
+  	// Array.prototype.removeblur = function(val) {
+  	// 	var index = this.indexOf(val);
+  	// 	if (index > -1) {
+  	// 		this.splice(index, 1);
+  	// 	}
+  	// };
+	  // theme.custom_css.body.effect.removeblur("blur")
   }
 }
 

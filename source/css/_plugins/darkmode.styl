@@ -16,7 +16,7 @@
       color: black
 
 .darkmode-background
-	z-index: -1001 !important
+	z-index: -1000000 !important
 .darkmode--activated
 	--color-site-bg: convert(hexo-config('color_scheme.dark.site_bg'))
 	--color-site-inner: convert(hexo-config('color_scheme.dark.site_inner'))
@@ -39,7 +39,7 @@
 	--color-meta: convert(hexo-config('color_scheme.dark.meta'))
 
 
-	if hexo-config('plugins.backstretch.position') =='fixed'
+	if hexo-config('plugins.backstretch.position') == 'fixed'
 		.backstretch
 			mix-blend-mode: difference  !important
 	else
