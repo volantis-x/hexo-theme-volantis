@@ -18,14 +18,21 @@ hexo.extend.tag.register('link', function(args) {
     img = args[2].trim()
   }
   let result = '';
-  result += '<div><a class="link-card" title="' + text + '" href="' + url + '">';
+  result += '<a class="link-card" title="' + text + '" href="' + url + '">';
   // left
   result += '<div class="left">';
   result += '<img src="' + (img || hexo.theme.config.tag_plugins.link.placeholder) + '"/>';
   result += '</div>';
   // right
   result += '<div class="right"><p class="text">' + text + '</p><p class="url">' + url + '</p></div>';
-  result += '</a></div>';
+  result += '</a>';
 
   return result;
 });
+
+
+
+function postDivLink(args, content) {
+  return `<div class="div-link">${content}</div>`;
+}
+hexo.extend.tag.register('divlink', postDivLink, {ends: true});

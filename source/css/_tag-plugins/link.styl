@@ -1,12 +1,20 @@
-.article a.link-card, .md a.link-card
-  margin: $gap-row * 0.5 auto
+.md
+  .div-link
+    margin-left: 0 - $gap-row * 0.5
+    margin-right: 0 - $gap-row * 0.5
+    .link-card
+      margin: $gap-row * 0.5
+
+.md .link-card
+  margin: $gap-row * 0.5 $gap-row * 0.5 $gap-row * 0.5 0
+
   background: var(--color-block)
   display: inline-flex
   align-items: center
   cursor: pointer
   text-align: center
-  min-width: 200px
-  max-width: $device-mobile-l - 4 * $gap
+  width: $device-mobile-l - 4 * $gap
+  max-width: 100%
   @media screen and (max-width: $device-mobile-l)
     max-width: 100%
     width: 100%
@@ -16,7 +24,7 @@
     box-shadow: $boxshadow-float, $boxshadow-card-float
 
 
-.article a.link-card, .md a.link-card
+.md .link-card
   div.left,div.right
     pointer-events: none
   div.left

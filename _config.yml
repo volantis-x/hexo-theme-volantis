@@ -20,7 +20,6 @@ navbar:
     icon:
     title:
   menu:
-    # The following can be written in `blog/source/_data/menu.yml`
     - name: 博客
       icon: fas fa-rss
       url: /
