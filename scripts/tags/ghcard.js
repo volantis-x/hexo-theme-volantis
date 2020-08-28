@@ -26,6 +26,9 @@ hexo.extend.tag.register('ghcard', function(args) {
       url += "&" + tmp;
     }
   }
+  if (!url.includes('&show_owner=')) {
+    url += '&show_owner=true';
+  }
   card += '<img src="' + url + '"/>';
   card += '</a>';
   return card;
