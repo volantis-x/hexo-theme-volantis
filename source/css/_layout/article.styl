@@ -414,6 +414,9 @@ article .footer
   h1,h2
     &:before
       margin-top: $gap-h2 - $navbar-height + $gap
+    &:first-child:before
+      margin-top: $gap-h2 - $navbar-height - 3 * $gap
+
   h3,h4,h5,h6
     margin-bottom: $gap-paragraph
   h3
