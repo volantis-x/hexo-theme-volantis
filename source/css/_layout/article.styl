@@ -371,7 +371,6 @@ article .footer
         overflow: hidden
       .title
         font-weight: 600
-        font-size: $fontsize-body
         -webkit-line-clamp: 1
       .excerpt
         font-size: $fontsize-meta
@@ -380,6 +379,7 @@ article .footer
 
   .copyright blockquote p
     font-size: $fontsize-meta
+    margin: .25em 0
     a
       font-weight: 500
   .donate
@@ -407,21 +407,21 @@ article .footer
     &:before
       content: ''
       display: block
-      margin-top: 0 - $navbar-height -  $gap
+      margin-top: 0 - $navbar-height +  $gap
       height: $navbar-height + $gap
       visibility: hidden
       pointer-events: none
   h1,h2
     &:before
-      margin-top: $gap-h2 - $navbar-height - $gap
+      margin-top: $gap-h2 - $navbar-height + $gap
   h3,h4,h5,h6
     margin-bottom: $gap-paragraph
   h3
     &:before
-      margin-top: $gap-h3 - $navbar-height - $gap
+      margin-top: $gap-h3 - $navbar-height + $gap
   h4
     &:before
-      margin-top: $gap-h4 - $navbar-height - $gap
+      margin-top: $gap-h4 - $navbar-height + $gap
   h5
     font-weight: bold
 

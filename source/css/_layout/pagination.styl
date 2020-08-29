@@ -6,7 +6,7 @@
     align-items: baseline
     color: var(--color-meta)
     margin: 0
-    font-size: $fontsize-body
+    font-weight: 600
     .prev
       text-align: left
       border-top-right-radius: 32px
@@ -46,15 +46,16 @@
           background: bgcolor($color-hover)
           p.title
             color: $color-hover
-        p.title
+        p
           margin: $gap * 0.5 .5rem
-          font-weight: bold
+        p.title
+          font-weight: 600
           font-size: $fontsize-h5
           >i
             width: 1rem
         p.content
           font-size: $fontsize-meta
-          margin: 0 .5rem
+          font-weight: 400
           text-align: justify
           word-break: break-all
         &:only-child

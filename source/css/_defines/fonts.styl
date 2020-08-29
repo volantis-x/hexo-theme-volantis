@@ -38,14 +38,13 @@ if hexo-config('custom_css.fontfamily.logofont')
 
 
 // font size
-$fontsize = convert(hexo-config('custom_css.fontsize.root')) || 16px
+$fontsize-root = convert(hexo-config('custom_css.fontsize.root')) || 16px
 $fontsize-h1 = convert(hexo-config('custom_css.fontsize.h1')) || 1.625rem    // 26px
-$fontsize-h2 = convert(hexo-config('custom_css.fontsize.h2')) || 1.5rem    // 24px bottom line
-$fontsize-h3 = convert(hexo-config('custom_css.fontsize.h3')) || 1.25rem     // 20px colorful title
+$fontsize-h2 = convert(hexo-config('custom_css.fontsize.h2')) || 1.625rem    // 26px bottom line
+$fontsize-h3 = convert(hexo-config('custom_css.fontsize.h3')) || 1.375rem    // 22px colorful title
 $fontsize-h4 = convert(hexo-config('custom_css.fontsize.h4')) || 1.125rem    // 18px
 $fontsize-h5 = convert(hexo-config('custom_css.fontsize.h5')) || 1rem        // 16px bold
 $fontsize-h6 = convert(hexo-config('custom_css.fontsize.h6')) || 1rem        // 16px
-$fontsize-body = convert(hexo-config('custom_css.fontsize.body')) || 1rem      // 16px
 $fontsize-list = convert(hexo-config('custom_css.fontsize.list')) || .9375rem  // 15px
 $fontsize-meta = convert(hexo-config('custom_css.fontsize.meta')) || .875rem   // 14px
 $fontsize-code = convert(hexo-config('custom_css.fontsize.code')) || .8125rem  // 13px
