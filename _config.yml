@@ -855,7 +855,7 @@ custom_css:
     list: .9375rem
     meta: .875rem
     code: .8125rem
-    footnote: .75rem
+    footnote: .78125rem
   fontfamily:
     logofont:
       fontfamily: '"Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'

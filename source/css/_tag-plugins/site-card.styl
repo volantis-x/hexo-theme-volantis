@@ -40,10 +40,12 @@
       border-radius: 16px
       float: left
       margin-right: 8px
+      margin-top: 2px
     span
       display: block
     .title
       font-weight: 600
+      font-size: $fontsize-list
       color: var(--color-p)
       display: -webkit-box
       -webkit-box-orient: vertical
@@ -51,7 +53,9 @@
       -webkit-line-clamp: 1
       trans()
     .desc
-      font-size: $fontsize-meta
+      font-size: $fontsize-footnote
+      word-wrap: break-word;
+      line-height: 1.2
       color: var(--color-meta)
       display: -webkit-box
       -webkit-box-orient: vertical
