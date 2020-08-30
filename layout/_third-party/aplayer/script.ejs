@@ -7,6 +7,6 @@
   <%- js({src:item}) %>
 <% }) %>
 
-<% if (theme.rightmenu && theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
+<% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
   <%- js('js/aplayer.js') %>
 <% } %>

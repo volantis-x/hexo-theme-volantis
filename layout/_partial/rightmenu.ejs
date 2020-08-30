@@ -1,4 +1,4 @@
-<% if (theme.rightmenu && theme.rightmenu.enable == true && theme.rightmenu.layout.length > 0) { %>
+<% if (theme.rightmenu.enable == true && theme.rightmenu.layout.length > 0) { %>
   <% function loadmenu(obj) { %>
     <li>
       <a class='vlts-menu fix-cursor-default' <%= obj.url ? 'href='+ url_for(obj.url)+'' : ''%>
@@ -173,7 +173,7 @@
       }
 
       // 有音乐播放器
-      if (<%= theme.plugins.aplayer.enable %> == true && ('<%- theme.rightmenu.layout %>'||[]).includes('music')) {
+      if ('<%= theme.plugins.aplayer.enable %>' == true && ('<%- theme.rightmenu.layout %>'||[]).includes('music')) {
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();

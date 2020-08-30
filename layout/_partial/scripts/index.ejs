@@ -4,6 +4,9 @@
 
 <!-- internal -->
 <%- partial('cover') %>
+<% if (theme.rightmenu.enable == true) { %>
+  <%- partial('../rightmenu') %>
+<% } %>
 
 <!-- optional -->
 <% if (theme.search && theme.search.enable) { %>
