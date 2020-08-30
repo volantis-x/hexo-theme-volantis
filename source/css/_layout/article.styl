@@ -20,14 +20,10 @@
 
   a
     word-break: break-word
-  h1,h2,h3,h4,h5,h6
-    &:first-child
-      margin-top: $gap-row
-      padding-top: 0
-    &.title
-      left: 0
-      &:before
-        content: none
+  h1.title,h2.title
+    left: 0
+    &:before
+      content: none
   h1,h2
     padding-bottom: .2rem
     margin-bottom: 1rem
@@ -51,17 +47,17 @@
   h5
     font-weight: bold
     color: var(--color-h5)
-    margin-top: $gap-paragraph
+    margin-top: $gap-p
   h6
     color: var(--color-h6)
-    margin-top: $gap-paragraph
+    margin-top: $gap-p
 
   center
     &,p
       text-align: center
 
   .aplayer
-    margin: $gap-row 0
+    margin: $gap-p 0
     display: inline-block
     width: 400px
     max-width: 100%
@@ -106,8 +102,8 @@
     padding-left: 4px
     padding-right: 4px
   p
-    margin-top: $gap-paragraph * 1.1
-    margin-bottom: $gap-paragraph
+    margin-top: $gap-p
+    margin-bottom: $gap-p
     text-align: $textalign-p
     max-width: 100%
     line-height: inherit
@@ -167,8 +163,8 @@
       text-align: left
       word-wrap: normal
       font-size: $fontsize-list
-      margin-top: $gap-row
-      margin-bottom: $gap-row
+      margin-top: $gap-p
+      margin-bottom: $gap-p
     position: relative
     width: 100%
     padding: $gap
@@ -178,7 +174,7 @@
       text-align: justify
       color: inherit
       font-style: italic
-      margin: $gap-row 0
+      margin: $gap-p 0
       cite
         &::before
           content: '----'
@@ -199,8 +195,8 @@
     display: block
     -moz-box-sizing: border-box
     box-sizing: border-box
-    margin-top: $gap-row
-    margin-bottom: $gap-row
+    margin-top: $gap-p
+    margin-bottom: $gap-p
     overflow: auto
     background: var(--color-codeblock)
     font-size: $fontsize-code
@@ -235,7 +231,7 @@
 
   .widget
     background: transparent
-    margin: $gap-row 0
+    margin: $gap-p 0
     box-shadow: none
     border-radius: $border-codeblock
     cursor: auto
@@ -324,8 +320,8 @@
 article .footer
   margin-top: $gap * 4
   >div
-    margin-top: $gap-row
-    margin-bottom: $gap-row
+    margin-top: $gap-p
+    margin-bottom: $gap-p
   .header
     i
       margin-right: 2px
@@ -343,7 +339,7 @@ article .footer
     font-weight: 500
   .related_posts
     .body
-      margin: $gap-row 4px
+      margin: $gap-p 4px
       overflow: hidden
       border-radius: 2px
     .body .vlts-rps
@@ -392,41 +388,6 @@ article .footer
         margin: $gap * 0.5
       img
         width: 80px
-
-// nav to title
-.article .article-entry>
-  h1,h2,h3,h4,h5,h6
-    position: relative
-    pointer-events: none
-    margin-top: 0
-    >a
-      color: inherit
-      pointer-events: auto
-      &:hover
-        color: $color-hover
-    &:before
-      content: ''
-      display: block
-      margin-top: 0 - $navbar-height +  $gap
-      height: $navbar-height + $gap
-      visibility: hidden
-      pointer-events: none
-  h1,h2
-    &:before
-      margin-top: $gap-h2 - $navbar-height + $gap
-    &:first-child:before
-      margin-top: $gap-h2 - $navbar-height - 3 * $gap
-
-  h3,h4,h5,h6
-    margin-bottom: $gap-paragraph
-  h3
-    &:before
-      margin-top: $gap-h3 - $navbar-height + $gap
-  h4
-    &:before
-      margin-top: $gap-h4 - $navbar-height + $gap
-  h5
-    font-weight: bold
 
 
 article .readmore

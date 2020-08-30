@@ -1,7 +1,9 @@
 div.gallery
-  margin: $gap-row 0
+  margin: $gap-p 0
   overflow: hidden
   $sp = 1px
+  &+.gallery
+    margin-top: 0 - $gap-p
   >.fancybox,>p>.fancybox
     margin: $sp
     padding: 0
@@ -65,6 +67,8 @@ div.gallery
     cursor: zoom-out
 
 .fancybox
+  margin-top: $gap-p
+  margin-bottom: $gap-p
   display: flex
   flex-direction: column
   justify-content: center
@@ -80,15 +84,15 @@ div.gallery
     margin: 0 auto
     align-items: stretch
     cursor: zoom-in
-  .bg 
+  .bg
     display: flex
     width: 100%
   .gallery
     overflow: hidden
   .image-caption
     font-size: $fontsize-code
-    padding-top: $gap-row
-    padding-bottom: $gap-row
+    padding-top: $gap-p * 0.5
+    padding-bottom: $gap-p
     color: var(--color-meta)
     &:empty
       display: none

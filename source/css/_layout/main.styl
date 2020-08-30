@@ -75,13 +75,13 @@
   .widget
     .content
       p,ul,ol,table,.tabs,details
-        margin-top: $gap-row
-        margin-bottom: $gap-row
+        margin-top: $gap-p
+        margin-bottom: $gap-p
       .post
         padding-top: 0
         padding-bottom: 0
-        margin-top: $gap-row
-        margin-bottom: $gap-row
+        margin-top: $gap-p
+        margin-bottom: $gap-p
     &.grid .content .grid.fixed a
       width: "calc(100%/8 - 0 * %s)" % $gap
       @media screen and (max-width: $device-laptop)
@@ -325,12 +325,12 @@ article#comments
   .article
     p[ct]
       margin-top: 0
-      margin-bottom: $gap-row
+      margin-bottom: $gap-p
       font-size: $fontsize-h4
       color: var(--color-text)
     p[cst]
-      margin-top: $gap-row
-      margin-bottom: $gap-row
+      margin-top: $gap-p
+      margin-bottom: $gap-p
       font-size: $fontsize-meta
   #load-btns, #loading-comments
     text-align: center

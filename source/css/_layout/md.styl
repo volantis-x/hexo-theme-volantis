@@ -1,0 +1,47 @@
+// 以后关于 md 渲染方面的都写到这里
+.md
+  >*
+    margin-top: $gap-p
+    margin-bottom: $gap-p
+    &:first-child
+      margin-top: 0
+  >p
+    padding-top: 4px
+  h1,h2,h3,h4,h5,h6
+    position: relative
+    pointer-events: none
+    margin-top: 0
+    font-weight: 500
+    >a
+      color: inherit
+      pointer-events: auto
+      &:hover
+        color: $color-hover
+    &:before
+      content: ''
+      display: block
+      margin-top: 0 - $navbar-height +  $gap
+      height: $navbar-height + $gap * 2
+      visibility: hidden
+      pointer-events: none
+  h1,h2
+    &:before
+      margin-top: $gap-h2 - $navbar-height - $gap * 1
+    &:first-child:before
+      margin-top: $gap-h2 - $navbar-height - $gap * 4
+
+  h3,h4,h5,h6
+    margin-bottom: $gap-p
+  h3
+    &:before
+      margin-top: $gap-h3 - $navbar-height - $gap
+  h4
+    &:before
+      margin-top: $gap-h4 - $navbar-height - $gap
+  h5
+    font-weight: bold
+  h2+h3:before
+    margin-top: $gap-h2 - $navbar-height - $gap * 4
+  ul,ol
+    margin-top: $gap-p
+    margin-bottom: $gap-p

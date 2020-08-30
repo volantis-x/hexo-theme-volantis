@@ -744,12 +744,12 @@ color_scheme:
     inlinecode: '#D56D28'
 
     # 文章部分
-    h1: '#444'
-    h2: '#444'
-    h3: '#444'
+    h1: '#3a3a3a'
+    h2: '#3a3a3a'
+    h3: '#333'
     h4: '#444'
-    h5: '#444'
-    h6: '#444'
+    h5: '#555'
+    h6: '#666'
     p: '#444'
 
     # 列表文字
@@ -836,9 +836,8 @@ custom_css:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 24px # Spacing above H3 (only px unit)
     h4: 16px # Spacing above H4 (only px unit)
-    paragraph: 1rem # Paragraph spacing between paragraphs
-    row: .5rem # Paragraph spacing between other elements
-    line_height: 1.65 # normal, 1.5, 1.75, 2 ...
+    p: 1em # Paragraph spacing between paragraphs
+    line_height: 1.6 # normal, 1.5, 1.75, 2 ...
   border_radius:
     card: 8px
     codeblock: 4px
@@ -848,7 +847,7 @@ custom_css:
     root: 16px
     h1: 1.5rem # 不推荐用在文章中
     h2: 1.5rem
-    h3: 1.375rem
+    h3: 1.25rem
     h4: 1.125rem
     h5: 1rem
     h6: 1rem

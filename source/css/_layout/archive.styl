@@ -2,6 +2,9 @@ article
   &#arc,&#cat,&#tag
     padding-top: $gap * 3
     padding-bottom: $gap * 3
+    h2
+      font-weight: 600
+
 
 // 归档页面
 article#arc
@@ -60,6 +63,8 @@ article#cat
       padding: $gap * 0.5 $gap
       border-radius: $border-button
       color: var(--color-list)
+      font-size: $fontsize-list
+      font-weight: 500
       &:hover
         list_hover()
       &.child
@@ -73,28 +78,27 @@ article#tag
     align-items: flex-start
     justify-content: flex-start
     align-items: baseline
-    word-spacing: $gap * 0.5
     text-align: center
     ul
-      margin: 0 -4px
+      margin: 0 -8px
       padding: 0
       display: flex
       flex-wrap: wrap
       li
         list-style: none
-        margin: $gap-row 8px
+        margin: 8px
         border-radius: $border-button
         overflow: hidden
         display: flex
         position: relative
+        font-size: $fontsize-list
         a
           display: inline-block
           color: var(--color-list)
           padding: 4px 52px 4px 16px
           background: var(--color-block)
+          font-weight: 500
           &:hover
-            color: $color-hover
-            background: var(--color-site-bg)
             background: $color-hover
             color: $color-inner
         span
