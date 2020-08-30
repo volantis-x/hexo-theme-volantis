@@ -1,7 +1,12 @@
+/**
+ * note.js | https://github.com/volantis-x/hexo-theme-volantis
+ */
+
 'use strict';
 
+// {% note style, content %}
 function postNote(args) {
-  args = args.join(' ').split(',')
+  args = args.join(' ').split(', ')
   if (args.length > 1) {
     let cls = args[0].trim()
     let text = args[1].trim()
@@ -12,10 +17,24 @@ function postNote(args) {
   }
 }
 
+// {% noteblock style, title %}
+// content
+// {% endnoteblock %}
 function postNoteBlock(args, content) {
-  return `<div class="note ${args.join(' ')}">
-            ${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}
-          </div>`;
+  args = args.join(' ').split(', ');
+  if (args.length < 1) {
+    return;
+  }
+  let cls = args[0].trim();
+  let ret = '';
+  ret += '<div class="note ' + cls + '">';
+  if (args.length > 1) {
+    let title = args[1].trim();
+    ret += '<p><strong>' + title + '</strong></p>';
+  }
+  ret += hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('');
+  ret += '</div>';
+  return ret;
 }
 
 hexo.extend.tag.register('note', postNote);
