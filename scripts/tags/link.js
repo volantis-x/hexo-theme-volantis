@@ -18,21 +18,15 @@ hexo.extend.tag.register('link', function(args) {
     img = args[2].trim()
   }
   let result = '';
-  result += '<a class="link-card" title="' + text + '" href="' + url + '">';
+  // 发现如果不套一层 div 在其它可渲染 md 的容器中容易被分解
+  result += '<div class="tag link"><a class="link-card" title="' + text + '" href="' + url + '">';
   // left
   result += '<div class="left">';
   result += '<img src="' + (img || hexo.theme.config.tag_plugins.link.placeholder) + '"/>';
   result += '</div>';
   // right
   result += '<div class="right"><p class="text">' + text + '</p><p class="url">' + url + '</p></div>';
-  result += '</a>';
+  result += '</a></div>';
 
   return result;
 });
-
-
-
-function postDivLink(args, content) {
-  return `<div class="div-link">${content}</div>`;
-}
-hexo.extend.tag.register('divlink', postDivLink, {ends: true});
