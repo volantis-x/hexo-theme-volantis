@@ -586,7 +586,7 @@ plugins:
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
-    enable: true
+    enable: #true
     js:
       - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
       - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
@@ -768,7 +768,7 @@ color_scheme:
     # 网站页脚文字
     site_footer: '#aaa'
     # 卡片背景色
-    card: '#444'
+    card: '#333'
     # 卡片上的普通文字
     text: '#eee'
 
