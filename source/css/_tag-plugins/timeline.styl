@@ -56,11 +56,11 @@ div.timenode
     display: inline-block
     &:empty
       display: none
-    p
+    *
       &:first-child
-        margin-top: 0
+        margin-top: $gap-p * 0.25
       &:last-child
-        margin-bottom: 0
+        margin-bottom: $gap-p * 0.25
     .highlight
       border: 1px solid mix($color-block, $color-text, 90)
 

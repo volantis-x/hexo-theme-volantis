@@ -103,47 +103,22 @@
     margin-bottom: $gap
     padding: 1.5 * $gap
     border-radius: $border-card
-    h1
-      font-weight: normal
+    .headimg
+      height: 280px
+      background-position: center
+      background-size: cover
+      @media screen and (max-width: $device-tablet)
+        height: 250px
+      @media screen and (max-width: $device-mobile)
+        height: 220px
+      @media screen and (max-width: $device-mobile-l)
+        height: 190px
+    h1.title
       font-size: $fontsize-h1
-    .article-header
-      .headimg
-        width: "calc(100% + 3 * %s)" % $gap
-        margin-left: 0 - 1.5 * $gap
-        margin-top: 0 - 1.5 * $gap
-        margin-bottom: 2 * $gap
-        height: 280px
-        background-position: center
-        background-size: cover
-        @media screen and (max-width: $device-tablet)
-          height: 250px
-        @media screen and (max-width: $device-mobile)
-          height: 220px
-        @media screen and (max-width: $device-mobile-l)
-          height: 190px
-      .title
-        trans(.1s)
-        margin: 0
-        color: var(--color-text)
-        border-bottom: none
-        padding-bottom: 4px
-        p
-          &.h1,&.h2
-            margin-top: $gap * 3
-            margin-bottom: $gap * 1.5
-            border-bottom: none
-          &.h1
-            font-size: $fontsize-h1 * 1.1
-          &.h2
-            font-size: $fontsize-h2 * 1.1
-        a
-          display: inline
-          font-weight: bold
-          color: var(--color-text)
-          text-decoration: none
-          font-size: $fontsize-h1
-          &:hover
-            color: $color-hover
+      margin: 0
+      border-bottom: none
+      padding-bottom: 4px
+      border-bottom: none
     .article-meta
       color: var(--color-meta)
       margin-bottom: $gap
