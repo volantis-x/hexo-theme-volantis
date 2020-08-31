@@ -14,5 +14,4 @@ jobs:
         uses: roots/issue-closer@v1.1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          issue-close-message: "@${issue.user.login}: hello! :wave:\n\nThis issue is being automatically closed because it does not follow the issue template." # optional property
-          issue-pattern: ".*guidelines for Contributing.*"
+          issue-close-message: "@${issue.user.login}: hello! :wave:\n\nThis issue is being automatically closed because it does not follow the issue template.\n\n@${issue.user.login}: 您好! :wave:\n\n因为您没有按照模板中的操作步骤进行自检，此issue将被自动关闭。" 
