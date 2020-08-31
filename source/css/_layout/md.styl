@@ -22,9 +22,8 @@
   h1,h2
     &:before
       margin-top: $gap-h2 - $navbar-height - $gap * 1
-    &:first-child:before
-      margin-top: $gap-h2 - $navbar-height - $gap * 4
-
+  .article-meta+h1,.article-meta+h2
+    margin-top: $gap-h2 - $navbar-height - $gap * 4
   h3,h4,h5,h6
     margin-bottom: $gap-p
   h3
