@@ -112,38 +112,6 @@
     max-width: 100%
     line-height: inherit
 
-  ul,ol
-    font-size: $fontsize-list
-    list-style: initial
-    padding-left: 8px
-    margin-left: $gap
-    margin-top: 2px
-    margin-bottom: 2px
-    ul,ol
-      margin-top: 0
-      margin-bottom: 0
-    li
-      margin-top: 0px
-      margin-bottom: 0px
-      li
-        margin-top: 0
-        margin-bottom: 0
-      p
-        margin-top: 4px
-        margin-bottom: 0
-    &.task-list
-      padding-left: 0
-      margin-left: 4px
-      li
-        list-style: none
-        input
-          margin-right: 4px
-
-
-  ul>li
-    list-style: initial
-  ol>li
-    list-style: decimal
 
   .subtitle
     h6
@@ -321,7 +289,7 @@
   .widget-blur
     backdrop-filter: none
 
-article .footer
+.md .footer
   margin-top: $gap * 4
   >div
     margin-top: $gap-p
@@ -334,6 +302,10 @@ article .footer
     font-weight: 500
     font-size: $fontsize-meta
     color: var(--color-list)
+  .body
+    ul,ol
+      margin-top: 0
+      margin-bottom: 0
   .references,.related_posts
     background: var(--color-block)
     border-radius: $border-codeblock

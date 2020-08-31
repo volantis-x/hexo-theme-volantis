@@ -37,5 +37,34 @@
   h2+h3:before
     margin-top: $gap-h2 - $navbar-height - $gap * 4
   ul,ol
+    font-size: $fontsize-list
+    list-style: initial
+    padding-left: 8px
+    margin-left: $gap
     margin-top: $gap-p
     margin-bottom: $gap-p
+    ul,ol
+      margin-top: 0
+      margin-bottom: 0
+    li
+      margin-top: 0px
+      margin-bottom: 0px
+      li
+        margin-top: 0
+        margin-bottom: 0
+      p
+        margin-top: 4px
+        margin-bottom: 0
+    &.task-list
+      padding-left: 0
+      margin-left: 4px
+      li
+        list-style: none
+        input
+          margin-right: 4px
+
+
+  ul>li
+    list-style: initial
+  ol>li
+    list-style: decimal
