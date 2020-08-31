@@ -4,12 +4,12 @@ const fs = require('hexo-fs');
 
 function lazyProcess(htmlContent, target)  {
   let cfg = this.theme.config.plugins.lazyload;
-  if (cfg == undefined || cfg.enable == false) {
-    return;
+  if (cfg == undefined || cfg.enable != true) {
+    return htmlContent;
   }
   if (cfg.onlypost == true) {
     if (target != 'post') {
-      return;
+      return htmlContent;
     }
   }
   let loadingImg = cfg.loadingImg;
