@@ -1,10 +1,6 @@
 <!-- required -->
 <%- js(theme.plugins.jquery) %>
-
-<!-- fancybox -->
-<% if (theme.plugins.fancybox && theme.plugins.fancybox.enable) { %>
-  <%- partial('../../_third-party/fancybox/script') %>
-<% } %>
+<%- partial('../../_third-party/fancybox/script') %>
 
 <!-- internal -->
 <%- partial('cover') %>

@@ -90,9 +90,8 @@
   <% if (theme.plugins.fontawesome_animation.enable) { %>
     <%- css(theme.plugins.fontawesome_animation.css) %>
   <% } %>
-  
-  <% if (theme.plugins.fancybox && theme.plugins.fancybox.enable) { %>
-    <%- css(theme.plugins.fancybox.css) %>
+  <% if (theme.plugins.fancybox) { %>
+    <%- css(theme.plugins.fancybox) %>
   <% } %>
 
   <% if (theme.plugins.nodewaves.enable) { %>
