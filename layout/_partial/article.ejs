@@ -7,6 +7,13 @@
     <div class='fancybox'><img src='<%- url_for(photo) %>'/></div>
   <% }) %>
   <%- post.content %>
+  <% if (page.link) { %>
+    <div class='div-ori-link'>
+      <a class='ori-link' href='<%- url_for(post.link || post.path) %>'>
+        <%- post.link ? __('post.readoriginal') : __('post.readmore') %>
+      </a>
+    </div>
+  <% } %>
   <% if (['post','docs'].includes(page.layout)) { %>
     <% let footer_widget = theme.article.body.footer_widget; %>
     <div class='footer'>

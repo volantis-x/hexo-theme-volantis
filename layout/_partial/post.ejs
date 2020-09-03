@@ -88,8 +88,8 @@
       </div>
       <% if (showReadmore) { %>
         <div>
-            <a class='readmore' href='<%- url_for(post.link || post.path) %>'>
-            <%- __('post.readmore') %>
+          <a class='readmore' href='<%- url_for(post.link || post.path) %>'>
+            <%- post.link ? __('post.readoriginal') : __('post.readmore') %>
           </a>
         </div>
       <% } %>

@@ -5,6 +5,7 @@ navbar:
 post:
   pin: Top
   readmore: Read More
+  readoriginal: Read Original
   wordcount: '%s words'
   duration: '%s min'
   comments: Comments

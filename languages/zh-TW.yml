@@ -5,6 +5,7 @@ navbar:
 post:
   pin: 置頂
   readmore: 閱讀全文
+  readoriginal: 去源站閱讀
   wordcount: '字數：%s字'
   duration: '時長：%s分鐘'
   comments: 評論
