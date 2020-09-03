@@ -75,7 +75,11 @@
         $(this).parent().append($(this).remove());
       });
       try{
-        pjax_fancybox();
+		if (typeof $.fancybox == "undefined") {
+			SCload_fancybox();
+		} else {
+			pjax_fancybox();
+		}
         <% if (theme.plugins.backstretch.enable && theme.plugins.backstretch.images) { %>
           <% var posi = null;
             if (theme.plugins.backstretch.position == 'cover') {
