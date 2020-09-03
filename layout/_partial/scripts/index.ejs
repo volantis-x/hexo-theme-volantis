@@ -13,6 +13,10 @@
   <%- partial('search') %>
 <% } %>
 
+<% if (theme.plugins.issues.enable) { %>
+  <%- js('js/issues') %>
+<% } %>
+
 <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
   <%- partial('../../_third-party/lazyload/script') %>
 <% } %>
