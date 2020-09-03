@@ -97,6 +97,8 @@ article:
     auto_excerpt: true # false, true
     # show split line or not
     line_style: solid # hidden, solid, dashed, dotted
+    # show author
+    author: true # true, false
     # show readmore button
     readmore: auto # auto, always
   # 文章详情页面的文章卡片本体布局方案

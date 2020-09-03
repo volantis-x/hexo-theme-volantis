@@ -63,9 +63,12 @@
       <% } %>
     <% } %>
   </div>
-  <% if (showCat || showReadmore) { %>
+  <% if (showCat || showReadmore || theme.article.preview.author) { %>
     <div class='meta-v3' line_style='<%- theme.article.preview.line_style %>'>
       <div>
+        <% if (theme.article.preview.author) { %>
+          <a class='avatar' href='<%- post.author && post.author.url || theme.article.body.meta_library.author.url %>'><img src='<%- post.author && post.author.avatar || theme.article.body.meta_library.author.avatar %>'></a>
+        <% } %>
         <time><%= date(post.date, config.date_format) %></time>
         <% if (post.categories && post.categories.length > 0) { %>
           <span class="dot"></span>

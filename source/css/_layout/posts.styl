@@ -56,6 +56,10 @@
   flex-wrap: wrap
   justify-content: space-between
   color: var(--color-meta)
+  >div
+    display: flex
+    align-items: center
+    user-select: none
   time
     font-size: $fontsize-meta
   .category-link
@@ -67,3 +71,12 @@
       color: $color-hover
   .readmore
     font-weight: bold
+  .avatar
+    line-height: 0
+    margin-right: .75em
+    img
+      width: 24px
+      height: 24px
+      display: block
+      border-radius: 12px
+      object-fit: cover
