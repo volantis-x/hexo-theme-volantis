@@ -533,7 +533,7 @@ plugins:
 
   # Codeblock Copy Button
   clipboard:
-    enable: true
+    enable: #true
     js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:

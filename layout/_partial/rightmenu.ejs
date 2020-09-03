@@ -140,8 +140,10 @@
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          copyText.style.display = 'block';
-          hrText.style.display = 'block';
+          if ('<%= theme.plugins.clipboard.enable %>' == true) {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
         }
       }
 
