@@ -45,13 +45,13 @@
     });
   };
   function SCload_fancybox() {
+    if($(".md").find("img").not('.inline').not('a img').length+$(".article-entry").find("img").length==0)return;
     loadCSS("<%- theme.plugins.fancybox %>", document.getElementById("loadcss"));
-	setTimeout(function() {
-		loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
-	}, 1);
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
   };
   $(function () {
-    if($(".md").find("img").not('.inline').not('a img').length+$(".article-entry").find("img").length==0)return;
     SCload_fancybox();
   });
 </script>
