@@ -67,7 +67,14 @@
     <div class='meta-v3' line_style='<%- theme.article.preview.line_style %>'>
       <div>
         <% if (theme.article.preview.author) { %>
-          <a class='avatar' href='<%- post.author && post.author.url || theme.article.body.meta_library.author.url %>'><img src='<%- post.author && post.author.avatar || theme.article.body.meta_library.author.avatar %>'></a>
+          <%
+          let authorId = post.author || 'default';
+          let author = theme.article.author.default;
+          if (authorId in theme.article.author) {
+            author = theme.article.author[authorId];
+          }
+          %>
+          <a class='avatar' href='<%- author.url %>'><img src='<%- author.avatar %>'></a>
         <% } %>
         <time><%= date(post.date, config.date_format) %></time>
         <% if (post.categories && post.categories.length > 0) { %>
