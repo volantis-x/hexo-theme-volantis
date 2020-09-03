@@ -75,11 +75,11 @@
         $(this).parent().append($(this).remove());
       });
       try{
-		if (typeof $.fancybox == "undefined") {
-			SCload_fancybox();
-		} else {
-			pjax_fancybox();
-		}
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
         <% if (theme.plugins.backstretch.enable && theme.plugins.backstretch.images) { %>
           <% var posi = null;
             if (theme.plugins.backstretch.position == 'cover') {
@@ -117,7 +117,11 @@
           pjax_valine();
         <% } %>
         <% if (theme.comments.service == 'minivaline'){ %>
-          pjax_minivaline();
+          if (typeof MiniValine == "undefined") {
+            load_minivaline();
+          } else {
+            pjax_minivaline();
+          }
         <% } %>
         <% if (theme.comments.service == 'gitalk'){ %>
           pjax_gitalk();
