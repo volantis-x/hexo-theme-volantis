@@ -643,6 +643,7 @@ plugins:
   # {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=latest,v6,v5,v4,v3,v2,v1,v0 %}
   issues:
     enable: #true
+    js:
 
   # 暗黑模式 darkmodejs
   # https://darkmodejs.learn.uno
@@ -702,7 +703,7 @@ rightmenu:
 search:
   enable: true
   service: hexo  # hexo, google, algolia, azure, baidu
-  # js: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3.0/js/search.js
+  js:
   google:
     apiKey:
     engineId:
