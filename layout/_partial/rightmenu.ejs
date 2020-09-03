@@ -24,7 +24,7 @@
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='option'>
-        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick='document.execCommand("copy")'><i class='fa fa-copy fa-fw'></i><%- __('rightmenu.copy_text') %></a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i><%- __('rightmenu.copy_text') %></a>
         <hr id='hr-text'>
         <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i><%- __('rightmenu.copy_link') %></a>
         <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i><%- __('rightmenu.open_in_new_tab') %></a>
@@ -140,7 +140,7 @@
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('<%= theme.plugins.clipboard.enable %>' == true) {
+          if ('<%= theme.plugins.clipboard.enable %>' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
