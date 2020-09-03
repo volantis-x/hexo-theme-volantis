@@ -27,7 +27,6 @@ hexo.extend.tag.register('issues', function(args) {
       }
     }
   }
-  console.log(type, api, group);
   if (type.length == 0 || api.length == 0) {
     return;
   }
