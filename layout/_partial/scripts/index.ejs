@@ -9,7 +9,7 @@
 <% } %>
 
 <% if (theme.plugins.issues.enable) { %>
-  <%- js('js/issues') %>
+  <%- js({src: theme.plugins.issues.js || 'js/issues', aysc: true}) %>
 <% } %>
 
 <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
