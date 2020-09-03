@@ -39,11 +39,6 @@ if(theme.cover && theme.cover.height_scheme) {
 
 if (enableCover && page && page.cover) {
   frontMatterCover = page.cover;
-  if (is_home() && page.prev == 0 && theme.cover.height_scheme == 'full') {
-    frontMatterCover = 'full';
-  } else {
-    frontMatterCover = 'half';
-  }
 }
 
 if (page && page.layout == 'post' && page.title) {
@@ -65,17 +60,8 @@ if (page && page.layout == 'post' && page.title) {
 <script>
   // 处理封面 此时 jquery 还没加载
   if ("<%=frontMatterCover%>" == "none") { // 移除封面
-    document.getElementsByClassName('cover-wrapper')[0].style.display = "none";
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show");
   } else {
-    if ("<%=frontMatterCover%>" == "half") { // 半屏
-      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half');
-      document.getElementsByClassName('scroll-down')[0].style.display = "none";
-    } else if ("<%=frontMatterCover%>" == "full") { // 全屏
-      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full');
-      document.getElementsByClassName('scroll-down')[0].style.display = "";
-    }
-    document.getElementsByClassName('cover-wrapper')[0].style.display = "";
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show");
   }
 </script>

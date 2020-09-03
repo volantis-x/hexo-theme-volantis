@@ -44,7 +44,7 @@ navbar:
 
 ############################### Cover ############################### > start
 cover:
-  height_scheme: half # full, half
+  height_scheme: full # full, half
   layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true

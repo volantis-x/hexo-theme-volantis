@@ -1,19 +1,46 @@
 <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("<%- config.root %>" || "/").endsWith('/') ? ("<%- config.root %>" || "/") : ("<%- config.root %>/" || "/" );
+(function ($) {
   <% if(theme.search.service === 'baidu') { %>
-    var BAIDU_API_ID = "<%- theme.search.baidu.apiId %>";
+    const BAIDU_API_ID = "<%- theme.search.baidu.apiId %>";
+    customSearch = new BaiduSearch({
+      apiId: BAIDU_API_ID,
+      imagePath: SearchServiceimagePath
+    });
   <%} else if(theme.search.service === 'algolia') { %>
-    var ALGOLIA_API_KEY = "<%- theme.search.algolia.apiKey %>";
-    var ALGOLIA_APP_ID = "<%- theme.search.algolia.applicationID %>";
-    var ALGOLIA_INDEX_NAME = "<%- theme.search.algolia.indexName %>";
+    const ALGOLIA_API_KEY = "<%- theme.search.algolia.apiKey %>";
+    const ALGOLIA_APP_ID = "<%- theme.search.algolia.applicationID %>";
+    const ALGOLIA_INDEX_NAME = "<%- theme.search.algolia.indexName %>";
+    customSearch = new AlgoliaSearch({
+      apiKey: ALGOLIA_API_KEY,
+      appId: ALGOLIA_APP_ID,
+      indexName: ALGOLIA_INDEX_NAME,
+      imagePath: SearchServiceimagePath
+    });
   <%} else if(theme.search.service === 'azure') { %>
-    var AZURE_QUERY_KEY = "<%- theme.search.azure.queryKey %>";
-    var AZURE_INDEX_NAME = "<%- theme.search.azure.indexName %>";
-    var AZURE_SERVICE_NAME = "<%- theme.search.azure.serviceName %>";
+    const AZURE_QUERY_KEY = "<%- theme.search.azure.queryKey %>";
+    const AZURE_INDEX_NAME = "<%- theme.search.azure.indexName %>";
+    const AZURE_SERVICE_NAME = "<%- theme.search.azure.serviceName %>";
+    customSearch = new AzureSearch({
+      serviceName: AZURE_SERVICE_NAME,
+      indexName: AZURE_INDEX_NAME,
+      queryKey: AZURE_QUERY_KEY,
+      imagePath: SearchServiceimagePath
+    });
   <%} else if(theme.search.service === 'google') { %>
-    var GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google.apiKey %>";
-    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google.engineId %>";
+    const GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google.apiKey %>";
+    const GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google.engineId %>";
+    customSearch = new GoogleCustomSearch({
+      apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
+      engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
+      imagePath: SearchServiceimagePath
+    });
+  <%} else {%>
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
   <%}%>
-  var SEARCH_SERVICE = "<%- theme.search.service %>" || "hexo";
-  var ROOT = "<%- config.root %>" || "/";
-  if (!ROOT.endsWith('/')) ROOT += '/';
+})(jQuery);
+
 </script>
