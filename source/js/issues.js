@@ -141,6 +141,5 @@ document.addEventListener('DOMContentLoaded', function () {
   checkIssues();
 });
 document.addEventListener('pjax:complete', function () {
-  console.log('checkIssues');
   checkIssues();
 });
