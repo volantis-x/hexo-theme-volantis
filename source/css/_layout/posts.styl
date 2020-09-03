@@ -29,9 +29,15 @@
       height: 220px
     @media screen and (max-width: $device-mobile-l)
       height: 190px
-    transition: transform 1s ease-out
     &:hover
-      transform: scale(1.02)
+      transform: scale(1.05)
+    &.lazyload:not(.placeholder)
+      transition all 2s ease-out
+      &:not(.loaded)
+        opacity: 0
+      &.loaded
+        opacity: 1
+
   .pin
     position: absolute
     width: 20px
