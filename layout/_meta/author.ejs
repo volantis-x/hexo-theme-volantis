@@ -1,8 +1,8 @@
 <%
-let authorId = post.author || 'default';
-let author = theme.article.author.default;
-if (authorId in theme.article.author) {
-  author = theme.article.author[authorId];
+let author = theme.article.body.meta_library.author;
+let aid = post.author;
+if (aid && site.data && site.data.author && (aid in site.data.author)) {
+  author = site.data.author[aid];
 }
 %>
 <div class='new-meta-item author'>

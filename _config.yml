@@ -194,12 +194,6 @@ article:
           img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
         - id: # telegram
           img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
-  author:
-    default:
-      name: Volantis Team
-      avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
-      url: https://github.com/volantis-x/
-    # Add author here:
 ############################### Article Layout ############################### > end
 
 
