@@ -3,51 +3,44 @@
   <article id="<%= page.layout %>" class="post article article-entry l_friends white-box reveal <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
     <%- partial('_partial/meta',{post: page, position: 'top'}) %>
     <%- page.excerpt %>
-    <% if (page.links){ %>
-      <% (page.links||[]).forEach(function(group){ %>
-        <% if (group.items) { %>
-          <div class='friends-group'>
-            <% if (group.group) { %>
-              <br>
-              <h2 class='friend-header'>
-                <% if (group.icon) { %>
-                  <i class="<%= group.icon %> fa-fw" aria-hidden="true"></i>
-                <%} %>
-                <%- group.group %>
-              </h2>
-              <% if(group.desc) { %>
-                <%- markdown(group.desc) %>
-              <%} %>
-            <%} %>
-            <div class='friend-content'>
-              <% (group.items||[]).forEach(function(item){ %>
-                <a class='friend-card' style='background:<%- item.backgroundColor %>; color:<%- item.textColor %>'
-                  target="_blank" rel="external nofollow noopener noreferrer" href='<%- url_for(item.url || '') %>'>
-                  <div class='friend-left'>
-                    <% if (item.avatar) { %>
-                      <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
-                    <% } %>
-                  </div>
-                  <div class='friend-right'>
-                    <p class="friend-name"><%- item.name %></p>
-                    <% if(item.tags){ %>
-                      <div class='friend-tags-wrapper'>
-                      <% (item.tags||[]).forEach(function(tag){ %>
-                        <p class="tags"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><%= tag %></p>
-                      <% }) %>
-                      </div>
-                    <% } %>
-                    <% if(item.desc){ %>
-                      <div class='friend-tags-wrapper'>
-                        <p class="tags"><%= item.desc %></p>
-                      </div>
-                    <% } %>
-                  </div>
-                </a>
-              <% }) %>
-            </div>
+    <% if (site.data.friends){ %>
+      <% site.data.friends.forEach((group, i) => { %>
+        <div class='friends-group'>
+          <br>
+          <h2 class='friend-header'>
+            <%- group.group %>
+          </h2>
+          <% if (group.description) { %>
+            <%- markdown(group.description) %>
+          <%} %>
+          <div class='friend-content'>
+            <% (group.items||[]).forEach(function(item){ %>
+              <a class='friend-card'
+                target="_blank" rel="external nofollow noopener noreferrer" href='<%- url_for(item.url || '') %>'>
+                <div class='friend-left'>
+                  <% if (item.avatar) { %>
+                    <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
+                  <% } %>
+                </div>
+                <div class='friend-right'>
+                  <p class="friend-name"><%- item.name %></p>
+                  <% if(item.keywords){ %>
+                    <div class='friend-tags-wrapper'>
+                    <% (item.keywords||[]).forEach(function(keyword){ %>
+                      <p class="tags"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><%= keyword %></p>
+                    <% }) %>
+                    </div>
+                  <% } %>
+                  <% if(item.description){ %>
+                    <div class='friend-tags-wrapper'>
+                      <p class="tags"><%= item.description %></p>
+                    </div>
+                  <% } %>
+                </div>
+              </a>
+            <% }) %>
           </div>
-        <%} %>
+        </div>
       <% }) %>
     <% } %>
     <br><br>
