@@ -45,6 +45,13 @@
     } else if (is_home() && page.prev == 0) {
       keywords = config.keywords || '';
       description = config.description || '';
+    } else {
+      if ((page.layout == 'docs') && page.group && (page.group in theme.sidebar.widget_library)) {
+        let widget = theme.sidebar.widget_library[page.group];
+        if ((widget.class == 'group') && widget.seo_title) {
+          title = widget.seo_title + ": " + title;
+        }
+      }
     }
     if (theme.seo && theme.seo.use_tags_as_keywords) {
       if (!keywords && page.tags && page.tags.length > 0) {
