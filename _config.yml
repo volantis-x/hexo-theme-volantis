@@ -440,31 +440,13 @@ site_footer:
   layout: [aplayer, social, license, analytics, info, copyright]
   social:
     - icon: #fas fa-rss
-      img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/020-rss.svg
-      url: atom.xml
-    - icon: #fas fa-envelope
-      url: mailto:me@xxx.com
-    - icon: #fab fa-github
-      img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/029-github.svg
-      url: https://github.com/volantis-x/
-    - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/010-facebook.svg
-      url: /
-    - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/018-twitter.svg
-      url: /
-    - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/045-telegram.svg
-      url: /
-    - img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org@1.1/icon/1322024-social-media/006-youtube.svg
-      url: /
-    - icon: # fas fa-headphones-alt
-      url: #
-    - img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/qq.png
-      url: #
-    - img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/qzone.png
-      url: #
-    - img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/weibo.png
-      url: #
-    - avatar: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/64/wechat.png
-      url: #
+      url:
+    # or
+    - img:
+      url:
+    # or
+    - avatar:
+      url:
   # site source
   source: https://github.com/volantis-x/volantis-docs/
   # analytics using leancloud
