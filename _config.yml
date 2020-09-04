@@ -82,6 +82,10 @@ cover:
       url: https://github.com/volantis-x/hexo-theme-volantis/
 ############################### Cover ############################### > end
 
+pages:
+  # 友链页面配置
+  friends:
+    layout_scheme: traditional # simple: 简单布局, traditional: 传统布局,  sites: 网站卡片布局
 
 ############################### Article Layout ############################### > start
 # 文章布局
