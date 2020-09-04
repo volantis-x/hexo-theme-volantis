@@ -63,14 +63,28 @@ var customSearch;
 			});
 		}
 
+		//==========================================
+
 		const $coverAnchor = $('.cover-wrapper');
+
+		var enableCover = $('#pjax-enable-cover').text(); // Pjax 处理
+
 		var showHeaderPoint = 0;
 		if ($coverAnchor[0]) {
-			showHeaderPoint = $coverAnchor[0].clientHeight - 240;
+			if(enableCover == "true" && $('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
+				showHeaderPoint = $coverAnchor[0].clientHeight - 240;
 		}
+
 		var pos = document.body.scrollTop;
+		if(enableCover == "true" && $('.cover-wrapper#half').css('display') === 'none')
+			pos += 240; // Pjax 处理
+
 		$(document, window).scroll(() => {
 			let scrollTop = $(window).scrollTop();  // 滚动条距离顶部的距离
+
+			if(enableCover == "true" && $('.cover-wrapper#half').css('display') === 'none')
+				scrollTop += 240; // Pjax 处理
+
 			const del = scrollTop - pos;
 			pos = scrollTop;
 			if (scrollTop > 240) {
