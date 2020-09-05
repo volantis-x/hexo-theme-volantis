@@ -16,55 +16,61 @@
           <% if (theme.pages.friends.layout_scheme == 'sites') { %>
             <div class='site-card-group'>
               <% (group.items||[]).forEach(function(item){ %>
-                <a class="site-card" target="_blank" rel="external nofollow noopener noreferrer" href="<%- url_for(item.url || '/') %>">
-                  <div class="img">
-                    <% if (item.screenshot) { %>
-                      <img src="<%- item.screenshot %>"/>
-                    <% } %>
-                  </div>
-                  <div class="info">
-                    <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>
-                    <span class="title"><%- item.name %></span>
-                    <span class="desc"><%- item.description %></span>
-                  </div>
-                </a>
+                <% if (item.url && item.title) { %>
+                  <a class="site-card" target="_blank" rel="external nofollow noopener noreferrer" href="<%- url_for(item.url || '/') %>">
+                    <div class="img">
+                      <% if (item.screenshot) { %>
+                        <img src="<%- item.screenshot %>"/>
+                      <% } %>
+                    </div>
+                    <div class="info">
+                      <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>
+                      <span class="title"><%- item.title %></span>
+                      <span class="desc"><%- item.description %></span>
+                    </div>
+                  </a>
+                <% } %>
               <% }) %>
             </div>
           <% } else if (theme.pages.friends.layout_scheme == 'traditional') { %>
             <div class='friend-content'>
               <% (group.items||[]).forEach(function(item){ %>
-                <a class='friend-card'
-                  target="_blank" rel="external nofollow noopener noreferrer" href='<%- url_for(item.url || '/') %>'>
-                  <div class='friend-left'>
-                    <% if (item.avatar) { %>
-                      <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
-                    <% } %>
-                  </div>
-                  <div class='friend-right'>
-                    <p class="friend-name"><%- item.name %></p>
-                    <% if (item.keywords) { %>
-                      <div class='friend-tags-wrapper'>
-                      <% (item.keywords||[]).forEach(function(keyword){ %>
-                        <p class="tags"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><%= keyword %></p>
-                      <% }) %>
-                      </div>
-                    <% } %>
-                    <% if(item.description){ %>
-                      <div class='friend-tags-wrapper'>
-                        <p class="tags"><%= item.description %></p>
-                      </div>
-                    <% } %>
-                  </div>
-                </a>
+                <% if (item.url && item.title) { %>
+                  <a class='friend-card'
+                    target="_blank" rel="external nofollow noopener noreferrer" href='<%- url_for(item.url || '/') %>'>
+                    <div class='friend-left'>
+                      <% if (item.avatar) { %>
+                        <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
+                      <% } %>
+                    </div>
+                    <div class='friend-right'>
+                      <p class="friend-name"><%- item.title %></p>
+                      <% if (item.keywords) { %>
+                        <div class='friend-tags-wrapper'>
+                        <% (item.keywords||[]).forEach(function(keyword){ %>
+                          <p class="tags"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><%= keyword %></p>
+                        <% }) %>
+                        </div>
+                      <% } %>
+                      <% if(item.description){ %>
+                        <div class='friend-tags-wrapper'>
+                          <p class="tags"><%= item.description %></p>
+                        </div>
+                      <% } %>
+                    </div>
+                  </a>
+                <% } %>
               <% }) %>
             </div>
           <% } else { %>
             <div class='simpleuser-group'>
               <% (group.items||[]).forEach(function(item){ %>
-                <a class="simpleuser" target="_blank" rel="external nofollow noopener noreferrer" href="<%- url_for(item.url || '/') %>">
-                  <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>
-                  <span><%- item.name %></span>
-                </a>
+                <% if (item.url && item.title) { %>
+                  <a class="simpleuser" target="_blank" rel="external nofollow noopener noreferrer" href="<%- url_for(item.url || '/') %>">
+                    <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>
+                    <span><%- item.title %></span>
+                  </a>
+                <% } %>
               <% }) %>
             </div>
           <% } %>

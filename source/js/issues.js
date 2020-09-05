@@ -44,8 +44,10 @@ function getIssuesAPIForSites(cfg) {
           status = 2;
           timer = null;
           reject("超时");
-          $(el).find('.loading i').remove();
-          $(el).find('.loading p').text('加载失败，请稍后重试。');
+          if (retryTimes == 0) {
+            $(el).find('.loading i').remove();
+            $(el).find('.loading p').text('加载失败，请稍后重试。');
+          }
         }
       }, 5000);
       fetch(cfg.api).then(function(response) {
@@ -73,8 +75,10 @@ function getIssuesAPIForSites(cfg) {
             }
           }
           let issues = dt[name];
-          if (name) {
+          if (name.length > 0) {
             $(el).append('<h2>' + name + '</h2>');
+          } else if (name == '' && cfg.group.length > 1) {
+            $(el).append('<h2>' + '未分组' + '</h2>');
           }
           $(el).append('<div class="site-card-group ' + i + '"></div>');
           // layout items
