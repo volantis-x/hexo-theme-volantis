@@ -23,15 +23,7 @@ if (post.bottom_meta == false) {
     <% } %>
     <% if (post.thumbnail && post.thumbnail.length){ %>
       <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
-        <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
-          <% if (theme.plugins.lazyload.loadingImg) { %>
-            <img class='thumbnail lazyload placeholder' src='<%- post.thumbnail %>'>
-          <% } else { %>
-            <img class='thumbnail lazyload' src='<%- post.thumbnail %>'>
-          <% } %>
-        <% } else { %>
-          <img class='thumbnail' src='<%- post.thumbnail %>'>
-        <% } %>
+        <img class='thumbnail' src='<%- post.thumbnail %>'>
       </a>
     <% } %>
     <% if (post.title) { %>
