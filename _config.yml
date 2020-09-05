@@ -430,7 +430,7 @@ tag_plugins:
     iconfont: 'Font Awesome 5 Free'
   # {% checkbox %}
   checkbox:
-    interactive: true # enable interactive for user
+    interactive: false # enable interactive for user
     color: '' # color for default checkbox
   # {% link title, url, img %}
   link:
