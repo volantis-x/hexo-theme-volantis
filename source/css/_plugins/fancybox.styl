@@ -8,6 +8,9 @@ div.gallery
     margin: $sp
     padding: 0
     position: relative
+    .bg
+      height: 100%
+      width: 100%
     .image-caption
       opacity: 0
       transform: translateY(100%)
@@ -60,7 +63,9 @@ div.gallery
   &.stretch,&.stretch>p
     align-items: stretch
     img
-      transform: scale(1.5)
+      object-fit: cover
+      height: 100%
+      width: 100%
 
 .fancybox-container
   .fancybox-stage
