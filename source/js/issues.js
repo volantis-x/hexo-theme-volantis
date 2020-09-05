@@ -85,13 +85,13 @@ function getIssuesAPIForSites(cfg) {
 
         let imgTag = '';
         if (screenshot && screenshot.length > 0) {
-          imgTag = '<div class="img"><img no-lazy src="' + screenshot + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/></div>';
+          imgTag = '<div class="img"><img src="' + screenshot + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/></div>';
         } else {
           imgTag = '<div class="img"></div>';
         }
         let infoTag = '<div class="info">';
         if (avatar && avatar.length > 0) {
-          infoTag += '<img no-lazy src="' + avatar + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/>';
+          infoTag += '<img src="' + avatar + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/>';
         }
         infoTag += '<span class="title">' + title + '</span><span class="desc">' + desc + '</span></div>';
         let cardTag = "<a class='site-card' target='_blank' href='" + issue.title + "'>" + imgTag + infoTag + "</a>";

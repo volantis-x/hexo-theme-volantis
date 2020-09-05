@@ -11,15 +11,11 @@ if (post.bottom_meta == false) {
 
 <% if (position == 'top') { %>
   <% if (post.headimg) { %>
-    <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
-      <% if (theme.plugins.lazyload.loadingImg) { %>
-        <div class='headimg lazyload placeholder' data-bg='<%- post.headimg %>'></div>
-      <% } else { %>
-        <div class='headimg lazyload' data-bg='<%- post.headimg %>'></div>
-      <% } %>
-    <% } else { %>
-      <div class='headimg' style='background-image:url(<%- post.headimg %>)'></div>
-    <% } %>
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='<%- post.headimg %>'/>
+      </a>
+    </div>
   <% } %>
   <div class="article-meta" id="top">
     <% if (post.music && post.music.enable != false) { %>

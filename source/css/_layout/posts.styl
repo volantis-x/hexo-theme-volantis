@@ -13,30 +13,6 @@
   text-align: justify
   .md
     color: var(--color-list)
-  .headimg-div
-    overflow: hidden
-    margin-left: 0 - 1.5 * $gap
-    margin-top: 0 - 1.5 * $gap
-    margin-bottom: 1.25 * $gap
-    width: "calc(100% + 3 * %s)" % $gap
-  .headimg
-    background-position: center
-    background-size: cover
-    height: 280px
-    @media screen and (max-width: $device-tablet)
-      height: 250px
-    @media screen and (max-width: $device-mobile)
-      height: 220px
-    @media screen and (max-width: $device-mobile-l)
-      height: 190px
-    &:hover
-      transform: scale(1.05)
-    &.lazyload:not(.placeholder)
-      transition all 2s ease-out
-      &:not(.loaded)
-        opacity: 0
-      &.loaded
-        opacity: 1
 
   .pin
     position: absolute
@@ -86,3 +62,33 @@
       display: block
       border-radius: 12px
       object-fit: cover
+
+.headimg-div
+  display: block
+  overflow: hidden
+  height: 280px
+  margin-left: 0 - 1.5 * $gap
+  margin-top: 0 - 1.5 * $gap
+  margin-bottom: 1.25 * $gap
+  width: "calc(100% + 3 * %s)" % $gap
+  @media screen and (max-width: $device-tablet)
+    height: 250px
+  @media screen and (max-width: $device-mobile)
+    height: 220px
+  @media screen and (max-width: $device-mobile-l)
+    height: 190px
+  .headimg-a
+    display: block
+    overflow: hidden
+    line-height: 0
+  .headimg
+    display: block
+    object-fit: cover
+    &:hover
+      transform: scale(1.1)
+    &.lazyload:not(.placeholder)
+      transition transform 3s ease-out, opacity .5s ease-out
+      &:not(.loaded)
+        opacity: 0
+      &.loaded
+        opacity: 1
