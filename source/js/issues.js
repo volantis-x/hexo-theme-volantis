@@ -1,5 +1,5 @@
 function requestIssuesAPI(url, callback, timeout) {
-  let retryTimes = 0;
+  let retryTimes = 10;
   function request() {
     return new Promise((resolve, reject) => {
       let status = 0; // 0 等待 1 完成 2 超时
