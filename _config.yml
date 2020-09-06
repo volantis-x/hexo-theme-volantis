@@ -617,6 +617,7 @@ plugins:
     # color1: #说说背景颜色1&按钮颜色1
     # color2: #说说背景颜色2&按钮颜色2
     # color3: #说说字体颜色
+    # cssUrl: #自定义css接口（仅新版Artitalk有效）
 
   # 从 issues 加载动态数据
   # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
