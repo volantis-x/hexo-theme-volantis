@@ -8,8 +8,8 @@
 <script>
     var appID = "<%=  theme.plugins.artitalk.appId  %>";
     var appKEY = "<%=  theme.plugins.artitalk.appKey  %>";
-        <% if (theme.plugins.artitalk.severURL) { %>
-            var severurl = "<%=  theme.plugins.artitalk.severURL  %>";
+        <% if (theme.plugins.artitalk.serverURL) { %>
+            var severurl = "<%=  theme.plugins.artitalk.serverURL  %>";
         <% } %>
         <% if (theme.plugins.artitalk.lang) { %>
             var slanguage = "<%=  theme.plugins.artitalk.lang  %>";
@@ -48,8 +48,8 @@
     new Artitalk({
         appId: "<%=  theme.plugins.artitalk.appId  %>",
         appKey: "<%=  theme.plugins.artitalk.appKey  %>",
-  <% if (theme.plugins.artitalk.severURL) { %>
-        severURL: "<%=  theme.plugins.artitalk.severURL  %>",
+  <% if (theme.plugins.artitalk.serverURL) { %>
+        serverURL: "<%=  theme.plugins.artitalk.serverURL  %>",
   <% } %>
   <% if (theme.plugins.artitalk.lang) { %>
         lang: "<%=  theme.plugins.artitalk.lang  %>",
