@@ -25,6 +25,7 @@ function requestIssuesAPI(url, callback, timeout) {
         }
         throw new Error('Network response was not ok.');
       }).then(function(data) {
+        retryTimes = 0;
         callback(data);
       }).catch(function(error) {
         if (retryTimes > 0) {
@@ -45,11 +46,16 @@ function parseIssueStrToJson(str) {
   if (jsonStr && jsonStr.length > 0) {
     jsonStr = jsonStr[0];
   }
-  jsonStr = jsonStr.split('```json')[1].split('```')[0];
-  return JSON.parse(jsonStr);
+  if (jsonStr) {
+    jsonStr = jsonStr.split('```json')[1].split('```')[0];
+    if (jsonStr) {
+      return JSON.parse(jsonStr);
+    }
+  }
+  return undefined;
 }
 function groupIssuesData(cfg, data) {
-  let groups = new Object();
+  var groups = new Object();
   if (data.length > 0) {
     if (cfg.group != undefined) {
       let arr = cfg.group.split(':');
@@ -61,7 +67,7 @@ function groupIssuesData(cfg, data) {
         }
         for (i = 0; i < data.length; i++) {
           let obj = parseIssueStrToJson(data[i].body);
-          if (groupKey in obj) {
+          if (obj && (groupKey in obj)) {
             let tmp = obj[groupKey];
             tmp = tmp.replace(', ', ',').split(',');
             for (var j = 0; j < tmp.length; j++) {
@@ -70,7 +76,7 @@ function groupIssuesData(cfg, data) {
                 if (arr == undefined) {
                   arr = new Array();
                 }
-                arr.push(data[i]);
+                arr.push(obj);
                 groups[tmp[j]] = arr;
               }
             }
@@ -78,7 +84,17 @@ function groupIssuesData(cfg, data) {
         }
       }
     } else {
-      groups[''] = data;
+      for (i = 0; i < data.length; i++) {
+        let obj = parseIssueStrToJson(data[i].body);
+        if (obj) {
+          let arr = groups[''];
+          if (arr == undefined) {
+            arr = new Array();
+          }
+          arr.push(obj);
+          groups[''] = arr;
+        }
+      }
     }
   }
   return groups;
@@ -90,7 +106,6 @@ function getIssuesAPIForSites(cfg) {
   requestIssuesAPI(cfg.api, function(data){
     $(el).find('.loading').remove();
     let dt = groupIssuesData(cfg, data);
-    console.log(dt);
     let groupTitles = Object.keys(dt);
     groupTitles.forEach((groupTitle, i) => {
       let issues = dt[groupTitle];
@@ -102,7 +117,7 @@ function getIssuesAPIForSites(cfg) {
       $(el).append('<div class="site-card-group ' + i + '"></div>');
       // layout items
       for (j = 0; j < issues.length; j++) {
-        let issue = parseIssueStrToJson(issues[j].body);
+        let issue = issues[j];
         let imgTag = '';
         if (issue.screenshot && issue.screenshot.length > 0) {
           imgTag = '<div class="img"><img src="' + issue.screenshot + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/></div>';
