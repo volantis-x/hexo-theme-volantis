@@ -604,18 +604,20 @@ plugins:
   # 除appID和appKEY外均为选填项
   artitalk:
     # Set `layout: artitalk` to enable in page
-    appID: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
-    appKEY: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
-    # severurl:  #leancloud绑定的安全域名，使用国际版的话不需要填写
-    # slanguage: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
-    # per: #每页说说的显示数量
-    # placeholder1: #在编辑说说的输入框中的占位符
-    # placeholder2: #自定义头像url的输入框的占位符
-    # lazy: #加载动画的开关，1为开，0为关，默认为开
-    # bgimg: #说说输入框背景图片url
+    appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
+    appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
+    # Un_NewVersion:  # 取消使用新版Artitalk，默认为false
+    # severURL:  #leancloud绑定的安全域名，使用国际版的话不需要填写
+    # lang: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
+    # pageSize: #每页说说的显示数量
+    # shuoPla: #在编辑说说的输入框中的占位符
+    # avatarPla: #自定义头像url的输入框的占位符
+    # motion: #加载动画的开关，1为开，0为关，默认为开
+    # bgImg: #说说输入框背景图片url
     # color1: #说说背景颜色1&按钮颜色1
     # color2: #说说背景颜色2&按钮颜色2
     # color3: #说说字体颜色
+    # cssUrl: #自定义css接口（仅新版Artitalk有效）
 
   # 从 issues 加载动态数据
   # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
