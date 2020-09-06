@@ -5,9 +5,9 @@
 'use strict';
 
 // 从 issues 加载动态数据
-// {% issues sites/timeline/friends | api=xxx | group=xxx %}
+// {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
 // 例如：
-// {% issues site | api=https://api.github.com/repos/xaoxuu/friends/issues?sort=updated&state=open&page=1&per_page=100&labels=active | group=recent,developer,student,designer,org,unsafe %}
+// {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
 hexo.extend.tag.register('issues', function(args) {
   args = args.join(' ').split(' | ');
   // 所有支持的参数
