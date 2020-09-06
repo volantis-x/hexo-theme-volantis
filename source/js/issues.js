@@ -65,6 +65,7 @@ function groupIssuesData(cfg, data) {
         if (groupKey && groupList) {
           groupList = groupList.split(',');
         }
+        cfg.group = groupList;
         for (i = 0; i < data.length; i++) {
           let obj = parseIssueStrToJson(data[i].body);
           if (obj && (groupKey in obj)) {
@@ -84,6 +85,7 @@ function groupIssuesData(cfg, data) {
         }
       }
     } else {
+      cfg.group = [''];
       for (i = 0; i < data.length; i++) {
         let obj = parseIssueStrToJson(data[i].body);
         if (obj) {
@@ -107,30 +109,32 @@ function getIssuesAPIForSites(cfg) {
     $(el).find('.loading').remove();
     let dt = groupIssuesData(cfg, data);
     let groupTitles = Object.keys(dt);
-    groupTitles.forEach((groupTitle, i) => {
+    cfg.group.forEach((groupTitle, i) => {
       let issues = dt[groupTitle];
-      if (groupTitle.length > 0) {
-        $(el).append('<h2>' + groupTitle + '</h2>');
-      } else if (name == '' && groupTitles.length > 1) {
-        $(el).append('<h2>' + '未分组' + '</h2>');
-      }
-      $(el).append('<div class="site-card-group ' + i + '"></div>');
-      // layout items
-      for (j = 0; j < issues.length; j++) {
-        let issue = issues[j];
-        let imgTag = '';
-        if (issue.screenshot && issue.screenshot.length > 0) {
-          imgTag = '<div class="img"><img src="' + issue.screenshot + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/></div>';
-        } else {
-          imgTag = '<div class="img"></div>';
+      if (issues && issues.length > 0) {
+        if (groupTitle.length > 0) {
+          $(el).append('<h2>' + groupTitle + '</h2>');
+        } else if (name == '' && groupTitles.length > 1) {
+          $(el).append('<h2>' + '未分组' + '</h2>');
         }
-        let infoTag = '<div class="info">';
-        if (issue.avatar && issue.avatar.length > 0) {
-          infoTag += '<img src="' + issue.avatar + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/>';
+        $(el).append('<div class="site-card-group ' + i + '"></div>');
+        // layout items
+        for (j = 0; j < issues.length; j++) {
+          let issue = issues[j];
+          let imgTag = '';
+          if (issue.screenshot && issue.screenshot.length > 0) {
+            imgTag = '<div class="img"><img src="' + issue.screenshot + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/></div>';
+          } else {
+            imgTag = '<div class="img"></div>';
+          }
+          let infoTag = '<div class="info">';
+          if (issue.avatar && issue.avatar.length > 0) {
+            infoTag += '<img src="' + issue.avatar + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/>';
+          }
+          infoTag += '<span class="title">' + issue.title + '</span><span class="desc">' + issue.description + '</span></div>';
+          let cardTag = "<a class='site-card' target='_blank' href='" + issue.url + "'>" + imgTag + infoTag + "</a>";
+          $(el).find('.site-card-group.' + i).append(cardTag);
         }
-        infoTag += '<span class="title">' + issue.title + '</span><span class="desc">' + issue.description + '</span></div>';
-        let cardTag = "<a class='site-card' target='_blank' href='" + issue.url + "'>" + imgTag + infoTag + "</a>";
-        $(el).find('.site-card-group.' + i).append(cardTag);
       }
     });
   }, function() {
