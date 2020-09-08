@@ -1,0 +1,25 @@
+name: Sync Coding
+
+on:
+  push:
+    branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Curl
+        run: |
+          curl -u ${{ secrets.CODING_TOKEN_API }} \
+             -v -X POST  'https://volantis.coding.net/api/cci/job/266519/trigger' \
+             -H 'Content-Type: application/json' \
+             -d '
+              {
+                "ref": "master",
+                "envs": []
+              }'
