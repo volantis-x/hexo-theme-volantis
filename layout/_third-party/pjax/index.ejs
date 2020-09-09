@@ -112,6 +112,11 @@
         <% if (theme.plugins.scrollreveal.enable) { %>
           pjax_scrollrebeal();
         <% } %>
+        <% if (theme.plugins.issues.enable) { %>
+          if (typeof IssuesAPI == "undefined") {
+            loadIssuesJS();
+          }
+        <% } %>
         <% if (theme.plugins.clipboard.enable && (theme.custom_css.body.highlight.copy_btn == true)) { %>
           pjax_initCopyCode();
         <% } %>

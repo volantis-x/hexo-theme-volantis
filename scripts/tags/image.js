@@ -14,28 +14,54 @@
 hexo.extend.tag.register('image', function(args) {
   args = args.join(' ').split(', ');
   let url = args[0].trim();
-  let result = '';
-  result += '<img class="img" src="' + url + '"';
+  let alt = '';
+  let bg = '';
   let style = '';
   if (args.length > 1) {
     for (let i = 1; i < args.length; i++) {
       let tmp = args[i].trim();
       if (tmp.includes('alt=')) {
-        result += ' alt="' + tmp.substring(4, tmp.length) + '"';
+        alt = tmp.substring(4, tmp.length);
       } else if (tmp.includes('width=')) {
         style += 'width:' + tmp.substring(6, tmp.length) + ';';
       } else if (tmp.includes('height=')) {
         style += 'height:' + tmp.substring(7, tmp.length) + ';';
       } else if (tmp.includes('bg=')) {
-        result += ' bg="' + tmp.substring(3, tmp.length) + '"';
+        bg = tmp.substring(3, tmp.length);
       }
     }
   }
-  if (style.length > 0) {
-    result += ' style="' + style + '"';
+  function img(url, alt, style) {
+    let img = '';
+    img += '<img class="img" src="' + url + '"';
+    if (alt.length > 0) {
+      img += ' alt="' + alt + '"';
+    }
+    if (style.length > 0) {
+      img += ' style="' + style + '"';
+    }
+    img += '/>';
+    return img;
   }
-  result += '/>';
-  return result;
+
+  let ret = '';
+  // wrap
+  ret += '<div class="img-wrap">';
+  // bg
+  ret += '<div class="img-bg"';
+  if (bg.length > 0) {
+    ret += ' style="background:' + bg + '"';
+  }
+  ret += '>';
+  ret += img(url, alt, style);
+  ret += '</div>';
+
+  if (alt.length > 0) {
+    ret += '<span class="image-caption">' + alt + '</span>';
+  }
+
+  ret += '</div>';
+  return ret;
 });
 
 
@@ -44,8 +70,8 @@ hexo.extend.tag.register('image', function(args) {
 hexo.extend.tag.register('inlineimage', function(args) {
   args = args.join(' ').split(', ');
   let url = args[0].trim();
-  let result = '';
-  result += '<img no-lazy class="inline" src="' + url + '"';
+  let ret = '';
+  ret += '<img no-lazy class="inline" src="' + url + '"';
   let style = '';
   if (args.length > 1) {
     for (let i = 1; i < args.length; i++) {
@@ -56,10 +82,10 @@ hexo.extend.tag.register('inlineimage', function(args) {
     }
   }
   if (style.length > 0) {
-    result += ' style="' + style + '"';
+    ret += ' style="' + style + '"';
   } else {
-    result += ' style="height:1.5em"';
+    ret += ' style="height:1.5em"';
   }
-  result += '/>';
-  return result;
+  ret += '/>';
+  return ret;
 });

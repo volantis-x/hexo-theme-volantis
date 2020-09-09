@@ -378,7 +378,6 @@ sidebar:
       class: qrcode
       display: [desktop, mobile] # [desktop, mobile]
       height: 64px  # Automatic height if not set
-      fancybox: true
       images:
         - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
         - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
@@ -472,9 +471,6 @@ plugins:
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
-  # fancybox
-  fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
-
   ################ optional plugins ################
 
   ######## Plugins to improve loading speed:

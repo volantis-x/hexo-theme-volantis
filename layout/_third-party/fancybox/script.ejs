@@ -1,6 +1,6 @@
 <script>
   function pjax_fancybox() {
-    $(".md").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
       var element = document.createElement("a"); // a 标签
       $(element).attr("class", "fancybox");
       $(element).attr("pjax-fancybox", "");  // 过滤 pjax
@@ -21,16 +21,9 @@
       $(span).addClass("image-caption");
       $(span).text(caption); // 加描述
       $(this).after(span);  // 再套一层描述
-      // 背景层
-      var bgDiv = document.createElement("div");
-      $(bgDiv).addClass("bg");
-      if ($(this).attr('bg')) {
-        $(bgDiv).css('background', $(this).attr('bg'));
-      }
-      $(this).wrap(bgDiv); // 背景层
       $(this).wrap(element);  // 最后套 a 标签
     })
-    $(".md").find("img").fancybox({
+    $(".md .gallery").find("img").fancybox({
       selector: '[data-fancybox="images"]',
       hash: false,
       loop: false,
@@ -45,8 +38,8 @@
     });
   };
   function SCload_fancybox() {
-    if($(".md").find("img").not('.inline').not('a img').length+$(".article-entry").find("img").length==0)return;
-    loadCSS("<%- theme.plugins.fancybox %>", document.getElementById("loadcss"));
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
     setTimeout(function() {
       loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
     }, 1);

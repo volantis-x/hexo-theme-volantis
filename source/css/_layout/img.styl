@@ -1,0 +1,36 @@
+.md
+  img
+    position: relative
+    trans()
+    @media screen and (max-width: $device-mobile)
+      box-shadow: none
+  div>img,p>img
+    display: block
+    margin: auto
+    border-radius: 4px
+    @media screen and (max-width: $device-mobile)
+      border-radius: 2px
+  span
+    img
+      display: inline
+      margin: auto
+
+
+// image
+.md .img-wrap
+  margin-top: 1rem
+  margin-bottom: 1rem
+  border-radius: 2px
+  overflow: hidden
+  .img-bg
+    width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  .image-caption
+    font-size: $fontsize-code
+    padding-top: $gap-p * 0.5
+    padding-bottom: $gap-p
+    color: var(--color-meta)
+    &:empty
+      display: none

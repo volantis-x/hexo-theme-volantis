@@ -1,0 +1,11 @@
+<script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+    setTimeout(function() {
+      loadScript('/js/issues.js');
+    }, 1);
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+</script>

@@ -8,7 +8,11 @@ div.gallery
     margin: $sp
     padding: 0
     position: relative
-    .bg
+    a
+      height: 100%
+      width: 100%
+    img
+      object-fit: cover
       height: 100%
       width: 100%
     .image-caption
@@ -62,16 +66,13 @@ div.gallery
     justify-content: flex-end
   &.stretch,&.stretch>p
     align-items: stretch
-    img
-      object-fit: cover
-      height: 100%
-      width: 100%
+
 
 .fancybox-container
   .fancybox-stage
     cursor: zoom-out
 
-.fancybox
+div.fancybox
   margin-top: $gap-p
   margin-bottom: $gap-p
   display: flex
@@ -89,9 +90,6 @@ div.gallery
     margin: 0 auto
     align-items: stretch
     cursor: zoom-in
-  .bg
-    display: flex
-    width: 100%
   .gallery
     overflow: hidden
   .image-caption

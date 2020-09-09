@@ -3,9 +3,6 @@
   <% if (page.layout == 'artitalk') { %>
     <div id="artitalk_main"></div>
   <% } %>
-  <% (post.photos||[]).forEach(function(photo){ %>
-    <div class='fancybox'><img src='<%- url_for(photo) %>'/></div>
-  <% }) %>
   <%- post.content %>
   <% if (page.link) { %>
     <div class='div-ori-link'>
