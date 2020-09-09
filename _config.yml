@@ -601,12 +601,12 @@ plugins:
 
   # Artitalk https://artitalk.js.org
   # 配置过程请参考：https://artitalk.js.org/doc.html
+  # 使用过旧版本的请修改Leancloud shuoshuo class部分列名：https://artitalk.js.org/release.html
   # 除appID和appKEY外均为选填项
   artitalk:
     # Set `layout: artitalk` to enable in page
     appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
     appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
-    # Un_NewVersion:  # 取消使用新版Artitalk，默认为false
     # serverURL:  #leancloud绑定的安全域名，使用国际版的话不需要填写
     # lang: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
     # pageSize: #每页说说的显示数量
@@ -617,7 +617,7 @@ plugins:
     # color1: #说说背景颜色1&按钮颜色1
     # color2: #说说背景颜色2&按钮颜色2
     # color3: #说说字体颜色
-    # cssUrl: #自定义css接口（仅新版Artitalk有效）
+    # cssUrl: #自定义css接口
 
   # 从 issues 加载动态数据
   # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
