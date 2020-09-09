@@ -4,45 +4,6 @@
 </div>
 <%- partial('_partial/side') %>
 
-<% if (theme.plugins.artitalk.Un_NewVersion == true) { %>
-<script>
-    var appID = "<%=  theme.plugins.artitalk.appId  %>";
-    var appKEY = "<%=  theme.plugins.artitalk.appKey  %>";
-        <% if (theme.plugins.artitalk.serverURL) { %>
-            var severurl = "<%=  theme.plugins.artitalk.serverURL  %>";
-        <% } %>
-        <% if (theme.plugins.artitalk.lang) { %>
-            var slanguage = "<%=  theme.plugins.artitalk.lang  %>";
-        <% } %>
-        <% if (theme.plugins.artitalk.pageSize) { %>
-            var per = "<%=  theme.plugins.artitalk.pageSize  %>";
-        <% } %>
-        <% if (theme.plugins.artitalk.shuoPla) { %>
-            var placeholder1 = "<%=  theme.plugins.artitalk.shuoPla  %>";
-        <% } %>
-        <% if (theme.plugins.artitalk.avatarPla) { %>
-            var placeholder2 = "<%=  theme.plugins.artitalk.avatarPla  %>";
-        <% } %>
-        <% if (theme.plugins.artitalk.motion == 0) { %>
-            var lazy = 0;
-        <% } else { %>
-            var lazy = 1;
-        <% }  %>
-        <% if (theme.plugins.artitalk.bgImg) { %>
-            var bgimg = "<%=  theme.plugins.artitalk.bgimg  %>";
-        <% } %>
-        <% if (theme.plugins.artitalk.color1) { %>
-            var color1 = "<%=  theme.plugins.artitalk.color1  %>";
-        <% } %>
-        <% if (theme.plugins.artitalk.color2) { %>
-            var color2 = "<%=  theme.plugins.artitalk.color2  %>";
-        <% } %>
-        <% if (theme.plugins.artitalk.color3) { %>
-            var color3 = "<%=  theme.plugins.artitalk.color3  %>";
-        <% } %>
-</script>
-<script async type="text/javascript" src="https://cdn.jsdelivr.net/npm/artitalk@2.4.2"></script>
-<% } else { %>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/artitalk"></script>
 <script>
     new Artitalk({
@@ -85,4 +46,3 @@
   <% } %>
 })
 </script>
-<% }  %>
