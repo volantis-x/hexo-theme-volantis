@@ -135,13 +135,17 @@
           if (url) {
             var viewGetter = this.getRecord(Counter, url, title).then((record) => {
               // 是当前页面就自增
-              if (pv.getAttribute('data-path') == window.location.pathname) {
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
                 incrArr.push(this.buildIncrement(record.objectId));
               }
               if (pv) {
                 var ele = pv.querySelector('#lc-pv #number');
                 if (ele) {
-                  if (pv.getAttribute('data-path') == window.location.pathname) {
+                  if (pv.getAttribute('data-path') == curPath) {
                     ele.innerText = (record.times || 0) + 1;
                   } else {
                     ele.innerText = record.times || 0;
