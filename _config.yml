@@ -406,11 +406,13 @@ sidebar:
           unit: '字'
         siteuv:
           enable: true
-          text: '本站访客数：'   # 需要启用 busuanzi
+          options: busuanzi # busuanzi / leancloud 需要启用对应analytics
+          text: '本站访客数：'
           unit: '人'
         sitepv:
           enable: true
-          text: '本站总访问量：' # 需要启用 busuanzi
+          options: busuanzi # busuanzi / leancloud 需要启用对应analytics
+          text: '本站总访问量：'
           unit: '次'
         lastupd:
           enable: true
