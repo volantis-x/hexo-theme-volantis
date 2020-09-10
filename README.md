@@ -2,6 +2,8 @@
   <a href='https://volantis.js.org'><img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png' height='120px'></a>
 </p>
 
+[![](https://img.shields.io/npm/v/hexo-theme-volantis.svg?style=flat-square)](https://www.npmjs.com/package/hexo-theme-volantis)
+
 ## Getting Started
 
 Check your environment:
