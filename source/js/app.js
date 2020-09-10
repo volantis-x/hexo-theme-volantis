@@ -204,31 +204,14 @@ var customSearch;
 
 	// 设置全局事件
 	function setGlobalHeaderMenuEvent() {
-		// PC端 hover时展开子菜单，点击时隐藏子菜单
-		$('.m-pc li > a[href]').parent().click(function (e) {
-			e.stopPropagation();
-			if (e.target.origin == e.target.baseURI) {
-				$('.m-pc .list-v').hide();
-			}
-		});
 		// 手机端 点击展开子菜单
-		$('.m-phone li').click(function (e) {
+		$('.m-phone li:has(.list-v)').click(function (e) {
 			e.stopPropagation();
 			$($(e.currentTarget).children('ul')).show();
+			$(document).one('click', function(event) {$('.m-phone .list-v').hide()});
 		});
-		setPageHeaderMenuEvent();
 	}
 
-	function setPageHeaderMenuEvent() {
-		// 手机端 点击空白处隐藏子菜单
-		$(document).click(function (e) {
-			$('.m-phone .list-v').hide();
-		});
-		// 手机端 滚动时隐藏子菜单
-		$(window).scroll(() => {
-			$('.m-phone .list-v').hide();
-		});
-	}
 	// 设置导航栏搜索框   fix √
 	function setHeaderSearch() {
 		var $switcher = $('.l_header .switcher .s-search');   // 搜索按钮   移动端
@@ -390,8 +373,6 @@ var customSearch;
 				$(function () {
 					restData();
 					setHeader();
-					setHeaderMenuSelection();
-					setPageHeaderMenuEvent();
 					setTocToggle();
 					setScrollAnchor();
 					setTabs();
