@@ -28,16 +28,10 @@ assignees: ''
 
 <!-- If you are unable to provide detailed steps to reproduce, it means that you are not clear about this, we may close your issue and it is recommended to follow the help process. (If you have located a specific code location, you don’t need to fill in the recurring steps. -->
 
-- [ ] Detailed reproduction steps
-
 1. xxx
 2. xxx
 3. xxx
 
-- [ ] Specific code location
-
-
-- [ ] Great, I can provide bug patches
 
 ## Environmental information <!-- Please provide the following information -->
 
