@@ -6,6 +6,8 @@
   display: flex
   flex-direction: column
   align-items: center
+  img,video
+    border-radius: 0
 .md .frame-wrap .frame
   z-index: 1
   display: block
@@ -16,14 +18,12 @@
 
 .md .img-wrap .frame-wrap
   &[part]
-    height: 280px
+    height: auto
 
 .md .frame-wrap
-  &[part]
-    max-height: 280px
   &#iphone11
     img,video
-      width: 286px
+      width: 287px
       margin-top: 19px
       margin-bottom: 20px
     .frame
@@ -40,18 +40,11 @@
     img,video
       bottom: 0
       margin-top: 0 !important
-    img
-      position: absolute
     .frame
       bottom: 0
 
 @media screen and (max-width: $device-mobile)
-  .md .img-wrap .frame-wrap
-    &[part]
-      height: 200px
   .md .frame-wrap
-    &[part]
-      max-height: 200px
     &#iphone11
       img,video
         width: 208px
@@ -60,8 +53,3 @@
       .frame
         width: 238px
         height: 476px
-    &[part='bottom']
-      img,video
-        bottom: 0
-      .frame
-        bottom: 0
