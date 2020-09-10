@@ -10,9 +10,6 @@
   z-index: 1
   display: block
   position: absolute;
-  width: 100%;
-  height: 100%;
-
   background-size: 100%;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -27,9 +24,6 @@
   &#iphone11
     img,video
       width: 286px
-      // height: 619px
-      margin-left: 21px
-      margin-right: 21px
       margin-top: 19px
       margin-bottom: 20px
     .frame
@@ -52,22 +46,21 @@
       bottom: 0
 
 @media screen and (max-width: $device-mobile)
+  .md .img-wrap .frame-wrap
+    &[part]
+      height: 200px
   .md .frame-wrap
+    &[part]
+      max-height: 200px
     &#iphone11
       img,video
-        width: 207px
-        height: 449px
-        margin-left: 15px
-        margin-right: 13px
+        width: 208px
         margin-top: 13px
         margin-bottom: 14px
       .frame
         width: 238px
         height: 476px
-    &[part='top']
-      height: 200px
     &[part='bottom']
-      height: 200px
       img,video
         bottom: 0
       .frame
