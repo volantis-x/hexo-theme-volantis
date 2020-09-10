@@ -72,7 +72,7 @@ hexo.extend.tag.register('frame', function(args) {
       ret += '>';
     }
 
-    ret += '<video muted="" loop="" autoplay="" preload="metadata">';
+    ret += '<video playsinline="" muted="" loop="" autoplay="" preload="metadata">';
     ret += '<source src="' + video + '" type="video/mp4">';
     ret += '</video>';
 
