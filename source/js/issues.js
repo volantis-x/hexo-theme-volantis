@@ -107,7 +107,7 @@ const IssuesAPI = {
     $(el).append('<div class="loading"><i class="fa fa-cog fa-2x fa-spin"></i><p>正在加载</p></div>');
     this.requestIssuesAPI(cfg.api, function(data){
       $(el).find('.loading').remove();
-      let dt = groupIssuesData(cfg, data);
+      let dt = IssuesAPI.groupIssuesData(cfg, data);
       let groupTitles = Object.keys(dt);
       cfg.group.forEach((groupTitle, i) => {
         let issues = dt[groupTitle];
