@@ -373,6 +373,7 @@ var customSearch;
 				$(function () {
 					restData();
 					setHeader();
+					setHeaderMenuSelection();
 					setTocToggle();
 					setScrollAnchor();
 					setTabs();

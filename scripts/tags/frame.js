@@ -48,7 +48,26 @@ hexo.extend.tag.register('frame', function(args) {
     i += '/>';
     return i;
   }
-  if (img.length > 0) {
+  if (video.length > 0) {
+    ret += '<div class="video-wrap">';
+    ret += '<div class="frame-wrap" id="' + device + '"';
+    if (part.length > 0) {
+      ret += 'part="' + part + '">';
+    } else {
+      ret += '>';
+    }
+    ret += '<video';
+    if (img.length > 0) {
+      ret += ' poster="' + img + '"';
+    }
+    ret += ' playsinline="" muted="" loop="" autoplay="" preload="metadata">';
+    ret += '<source src="' + video + '" type="video/mp4">';
+    ret += '</video>';
+
+    ret += '<div class="frame"></div>';
+    ret += '</div>';
+    ret += '</div>';
+  } else if (img.length > 0) {
     ret += '<div class="img-wrap">';
     ret += '<div class="frame-wrap" id="' + device + '"';
     if (part.length > 0) {
@@ -62,22 +81,6 @@ hexo.extend.tag.register('frame', function(args) {
     if (alt.length > 0) {
       ret += '<span class="image-caption">' + alt + '</span>';
     }
-    ret += '</div>';
-  } else if (video.length > 0) {
-    ret += '<div class="video-wrap">';
-    ret += '<div class="frame-wrap" id="' + device + '"';
-    if (part.length > 0) {
-      ret += 'part="' + part + '">';
-    } else {
-      ret += '>';
-    }
-
-    ret += '<video playsinline="" muted="" loop="" autoplay="" preload="metadata">';
-    ret += '<source src="' + video + '" type="video/mp4">';
-    ret += '</video>';
-
-    ret += '<div class="frame"></div>';
-    ret += '</div>';
     ret += '</div>';
   }
   return ret;
