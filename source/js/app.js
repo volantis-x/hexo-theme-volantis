@@ -1,8 +1,26 @@
 /* eslint-disable */
 var customSearch;
+
+// 函数防抖 (只执行最后一次点击) 
+var Debounce = (fn, t) => {
+	let delay = t || 200;
+	let timer;
+	return function () {
+		let args = arguments;
+		if(timer){
+			clearTimeout(timer);
+		}
+		timer = setTimeout(() => {
+			timer = null;
+			fn.apply(this, args);
+		}, delay);
+	}	
+};
+
 (function ($) {
 
 	"use strict";
+	const isMobile = /mobile/i.test(window.navigator.userAgent);
 
 	// 校正页面定位（被导航栏挡住的区域）
 	var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
@@ -65,25 +83,27 @@ var customSearch;
 
 		//==========================================
 
-		const $coverAnchor = $('.cover-wrapper');
-
 		var enableCover = $('#pjax-enable-cover').text(); // Pjax 处理
 
 		var showHeaderPoint = 0;
-		if ($coverAnchor[0]) {
-			if(enableCover == "true" && $('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
-				showHeaderPoint = $coverAnchor[0].clientHeight - 240;
+		var $coverHeight = 0;
+
+		if (enableCover) {
+			const $coverAnchor = $('.cover-wrapper');
+
+			if ($coverAnchor[0]) {
+				if($('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
+					$coverHeight = 240;
+				showHeaderPoint = $coverAnchor[0].clientHeight - $coverHeight;
+			}
 		}
 
-		var pos = document.body.scrollTop;
-		if(enableCover == "true" && $('.cover-wrapper#half').css('display') === 'none')
-			pos += 240; // Pjax 处理
+		var pos = document.body.scrollTop + $coverHeight; 	// Pjax 处理
 
-		$(document, window).scroll(() => {
+		$(document, window).scroll(Debounce( () => {
 			let scrollTop = $(window).scrollTop();  // 滚动条距离顶部的距离
 
-			if(enableCover == "true" && $('.cover-wrapper#half').css('display') === 'none')
-				scrollTop += 240; // Pjax 处理
+			scrollTop += $coverHeight; // Pjax 处理
 
 			const del = scrollTop - pos;
 			pos = scrollTop;
@@ -102,7 +122,7 @@ var customSearch;
 			} else {
 				$headerAnchor.removeClass('show');
 			}
-		});
+		}));
 		//==========================================
 	}
 
@@ -124,7 +144,7 @@ var customSearch;
 
 		// 决定一二级导航栏的切换
 		let pos = document.body.scrollTop;
-		$(document, window).scroll(() => {
+		$(document, window).scroll(Debounce( () => {
 			const scrollTop = $(window).scrollTop();
 			const del = scrollTop - pos;
 			if (del >= 50 && scrollTop > 100) {
@@ -134,7 +154,7 @@ var customSearch;
 				pos = scrollTop;
 				$wrapper.removeClass('sub');  // <---- 取消二级导航显示
 			}
-		});
+		}));
 
 		// bind events to every btn
 		let $commentTarget = $('.l_body article#comments');  // 评论区域
@@ -159,10 +179,10 @@ var customSearch;
 				$tocTarget.removeClass('active');
 				$toc.removeClass('active');
 			});
-			$(document, window).scroll(() => {
+			$(document, window).scroll(Debounce(() => {
 				$tocTarget.removeClass('active');
 				$toc.removeClass('active');
-			});
+			}, 100));
 		} else $toc.remove();
 	}
 
@@ -204,14 +224,35 @@ var customSearch;
 
 	// 设置全局事件
 	function setGlobalHeaderMenuEvent() {
-		// 手机端 点击展开子菜单
-		$('.m-phone li:has(.list-v)').click(function (e) {
-			e.stopPropagation();
-			$($(e.currentTarget).children('ul')).show();
-			$(document).one('click', function(event) {$('.m-phone .list-v').hide()});
-		});
+		if (isMobile) {
+			// 手机端 点击展开子菜单
+			$('.m-phone li').click(function (e) {
+				e.stopPropagation();
+				$($(e.currentTarget).children('ul')).show();
+			});
+		} else {
+			// PC端 hover时展开子菜单，点击时隐藏子菜单
+			$('.m-pc li > a[href]').parent().click(function (e) {
+				e.stopPropagation();
+				if (e.target.origin == e.target.baseURI) {
+					$('.m-pc .list-v').hide();
+				}
+			});
+		}
+		setPageHeaderMenuEvent();
 	}
 
+	function setPageHeaderMenuEvent() {
+		if (!isMobile) return;
+		// 手机端 点击空白处隐藏子菜单
+		$(document).click(function (e) {
+			$('.m-phone .list-v').hide();
+		});
+		// 手机端 滚动时隐藏子菜单
+		$(window).scroll(Debounce(() => {
+			$('.m-phone .list-v').hide();
+		}));
+	}
 	// 设置导航栏搜索框   fix √
 	function setHeaderSearch() {
 		var $switcher = $('.l_header .switcher .s-search');   // 搜索按钮   移动端
@@ -313,9 +354,9 @@ var customSearch;
 			$(liElements).removeClass('active').eq(l).addClass('active');
 		};
 
-		$(window).scroll(() => {
+		$(window).scroll(Debounce(() => {
 			scrollListener();
-		});
+		}));
 
 		// 监听窗口改变事件
 		let resizeTimer = null;
@@ -374,6 +415,7 @@ var customSearch;
 					restData();
 					setHeader();
 					setHeaderMenuSelection();
+					setPageHeaderMenuEvent();
 					setTocToggle();
 					setScrollAnchor();
 					setTabs();
