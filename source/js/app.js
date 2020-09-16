@@ -195,7 +195,9 @@ var customSearch;
 		if (index) {
 			index = index[0];
 			idname = idname.split(index)[0];
-		}
+    }
+    // 转义字符如 [, ], ~, #, @
+    idname = idname.replace(/(\[|\]|~|#|@)/g, "\\$1");    
 		if (idname && $headerMenu) {
 			$active_link = $('#' + idname, $headerMenu);
 			setUnderline($active_link);
