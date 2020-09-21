@@ -11,6 +11,9 @@
           <%- partial('_third-party/pjax/data') %>
         <% } %>
         <%- body %>
+        <% if (page.snackbar && site.data.notification && (page.snackbar in site.data.notification)) { %>
+          <%- partial('_partial/snackbar') %>
+        <% } %>
       </div>
       <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
       <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
