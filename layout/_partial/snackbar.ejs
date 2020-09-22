@@ -6,9 +6,15 @@
     <% if (snackbar.action && snackbar.action.length > 0) { %>
       <div class="action">
         <% snackbar.action.forEach((ac, i) => { %>
-          <a href='<%- ac.url %>'>
-            <%- ac.title %>
-          </a>
+          <% if (ac.dismiss) { %>
+            <a onclick="document.getElementsByClassName('snackbar-wrap')[0].style.display = 'none'">
+              <%- ac.title %>
+            </a>
+          <% } else { %>
+            <a href='<%- ac.url %>'>
+              <%- ac.title %>
+            </a>
+          <% } %>
         <% }) %>
       </div>
     <% } %>
