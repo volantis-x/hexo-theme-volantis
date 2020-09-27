@@ -734,7 +734,7 @@ color_scheme:
     # 代码块高亮时的背景色
     codeblock: '#FFF7EA'
     # 行内代码颜色
-    inlinecode: '#D56D28'
+    inlinecode: '#c74f00'
 
     # 文章部分
     h1: '#3a3a3a'
