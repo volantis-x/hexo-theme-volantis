@@ -226,7 +226,7 @@ comments:
   minivaline:
     appId: # your appId
     appKey: # your appKey
-    js: https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js
+    js: https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js
     path: # 全局评论地址
     placeholder: 快来评论吧~  # 评论占位提示
     mode: xCss # DesertsP or xCss
