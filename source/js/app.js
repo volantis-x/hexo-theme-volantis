@@ -41,9 +41,10 @@ var Debounce = (fn, t) => {
 	// 校正页面定位（被导航栏挡住的区域）
 	function scrolltoElement(elem, correction = scrollCorrection) {
 		const $elem = elem.href ? $(decodeURI(elem.getAttribute('href'))) : $(elem);
-		$('html, body').animate({
-			'scrollTop': $elem.offset().top - correction
-		}, 500);
+		  window.scrollTo({
+			top: $elem.offset().top - correction,
+			behavior: "smooth"
+		  });
 	}
 
 	// 设置滚动锚点
@@ -304,75 +305,6 @@ var Debounce = (fn, t) => {
 		});
 	}
 
-	// 设置导航栏搜索框
-	function setTocToggle() {
-		const $toc = $('.toc-wrapper');   // 侧边栏 TOC 移动端
-		if ($toc.length === 0) return;
-		$toc.click((e) => {
-			e.stopPropagation();
-			$toc.addClass('active');
-		});
-		$(document).click(() => $toc.removeClass('active'));
-
-		$toc.on('click', 'a', (e) => {
-			e.preventDefault();
-			e.stopPropagation();
-			if (e.target.tagName === 'A') {
-				scrolltoElement(e.target, 0);
-			} else if (e.target.tagName === 'SPAN') {
-				scrolltoElement(e.target.parentElement, 0);
-			}
-			$toc.removeClass('active');
-			const $tocBtn = $('.s-toc');
-			if ($tocBtn.length > 0) {
-				$tocBtn.removeClass('active');
-			}
-		});
-
-		let liElements = Array.from($toc.find('li a'));
-		//function animate above will convert float to int.
-		let getAnchor = () => liElements.map(elem => Math.floor($(decodeURI(elem.getAttribute('href'))).offset().top - scrollCorrection));
-
-		let anchor = getAnchor();
-		let domHeigth = $(document).height();
-		let scrollListener = () => {
-			let scrollTop = $('html').scrollTop() || $('body').scrollTop();
-			if ($(document).height() != domHeigth) { // dom 高度发生变化： 普遍来说，是图片懒加载造成的
-				scrollTop = $('html').scrollTop() || $('body').scrollTop();
-				domHeigth = $(document).height();
-				anchor = getAnchor();
-			}
-			if (!anchor) return;
-			//binary search.
-			let l = 0,
-				r = anchor.length - 1,
-				mid;
-			while (l < r) {
-				mid = (l + r + 1) >> 1;
-				if (anchor[mid] === scrollTop) l = r = mid;
-				else if (anchor[mid] < scrollTop) l = mid;
-				else r = mid - 1;
-			}
-			$(liElements).removeClass('active').eq(l).addClass('active');
-		};
-
-		$(window).scroll(Debounce(() => {
-			scrollListener();
-		}));
-
-		// 监听窗口改变事件
-		let resizeTimer = null;
-		$(window).bind('resize', function (){
-			if (resizeTimer) clearTimeout(resizeTimer);
-			resizeTimer = setTimeout(function(){
-				anchor = getAnchor();
-				scrollListener();
-			} , 100);
-		});
-
-		scrollListener();
-	}
-
 	// 设置 tabs 标签
 	function setTabs() {
 		const $tabs = $('.tabs');
@@ -400,7 +332,6 @@ var Debounce = (fn, t) => {
 		setHeaderMenuSelection();
 		setGlobalHeaderMenuEvent();
 		setHeaderSearch();
-		setTocToggle();
 		setScrollAnchor();
 		setTabs();
 
@@ -418,7 +349,6 @@ var Debounce = (fn, t) => {
 					setHeader();
 					setHeaderMenuSelection();
 					setPageHeaderMenuEvent();
-					setTocToggle();
 					setScrollAnchor();
 					setTabs();
 
@@ -447,7 +377,7 @@ if(window.location.hash){
 	var checkExist = setInterval(function() {
 	   if (typeof jQuery == 'undefined'){return;}
 	   if ($("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")).length) {
-		  $('html, body').animate({scrollTop: $("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")).offset().top-40}, 500);
+		  $('html, body').animate({scrollTop: $("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")).offset().top}, 500);
 		  clearInterval(checkExist);
 	   }
 	}, 100);
