@@ -793,6 +793,7 @@ color_scheme:
 
 ############################### Custom css ############################### > start
 custom_css:
+  toc_smooth: true # TOC 目录平滑滚动效果
   cursor:
     enable: #true
     text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png

@@ -11,7 +11,9 @@ function listennSidebarTOC() {
       event.preventDefault();
       window.scrollTo({
 		top: target.offsetTop + 100,
+		<% if (theme.custom_css.toc_smooth) { %>
 		behavior: "smooth"
+		<% } %>
 	  });
     });
     return target;
