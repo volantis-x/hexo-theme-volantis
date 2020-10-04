@@ -17,7 +17,7 @@
   .container
     margin-left: $gap
     margin-right: $gap
-  .wrapper
+  #wrapper
     height: 100%
     disable-user-select()
     .nav-main,.nav-sub
@@ -312,7 +312,7 @@ ul.list-v
   ul
     right: "calc(100% - 0.5 * %s)" % $gap
 
-.l_header .wrapper
+#wrapper
   if hexo-config('custom_css.navbar.width') == 'auto'
     max-width: $layout-width
     margin: auto

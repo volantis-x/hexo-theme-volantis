@@ -166,8 +166,10 @@
     })();
     </script>
   <% } %>
-  <!-- 脚本懒加载函数 -->
+  <!--  -->
   <script>
+  window.volantis={};
+  /********************脚本懒加载函数********************************/
   function loadScript(src, cb) {
     var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
     var script = document.createElement('script');

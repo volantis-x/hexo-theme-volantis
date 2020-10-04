@@ -5,7 +5,7 @@
   <%- partial('_partial/header', null, {cache: false, path: path}) %>
   <div class="l_body">
     <%- partial('_partial/cover') %>
-    <div class='safearea'>
+    <div id='safearea'>
       <div class='body-wrapper' id="pjax-container">
         <% if (theme.plugins.pjax.enable) { %>
           <%- partial('_third-party/pjax/data') %>
@@ -16,7 +16,7 @@
         <% } %>
       </div>
       <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
     </div>
   </div>
   <div>

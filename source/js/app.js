@@ -20,21 +20,39 @@ var Debounce = (fn, t) => {
 (function ($) {
 
 	"use strict";
+	// 将jQuery对象缓存起来 永远不要让相同的选择器在你的代码里出现多次
+	// 在jQuery中最快的选择器是ID选择器,尽量使用ID代替Class 时间上大约相差100倍
+	// 在class前使用tag(标签名)
+	// 给选择器一个上下文
+	volantis.$bodyAnchor = $('#safearea');                // 页面主体
+	volantis.$topBtn = $('#s-top');                     // 向上
+	volantis.$wrapper = $('#wrapper');        // 整个导航栏
+	volantis.$postsBtn = $('.menu .active');            // 一级导航上的当前激活的按钮
+	volantis.$titleBtn = $('h1.title', '#header-meta'); // 文章内标题
+	volantis.$coverAnchor = $('.cover-wrapper');
+	volantis.$comment = $('.s-comment', volantis.$wrapper);   // 评论按钮  桌面端 移动端
+	volantis.$toc = $('.s-toc', volantis.$wrapper);           // 目录按钮  仅移动端
+	volantis.$switcher = $('.l_header .switcher .s-search'); // 搜索按钮   移动端
+	volantis.$header = $('.l_header'); // 移动端导航栏
+	volantis.$tabs = $('.tabs');
+	volantis.$headerMenu = $('body .navigation');
+	volantis.$search = $('.l_header .m_search');               // 搜索框 桌面端
+	volantis.$commentTarget = $('.l_body article#comments');  // 评论区域
+	volantis.$tocTarget = $('.l_body .toc-wrapper');     // 侧边栏的目录列表  PC
+
 	const isMobile = /mobile/i.test(window.navigator.userAgent);
 
 	// 校正页面定位（被导航栏挡住的区域）
 	var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
-	var $headerAnchor = $('.l_header');
-	if ($headerAnchor[0]) {
-		scrollCorrection = $headerAnchor[0].clientHeight + 16;
+	if (volantis.$header[0]) {
+		scrollCorrection = volantis.$header[0].clientHeight + 16;
 	}
 
 	// 尝试： 重设数据值
 	function restData() {
 		scrollCorrection = 80;
-		$headerAnchor = $('.l_header');
-		if ($headerAnchor[0]) {
-			scrollCorrection = $headerAnchor[0].clientHeight + 16;
+		if (volantis.$header[0]) {
+			scrollCorrection = volantis.$header[0].clientHeight + 16;
 		}
 	}
 
@@ -49,35 +67,30 @@ var Debounce = (fn, t) => {
 
 	// 设置滚动锚点
 	function setScrollAnchor() {
-		const $postsBtn = $('.menu .active');            // 一级导航上的当前激活的按钮
-		const $topBtn = $('.s-top');                     // 向上
-		const $titleBtn = $('h1.title', '#header-meta'); // 文章内标题
-		const $bodyAnchor = $('.safearea');                // 页面主体
-
-		if ($postsBtn.length && $bodyAnchor) {
-			$postsBtn.click(e => {
+		if (volantis.$postsBtn.length && volantis.$bodyAnchor) {
+			volantis.$postsBtn.click(e => {
 				e.preventDefault();
 				e.stopPropagation();
-				if($postsBtn.attr("href") != "/")       // TODO: fix it
-					scrolltoElement($bodyAnchor);
+				if(volantis.$postsBtn.attr("href") != "/")       // TODO: fix it
+					scrolltoElement(volantis.$bodyAnchor);
 				e.stopImmediatePropagation();
-				$postsBtn.unbind('click');
+				volantis.$postsBtn.unbind('click');
 			});
 		}
-		if ($titleBtn.length && $bodyAnchor) {
-			$titleBtn.click(e => {
+		if (volantis.$titleBtn.length && volantis.$bodyAnchor) {
+			volantis.$titleBtn.click(e => {
 				e.preventDefault();
 				e.stopPropagation();
-				scrolltoElement($bodyAnchor);
+				scrolltoElement(volantis.$bodyAnchor);
 				e.stopImmediatePropagation();
-				$titleBtn.unbind('click');
+				volantis.$titleBtn.unbind('click');
 			});
 		}
-		if ($topBtn.length && $bodyAnchor) {
-			$topBtn.click(e => {
+		if (volantis.$topBtn.length && volantis.$bodyAnchor) {
+			volantis.$topBtn.click(e => {
 				e.preventDefault();
 				e.stopPropagation();
-				scrolltoElement($bodyAnchor);
+				scrolltoElement(volantis.$bodyAnchor);
 				e.stopImmediatePropagation();
 			});
 		}
@@ -90,12 +103,10 @@ var Debounce = (fn, t) => {
 		var $coverHeight = 0;
 
 		if (enableCover) {
-			const $coverAnchor = $('.cover-wrapper');
-
-			if ($coverAnchor[0]) {
+			if (volantis.$coverAnchor[0]) {
 				if($('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
 					$coverHeight = 240;
-				showHeaderPoint = $coverAnchor[0].clientHeight - $coverHeight;
+				showHeaderPoint = volantis.$coverAnchor[0].clientHeight - $coverHeight;
 			}
 		}
 
@@ -109,19 +120,19 @@ var Debounce = (fn, t) => {
 			const del = scrollTop - pos;
 			pos = scrollTop;
 			if (scrollTop > 240) {
-				$topBtn.addClass('show');
+				volantis.$topBtn.addClass('show');
 				if (del > 0) {
-					$topBtn.removeClass('hl');
+					volantis.$topBtn.removeClass('hl');
 				} else {
-					$topBtn.addClass('hl');
+					volantis.$topBtn.addClass('hl');
 				}
 			} else {
-				$topBtn.removeClass('show').removeClass('hl');
+				volantis.$topBtn.removeClass('show').removeClass('hl');
 			}
 			if (scrollTop - showHeaderPoint > -1) {
-				$headerAnchor.addClass('show');
+				volantis.$header.addClass('show');
 			} else {
-				$headerAnchor.removeClass('show');
+				volantis.$header.removeClass('show');
 			}
 		}));
 		//==========================================
@@ -137,11 +148,9 @@ var Debounce = (fn, t) => {
 		  }
 
 		if (!window.subData) return;
-		const $wrapper = $('header .wrapper');        // 整个导航栏
-		const $comment = $('.s-comment', $wrapper);   // 评论按钮  桌面端 移动端
-		const $toc = $('.s-toc', $wrapper);           // 目录按钮  仅移动端
 
-		$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
+
+		volantis.$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
 
 		// 决定一二级导航栏的切换
 		let pos = document.body.scrollTop;
@@ -150,50 +159,47 @@ var Debounce = (fn, t) => {
 			const del = scrollTop - pos;
 			if (del >= 50 && scrollTop > 100) {
 				pos = scrollTop;
-				$wrapper.addClass('sub');
+				volantis.$wrapper.addClass('sub');
 			} else if (del <= -50) {
 				pos = scrollTop;
-				$wrapper.removeClass('sub');  // <---- 取消二级导航显示
+				volantis.$wrapper.removeClass('sub');  // <---- 取消二级导航显示
 			}
 		}));
 
 		// bind events to every btn
-		let $commentTarget = $('.l_body article#comments');  // 评论区域
-		if ($commentTarget.length) {
-			$comment.click(e => {                     // 评论按钮点击后 跳转到评论区域
+		if (volantis.$commentTarget.length) {
+			volantis.$comment.click(e => {                     // 评论按钮点击后 跳转到评论区域
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($('.l_body article#comments'));
 				e.stopImmediatePropagation();
 			});
-		} else $comment.remove(); // 关闭了评论，则隐藏
+		} else volantis.$comment.remove(); // 关闭了评论，则隐藏
 
-		const $tocTarget = $('.l_body .toc-wrapper');     // 侧边栏的目录列表  PC
-		if ($tocTarget.length && $tocTarget.children().length) {
-			$toc.click((e) => {
+		if (volantis.$tocTarget.length && volantis.$tocTarget.children().length) {
+			volantis.$toc.click((e) => {
 				e.stopPropagation();
-				$tocTarget.toggleClass('active');
-				$toc.toggleClass('active');
+				volantis.$tocTarget.toggleClass('active');
+				volantis.$toc.toggleClass('active');
 			});
 			$(document).click(function (e) {
 				e.stopPropagation();
-				$tocTarget.removeClass('active');
-				$toc.removeClass('active');
+				volantis.$tocTarget.removeClass('active');
+				volantis.$toc.removeClass('active');
 			});
 			$(document, window).scroll(Debounce(() => {
-				$tocTarget.removeClass('active');
-				$toc.removeClass('active');
+				volantis.$tocTarget.removeClass('active');
+				volantis.$toc.removeClass('active');
 			}, 100));
-		} else $toc.remove();
+		} else volantis.$toc.remove();
 	}
 
 	// 设置导航栏菜单选中状态
 	function setHeaderMenuSelection() {
-		var $headerMenu = $('body .navigation');
 		// 先把已经激活的取消激活
-		$headerMenu.find('li a.active').removeClass('active');
-		$headerMenu.find('div a.active').removeClass('active');
-		// var $underline = $headerMenu.find('.underline');
+		volantis.$headerMenu.find('li a.active').removeClass('active');
+		volantis.$headerMenu.find('div a.active').removeClass('active');
+		// var $underline = volantis.$headerMenu.find('.underline');
 		function setUnderline($item) {
 			// if (!transition) $underline.addClass('disable-trans');
 			if ($item && $item.length) {
@@ -219,8 +225,8 @@ var Debounce = (fn, t) => {
     }
     // 转义字符如 [, ], ~, #, @
     idname = idname.replace(/(\[|\]|~|#|@)/g, "\\$1");    
-		if (idname && $headerMenu) {
-			$active_link = $('#' + idname, $headerMenu);
+		if (idname && volantis.$headerMenu) {
+			$active_link = $('#' + idname, volantis.$headerMenu);
 			setUnderline($active_link);
 		}
 	}
@@ -258,26 +264,23 @@ var Debounce = (fn, t) => {
 	}
 	// 设置导航栏搜索框   fix √
 	function setHeaderSearch() {
-		var $switcher = $('.l_header .switcher .s-search');   // 搜索按钮   移动端
-		var $header = $('.l_header');                         // 移动端导航栏
-		var $search = $('.l_header .m_search');               // 搜索框 桌面端
-		if ($switcher.length === 0) return;
-		$switcher.click(function (e) {
+		if (volantis.$switcher.length === 0) return;
+		volantis.$switcher.click(function (e) {
 			e.stopPropagation();
-			$header.toggleClass('z_search-open');   // 激活移动端搜索框
-			$switcher.toggleClass('active');        // 搜索按钮
-			$search.find('input').focus();
+			volantis.$header.toggleClass('z_search-open');   // 激活移动端搜索框
+			volantis.$switcher.toggleClass('active');        // 搜索按钮
+			volantis.$search.find('input').focus();
 		});
 		$(document).click(function (e) {
-			$header.removeClass('z_search-open');
-			$switcher.removeClass('active');
+			volantis.$header.removeClass('z_search-open');
+			volantis.$switcher.removeClass('active');
 		});
 
-		$search.click(function (e) {
+		volantis.$search.click(function (e) {
 			e.stopPropagation();
 		});
-		$header.ready(function () {
-			$header.bind('keydown', function (event) {
+		volantis.$header.ready(function () {
+			volantis.$header.bind('keydown', function (event) {
 				if (event.keyCode == 9) {
 					return false;
 				} else {
@@ -307,11 +310,10 @@ var Debounce = (fn, t) => {
 
 	// 设置 tabs 标签
 	function setTabs() {
-		const $tabs = $('.tabs');
-		if ($tabs.length === 0) return;
-		let $navs = $tabs.find('.nav-tabs .tab');
+		if (volantis.$tabs.length === 0) return;
+		let $navs = volantis.$tabs.find('.nav-tabs .tab');
 		for (var i = 0; i < $navs.length; i++) {
-			let $a = $tabs.find($navs[i].children[0]);
+			let $a = volantis.$tabs.find($navs[i].children[0]);
 			$a.addClass($a.attr("href"));
 			$a.removeAttr('href');
 		}
@@ -337,7 +339,7 @@ var Debounce = (fn, t) => {
 
 		// 全屏封面底部箭头
 		$('.scroll-down').on('click', function () {
-			scrolltoElement('.safearea');
+			scrolltoElement(volantis.$bodyAnchor);
 		});
 
 
@@ -353,12 +355,10 @@ var Debounce = (fn, t) => {
 					setTabs();
 
 					// 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件
-					var $switcher = $('.l_header .switcher .s-search'); // 搜索按钮   移动端
-					var $header = $('.l_header'); // 移动端导航栏
-					if ($switcher.length !== 0) {
+					if (volantis.$switcher.length !== 0) {
 						$(document).click(function (e) {
-							$header.removeClass('z_search-open');
-							$switcher.removeClass('active');
+							volantis.$header.removeClass('z_search-open');
+							volantis.$switcher.removeClass('active');
 						});
 					}
 				});
