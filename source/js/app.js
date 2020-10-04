@@ -2,44 +2,44 @@
 var customSearch;
 
 // 函数防抖 (只执行最后一次点击) 
-var Debounce = (fn, t) => {
+var Debounce = (fn, t) =>{
 	let delay = t || 200;
 	let timer;
-	return function () {
+	return function() {
 		let args = arguments;
-		if(timer){
+		if (timer) {
 			clearTimeout(timer);
 		}
-		timer = setTimeout(() => {
+		timer = setTimeout(() =>{
 			timer = null;
 			fn.apply(this, args);
-		}, delay);
-	}	
+		},
+		delay);
+	}
 };
 
-(function ($) {
+(function($) {
 
 	"use strict";
 	// 将jQuery对象缓存起来 永远不要让相同的选择器在你的代码里出现多次
 	// 在jQuery中最快的选择器是ID选择器,尽量使用ID代替Class 时间上大约相差100倍
 	// 在class前使用tag(标签名)
 	// 给选择器一个上下文
-	volantis.$bodyAnchor = $('#safearea');                // 页面主体
-	volantis.$topBtn = $('#s-top');                     // 向上
-	volantis.$wrapper = $('#wrapper');        // 整个导航栏
-	volantis.$postsBtn = $('.menu .active');            // 一级导航上的当前激活的按钮
+	volantis.$bodyAnchor = $('#safearea'); // 页面主体
+	volantis.$topBtn = $('#s-top'); // 向上
+	volantis.$wrapper = $('#wrapper'); // 整个导航栏
+	volantis.$postsBtn = $('.menu .active'); // 一级导航上的当前激活的按钮
 	volantis.$titleBtn = $('h1.title', '#header-meta'); // 文章内标题
 	volantis.$coverAnchor = $('.cover-wrapper');
-	volantis.$comment = $('.s-comment', volantis.$wrapper);   // 评论按钮  桌面端 移动端
-	volantis.$toc = $('.s-toc', volantis.$wrapper);           // 目录按钮  仅移动端
+	volantis.$comment = $('.s-comment', volantis.$wrapper); // 评论按钮  桌面端 移动端
+	volantis.$toc = $('.s-toc', volantis.$wrapper); // 目录按钮  仅移动端
 	volantis.$switcher = $('.l_header .switcher .s-search'); // 搜索按钮   移动端
 	volantis.$header = $('.l_header'); // 移动端导航栏
 	volantis.$tabs = $('.tabs');
 	volantis.$headerMenu = $('body .navigation');
-	volantis.$search = $('.l_header .m_search');               // 搜索框 桌面端
-	volantis.$commentTarget = $('.l_body article#comments');  // 评论区域
-	volantis.$tocTarget = $('.l_body .toc-wrapper');     // 侧边栏的目录列表  PC
-
+	volantis.$search = $('.l_header .m_search'); // 搜索框 桌面端
+	volantis.$commentTarget = $('.l_body article#comments'); // 评论区域
+	volantis.$tocTarget = $('.l_body .toc-wrapper'); // 侧边栏的目录列表  PC
 	const isMobile = /mobile/i.test(window.navigator.userAgent);
 
 	// 校正页面定位（被导航栏挡住的区域）
@@ -59,26 +59,26 @@ var Debounce = (fn, t) => {
 	// 校正页面定位（被导航栏挡住的区域）
 	function scrolltoElement(elem, correction = scrollCorrection) {
 		const $elem = elem.href ? $(decodeURI(elem.getAttribute('href'))) : $(elem);
-		  window.scrollTo({
+		window.scrollTo({
 			top: $elem.offset().top - correction,
 			behavior: "smooth"
-		  });
+		});
 	}
 
 	// 设置滚动锚点
 	function setScrollAnchor() {
 		if (volantis.$postsBtn.length && volantis.$bodyAnchor) {
-			volantis.$postsBtn.click(e => {
+			volantis.$postsBtn.click(e =>{
 				e.preventDefault();
 				e.stopPropagation();
-				if(volantis.$postsBtn.attr("href") != "/")       // TODO: fix it
-					scrolltoElement(volantis.$bodyAnchor);
+				if (volantis.$postsBtn.attr("href") != "/") // TODO: fix it
+				scrolltoElement(volantis.$bodyAnchor);
 				e.stopImmediatePropagation();
 				volantis.$postsBtn.unbind('click');
 			});
 		}
 		if (volantis.$titleBtn.length && volantis.$bodyAnchor) {
-			volantis.$titleBtn.click(e => {
+			volantis.$titleBtn.click(e =>{
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement(volantis.$bodyAnchor);
@@ -87,7 +87,7 @@ var Debounce = (fn, t) => {
 			});
 		}
 		if (volantis.$topBtn.length && volantis.$bodyAnchor) {
-			volantis.$topBtn.click(e => {
+			volantis.$topBtn.click(e =>{
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement(volantis.$bodyAnchor);
@@ -96,27 +96,22 @@ var Debounce = (fn, t) => {
 		}
 
 		//==========================================
-
 		var enableCover = $('#pjax-enable-cover').text(); // Pjax 处理
-
 		var showHeaderPoint = 0;
 		var $coverHeight = 0;
 
 		if (enableCover) {
 			if (volantis.$coverAnchor[0]) {
-				if($('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
-					$coverHeight = 240;
+				if ($('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
+				$coverHeight = 240;
 				showHeaderPoint = volantis.$coverAnchor[0].clientHeight - $coverHeight;
 			}
 		}
 
-		var pos = document.body.scrollTop + $coverHeight; 	// Pjax 处理
-
-		$(document, window).scroll(Debounce( () => {
-			let scrollTop = $(window).scrollTop();  // 滚动条距离顶部的距离
-
+		var pos = document.body.scrollTop + $coverHeight; // Pjax 处理
+		$(document, window).scroll(Debounce(() =>{
+			let scrollTop = $(window).scrollTop(); // 滚动条距离顶部的距离
 			scrollTop += $coverHeight; // Pjax 处理
-
 			const del = scrollTop - pos;
 			pos = scrollTop;
 			if (scrollTop > 240) {
@@ -141,20 +136,17 @@ var Debounce = (fn, t) => {
 	// 设置导航栏
 	function setHeader() {
 		var HEXO_ISPAGE = $.trim($('#pjax-ispage').text());
-		if(HEXO_ISPAGE == 'true')
-		  window.subData = {
+		if (HEXO_ISPAGE == 'true') window.subData = {
 			title: $.trim($('#pjax-pageTitle').text()),
 			tools: true
-		  }
+		}
 
 		if (!window.subData) return;
 
-
-		volantis.$wrapper.find('.nav-sub .title').text(window.subData.title);   // 二级导航文章标题
-
+		volantis.$wrapper.find('.nav-sub .title').text(window.subData.title); // 二级导航文章标题
 		// 决定一二级导航栏的切换
 		let pos = document.body.scrollTop;
-		$(document, window).scroll(Debounce( () => {
+		$(document, window).scroll(Debounce(() =>{
 			const scrollTop = $(window).scrollTop();
 			const del = scrollTop - pos;
 			if (del >= 50 && scrollTop > 100) {
@@ -162,35 +154,35 @@ var Debounce = (fn, t) => {
 				volantis.$wrapper.addClass('sub');
 			} else if (del <= -50) {
 				pos = scrollTop;
-				volantis.$wrapper.removeClass('sub');  // <---- 取消二级导航显示
+				volantis.$wrapper.removeClass('sub'); // <---- 取消二级导航显示
 			}
 		}));
 
 		// bind events to every btn
 		if (volantis.$commentTarget.length) {
-			volantis.$comment.click(e => {                     // 评论按钮点击后 跳转到评论区域
+			volantis.$comment.click(e =>{ // 评论按钮点击后 跳转到评论区域
 				e.preventDefault();
 				e.stopPropagation();
 				scrolltoElement($('.l_body article#comments'));
 				e.stopImmediatePropagation();
 			});
 		} else volantis.$comment.remove(); // 关闭了评论，则隐藏
-
 		if (volantis.$tocTarget.length && volantis.$tocTarget.children().length) {
-			volantis.$toc.click((e) => {
+			volantis.$toc.click((e) =>{
 				e.stopPropagation();
 				volantis.$tocTarget.toggleClass('active');
 				volantis.$toc.toggleClass('active');
 			});
-			$(document).click(function (e) {
+			$(document).click(function(e) {
 				e.stopPropagation();
 				volantis.$tocTarget.removeClass('active');
 				volantis.$toc.removeClass('active');
 			});
-			$(document, window).scroll(Debounce(() => {
+			$(document, window).scroll(Debounce(() =>{
 				volantis.$tocTarget.removeClass('active');
 				volantis.$toc.removeClass('active');
-			}, 100));
+			},
+			100));
 		} else volantis.$toc.remove();
 	}
 
@@ -222,9 +214,9 @@ var Debounce = (fn, t) => {
 		if (index) {
 			index = index[0];
 			idname = idname.split(index)[0];
-    }
-    // 转义字符如 [, ], ~, #, @
-    idname = idname.replace(/(\[|\]|~|#|@)/g, "\\$1");    
+		}
+		// 转义字符如 [, ], ~, #, @
+		idname = idname.replace(/(\[|\]|~|#|@)/g, "\\$1");
 		if (idname && volantis.$headerMenu) {
 			$active_link = $('#' + idname, volantis.$headerMenu);
 			setUnderline($active_link);
@@ -235,13 +227,13 @@ var Debounce = (fn, t) => {
 	function setGlobalHeaderMenuEvent() {
 		if (isMobile) {
 			// 手机端 点击展开子菜单
-			$('.m-phone li').click(function (e) {
+			$('.m-phone li').click(function(e) {
 				e.stopPropagation();
 				$($(e.currentTarget).children('ul')).show();
 			});
 		} else {
 			// PC端 hover时展开子菜单，点击时隐藏子菜单
-			$('.m-pc li > a[href]').parent().click(function (e) {
+			$('.m-pc li > a[href]').parent().click(function(e) {
 				e.stopPropagation();
 				if (e.target.origin == e.target.baseURI) {
 					$('.m-pc .list-v').hide();
@@ -254,37 +246,38 @@ var Debounce = (fn, t) => {
 	function setPageHeaderMenuEvent() {
 		if (!isMobile) return;
 		// 手机端 点击空白处隐藏子菜单
-		$(document).click(function (e) {
+		$(document).click(function(e) {
 			$('.m-phone .list-v').hide();
 		});
 		// 手机端 滚动时隐藏子菜单
-		$(window).scroll(Debounce(() => {
+		$(window).scroll(Debounce(() =>{
 			$('.m-phone .list-v').hide();
 		}));
 	}
 	// 设置导航栏搜索框   fix √
 	function setHeaderSearch() {
 		if (volantis.$switcher.length === 0) return;
-		volantis.$switcher.click(function (e) {
+		volantis.$switcher.click(function(e) {
 			e.stopPropagation();
-			volantis.$header.toggleClass('z_search-open');   // 激活移动端搜索框
-			volantis.$switcher.toggleClass('active');        // 搜索按钮
+			volantis.$header.toggleClass('z_search-open'); // 激活移动端搜索框
+			volantis.$switcher.toggleClass('active'); // 搜索按钮
 			volantis.$search.find('input').focus();
 		});
-		$(document).click(function (e) {
+		$(document).click(function(e) {
 			volantis.$header.removeClass('z_search-open');
 			volantis.$switcher.removeClass('active');
 		});
 
-		volantis.$search.click(function (e) {
+		volantis.$search.click(function(e) {
 			e.stopPropagation();
 		});
-		volantis.$header.ready(function () {
-			volantis.$header.bind('keydown', function (event) {
+		volantis.$header.ready(function() {
+			volantis.$header.bind('keydown',
+			function(event) {
 				if (event.keyCode == 9) {
 					return false;
 				} else {
-					var isie = (document.all) ? true : false;
+					var isie = (document.all) ? true: false;
 					var key;
 					var ev;
 					if (isie) { //IE浏览器
@@ -317,7 +310,7 @@ var Debounce = (fn, t) => {
 			$a.addClass($a.attr("href"));
 			$a.removeAttr('href');
 		}
-		$('.tabs .nav-tabs').on('click', 'a', (e) => {
+		$('.tabs .nav-tabs').on('click', 'a', (e) =>{
 			e.preventDefault();
 			e.stopPropagation();
 			let $tab = $(e.target.parentElement.parentElement.parentElement);
@@ -329,7 +322,7 @@ var Debounce = (fn, t) => {
 		});
 	}
 
-	$(function () {
+	$(function() {
 		setHeader();
 		setHeaderMenuSelection();
 		setGlobalHeaderMenuEvent();
@@ -338,15 +331,16 @@ var Debounce = (fn, t) => {
 		setTabs();
 
 		// 全屏封面底部箭头
-		$('.scroll-down').on('click', function () {
+		$('.scroll-down').on('click',
+		function() {
 			scrolltoElement(volantis.$bodyAnchor);
 		});
 
-
 		try {
 			// addEventListener是先绑定先执行，此处的绑定后执行
-			document.addEventListener('pjax:complete', function () {
-				$(function () {
+			document.addEventListener('pjax:complete',
+			function() {
+				$(function() {
 					restData();
 					setHeader();
 					setHeaderMenuSelection();
@@ -356,7 +350,7 @@ var Debounce = (fn, t) => {
 
 					// 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件
 					if (volantis.$switcher.length !== 0) {
-						$(document).click(function (e) {
+						$(document).click(function(e) {
 							volantis.$header.removeClass('z_search-open');
 							volantis.$switcher.removeClass('active');
 						});
@@ -364,21 +358,26 @@ var Debounce = (fn, t) => {
 				});
 
 			});
-		} catch (error) {
+		} catch(error) {
 			// console.log(error);
 		}
 	});
 
-
 })(jQuery);
 
 /*锚点定位*/
-if(window.location.hash){
+if (window.location.hash) {
 	var checkExist = setInterval(function() {
-	   if (typeof jQuery == 'undefined'){return;}
-	   if ($("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")).length) {
-		  $('html, body').animate({scrollTop: $("#"+decodeURI(window.location.hash.split("#")[1]).replace(/\ /g,"-")).offset().top-40}, 500);
-		  clearInterval(checkExist);
-	   }
-	}, 100);
+		if (typeof jQuery == 'undefined') {
+			return;
+		}
+		if ($("#" + decodeURI(window.location.hash.split("#")[1]).replace(/\ /g, "-")).length) {
+			$('html, body').animate({
+				scrollTop: $("#" + decodeURI(window.location.hash.split("#")[1]).replace(/\ /g, "-")).offset().top - 40
+			},
+			500);
+			clearInterval(checkExist);
+		}
+	},
+	100);
 }
