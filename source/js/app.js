@@ -31,15 +31,11 @@ var Debounce = (fn, t) =>{
 	volantis.$postsBtn = $('.menu .active'); // 一级导航上的当前激活的按钮
 	volantis.$titleBtn = $('h1.title', '#header-meta'); // 文章内标题
 	volantis.$coverAnchor = $('#l_cover .cover-wrapper');
-	volantis.$comment = $('#s-comment'); // 评论按钮  桌面端 移动端
-	volantis.$toc = $('#s-toc'); // 目录按钮  仅移动端
 	volantis.$switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
 	volantis.$header = $('#l_header'); // 移动端导航栏
 	volantis.$tabs = $('.tabs');
 	volantis.$headerMenu = $('body .navigation');
 	volantis.$search = $('#l_header .m_search'); // 搜索框 桌面端
-	volantis.$commentTarget = $('#l_body article#comments'); // 评论区域
-	volantis.$tocTarget = $('#l_body .toc-wrapper'); // 侧边栏的目录列表  PC
 	volantis.$mPhoneList = $('#l_header .m-phone .list-v'); //  手机端 子菜单
 	const isMobile = /mobile/i.test(window.navigator.userAgent);
 
@@ -143,7 +139,9 @@ var Debounce = (fn, t) =>{
 		}
 
 		if (!window.subData) return;
-
+		volantis.$comment = $('#s-comment'); // 评论按钮  桌面端 移动端
+		volantis.$toc = $('#s-toc'); // 目录按钮  仅移动端
+		volantis.$commentTarget = $('#l_body article#comments'); // 评论区域
 		volantis.$wrapper.find('.nav-sub .title').text(window.subData.title); // 二级导航文章标题
 		// 决定一二级导航栏的切换
 		let pos = document.body.scrollTop;
@@ -168,6 +166,7 @@ var Debounce = (fn, t) =>{
 				e.stopImmediatePropagation();
 			});
 		} else volantis.$comment.remove(); // 关闭了评论，则隐藏
+		volantis.$tocTarget = $('#l_body .toc-wrapper'); // 侧边栏的目录列表  PC
 		if (volantis.$tocTarget.length && volantis.$tocTarget.children().length) {
 			volantis.$toc.click((e) =>{
 				e.stopPropagation();
@@ -355,10 +354,11 @@ var Debounce = (fn, t) =>{
 					}
 				});
 
-			});
-		} catch(error) {
+			},{passive: true});
+		} catch (error) {
 			// console.log(error);
 		}
+		
 	});
 
 	/*锚点定位*/
