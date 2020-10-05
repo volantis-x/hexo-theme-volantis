@@ -35,11 +35,12 @@ var Debounce = (fn, t) =>{
 	volantis.$toc = $('#s-toc'); // 目录按钮  仅移动端
 	volantis.$switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
 	volantis.$header = $('#l_header'); // 移动端导航栏
-	volantis.$tabs = $('div.tabs');
+	volantis.$tabs = $('.tabs');
 	volantis.$headerMenu = $('body .navigation');
 	volantis.$search = $('#l_header .m_search'); // 搜索框 桌面端
 	volantis.$commentTarget = $('#l_body article#comments'); // 评论区域
 	volantis.$tocTarget = $('#l_body .toc-wrapper'); // 侧边栏的目录列表  PC
+	volantis.$mPhoneList = $('#l_header .m-phone .list-v'); //  手机端 子菜单
 	const isMobile = /mobile/i.test(window.navigator.userAgent);
 
 	// 校正页面定位（被导航栏挡住的区域）
@@ -225,16 +226,16 @@ var Debounce = (fn, t) =>{
 	function setGlobalHeaderMenuEvent() {
 		if (isMobile) {
 			// 手机端 点击展开子菜单
-			$('.m-phone li').click(function(e) {
+			$('#l_header .m-phone li').click(function(e) {
 				e.stopPropagation();
 				$($(e.currentTarget).children('ul')).show();
 			});
 		} else {
 			// PC端 hover时展开子菜单，点击时隐藏子菜单
-			$('.m-pc li > a[href]').parent().click(function(e) {
+			$('#wrapper .m-pc li > a[href]').parent().click(function(e) {
 				e.stopPropagation();
 				if (e.target.origin == e.target.baseURI) {
-					$('.m-pc .list-v').hide();
+					$('#wrapper .m-pc .list-v').hide();
 				}
 			});
 		}
@@ -245,11 +246,11 @@ var Debounce = (fn, t) =>{
 		if (!isMobile) return;
 		// 手机端 点击空白处隐藏子菜单
 		$(document).click(function(e) {
-			$('.m-phone .list-v').hide();
+			volantis.$mPhoneList.hide();
 		});
 		// 手机端 滚动时隐藏子菜单
 		$(window).scroll(Debounce(() =>{
-			$('.m-phone .list-v').hide();
+			volantis.$mPhoneList.hide();
 		}));
 	}
 	// 设置导航栏搜索框   fix √
