@@ -63,20 +63,24 @@ if (page && page.layout == 'post' && page.title) {
  
 <% if (enableCover) { %> 
 <script> 
-  // 处理封面 此时 jquery 还没加载 
+  // 处理封面 此时 jquery 还没加载
+  var l_cover=document.getElementById("l_cover");
+  var l_header=document.getElementById("l_header");
+  var scroll_down=document.getElementById("scroll-down");
+  var cover_wrapper=l_cover.getElementsByClassName('cover-wrapper')[0];
   if ("<%=frontMatterCover%>" == "none") { // 移除封面 
-    document.getElementsByClassName('cover-wrapper')[0].style.display = "none"; 
-    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
+    cover_wrapper.style.display = "none"; 
+    l_header.classList.add("show"); 
   } else { 
     if ("<%=frontMatterCover%>" == "half") { // 半屏 
-      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
-      document.getElementById("scroll-down").style.display = "none"; 
+      cover_wrapper.setAttribute('id', 'half'); 
+      scroll_down.style.display = "none"; 
     } else if ("<%=frontMatterCover%>" == "full") { // 全屏 
-      document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
-      document.getElementById("scroll-down").style.display = ""; 
+      cover_wrapper.setAttribute('id', 'full'); 
+      scroll_down.style.display = ""; 
     } 
-    document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
-    document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 
+    cover_wrapper.style.display = ""; 
+    l_header.classList.remove("show");
   } 
 </script> 
 <% } %> 
