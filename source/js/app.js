@@ -38,8 +38,8 @@ var Debounce = (fn, t) =>{
 	volantis.$tabs = $('.tabs');
 	volantis.$headerMenu = $('body .navigation');
 	volantis.$search = $('.l_header .m_search'); // 搜索框 桌面端
-	volantis.$commentTarget = $('.l_body article#comments'); // 评论区域
-	volantis.$tocTarget = $('.l_body .toc-wrapper'); // 侧边栏的目录列表  PC
+	volantis.$commentTarget = $('#l_body article#comments'); // 评论区域
+	volantis.$tocTarget = $('#l_body .toc-wrapper'); // 侧边栏的目录列表  PC
 	const isMobile = /mobile/i.test(window.navigator.userAgent);
 
 	// 校正页面定位（被导航栏挡住的区域）
@@ -163,7 +163,7 @@ var Debounce = (fn, t) =>{
 			volantis.$comment.click(e =>{ // 评论按钮点击后 跳转到评论区域
 				e.preventDefault();
 				e.stopPropagation();
-				scrolltoElement($('.l_body article#comments'));
+				scrolltoElement(volantis.$commentTarget);
 				e.stopImmediatePropagation();
 			});
 		} else volantis.$comment.remove(); // 关闭了评论，则隐藏
@@ -191,9 +191,7 @@ var Debounce = (fn, t) =>{
 		// 先把已经激活的取消激活
 		volantis.$headerMenu.find('li a.active').removeClass('active');
 		volantis.$headerMenu.find('div a.active').removeClass('active');
-		// var $underline = volantis.$headerMenu.find('.underline');
 		function setUnderline($item) {
-			// if (!transition) $underline.addClass('disable-trans');
 			if ($item && $item.length) {
 				$item.addClass('active').siblings().removeClass('active');
 			}
