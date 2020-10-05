@@ -70,10 +70,10 @@ if (page && page.layout == 'post' && page.title) {
   } else { 
     if ("<%=frontMatterCover%>" == "half") { // 半屏 
       document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'half'); 
-      document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
+      document.getElementById("scroll-down").style.display = "none"; 
     } else if ("<%=frontMatterCover%>" == "full") { // 全屏 
       document.getElementsByClassName('cover-wrapper')[0].setAttribute('id', 'full'); 
-      document.getElementsByClassName('scroll-down')[0].style.display = ""; 
+      document.getElementById("scroll-down").style.display = ""; 
     } 
     document.getElementsByClassName('cover-wrapper')[0].style.display = ""; 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.remove("show"); 

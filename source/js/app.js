@@ -35,7 +35,7 @@ var Debounce = (fn, t) =>{
 	volantis.$toc = $('#s-toc'); // 目录按钮  仅移动端
 	volantis.$switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
 	volantis.$header = $('#l_header'); // 移动端导航栏
-	volantis.$tabs = $('.tabs');
+	volantis.$tabs = $('div.tabs');
 	volantis.$headerMenu = $('body .navigation');
 	volantis.$search = $('#l_header .m_search'); // 搜索框 桌面端
 	volantis.$commentTarget = $('#l_body article#comments'); // 评论区域
@@ -329,8 +329,7 @@ var Debounce = (fn, t) =>{
 		setTabs();
 
 		// 全屏封面底部箭头
-		$('.scroll-down').on('click',
-		function() {
+		$('#scroll-down').on('click',function() {
 			scrolltoElement(volantis.$bodyAnchor);
 		});
 

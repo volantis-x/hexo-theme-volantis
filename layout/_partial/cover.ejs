@@ -16,7 +16,7 @@
             <div class='cover-bg' style='background-image:url(<%- theme.cover.background %>)'></div>
           <% } %>
           <%- partial('../_cover/' + theme.cover.layout_scheme) %>
-          <div class="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
         </div>
     <% } %>
   <% } else { %>
@@ -31,7 +31,7 @@
               <div class='cover-bg' style='background-image:url(<%- theme.cover.background %>)'></div>
             <% } %>
             <%- partial('../_cover/' + theme.cover.layout_scheme) %>
-            <div class="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+            <div id="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
           </div>
         <% } else { %>
           <div class="cover-wrapper" id='half'>
