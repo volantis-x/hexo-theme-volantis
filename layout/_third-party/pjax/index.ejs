@@ -39,8 +39,8 @@
       if (typeof $.fancybox != "undefined") {
         $.fancybox.close();    // 关闭弹窗
       }
-      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
-      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
       volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
 
       // 解绑事件 避免重复监听
@@ -90,14 +90,14 @@
           %>
           if ('<%- posi %>') {
             $('<%- posi %>').backstretch("resize");
-            if($('.cover-wrapper').is(':hidden')){
+            if(volantis.$coverAnchor.is(':hidden')){
               $('.cover-backstretch').backstretch("pause");
             }else{
               $('.cover-backstretch').backstretch("next");
             }
           } else {
             $.backstretch("resize");
-            if($('.cover-wrapper').is(':hidden')){
+            if(volantis.$coverAnchor.is(':hidden')){
               $.backstretch("pause");
             }else{
               $.backstretch("next");

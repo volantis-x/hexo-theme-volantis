@@ -30,29 +30,29 @@ var Debounce = (fn, t) =>{
 	volantis.$wrapper = $('#wrapper'); // 整个导航栏
 	volantis.$postsBtn = $('.menu .active'); // 一级导航上的当前激活的按钮
 	volantis.$titleBtn = $('h1.title', '#header-meta'); // 文章内标题
-	volantis.$coverAnchor = $('.cover-wrapper');
+	volantis.$coverAnchor = $('#l_cover .cover-wrapper');
 	volantis.$comment = $('.s-comment', volantis.$wrapper); // 评论按钮  桌面端 移动端
 	volantis.$toc = $('.s-toc', volantis.$wrapper); // 目录按钮  仅移动端
-	volantis.$switcher = $('.l_header .switcher .s-search'); // 搜索按钮   移动端
-	volantis.$header = $('.l_header'); // 移动端导航栏
+	volantis.$switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
+	volantis.$header = $('#l_header'); // 移动端导航栏
 	volantis.$tabs = $('.tabs');
 	volantis.$headerMenu = $('body .navigation');
-	volantis.$search = $('.l_header .m_search'); // 搜索框 桌面端
+	volantis.$search = $('#l_header .m_search'); // 搜索框 桌面端
 	volantis.$commentTarget = $('#l_body article#comments'); // 评论区域
 	volantis.$tocTarget = $('#l_body .toc-wrapper'); // 侧边栏的目录列表  PC
 	const isMobile = /mobile/i.test(window.navigator.userAgent);
 
 	// 校正页面定位（被导航栏挡住的区域）
 	var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
-	if (volantis.$header[0]) {
-		scrollCorrection = volantis.$header[0].clientHeight + 16;
+	if (volantis.$header) {
+		scrollCorrection = volantis.$header.clientHeight + 16;
 	}
 
 	// 尝试： 重设数据值
 	function restData() {
 		scrollCorrection = 80;
-		if (volantis.$header[0]) {
-			scrollCorrection = volantis.$header[0].clientHeight + 16;
+		if (volantis.$header) {
+			scrollCorrection = volantis.$header.clientHeight + 16;
 		}
 	}
 
