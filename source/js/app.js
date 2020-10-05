@@ -31,8 +31,8 @@ var Debounce = (fn, t) =>{
 	volantis.$postsBtn = $('.menu .active'); // 一级导航上的当前激活的按钮
 	volantis.$titleBtn = $('h1.title', '#header-meta'); // 文章内标题
 	volantis.$coverAnchor = $('#l_cover .cover-wrapper');
-	volantis.$comment = $('.s-comment', volantis.$wrapper); // 评论按钮  桌面端 移动端
-	volantis.$toc = $('.s-toc', volantis.$wrapper); // 目录按钮  仅移动端
+	volantis.$comment = $('#s-comment'); // 评论按钮  桌面端 移动端
+	volantis.$toc = $('#s-toc'); // 目录按钮  仅移动端
 	volantis.$switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
 	volantis.$header = $('#l_header'); // 移动端导航栏
 	volantis.$tabs = $('.tabs');
@@ -361,21 +361,17 @@ var Debounce = (fn, t) =>{
 		}
 	});
 
+	/*锚点定位*/
+	if (window.location.hash) {
+		var checkExist = setInterval(function() {
+			if ($("#" + decodeURI(window.location.hash.split("#")[1]).replace(/\ /g, "-")).length) {
+				$('html, body').animate({
+					scrollTop: $("#" + decodeURI(window.location.hash.split("#")[1]).replace(/\ /g, "-")).offset().top - 40
+				},
+				500);
+				clearInterval(checkExist);
+			}
+		},
+		100);
+	}
 })(jQuery);
-
-/*锚点定位*/
-if (window.location.hash) {
-	var checkExist = setInterval(function() {
-		if (typeof jQuery == 'undefined') {
-			return;
-		}
-		if ($("#" + decodeURI(window.location.hash.split("#")[1]).replace(/\ /g, "-")).length) {
-			$('html, body').animate({
-				scrollTop: $("#" + decodeURI(window.location.hash.split("#")[1]).replace(/\ /g, "-")).offset().top - 40
-			},
-			500);
-			clearInterval(checkExist);
-		}
-	},
-	100);
-}
