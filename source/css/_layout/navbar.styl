@@ -1,4 +1,4 @@
-#l_header
+.l_header
   $iconW = 36px
   $iconMargin = 4px
   position: fixed
@@ -273,7 +273,7 @@ ul.list-v
     &:hover
       list_hover()
 
-#l_header
+.l_header
   .menu
     >ul>li>a
       display: block
@@ -281,7 +281,7 @@ ul.list-v
       >i
         margin-right: 4px
 
-#l_header ul.nav-list-h>li
+.l_header ul.nav-list-h>li
   color: var(--color-list)
   line-height: $navbar-height - 2px
   >a
@@ -347,14 +347,14 @@ ul.list-v
 
 
 .cover-wrapper
-  #l_header
+  .l_header
     trans(0.5s)
     transform: translateY(-2 * $navbar-height)
     &.show
       transform: translateY(0)
 
 
-#l_header
+.l_header
   if hexo-config('custom_css.navbar.width') == 'auto'
     max-width: 65vw
     left: "calc((100% - %s) * 0.5)" % @max-width

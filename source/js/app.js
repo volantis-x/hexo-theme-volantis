@@ -44,15 +44,15 @@ var Debounce = (fn, t) =>{
 
 	// 校正页面定位（被导航栏挡住的区域）
 	var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
-	if (volantis.$header) {
-		scrollCorrection = volantis.$header.clientHeight + 16;
+	if (volantis.$header[0]) {
+		scrollCorrection = volantis.$header[0].clientHeight + 16;
 	}
 
 	// 尝试： 重设数据值
 	function restData() {
 		scrollCorrection = 80;
-		if (volantis.$header) {
-			scrollCorrection = volantis.$header.clientHeight + 16;
+		if (volantis.$header[0]) {
+			scrollCorrection = volantis.$header[0].clientHeight + 16;
 		}
 	}
 
