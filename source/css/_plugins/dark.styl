@@ -1,0 +1,149 @@
+if hexo-config('plugins.backstretch.position') == 'fixed'
+  .backstretch
+    background-color: #282c34 !important
+  .backstretch-item
+    display: none !important
+else
+  #l_body
+    background-color: black !important
+img
+  filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
+.lazyload
+  filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
+.pdf
+  filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
+//header
+#wrapper .title
+  color: var(--color-meta)
+.l_header ul.nav-list-h>li>a, ul.list-v >li>a
+  color: var(--color-list)
+.blur
+  background: var(--color-site-bg) !important
+.nav-main
+  .u-search-input
+    background: var(--color-card) !important
+.l_main .article .prev-next>a
+  background: var(--color-block)
+  &:hover
+    background: var(--color-card)
+.article blockquote
+  background: var(--color-block)
+.article-title a
+  color: var(--color-h1)
+details>summary
+  color: var(--color-p)
+  background: var(--color-site-bg)
+details
+  border: 1px solid var(--color-site-bg)
+  background: var(--color-site-bg)
+//search
+#u-search .modal
+  background: var(--color-card) !important
+#u-search .modal-header
+  background: var(--color-card) !important
+#u-search .modal-body
+  background: var(--color-card) !important
+#u-search .modal-body .modal-results .result:hover
+  background: var(--color-block) !important
+//phone search
+.l_header .m_search
+  @media screen and (max-width: $device-mobile)
+    background: var(--color-site-bg) !important
+//side
+.widget.blogger .content .social-wrapper a.social:hover
+  background: var(--color-card)
+.content
+  color: var(--color-p)
+.note
+  background: var(--color-block) !important
+div.tabs ul.nav-tabs li.tab.active a
+  color: var(--color-p)
+  background: var(--color-card)
+kbd
+  background: var(--color-block) !important
+.cover-wrapper.dock .menu .list-h a:hover, .cover-wrapper.featured .menu .list-h a:hover, .cover-wrapper.focus .menu .list-h a:hover
+  color: var(--color-text) !important
+//highlight
+.gutter
+  background: var(--color-card) !important
+  background-color: var(--color-card) !important
+.highlight figcaption
+  background-color: #21252b
+.highlight pre .line, .highlight pre .params
+  color: rgba(158, 142, 142, 0.9)
+//table
+*:not(.highlight) >table tr
+  background-color: var(--color-card)
+*:not(.highlight) >table th
+  background: var(--color-site-bg)
+*:not(.highlight) table td,*:not(.highlight) table th
+  border-color: var(--color-site-bg)
+*:not(.highlight) >table tr:hover
+  background: var(--color-codeblock)
+.timenode .highlight
+  border-color: var(--color-site-bg) !important
+blockquote p
+  color: var(--color-p)
+// tags
+#archive-page .archive .all-tags ul li span
+  color: var(--color-text)
+  background: #6f6f72
+if hexo-config('comments.service')=='gitalk'
+  .gt-container .gt-header-textarea
+    background-color: var(--color-card)
+    &:hover
+      background-color: var(--color-block)
+  .gt-container .gt-comment-content
+    background-color: var(--color-card)
+    &:hover
+      box-shadow: none
+  .gt-container .gt-comment-admin .gt-comment-content
+    background-color: var(--color-card)
+if hexo-config('comments.service')=='minivaline'
+  .MiniValine .vpage .more
+    background: var(--color-site-bg)
+  .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before
+    background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+  .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after
+    background: rgba(0,0,0,0.9)
+  .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre
+    background: var(--color-site-bg)
+    border: 1px solid var(--color-site-bg)
+  .MiniValine .vinputs-area .vextra-area .vsmile-icons
+    background: transparent
+  .MiniValine .vlist .vcard .vcomment-body .vhead
+    filter: brightness(85%)
+  .MiniValine .vbtn
+    background: var(--color-card)
+    &:hover
+      background: var(--color-block)
+  .MiniValine .vpage .more:hover
+    background: var(--color-card)
+if hexo-config('plugins.aplayer.enable')
+  .aplayer
+    background: var(--color-site-bg)
+  .aplayer .aplayer-list ol li:hover
+    background: rgba($color-theme,.2)
+  .aplayer .aplayer-list ol li.aplayer-list-light
+    background: var(--color-block)
+  .aplayer-info
+    background: var(--color-site-bg) !important
+  .aplayer .aplayer-lrc:before
+    background: linear-gradient(180deg,#282c34 0,hsla(0,0%,100%,0))
+  .aplayer .aplayer-lrc:after
+    background: linear-gradient(180deg,hsla(0,0%,0%,0) 0,hsla(0,0%,13%,.8))
+  .aplayer-pic
+    filter: brightness(convert(hexo-config('color_scheme.dark.brightness')))
+  .aplayer .aplayer-list ol li
+    border-top: 1px solid var(--color-card)
+  .aplayer.aplayer-withlist .aplayer-info
+    border-bottom: 1px solid var(--color-block)
+if hexo-config('comments.service')=='valine'
+  #valine_container button
+    background-color: var(--color-block) !important
+  #valine_container .vcards .vcontent.expand:before
+    background: none !important
+  #valine_container .vcards .vcontent.expand:after
+    background:  #393c40 !important
+  .v[data-class=v] code, .v[data-class=v] pre
+    background-color: #332828 !important
