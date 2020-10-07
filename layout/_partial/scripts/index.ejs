@@ -1,17 +1,4 @@
-<script>
-window.volantis={};
-/********************脚本懒加载函数********************************/
-function loadScript(src, cb) {
-var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
-var script = document.createElement('script');
-script.setAttribute('type','text/javascript');
-if (cb) script.onload = cb;
-script.setAttribute('src', src);
-HEAD.appendChild(script);
-}
-//https://github.com/filamentgroup/loadCSS
-!function(c){"use strict";var e=function(e,t,n,r){var o,i=c.document,a=i.createElement("link");if(t)o=t;else{var d=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=d[d.length-1]}var f=i.styleSheets;if(r)for(var l in r)r.hasOwnProperty(l)&&a.setAttribute(l,r[l]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,t?o:o.nextSibling)});var s=function(e){for(var t=a.href,n=f.length;n--;)if(f[n].href===t)return e();setTimeout(function(){s(e)})};function u(){a.addEventListener&&a.removeEventListener("load",u),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",u),(a.onloadcssdefined=s)(u),a};"undefined"!=typeof exports?exports.loadCSS=e:c.loadCSS=e}("undefined"!=typeof global?global:this);
-</script>
+<%- partial('loadfunction') %>
 <!-- required -->
 <%- js(theme.plugins.jquery) %>
 <%- partial('../../_third-party/fancybox/script') %>
@@ -117,41 +104,17 @@ HEAD.appendChild(script);
   <%- partial('counter') %>
 <% } %>
 
-<% if (config.google_analytics_key) { %>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script>
-setTimeout(function() {
-  window.ga_tid = '<%- config.google_analytics_key %>';
-   (function() {
-	 var dga = document.createElement("script");
-	 dga.src = "https://rmt.dogedoge.com/fetch/public/ga.js";
-	  var s = document.getElementsByTagName("script")[0];
-	  s.parentNode.insertBefore(dga, s);
-  })();
-}, 5000);
-</script>
+<% if (theme.plugins.darkmodejs.enable) { %>
+  <%- partial('darkmode') %>
 <% } %>
-<% if (config.baidu_analytics_key) { %>
-<!-- ba -->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  setTimeout(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
-	hm.defer=true;
-	var s = document.getElementsByTagName("script")[0];
-	s.parentNode.insertBefore(hm, s);
-  }, 5000);
-})();
-</script>
-<% } %>
-  <% if (theme.plugins.darkmodejs.enable) { %>
-    <%- partial('darkmode') %>
-  <% } %>
+
+<%- partial('../../_third-party/analytics/script') %>
+
+<%- partial('toc') %>
+
 <!-- more -->
 <% if (config.import && config.import.script) { %>
   <%- partial('import') %>
 <% } %>
 
-<%- partial('toc') %>
+
