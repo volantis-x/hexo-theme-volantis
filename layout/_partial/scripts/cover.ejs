@@ -2,13 +2,12 @@
   <% var imgs = theme.plugins.backstretch.images || page.images; %>
   <% var posi = null;
   if (theme.plugins.backstretch.position == 'cover') {
-    posi = '.cover-backstretch';
+    posi = '#cover-backstretch';
   }
    %>
   <% if (imgs != undefined && theme.plugins.backstretch.position != undefined){ %>
     <%- js(theme.plugins.backstretch.js) %>
     <script type="text/javascript">
-      $(function(){
         var imgs=<%- '["' + imgs.join('", "') + '"]' %>;
         if ('<%- theme.plugins.backstretch.shuffle %>' == 'true') {
           function shuffle(arr){
@@ -23,22 +22,24 @@
           }
           shuffle(imgs);
         }
-        if ('<%- posi %>') {
+	  function Pjax_backstretch(){
+        <% if (posi) { %>
           $('<%- posi %>').backstretch(
             imgs,
           {
             duration: "<%- theme.plugins.backstretch.duration %>",
             fade: "<%- theme.plugins.backstretch.fade %>"
           });
-        } else {
+        <%} else { %>
           $.backstretch(
             imgs,
           {
             duration: "<%- theme.plugins.backstretch.duration %>",
             fade: "<%- theme.plugins.backstretch.fade %>"
           });
-        }
-      });
+        <%} %>
+	  }
+	  loadScript("<%- theme.plugins.backstretch.js %>",Pjax_backstretch)
     </script>
   <% } %>
 <% } %>

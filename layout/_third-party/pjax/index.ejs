@@ -11,6 +11,7 @@
         elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
         selectors: [
           "title",
+          "#l_cover",
           "#pjax-container",
           "#pjax-header-nav-list"
         ],
@@ -83,26 +84,7 @@
             pjax_fancybox();
           }
         <% if (theme.plugins.backstretch.enable && theme.plugins.backstretch.images) { %>
-          <% var posi = null;
-            if (theme.plugins.backstretch.position == 'cover') {
-              posi = '.cover-backstretch';
-            }
-          %>
-          if ('<%- posi %>') {
-            $('<%- posi %>').backstretch("resize");
-            if(volantis.$coverAnchor.is(':hidden')){
-              $('.cover-backstretch').backstretch("pause");
-            }else{
-              $('.cover-backstretch').backstretch("next");
-            }
-          } else {
-            $.backstretch("resize");
-            if(volantis.$coverAnchor.is(':hidden')){
-              $.backstretch("pause");
-            }else{
-              $.backstretch("next");
-            }
-          }
+		  Pjax_backstretch()
         <% } %>
         <% if (theme.plugins.highlightjs.enable) { %>
         document.querySelectorAll('pre code').forEach((block) => {

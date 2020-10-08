@@ -1,0 +1,47 @@
+<%
+  theme.pjax_cover={}
+  theme.pjax_cover.enableCover = false; // 封面是否开启
+  theme.pjax_cover.frontMatterCover = 'none';  // 封面控制
+  theme.pjax_cover.coverWrapperDisplay = 'none';
+  theme.pjax_cover.coverWrapperID = 'full';
+  theme.pjax_cover.scrollDownDisplay = 'none';
+  theme.pjax_cover.headerShow = 'show';
+  if(theme.cover && theme.cover.height_scheme) {
+  theme.pjax_cover.enableCover = true;
+  }
+  if (theme.pjax_cover.enableCover && page && page.cover) {
+    theme.pjax_cover.frontMatterCover = page.cover;
+    if (is_home() && page.prev == 0 && theme.cover.height_scheme == 'full') {
+    theme.pjax_cover.frontMatterCover = 'full';
+    } else {
+    theme.pjax_cover.frontMatterCover = 'half';
+    }
+  }
+  /*cover*/
+  if (theme.pjax_cover.frontMatterCover == "none") { // 移除封面
+    theme.pjax_cover.coverWrapperDisplay= "none";
+  } else {
+  if (theme.pjax_cover.frontMatterCover == "half") { // 半屏
+    theme.pjax_cover.coverWrapperID= 'half';
+    theme.pjax_cover.scrollDownDisplay = "none";
+  } else if (theme.pjax_cover.frontMatterCover == "full") { // 全屏
+    theme.pjax_cover.coverWrapperID= 'full';
+    theme.pjax_cover.scrollDownDisplay = "";
+  }
+  theme.pjax_cover.coverWrapperDisplay = "";
+  }
+  /*header*/
+  if (theme.plugins.pjax.enable) {
+    if (theme.pjax_cover.frontMatterCover == "none") { // 移除封面
+      theme.pjax_cover.headerShow="show";
+    } else {
+      theme.pjax_cover.headerShow="";
+    }
+  }else{
+    if(theme.cover.height_scheme){
+      theme.pjax_cover.headerShow="";
+    }else{
+      theme.pjax_cover.headerShow="show";
+    }
+}
+%>

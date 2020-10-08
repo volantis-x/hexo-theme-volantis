@@ -7,12 +7,12 @@
     <%- partial('_partial/cover') %>
     <div id='safearea'>
       <div class='body-wrapper' id="pjax-container">
-        <% if (theme.plugins.pjax.enable) { %>
-          <%- partial('_third-party/pjax/data') %>
-        <% } %>
         <%- body %>
         <% if (page.snackbar && site.data.notification && (page.snackbar in site.data.notification)) { %>
           <%- partial('_partial/snackbar') %>
+        <% } %>
+        <% if (theme.plugins.pjax.enable) { %>
+          <%- partial('_third-party/pjax/data') %>
         <% } %>
       </div>
       <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
