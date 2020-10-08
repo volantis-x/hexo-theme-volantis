@@ -8,16 +8,16 @@
 	<% if (theme.comments.minivaline.js) { %>
 	  loadScript('<%- theme.comments.minivaline.js %>', pjax_minivaline)
 	<% } else { %>
-	  loadScript('https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js', pjax_minivaline)
+	  loadScript('https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js', pjax_minivaline)
 	<% } %>
 	}, 1);
   };
   function pjax_minivaline() {
   if(!document.querySelectorAll("#minivaline_container")[0])return;
 
-  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "<%= theme.comments.minivaline.placeholder %>";
+  let pagePlaceholder = pdata.commentPlaceholder || "<%= theme.comments.minivaline.placeholder %>";
 
-  let path = $.trim($('#pjax-comment-path').text());
+  let path = pdata.commentPath;
   if (path.length == 0) {
     let defaultPath = '<%= theme.comments.minivaline.path %>';
     path = defaultPath || decodeURI(window.location.pathname);
@@ -49,7 +49,6 @@
     closeUA: <%= theme.comments.minivaline.closeUA %>,
     emoticonUrl: <%- '["' + emoticonUrl.join('", "') + '"]' %>,
     serverURLs: '<%= theme.comments.minivaline.serverURLs %>',
-    vc: '<%= theme.comments.minivaline.vc %>',
     region: '<%= theme.comments.minivaline.region %>',
     });
   }

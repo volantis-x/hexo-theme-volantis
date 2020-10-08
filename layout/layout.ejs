@@ -3,20 +3,20 @@
 <%- partial('_partial/head') %>
 <body>
   <%- partial('_partial/header', null, {cache: false, path: path}) %>
-  <div class="l_body">
+  <div id="l_body">
     <%- partial('_partial/cover') %>
-    <div class='safearea'>
+    <div id='safearea'>
       <div class='body-wrapper' id="pjax-container">
-        <% if (theme.plugins.pjax.enable) { %>
-          <%- partial('_third-party/pjax/data') %>
-        <% } %>
         <%- body %>
         <% if (page.snackbar && site.data.notification && (page.snackbar in site.data.notification)) { %>
           <%- partial('_partial/snackbar') %>
         <% } %>
+        <% if (theme.plugins.pjax.enable) { %>
+          <%- partial('_third-party/pjax/pdata') %>
+        <% } %>
       </div>
       <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-      <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
     </div>
   </div>
   <div>

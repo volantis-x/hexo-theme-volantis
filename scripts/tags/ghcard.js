@@ -33,3 +33,12 @@ hexo.extend.tag.register('ghcard', function(args) {
   card += '</a>';
   return card;
 });
+
+hexo.extend.tag.register('ghcardgroup', function(args, content) {
+  let ret = '';
+  // wrap
+  ret += '<div class="ghcard-group">';
+  ret += content;
+  ret += '</div>';
+  return ret;
+}, {ends: true});

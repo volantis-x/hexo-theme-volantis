@@ -82,3 +82,16 @@
 
   &:empty
     display:none
+
+  .toc-child 
+    font-size: 1rem
+    overflow: hidden
+    transition: max-height 0.6s ease-in
+    max-height: 0
+  .toc-item
+    &.active
+      &>.toc-link
+        list_active()
+        border-left: $border-line solid $color-theme
+      &>.toc-child 
+        max-height: 1000px

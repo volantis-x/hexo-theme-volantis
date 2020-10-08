@@ -129,7 +129,7 @@ article:
         icon: fas fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
-        placeholder_img: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=
+        placeholder_img: data:image/png;base64,666
       # ----------------
       # 版权声明组件 (for layout: post)
       copyright:
@@ -226,7 +226,7 @@ comments:
   minivaline:
     appId: # your appId
     appKey: # your appKey
-    js: https://cdn.jsdelivr.net/npm/minivaline@3/dist/MiniValine.min.js
+    js: https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js
     path: # 全局评论地址
     placeholder: 快来评论吧~  # 评论占位提示
     mode: xCss # DesertsP or xCss
@@ -623,21 +623,12 @@ plugins:
     enable: #true
     js:
 
-  # 暗黑模式 darkmodejs
-  # https://darkmodejs.learn.uno
-  # 暗黑模式样式：https://github.com/volantis-x/hexo-theme-volantis/blob/master/source/css/_third-party/darkmode.styl
+  # 暗黑模式 darkmode
+  # 暗黑模式样式：source/css/_plugins/dark.styl
+  # 暗黑模式按钮：在navbar menu中添加class为 `.darkbtn` 的menu 或者 自行开发
   darkmodejs:
     enable: #true
-    js: https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js
-    button: # button 使用默认或自行开发
-      enable: true
-      left: '16px'
-      bottom: '32px'
-      buttonDark: '#333'
-      buttonLight: '#ddd'
-    compatible: true # 卡片兼容性处理，如果未发现卡片出现兼容问题设置为false
-    # darkmodejs的 mix-blend-mode 与 body.effect: [blur] 样式冲突，如果backstretch.position设置为'fixed'建议删除blur或禁用暗黑模式
-    # Help Wanted : https://github.com/volantis-x/hexo-theme-volantis/blob/master/layout/_pre.ejs#L43
+
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
@@ -734,7 +725,7 @@ color_scheme:
     # 代码块高亮时的背景色
     codeblock: '#FFF7EA'
     # 行内代码颜色
-    inlinecode: '#D56D28'
+    inlinecode: '#c74f00'
 
     # 文章部分
     h1: '#3a3a3a'
@@ -793,6 +784,7 @@ color_scheme:
 
 ############################### Custom css ############################### > start
 custom_css:
+  toc_smooth: true # TOC 目录平滑滚动效果
   cursor:
     enable: #true
     text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png

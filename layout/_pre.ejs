@@ -40,18 +40,6 @@ if (config.theme_config && config.theme_config.style) {
   if (style.body && style.body.effect) {
     theme.custom_css.body.effect = style.body.effect;
   }
-  // 卡片兼容处理 mix-blend-mode 与 body effect: [blur] 冲突
-  if (theme.plugins.darkmodejs.enable && theme.plugins.backstretch.enable && (theme.plugins.backstretch.position == 'fixed')) {
-  	// !! Waring !! 兼容失效
-	// 这里删除 "blur" 即可兼容 以下代码潜在异常
-	// Array.prototype.removeblur = function(val) {
-  	// 	var index = this.indexOf(val);
-  	// 	if (index > -1) {
-  	// 		this.splice(index, 1);
-  	// 	}
-  	// };
-	// theme.custom_css.body.effect.removeblur("blur")
-  }
 }
 
 %>

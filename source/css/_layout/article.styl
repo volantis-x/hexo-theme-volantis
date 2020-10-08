@@ -115,8 +115,8 @@
       text-align: left
       word-wrap: normal
       font-size: $fontsize-list
-      margin-top: $gap-p
-      margin-bottom: $gap-p
+      margin-top: .5em
+      margin-bottom: .5em
     position: relative
     width: 100%
     padding: $gap
@@ -168,7 +168,7 @@
   code
     font-family: $fontfamily-code
     &:not([class])
-      font-size: $fontsize-code
+      word-break: break-all
       color: var(--color-inlinecode)
       border-radius: $border-codeblock * 0.5
 
@@ -295,7 +295,7 @@
     font-weight: 500
   .related_posts
     .body
-      margin: 0 4px
+      margin: 4px
       overflow: hidden
       border-radius: 2px
     .body .vlts-rps

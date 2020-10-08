@@ -11,6 +11,7 @@
         elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
         selectors: [
           "title",
+          "#l_cover",
           "#pjax-container",
           "#pjax-header-nav-list"
         ],
@@ -20,7 +21,7 @@
     });
 
     document.addEventListener('pjax:send', function (e) {
-      window.stop(); // 相当于点击了浏览器的停止按钮
+      //window.stop(); // 相当于点击了浏览器的停止按钮
 
       try {
         var currentUrl = window.location.pathname;
@@ -39,12 +40,12 @@
       if (typeof $.fancybox != "undefined") {
         $.fancybox.close();    // 关闭弹窗
       }
-      $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
-      $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
-      $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
 
       // 解绑事件 避免重复监听
-      $('.s-top').unbind('click');
+      volantis.$topBtn.unbind('click');
       $('.menu a').unbind('click');
       $(window).unbind('resize');
       $(window).unbind('scroll');
@@ -83,26 +84,7 @@
             pjax_fancybox();
           }
         <% if (theme.plugins.backstretch.enable && theme.plugins.backstretch.images) { %>
-          <% var posi = null;
-            if (theme.plugins.backstretch.position == 'cover') {
-              posi = '.cover-backstretch';
-            }
-          %>
-          if ('<%- posi %>') {
-            $('<%- posi %>').backstretch("resize");
-            if($('.cover-wrapper').is(':hidden')){
-              $('.cover-backstretch').backstretch("pause");
-            }else{
-              $('.cover-backstretch').backstretch("next");
-            }
-          } else {
-            $.backstretch("resize");
-            if($('.cover-wrapper').is(':hidden')){
-              $.backstretch("pause");
-            }else{
-              $.backstretch("next");
-            }
-          }
+		  Pjax_backstretch()
         <% } %>
         <% if (theme.plugins.highlightjs.enable) { %>
         document.querySelectorAll('pre code').forEach((block) => {
@@ -135,9 +117,6 @@
         <% } %>
         <% if (theme.comments.service == 'disqus'){ %>
           pjax_disqus();
-        <% } %>
-        <% if (theme.plugins.darkmodejs.enable) { %>
-          pjax_darkmodejs();
         <% } %>
       } catch (e) {
         console.log(e);
