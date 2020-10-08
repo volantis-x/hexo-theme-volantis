@@ -93,11 +93,10 @@ var Debounce = (fn, t) =>{
 		}
 
 		//==========================================
-		var enableCover = $('#pjax-enable-cover').text(); // Pjax 处理
 		var showHeaderPoint = 0;
 		var $coverHeight = 0;
 
-		if (enableCover) {
+		if (pdata.enableCover) {
 			if (volantis.$coverAnchor[0]) {
 				if ($('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
 				$coverHeight = 240;
@@ -132,12 +131,10 @@ var Debounce = (fn, t) =>{
 
 	// 设置导航栏
 	function setHeader() {
-		var HEXO_ISPAGE = $.trim($('#pjax-ispage').text());
-		if (HEXO_ISPAGE == 'true') window.subData = {
-			title: $.trim($('#pjax-pageTitle').text()),
+		if (pdata.ispage) window.subData = {
+			title: pdata.postTitle,
 			tools: true
 		}
-
 		if (!window.subData) return;
 		volantis.$comment = $('#s-comment'); // 评论按钮  桌面端 移动端
 		volantis.$toc = $('#s-toc'); // 目录按钮  仅移动端

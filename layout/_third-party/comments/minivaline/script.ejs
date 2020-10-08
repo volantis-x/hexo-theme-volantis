@@ -15,9 +15,9 @@
   function pjax_minivaline() {
   if(!document.querySelectorAll("#minivaline_container")[0])return;
 
-  let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "<%= theme.comments.minivaline.placeholder %>";
+  let pagePlaceholder = pdata.commentPlaceholder || "<%= theme.comments.minivaline.placeholder %>";
 
-  let path = $.trim($('#pjax-comment-path').text());
+  let path = pdata.commentPath;
   if (path.length == 0) {
     let defaultPath = '<%= theme.comments.minivaline.path %>';
     path = defaultPath || decodeURI(window.location.pathname);

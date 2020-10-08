@@ -31,7 +31,7 @@
 
   function loadDisqus() {
 
-    let path = $.trim($('#pjax-comment-path').text());
+    let path = pdata.commentPath;
     if (path.length == 0) {
       let defaultPath = '<%= theme.comments.disqus.path %>';
       path = defaultPath || decodeURI(window.location.pathname);
