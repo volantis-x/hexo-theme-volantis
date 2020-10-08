@@ -93,24 +93,13 @@ var Debounce = (fn, t) =>{
 		}
 
 		//==========================================
-		var showHeaderPoint = 0;
-		var $coverHeight = 0;
-
-		if (pdata.enableCover) {
-			if (volantis.$coverAnchor[0]) {
-				if ($('.cover-wrapper#half').css('display') !== 'none') // Pjax 处理
-				$coverHeight = 240;
-				showHeaderPoint = volantis.$coverAnchor[0].clientHeight - $coverHeight;
-			}
-		}
-
-		var pos = document.body.scrollTop + $coverHeight; // Pjax 处理
+		var showHeaderPoint = volantis.$bodyAnchor.offset().top-scrollCorrection;
+		var pos = document.body.scrollTop;
 		$(document, window).scroll(Debounce(() =>{
 			let scrollTop = $(window).scrollTop(); // 滚动条距离顶部的距离
-			scrollTop += $coverHeight; // Pjax 处理
 			const del = scrollTop - pos;
 			pos = scrollTop;
-			if (scrollTop > 240) {
+			if (scrollTop > volantis.$bodyAnchor.offset().top) {
 				volantis.$topBtn.addClass('show');
 				if (del > 0) {
 					volantis.$topBtn.removeClass('hl');
@@ -120,7 +109,8 @@ var Debounce = (fn, t) =>{
 			} else {
 				volantis.$topBtn.removeClass('show').removeClass('hl');
 			}
-			if (scrollTop - showHeaderPoint > -1) {
+			console.log(scrollTop - showHeaderPoint)
+			if (scrollTop - showHeaderPoint  > -1) {
 				volantis.$header.addClass('show');
 			} else {
 				volantis.$header.removeClass('show');

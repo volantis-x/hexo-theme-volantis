@@ -1,12 +1,10 @@
 <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
-
 <%
 var commentPath = '';                     // 自定义的评论路径
 var commentPlaceholder = '';              // 自定义的评论描述
 var ispage = false;                           // 一二级导航栏切换控制
 var postTitle = '';                           // 当前文章标题，用于二级导航栏赋值
-
 if (theme.comments.service && theme.comments.service.length > 0) {
   let service = theme.comments.service;
   if (page.comments == undefined || page.comments != false) {
@@ -20,8 +18,6 @@ if (theme.comments.service && theme.comments.service.length > 0) {
     }
   }
 }
-
-
 var enableValine = false;
 if (theme.comments.service == 'valine') {
   enableValine = true;
@@ -30,20 +26,15 @@ var enableMiniValine = false;
 if (theme.comments.service == 'minivaline') {
   enableMiniValine = true;
 }
-
 if (page && page.layout == 'post' && page.title) {
   ispage = true;
   postTitle = page.title;
 }
-
 %>
-
-<% if (theme.pjax_cover.enableCover) { %>
 <script>
   window.pdata={}
   pdata.ispage=<%=ispage%>;
   pdata.postTitle="<%=postTitle%>";
-  pdata.enableCover=<%=theme.pjax_cover.enableCover%>;
   pdata.commentPath="<%=theme.commentPath%>";
   pdata.commentPlaceholder="<%=commentPlaceholder%>";
 
@@ -54,4 +45,3 @@ if (page && page.layout == 'post' && page.title) {
   l_header.classList.remove("show");
   <% }%>
 </script>
-<% } %>
