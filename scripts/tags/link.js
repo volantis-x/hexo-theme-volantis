@@ -30,3 +30,11 @@ hexo.extend.tag.register('link', function(args) {
 
   return result;
 });
+
+hexo.extend.tag.register('linkgroup', function(args, content) {
+  let ret = '';
+  ret += '<div class="link-group">';
+  ret += content;
+  ret += '</div>';
+  return ret;
+}, {ends: true});

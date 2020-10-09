@@ -54,3 +54,14 @@
     flex-shrink: 0
     color: var(--color-meta)
     font-size: $fontsize-code
+
+.md .link-group
+  display: grid
+  grid-template-columns: 1fr 1fr
+  @media screen and (max-width: $device-mobile-l * 2)
+    grid-template-columns: 1fr
+  grid-gap: $gap
+  .tag.link
+    margin: 0
+  .link-card
+    width: 100%
