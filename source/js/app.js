@@ -3,7 +3,7 @@ var customSearch;
 
 // 函数防抖 (只执行最后一次点击)
 var Debounce = (fn, t) =>{
-	let delay = t || 200;
+	let delay = t || 25;
 	let timer;
 	return function() {
 		let args = arguments;
