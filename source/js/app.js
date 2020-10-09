@@ -33,7 +33,6 @@ var Debounce = (fn, t) =>{
 	volantis.$coverAnchor = $('#l_cover .cover-wrapper');
 	volantis.$switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
 	volantis.$header = $('#l_header'); // 移动端导航栏
-	volantis.$tabs = $('.tabs');
 	volantis.$headerMenu = $('body .navigation');
 	volantis.$search = $('#l_header .m_search'); // 搜索框 桌面端
 	volantis.$mPhoneList = $('#l_header .m-phone .list-v'); //  手机端 子菜单
@@ -287,13 +286,6 @@ var Debounce = (fn, t) =>{
 
 	// 设置 tabs 标签
 	function setTabs() {
-		if (volantis.$tabs.length === 0) return;
-		let $navs = volantis.$tabs.find('.nav-tabs .tab');
-		for (var i = 0; i < $navs.length; i++) {
-			let $a = volantis.$tabs.find($navs[i].children[0]);
-			$a.addClass($a.attr("href"));
-			$a.removeAttr('href');
-		}
 		$('.tabs .nav-tabs').on('click', 'a', (e) =>{
 			e.preventDefault();
 			e.stopPropagation();
