@@ -1,7 +1,7 @@
 /* eslint-disable */
 var customSearch;
 
-// 函数防抖 (只执行最后一次点击) 
+// 函数防抖 (只执行最后一次点击)
 var Debounce = (fn, t) =>{
 	let delay = t || 200;
 	let timer;
@@ -109,7 +109,6 @@ var Debounce = (fn, t) =>{
 			} else {
 				volantis.$topBtn.removeClass('show').removeClass('hl');
 			}
-			console.log(scrollTop - showHeaderPoint)
 			if (scrollTop - showHeaderPoint  > -1) {
 				volantis.$header.addClass('show');
 			} else {
@@ -331,7 +330,10 @@ var Debounce = (fn, t) =>{
 					setPageHeaderMenuEvent();
 					setScrollAnchor();
 					setTabs();
-
+					// 全屏封面底部箭头
+					$('#scroll-down').on('click',function() {
+						scrolltoElement(volantis.$bodyAnchor);
+					});
 					// 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件
 					if (volantis.$switcher.length !== 0) {
 						$(document).click(function(e) {
@@ -345,7 +347,7 @@ var Debounce = (fn, t) =>{
 		} catch (error) {
 			// console.log(error);
 		}
-		
+
 	});
 
 	/*锚点定位*/
