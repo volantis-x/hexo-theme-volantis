@@ -624,8 +624,11 @@ plugins:
     js:
 
   # 暗黑模式 darkmode
-  # 暗黑模式样式：source/css/_plugins/dark.styl
-  # 暗黑模式按钮：在navbar menu中添加class为 `.darkbtn` 的menu 或者 自行开发
+  # 样式：source/css/_plugins/dark.styl
+  # 开关按钮：在 navbar.menu 中添加：
+  # - name: 暗黑模式 # 可自定义
+  #   icon: fas fa-moon # 可自定义
+  #   toggle: darkmode
   darkmodejs:
     enable: #true
 
