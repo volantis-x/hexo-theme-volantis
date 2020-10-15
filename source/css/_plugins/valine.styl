@@ -82,10 +82,16 @@ article#comments
         width: 100%
         padding: 8px 2rem
     .vcards
+      margin-top: $gap * 0.5
+      >.vcard
+        border-radius: $border-card
+        border: 1px dashed alpha($color-text, .3)
+        padding: $gap
+        margin-bottom: $gap
+      .vh
+        border-bottom: none
       .vquote
         border-left: none
-      .vh
-        border-bottom: 1px dashed alpha($color-text, .1)
       .vimg
         border: 1px solid white
         padding: 0
@@ -119,6 +125,7 @@ article#comments
           &:hover
             color: $color-hover
       .vcontent
+        padding-top: 0
         blockquote
           padding-top: $gap-p
           padding-bottom: $gap-p
