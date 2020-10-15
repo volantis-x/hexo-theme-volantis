@@ -33,7 +33,7 @@ var Debounce = (fn, t) =>{
 	volantis.$coverAnchor = $('#l_cover .cover-wrapper');
 	volantis.$switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
 	volantis.$header = $('#l_header'); // 移动端导航栏
-	volantis.$headerMenu = $('body .navigation');
+	volantis.$headerMenu = $('body .navigation'); // 导航列表
 	volantis.$search = $('#l_header .m_search'); // 搜索框 桌面端
 	volantis.$mPhoneList = $('#l_header .m-phone .list-v'); //  手机端 子菜单
 	const isMobile = /mobile/i.test(window.navigator.userAgent);
@@ -50,6 +50,7 @@ var Debounce = (fn, t) =>{
 		if (volantis.$header[0]) {
 			scrollCorrection = volantis.$header[0].clientHeight + 16;
 		}
+		volantis.$headerMenu = $('body .navigation');
 	}
 
 	// 校正页面定位（被导航栏挡住的区域）
