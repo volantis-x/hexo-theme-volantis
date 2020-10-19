@@ -1,0 +1,12 @@
+// 本文件样式最佳方案是内联写在HTML中 暂未找到内联自动化方案
+// https://blog.skk.moe/post/improve-fcp-for-my-blog/
+#safearea{
+  display: none
+}
+@import '_defines/*'
+
+// Project
+@import '_base'
+@import '_first/*'
+if hexo-config('plugins.darkmodejs.enable')
+  @import '_plugins/darkmode'
