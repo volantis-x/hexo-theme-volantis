@@ -110,9 +110,9 @@
     <%- css('/css/first.css') %>
   <% } %>
 
-  <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.css) { %>
+  <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.css.style) { %>
   <link rel="stylesheet" href="<%- theme.info.cdn.css %>" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="<%- theme.info.cdn.css %>"></noscript>
+  <noscript><link rel="stylesheet" href="<%- theme.info.cdn.css.style %>"></noscript>
   <% } else { %>
   <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
