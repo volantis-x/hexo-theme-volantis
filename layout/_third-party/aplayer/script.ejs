@@ -7,8 +7,8 @@ setTimeout(function() {
 <% (theme.plugins.aplayer.js||[]).forEach(function(item){ %>
   loadScript("<%- item %>")
 <% }) %>
+<% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
+  loadScript("/js/aplayer.js")
+<% } %>
 }, 10000);
 </script>
-<% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
-  <%- js('js/aplayer.js') %>
-<% } %>
