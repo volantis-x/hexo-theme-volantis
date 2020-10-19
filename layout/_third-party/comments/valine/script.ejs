@@ -1,6 +1,6 @@
 <% if (theme.comments.valine.js) { %>
   <%- js(theme.comments.valine.js) %>
-<% } else if(config.use_cdn) { %>
+<% } else if(theme.use_cdn) { %>
   <%- js(['https://cdn.jsdelivr.net/npm/hexo-theme-volantis@'+theme.info.theme_version+'/source/js/valine.min.js']) %>
 <% } else { %>
   <%- js(['js/valine.js']) %>

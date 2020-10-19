@@ -8,7 +8,7 @@ setTimeout(function() {
   loadScript("<%- item %>")
 <% }) %>
 <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
-	<% if(config.use_cdn) { %>
+	<% if(theme.use_cdn) { %>
 	  loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/aplayer.min.js');
 	<% } else { %>
 	  loadScript("/js/aplayer.js")

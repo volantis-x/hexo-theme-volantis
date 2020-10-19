@@ -1,4 +1,5 @@
 ############################### Volantis ###############################
+use_cdn: true # 仅限/source/js/中的JS文件 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis/source/js/ 的CDN压缩版本，注意版本号对应关系！！可以通过修改以下配置项覆盖
 info:
   theme_name: Volantis # This is theme's name.
   theme_version: '4.1.3' # This is theme's version.

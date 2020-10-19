@@ -2,7 +2,7 @@
   function loadIssuesJS() {
     if ($(".md").find(".issues-api").length == 0) return;
     setTimeout(function() {
-	<% if(config.use_cdn) { %>
+	<% if(theme.use_cdn) { %>
 	  loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/issues.min.js');
 	<% } else { %>
 	  loadScript('/js/issues.js');

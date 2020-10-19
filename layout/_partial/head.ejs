@@ -104,13 +104,13 @@
   <%- item %><% }) %>
   <% } %>
 
-  <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.css.first) { %>
+  <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.css.first) { %>
     <%- css(theme.info.cdn.css.first) %>
   <% } else { %>
     <%- css('/css/first.css') %>
   <% } %>
 
-  <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.css.style) { %>
+  <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.css.style) { %>
   <link rel="stylesheet" href="<%- theme.info.cdn.css %>" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="<%- theme.info.cdn.css.style %>"></noscript>
   <% } else { %>
