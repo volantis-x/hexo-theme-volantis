@@ -1,4 +1,18 @@
 <%- partial('loadfunction') %>
+<script>
+  <% if (theme.plugins.fontawesome) { %>
+  loadCSS("<%- theme.plugins.fontawesome %>", window.volantis.loadcss);
+  <% } %>
+  <% if (theme.plugins.fontawesome_animation.enable) { %>
+  loadCSS("<%- theme.plugins.fontawesome_animation.css %>", window.volantis.loadcss);
+  <% } %>
+  <% if (theme.plugins.nodewaves.enable) { %>
+  loadCSS("<%- theme.plugins.nodewaves.css %>", window.volantis.loadcss);
+  <% } %>
+  <% if ((theme.plugins.highlightjs.enable == true)&&(theme.plugins.highlightjs.css)) { %>
+  loadCSS("<%- theme.plugins.highlightjs.css %>", window.volantis.loadcss);
+  <% } %>
+</script>
 <!-- required -->
 <%- js(theme.plugins.jquery) %>
 <%- partial('../../_third-party/fancybox/script') %>

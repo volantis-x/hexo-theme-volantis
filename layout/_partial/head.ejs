@@ -94,27 +94,8 @@
   <% } %>
 
   <!-- link -->
-  <% if (theme.plugins.fontawesome) { %>
-    <%- css(theme.plugins.fontawesome) %>
-  <% } %>
-  <% if (theme.plugins.fontawesome_animation.enable) { %>
-    <%- css(theme.plugins.fontawesome_animation.css) %>
-  <% } %>
-
-  <% if (theme.plugins.nodewaves.enable) { %>
-    <%- css(theme.plugins.nodewaves.css) %>
-  <% } %>
-
   <% if (config.favicon) { %>
     <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
-  <% } %>
-
-  <% if (theme.plugins.aplayer.enable) { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
-  <% } %>
-
-  <% if (theme.comments.service == 'vssue') { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css">
   <% } %>
 
   <!-- import link -->
@@ -123,11 +104,6 @@
   <%- item %><% }) %>
   <% } %>
 
-  <% if (theme.plugins.highlightjs.enable == true) { %>
-    <% if (theme.plugins.highlightjs.css) { %>
-      <%- css(theme.plugins.highlightjs.css) %>
-    <% } %>
-  <% } %>
   <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.css) { %>
     <%- css(theme.info.cdn.css) %>
   <% } else { %>
