@@ -3,9 +3,9 @@
 %>
 
 <%- js('https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js') %>
-<%- if(theme.plugins.pjax.animation){ %>
+<% if (theme.plugins.pjax.animation){ %>
 <%- partial('animate') %>
-<%- } %>
+<% } %>
 <script>
     var pjax;
     document.addEventListener('DOMContentLoaded', function () {
