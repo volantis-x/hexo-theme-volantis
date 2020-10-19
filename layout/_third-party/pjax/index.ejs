@@ -3,7 +3,9 @@
 %>
 
 <%- js('https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js') %>
+<%- if(theme.plugins.pjax.animation){ %>
 <%- partial('animate') %>
+<%- } %>
 <script>
     var pjax;
     document.addEventListener('DOMContentLoaded', function () {
@@ -52,7 +54,9 @@
       $(document).unbind('scroll');
       $(document).unbind('click');
       $('body').unbind('click');
+	  <% if (theme.plugins.pjax.animation){ %>
       window.ShowLoading();
+	  <% } %>
     });
 
     document.addEventListener('pjax:complete', function () {
@@ -121,11 +125,15 @@
       } catch (e) {
         console.log(e);
       }
+	  <% if (theme.plugins.pjax.animation){ %>
       window.HideLoading();
+	  <% } %>
     });
 
     document.addEventListener('pjax:error', function (e) {
+	  <% if (theme.plugins.pjax.animation){ %>
       window.HideLoading();
+	  <% } %>
       window.location.href = e.triggerElement.href;
     });
 </script>
