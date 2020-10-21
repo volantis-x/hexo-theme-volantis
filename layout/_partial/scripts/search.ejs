@@ -1,7 +1,7 @@
 <script>
 const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
 const ROOT =  ("<%- config.root %>" || "/").endsWith('/') ? ("<%- config.root %>" || "/") : ("<%- config.root %>/" || "/" );
-(function ($) {
+function listenSearch(){
   <% if(theme.search.service === 'baidu') { %>
     const BAIDU_API_ID = "<%- theme.search.baidu.apiId %>";
     customSearch = new BaiduSearch({
@@ -41,6 +41,9 @@ const ROOT =  ("<%- config.root %>" || "/").endsWith('/') ? ("<%- config.root %>
       imagePath: SearchServiceimagePath
     });
   <%}%>
-})(jQuery);
-
+}
+document.addEventListener("DOMContentLoaded", listenSearch);
+<% if(theme.cover.layout_scheme=='search'){%>
+ document.addEventListener("pjax:success", listenSearch);
+<% } %>
 </script>
