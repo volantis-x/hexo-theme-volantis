@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-volantis",
-  "version": "4.1.4",
+  "version": "4.1.5",
   "description": "Elegant and powerful theme for Hexo.",
   "main": "package.json",
   "scripts": {
@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/volantis-x/hexo-theme-volantis/issues"
   },
-  "homepage": "https://volantis.js.org",
+  "homepage": "https://volantis-x.github.io",
   "devDependencies": {
   }
 }
