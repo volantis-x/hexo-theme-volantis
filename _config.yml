@@ -580,13 +580,13 @@ plugins:
       - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
       - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
     # Required
-    server: netease   # netease, tencent, kugou, xiami, baidu
-    type: playlist    # song, playlist, album, search, artist
-    id: 3175833810    # song id / playlist id / album id / search keyword
+    server: kugou   # netease, tencent, kugou, xiami, baidu
+    type: song    # song, playlist, album, search, artist
+    id: 2601443    # song id / playlist id / album id / search keyword
     # Optional
-    fixed: false      # enable fixed mode
+    fixed: false     # enable fixed mode
     theme: '#1BCDFC'  # main color
-    autoplay: false   # audio autoplay
+    autoplay: ture   # audio autoplay
     order: list       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
