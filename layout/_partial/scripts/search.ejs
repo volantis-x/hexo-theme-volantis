@@ -1,6 +1,17 @@
 <script>
 const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
 const ROOT =  ("<%- config.root %>" || "/").endsWith('/') ? ("<%- config.root %>" || "/") : ("<%- config.root %>/" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	<% if (theme.search.js) { %>
+		loadScript('<%- theme.search.js %>',setSearchService);
+	<% } else if(theme.use_cdn) { %>
+		loadScript('<%- 'https://cdn.jsdelivr.net/npm/hexo-theme-volantis@'+theme.info.theme_version+'/source/js/search/'+theme.search.service+'.min.js' %>',setSearchService);
+	<% } else { %>
+		loadScript('<%- '/js/search/'+theme.search.service+'.js' %>',setSearchService);
+	<% } %>
+})
+
 function listenSearch(){
   <% if(theme.search.service === 'baidu') { %>
     const BAIDU_API_ID = "<%- theme.search.baidu.apiId %>";
@@ -42,8 +53,10 @@ function listenSearch(){
     });
   <%}%>
 }
-document.addEventListener("DOMContentLoaded", listenSearch);
-<% if(theme.cover.layout_scheme=='search'){%>
- document.addEventListener("pjax:success", listenSearch);
-<% } %>
+function setSearchService() {
+	listenSearch();
+	<% if(theme.cover.layout_scheme=='search'){%>
+		document.addEventListener("pjax:success", listenSearch);
+	<% } %>
+}
 </script>
