@@ -2,7 +2,6 @@
   let APlayerController = new Object();
   APlayerController.id = '<%= theme.plugins.aplayer.id %>';  // 设定全局音乐播放ID
   APlayerController.volume = '<%= theme.plugins.aplayer.volume %>';
-setTimeout(function() {
   loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
 <% (theme.plugins.aplayer.js||[]).forEach(function(item){ %>
   loadScript("<%- item %>")
@@ -14,5 +13,4 @@ setTimeout(function() {
 	  loadScript("/js/aplayer.js")
 	<% } %>
 <% } %>
-}, 10000);
 </script>

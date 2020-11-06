@@ -13,7 +13,7 @@ function checkAPlayer() {
 function setAPlayerObject() {
 	if (APlayerController.id == undefined) return;
 	document.querySelectorAll('meting-js').forEach((item, index)=>{
-		if (item.meta.id == APlayerController.id) {
+		if (item.meta.id&&item.meta.id == APlayerController.id) {
 			if (document.querySelectorAll('meting-js')[index].aplayer != undefined) {
  				APlayerController.player = document.querySelectorAll('meting-js')[index].aplayer;
 				setAPlayerObserver();
