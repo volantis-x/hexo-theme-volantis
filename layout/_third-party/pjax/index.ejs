@@ -63,9 +63,9 @@
       // 关于百度统计对 SPA 页面的处理：
       // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
       // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
-      // <% if (config.baidu_analytics_key) { %>
-      // _hmt.push(['_trackPageview', document.location.pathname]);
-      // <% } %>
+       <% if (config.baidu_analytics_key) { %>
+       _hmt.push(['_trackPageview', document.location.pathname]);
+       <% } %>
 
       // 关于谷歌统计对 SPA 页面的处理：
       // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
@@ -75,6 +75,7 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('config', '<%- config.google_analytics_key %>', {'page_path': document.location.pathname});
       <% } %>
+	 
 
       $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
       $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
