@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-volantis",
-  "version": "4.1.5",
+  "version": "4.1.6",
   "description": "Elegant and powerful theme for Hexo.",
   "main": "package.json",
   "scripts": {
