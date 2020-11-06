@@ -8,7 +8,7 @@ $('.input.u-search-input').one('focus',function(){
 	<% } else if(theme.use_cdn) { %>
 		loadScript('<%- 'https://cdn.jsdelivr.net/npm/hexo-theme-volantis@'+theme.info.theme_version+'/source/js/search/'+theme.search.service+'.min.js' %>',setSearchService);
 	<% } else { %>
-		loadScript('<%- '/js/search/'+theme.search.service+'.js' %>',setSearchService);
+		loadScript('<%- url_for('/js/search/'+theme.search.service+'.js') %>',setSearchService);
 	<% } %>
 })
 

@@ -114,8 +114,8 @@
   <link rel="stylesheet" href="<%- theme.info.cdn.css %>" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="<%- theme.info.cdn.css.style %>"></noscript>
   <% } else { %>
-  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  <link rel="stylesheet" href="<%- url_for("/css/style.css") %>" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="<%- url_for("/css/style.css") %>"></noscript>
   <% } %>
 
   <script id="loadcss"></script>
