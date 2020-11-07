@@ -123,13 +123,13 @@ const IssuesAPI = {
             let issue = issues[j];
             let imgTag = '';
             if (issue.screenshot && issue.screenshot.length > 0) {
-              imgTag = '<div class="img"><img src="' + issue.screenshot + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/></div>';
+              imgTag = '<div class="img"><img src="' + issue.screenshot + '" onerror="javascript:this.src=\'https://image.thum.io/get/width/1024/crop/768/' + issue.url + '\';"/></div>';
             } else {
               imgTag = '<div class="img"></div>';
             }
             let infoTag = '<div class="info">';
             if (issue.avatar && issue.avatar.length > 0) {
-              infoTag += '<img src="' + issue.avatar + '" onerror="javascript:this.src=\'https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg\';"/>';
+              infoTag += '<img src="' + issue.avatar + '" onerror="javascript:this.src=\'https://image.thum.io/get/width/1024/crop/768/' + issue.url + '\';"/>';
             }
             infoTag += '<span class="title">' + issue.title + '</span><span class="desc">' + issue.description + '</span></div>';
             let cardTag = "<a class='site-card' target='_blank' href='" + issue.url + "'>" + imgTag + infoTag + "</a>";
