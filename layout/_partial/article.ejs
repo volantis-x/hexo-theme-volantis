@@ -42,7 +42,7 @@
         )
         %>
       <% } %>
-      <% if (['post'].includes(page.layout) && footer_widget.copyright && footer_widget.copyright.enable == true) { %>
+      <% if (['post'].includes(page.layout) && footer_widget.copyright && footer_widget.copyright.enable == true && post.copyright != false) { %>
         <div class='copyright'>
           <blockquote>
             <% (footer_widget.copyright.content||[]).forEach(function(row){ %>
