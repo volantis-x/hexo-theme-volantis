@@ -16,7 +16,7 @@ jobs:
       - name: Run Curl
         run: |
           curl -u ${{ secrets.CODING_TOKEN_API }} \
-             -v -X POST  'https://volantis.coding.net/api/cci/job/266519/trigger' \
+             -v -X POST  'https://volantis-x.coding.net/api/cci/job/387490/trigger' \
              -H 'Content-Type: application/json' \
              -d '
               {
