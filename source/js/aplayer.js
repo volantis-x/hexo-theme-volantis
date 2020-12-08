@@ -11,9 +11,8 @@ function checkAPlayer() {
 
 // 设置全局播放器所对应的 aplyer 对象
 function setAPlayerObject() {
-	if (APlayerController.id == undefined) return;
 	document.querySelectorAll('meting-js').forEach((item, index)=>{
-		if (item.meta.id&&item.meta.id == APlayerController.id) {
+		if (item.meta.id == APlayerController.id) {
 			if (document.querySelectorAll('meting-js')[index].aplayer != undefined) {
  				APlayerController.player = document.querySelectorAll('meting-js')[index].aplayer;
 				setAPlayerObserver();
@@ -151,18 +150,12 @@ function updateTitle() {
 		console.log(error);
 	}
 }
+var checkrightmenu = setInterval(function () {
+  console.log(0)
+  if (!document.querySelectorAll('meting-js')[0].meta) return
+  if (!document.querySelectorAll('meting-js')[0].meta.id) return
+  clearInterval(checkrightmenu)
+  checkAPlayer();
+  console.log(1)
+}, 1000)
 
-(function ($) {
-	// 网速快
-	checkAPlayer();
-	// 网速一般
-	setTimeout(function(){
-		checkAPlayer();
-	}, 3000);
-	// 网速较慢
-	setTimeout(function(){
-		checkAPlayer();
-	}, 10000);
-
-
-})(jQuery);
