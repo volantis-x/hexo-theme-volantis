@@ -208,7 +208,7 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover
+  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover, twikoo
   # Valine
   # https://valine.js.org/
   valine:
@@ -311,6 +311,11 @@ comments:
   # https://www.barkdull.org/software/hashover
   hashover:
     src: https://example.com/(path/)comments.php
+  # Twikoo
+  # https://twikoo.js.org/
+  twikoo:
+    js: #https://cdn.jsdelivr.net/npm/twikoo@0.3.0/dist/twikoo.all.min.js   (本地为twikoo v0.3.0版本)
+    envId: xxxxxxxxxxxxxxx # 腾讯云环境id
 ############################### Comments ############################### > end
 
 ############################### Sidebar ############################### > start
