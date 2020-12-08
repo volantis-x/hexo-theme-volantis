@@ -1,0 +1,17 @@
+<% if (theme.comments.twikoo.js) { %>
+<%- js(theme.comments.twikoo.js) %>
+<% } else { %>
+<%- js(['js/twikoo.js']) %>
+<% } %>
+<script>
+  function pjax_twikoo() {
+    twikoo.init({ envId: '<%= theme.comments.twikoo.envId %>', el: '#twikoo_container' })
+  }
+
+  $(function () {
+    pjax_twikoo();
+  });
+
+
+
+</script>
