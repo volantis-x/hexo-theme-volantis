@@ -1,56 +1,26 @@
-<% var emoticonUrl = theme.comments.minivaline.emoticonUrl || [] %>
-<% var tagMeta = theme.comments.minivaline.tagMeta || [] %>
-<% var master = theme.comments.minivaline.master || [] %>
-<% var friends = theme.comments.minivaline.friends  || []  %>
 <script>
   function load_minivaline() {
 	setTimeout(function() {
 	<% if (theme.comments.minivaline.js) { %>
 	  loadScript('<%- theme.comments.minivaline.js %>', pjax_minivaline)
 	<% } else { %>
-	  loadScript('https://cdn.jsdelivr.net/npm/minivaline@4/dist/MiniValine.min.js', pjax_minivaline)
+	  loadScript('https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js', pjax_minivaline)
 	<% } %>
 	}, 1);
   };
   function pjax_minivaline() {
   if(!document.querySelectorAll("#minivaline_container")[0])return;
-
   let pagePlaceholder = pdata.commentPlaceholder || "<%= theme.comments.minivaline.placeholder %>";
-
   let path = pdata.commentPath;
   if (path.length == 0) {
     let defaultPath = '<%= theme.comments.minivaline.path %>';
     path = defaultPath || decodeURI(window.location.pathname);
   }
-
-  new MiniValine({
-    el: '#minivaline_container',
-    appId: '<%= theme.comments.minivaline.appId %>',
-    appKey: '<%= theme.comments.minivaline.appKey %>',
-    mode: '<%= theme.comments.minivaline.mode %>',
-    placeholder: pagePlaceholder,
-    path: path,
-    lang: '<%= theme.comments.minivaline.lang %>',
-    adminEmailMd5: '<%= theme.comments.minivaline.adminEmailMd5 %>',
-    tagMeta: <%- '["' + tagMeta.join('", "') + '"]' %>,
-    master: <%- '["' + master.join('", "') + '"]' %>,
-    friends: <%- '["' + friends.join('", "') + '"]' %>,
-    math: <%= theme.comments.minivaline.math %>,  /*布尔值 字符串无效 下同*/
-    md: <%= theme.comments.minivaline.md %>,
-    enableQQ: <%= theme.comments.minivaline.enableQQ %>,
-    NoRecordIP: <%= theme.comments.minivaline.NoRecordIP %>,
-    visitor: <%= theme.comments.minivaline.visitor %>,
-    maxNest: <%= theme.comments.minivaline.maxNest %>,
-    pageSize: <%= theme.comments.minivaline.pageSize %>,
-    barrager: <%= theme.comments.minivaline.barrager %>,
-    role: '<%= theme.comments.minivaline.role %>',
-    closeFlag: <%= theme.comments.minivaline.closeFlag %>,
-    cloudflag: <%= theme.comments.minivaline.cloudflag %>,
-    closeUA: <%= theme.comments.minivaline.closeUA %>,
-    emoticonUrl: <%- '["' + emoticonUrl.join('", "') + '"]' %>,
-    serverURLs: '<%= theme.comments.minivaline.serverURLs %>',
-    region: '<%= theme.comments.minivaline.region %>',
-    });
+    new MiniValine(Object.assign(<%- JSON.stringify(theme.comments.minivaline) %>, {
+	  el: '#minivaline_container',
+	  pathname: path,
+	  placeholder: pagePlaceholder,
+    }));
   }
   $(function () {
     if(!document.querySelectorAll("#minivaline_container")[0])return;
