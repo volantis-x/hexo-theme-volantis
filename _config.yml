@@ -1,5 +1,5 @@
 ############################### Volantis ###############################
-# 仅限/source/js/中的JS文件 
+# 仅限/source/js/中的JS文件
 # 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis/source/js/ 的CDN压缩版本，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 use_cdn 设置为 false
 use_cdn: false
@@ -235,8 +235,8 @@ comments:
     placeholder: 快来评论吧~  # 全局评论占位提示
     # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el] [pathname] [placeholder] 选项）  emoticonUrl可参考 https://github.com/MiniValine/hexo-next-minivaline
     # mode: xCss # DesertsP or xCss
-    
-    
+
+
   # Disqus
   # https://disqus.com
   disqus:
@@ -467,8 +467,8 @@ plugins:
   # highlight.js
   highlightjs:
     enable: #true # Please set hexo.config.highlight.enable = false !!!
-    js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js
-    css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css
+    js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/highlight.min.js
+    css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/styles/solarized-light.min.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
   # https://scrollrevealjs.org/api/reveal.html
