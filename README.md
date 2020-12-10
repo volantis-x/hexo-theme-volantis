@@ -1,5 +1,5 @@
 <p align="center">
-  <a href='https://volantis-x.github.io'><img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png' height='120px'></a>
+  <a href='https://volantis.js.org'><img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png' height='120px'></a>
 </p>
 
 [![](https://img.shields.io/npm/v/hexo-theme-volantis.svg?style=flat-square)](https://www.npmjs.com/package/hexo-theme-volantis)
@@ -29,12 +29,13 @@ npm i hexo-theme-volantis
 
 ## Usage
 
-See docs: https://volantis-x.github.io
+See docs: https://volantis.js.org
 
+or:  https://volantis.vercel.app
 
 ## Examples
 
-See examples: https://volantis-x.github.io/examples/
+See examples: https://volantis.js.org/examples/
 
 Add your blog to examples page: https://github.com/volantis-x/examples/issues/
 
