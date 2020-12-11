@@ -156,7 +156,8 @@ article:
     bottom_meta: [updated, tags, share]
     # meta library
     meta_library:
-      # 默认文章作者（可在 front-matter 中覆盖）
+      # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
+      # https://volantis.js.org/advanced-settings/#多人协同
       author:
         avatar:
         name: 请设置文章作者
