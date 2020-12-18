@@ -208,7 +208,7 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover, twikoo
+  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover, twikoo, waline
   # Valine
   # https://valine.js.org/
   valine:
@@ -276,8 +276,22 @@ comments:
   # Twikoo
   # https://twikoo.js.org/
   twikoo:
-    js: #https://cdn.jsdelivr.net/npm/twikoo@0.3.0/dist/twikoo.all.min.js   (本地为twikoo v0.3.0版本)
+    js: #https://cdn.jsdelivr.net/npm/twikoo@0.4.0/dist/twikoo.all.min.js   (本地为twikoo v0.4.0版本)
     envId: xxxxxxxxxxxxxxx # 腾讯云环境id
+  # Waline
+  # https://waline.js.org/
+  waline:
+    js: #https://unpkg.com/@waline/client/dist/Waline.min.js (本地为waline v0.8.5版本)
+    path: # 全局评论地址
+    meta: nick,mail,link # waline comment header info
+    requiredFields: ['nick','mail']
+    placeholder: 快来评论吧~  # 评论占位提示
+    serverURL: xxxxxxxxxxxxxxx # Waline 的服务端地址（必填） 测试用地址: https://waline-ruddy.vercel.app
+    imageHosting: https://7bu.top/api/upload # 图床api（默认使用去不图床）
+    avatar: robohash # gravatar style https://waline.js.org/client/basic.html#avatar
+    pageSize: 10 # 评论每页显示数量
+    lang: zh-CN
+
 ############################### Comments ############################### > end
 
 ############################### Sidebar ############################### > start
