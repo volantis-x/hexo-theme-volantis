@@ -126,6 +126,9 @@
         <% if (theme.comments.service == 'twikoo'){ %>
           pjax_twikoo();
         <% } %>
+        <% if (theme.comments.service == 'waline'){ %>
+          pjax_waline();
+        <% } %>
       } catch (e) {
         console.log(e);
       }
