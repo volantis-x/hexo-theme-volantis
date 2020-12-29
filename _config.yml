@@ -614,9 +614,7 @@ plugins:
   # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
   # 例如：
   # {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
-  issues:
-    enable: #true
-    js:
+
 
   # 暗黑模式 darkmode
   # 样式：source/css/_plugins/dark.styl

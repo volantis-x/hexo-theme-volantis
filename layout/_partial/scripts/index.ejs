@@ -23,9 +23,7 @@
   <%- partial('../rightmenu') %>
 <% } %>
 
-<% if (theme.plugins.issues.enable) { %>
-  <%- partial('../../_third-party/issues/script') %>
-<% } %>
+<%- partial('issues') %>
 
 <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
   <%- partial('../../_third-party/lazyload/script') %>
@@ -124,5 +122,3 @@
 <% if (config.import && config.import.script) { %>
   <%- partial('import') %>
 <% } %>
-
-
