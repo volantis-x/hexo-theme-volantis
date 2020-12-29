@@ -213,13 +213,14 @@ comments:
   # Valine
   # https://valine.js.org/
   valine:
-    appId: # your appId
-    appKey: # your appKey
     # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
     path: # 全局评论地址
     placeholder: 快来评论吧~  # 评论占位提示
-    meta: nick,mail,link # valine comment header info
-    requiredFields: ['nick','mail']
+    # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder emojiCDN emojiMaps] 选项
+    appId: # your appId
+    appKey: # your appKey
+    meta: [nick,mail,link] # valine comment header info
+    requiredFields: [nick,mail]
     enableQQ: true # Unstable avatar link
     recordIP: false # Record commenter IP
     avatar: robohash # gravatar style https://valine.js.org/avatar
@@ -249,6 +250,7 @@ comments:
   # Gitalk
   # https://gitalk.github.io/
   gitalk:
+    # 配置项按照yml格式继续填写即可 除了 [id distractionFreeMode] 选项
     clientID:
     clientSecret:
     repo:
@@ -287,9 +289,10 @@ comments:
   waline:
     js: https://cdn.jsdelivr.net/npm/@waline/client@latest
     path: # 全局评论地址
-    meta: nick,mail,link # waline comment header info
-    requiredFields: ['nick','mail']
     placeholder: 快来评论吧~  # 评论占位提示
+    # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder] 选项
+    meta: [nick,mail,link] # waline comment header info
+    requiredFields: [nick,mail]
     serverURL: xxxxxxxxxxxxxxx # Waline 的服务端地址（必填） 测试用地址: https://waline-ruddy.vercel.app
     imageHosting: https://7bu.top/api/upload # 图床api（默认使用去不图床）
     avatar: robohash # gravatar style https://waline.js.org/client/basic.html#avatar

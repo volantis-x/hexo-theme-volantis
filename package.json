@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/volantis-x/hexo-theme-volantis/issues"
   },
-  "homepage": "https://volantis-x.github.io",
+  "homepage": "https://volantis.js.org",
   "devDependencies": {
   }
 }

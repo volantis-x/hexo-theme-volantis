@@ -151,11 +151,9 @@ function updateTitle() {
 	}
 }
 var checkrightmenu = setInterval(function () {
-  console.log(0)
   if (!document.querySelectorAll('meting-js')[0].meta) return
   if (!document.querySelectorAll('meting-js')[0].meta.id) return
   clearInterval(checkrightmenu)
   checkAPlayer();
-  console.log(1)
 }, 1000)
 

@@ -4,14 +4,6 @@
 <%- js(['https://cdn.jsdelivr.net/npm/@waline/client@latest']) %>
 <% } %>
 <script>
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var meta = '<%= theme.comments.valine.meta %>'.split(',').filter(function (item) {
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
-  var requiredFields = '<%= theme.comments.valine.requiredFields %>'.split(',').filter(function (item) {
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
   function pjax_waline() {
     if(!document.querySelectorAll("#waline")[0])return;
     let pagePlaceholder = pdata.commentPlaceholder || "<%= theme.comments.waline.placeholder %>";
@@ -20,27 +12,20 @@
       let defaultPath = '<%= theme.comments.waline.path %>';
       path = defaultPath || decodeURI(window.location.pathname);
     }
-    new Waline({
-      el: '#waline',
-      meta: meta,
-      placeholder: pagePlaceholder,
-      path: path,
-      serverURL: '<%= theme.comments.waline.serverURL %>',
+    new Waline(Object.assign(<%- JSON.stringify(theme.comments.waline) %>, {
+	  el: '#waline',
+	  path: path,
+	  placeholder: pagePlaceholder,
       uploadImage: function(file) {
-      const formData = new FormData();
-      formData.append('image', file);
-      return fetch('<%= theme.comments.waline.imageHosting %>', {
-        method: 'POST',
-        body: formData
-      }).then(resp => resp.json()).then(resp => resp.data.url);
-    },
-      requiredFields: requiredFields,
-      pageSize: '<%= theme.comments.waline.pageSize %>',
-      avatar: '<%= theme.comments.waline.avatar %>',
-      lang: '<%= theme.comments.waline.lang %>'
-    });
+		  const formData = new FormData();
+		  formData.append('image', file);
+		  return fetch('<%= theme.comments.waline.imageHosting %>', {
+			method: 'POST',
+			body: formData
+		  }).then(resp => resp.json()).then(resp => resp.data.url);
+     },
+    }));
   }
-
   $(function () {
     pjax_waline();
   });
