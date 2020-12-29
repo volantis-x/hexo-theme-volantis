@@ -14,6 +14,6 @@ function postTable(args, content) {
   ret += hexo.render.renderSync({text: content, engine: 'markdown'});
   ret += '</div>';
   return ret;
-};
+}
 
 hexo.extend.tag.register('table', postTable, {ends: true});

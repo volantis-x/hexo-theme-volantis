@@ -17,7 +17,7 @@ hexo.extend.tag.register('issues', function(args) {
   // 解析
   if (args.length > 1) {
     for (let i = 1; i < args.length; i++) {
-      let tmp = args[i].trim();
+      const tmp = args[i].trim();
       if (tmp.includes('type=')) {
         type = tmp.substring(5, tmp.length);
       } else if (tmp.includes('api=')) {

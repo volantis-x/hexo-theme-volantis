@@ -2,8 +2,8 @@
 
 const fs = require('hexo-fs');
 
-function lazyProcess(htmlContent, target)  {
-  let cfg = this.theme.config.plugins.lazyload;
+function lazyProcess(htmlContent, target) {
+  const cfg = this.theme.config.plugins.lazyload;
   if (cfg == undefined || cfg.enable != true) {
     return htmlContent;
   }
@@ -12,23 +12,23 @@ function lazyProcess(htmlContent, target)  {
       return htmlContent;
     }
   }
-  let loadingImg = cfg.loadingImg;
-  return htmlContent.replace(/<img(.*?)src="(.*?)"(.*?)>/gi, function (str, p1, p2) {
+  const loadingImg = cfg.loadingImg;
+  return htmlContent.replace(/<img(.*?)src="(.*?)"(.*?)>/gi, function(str, p1, p2) {
     // might be duplicate
-    if (/data-srcset/gi.test(str)){
-        return str;
+    if (/data-srcset/gi.test(str)) {
+      return str;
     }
     if (/src="data:image(.*?)/gi.test(str)) {
-        return str;
+      return str;
     }
     if (/no-lazy/gi.test(str)) {
-        return str;
+      return str;
     }
     let cls = '';
     if (str.indexOf('class=') > -1) {
       cls = str.substring(str.indexOf('class='));
       if (cls.length > 7) {
-        let c = cls.substring(6, 7);
+        const c = cls.substring(6, 7);
         cls = cls.split(c);
         if (cls.length > 1) {
           cls = cls[0] + '"' + cls[1] + '"';
@@ -38,9 +38,9 @@ function lazyProcess(htmlContent, target)  {
     let result = str;
     let newCls = '';
     if (cls.length > 0 && result.includes('class=')) {
-      newCls = cls.replace(/(class=|[\"]*)/g,'') + ' ';
+      newCls = cls.replace(/(class=|[\"]*)/g, '') + ' ';
     }
-    let oldCls = newCls.trim();
+    const oldCls = newCls.trim();
     if (loadingImg) {
       newCls += 'lazyload placeholder';
     } else {
@@ -51,9 +51,9 @@ function lazyProcess(htmlContent, target)  {
     }
     if (loadingImg) {
       return result.replace(p2, p2 + '" class="lazyload placeholder" ' + 'data-srcset="' + p2 + '" srcset="' + loadingImg);
-    } else {
-      return result.replace(p2, p2 + '" class="lazyload" ' + 'data-srcset="' + p2 + '" srcset="' + 'data:image/png;base64,666');
     }
+    return result.replace(p2, p2 + '" class="lazyload" ' + 'data-srcset="' + p2 + '" srcset="' + 'data:image/png;base64,666');
+
   });
 }
 
@@ -62,6 +62,6 @@ module.exports.processPost = function(data) {
   return data;
 };
 
-module.exports.processSite = function (htmlContent) {
+module.exports.processSite = function(htmlContent) {
   return lazyProcess.call(this, htmlContent, 'site');
 };

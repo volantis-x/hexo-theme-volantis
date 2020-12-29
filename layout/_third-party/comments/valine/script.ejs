@@ -35,9 +35,9 @@
     }
     var valine = new Valine();
     valine.init(Object.assign(<%- JSON.stringify(theme.comments.valine) %>, {
-	  el: '#valine_container',
-	  path: path,
-	  placeholder: pagePlaceholder,
+   el: '#valine_container',
+   path: path,
+   placeholder: pagePlaceholder,
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
       emojiMaps: emojiMaps,
     }))

@@ -7,14 +7,14 @@
 function postTimeline(args, content) {
   if (args.length > 0) {
     return `<div class="timeline"><p class='p h2'>${args}</p>${content}</div>`;
-  } else {
-    return `<div class="timeline">${content}</div>`;
   }
+  return `<div class="timeline">${content}</div>`;
+
 }
 
 function postTimenode(args, content) {
-  args = args.join(' ').split(',')
-  var time = args[0]
+  args = args.join(' ').split(',');
+  var time = args[0];
   return `<div class="timenode"><div class="meta"><p>${hexo.render.renderSync({text: time, engine: 'markdown'})}</p></div><div class="body">${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}</div></div>`;
 }
 

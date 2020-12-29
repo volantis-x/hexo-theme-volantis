@@ -8,11 +8,11 @@ function postFancybox(args, content) {
     return `<div class="gallery ${cls}" col='${col}'>
               ${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}
             </div>`;
-  } else {
-    return `<div class="gallery ${cls}">
+  }
+  return `<div class="gallery ${cls}">
               ${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}
             </div>`;
-  }
+
 }
 
 hexo.extend.tag.register('gallery', postFancybox, {ends: true});

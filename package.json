@@ -4,6 +4,7 @@
   "description": "Elegant and powerful theme for Hexo.",
   "main": "package.json",
   "scripts": {
+    "eslint": "eslint scripts/ source/js --fix",
     "test": "echo test"
   },
   "repository": {
@@ -22,5 +23,6 @@
   },
   "homepage": "https://volantis.js.org",
   "devDependencies": {
+    "eslint": "^7.16.0"
   }
 }

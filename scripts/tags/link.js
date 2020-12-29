@@ -3,19 +3,19 @@
 // {% link title, url %}
 // {% link title, url, img %}
 hexo.extend.tag.register('link', function(args) {
-  args = args.join(' ').split(',')
-  let text = ''
-  let url = ''
-  let img = ''
+  args = args.join(' ').split(',');
+  let text = '';
+  let url = '';
+  let img = '';
   if (args.length < 2) {
-    return
+    return;
   } else if (args.length == 2) {
-    text = args[0].trim()
-    url = args[1].trim()
+    text = args[0].trim();
+    url = args[1].trim();
   } else if (args.length == 3) {
-    text = args[0].trim()
-    url = args[1].trim()
-    img = args[2].trim()
+    text = args[0].trim();
+    url = args[1].trim();
+    img = args[2].trim();
   }
   let result = '';
   // 发现如果不套一层 div 在其它可渲染 md 的容器中容易被分解

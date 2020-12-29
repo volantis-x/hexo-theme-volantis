@@ -1,9 +1,9 @@
 'use strict';
 
 function postMenu(args, content) {
-  args = args.join(' ').split(',')
+  args = args.join(' ').split(',');
   if (args.length == 1) {
-    let title = args[0].trim()
+    const title = args[0].trim();
     return `<div class='dropmenu-wrapper'>
               <div class='dropmenu'>
                 <a>${title}</a>
@@ -11,10 +11,10 @@ function postMenu(args, content) {
                   ${content}
                 </ul>
               </div>
-            </div>`
+            </div>`;
   } else if (args.length == 2) {
-    let prefix = args[0].trim()
-    let title = args[1].trim()
+    const prefix = args[0].trim();
+    const title = args[1].trim();
     return `<div class='dropmenu-wrapper'>
               <span>${prefix}</span>
               <div class='dropmenu'>
@@ -23,11 +23,11 @@ function postMenu(args, content) {
                   ${content}
                 </ul>
               </div>
-            </div>`
+            </div>`;
   } else if (args.length == 3) {
-    let prefix = args[0].trim()
-    let title = args[1].trim()
-    let suffix = args[2].trim()
+    const prefix = args[0].trim();
+    const title = args[1].trim();
+    const suffix = args[2].trim();
     return `<div class='dropmenu-wrapper'>
               <span>${prefix}</span>
               <div class='dropmenu'>
@@ -37,13 +37,13 @@ function postMenu(args, content) {
                 </ul>
               </div>
               <span>${suffix}</span>
-            </div>`
+            </div>`;
   }
 }
 function postSubmenu(args, content) {
-  args = args.join(' ').split(',')
-  let text = args[0] || ''
-  let icon = args[1] || ''
+  args = args.join(' ').split(',');
+  const text = args[0] || '';
+  const icon = args[1] || '';
   if (icon.length > 0) {
     return `<li>
               <a class='menuitem'>
@@ -53,29 +53,29 @@ function postSubmenu(args, content) {
               <ul class='list-v'>
                 ${content}
               </ul>
-            </li>`
-  } else {
-    return `<li>
+            </li>`;
+  }
+  return `<li>
               <a class='menuitem'>${text}</a>
               <ul class='list-v'>
                 ${content}
               </ul>
-            </li>`
-  }
+            </li>`;
+
 }
 
 function postMenuItem(args) {
-  args = args.join(' ').split(',')
-  let text = args[0] || ''
-  let url = args[1] || ''
-  text = text.trim()
-  url = url.trim()
+  args = args.join(' ').split(',');
+  let text = args[0] || '';
+  let url = args[1] || '';
+  text = text.trim();
+  url = url.trim();
   if (url.length > 0) {
-    url = "href='" + url + "'"
+    url = 'href=\'' + url + '\'';
   }
-  let icon = ''
+  let icon = '';
   if (args.length > 2) {
-    icon = args[2].trim()
+    icon = args[2].trim();
   }
   if (url.length > 0) {
     if (icon.length > 0) {
@@ -84,19 +84,19 @@ function postMenuItem(args) {
                   <i class='${icon} fa-fw'></i>
                   ${text}
                 </a>
-              </li>`
-    } else {
-      return `<li>
+              </li>`;
+    }
+    return `<li>
                 <a class='menuitem' ${url} title='${text}'>
                   ${text}
                 </a>
-              </li>`
-    }
-  } else {
-    if (text == 'hr') {
-      return `<hr>`
-    }
+              </li>`;
+
   }
+  if (text == 'hr') {
+    return '<hr>';
+  }
+
 
 }
 

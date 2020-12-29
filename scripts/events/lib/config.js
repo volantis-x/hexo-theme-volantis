@@ -53,7 +53,7 @@ module.exports = hexo => {
     };
 
     if (Array.isArray(language)) {
-      for (let lang of language) {
+      for (const lang of language) {
         mergeLang(lang);
       }
     } else {

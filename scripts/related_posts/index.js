@@ -6,10 +6,10 @@
 var util = require('hexo-util');
 
 // Examples of helper
-hexo.extend.helper.register('htmlGenerator', function(args){
-  if (!args || !args.json || args.json.length == 0) return "";
+hexo.extend.helper.register('htmlGenerator', function(args) {
+  if (!args || !args.json || args.json.length == 0) return '';
   const cfg = hexo.theme.config.article.body.footer_widget.related_posts;
-  var returnHTML = "";
+  var returnHTML = '';
   var div = `
   <div class="related_posts">
     <section class='header'>
@@ -19,13 +19,13 @@ hexo.extend.helper.register('htmlGenerator', function(args){
       `;
 
 
-  function generateHTML(list){
+  function generateHTML(list) {
 
     var ret = '';
     ret += '<a class="item" href="' + list.path + '" title="' + list.title + '" rel="bookmark ">';
 
     if (cfg.placeholder_img.length > 0) {
-      if (list.img && list.img != "") {
+      if (list.img && list.img != '') {
         ret += '<img src="' + list.img + '" />';
       } else {
         ret += '<img src="' + cfg.placeholder_img + '" />';
@@ -42,12 +42,12 @@ hexo.extend.helper.register('htmlGenerator', function(args){
     return ret;
   }
 
-  for(var i=0; i<args.json.length; i++){
-      returnHTML += generateHTML(args.json[i]);
+  for (var i = 0; i < args.json.length; i++) {
+    returnHTML += generateHTML(args.json[i]);
   }
 
 
-  if (returnHTML != "") returnHTML = "<div class=\"" + args.class + "\">" + returnHTML + "</div>";
+  if (returnHTML != '') returnHTML = '<div class="' + args.class + '">' + returnHTML + '</div>';
   div += returnHTML;
   div += '</section></div>';
   return div;

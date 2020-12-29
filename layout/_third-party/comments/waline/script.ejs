@@ -1,8 +1,6 @@
-<% if (theme.comments.waline.js) { %>
-<%- js(theme.comments.waline.js) %>
-<% } else { %>
-<%- js(['https://cdn.jsdelivr.net/npm/@waline/client@latest']) %>
-<% } %>
+<% if (theme.comments.waline.js) { %> <%- js(theme.comments.waline.js) %> <% }
+else { %> <%- js(['https://cdn.jsdelivr.net/npm/@waline/client@latest']) %> <% }
+%>
 <script>
   function pjax_waline() {
     if(!document.querySelectorAll("#waline")[0])return;
@@ -13,18 +11,18 @@
       path = defaultPath || decodeURI(window.location.pathname);
     }
     new Waline(Object.assign(<%- JSON.stringify(theme.comments.waline) %>, {
-	  el: '#waline',
-	  path: path,
-	  placeholder: pagePlaceholder,
-      uploadImage: function(file) {
-		  const formData = new FormData();
-		  formData.append('image', file);
-		  return fetch('<%= theme.comments.waline.imageHosting %>', {
-			method: 'POST',
-			body: formData
-		  }).then(resp => resp.json()).then(resp => resp.data.url);
-     },
-    }));
+     el: '#waline',
+     path: path,
+     placeholder: pagePlaceholder,
+     uploadImage: function(file) {
+      const formData = new FormData();
+      formData.append('image', file);
+      return fetch('<%= theme.comments.waline.imageHosting %>', {
+      	method: 'POST',
+      	body: formData
+      }).then(resp => resp.json()).then(resp => resp.data.url);
+   },
+  }));
   }
   $(function () {
     pjax_waline();

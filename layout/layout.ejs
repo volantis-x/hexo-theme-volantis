@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="<%- config.language %>">
-<%- partial('_partial/head') %>
-<body>
-  <%- partial('_partial/header', null, {cache: false, path: path}) %>
-  <div id="l_body">
-    <%- partial('_partial/cover') %>
-    <div id='safearea'>
-      <div class='body-wrapper' id="pjax-container">
-        <%- body %>
-        <% if (page.snackbar && site.data.notification && (page.snackbar in site.data.notification)) { %>
-          <%- partial('_partial/snackbar') %>
-        <% } %>
-        <% if (theme.plugins.pjax.enable) { %>
-          <%- partial('_third-party/pjax/pdata') %>
-        <% } %>
+  <%- partial('_partial/head') %>
+  <body>
+    <%- partial('_partial/header', null, {cache: false, path: path}) %>
+    <div id="l_body">
+      <%- partial('_partial/cover') %>
+      <div id="safearea">
+        <div class="body-wrapper" id="pjax-container">
+          <%- body %> <% if (page.snackbar && site.data.notification &&
+          (page.snackbar in site.data.notification)) { %> <%-
+          partial('_partial/snackbar') %> <% } %> <% if
+          (theme.plugins.pjax.enable) { %> <%-
+          partial('_third-party/pjax/pdata') %> <% } %>
+        </div>
+        <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+        <a
+          id="s-top"
+          class="fas fa-arrow-up fa-fw"
+          href="javascript:void(0)"
+        ></a>
       </div>
-      <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
     </div>
-  </div>
-  <div>
-    <%- partial('_partial/scripts/index') %>
-    <% if (theme.plugins.pjax.enable) { %>
-      <%- partial('_third-party/pjax/index') %>
-    <% } %>
-  </div>
-</body>
+    <div>
+      <%- partial('_partial/scripts/index') %> <% if (theme.plugins.pjax.enable)
+      { %> <%- partial('_third-party/pjax/index') %> <% } %>
+    </div>
+  </body>
 </html>

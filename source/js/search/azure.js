@@ -1,6 +1,7 @@
-var SearchService = "";
+var SearchService = '';
 
 (function($) {
+
   /**
    * A super class of common logics for all search services
    * @param options : (object)
@@ -9,44 +10,44 @@ var SearchService = "";
     var self = this;
 
     self.config = $.extend({
-      per_page: 10,
+      per_page : 10,
       selectors: {
-        body: "body",
-        form: ".u-search-form",
-        input: ".u-search-input",
-        container: "#u-search",
-        modal: "#u-search .modal",
-        modal_body: "#u-search .modal-body",
-        modal_footer: "#u-search .modal-footer",
-        modal_overlay: "#u-search .modal-overlay",
-        modal_results: "#u-search .modal-results",
-        modal_metadata: "#u-search .modal-metadata",
-        modal_error: "#u-search .modal-error",
-        modal_loading_bar: "#u-search .modal-loading-bar",
-        modal_ajax_content: "#u-search .modal-ajax-content",
-        modal_logo: '#u-search .modal-footer .logo',
-        btn_close: "#u-search .btn-close",
-        btn_next: "#u-search .btn-next",
-        btn_prev: "#u-search .btn-prev"
+        body              : 'body',
+        form              : '.u-search-form',
+        input             : '.u-search-input',
+        container         : '#u-search',
+        modal             : '#u-search .modal',
+        modal_body        : '#u-search .modal-body',
+        modal_footer      : '#u-search .modal-footer',
+        modal_overlay     : '#u-search .modal-overlay',
+        modal_results     : '#u-search .modal-results',
+        modal_metadata    : '#u-search .modal-metadata',
+        modal_error       : '#u-search .modal-error',
+        modal_loading_bar : '#u-search .modal-loading-bar',
+        modal_ajax_content: '#u-search .modal-ajax-content',
+        modal_logo        : '#u-search .modal-footer .logo',
+        btn_close         : '#u-search .btn-close',
+        btn_next          : '#u-search .btn-next',
+        btn_prev          : '#u-search .btn-prev'
       },
       brands: {
-        'hexo': {logo: '', url: ''},
-        'google': {logo: 'google.svg', url: 'https://cse.google.com'},
+        'hexo'   : {logo: '', url: ''},
+        'google' : {logo: 'google.svg', url: 'https://cse.google.com'},
         'algolia': {logo: 'algolia.svg', url: 'https://www.algolia.com'},
-        'baidu': {logo: 'baidu.svg', url: 'http://zn.baidu.com/cse/home/index'},
-        'azure': {logo: 'azure.svg', url: 'https://azure.microsoft.com/en-us/services/search/'}
+        'baidu'  : {logo: 'baidu.svg', url: 'http://zn.baidu.com/cse/home/index'},
+        'azure'  : {logo: 'azure.svg', url: 'https://azure.microsoft.com/en-us/services/search/'}
       },
-      imagePath: "https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/logo/"
+      imagePath: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/logo/'
     }, options);
 
     self.dom = {};
     self.percentLoaded = 0;
     self.open = false;
-    self.queryText = "";
+    self.queryText = '';
     self.nav = {
-      next: -1,
-      prev: -1,
-      total: 0,
+      next   : -1,
+      prev   : -1,
+      total  : 0,
       current: 1
     };
 
@@ -62,7 +63,7 @@ var SearchService = "";
         // self.dom.body.addClass('modal-active');
         // 上面的是去除了文章的滚动条，我觉得没必要
       }
-      self.dom.input.each(function(index,elem) {
+      self.dom.input.each(function(index, elem) {
         $(elem).val(self.queryText);
       });
       document.activeElement.blur();
@@ -87,9 +88,8 @@ var SearchService = "";
         self.query(self.queryText, startIndex, function() {
           self.afterQuery();
         });
-      }
-      else {
-        console.log("query() does not exist.");
+      } else {
+        console.log('query() does not exist.');
         self.onQueryError(self.queryText, '');
         self.afterQuery();
       }
@@ -101,11 +101,11 @@ var SearchService = "";
      * @param status: (string)
      */
     self.onQueryError = function(queryText, status) {
-      var errMsg = "";
-      if (status === "success") errMsg = "No result found for \"" +queryText+ "\".";
-      else if (status === "timeout") errMsg = "Unfortunate timeout.";
-      else errMsg = "Mysterious failure.";
-      self.dom.modal_results.html("");
+      var errMsg = '';
+      if (status === 'success') errMsg = 'No result found for "' + queryText + '".';
+      else if (status === 'timeout') errMsg = 'Unfortunate timeout.';
+      else errMsg = 'Mysterious failure.';
+      self.dom.modal_results.html('');
       self.dom.modal_error.html(errMsg);
       self.dom.modal_error.show();
     };
@@ -122,15 +122,15 @@ var SearchService = "";
       }
     };
 
-    self.getUrlRelativePath = function (url) {
-      var arrUrl = url.split("//");
-      var start = arrUrl[1].indexOf("/");
+    self.getUrlRelativePath = function(url) {
+      var arrUrl = url.split('//');
+      var start = arrUrl[1].indexOf('/');
       var relUrl = arrUrl[1].substring(start);
-      if (relUrl.indexOf("?") != -1) {
-        relUrl = relUrl.split("?")[0];
+      if (relUrl.indexOf('?') != -1) {
+        relUrl = relUrl.split('?')[0];
       }
       return relUrl;
-    }
+    };
 
     /**
      * Generate html for one result
@@ -138,15 +138,15 @@ var SearchService = "";
      * @param title : (string) title
      * @param digest : (string) digest
      */
-    self.buildResult = function (url, title, digest) {
+    self.buildResult = function(url, title, digest) {
       var result = self.getUrlRelativePath(url);
-      var html = "";
-      html = "<li>";
-      html += "<a class='result' href='" + result + "'>";
-      html += "<span class='title'>" + title + "</span>";
-      if (digest !== "") html += "<span class='digest'>" + digest + "</span>";
-      html += "</a>";
-      html += "</li>";
+      var html = '';
+      html = '<li>';
+      html += '<a class=\'result\' href=\'' + result + '\'>';
+      html += '<span class=\'title\'>' + title + '</span>';
+      if (digest !== '') html += '<span class=\'digest\'>' + digest + '</span>';
+      html += '</a>';
+      html += '</li>';
       return html;
     };
 
@@ -179,8 +179,8 @@ var SearchService = "";
     self.startLoading = function() {
       self.dom.modal_loading_bar.show();
       self.loadingTimer = setInterval(function() {
-        self.percentLoaded = Math.min(self.percentLoaded+5,95);
-        self.dom.modal_loading_bar.css('width', self.percentLoaded+'%');
+        self.percentLoaded = Math.min(self.percentLoaded + 5, 95);
+        self.dom.modal_loading_bar.css('width', self.percentLoaded + '%');
       }, 100);
     };
 
@@ -203,17 +203,17 @@ var SearchService = "";
      * @param service {String} service name
      */
     self.addLogo = function(service) {
-      var html = "";
+      var html = '';
       if (self.config.brands[service] && self.config.brands[service].logo) {
-        html += "<a href='" +self.config.brands[service].url+ "' class='" +service+ "'>";
-        html +=    '<img src="' +self.config.imagePath+self.config.brands[service].logo+ '" />';
-        html += "</a>";
+        html += '<a href=\'' + self.config.brands[service].url + '\' class=\'' + service + '\'>';
+        html +=    '<img src="' + self.config.imagePath + self.config.brands[service].logo + '" />';
+        html += '</a>';
         self.dom.modal_logo.html(html);
       }
     };
 
     self.destroy = function() {
-      self.dom.form.each(function(index,elem) {
+      self.dom.form.each(function(index, elem) {
         $(elem).off('submit');
       });
       self.dom.modal_overlay.off('click');
@@ -231,7 +231,7 @@ var SearchService = "";
       $('body').append(template);
       self.parseSelectors();
       self.dom.modal_footer.show();
-      self.dom.form.each(function(index,elem) {
+      self.dom.form.each(function(index, elem) {
         $(elem).on('submit', self.onSubmit);
       });
       self.dom.modal_overlay.on('click', self.close);
@@ -257,7 +257,7 @@ var AzureSearch;
   AzureSearch = function(options) {
     SearchService.apply(this, arguments);
     var self = this;
-    var endpoint = "https://" +self.config.serviceName+ ".search.windows.net/indexes/" +self.config.indexName+ "/docs?api-version=2015-02-28";
+    var endpoint = 'https://' + self.config.serviceName + '.search.windows.net/indexes/' + self.config.indexName + '/docs?api-version=2015-02-28';
     self.nav.current = 1;
     self.addLogo('azure');
 
@@ -266,17 +266,17 @@ var AzureSearch;
      * @param data : (array) result items
      */
     self.buildResultList = function(data) {
-      var html = "";
+      var html = '';
       $.each(data, function(index, row) {
-        var url = row.permalink || row.path || "";
+        var url = row.permalink || row.path || '';
         if (!row.permalink && row.path) {
-          url = "/" + url;
+          url = '/' + url;
         }
         var title = row.title;
-        var digest = row.excerpt || "";
+        var digest = row.excerpt || '';
         html += self.buildResult(url, title, digest);
       });
-      html += "<script>try{pjax.refresh(document.querySelector('#u-search'));document.addEventListener('pjax:send',function(){$('#u-search').fadeOut(500);$('body').removeClass('modal-active')});}catch(e){$('#u-search').fadeOut(500);}</script>";
+      html += '<script>try{pjax.refresh(document.querySelector(\'#u-search\'));document.addEventListener(\'pjax:send\',function(){$(\'#u-search\').fadeOut(500);$(\'body\').removeClass(\'modal-active\')});}catch(e){$(\'#u-search\').fadeOut(500);}</script>';
       return html;
     };
 
@@ -290,27 +290,24 @@ var AzureSearch;
       self.nav.currentCount = data.value.length;
       self.nav.total = parseInt(data['@odata.count']);
       self.dom.modal_metadata.children('.total').html(self.nav.total);
-      self.dom.modal_metadata.children('.range').html(self.nav.current + "-" + (self.nav.current+self.nav.currentCount-1));
+      self.dom.modal_metadata.children('.range').html(self.nav.current + '-' + (self.nav.current + self.nav.currentCount - 1));
       if (self.nav.total > 0) {
         self.dom.modal_metadata.show();
-      }
-      else {
+      } else {
         self.dom.modal_metadata.hide();
       }
 
-      if (self.nav.current+self.nav.currentCount <= self.nav.total) {
-        self.nav.next = self.nav.current+self.nav.currentCount;
+      if (self.nav.current + self.nav.currentCount <= self.nav.total) {
+        self.nav.next = self.nav.current + self.nav.currentCount;
         self.dom.btn_next.show();
-      }
-      else {
+      } else {
         self.nav.next = -1;
         self.dom.btn_next.hide();
       }
       if (self.nav.current > 1) {
-        self.nav.prev = self.nav.current-self.config.per_page;
+        self.nav.prev = self.nav.current - self.config.per_page;
         self.dom.btn_prev.show();
-      }
-      else {
+      } else {
         self.nav.prev = -1;
         self.dom.btn_prev.hide();
       }
@@ -324,25 +321,24 @@ var AzureSearch;
      */
     self.query = function(queryText, startIndex, callback) {
       $.ajax({
-        url: endpoint,
+        url    : endpoint,
         headers: {
-          "Accept": "application/json",
-          "api-key": self.config.queryKey
+          'Accept' : 'application/json',
+          'api-key': self.config.queryKey
         },
         data: {
-          search: queryText,
-          $orderby: "date desc",
-          $skip: startIndex-1,
-          $top: self.config.per_page,
-          $count: true
+          search  : queryText,
+          $orderby: 'date desc',
+          $skip   : startIndex - 1,
+          $top    : self.config.per_page,
+          $count  : true
         },
-        type: "GET",
+        type   : 'GET',
         success: function(data, status) {
           if (status === 'success' && data.value && data.value.length > 0) {
             var results = self.buildResultList(data.value);
             self.dom.modal_results.html(results);
-          }
-          else {
+          } else {
             self.onQueryError(queryText, status);
           }
           self.buildMetadata(data, startIndex);

@@ -15,7 +15,7 @@
 hexo.extend.tag.register('frame', function(args) {
   args = args.join(' ').split(' | ');
   // 所有支持的参数
-  let device = args[0].trim();
+  const device = args[0].trim();
   let img = '';
   let video = '';
   let part = '';
@@ -23,7 +23,7 @@ hexo.extend.tag.register('frame', function(args) {
   // 解析
   if (args.length > 0) {
     for (let i = 0; i < args.length; i++) {
-      let tmp = args[i].trim();
+      const tmp = args[i].trim();
       if (tmp.includes('img=')) {
         img = tmp.substring(4, tmp.length);
       } else if (tmp.includes('video=')) {
