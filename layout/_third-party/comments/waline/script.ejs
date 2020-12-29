@@ -1,7 +1,7 @@
 <% if (theme.comments.waline.js) { %>
 <%- js(theme.comments.waline.js) %>
 <% } else { %>
-<%- js(['js/waline.js']) %>
+<%- js(['https://cdn.jsdelivr.net/npm/@waline/client@latest']) %>
 <% } %>
 <script>
   var GUEST_INFO = ['nick', 'mail', 'link'];
@@ -38,8 +38,6 @@
       pageSize: '<%= theme.comments.waline.pageSize %>',
       avatar: '<%= theme.comments.waline.avatar %>',
       lang: '<%= theme.comments.waline.lang %>'
-  
-
     });
   }
 

@@ -234,10 +234,11 @@ comments:
     js: https://cdn.jsdelivr.net/npm/minivaline@latest
     path: # 全局评论地址
     placeholder: 快来评论吧~  # 全局评论占位提示
-    # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el] [pathname] [placeholder] 选项）  emoticonUrl可参考 https://github.com/MiniValine/hexo-next-minivaline
-    # mode: xCss # DesertsP or xCss
-
-
+    # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）  
+    # emoticonUrl 等列表选项 可参考 https://github.com/MiniValine/hexo-next-minivaline
+    # 下面是一个例子：
+    backend: waline
+    serverURL: https://waline.vercel.app
   # Disqus
   # https://disqus.com
   disqus:
@@ -277,12 +278,14 @@ comments:
   # Twikoo
   # https://twikoo.js.org/
   twikoo:
-    js: #https://cdn.jsdelivr.net/npm/twikoo@0.4.0/dist/twikoo.all.min.js   (本地为twikoo v0.4.0版本)
+    js: https://cdn.jsdelivr.net/npm/twikoo@latest # 建议锁定版本
+    path: # 全局评论地址
+    # 其他配置项按照yml格式继续填写即可 除了 [el path] 选项
     envId: xxxxxxxxxxxxxxx # 腾讯云环境id
   # Waline
   # https://waline.js.org/
   waline:
-    js: #https://unpkg.com/@waline/client/dist/Waline.min.js (本地为waline v0.8.5版本)
+    js: https://cdn.jsdelivr.net/npm/@waline/client@latest
     path: # 全局评论地址
     meta: nick,mail,link # waline comment header info
     requiredFields: ['nick','mail']
