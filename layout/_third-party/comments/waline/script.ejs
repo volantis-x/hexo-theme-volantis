@@ -1,6 +1,8 @@
-<% if (theme.comments.waline.js) { %> <%- js(theme.comments.waline.js) %> <% }
-else { %> <%- js(['https://cdn.jsdelivr.net/npm/@waline/client@latest']) %> <% }
-%>
+<% if (theme.comments.waline.js) { %>
+  <%- js(theme.comments.waline.js) %>
+<% } else { %>
+  <%- js(['https://cdn.jsdelivr.net/npm/@waline/client@latest']) %>
+<% }%>
 <script>
   function pjax_waline() {
     if(!document.querySelectorAll("#waline")[0])return;
