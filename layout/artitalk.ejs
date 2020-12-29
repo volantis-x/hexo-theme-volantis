@@ -3,46 +3,11 @@
     <%- partial('_partial/article', {post: page, index: false}) %>
 </div>
 <%- partial('_partial/side') %>
-
+<%- js(theme.plugins.jquery) %>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/artitalk"></script>
 <script>
-    new Artitalk({
-        appId: "<%=  theme.plugins.artitalk.appId  %>",
-        appKey: "<%=  theme.plugins.artitalk.appKey  %>",
-  <% if (theme.plugins.artitalk.serverURL) { %>
-        serverURL: "<%=  theme.plugins.artitalk.serverURL  %>",
-  <% } %>
-  <% if (theme.plugins.artitalk.lang) { %>
-        lang: "<%=  theme.plugins.artitalk.lang  %>",
-  <% } %>
-  <% if (theme.plugins.artitalk.pageSize) { %>
-        pageSize: "<%=  theme.plugins.artitalk.pageSize  %>",
-  <% } %>
-  <% if (theme.plugins.artitalk.shuoPla) { %>
-        shuoPla: "<%=  theme.plugins.artitalk.shuoPla  %>",
-  <% } %>
-  <% if (theme.plugins.artitalk.avatarPla) { %>
-        avatarPla: "<%=  theme.plugins.artitalk.avatarPla  %>",
-  <% } %>
-  <% if (theme.plugins.artitalk.motion == 0) { %>
-        motion: 0,
-  <% } else { %>
-        motion: 1,
-  <% }  %>
-  <% if (theme.plugins.artitalk.bgImg) { %>
-        bgImg: "<%=  theme.plugins.artitalk.bgImg  %>",
-  <% } %>
-  <% if (theme.plugins.artitalk.color1) { %>
-        color1: "<%=  theme.plugins.artitalk.color1  %>",
-  <% } %>
-  <% if (theme.plugins.artitalk.color2) { %>
-        color2: "<%=  theme.plugins.artitalk.color2  %>",
-  <% } %>
-  <% if (theme.plugins.artitalk.color3) { %>
-        color3: "<%=  theme.plugins.artitalk.color3  %>",
-  <% } %>
-  <% if (theme.plugins.artitalk.cssUrl) { %>
-        cssUrl: "<%=  theme.plugins.artitalk.cssUrl  %>",
-  <% } %>
-})
+    new Artitalk(Object.assign(<%- JSON.stringify(theme.plugins.artitalk) %>, {}))
 </script>
+<style>
+#artitalk_main #lazy{background: transparent !important}
+</style>

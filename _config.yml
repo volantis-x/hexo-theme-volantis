@@ -595,6 +595,7 @@ plugins:
   # 除appID和appKEY外均为选填项
   artitalk:
     # Set `layout: artitalk` to enable in page
+    # 配置项按照yml格式继续填写即可
     appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
     appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
     # serverURL:  #leancloud绑定的安全域名，使用国际版的话不需要填写
