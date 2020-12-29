@@ -1,0 +1,5 @@
+<% if (theme.plugins.killOldVersionsOfIE.enable) { %>
+<% if (theme.plugins.killOldVersionsOfIE.action=="jump") { %>
+<script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script><% }else if(theme.plugins.killOldVersionsOfIE.action=="alert"){ %>
+<script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) document.write('\x3Cscript id="_iealwn_js" data-outver="11" src="https://support.dmeng.net/ie-alert-warning/latest.js">\x3C/script>'); </script><% } %>
+<% } %>

@@ -625,6 +625,12 @@ plugins:
   darkmodejs:
     enable: #true
 
+  # 旧版 Internet Explorer 淘汰行动
+  # https://support.dmeng.net/kill-old-versions-of-ie.html
+  # 本主题不支持Internet Explorer的任何版本!!!
+  killOldVersionsOfIE:
+    enable: true
+    action: alert # jump: 升级提示跳转 alert: 升级提示弹窗
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
