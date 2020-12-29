@@ -10,7 +10,7 @@
     let path = pdata.commentPath;
     if (path.length == 0) {
       let defaultPath = '<%= theme.comments.waline.path %>';
-      path = defaultPath || decodeURI(window.location.pathname);
+      path = defaultPath || decodeURI(location.pathname.replace(/\/$/, '') );
     }
     new Waline(Object.assign(<%- JSON.stringify(theme.comments.waline) %>, {
      el: '#waline',
