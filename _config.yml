@@ -287,7 +287,7 @@ comments:
   # Waline
   # https://waline.js.org/
   waline:
-    js: https://cdn.jsdelivr.net/npm/@waline/client@latest
+    js: https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js
     path: # 全局评论地址
     placeholder: 快来评论吧~  # 评论占位提示
     imageHosting: https://7bu.top/api/upload # 图床api（默认使用去不图床）
