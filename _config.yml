@@ -112,7 +112,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, counter]
+    top_meta: [author, category, date, counter] #启用评论数量需在此添加
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -179,10 +179,13 @@ article:
       counter:
         icon: fas fa-eye
         unit: '次浏览'
-      # 文章评论数量：只支持 valine
+      # 文章评论数量：支持 valine和waline
       valinecount:
         icon: fas fa-comment-dots
         desc: '' # 条评论
+      walinecount:
+        icon: fas fa-comment-dots
+        desc: '' # 条评论        
       # 文章字数和阅读时长
       wordcount:
         icon_wordcount: fas fa-keyboard
