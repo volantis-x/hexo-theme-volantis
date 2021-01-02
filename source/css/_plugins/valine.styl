@@ -19,9 +19,12 @@ article#comments
         margin-top: 0
         margin-bottom: 0
       .vheader
+        margin: -10px
+        padding: 5px 10px 0
+        background: var(--color-block)
         .vinput
           border-radius: 0
-          border-bottom: 1px dashed alpha($color-text, 30%)
+          border-bottom: 1px dashed transparent
           &:hover
             border-bottom: 1px dashed $color-theme
           &:focus
@@ -74,6 +77,7 @@ article#comments
       color: var(--color-text)
       line-height: 2
       font-size: 14px
+      font-weight: 600
       trans()
       &:hover
         color: $color-hover
@@ -117,13 +121,19 @@ article#comments
           margin: 2px
           padding: 1px 8px
           background-color: var(--color-block)
+          display: none
       .vmeta
         .vat
           font-weight: bold
-          color: $color-link
+          color: var(--color-p)
+          float: none
           trans()
+          padding: 4px 8px
+          border-radius: 2px
           &:hover
             color: $color-hover
+            background-color: var(--color-block)
+
       .vcontent
         padding-top: 0
         blockquote
