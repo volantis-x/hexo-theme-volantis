@@ -16,6 +16,7 @@ info:
 ########################################################################
 
 ############################### Navigation Bar ############################### > start
+# 注意事项：建议规范全站路径 URL 最后带一个 "/" 例如 "about/"
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
@@ -113,7 +114,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, counter]
+    top_meta: [author, category, date, counter] #启用评论数量需在此添加
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -180,8 +181,11 @@ article:
       counter:
         icon: fas fa-eye
         unit: '次浏览'
-      # 文章评论数量：只支持 valine
+      # 文章评论数量：支持 valine和waline
       valinecount:
+        icon: fas fa-comment-dots
+        desc: '' # 条评论
+      walinecount:
         icon: fas fa-comment-dots
         desc: '' # 条评论
       # 文章字数和阅读时长
@@ -288,7 +292,7 @@ comments:
   # Waline
   # https://waline.js.org/
   waline:
-    js: https://cdn.jsdelivr.net/npm/@waline/client@latest
+    js: https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js
     path: # 全局评论地址
     placeholder: 快来评论吧~  # 评论占位提示
     imageHosting: https://7bu.top/api/upload # 图床api（默认使用去不图床）

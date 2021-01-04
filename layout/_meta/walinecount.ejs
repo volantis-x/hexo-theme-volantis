@@ -1,0 +1,15 @@
+<% if (theme.comments.service == 'waline'){ %>
+<div class="new-meta-item comments-count">
+  <%
+    var path = post.path || page.path;
+    if (path.length > 9 && (path.substring(path.length - 10) == 'index.html')) {
+      path = path.substring(0, path.length - 10);
+    }
+  %>
+  <a href="<%- url_for(path) %>#comments">
+    <i class="<%- theme.article.body.meta_library.walinecount.icon %> fa-fw"></i>
+    <span id="<%- url_for(path) %>" class="waline-comment-count"></span>
+    <span class="leancloud-comments-count">&nbsp;<%- theme.article.body.meta_library.walinecount.desc %></span>
+  </a>
+</div>
+<% } %>
