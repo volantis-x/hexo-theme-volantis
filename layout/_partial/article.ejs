@@ -3,6 +3,9 @@
   <% if (page.layout == 'artitalk') { %>
     <div id="artitalk_main"></div>
   <% } %>
+  <% if (page.layout == 'bb') { %>
+    <div id="bbtalk"></div>
+  <% } %>
   <%- post.content %>
   <% if (page.link) { %>
     <div class='div-ori-link'>

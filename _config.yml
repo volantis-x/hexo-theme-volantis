@@ -591,6 +591,7 @@ plugins:
     animation: false # false, nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
       # - /artitalk/     # artitalk 不支持 pjax
+      # - /bb/           # bbtalk 不支持 pjax
 
 
   # Artitalk https://artitalk.js.org
@@ -613,6 +614,13 @@ plugins:
     # color2: #说说背景颜色2&按钮颜色2
     # color3: #说说字体颜色
     # cssUrl: #自定义css接口
+
+  # BBtalk https://bb.js.org
+  bbtalk:
+    js: https://cdn.jsdelivr.net/npm/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
+    appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
+    appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
+    serverURLs: https://bbapi.heson10.com # Request Api 域名
 
   # 从 issues 加载动态数据
   # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
