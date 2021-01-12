@@ -54,7 +54,8 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
+  background: https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
+  # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
   logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: 'Volantis'
   subtitle: ''
@@ -136,7 +137,7 @@ article:
         icon: fas fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
-        placeholder_img: data:image/png;base64,666
+        placeholder_img: https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
       # ----------------
       # 版权声明组件 (for layout: post)
       copyright:
@@ -186,7 +187,7 @@ article:
         desc: '' # 条评论
       walinecount:
         icon: fas fa-comment-dots
-        desc: '' # 条评论        
+        desc: '' # 条评论
       # 文章字数和阅读时长
       wordcount:
         icon_wordcount: fas fa-keyboard
@@ -239,7 +240,7 @@ comments:
     js: https://cdn.jsdelivr.net/npm/minivaline@latest
     path: # 全局评论地址
     placeholder: 快来评论吧~  # 全局评论占位提示
-    # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）  
+    # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）
     # emoticonUrl 等列表选项 可参考 https://github.com/MiniValine/hexo-next-minivaline
     # 下面是一个例子：
     backend: waline
