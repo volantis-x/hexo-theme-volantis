@@ -54,6 +54,9 @@
       $(document).unbind('scroll');
       $(document).unbind('click');
       $('body').unbind('click');
+      <% if (theme.plugins.darkmodejs.enable){ %>
+      $("#wrapper .toggle-mode-btn").unbind('click');
+      <% } %>
 	  <% if (theme.plugins.pjax.animation){ %>
       window.ShowLoading();
 	  <% } %>
