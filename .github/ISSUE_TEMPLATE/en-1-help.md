@@ -41,6 +41,10 @@ Does the result work normally? The test result is: A or B
 
 ## Environmental information <!-- Please provide the following information -->
 
+### Version
+
+Your current version of volantis is:_________________
+
 ### URL
 <!-- If there is an abnormality in the local operation using the source code of the official website of the document, you do not need to provide a the URL. -->
 

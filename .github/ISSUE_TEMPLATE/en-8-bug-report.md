@@ -21,7 +21,7 @@ assignees: ''
 <!-- Change [ ] to [x] to select. -->
 
 - [ ] No related issues can be searched in Issues.
-- [ ] Upgrade the theme to the latest version.
+- [ ] Upgrade the theme to the latest version. Your current version of volantis is:_________________
 - [ ] This problem also exists on the official website; or download the source code of the theme’s official website and run it. After certain steps, this problem can be reproduced.
 
 **Steps to reproduce**
