@@ -219,7 +219,7 @@ comments:
   # https://valine.js.org/
   valine:
     # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
-    path: # 全局评论地址
+    path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是valine的问题
     placeholder: 快来评论吧~  # 评论占位提示
     # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder emojiCDN emojiMaps] 选项
     appId: # your appId
@@ -232,7 +232,6 @@ comments:
     pageSize: 10 # comment list page size
     lang: zh-cn
     highlight: true
-    visitor: true
     mathJax: false
   # MiniValine
   # https://github.com/MiniValine/MiniValine
@@ -293,7 +292,7 @@ comments:
   # https://waline.js.org/
   waline:
     js: https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js
-    path: # 全局评论地址
+    path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是waline的问题
     placeholder: 快来评论吧~  # 评论占位提示
     imageHosting: https://7bu.top/api/upload # 图床api（默认使用去不图床）
     # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder uploadImage] 选项
