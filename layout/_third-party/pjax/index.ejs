@@ -134,6 +134,9 @@
         <% if (theme.comments.service == 'waline'){ %>
           pjax_waline();
         <% } %>
+        <% if (theme.comments.service == 'disqusjs'){ %>
+          pjax_DisqusJS();
+        <% } %>
       } catch (e) {
         console.log(e);
       }

@@ -251,6 +251,17 @@ comments:
     # optional
     autoload: false
     path: # 全局评论地址
+  # DisqusJS
+  # https://github.com/SukkaW/DisqusJS
+  disqusjs:
+    path: # 全局评论地址
+    # 配置项按照yml格式继续填写即可
+    #shortname:
+    #api:
+    #apikey:
+    #admin:
+    #nesting:
+
   # Gitalk
   # https://gitalk.github.io/
   gitalk:
