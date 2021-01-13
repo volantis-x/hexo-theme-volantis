@@ -109,7 +109,7 @@
           pjax_initCopyCode();
         <% } %>
 		<% if (theme.comments.service){ %>
-          pjax_comment();
+          try{pjax_comment();} catch (e) {}
         <% } %>
       } catch (e) {
         console.log(e);
