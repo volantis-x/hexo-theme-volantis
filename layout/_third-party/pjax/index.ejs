@@ -108,34 +108,8 @@
         <% if (theme.plugins.clipboard.enable && (theme.custom_css.body.highlight.copy_btn == true)) { %>
           pjax_initCopyCode();
         <% } %>
-        <% if (theme.comments.service == 'valine'){ %>
-          pjax_valine();
-        <% } %>
-        <% if (theme.comments.service == 'minivaline'){ %>
-          if (typeof MiniValine == "undefined") {
-            load_minivaline();
-          } else {
-            pjax_minivaline();
-          }
-        <% } %>
-        <% if (theme.comments.service == 'gitalk'){ %>
-          pjax_gitalk();
-        <% } %>
-        <% if (theme.comments.service == 'disqus'){ %>
-          pjax_disqus();
-        <% } %>
-        <% if (theme.comments.service == 'twikoo'){ %>
-          if (typeof twikoo == "undefined") {
-            load_twikoo();
-          } else {
-            pjax_twikoo();
-          }
-        <% } %>
-        <% if (theme.comments.service == 'waline'){ %>
-          pjax_waline();
-        <% } %>
-        <% if (theme.comments.service == 'disqusjs'){ %>
-          pjax_DisqusJS();
+		<% if (theme.comments.service){ %>
+          pjax_comment();
         <% } %>
       } catch (e) {
         console.log(e);

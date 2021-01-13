@@ -26,4 +26,11 @@
      if(!document.querySelectorAll("#minivaline_container")[0])return;
      load_minivaline();
    });
+   function pjax_comment(){
+	  if (typeof MiniValine == "undefined") {
+		load_minivaline();
+	  } else {
+		pjax_minivaline();
+	  }
+   };
 </script>

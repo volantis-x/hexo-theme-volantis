@@ -24,4 +24,11 @@
     if(!document.querySelectorAll("#twikoo_container")[0])return;
     load_twikoo();
   });
+   function pjax_comment(){
+	  if (typeof twikoo == "undefined") {
+		load_twikoo();
+	  } else {
+		pjax_twikoo();
+	  }
+   };
 </script>
