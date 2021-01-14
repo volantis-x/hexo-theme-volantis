@@ -31,7 +31,7 @@
   <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.css.first) { %>
   <link rel="preload" href="<%- theme.info.cdn.css.first %>" as="style">
   <% } else { %>
-  <link rel="preload" href="/css/first.css" as="style">
+  <link rel="preload" href="<%- url_for("/css/first.css") %>" as="style">
   <% } %>
 
   <!-- 页面元数据 -->
@@ -116,7 +116,7 @@
   <% } %>
 
   <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.css.style) { %>
-  <link rel="stylesheet" href="<%- theme.info.cdn.css %>" media="print" onload="this.media='all';this.onload=null">
+  <link rel="stylesheet" href="<%- theme.info.cdn.css.style %>" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="<%- theme.info.cdn.css.style %>"></noscript>
   <% } else { %>
   <link rel="stylesheet" href="<%- url_for("/css/style.css") %>" media="print" onload="this.media='all';this.onload=null">
