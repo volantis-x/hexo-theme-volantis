@@ -12,6 +12,7 @@
   $(function () {
   var checkScrollReveal = setInterval(function () {
     if ($("#safearea").css("display")!="block") return
+    if (typeof ScrollReveal=="undefined") return
     clearInterval(checkScrollReveal)
 	pjax_scrollrebeal();
   }, 100)

@@ -214,7 +214,7 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover, twikoo, waline
+  service: valine # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
   # Valine
   # https://valine.js.org/
   valine:
@@ -255,13 +255,12 @@ comments:
   # https://github.com/SukkaW/DisqusJS
   disqusjs:
     path: # 全局评论地址
-    # 配置项按照yml格式继续填写即可
+    # 配置项按照yml格式继续填写即可 除了 [siteName url identifier] 选项
     #shortname:
     #api:
     #apikey:
     #admin:
     #nesting:
-
   # Gitalk
   # https://gitalk.github.io/
   gitalk:
@@ -272,23 +271,23 @@ comments:
     owner:
     admin: # []
     path: # 全局评论地址
-  # Vssue
+  # Vssue 暂不支持Pjax
   # https://vssue.js.org/zh/
   vssue:
     owner:
     repo:
     clientId:
     clientSecret:
-  # LiveRe
+  # LiveRe 暂不支持Pjax
   # https://www.livere.com
   livere:
     uid:
-  # Isso
+  # Isso 暂不支持Pjax
   # https://posativ.org/isso/
   isso:
     url: https://example.com/(path/)
     src: https://example.com/(path/)js/embed.min.js
-  # HashOver
+  # HashOver 暂不支持Pjax
   # https://www.barkdull.org/software/hashover
   hashover:
     src: https://example.com/(path/)comments.php
