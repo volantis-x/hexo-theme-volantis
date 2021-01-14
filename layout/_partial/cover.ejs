@@ -16,7 +16,7 @@
   <% } else { %>
       <% if (page.cover == true) { %>
         <% if (is_home() && page.prev == 0 && theme.cover.height_scheme == 'full') { %>
-          <div class="cover-wrapper" id='full'>
+          <div class="cover-wrapper <%- page.layout %> <%- theme.cover.layout_scheme %>" id='full'>
             <% if (theme.plugins.backstretch.enable) { %>
               <div id='cover-backstretch'></div>
             <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
@@ -28,7 +28,7 @@
             <div id="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
           </div>
         <% } else { %>
-          <div class="cover-wrapper" id='half'>
+          <div class="cover-wrapper <%- page.layout %> <%- theme.cover.layout_scheme %>" id='half'>
             <% if (theme.plugins.backstretch.enable) { %>
               <div id='cover-backstretch'></div>
             <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
