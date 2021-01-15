@@ -310,6 +310,7 @@ comments:
     requiredFields: [nick,mail]
     serverURL: xxxxxxxxxxxxxxx # Waline 的服务端地址（必填） 测试用地址: https://waline-ruddy.vercel.app
     avatar: robohash # gravatar style https://waline.js.org/client/basic.html#avatar
+    avatarCDN: https://sdn.geekzu.org/avatar/ #默认使用gravatar.loli.net镜像源，可自行替换
     pageSize: 10 # 评论每页显示数量
     lang: zh-CN
 

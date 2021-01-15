@@ -16,6 +16,8 @@
      el: '#waline',
      path: path,
      placeholder: pagePlaceholder,
+     serverURL: '<%= theme.comments.waline.serverURL %>',
+     avatarCDN: '<%= theme.comments.waline.avatarCDN %>',
      uploadImage: function(file) {
       const formData = new FormData();
       formData.append('image', file);
