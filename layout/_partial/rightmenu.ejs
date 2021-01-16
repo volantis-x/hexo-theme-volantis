@@ -175,7 +175,7 @@
       }
 
       // 有音乐播放器
-      if ('<%= theme.plugins.aplayer.enable %>' == true && ('<%- theme.rightmenu.layout %>'||[]).includes('music')) {
+      <% if (theme.plugins.aplayer.enable && (theme.rightmenu.layout||[]).includes('music')) { %>
         // 如果有aplayer，初始化一下
       	try {
       		checkAPlayer();
@@ -183,8 +183,7 @@
       	} catch (error) {
       		console.log(error);
       	}
-      }
-
+      <% } %>
       return false; // 该行代码确保系统自带的右键菜单不会被调出
     }
     function hideMenu() {
