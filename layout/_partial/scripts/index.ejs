@@ -1,4 +1,4 @@
-<%- partial('loadfunction') %>
+<%- partial('global') %>
 <script>
   <% if (theme.plugins.fontawesome) { %>
   loadCSS("<%- theme.plugins.fontawesome %>", window.volantis.loadcss);
@@ -30,22 +30,8 @@
 <% } %>
 
 <% if (theme.plugins.preload.enable && theme.plugins.preload.service) { %>
-  <% let preload = theme.plugins.preload; %>
-  <% if (preload.service == 'instant_page') { %>
-    <script async src="<%- preload.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
-  <% } else if (preload.service == 'flying_pages') { %>
-    <script>
-      window.FPConfig = {
-        delay: 0,
-        ignoreKeywords: [],
-        maxRPS: 5,
-        hoverDelay: 25
-      };
-    </script>
-    <script defer src="<%- preload.flying_pages %>"></script>
-  <% } %>
+  <%- partial('../../_third-party/preload/script') %>
 <% } %>
-
 
 <% if (theme.plugins.clipboard.enable && (theme.custom_css.body.highlight.copy_btn == true)) { %>
   <%- partial('../../_third-party/clipboard/script') %>
@@ -66,6 +52,7 @@
 <% if (theme.analytics.busuanzi) { %>
   <script defer src="<%- theme.analytics.busuanzi %>" data-pjax></script>
 <% } %>
+
 <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.js) { %>
   <%- js(theme.info.cdn.js) %>
 <% } else if(theme.use_cdn) { %>
@@ -81,18 +68,7 @@
 
 
 <% if (theme.plugins.nodewaves.enable) { %>
-  <%- js({src: theme.plugins.nodewaves.js}) %>
-  <script type="text/javascript">
-    $(function () {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
-    });
-  </script>
+  <%- partial('../../_third-party/nodewaves/script') %>
 <% } %>
 
 <% if (theme.plugins.comment_typing.enable) { %>
@@ -100,10 +76,7 @@
 <% } %>
 
 <% if (theme.plugins.highlightjs.enable) { %>
-  <% if (theme.plugins.highlightjs.js) { %>
-    <%- js(theme.plugins.highlightjs.js) %>
-    <script>hljs.initHighlightingOnLoad();</script>
-  <% } %>
+  <%- partial('../../_third-party/highlightjs/script') %>
 <% } %>
 
 <% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>

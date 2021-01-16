@@ -9,6 +9,14 @@
 	  gtag('js', new Date());
 	  gtag('config', '<%- config.google_analytics_key %>');
 	}, 5000);
+	// 关于谷歌统计对 SPA 页面的处理：
+	// 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+	// https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+	volantis.pjax.push(()=>{
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('config', '<%- config.google_analytics_key %>', {'page_path': document.location.pathname});
+	},'google_analytics')
 </script>
 <% } %>
 <% if (config.baidu_analytics_key) { %>
@@ -20,5 +28,9 @@ var _hmt = _hmt || [];
     loadScript("https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>")
   }, 5000);
 })();
+// 关于百度统计对 SPA 页面的处理：
+// 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+// 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+volantis.pjax.push(()=>{_hmt.push(['_trackPageview', document.location.pathname]);},'baidu_analytics')
 </script>
 <% } %>

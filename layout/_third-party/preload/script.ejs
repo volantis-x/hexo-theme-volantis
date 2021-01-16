@@ -1,0 +1,14 @@
+<% let preload = theme.plugins.preload; %>
+<% if (preload.service == 'instant_page') { %>
+<script async src="<%- preload.instant_page %>" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<% } else if (preload.service == 'flying_pages') { %>
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script>
+<script defer src="<%- preload.flying_pages %>"></script>
+<% } %>

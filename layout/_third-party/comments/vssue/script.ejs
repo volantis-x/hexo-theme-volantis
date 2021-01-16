@@ -4,7 +4,6 @@
   loadCSS("https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css", window.volantis.loadcss);
   new Vue({
     el: '#vssue',
-
     render: h => h('Vssue', {
       props: {
         title: "<%- (page.seo_title || page.title) + ' - ' + config.title %>",

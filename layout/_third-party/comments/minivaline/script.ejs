@@ -1,12 +1,10 @@
 <script>
   function load_minivaline() {
-    setTimeout(function() {
       <% if (theme.comments.minivaline.js) { %>
         loadScript('<%- theme.comments.minivaline.js %>', pjax_minivaline)
       <% } else { %>
         loadScript('https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js', pjax_minivaline)
       <% } %>
-    }, 1);
   };
    function pjax_minivaline() {
      if(!document.querySelectorAll("#minivaline_container")[0])return;
@@ -26,11 +24,11 @@
      if(!document.querySelectorAll("#minivaline_container")[0])return;
      load_minivaline();
    });
-   function pjax_comment(){
+   volantis.pjax.push(()=>{
 	  if (typeof MiniValine == "undefined") {
 		load_minivaline();
 	  } else {
 		pjax_minivaline();
 	  }
-   };
+   },"MiniValine");
 </script>

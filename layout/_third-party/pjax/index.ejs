@@ -39,9 +39,7 @@
       } catch (error) {}
 
       window.subData = null; // 移除标题（用于一二级导航栏切换处）
-      if (typeof $.fancybox != "undefined") {
-        $.fancybox.close();    // 关闭弹窗
-      }
+
       volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
       volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
       volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
@@ -54,75 +52,27 @@
       $(document).unbind('scroll');
       $(document).unbind('click');
       $('body').unbind('click');
-      <% if (theme.plugins.darkmodejs.enable){ %>
-      $("#wrapper .toggle-mode-btn").unbind('click');
-      <% } %>
-	  <% if (theme.plugins.pjax.animation){ %>
-      window.ShowLoading();
-	  <% } %>
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
     });
 
     document.addEventListener('pjax:complete', function () {
-      // 关于百度统计对 SPA 页面的处理：
-      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
-      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
-       <% if (config.baidu_analytics_key) { %>
-       _hmt.push(['_trackPageview', document.location.pathname]);
-       <% } %>
-
-      // 关于谷歌统计对 SPA 页面的处理：
-      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
-      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
-      <% if (config.google_analytics_key) { %>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('config', '<%- config.google_analytics_key %>', {'page_path': document.location.pathname});
-      <% } %>
-
-
       $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
       $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
       $('script[data-pjax], .pjax-reload script').each(function () {
         $(this).parent().append($(this).remove());
       });
       try{
-          if (typeof $.fancybox == "undefined") {
-            SCload_fancybox();
-          } else {
-            pjax_fancybox();
-          }
-        <% if (theme.plugins.backstretch.enable && theme.plugins.backstretch.images) { %>
-		  Pjax_backstretch()
-        <% } %>
-        <% if (theme.plugins.highlightjs.enable) { %>
-        document.querySelectorAll('pre code').forEach((block) => {
-          hljs.highlightBlock(block);
-        });
-        <% } %>
-        <% if (theme.plugins.scrollreveal.enable) { %>
-          pjax_scrollrebeal();
-        <% } %>
-        if (typeof IssuesAPI == "undefined") {
-          loadIssuesJS();
-        }
-        <% if (theme.plugins.clipboard.enable && (theme.custom_css.body.highlight.copy_btn == true)) { %>
-          pjax_initCopyCode();
-        <% } %>
-		<% if (theme.comments.service){ %>
-          try{pjax_comment();} catch (e) {}
-        <% } %>
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
       } catch (e) {
         console.log(e);
       }
-	  <% if (theme.plugins.pjax.animation){ %>
-      window.HideLoading();
-	  <% } %>
     });
 
     document.addEventListener('pjax:error', function (e) {
-	  <% if (theme.plugins.pjax.animation){ %>
-      window.HideLoading();
-	  <% } %>
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
       window.location.href = e.triggerElement.href;
     });
 </script>

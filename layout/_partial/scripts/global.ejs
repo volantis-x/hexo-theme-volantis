@@ -1,14 +1,52 @@
 <script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
 window.volantis={};
 window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
 /********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
 function loadScript(src, cb) {
-var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
-var script = document.createElement('script');
-script.setAttribute('type','text/javascript');
-if (cb) script.onload = cb;
-script.setAttribute('src', src);
-HEAD.appendChild(script);
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
 }
 //https://github.com/filamentgroup/loadCSS
 var loadCSS = function( href, before, media, attributes ){

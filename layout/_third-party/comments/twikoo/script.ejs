@@ -1,12 +1,10 @@
 <script>
   function load_twikoo() {
-	setTimeout(function() {
 	<% if (theme.comments.twikoo.js) { %>
 	  loadScript('<%- theme.comments.twikoo.js %>', pjax_twikoo)
 	<% } else { %>
 	  loadScript('https://cdn.jsdelivr.net/npm/twikoo@latest', pjax_twikoo)
 	<% } %>
-	}, 1);
   }
   function pjax_twikoo() {
     if(!document.querySelectorAll("#twikoo_container")[0])return;
@@ -24,11 +22,11 @@
     if(!document.querySelectorAll("#twikoo_container")[0])return;
     load_twikoo();
   });
-   function pjax_comment(){
+   volantis.pjax.push(()=>{
 	  if (typeof twikoo == "undefined") {
 		load_twikoo();
 	  } else {
 		pjax_twikoo();
 	  }
-   };
+   },'twikoo');
 </script>

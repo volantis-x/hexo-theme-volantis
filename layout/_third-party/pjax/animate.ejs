@@ -23,4 +23,9 @@
       }
     </script>
   <% } %>
+	<script>
+		volantis.pjax.push(window.HideLoading,'HideLoading');
+		volantis.pjax.send(window.ShowLoading,'ShowLoading');
+		volantis.pjax.error(window.HideLoading,'HideLoading');
+	</script>
 </div>

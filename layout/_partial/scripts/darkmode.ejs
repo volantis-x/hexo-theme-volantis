@@ -78,6 +78,8 @@ function bindToggleButton() {
 
 applyCustomDarkModeSettings();
 document.addEventListener("DOMContentLoaded", bindToggleButton);
-document.addEventListener("pjax:success", bindToggleButton);
-
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	$("#wrapper .toggle-mode-btn").unbind('click');
+},'toggle-mode-btn-unbind');
 </script>
