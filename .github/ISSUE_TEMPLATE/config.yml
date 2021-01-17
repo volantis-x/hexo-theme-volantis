@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Ask a question about volantis or get support
+  - name: 提问一个关于Volantis的问题或者寻求支持
     url: https://github.com/volantis-x/hexo-theme-volantis/discussions/new
-    about: Ask a question or request support for using volantis
-  - name: Ask a question related to hexo but not about volantis
-    url: https://github.com/hexojs/hexo/issues
-    about: Ask a question about the hexo but not about volantis
+    about: Ask a question about volantis or get support
+  - name: 提问的智慧
+    url: https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md
+    about: How To Ask Questions The Smart Way

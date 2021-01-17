@@ -1,18 +1,18 @@
 ############################### Volantis ###############################
-# 仅限/source/js/中的JS文件
-# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis/source/js/ 的CDN压缩版本，注意版本号对应关系！！可以通过修改以下配置项覆盖
+# use_cdn: /source/js/* 中的JS文件(JS Only)使用jsdelivr的min版本加速
+# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 use_cdn 设置为 false
-use_cdn: true
+use_cdn: false
 info:
   theme_name: Volantis # This is theme's name.
   theme_version: '4.3.0' # This is theme's version.
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:
-    js:
+    js: # https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/app.min.js # 注意版本!!!
     css:
-      first:
-      style:
+      first: # /css/first.css (需自行替换CDN 首屏样式 cover navbar search )
+      style: # /css/style.css (需自行替换CDN 异步加载 Others...           )
 ########################################################################
 
 ############################### Navigation Bar ############################### > start
