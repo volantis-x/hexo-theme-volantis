@@ -43,7 +43,7 @@ Add your blog to examples page: https://github.com/volantis-x/examples/issues/
 
 Feedback to developer: https://github.com/volantis-x/hexo-theme-volantis/issues/
 
-Discuss with other users: https://github.com/volantis-x/community/issues/
+Discuss with other users: https://github.com/volantis-x/hexo-theme-volantis/discussions/
 
 ## Screenshot
 
