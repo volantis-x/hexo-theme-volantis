@@ -11,11 +11,17 @@ function checkAPlayer() {
 
 // 设置全局播放器所对应的 aplyer 对象
 function setAPlayerObject() {
-  document.querySelectorAll('meting-js').forEach((item, index) => {
+  // 设置foot全局播放器为高优先级
+  var Meting = document.querySelectorAll('.footer meting-js');
+  if (Meting.length == 0) {
+    Meting = document.querySelectorAll('meting-js');
+  }
+  Meting.forEach((item, index) => {
     if (item.meta.id == APlayerController.id) {
-      if (document.querySelectorAll('meting-js')[index].aplayer != undefined) {
-        APlayerController.player = document.querySelectorAll('meting-js')[index].aplayer;
+      if (Meting[index].aplayer != undefined) {
+        APlayerController.player = Meting[index].aplayer;
         setAPlayerObserver();
+        updateTitle();
       }
     }
   });
@@ -151,8 +157,10 @@ function updateTitle() {
   }
 }
 var checkrightmenu = setInterval(function() {
-  if (!document.querySelectorAll('meting-js')[0].meta) return;
-  if (!document.querySelectorAll('meting-js')[0].meta.id) return;
+  if (!volantis.APlayerLoaded) return; // APlayer加载完成？
+  if ($('#safearea').css('display') != 'block') return; // 文章内容加载完成？ see: source/css/first.styl
+  if (!document.querySelectorAll('meting-js')[0].meta) return; // meting-js 加载完成？
+  if (!document.querySelectorAll('meting-js')[0].meta.id) return; // meting-js 初始化?
   clearInterval(checkrightmenu);
   checkAPlayer();
 }, 1000);

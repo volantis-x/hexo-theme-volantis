@@ -173,18 +173,12 @@
           copyHref.style.display = 'none';
         }
       }
-
       // 有音乐播放器 see: layout/_third-party/aplayer/script.ejs
       <% if (theme.plugins.aplayer.enable && (theme.rightmenu.layout||[]).includes('music')) { %>
-		if(volantis.APlayerLoaded){ // APlayer加载完成？
-			// 如果有aplayer，初始化一下
-			try {
-				checkAPlayer();
-				updateTitle();
-			} catch (error) {
-				console.log(error);
-			}
-		}
+      if(volantis.APlayerLoaded){ // APlayer加载完成？
+        // 如果有aplayer，初始化一下
+        checkAPlayer();
+      }
       <% } %>
       return false; // 该行代码确保系统自带的右键菜单不会被调出
     }

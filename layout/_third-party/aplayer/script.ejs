@@ -8,12 +8,12 @@
   window.volantis.APlayerLoaded=0 // APlayer加载完成状态
   var checkAPlayer = setInterval(function () {
     if (!window.APlayer) return // APlayer加载完成？
-	if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
+	  if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
     clearInterval(checkAPlayer)
-	if (!window.volantis.APlayerLoaded&&!window.MetingJSElement){ // APlayer只能加载一次
-	  window.APlayerLoaded=1 // APlayer加载完成
+	  if (!window.volantis.APlayerLoaded&&!window.MetingJSElement){ // APlayer只能加载一次
+      window.volantis.APlayerLoaded=1 // APlayer加载完成
       loadScript("<%- theme.plugins.aplayer.js.meting %>") // 加载 MetingJS
-	}
+	  }
   }, 2500) // 按照网速调节差分2.5s
   // rightmenu see: layout/_partial/rightmenu.ejs
 <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
