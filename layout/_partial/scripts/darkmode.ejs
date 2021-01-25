@@ -68,8 +68,8 @@ const toggleCustomDarkMode = () => {
 /**
  * bind click event for toggle button
  */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
 function bindToggleButton() {
-	var btn=$("#wrapper .toggle-mode-btn");
     btn.on('click',(e) => {
       const mode = toggleCustomDarkMode();
       applyCustomDarkModeSettings(mode);
@@ -80,6 +80,6 @@ applyCustomDarkModeSettings();
 document.addEventListener("DOMContentLoaded", bindToggleButton);
 volantis.pjax.push(bindToggleButton);
 volantis.pjax.send(()=>{
-	$("#wrapper .toggle-mode-btn").unbind('click');
+	btn.unbind('click');
 },'toggle-mode-btn-unbind');
 </script>

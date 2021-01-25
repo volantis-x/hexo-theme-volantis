@@ -1,7 +1,7 @@
 <% if (theme.rightmenu.enable == true && theme.rightmenu.layout.length > 0) { %>
   <% function loadmenu(obj) { %>
     <li>
-      <a class='vlts-menu fix-cursor-default' <%= obj.url ? 'href='+ url_for(obj.url)+'' : ''%>
+      <a class='vlts-menu fix-cursor-default <%= obj.toggle == 'darkmode' ? 'toggle-mode-btn' : ''%>' <%= obj.url ? 'href='+ url_for(obj.url)+'' : ''%>
         <% if (obj.rel) { %>
           rel="<%- obj.rel %>"
         <% } %>
