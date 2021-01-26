@@ -1,7 +1,8 @@
 <div id="l_cover">
   <% if (theme.plugins.pjax.enable) { %>
     <% if (theme.pjax_cover.enableCover) { %>
-        <div id="<%- theme.pjax_cover.coverWrapperID %>" class='cover-wrapper <%- page.layout %> <%- theme.cover.layout_scheme %>' style="display: <%- theme.pjax_cover.coverWrapperDisplay %>;">
+      <!-- see: /layout/_partial/scripts/coverCtrl.ejs -->
+        <div id="<%- theme.pjax_cover.frontMatterCover %>" class='cover-wrapper <%- page.layout %> <%- theme.cover.layout_scheme %>' style="display: <%- theme.pjax_cover.coverWrapperDisplay %>;">
           <% if (theme.plugins.backstretch.enable) { %>
             <div id='cover-backstretch'></div>
           <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
