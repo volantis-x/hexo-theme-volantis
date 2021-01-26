@@ -38,13 +38,16 @@ if (page && page.layout == 'post' && page.title) {
   <% }%>
   <% if (theme.plugins.pjax.enable&&theme.plugins.pjax.cover) {%>
     // cover
-    var cover_wrapper=document.querySelector('.cover-wrapper');
+    var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
+    var scroll_down=document.getElementById('scroll-down');
     <% if (theme.pjax_cover.frontMatterCover == "full") {%>
     cover_wrapper.id="full";
     cover_wrapper.style.display="";
+    scroll_down.style.display="";
     <% } else if (theme.pjax_cover.frontMatterCover == "half"){%>
     cover_wrapper.id="half";
     cover_wrapper.style.display="";
+    scroll_down.style.display="none";
     <% } else if (theme.pjax_cover.frontMatterCover == "none"){%>
     cover_wrapper.id="none";
     cover_wrapper.style.display="none";
