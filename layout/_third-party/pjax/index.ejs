@@ -13,7 +13,7 @@
         elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
         selectors: [
           "title",
-          "#l_cover",
+          <% if (!theme.plugins.pjax.cover){ %>"#l_cover",<% } %>
           "#pjax-container",
           "#pjax-header-nav-list"
         ],

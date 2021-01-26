@@ -1,4 +1,5 @@
 <%
+  // 为保证初次进入页面流畅，要求开启pjax且浏览器禁用Javascript时(仅HTML渲染)封面控制正常
   theme.pjax_cover={}
   theme.pjax_cover.enableCover = false; // 封面是否开启
   theme.pjax_cover.frontMatterCover = 'none';  // 封面控制
@@ -7,7 +8,10 @@
   theme.pjax_cover.scrollDownDisplay = 'none';
   theme.pjax_cover.headerShow = 'show';
   if(theme.cover && theme.cover.height_scheme) {
-  theme.pjax_cover.enableCover = true;
+    theme.pjax_cover.enableCover = true;
+  }
+  if(theme.plugins.pjax.enable&&theme.plugins.pjax.cover) {
+    theme.pjax_cover.enableCover = true;
   }
   if (theme.pjax_cover.enableCover && page && page.cover) {
     theme.pjax_cover.frontMatterCover = page.cover;

@@ -29,11 +29,25 @@ if (page && page.layout == 'post' && page.title) {
   pdata.postTitle="<%=postTitle%>";
   pdata.commentPath="<%=commentPath%>";
   pdata.commentPlaceholder="<%=commentPlaceholder%>";
-
+  // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   <% if (theme.pjax_cover.frontMatterCover == "none") {%>
   l_header.classList.add("show");
   <% } else {%>
   l_header.classList.remove("show");
+  <% }%>
+  <% if (theme.plugins.pjax.enable&&theme.plugins.pjax.cover) {%>
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    <% if (theme.pjax_cover.frontMatterCover == "full") {%>
+    cover_wrapper.id="full";
+    cover_wrapper.style.display="";
+    <% } else if (theme.pjax_cover.frontMatterCover == "half"){%>
+    cover_wrapper.id="half";
+    cover_wrapper.style.display="";
+    <% } else if (theme.pjax_cover.frontMatterCover == "none"){%>
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
+    <% }%>
   <% }%>
 </script>
