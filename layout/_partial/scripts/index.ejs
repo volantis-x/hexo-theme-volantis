@@ -18,13 +18,15 @@
 <%- partial('../../_third-party/fancybox/script') %>
 
 <!-- internal -->
-<% if (theme.plugins.darkmodejs.enable) { %>
-  <%- partial('darkmode') %>
-<% } %>
+
 <%- partial('cover') %>
 
 <% if (theme.rightmenu.enable == true) { %>
   <%- partial('../rightmenu') %>
+<% } %>
+<!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
+<% if (theme.plugins.darkmodejs.enable) { %>
+  <%- partial('darkmode') %>
 <% } %>
 
 <%- partial('issues') %>
