@@ -4,6 +4,7 @@
     volantis.utterances.ThemeDark='<%- theme.comments.utterances.theme.dark %>';
     volantis.utterances.Theme=volantis.utterances.ThemeLight;
     function pjax_utterances(){
+        if(!document.getElementById("utterances"))return;
         <% if (theme.plugins.darkmodejs.enable) { %>
             if(volantis.dark.mode=="dark"){
                 volantis.utterances.Theme=volantis.utterances.ThemeDark;
