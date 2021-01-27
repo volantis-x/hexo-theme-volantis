@@ -1,0 +1,32 @@
+<script>
+    volantis.utterances={}
+    volantis.utterances.ThemeLight='<%- theme.comments.utterances.theme.light %>';
+    volantis.utterances.ThemeDark='<%- theme.comments.utterances.theme.dark %>';
+    volantis.utterances.Theme=volantis.utterances.ThemeLight;
+    function pjax_utterances(){
+        <% if (theme.plugins.darkmodejs.enable) { %>
+            if(volantis.dark.mode=="dark"){
+                volantis.utterances.Theme=volantis.utterances.ThemeDark;
+            }else{
+                volantis.utterances.Theme=volantis.utterances.ThemeLight;
+            }
+        <% } %>
+        document.getElementById("utterances").innerHTML="";
+        setTimeout(function() {
+            var HEAD = document.getElementById("utterances");
+            var script = document.createElement('script');
+            script.setAttribute('src','https://utteranc.es/client.js');
+            script.setAttribute('repo','<%- theme.comments.utterances.repo %>');
+            script.setAttribute('issue-term','<%- theme.comments.utterances['issue-term'] %>');
+            script.setAttribute('theme', volantis.utterances.Theme );
+            script.setAttribute('label','<%- theme.comments.utterances.label %>');
+            script.setAttribute('crossorigin','<%- theme.comments.utterances.crossorigin %>');
+            HEAD.appendChild(script);
+        });
+    }
+    $(function () {
+        pjax_utterances();
+    });
+    volantis.pjax.push(pjax_utterances);
+    volantis.dark.push(pjax_utterances);
+</script>
