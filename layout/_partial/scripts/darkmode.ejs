@@ -2,38 +2,31 @@
 const rootElement = document.documentElement;
 const darkModeStorageKey = "user-color-scheme";
 const rootElementDarkModeAttributeName = "data-user-color-scheme";
-
 const setLS = (k, v) => {
     localStorage.setItem(k, v);
 };
-
 const removeLS = (k) => {
     localStorage.removeItem(k);
 };
-
 const getLS = (k) => {
     return localStorage.getItem(k);
 };
-
 const getModeFromCSSMediaQuery = () => {
   return window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
     : "light";
 };
-
 const resetRootDarkModeAttributeAndLS = () => {
   rootElement.removeAttribute(rootElementDarkModeAttributeName);
   removeLS(darkModeStorageKey);
 };
-
 const validColorModeKeys = {
   dark: true,
   light: true,
 };
-
 const applyCustomDarkModeSettings = (mode) => {
   const currentSetting = mode || getLS(darkModeStorageKey);
-
+  getCustomDarkMode();
   if (currentSetting === getModeFromCSSMediaQuery()) {
     resetRootDarkModeAttributeAndLS();
   } else if (validColorModeKeys[currentSetting]) {
@@ -42,18 +35,31 @@ const applyCustomDarkModeSettings = (mode) => {
     resetRootDarkModeAttributeAndLS();
   }
 };
-
 const invertDarkModeObj = {
   dark: "light",
   light: "dark",
 };
-
 /**
  * get target mode
  */
+ const getCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  if(currentSetting=="dark"){
+    volantis.dark.mode="light";
+  }else{
+    volantis.dark.mode="dark";
+  }
+  // console.log(volantis.dark.mode)
+};
 const toggleCustomDarkMode = () => {
   let currentSetting = getLS(darkModeStorageKey);
-
   if (validColorModeKeys[currentSetting]) {
     currentSetting = invertDarkModeObj[currentSetting];
   } else if (currentSetting === null) {
@@ -64,18 +70,19 @@ const toggleCustomDarkMode = () => {
   setLS(darkModeStorageKey, currentSetting);
   return currentSetting;
 };
-
 /**
  * bind click event for toggle button
  */
-var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
-function bindToggleButton() {
-    btn.on('click',(e) => {
+ function bindToggle() {
       const mode = toggleCustomDarkMode();
       applyCustomDarkModeSettings(mode);
-    });
+	    // 使用 volantis.dark.push 方法传入bindToggle回调函数 参见layout/_partial/scripts/global.ejs
+	    volantis.dark.method.toggle.start();
 }
-
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',bindToggle);
+}
 applyCustomDarkModeSettings();
 document.addEventListener("DOMContentLoaded", bindToggleButton);
 volantis.pjax.push(bindToggleButton);

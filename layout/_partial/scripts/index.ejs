@@ -18,7 +18,11 @@
 <%- partial('../../_third-party/fancybox/script') %>
 
 <!-- internal -->
+<% if (theme.plugins.darkmodejs.enable) { %>
+  <%- partial('darkmode') %>
+<% } %>
 <%- partial('cover') %>
+
 <% if (theme.rightmenu.enable == true) { %>
   <%- partial('../rightmenu') %>
 <% } %>
@@ -81,10 +85,6 @@
 
 <% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>
   <%- partial('counter') %>
-<% } %>
-
-<% if (theme.plugins.darkmodejs.enable) { %>
-  <%- partial('darkmode') %>
 <% } %>
 
 <%- partial('../../_third-party/analytics/script') %>
