@@ -11,17 +11,24 @@
                 volantis.utterances.Theme=volantis.utterances.ThemeLight;
             }
         <% } %>
-        document.getElementById("utterances").innerHTML="";
         setTimeout(function() {
-            var HEAD = document.getElementById("utterances");
-            var script = document.createElement('script');
-            script.setAttribute('src','https://utteranc.es/client.js');
-            script.setAttribute('repo','<%- theme.comments.utterances.repo %>');
-            script.setAttribute('issue-term','<%- theme.comments.utterances['issue-term'] %>');
-            script.setAttribute('theme', volantis.utterances.Theme );
-            script.setAttribute('label','<%- theme.comments.utterances.label %>');
-            script.setAttribute('crossorigin','<%- theme.comments.utterances.crossorigin %>');
-            HEAD.appendChild(script);
+            var checkUtterances = setInterval(function () {
+                var HEAD = document.getElementById("utterances");
+                if (!HEAD) return
+                if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
+                clearInterval(checkUtterances)
+                try {
+                    document.getElementById("utterances").innerHTML="";
+                } catch (error) {}
+                var script = document.createElement('script');
+                script.setAttribute('src','https://utteranc.es/client.js');
+                script.setAttribute('repo','<%- theme.comments.utterances.repo %>');
+                script.setAttribute('issue-term','<%- theme.comments.utterances['issue-term'] %>');
+                script.setAttribute('theme', volantis.utterances.Theme );
+                script.setAttribute('label','<%- theme.comments.utterances.label %>');
+                script.setAttribute('crossorigin','<%- theme.comments.utterances.crossorigin %>');
+                HEAD.appendChild(script);
+             }, 200)
         });
     }
     $(function () {
