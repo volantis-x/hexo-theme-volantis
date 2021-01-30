@@ -1,5 +1,5 @@
 <% let snackbar = site.data.notification[page.snackbar] %>
-<% if (snackbar.theme == 'warning' || snackbar.theme == 'error') { %>
+<% if (snackbar.position == 'bottom') { %>
   <div class='snackbar-wrap' theme='<%- snackbar.theme %>'>
     <div class="snackbar-content">
       <div class='title'><%- markdown(snackbar.title) %></div>
@@ -21,7 +21,7 @@
       <% } %>
     </div>
   </div>
-<% } else { %>
+<% } else if (snackbar.position == 'right') { %>
   <% if (snackbar.action && snackbar.action.length > 0) { %>
       <script>
         var checkSnackbar = setInterval(function () {
@@ -36,8 +36,7 @@
             $.message({
               title: '<%- snackbar.title %>',
               message: '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
-              type: '<%- snackbar.theme %>',
-              <% if (!snackbar.auto_dismiss) { %>autoClose: 0,<% } %>
+              type: '<%- snackbar.theme %>'
             });
           <% }) %>
         })
