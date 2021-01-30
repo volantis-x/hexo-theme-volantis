@@ -1,14 +1,47 @@
 <% let snackbar = site.data.notification[page.snackbar] %>
+<% if (snackbar.theme == 'warning' || snackbar.theme == 'error') { %>
+  <div class='snackbar-wrap' theme='<%- snackbar.theme %>'>
+    <div class="snackbar-content">
+      <div class='title'><%- markdown(snackbar.title) %></div>
+      <div class='message'><%- markdown(snackbar.message) %></div>
+      <% if (snackbar.action && snackbar.action.length > 0) { %>
+        <div class="action">
+        <% snackbar.action.forEach((ac, i) => { %>
+          <% if (snackbar.auto_dismiss) { %>
+            <a onclick="document.getElementsByClassName('snackbar-wrap')[0].style.display = 'none'">
+              <%- ac.title %>
+            </a>
+          <% } else { %>
+            <a href='<%- ac.url %>'>
+              <%- ac.title %>
+            </a>
+          <% } %>
+        <% }) %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+<% } else { %>
   <% if (snackbar.action && snackbar.action.length > 0) { %>
     <% snackbar.action.forEach((ac, i) => { %>
-      <% if (ac.dismiss) { %>
+      <% if (snackbar.auto_dismiss) { %>
         <script>
-          $.message({ title: '<%- snackbar.title %>', message: '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>", type: '<%- snackbar.theme %>' });
+          $.message({
+            title: '<%- snackbar.title %>',
+            message: '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
+            type: '<%- snackbar.theme %>'
+          });
         </script>
       <% } else { %>
         <script>
-          $.message({ title: '<%- snackbar.title %>', message: '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>", autoClose:!1, type: '<%- snackbar.theme %>' });
+          $.message({
+            title: '<%- snackbar.title %>',
+            message: '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
+            autoClose: !1,
+            type: '<%- snackbar.theme %>'
+          });
         </script>
       <% } %>
     <% }) %>
   <% } %>
+<% } %>
