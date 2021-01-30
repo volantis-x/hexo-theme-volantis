@@ -276,3 +276,23 @@
     &:hover
       opacity: 1
       background: var(--color-card)
+
+.cover-wrapper
+  #parallax-window
+    position: absolute
+    width: 100%
+    height: 100%
+    background: transparent
+
+.parallax-mirror
+  animation-delay: 0s
+  animation-duration: .5s
+  animation-fill-mode: forwards
+  animation-timing-function: ease-out
+  animation-name: fadeIn
+  @keyframes fadeIn
+    0%
+      opacity: 0
+      filter blur(12px)
+    100%
+      opacity: 1

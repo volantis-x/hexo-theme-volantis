@@ -5,6 +5,8 @@
         <div id="<%- theme.pjax_cover.frontMatterCover %>" class='cover-wrapper <%- page.layout %> <%- theme.cover.layout_scheme %>' style="display: <%- theme.pjax_cover.coverWrapperDisplay %>;">
           <% if (theme.plugins.backstretch.enable) { %>
             <div id='cover-backstretch'></div>
+          <% } else if (theme.plugins.parallax.enable) { %>
+            <div id="parallax-window"></div>
           <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
             <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
           <% } else { %>

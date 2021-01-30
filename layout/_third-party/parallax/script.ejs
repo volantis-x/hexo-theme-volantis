@@ -1,0 +1,75 @@
+<% if (theme.plugins.parallax.enable) { %>
+  <% var imgs = theme.plugins.parallax.images || page.images; %>
+<script>
+  var imgs=<%- '["' + imgs.join('", "') + '"]' %>;
+  var index=0;
+  <% if (theme.plugins.parallax.shuffle) { %>
+      function shuffle(arr){
+        /*From countercurrent-time*/
+        var n = arr.length;
+        while(n--) {
+          var index = Math.floor(Math.random() * n);
+          var temp = arr[index];
+          arr[index] = arr[n];
+          arr[n] = temp;
+        }
+      }
+      shuffle(imgs);
+  <% } %>
+  // https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha
+  // 这是 2.0.0-alpha，（1.x不兼容pjax） alpha版本官方尚未正式发布 上一次更新时间：30 Nov 2017
+  loadScript('<%- theme.plugins.parallax.js %>')
+  function parallax(src){
+    $('#parallax-window').parallax({
+      src: src,
+      speed: .25,
+      bleed: 0,
+      zIndex: -100,
+      posX: 'center',
+      posY: 'center',
+      overScrollFix: false,
+      excludeAgents: /(iPod|iPhone|iPad|Android)/,
+      aspectRatio: null,
+      // jquery selectors
+      sliderSelector: '>.parallax-slider',
+      mirrorSelector: '#l_cover',
+      // callback functions:
+      afterRefresh: ()=>{
+        // console.log("afterRefresh")
+      },
+      afterRender: ()=>{
+        // console.log("afterRender")
+      },
+      afterSetup: ()=>{
+        // console.log("afterSetup")
+      },
+      afterDestroy: ()=>{
+        // console.log("afterDestroy")
+      },
+    });
+  }
+  function next_parallax(){
+    $("#l_cover .parallax-mirror img")[0].src=imgs[(index)%(imgs.length)];
+    index++;
+    fetch(imgs[(index)%(imgs.length)]); // cach
+  }
+  function pjax_parallax(){
+    next_parallax();
+    volantis.IntervalParallax = setInterval(function () {
+      next_parallax();
+    }, 15000)
+  }
+  var checkParallax = setInterval(function () {
+	  if ($("#safearea").css("display")!="block") return 
+	  if (typeof $('#parallax-window').parallax == 'undefined') return 
+    clearInterval(checkParallax)
+    parallax(imgs[(index)%(imgs.length)]);
+  }, 500)
+  volantis.pjax.push(pjax_parallax);
+  volantis.pjax.send(()=>{
+      try {
+        clearInterval(volantis.IntervalParallax);
+      } catch (error) {}
+    },'pjax_parallax')
+</script>
+<% } %>
