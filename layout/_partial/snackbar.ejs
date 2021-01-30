@@ -28,6 +28,7 @@
           if (typeof loadScript=='undefined') return
           if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
           clearInterval(checkSnackbar)
+          loadCSS('<%- url_for("/css/message.css") %>')
           loadScript("<%- url_for("/js/message.js") %>",()=>{
           <% snackbar.action.forEach((ac, i) => { %>
             $.message({
