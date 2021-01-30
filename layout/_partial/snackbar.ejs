@@ -1,58 +1,63 @@
 <% let snackbar = site.data.notification[page.snackbar] %>
 <% if (snackbar.position == 'bottom') { %>
-  <div class='snackbar-wrap' theme='<%- snackbar.theme %>'>
-    <div class="snackbar-content">
-      <div class='title'><%- markdown(snackbar.title) %></div>
-      <div class='message'><%- markdown(snackbar.message) %></div>
-      <% if (snackbar.buttons && snackbar.buttons.length > 0) { %>
-        <div class="action">
-        <% snackbar.buttons.forEach((ac, i) => { %>
-          <% if (ac.dismiss) { %>
-            <a onclick="document.getElementsByClassName('snackbar-wrap')[0].style.display = 'none'">
-              <%- ac.title %>
-            </a>
-          <% } else { %>
-            <a href='<%- ac.url %>'>
-              <%- ac.title %>
-            </a>
-          <% } %>
-        <% }) %>
-        </div>
-      <% } %>
-    </div>
-  </div>
+  <div id="snackbar"></div>
+  <script>
+    function Snackbar(){
+      document.getElementById("snackbar").innerHTML=`<div class='snackbar-wrap' theme='<%- snackbar.theme %>'>
+      <div class="snackbar-content">
+        <div class='title'><%- markdown(snackbar.title) %></div>
+        <div class='message'><%- markdown(snackbar.message) %></div>
+        <% if (snackbar.buttons && snackbar.buttons.length > 0) { %>
+          <div class="action">
+          <% snackbar.buttons.forEach((ac, i) => { %>
+            <% if (ac.dismiss) { %>
+              <a onclick="document.getElementsByClassName('snackbar-wrap')[0].style.display = 'none'">
+                <%- ac.title %>
+              </a>
+            <% } else { %>
+              <a href='<%- ac.url %>'>
+                <%- ac.title %>
+              </a>
+            <% } %>
+          <% }) %>
+          </div>
+        <% } %>
+      </div>
+    </div>`
+    }
+  </script>
 <% } else if (snackbar.position == 'right') { %>
   <% if (snackbar.buttons && snackbar.buttons.length > 0) { %>
       <script>
-        var checkSnackbar = setInterval(function () {
-          if (typeof loadScript=='undefined') return
-          if (typeof loadCSS=='undefined') return
-          if (typeof $=='undefined') return
-          if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
-          clearInterval(checkSnackbar)
-          loadCSS('<%- url_for("/css/message.css") %>')
-          loadScript("<%- url_for("/js/message.js") %>",()=>{
-          <% snackbar.buttons.forEach((ac, i) => { %>
-            $.message({
-              title: '<%- snackbar.title %>',
-              message: '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
-              type: '<%- snackbar.theme %>'
-            });
-          <% }) %>
-        })
-        }, 1000)
+        function Snackbar(){
+          var checkSnackbar = setInterval(function () {
+            if (typeof loadScript=='undefined') return
+            if (typeof loadCSS=='undefined') return
+            if (typeof $=='undefined') return
+            if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
+            clearInterval(checkSnackbar)
+            loadCSS('<%- url_for("/css/message.css") %>')
+            loadScript("<%- url_for("/js/message.js") %>",()=>{
+            <% snackbar.buttons.forEach((ac, i) => { %>
+              $.message({
+                title: '<%- snackbar.title %>',
+                message: '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
+                type: '<%- snackbar.theme %>'
+              });
+            <% }) %>
+          })
+          }, 1000)
+        }
       </script>
   <% } %>
 <% } %>
 <script>
-  let locSnackbar=localStorage.getItem('Snackbar');
-  if (locSnackbar) {
-    locSnackbar=JSON.parse(locSnackbar);
-  } else {
-    localStorage.setItem('Snackbar', <%- snackbar.cache ? '1' : '0' %>);
+  <% if (snackbar.cache) { %>
+  if (!localStorage.getItem('Snackbar')) {
+    localStorage.setItem('Snackbar', '1');
+    Snackbar();
   }
-  // to do
-  // to do
-  // to do
-
+  <% } else { %>
+    Snackbar()
+  <% }%>
 </script>
