@@ -44,3 +44,15 @@
       </script>
   <% } %>
 <% } %>
+<script>
+  let locSnackbar=localStorage.getItem('Snackbar');
+  if (locSnackbar) {
+    locSnackbar=JSON.parse(locSnackbar);
+  } else {
+    localStorage.setItem('Snackbar', <%- snackbar.cache ? '1' : '0' %>);
+  }
+  // to do
+  // to do
+  // to do
+
+</script>
