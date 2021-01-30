@@ -4,9 +4,9 @@
     <div class="snackbar-content">
       <div class='title'><%- markdown(snackbar.title) %></div>
       <div class='message'><%- markdown(snackbar.message) %></div>
-      <% if (snackbar.action && snackbar.action.length > 0) { %>
+      <% if (snackbar.buttons && snackbar.buttons.length > 0) { %>
         <div class="action">
-        <% snackbar.action.forEach((ac, i) => { %>
+        <% snackbar.buttons.forEach((ac, i) => { %>
           <% if (ac.auto_dismiss) { %>
             <a onclick="document.getElementsByClassName('snackbar-wrap')[0].style.display = 'none'">
               <%- ac.title %>
@@ -22,7 +22,7 @@
     </div>
   </div>
 <% } else if (snackbar.position == 'right') { %>
-  <% if (snackbar.action && snackbar.action.length > 0) { %>
+  <% if (snackbar.buttons && snackbar.buttons.length > 0) { %>
       <script>
         var checkSnackbar = setInterval(function () {
           if (typeof loadScript=='undefined') return
@@ -32,7 +32,7 @@
           clearInterval(checkSnackbar)
           loadCSS('<%- url_for("/css/message.css") %>')
           loadScript("<%- url_for("/js/message.js") %>",()=>{
-          <% snackbar.action.forEach((ac, i) => { %>
+          <% snackbar.buttons.forEach((ac, i) => { %>
             $.message({
               title: '<%- snackbar.title %>',
               message: '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
