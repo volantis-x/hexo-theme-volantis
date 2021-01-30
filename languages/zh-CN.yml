@@ -6,8 +6,8 @@ post:
   pin: 置顶
   readmore: 阅读全文
   readoriginal: 去源站阅读
-  wordcount: '字数：%s字'
-  duration: '时长：%s分钟'
+  wordcount: '字数：%s 字'
+  duration: '时长：%s 分钟'
   comments: 评论
   comments_load: 点击加载 %s 评论
   comments_check: 正在检查 %s 能否访问...
@@ -44,6 +44,9 @@ rightmenu:
   forward: "前进"
   reload: "刷新"
   copy_text: "复制文本"
+  copy_paste: "粘贴文本"
+  copy_select: "全选文本"
+  copy_cut: "剪切文本"
   copy_image_src: "复制图片地址"
   copy_link: "复制链接"
   open_in_new_tab: "在新标签页打开"
