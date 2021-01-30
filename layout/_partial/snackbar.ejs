@@ -7,7 +7,7 @@
       <% if (snackbar.buttons && snackbar.buttons.length > 0) { %>
         <div class="action">
         <% snackbar.buttons.forEach((ac, i) => { %>
-          <% if (ac.auto_dismiss) { %>
+          <% if (ac.dismiss) { %>
             <a onclick="document.getElementsByClassName('snackbar-wrap')[0].style.display = 'none'">
               <%- ac.title %>
             </a>
