@@ -46,7 +46,10 @@
   width: "calc(100% - 1 * %s)" % $sidebar
   @media screen and (max-width: $device-tablet)
     width: 100%
-  padding-right: $gap
+  if hexo-config('sidebar.position') =='right'
+    padding-right: $gap
+  if hexo-config('sidebar.position') =='left'
+    padding-left: $gap
   &.no_sidebar
     width: 100%
     padding-right: 0
@@ -57,6 +60,12 @@
     ~.l_side
       display: none
   float: left
+  if hexo-config('sidebar.position') =='left'
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
   .post-list
     position: relative
     margin-bottom: $gap
