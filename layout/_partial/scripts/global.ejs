@@ -1,119 +1,133 @@
 <script>
-/************这个文件存放不需要重载的全局变量和全局函数*********/
-window.volantis={};
-window.volantis.loadcss=document.getElementById("loadcss");
-/******************** Pjax ********************************/
-function RunItem(){
-    this.list=[] // 存放回调函数
-    this.start=()=>{
-        for(var i=0;i<this.list.length;i++){
+  /************这个文件存放不需要重载的全局变量和全局函数*********/
+  window.volantis = {}; // volantis 全局变量
+  window.volantis.loadcss = document.getElementById("loadcss");
+  /******************** Pjax ********************************/
+  // /layout/_third-party/pjax/index.ejs
+  // volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
+  // volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
+  // volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
         this.list[i].run();
-        }
-    }
-    this.push=(fn,name)=>{
-        var f=new Item(fn,name);
-        this.list.push(f);
-    }
+      }
+    };
+    this.push = (fn, name) => {
+      var f = new Item(fn, name);
+      this.list.push(f);
+    };
     // 构造一个可以run的对象
-    function Item(fn,name){
-        // 函数名称
-        this.name = name || fn.name
-        // run方法
-        this.run=()=>{
-            fn()
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn();
+        } catch (error) {
+          console.log(error);
         }
+      };
     }
-}
-volantis.pjax={}
-volantis.pjax.method={
+  }
+  volantis.pjax = {};
+  volantis.pjax.method = {
     complete: new RunItem(),
     error: new RunItem(),
-    send: new RunItem()
-}
-volantis.pjax={
+    send: new RunItem(),
+  };
+  volantis.pjax = {
     ...volantis.pjax,
     push: volantis.pjax.method.complete.push,
     error: volantis.pjax.method.error.push,
-    send: volantis.pjax.method.send.push
-}
-/********************  Dark Mode  ********************************/
-volantis.dark={}
-volantis.dark.method={
+    send: volantis.pjax.method.send.push,
+  };
+  /********************  Dark Mode  ********************************/
+  // volantis.dark.mode 当前模式 dark or light
+  // volantis.dark.toggle() 暗黑模式触发器
+  // volantis.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  volantis.dark = {};
+  volantis.dark.method = {
     toggle: new RunItem(),
-}
-volantis.dark={
+  };
+  volantis.dark = {
     ...volantis.dark,
     push: volantis.dark.method.toggle.push,
-}
-/********************脚本懒加载函数********************************/
-// 已经加入了setTimeout
-function loadScript(src, cb) {
-	setTimeout(function() {
-		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
-		var script = document.createElement('script');
-		script.setAttribute('type','text/javascript');
-		if (cb) script.onload = cb;
-		script.setAttribute('src', src);
-		HEAD.appendChild(script);
-	});
-}
-//https://github.com/filamentgroup/loadCSS
-var loadCSS = function( href, before, media, attributes ){
-	var doc = window.document;
-	var ss = doc.createElement( "link" );
-	var ref;
-	if( before ){
-		ref = before;
-	}
-	else {
-		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
-		ref = refs[ refs.length - 1];
-	}
-	var sheets = doc.styleSheets;
-	if( attributes ){
-		for( var attributeName in attributes ){
-			if( attributes.hasOwnProperty( attributeName ) ){
-				ss.setAttribute( attributeName, attributes[attributeName] );
-			}
-		}
-	}
-	ss.rel = "stylesheet";
-	ss.href = href;
-	ss.media = "only x";
-	function ready( cb ){
-		if( doc.body ){
-			return cb();
-		}
-		setTimeout(function(){
-			ready( cb );
-		});
-	}
-	ready( function(){
-		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
-	});
-	var onloadcssdefined = function( cb ){
-		var resolvedHref = ss.href;
-		var i = sheets.length;
-		while( i-- ){
-			if( sheets[ i ].href === resolvedHref ){
-				return cb();
-			}
-		}
-		setTimeout(function() {
-			onloadcssdefined( cb );
-		});
-	};
-	function loadCB(){
-		if( ss.addEventListener ){
-			ss.removeEventListener( "load", loadCB );
-		}
-		ss.media = media || "all";
-	}
-	if( ss.addEventListener ){
-		ss.addEventListener( "load", loadCB);
-	}
-	ss.onloadcssdefined = onloadcssdefined;
-	onloadcssdefined( loadCB );
-	return ss;
-};
+  };
+  /********************  Message  ********************************/
+  // /layout/_third-party/message/script.ejs
+  // volantis.message(title,message,type,autoClose)
+  /********************脚本懒加载函数********************************/
+  // 已经加入了setTimeout
+  function loadScript(src, cb) {
+    setTimeout(function () {
+      var HEAD =
+        document.getElementsByTagName("head")[0] || document.documentElement;
+      var script = document.createElement("script");
+      script.setAttribute("type", "text/javascript");
+      if (cb) script.onload = cb;
+      script.setAttribute("src", src);
+      HEAD.appendChild(script);
+    });
+  }
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    var doc = window.document;
+    var ss = doc.createElement("link");
+    var ref;
+    if (before) {
+      ref = before;
+    } else {
+      var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+      ref = refs[refs.length - 1];
+    }
+    var sheets = doc.styleSheets;
+    if (attributes) {
+      for (var attributeName in attributes) {
+        if (attributes.hasOwnProperty(attributeName)) {
+          ss.setAttribute(attributeName, attributes[attributeName]);
+        }
+      }
+    }
+    ss.rel = "stylesheet";
+    ss.href = href;
+    ss.media = "only x";
+    function ready(cb) {
+      if (doc.body) {
+        return cb();
+      }
+      setTimeout(function () {
+        ready(cb);
+      });
+    }
+    ready(function () {
+      ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+    });
+    var onloadcssdefined = function (cb) {
+      var resolvedHref = ss.href;
+      var i = sheets.length;
+      while (i--) {
+        if (sheets[i].href === resolvedHref) {
+          return cb();
+        }
+      }
+      setTimeout(function () {
+        onloadcssdefined(cb);
+      });
+    };
+    function loadCB() {
+      if (ss.addEventListener) {
+        ss.removeEventListener("load", loadCB);
+      }
+      ss.media = media || "all";
+    }
+    if (ss.addEventListener) {
+      ss.addEventListener("load", loadCB);
+    }
+    ss.onloadcssdefined = onloadcssdefined;
+    onloadcssdefined(loadCB);
+    return ss;
+  };
 </script>

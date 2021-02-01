@@ -31,21 +31,17 @@
       <script>
         function Snackbar(){
           var checkSnackbar = setInterval(function () {
-            if (typeof loadScript=='undefined') return
-            if (typeof loadCSS=='undefined') return
-            if (typeof $=='undefined') return
-            if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
+            if (typeof volantis=='undefined') return
+            if (typeof volantis.message=='undefined') return
             clearInterval(checkSnackbar)
-            loadCSS('<%- url_for("/css/message.css") %>')
-            loadScript("<%- url_for("/js/message.js") %>",()=>{
             <% snackbar.buttons.forEach((ac, i) => { %>
-              $.message({
-                title: '<%- snackbar.title %>',
-                message: '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
-                type: '<%- snackbar.theme %>'
-              });
+              volantis.message(
+                '<%- snackbar.title %>',
+                '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
+                '<%- snackbar.theme %>',
+                true
+              );
             <% }) %>
-          })
           }, 1000)
         }
       </script>

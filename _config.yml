@@ -591,7 +591,6 @@ plugins:
   # 由于插件过度封装，且pixelcog/parallax.js已不在维护，请务必保证所有图片尺寸一致！！！【暂无兼容方案，欢迎PR】
   parallax:
     enable: #true
-    js: /js/jquery.parallax.min.js # 2.0.0-alpha
     shuffle: true         # shuffle playlist
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg

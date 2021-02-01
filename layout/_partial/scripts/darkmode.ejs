@@ -71,17 +71,20 @@ const toggleCustomDarkMode = () => {
   return currentSetting;
 };
 /**
- * bind click event for toggle button
+ * 暗黑模式触发器
  */
- function bindToggle() {
-      const mode = toggleCustomDarkMode();
-      applyCustomDarkModeSettings(mode);
-	    // 使用 volantis.dark.push 方法传入bindToggle回调函数 参见layout/_partial/scripts/global.ejs
-	    volantis.dark.method.toggle.start();
+volantis.dark.toggle=()=>{
+  const mode = toggleCustomDarkMode();
+  applyCustomDarkModeSettings(mode);
+  // 使用 volantis.dark.push 方法传入volantis.dark.toggle回调函数 参见layout/_partial/scripts/global.ejs
+  volantis.dark.method.toggle.start();
 }
+/**
+ * bind event for toggle button
+ */
 var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
 function bindToggleButton() {
-    btn.on('click',bindToggle);
+    btn.on('click',volantis.dark.toggle);
 }
 applyCustomDarkModeSettings();
 document.addEventListener("DOMContentLoaded", bindToggleButton);

@@ -1,0 +1,27 @@
+<script>
+  volantis.message=(title,message,type,autoClose)=>{
+    if (typeof $.message=='undefined') {
+      <% if(theme.use_cdn) { %>
+        var messageJS='https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/message.js';
+        var messageCSS='https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/css/message.css';
+      <% } else { %>
+        var messageJS='<%- url_for("/js/message.js") %>'
+        var messageCSS='<%- url_for("/css/message.css") %>'
+      <% } %>
+      loadCSS(messageCSS)
+      loadScript(messageJS,()=>{
+        start(title,message,type,autoClose)
+      })
+    }else{
+      start(title,message,type,autoClose)
+    }
+    function start(title,message,type,autoClose){
+        $.message({
+          title: title,
+          message: message,
+          type: type,
+          autoClose: autoClose,
+        });
+    }
+  }
+</script>
