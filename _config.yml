@@ -635,6 +635,7 @@ plugins:
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
     list_folded: true
+    message: false    # 音乐通知
   pjax:
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
