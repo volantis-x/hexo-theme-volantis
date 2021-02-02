@@ -1,15 +1,15 @@
 <% if (theme.plugins.backstretch.enable && (theme.plugins.backstretch.images || page.images)) { %>
-  <% var imgs = theme.plugins.backstretch.images || page.images; %>
-  <% var posi = null;
-  if (theme.plugins.backstretch.position == 'cover') {
-    posi = '#cover-backstretch';
-  }
-   %>
+  <% 
+    var imgs = theme.plugins.backstretch.images || page.images; 
+    var posi = null;
+    if (theme.plugins.backstretch.position == 'cover') {
+      posi = '#cover-backstretch';
+    }
+  %>
   <% if (imgs != undefined && theme.plugins.backstretch.position != undefined){ %>
-    <%- js(theme.plugins.backstretch.js) %>
-    <script type="text/javascript">
+      <script>
         var imgs=<%- '["' + imgs.join('", "') + '"]' %>;
-        if ('<%- theme.plugins.backstretch.shuffle %>' == 'true') {
+        <% if (theme.plugins.backstretch.shuffle) { %>
           function shuffle(arr){
             /*From countercurrent-time*/
             var n = arr.length;
@@ -21,25 +21,20 @@
             }
           }
           shuffle(imgs);
+        <% } %>
+        function Pjax_backstretch(){
+          <% if (posi) { %>
+            $('<%- posi %>').backstretch(
+          <%} else { %>
+            $.backstretch(
+          <%} %>
+              imgs,
+            {
+              duration: "<%- theme.plugins.backstretch.duration %>",
+              fade: "<%- theme.plugins.backstretch.fade %>"
+            });
         }
-	  function Pjax_backstretch(){
-        <% if (posi) { %>
-          $('<%- posi %>').backstretch(
-            imgs,
-          {
-            duration: "<%- theme.plugins.backstretch.duration %>",
-            fade: "<%- theme.plugins.backstretch.fade %>"
-          });
-        <%} else { %>
-          $.backstretch(
-            imgs,
-          {
-            duration: "<%- theme.plugins.backstretch.duration %>",
-            fade: "<%- theme.plugins.backstretch.fade %>"
-          });
-        <%} %>
-	  }
-	  loadScript("<%- theme.plugins.backstretch.js %>",Pjax_backstretch)
-    </script>
+        loadScript("<%- theme.plugins.backstretch.js %>",Pjax_backstretch)
+      </script>
   <% } %>
 <% } %>

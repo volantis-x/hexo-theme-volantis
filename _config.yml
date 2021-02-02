@@ -720,6 +720,10 @@ rightmenu:
     name: 打印页面
     icon: fa fa-print
     onclick: document.execCommand('print')
+  darkmode:
+    name: 暗黑模式
+    white: fal fa-sun
+    dark: fal fa-moon
   # 自定义菜单的格式如下
   help:
     name: 常见问题
@@ -741,11 +745,6 @@ rightmenu:
     name: 主题源码
     icon: fa fa-code-branch
     url: https://github.com/volantis-x/hexo-theme-volantis/
-  darkmode:
-    name: 暗黑模式
-    white: fal fa-sun
-    dark: fal fa-moon
-    toggle: darkmode
 ############################### Rightmenu ############################### > end
 
 

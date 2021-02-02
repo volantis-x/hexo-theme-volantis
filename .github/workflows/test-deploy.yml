@@ -1,0 +1,66 @@
+name: Test to deploy
+
+on:
+  push:
+    branches:s
+    - dev
+    - tests
+jobs:
+  dev:
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    name: A job to Test deploying.
+    steps:
+    - name: Setup Node.js 10.x
+      uses: actions/setup-node@master
+      with:
+        node-version: "10.x"
+    - name: Clone
+      run: |
+        git clone https://github.com/volantis-x/volantis-x.github.io
+        cd volantis-x.github.io
+        git clone -b dev https://github.com/volantis-x/hexo-theme-volantis themes/volantis
+    - name: Generate Public Files
+      run: |
+        cd volantis-x.github.io
+        npm i
+        npm install hexo-cli -g
+        npm run start
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.MHUIG_DEPLOY_KEY }}
+        external_repository: volantis-x/volantis-x.github.io
+        publish_branch: gh-page
+        publish_dir: ./volantis-x.github.io/public
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+  test:
+    if: github.ref == 'refs/heads/test'
+    runs-on: ubuntu-latest
+    name: A job to Test deploying.
+    steps:
+    - name: Setup Node.js 10.x
+      uses: actions/setup-node@master
+      with:
+        node-version: "10.x"
+    - name: Clone
+      run: |
+        git clone https://github.com/volantis-x/volantis-x.github.io
+        cd volantis-x.github.io
+        git clone -b test https://github.com/volantis-x/hexo-theme-volantis themes/volantis
+    - name: Generate Public Files
+      run: |
+        cd volantis-x.github.io
+        npm i
+        npm install hexo-cli -g
+        npm run start
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.MHUIG_DEPLOY_KEY }}
+        external_repository: volantis-x/volantis-x.github.io
+        publish_branch: gh-page
+        publish_dir: ./volantis-x.github.io/public
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'

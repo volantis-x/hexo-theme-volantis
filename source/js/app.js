@@ -28,10 +28,8 @@ var Debounce = (fn, t) => {
   volantis.$coverAnchor = $('#l_cover .cover-wrapper');
   volantis.$switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
   volantis.$header = $('#l_header'); // 移动端导航栏
-  volantis.$headerMenu = $('body .navigation'); // 导航列表
   volantis.$search = $('#l_header .m_search'); // 搜索框 桌面端
   volantis.$mPhoneList = $('#l_header .m-phone .list-v'); //  手机端 子菜单
-  const isMobile = /mobile/i.test(window.navigator.userAgent);
 
   // 校正页面定位（被导航栏挡住的区域）
   var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
@@ -45,7 +43,6 @@ var Debounce = (fn, t) => {
     if (volantis.$header[0]) {
       scrollCorrection = volantis.$header[0].clientHeight + 16;
     }
-    volantis.$headerMenu = $('body .navigation');
   }
 
   // 校正页面定位（被导航栏挡住的区域）
@@ -115,17 +112,11 @@ var Debounce = (fn, t) => {
 
   // 设置导航栏
   function setHeader() {
-    if (pdata.ispage) {
-      window.subData = {
-        title: pdata.postTitle,
-        tools: true
-      };
-    }
-    if (!window.subData) return;
+    if (!pdata.ispage) return;
     volantis.$comment = $('#s-comment'); // 评论按钮  桌面端 移动端
     volantis.$toc = $('#s-toc'); // 目录按钮  仅移动端
     volantis.$commentTarget = $('#l_body article#comments'); // 评论区域
-    volantis.$wrapper.find('.nav-sub .title').text(window.subData.title); // 二级导航文章标题
+    volantis.$wrapper.find('.nav-sub .title').html(pdata.postTitle); // 二级导航文章标题
     // 决定一二级导航栏的切换
     let pos = document.body.scrollTop;
     $(document, window).scroll(Debounce(() => {
@@ -171,6 +162,7 @@ var Debounce = (fn, t) => {
 
   // 设置导航栏菜单选中状态
   function setHeaderMenuSelection() {
+    volantis.$headerMenu = $('body .navigation'); // 导航列表
     // 先把已经激活的取消激活
     volantis.$headerMenu.find('li a.active').removeClass('active');
     volantis.$headerMenu.find('div a.active').removeClass('active');
@@ -206,13 +198,12 @@ var Debounce = (fn, t) => {
 
   // 设置全局事件
   function setGlobalHeaderMenuEvent() {
-    if (isMobile) {
+      // todo: https://github.com/volantis-x/hexo-theme-volantis/issues/476
       // 手机端 点击展开子菜单
-      $('#l_header .m-phone li').click(function(e) {
+      $('#l_header .m-phone li:has(.list-v)').click(function(e) {
         e.stopPropagation();
         $($(e.currentTarget).children('ul')).show();
       });
-    } else {
       // PC端 hover时展开子菜单，点击时隐藏子菜单
       $('#wrapper .m-pc li > a[href]').parent().click(function(e) {
         e.stopPropagation();
@@ -220,12 +211,11 @@ var Debounce = (fn, t) => {
           $('#wrapper .m-pc .list-v').hide();
         }
       });
-    }
     setPageHeaderMenuEvent();
   }
 
   function setPageHeaderMenuEvent() {
-    if (!isMobile) return;
+    // todo: https://github.com/volantis-x/hexo-theme-volantis/issues/476
     // 手机端 点击空白处隐藏子菜单
     $(document).click(function(e) {
       volantis.$mPhoneList.hide();
