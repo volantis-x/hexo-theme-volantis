@@ -1,12 +1,8 @@
 <script>
   /************这个文件存放不需要重载的全局变量和全局函数*********/
   window.volantis = {}; // volantis 全局变量
-  window.volantis.loadcss = document.getElementById("loadcss");
-  /******************** Pjax ********************************/
-  // /layout/_third-party/pjax/index.ejs
-  // volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
-  // volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
-  // volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
+  volantis.$ = {}; // 页面选择器 将jQuery对象缓存起来 see: /source/js/app.js etc.
+  /******************** RunItem ********************************/
   function RunItem() {
     this.list = []; // 存放回调函数
     this.start = () => {
@@ -32,6 +28,11 @@
       };
     }
   }
+  /******************** Pjax ********************************/
+  // /layout/_third-party/pjax/index.ejs
+  // volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
+  // volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
+  // volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
   volantis.pjax = {};
   volantis.pjax.method = {
     complete: new RunItem(),
@@ -45,6 +46,7 @@
     send: volantis.pjax.method.send.push,
   };
   /********************  Dark Mode  ********************************/
+  // /layout/_partial/scripts/darkmode.ejs
   // volantis.dark.mode 当前模式 dark or light
   // volantis.dark.toggle() 暗黑模式触发器
   // volantis.dark.push(callBack[,"callBackName"]) 传入触发器回调函数

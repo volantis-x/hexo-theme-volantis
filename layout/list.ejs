@@ -1,6 +1,6 @@
 <%- partial('_pre') %>
 <% page.comments = false; %>
-<div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.pages && site.pages.length > 0) { %>
     <section class="post-list">
       <% site.pages.sort("-date").each(function(post){ %>

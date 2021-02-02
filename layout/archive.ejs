@@ -1,5 +1,5 @@
 <%- partial('_pre') %>
-<div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
 	<% if (page.year || page.month) { %>
 		<%- partial('_partial/archive') %>
 	<% } else { %>

@@ -42,7 +42,7 @@
         &.hl
           box-shadow: $boxshadow-card-float
 
-.l_main
+#l_main
   width: "calc(100% - 1 * %s)" % $sidebar
   @media screen and (max-width: $device-tablet)
     width: 100%
@@ -57,7 +57,7 @@
     @media screen and (min-width: $device-2k)
       max-width: "calc(55vw - %s)" % $sidebar
     margin: auto
-    ~.l_side
+    ~#l_side
       display: none
   float: left
   if hexo-config('sidebar.position') =='left'

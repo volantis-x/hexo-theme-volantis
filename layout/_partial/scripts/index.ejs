@@ -1,16 +1,16 @@
 <%- partial('global') %>
 <script>
   <% if (theme.plugins.fontawesome) { %>
-  loadCSS("<%- theme.plugins.fontawesome %>", window.volantis.loadcss);
+  loadCSS("<%- theme.plugins.fontawesome %>");
   <% } %>
   <% if (theme.plugins.fontawesome_animation.enable) { %>
-  loadCSS("<%- theme.plugins.fontawesome_animation.css %>", window.volantis.loadcss);
+  loadCSS("<%- theme.plugins.fontawesome_animation.css %>");
   <% } %>
   <% if (theme.plugins.nodewaves.enable) { %>
-  loadCSS("<%- theme.plugins.nodewaves.css %>", window.volantis.loadcss);
+  loadCSS("<%- theme.plugins.nodewaves.css %>");
   <% } %>
   <% if ((theme.plugins.highlightjs.enable == true)&&(theme.plugins.highlightjs.css)) { %>
-  loadCSS("<%- theme.plugins.highlightjs.css %>", window.volantis.loadcss);
+  loadCSS("<%- theme.plugins.highlightjs.css %>");
   <% } %>
 </script>
 <!-- required -->
