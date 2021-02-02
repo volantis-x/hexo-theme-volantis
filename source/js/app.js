@@ -23,13 +23,23 @@ var Debounce = (fn, t) => {
   volantis.$.bodyAnchor = $('#safearea'); // 页面主体
   volantis.$.topBtn = $('#s-top'); // 向上
   volantis.$.wrapper = $('#wrapper'); // 整个导航栏
-  volantis.$.postsBtn = $('#l_header .menu .active,#l_cover .menu .active'); // 一级导航上的当前激活的按钮
+  volantis.$.postsBtn = $('.menu .active','#l_header,#l_cover'); // 一级导航上的当前激活的按钮
   volantis.$.titleBtn = $('h1.title', '#header-meta'); // 文章内标题
   volantis.$.coverAnchor = $('#l_cover .cover-wrapper');
   volantis.$.switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
   volantis.$.header = $('#l_header'); // 移动端导航栏
   volantis.$.search = $('#l_header .m_search'); // 搜索框 桌面端
   volantis.$.mPhoneList = $('#l_header .m-phone .list-v'); //  手机端 子菜单
+
+  function setIsMobile(){
+    if (document.documentElement.clientWidth < 500) {
+      volantis.isMobile=1;
+      volantis.isMobileOld=1;
+    }else{
+      volantis.isMobile=0;
+      volantis.isMobileOld=0;
+    }
+  }
 
   // 校正页面定位（被导航栏挡住的区域）
   var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
@@ -166,7 +176,7 @@ var Debounce = (fn, t) => {
   // 设置导航栏菜单选中状态
   function setHeaderMenuSelection() {
     // !!! 事件丢失 !!!
-    volantis.$.headerMenu = $('#l_header .navigation,#l_cover .navigation,#l_side .navigation'); // 导航列表
+    volantis.$.headerMenu = $('.navigation','#l_header,#l_cover,#l_side'); // 导航列表
 
     // 先把已经激活的取消激活
     volantis.$.headerMenu.find('li a.active').removeClass('active');
@@ -203,12 +213,13 @@ var Debounce = (fn, t) => {
 
   // 设置全局事件
   function setGlobalHeaderMenuEvent() {
-      // todo: https://github.com/volantis-x/hexo-theme-volantis/issues/476
+    if (volantis.isMobile) {
       // 手机端 点击展开子菜单
       $('#l_header .m-phone li:has(.list-v)').click(function(e) {
         e.stopPropagation();
         $($(e.currentTarget).children('ul')).show();
       });
+    } else {
       // PC端 hover时展开子菜单，点击时隐藏子菜单
       $('#wrapper .m-pc li > a[href]').parent().click(function(e) {
         e.stopPropagation();
@@ -216,11 +227,12 @@ var Debounce = (fn, t) => {
           $('#wrapper .m-pc .list-v').hide();
         }
       });
+    }
     setPageHeaderMenuEvent();
   }
 
   function setPageHeaderMenuEvent() {
-    // todo: https://github.com/volantis-x/hexo-theme-volantis/issues/476
+    if (!volantis.isMobile) return
     // 手机端 点击空白处隐藏子菜单
     $(document).click(function(e) {
       volantis.$.mPhoneList.hide();
@@ -292,12 +304,27 @@ var Debounce = (fn, t) => {
   }
 
   $(function() {
+    setIsMobile()
     setHeader();
     setHeaderMenuSelection();
     setGlobalHeaderMenuEvent();
     setHeaderSearch();
     setScrollAnchor();
     setTabs();
+
+    // 监听屏幕宽度
+    window.onresize=()=>{
+      let offsetWid = document.documentElement.clientWidth;
+      // console.log(offsetWid);
+      if (document.documentElement.clientWidth < 500) {
+        volantis.isMobile=1;
+      }else{
+        volantis.isMobile=0;
+      }
+      if(volantis.isMobile!=volantis.isMobileOld){
+        setGlobalHeaderMenuEvent();
+      }
+    } 
 
     // 全屏封面底部箭头
     $('#scroll-down').on('click', function() {

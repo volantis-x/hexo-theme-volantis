@@ -82,7 +82,7 @@ volantis.dark.toggle=()=>{
 /**
  * bind event for toggle button
  */
-var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+var btn=$(".toggle-mode-btn","#wrapper,#rightmenu-wrapper");
 function bindToggleButton() {
     btn.on('click',volantis.dark.toggle);
 }
