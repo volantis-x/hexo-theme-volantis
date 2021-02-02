@@ -312,6 +312,7 @@ comments:
     avatar: robohash # gravatar style https://waline.js.org/client/basic.html#avatar
     pageSize: 10 # 评论每页显示数量
     lang: zh-CN
+    visitor: true
   # utterances
   # https://utteranc.es/
   utterances:
