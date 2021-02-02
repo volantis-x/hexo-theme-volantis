@@ -2,14 +2,18 @@ name: Test to deploy
 
 on:
   push:
-    branches:s
+    branches:
     - dev
-    - tests
+    - test
+  pull_request:
+    branches:
+    - dev
+    - test
 jobs:
   dev:
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
-    name: A job to Test deploying.
+    name: A job to Test deploying for dev.
     steps:
     - name: Setup Node.js 10.x
       uses: actions/setup-node@master
@@ -38,7 +42,7 @@ jobs:
   test:
     if: github.ref == 'refs/heads/test'
     runs-on: ubuntu-latest
-    name: A job to Test deploying.
+    name: A job to Test deploying for test.
     steps:
     - name: Setup Node.js 10.x
       uses: actions/setup-node@master
