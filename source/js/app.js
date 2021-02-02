@@ -70,8 +70,9 @@ var Debounce = (fn, t) => {
       volantis.$.postsBtn.click(e => {
         e.preventDefault();
         e.stopPropagation();
-        if (volantis.$.postsBtn.attr('href') != '/') // TODO: fix it
-        { scrolltoElement(volantis.$.bodyAnchor); }
+        if (volantis.$.postsBtn.attr('href') != '/'){  // TODO: fix it
+          scrolltoElement(volantis.$.bodyAnchor); 
+        }
         e.stopImmediatePropagation();
         volantis.$.postsBtn.unbind('click');
       });
@@ -314,8 +315,7 @@ var Debounce = (fn, t) => {
 
     // 监听屏幕宽度
     window.onresize=()=>{
-      let offsetWid = document.documentElement.clientWidth;
-      // console.log(offsetWid);
+      // console.log(document.documentElement.clientWidth);
       if (document.documentElement.clientWidth < 500) {
         volantis.isMobile=1;
       }else{
@@ -331,35 +331,42 @@ var Debounce = (fn, t) => {
       scrolltoElement(volantis.$.bodyAnchor);
     });
 
-    try {
-      // addEventListener是先绑定先执行，此处的绑定后执行
-      document.addEventListener('pjax:complete',
-        function() {
-          $(function() {
-            restData();
-            setHeader();
-            setHeaderMenuSelection();
-            setPageHeaderMenuEvent();
-            setScrollAnchor();
-            setTabs();
-            // 全屏封面底部箭头
-            $('#scroll-down').on('click', function() {
-              scrolltoElement(volantis.$.bodyAnchor);
-            });
-            // 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件
-            if (volantis.$.switcher.length !== 0) {
-              $(document).click(function(e) {
-                volantis.$.header.removeClass('z_search-open');
-                volantis.$.switcher.removeClass('active');
-              });
-            }
+    volantis.pjax.push(()=>{
+      $(function() {
+        $('#l_header .nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+        $('#l_header .menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+        restData();
+        setHeader();
+        setHeaderMenuSelection();
+        setPageHeaderMenuEvent();
+        setScrollAnchor();
+        setTabs();
+        // 全屏封面底部箭头
+        $('#scroll-down').on('click', function() {
+          scrolltoElement(volantis.$.bodyAnchor);
+        });
+        // 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件
+        if (volantis.$.switcher.length !== 0) {
+          $(document).click(function(e) {
+            volantis.$.header.removeClass('z_search-open');
+            volantis.$.switcher.removeClass('active');
           });
-
-        }, {passive: true});
-    } catch (error) {
-      // console.log(error);
-    }
-
+        }
+      });
+    },'app.js');
+    // 解绑事件 避免重复监听
+    volantis.pjax.send(()=>{
+      volantis.$.switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+      volantis.$.topBtn.unbind('click');
+      $('.menu a','#l_header,#l_cover').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+    },'app.js');
   });
 
   /*锚点定位*/

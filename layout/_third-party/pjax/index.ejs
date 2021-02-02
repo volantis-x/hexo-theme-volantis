@@ -38,34 +38,17 @@
         }
       } catch (error) {}
 
-      volantis.$.switcher.removeClass('active'); // 关闭移动端激活的搜索框
-      volantis.$.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
-      volantis.$.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-
       // 解绑事件 避免重复监听
-      volantis.$.topBtn.unbind('click');
-      $('#l_header .menu a,#l_cover .menu a').unbind('click');
-      $(window).unbind('resize');
-      $(window).unbind('scroll');
-      $(document).unbind('scroll');
-      $(document).unbind('click');
-      $('body').unbind('click');
       // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
       volantis.pjax.method.send.start();
     });
 
     document.addEventListener('pjax:complete', function () {
-      $('#l_header .nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
-      $('#l_header .menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
       $('script[data-pjax], .pjax-reload script').each(function () {
         $(this).parent().append($(this).remove());
       });
-      try{
-        // 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
-        volantis.pjax.method.complete.start();
-      } catch (e) {
-        console.log(e);
-      }
+      // 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.complete.start();
     });
 
     document.addEventListener('pjax:error', function (e) {
