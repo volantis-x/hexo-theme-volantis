@@ -24,7 +24,12 @@
                 var script = document.createElement('script');
                 script.setAttribute('src','https://utteranc.es/client.js');
                 script.setAttribute('repo','<%- theme.comments.utterances.repo %>');
-                script.setAttribute('issue-term','<%- theme.comments.utterances['issue-term'] %>');
+                let issuenumber = '<%- theme.comments.utterances['issue-number'] %>';
+                if (issuenumber) {
+                  script.setAttribute('issue-number', issuenumber);
+                } else {
+                  script.setAttribute('issue-term', '<%- theme.comments.utterances['issue-term'] %>');
+                }
                 script.setAttribute('theme', volantis.utterances.Theme );
                 script.setAttribute('label','<%- theme.comments.utterances.label %>');
                 script.setAttribute('crossorigin','<%- theme.comments.utterances.crossorigin %>');

@@ -317,6 +317,7 @@ comments:
   utterances:
     repo: xxx/xxx
     issue-term: pathname
+    issue-number:
     theme:
       light: github-light
       dark: github-dark
@@ -584,7 +585,7 @@ plugins:
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg
       - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg
-  
+
   # 视差滚动效果
   # https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha
   # parallax 与 backstretch.position:cover 只能选择一个
