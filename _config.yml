@@ -660,7 +660,7 @@ plugins:
   #   icon: fas fa-moon # 可自定义
   #   toggle: darkmode
   darkmodejs:
-    enable: true
+    enable: #true
 
   # 旧版 Internet Explorer 淘汰行动
   # https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support
@@ -721,7 +721,7 @@ rightmenu:
     name: 打印页面
     icon: fa fa-print
     onclick: document.execCommand('print')
-  darkmode:
+  darkmode: # 需开启plugins.darkmodejs
     name: 暗黑模式
     white: fal fa-sun
     dark: fal fa-moon
