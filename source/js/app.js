@@ -16,7 +16,8 @@ var Debounce = (fn, t) => {
 };
 
 (function($) {
-  // 将jQuery对象缓存起来 永远不要让相同的选择器在你的代码里出现多次
+  // jQuery性能优化提示：
+  // 将jQuery对象缓存起来 永远不要让相同的选择器在代码里出现多次
   // 在jQuery中最快的选择器是ID选择器,尽量使用ID代替Class 时间上大约相差100倍
   // 在class前使用tag(标签名)
   // 给选择器一个上下文
@@ -388,19 +389,6 @@ var Debounce = (fn, t) => {
           });
         }
       });
-    },'app.js');
-    // 解绑事件 避免重复监听
-    volantis.pjax.send(()=>{
-      volantis.$.switcher.removeClass('active'); // 关闭移动端激活的搜索框
-      volantis.$.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
-      volantis.$.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-      volantis.$.topBtn.unbind('click');
-      $('.menu a','#l_header,#l_cover').unbind('click');
-      $(window).unbind('resize');
-      $(window).unbind('scroll');
-      $(document).unbind('scroll');
-      $(document).unbind('click');
-      $('body').unbind('click');
     },'app.js');
   });
 
