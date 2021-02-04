@@ -714,6 +714,7 @@ plugins:
 # 自定义右键菜单
 rightmenu:
   enable: true
+  faicon: fa
   # hr: 分割线, music: 音乐控制器
   layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, darkmode, hr, music]
   # 可选功能项
@@ -723,8 +724,8 @@ rightmenu:
     onclick: document.execCommand('print')
   darkmode: # 需开启plugins.darkmodejs
     name: 暗黑模式
-    white: fal fa-sun
-    dark: fal fa-moon
+    white: fa fa-sun
+    dark: fa fa-moon
   # 自定义菜单的格式如下
   help:
     name: 常见问题

@@ -1,5 +1,5 @@
 <% if (theme.rightmenu.enable == true && theme.rightmenu.layout.length > 0) { %>
-
+  <% let faIcon = theme.rightmenu.faicon %>
   <% function loadmenu(obj) { %>
     <li class="menuLoad-Content">
       <a class='vlts-menu fix-cursor-default' <%= obj.url ? 'href='+ url_for(obj.url)+'' : ''%>
@@ -26,29 +26,29 @@
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='navigation menuNavigation-Content'>
-        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fal fa-arrow-left fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fal fa-arrow-right fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fal fa-redo fa-fw'></i></a>
-        <a class='nav icon-only fix-cursor-default' href='/'><i class='fal fa-home fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='<%= faIcon %> fa-arrow-left fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='<%= faIcon %> fa-arrow-right fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='<%= faIcon %> fa-redo fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' href='/'><i class='<%= faIcon %> fa-home fa-fw'></i></a>
       </li>
       <li class='option menuOption-Content'>
         <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyText'>
-          <i class='fal fa-copy fa-fw'></i><%- __('rightmenu.copy_text') %>
+          <i class='<%= faIcon %> fa-copy fa-fw'></i><%- __('rightmenu.copy_text') %>
         </a>
         <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyPaste'>
-          <i class='fal fa-paste fa-fw'></i><%- __('rightmenu.copy_paste') %>
+          <i class='<%= faIcon %> fa-paste fa-fw'></i><%- __('rightmenu.copy_paste') %>
         </a>
         <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySelect'>
-          <i class='fal fa-object-ungroup fa-fw'></i><%- __('rightmenu.copy_select') %>
+          <i class='<%= faIcon %> fa-object-ungroup fa-fw'></i><%- __('rightmenu.copy_select') %>
         </a>
         <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyCut'>
-          <i class='fal fa-cut fa-fw'></i><%- __('rightmenu.copy_cut') %>
+          <i class='<%= faIcon %> fa-cut fa-fw'></i><%- __('rightmenu.copy_cut') %>
         </a>
         <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='openTab'>
-          <i class='fal fa-external-link-square-alt fa-fw'></i><%- __('rightmenu.open_in_new_tab') %>
+          <i class='<%= faIcon %> fa-external-link-square-alt fa-fw'></i><%- __('rightmenu.open_in_new_tab') %>
         </a>
         <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySrc'>
-          <i class='fal fa-image fa-fw'></i><%- __('rightmenu.copy_image_src') %>
+          <i class='<%= faIcon %> fa-image fa-fw'></i><%- __('rightmenu.copy_image_src') %>
         </a>
       </li>
       <% theme.rightmenu.layout.forEach(function(item){ %>
