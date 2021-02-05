@@ -99,7 +99,7 @@
 
       const $menuLoad =  $('.menuLoad-Content'),
             $menuOption =  $('.menuOption-Content'),
-            $menuDarkBtn =  $('.menu-Option[data-fn-type="menuDarkBtn"]');;
+            $menuDarkBtn =  $('.menu-Option[data-fn-type="menuDarkBtn"]');
 
       const $copyText = $('.menu-Option[data-fn-type="copyText"]'),
             $copyPaste = $('.menu-Option[data-fn-type="copyPaste"]'),
@@ -108,6 +108,9 @@
             $copyHref = $('.menu-Option[data-fn-type="copyHref"]'),
             $copySrc = $('.menu-Option[data-fn-type="copySrc"]'),
             $openTab = $('.menu-Option[data-fn-type="openTab"]');
+
+      const darkmodeDark = '<%= theme.rightmenus.darkmode.dark %>' || 'fa fa-moon',
+            darkmodeWhite = '<%= theme.rightmenus.darkmode.white %>' || 'fa fa-sun';
             
       model.init = () => {
         fn.init();
@@ -138,14 +141,6 @@
           event.preventDefault();
           return false;
         }
-
-        // 对应更改图标
-        const darkmodeDark = '<%= theme.rightmenu.darkmode.dark %>'.slice(3) || 'moon',
-              darkmodeWhite = '<%= theme.rightmenu.darkmode.white %>'.slice(3) || 'sun';
-        $menuDarkBtn.on('click.rightMenu.setMenuDark', (event) => {
-          $menuDarkBtn.children().toggleClass(darkmodeDark);
-          $menuDarkBtn.children().toggleClass(darkmodeWhite);
-        })
 
         document.addEventListener('click', () => {
           fn.hideMenu();
@@ -181,6 +176,14 @@
         let optionFlag = false;
         const eventTarget = event.target;
         const selectText = window.getSelection().toString();
+
+         // 对应更改图标
+        if ($menuDarkBtn) {
+          $menuDarkBtn.one('click.rightMenu.setMenuDark', (event) => {
+            $menuDarkBtn.children().toggleClass(darkmodeDark);
+            $menuDarkBtn.children().toggleClass(darkmodeWhite);
+          })
+        }
         
         // 判断是否是输入框
         if($(eventTarget).is('input') || $(eventTarget).is('textarea')) {
