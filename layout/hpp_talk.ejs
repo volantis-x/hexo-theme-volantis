@@ -1,0 +1,22 @@
+<%- partial('_pre') %>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+    <%- partial('_partial/article', {post: page, index: false}) %>
+</div>
+<%- partial('_partial/side') %>
+<%- js(theme.plugins.jquery) %>
+
+<!-- 引用 HexoPlusPlus_Talk组件 -->
+<link rel="stylesheet" href="<%= theme.plugins.hpp.hpp_talk.css %>" /> 
+<script src="<%= theme.plugins.hpp.hpp_talk.js %>"></script>
+<!-- 激活HexoPlusPlus_Talk -->
+<script>
+new hpp_talk(Object.assign(<%- JSON.stringify(theme.plugins.hpp.hpp_talk) %>, {
+  id:"hpp_talk",//容器id
+}));
+</script>
+
+<style>
+.hpp_talk_img{
+  display: inline !important
+}
+</style>
