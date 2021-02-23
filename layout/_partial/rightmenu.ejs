@@ -137,15 +137,15 @@
           return false;
         }
 
-        document.addEventListener('click', () => {
-          $(_rightMenuWrapper).blur();
-        })
-
-        $(window).blur(() => {
+        $(window).on('click.rightMenu', () => {
           fn.hideMenu();
         })
 
-        $(_rightMenuWrapper).blur(() => {
+        $(window).on('blur.rightMenu', () => {
+          fn.hideMenu();
+        })
+
+        $(_rightMenuWrapper).on('blur.rightMenu', () => {
           fn.hideMenu();
         })
       }
@@ -390,6 +390,13 @@
         init: () => {
           fn.init();
           fn.initEvent();
+        },
+        destroy: () => {
+          $(window).off('click.rightMenu');
+          $(window).off('blur.rightMenu');
+          $(_rightMenuWrapper).off('blur.rightMenu');
+          window.document.oncontextmenu = () => {return true};
+          volantis.message('操作提示', '自定义右键注销成功', 'success');
         }
       }
     })()
