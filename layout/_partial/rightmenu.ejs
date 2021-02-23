@@ -92,7 +92,7 @@
       rightMenu.init();
     });
 
-    var rightMenu = (function (model) {
+    const rightMenu = (function(){
       const fn = {},
             _rightMenuWrapper = document.getElementById('rightmenu-wrapper'),
             _rightMenuContent = document.getElementById('rightmenu-content');
@@ -111,11 +111,6 @@
 
       const darkmodeDark = '<%= theme.rightmenu.darkmode.dark %>' || 'fa fa-moon',
             darkmodeWhite = '<%= theme.rightmenu.darkmode.white %>' || 'fa fa-sun';
-            
-      model.init = () => {
-        fn.init();
-        fn.initEvent();
-      }
 
       fn.init = () => {
         $copyText.hide();
@@ -143,6 +138,14 @@
         }
 
         document.addEventListener('click', () => {
+          $(_rightMenuWrapper).blur();
+        })
+
+        $(window).blur(() => {
+          fn.hideMenu();
+        })
+
+        $(_rightMenuWrapper).blur(() => {
           fn.hideMenu();
         })
       }
@@ -151,19 +154,23 @@
       fn.popMenu = (event) => {
         let mouseClientX = event.clientX;
         let mouseClientY = event.clientY;
-        let menuWidth = _rightMenuContent.offsetWidth;
-        let menuHeight = _rightMenuContent.offsetHeight;
         let screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
         let screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
-        let showLeft = mouseClientX + menuWidth > screenWidth ? mouseClientX - menuWidth + 10 : mouseClientX;
-        let showTop = mouseClientY + menuHeight > screenHeight ? mouseClientY - menuHeight + 10 : mouseClientY;
         
         try {
           fn.setMenuItem(event);
+          $(_rightMenuWrapper).focus();
+          _rightMenuWrapper.style.display = 'block';
+          _rightMenuWrapper.style.zIndex = '-2147483648';
+          let menuWidth = _rightMenuContent.offsetWidth;
+          let menuHeight = _rightMenuContent.offsetHeight;
+          let showLeft = mouseClientX + menuWidth > screenWidth ? mouseClientX - menuWidth + 10 : mouseClientX;
+          let showTop = mouseClientY + menuHeight > screenHeight ? mouseClientY - menuHeight + 10 : mouseClientY;
           _rightMenuWrapper.style.left = showLeft + "px";
           _rightMenuWrapper.style.top = showTop + "px";
-          _rightMenuWrapper.style.display = 'block';
+          _rightMenuWrapper.style.zIndex = '2147483648';
         } catch (error) {
+          $(_rightMenuWrapper).blur();
           console.error(error);
           return true;
         }
@@ -189,7 +196,7 @@
         if($(eventTarget).is('input') || $(eventTarget).is('textarea')) {
           const inputStr = $(eventTarget).val();
 
-          // 复制
+          // 全选
           if(inputStr.length > 0) {
             $copySelect.show();
             $copySelect.one("click.rightMenu.copySelect", () => {
@@ -265,7 +272,7 @@
             $copySrc.hide();
           }
 
-        // 选中文本
+        // 复制文本
         if (selectText) {
           if ('<%= theme.plugins.clipboard.enable %>' == 'true') {
             optionFlag = true;
@@ -379,7 +386,12 @@
         return Promise.reject(result);
       }
 
-      return model;
-    }(rightMenu || {}));
+      return {
+        init: () => {
+          fn.init();
+          fn.initEvent();
+        }
+      }
+    })()
   </script>
 <% } %>
