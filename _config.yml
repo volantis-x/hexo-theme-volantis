@@ -735,11 +735,15 @@ rightmenu:
   enable: true
   faicon: fa
   # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, darkmode, hr, music]
+  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, hr, music]
   # 可选功能项
-  print:
-    name: 打印页面
+  print:                  # 只有文章页才允许自定义打印，建议打印选项勾选背景图形 & 取消勾选页眉和页脚
+    name: 打印页面        #       👆 class = article.post 的页面
     icon: fa fa-print
+    defaultStyles: true   # 是否使用预制的打印样式
+    # js:                 # 自定义 js ，可自定义修改，一行一个~
+    #   - $('#top').hide();
+    #   - console.log('打印文章');
     onclick: document.execCommand('print')
   darkmode: # 需开启plugins.darkmodejs
     name: 暗黑模式
