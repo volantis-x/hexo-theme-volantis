@@ -741,10 +741,11 @@ rightmenu:
     name: 打印页面        #       👆 class = article.post 的页面
     icon: fa fa-print
     defaultStyles: true   # 是否使用预制的打印样式
-    # js:                 # 自定义 js ，可自定义修改，一行一个~
-    #   - $('#top').hide();
-    #   - console.log('打印文章');
-    onclick: document.execCommand('print')
+    # js:                 # 自定义 js ，可用于修改样式~
+    #  - '$("article#comments").remove();'
+    #  - '$(".backstretch").remove();'
+    #  - '$("article").css({"boxShadow": "none"});'
+    #  - '$("body").css({"backgroundColor": "#fff"});'
   darkmode: # 需开启plugins.darkmodejs
     name: 暗黑模式
     white: fa fa-sun
