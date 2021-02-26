@@ -184,6 +184,7 @@
         let optionFlag = false;
         const eventTarget = event.target;
         const selectText = window.getSelection().toString();
+        $openTab.hide();  // 隐藏新标签页打开
 
          // 对应更改图标
         if ($menuDarkBtn) {
@@ -258,7 +259,6 @@
           });
         } else {
           $copyHref.hide();
-          $openTab.hide();
         }
 
         // 复制图片
@@ -266,8 +266,12 @@
         if (!!eventSrc) {
             optionFlag = true;
             $copySrc.show();
+            $openTab.show();
             $copySrc.one("click.rightMenu.copySrc", () => {
               fn.copyString(eventSrc);
+            });
+            $openTab.one("click.rightMenu.openTab", () => {
+              window.open(eventSrc);
             });
           } else {
             $copySrc.hide();
@@ -464,6 +468,7 @@
           if(notice) volantis.message('操作提示', '自定义右键注册成功。', 'success');
         },
         destroy: (notice = false) => {
+          fn.hideMenu();
           $(window).off('click.rightMenu');
           $(window).off('blur.rightMenu');
           $(_rightMenuWrapper).off('blur.rightMenu');
