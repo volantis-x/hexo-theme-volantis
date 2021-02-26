@@ -254,7 +254,7 @@
           $copyHref.one("click.rightMenu.copyHref", () => {
             fn.copyString(eventHref);
           });
-          $openTab.one("click.rightMenu.openTab", () => {
+          $openTab.off("click.rightMenu.openTab").one("click.rightMenu.openTab", () => {
             window.open(eventHref);
           });
         } else {
@@ -270,7 +270,7 @@
             $copySrc.one("click.rightMenu.copySrc", () => {
               fn.copyString(eventSrc);
             });
-            $openTab.one("click.rightMenu.openTab", () => {
+            $openTab.off("click.rightMenu.openTab").one("click.rightMenu.openTab", () => {
               window.open(eventSrc);
             });
           } else {
