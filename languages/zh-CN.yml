@@ -48,5 +48,6 @@ rightmenu:
   copy_select: "全选文本"
   copy_cut: "剪切文本"
   copy_image_src: "复制图片地址"
+  copy_image_file: "复制图片文件"
   copy_link: "复制链接"
   open_in_new_tab: "在新标签页打开"
