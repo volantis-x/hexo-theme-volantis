@@ -50,6 +50,9 @@
         <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySrc'>
           <i class='<%= faIcon %> fa-image fa-fw'></i><%- __('rightmenu.copy_image_src') %>
         </a>
+        <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyImg'>
+          <i class='<%= faIcon %> fa-images fa-fw'></i><%- __('rightmenu.copy_image_file') %>
+        </a>
       </li>
       <% theme.rightmenu.layout.forEach(function(item){ %>
         <% if (item == 'hr') { %>
@@ -114,6 +117,7 @@
             $copyCut = $('.menu-Option[data-fn-type="copyCut"]'),
             $copyHref = $('.menu-Option[data-fn-type="copyHref"]'),
             $copySrc = $('.menu-Option[data-fn-type="copySrc"]'),
+            $copyImg = $('.menu-Option[data-fn-type="copyImg"]'),
             $openTab = $('.menu-Option[data-fn-type="openTab"]');
 
       const darkmodeDark = '<%= theme.rightmenu.darkmode.dark %>' || 'fa fa-moon',
@@ -264,17 +268,31 @@
         // 复制图片
         const eventSrc = eventTarget.currentSrc;
         if (!!eventSrc) {
-            optionFlag = true;
-            $copySrc.show();
-            $openTab.show();
-            $copySrc.one("click.rightMenu.copySrc", () => {
-              fn.copyString(eventSrc);
+          optionFlag = true;
+          $copySrc.show();
+          $openTab.show();
+          $copyImg.show();
+          
+          $copySrc.one("click.rightMenu.copySrc", () => {
+            fn.copyString(eventSrc);
+          });
+
+          $copyImg.one("click.rightMenu.copyImg", () => {
+            fn.writeClipImg(eventSrc, (flag, msg) => {
+              if(flag) {
+                volantis.message('操作提示', '复制成功！', 'success');
+              } else {
+                volantis.message('操作提示', '复制失败：' + msg, 'error');
+              }
             });
-            $openTab.off("click.rightMenu.openTab").one("click.rightMenu.openTab", () => {
-              window.open(eventSrc);
-            });
+          });
+
+          $openTab.off("click.rightMenu.openTab").one("click.rightMenu.openTab", () => {
+            window.open(eventSrc);
+          });
           } else {
             $copySrc.hide();
+            $copyImg.hide();
           }
 
         // 复制文本
@@ -392,6 +410,27 @@
             $elemt.value += value; 
             $elemt.focus(); 
           }
+        }
+      }
+
+      // 复制图片到剪切板
+      fn.writeClipImg = async function(eventSrc, done) {
+        try {
+          const data = await fetch(eventSrc);
+          const blob = await data.blob();
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              [blob.type]: blob
+            })
+          ]).then(() => {
+            done(true);
+          }, (error) => {
+            console.error('failure：', error);
+            done(false, error);
+          });
+        } catch (error) {
+          console.error('failure：', error);
+          done(false, error);
         }
       }
 
