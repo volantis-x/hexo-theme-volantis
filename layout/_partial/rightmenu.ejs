@@ -192,7 +192,7 @@
 
          // 对应更改图标
         if ($menuDarkBtn) {
-          $menuDarkBtn.one('click.rightMenu.setMenuDark', (event) => {
+          $menuDarkBtn.off('click.rightMenu').one('click.rightMenu', (event) => {
             $menuDarkBtn.children().toggleClass(darkmodeDark);
             $menuDarkBtn.children().toggleClass(darkmodeWhite);
           })
@@ -205,7 +205,7 @@
           // 全选
           if(inputStr.length > 0) {
             $copySelect.show();
-            $copySelect.one("click.rightMenu.copySelect", () => {
+            $copySelect.off("click.rightMenu").one("click.rightMenu", () => {
               $(eventTarget).select();
             })
           } else {
@@ -215,7 +215,7 @@
           // 剪切
           if(selectText) {
             $copyCut.show();
-            $copyCut.one("click.rightMenu.copyCut", () => {
+            $copyCut.off("click.rightMenu").one("click.rightMenu", () => {
               const statrPos = eventTarget.selectionStart;
               const endPos = eventTarget.selectionEnd;
               fn.copyString(selectText);
@@ -233,7 +233,7 @@
             // 如果剪切板存在内容
             if (!!text) {
               $copyPaste.show();
-              $copyPaste.off("click.rightMenu.cpoyPaste").one("click.rightMenu.cpoyPaste", () => {
+              $copyPaste.off("click.rightMenu").one("click.rightMenu", () => {
                 fn.insertAtCaret($(eventTarget), text);
               })
             } else {
@@ -255,10 +255,10 @@
           optionFlag = true;
           $copyHref.show();
           $openTab.show();
-          $copyHref.one("click.rightMenu.copyHref", () => {
+          $copyHref.off("click.rightMenu").one("click.rightMenu", () => {
             fn.copyString(eventHref);
           });
-          $openTab.off("click.rightMenu.openTab").one("click.rightMenu.openTab", () => {
+          $openTab.off("click.rightMenu").one("click.rightMenu", () => {
             window.open(eventHref);
           });
         } else {
@@ -273,21 +273,19 @@
           $openTab.show();
           $copyImg.show();
           
-          $copySrc.one("click.rightMenu.copySrc", () => {
+          $copySrc.off("click.rightMenu").one("click.rightMenu", () => {
             fn.copyString(eventSrc);
           });
 
-          $copyImg.one("click.rightMenu.copyImg", () => {
-            fn.writeClipImg(eventSrc, (flag, msg) => {
-              if(flag) {
-                volantis.message('操作提示', '复制成功！', 'success');
-              } else {
-                volantis.message('操作提示', '复制失败：' + msg, 'error');
-              }
-            });
+          $copyImg.off("click.rightMenu").one("click.rightMenu", () => {
+            fn.writeClipImg(event, () => {
+              volantis.message('操作提示', '复制成功！', 'success');
+            }, (error) => {
+              volantis.message('操作提示', '复制失败：' + error, 'error');
+            })
           });
 
-          $openTab.off("click.rightMenu.openTab").one("click.rightMenu.openTab", () => {
+          $openTab.off("click.rightMenu").one("click.rightMenu", () => {
             window.open(eventSrc);
           });
           } else {
@@ -300,7 +298,7 @@
           if ('<%= theme.plugins.clipboard.enable %>' == 'true') {
             optionFlag = true;
             $copyText.show();
-            $copyText.one("click.rightMenu.cpoyText", () => {
+            $copyText.off("click.rightMenu").one("click.rightMenu", () => {
               fn.copyString(selectText);
             })
           }
@@ -313,7 +311,7 @@
         const pathName = window.location.pathname;
         if(!!_printArticle) {
           $printHtml.show();
-          $printHtml.one('click.rightMenu.printHtml', (event) => {
+          $printHtml.off("click.rightMenu").one('click.rightMenu', (event) => {
             if(window.location.pathname === pathName) {
               fn.printHtml();
             } else {
@@ -346,7 +344,7 @@
 
       // 复制字符串
       fn.copyString = (str) => {
-        fn.copyText(str)
+        fn.writeClipText(str)
           .then(() => {
             volantis.message('操作提示', str.length > 120 ? str.substring(0, 120) + '...' : str, 'info');
           }).catch(e => {
@@ -354,8 +352,8 @@
           })
       }
 
-      // 兼容处理
-      fn.copyText = (str) => {
+      // 写入文本到剪切板
+      fn.writeClipText = (str) => {
         try {
           return navigator.clipboard
             .writeText(str)
@@ -388,8 +386,66 @@
         }
       }
 
+      // 写入图片到剪切板
+      fn.writeClipImg = async function(event, success, error) {
+        const eventSrc = event.target.currentSrc;
+        const parentElement = event.target.parentElement;
+        try {
+          const data = await fetch(eventSrc);
+          const blob = await data.blob();
+          await navigator.clipboard
+            .write([
+              new ClipboardItem({
+                [blob.type]: blob
+              })
+            ]).then(() => {
+              // console.info('图片复制成功', new Date().getTime());
+              success();
+            }, (e) => {
+              console.error('图片复制失败：', e);
+              error(e);
+            });
+        } catch (e) {
+          // console.info('使用兼容方法复制图片，问题：', e);
+          const dom = document;
+          try {
+            if (dom.body.createTextRange) {
+              const textRange = document.body.createTextRange();
+              textRange.moveToElementText(parentElement);
+              textRange.select();
+            } else if (window.getSelection) {
+              const selection = window.getSelection();
+              const range = document.createRange();
+              range.selectNodeContents(parentElement);
+              selection.removeAllRanges();
+              selection.addRange(range);
+            }
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            success();
+          } catch (e) {
+            console.error(e);
+            error('不支持复制当前图片！');
+          }
+        }
+      }
+
+      // 请求读取剪切板
+      fn.readClipboard = async () => {
+        const result = await navigator.permissions.query({ name: 'clipboard-read' });
+        if (result.state === 'granted' || result.state === 'prompt') {
+          // 修改为 .read()  可以获取剪切板中的文字/图片
+          // 返回的是 ClipboardItem
+          return navigator.clipboard
+            .readText()
+            .then(text => text)
+            .catch(err => Promise.reject(err));
+        }
+        return Promise.reject(result);
+      }
+
       // 粘贴文本
-      fn.insertAtCaret = function($elemt, value) {
+      fn.insertAtCaret = ($elemt, value) => {
         const elemt = $elemt[0];
         const startPos = elemt.selectionStart,
               endPos = elemt.selectionEnd;
@@ -411,39 +467,6 @@
             $elemt.focus(); 
           }
         }
-      }
-
-      // 复制图片到剪切板
-      fn.writeClipImg = async function(eventSrc, done) {
-        try {
-          const data = await fetch(eventSrc);
-          const blob = await data.blob();
-          await navigator.clipboard.write([
-            new ClipboardItem({
-              [blob.type]: blob
-            })
-          ]).then(() => {
-            done(true);
-          }, (error) => {
-            console.error('failure：', error);
-            done(false, error);
-          });
-        } catch (error) {
-          console.error('failure：', error);
-          done(false, error);
-        }
-      }
-
-      // 请求读取剪切板
-      fn.readClipboard = async () => {
-        const result = await navigator.permissions.query({ name: 'clipboard-read' });
-        if (result.state === 'granted' || result.state === 'prompt') {
-          return navigator.clipboard
-            .readText()
-            .then(text => text)
-            .catch(err => Promise.reject(err));
-        }
-        return Promise.reject(result);
       }
 
       // 执行打印页面
