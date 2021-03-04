@@ -15,8 +15,8 @@
 						<div class='timenode'>
 								<a class="meta" href="<%= url_for(post.link || post.path) %>">
 									<time><%= date(post.date, 'MM-DD') %></time>
-									<% if(post.title){ %>
-										<%- post.title %>
+									<% if(post.title || post.seo_title){ %>
+										<%- post.title || post.seo_title %>
 									<% } else if (post.date) { %>
 										<%= date(post.date, config.date_format) %>
 									<% } %>
