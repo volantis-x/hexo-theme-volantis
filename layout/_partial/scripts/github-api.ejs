@@ -1,0 +1,30 @@
+<script>
+  function loadIssuesJS() {
+    // issuesjs
+    if (volantis.plugins.sitesjs) {
+      const issues_api = document.getElementById('sites-api');
+      if (issues_api != undefined && typeof SitesJS === 'undefined') {
+        loadScript(volantis.plugins.sitesjs, {defer:true})
+      }
+    }
+    if (volantis.plugins.friendsjs) {
+      const issues_api = document.getElementById('friends-api');
+      if (issues_api != undefined && typeof FriendsJS === 'undefined') {
+        loadScript(volantis.plugins.friendsjs, {defer:true})
+      }
+    }
+    if (volantis.plugins.contributorsjs) {
+      const github_api = document.getElementById('contributors-api');
+      if (github_api != undefined && typeof ContributorsJS === 'undefined') {
+        loadScript(volantis.plugins.contributorsjs, {defer:true})
+      }
+    }
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+    loadIssuesJS();
+  })
+
+</script>

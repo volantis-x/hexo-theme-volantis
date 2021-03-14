@@ -1,3 +1,20 @@
+
+
+default:
+  avatar: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
+  link: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
+  cover: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
+  image: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+
+
+#
+# 上面的是 v5 新版通用配置，可兼容 Stellar 主题，请放心使用
+#
+# xxxxxxxx
+#
+# 下面的是 v4 旧版配置，将逐步迁移至通用配置中
+#
+
 ############################### Volantis ###############################
 # use_cdn: /source/js/* 中的JS文件(JS Only)使用jsdelivr的min版本加速
 # 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
@@ -491,6 +508,10 @@ plugins:
   # fontawesome
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
   ################ optional plugins ################
+  # issues api
+  sitesjs: /js/plugins/sites.js
+  friendsjs: /js/plugins/friends.js
+  contributorsjs: /js/plugins/contributors.js
 
   ######## Plugins to improve loading speed:
 
@@ -709,7 +730,7 @@ plugins:
   tidio:
     enable: #true
     id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  
+
   # HexoPlusPlus
   # https://github.com/HexoPlusPlus/HexoPlusPlus
   # https://hexoplusplus.js.org/

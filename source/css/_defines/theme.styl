@@ -1,0 +1,43 @@
+
+// 浅色页面
+$c-site-bg-light = #f8f8f8
+$c-block-light = #f2f2f2
+$c-title-light = #000
+$c-text-light = #222
+$c-card-light = white
+
+// 深色页面
+$c-site-bg-dark = black
+$c-block-dark = #111
+$c-title-dark = #fff
+$c-text-dark = #fff
+$c-card-dark = #333
+
+
+:root
+  --site-bg: $c-site-bg-light
+  --block: $c-block-light
+  --block-border: mix($c-block-light, $c-text-light, 95)
+  --block-hover: mix($c-block-light, $c-text-light, 98)
+  --text-p0: $c-title-light
+  --text-p1: $c-text-light
+  --text-p2: mix($c-text-light, $c-site-bg-light, 80)
+  --text-p3: mix($c-text-light, $c-site-bg-light, 60)
+  --text-meta: mix($c-text-light, $c-site-bg-light, 20)
+  --card: $c-card-light
+  --theme-highlight: darken($color-theme, 5)
+  --theme-bg: mix($color-theme, $c-card-light, 10)
+
+body[theme='dark']
+  --site-bg: $c-site-bg-dark
+  --block: $c-block-dark
+  --block-border: mix($c-block-dark, $c-text-dark, 90)
+  --block-hover: mix($c-block-dark, $c-text-dark, 95)
+  --text-p0: $c-title-dark
+  --text-p1: $c-text-dark
+  --text-p2: mix($c-text-dark, $c-site-bg-dark, 70)
+  --text-p3: mix($c-text-dark, $c-site-bg-dark, 45)
+  --text-meta: mix($c-text-dark, $c-site-bg-dark, 30)
+  --card: $c-card-dark
+  --theme-highlight: $color-theme
+  --theme-bg: mix($color-theme, $c-card-dark, 10)

@@ -1,0 +1,72 @@
+.users-wrap
+  overflow: hidden
+  .group-header
+    margin: 0 0 1rem
+    p
+      margin: 0
+      font-size: $fs-14
+      &:first-child
+        font-size: 1.25rem
+        font-weight: 500
+  .group-body
+    width: 100%
+    display: flex
+    flex-wrap: wrap
+    align-items: stretch
+    margin-bottom: 2rem
+  .friendsjs-wrap
+    display: block
+    .loading-wrap
+      min-height: 50px
+      margin: 2rem 0
+      text-align: center
+
+.users-wrap .user-card
+  flex-shrink: 1
+  display: flex
+  align-items: stretch
+  width: 12.5%
+  @media screen and (max-width: 980px)
+    width: 14.28%
+  @media screen and (max-width: 900px)
+    width: 16.66%
+  @media screen and (max-width: 820px)
+    width: 20%
+  @media screen and (max-width: $device-tablet)
+    width: 16.66%
+  @media screen and (max-width: $device-mobile)
+    width: 25%
+  .card-link
+    margin: 0
+    width: 100%
+    color: var(--text-p1)
+    font-size: 10px
+    font-weight: 500
+    display: flex
+    justify-content: flex-start
+    flex-direction: column
+    align-items: center
+    text-align: center
+    line-height: 1.2
+    border-radius: 4px
+    overflow: hidden
+    position: relative
+    padding: 1rem 0.5rem
+    img
+      object-fit: cover
+      display: block
+      width: 48px
+      height: 48px
+      background: var(--card)
+      border-radius: 64px
+      margin: 0 0 0.5rem
+
+// transform
+.users-wrap .user-card .card-link
+  >img
+    trans2 transform box-shadow
+  &:hover
+    background: var(--block-hover)
+    img
+      transform: scale(1.2) rotate(8deg)
+      box-shadow: $boxshadow-card-float

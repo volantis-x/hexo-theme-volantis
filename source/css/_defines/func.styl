@@ -1,5 +1,38 @@
 
 
+// 可替代 transition 使用
+transition($op = all, $time = 0.28s, $ease = ease-out)
+  transition: $op $time $ease
+  -moz-transition: $op $time $ease
+  -webkit-transition: $op $time $ease
+  -o-transition: $op $time $ease
+
+// 为1个属性设置动画
+trans1($op, $time = 0.2s)
+  transition: $op $time ease-out
+  -moz-transition: $op $time ease-out
+  -webkit-transition: $op $time ease-out
+  -o-transition: $op $time ease-out
+
+// 为2个属性设置动画
+trans2($op1, $op2)
+  transition: $op1 0.2s ease-out, $op2 0.2s ease-out
+  -moz-transition: $op1 0.2s ease-out, $op2 0.2s ease-out
+  -webkit-transition: $op1 0.2s ease-out, $op2 0.2s ease-out
+  -o-transition: $op1 0.2s ease-out, $op2 0.2s ease-out
+
+trans2pro($op1, $t1, $op2, $t2)
+  transition: $op1 $t1 ease-out, $op2 $t2 ease-out
+  -moz-transition: $op1 $t1 ease-out, $op2 $t2 ease-out
+  -webkit-transition: $op1 $t1 ease-out, $op2 $t2 ease-out
+  -o-transition: $op1 $t1 ease-out, $op2 $t2 ease-out
+
+trans3($op1, $op2, $op3)
+  transition: $op1 0.2s ease-out, $op2 0.2s ease-out, $op3 0.2s ease-out
+  -moz-transition: $op1 0.2s ease-out, $op2 0.2s ease-out, $op3 0.2s ease-out
+  -webkit-transition: $op1 0.2s ease-out, $op2 0.2s ease-out, $op3 0.2s ease-out
+  -o-transition: $op1 0.2s ease-out, $op2 0.2s ease-out, $op3 0.2s ease-out
+
 trans($time = 0.28s)
   transition: all $time ease
   -moz-transition: all $time ease

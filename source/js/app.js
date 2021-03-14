@@ -78,13 +78,13 @@ var Debounce = (fn, t) => {
     //     console.log(1)
     //     if (volantis.$.postsBtn.attr('href') != '/'){  // TODO: fix it
     //       console.log(2)
-    //       scrolltoElement(volantis.$.bodyAnchor); 
+    //       scrolltoElement(volantis.$.bodyAnchor);
     //     }
     //     e.stopImmediatePropagation();
     //     volantis.$.postsBtn.unbind('click');
     //   });
     // }
-    
+
     // 点击文章内标题滚动至bodyAnchor
     // 无用代码段 ？？？
     // volantis.$.titleBtn = $('h1.title', '#header-meta'); // 文章内标题 // 无法点击！！
@@ -175,7 +175,7 @@ var Debounce = (fn, t) => {
         e.stopImmediatePropagation();
       });
     } else volantis.$.comment.remove(); // 关闭了评论，则隐藏评论按钮
-    
+
     // 移动端toc目录按钮 【移动端】
     if (volantis.isMobile) {
       volantis.$.toc = $('#s-toc'); // 目录按钮  仅移动端
@@ -261,7 +261,7 @@ var Debounce = (fn, t) => {
     }
     setPageHeaderMenuEvent();
   }
-  
+
   // 【移动端】隐藏子菜单
   function setPageHeaderMenuEvent() {
     if (!volantis.isMobile) return
@@ -311,7 +311,7 @@ var Debounce = (fn, t) => {
     //         ev = event;
     //       }
     //       if (key == 9) { //IE浏览器
-    //         if (isie) { 
+    //         if (isie) {
     //           ev.keyCode = 0;
     //           ev.returnValue = false;
     //         } else { //火狐浏览器
@@ -360,7 +360,7 @@ var Debounce = (fn, t) => {
         setHeader();
         setHeaderSearch();
       }
-    } 
+    }
 
     // 全屏封面底部箭头  【移动端 PC】
     $('#scroll-down').on('click', function() {
