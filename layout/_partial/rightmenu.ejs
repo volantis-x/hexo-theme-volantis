@@ -251,7 +251,7 @@
 
         // 新标签打开链接
         const eventHref = eventTarget.href;
-        if (!!eventHref && urlRegx.test(eventTarget)) {
+        if (!!eventHref && urlRegx.test(eventHref)) {
           optionFlag = true;
           $copyHref.show();
           $openTab.show();
