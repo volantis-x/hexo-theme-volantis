@@ -32,42 +32,42 @@
         <a class='nav icon-only fix-cursor-default' href='/'><i class='<%= faIcon %> fa-home fa-fw'></i></a>
       </li>
       <li class='option menuOption-Content'>
-        <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyText'>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyText'>
           <i class='<%= faIcon %> fa-copy fa-fw'></i><%- __('rightmenu.copy_text') %>
-        </a>
-        <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyPaste'>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyPaste'>
           <i class='<%= faIcon %> fa-paste fa-fw'></i><%- __('rightmenu.copy_paste') %>
-        </a>
-        <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySelect'>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySelect'>
           <i class='<%= faIcon %> fa-object-ungroup fa-fw'></i><%- __('rightmenu.copy_select') %>
-        </a>
-        <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyCut'>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyCut'>
           <i class='<%= faIcon %> fa-cut fa-fw'></i><%- __('rightmenu.copy_cut') %>
-        </a>
-        <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='openTab'>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='openTab'>
           <i class='<%= faIcon %> fa-external-link-square-alt fa-fw'></i><%- __('rightmenu.open_in_new_tab') %>
-        </a>
-        <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySrc'>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySrc'>
           <i class='<%= faIcon %> fa-image fa-fw'></i><%- __('rightmenu.copy_image_src') %>
-        </a>
-        <a class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyImg'>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyImg'>
           <i class='<%= faIcon %> fa-images fa-fw'></i><%- __('rightmenu.copy_image_file') %>
-        </a>
+        </span>
       </li>
       <% theme.rightmenu.layout.forEach(function(item){ %>
         <% if (item == 'hr') { %>
           <hr class="menuLoad-Content">
         <% } else if (item == 'darkmode') { %>
           <li class='option menuOption-Content'>
-            <a class='vlts-menu fix-cursor-default toggle-mode-btn' id='menuDarkBtn'>
+            <span class='vlts-menu opt fix-cursor-default toggle-mode-btn' id='menuDarkBtn'>
               <i class='<%= theme.rightmenu.darkmode.dark %> fa-fw '></i> <%- trim(theme.rightmenu.darkmode.name) %>
-            </a>
+            </span>
           </li>
         <% } else if (item == 'print') { %>
           <li class='option menuOption-Content'>
-            <a class='vlts-menu fix-cursor-default' id='printHtml'>
+            <span class='vlts-menu opt fix-cursor-default' id='printHtml'>
               <i class='<%= theme.rightmenu.print.icon %> fa-fw '></i> <%- trim(theme.rightmenu.print.name) %>
-            </a>
+            </span>
           </li>  
         <% } else if (item == 'music' && theme.plugins.aplayer.enable == true) { %>
           <li class='music name menuOption-Content'>
@@ -107,7 +107,7 @@
             _rightMenuContent = document.getElementById('rightmenu-content');
 
       const $printHtml =  $('#printHtml'),
-            $menuDarkBtn =  $('#menuDarkBtn')
+            $menuDarkBtn =  $('#menuDarkBtn'),
             $menuLoad =  $('.menuLoad-Content'),
             $menuOption =  $('.menuOption-Content');
 
@@ -251,7 +251,7 @@
 
         // 新标签打开
         const eventHref = eventTarget.href;
-        if (!!eventHref) {
+        if (!!eventHref && eventTarget.tagName !== 'use') {
           optionFlag = true;
           $copyHref.show();
           $openTab.show();
@@ -307,7 +307,7 @@
         }
 
         // 打印
-        const _printArticle = $('.article.post').html();
+        const _printArticle = $('#post.article').html() || null;
         const pathName = window.location.pathname;
         if(!!_printArticle) {
           $printHtml.show();
@@ -473,8 +473,9 @@
       fn.printHtml = () => {
         <% if(theme.rightmenu.print.defaultStyles) { %>
         // 加载默认的打印样式
-        $('img.lazyload').removeAttr('srcset data-srcset').removeClass('lazyload');
-        $('#backgroud-cover-szyink').css({'background': '#fff'});
+        $('body').css({
+          'backgroundColor': 'unset'
+        });
         $('#l_header').hide();
         $('#l_cover').hide();
         $('#l_side').hide();
@@ -503,7 +504,12 @@
         $('.tab-content').css({'border-top': 'none'});
         $('.highlight>table pre').css({'white-space': 'pre-wrap', 'word-break': 'break-all'});
         $('.nav-tabs').hide();
-        $('.j-china-lantern').hide();
+        $('.backstretch').hide();
+        $('.fancybox img').css({
+          'height': 'auto',
+          'weight': 'auto'
+        });
+        $('img').removeAttr('srcset data-srcset').removeClass('img lazyload loaded');
         <% } %>
 
         <% if (theme.rightmenu.print.js) { %>
@@ -518,9 +524,11 @@
         <% } %>
 
         $(document).click();
-        window.print();
-        document.body.innerHTML = '';
-        window.location.reload();
+        setTimeout(() => {
+          window.print();
+          document.body.innerHTML = '';
+          window.location.reload();
+        }, 50);
       }
 
       return {

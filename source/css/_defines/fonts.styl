@@ -6,6 +6,7 @@ if hexo-config('custom_css.fontfamily.bodyfont')
       src: url(hexo-config('custom_css.fontfamily.bodyfont.url'))
       font-weight: hexo-config('custom_css.fontfamily.bodyfont.weight')
       font-style: hexo-config('custom_css.fontfamily.bodyfont.style')
+      font-display: swap
   if hexo-config('custom_css.fontfamily.bodyfont.fontfamily')
     $fontfamily = convert(hexo-config('custom_css.fontfamily.bodyfont.fontfamily')), Menlo, Monaco, monospace, sans-serif
 
@@ -18,6 +19,7 @@ if hexo-config('custom_css.fontfamily.codefont')
       src: url(hexo-config('custom_css.fontfamily.codefont.url'))
       font-weight: hexo-config('custom_css.fontfamily.codefont.weight')
       font-style: hexo-config('custom_css.fontfamily.codefont.style')
+      font-display: swap
   if hexo-config('custom_css.fontfamily.codefont.fontfamily')
     $fontfamily-code = convert(hexo-config('custom_css.fontfamily.codefont.fontfamily')), monospace, courier, sans-serif
 
@@ -31,6 +33,7 @@ if hexo-config('custom_css.fontfamily.logofont')
       src: url(hexo-config('custom_css.fontfamily.logofont.url'))
       font-weight: hexo-config('custom_css.fontfamily.logofont.weight')
       font-style: hexo-config('custom_css.fontfamily.logofont.style')
+      font-display: swap
   if hexo-config('custom_css.fontfamily.logofont.fontfamily')
     $fontfamily-logo = convert(hexo-config('custom_css.fontfamily.logofont.fontfamily')), Helvetica, monospace
 

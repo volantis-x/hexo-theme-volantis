@@ -18,6 +18,25 @@ ul.list-v.rightmenu
     text-overflow: ellipsis
     overflow: hidden
     line-height: $cellH
+  >li>span
+    trans()
+    display: block
+    color: var(--color-list)
+    font-size: $fontsize-meta
+    // font-weight: bold
+    line-height: 36px
+    @media screen and (max-width: $device-laptop)
+      line-height: 40px
+    padding: 0 $gap + $border-line + 2px 0 $gap
+    text-overflow: ellipsis
+    margin: 0 4px
+    border-radius: 4px
+    >i
+      margin-right: 8px
+    &:active,&.active
+      list_active()
+    &:hover
+      list_hover()  
   li.navigation, li.music
     display: flex
     justify-content: space-between
