@@ -36,6 +36,8 @@ hexo.extend.tag.register('image', function(args) {
     img += '<img class="img" src="' + url + '"';
     if (alt.length > 0) {
       img += ' alt="' + alt + '"';
+    } else {
+      img += ' alt="image"';
     }
     if (style.length > 0) {
       img += ' style="' + style + '"';
