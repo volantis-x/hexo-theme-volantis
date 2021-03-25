@@ -60,12 +60,12 @@
   box-sizing border-box
   position fixed
   right 16px
-  background-color #fff
+  background-color var(--color-card)
   transition opacity .3s, transform .3s, right .3s, top .4s
   overflow hidden
   box-shadow 0 2px 12px 0 rgba(0, 0, 0, .1)
   border-radius 8px
-  border 1px solid #ebeef5
+  border 1px solid var(--color-block)
   a
     border-bottom 1px solid rgba(131, 145, 165, .8)
     color inherit
@@ -91,7 +91,7 @@
 .c-message__title
   font-weight 400
   font-size 15px
-  color #1f2d3d
+  color var(--color-text)
   margin 0
 
 .c-message--icon
@@ -105,8 +105,9 @@
   font-size 13px
   line-height 21px
   margin 10px 0 0
-  color #8391a5
+  color var(--color-p)
   text-align justify
+  word-break break-all
 
 .el-notification__group
   margin-left 35px
