@@ -249,9 +249,9 @@
           $copyCut.hide();
         }
 
-        // 新标签打开
+        // 新标签打开链接
         const eventHref = eventTarget.href;
-        if (!!eventHref && eventTarget.tagName !== 'use') {
+        if (!!eventHref && urlRegx.test(eventTarget)) {
           optionFlag = true;
           $copyHref.show();
           $openTab.show();
@@ -265,17 +265,29 @@
           $copyHref.hide();
         }
 
-        // 复制图片
+        // 新标签打开图片 & 复制图片链接
         const eventSrc = eventTarget.currentSrc;
-        if (!!eventSrc) {
+        if (!!eventSrc && urlRegx.test(eventSrc)) {
           optionFlag = true;
           $copySrc.show();
           $openTab.show();
-          $copyImg.show();
           
           $copySrc.off("click.rightMenu").one("click.rightMenu", () => {
             fn.copyString(eventSrc);
           });
+
+          $openTab.off("click.rightMenu").one("click.rightMenu", () => {
+            window.open(eventSrc);
+          });
+        } else {
+          $copySrc.hide();
+          $openTab.hide();
+        }
+
+        // 复制文本
+        if(!!eventSrc && urlRegx.test(eventSrc) && eventSrc.trimEnd().endsWith('.png')) {
+          optionFlag = true;
+          $copyImg.show();
 
           $copyImg.off("click.rightMenu").one("click.rightMenu", () => {
             fn.writeClipImg(event, () => {
@@ -284,14 +296,9 @@
               volantis.message('操作提示', '复制失败：' + error, 'error');
             })
           });
-
-          $openTab.off("click.rightMenu").one("click.rightMenu", () => {
-            window.open(eventSrc);
-          });
-          } else {
-            $copySrc.hide();
-            $copyImg.hide();
-          }
+        } else {
+          $copyImg.hide();
+        }
 
         // 复制文本
         if (selectText) {

@@ -1,5 +1,5 @@
 <script>
-  volantis.message=(title,message,type,autoClose)=>{
+  volantis.message=(title,message,type,time = 3000,autoClose,)=>{
     if (typeof $.message=='undefined') {
       <% if(theme.use_cdn) { %>
         var messageJS='https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/message.js';
@@ -10,17 +10,18 @@
       <% } %>
       loadCSS(messageCSS)
       loadScript(messageJS,()=>{
-        start(title,message,type,autoClose)
+        start(title,message,type,autoClose,time)
       })
     }else{
-      start(title,message,type,autoClose)
+      start(title,message,type,autoClose,time)
     }
-    function start(title,message,type,autoClose){
+    function start(title,message,type,autoClose,time){
         $.message({
           title: title,
           message: message,
           type: type,
           autoClose: autoClose,
+          time: time
         });
     }
   }
