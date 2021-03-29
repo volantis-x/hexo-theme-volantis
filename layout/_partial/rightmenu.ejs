@@ -33,25 +33,32 @@
       </li>
       <li class='option menuOption-Content'>
         <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyText'>
-          <i class='<%= faIcon %> fa-copy fa-fw'></i><%- __('rightmenu.copy_text') %>
+          <% let copy_text = __('rightmenu.copy_text') %>
+          <i class='<%= faIcon %> fa-copy fa-fw'></i> <%- trim(copy_text) %>
         </span>
         <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyPaste'>
-          <i class='<%= faIcon %> fa-paste fa-fw'></i><%- __('rightmenu.copy_paste') %>
+          <% let copy_paste = __('rightmenu.copy_paste') %>
+          <i class='<%= faIcon %> fa-paste fa-fw mR12'></i> <%- trim(copy_paste) %>
         </span>
         <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySelect'>
-          <i class='<%= faIcon %> fa-object-ungroup fa-fw'></i><%- __('rightmenu.copy_select') %>
+          <% let copy_select = __('rightmenu.copy_select') %>
+          <i class='<%= faIcon %> fa-object-ungroup fa-fw mR12'></i> <%- trim(copy_select) %>
         </span>
         <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyCut'>
-          <i class='<%= faIcon %> fa-cut fa-fw'></i><%- __('rightmenu.copy_cut') %>
+          <% let copy_cut = __('rightmenu.copy_cut') %>
+          <i class='<%= faIcon %> fa-cut fa-fw mR12'></i> <%- trim(copy_cut) %>
         </span>
         <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='openTab'>
-          <i class='<%= faIcon %> fa-external-link-square-alt fa-fw'></i><%- __('rightmenu.open_in_new_tab') %>
+          <% let open_in_new_tab = __('rightmenu.open_in_new_tab') %>
+          <i class='<%= faIcon %> fa-external-link-square-alt fa-fw mR12'></i> <%- trim(open_in_new_tab) %>
         </span>
         <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySrc'>
-          <i class='<%= faIcon %> fa-image fa-fw'></i><%- __('rightmenu.copy_image_src') %>
+          <% let copy_image_src = __('rightmenu.copy_image_src') %>
+          <i class='<%= faIcon %> fa-image fa-fw mR12'></i> <%- trim(copy_image_src) %>
         </span>
         <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyImg'>
-          <i class='<%= faIcon %> fa-images fa-fw'></i><%- __('rightmenu.copy_image_file') %>
+          <% let copy_image_file = __('rightmenu.copy_image_file') %>
+          <i class='<%= faIcon %> fa-images fa-fw mR12'></i> <%- trim(copy_image_file) %>
         </span>
       </li>
       <% theme.rightmenu.layout.forEach(function(item){ %>
@@ -98,18 +105,17 @@
 
   <script>
     $(function () {
-      rightMenu.init();
+      RightMenu.init();
     });
 
-    const rightMenu = (function(){
+    const RightMenu = (() => {
       const fn = {},
-            _rightMenuWrapper = document.getElementById('rightmenu-wrapper'),
-            _rightMenuContent = document.getElementById('rightmenu-content');
-
-      const $printHtml =  $('#printHtml'),
+            $printHtml =  $('#printHtml'),
             $menuDarkBtn =  $('#menuDarkBtn'),
             $menuLoad =  $('.menuLoad-Content'),
-            $menuOption =  $('.menuOption-Content');
+            $menuOption =  $('.menuOption-Content'),
+            _rightMenuWrapper = $('#rightmenu-wrapper')[0],
+            _rightMenuContent = $('#rightmenu-content')[0];
 
       const $copyText = $('.menu-Option[data-fn-type="copyText"]'),
             $copyPaste = $('.menu-Option[data-fn-type="copyPaste"]'),
@@ -121,7 +127,8 @@
             $openTab = $('.menu-Option[data-fn-type="openTab"]');
 
       const darkmodeDark = '<%= theme.rightmenu.darkmode.dark %>' || 'fa fa-moon',
-            darkmodeWhite = '<%= theme.rightmenu.darkmode.white %>' || 'fa fa-sun';
+            darkmodeWhite = '<%= theme.rightmenu.darkmode.white %>' || 'fa fa-sun',
+            urlRegx = /^((https|http)?:\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/;
 
       fn.init = () => {
         $('.menu-Option').hide();
@@ -281,10 +288,9 @@
           });
         } else {
           $copySrc.hide();
-          $openTab.hide();
         }
 
-        // 复制文本
+        // 复制图片
         if(!!eventSrc && urlRegx.test(eventSrc) && eventSrc.trimEnd().endsWith('.png')) {
           optionFlag = true;
           $copyImg.show();
