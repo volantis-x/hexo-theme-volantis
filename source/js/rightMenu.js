@@ -238,8 +238,8 @@ const RightMenu = (() => {
     }
 
     if (volantis.rightMenu.music = true) {
-      if (volantis.APlayerLoaded) {
-        checkAPlayer();
+      if (volantis.APlayerController.APlayerLoaded) {
+        MainAPlayer.checkAPlayer();
       }
     }
   }
