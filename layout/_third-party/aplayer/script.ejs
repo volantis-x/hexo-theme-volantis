@@ -15,14 +15,6 @@
         loadScript("<%- theme.plugins.aplayer.js.meting %>") // 加载 MetingJS
   	  }
     }, 100) // 按照网速调节差分
-  // rightmenu see: layout/_partial/rightmenu.ejs
-  <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
-    <% if(theme.use_cdn) { %>
-      loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/aplayer.min.js');
-    <% } else { %>
-      loadScript("<%- url_for("/js/aplayer.js") %>")
-    <% } %>
-  <% } %>
   // message see: /layout/_third-party/message/script.ejs
   <% if (theme.plugins.aplayer.message) { %>
     var checkMetings = setInterval(function() {
