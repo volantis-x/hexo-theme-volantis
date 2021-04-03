@@ -1,23 +1,26 @@
+<%
+theme.cdnCtrl.addJS("plugins_sites","plugins/sites",theme.plugins.sitesjs.js)
+theme.cdnCtrl.addJS("plugins_friends","plugins/friends",theme.plugins.friendsjs.js)
+theme.cdnCtrl.addJS("plugins_contributors","plugins/contributors",theme.plugins.contributorsjs.js)
+%>
 <script>
   function loadIssuesJS() {
-    // issuesjs
-    // volantis.cdn.js("issues")
-    <% if (theme.plugins.sitesjs) { %>
+    <% if (theme.plugins.sitesjs.enable) { %>
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.cdn.js("plugins/sites")
+        loadScript("<%- theme.cdnCtrl.source.plugins_sites %>")
       }
     <% } %>
-    <% if (theme.plugins.friendsjs) { %>
+    <% if (theme.plugins.friendsjs.enable) { %>
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.cdn.js("plugins/friends")
+        loadScript("<%- theme.cdnCtrl.source.plugins_friends %>")
       }
     <% } %>
-    <% if (theme.plugins.contributorsjs) { %>
+    <% if (theme.plugins.contributorsjs.enable) { %>
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.cdn.js("plugins/contributors")
+        loadScript("<%- theme.cdnCtrl.source.plugins_contributors %>")
       }
     <% } %>
   };

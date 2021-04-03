@@ -512,9 +512,15 @@ plugins:
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
   ################ optional plugins ################
   # issues api
-  sitesjs: true
-  friendsjs: true
-  contributorsjs: true
+  sitesjs:
+    enable: true
+    js: # /js/plugins/sites.js
+  friendsjs:
+    enable: true
+    js: # /js/plugins/friends.js
+  contributorsjs:
+    enable: true
+    js: # /js/plugins/contributors.js
 
   ######## Plugins to improve loading speed:
 
@@ -672,12 +678,6 @@ plugins:
       # - '/artitalk/'     # artitalk 不支持 pjax
       # - '/bb/'           # bbtalk 不支持 pjax
       # - '/hpp_talk/'     # HexoPlusPlus_Talk 不支持 pjax
-
-  # 从 issues 加载动态数据
-  # {% issues sites/timeline/friends | api=xxx | group=key:a,b,c %}
-  # 例如：
-  # {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
-
 
   # 暗黑模式 darkmode
   # 样式：source/css/_plugins/dark.styl
