@@ -58,15 +58,6 @@
     ...volantis.dark,
     push: volantis.dark.method.toggle.push,
   };
-
-  /********************  Plugins  ********************************/
-  volantis.plugins = {
-    jQuery: '<%- url_for(theme.plugins.jquery || "https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js") %>',
-    sitesjs: '<%- url_for(theme.plugins.sitesjs) %>',
-    friendsjs: '<%- url_for(theme.plugins.friendsjs) %>',
-    contributorsjs: '<%- url_for(theme.plugins.contributorsjs) %>',
-  };
-
   /********************  Message  ********************************/
   // /layout/_third-party/message/script.ejs
   // volantis.message(title,message,type,autoClose)
@@ -145,4 +136,17 @@
     onloadcssdefined(loadCB);
     return ss;
   };
+  /******************** CDN ********************************/
+  volantis.cdn={
+    js : (source,cb)=>{
+      <% if(theme.use_cdn) { %>
+        loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/'+source.replace(/^\//g, "").replace(/\.min/g, "")+'.min.js',cb);
+      <% } else { %>
+        loadScript("<%- url_for("/js/") %>"+source.replace(/^\//g, "")+'.js',cb)
+      <% } %>
+    },
+    css : (source)=>{
+        loadCSS("<%- url_for("/css/") %>"+source.replace(/^\//g, "")+'.css', before, media, attributes)
+    },
+  }
 </script>

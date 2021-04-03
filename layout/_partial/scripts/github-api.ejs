@@ -1,24 +1,25 @@
 <script>
   function loadIssuesJS() {
     // issuesjs
-    if (volantis.plugins.sitesjs) {
-      const issues_api = document.getElementById('sites-api');
-      if (issues_api != undefined && typeof SitesJS === 'undefined') {
-        loadScript(volantis.plugins.sitesjs, {defer:true})
+    // volantis.cdn.js("issues")
+    <% if (theme.plugins.sitesjs) { %>
+      const sites_api = document.getElementById('sites-api');
+      if (sites_api != undefined && typeof SitesJS === 'undefined') {
+        volantis.cdn.js("plugins/sites")
       }
-    }
-    if (volantis.plugins.friendsjs) {
-      const issues_api = document.getElementById('friends-api');
-      if (issues_api != undefined && typeof FriendsJS === 'undefined') {
-        loadScript(volantis.plugins.friendsjs, {defer:true})
+    <% } %>
+    <% if (theme.plugins.friendsjs) { %>
+      const friends_api = document.getElementById('friends-api');
+      if (friends_api != undefined && typeof FriendsJS === 'undefined') {
+        volantis.cdn.js("plugins/friends")
       }
-    }
-    if (volantis.plugins.contributorsjs) {
-      const github_api = document.getElementById('contributors-api');
-      if (github_api != undefined && typeof ContributorsJS === 'undefined') {
-        loadScript(volantis.plugins.contributorsjs, {defer:true})
+    <% } %>
+    <% if (theme.plugins.contributorsjs) { %>
+      const contributors_api = document.getElementById('contributors-api');
+      if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
+        volantis.cdn.js("plugins/contributors")
       }
-    }
+    <% } %>
   };
   $(function () {
     loadIssuesJS();

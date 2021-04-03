@@ -18,11 +18,7 @@
   <% } %>
   // https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha
   // 这是 2.0.0-alpha，（1.x不兼容pjax） alpha版本官方尚未正式发布 上一次更新时间：30 Nov 2017
-  <% if(theme.use_cdn) { %>
-    loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/jquery.parallax.min.js')
-  <% } else { %>
-    loadScript('<%- url_for("/js/jquery.parallax.min.js") %>')
-  <% } %>
+  volantis.cdn.js("jquery.parallax.min")
   function parallax(src){
     $('#parallax-window').parallax({
       src: src,

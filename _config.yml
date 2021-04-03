@@ -22,7 +22,7 @@ default:
 use_cdn: false
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '4.3.1' # This is theme's version.
+  theme_version: '5.0.0.alpha' # This is theme's version.
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn:
@@ -509,9 +509,9 @@ plugins:
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
   ################ optional plugins ################
   # issues api
-  sitesjs: /js/plugins/sites.js
-  friendsjs: /js/plugins/friends.js
-  contributorsjs: /js/plugins/contributors.js
+  sitesjs: true
+  friendsjs: true
+  contributorsjs: true
 
   ######## Plugins to improve loading speed:
 

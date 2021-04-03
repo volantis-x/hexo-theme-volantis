@@ -142,20 +142,10 @@
       };
     <% } %>
 
-
-    <% if(theme.use_cdn) { %>
-      loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/rightMenu.min.js');
-    <% } else { %>
-      loadScript("<%- url_for("/js/rightMenu.js") %>")
-    <% } %>
-
+    volantis.cdn.js("rightMenu")
 
     <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
-      <% if(theme.use_cdn) { %>
-        loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/aplayer.min.js');
-      <% } else { %>
-        loadScript("<%- url_for("/js/aplayer.js") %>")
-      <% } %>
+      volantis.cdn.js("aplayer")
     <% } %>
   </script>
 <% } %>
