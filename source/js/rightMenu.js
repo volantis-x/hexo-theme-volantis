@@ -295,7 +295,7 @@ const RightMenu = (() => {
 
   // 写入图片到剪切板 
   fn.writeClipImg = async function (event, success, error) {
-    const eventSrc = event.target.currentSrc.replace('https://img.inkss.cn/inkss_cn/img/', 'https://cdn.jsdelivr.net/gh/inkss/common@master/hexo/img/');
+    const eventSrc = event.target.currentSrc;
     const parentElement = event.target.parentElement;
     try {
       const data = await fetch(eventSrc);
