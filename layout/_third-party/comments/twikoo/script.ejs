@@ -1,10 +1,6 @@
 <script>
   function load_twikoo() {
-	<% if (theme.comments.twikoo.js) { %>
-	  loadScript('<%- theme.comments.twikoo.js %>', pjax_twikoo)
-	<% } else { %>
-	  loadScript('https://cdn.jsdelivr.net/npm/twikoo@latest', pjax_twikoo)
-	<% } %>
+	  loadScript("<%- theme.comments.twikoo.js || 'https://cdn.jsdelivr.net/npm/twikoo@latest' %>", pjax_twikoo)
   }
   function pjax_twikoo() {
     if(!document.querySelectorAll("#twikoo_container")[0])return;

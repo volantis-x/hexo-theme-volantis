@@ -1,0 +1,50 @@
+<% 
+  // 这里存放全局 CDN 资源控制变量 此处是硬编码
+  // theme.cdnCtrl.addJS("search_js","search/"+theme.search.service,theme.search.js)  => theme.cdnCtrl.source.search_js
+  // theme.cdnCtrl.addCSS("first_css","first",theme.info.cdn.css.first)  => theme.cdnCtrl.source.first_css
+
+  theme.cdnCtrl={}
+  if (theme.use_cdn&&theme.info.cdn.prefix) {
+    theme.cdnCtrl.prefix=theme.info.cdn.prefix.replace(/^\//g, "")
+  } else {
+    theme.cdnCtrl.prefix="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
+  }
+  theme.cdnCtrl.source={}
+  theme.cdnCtrl.addJS=(name,source,force)=>{
+    if(force){
+      theme.cdnCtrl.source[name]=force
+      return
+    }
+    if(source){
+      source = source.replace(/^\//g, "")
+      if (theme.use_cdn) {
+        let suffix=theme.info.cdn.prefix&&theme.info.cdn.prefix.match(/jsdelivr/g)?'.min.js':'.js'
+        source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
+        theme.cdnCtrl.source[name]=theme.cdnCtrl.prefix + '/js/' + source + suffix
+      } else {
+        theme.cdnCtrl.source[name]=url_for('/js/')+ source + '.js'
+      }
+    }
+  }
+  theme.cdnCtrl.addCSS=(name,source,force)=>{
+    if(force){
+      theme.cdnCtrl.source[name]=force
+      return
+    }
+    if(source){
+      source = source.replace(/^\//g, "")
+      if (theme.use_cdn&&theme.info.cdn.prefix) {
+        let suffix=theme.info.cdn.prefix.match(/jsdelivr/g)?'.min.css':'.css'
+        source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
+        theme.cdnCtrl.source[name]=theme.cdnCtrl.prefix + '/css/' + source + suffix
+      } else {
+        theme.cdnCtrl.source[name]=url_for('/css/')+ source + '.css'
+      }
+    }
+  }
+  theme.cdnCtrl.addJS("app_js","app",theme.info.cdn.js)
+  theme.cdnCtrl.addJS("search_js","search/"+theme.search.service,theme.search.js)
+  theme.cdnCtrl.addCSS("first_css","first",theme.info.cdn.css.first)
+  theme.cdnCtrl.addCSS("style_css","style",theme.info.cdn.css.style)
+
+%>

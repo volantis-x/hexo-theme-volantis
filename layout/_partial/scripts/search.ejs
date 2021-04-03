@@ -3,11 +3,8 @@ const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volanti
 const ROOT =  ("<%- config.root %>" || "/").endsWith('/') ? ("<%- config.root %>" || "/") : ("<%- config.root %>/" || "/" );
 
 $('.input.u-search-input').one('focus',function(){
-	<% if (theme.search.js) { %>
-		loadScript('<%- theme.search.js %>',setSearchService);
-	<% } else { %>
-    volantis.cdn.js(theme.search.service,setSearchService)
-	<% } %>
+  // see: layout/_partial/scripts/cdnCtrl.ejs
+	loadScript('<%- theme.cdnCtrl.source.search_js %>',setSearchService);
 })
 
 function listenSearch(){

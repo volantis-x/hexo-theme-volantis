@@ -59,13 +59,7 @@
   <script defer src="<%- theme.analytics.busuanzi %>" data-pjax></script>
 <% } %>
 
-<% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.js) { %>
-  <%- js(theme.info.cdn.js) %>
-<% } else if(theme.use_cdn) { %>
-  <%- js(['https://cdn.jsdelivr.net/npm/hexo-theme-volantis@'+theme.info.theme_version+'/source/js/app.min.js']) %>
-<% } else { %>
-  <%- js(['js/app.js']) %>
-<% } %>
+<%- js(theme.cdnCtrl.source.app_js) %>
 
 <!-- optional -->
 <% if (theme.search && theme.search.enable) { %>

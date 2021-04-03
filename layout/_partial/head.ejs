@@ -28,11 +28,8 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.css.first) { %>
-  <link rel="preload" href="<%- theme.info.cdn.css.first %>" as="style">
-  <% } else { %>
-  <link rel="preload" href="<%- url_for("/css/first.css") %>" as="style">
-  <% } %>
+  <link rel="preload" href="<%- theme.cdnCtrl.source.first_css %>" as="style">
+
 
   <!-- 页面元数据 -->
   <%
@@ -109,19 +106,10 @@
   <%- item %><% }) %>
   <% } %>
 
-  <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.css.first) { %>
-    <%- css(theme.info.cdn.css.first) %>
-  <% } else { %>
-    <%- css('/css/first.css') %>
-  <% } %>
+  <%- css(theme.cdnCtrl.source.first_css) %>
 
-  <% if (theme.use_cdn && theme.info.cdn && theme.info.cdn.css.style) { %>
-  <link rel="stylesheet" href="<%- theme.info.cdn.css.style %>" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="<%- theme.info.cdn.css.style %>"></noscript>
-  <% } else { %>
-  <link rel="stylesheet" href="<%- url_for("/css/style.css") %>" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="<%- url_for("/css/style.css") %>"></noscript>
-  <% } %>
+  <link rel="stylesheet" href="<%- theme.cdnCtrl.source.style_css %>" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="<%- theme.cdnCtrl.source.style_css %>"></noscript>
 
   <%- partial('../_third-party/end-of-support/script') %>
 </head>
