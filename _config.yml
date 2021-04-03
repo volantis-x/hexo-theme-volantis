@@ -327,6 +327,7 @@ comments:
     requiredFields: [nick,mail]
     serverURL: xxxxxxxxxxxxxxx # Waline 的服务端地址（必填） 测试用地址: https://waline-ruddy.vercel.app
     avatar: robohash # gravatar style https://waline.js.org/client/basic.html#avatar
+    avatarCDN: #https://sdn.geekzu.org/avatar/
     pageSize: 10 # 评论每页显示数量
     lang: zh-CN
     visitor: true
@@ -410,7 +411,7 @@ sidebar:
 
     # ---------------------------------------
     # qrcode widget
-    donate:
+    qrcode:
       class: qrcode
       display: [desktop, mobile] # [desktop, mobile]
       height: 64px  # Automatic height if not set
