@@ -66,23 +66,22 @@
   // volantis.isMobile
   // volantis.isMobileOld
   /********************脚本懒加载函数********************************/
+  // volantis.js(src, cb)
+  // volantis.css(href, before, media, attributes)
+
   // 已经加入了setTimeout
-  // cb 可以传入onload回调函数或者JSON对象 例如 loadScript("src", ()=>{}) 或 loadScript("src", {defer:true,onload:()=>{}})
-  function loadScript(src, cb) {
+  // cb 可以传入onload回调函数或者JSON对象 例如 volantis.js("src", ()=>{}) 或 volantis.js("src", {defer:true,onload:()=>{}})
+  volantis.js = (src, cb) => {
     setTimeout(function () {
       var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
       var script = document.createElement("script");
       script.setAttribute("type", "text/javascript");
       if (cb) {
-        try{
-          if (JSON.stringify(cb)) {
-            for (let p in cb) {
-              script[p]=cb[p]
-            }
-          } else {
-            script.onload = cb;
+        if (JSON.stringify(cb)) {
+          for (let p in cb) {
+            script[p]=cb[p]
           }
-        }catch(e){
+        } else {
           script.onload = cb;
         }
       }
@@ -91,7 +90,7 @@
     });
   }
   //https://github.com/filamentgroup/loadCSS
-  var loadCSS = function (href, before, media, attributes) {
+  volantis.css = (href, before, media, attributes)=>{
     var doc = window.document;
     var ss = doc.createElement("link");
     var ref;
@@ -148,38 +147,4 @@
     onloadcssdefined(loadCB);
     return ss;
   };
-  /******************** CDN ********************************/
-  // volantis.cdn.js(source, cb)
-  // volantis.cdn.css(source, before, media, attributes)
-  // 另外有CDN硬编码方案 see:layout/_partial/scripts/cdnCtrl.ejs
-
-  volantis.cdn={}
-  <% if (theme.use_cdn&&theme.info.cdn.prefix) { %>
-    volantis.cdn.prefix="<%- theme.info.cdn.prefix %>".replace(/^\//g, "")
-  <% } else { %>
-    volantis.cdn.prefix="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source"
-  <% } %>
-  volantis.cdn = {
-    ...volantis.cdn,
-    js: (source, cb) => {
-      source = source.replace(/^\//g, "")
-      <% if (theme.use_cdn) { %>
-        let suffix= "<%- (theme.info.cdn.prefix&&theme.info.cdn.prefix.match(/jsdelivr/g))?'.min.js':'.js' %>"
-        source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
-        loadScript(volantis.cdn.prefix + '/js/' + source + suffix, cb);
-      <% } else { %>
-        loadScript("<%- url_for('/js/') %>" + source + '.js', cb)
-      <% } %>
-    },
-    css: (source, before, media, attributes) => {
-      source=source.replace(/^\//g, "")
-      <% if (theme.use_cdn&&theme.info.cdn.prefix) { %>
-        let suffix= "<%- theme.info.cdn.prefix.match(/jsdelivr/g)?'.min.css':'.css' %>"
-        source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
-        loadCSS(volantis.cdn.prefix + '/css/' + source + suffix, before, media, attributes)
-      <% } else { %>
-          loadCSS("<%- url_for('/css/') %>" + source + '.css', before, media, attributes)
-      <% } %>
-    },
-  }
 </script>

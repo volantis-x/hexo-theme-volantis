@@ -1,6 +1,6 @@
 <script>
   function load_twikoo() {
-	  loadScript("<%- theme.comments.twikoo.js || 'https://cdn.jsdelivr.net/npm/twikoo@latest' %>", pjax_twikoo)
+	  volantis.js("<%- theme.comments.twikoo.js || 'https://cdn.jsdelivr.net/npm/twikoo@latest' %>", pjax_twikoo)
   }
   function pjax_twikoo() {
     if(!document.querySelectorAll("#twikoo_container")[0])return;

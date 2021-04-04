@@ -1,50 +1,79 @@
 <% 
   // 这里存放全局 CDN 资源控制变量 此处是硬编码
-  // theme.cdnCtrl.addJS("search_js","search/"+theme.search.service,theme.search.js)  => theme.cdnCtrl.source.search_js
-  // theme.cdnCtrl.addCSS("first_css","first",theme.info.cdn.css.first)  => theme.cdnCtrl.source.first_css
+  // theme.cdn.addJS("search","search/"+theme.search.service,theme.search.js)  => theme.cdn.map.js.search
+  // theme.cdn.addCSS("first","first",theme.cdn.set.css.first)  => theme.cdn.map.css.first
 
   theme.cdnCtrl={}
-  if (theme.use_cdn&&theme.info.cdn.prefix) {
-    theme.cdnCtrl.prefix=theme.info.cdn.prefix.replace(/^\//g, "")
+  if (theme.cdn.enable&&theme.cdn.prefix) {
+    theme.cdnCtrl.prefix=theme.cdn.prefix.replace(/\/$/g, "")
   } else {
     theme.cdnCtrl.prefix="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
   }
-  theme.cdnCtrl.source={}
-  theme.cdnCtrl.addJS=(name,source,force)=>{
+  theme.cdn.map={}
+  theme.cdn.map.js={}
+  theme.cdn.map.css={}
+  theme.cdn.addJS=(name,source,force)=>{
     if(force){
-      theme.cdnCtrl.source[name]=force
-      return
-    }
-    if(source){
+      theme.cdn.map.js[name]=force
+    }else{
+      if(!source){
+        source=name
+      }
       source = source.replace(/^\//g, "")
-      if (theme.use_cdn) {
-        let suffix=theme.info.cdn.prefix&&theme.info.cdn.prefix.match(/jsdelivr/g)?'.min.js':'.js'
+      if (theme.cdn.enable) {
+        let suffix=theme.cdn.prefix&&theme.cdn.prefix.match(/jsdelivr/g)?'.min.js':'.js'
         source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
-        theme.cdnCtrl.source[name]=theme.cdnCtrl.prefix + '/js/' + source + suffix
+        theme.cdn.map.js[name]=theme.cdnCtrl.prefix + '/js/' + source + suffix
       } else {
-        theme.cdnCtrl.source[name]=url_for('/js/')+ source + '.js'
+        theme.cdn.map.js[name]=url_for('/js/')+ source + '.js'
+      }
+    }
+    return theme.cdn.map.js[name]
+  }
+  theme.cdn.addCSS=(name,source,force)=>{
+    if(force){
+      theme.cdn.map.css[name]=force
+    }else{
+      if(!source){
+        source=name
+      }
+      source = source.replace(/^\//g, "")
+      if (theme.cdn.enable&&theme.cdn.prefix) {
+        let suffix=theme.cdn.prefix.match(/jsdelivr/g)?'.min.css':'.css'
+        source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
+        theme.cdn.map.css[name]=theme.cdnCtrl.prefix + '/css/' + source + suffix
+      } else {
+        theme.cdn.map.css[name]=url_for('/css/')+ source + '.css'
+      }
+    }
+    return theme.cdn.map.css[name]
+  }
+  dfs = (n,path) => {
+    for (const key in n) {
+      const element = n[key];
+      if(element && typeof element !="string"){
+        dfs(element,path.concat(key))
+      }else{
+        let op=path.concat(key)
+        let source=""
+        for (let index = 1; index < op.length; index++) {
+          const element = op[index];
+          source+=element
+          if (index!=op.length-1) {
+            source+="/"
+          }
+        }
+        if(op[0]=="js"){
+          theme.cdn.addJS(op[op.length-1],source,element)
+        }
+        if(op[0]=="css"){
+          theme.cdn.addCSS(op[op.length-1],source,element)
+        }
       }
     }
   }
-  theme.cdnCtrl.addCSS=(name,source,force)=>{
-    if(force){
-      theme.cdnCtrl.source[name]=force
-      return
-    }
-    if(source){
-      source = source.replace(/^\//g, "")
-      if (theme.use_cdn&&theme.info.cdn.prefix) {
-        let suffix=theme.info.cdn.prefix.match(/jsdelivr/g)?'.min.css':'.css'
-        source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
-        theme.cdnCtrl.source[name]=theme.cdnCtrl.prefix + '/css/' + source + suffix
-      } else {
-        theme.cdnCtrl.source[name]=url_for('/css/')+ source + '.css'
-      }
-    }
-  }
-  theme.cdnCtrl.addJS("app_js","app",theme.info.cdn.js)
-  theme.cdnCtrl.addJS("search_js","search/"+theme.search.service,theme.search.js)
-  theme.cdnCtrl.addCSS("first_css","first",theme.info.cdn.css.first)
-  theme.cdnCtrl.addCSS("style_css","style",theme.info.cdn.css.style)
-
+  dfs(theme.cdn.set,[])
 %>
+
+
+

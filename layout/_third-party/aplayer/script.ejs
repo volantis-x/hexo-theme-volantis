@@ -2,9 +2,9 @@
     volantis.APlayerController = {};
     volantis.APlayerController.id = '<%= theme.plugins.aplayer.id %>';  // 设定全局音乐播放ID
     volantis.APlayerController.volume = '<%= theme.plugins.aplayer.volume %>';
-    loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css");
+    volantis.css("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css");
     // APlayer 需要在  MetingJS 之前加载
-    loadScript("<%- theme.plugins.aplayer.js.aplayer %>")
+    volantis.js("<%- theme.plugins.aplayer.js.aplayer %>")
     volantis.APlayerController.APlayerLoaded=0 // APlayer加载完成状态
     var checkAPlayer = setInterval(function () {
       if (!window.APlayer) return // APlayer加载完成？
@@ -12,7 +12,7 @@
       clearInterval(checkAPlayer)
   	  if (!volantis.APlayerController.APlayerLoaded&&!window.MetingJSElement){ // APlayer只能加载一次
         volantis.APlayerController.APlayerLoaded=1 // APlayer加载完成
-        loadScript("<%- theme.plugins.aplayer.js.meting %>") // 加载 MetingJS
+        volantis.js("<%- theme.plugins.aplayer.js.meting %>") // 加载 MetingJS
   	  }
     }, 100) // 按照网速调节差分
   // message see: /layout/_third-party/message/script.ejs

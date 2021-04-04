@@ -3,7 +3,7 @@
 <!-- https://github.com/volantis-x/hexo-theme-volantis/issues/63 -->
 <script>
 	setTimeout(function() {
-	  loadScript("https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>");
+	  volantis.js("https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>");
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
@@ -25,7 +25,7 @@
 var _hmt = _hmt || [];
 (function() {
   setTimeout(function() {
-    loadScript("https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>")
+    volantis.js("https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>")
   }, 5000);
 })();
 // 关于百度统计对 SPA 页面的处理：

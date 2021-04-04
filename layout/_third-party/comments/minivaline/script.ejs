@@ -1,6 +1,6 @@
 <script>
   function load_minivaline() {
-    loadScript("<%- theme.comments.minivaline.js || 'https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js' %>", pjax_minivaline)
+    volantis.js("<%- theme.comments.minivaline.js || 'https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js' %>", pjax_minivaline)
   };
    function pjax_minivaline() {
      if(!document.querySelectorAll("#minivaline_container")[0])return;

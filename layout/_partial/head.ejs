@@ -28,7 +28,7 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="preload" href="<%- theme.cdnCtrl.source.first_css %>" as="style">
+  <link rel="preload" href="<%- theme.cdn.map.css.first %>" as="style">
 
 
   <!-- 页面元数据 -->
@@ -106,10 +106,10 @@
   <%- item %><% }) %>
   <% } %>
 
-  <%- css(theme.cdnCtrl.source.first_css) %>
+  <%- css(theme.cdn.map.css.first) %>
 
-  <link rel="stylesheet" href="<%- theme.cdnCtrl.source.style_css %>" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="<%- theme.cdnCtrl.source.style_css %>"></noscript>
+  <link rel="stylesheet" href="<%- theme.cdn.map.css.style %>" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
 
   <%- partial('../_third-party/end-of-support/script') %>
 </head>

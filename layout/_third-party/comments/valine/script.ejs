@@ -1,10 +1,3 @@
-<% if (theme.comments.valine.js) { %>
-  <%- js(theme.comments.valine.js) %>
-<% } else { %>
-<script>
-  volantis.cdn.js("valine")
-</script>
-<% } %>
 <script>
   function emoji(path, idx, ext) {
     return path + "/" + path + "-" + idx + "." + ext;
@@ -43,7 +36,7 @@
     }))
   }
   $(function () {
-    pjax_valine();
+    volantis.js('<%- theme.cdn.addJS("valine","valine",theme.comments.valine.js) %>',pjax_valine)
   });
   volantis.pjax.push(pjax_valine);
 </script>

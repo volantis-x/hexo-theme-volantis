@@ -4,7 +4,7 @@ const ROOT =  ("<%- config.root %>" || "/").endsWith('/') ? ("<%- config.root %>
 
 $('.input.u-search-input').one('focus',function(){
   // see: layout/_partial/scripts/cdnCtrl.ejs
-	loadScript('<%- theme.cdnCtrl.source.search_js %>',setSearchService);
+	volantis.js('<%- theme.cdn.addJS("search","search/"+theme.search.service,theme.search.js) %>',setSearchService);
 })
 
 function listenSearch(){

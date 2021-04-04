@@ -1,26 +1,21 @@
-<%
-theme.cdnCtrl.addJS("plugins_sites","plugins/sites",theme.plugins.sitesjs.js)
-theme.cdnCtrl.addJS("plugins_friends","plugins/friends",theme.plugins.friendsjs.js)
-theme.cdnCtrl.addJS("plugins_contributors","plugins/contributors",theme.plugins.contributorsjs.js)
-%>
 <script>
   function loadIssuesJS() {
     <% if (theme.plugins.sitesjs.enable) { %>
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        loadScript("<%- theme.cdnCtrl.source.plugins_sites %>")
+        volantis.js("<%- theme.cdn.map.js.sites %>")
       }
     <% } %>
     <% if (theme.plugins.friendsjs.enable) { %>
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        loadScript("<%- theme.cdnCtrl.source.plugins_friends %>")
+        volantis.js("<%- theme.cdn.map.js.friends %>")
       }
     <% } %>
     <% if (theme.plugins.contributorsjs.enable) { %>
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        loadScript("<%- theme.cdnCtrl.source.plugins_contributors %>")
+        volantis.js("<%- theme.cdn.map.js.contributors %>")
       }
     <% } %>
   };

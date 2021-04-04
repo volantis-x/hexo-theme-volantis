@@ -16,22 +16,30 @@ default:
 #
 
 ############################### Volantis ###############################
-# use_cdn: /source/js/* 中的JS文件(JS Only)使用jsdelivr的min版本加速 https://www.jsdelivr.com/features
-# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
-# 开发者注意 use_cdn 设置为 false
-use_cdn: false
 info:
   theme_name: Volantis # This is theme's name.
   theme_version: '5.0.0.alpha.0' # This is theme's version.
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
-  cdn:
-    prefix: # CDN 前缀，默认为空，最后不加 "/",例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录
-    # 以下配置可以覆盖 info.cdn.prefix
-    js: # https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/app.min.js # 注意版本!!!
+
+############################### CDN ###############################
+# 本地静态文件使用jsdelivr的min版本加速 https://www.jsdelivr.com/features
+# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
+# 开发者注意 cdn.enable 设置为 false
+cdn:
+  enable: false
+  prefix: # CDN 前缀，为空使用默认值，链接最后不加 "/",例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,该配置默认值是："https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
+  # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
+  set:
+    js:
+      app: #/js/app.js
+      plugins:
+        contributors: #/js/plugins/contributors.js
+        friends: #/js/plugins/friends.js
+        sites: #/js/plugins/sites.js
     css:
-      first: # /css/first.css (需自行替换CDN 首屏样式 cover navbar search )
-      style: # /css/style.css (需自行替换CDN 异步加载 Others...           )
+      first: #/css/first.css # (需自行替换CDN 首屏样式 cover navbar search )
+      style: #/css/style.css # (需自行替换CDN 异步加载 Others...           )
 ########################################################################
 
 ############################### Navigation Bar ############################### > start
@@ -514,13 +522,10 @@ plugins:
   # issues api
   sitesjs:
     enable: true
-    js: # /js/plugins/sites.js
   friendsjs:
     enable: true
-    js: # /js/plugins/friends.js
   contributorsjs:
     enable: true
-    js: # /js/plugins/contributors.js
 
   ######## Plugins to improve loading speed:
 
