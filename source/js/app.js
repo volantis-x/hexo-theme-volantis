@@ -113,9 +113,9 @@ var Debounce = (fn, t) => {
 
     //==========================================
     // 滚动监听 显示/隐藏 Header导航 topBtn 【移动端 PC】
-    var showHeaderPoint = volantis.$.bodyAnchor.offset().top - scrollCorrection;
-    var pos = document.body.scrollTop;
+    let pos = document.body.scrollTop;
     $(document, window).scroll(Debounce(() => {
+      const showHeaderPoint = volantis.$.bodyAnchor.offset().top - scrollCorrection;
       const scrollTop = $(window).scrollTop(); // 滚动条距离顶部的距离
       const del = scrollTop - pos;
       pos = scrollTop;
