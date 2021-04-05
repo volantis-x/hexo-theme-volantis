@@ -1,3 +1,9 @@
+<!-- 
+  pjax重载区域接口：
+  1.  <pjax></pjax> 标签
+  2.  script[data-pjax]
+  3.  .pjax-reload script
+-->
 <%
   var banUrl = theme.plugins.pjax.banUrl || [];
 %>
@@ -13,6 +19,7 @@
         elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
         selectors: [
           "title",
+          "pjax",
           <% if (!theme.plugins.pjax.cover){ %>"#l_cover",<% } %>
           "#pjax-container",
           "#pjax-header-nav-list"

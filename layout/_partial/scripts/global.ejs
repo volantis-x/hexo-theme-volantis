@@ -66,85 +66,57 @@
   // volantis.isMobile
   // volantis.isMobileOld
   /********************脚本懒加载函数********************************/
-  // volantis.js(src, cb)
-  // volantis.css(href, before, media, attributes)
+  // volantis.js(src, cb)  cb 可以传入onload回调函数 或者 JSON对象 例如: volantis.js("src", ()=>{}) 或 volantis.js("src", {defer:true,onload:()=>{}})
+  // volantis.css(src)
+
+  // 返回Promise对象，如下方法同步加载资源，这利于处理文件资源之间的依赖关系，例如：APlayer 需要在 MetingJS 之前加载
+  // (async () => {
+  //     await volantis.js("...theme.plugins.aplayer.js.aplayer...")
+  //     await volantis.js("...theme.plugins.aplayer.js.meting...")
+  // })();
 
   // 已经加入了setTimeout
-  // cb 可以传入onload回调函数或者JSON对象 例如 volantis.js("src", ()=>{}) 或 volantis.js("src", {defer:true,onload:()=>{}})
   volantis.js = (src, cb) => {
-    setTimeout(function () {
-      var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
-      var script = document.createElement("script");
-      script.setAttribute("type", "text/javascript");
-      if (cb) {
-        if (JSON.stringify(cb)) {
-          for (let p in cb) {
-            script[p]=cb[p]
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if(p=="onload"){
+                script[p]=()=>{
+                  cb[p]()
+                  resolve()
+                }
+              }else{
+                script[p]=cb[p]
+              }
+            }
+          } else {
+            script.onload = ()=>{
+              cb()
+              resolve()
+            };
           }
-        } else {
-          script.onload = cb;
+        }else{
+          script.onload=resolve
         }
-      }
-      script.setAttribute("src", src);
-      HEAD.appendChild(script);
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
     });
   }
-  //https://github.com/filamentgroup/loadCSS
-  volantis.css = (href, before, media, attributes)=>{
-    var doc = window.document;
-    var ss = doc.createElement("link");
-    var ref;
-    if (before) {
-      ref = before;
-    } else {
-      var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
-      ref = refs[refs.length - 1];
-    }
-    var sheets = doc.styleSheets;
-    if (attributes) {
-      for (var attributeName in attributes) {
-        if (attributes.hasOwnProperty(attributeName)) {
-          ss.setAttribute(attributeName, attributes[attributeName]);
-        }
-      }
-    }
-    ss.rel = "stylesheet";
-    ss.href = href;
-    ss.media = "only x";
-    function ready(cb) {
-      if (doc.body) {
-        return cb();
-      }
+  volantis.css = (src)=>{
+    return new Promise(resolve => {
       setTimeout(function () {
-        ready(cb);
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
       });
-    }
-    ready(function () {
-      ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
     });
-    var onloadcssdefined = function (cb) {
-      var resolvedHref = ss.href;
-      var i = sheets.length;
-      while (i--) {
-        if (sheets[i].href === resolvedHref) {
-          return cb();
-        }
-      }
-      setTimeout(function () {
-        onloadcssdefined(cb);
-      });
-    };
-    function loadCB() {
-      if (ss.addEventListener) {
-        ss.removeEventListener("load", loadCB);
-      }
-      ss.media = media || "all";
-    }
-    if (ss.addEventListener) {
-      ss.addEventListener("load", loadCB);
-    }
-    ss.onloadcssdefined = onloadcssdefined;
-    onloadcssdefined(loadCB);
-    return ss;
-  };
+  }
 </script>

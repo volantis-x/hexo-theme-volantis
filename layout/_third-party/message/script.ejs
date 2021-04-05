@@ -1,5 +1,5 @@
 <script>
-  volantis.message = (title, message, type, time = 3000, autoClose) => {
+  volantis.message = (title, message, type, autoClose, time = 3000) => {
     if (typeof $.message == "undefined") {
       volantis.css('<%- theme.cdn.addCSS("message") %>')
       volantis.js('<%- theme.cdn.addJS("message") %>', () => {

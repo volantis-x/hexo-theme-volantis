@@ -1,3 +1,5 @@
+<pjax>
+<% if (page.snackbar && site.data.notification && (page.snackbar in site.data.notification)) { %> 
 <% let snackbar = site.data.notification[page.snackbar] %>
 <% if (snackbar.position == 'bottom') { %>
   <div id="snackbar"></div>
@@ -30,30 +32,26 @@
   <% if (snackbar.buttons && snackbar.buttons.length > 0) { %>
       <script>
         function Snackbar(){
-          var checkSnackbar = setInterval(function () {
-            if (typeof volantis=='undefined') return
-            if (typeof volantis.message=='undefined') return
-            clearInterval(checkSnackbar)
-            <% snackbar.buttons.forEach((ac, i) => { %>
-              volantis.message(
-                '<%- snackbar.title %>',
-                '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
-                '<%- snackbar.theme %>',
-                true
-              );
-            <% }) %>
-          }, 1000)
+          <% snackbar.buttons.forEach((ac, i) => { %>
+            volantis.message(
+              '<%- snackbar.title %>',
+              '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
+              '<%- snackbar.theme %>',
+            );
+          <% }) %>
         }
       </script>
   <% } %>
 <% } %>
 <script>
-  <% if (snackbar.cache) { %>
-  if (!localStorage.getItem('Snackbar')) {
-    localStorage.setItem('Snackbar', '1');
-    Snackbar();
-  }
-  <% } else { %>
-    Snackbar()
-  <% }%>
+    <% if (snackbar.cache) { %>
+    if (!localStorage.getItem('Snackbar')) {
+      localStorage.setItem('Snackbar', '1');
+      Snackbar();
+    }
+    <% } else { %>
+      Snackbar()
+    <% }%>
 </script>
+<% }%>
+</pjax>

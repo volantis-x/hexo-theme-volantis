@@ -1,13 +1,6 @@
 $(function () {
   MainAPlayer.init();
-  const checkAplayLoad = setInterval(function () {
-    if (!volantis.APlayerLoaded) return; // APlayer加载完成？
-    if ($('#safearea').css('display') != 'block') return; // 文章内容加载完成？ see: source/css/first.styl
-    if (!document.querySelectorAll('meting-js')[0].meta) return; // meting-js 加载完成？
-    if (!document.querySelectorAll('meting-js')[0].meta.id) return; // meting-js 初始化?
-    clearInterval(checkAplayLoad);
-    MainAPlayer.checkAPlayer();
-  }, 1000);
+  MainAPlayer.checkAPlayer();
 });
 
 const MainAPlayer = (() => {
