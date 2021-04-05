@@ -76,6 +76,8 @@ const RightMenu = (() => {
       let menuHeight = _rightMenuContent.offsetHeight;
       let showLeft = mouseClientX + menuWidth > screenWidth ? mouseClientX - menuWidth + 10 : mouseClientX;
       let showTop = mouseClientY + menuHeight > screenHeight ? mouseClientY - menuHeight + 10 : mouseClientY;
+      showTop = mouseClientY + menuHeight > screenHeight && showTop < menuHeight && mouseClientY < menuHeight ?
+        showTop + (screenHeight - menuHeight - showTop - 10) : showTop;
       _rightMenuWrapper.style.left = showLeft + "px";
       _rightMenuWrapper.style.top = showTop + "px";
       _rightMenuWrapper.style.zIndex = '2147483648';
