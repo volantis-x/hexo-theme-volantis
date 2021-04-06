@@ -36,7 +36,7 @@
     }))
   }
   $(function () {
-    volantis.js('<%- theme.cdn.addJS("valine","valine",theme.comments.valine.js) %>',pjax_valine)
+    volantis.js('<%- theme.cdn.map.js.valine %>',pjax_valine)
   });
   volantis.pjax.push(pjax_valine);
 </script>

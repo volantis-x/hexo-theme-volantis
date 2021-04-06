@@ -33,13 +33,8 @@ cdn:
   set:
     js:
       app: #/js/app.js
-      plugins:
-        contributors: #/js/plugins/contributors.js
-        friends: #/js/plugins/friends.js
-        sites: #/js/plugins/sites.js
     css:
-      first: #/css/first.css # (需自行替换CDN 首屏样式 cover navbar search )
-      style: #/css/style.css # (需自行替换CDN 异步加载 Others...           )
+      style: #/css/style.css # (异步加载样式)
 ########################################################################
 
 ############################### Navigation Bar ############################### > start

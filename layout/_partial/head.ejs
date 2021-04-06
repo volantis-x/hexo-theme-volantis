@@ -28,7 +28,7 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="preload" href="<%- theme.cdn.map.css.first %>" as="style">
+  <link rel="preload" href="<%- theme.cdn.map.css.style %>" as="style">
 
 
   <!-- 页面元数据 -->
@@ -106,10 +106,23 @@
   <%- item %><% }) %>
   <% } %>
 
-  <%- css(theme.cdn.map.css.first) %>
+  <style>
+    /* 
+      source/css/first.styl
+      scripts/first-style/index.js
+     */
+    <%- getFirstCSS() %>
+  </style>
 
   <link rel="stylesheet" href="<%- theme.cdn.map.css.style %>" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
-
+  <% if (theme.plugins.darkmodejs.enable) { %>
+    <script>
+      var userColorScheme=localStorage.getItem("user-color-scheme")
+      if(userColorScheme){
+        document.documentElement.setAttribute("data-user-color-scheme", userColorScheme);
+      }
+    </script>
+  <% } %>
   <%- partial('../_third-party/end-of-support/script') %>
 </head>
