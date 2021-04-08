@@ -39,6 +39,19 @@ trans($time = 0.28s)
   -webkit-transition: all $time ease
   -o-transition: all $time ease
 
+// 为2个属性设置动画 （更灵活的
+trans2flex($op1, $op2)
+  transition: $op1, $op2
+  -moz-transition: $op1, $op2
+  -webkit-transition: $op1, $op2
+  -o-transition: $op1, $op2
+
+// 为3个属性设置动画 （更灵活的
+trans3flex($op1, $op2, $op3)
+  transition: $op1, $op2, $op3
+  -moz-transition: $op1, $op2, $op3
+  -webkit-transition: $op1, $op2, $op3
+  -o-transition: $op1, $op2, $op3
 
 hoverable-card()
   trans()
