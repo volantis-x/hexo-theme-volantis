@@ -1,37 +1,11 @@
 
 
 // 可替代 transition 使用
-transition($op1, $op2 = "", $op3 = "", $op4 = "", $op5 = "", $op6 = "")
-  if $op2 == ""
-    transition: $op1
-    -moz-transition: $op1
-    -webkit-transition: $op1
-    -o-transition: $op1
-  else if $op3 == ""
-    transition: $op1, $op2
-    -moz-transition: $op1, $op2
-    -webkit-transition: $op1, $op2
-    -o-transition: $op1, $op2
-  else if $op4 == ""
-    transition: $op1, $op2, $op3
-    -moz-transition: $op1, $op2, $op3
-    -webkit-transition: $op1, $op2, $op3
-    -o-transition: $op1, $op2, $op3
-  else if $op5 == ""
-    transition: $op1, $op2, $op3, $op4
-    -moz-transition: $op1, $op2, $op3, $op4
-    -webkit-transition: $op1, $op2, $op3, $op4
-    -o-transition: $op1, $op2, $op3, $op4
-  else if $op6 == ""
-    transition: $op1, $op2, $op3, $op4, $op5
-    -moz-transition: $op1, $op2, $op3, $op4, $op5
-    -webkit-transition: $op1, $op2, $op3, $op4, $op5
-    -o-transition: $op1, $op2, $op3, $op4, $op5
-  else
-    transition: $op1, $op2, $op3, $op4, $op5, $op6
-    -moz-transition: $op1, $op2, $op3, $op4, $op5, $op6
-    -webkit-transition: $op1, $op2, $op3, $op4, $op5, $op6
-    -o-transition: $op1, $op2, $op3, $op4, $op5, $op6
+transition()
+  transition: arguments
+  -moz-transition: arguments
+  -webkit-transition: arguments
+  -o-transition: arguments
 
 // 为1个属性设置动画
 trans1($op, $time = 0.2s)
