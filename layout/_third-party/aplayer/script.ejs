@@ -11,6 +11,7 @@
       <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
         // 右键 music 需要在 APlayer  MetingJS 之后加载
         await volantis.js('<%- theme.cdn.addJS("aplayer") %>')
+        volantis.APlayerController.music = true;
       <% } %>
     })();
   // message see: /layout/_third-party/message/script.ejs
@@ -22,28 +23,35 @@
     try {
       var Metings = document.querySelectorAll('meting-js');
       Metings.forEach((item, index) => {
+        var rightMenuAplayer = $(item)[0].meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
+        if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
         var thisAplayer =Metings[index].aplayer;
         thisAplayer.on('play', function(e) {
+        $('#aplayerHeaderIcon').removeClass('music').addClass('music')
         var index = thisAplayer.list.index;
         var title = thisAplayer.list.audios[index].title;
         var artist = thisAplayer.list.audios[index].artist;
           volantis.message(
             '音乐通知',
             '正在播放：' + title + ' - ' + artist,
-            'success'
+            'info'
           )
+          if(rightMenuAplayer) volantis.APlayerController.status = 'play';
         });
         thisAplayer.on('pause', function(e) {
+          $('#aplayerHeaderIcon').removeClass('music')
           var index =thisAplayer.list.index;
           var title = thisAplayer.list.audios[index].title;
           var artist = thisAplayer.list.audios[index].artist;
           volantis.message(
             '音乐通知',
             '暂停播放：' + title + ' - ' + artist,
-            'success'
+            'info'
           )
+          if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
         });
         thisAplayer.on('error', function (e) {
+          $('#aplayerHeaderIcon').removeClass('music')
           var index = thisAplayer.list.index;
           var title = thisAplayer.list.audios[index].title;
           volantis.message(
@@ -51,6 +59,7 @@
             "歌曲：" + title + "加载失败~",
             'warning'
           )
+          if(rightMenuAplayer) volantis.APlayerController.status = 'error';
         });
       });
 
