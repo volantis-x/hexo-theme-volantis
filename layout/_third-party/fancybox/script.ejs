@@ -1,32 +1,13 @@
 <script>
   function pjax_fancybox() {
     const group = new Set();
-    const $img = $(".md .gallery").find("img");
-    $img.each(function (index, ele) { //渲染 fancybox
-      var element = document.createElement("a"); // a 标签
-      $(element).attr("class", "fancybox");
-      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
-      $(element).attr("href", $(this).attr("src"));
-      if ($(this).attr("data-original")) {
-        $(element).attr("href", $(this).attr("data-original"));
+
+    $(".md .gallery").each(function (index, ele) {
+      if ($(ele).has('img').length) {
+        group.add($(ele).attr('data-group') || 'default');
       }
-      const name = $($(ele).parents('div.gallery')[0]).attr('data-group');
-      $(element).attr("data-fancybox", name);
-      group.add(name);
-      var caption = "";   // 描述信息
-      if ($(this).attr('alt') && $(this).attr('alt') !== 'image') {  // 判断当前页面是否存在描述信息
-        $(element).attr('data-caption', $(this).attr('alt'));
-        caption = $(this).attr('alt');
-      }
-      var div = document.createElement("div");
-      $(div).addClass("fancybox");
-      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
-      var span = document.createElement("span");
-      $(span).addClass("image-caption");
-      $(span).text(caption); // 加描述
-      $(this).after(span);  // 再套一层描述
-      $(this).wrap(element);  // 最后套 a 标签
     })
+
     for (const iterator of group) {
       $('[data-fancybox="' + iterator + '"]').fancybox({
         hash: false,
@@ -46,25 +27,29 @@
       });
     }
   };
+
   function SCload_fancybox() {
     if ($(".md .gallery").find("img").length == 0) return;
     volantis.css("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css");
     volantis.js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
   };
+
   $(function () {
     SCload_fancybox();
   });
+
   function Pjax_SCload_fancybox(){
-	if (typeof $.fancybox == "undefined") {
-	 SCload_fancybox();
+	  if (typeof $.fancybox == "undefined") {
+	    SCload_fancybox();
     } else {
-	 pjax_fancybox();
+	    pjax_fancybox();
     }
   }
+
   volantis.pjax.push(Pjax_SCload_fancybox)
   volantis.pjax.send(()=>{
-      if (typeof $.fancybox != "undefined") {
-        $.fancybox.close();    // 关闭弹窗
-      }
+    if (typeof $.fancybox != "undefined") {
+      $.fancybox.close();    // 关闭弹窗
+    }
   },'fancybox')
 </script>
