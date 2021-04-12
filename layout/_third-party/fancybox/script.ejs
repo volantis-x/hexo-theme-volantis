@@ -1,6 +1,8 @@
 <script>
   function pjax_fancybox() {
-    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+    const group = new Set();
+    const $img = $(".md .gallery").find("img");
+    $img.each(function (index, ele) { //渲染 fancybox
       var element = document.createElement("a"); // a 标签
       $(element).attr("class", "fancybox");
       $(element).attr("pjax-fancybox", "");  // 过滤 pjax
@@ -8,7 +10,9 @@
       if ($(this).attr("data-original")) {
         $(element).attr("href", $(this).attr("data-original"));
       }
-      $(element).attr("data-fancybox", "images");
+      const name = $($(ele).parents('div')[0]).attr('data-group');
+      $(element).attr("data-fancybox", name);
+      group.add(name);
       var caption = "";   // 描述信息
       if ($(this).attr('alt') && $(this).attr('alt') !== 'image') {  // 判断当前页面是否存在描述信息
         $(element).attr('data-caption', $(this).attr('alt'));
@@ -23,19 +27,24 @@
       $(this).after(span);  // 再套一层描述
       $(this).wrap(element);  // 最后套 a 标签
     })
-    $(".md .gallery").find("img").fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-      closeClick: true,
-      helpers: {
-        overlay: {closeClick: true}
-      },
-      buttons: [
-        "zoom",
-        "close"
-      ]
-    });
+    for (const iterator of group) {
+      $('[data-fancybox="' + iterator + '"]').fancybox({
+        hash: false,
+        loop: true,
+        closeClick: true,
+        helpers: {
+          overlay: {closeClick: true}
+        },
+        buttons: [
+          "zoom",
+          "slideShow",
+          "fullScreen",
+          "download",
+          "thumbs",
+          "close"
+        ]
+      });
+    }
   };
   function SCload_fancybox() {
     if ($(".md .gallery").find("img").length == 0) return;
