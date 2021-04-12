@@ -10,7 +10,7 @@ function postFancybox(args, content) {
               ${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}
             </div>`;
   }
-  return `<div class="gallery ${cls}" group='${group}'>
+  return `<div class="gallery ${cls}" data-group='${group}'>
               ${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}
             </div>`;
 

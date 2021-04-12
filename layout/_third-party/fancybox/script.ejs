@@ -10,7 +10,7 @@
       if ($(this).attr("data-original")) {
         $(element).attr("href", $(this).attr("data-original"));
       }
-      const name = $($(ele).parents('div')[0]).attr('data-group');
+      const name = $($(ele).parents('div.gallery')[0]).attr('data-group');
       $(element).attr("data-fancybox", name);
       group.add(name);
       var caption = "";   // 描述信息
