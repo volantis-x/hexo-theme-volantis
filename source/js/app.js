@@ -1,117 +1,125 @@
+$(function () {
+  VolantisApp.init();
+  VolantisApp.subscribe();
+  volantisFancyBox.loadFancyBox();
+
+  volantis.pjax.push(() => {
+    $(function () {
+      VolantisApp.pjaxReload();
+      sessionStorage.setItem("domTitle", document.title);
+    });
+  }, 'app.js');
+
+  volantis.pjax.push(volantisFancyBox.pjaxReload);
+  volantis.pjax.send(() => {
+    if (typeof $.fancybox != "undefined") {
+      $.fancybox.close(); // 关闭弹窗
+    }
+  }, 'fancybox');
+});
+
+/*锚点定位*/
+if (window.location.hash) {
+  let checkExist = setInterval(function () {
+    let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
+    if ($('#' + locationID).length) {
+      $('html, body').animate({
+        scrollTop: $('#' + locationID).offset().top - 40
+      }, 500);
+      clearInterval(checkExist);
+    }
+  }, 100);
+}
+
 // 函数防抖 (只执行最后一次点击)
-var Debounce = (fn, t) => {
-  const delay = t || 25;
+const Debounce = (fn, t) => {
+  const delay = t || 50;
   let timer;
-  return function() {
+  return function () {
     const args = arguments;
     if (timer) {
       clearTimeout(timer);
     }
     timer = setTimeout(() => {
-      timer = null;
-      fn.apply(this, args);
-    },
-    delay);
+        timer = null;
+        fn.apply(this, args);
+      },
+      delay);
   };
 };
 
-(function($) {
-  // jQuery性能优化提示：
-  // 将jQuery对象缓存起来 永远不要让相同的选择器在代码里出现多次
-  // 在jQuery中最快的选择器是ID选择器,尽量使用ID代替Class 时间上大约相差100倍
-  // 在class前使用tag(标签名)
-  // 给选择器一个上下文
-  volantis.$.bodyAnchor = $('#safearea'); // 页面主体
-  volantis.$.topBtn = $('#s-top'); // 向上
-  volantis.$.wrapper = $('#wrapper'); // 整个导航栏
-  volantis.$.coverAnchor = $('#l_cover .cover-wrapper');
-  volantis.$.switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
-  volantis.$.header = $('#l_header'); // 移动端导航栏
-  volantis.$.search = $('#l_header .m_search'); // 搜索框 桌面端
-  volantis.$.mPhoneList = $('#l_header .m-phone .list-v'); //  手机端 子菜单
+const VolantisApp = (() => {
+  const fn = {};
+  let scrollCorrection = 80;
 
-  function setIsMobile(){
-    if (document.documentElement.clientWidth < 500) {
-      volantis.isMobile=1;
-      volantis.isMobileOld=1;
-    }else{
-      volantis.isMobile=0;
-      volantis.isMobileOld=0;
-    }
-  }
-
-  // 校正页面定位（被导航栏挡住的区域）
-  var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
-  if (volantis.$.header[0]) {
-    scrollCorrection = volantis.$.header[0].clientHeight + 16;
-  }
-
-  // 尝试： 重设数据值
-  function restData() {
-    scrollCorrection = 80;
+  fn.init = () => {
+    volantis.$.bodyAnchor = $('#safearea'); // 页面主体
+    volantis.$.topBtn = $('#s-top'); // 向上
+    volantis.$.wrapper = $('#wrapper'); // 整个导航栏
+    volantis.$.coverAnchor = $('#l_cover .cover-wrapper');
+    volantis.$.switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
+    volantis.$.header = $('#l_header'); // 移动端导航栏
+    volantis.$.search = $('#l_header .m_search'); // 搜索框 桌面端
+    volantis.$.mPhoneList = $('#l_header .m-phone .list-v'); //  手机端 子菜单
     if (volantis.$.header[0]) {
       scrollCorrection = volantis.$.header[0].clientHeight + 16;
     }
+
+    window.onresize = () => {
+      if (document.documentElement.clientWidth < 500) {
+        volantis.isMobile = 1;
+      } else {
+        volantis.isMobile = 0;
+      }
+      if (volantis.isMobile != volantis.isMobileOld) {
+        fn.setGlobalHeaderMenuEvent();
+        fn.setHeader();
+        fn.setHeaderSearch();
+      }
+    }
+  }
+
+  fn.event = () => {
+    $('#scroll-down').off('click').on('click', function () {
+      fn.scrolltoElement(volantis.$.bodyAnchor);
+    });
+  }
+
+  fn.restData = () => {
+    scrollCorrection = volantis.$.header[0] ? volantis.$.header[0].clientHeight + 16 : 80;
+  }
+
+  fn.setIsMobile = () => {
+    if (document.documentElement.clientWidth < 500) {
+      volantis.isMobile = 1;
+      volantis.isMobileOld = 1;
+    } else {
+      volantis.isMobile = 0;
+      volantis.isMobileOld = 0;
+    }
   }
 
   // 校正页面定位（被导航栏挡住的区域）
-  function scrolltoElement(elem, correction = scrollCorrection) {
+  fn.scrolltoElement = (elem, correction = scrollCorrection) => {
     const $elem = elem.href ? $(decodeURI(elem.getAttribute('href'))) : $(elem);
     window.scrollTo({
-      top     : $elem.offset().top - correction,
+      top: $elem.offset().top - correction,
       behavior: 'smooth'
     });
   }
 
   // 设置滚动锚点
-  function setScrollAnchor() {
-
-    // 关闭pjax：点击当前激活的按钮滚动至bodyAnchor 【第一次点击滚动，第二次点击跳转】
-    // 开启pjax：无用代码段 ？？？
-    // volantis.$.postsBtn = $('.menu .active','#l_header,#l_cover'); // 一级导航上的当前激活的按钮
-    // console.log(-1)
-    // if (volantis.$.postsBtn.length && volantis.$.bodyAnchor) {
-    //   console.log(0)
-    //   volantis.$.postsBtn.click(e => {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     console.log(1)
-    //     if (volantis.$.postsBtn.attr('href') != '/'){  // TODO: fix it
-    //       console.log(2)
-    //       scrolltoElement(volantis.$.bodyAnchor);
-    //     }
-    //     e.stopImmediatePropagation();
-    //     volantis.$.postsBtn.unbind('click');
-    //   });
-    // }
-
-    // 点击文章内标题滚动至bodyAnchor
-    // 无用代码段 ？？？
-    // volantis.$.titleBtn = $('h1.title', '#header-meta'); // 文章内标题 // 无法点击！！
-    // console.log(-1)
-    // if (volantis.$.titleBtn.length && volantis.$.bodyAnchor) {
-    //   console.log(0)
-    //   volantis.$.titleBtn.click(e => { // 无法点击！！
-    //     console.log(1)
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     scrolltoElement(volantis.$.bodyAnchor);
-    //     e.stopImmediatePropagation();
-    //     volantis.$.titleBtn.unbind('click');
-    //   });
-    // }
-
+  fn.setScrollAnchor = () => {
     // click topBtn 滚动至bodyAnchor 【移动端 PC】
     if (volantis.$.topBtn.length && volantis.$.bodyAnchor) {
       volantis.$.topBtn.click(e => {
         e.preventDefault();
         e.stopPropagation();
-        scrolltoElement(volantis.$.bodyAnchor);
+        fn.scrolltoElement(volantis.$.bodyAnchor);
         e.stopImmediatePropagation();
       });
     }
 
-    //==========================================
     // 滚动监听 显示/隐藏 Header导航 topBtn 【移动端 PC】
     let pos = document.body.scrollTop;
     $(document, window).scroll(Debounce(() => {
@@ -138,11 +146,10 @@ var Debounce = (fn, t) => {
         volantis.$.header.removeClass('show');
       }
     }));
-    //==========================================
   }
 
   // 设置导航栏
-  function setHeader() {
+  fn.setHeader = () => {
     // !!! 此处的jQuery对象需要重载 !!!
     if (!pdata.ispage) return;
 
@@ -188,30 +195,30 @@ var Debounce = (fn, t) => {
           volantis.$.toc.toggleClass('active');
         });
         // 点击空白 隐藏
-        $(document).click(function(e) {
+        $(document).click(function (e) {
           e.stopPropagation();
           volantis.$.tocTarget.removeClass('active');
           volantis.$.toc.removeClass('active');
         });
         // 页面滚动  隐藏
         $(document, window).scroll(Debounce(() => {
-          volantis.$.tocTarget.removeClass('active');
-          volantis.$.toc.removeClass('active');
-        },
-        100));
-      } else volantis.$.toc.remove();// 隐藏toc目录按钮
+            volantis.$.tocTarget.removeClass('active');
+            volantis.$.toc.removeClass('active');
+          },
+          100));
+      } else volantis.$.toc.remove(); // 隐藏toc目录按钮
     }
-    // =========================================
   }
 
   // 设置导航栏菜单选中状态  【移动端 PC】
-  function setHeaderMenuSelection() {
+  fn.setHeaderMenuSelection = () => {
     // !!! 此处的jQuery对象需要重载 !!!
-    volantis.$.headerMenu = $('.navigation','#l_header,#l_cover,#l_side'); // 导航列表
+    volantis.$.headerMenu = $('.navigation', '#l_header,#l_cover,#l_side'); // 导航列表
 
     // 先把已经激活的取消激活
     volantis.$.headerMenu.find('li a.active').removeClass('active');
     volantis.$.headerMenu.find('div a.active').removeClass('active');
+
     function setUnderline($item) {
       if ($item && $item.length) {
         $item.addClass('active').siblings().removeClass('active');
@@ -243,30 +250,30 @@ var Debounce = (fn, t) => {
   }
 
   // 设置全局事件
-  function setGlobalHeaderMenuEvent() {
+  fn.setGlobalHeaderMenuEvent = () => {
     if (volantis.isMobile) {
       // 【移动端】 点击展开子菜单
-      $('#l_header .m-phone li:has(.list-v)').click(function(e) {
+      $('#l_header .m-phone li:has(.list-v)').click(function (e) {
         e.stopPropagation();
         $($(e.currentTarget).children('ul')).show();
       });
     } else {
       // 【PC端】 hover时展开子菜单，点击时隐藏子菜单
-      $('#wrapper .m-pc li > a[href]').parent().click(function(e) {
+      $('#wrapper .m-pc li > a[href]').parent().click(function (e) {
         e.stopPropagation();
         if (e.target.origin == e.target.baseURI) {
           $('#wrapper .m-pc .list-v').hide();
         }
       });
     }
-    setPageHeaderMenuEvent();
+    fn.setPageHeaderMenuEvent();
   }
 
   // 【移动端】隐藏子菜单
-  function setPageHeaderMenuEvent() {
+  fn.setPageHeaderMenuEvent = () => {
     if (!volantis.isMobile) return
     // 【移动端】 点击空白处隐藏子菜单
-    $(document).click(function(e) {
+    $(document).click(function (e) {
       volantis.$.mPhoneList.hide();
     });
     // 【移动端】 滚动时隐藏子菜单
@@ -274,58 +281,32 @@ var Debounce = (fn, t) => {
       volantis.$.mPhoneList.hide();
     }));
   }
-  // 设置导航栏搜索框   fix √ 【移动端】
-  function setHeaderSearch() {
+
+  // 设置导航栏搜索框 【移动端】
+  fn.setHeaderSearch = () => {
     if (!volantis.isMobile) return;
     if (volantis.$.switcher.length === 0) return;
     // 点击移动端搜索按钮
-    volantis.$.switcher.click(function(e) {
+    volantis.$.switcher.click(function (e) {
       e.stopPropagation();
       volantis.$.header.toggleClass('z_search-open'); // 激活移动端搜索框
       volantis.$.switcher.toggleClass('active'); // 移动端搜索按钮
       volantis.$.search.find('input').focus();
     });
     // 点击空白取消激活
-    $(document).click(function(e) {
+    $(document).click(function (e) {
       volantis.$.header.removeClass('z_search-open');
       volantis.$.switcher.removeClass('active');
     });
     // 移动端点击搜索框 停止事件传播
-    volantis.$.search.click(function(e) {
+    volantis.$.search.click(function (e) {
       e.stopPropagation();
     });
-    // // 导航栏 监听 键盘 Tab键 return false   有什么作用？？ 删除测试
-    // volantis.$.header.ready(function() {
-    //   volantis.$.header.bind('keydown',
-    //     function(event) {
-    //       if (event.keyCode == 9) {
-    //         return false;
-    //       }
-    //       var isie = !!document.all;
-    //       var key,ev;
-    //       if (isie) { //IE浏览器
-    //         key = window.event.keyCode;
-    //         ev = window.event;
-    //       } else { //火狐浏览器
-    //         key = event.which;
-    //         ev = event;
-    //       }
-    //       if (key == 9) { //IE浏览器
-    //         if (isie) {
-    //           ev.keyCode = 0;
-    //           ev.returnValue = false;
-    //         } else { //火狐浏览器
-    //           ev.which = 0;
-    //           ev.preventDefault();
-    //         }
-    //       }
-    //     });
-    // });
   }
 
   // 设置 tabs 标签  【移动端 PC】
-  function setTabs() {
-    if(!$('#l_main .tabs .nav-tabs').length)return
+  fn.setTabs = () => {
+    if (!$('#l_main .tabs .nav-tabs').length) return
     $('#l_main .tabs .nav-tabs').on('click', 'a', (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -338,71 +319,97 @@ var Debounce = (fn, t) => {
     });
   }
 
-  $(function() {
-    setIsMobile()
-    setHeader();
-    setHeaderMenuSelection();
-    setGlobalHeaderMenuEvent();
-    setHeaderSearch();
-    setScrollAnchor();
-    setTabs();
+  return {
+    init: () => {
+      fn.init();
+      fn.event();
+    },
+    subscribe: () => {
+      fn.setIsMobile();
+      fn.setHeader();
+      fn.setHeaderMenuSelection();
+      fn.setGlobalHeaderMenuEvent();
+      fn.setHeaderSearch();
+      fn.setScrollAnchor();
+      fn.setTabs();
+    },
+    pjaxReload: () => {
+      fn.event();
+      fn.restData();
+      fn.setHeader();
+      fn.setHeaderMenuSelection();
+      fn.setPageHeaderMenuEvent();
+      fn.setScrollAnchor();
+      fn.setTabs();
 
-    // 监听屏幕宽度  【移动端 PC】
-    window.onresize=()=>{
-      // console.log(document.documentElement.clientWidth);
-      if (document.documentElement.clientWidth < 500) {
-        volantis.isMobile=1;
-      }else{
-        volantis.isMobile=0;
-      }
-      if(volantis.isMobile!=volantis.isMobileOld){
-        setGlobalHeaderMenuEvent();
-        setHeader();
-        setHeaderSearch();
+      $('#l_header .nav-main').find('.list-v').not('.menu-phone').removeAttr("style", ""); // 移除小尾巴的移除
+      $('#l_header .menu-phone.list-v').removeAttr("style", ""); // 移除小尾巴的移除
+      // 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件  【移动端】
+      if (volantis.$.switcher.length !== 0) {
+        $(document).click(function (e) {
+          volantis.$.header.removeClass('z_search-open');
+          volantis.$.switcher.removeClass('active');
+        });
       }
     }
-
-    // 全屏封面底部箭头  【移动端 PC】
-    $('#scroll-down').on('click', function() {
-      scrolltoElement(volantis.$.bodyAnchor);
-    });
-
-    volantis.pjax.push(()=>{
-      $(function() {
-        $('#l_header .nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
-        $('#l_header .menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
-        restData();
-        setHeader();
-        setHeaderMenuSelection();
-        setPageHeaderMenuEvent();
-        setScrollAnchor();
-        setTabs();
-        // 全屏封面底部箭头  【移动端 PC】
-        $('#scroll-down').on('click', function() {
-          scrolltoElement(volantis.$.bodyAnchor);
-        });
-        // 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件  【移动端】
-        if (volantis.$.switcher.length !== 0) {
-          $(document).click(function(e) {
-            volantis.$.header.removeClass('z_search-open');
-            volantis.$.switcher.removeClass('active');
-          });
-        }
-      });
-    },'app.js');
-  });
-
-  /*锚点定位*/
-  if (window.location.hash) {
-    var checkExist = setInterval(function() {
-      if ($('#' + decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-')).length) {
-        $('html, body').animate({
-          scrollTop: $('#' + decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-')).offset().top - 40
-        },
-        500);
-        clearInterval(checkExist);
-      }
-    },
-    100);
   }
-})(jQuery);
+})()
+Object.freeze(VolantisApp);
+
+const volantisFancyBox = (() => {
+  const fn = {};
+
+  fn.initFB = () => {
+    const group = new Set();
+    group.add('default');
+
+    $(".md .gallery").each(function (index, ele) {
+      if ($(ele).has('img').length) {
+        group.add($(ele).attr('data-group') || 'default');
+      }
+    })
+
+    for (const iterator of group) {
+      if (!!iterator) $('[data-fancybox="' + iterator + '"]').fancybox({
+        hash: false,
+        loop: true,
+        closeClick: true,
+        helpers: {
+          overlay: {
+            closeClick: true
+          }
+        },
+        buttons: [
+          "zoom",
+          "slideShow",
+          "fullScreen",
+          "download",
+          "thumbs",
+          "close"
+        ]
+      });
+    }
+  }
+
+  fn.loadFancyBox = () => {
+    if ($(".md .gallery").find("img").length == 0) return;
+    volantis.css("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css");
+    volantis.js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', () => {
+      fn.initFB();
+    });
+  }
+
+  return {
+    loadFancyBox: () => {
+      fn.loadFancyBox()
+    },
+    pjaxReload: () => {
+      if (typeof $.fancybox == "undefined") {
+        fn.loadFancyBox();
+      } else {
+        fn.initFB();
+      }
+    }
+  }
+})()
+Object.freeze(volantisFancyBox);

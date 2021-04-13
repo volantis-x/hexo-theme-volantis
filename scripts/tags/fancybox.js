@@ -7,6 +7,8 @@ function renderImg(content) {
 function buidAlt(alt) {
   if (!!alt && alt !== 'image') {
     return `<span class='image-caption'>${alt}</span>`
+  } else {
+    return '';
   }
 }
 
