@@ -82,14 +82,14 @@ volantis.dark.toggle=()=>{
 /**
  * bind event for toggle button
  */
-var btn=$(".toggle-mode-btn","#wrapper,#rightmenu-wrapper");
+
 function bindToggleButton() {
-    btn.on('click',volantis.dark.toggle);
+  var btn= document.querySelectorAll("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn")
+  btn.forEach(function (e) {
+    volantis.dom.$(e).on('click',volantis.dark.toggle);
+  })
 }
 applyCustomDarkModeSettings();
 document.addEventListener("DOMContentLoaded", bindToggleButton);
 volantis.pjax.push(bindToggleButton);
-volantis.pjax.send(()=>{
-	btn.unbind('click');
-},'toggle-mode-btn-unbind');
 </script>

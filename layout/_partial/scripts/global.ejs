@@ -2,6 +2,110 @@
   /************这个文件存放不需要重载的全局变量和全局函数*********/
   window.volantis = {}; // volantis 全局变量
   volantis.$ = {}; // 页面选择器 将jQuery对象缓存起来 see: /source/js/app.js etc.
+  volantis.dom = {}; 
+  /******************** volantis.dom.$ ********************************/
+  // 全局监听器容器
+  volantis.EventListener=[]
+  function volantisEventListener(type,f,ele){
+    this.type=type
+    this.f=f
+    this.ele=ele
+  }
+  // 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
+  function volantisDom(ele){
+    this.ele=ele;
+    // ==============================================================
+    this.ele.find=(c)=>{
+      let q=this.ele.querySelector(c)
+      if(q)
+        return new volantisDom(q)
+    }
+    // ==============================================================
+    this.ele.hasClass=(c)=>{
+      return this.ele.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
+    }
+    this.ele.addClass=(c)=>{
+      this.ele.classList.add(c);
+      return this.ele
+    }
+    this.ele.removeClass=(c)=>{
+      this.ele.classList.remove(c);
+      return this.ele
+    }
+    this.ele.toggleClass=(c)=>{
+      if(this.ele.hasClass(c)){
+        this.ele.removeClass(c)
+      }else{
+        this.ele.addClass(c)
+      }
+      return this.ele
+    }
+    // ==============================================================
+    // 比较省事的清除所有c类型的监听 此处的ele选择器并没有实质作用
+    this.ele.off=(c)=>{
+      // 移除监听
+      volantis.EventListener.forEach(function (i) {
+        if (i.type==c) {
+          i.ele.removeEventListener(c,i.f,false)
+        }
+      })
+      // 同步更新 volantis.EventListener
+      volantis.EventListener.forEach(function (i,j) {
+        if (i.type==c) {
+          delete volantis.EventListener[j]
+        }
+      })
+      volantis.EventListener=volantis.EventListener.filter(d=>d)
+      // console.log(volantis.EventListener)
+      return this.ele
+    }
+    this.ele.on=(c,f)=>{
+      this.ele.addEventListener(c,f,false)
+      volantis.EventListener.push(new volantisEventListener(c,f,this.ele))
+      return this.ele
+    }
+    this.ele.click=(f)=>{
+      this.ele.on("click",f)
+      return this.ele
+    }
+    this.ele.scroll=(f)=>{
+      this.ele.on("scroll",f)
+      return this.ele
+    }
+    // ==============================================================
+    this.ele.html=(c)=>{
+      // if(c=== undefined){
+      //   return this.ele.innerHTML
+      // }else{
+        this.ele.innerHTML=c
+        return this.ele
+      // }
+    }
+    // ==============================================================
+    this.ele.hide=(c)=>{
+      this.ele.style.display="none"
+      return this.ele
+    }
+    this.ele.show=(c)=>{
+      this.ele.style.display="block"
+      return this.ele
+    }
+    // ==============================================================
+    return this.ele
+  }
+  volantis.dom.$=(ele)=>{
+    return new volantisDom(ele)
+  }
+  /******************** volantis.dom ********************************/
+  // 页面选择器 将dom对象缓存起来 see: /source/js/app.js etc.
+  volantis.dom.bodyAnchor = volantis.dom.$(document.getElementById("safearea")); // 页面主体
+  volantis.dom.topBtn = volantis.dom.$(document.getElementById('s-top')); // 向上
+  volantis.dom.wrapper = volantis.dom.$(document.getElementById('wrapper')); // 整个导航栏
+  volantis.dom.coverAnchor = volantis.dom.$(document.querySelector('#l_cover .cover-wrapper')); // 1个
+  volantis.dom.switcher = volantis.dom.$(document.querySelector('#l_header .switcher .s-search')); // 搜索按钮   移动端 1个
+  volantis.dom.header = volantis.dom.$(document.getElementById('l_header')); // 移动端导航栏
+  volantis.dom.search = volantis.dom.$(document.querySelector('#l_header .m_search')); // 搜索框 桌面端 移动端 1个
+  volantis.dom.mPhoneList = volantis.dom.$(document.querySelectorAll('#l_header .m-phone .list-v')); //  手机端 子菜单 多个
   /******************** RunItem ********************************/
   function RunItem() {
     this.list = []; // 存放回调函数

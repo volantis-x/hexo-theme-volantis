@@ -9,7 +9,12 @@ $(function () {
       sessionStorage.setItem("domTitle", document.title);
     });
   }, 'app.js');
-
+  volantis.pjax.send(() => {
+    volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
+    volantis.dom.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+    volantis.dom.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+    volantis.dom.$(document).off('scroll').off('click'); // 比较省事的清除所有类型的监听 此处的document选择器并没有实质作用
+  }, 'app.js');
   volantis.pjax.push(volantisFancyBox.pjaxReload);
   volantis.pjax.send(() => {
     if (typeof $.fancybox != "undefined") {
@@ -20,15 +25,14 @@ $(function () {
 
 /*锚点定位*/
 if (window.location.hash) {
-  let checkExist = setInterval(function () {
-    let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
-    if ($('#' + locationID).length) {
-      $('html, body').animate({
-        scrollTop: $('#' + locationID).offset().top - 40
-      }, 500);
-      clearInterval(checkExist);
-    }
-  }, 100);
+  let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
+  let target = document.getElementById(locationID);
+  if (target) {
+    window.scrollTo({
+      top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop + 5,
+      behavior: "smooth" //平滑滚动
+    });
+  }
 }
 
 // 函数防抖 (只执行最后一次点击)
@@ -53,16 +57,8 @@ const VolantisApp = (() => {
   let scrollCorrection = 80;
 
   fn.init = () => {
-    volantis.$.bodyAnchor = $('#safearea'); // 页面主体
-    volantis.$.topBtn = $('#s-top'); // 向上
-    volantis.$.wrapper = $('#wrapper'); // 整个导航栏
-    volantis.$.coverAnchor = $('#l_cover .cover-wrapper');
-    volantis.$.switcher = $('#l_header .switcher .s-search'); // 搜索按钮   移动端
-    volantis.$.header = $('#l_header'); // 移动端导航栏
-    volantis.$.search = $('#l_header .m_search'); // 搜索框 桌面端
-    volantis.$.mPhoneList = $('#l_header .m-phone .list-v'); //  手机端 子菜单
-    if (volantis.$.header[0]) {
-      scrollCorrection = volantis.$.header[0].clientHeight + 16;
+    if (volantis.dom.header) {
+      scrollCorrection = volantis.dom.header.clientHeight + 16;
     }
 
     window.onresize = () => {
@@ -80,13 +76,13 @@ const VolantisApp = (() => {
   }
 
   fn.event = () => {
-    $('#scroll-down').off('click').on('click', function () {
-      fn.scrolltoElement(volantis.$.bodyAnchor);
+    volantis.dom.$(document.getElementById("scroll-down")).on('click', function () {
+      fn.scrolltoElement(volantis.dom.bodyAnchor);
     });
   }
 
   fn.restData = () => {
-    scrollCorrection = volantis.$.header[0] ? volantis.$.header[0].clientHeight + 16 : 80;
+    scrollCorrection = volantis.dom.header ? volantis.dom.header.clientHeight + 16 : 80;
   }
 
   fn.setIsMobile = () => {
@@ -101,49 +97,59 @@ const VolantisApp = (() => {
 
   // 校正页面定位（被导航栏挡住的区域）
   fn.scrolltoElement = (elem, correction = scrollCorrection) => {
-    const $elem = elem.href ? $(decodeURI(elem.getAttribute('href'))) : $(elem);
     window.scrollTo({
-      top: $elem.offset().top - correction,
+      top: elem.offsetTop - correction,
       behavior: 'smooth'
     });
   }
-
+  // 滚动条距离顶部的距离
+  function getScrollTop() {
+    var scrollPos;
+    if (window.pageYOffset) {
+      scrollPos = window.pageYOffset;
+    } else if (document.compatMode && document.compatMode != 'BackCompat') {
+      scrollPos = document.documentElement.scrollTop;
+    } else if (document.body) {
+      scrollPos = document.body.scrollTop;
+    }
+    return scrollPos;   
+  }
   // 设置滚动锚点
   fn.setScrollAnchor = () => {
     // click topBtn 滚动至bodyAnchor 【移动端 PC】
-    if (volantis.$.topBtn.length && volantis.$.bodyAnchor) {
-      volantis.$.topBtn.click(e => {
+    if (volantis.dom.topBtn && volantis.dom.bodyAnchor) {
+      volantis.dom.topBtn.click(e => {
         e.preventDefault();
         e.stopPropagation();
-        fn.scrolltoElement(volantis.$.bodyAnchor);
+        fn.scrolltoElement(volantis.dom.bodyAnchor);
         e.stopImmediatePropagation();
       });
     }
 
     // 滚动监听 显示/隐藏 Header导航 topBtn 【移动端 PC】
     let pos = document.body.scrollTop;
-    $(document, window).scroll(Debounce(() => {
-      const showHeaderPoint = volantis.$.bodyAnchor.offset().top - scrollCorrection;
-      const scrollTop = $(window).scrollTop(); // 滚动条距离顶部的距离
+    volantis.dom.$(document).scroll(Debounce(() => {
+      const showHeaderPoint = volantis.dom.bodyAnchor.offsetTop - scrollCorrection;
+      const scrollTop = getScrollTop(); // 滚动条距离顶部的距离
       const del = scrollTop - pos;
       pos = scrollTop;
       // topBtn
-      if (scrollTop > volantis.$.bodyAnchor.offset().top) {
-        volantis.$.topBtn.addClass('show');
+      if (scrollTop > volantis.dom.bodyAnchor.offsetTop) {
+        volantis.dom.topBtn.addClass('show');
         // 向上滚动高亮 topBtn
         if (del > 0) {
-          volantis.$.topBtn.removeClass('hl');
+          volantis.dom.topBtn.removeClass('hl');
         } else {
-          volantis.$.topBtn.addClass('hl');
+          volantis.dom.topBtn.addClass('hl');
         }
       } else {
-        volantis.$.topBtn.removeClass('show').removeClass('hl');
+        volantis.dom.topBtn.removeClass('show').removeClass('hl');
       }
       // Header导航
       if (scrollTop - showHeaderPoint > -1) {
-        volantis.$.header.addClass('show');
+        volantis.dom.header.addClass('show');
       } else {
-        volantis.$.header.removeClass('show');
+        volantis.dom.header.removeClass('show');
       }
     }));
   }
@@ -154,76 +160,78 @@ const VolantisApp = (() => {
     if (!pdata.ispage) return;
 
     // 填充二级导航文章标题 【移动端 PC】
-    volantis.$.wrapper.find('.nav-sub .title').html(pdata.postTitle);
+    volantis.dom.wrapper.find('.nav-sub .title').html(pdata.postTitle);
 
     // 决定一二级导航栏的切换 【向上滚动50px切换为一级导航栏；向下滚动50px切换为二级导航栏】  【移动端 PC】
     let pos = document.body.scrollTop;
-    $(document, window).scroll(Debounce(() => {
-      const scrollTop = $(window).scrollTop();
+    volantis.dom.$(document).scroll(Debounce(() => {
+      const scrollTop = getScrollTop();
       const del = scrollTop - pos;
       if (del >= 50 && scrollTop > 100) { // 向下滚动50px
         pos = scrollTop;
-        volantis.$.wrapper.addClass('sub'); // <---- 二级导航显示
+        volantis.dom.wrapper.addClass('sub'); // <---- 二级导航显示
       } else if (del <= -50) { // 向上滚动50px
         pos = scrollTop;
-        volantis.$.wrapper.removeClass('sub'); // <---- 取消二级导航显示 一级导航显示
+        volantis.dom.wrapper.removeClass('sub'); // <---- 取消二级导航显示 一级导航显示
       }
     }));
 
     // ====== bind events to every btn =========
     // 评论按钮 【移动端 PC】
-    volantis.$.comment = $('#s-comment'); // 评论按钮  桌面端 移动端
-    volantis.$.commentTarget = $('#l_main article#comments'); // 评论区域
-    if (volantis.$.commentTarget.length) {
-      volantis.$.comment.click(e => { // 评论按钮点击后 跳转到评论区域
+    volantis.dom.comment = volantis.dom.$(document.getElementById("s-comment")); // 评论按钮  桌面端 移动端
+    volantis.dom.commentTarget = volantis.dom.$(document.querySelector('#l_main article#comments')); // 评论区域
+    if (volantis.dom.commentTarget) {
+      volantis.dom.comment.click(e => { // 评论按钮点击后 跳转到评论区域
         e.preventDefault();
         e.stopPropagation();
-        scrolltoElement(volantis.$.commentTarget);
+        fn.scrolltoElement(volantis.dom.commentTarget);
         e.stopImmediatePropagation();
       });
-    } else volantis.$.comment.remove(); // 关闭了评论，则隐藏评论按钮
+    } else volantis.dom.comment.remove(); // 关闭了评论，则隐藏评论按钮
 
     // 移动端toc目录按钮 【移动端】
     if (volantis.isMobile) {
-      volantis.$.toc = $('#s-toc'); // 目录按钮  仅移动端
-      volantis.$.tocTarget = $('#l_side .toc-wrapper'); // 侧边栏的目录列表
-      if (volantis.$.tocTarget.length && volantis.$.tocTarget.children().length) {
+      volantis.dom.toc = volantis.dom.$(document.getElementById("s-toc")); // 目录按钮  仅移动端
+      volantis.dom.tocTarget = volantis.dom.$(document.querySelector('#l_side .toc-wrapper')); // 侧边栏的目录列表
+      if (volantis.dom.tocTarget) {
         // 点击移动端目录按钮 激活目录按钮 显示侧边栏的目录列表
-        volantis.$.toc.click((e) => {
+        volantis.dom.toc.click((e) => {
           e.stopPropagation();
-          volantis.$.tocTarget.toggleClass('active');
-          volantis.$.toc.toggleClass('active');
+          volantis.dom.tocTarget.toggleClass('active');
+          volantis.dom.toc.toggleClass('active');
         });
         // 点击空白 隐藏
-        $(document).click(function (e) {
+        volantis.dom.$(document).click(function (e) {
           e.stopPropagation();
-          volantis.$.tocTarget.removeClass('active');
-          volantis.$.toc.removeClass('active');
+          volantis.dom.tocTarget.removeClass('active');
+          volantis.dom.toc.removeClass('active');
         });
         // 页面滚动  隐藏
-        $(document, window).scroll(Debounce(() => {
-            volantis.$.tocTarget.removeClass('active');
-            volantis.$.toc.removeClass('active');
+        volantis.dom.$(document).scroll(Debounce(() => {
+            volantis.dom.tocTarget.removeClass('active');
+            volantis.dom.toc.removeClass('active');
           },
           100));
-      } else volantis.$.toc.remove(); // 隐藏toc目录按钮
+      } else volantis.dom.toc.remove(); // 隐藏toc目录按钮
     }
   }
 
   // 设置导航栏菜单选中状态  【移动端 PC】
   fn.setHeaderMenuSelection = () => {
     // !!! 此处的jQuery对象需要重载 !!!
-    volantis.$.headerMenu = $('.navigation', '#l_header,#l_cover,#l_side'); // 导航列表
+    // volantis.$.headerMenu = $('.navigation', '#l_header,#l_cover,#l_side'); // 导航列表
+    volantis.dom.headerMenu = volantis.dom.$(document.querySelectorAll('#l_header .navigation,#l_cover .navigation,#l_side .navigation')); // 导航列表
 
     // 先把已经激活的取消激活
-    volantis.$.headerMenu.find('li a.active').removeClass('active');
-    volantis.$.headerMenu.find('div a.active').removeClass('active');
+    volantis.dom.headerMenu.forEach(element => {
+      let li=volantis.dom.$(element).find('li a.active')
+      if(li)
+        li.removeClass('active')
+      let div=volantis.dom.$(element).find('div a.active')
+      if(div)
+        div.removeClass('active')
+    });
 
-    function setUnderline($item) {
-      if ($item && $item.length) {
-        $item.addClass('active').siblings().removeClass('active');
-      }
-    }
     //set current active nav
     var $active_link = null;
     // replace '%' '/' '.'
@@ -243,9 +251,13 @@ const VolantisApp = (() => {
     }
     // 转义字符如 [, ], ~, #, @
     idname = idname.replace(/(\[|\]|~|#|@)/g, '\\$1');
-    if (idname && volantis.$.headerMenu) {
-      $active_link = $('#' + idname, volantis.$.headerMenu);
-      setUnderline($active_link);
+    if (idname && volantis.dom.headerMenu) {
+      volantis.dom.headerMenu.forEach(element => {
+        let id=element.querySelector("#"+idname)
+        if(id){
+          volantis.dom.$(id).addClass('active')
+        }
+      });
     }
   }
 
@@ -253,18 +265,24 @@ const VolantisApp = (() => {
   fn.setGlobalHeaderMenuEvent = () => {
     if (volantis.isMobile) {
       // 【移动端】 点击展开子菜单
-      $('#l_header .m-phone li:has(.list-v)').click(function (e) {
-        e.stopPropagation();
-        $($(e.currentTarget).children('ul')).show();
-      });
+      document.querySelectorAll('#l_header .m-phone li').forEach(function(e){
+        if(e.querySelector(".list-v")){
+          volantis.dom.$(e).click(function (e) {
+            e.stopPropagation();
+            $($(e.currentTarget).children('ul')).show();
+          });
+        }
+      })
     } else {
       // 【PC端】 hover时展开子菜单，点击时隐藏子菜单
-      $('#wrapper .m-pc li > a[href]').parent().click(function (e) {
-        e.stopPropagation();
-        if (e.target.origin == e.target.baseURI) {
-          $('#wrapper .m-pc .list-v').hide();
-        }
-      });
+      document.querySelectorAll('#wrapper .m-pc li > a[href]').forEach(function (e) {
+        volantis.dom.$(e.parentElement).click(function (e) {
+          e.stopPropagation();
+          if (e.target.origin == e.target.baseURI) {
+            volantis.dom.$('#wrapper .m-pc .list-v').hide();
+          }
+        });
+      })
     }
     fn.setPageHeaderMenuEvent();
   }
@@ -273,50 +291,58 @@ const VolantisApp = (() => {
   fn.setPageHeaderMenuEvent = () => {
     if (!volantis.isMobile) return
     // 【移动端】 点击空白处隐藏子菜单
-    $(document).click(function (e) {
-      volantis.$.mPhoneList.hide();
+    volantis.dom.$(document).click(function (e) {
+      volantis.dom.mPhoneList.forEach(function(e){
+        volantis.dom.$(e).hide();
+      })
     });
     // 【移动端】 滚动时隐藏子菜单
-    $(window).scroll(Debounce(() => {
-      volantis.$.mPhoneList.hide();
+    volantis.dom.$(document).scroll(Debounce(() => {
+      volantis.dom.mPhoneList.forEach(function(e){
+        volantis.dom.$(e).hide();
+      })
     }));
   }
 
   // 设置导航栏搜索框 【移动端】
   fn.setHeaderSearch = () => {
     if (!volantis.isMobile) return;
-    if (volantis.$.switcher.length === 0) return;
+    if (!volantis.dom.switcher) return;
     // 点击移动端搜索按钮
-    volantis.$.switcher.click(function (e) {
+    volantis.dom.switcher.click(function (e) {
       e.stopPropagation();
-      volantis.$.header.toggleClass('z_search-open'); // 激活移动端搜索框
-      volantis.$.switcher.toggleClass('active'); // 移动端搜索按钮
-      volantis.$.search.find('input').focus();
+      volantis.dom.header.toggleClass('z_search-open'); // 激活移动端搜索框
+      volantis.dom.switcher.toggleClass('active'); // 移动端搜索按钮
     });
     // 点击空白取消激活
     $(document).click(function (e) {
-      volantis.$.header.removeClass('z_search-open');
-      volantis.$.switcher.removeClass('active');
+      volantis.dom.header.removeClass('z_search-open');
+      volantis.dom.switcher.removeClass('active');
     });
     // 移动端点击搜索框 停止事件传播
-    volantis.$.search.click(function (e) {
+    volantis.dom.search.click(function (e) {
       e.stopPropagation();
     });
   }
 
   // 设置 tabs 标签  【移动端 PC】
   fn.setTabs = () => {
-    if (!$('#l_main .tabs .nav-tabs').length) return
-    $('#l_main .tabs .nav-tabs').on('click', 'a', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const $tab = $(e.target.parentElement.parentElement.parentElement);
-      $tab.find('.nav-tabs .active').removeClass('active');
-      $tab.find(e.target.parentElement).addClass('active');
-      $tab.find('.tab-content .active').removeClass('active');
-      $tab.find($(e.target).attr('class')).addClass('active');
-      return false;
-    });
+    let tabs=document.querySelectorAll('#l_main .tabs .nav-tabs')
+    if (!tabs) return
+    tabs.forEach(function(e){
+      e.querySelectorAll('a').forEach(function(e){
+        volantis.dom.$(e).on('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const $tab = volantis.dom.$(e.target.parentElement.parentElement.parentElement);
+          $tab.find('.nav-tabs .active').removeClass('active');
+          volantis.dom.$(e.target.parentElement).addClass('active');
+          $tab.find('.tab-content .active').removeClass('active');
+          $tab.find($(e.target).attr('class')).addClass('active');
+          return false;
+        });
+      })
+    })
   }
 
   return {
@@ -342,13 +368,16 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
 
-      $('#l_header .nav-main').find('.list-v').not('.menu-phone').removeAttr("style", ""); // 移除小尾巴的移除
-      $('#l_header .menu-phone.list-v').removeAttr("style", ""); // 移除小尾巴的移除
+      // 移除小尾巴的移除
+      document.querySelector("#l_header .nav-main").querySelectorAll('.list-v:not(.menu-phone)').forEach(function(e){
+        e.removeAttribute("style")
+      })
+      document.querySelector("#l_header .menu-phone.list-v").removeAttribute("style")
       // 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件  【移动端】
-      if (volantis.$.switcher.length !== 0) {
-        $(document).click(function (e) {
-          volantis.$.header.removeClass('z_search-open');
-          volantis.$.switcher.removeClass('active');
+      if (volantis.dom.switcher) {
+        volantis.dom.$(document).click(function (e) {
+          volantis.dom.header.removeClass('z_search-open');
+          volantis.dom.switcher.removeClass('active');
         });
       }
     }
@@ -363,7 +392,7 @@ const volantisFancyBox = (() => {
     const group = new Set();
     group.add('default');
 
-    $(".md .gallery").each(function (index, ele) {
+    document.querySelectorAll(".md .gallery").forEach(function (ele) {
       if ($(ele).has('img').length) {
         group.add($(ele).attr('data-group') || 'default');
       }

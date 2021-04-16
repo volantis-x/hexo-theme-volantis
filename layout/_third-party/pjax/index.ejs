@@ -45,21 +45,6 @@
         }
       } catch (error) {}
 
-      // 解绑事件 避免重复监听
-      // ====================================================================================
-      // 这一段代码必须先执行，不可以放到其他位置 【放到app.js中测试，跳转页面时不会关闭二级导航】
-      volantis.$.switcher.removeClass('active'); // 关闭移动端激活的搜索框
-      volantis.$.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
-      volantis.$.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-      volantis.$.topBtn.unbind('click');
-      $('.menu a','#l_header,#l_cover').unbind('click');
-      $(window).unbind('resize');
-      $(window).unbind('scroll');
-      $(document).unbind('scroll');
-      $(document).unbind('click');
-      $('body').unbind('click');
-      // ====================================================================================
-
       // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
       volantis.pjax.method.send.start();
     });

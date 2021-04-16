@@ -27,7 +27,9 @@
         if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
         var thisAplayer =Metings[index].aplayer;
         thisAplayer.on('play', function(e) {
-        $('#aplayerHeaderIcon').removeClass('music').addClass('music')
+        let icon=document.getElementById('#aplayerHeaderIcon')
+        if(icon)
+          volantis.dom.$(icon).removeClass('music').addClass('music')
         var index = thisAplayer.list.index;
         var title = thisAplayer.list.audios[index].title;
         var artist = thisAplayer.list.audios[index].artist;
@@ -39,7 +41,9 @@
           if(rightMenuAplayer) volantis.APlayerController.status = 'play';
         });
         thisAplayer.on('pause', function(e) {
-          $('#aplayerHeaderIcon').removeClass('music')
+          let icon=document.getElementById('#aplayerHeaderIcon')
+          if(icon)
+            volantis.dom.$(icon).removeClass('music')
           var index =thisAplayer.list.index;
           var title = thisAplayer.list.audios[index].title;
           var artist = thisAplayer.list.audios[index].artist;
@@ -51,7 +55,9 @@
           if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
         });
         thisAplayer.on('error', function (e) {
-          $('#aplayerHeaderIcon').removeClass('music')
+          let icon=document.getElementById('#aplayerHeaderIcon')
+          if(icon)
+            volantis.dom.$(icon).removeClass('music')
           var index = thisAplayer.list.index;
           var title = thisAplayer.list.audios[index].title;
           volantis.message(
