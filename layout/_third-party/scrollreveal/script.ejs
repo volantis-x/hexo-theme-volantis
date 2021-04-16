@@ -9,9 +9,9 @@
       easing: "ease-out",
     });
   }
-  $(function () {
+  document.addEventListener("DOMContentLoaded", function () {
     var checkScrollReveal = setInterval(function () {
-      if ($("#safearea").css("display") != "block") return;
+      if (document.getElementById("safearea").style.display != "block") return;
       if (typeof ScrollReveal == "undefined") return;
       clearInterval(checkScrollReveal);
       pjax_scrollrebeal();

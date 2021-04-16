@@ -34,7 +34,9 @@
               fade: "<%- theme.plugins.backstretch.fade %>"
             });
         }
-        volantis.js("<%- theme.plugins.backstretch.js %>",Pjax_backstretch)
+        volantis.import.jQuery().then(()=>{
+          volantis.js("<%- theme.plugins.backstretch.js %>",Pjax_backstretch)
+        })
       </script>
   <% } %>
 <% } %>

@@ -1,8 +1,7 @@
 <script>
   /************这个文件存放不需要重载的全局变量和全局函数*********/
   window.volantis = {}; // volantis 全局变量
-  volantis.$ = {}; // 页面选择器 将jQuery对象缓存起来 see: /source/js/app.js etc.
-  volantis.dom = {}; 
+  volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
   /******************** volantis.dom.$ ********************************/
   // 全局监听器容器
   volantis.EventListener=[]
@@ -169,7 +168,7 @@
   // /source/js/app.js
   // volantis.isMobile
   // volantis.isMobileOld
-  /********************脚本懒加载函数********************************/
+  /********************脚本动态加载函数********************************/
   // volantis.js(src, cb)  cb 可以传入onload回调函数 或者 JSON对象 例如: volantis.js("src", ()=>{}) 或 volantis.js("src", {defer:true,onload:()=>{}})
   // volantis.css(src)
 
@@ -223,4 +222,16 @@
       });
     });
   }
+  /********************按需加载的插件********************************/
+  // volantis.import.jQuery().then(()=>{})
+  volantis.import={
+    jQuery:()=>{
+      if(typeof jQuery=="undefined"){
+        return volantis.js("<%- theme.plugins.jquery %>")
+      }else{
+        return new Promise(resolve => {});
+      }
+    }
+  }
+  /*****************************************************************/
 </script>

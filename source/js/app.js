@@ -1,13 +1,11 @@
-$(function () {
+document.addEventListener("DOMContentLoaded", function () {
   VolantisApp.init();
   VolantisApp.subscribe();
   volantisFancyBox.loadFancyBox();
 
   volantis.pjax.push(() => {
-    $(function () {
-      VolantisApp.pjaxReload();
-      sessionStorage.setItem("domTitle", document.title);
-    });
+    VolantisApp.pjaxReload();
+    sessionStorage.setItem("domTitle", document.title);
   }, 'app.js');
   volantis.pjax.send(() => {
     volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
@@ -16,7 +14,7 @@ $(function () {
     volantis.dom.$(document).off('scroll').off('click'); // 比较省事的清除所有类型的监听 此处的document选择器并没有实质作用
   }, 'app.js');
   volantis.pjax.push(volantisFancyBox.pjaxReload);
-  volantis.pjax.send(() => {
+  volantis.pjax.send(() => {  // 此处依赖JQ
     if (typeof $.fancybox != "undefined") {
       $.fancybox.close(); // 关闭弹窗
     }
@@ -156,7 +154,7 @@ const VolantisApp = (() => {
 
   // 设置导航栏
   fn.setHeader = () => {
-    // !!! 此处的jQuery对象需要重载 !!!
+    // !!! 此处的Dom对象需要重载 !!!
     if (!pdata.ispage) return;
 
     // 填充二级导航文章标题 【移动端 PC】
@@ -218,8 +216,7 @@ const VolantisApp = (() => {
 
   // 设置导航栏菜单选中状态  【移动端 PC】
   fn.setHeaderMenuSelection = () => {
-    // !!! 此处的jQuery对象需要重载 !!!
-    // volantis.$.headerMenu = $('.navigation', '#l_header,#l_cover,#l_side'); // 导航列表
+    // !!! 此处的Dom对象需要重载 !!!
     volantis.dom.headerMenu = volantis.dom.$(document.querySelectorAll('#l_header .navigation,#l_cover .navigation,#l_side .navigation')); // 导航列表
 
     // 先把已经激活的取消激活
@@ -232,8 +229,6 @@ const VolantisApp = (() => {
         div.removeClass('active')
     });
 
-    //set current active nav
-    var $active_link = null;
     // replace '%' '/' '.'
     var idname = location.pathname.replace(/\/|%|\./g, '');
     if (idname.length == 0) {
@@ -269,7 +264,11 @@ const VolantisApp = (() => {
         if(e.querySelector(".list-v")){
           volantis.dom.$(e).click(function (e) {
             e.stopPropagation();
-            $($(e.currentTarget).children('ul')).show();
+            let array=e.currentTarget.children
+            for (let index = 0; index < array.length; index++) {
+              const element = array[index];
+                volantis.dom.$(element).show()
+            }
           });
         }
       })
@@ -315,7 +314,7 @@ const VolantisApp = (() => {
       volantis.dom.switcher.toggleClass('active'); // 移动端搜索按钮
     });
     // 点击空白取消激活
-    $(document).click(function (e) {
+    volantis.dom.$(document).click(function (e) {
       volantis.dom.header.removeClass('z_search-open');
       volantis.dom.switcher.removeClass('active');
     });
@@ -364,6 +363,7 @@ const VolantisApp = (() => {
       fn.restData();
       fn.setHeader();
       fn.setHeaderMenuSelection();
+      fn.setGlobalHeaderMenuEvent();
       fn.setPageHeaderMenuEvent();
       fn.setScrollAnchor();
       fn.setTabs();
@@ -385,7 +385,7 @@ const VolantisApp = (() => {
 })()
 Object.freeze(VolantisApp);
 
-const volantisFancyBox = (() => {
+const volantisFancyBox = (() => { // 此处依赖JQ
   const fn = {};
 
   fn.initFB = () => {
@@ -393,13 +393,13 @@ const volantisFancyBox = (() => {
     group.add('default');
 
     document.querySelectorAll(".md .gallery").forEach(function (ele) {
-      if ($(ele).has('img').length) {
-        group.add($(ele).attr('data-group') || 'default');
+      if (ele.querySelector("img")) {
+        group.add($(ele).attr('data-group') || 'default'); // 此处依赖JQ
       }
     })
 
     for (const iterator of group) {
-      if (!!iterator) $('[data-fancybox="' + iterator + '"]').fancybox({
+      if (!!iterator) $('[data-fancybox="' + iterator + '"]').fancybox({ // 此处依赖JQ
         hash: false,
         loop: true,
         closeClick: true,
@@ -421,11 +421,13 @@ const volantisFancyBox = (() => {
   }
 
   fn.loadFancyBox = () => {
-    if ($(".md .gallery").find("img").length == 0) return;
-    volantis.css("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css");
-    volantis.js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', () => {
-      fn.initFB();
-    });
+    if (!document.querySelector(".md .gallery img")) return;
+    volantis.import.jQuery().then(()=>{
+      volantis.css("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css");
+      volantis.js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js').then(() => {
+        fn.initFB();
+      })
+    })
   }
 
   return {

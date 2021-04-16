@@ -47,8 +47,6 @@
             }, 2000)
         })
     }
-    $(function () {
-        pjax_initCopyCode()
-    });
+    volantis.import.jQuery().then(()=>{pjax_initCopyCode()})
 	volantis.pjax.push(pjax_initCopyCode)
 </script>

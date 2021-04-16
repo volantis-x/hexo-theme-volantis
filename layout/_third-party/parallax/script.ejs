@@ -16,9 +16,7 @@
       }
       shuffle(imgs);
   <% } %>
-  // https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha
-  // 这是 2.0.0-alpha，（1.x不兼容pjax） alpha版本官方尚未正式发布 上一次更新时间：30 Nov 2017
-  volantis.js('<%- theme.cdn.map.js.parallax %>')
+
   function parallax(src){
     $('#parallax-window').parallax({
       src: src,
@@ -59,12 +57,18 @@
       next_parallax();
     }, 15000)
   }
-  var checkParallax = setInterval(function () {
-	  if ($("#safearea").css("display")!="block") return 
-	  if (typeof $('#parallax-window').parallax == 'undefined') return 
-    clearInterval(checkParallax)
-    parallax(imgs[(index)%(imgs.length)]);
-  }, 500)
+  volantis.import.jQuery().then(()=>{
+    // https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha
+    // 这是 2.0.0-alpha，（1.x不兼容pjax） alpha版本官方尚未正式发布 上一次更新时间：30 Nov 2017
+    volantis.js('<%- theme.cdn.map.js.parallax %>').then(()=>{
+      var checkParallax = setInterval(function () {
+        if ($("#safearea").css("display")!="block") return 
+        if (typeof $('#parallax-window').parallax == 'undefined') return 
+        clearInterval(checkParallax)
+        parallax(imgs[(index)%(imgs.length)]);
+      }, 500)
+    })
+  })
   volantis.pjax.push(pjax_parallax);
   volantis.pjax.send(()=>{
       try {
