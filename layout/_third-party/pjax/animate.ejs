@@ -16,10 +16,10 @@
     <div class="loading-circle"><div id="loader-circle"></div></div>
     <script>
       window.ShowLoading = function() {
-        $(".loading-circle").css("display", "block");
+        document.querySelector(".loading-circle").style.display="block"
       };
       window.HideLoading = function() {
-        $(".loading-circle").css("display", "none");
+        document.querySelector(".loading-circle").style.display="none"
       }
     </script>
   <% } %>

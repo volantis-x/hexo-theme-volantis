@@ -2,9 +2,16 @@
 const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
 const ROOT =  ("<%- config.root %>" || "/").endsWith('/') ? ("<%- config.root %>" || "/") : ("<%- config.root %>/" || "/" );
 
-$('.input.u-search-input').one('focus',function(){
+function loadSearchService(){
   // see: layout/_partial/scripts/cdnCtrl.ejs
 	volantis.js('<%- theme.cdn.map.js.search %>',setSearchService);
+  document.querySelectorAll('.input.u-search-input').forEach((e)=>{
+    e.removeEventListener('focus',loadSearchService,false)
+  })
+}
+
+document.querySelectorAll('.input.u-search-input').forEach((e)=>{
+  e.addEventListener('focus',loadSearchService,false)
 })
 
 function listenSearch(){

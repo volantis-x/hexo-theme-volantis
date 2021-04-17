@@ -35,7 +35,7 @@
             });
         }
         volantis.import.jQuery().then(()=>{
-          volantis.js("<%- theme.plugins.backstretch.js %>",Pjax_backstretch)
+          volantis.js("<%- theme.plugins.backstretch.js %>").then(Pjax_backstretch)
         })
       </script>
   <% } %>

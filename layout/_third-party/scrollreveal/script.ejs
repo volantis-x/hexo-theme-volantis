@@ -1,5 +1,4 @@
 <script type="text/javascript">
-  volantis.js("<%- theme.plugins.scrollreveal.js %>");
   function pjax_scrollrebeal() {
     ScrollReveal().reveal("#l_main .reveal", {
       distance: "<%- theme.plugins.scrollreveal.distance %>",
@@ -9,13 +8,13 @@
       easing: "ease-out",
     });
   }
-  document.addEventListener("DOMContentLoaded", function () {
+  volantis.js("<%- theme.plugins.scrollreveal.js %>")
+  document.addEventListener("DOMContentLoaded", ()=>{
     var checkScrollReveal = setInterval(function () {
-      if (document.getElementById("safearea").style.display != "block") return;
       if (typeof ScrollReveal == "undefined") return;
       clearInterval(checkScrollReveal);
       pjax_scrollrebeal();
     }, 100);
-  });
+  })
   volantis.pjax.push(pjax_scrollrebeal);
 </script>

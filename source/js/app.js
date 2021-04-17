@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
     volantis.dom.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
     volantis.dom.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-    volantis.dom.$(document).off('scroll').off('click'); // 比较省事的清除所有类型的监听 此处的document选择器并没有实质作用
+    volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
   }, 'app.js');
   volantis.pjax.push(volantisFancyBox.pjaxReload);
   volantis.pjax.send(() => {  // 此处依赖JQ
@@ -269,7 +269,7 @@ const VolantisApp = (() => {
               const element = array[index];
                 volantis.dom.$(element).show()
             }
-          });
+          },0);
         }
       })
     } else {
@@ -280,7 +280,7 @@ const VolantisApp = (() => {
           if (e.target.origin == e.target.baseURI) {
             volantis.dom.$('#wrapper .m-pc .list-v').hide();
           }
-        });
+        },0);
       })
     }
     fn.setPageHeaderMenuEvent();
@@ -363,7 +363,6 @@ const VolantisApp = (() => {
       fn.restData();
       fn.setHeader();
       fn.setHeaderMenuSelection();
-      fn.setGlobalHeaderMenuEvent();
       fn.setPageHeaderMenuEvent();
       fn.setScrollAnchor();
       fn.setTabs();
@@ -424,16 +423,12 @@ const volantisFancyBox = (() => { // 此处依赖JQ
     if (!document.querySelector(".md .gallery img")) return;
     volantis.import.jQuery().then(()=>{
       volantis.css("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css");
-      volantis.js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js').then(() => {
-        fn.initFB();
-      })
+      volantis.js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js').then(fn.initFB)
     })
   }
 
   return {
-    loadFancyBox: () => {
-      fn.loadFancyBox()
-    },
+    loadFancyBox: fn.loadFancyBox,
     pjaxReload: () => {
       if (typeof $.fancybox == "undefined") {
         fn.loadFancyBox();
