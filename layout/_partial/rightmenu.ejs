@@ -141,8 +141,8 @@
         }
       };
     <% } %>
-
-    volantis.js('<%- theme.cdn.map.js.rightMenu %>')
-
+    volantis.import.jQuery().then(()=>{
+      volantis.js('<%- theme.cdn.map.js.rightMenu %>') // 此处依赖JQ
+    })
   </script>
 <% } %>

@@ -35,8 +35,6 @@
       emojiMaps: emojiMaps,
     }))
   }
-  $(function () {
-    volantis.js('<%- theme.cdn.map.js.valine %>',pjax_valine)
-  });
+  volantis.js('<%- theme.cdn.map.js.valine %>').then(pjax_valine)
   volantis.pjax.push(pjax_valine);
 </script>

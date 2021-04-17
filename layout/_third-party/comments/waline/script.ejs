@@ -1,4 +1,3 @@
-<%- js(theme.comments.waline.js || 'https://cdn.jsdelivr.net/npm/@waline/client@latest') %>
 <script>
   function pjax_waline() {
     if(!document.querySelectorAll("#waline")[0])return;
@@ -22,8 +21,6 @@
    },
   }));
   }
-  $(function () {
-    pjax_waline();
-  });
+  volantis.js('<%- theme.comments.waline.js || 'https://cdn.jsdelivr.net/npm/@waline/client@latest' %>').then(pjax_waline)
   volantis.pjax.push(pjax_waline);
 </script>
