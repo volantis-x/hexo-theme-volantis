@@ -43,9 +43,10 @@ const ContributorsJS = {
     request();
   },
   layout: (cfg) => {
-    const el = $(cfg.el)[0];
+    const el = cfg.el;
     ContributorsJS.requestAPI(cfg.api, function(data) {
-      $(el).find('.loading-wrap').remove();
+      el.querySelector('.loading-wrap').remove();
+      var cellALL="";
       (data||[]).forEach((item, i) => {
         var user = '<div class="user-card">';
         user += '<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer"';
@@ -54,11 +55,14 @@ const ContributorsJS = {
         user += '<div class="name"><span>' + item.login + '</span></div>';
         user += '</a>';
         user += '</div>';
-        $(el).find('.group-body').append(user);
+        cellALL += user;
       });
+      el.querySelector('.group-body').innerHTML=cellALL;
     }, function() {
-      $(el).find('.loading-wrap svg').remove();
-      $(el).find('.loading-wrap p').text('加载失败，请稍后重试。');
+      try{
+        el.querySelector('.loading-wrap svg').remove();
+        el.querySelector('.loading-wrap p').innerText('加载失败，请稍后重试。');
+      }catch(e){}
     });
   },
   start: () => {
@@ -80,9 +84,8 @@ const ContributorsJS = {
 }
 
 
-$(function () {
-  ContributorsJS.start();
-});
+
+ContributorsJS.start();
 document.addEventListener('pjax:complete', function() {
   ContributorsJS.start();
 });

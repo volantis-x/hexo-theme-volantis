@@ -1,55 +1,54 @@
-<script src="<%- theme.plugins.clipboard.js %>"></script>
 <script>
-  var clipboard = new ClipboardJS(".btn-copy", {
-    target: function (trigger) {
-      return trigger.nextElementSibling;
-    },
-  });
   function wait(callback, seconds) {
     var timelag = null;
     timelag = window.setTimeout(callback, seconds);
   }
-  function pjax_initCopyCode() {
+  function pjax_CopyCode() {
     if (!(document.querySelector(".highlight .code pre") || document.querySelector(".article pre code")))
       return;
+    if (typeof clipboard == "undefined") {
+      var clipboard = new ClipboardJS(".btn-copy", {
+        target: function (trigger) {
+          return trigger.nextElementSibling;
+        },
+      });
+    }
     var copyHtml = "";
     copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
     copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
     copyHtml += "</button>";
-    $(".highlight .code pre").before(copyHtml);
-    $(".article pre code").before(copyHtml);
+    document.querySelectorAll(".highlight .code pre").forEach(e => {
+      e.insertAdjacentHTML("beforebegin", copyHtml)
+    });
+    document.querySelectorAll(".article pre code").forEach(e => {
+      e.insertAdjacentHTML("beforebegin", copyHtml)
+    });
     clipboard.off("success").on("success", function (e) {
-      let $btn = $(e.trigger);
+      let $btn = volantis.dom.$(e.trigger);
       $btn.addClass("copied");
-      let $icon = $($btn.find("i"));
-      $icon.removeClass("fa-copy");
-      $icon.addClass("fa-check-circle");
-      let $span = $($btn.find("span"));
-      $span[0].innerText = "COPIED";
+      let $icon = volantis.dom.$($btn.find("i"));
+      $icon.removeClass("fa-copy").addClass("fa-check-circle");
+      let $span = volantis.dom.$($btn.find("span"));
+      $span.innerText = "COPIED";
       wait(function () {
-        $icon.removeClass("fa-check-circle");
-        $icon.addClass("fa-copy");
-        $span[0].innerText = "COPY";
+        $icon.removeClass("fa-check-circle").addClass("fa-copy");
+        $span.innerText = "COPY";
       }, 2000);
     });
     clipboard.off("error").on("error", function (e) {
       e.clearSelection();
-      let $btn = $(e.trigger);
+      let $btn = volantis.dom.$(e.trigger);
       $btn.addClass("copy-failed");
-      let $icon = $($btn.find("i"));
-      $icon.removeClass("fa-copy");
-      $icon.addClass("fa-times-circle");
-      let $span = $($btn.find("span"));
-      $span[0].innerText = "COPY FAILED";
+      let $icon = volantis.dom.$($btn.find("i"));
+      $icon.removeClass("fa-copy").addClass("fa-times-circle");
+      let $span = volantis.dom.$($btn.find("span"));
+      $span.innerText = "COPY FAILED";
       wait(function () {
-        $icon.removeClass("fa-times-circle");
-        $icon.addClass("fa-copy");
-        $span[0].innerText = "COPY";
+        $icon.removeClass("fa-times-circle").addClass("fa-copy");
+        $span.innerText = "COPY";
       }, 2000);
     });
   }
-  volantis.import.jQuery().then(() => {
-    pjax_initCopyCode();  // 此处依赖JQ
-  });
-  volantis.pjax.push(pjax_initCopyCode);
+  volantis.js("<%- theme.plugins.clipboard.js %>").then(pjax_CopyCode)
+  volantis.pjax.push(pjax_CopyCode);
 </script>

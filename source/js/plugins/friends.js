@@ -43,10 +43,11 @@ const FriendsJS = {
     request();
   },
   layout: (cfg) => {
-    const el = $(cfg.el)[0];
+    const el = cfg.el;
     FriendsJS.requestAPI(cfg.api, function(data) {
-      $(el).find('.loading-wrap').remove();
+      el.querySelector('.loading-wrap').remove();
       const arr = data.content;
+      var cellALL="";
       arr.forEach((item, i) => {
         var user = '<div class="user-card">';
         user += '<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer"';
@@ -55,11 +56,14 @@ const FriendsJS = {
         user += '<div class="name"><span>' + item.title + '</span></div>';
         user += '</a>';
         user += '</div>';
-        $(el).find('.group-body').append(user);
+        cellALL += user;
       });
+      el.querySelector('.group-body').innerHTML=cellALL;
     }, function() {
-      $(el).find('.loading-wrap svg').remove();
-      $(el).find('.loading-wrap p').text('加载失败，请稍后重试。');
+      try{
+        el.querySelector('.loading-wrap svg').remove();
+        el.querySelector('.loading-wrap p').innerText('加载失败，请稍后重试。');
+      }catch(e){}
     });
   },
   start: () => {
@@ -81,9 +85,8 @@ const FriendsJS = {
 }
 
 
-$(function () {
-  FriendsJS.start();
-});
+
+FriendsJS.start();
 document.addEventListener('pjax:complete', function() {
   FriendsJS.start();
 });

@@ -19,7 +19,7 @@
       }
     <% } %>
   };
-  volantis.import.jQuery().then(loadIssuesJS) // 此处依赖JQ
+  loadIssuesJS()
   volantis.pjax.push(()=>{
     loadIssuesJS();
   })
