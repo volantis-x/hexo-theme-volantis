@@ -23,6 +23,7 @@
   /******************** volantis.dom.$ ********************************/
   // 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
   function volantisDom(ele){
+    if(!ele) ele=document.createElement("div")
     this.ele=ele;
     // ==============================================================
     this.ele.find=(c)=>{
