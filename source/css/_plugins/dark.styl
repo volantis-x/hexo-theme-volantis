@@ -6,13 +6,15 @@ if hexo-config('plugins.backstretch.position') == 'fixed'
 else
   #l_body
     background-color: black !important
+
 fal,
 fad,
 fa,
 svg.iconfont,    
 img,
-.lazyload,
+.lazyload
   filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
+
 //header
 #wrapper .title
   color: var(--color-meta)
@@ -37,19 +39,20 @@ details>summary
 details
   border: 1px solid var(--color-site-bg)
   background: var(--color-site-bg)
+
 //search
-#u-search .modal
-  background: var(--color-card) !important
-#u-search .modal-header
-  background: var(--color-card) !important
+#u-search .modal,
+#u-search .modal-header,
 #u-search .modal-body
   background: var(--color-card) !important
 #u-search .modal-body .modal-results .result:hover
   background: var(--color-block) !important
+
 //phone search
 .l_header .m_search
   @media screen and (max-width: $device-mobile)
     background: var(--color-site-bg) !important
+ 
 //side
 .widget.blogger .content .social-wrapper a.social:hover
   background: var(--color-card)
@@ -64,6 +67,7 @@ kbd
   background: var(--color-block) !important
 .cover-wrapper.dock .menu .list-h a:hover, .cover-wrapper.featured .menu .list-h a:hover, .cover-wrapper.focus .menu .list-h a:hover
   color: var(--color-text) !important
+
 //highlight
 .gutter
   background: var(--color-card) !important
@@ -72,6 +76,7 @@ kbd
   background-color: #21252b
 .highlight pre .line, .highlight pre .params
   color: rgba(158, 142, 142, 0.9)
+
 //table
 *:not(.highlight) >table tr
   background-color: var(--color-card)
@@ -85,10 +90,12 @@ kbd
   border-color: var(--color-site-bg) !important
 blockquote p
   color: var(--color-p)
+  
 // tags
 #archive-page .archive .all-tags ul li span
   color: var(--color-text)
   background: #6f6f72
+
 if hexo-config('comments.service')=='gitalk'
   .gt-container .gt-header-textarea
     background-color: var(--color-card)
@@ -100,6 +107,7 @@ if hexo-config('comments.service')=='gitalk'
       box-shadow: none
   .gt-container .gt-comment-admin .gt-comment-content
     background-color: var(--color-card)
+
 if hexo-config('comments.service')=='minivaline'
   .MiniValine .vpage .more
     background: var(--color-site-bg)
@@ -120,6 +128,7 @@ if hexo-config('comments.service')=='minivaline'
       background: var(--color-block)
   .MiniValine .vpage .more:hover
     background: var(--color-card)
+
 if hexo-config('plugins.aplayer.enable')
   .aplayer
     background: var(--color-site-bg)
@@ -139,6 +148,7 @@ if hexo-config('plugins.aplayer.enable')
     border-top: 1px solid var(--color-card)
   .aplayer.aplayer-withlist .aplayer-info
     border-bottom: 1px solid var(--color-block)
+
 if hexo-config('comments.service')=='valine'
   #valine_container button
     background-color: var(--color-block) !important
