@@ -1,6 +1,7 @@
 <script>
   function load_twikoo() {
-	  volantis.js("<%- theme.comments.twikoo.js || 'https://cdn.jsdelivr.net/npm/twikoo@latest' %>", pjax_twikoo)
+    if(!document.querySelectorAll("#twikoo_container")[0])return;
+    volantis.js("<%- theme.comments.twikoo.js || 'https://cdn.jsdelivr.net/npm/twikoo@latest' %>", pjax_twikoo)
   }
   function pjax_twikoo() {
     if(!document.querySelectorAll("#twikoo_container")[0])return;
@@ -10,19 +11,16 @@
       path = defaultPath || "decodeURI(window.location.pathname)"; //神奇的pathname
     }
     twikoo.init(Object.assign(<%- JSON.stringify(theme.comments.twikoo) %>, {
-	  el: '#twikoo_container',
-	  path: path,
+      el: '#twikoo_container',
+      path: path,
     }))
   }
-  $(function () {
-    if(!document.querySelectorAll("#twikoo_container")[0])return;
-    load_twikoo();
-  });
-   volantis.pjax.push(()=>{
-	  if (typeof twikoo == "undefined") {
-		load_twikoo();
-	  } else {
-		pjax_twikoo();
-	  }
-   },'twikoo');
+  load_twikoo();
+  volantis.pjax.push(()=>{
+    if (typeof twikoo == "undefined") {
+      load_twikoo();
+    } else {
+      pjax_twikoo();
+    }
+  },'twikoo');
 </script>

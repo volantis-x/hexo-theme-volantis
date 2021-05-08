@@ -236,7 +236,18 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: valine # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  service: utterances # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  # utterances
+  # https://utteranc.es/
+  utterances:
+    repo: xxx/xxx
+    issue-term: pathname
+    issue-number:
+    theme:
+      light: github-light
+      dark: github-dark
+    label: ✨💬✨
+    crossorigin: anonymous
   # Valine
   # https://valine.js.org/
   valine:
@@ -258,14 +269,13 @@ comments:
   # MiniValine
   # https://github.com/MiniValine/MiniValine
   minivaline:
-    js: https://cdn.jsdelivr.net/npm/minivaline@latest
+    js: https://cdn.jsdelivr.net/npm/minivaline@5
     path: # 全局评论地址
     placeholder: 快来评论吧~  # 全局评论占位提示
     # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）
     # emoticonUrl 等列表选项 可参考 https://github.com/MiniValine/hexo-next-minivaline
     # 下面是一个例子：
-    backend: waline
-    serverURL: https://waline.vercel.app
+    serverURL: https://hello.com
   # Disqus
   # https://disqus.com
   disqus:
@@ -336,17 +346,7 @@ comments:
     pageSize: 10 # 评论每页显示数量
     lang: zh-CN
     visitor: true
-  # utterances
-  # https://utteranc.es/
-  utterances:
-    repo: xxx/xxx
-    issue-term: pathname
-    issue-number:
-    theme:
-      light: github-light
-      dark: github-dark
-    label: ✨💬✨
-    crossorigin: anonymous
+
 
 ############################### Comments ############################### > end
 
@@ -510,6 +510,7 @@ site_footer:
 plugins:
   ################ required plugins ################
   # jquery
+  globalJquery: false # 全局引入 jquery
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css

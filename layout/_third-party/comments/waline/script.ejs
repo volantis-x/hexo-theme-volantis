@@ -1,6 +1,6 @@
 <script>
   function pjax_waline() {
-    if(!document.querySelectorAll("#waline")[0])return;
+    if(!document.querySelector("#waline"))return;
     let pagePlaceholder = pdata.commentPlaceholder || "<%= theme.comments.waline.placeholder %>";
     let path = pdata.commentPath;
     if (path.length == 0) {

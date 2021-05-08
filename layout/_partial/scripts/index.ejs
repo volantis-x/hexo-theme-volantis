@@ -14,7 +14,9 @@
   <% } %>
 </script>
 <!-- required -->
-<!-- <%- js(theme.plugins.jquery) %> -->
+<% if (theme.plugins.globalJquery) { %>
+  <%- js(theme.plugins.jquery) %>
+<% } %>
 
 <!-- internal -->
 
