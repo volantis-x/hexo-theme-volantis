@@ -1,8 +1,6 @@
-$(function () {
-  MainAPlayer.init();
-  MainAPlayer.checkAPlayer();
-});
-
+/**
+ * 右键音乐
+ * */
 const MainAPlayer = (() => {
   const APlayer = {};
   const fn = {};
@@ -193,3 +191,6 @@ const MainAPlayer = (() => {
 })()
 
 Object.freeze(MainAPlayer);
+
+MainAPlayer.init();
+MainAPlayer.checkAPlayer();
