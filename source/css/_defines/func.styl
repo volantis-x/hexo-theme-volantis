@@ -96,6 +96,7 @@ scrollbar-codeblock()
         background: $color-hover
 
 dark()
+  // Base Dark Color
   --color-site-body: black
   --color-site-bg: convert(hexo-config('color_scheme.dark.site_bg'))
   --color-site-inner: convert(hexo-config('color_scheme.dark.site_inner'))
@@ -117,3 +118,27 @@ dark()
   --color-list-hl: convert(hexo-config('color_scheme.dark.list_hl'))
   --color-meta: convert(hexo-config('color_scheme.dark.meta'))
   --color-link: convert(hexo-config('color_scheme.dark.meta'))
+  
+  // minivaline v6 or ohhho Dark Color
+  if hexo-config('comments.service') == 'minivaline' || 'ohhho'
+    --ohhho-color-p: var(--color-p) !important
+    --ohhho-color-text: var(--color-text) !important
+    --ohhho-color-card: var(--color-card) !important
+    --ohhho-color-block: var(--color-block) !important
+    --ohhho-expand-before-background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9)) !important
+    --ohhho-expand-after-background: rgba(0,0,0,0.9) !important
+
+  // waline Dark Color https://github.com/volantis-x/hexo-theme-volantis/issues/633
+  if hexo-config('comments.service')=='waline'
+    --waline-white: #000 !important
+    --waline-light-grey: #666 !important
+    --waline-dark-grey: #999 !important
+    --waline-text-color: #888 !important
+    --waline-bgcolor: #1e1e1e !important
+    --waline-bgcolor-light: #272727 !important
+    --waline-border-color: #333 !important
+    --waline-disable-bgcolor: #444 !important
+    --waline-disable-color: #272727 !important
+    --waline-bq-color: #272727 !important
+    --waline-info-bgcolor: #272727 !important
+    --waline-info-color: #666 !important
