@@ -1,10 +1,6 @@
-## PR Checklist <!-- 我确认我已经查看了 -->
+## PR Type
 
 <!-- Change [ ] to [x] to select (将 [ ] 换成 [x] 来选择) -->
-
-- [ ] 我已提交主题文档更新PR | [Docs](https://github.com/volantis-x/community/) in [volantis website](https://volantis.js.org/)  have been added / updated (for features).
-
-## PR Type
 <!-- What kind of change does this PR introduce? -->
 <!-- PR带来了什么样的变化？ -->
 

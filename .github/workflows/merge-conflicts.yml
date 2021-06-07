@@ -2,7 +2,8 @@ name: Merge conflicts
 on:
   push:
     branches:
-      - master
+      - main
+      - dev
 jobs:
   triage:
     runs-on: ubuntu-latest

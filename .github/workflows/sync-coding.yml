@@ -2,9 +2,9 @@ name: Sync Coding
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   # pull_request:
-  #   branches: [ master ]
+  #   branches: [ main ]
   release:
     types: [ published ]
 
@@ -20,6 +20,6 @@ jobs:
              -H 'Content-Type: application/json' \
              -d '
               {
-                "ref": "master",
+                "ref": "main",
                 "envs": []
               }'
