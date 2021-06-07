@@ -3,16 +3,16 @@ name: Sync Coding
 on:
   push:
     branches: 
-    - master
+    - main
     - dev
   # pull_request:
-  #   branches: [ master ]
+  #   branches: [ main ]
   release:
     types: [ published ]
 
 jobs:
-  master:
-    if: github.ref == 'refs/heads/master'
+  main:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +26,7 @@ jobs:
                 "envs": [
                   {
                     "name": "BRANCH",
-                    "value": "master",
+                    "value": "main",
                     "sensitive": 0
                   }
                 ]

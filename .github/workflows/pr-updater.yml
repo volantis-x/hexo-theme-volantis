@@ -2,8 +2,7 @@ name: PR update
 on:
   push:
     branches:
-      - master
-      - dev
+      - main
 
 jobs:
   autoupdate:

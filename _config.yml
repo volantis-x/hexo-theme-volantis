@@ -354,7 +354,7 @@ comments:
 sidebar:
   position: right # left right
   # 主页、分类、归档等独立页面
-  for_page: [blogger, category, tagcloud, qrcode]
+  for_page: [blogger, category, tagcloud, donate]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
