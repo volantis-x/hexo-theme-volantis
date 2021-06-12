@@ -1,1 +1,9 @@
-<script data-isso="<%= theme.comments.isso.url %>" src="<%= theme.comments.isso.src %>"</script>
+<script
+  data-pjax
+  data-isso="<%= theme.comments.isso.url %>"
+  data-isso-css="<%= theme.comments.isso.css %>"
+  <% if (theme.comments.isso.gravatar) { %>
+  data-isso-gravatar="true"
+  data-isso-avatar="false"
+  <% } %>
+  src="<%= theme.comments.isso.src %>"</script>
