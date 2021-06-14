@@ -1,26 +1,26 @@
 <script type="text/javascript">
   function loadIsso() {
-    let d = document, s = d.createElement('script');
-    s.src = '<%= theme.comments.isso.src %>';
-    s.setAttribute('data-isso', '<%= theme.comments.isso.url %>');
-    s.setAttribute('data-isso-css', '<%= theme.comments.isso.css %>');
-    if ('<%= theme.comments.isso.gravatar %>' == 'true') {
-      s.setAttribute('data-isso-gravatar', 'true');
-      s.setAttribute('data-isso-avatar', 'false');
-    }
+    let d = document,
+      s = d.createElement("script");
+    s.src = "<%= theme.comments.isso.src %>";
+    s.setAttribute("data-isso", "<%= theme.comments.isso.url %>");
+    <% if (theme.comments.isso.css) { %>
+      s.setAttribute("data-isso-css", "<%= theme.comments.isso.css %>");
+    <% } %>
+    <% if (theme.comments.isso.gravatar) { %>
+      s.setAttribute("data-isso-gravatar", "true");
+      s.setAttribute("data-isso-avatar", "false");
+    <% } %>
     (d.head || d.body).appendChild(s);
   }
-
   function pjax_isso() {
     if (window.Isso) {
       window.Isso.init();
       window.Isso.fetchComments();
-    } else if ($('#isso-thread').length != 0) {
+    } else if (document.querySelector("#isso-thread")) {
       loadIsso();
     }
   }
-  $(function () {
-    pjax_isso();
-  });
+  pjax_isso();
   volantis.pjax.push(pjax_isso);
 </script>

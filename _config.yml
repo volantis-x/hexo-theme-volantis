@@ -282,11 +282,13 @@ comments:
   # https://www.livere.com
   livere:
     uid:
-  # Isso 暂不支持Pjax
+  # Isso
   # https://posativ.org/isso/
   isso:
     url: https://example.com/(path/)
     src: https://example.com/(path/)js/embed.min.js
+    css:
+    gravatar:
   # HashOver 暂不支持Pjax
   # https://www.barkdull.org/software/hashover
   hashover:
