@@ -32,8 +32,8 @@ function commit() {
   printf "\n"
   git commit -m "${msg}"
 
-  # 变基到 master 分支
-  git checkout master
+  # 变基到 main 分支
+  git checkout main
   git rebase dev
   # 切换回 dev 开发分支
   git checkout dev

@@ -1,3 +1,4 @@
+// 将首屏样式 first.styl 硬编码到HTML页面
 "use strict";
 const stylus = require("stylus");
 const fs = require("hexo-fs");
