@@ -1,7 +1,8 @@
-// Custom Files 自定义文件   --- From NexT ---
+// Custom Files 自定义文件   --- Modified From NexT ---
 
 const fs = require('hexo-fs');
 const path = require('path');
+const defaultExtname = '.ejs';
 let points={
   styles:[
     "first",
@@ -29,7 +30,7 @@ hexo.extend.filter.register('theme_inject', injects => {
     filePath[key]="source/_volantis/"+key+".styl"
   });
   points.views.forEach(key => {
-    filePath[key]="source/_volantis/"+key+".ejs"
+    filePath[key]="source/_volantis/"+key+defaultExtname
   });
   filePath=Object.assign(filePath, hexo.theme.config.custom_files)
   // console.log(filePath);
