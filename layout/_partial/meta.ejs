@@ -36,6 +36,9 @@ if (post.bottom_meta == false) {
             <%- partial('../_meta/' + meta, {post: post}) %>
           <% } %>
         <% }) %>
+        <!-- Custom Files topMeta begin-->
+        <%- volantis_inject('topMeta') %>
+        <!-- Custom Files topMeta end-->
       </div>
     <% } %>
   </div>
@@ -48,5 +51,8 @@ if (post.bottom_meta == false) {
         <% } %>
       <% }) %>
     </div>
+    <!-- Custom Files bottomMeta begin -->
+    <%- volantis_inject('bottomMeta') %>
+    <!-- Custom Files bottomMeta end -->
   </div>
 <% } %>

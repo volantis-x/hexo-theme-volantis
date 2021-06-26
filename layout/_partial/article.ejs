@@ -124,6 +124,9 @@
       <% } %>
     </div>
   <% } %>
+  <!-- Custom Files postEnd begin-->
+  <%- volantis_inject('postEnd') %>
+  <!-- Custom Files postEnd end-->
 </article>
 
 <% if (page.comments == undefined || page.comments != false) { %>

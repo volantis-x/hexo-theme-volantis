@@ -6,6 +6,10 @@
 @import '_plugins/index'
 @import '_layout/*'
 
+// Custom Files
+for $injects_style in hexo-config('injects.style')
+  @import $injects_style;
+
 #safearea{
   display: block
 }

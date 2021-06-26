@@ -165,3 +165,11 @@ if hexo-config('comments.service')=='valine'
     background:  #393c40 !important
   .v[data-class=v] code, .v[data-class=v] pre
     background-color: #332828 !important
+
+
+// Custom Files
+for $injects_dark in hexo-config('injects.dark')
+  @import $injects_dark;
+// eg:
+// body
+//   --color-site-body: blue !important

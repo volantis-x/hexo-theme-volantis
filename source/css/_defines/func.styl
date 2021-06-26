@@ -142,3 +142,11 @@ dark()
     --waline-bq-color: #272727 !important
     --waline-info-bgcolor: #272727 !important
     --waline-info-color: #666 !important
+
+
+  // Custom Files
+  for $injects_darkFun in hexo-config('injects.darkFun')
+    @import $injects_darkFun;
+  // eg:
+  // body
+  //   --color-site-body: blue !important
