@@ -67,6 +67,7 @@ hexo.on('generateBefore', function() {
     push(file) {
       // Get absolute path base on hexo dir
       let temp_path=path.resolve(this.base_dir, file)
+      fs.watch(temp_path)
       if(fs.existsSync(temp_path)){
         this.files.push(temp_path);
       }
@@ -93,6 +94,7 @@ hexo.on('generateBefore', function() {
       // Get absolute path base on hexo dir
       let temp_path=path.resolve(this.base_dir, file)
       let temp_raw=""
+      fs.watch(temp_path)
       if(fs.existsSync(temp_path)){
         temp_raw=fs.readFileSync(temp_path)
       }
