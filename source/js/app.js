@@ -259,11 +259,23 @@ const VolantisApp = (() => {
   // 设置全局事件
   fn.setGlobalHeaderMenuEvent = () => {
     if (volantis.isMobile) {
-      // 【移动端】 点击展开子菜单
+      // 【移动端】 关闭已经展开的子菜单 点击展开子菜单
       document.querySelectorAll('#l_header .m-phone li').forEach(function(e){
         if(e.querySelector(".list-v")){
+          // 点击菜单
           volantis.dom.$(e).click(function (e) {
             e.stopPropagation();
+            // 关闭已经展开的子菜单
+            e.currentTarget.parentElement.childNodes.forEach(function(e){
+              if(Object.prototype.toString.call(e) == '[object HTMLLIElement]'){
+                e.childNodes.forEach(function(e){
+                  if(Object.prototype.toString.call(e) == '[object HTMLUListElement]'){
+                    volantis.dom.$(e).hide()
+                  }
+                })
+              }
+            })
+            // 点击展开子菜单
             let array=e.currentTarget.children
             for (let index = 0; index < array.length; index++) {
               const element = array[index];
