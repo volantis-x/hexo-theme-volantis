@@ -31,7 +31,20 @@ function postTabs(args, content) {
     var tabIcon       = tabParameters[1] || '';
     var tabHref       = '';
 
+
+    // 兼容aplayer插件 https://github.com/volantis-x/hexo-theme-volantis/issues/575
+    var aplayerTag=0
+    var aplayerTagReg=/\<div.*class=\"aplayer aplayer-tag-marker\"(.|\n)*\<\/script\>/g
+    if(/class="aplayer aplayer-tag-marker"/g.test(postContent)){
+      aplayerTag=aplayerTagReg.exec(postContent)[0]
+      postContent=postContent.replace(aplayerTagReg,"@aplayerTag@")
+    }
+
     postContent = hexo.render.renderSync({text: postContent, engine: 'markdown'}).trim();
+
+    if(aplayerTag){
+      postContent=postContent.replace(/\<pre\>\<code\>.*@aplayerTag@.*\<\/code><\/pre>/,aplayerTag)
+    }
 
     tabId += 1;
     tabHref = (tabName + ' ' + tabId).toLowerCase().split(' ').join('-');
