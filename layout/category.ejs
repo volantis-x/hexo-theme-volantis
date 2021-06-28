@@ -2,7 +2,7 @@
 <% page.comments = false; %>
 <div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.posts && site.posts.length > 0) { %>
-    <% if (page.layout == 'category') { %>
+    <% if ((page.layout == 'category')||(page.layout == 'categories') ) { %>
       <div class='post-wrapper'>
         <article id="cat" class="post article white-box reveal <%- theme.custom_css.body.effect.join(' ') %>">
           <h2><%- page.title %></h2>
