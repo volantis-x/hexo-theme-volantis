@@ -22,16 +22,17 @@ module.exports = hexo => {
   if (!data) return;
 
   /**
-   * Merge configs from _data/next.yml into hexo.theme.config.
-   * If `override`, configs in next.yml will rewrite configs in hexo.theme.config.
-   * If next.yml not exists, merge all `theme_config.*` into hexo.theme.config.
+   * Merge configs from _data/volantis.yml into hexo.theme.config.
+   * If `override`, configs in volantis.yml will rewrite configs in hexo.theme.config.
+   * If volantis.yml not exists, merge all `theme_config.*` into hexo.theme.config.
    */
-  if (data.next) {
-    if (data.next.override) {
-      hexo.theme.config = data.next;
+  console.log(data.volantis);
+  if (data.volantis) {
+    if (data.volantis.override) {
+      hexo.theme.config = data.volantis;
     } else {
-      merge(hexo.config, data.next);
-      merge(hexo.theme.config, data.next);
+      merge(hexo.config, data.volantis);
+      merge(hexo.theme.config, data.volantis);
     }
   } else {
     merge(hexo.theme.config, hexo.config.theme_config);

@@ -22,7 +22,13 @@ let points={
     "comment",
   ]
 }
-
+// hexo s 和 hexo server 时监听自定义文件变动
+function watchFile(path){
+  let arg=process.argv[2];
+  if(arg=="s"||arg=="server"){
+    fs.watch(path)
+  }
+}
 hexo.extend.filter.register('theme_inject', injects => {
 
   let filePath={}
@@ -67,7 +73,7 @@ hexo.on('generateBefore', function() {
     push(file) {
       // Get absolute path base on hexo dir
       let temp_path=path.resolve(this.base_dir, file)
-      fs.watch(temp_path)
+      watchFile(temp_path)
       if(fs.existsSync(temp_path)){
         this.files.push(temp_path);
       }
@@ -94,7 +100,7 @@ hexo.on('generateBefore', function() {
       // Get absolute path base on hexo dir
       let temp_path=path.resolve(this.base_dir, file)
       let temp_raw=""
-      fs.watch(temp_path)
+      watchFile(temp_path)
       if(fs.existsSync(temp_path)){
         temp_raw=fs.readFileSync(temp_path)
       }
