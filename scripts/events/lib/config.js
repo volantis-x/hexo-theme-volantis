@@ -26,7 +26,7 @@ module.exports = hexo => {
    * If `override`, configs in volantis.yml will rewrite configs in hexo.theme.config.
    * If volantis.yml not exists, merge all `theme_config.*` into hexo.theme.config.
    */
-  console.log(data.volantis);
+
   if (data.volantis) {
     if (data.volantis.override) {
       hexo.theme.config = data.volantis;
