@@ -1,23 +1,34 @@
 <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/<%- theme.info.theme_version %>'>
+  <%- meta_generator() %>
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <% if (page.robots) { %>
-    <meta name="robots" content="<%- page.robots %>">
-  <% } else if (theme.seo && theme.seo.robots) { %>
-    <% if (is_home()) { %>
-      <% if (page.prev == 0) { %>
-        <meta name="robots" content="<%- theme.seo.robots.home_first_page %>">
-      <% } else { %>
-        <meta name="robots" content="<%- theme.seo.robots.home_other_pages %>">
-      <% } %>
-    <% } else if (is_archive()) { %>
-      <meta name="robots" content="<%- theme.seo.robots.archive %>">
-    <% } else if (is_category()) { %>
-      <meta name="robots" content="<%- theme.seo.robots.category %>">
-    <% } else if (is_tag()) { %>
-      <meta name="robots" content="<%- theme.seo.robots.tag %>">
-    <% } %>
-  <% } %>
+  <%_
+    function generate_seo() {
+      let robots_content="";
+      if (page.robots) {
+        robots_content = page.robots
+      } else if (theme.seo && theme.seo.robots) {
+        if (is_home()) {
+          if (page.prev == 0) {
+            robots_content=theme.seo.robots.home_first_page
+          }else{
+            robots_content=theme.seo.robots.home_other_pages
+          }
+        } else if (is_archive()) { 
+          robots_content=theme.seo.robots.archive
+        } else if (is_category()) {
+          robots_content=theme.seo.robots.category
+        } else if (is_tag()) {
+          robots_content=theme.seo.robots.tag
+        }
+      }
+      if(robots_content){
+        return `<meta name="robots" content="${robots_content}">`
+      }
+    }
+  _%>
+  <%- generate_seo() %>
+  <%- autoCanonical(config, page) %>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -28,11 +39,13 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta content="<%=config.title%>" name="application-name">
+  <meta content="<%=config.title%>" name="apple-mobile-web-app-title">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
   <link rel="preload" href="<%- theme.cdn.map.css.style %>" as="style">
-
-
   <!-- 页面元数据 -->
-  <%
+  <%_
     var title = page.seo_title || page.title;
     var keywords = page.keywords || '';
     var description = page.description || '';
@@ -73,39 +86,55 @@
         }
       }
     }
-  %>
-  <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
-  <% if (keywords){ %>
-    <meta name="keywords" content="<%- keywords %>">
-  <% } %>
-
-  <% if (description){ %>
-    <meta name="description" content="<%- description %>">
-  <% } %>
-
+    function generate_title() {
+      let s="<title>"
+      if (title) {
+        s+=`${title} - `
+      }
+      s+=`${config.title}</title>`
+      return s
+    }
+    function generate_keywords() {
+      if(!(is_home() && page.prev == 0)){
+        if (keywords) {
+          keywords += `,`
+        }
+        keywords += `${config.keywords}`
+      }
+      return `<meta name="keywords" content="${keywords}">`
+    }
+    function generate_description() {
+      if (!description) {
+        description += config.description
+      }
+      description += ` - ${config.author} - ${config.title}`
+      return `<meta name="description" content="${description}">`
+    }
+  _%>
+  <%- generate_title() %>
+  <%- generate_keywords() %>
+  <%- generate_description() %>
+  <%- open_graph(theme.open_graph) %>
   <!-- feed -->
-  <% if (config.feed && config.feed.path){ %>
+  <%_ if (config.feed && config.feed.path){ _%>
     <%- feed_tag(config.feed.path, {title: config.title}) %>
-  <% } %>
-
+  <%_ } _%>
   <!-- import meta -->
-  <% if (config.import && config.import.meta){ %>
-    <% (config.import.meta||[]).forEach(function(item){ %>
+  <%_ if (config.import && config.import.meta){ _%>
+    <%_ (config.import.meta||[]).forEach(function(item){ _%>
       <%- item %>
-    <% }) %>
-  <% } %>
-
+    <%_ }) _%>
+  <%_ } _%>
   <!-- link -->
-  <% if (config.favicon) { %>
+  <%_ if (config.favicon) { _%>
     <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
-  <% } %>
-
+  <%_ } _%>
   <!-- import link -->
-  <% if (config.import && config.import.link){ %>
-  <% (config.import.link||[]).forEach(function(item){ %>
-  <%- item %><% }) %>
-  <% } %>
-
+  <%_ if (config.import && config.import.link){ _%>
+    <%_ (config.import.link||[]).forEach(function(item){ _%>
+      <%- item %>
+    <%_ }) _%>
+  <%_ } _%>
   <style>
     /* 
       source/css/first.styl
@@ -113,17 +142,16 @@
      */
     <%- getFirstCSS() %>
   </style>
-
   <link rel="stylesheet" href="<%- theme.cdn.map.css.style %>" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
-  <% if (theme.plugins.darkmodejs.enable) { %>
+  <%_ if (theme.plugins.darkmodejs.enable) { _%>
     <script>
       var userColorScheme=localStorage.getItem("user-color-scheme")
       if(userColorScheme){
         document.documentElement.setAttribute("data-user-color-scheme", userColorScheme);
       }
     </script>
-  <% } %>
+  <%_ } _%>
   <%- partial('../_third-party/end-of-support/script') %>
   <!-- Custom Files head begin-->
   <%- volantis_inject('head') %>

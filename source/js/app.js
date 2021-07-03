@@ -249,9 +249,11 @@ const VolantisApp = (() => {
     idname = idname.replace(/(\[|\]|~|#|@)/g, '\\$1');
     if (idname && volantis.dom.headerMenu) {
       volantis.dom.headerMenu.forEach(element => {
-        let id=element.querySelector("#"+idname)
-        if(id){
-          volantis.dom.$(id).addClass('active')
+        if(!/^\d/.test(idname)){ // id 不能数字开头
+          let id=element.querySelector("#"+idname)
+          if(id){
+            volantis.dom.$(id).addClass('active')
+          }
         }
       });
     }
@@ -280,18 +282,20 @@ const VolantisApp = (() => {
             let array=e.currentTarget.children
             for (let index = 0; index < array.length; index++) {
               const element = array[index];
-                volantis.dom.$(element).show()
+              volantis.dom.$(element).show()
             }
           },0);
         }
       })
     } else {
-      // 【PC端】 hover时展开子菜单，点击时隐藏子菜单
+      // 【PC端】 hover时展开子菜单，点击时[target.baseURI==origin时]隐藏子菜单? 现有逻辑大部分情况不隐藏子菜单
       document.querySelectorAll('#wrapper .m-pc li > a[href]').forEach(function (e) {
         volantis.dom.$(e.parentElement).click(function (e) {
           e.stopPropagation();
           if (e.target.origin == e.target.baseURI) {
-            volantis.dom.$('#wrapper .m-pc .list-v').hide();
+            document.querySelectorAll('#wrapper .m-pc .list-v').forEach(function (e) {
+              volantis.dom.$(e).hide(); // 大概率不会执行
+            })
           }
         },0);
       })

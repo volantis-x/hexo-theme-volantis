@@ -1018,3 +1018,13 @@ seo:
     tag: noindex,follow
     # robots can be written in front-matter
 ############################### SEO ############################### > end
+
+############################### Open Graph ############################### > start
+# https://ogp.me/
+# https://hexo.io/zh-cn/docs/helpers#open-graph
+open_graph:
+  image: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+  twitter_card: summary_large_image
+  #twitter_id:
+  #twitter_site:
+############################### Open Graph ############################### > end
