@@ -37,7 +37,7 @@
               <% (group.items||[]).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
                   <a class='friend-card'
-                    target="_blank" rel="external nofollow noopener noreferrer" href='<%- url_for(item.url || '/') %>'>
+                    target="_blank" rel="external nofollow noopener noreferrer" href="<%- url_for(item.url || '/') %>">
                     <div class='friend-left'>
                       <% if (item.avatar) { %>
                         <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
