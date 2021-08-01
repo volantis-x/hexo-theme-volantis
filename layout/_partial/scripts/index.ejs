@@ -108,7 +108,9 @@
   <%- partial('../snackbar') %>
 <% } %>
 
-<%- partial('../../_third-party/message/script') %>
+<% if (theme.plugins.message && theme.plugins.message.enable) { %>
+  <%- partial('../../_third-party/message/script') %>
+<% } %>
 
 <%- partial('toc') %>
 

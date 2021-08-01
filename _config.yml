@@ -515,6 +515,7 @@ plugins:
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome Pro 版本：https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
+  
   ################ optional plugins ################
   # issues api
   sitesjs:
@@ -525,7 +526,6 @@ plugins:
     enable: true
 
   ######## Plugins to improve loading speed:
-
   # 预加载
   preload:
     enable: true
@@ -543,7 +543,6 @@ plugins:
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
 
   ######## Plugins to optimize the experience:
-
   # highlight.js
   highlightjs:
     enable: #true # Please set hexo.config.highlight.enable = false !!!
@@ -566,7 +565,6 @@ plugins:
     js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
-
   # npm i hexo-wordcount
   wordcount:
     enable: #true
@@ -670,6 +668,8 @@ plugins:
     list_max_height: 320px # list max height
     list_folded: true
     message: false    # 音乐通知
+  
+  # Pjax 
   pjax:
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
@@ -752,6 +752,9 @@ plugins:
       # themecss:
     # HexoPlusPlus其他功能暂未集成
 
+  # 消息提示
+  message:
+    enable: true
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start

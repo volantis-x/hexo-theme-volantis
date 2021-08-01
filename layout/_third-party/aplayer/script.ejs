@@ -15,7 +15,7 @@
       <% } %>
     })();
   // message see: /layout/_third-party/message/script.ejs
-  <% if (theme.plugins.aplayer.message) { %>
+  <% if (theme.plugins.aplayer.message && theme.plugins.message && theme.plugins.message.enable) { %>
     var checkMetings = setInterval(function() {
     if (!document.querySelectorAll('meting-js')[0].aplayer) return;
     if (!document.querySelectorAll('meting-js')[0].aplayer.on) return;
