@@ -71,4 +71,12 @@
       });
     }
   }
+
+  <% if (theme.plugins.message.copyright.enable) { %>
+    document.body.oncopy = function(){
+      volantis.message('<%- theme.plugins.message.copyright.title %>',
+      '<%- theme.plugins.message.copyright.message %>', 
+      '<%- theme.plugins.message.copyright.icon %>');
+    }; 
+  <% } %>
 </script>
