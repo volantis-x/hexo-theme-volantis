@@ -13,24 +13,29 @@
   volantis.css("<%- theme.plugins.highlightjs.css %>");
   <% } %>
 </script>
+
 <!-- required -->
 <% if (theme.plugins.globalJquery) { %>
   <%- js(theme.plugins.jquery) %>
 <% } %>
 
 <!-- internal -->
+<% if (theme.plugins.backstretch.enable && (theme.plugins.backstretch.images || page.images)) { %>
+  <%- partial('cover') %>
+<% } %>
 
-<%- partial('cover') %>
-
-<% if (theme.rightmenu.enable == true) { %>
+<% if (theme.rightmenu.enable) { %>
   <%- partial('../rightmenu') %>
 <% } %>
+
 <!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
 <% if (theme.plugins.darkmodejs.enable) { %>
   <%- partial('darkmode') %>
 <% } %>
 
+<% if (theme.plugins.sitesjs.enable || theme.plugins.friendsjs.enable || theme.plugins.contributorsjs.enable) { %>
 <%- partial('github-api') %>
+<% } %>
 
 <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
   <%- partial('../../_third-party/lazyload/script') %>
@@ -67,7 +72,6 @@
   <%- partial('search') %>
 <% } %>
 
-
 <% if (theme.plugins.nodewaves.enable) { %>
   <%- partial('../../_third-party/nodewaves/script') %>
 <% } %>
@@ -84,17 +88,27 @@
   <%- partial('counter') %>
 <% } %>
 
-<%- partial('../../_third-party/analytics/script') %>
+<% if (config.google_analytics_key || config.baidu_analytics_key) { %>
+  <%- partial('../../_third-party/analytics/script') %>
+<% } %>
 
-<%- partial('../../_third-party/tidio/script') %>
+<% if (theme.plugins.tidio.enable) { %>
+  %- partial('../../_third-party/tidio/script') %>
+<% } %>
 
-<%- partial('../../_third-party/parallax/script') %>
+<% if (theme.plugins.parallax.enable) { %>
+  <%- partial('../../_third-party/parallax/script') %>
+<% } %>
+
+<% if (page.hpptalk) { %>
+  <%- partial('../../_third-party/hpp/hpptalk') %>
+<% } %>
+
+<% if (page.snackbar && site.data.notification && (page.snackbar in site.data.notification)) { %> 
+  <%- partial('../snackbar') %>
+<% } %>
 
 <%- partial('../../_third-party/message/script') %>
-
-<%- partial('../../_third-party/hpp/hpptalk') %>
-
-<%- partial('../snackbar') %>
 
 <%- partial('toc') %>
 

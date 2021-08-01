@@ -1,5 +1,4 @@
-<% if (theme.plugins.parallax.enable) { %>
-  <% var imgs = theme.plugins.parallax.images || page.images; %>
+<% var imgs = theme.plugins.parallax.images || page.images; %>
 <script>
   var imgs=<%- '["' + imgs.join('", "') + '"]' %>;
   var index=0;
@@ -71,4 +70,3 @@
     } catch (error) {}
   },'pjax_parallax')
 </script>
-<% } %>

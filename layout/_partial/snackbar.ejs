@@ -1,5 +1,4 @@
 <pjax>
-<% if (page.snackbar && site.data.notification && (page.snackbar in site.data.notification)) { %> 
 <% let snackbar = site.data.notification[page.snackbar] %>
 <% if (snackbar.position == 'bottom') { %>
   <div id="snackbar"></div>
@@ -42,15 +41,15 @@
       </script>
   <% } %>
 <% } %>
+
 <script>
-    <% if (snackbar.cache) { %>
-    if (!localStorage.getItem('Snackbar')) {
-      localStorage.setItem('Snackbar', '1');
-      Snackbar();
-    }
-    <% } else { %>
-      Snackbar()
-    <% }%>
-</script>
+<% if (snackbar.cache) { %>
+  if (!localStorage.getItem('Snackbar')) {
+    localStorage.setItem('Snackbar', '1');
+    Snackbar();
+  }
+<% } else { %>
+  Snackbar()
 <% }%>
+</script>
 </pjax>

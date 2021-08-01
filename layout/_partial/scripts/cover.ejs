@@ -1,42 +1,40 @@
-<% if (theme.plugins.backstretch.enable && (theme.plugins.backstretch.images || page.images)) { %>
-  <% 
-    var imgs = theme.plugins.backstretch.images || page.images; 
-    var posi = null;
-    if (theme.plugins.backstretch.position == 'cover') {
-      posi = '#cover-backstretch';
-    }
-  %>
-  <% if (imgs != undefined && theme.plugins.backstretch.position != undefined){ %>
-      <script>
-        var imgs=<%- '["' + imgs.join('", "') + '"]' %>;
-        <% if (theme.plugins.backstretch.shuffle) { %>
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        <% } %>
-        function Pjax_backstretch(){
-          <% if (posi) { %>
-            $('<%- posi %>').backstretch(
-          <%} else { %>
-            $.backstretch(
-          <%} %>
-              imgs,
-            {
-              duration: "<%- theme.plugins.backstretch.duration %>",
-              fade: "<%- theme.plugins.backstretch.fade %>"
-            });
+<% 
+  var imgs = theme.plugins.backstretch.images || page.images; 
+  var posi = null;
+  if (theme.plugins.backstretch.position == 'cover') {
+    posi = '#cover-backstretch';
+  }
+%>
+<% if (imgs != undefined && theme.plugins.backstretch.position != undefined){ %>
+  <script>
+    let imgs=<%- '["' + imgs.join('", "') + '"]' %>;
+    <% if (theme.plugins.backstretch.shuffle) { %>
+      function shuffle(arr){
+        /*From countercurrent-time*/
+        let n = arr.length;
+        while(n--) {
+          let index = Math.floor(Math.random() * n);
+          let temp = arr[index];
+          arr[index] = arr[n];
+          arr[n] = temp;
         }
-        volantis.import.jQuery().then(()=>{
-          volantis.js("<%- theme.plugins.backstretch.js %>").then(Pjax_backstretch)
-        })
-      </script>
-  <% } %>
+      }
+      shuffle(imgs);
+    <% } %>
+    function Pjax_backstretch() {
+      <% if (posi) { %>
+        $('<%- posi %>').backstretch(
+      <%} else { %>
+        $.backstretch(
+      <% } %>
+          imgs,
+        {
+          duration: "<%- theme.plugins.backstretch.duration %>",
+          fade: "<%- theme.plugins.backstretch.fade %>"
+        });
+    }
+    volantis.import.jQuery().then(()=>{
+      volantis.js("<%- theme.plugins.backstretch.js %>").then(Pjax_backstretch)
+    })
+  </script>
 <% } %>

@@ -4,92 +4,92 @@
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
   /******************** volantis.EventListener ********************************/
   // 事件监听器 see: /source/js/app.js
-  volantis.EventListener={}
+  volantis.EventListener = {}
   // 这里存放pjax切换页面时将被移除的事件监听器
-  volantis.EventListener.list=[]
+  volantis.EventListener.list = []
   //构造方法
-  function volantisEventListener(type,f,ele){
-    this.type=type
-    this.f=f
-    this.ele=ele
+  function volantisEventListener(type, f, ele) {
+    this.type = type
+    this.f = f
+    this.ele = ele
   }
   // 移除事件监听器
-  volantis.EventListener.remove=()=>{
+  volantis.EventListener.remove = () => {
     volantis.EventListener.list.forEach(function (i) {
-        i.ele.removeEventListener(i.type,i.f,false)
+      i.ele.removeEventListener(i.type, i.f, false)
     })
-    volantis.EventListener.list=[]
+    volantis.EventListener.list = []
   }
   /******************** volantis.dom.$ ********************************/
   // 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
-  function volantisDom(ele){
-    if(!ele) ele=document.createElement("div")
-    this.ele=ele;
+  function volantisDom(ele) {
+    if (!ele) ele = document.createElement("div")
+    this.ele = ele;
     // ==============================================================
-    this.ele.find=(c)=>{
-      let q=this.ele.querySelector(c)
-      if(q)
+    this.ele.find = (c) => {
+      let q = this.ele.querySelector(c)
+      if (q)
         return new volantisDom(q)
     }
     // ==============================================================
-    this.ele.hasClass=(c)=>{
+    this.ele.hasClass = (c) => {
       return this.ele.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
     }
-    this.ele.addClass=(c)=>{
+    this.ele.addClass = (c) => {
       this.ele.classList.add(c);
       return this.ele
     }
-    this.ele.removeClass=(c)=>{
+    this.ele.removeClass = (c) => {
       this.ele.classList.remove(c);
       return this.ele
     }
-    this.ele.toggleClass=(c)=>{
-      if(this.ele.hasClass(c)){
+    this.ele.toggleClass = (c) => {
+      if (this.ele.hasClass(c)) {
         this.ele.removeClass(c)
-      }else{
+      } else {
         this.ele.addClass(c)
       }
       return this.ele
     }
     // ==============================================================
     // 参数 r 为 true 表示pjax切换页面时事件监听器将被移除，false不移除
-    this.ele.on=(c,f,r=1)=>{
-      this.ele.addEventListener(c,f,false)
-      if(r){
-        volantis.EventListener.list.push(new volantisEventListener(c,f,this.ele))
+    this.ele.on = (c, f, r = 1) => {
+      this.ele.addEventListener(c, f, false)
+      if (r) {
+        volantis.EventListener.list.push(new volantisEventListener(c, f, this.ele))
       }
       return this.ele
     }
-    this.ele.click=(f,r)=>{
-      this.ele.on("click",f,r)
+    this.ele.click = (f, r) => {
+      this.ele.on("click", f, r)
       return this.ele
     }
-    this.ele.scroll=(f,r)=>{
-      this.ele.on("scroll",f,r)
+    this.ele.scroll = (f, r) => {
+      this.ele.on("scroll", f, r)
       return this.ele
     }
     // ==============================================================
-    this.ele.html=(c)=>{
+    this.ele.html = (c) => {
       // if(c=== undefined){
       //   return this.ele.innerHTML
       // }else{
-        this.ele.innerHTML=c
-        return this.ele
+      this.ele.innerHTML = c
+      return this.ele
       // }
     }
     // ==============================================================
-    this.ele.hide=(c)=>{
-      this.ele.style.display="none"
+    this.ele.hide = (c) => {
+      this.ele.style.display = "none"
       return this.ele
     }
-    this.ele.show=(c)=>{
-      this.ele.style.display="block"
+    this.ele.show = (c) => {
+      this.ele.style.display = "block"
       return this.ele
     }
     // ==============================================================
     return this.ele
   }
-  volantis.dom.$=(ele)=>{
+  volantis.dom.$ = (ele) => {
     return new volantisDom(ele)
   }
   /******************** volantis.dom ********************************/
@@ -185,31 +185,31 @@
         if (cb) {
           if (JSON.stringify(cb)) {
             for (let p in cb) {
-              if(p=="onload"){
-                script[p]=()=>{
+              if (p == "onload") {
+                script[p] = () => {
                   cb[p]()
                   resolve()
                 }
-              }else{
-                script[p]=cb[p]
+              } else {
+                script[p] = cb[p]
                 script.onload = resolve
               }
             }
           } else {
-            script.onload = ()=>{
+            script.onload = () => {
               cb()
               resolve()
             };
           }
-        }else{
-          script.onload=resolve
+        } else {
+          script.onload = resolve
         }
         script.setAttribute("src", src);
         HEAD.appendChild(script);
       });
     });
   }
-  volantis.css = (src)=>{
+  volantis.css = (src) => {
     return new Promise(resolve => {
       setTimeout(function () {
         var link = document.createElement('link');
@@ -222,12 +222,14 @@
   }
   /********************按需加载的插件********************************/
   // volantis.import.jQuery().then(()=>{})
-  volantis.import={
-    jQuery:()=>{
-      if(typeof jQuery=="undefined"){
+  volantis.import = {
+    jQuery: () => {
+      if (typeof jQuery == "undefined") {
         return volantis.js("<%- theme.plugins.jquery %>")
-      }else{
-        return new Promise(resolve => {resolve()});
+      } else {
+        return new Promise(resolve => {
+          resolve()
+        });
       }
     }
   }
