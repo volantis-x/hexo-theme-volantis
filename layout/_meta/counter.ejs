@@ -26,7 +26,10 @@
       </p>
     </a>
   </div>
-<% } else if ((theme.comments.service=='valine'&&theme.comments.valine.visitor)||(theme.comments.service=='minivaline'&&theme.comments.minivaline.visitor)||(theme.comments.service=='waline'&&theme.comments.waline.visitor)) { %>
+<% } else if (
+    (theme.comments.service=='valine' && theme.comments.valine.visitor) || 
+    (theme.comments.service=='minivaline' && theme.comments.minivaline.visitor) || 
+    (theme.comments.service=='waline' && theme.comments.waline.visitor)) { %>
   <div class="new-meta-item browse">
     <a class='notlink'>
       <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
@@ -43,7 +46,7 @@
       </span>
     </a>
   </div>
-<% } else if (theme.comments.service=='twikoo') { %>
+<% } else if (theme.comments.service=='twikoo' && !!page.comments) { %>
   <div class="new-meta-item browse">
     <a class='notlink'>
       <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
