@@ -1,41 +1,56 @@
 var SearchService = '';
 
-(function($) {
+(function ($) {
 
   /**
    * A super class of common logics for all search services
    * @param options : (object)
    */
-  SearchService = function(options) {
+  SearchService = function (options) {
     var self = this;
 
     self.config = $.extend({
-      per_page : 10,
+      per_page: 10,
       selectors: {
-        body              : 'body',
-        form              : '.u-search-form',
-        input             : '.u-search-input',
-        container         : '#u-search',
-        modal             : '#u-search .modal',
-        modal_body        : '#u-search .modal-body',
-        modal_footer      : '#u-search .modal-footer',
-        modal_overlay     : '#u-search .modal-overlay',
-        modal_results     : '#u-search .modal-results',
-        modal_metadata    : '#u-search .modal-metadata',
-        modal_error       : '#u-search .modal-error',
-        modal_loading_bar : '#u-search .modal-loading-bar',
+        body: 'body',
+        form: '.u-search-form',
+        input: '.u-search-input',
+        container: '#u-search',
+        modal: '#u-search .modal',
+        modal_body: '#u-search .modal-body',
+        modal_footer: '#u-search .modal-footer',
+        modal_overlay: '#u-search .modal-overlay',
+        modal_results: '#u-search .modal-results',
+        modal_metadata: '#u-search .modal-metadata',
+        modal_error: '#u-search .modal-error',
+        modal_loading_bar: '#u-search .modal-loading-bar',
         modal_ajax_content: '#u-search .modal-ajax-content',
-        modal_logo        : '#u-search .modal-footer .logo',
-        btn_close         : '#u-search .btn-close',
-        btn_next          : '#u-search .btn-next',
-        btn_prev          : '#u-search .btn-prev'
+        modal_logo: '#u-search .modal-footer .logo',
+        btn_close: '#u-search .btn-close',
+        btn_next: '#u-search .btn-next',
+        btn_prev: '#u-search .btn-prev'
       },
       brands: {
-        'hexo'   : {logo: '', url: ''},
-        'google' : {logo: 'google.svg', url: 'https://cse.google.com'},
-        'algolia': {logo: 'algolia.svg', url: 'https://www.algolia.com'},
-        'baidu'  : {logo: 'baidu.svg', url: 'http://zn.baidu.com/cse/home/index'},
-        'azure'  : {logo: 'azure.svg', url: 'https://azure.microsoft.com/en-us/services/search/'}
+        'hexo': {
+          logo: '',
+          url: ''
+        },
+        'google': {
+          logo: 'google.svg',
+          url: 'https://cse.google.com'
+        },
+        'algolia': {
+          logo: 'algolia.svg',
+          url: 'https://www.algolia.com'
+        },
+        'baidu': {
+          logo: 'baidu.svg',
+          url: 'http://zn.baidu.com/cse/home/index'
+        },
+        'azure': {
+          logo: 'azure.svg',
+          url: 'https://azure.microsoft.com/en-us/services/search/'
+        }
       },
       imagePath: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/logo/'
     }, options);
@@ -45,25 +60,25 @@ var SearchService = '';
     self.open = false;
     self.queryText = '';
     self.nav = {
-      next   : -1,
-      prev   : -1,
-      total  : 0,
+      next: -1,
+      prev: -1,
+      total: 0,
       current: 1
     };
 
-    self.parseSelectors = function() {
+    self.parseSelectors = function () {
       for (var key in self.config.selectors) {
         self.dom[key] = $(self.config.selectors[key]);
       }
     };
 
-    self.beforeQuery = function() {
+    self.beforeQuery = function () {
       if (!self.open) {
         self.dom.container.fadeIn();
         // self.dom.body.addClass('modal-active');
         // 上面的是去除了文章的滚动条，我觉得没必要
       }
-      self.dom.input.each(function(index, elem) {
+      self.dom.input.each(function (index, elem) {
         $(elem).val(self.queryText);
       });
       document.activeElement.blur();
@@ -72,7 +87,7 @@ var SearchService = '';
       self.startLoading();
     };
 
-    self.afterQuery = function() {
+    self.afterQuery = function () {
       self.dom.modal_body.scrollTop(0);
       self.dom.modal_ajax_content.addClass('loaded');
       self.stopLoading();
@@ -82,10 +97,10 @@ var SearchService = '';
      * Perform a complete serach operation including UI updates and query
      * @param startIndex {int} start index or page number
      */
-    self.search = function(startIndex, callback) {
+    self.search = function (startIndex, callback) {
       self.beforeQuery();
       if (self.search instanceof Function) {
-        self.query(self.queryText, startIndex, function() {
+        self.query(self.queryText, startIndex, function () {
           self.afterQuery();
         });
       } else {
@@ -100,7 +115,7 @@ var SearchService = '';
      * @param queryText: (string)
      * @param status: (string)
      */
-    self.onQueryError = function(queryText, status) {
+    self.onQueryError = function (queryText, status) {
       var errMsg = '';
       if (status === 'success') errMsg = 'No result found for "' + queryText + '".';
       else if (status === 'timeout') errMsg = 'Unfortunate timeout.';
@@ -110,19 +125,19 @@ var SearchService = '';
       self.dom.modal_error.show();
     };
 
-    self.nextPage = function() {
+    self.nextPage = function () {
       if (self.nav.next !== -1) {
         self.search(self.nav.next);
       }
     };
 
-    self.prevPage = function() {
+    self.prevPage = function () {
       if (self.nav.prev !== -1) {
         self.search(self.nav.prev);
       }
     };
 
-    self.getUrlRelativePath = function(url) {
+    self.getUrlRelativePath = function (url) {
       var arrUrl = url.split('//');
       var start = arrUrl[1].indexOf('/');
       var relUrl = arrUrl[1].substring(start);
@@ -138,7 +153,7 @@ var SearchService = '';
      * @param title : (string) title
      * @param digest : (string) digest
      */
-    self.buildResult = function(url, title, digest) {
+    self.buildResult = function (url, title, digest) {
       var result = self.getUrlRelativePath(url);
       var html = '';
       html = '<li>';
@@ -154,7 +169,7 @@ var SearchService = '';
      * Close the modal, resume body scrolling
      * no param
      */
-    self.close = function() {
+    self.close = function () {
       self.open = false;
       self.dom.container.fadeOut();
       self.dom.body.removeClass('modal-active');
@@ -164,7 +179,7 @@ var SearchService = '';
      * Searchform submit event handler
      * @param queryText : (string) the query text
      */
-    self.onSubmit = function(event) {
+    self.onSubmit = function (event) {
       event.preventDefault();
       self.queryText = $(this).find('.u-search-input').val();
       if (self.queryText) {
@@ -176,9 +191,9 @@ var SearchService = '';
      * Start loading bar animation
      * no param
      */
-    self.startLoading = function() {
+    self.startLoading = function () {
       self.dom.modal_loading_bar.show();
-      self.loadingTimer = setInterval(function() {
+      self.loadingTimer = setInterval(function () {
         self.percentLoaded = Math.min(self.percentLoaded + 5, 95);
         self.dom.modal_loading_bar.css('width', self.percentLoaded + '%');
       }, 100);
@@ -188,11 +203,11 @@ var SearchService = '';
      * Stop loading bar animation
      * no param
      */
-    self.stopLoading = function() {
+    self.stopLoading = function () {
       clearInterval(self.loadingTimer);
       self.dom.modal_loading_bar.css('width', '100%');
       self.dom.modal_loading_bar.fadeOut();
-      setTimeout(function() {
+      setTimeout(function () {
         self.percentLoaded = 0;
         self.dom.modal_loading_bar.css('width', '0%');
       }, 300);
@@ -202,18 +217,18 @@ var SearchService = '';
      * Add service branding
      * @param service {String} service name
      */
-    self.addLogo = function(service) {
+    self.addLogo = function (service) {
       var html = '';
       if (self.config.brands[service] && self.config.brands[service].logo) {
         html += '<a href=\'' + self.config.brands[service].url + '\' class=\'' + service + '\'>';
-        html +=    '<img src="' + self.config.imagePath + self.config.brands[service].logo + '" />';
+        html += '<img src="' + self.config.imagePath + self.config.brands[service].logo + '" />';
         html += '</a>';
         self.dom.modal_logo.html(html);
       }
     };
 
-    self.destroy = function() {
-      self.dom.form.each(function(index, elem) {
+    self.destroy = function () {
+      self.dom.form.each(function (index, elem) {
         $(elem).off('submit');
       });
       self.dom.modal_overlay.off('click');
@@ -227,11 +242,11 @@ var SearchService = '';
      * Load template and register event handlers
      * no param
      */
-    self.init = function() {
+    self.init = function () {
       $('body').append(template);
       self.parseSelectors();
       self.dom.modal_footer.show();
-      self.dom.form.each(function(index, elem) {
+      self.dom.form.each(function (index, elem) {
         $(elem).on('submit', self.onSubmit);
       });
       self.dom.modal_overlay.on('click', self.close);
@@ -247,14 +262,14 @@ var SearchService = '';
 })(jQuery);
 
 var HexoSearch;
-(function($) {
+(function ($) {
   'use strict';
 
   /**
-  * Search by Hexo generator json content
-  * @param options : (object)
-  */
-  HexoSearch = function(options) {
+   * Search by Hexo generator json content
+   * @param options : (object)
+   */
+  HexoSearch = function (options) {
     SearchService.apply(this, arguments);
     var self = this;
     self.config.endpoint = ROOT + ((options || {}).endpoint || 'content.json');
@@ -267,7 +282,7 @@ var HexoSearch;
      * @param post : the post object
      * @param queryText : the search query
      */
-    self.contentSearch = function(post, queryText) {
+    self.contentSearch = function (post, queryText) {
       var post_title = post.title.trim().toLowerCase();
       var post_content = post.text.trim().toLowerCase();
       var keywords = queryText.trim().toLowerCase().split(' ');
@@ -276,7 +291,7 @@ var HexoSearch;
       var index_content = -1;
       var first_occur = -1;
       if (post_title !== '' && post_content !== '') {
-        $.each(keywords, function(index, word) {
+        $.each(keywords, function (index, word) {
           index_title = post_title.indexOf(word);
           index_content = post_content.indexOf(word);
           if (index_title < 0 && index_content < 0) {
@@ -292,12 +307,13 @@ var HexoSearch;
           }
           if (foundMatch) {
             post_content = post.text.trim();
-            var start = 0; var end = 0;
+            var start = 0;
+            var end = 0;
             if (first_occur >= 0) {
               start = Math.max(first_occur - 40, 0);
               end = start === 0 ? Math.min(200, post_content.length) : Math.min(first_occur + 120, post_content.length);
               var match_content = post_content.substring(start, end);
-              keywords.forEach(function(keyword) {
+              keywords.forEach(function (keyword) {
                 var regS = new RegExp(keyword, 'gi');
                 match_content = match_content.replace(regS, '<b mark>' + keyword + '</b>');
               });
@@ -316,11 +332,13 @@ var HexoSearch;
      * Generate result list html
      * @param data : (array) result items
      */
-    self.buildResultList = function(data, queryText) {
+    self.buildResultList = function (data, queryText) {
       var results = [];
       var html = '';
-      $.each(data, function(index, post) {
-        if (self.contentSearch(post, queryText)) { html += self.buildResult(post.permalink, post.title, post.digest); }
+      $.each(data, function (index, post) {
+        if (self.contentSearch(post, queryText)) {
+          html += self.buildResult(post.permalink, post.title, post.digest);
+        }
       });
       html += '<script>try{pjax.refresh(document.querySelector(\'#u-search\'));document.addEventListener(\'pjax:send\',function(){$(\'#u-search\').fadeOut(500);$(\'body\').removeClass(\'modal-active\')});}catch(e){$(\'#u-search\').fadeOut(500);}</script>';
       return html;
@@ -330,7 +348,7 @@ var HexoSearch;
      * Generate metadata after a successful query
      * @param data : (object) the raw google custom search response data
      */
-    self.buildMetadata = function(data) {
+    self.buildMetadata = function (data) {
       self.dom.modal_footer.hide();
     };
 
@@ -340,19 +358,19 @@ var HexoSearch;
      * @param startIndex : (int) the index of first item (start from 1)
      * @param callback : (function)
      */
-    self.query = function(queryText, startIndex, callback) {
+    self.query = function (queryText, startIndex, callback) {
       if (!self.cache) {
         $.get(self.config.endpoint, {
-          key  : self.config.apiKey,
-          cx   : self.config.engineId,
-          q    : queryText,
+          key: self.config.apiKey,
+          cx: self.config.engineId,
+          q: queryText,
           start: startIndex,
-          num  : self.config.per_page
-        }, function(data, status) {
-          if (status !== 'success'
-              || !data
-              || (!data.posts && !data.pages)
-              || (data.posts.length < 1 && data.pages.length < 1)
+          num: self.config.per_page
+        }, function (data, status) {
+          if (status !== 'success' ||
+            !data ||
+            (!data.posts && !data.pages) ||
+            (data.posts.length < 1 && data.pages.length < 1)
           ) {
             self.onQueryError(queryText, status);
           } else {

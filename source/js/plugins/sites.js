@@ -1,6 +1,7 @@
 const SitesJS = {
   requestAPI: (url, callback, timeout) => {
     let retryTimes = 5;
+
     function request() {
       return new Promise((resolve, reject) => {
         let status = 0; // 0 等待 1 完成 2 超时
@@ -14,7 +15,7 @@ const SitesJS = {
             }
           }
         }, 5000);
-        fetch(url).then(function(response) {
+        fetch(url).then(function (response) {
           if (status !== 2) {
             clearTimeout(timer);
             resolve(response);
@@ -25,10 +26,10 @@ const SitesJS = {
             return response.json();
           }
           throw new Error('Network response was not ok.');
-        }).then(function(data) {
+        }).then(function (data) {
           retryTimes = 0;
           callback(data);
-        }).catch(function(error) {
+        }).catch(function (error) {
           if (retryTimes > 0) {
             retryTimes -= 1;
             setTimeout(() => {
@@ -44,10 +45,10 @@ const SitesJS = {
   },
   layout: (cfg) => {
     const el = cfg.el;
-    SitesJS.requestAPI(cfg.api, function(data) {
+    SitesJS.requestAPI(cfg.api, function (data) {
       el.querySelector('.loading-wrap').remove();
       const arr = data.content;
-      var cellALL="";
+      var cellALL = "";
       arr.forEach((item, i) => {
         var cell = '<div class="site-card">';
         cell += '<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer" href="' + item.url + '">';
@@ -61,12 +62,12 @@ const SitesJS = {
         cell += '</div>';
         cellALL += cell;
       });
-      el.querySelector('.group-body').innerHTML=cellALL;
-    }, function() {
-      try{
+      el.querySelector('.group-body').innerHTML = cellALL;
+    }, function () {
+      try {
         el.querySelector('.loading-wrap svg').remove();
         el.querySelector('.loading-wrap p').innerText('加载失败，请稍后重试。');
-      }catch(e){}
+      } catch (e) {}
     });
   },
   start: (cfg) => {
@@ -90,6 +91,6 @@ const SitesJS = {
 
 
 SitesJS.start();
-document.addEventListener('pjax:complete', function() {
+document.addEventListener('pjax:complete', function () {
   SitesJS.start();
 });

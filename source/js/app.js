@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
   }, 'app.js');
   volantis.pjax.push(volantisFancyBox.pjaxReload);
-  volantis.pjax.send(() => {  // 此处依赖JQ
+  volantis.pjax.send(() => { // 此处依赖JQ
     if (typeof $ == "undefined") return
     if (typeof $.fancybox != "undefined") {
       $.fancybox.close(); // 关闭弹窗
@@ -111,7 +111,7 @@ const VolantisApp = (() => {
     } else if (document.body) {
       scrollPos = document.body.scrollTop;
     }
-    return scrollPos;   
+    return scrollPos;
   }
   // 设置滚动锚点
   fn.setScrollAnchor = () => {
@@ -222,11 +222,11 @@ const VolantisApp = (() => {
 
     // 先把已经激活的取消激活
     volantis.dom.headerMenu.forEach(element => {
-      let li=volantis.dom.$(element).find('li a.active')
-      if(li)
+      let li = volantis.dom.$(element).find('li a.active')
+      if (li)
         li.removeClass('active')
-      let div=volantis.dom.$(element).find('div a.active')
-      if(div)
+      let div = volantis.dom.$(element).find('div a.active')
+      if (div)
         div.removeClass('active')
     });
 
@@ -249,9 +249,9 @@ const VolantisApp = (() => {
     idname = idname.replace(/(\[|\]|~|#|@)/g, '\\$1');
     if (idname && volantis.dom.headerMenu) {
       volantis.dom.headerMenu.forEach(element => {
-        if(!/^\d/.test(idname)){ // id 不能数字开头
-          let id=element.querySelector("#"+idname)
-          if(id){
+        if (!/^\d/.test(idname)) { // id 不能数字开头
+          let id = element.querySelector("#" + idname)
+          if (id) {
             volantis.dom.$(id).addClass('active')
           }
         }
@@ -263,28 +263,28 @@ const VolantisApp = (() => {
   fn.setGlobalHeaderMenuEvent = () => {
     if (volantis.isMobile) {
       // 【移动端】 关闭已经展开的子菜单 点击展开子菜单
-      document.querySelectorAll('#l_header .m-phone li').forEach(function(e){
-        if(e.querySelector(".list-v")){
+      document.querySelectorAll('#l_header .m-phone li').forEach(function (e) {
+        if (e.querySelector(".list-v")) {
           // 点击菜单
           volantis.dom.$(e).click(function (e) {
             e.stopPropagation();
             // 关闭已经展开的子菜单
-            e.currentTarget.parentElement.childNodes.forEach(function(e){
-              if(Object.prototype.toString.call(e) == '[object HTMLLIElement]'){
-                e.childNodes.forEach(function(e){
-                  if(Object.prototype.toString.call(e) == '[object HTMLUListElement]'){
+            e.currentTarget.parentElement.childNodes.forEach(function (e) {
+              if (Object.prototype.toString.call(e) == '[object HTMLLIElement]') {
+                e.childNodes.forEach(function (e) {
+                  if (Object.prototype.toString.call(e) == '[object HTMLUListElement]') {
                     volantis.dom.$(e).hide()
                   }
                 })
               }
             })
             // 点击展开子菜单
-            let array=e.currentTarget.children
+            let array = e.currentTarget.children
             for (let index = 0; index < array.length; index++) {
               const element = array[index];
               volantis.dom.$(element).show()
             }
-          },0);
+          }, 0);
         }
       })
     } else {
@@ -297,7 +297,7 @@ const VolantisApp = (() => {
               volantis.dom.$(e).hide(); // 大概率不会执行
             })
           }
-        },0);
+        }, 0);
       })
     }
     fn.setPageHeaderMenuEvent();
@@ -308,13 +308,13 @@ const VolantisApp = (() => {
     if (!volantis.isMobile) return
     // 【移动端】 点击空白处隐藏子菜单
     volantis.dom.$(document).click(function (e) {
-      volantis.dom.mPhoneList.forEach(function(e){
+      volantis.dom.mPhoneList.forEach(function (e) {
         volantis.dom.$(e).hide();
       })
     });
     // 【移动端】 滚动时隐藏子菜单
     volantis.dom.$(document).scroll(Debounce(() => {
-      volantis.dom.mPhoneList.forEach(function(e){
+      volantis.dom.mPhoneList.forEach(function (e) {
         volantis.dom.$(e).hide();
       })
     }));
@@ -343,10 +343,10 @@ const VolantisApp = (() => {
 
   // 设置 tabs 标签  【移动端 PC】
   fn.setTabs = () => {
-    let tabs=document.querySelectorAll('#l_main .tabs .nav-tabs')
+    let tabs = document.querySelectorAll('#l_main .tabs .nav-tabs')
     if (!tabs) return
-    tabs.forEach(function(e){
-      e.querySelectorAll('a').forEach(function(e){
+    tabs.forEach(function (e) {
+      e.querySelectorAll('a').forEach(function (e) {
         volantis.dom.$(e).on('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -385,7 +385,7 @@ const VolantisApp = (() => {
       fn.setTabs();
 
       // 移除小尾巴的移除
-      document.querySelector("#l_header .nav-main").querySelectorAll('.list-v:not(.menu-phone)').forEach(function(e){
+      document.querySelector("#l_header .nav-main").querySelectorAll('.list-v:not(.menu-phone)').forEach(function (e) {
         e.removeAttribute("style")
       })
       document.querySelector("#l_header .menu-phone.list-v").removeAttribute("style")
@@ -438,7 +438,7 @@ const volantisFancyBox = (() => { // 此处依赖JQ
 
   fn.loadFancyBox = () => {
     if (!document.querySelector(".md .gallery img")) return;
-    volantis.import.jQuery().then(()=>{
+    volantis.import.jQuery().then(() => {
       volantis.css("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css");
       volantis.js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js').then(fn.initFB)
     })

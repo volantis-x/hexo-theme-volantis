@@ -1,6 +1,7 @@
 const FriendsJS = {
   requestAPI: (url, callback, timeout) => {
     let retryTimes = 5;
+
     function request() {
       return new Promise((resolve, reject) => {
         let status = 0; // 0 等待 1 完成 2 超时
@@ -14,7 +15,7 @@ const FriendsJS = {
             }
           }
         }, 5000);
-        fetch(url).then(function(response) {
+        fetch(url).then(function (response) {
           if (status !== 2) {
             clearTimeout(timer);
             resolve(response);
@@ -25,10 +26,10 @@ const FriendsJS = {
             return response.json();
           }
           throw new Error('Network response was not ok.');
-        }).then(function(data) {
+        }).then(function (data) {
           retryTimes = 0;
           callback(data);
-        }).catch(function(error) {
+        }).catch(function (error) {
           if (retryTimes > 0) {
             retryTimes -= 1;
             setTimeout(() => {
@@ -44,10 +45,10 @@ const FriendsJS = {
   },
   layout: (cfg) => {
     const el = cfg.el;
-    FriendsJS.requestAPI(cfg.api, function(data) {
+    FriendsJS.requestAPI(cfg.api, function (data) {
       el.querySelector('.loading-wrap').remove();
       const arr = data.content;
-      var cellALL="";
+      var cellALL = "";
       arr.forEach((item, i) => {
         var user = '<div class="user-card">';
         user += '<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer"';
@@ -58,12 +59,12 @@ const FriendsJS = {
         user += '</div>';
         cellALL += user;
       });
-      el.querySelector('.group-body').innerHTML=cellALL;
-    }, function() {
-      try{
+      el.querySelector('.group-body').innerHTML = cellALL;
+    }, function () {
+      try {
         el.querySelector('.loading-wrap svg').remove();
         el.querySelector('.loading-wrap p').innerText('加载失败，请稍后重试。');
-      }catch(e){}
+      } catch (e) {}
     });
   },
   start: () => {
@@ -87,6 +88,6 @@ const FriendsJS = {
 
 
 FriendsJS.start();
-document.addEventListener('pjax:complete', function() {
+document.addEventListener('pjax:complete', function () {
   FriendsJS.start();
 });
