@@ -35,8 +35,7 @@
           <% snackbar.buttons.forEach((ac, i) => { %>
             volantis.message(
               '<%- snackbar.title %>',
-              '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>",
-              '<%- snackbar.theme %>',
+              '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>"
             );
           <% }) %>
         }

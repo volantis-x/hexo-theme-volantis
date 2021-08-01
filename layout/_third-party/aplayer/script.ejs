@@ -27,43 +27,44 @@
         if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
         var thisAplayer =Metings[index].aplayer;
         thisAplayer.on('play', function(e) {
-        let icon=document.getElementById('#aplayerHeaderIcon')
-        if(icon)
-          volantis.dom.$(icon).removeClass('music').addClass('music')
+        let icon = document.getElementById('#aplayerHeaderIcon')
+        if(icon) volantis.dom.$(icon).removeClass('music').addClass('music')
         var index = thisAplayer.list.index;
         var title = thisAplayer.list.audios[index].title;
         var artist = thisAplayer.list.audios[index].artist;
           volantis.message(
             '音乐通知',
             '正在播放：' + title + ' - ' + artist,
-            'info'
+            'fas fa-play'
           )
           if(rightMenuAplayer) volantis.APlayerController.status = 'play';
         });
         thisAplayer.on('pause', function(e) {
-          let icon=document.getElementById('#aplayerHeaderIcon')
-          if(icon)
-            volantis.dom.$(icon).removeClass('music')
+          let icon = document.getElementById('#aplayerHeaderIcon')
+          if(icon) volantis.dom.$(icon).removeClass('music')
           var index =thisAplayer.list.index;
           var title = thisAplayer.list.audios[index].title;
           var artist = thisAplayer.list.audios[index].artist;
-          volantis.message(
-            '音乐通知',
-            '暂停播放：' + title + ' - ' + artist,
-            'info'
-          )
+          setTimeout(() => {
+            // 歌曲播放结束也会触发 pause 事件
+            if(thisAplayer.paused)
+              volantis.message(
+              '音乐通知',
+              '暂停播放：' + title + ' - ' + artist,
+              'fas fa-pause'
+              )
+          }, 100)
           if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
         });
         thisAplayer.on('error', function (e) {
-          let icon=document.getElementById('#aplayerHeaderIcon')
-          if(icon)
-            volantis.dom.$(icon).removeClass('music')
+          let icon = document.getElementById('#aplayerHeaderIcon')
+          if(icon) volantis.dom.$(icon).removeClass('music')
           var index = thisAplayer.list.index;
           var title = thisAplayer.list.audios[index].title;
           volantis.message(
             '音乐通知',
             "歌曲：" + title + "加载失败~",
-            'warning'
+            'fas fa-exclamation-square'
           )
           if(rightMenuAplayer) volantis.APlayerController.status = 'error';
         });

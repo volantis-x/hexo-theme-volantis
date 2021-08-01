@@ -197,9 +197,9 @@ const RightMenu = (() => {
 
       $copyImg.off("click.rightMenu").one("click.rightMenu", () => {
         fn.writeClipImg(event, () => {
-          volantis.message('操作提示', '复制成功！', 'success');
+          volantis.message('系统提示', '图片复制成功！', 'fas fa-images');
         }, (error) => {
-          volantis.message('操作提示', '复制失败：' + error, 'error');
+          volantis.message('系统提示', '复制失败：' + error, 'fas fa-exclamation-square');
         })
       });
     } else {
@@ -255,9 +255,9 @@ const RightMenu = (() => {
   fn.copyString = (str) => {
     fn.writeClipText(str)
       .then(() => {
-        volantis.message('操作提示', str.length > 120 ? str.substring(0, 120) + '...' : str, 'info');
+        volantis.message('复制成功', str.length > 120 ? str.substring(0, 120) + '...' : str, 'fas fa-copy');
       }).catch(e => {
-        volantis.message('操作提示', e, 'error');
+        volantis.message('系统提示', e, 'fas fa-exclamation-square');
       })
   }
 
@@ -445,7 +445,7 @@ const RightMenu = (() => {
     init: (notice = false) => {
       fn.init();
       fn.initEvent();
-      if (notice) volantis.message('操作提示', '自定义右键注册成功。', 'success');
+      if (notice) volantis.message('系统提示', '自定义右键注册成功。');
     },
     destroy: (notice = false) => {
       fn.hideMenu();
@@ -455,7 +455,7 @@ const RightMenu = (() => {
       window.document.oncontextmenu = () => {
         return true
       };
-      if (notice) volantis.message('操作提示', '自定义右键注销成功。', 'success');
+      if (notice) volantis.message('系统提示', '自定义右键注销成功。');
     },
     hideMenu: () => {
       fn.hideMenu();

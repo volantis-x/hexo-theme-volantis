@@ -1,23 +1,74 @@
 <script>
-  volantis.message = (title, message, type, autoClose, time = 3000) => { // 此处依赖JQ
-    volantis.import.jQuery().then(()=>{
-      if (typeof $.message == "undefined") {
-        volantis.css('<%- theme.cdn.map.css.message %>')
-        volantis.js('<%- theme.cdn.map.js.message %>', () => {
-          start(title, message, type, autoClose, time);
-        });
-      } else {
-        start(title, message, type, autoClose, time);
-      }
-    })
-    function start(title, message, type, autoClose, time) {
-      $.message({
+  volantis.message = (title, message, icon = 'fas fa-info-circle', time = 5000, position = 'topRight', done = null) => {
+    if (typeof iziToast == "undefined") {
+      volantis.css('<%- theme.cdn.map.css.message %>')
+      volantis.js('<%- theme.cdn.map.js.message %>', () => {
+        tozashMessage(title, message, icon, time, position, done);
+      });
+    } else {
+      tozashMessage(title, message, icon, time, position, done);
+    }
+
+    function tozashMessage(title, message, icon, time, position, done) {
+      iziToast.show({
+        layout: '2',
+        icon: 'Fontawesome',
+        transitionIn: 'bounceInLeft',
+        transitionOut: 'fadeOutRight',
+        closeOnEscape: 'true',
+        displayMode: 'replace',
+        backgroundColor: '#fff',
+        zindex: 2147483647,
         title: title,
         message: message,
-        type: type,
-        autoClose: autoClose,
-        time: time,
+        icon: icon,
+        timeout: time,
+        position: position,
+        onClosed: () => {
+          if(done) done();
+        },
       });
     }
   };
+
+  volantis.question = (title, message, success = null, cancel = null, done = null, icon = 'fas fa-question-circle', time = 20000) => {
+    if (typeof iziToast == "undefined") {
+      volantis.css('<%- theme.cdn.map.css.message %>')
+      volantis.js('<%- theme.cdn.map.js.message %>', () => {
+        tozashQuestion(title, message, icon , time, success, cancel, done);
+      });
+    } else {
+      tozashQuestion(title, message, icon , time, success, cancel, done);
+    }
+
+    function tozashQuestion(title, message, icon , time, success, cancel, done) {
+      iziToast.question({ 
+        icon: 'Fontawesome',
+        backgroundColor: '#fff',
+        close: false,
+        overlay: true,
+        displayMode: 'once',
+        id: 'question',
+        position: 'center',
+        zindex: 2147483647,
+        icon: icon,
+        timeout: time,
+        title: title,
+        message: message,
+        buttons: [
+          ['<button><b>是</b></button>', (instance, toast) => {
+            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+            if(success) success(instance, toast)
+          }],
+          ['<button><b>否</b></button>', (instance, toast) => {
+            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+            if(cancel) cancel(instance, toast)
+          }]
+        ],
+        onClosed: (instance, toast, closedBy) => {
+          if(done) done(instance, toast, closedBy);
+        }
+      });
+    }
+  }
 </script>
