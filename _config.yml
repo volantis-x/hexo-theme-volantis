@@ -414,7 +414,6 @@ sidebar:
       color: true
       start_color: '#999'
       end_color: '#555'
-
     # ---------------------------------------
     # qrcode widget
     qrcode:
@@ -461,6 +460,14 @@ sidebar:
           friendlyShow: true    # 更友好的时间显示
           text: '最后活动时间：'
           unit: '日'
+    # ---------------------------------------
+    # lastupdate widget 
+    lastupdate:
+      class: lastupdate
+      display: [desktop, mobile]
+      header:
+        icon: fas fa-clock WISTERIA
+        title: 最近更新
 ############################### Sidebar ############################### > end
 
 
