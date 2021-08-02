@@ -347,9 +347,15 @@
         display inline-block
         float right
 
-.widget-last 
-  display: block !important 
-  & > .item 
-    display: flex 
-    justify-content: space-between 
-    font-size: 0.5rem
+.widget-last
+  display: block !important
+  .item
+    display: flex
+    justify-content: space-between
+    font-size: 0.8rem
+  .item-title
+    width: 100%  // 设定宽度
+    display: inline-block  // 将 span 当作块级元素
+    white-space: nowrap  // 不换行
+    overflow: hidden  // 超出宽度部分隐藏
+    text-overflow: ellipsis  // 超出部分以点号替代

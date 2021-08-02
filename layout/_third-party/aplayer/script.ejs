@@ -15,7 +15,7 @@
       <% } %>
     })();
   // message see: /layout/_third-party/message/script.ejs
-  <% if (theme.plugins.aplayer.message && theme.plugins.message && theme.plugins.message.enable) { %>
+  <% if (theme.plugins.aplayer.message.enable && theme.plugins.message && theme.plugins.message.enable) { %>
     var checkMetings = setInterval(function() {
     if (!document.querySelectorAll('meting-js')[0].aplayer) return;
     if (!document.querySelectorAll('meting-js')[0].aplayer.on) return;
@@ -35,7 +35,7 @@
           volantis.message(
             '音乐通知',
             '正在播放：' + title + ' - ' + artist,
-            'fas fa-play'
+            '<%- theme.plugins.aplayer.message.play %>'
           )
           if(rightMenuAplayer) volantis.APlayerController.status = 'play';
         });
@@ -51,7 +51,7 @@
               volantis.message(
               '音乐通知',
               '暂停播放：' + title + ' - ' + artist,
-              'fas fa-pause'
+              '<%- theme.plugins.aplayer.message.pause %>'
               )
           }, 100)
           if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
@@ -64,7 +64,7 @@
           volantis.message(
             '音乐通知',
             "歌曲：" + title + "加载失败~",
-            'fas fa-exclamation-square'
+            '<%- theme.plugins.aplayer.message.error %>'
           )
           if(rightMenuAplayer) volantis.APlayerController.status = 'error';
         });

@@ -674,7 +674,11 @@ plugins:
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
     list_folded: true
-    message: false    # 音乐通知
+    message:          # 音乐通知，播放、暂停、失败 时的图标
+      enable: true
+      play: fas fa-play
+      pause: fas fa-pause
+      error: fas fa-exclamation-square
   
   # Pjax 
   pjax:
@@ -762,11 +766,22 @@ plugins:
   # 消息提示
   message:
     enable: true
-    copyright:  # 是否在复制时弹出版权提示
+    icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_plugins/message.styl
+      default: fas fa-info-circle light-blue
+      quection: fas fa-question-circle light-blue
+    time:     # 默认持续时间
+      default: 5000
+      quection: 20000
+    position: 'topRight'                 # 弹出位置 可选值：topRight, bottomRight, bottomLeft, topLeft, topCenter, bottomCenter, center
+    titleColor: 'var(--color-text)'      # 标题颜色
+    messageColor: 'var(--color-text)'    # 消息颜色
+    backgroundColor: 'var(--color-card)' # 默认背景色
+    zindex: 2147483647                   # 层级
+    copyright:                           # 是否在复制时弹出版权提示(非右键下的操作提示)
       enable: true
       title: '知识共享许可协议'
       message: '请遵守 CC BY-NC-SA 4.0 协议。'
-      icon: 'far fa-copyright'
+      icon: 'far fa-copyright light-blue'
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start

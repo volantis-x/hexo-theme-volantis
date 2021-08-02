@@ -1,5 +1,5 @@
 <script>
-  volantis.message = (title, message, icon = 'fas fa-info-circle', time = 5000, position = 'topRight', done = null) => {
+  volantis.message = (title, message, icon = '<%- theme.plugins.message.icon.default %>', time = '<%- theme.plugins.message.time.default %>', position = '<%- theme.plugins.message.position %>', done = null) => {
     if (typeof iziToast == "undefined") {
       volantis.css('<%- theme.cdn.map.css.message %>')
       volantis.js('<%- theme.cdn.map.js.message %>', () => {
@@ -17,8 +17,10 @@
         transitionOut: 'fadeOutRight',
         closeOnEscape: 'true',
         displayMode: 'replace',
-        backgroundColor: '#fff',
-        zindex: 2147483647,
+        messageColor: '<%- theme.plugins.message.messageColor %>',
+        titleColor: '<%- theme.plugins.message.titleColor %>',
+        backgroundColor: '<%- theme.plugins.message.backgroundColor %>',
+        zindex: <%- theme.plugins.message.zindex %>,
         title: title,
         message: message,
         icon: icon,
@@ -31,7 +33,7 @@
     }
   };
 
-  volantis.question = (title, message, success = null, cancel = null, done = null, icon = 'fas fa-question-circle', time = 20000) => {
+  volantis.question = (title, message, success = null, cancel = null, done = null, icon = '<%- theme.plugins.message.icon.quection %>', time = '<%- theme.plugins.message.time.quection %>') => {
     if (typeof iziToast == "undefined") {
       volantis.css('<%- theme.cdn.map.css.message %>')
       volantis.js('<%- theme.cdn.map.js.message %>', () => {
@@ -44,13 +46,15 @@
     function tozashQuestion(title, message, icon , time, success, cancel, done) {
       iziToast.question({ 
         icon: 'Fontawesome',
-        backgroundColor: '#fff',
+        messageColor: '<%- theme.plugins.message.messageColor %>',
+        titleColor: '<%- theme.plugins.message.titleColor %>',
+        backgroundColor: '<%- theme.plugins.message.backgroundColor %>',
         close: false,
         overlay: true,
         displayMode: 'once',
         id: 'question',
         position: 'center',
-        zindex: 2147483647,
+        zindex: <%- theme.plugins.message.zindex %>,
         icon: icon,
         timeout: time,
         title: title,
