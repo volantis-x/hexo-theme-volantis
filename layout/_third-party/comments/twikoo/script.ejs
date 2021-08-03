@@ -6,6 +6,7 @@
   function pjax_twikoo() {
     if(!document.querySelectorAll("#twikoo_container")[0])return;
     let path = pdata.commentPath;
+    let placeholder = pdata.commentPlaceholder || "<%= theme.comments.twikoo.placeholder %>" || "";
     if (path.length == 0) {
       let defaultPath = '<%= theme.comments.twikoo.path %>';
       path = defaultPath || "decodeURI(window.location.pathname)"; //神奇的pathname
@@ -13,6 +14,7 @@
     twikoo.init(Object.assign(<%- JSON.stringify(theme.comments.twikoo) %>, {
       el: '#twikoo_container',
       path: path,
+      placeholder: placeholder
     }))
   }
   load_twikoo();
