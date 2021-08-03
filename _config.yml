@@ -236,7 +236,18 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: utterances # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  service: beaudar # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  # beaudar
+  # https://beaudar.lipk.org/
+  beaudar:
+    repo: xxx/xxx
+    issue-term: pathname
+    input-position: top
+    theme:
+      light: github-light
+      dark: github-dark
+    label: ✨💬✨
+    crossorigin: anonymous
   # utterances
   # https://utteranc.es/
   utterances:
@@ -247,7 +258,7 @@ comments:
       light: github-light
       dark: github-dark
     label: ✨💬✨
-    crossorigin: anonymous
+    crossorigin: anonymous  
   # Valine
   # https://valine.js.org/
   valine:

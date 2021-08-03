@@ -1,0 +1,36 @@
+<script>
+  volantis.beaudar = {};
+
+  function pjax_beaudar() {
+    let beaudar_container = document.getElementById("beaudar_container");
+    if (!beaudar_container) return;
+
+    setTimeout(() => {
+      let checkBeaudar = setInterval(() => {
+        let HEAD = document.getElementById("beaudar_container");
+        if (!HEAD) return;
+        clearInterval(checkBeaudar)
+        try {
+          document.getElementById("beaudar_container").innerHTML = "";
+        } catch (error) {}
+        if (volantis.dark.mode === "dark") {
+          volantis.beaudar.Theme = '<%- theme.comments.beaudar.theme.light %>';
+        } else {
+          volantis.beaudar.Theme = '<%- theme.comments.beaudar.theme.dark %>';
+        }
+        const script = document.createElement('script');
+        script.setAttribute('src', 'https://beaudar.lipk.org/client.js');
+        script.setAttribute('repo', '<%- theme.comments.beaudar.repo %>');
+        script.setAttribute('issue-term', '<%- theme.comments.beaudar.issue-term %>');
+        script.setAttribute('input-position', '<%- theme.comments.beaudar.input-position %>');
+        script.setAttribute('crossorigin', '<%- theme.comments.beaudar.crossorigin %>');
+        script.setAttribute('label', '<%- theme.comments.beaudar.label %>');
+        script.setAttribute('theme', volantis.beaudar.Theme);
+        HEAD.appendChild(script);
+      })
+    }, 200)
+  }
+  pjax_beaudar();
+  volantis.pjax.push(pjax_beaudar);
+  volantis.dark.push(pjax_beaudar);
+</script>
