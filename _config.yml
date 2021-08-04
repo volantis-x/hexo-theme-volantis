@@ -242,7 +242,10 @@ comments:
   beaudar:
     repo: xxx/xxx
     issue-term: pathname
-    input-position: top
+    issue-number:
+    branch: main
+    position: top
+    order: desc
     theme:
       light: github-light
       dark: github-dark
