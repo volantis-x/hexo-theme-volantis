@@ -20,17 +20,31 @@ document.addEventListener("DOMContentLoaded", function () {
       $.fancybox.close(); // 关闭弹窗
     }
   }, 'fancybox');
+
+  locationHas();
 });
 
-/*锚点定位*/
-if (window.location.hash) {
-  let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
-  let target = document.getElementById(locationID);
-  if (target) {
-    window.scrollTo({
-      top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop + 5,
-      behavior: "smooth" //平滑滚动
-    });
+// /*锚点定位*/
+const locationHas = () => {
+  /*锚点定位*/
+  if (window.location.hash) {
+    let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
+    let target = document.getElementById(locationID);
+    if (target) {
+      setTimeout(() => {
+        if (window.location.hash.startsWith('#fn')) {
+          window.scrollTo({
+            top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop - volantis.dom.header.offsetHeight,
+            behavior: "smooth" //平滑滚动
+          });
+        } else {
+          window.scrollTo({
+            top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop + 5,
+            behavior: "smooth" //平滑滚动
+          });
+        }
+      }, 1000)
+    }
   }
 }
 
@@ -361,6 +375,26 @@ const VolantisApp = (() => {
     })
   }
 
+  // 页脚跳转
+  fn.footnotes = () => {
+    let ref = document.querySelectorAll('.footnote-backref, .footnote-ref > a');
+    ref.forEach(function (e, i) {
+      ref[i].click = () => {}; // 强制清空原 click 事件
+      volantis.dom.$(e).on('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        let targetID = decodeURI(e.target.hash.split('#')[1]).replace(/\ /g, '-');
+        let target = document.getElementById(targetID);
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop - volantis.dom.header.offsetHeight,
+            behavior: "smooth" //平滑滚动
+          });
+        }
+      });
+    })
+  }
+
   return {
     init: () => {
       fn.init();
@@ -374,6 +408,7 @@ const VolantisApp = (() => {
       fn.setHeaderSearch();
       fn.setScrollAnchor();
       fn.setTabs();
+      fn.footnotes();
     },
     pjaxReload: () => {
       fn.event();
@@ -383,6 +418,7 @@ const VolantisApp = (() => {
       fn.setPageHeaderMenuEvent();
       fn.setScrollAnchor();
       fn.setTabs();
+      fn.footnotes();
 
       // 移除小尾巴的移除
       document.querySelector("#l_header .nav-main").querySelectorAll('.list-v:not(.menu-phone)').forEach(function (e) {
@@ -406,7 +442,8 @@ const volantisFancyBox = (() => { // 此处依赖JQ
 
   fn.initFB = () => {
     const group = new Set();
-    group.add('default');
+    group.add('default'); // 默认类
+    group.add('Twikoo');  // TwiKoo 类
 
     document.querySelectorAll(".md .gallery").forEach(function (ele) {
       if (ele.querySelector("img")) {
@@ -436,16 +473,21 @@ const volantisFancyBox = (() => { // 此处依赖JQ
     }
   }
 
-  fn.loadFancyBox = () => {
-    if (!document.querySelector(".md .gallery img")) return;
+  fn.loadFancyBox = (done) => {
+    if (!document.querySelector(".md .gallery img, .fancybox")) return;
     volantis.import.jQuery().then(() => {
       volantis.css("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css");
-      volantis.js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js').then(fn.initFB)
+      volantis.js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js').then(() => {
+        fn.initFB();
+        if (done) done();
+      })
     })
   }
 
   return {
-    loadFancyBox: fn.loadFancyBox,
+    loadFancyBox: (done = null) => {
+      fn.loadFancyBox(done);
+    },
     pjaxReload: () => {
       if (typeof $ == "undefined") return
       if (typeof $.fancybox == "undefined") {
