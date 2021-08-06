@@ -16,8 +16,9 @@
       path: path,
       placeholder: placeholder,
       onCommentLoaded: function() {
-        const nodeList = document.querySelectorAll('.tk-content img');
+        const nodeList = document.querySelectorAll('.tk-content img:not([fancybox])');
         nodeList.forEach(item => {
+          item.setAttribute('fancybox', 'true');
           const url = item.getAttribute('src');
           const alt = item.getAttribute('alt') || '';
           const template = `<a class='fancybox' href='${url}' data-fancybox='Twikoo' data-caption='${alt}'>${item.outerHTML}</a>`;
@@ -29,7 +30,11 @@
         const checkFancyBox = setInterval(() => {
           if(volantisFancyBox === undefined) return;
           clearInterval(checkFancyBox);
-          volantisFancyBox.loadFancyBox();
+          if (typeof $ == "undefined" || typeof $.fancybox == "undefined") {
+            volantisFancyBox.loadFancyBox();
+          } else {
+            volantisFancyBox.initFancyBox();
+          }
         })
       }
     }))
