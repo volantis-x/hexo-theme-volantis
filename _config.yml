@@ -815,24 +815,24 @@ plugins:
 # 自定义右键菜单
 rightmenu:
   enable: true
-  faicon: fa
+  faicon: fa              # 公共图标类型 fa fal fas fad
   # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, hr, music]
-  # 可选功能项
-  print:                  # 只有文章页才允许自定义打印，建议打印选项勾选背景图形 & 取消勾选页眉和页脚
-    name: 打印页面        #       👆 class = article.post 的页面
+  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, music]
+  ### 可选功能项 ###
+  print:                  # 只有文章页才允许自定义打印
+    name: 打印页面
     icon: fa fa-print
     defaultStyles: true   # 是否使用预制的打印样式
-    # js:                 # 自定义 js ，可用于修改样式~
-    #  - '$("article#comments").remove();'
-    #  - '$(".backstretch").remove();'
-    #  - '$("article").css({"boxShadow": "none"});'
-    #  - '$("body").css({"backgroundColor": "#fff"});'
-  darkmode: # 需开启plugins.darkmodejs
+    # js:                 # 自定义 js ，可用于修饰打印样式~， 右键剔除了对 Jquery 的依赖，所以此处你只能使用原生 js
+    #  - document.querySelector('article#comments').remove()  # 移除评论
+  darkmode:        # 需开启 plugins.darkmodejs
     name: 暗黑模式
-    white: fa fa-sun
-    dark: fa fa-moon
-  # 自定义菜单的格式如下
+    icon: fa fa-moon
+  customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
+    enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
+    old: #https://static.inkss.cn/img/article/
+    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/  
+  ### 自定义菜单 ###
   help:
     name: 常见问题
     icon: fa fa-question
