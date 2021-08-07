@@ -107,6 +107,7 @@
 
   <script>
     volantis.rightMenu = {};
+    volantis.rightMenu.faicon = '<%- theme.rightmenu.faicon %>' || 'fa';
     <% if (theme.plugins.aplayer.enable && (theme.rightmenu.layout||[]).includes('music')) { %>
       volantis.rightMenu.music = true;
       volantis.rightMenu.aplayerBackward = () => {
@@ -150,6 +151,9 @@
     <% } %>
     <% if (theme.plugins.message && !theme.plugins.message.enable) { %>
       volantis.message = () => {}
+    <% } %>
+    <% if (theme.plugins.aplayer && !theme.plugins.aplayer.enable) { %>
+      volantis.APlayerController = {};
     <% } %>
     volantis.import.jQuery().then(()=>{
       volantis.js('<%- theme.cdn.map.js.rightMenu %>') // 此处依赖JQ

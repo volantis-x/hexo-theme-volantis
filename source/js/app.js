@@ -445,6 +445,7 @@ const volantisFancyBox = (() => { // 此处依赖JQ
     group.add('default'); // 默认类
     group.add('Twikoo');  // TwiKoo 类
 
+    if (!document.querySelector(".md .gallery img, .fancybox")) return;
     document.querySelectorAll(".md .gallery").forEach(function (ele) {
       if (ele.querySelector("img")) {
         group.add($(ele).attr('data-group') || 'default'); // 此处依赖JQ
