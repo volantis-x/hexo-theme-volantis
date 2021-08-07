@@ -16,7 +16,7 @@
       path: path,
       placeholder: placeholder,
       onCommentLoaded: function() {
-        const nodeList = document.querySelectorAll('.tk-content img:not([fancybox])');
+        const nodeList = document.querySelectorAll('.tk-content img:not([fancybox]):not([class*="emo"])');
         nodeList.forEach(item => {
           item.setAttribute('fancybox', 'true');
           const url = item.getAttribute('src');
@@ -28,9 +28,9 @@
         })
         
         const checkFancyBox = setInterval(() => {
-          if(volantisFancyBox === undefined) return;
+          if(typeof volantisFancyBox === 'undefined') return;
           clearInterval(checkFancyBox);
-          if (typeof $ == "undefined" || typeof $.fancybox == "undefined") {
+          if (typeof $ === 'undefined' || typeof $.fancybox === 'undefined') {
             volantisFancyBox.loadFancyBox();
           } else {
             volantisFancyBox.initFancyBox();
