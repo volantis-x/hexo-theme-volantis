@@ -693,7 +693,6 @@ plugins:
       enable: true
       play: fas fa-play
       pause: fas fa-pause
-      error: fas fa-exclamation-square
   
   # Pjax 
   pjax:

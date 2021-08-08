@@ -57,15 +57,6 @@
         if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
       });
       thisAplayer.on('error', function (e) {
-        let icon = document.getElementById('#aplayerHeaderIcon')
-        if(icon) volantis.dom.$(icon).removeClass('music')
-        var index = thisAplayer.list.index;
-        var title = thisAplayer.list.audios[index].title;
-        volantis.message(
-          '音乐通知',
-          "歌曲：" + title + "加载失败~",
-          '<%- theme.plugins.aplayer.message.error %>'
-        )
         if(rightMenuAplayer) volantis.APlayerController.status = 'error';
       });
     });
