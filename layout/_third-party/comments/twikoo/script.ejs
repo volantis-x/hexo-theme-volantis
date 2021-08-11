@@ -19,7 +19,7 @@
         const nodeList = document.querySelectorAll('.tk-content img:not([fancybox]):not([class*="emo"])');
         nodeList.forEach(item => {
           item.setAttribute('fancybox', 'true');
-          const url = item.getAttribute('src');
+          const url = item.getAttribute('data-lazy-src') || item.getAttribute('src');
           const alt = item.getAttribute('alt') || '';
           const template = `<a class='fancybox' href='${url}' data-fancybox='Twikoo' data-caption='${alt}'>${item.outerHTML}</a>`;
           const node = document.createElement('template');
@@ -27,15 +27,17 @@
           item.parentNode.replaceChild(node.content.lastChild, item);
         })
         
-        const checkFancyBox = setInterval(() => {
-          if(typeof volantisFancyBox === 'undefined') return;
-          clearInterval(checkFancyBox);
-          if (typeof $ === 'undefined' || typeof $.fancybox === 'undefined') {
-            volantisFancyBox.loadFancyBox();
-          } else {
-            volantisFancyBox.initFancyBox();
-          }
-        })
+        if(nodeList.length !== 0) {
+          const checkFancyBox = setInterval(() => {
+            if(typeof volantisFancyBox === "undefined") return;
+            clearInterval(checkFancyBox);
+            if (typeof Fancybox === "undefined") {
+              volantisFancyBox.loadFancyBox();
+            } else {
+              volantisFancyBox.initFancyBox();
+            }
+          })
+        }
       }
     }))
   }

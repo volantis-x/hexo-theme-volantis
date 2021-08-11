@@ -437,7 +437,7 @@ const VolantisApp = (() => {
 })()
 Object.freeze(VolantisApp);
 
-const volantisFancyBox = (() => { // 此处依赖JQ
+const volantisFancyBox = (() => {
   const fn = {};
 
   fn.initFB = () => {
@@ -448,40 +448,24 @@ const volantisFancyBox = (() => { // 此处依赖JQ
     if (!document.querySelector(".md .gallery img, .fancybox")) return;
     document.querySelectorAll(".md .gallery").forEach(function (ele) {
       if (ele.querySelector("img")) {
-        group.add($(ele).attr('data-group') || 'default'); // 此处依赖JQ
+        group.add(ele.getAttribute('data-group') || 'default');
       }
     })
 
+    Fancybox.destroy();
     for (const iterator of group) {
-      if (!!iterator) $('[data-fancybox="' + iterator + '"]').fancybox({ // 此处依赖JQ
-        hash: false,
-        loop: true,
-        closeClick: true,
-        helpers: {
-          overlay: {
-            closeClick: true
-          }
-        },
-        buttons: [
-          "zoom",
-          "slideShow",
-          "fullScreen",
-          "download",
-          "thumbs",
-          "close"
-        ]
+      if (!!iterator) Fancybox.bind('[data-fancybox="' + iterator + '"]', {
+        Hash: false
       });
     }
   }
 
   fn.loadFancyBox = (done) => {
     if (!document.querySelector(".md .gallery img, .fancybox")) return;
-    volantis.import.jQuery().then(() => {
-      volantis.css("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css");
-      volantis.js('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js').then(() => {
-        fn.initFB();
-        if (done) done();
-      })
+    volantis.css(" https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css");
+    volantis.js('https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js').then(() => {
+      fn.initFB();
+      if (done) done();
     })
   }
 
@@ -493,8 +477,7 @@ const volantisFancyBox = (() => { // 此处依赖JQ
       fn.initFB()
     },
     pjaxReload: () => {
-      if (typeof $ == "undefined") return
-      if (typeof $.fancybox == "undefined") {
+      if (typeof Fancybox === "undefined") {
         fn.loadFancyBox();
       } else {
         fn.initFB();
