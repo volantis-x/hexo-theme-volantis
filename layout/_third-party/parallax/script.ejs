@@ -16,57 +16,28 @@
       shuffle(imgs);
   <% } %>
 
-  function parallax(src){
-    $('#parallax-window').parallax({
-      src: src,
-      speed: .25,
-      bleed: 0,
-      zIndex: -100,
-      posX: 'center',
-      posY: 'center',
-      overScrollFix: false,
-      excludeAgents: /(iPod|iPhone|iPad|Android)/,
-      aspectRatio: null,
-      // jquery selectors
-      sliderSelector: '>.parallax-slider',
-      mirrorSelector: '#l_cover',
-      // callback functions:
-      afterRefresh: ()=>{
-        // console.log("afterRefresh")
-      },
-      afterRender: ()=>{
-        // console.log("afterRender")
-      },
-      afterSetup: ()=>{
-        // console.log("afterSetup")
-      },
-      afterDestroy: ()=>{
-        // console.log("afterDestroy")
-      },
-    });
-  }
-  function next_parallax(){
-    $("#l_cover .parallax-mirror img")[0].src=imgs[(index)%(imgs.length)];
-    index++;
-    fetch(imgs[(index)%(imgs.length)]); // cach
-  }
-  function pjax_parallax(){
+  function parallax(){
+    let ParallaxWindow = document.querySelector("#parallax-window");
+    Parallax.window = ParallaxWindow;
+    Parallax.options.fade = <%- theme.plugins.parallax.fade %>;
     next_parallax();
-    volantis.IntervalParallax = setInterval(function () {
-      next_parallax();
-    }, 15000)
+    if (imgs.length>1) {
+      let IntervalParallax = setInterval(function () {
+        next_parallax();
+      }, '<%- theme.plugins.parallax.duration %>');
+    }
   }
-  volantis.import.jQuery().then(()=>{
-    // https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha
-    // 这是 2.0.0-alpha，（1.x不兼容pjax） alpha版本官方尚未正式发布 上一次更新时间：30 Nov 2017
-    volantis.js('<%- theme.cdn.map.js.parallax %>').then(()=>{
-        parallax(imgs[(index)%(imgs.length)])
-    })
+
+  function next_parallax() {
+    if (imgs.length>=1) {
+      Parallax.options.src = imgs[index % imgs.length];
+      Parallax.init();
+      index++;
+      fetch(imgs[index % imgs.length]);
+    }
+  }
+  volantis.js('<%- theme.cdn.map.js.parallax %>').then(()=>{
+    parallax()
   })
-  volantis.pjax.push(pjax_parallax);
-  volantis.pjax.send(()=>{
-    try {
-      clearInterval(volantis.IntervalParallax);
-    } catch (error) {}
-  },'pjax_parallax')
+  volantis.pjax.push(next_parallax);
 </script>

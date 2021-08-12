@@ -155,8 +155,6 @@
     <% if (theme.plugins.aplayer && !theme.plugins.aplayer.enable) { %>
       volantis.APlayerController = {};
     <% } %>
-    volantis.import.jQuery().then(()=>{
-      volantis.js('<%- theme.cdn.map.js.rightMenu %>') // 此处依赖JQ
-    })
+    volantis.js('<%- theme.cdn.map.js.rightMenu %>')
   </script>
 <% } %>
