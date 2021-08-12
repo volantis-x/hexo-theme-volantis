@@ -56,7 +56,11 @@ volantis.pjax.push(()=>{_hmt.push(['_trackPageview', document.location.pathname]
       localStorage.setItem('Aegis_UIN', uin);
     }
     volantis.js("https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js");
-    const aegis=new Aegis({id:"<%- config.tencent_aegis_id %>",reportApiSpeed:true,reportAssetSpeed:true,spa:true,uin:uin});
+    const checkAegis = setInterval(() => {
+      if(typeof Aegis === "undefined") return;
+      clearInterval(checkAegis);
+      const aegis=new Aegis({id:"<%- config.tencent_aegis_id %>",reportApiSpeed:true,reportAssetSpeed:true,spa:true,uin:uin});
+    })
   }, 1000)
 </script>
 <% } %>
