@@ -16,20 +16,23 @@ p,
 input,
 pre>span,
 textarea
-    cursor: $text,text !important
+  cursor: $text,text !important
 
 
-.fancybox-container .fancybox-stage
+.fancybox-container .fancybox-stage,
+.fancybox__carousel .is-draggable
     cursor: $zoom-out,zoom-out !important
 
 
 .fancybox a,
-.fancybox-can-zoomIn .fancybox-content
+.fancybox-can-zoomIn .fancybox-content,
+.fancybox__carousel .fancybox__slide.can-zoom_in .fancybox__content
     cursor: $zoom-in,zoom-in !important
 
 span.btn>a:not([href]):hover,
 .fancybox-button[disabled], .fancybox-button[disabled]:hover,
-.gt-container .gt-btn.is--disable
+.gt-container .gt-btn.is--disable,
+span.not-select
   cursor: $not-allowed,not-allowed !important
 
 
@@ -54,6 +57,8 @@ kbd,
 .iziToast p,
 .iframe,
 .embed-show,
+p > img,
+p > svg,
 .fix-cursor-default
   cursor: $default,default !important
 
@@ -118,6 +123,8 @@ div.tabs ul.nav-tabs li.tab a,
 .tk-avatar img,
 .tk-meta a,
 .tk-action-icon,
+.carousel__slide,
+.fancybox__slide,
 .fix-cursor-pointer
   cursor: $pointer,pointer !important
 
