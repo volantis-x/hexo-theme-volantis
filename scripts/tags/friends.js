@@ -10,10 +10,18 @@
 hexo.extend.tag.register('friends', function(args) {
   args = hexo.args.map(args, ['only', 'not', 'repo', 'api']);
   if (args.only) {
-    args.only = args.only.split(',');
+    if(/::/g.test(args.only)){
+      args.only = args.only.split('::');
+    }else{
+      args.only = args.only.split(',');
+    }
   }
   if (args.not) {
-    args.not = args.not.split(',');
+    if(/::/g.test(args.not)){
+      args.not = args.not.split('::');
+    }else{
+      args.not = args.not.split(',');
+    }
   }
   var friends = hexo.locals.get('data').friends;
   if (friends == undefined) {

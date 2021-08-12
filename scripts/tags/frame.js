@@ -13,7 +13,12 @@
 // {% frame device | video=xxx | part=bottom %}
 // device: iphone11,
 hexo.extend.tag.register('frame', function(args) {
-  args = args.join(' ').split(' | ');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(' | ');
+  }
   // 所有支持的参数
   const device = args[0].trim();
   let img = '';

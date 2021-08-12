@@ -13,7 +13,12 @@
 // 例如：
 // {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
 hexo.extend.tag.register('issues', function(args) {
-  args = args.join(' ').split(' | ');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(' | ');
+  }
   // 所有支持的参数
   let type = args[0].trim();
   let api = '';

@@ -31,7 +31,12 @@ function buidImgFancybox(content, group) {
 }
 
 function postFancybox(args, content) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   const cls = args[0];
   const col = Number(args[1]) || 0;
   const group = (args[2] || 'default').trim();

@@ -7,7 +7,12 @@ function postBtns(args, content) {
 }
 
 function postCell(args, content) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   let text = args[0] || '';
   let url = args[1] || '';
   text = text.trim();

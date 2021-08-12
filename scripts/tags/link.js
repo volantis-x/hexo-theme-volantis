@@ -3,7 +3,12 @@
 // {% link title, url %}
 // {% link title, url, img %}
 hexo.extend.tag.register('link', function(args) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   let text = '';
   let url = '';
   let img = '';

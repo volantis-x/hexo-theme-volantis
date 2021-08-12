@@ -7,7 +7,12 @@
 // {% ghcard volantis-x %}
 // {% ghcard volantis-x/hexo-theme-volantis %}
 hexo.extend.tag.register('ghcard', function(args) {
-  args = args.join(' ').split(', ');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   const path = args[0].trim();
   let card = '';
   card += '<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/' + path + '">';

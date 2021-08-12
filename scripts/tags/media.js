@@ -11,7 +11,12 @@ function postVideo(args) {
 }
 
 function postVideos(args, content) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   var cls = args[0];
   if (cls.length > 0) {
     cls = ' ' + cls;

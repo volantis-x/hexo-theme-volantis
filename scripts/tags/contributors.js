@@ -10,10 +10,18 @@
 hexo.extend.tag.register('contributors', function(args) {
   args = hexo.args.map(args, ['only', 'not', 'api', 'source', 'repo']);
   if (args.only) {
-    args.only = args.only.split(',');
+    if(/::/g.test(args.only)){
+      args.only = args.only.split('::');
+    }else{
+      args.only = args.only.split(',');
+    }
   }
   if (args.not) {
-    args.not = args.not.split(',');
+    if(/::/g.test(args.not)){
+      args.not = args.not.split('::');
+    }else{
+      args.not = args.not.split(',');
+    }
   }
   var friends = hexo.locals.get('data').contributors;
   if (friends == undefined) {

@@ -6,7 +6,12 @@
 
 // {% note style, content %}
 function postNote(args) {
-  args = args.join(' ').split(', ');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   if (args.length > 1) {
     const cls = args[0].trim();
     const text = args[1].trim();
@@ -21,7 +26,12 @@ function postNote(args) {
 // content
 // {% endnoteblock %}
 function postNoteBlock(args, content) {
-  args = args.join(' ').split(', ');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   if (args.length < 1) {
     return;
   }

@@ -1,7 +1,12 @@
 'use strict';
 
 function postBtn(args) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   let cls = '';
   let text = '';
   let url = '';

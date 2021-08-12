@@ -1,7 +1,12 @@
 'use strict';
 
 function postFolding(args, content) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   let style = '';
   let title = '';
   if (args.length > 1) {

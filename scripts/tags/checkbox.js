@@ -1,7 +1,12 @@
 'use strict';
 
 function postCheckbox(args) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   var cls = '';
   var text = '';
   var checked = false;
@@ -24,7 +29,12 @@ function postCheckbox(args) {
   }
 }
 function postRadio(args) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   var cls = '';
   var text = '';
   var checked = false;

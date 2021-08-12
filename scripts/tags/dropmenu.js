@@ -1,7 +1,12 @@
 'use strict';
 
 function postMenu(args, content) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   if (args.length == 1) {
     const title = args[0].trim();
     return `<div class='dropmenu-wrapper'>
@@ -41,7 +46,12 @@ function postMenu(args, content) {
   }
 }
 function postSubmenu(args, content) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   const text = args[0] || '';
   const icon = args[1] || '';
   if (icon.length > 0) {
@@ -65,7 +75,12 @@ function postSubmenu(args, content) {
 }
 
 function postMenuItem(args) {
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   let text = args[0] || '';
   let url = args[1] || '';
   text = text.trim();

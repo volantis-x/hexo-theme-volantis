@@ -7,7 +7,12 @@
 function postTabs(args, content) {
   var tabBlock = /<!--\s*tab (.*?)\s*-->\n([\w\W\s\S]*?)<!--\s*endtab\s*-->/g;
 
-  args = args.join(' ').split(',');
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
   var tabName = args[0];
   var tabActive = Number(args[1]) || 0;
 
