@@ -1,20 +1,22 @@
 let Parallax = {};
-Parallax.
-options = {};
+Parallax.options = {};
 Parallax.options.speed = 0.25;
 Parallax.options.zIndex = -100;
-Parallax.options.zIndex = -100;
-Parallax.options.fade = 200;
+Parallax.options.fade = 1500;
 Parallax.slidein = () => {
   var opac = parseFloat(Parallax.slider.style.opacity);
   if (opac !== 1) {
     opac = opac + 0.1;
     Parallax.slider.style.opacity = opac;
-    setTimeout(Parallax.slidein, Parallax.options.fade/10);
+    setTimeout(Parallax.slidein, Parallax.options.fade / 10);
+  } else {
+    let parallaxMirrors = Parallax.window.querySelectorAll(".parallax-mirror");
+    if (parallaxMirrors.length >= 2) {
+      parallaxMirrors[0].remove();
+    }
   }
 };
-Parallax.init = () => {
-  Parallax.window.innerHTML = "";
+Parallax.start = () => {
   let mirror = document.createElement("div");
   mirror.classList.add("parallax-mirror");
   mirror.style.visibility = "hidden";
@@ -39,6 +41,8 @@ Parallax.init = () => {
     },
     false
   );
+};
+Parallax.init = () => {
   function loadDimensions() {
     Parallax.wH = document.documentElement.clientHeight;
     Parallax.wW = document.documentElement.clientWidth;

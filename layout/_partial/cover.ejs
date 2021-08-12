@@ -3,9 +3,7 @@
     <% if (theme.pjax_cover.enableCover) { %>
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
         <div id="<%- theme.pjax_cover.frontMatterCover %>" class='cover-wrapper <%- page.layout %> <%- theme.cover.layout_scheme %>' style="display: <%- theme.pjax_cover.coverWrapperDisplay %>;">
-          <% if (theme.plugins.backstretch.enable) { %>
-            <div id='cover-backstretch'></div>
-          <% } else if (theme.plugins.parallax.enable) { %>
+          <% if (theme.plugins.parallax.enable) { %>
             <div id="parallax-window"></div>
           <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
             <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
@@ -20,8 +18,8 @@
       <% if (page.cover == true) { %>
         <% if (is_home() && page.prev == 0 && theme.cover.height_scheme == 'full') { %>
           <div class="cover-wrapper <%- page.layout %> <%- theme.cover.layout_scheme %>" id='full'>
-            <% if (theme.plugins.backstretch.enable) { %>
-              <div id='cover-backstretch'></div>
+            <% if (theme.plugins.parallax.enable) { %>
+              <div id="parallax-window"></div>
             <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
               <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
             <% } else { %>
@@ -32,8 +30,8 @@
           </div>
         <% } else { %>
           <div class="cover-wrapper <%- page.layout %> <%- theme.cover.layout_scheme %>" id='half'>
-            <% if (theme.plugins.backstretch.enable) { %>
-              <div id='cover-backstretch'></div>
+            <% if (theme.plugins.parallax.enable) { %>
+              <div id="parallax-window"></div>
             <% } else if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
               <div class='cover-bg lazyload placeholder' data-bg="<%- theme.cover.background %>"></div>
             <% } else { %>

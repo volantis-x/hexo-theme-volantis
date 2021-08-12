@@ -384,7 +384,6 @@ const RightMenu = (() => {
       fn.remove('footer');
       fn.remove('#rightmenu-wrapper');
       fn.remove('.nav-tabs');
-      fn.remove('.backstretch');
       fn.remove('#BKG');
       fn.setStyle('body', 'backgroundColor', 'unset');
       fn.setStyle('#l_main', 'width', '100%');

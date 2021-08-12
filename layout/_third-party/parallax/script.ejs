@@ -18,9 +18,13 @@
 
   function parallax(){
     let ParallaxWindow = document.querySelector("#parallax-window");
+    <% if (theme.plugins.parallax.position=="fixed") { %>
+      ParallaxWindow = document.querySelector("html");
+    <% } %>
     Parallax.window = ParallaxWindow;
     Parallax.options.fade = <%- theme.plugins.parallax.fade %>;
     next_parallax();
+    Parallax.init();
     if (imgs.length>1) {
       let IntervalParallax = setInterval(function () {
         next_parallax();
@@ -31,7 +35,7 @@
   function next_parallax() {
     if (imgs.length>=1) {
       Parallax.options.src = imgs[index % imgs.length];
-      Parallax.init();
+      Parallax.start();
       index++;
       fetch(imgs[index % imgs.length]);
     }
