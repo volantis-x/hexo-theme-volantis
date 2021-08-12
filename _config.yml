@@ -609,7 +609,6 @@ plugins:
     js: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
 
   # 视差滚动效果 Slide Background
-  # parallax 与 backstretch.position:cover 只能选择一个
   parallax:
     enable: #true
     position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.

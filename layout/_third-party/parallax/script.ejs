@@ -37,7 +37,7 @@
       Parallax.options.src = imgs[index % imgs.length];
       Parallax.start();
       index++;
-      fetch(imgs[index % imgs.length]);
+      fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
     }
   }
   volantis.js('<%- theme.cdn.map.js.parallax %>').then(()=>{
