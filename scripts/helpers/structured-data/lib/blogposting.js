@@ -1,5 +1,3 @@
-const cheerio = require("cheerio");
-
 module.exports = (hexo, option) => {
   const { config, page: post } = hexo;
 
@@ -7,7 +5,7 @@ module.exports = (hexo, option) => {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    description: post.description || cheerio(post.excerpt).text(),
+    description: post.description,
     datePublished: post.date.toISOString(),
     dateModified: post.updated.toISOString(),
     inLanguage: config.language,
@@ -31,8 +29,6 @@ module.exports = (hexo, option) => {
     },
     url: post.permalink,
   };
-
-  blogposting.wordCount = cheerio(post.content).text().length;
 
   if (post.categories && post.categories.length) {
     blogposting.articleSection = post.categories.data[0].name;
