@@ -13,26 +13,7 @@
           <% if (group.description) { %>
             <%- markdown(group.description) %>
           <%} %>
-          <% if (theme.pages.friends.layout_scheme == 'sites') { %>
-            <div class='site-card-group'>
-              <% (group.items||[]).forEach(function(item){ %>
-                <% if (item.url && item.title) { %>
-                  <a class="site-card" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>">
-                    <div class="img">
-                      <% if (item.screenshot) { %>
-                        <img src="<%- item.screenshot %>"/>
-                      <% } %>
-                    </div>
-                    <div class="info">
-                      <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>
-                      <span class="title"><%- item.title %></span>
-                      <span class="desc"><%- item.description %></span>
-                    </div>
-                  </a>
-                <% } %>
-              <% }) %>
-            </div>
-          <% } else if (theme.pages.friends.layout_scheme == 'traditional') { %>
+          <% if (theme.pages.friends.layout_scheme == 'traditional') { %>
             <div class='friend-content'>
               <% (group.items||[]).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
