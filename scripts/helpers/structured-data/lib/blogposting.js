@@ -5,7 +5,7 @@ module.exports = (hexo, option) => {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    description: post.description,
+    description: post.description || hexo.strip_html(post.excerpt),
     datePublished: post.date.toISOString(),
     dateModified: post.updated.toISOString(),
     inLanguage: config.language,
@@ -29,6 +29,8 @@ module.exports = (hexo, option) => {
     },
     url: post.permalink,
   };
+
+  blogposting.wordCount = hexo.strip_html(post.excerpt).length;
 
   if (post.categories && post.categories.length) {
     blogposting.articleSection = post.categories.data[0].name;

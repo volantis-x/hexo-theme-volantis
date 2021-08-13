@@ -103,17 +103,17 @@
       }
       return `<meta name="keywords" content="${keywords}">`
     }
-    function generate_description() {
-      if (!description) {
-        description += config.description
-      }
-      description += ` - ${config.author} - ${config.title}`
-      return `<meta name="description" content="${description}">`
-    }
+    // open_graph() 函数会生成一个 description 标签???  https://github.com/hexojs/hexo/blob/92b979f4a3fa8714aebd3d11c3295d466b870905/lib/plugins/helper/open_graph.js#L98
+    // function generate_description() {
+    //   if (!description) {
+    //     description += config.description
+    //   }
+    //   description += ` - ${config.author} - ${config.title}`
+    //   return `<meta name="description" content="${description}">`
+    // }
   _%>
   <%- generate_title() %>
   <%- generate_keywords() %>
-  <%- generate_description() %>
   <%- open_graph(theme.open_graph) %>
   <!-- feed -->
   <%_ if (config.feed && config.feed.path){ _%>
