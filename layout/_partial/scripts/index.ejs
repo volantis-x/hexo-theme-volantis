@@ -111,6 +111,10 @@
 
 <%- partial('toc') %>
 
+<% if (theme.structured_data && theme.structured_data.enable) { %>
+  <%- structured_data() %>
+<% } %>
+
 <!-- more -->
 <% if (config.import && config.import.script) { %>
   <%- partial('import') %>
