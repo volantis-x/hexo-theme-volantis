@@ -261,7 +261,7 @@ comments:
       light: github-light
       dark: github-dark
     label: ✨💬✨
-    crossorigin: anonymous  
+    crossorigin: anonymous
   # Valine
   # https://valine.js.org/
   valine:
@@ -476,7 +476,7 @@ sidebar:
           text: '最后活动时间：'
           unit: '日'
     # ---------------------------------------
-    # lastupdate widget 
+    # lastupdate widget
     lastupdate:
       class: lastupdate
       display: [desktop, mobile]
@@ -537,7 +537,7 @@ plugins:
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome Pro 版本：https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
-  
+
   ################ optional plugins ################
   # issues api
   sitesjs:
@@ -662,8 +662,8 @@ plugins:
       enable: true
       play: fas fa-play
       pause: fas fa-pause
-  
-  # Pjax 
+
+  # Pjax
   pjax:
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
@@ -799,7 +799,7 @@ rightmenu:
   customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
     enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
     old: #https://static.inkss.cn/img/article/
-    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/  
+    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/
   ### 自定义菜单 ###
   help:
     name: 常见问题
