@@ -17,10 +17,12 @@ function buidImgFancybox(content, group) {
   if(html.startsWith('<p>') &&  html.endsWith('</p>')) {  // 去除无用的 p 标签包裹
     html=html.substring(0, html.length-4).substring(3);
   }
+  
+  let imageTags = html.includes('image-caption') ? 'image' : undefined;
   let imgList = html.match(/<img.*?>/g) || [];
   imgList.forEach(item => {
     const url = (item.match(/\ssrc=['"](.*?)['"]/) || [])[1];
-    const alt = (item.match(/\salt=['"](.*?)['"]/) || [])[1];
+    const alt = imageTags || (item.match(/\salt=['"](.*?)['"]/) || [])[1];
     const newItem = item.replace('img', 'img fancybox');  // 避免出现重复替换，打个标
     const result = `<div class='fancybox'><a class='fancybox' pjax-fancybox href='${url}' data-fancybox='${group}' data-caption='${alt}'>${newItem}</a>${buidAlt(alt)}</div>`;
     html = html.replace(item, result.trim());
