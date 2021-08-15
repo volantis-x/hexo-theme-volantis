@@ -768,6 +768,8 @@ plugins:
       default: 5000
       quection: 20000
     position: 'topRight'                 # 弹出位置 可选值：topRight, bottomRight, bottomLeft, topLeft, topCenter, bottomCenter, center
+    transitionIn: 'bounceInLeft'         # 弹窗打开动画 可选值：bounceInLeft, bounceInRight, bounceInUp, bounceInDown, fadeIn, fadeInDown, fadeInUp, fadeInLeft, fadeInRight, flipInX
+    transitionOut: 'fadeOutRight'        # 弹窗关闭动画 可选值：fadeOut, fadeOutUp, fadeOutDown, fadeOutLeft, fadeOutRight, flipOutX
     titleColor: 'var(--color-text)'      # 标题颜色
     messageColor: 'var(--color-text)'    # 消息颜色
     backgroundColor: 'var(--color-card)' # 默认背景色

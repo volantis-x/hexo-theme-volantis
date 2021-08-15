@@ -1,31 +1,42 @@
 <script>
-  volantis.message = (title, message, icon = '<%- theme.plugins.message.icon.default %>', time = '<%- theme.plugins.message.time.default %>', position = '<%- theme.plugins.message.position %>', done = null) => {
+  volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
       volantis.css('<%- theme.cdn.map.css.message %>')
       volantis.js('<%- theme.cdn.map.js.message %>', () => {
-        tozashMessage(title, message, icon, time, position, done);
+        tozashMessage(title, message, option, done);
       });
     } else {
-      tozashMessage(title, message, icon, time, position, done);
+      tozashMessage(title, message, option, done);
     }
 
-    function tozashMessage(title, message, icon, time, position, done) {
+    function tozashMessage(title, message, option, done) {
+      const {
+        icon,
+        time,
+        position,
+        transitionIn,
+        transitionOut,
+        messageColor,
+        titleColor,
+        backgroundColor,
+        zindex
+      } = option;
       iziToast.show({
         layout: '2',
         icon: 'Fontawesome',
-        transitionIn: 'bounceInLeft',
-        transitionOut: 'fadeOutRight',
         closeOnEscape: 'true',
         displayMode: 'replace',
-        messageColor: '<%- theme.plugins.message.messageColor %>',
-        titleColor: '<%- theme.plugins.message.titleColor %>',
-        backgroundColor: '<%- theme.plugins.message.backgroundColor %>',
-        zindex: <%- theme.plugins.message.zindex %>,
+        transitionIn: transitionIn || '<%- theme.plugins.message.transitionIn %>',
+        transitionOut: transitionOut || '<%- theme.plugins.message.transitionOut %>',
+        messageColor: messageColor || '<%- theme.plugins.message.messageColor %>',
+        titleColor: titleColor || '<%- theme.plugins.message.titleColor %>',
+        backgroundColor: backgroundColor || '<%- theme.plugins.message.backgroundColor %>',
+        zindex: zindex || '<%- theme.plugins.message.zindex %>',
+        icon: icon || '<%- theme.plugins.message.icon.default %>',
+        timeout: time || '<%- theme.plugins.message.time.default %>',
+        position: position || '<%- theme.plugins.message.position %>',
         title: title,
         message: message,
-        icon: icon,
-        timeout: time,
-        position: position,
         onClosed: () => {
           if(done) done();
         },
@@ -33,39 +44,50 @@
     }
   };
 
-  volantis.question = (title, message, success = null, cancel = null, done = null, icon = '<%- theme.plugins.message.icon.quection %>', time = '<%- theme.plugins.message.time.quection %>') => {
+  volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
       volantis.css('<%- theme.cdn.map.css.message %>')
       volantis.js('<%- theme.cdn.map.js.message %>', () => {
-        tozashQuestion(title, message, icon , time, success, cancel, done);
+        tozashQuestion(ttitle, message, option, success, cancel, done);
       });
     } else {
-      tozashQuestion(title, message, icon , time, success, cancel, done);
+      tozashQuestion(title, message, option, success, cancel, done);
     }
 
-    function tozashQuestion(title, message, icon , time, success, cancel, done) {
+    function tozashQuestion(title, message, option, success, cancel, done) {
+      const {
+        icon,
+        time,
+        position,
+        transitionIn,
+        transitionOut,
+        messageColor,
+        titleColor,
+        backgroundColor,
+        zindex
+      } = option;
       iziToast.question({ 
+        id: 'question',
         icon: 'Fontawesome',
-        messageColor: '<%- theme.plugins.message.messageColor %>',
-        titleColor: '<%- theme.plugins.message.titleColor %>',
-        backgroundColor: '<%- theme.plugins.message.backgroundColor %>',
         close: false,
         overlay: true,
         displayMode: 'once',
-        id: 'question',
         position: 'center',
-        zindex: <%- theme.plugins.message.zindex %>,
-        icon: icon,
-        timeout: time,
+        messageColor: messageColor || '<%- theme.plugins.message.messageColor %>',
+        titleColor: titleColor || '<%- theme.plugins.message.titleColor %>',
+        backgroundColor: backgroundColor || '<%- theme.plugins.message.backgroundColor %>',
+        zindex: zindex || '<%- theme.plugins.message.zindex %>',
+        icon: icon || '<%- theme.plugins.message.icon.quection %>',
+        timeout: time || '<%- theme.plugins.message.time.quection %>',
         title: title,
         message: message,
         buttons: [
           ['<button><b>是</b></button>', (instance, toast) => {
-            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+            instance.hide({ transitionOut: transitionOut || 'fadeOut' }, toast, 'button');
             if(success) success(instance, toast)
           }],
           ['<button><b>否</b></button>', (instance, toast) => {
-            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+            instance.hide({ transitionOut: transitionOut || 'fadeOut' }, toast, 'button');
             if(cancel) cancel(instance, toast)
           }]
         ],

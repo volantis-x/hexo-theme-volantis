@@ -177,9 +177,9 @@ const RightMenu = (() => {
 
       _copyImg.onclick = () => {
         fn.writeClipImg(event, flag => {
-          if (flag) volantis.message('系统提示', '图片复制成功！', volantis.rightMenu.faicon + ' fa-images');
+          if (flag) volantis.message('系统提示', '图片复制成功！', { icon: volantis.rightMenu.faicon + ' fa-images'});
         }, (error) => {
-          volantis.message('系统提示', '复制失败：' + error, volantis.rightMenu.faicon + ' fa-exclamation-square red');
+          volantis.message('系统提示', '复制失败：' + error, { icon: volantis.rightMenu.faicon + ' fa-exclamation-square red'});
         })
       }
     } else {
@@ -206,7 +206,7 @@ const RightMenu = (() => {
 
       _printHtml.onclick = () => {
         if (window.location.pathname === pathName) {
-          volantis.question('', '是否打印当前页面？<br><em style="font-size: 80%">建议打印时勾选背景图形</em><br>', () => {
+          volantis.question('', '是否打印当前页面？<br><em style="font-size: 80%">建议打印时勾选背景图形</em><br>', {}, () => {
             fn.printHtml();
           })
         } else {
@@ -244,9 +244,9 @@ const RightMenu = (() => {
   fn.copyString = (str) => {
     fn.writeClipText(str)
       .then(() => {
-        volantis.message('复制成功', str.length > 120 ? str.substring(0, 120) + '...' : str, volantis.rightMenu.faicon + ' fa-copy');
+        volantis.message('复制成功', str.length > 120 ? str.substring(0, 120) + '...' : str, { icon: volantis.rightMenu.faicon + ' fa-copy'});
       }).catch(e => {
-        volantis.message('系统提示', e, volantis.rightMenu.faicon + ' fa-exclamation-square red');
+        volantis.message('系统提示', e, { icon: volantis.rightMenu.faicon + ' fa-exclamation-square red'});
       })
   }
 
