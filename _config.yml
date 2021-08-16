@@ -826,21 +826,8 @@ rightmenu:
 # npm i hexo-generator-search hexo-generator-json-content
 search:
   enable: true
-  service: hexo  # hexo, google, algolia, azure, baidu
+  service: hexo  # hexo
   js:
-  google:
-    apiKey:
-    engineId:
-  algolia:
-    applicationID:
-    apiKey:
-    indexName:
-  azure:
-    serviceName:
-    indexName:
-    queryKey:
-  baidu:
-    apiId:
 ############################### Search ############################### > end
 
 ############################### Color Scheme ############################### > start

@@ -157,7 +157,7 @@ var SearchService = '';
       var result = self.getUrlRelativePath(url);
       var html = '';
       html = '<li>';
-      html += '<a class=\'result\' href=\'' + result + '\'>';
+      html += '<a class=\'result\' href=\'' + result + "?keyword=" + self.queryText + '\'>';
       html += '<span class=\'title\'>' + title + '</span>';
       if (digest !== '') html += '<span class=\'digest\'>' + digest + '</span>';
       html += '</a>';

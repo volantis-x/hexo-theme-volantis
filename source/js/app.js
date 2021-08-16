@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   volantis.pjax.push(() => {
     VolantisApp.pjaxReload();
     sessionStorage.setItem("domTitle", document.title);
+    highlightKeyWords.startFromURL()
   }, 'app.js');
   volantis.pjax.send(() => {
     volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
@@ -380,7 +381,7 @@ const VolantisApp = (() => {
 
   // hexo-reference 页脚跳转 https://github.com/volantis-x/hexo-theme-volantis/issues/647
   fn.footnotes = () => {
-    let ref = document.querySelectorAll('#post .footnote-backref, #post .footnote-ref > a');
+    let ref = document.querySelectorAll('#l_main .footnote-backref, #l_main .footnote-ref > a');
     ref.forEach(function (e, i) {
       ref[i].click = () => {}; // 强制清空原 click 事件
       volantis.dom.$(e).on('click', (e) => {
@@ -587,20 +588,22 @@ const highlightKeyWords = (() => {
   fn.startFromURL = () => {
     const params = decodeURI(new URL(location.href).searchParams.get('keyword'));
     const keywords = params ? params.split(' ') : [];
-    const post = document.querySelector('#post');
+    const post = document.querySelector('#l_main');
     fn.start(keywords, post)
     fn.scrollToFirstHighlightKeywordMark()
   }
   fn.scrollToFirstHighlightKeywordMark = () => {
     let target = document.getElementById("first-highlight-keyword-mark");
     if (target) {
-      window.scrollTo({
-        top: target.getBoundingClientRect().top + document.documentElement.scrollTop - volantis.dom.header.offsetHeight - 5,
-        behavior: "smooth" //平滑滚动
-      });
+      setTimeout(() => {
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + document.documentElement.scrollTop - volantis.dom.header.offsetHeight - 5,
+        });
+      }, 1000)
     }
   }
   fn.start = (keywords, querySelector) => {
+    fn.firstFlag = 1
     if (!keywords.length || !querySelector) return;
     console.log(keywords);
     const walk = document.createTreeWalker(querySelector, NodeFilter.SHOW_TEXT, null);
@@ -713,7 +716,7 @@ const highlightKeyWords = (() => {
       fn.start(keywords, querySelector)
     },
     startFromURL: () => {
-      fn.startFromURL()
+      setTimeout(fn.startFromURL, 1000)
     },
     scrollToFirstHighlightKeywordMark: () => {
       fn.scrollToFirstHighlightKeywordMark()

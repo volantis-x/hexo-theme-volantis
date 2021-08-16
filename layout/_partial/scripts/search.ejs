@@ -1,5 +1,4 @@
 <script>
-const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/logo/";
 const ROOT =  ("<%- config.root %>" || "/").endsWith('/') ? ("<%- config.root %>" || "/") : ("<%- config.root %>/" || "/" );
 
 function loadSearchScript(){
@@ -41,45 +40,7 @@ document.querySelectorAll('.input.u-search-input').forEach((e)=>{
 })
 
 function listenSearch(){
-  <% if(theme.search.service === 'baidu') { %>
-    const BAIDU_API_ID = "<%- theme.search.baidu.apiId %>";
-    volantis.customSearch = new BaiduSearch({
-      apiId: BAIDU_API_ID,
-      imagePath: SearchServiceimagePath
-    });
-  <%} else if(theme.search.service === 'algolia') { %>
-    const ALGOLIA_API_KEY = "<%- theme.search.algolia.apiKey %>";
-    const ALGOLIA_APP_ID = "<%- theme.search.algolia.applicationID %>";
-    const ALGOLIA_INDEX_NAME = "<%- theme.search.algolia.indexName %>";
-    volantis.customSearch = new AlgoliaSearch({
-      apiKey: ALGOLIA_API_KEY,
-      appId: ALGOLIA_APP_ID,
-      indexName: ALGOLIA_INDEX_NAME,
-      imagePath: SearchServiceimagePath
-    });
-  <%} else if(theme.search.service === 'azure') { %>
-    const AZURE_QUERY_KEY = "<%- theme.search.azure.queryKey %>";
-    const AZURE_INDEX_NAME = "<%- theme.search.azure.indexName %>";
-    const AZURE_SERVICE_NAME = "<%- theme.search.azure.serviceName %>";
-    volantis.customSearch = new AzureSearch({
-      serviceName: AZURE_SERVICE_NAME,
-      indexName: AZURE_INDEX_NAME,
-      queryKey: AZURE_QUERY_KEY,
-      imagePath: SearchServiceimagePath
-    });
-  <%} else if(theme.search.service === 'google') { %>
-    const GOOGLE_CUSTOM_SEARCH_API_KEY = "<%- theme.search.google.apiKey %>";
-    const GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "<%- theme.search.google.engineId %>";
-    volantis.customSearch = new Googlevolantis.customSearch({
-      apiKey: GOOGLE_CUSTOM_SEARCH_API_KEY,
-      engineId: GOOGLE_CUSTOM_SEARCH_ENGINE_ID,
-      imagePath: SearchServiceimagePath
-    });
-  <%} else {%>
-    volantis.customSearch = new HexoSearch({
-      imagePath: SearchServiceimagePath
-    });
-  <%}%>
+  volantis.customSearch = new HexoSearch();
 }
 function setSearchService() {
 	listenSearch();
