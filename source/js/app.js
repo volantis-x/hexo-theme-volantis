@@ -589,13 +589,13 @@ const highlightKeyWords = (() => {
     const keywords = params ? params.split(' ') : [];
     const post = document.querySelector('#post');
     fn.start(keywords, post)
-    // fn.scrollToFirstHighlightKeywordMark()
+    fn.scrollToFirstHighlightKeywordMark()
   }
   fn.scrollToFirstHighlightKeywordMark = () => {
     let target = document.getElementById("first-highlight-keyword-mark");
     if (target) {
       window.scrollTo({
-        top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop + 5, // 啊这
+        top: target.getBoundingClientRect().top + document.documentElement.scrollTop - volantis.dom.header.offsetHeight - 5,
         behavior: "smooth" //平滑滚动
       });
     }
@@ -714,6 +714,9 @@ const highlightKeyWords = (() => {
     },
     startFromURL: () => {
       fn.startFromURL()
+    },
+    scrollToFirstHighlightKeywordMark: () => {
+      fn.scrollToFirstHighlightKeywordMark()
     },
   }
 })()
