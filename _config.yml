@@ -581,11 +581,6 @@ plugins:
     interval: 20 # ms
     scale: 1 # 0.1~1
 
-  # Codeblock Copy Button
-  clipboard:
-    enable: #true
-    js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
-
   ######## Plugins for SEO:
   # npm i hexo-wordcount
   wordcount:
@@ -969,7 +964,6 @@ custom_css:
     effect: [shadow] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
-      copy_btn: true
       grayscale: false # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left

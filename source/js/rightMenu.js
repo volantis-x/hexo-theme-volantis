@@ -242,7 +242,7 @@ const RightMenu = (() => {
 
   // 复制字符串 
   fn.copyString = (str) => {
-    fn.writeClipText(str)
+    VolantisApp.writeClipText(str)
       .then(() => {
         volantis.message('复制成功', str.length > 120 ? str.substring(0, 120) + '...' : str, { icon: volantis.rightMenu.faicon + ' fa-copy'});
       }).catch(e => {

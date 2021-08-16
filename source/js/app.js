@@ -66,7 +66,8 @@ const Debounce = (fn, t) => {
 };
 
 const VolantisApp = (() => {
-  const fn = {};
+  const fn = {},
+    COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fas fa-copy"></i><span>COPY</span></button>';;
   let scrollCorrection = 80;
 
   fn.init = () => {
@@ -115,9 +116,10 @@ const VolantisApp = (() => {
       behavior: 'smooth'
     });
   }
+
   // 滚动条距离顶部的距离
-  function getScrollTop() {
-    var scrollPos;
+  fn.getScrollTop = () => {
+    let scrollPos;
     if (window.pageYOffset) {
       scrollPos = window.pageYOffset;
     } else if (document.compatMode && document.compatMode != 'BackCompat') {
@@ -127,6 +129,7 @@ const VolantisApp = (() => {
     }
     return scrollPos;
   }
+
   // 设置滚动锚点
   fn.setScrollAnchor = () => {
     // click topBtn 滚动至bodyAnchor 【移动端 PC】
@@ -143,7 +146,7 @@ const VolantisApp = (() => {
     let pos = document.body.scrollTop;
     volantis.dom.$(document).scroll(Debounce(() => {
       const showHeaderPoint = volantis.dom.bodyAnchor.offsetTop - scrollCorrection;
-      const scrollTop = getScrollTop(); // 滚动条距离顶部的距离
+      const scrollTop = fn.getScrollTop(); // 滚动条距离顶部的距离
       const del = scrollTop - pos;
       pos = scrollTop;
       // topBtn
@@ -178,7 +181,7 @@ const VolantisApp = (() => {
     // 决定一二级导航栏的切换 【向上滚动50px切换为一级导航栏；向下滚动50px切换为二级导航栏】  【移动端 PC】
     let pos = document.body.scrollTop;
     volantis.dom.$(document).scroll(Debounce(() => {
-      const scrollTop = getScrollTop();
+      const scrollTop = fn.getScrollTop();
       const del = scrollTop - pos;
       if (del >= 50 && scrollTop > 100) { // 向下滚动50px
         pos = scrollTop;
@@ -395,6 +398,93 @@ const VolantisApp = (() => {
     })
   }
 
+  // 代码块复制
+  fn.copyCode = () => {
+    if (!(document.querySelector(".highlight .code pre") ||
+        document.querySelector(".article pre code"))) {
+      return;
+    }
+
+    document.querySelectorAll(".highlight .code pre, .article pre code").forEach(node => {
+      const test = node.insertAdjacentHTML("beforebegin", COPYHTML);
+      const _BtnCopy = node.previousSibling;
+      _BtnCopy.onclick = e => {
+        e.stopPropagation();
+        const _icon = _BtnCopy.querySelector('i');
+        const _span = _BtnCopy.querySelector('span');
+
+        node.focus();
+        const range = new Range();
+        range.selectNodeContents(node);
+        document.getSelection().removeAllRanges();
+        document.getSelection().addRange(range);
+
+        const str = document.getSelection().toString();
+        fn.writeClipText(str).then(() => {
+          volantis.message('复制成功', str.length > 120 ? str.substring(0, 120) + '...' : str, {
+            icon: 'fa fa-copy PETERRIVE'
+          });
+          _BtnCopy.classList.add('copied');
+          _icon.classList.remove('fa-copy');
+          _icon.classList.add('fa-check-circle');
+          _span.innerText = "COPIED";
+          setTimeout(() => {
+            _icon.classList.remove('fa-check-circle');
+            _icon.classList.add('fa-copy');
+            _span.innerText = "COPY";
+          }, 2000)
+        }).catch(e => {
+          volantis.message('系统提示', e, {
+            icon: 'fa fa-exclamation-circle red'
+          });
+          _BtnCopy.classList.add('copied-failed');
+          _icon.classList.remove('fa-copy');
+          _icon.classList.add('fa-exclamation-circle');
+          _span.innerText = "COPY FAILED";
+          setTimeout(() => {
+            _icon.classList.remove('fa-exclamation-circle');
+            _icon.classList.add('fa-copy');
+            _span.innerText = "COPY";
+          })
+        })
+      }
+    });
+  }
+
+  // 工具类：复制字符串到剪切板
+  fn.writeClipText = (str) => {
+    try {
+      return navigator.clipboard
+        .writeText(str)
+        .then(() => {
+          return Promise.resolve()
+        })
+        .catch(err => {
+          return Promise.reject(err || '复制文本失败!')
+        })
+    } catch (e) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      try {
+        let result = document.execCommand('copy')
+        document.body.removeChild(input);
+        if (!result || result === 'unsuccessful') {
+          return Promise.reject('复制文本失败!')
+        } else {
+          return Promise.resolve()
+        }
+      } catch (e) {
+        document.body.removeChild(input);
+        return Promise.reject(
+          '当前浏览器不支持复制功能，请检查更新或更换其他浏览器操作!'
+        )
+      }
+    }
+  }
+
   return {
     init: () => {
       fn.init();
@@ -409,6 +499,7 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
+      fn.copyCode();
     },
     pjaxReload: () => {
       fn.event();
@@ -419,6 +510,7 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
+      fn.copyCode();
 
       // 移除小尾巴的移除
       document.querySelector("#l_header .nav-main").querySelectorAll('.list-v:not(.menu-phone)').forEach(function (e) {
@@ -432,7 +524,8 @@ const VolantisApp = (() => {
           volantis.dom.switcher.removeClass('active');
         });
       }
-    }
+    },
+    writeClipText: fn.writeClipText
   }
 })()
 Object.freeze(VolantisApp);
@@ -443,7 +536,7 @@ const volantisFancyBox = (() => {
   fn.initFB = () => {
     const group = new Set();
     group.add('default'); // 默认类
-    group.add('Twikoo');  // TwiKoo 类
+    group.add('Twikoo'); // TwiKoo 类
 
     if (!document.querySelector(".md .gallery img, .fancybox")) return;
     document.querySelectorAll(".md .gallery").forEach(function (ele) {
