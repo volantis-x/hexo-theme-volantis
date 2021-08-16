@@ -716,7 +716,7 @@ const highlightKeyWords = (() => {
       fn.start(keywords, querySelector)
     },
     startFromURL: () => {
-      setTimeout(fn.startFromURL, 1000)
+      setTimeout(fn.startFromURL, 1200)
     },
     scrollToFirstHighlightKeywordMark: () => {
       fn.scrollToFirstHighlightKeywordMark()
