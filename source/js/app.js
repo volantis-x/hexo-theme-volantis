@@ -21,18 +21,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 'fancybox');
 
-  locationHas();
+  locationHash();
+  highlightKeyWords.startFromURL();
 });
 
-// /*锚点定位*/
-const locationHas = () => {
-  /*锚点定位*/
+/*锚点定位*/
+const locationHash = () => {
   if (window.location.hash) {
     let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
     let target = document.getElementById(locationID);
     if (target) {
       setTimeout(() => {
-        if (window.location.hash.startsWith('#fn')) {
+        if (window.location.hash.startsWith('#fn')) { // hexo-reference https://github.com/volantis-x/hexo-theme-volantis/issues/647
           window.scrollTo({
             top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop - volantis.dom.header.offsetHeight,
             behavior: "smooth" //平滑滚动
@@ -378,9 +378,9 @@ const VolantisApp = (() => {
     })
   }
 
-  // 页脚跳转
+  // hexo-reference 页脚跳转 https://github.com/volantis-x/hexo-theme-volantis/issues/647
   fn.footnotes = () => {
-    let ref = document.querySelectorAll('.footnote-backref, .footnote-ref > a');
+    let ref = document.querySelectorAll('#post .footnote-backref, #post .footnote-ref > a');
     ref.forEach(function (e, i) {
       ref[i].click = () => {}; // 强制清空原 click 事件
       volantis.dom.$(e).on('click', (e) => {
@@ -579,3 +579,142 @@ const volantisFancyBox = (() => {
   }
 })()
 Object.freeze(volantisFancyBox);
+
+// highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
+const highlightKeyWords = (() => {
+  let fn = {}
+  fn.firstFlag = 1
+  fn.startFromURL = () => {
+    const params = decodeURI(new URL(location.href).searchParams.get('keyword'));
+    const keywords = params ? params.split(' ') : [];
+    const post = document.querySelector('#post');
+    fn.start(keywords, post)
+    // fn.scrollToFirstHighlightKeywordMark()
+  }
+  fn.scrollToFirstHighlightKeywordMark = () => {
+    let target = document.getElementById("first-highlight-keyword-mark");
+    if (target) {
+      window.scrollTo({
+        top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop + 5, // 啊这
+        behavior: "smooth" //平滑滚动
+      });
+    }
+  }
+  fn.start = (keywords, querySelector) => {
+    if (!keywords.length || !querySelector) return;
+    console.log(keywords);
+    const walk = document.createTreeWalker(querySelector, NodeFilter.SHOW_TEXT, null);
+    const allNodes = [];
+    while (walk.nextNode()) {
+      if (!walk.currentNode.parentNode.matches('button, select, textarea')) allNodes.push(walk.currentNode);
+    }
+    allNodes.forEach(node => {
+      const [indexOfNode] = fn.getIndexByWord(keywords, node.nodeValue);
+      if (!indexOfNode.length) return;
+      const slice = fn.mergeIntoSlice(0, node.nodeValue.length, indexOfNode);
+      fn.highlightText(node, slice, 'keyword');
+      fn.highlightStyle()
+    });
+  }
+  fn.getIndexByWord = (words, text, caseSensitive = false) => {
+    const index = [];
+    const included = new Set();
+    words.forEach(word => {
+      const div = document.createElement('div');
+      div.innerText = word;
+      word = div.innerHTML;
+  
+      const wordLen = word.length;
+      if (wordLen === 0) return;
+      let startPosition = 0;
+      let position = -1;
+      if (!caseSensitive) {
+        text = text.toLowerCase();
+        word = word.toLowerCase();
+      }
+      while ((position = text.indexOf(word, startPosition)) > -1) {
+        index.push({ position, word });
+        included.add(word);
+        startPosition = position + wordLen;
+      }
+    });
+    index.sort((left, right) => {
+      if (left.position !== right.position) {
+        return left.position - right.position;
+      }
+      return right.word.length - left.word.length;
+    });
+    return [index, included];
+  };
+  fn.mergeIntoSlice = (start, end, index) => {
+    let item = index[0];
+    let { position, word } = item;
+    const hits = [];
+    const count = new Set();
+    while (position + word.length <= end && index.length !== 0) {
+      count.add(word);
+      hits.push({
+        position,
+        length: word.length
+      });
+      const wordEnd = position + word.length;
+  
+      index.shift();
+      while (index.length !== 0) {
+        item = index[0];
+        position = item.position;
+        word = item.word;
+        if (wordEnd > position) {
+          index.shift();
+        } else {
+          break;
+        }
+      }
+    }
+    return {
+      hits,
+      start,
+      end,
+      count: count.size
+    };
+  };
+  fn.highlightText = (node, slice, className) => {
+    const val = node.nodeValue;
+    let index = slice.start;
+    const children = [];
+    for (const { position, length } of slice.hits) {
+      const text = document.createTextNode(val.substring(index, position));
+      index = position + length;
+      let mark = document.createElement('mark');
+      mark.className = className;
+      mark = fn.highlightStyle(mark)
+      mark.appendChild(document.createTextNode(val.substr(position, length)));
+      children.push(text, mark);
+    }
+    node.nodeValue = val.substring(index, slice.end);
+    children.forEach(element => {
+      node.parentNode.insertBefore(element, node);
+    });
+  }
+  fn.highlightStyle = (mark) => {
+    if(!mark) return;
+    if (fn.firstFlag) {
+      mark.id = "first-highlight-keyword-mark"
+      fn.firstFlag = 0;
+    }
+    mark.style.background = "transparent";
+    mark.style["border-bottom"] = "1px dashed #ff2a2a";
+    mark.style["color"] = "#ff2a2a";
+    mark.style["font-weight"] = "bold";
+    return mark
+  }
+  return {
+    start: (keywords, querySelector) => {
+      fn.start(keywords, querySelector)
+    },
+    startFromURL: () => {
+      fn.startFromURL()
+    },
+  }
+})()
+Object.freeze(highlightKeyWords);
