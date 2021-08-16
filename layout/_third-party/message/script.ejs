@@ -48,7 +48,7 @@
     if (typeof iziToast == "undefined") {
       volantis.css('<%- theme.cdn.map.css.message %>')
       volantis.js('<%- theme.cdn.map.js.message %>', () => {
-        tozashQuestion(ttitle, message, option, success, cancel, done);
+        tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
       tozashQuestion(title, message, option, success, cancel, done);
