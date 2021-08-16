@@ -604,7 +604,7 @@ const highlightKeyWords = (() => {
   }
   fn.start = (keywords, querySelector) => {
     fn.firstFlag = 1
-    if (!keywords.length || !querySelector) return;
+    if (!keywords.length || !querySelector || keywords[0] == "null") return;
     console.log(keywords);
     const walk = document.createTreeWalker(querySelector, NodeFilter.SHOW_TEXT, null);
     const allNodes = [];
