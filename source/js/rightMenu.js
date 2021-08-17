@@ -473,13 +473,9 @@ const RightMenu = (() => {
     volantis.isReadModel = volantis.isReadModel === undefined ? true : !volantis.isReadModel;
     if (volantis.isReadModel) {
       const option = {
-        backgroundColor: '#f8f1e2',
+        backgroundColor: 'var(--color-read-post)',
         icon: volantis.rightMenu.faicon + ' fa-book-reader',
         time: 5000
-      }
-      if (volantis.dark && volantis.dark.mode === 'dark') {
-        option.backgroundColor = '#000';
-        option.icon = volantis.rightMenu.faicon + ' fa-book-reader CLOUDS';
       }
       if (volantis.messageRightMenu.enable) volantis.message('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', option);
       document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
