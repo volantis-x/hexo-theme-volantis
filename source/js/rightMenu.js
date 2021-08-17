@@ -268,7 +268,11 @@ const RightMenu = (() => {
   fn.copyString = (str) => {
     VolantisApp.writeClipText(str)
       .then(() => {
-        volantis.message('复制成功', str.length > 120 ? str.substring(0, 120) + '...' : str, { icon: volantis.rightMenu.faicon + ' fa-copy'});
+        if(volantis.messageCopyright && volantis.messageCopyright.enable) {
+          volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
+            icon: volantis.messageCopyright.icon
+          });
+        }
       }).catch(e => {
         volantis.message('系统提示', e, { icon: volantis.rightMenu.faicon + ' fa-exclamation-square red'});
       })

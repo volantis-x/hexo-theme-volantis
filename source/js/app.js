@@ -422,9 +422,11 @@ const VolantisApp = (() => {
 
         const str = document.getSelection().toString();
         fn.writeClipText(str).then(() => {
-          volantis.message('复制成功', str.length > 120 ? str.substring(0, 120) + '...' : str, {
-            icon: 'fa fa-copy PETERRIVE'
-          });
+          if(volantis.messageCopyright && volantis.messageCopyright.enable) {
+            volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
+              icon: volantis.messageCopyright.icon
+            });
+          }
           _BtnCopy.classList.add('copied');
           _icon.classList.remove('fa-copy');
           _icon.classList.add('fa-check-circle');

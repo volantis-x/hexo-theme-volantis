@@ -98,11 +98,18 @@
     }
   }
 
-  <% if (theme.plugins.message.copyright.enable) { %>
+  volantis.messageCopyright = {
+    enable: '<%- theme.plugins.message.copyright.enable %>' === 'true' ? true : false,
+    title: '<%- theme.plugins.message.copyright.title %>',
+    message: '<%- theme.plugins.message.copyright.message %>',
+    icon: '<%- theme.plugins.message.copyright.icon %>'
+  }
+
+  if(volantis.messageCopyright.enable) {
     document.body.oncopy = function(){
-      volantis.message('<%- theme.plugins.message.copyright.title %>',
-      '<%- theme.plugins.message.copyright.message %>', 
-      '<%- theme.plugins.message.copyright.icon %>');
+      volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
+        icon: volantis.messageCopyright.icon
+      });
     }; 
-  <% } %>
+  }
 </script>
