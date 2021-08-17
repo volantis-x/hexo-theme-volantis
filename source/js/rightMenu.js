@@ -474,10 +474,14 @@ const RightMenu = (() => {
     if (volantis.isReadModel) {
       const option = {
         backgroundColor: '#f8f1e2',
-        icon: 'fal fa-book-reader',
+        icon: volantis.rightMenu.faicon + ' fa-book-reader',
         time: 5000
       }
-      if (volantis.messageRightMenu.enable)('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', option);
+      if (volantis.dark && volantis.dark.mode === 'dark') {
+        option.backgroundColor = '#000';
+        option.icon = volantis.rightMenu.faicon + ' fa-book-reader CLOUDS';
+      }
+      if (volantis.messageRightMenu.enable) volantis.message('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', option);
       document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
       document.querySelector('#l_body').addEventListener('click', (event) => {
         if (fn.hasClass(event.target, 'common_read')) {
@@ -520,6 +524,7 @@ const RightMenu = (() => {
   }
 
   fn.fadeIn = (e) => {
+    if (!e) return;
     e.style.visibility = "visible";
     e.style.opacity = 1;
     e.style.display = "block";
@@ -528,6 +533,7 @@ const RightMenu = (() => {
   }
 
   fn.fadeOut = (e) => {
+    if (!e) return;
     e.style.visibility = "hidden";
     e.style.opacity = 0;
     e.style.display = "none";
@@ -536,6 +542,7 @@ const RightMenu = (() => {
   }
 
   fn.fadeToggle = (e) => {
+    if (!e) return;
     if (e.style.visibility == "hidden") {
       e = fn.fadeIn(e)
     } else {
@@ -543,18 +550,26 @@ const RightMenu = (() => {
     }
     return e
   }
+
   fn.hasClass = (e, c) => {
+    if (!e) return;
     return e.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
   }
+
   fn.addClass = (e, c) => {
+    if (!e) return;
     e.classList.add(c);
     return e
   }
+
   fn.removeClass = (e, c) => {
+    if (!e) return;
     e.classList.remove(c);
     return e
   }
+
   fn.toggleClass = (e, c) => {
+    if (!e) return;
     if (fn.hasClass(e, c)) {
       fn.removeClass(e, c)
     } else {
