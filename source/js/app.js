@@ -582,29 +582,84 @@ const volantisFancyBox = (() => {
 Object.freeze(volantisFancyBox);
 
 // highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
+
+// Question: 锚点稳定性未知
+
+// ToDo: 查找模式 
+// 0. (/////////要知道浏览器自带全页面查找功能 CTRL + F)
+// 1. 右键开启查找模式 / 导航栏菜单开启?? / CTRL + F ???
+// 2. 查找模式面板 (可拖动? or 固定?)
+// 3. keyword mark id 从 0 开始编号 查找下一处 highlightKeyWords.scrollToNextHighlightKeywordMark() 查找上一处 scrollToPrevHighlightKeywordMark() 循环查找(取模%)
+// 4. 可输入修改 查找关键词 keywords(type:list) 
+// 5. 区分大小写 caseSensitive (/ 全字匹配?? / 正则匹配??)
+// 6. 在选定区域中查找 querySelector ??
+// 7. 关闭查找模式
+// 8. 搜索跳转 (URL 入口) 自动开启查找模式 调用 scrollToNextHighlightKeywordMark()
+
 const highlightKeyWords = (() => {
   let fn = {}
-  fn.firstFlag = 1
+  fn.markNum = 0
+  fn.markNextId = -1
   fn.startFromURL = () => {
     const params = decodeURI(new URL(location.href).searchParams.get('keyword'));
     const keywords = params ? params.split(' ') : [];
     const post = document.querySelector('#l_main');
-    fn.start(keywords, post)
-    fn.scrollToFirstHighlightKeywordMark()
-  }
-  fn.scrollToFirstHighlightKeywordMark = () => {
-    let target = document.getElementById("first-highlight-keyword-mark");
-    if (target) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: target.getBoundingClientRect().top + document.documentElement.scrollTop - volantis.dom.header.offsetHeight - 5,
-        });
-      }, 1000)
+    if (keywords.length==1&&keywords[0]=="null") {
+      return;
     }
+    new Promise((resolve)=>{
+      fn.start(keywords, post); // 渲染耗时较长
+      resolve();
+    }).then(()=>{
+      let target = fn.scrollToNextHighlightKeywordMark("0");
+      let epcho = 10;
+      let CheckMarkInterval = setInterval(()=>{
+        if (!target && epcho) {
+          target = fn.scrollToNextHighlightKeywordMark("0");
+          epcho --;
+        }else{
+          clearInterval(CheckMarkInterval);
+        }
+      },1000);
+    })
+  }
+  fn.scrollToNextHighlightKeywordMark = (id) => {
+    // Next Id
+    let input = id || (fn.markNextId + 1) % fn.markNum;
+    fn.markNextId = parseInt(input)
+    let target = document.getElementById("keyword-mark-"+fn.markNextId);
+    if (!target) {
+      fn.markNextId = (fn.markNextId + 1) % fn.markNum;
+      target = document.getElementById("keyword-mark-"+fn.markNextId);
+    }
+    if (target) {
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + document.documentElement.scrollTop - volantis.dom.header.offsetHeight - 5,
+      });
+    }
+    // Current target
+    return target
+  }
+  fn.scrollToPrevHighlightKeywordMark = (id) => {
+    // Prev Id
+    let input = id || (fn.markNextId - 1 + fn.markNum) % fn.markNum;
+    fn.markNextId = parseInt(input)
+    let target = document.getElementById("keyword-mark-"+fn.markNextId);
+    if (!target) {
+      fn.markNextId = (fn.markNextId - 1 + fn.markNum) % fn.markNum;
+      target = document.getElementById("keyword-mark-"+fn.markNextId);
+    }
+    if (target) {
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + document.documentElement.scrollTop - volantis.dom.header.offsetHeight - 5,
+      });
+    }
+    // Current target
+    return target
   }
   fn.start = (keywords, querySelector) => {
-    fn.firstFlag = 1
-    if (!keywords.length || !querySelector || keywords[0] == "null") return;
+    fn.markNum = 0
+    if (!keywords.length || !querySelector || (keywords.length==1&&keywords[0]=="null")) return;
     console.log(keywords);
     const walk = document.createTreeWalker(querySelector, NodeFilter.SHOW_TEXT, null);
     const allNodes = [];
@@ -701,25 +756,37 @@ const highlightKeyWords = (() => {
   }
   fn.highlightStyle = (mark) => {
     if(!mark) return;
-    if (fn.firstFlag) {
-      mark.id = "first-highlight-keyword-mark"
-      fn.firstFlag = 0;
-    }
+    mark.id = "keyword-mark-" + fn.markNum;
+    fn.markNum ++;
     mark.style.background = "transparent";
     mark.style["border-bottom"] = "1px dashed #ff2a2a";
     mark.style["color"] = "#ff2a2a";
     mark.style["font-weight"] = "bold";
     return mark
   }
+  fn.cleanHighlightStyle = () => {
+    document.querySelectorAll(".keyword").forEach(mark=>{
+      mark.style.background = "transparent";
+      mark.style["border-bottom"] = null;
+      mark.style["color"] = null;
+      mark.style["font-weight"] = null;
+    })
+  }
   return {
     start: (keywords, querySelector) => {
       fn.start(keywords, querySelector)
     },
     startFromURL: () => {
-      setTimeout(fn.startFromURL, 1200)
+      fn.startFromURL()
     },
-    scrollToFirstHighlightKeywordMark: () => {
-      fn.scrollToFirstHighlightKeywordMark()
+    scrollToNextHighlightKeywordMark: (id) => {
+      fn.scrollToNextHighlightKeywordMark(id)
+    },
+    scrollToPrevHighlightKeywordMark: (id) => {
+      fn.scrollToPrevHighlightKeywordMark(id)
+    },
+    cleanHighlightStyle: () => {
+      fn.cleanHighlightStyle()
     },
   }
 })()
