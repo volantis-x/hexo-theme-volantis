@@ -22,7 +22,6 @@
       </a>
     </li>
   <% } %>
-
   <div id="rightmenu-wrapper">
     <ul class="list-v rightmenu" id="rightmenu-content">
       <li class='navigation menuNavigation-Content'>
@@ -76,6 +75,12 @@
               <i class='<%= theme.rightmenu.print.icon %> fa-fw '></i> <%- trim(theme.rightmenu.print.name) %>
             </span>
           </li>  
+        <% } else if (item == 'reading') { %>
+          <li class='option menuOption-Content'>
+            <span class='vlts-menu opt fix-cursor-default' id='readingModel'>
+              <i class='<%= theme.rightmenu.reading.icon %> fa-fw '></i> <%- trim(theme.rightmenu.reading.name) %>
+            </span>
+          </li>  
         <% } else if (item == 'music' && theme.plugins.aplayer.enable == true) { %>
           <div id="menuMusic">
             <li class='music name menuOption-Content'>
@@ -104,7 +109,6 @@
       <% }) %>
     </ul>
   </div>
-
   <script>
     volantis.rightMenu = {};
     volantis.rightMenu.faicon = '<%- theme.rightmenu.faicon %>' || 'fa';

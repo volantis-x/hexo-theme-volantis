@@ -1,11 +1,5 @@
-if hexo-config('plugins.backstretch.position') == 'fixed'
-  .backstretch
-    background-color: #282c34 !important
-  .backstretch-item
-    display: none !important
-else
-  #l_body
-    background-color: black !important
+#l_body
+  background-color: black !important
 
 fal,
 fad,
@@ -165,6 +159,12 @@ if hexo-config('comments.service')=='valine'
     background:  #393c40 !important
   .v[data-class=v] code, .v[data-class=v] pre
     background-color: #332828 !important
+
+if hexo-config('rightmenu.enable')
+  #read_bkg
+    background: #21252b !important
+  .post_read
+    background-color: #282c34 !important
 
 
 

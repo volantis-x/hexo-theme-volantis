@@ -4,7 +4,9 @@ const RightMenu = (() => {
     _rightMenuContent = document.getElementById('rightmenu-content'),
     _menuDarkBtn = document.getElementById('menuDarkBtn'),
     _printHtml = document.getElementById('printHtml'),
-    _menuMusic = document.getElementById('menuMusic');
+    _menuMusic = document.getElementById('menuMusic'),
+    _readingModel = document.getElementById('readingModel'),
+    _readBkg = document.getElementById('read_bkg');
 
   const
     _menuLoad = document.querySelectorAll('.menuLoad-Content'),
@@ -23,6 +25,12 @@ const RightMenu = (() => {
   fn.init = () => {
     fn.visible(_menuMusic, false);
     fn.visible(_menuOption, false);
+    if (_readBkg) _readBkg.parentNode.removeChild(_readBkg);
+
+    const readBkg = document.createElement("div");
+    readBkg.className = "common_read_bkg common_read_hide";
+    readBkg.id = "read_bkg";
+    window.document.body.appendChild(readBkg);
   }
 
   fn.initEvent = () => {
@@ -203,18 +211,34 @@ const RightMenu = (() => {
     const pathName = window.location.pathname;
     if (!!_printArticle) {
       fn.visible(_printHtml);
+      fn.visible(_readingModel);
 
-      _printHtml.onclick = () => {
-        if (window.location.pathname === pathName) {
-          volantis.question('', '是否打印当前页面？<br><em style="font-size: 80%">建议打印时勾选背景图形</em><br>', {}, () => {
-            fn.printHtml();
-          })
-        } else {
-          fn.hideMenu();
+      if (_printHtml) {
+        _printHtml.onclick = () => {
+          if (window.location.pathname === pathName) {
+            const message = '是否打印当前页面？<br><em style="font-size: 80%">建议打印时勾选背景图形</em><br>';
+            volantis.question('', message, {}, () => {
+              fn.printHtml();
+            })
+          } else {
+            fn.hideMenu();
+          }
         }
       }
+
+      if (_readingModel) {
+        _readingModel.onclick = () => {
+          if (window.location.pathname === pathName) {
+            fn.readingModel();
+          } else {
+            fn.readingModel();
+          }
+        }
+      }
+
     } else {
       fn.visible(_printHtml, false);
+      fn.visible(_readingModel, false);
     }
 
     if (volantis.APlayerController.status === 'play') {
@@ -370,6 +394,7 @@ const RightMenu = (() => {
 
   // 执行打印页面 
   fn.printHtml = () => {
+    if (volantis.isReadModel) fn.readingModel();
     if (volantis.rightMenu.defaultStyles === true) {
       fn.setAttribute('details', 'open', 'true');
       fn.remove('.cus-article-bkg');
@@ -406,12 +431,49 @@ const RightMenu = (() => {
       volantis.rightMenu.printJsFun();
     }
 
-    $(document).click();
     setTimeout(() => {
       window.print();
       document.body.innerHTML = '';
       window.location.reload();
     }, 50);
+  }
+
+  // 阅读模式
+  fn.readingModel = () => {
+    if (typeof ScrollReveal === 'function') ScrollReveal().clean('#comments');
+    fn.fadeToggle(document.querySelector('#l_header'))
+    fn.fadeToggle(document.querySelector('footer'))
+    fn.fadeToggle(document.querySelector('#s-top'))
+    fn.fadeToggle(document.querySelector('.article-meta#bottom'))
+    fn.fadeToggle(document.querySelector('.prev-next'))
+    fn.fadeToggle(document.querySelector('.widget'))
+    fn.fadeToggle(document.querySelector('#comments'))
+
+    fn.toggleClass(document.querySelector('#l_main'),'common_read')
+    fn.toggleClass(document.querySelector('#l_main'),'common_read_main')
+    fn.toggleClass(document.querySelector('#l_body'),'common_read')
+    fn.toggleClass(document.querySelector('#safearea'),'common_read')
+    fn.toggleClass(document.querySelector('#pjax-container'),'common_read')
+    fn.toggleClass(document.querySelector('#read_bkg'),'common_read_hide')
+    fn.toggleClass(document.querySelector('h1'),'common_read_h1')
+    fn.toggleClass(document.querySelector('#post'),'post_read')
+    fn.toggleClass(document.querySelector('#l_cover'),'read_cover')
+    fn.toggleClass(document.querySelector('.widget.toc-wrapper'),'post_read')
+
+    volantis.isReadModel = volantis.isReadModel === undefined ? true : !volantis.isReadModel;
+    if (volantis.isReadModel) {
+      const option = {
+        backgroundColor: '#f8f1e2',
+        icon: 'fal fa-book-reader',
+        time: 5000
+      }
+      volantis.message('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', option);
+      document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
+      document.querySelector('#l_body').addEventListener('click', fn.readingModel);
+    } else {
+      document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
+      document.querySelector('#post').removeEventListener('click', fn.readingModel);
+    }
   }
 
   // 控制元素显示隐藏
@@ -443,6 +505,50 @@ const RightMenu = (() => {
     })
   }
 
+  fn.fadeIn = (e) => {
+    e.style.visibility = "visible";
+    e.style.opacity = 1;
+    e.style.display = "block";
+    e.style.transition = "all 0.5s linear";
+    return e
+  }
+
+  fn.fadeOut = (e) => {
+    e.style.visibility = "hidden";
+    e.style.opacity = 0;
+    e.style.display = "none";
+    e.style.transition = "all 0.5s linear";
+    return e
+  }
+
+  fn.fadeToggle = (e) => {
+    if (e.style.visibility == "hidden") {
+      e = fn.fadeIn(e)
+    } else {
+      e = fn.fadeOut(e)
+    }
+    return e
+  }
+  fn.hasClass = (e, c) => {
+    return e.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
+  }
+  fn.addClass = (e, c) => {
+    e.classList.add(c);
+    return e
+  }
+  fn.removeClass = (e, c) => {
+    e.classList.remove(c);
+    return e
+  }
+  fn.toggleClass = (e, c) => {
+    if (fn.hasClass(e, c)) {
+      fn.removeClass(e, c)
+    } else {
+      fn.addClass(e, c)
+    }
+    return e
+  }
+
   return {
     init: (notice = false) => {
       fn.init();
@@ -458,6 +564,9 @@ const RightMenu = (() => {
     },
     hideMenu: () => {
       fn.hideMenu();
+    },
+    readingModel: () => {
+      fn.readingModel();
     }
   }
 })()
