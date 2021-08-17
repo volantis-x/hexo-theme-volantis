@@ -456,7 +456,7 @@ const RightMenu = (() => {
     fn.fadeToggle(document.querySelector('#s-top'))
     fn.fadeToggle(document.querySelector('.article-meta#bottom'))
     fn.fadeToggle(document.querySelector('.prev-next'))
-    fn.fadeToggle(document.querySelector('.widget'))
+    fn.fadeToggle(document.querySelector('#l_side'))
     fn.fadeToggle(document.querySelector('#comments'))
 
     fn.toggleClass(document.querySelector('#l_main'), 'common_read')
