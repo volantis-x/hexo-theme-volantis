@@ -15,7 +15,7 @@
     <% } %>
   })();
 // message see: /layout/_third-party/message/script.ejs
-<% if (theme.plugins.aplayer.message.enable && theme.plugins.message && theme.plugins.message.enable) { %>
+<% if (theme.plugins.message.enable && theme.plugins.message.aplayer.enable) { %>
   var checkMetings = setInterval(function() {
   if (!document.querySelectorAll('meting-js')[0].aplayer) return;
   if (!document.querySelectorAll('meting-js')[0].aplayer.on) return;
@@ -32,11 +32,8 @@
       var index = thisAplayer.list.index;
       var title = thisAplayer.list.audios[index].title;
       var artist = thisAplayer.list.audios[index].artist;
-        volantis.message(
-          '音乐通知',
-          '正在播放：' + title + ' - ' + artist,
-          {
-            icon: '<%- theme.plugins.aplayer.message.play %>'
+        volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
+            icon: '<%- theme.plugins.message.aplayer.play %>'
           }
         )
         if(rightMenuAplayer) volantis.APlayerController.status = 'play';
@@ -50,11 +47,8 @@
         setTimeout(() => {
           // 歌曲播放结束也会触发 pause 事件
           if(thisAplayer.paused)
-            volantis.message(
-              '音乐通知',
-              '暂停播放：' + title + ' - ' + artist,
-              {
-                icon: '<%- theme.plugins.aplayer.message.pause %>'
+            volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
+                icon: '<%- theme.plugins.message.aplayer.pause %>'
               }
             )
         }, 100)

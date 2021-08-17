@@ -105,6 +105,10 @@
     icon: '<%- theme.plugins.message.copyright.icon %>'
   }
 
+  volantis.messageRightMenu = {
+    enable: '<%- theme.plugins.message.rightmenu.enable %>' === 'true' ? true : false,
+  }
+
   if(volantis.messageCopyright.enable) {
     document.body.oncopy = function(){
       volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
