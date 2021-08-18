@@ -1,17 +1,6 @@
 <article class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= post.layout %>" id="<%= post.layout %>" itemscope itemprop="blogPost">
   <%- partial('meta', {post: post, position: 'top'}) %>
-  <% if (page.layout == 'artitalk') { %>
-    <div id="artitalk_main"></div>
-  <% } %>
-  <% if (page.layout == 'bb') { %>
-    <div id="bbtalk"></div>
-  <% } %>
-  <% if (page.layout == 'fcircle') { %>
-    <div id="moments_container" ></div>
-  <% } %>
-  <% if (page.hpptalk) { %>
-    <div id="hpp_talk"></div>
-  <% } %>
+  <div id="page-plugins-helper"></div>
   <%- post.content %>
   <% if (page.link) { %>
     <div class='div-ori-link'>

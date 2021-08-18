@@ -1,0 +1,18 @@
+<script>
+  window.tempDiv = document.createElement("div");
+  window.tempDiv.id = "artitalk_main";
+  document.querySelector("#page-plugins-helper").append(window.tempDiv);
+</script>
+<%- js(theme.plugins.jquery) %>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/artitalk"
+></script>
+<script>
+  new Artitalk(Object.assign(<%- JSON.stringify(theme.plugins.artitalk) %>, {}))
+</script>
+<style>
+  #artitalk_main #lazy {
+    background: transparent !important;
+  }
+</style>

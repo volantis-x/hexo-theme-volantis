@@ -1,0 +1,10 @@
+<script>
+  window.tempDiv = document.createElement("div");
+  window.tempDiv.id = "bbtalk";
+  document.querySelector("#page-plugins-helper").append(window.tempDiv);
+</script>
+<%- js(theme.plugins.jquery) %>
+<script src="<%= theme.plugins.bbtalk.js %>"></script>
+<script>
+  bbtalk.init(Object.assign(<%- JSON.stringify(theme.plugins.bbtalk) %>, {}))
+</script>
