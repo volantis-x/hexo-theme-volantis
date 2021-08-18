@@ -350,7 +350,7 @@ const VolantisApp = (() => {
     // 移动端点击搜索框 停止事件传播
     volantis.dom.search.click(function (e) {
       e.stopPropagation();
-    });
+    }, false); // false : pjax 不移除监听
   }
 
   // 设置 tabs 标签  【移动端 PC】
