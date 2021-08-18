@@ -341,12 +341,12 @@ const VolantisApp = (() => {
       e.stopPropagation();
       volantis.dom.header.toggleClass('z_search-open'); // 激活移动端搜索框
       volantis.dom.switcher.toggleClass('active'); // 移动端搜索按钮
-    });
+    }, false); // false : pjax 不移除监听
     // 点击空白取消激活
     volantis.dom.$(document).click(function (e) {
       volantis.dom.header.removeClass('z_search-open');
       volantis.dom.switcher.removeClass('active');
-    });
+    }, false); // false : pjax 不移除监听
     // 移动端点击搜索框 停止事件传播
     volantis.dom.search.click(function (e) {
       e.stopPropagation();
@@ -514,13 +514,6 @@ const VolantisApp = (() => {
         e.removeAttribute("style")
       })
       document.querySelector("#l_header .menu-phone.list-v").removeAttribute("style")
-      // 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件  【移动端】
-      if (volantis.dom.switcher) {
-        volantis.dom.$(document).click(function (e) {
-          volantis.dom.header.removeClass('z_search-open');
-          volantis.dom.switcher.removeClass('active');
-        });
-      }
     },
     writeClipText: fn.writeClipText
   }
