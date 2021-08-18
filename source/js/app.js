@@ -15,12 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
   }, 'app.js');
   volantis.pjax.push(volantisFancyBox.pjaxReload);
-  volantis.pjax.send(() => { // 此处依赖JQ
-    if (typeof $ == "undefined") return
-    if (typeof $.fancybox != "undefined") {
-      $.fancybox.close(); // 关闭弹窗
-    }
-  }, 'fancybox');
 
   locationHash();
   highlightKeyWords.startFromURL();
