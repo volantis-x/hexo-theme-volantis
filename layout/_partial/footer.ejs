@@ -28,7 +28,7 @@
         </div>
       <% } else if (item == 'aplayer') { %>
         <div class="aplayer-container">
-          <%- partial('../_third-party/aplayer/layout', {post: null, where: 'footer'}) %>
+          <%- partial('../_plugins/aplayer/layout', {post: null, where: 'footer'}) %>
         </div>
       <% } else if (item == 'license') { %>
         <div><%- markdown(__('footer.license')) %></div>

@@ -133,9 +133,9 @@
 </article>
 
 <% if (page.comments == undefined || page.comments != false) { %>
-  <%- partial('../_third-party/comments/index') %>
+  <%- partial('../_plugins/comments/index') %>
 <% } %>
 
 <% if (page.mathjax) { %>
-  <%- partial('../_third-party/math/mathjax/script') %>
+  <%- partial('../_plugins/math/mathjax/script') %>
 <% } %>

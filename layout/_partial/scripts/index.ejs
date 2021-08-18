@@ -22,36 +22,36 @@
 <!-- internal -->
 
 <% if (theme.rightmenu.enable) { %>
-  <%- partial('../rightmenu') %>
+  <%- partial('../../_plugins/rightmenu/layout') %>
 <% } %>
 
 <!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
 <% if (theme.plugins.darkmodejs.enable) { %>
-  <%- partial('darkmode') %>
+  <%- partial('../../_plugins/darkmode/script') %>
 <% } %>
 
 <% if (theme.plugins.sitesjs.enable || theme.plugins.friendsjs.enable || theme.plugins.contributorsjs.enable) { %>
-<%- partial('github-api') %>
+<%- partial('../../_plugins/github-api/script') %>
 <% } %>
 
 <% if (theme.plugins.lazyload && theme.plugins.lazyload.enable) { %>
-  <%- partial('../../_third-party/lazyload/script') %>
+  <%- partial('../../_plugins/lazyload/script') %>
 <% } %>
 
 <% if (theme.plugins.preload.enable && theme.plugins.preload.service) { %>
-  <%- partial('../../_third-party/preload/script') %>
+  <%- partial('../../_plugins/preload/script') %>
 <% } %>
 
 <% if (theme.plugins.scrollreveal.enable && theme.plugins.scrollreveal.js) { %>
-   <%- partial('../../_third-party/scrollreveal/script') %>
+   <%- partial('../../_plugins/scrollreveal/script') %>
 <% } %>
 
 <% if (theme.plugins.aplayer && theme.plugins.aplayer.enable && theme.plugins.aplayer.js) { %>
-  <%- partial('../../_third-party/aplayer/script') %>
+  <%- partial('../../_plugins/aplayer/script') %>
 <% } %>
 
 <% if (theme.comments.service && theme.comments.service.length > 0) { %>
-  <%- partial('../../_third-party/comments/' + theme.comments.service + '/script') %>
+  <%- partial('../../_plugins/comments/' + theme.comments.service + '/script') %>
 <% } %>
 
 <% if (theme.analytics.busuanzi) { %>
@@ -62,11 +62,11 @@
 
 <!-- optional -->
 <% if (theme.search && theme.search.enable) { %>
-  <%- partial('search') %>
+  <%- partial('../../_plugins/search/script') %>
 <% } %>
 
 <% if (theme.plugins.nodewaves.enable) { %>
-  <%- partial('../../_third-party/nodewaves/script') %>
+  <%- partial('../../_plugins/nodewaves/script') %>
 <% } %>
 
 <% if (theme.plugins.comment_typing.enable) { %>
@@ -74,35 +74,35 @@
 <% } %>
 
 <% if (theme.plugins.highlightjs.enable) { %>
-  <%- partial('../../_third-party/highlightjs/script') %>
+  <%- partial('../../_plugins/highlightjs/script') %>
 <% } %>
 
 <% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>
-  <%- partial('counter') %>
+  <%- partial('../../_plugins/analytics/LCCounter') %>
 <% } %>
 
 <% if (config.google_analytics_key || config.baidu_analytics_key || config.tencent_aegis_id) { %>
-  <%- partial('../../_third-party/analytics/script') %>
+  <%- partial('../../_plugins/analytics/script') %>
 <% } %>
 
 <% if (theme.plugins.tidio.enable) { %>
-  <%- partial('../../_third-party/tidio/script') %>
+  <%- partial('../../_plugins/tidio/script') %>
 <% } %>
 
 <% if (theme.plugins.parallax.enable) { %>
-  <%- partial('../../_third-party/parallax/script') %>
+  <%- partial('../../_plugins/parallax/script') %>
 <% } %>
 
 <% if (page.hpptalk) { %>
-  <%- partial('../../_third-party/hpp/hpptalk') %>
+  <%- partial('../../_plugins/hpp/hpptalk') %>
 <% } %>
 
 <% if (page.snackbar && site.data.notification && (page.snackbar in site.data.notification)) { %> 
-  <%- partial('../snackbar') %>
+  <%- partial('../../_plugins/snackbar/script') %>
 <% } %>
 
 <% if (theme.plugins.message && theme.plugins.message.enable) { %>
-  <%- partial('../../_third-party/message/script') %>
+  <%- partial('../../_plugins/message/script') %>
 <% } %>
 
 <%- partial('toc') %>

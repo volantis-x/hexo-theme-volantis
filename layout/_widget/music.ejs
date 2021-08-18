@@ -2,7 +2,7 @@
   <section class='widget <%- theme.custom_css.sidebar.effect.join(' ') %> <%- item.class %>'>
     <%- partial('header', {item: item}) %>
     <div class='content'>
-      <%- partial('../_third-party/aplayer/layout', {post: null, where: 'widget'}) %>
+      <%- partial('../_plugins/aplayer/layout', {post: null, where: 'widget'}) %>
     </div>
   </section>
 <% } %>
