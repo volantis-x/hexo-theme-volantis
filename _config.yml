@@ -690,7 +690,7 @@ plugins:
   # 使用过旧版本的请修改Leancloud shuoshuo class部分列名：https://artitalk.js.org/release.html
   # 除appID和appKEY外均为选填项
   artitalk:
-    # Set `plugins: ["artitalk"]` to enable in page
+    # Set `plugins: ["artitalk"]` to enable in front-matter
     # 不支持 Pjax
     # 配置项按照yml格式继续填写即可
     appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
@@ -709,7 +709,7 @@ plugins:
 
   # BBtalk https://bb.js.org
   bbtalk:
-    # Set `plugins: ["bbtalk"]` to enable in page
+    # Set `plugins: ["bbtalk"]` to enable in front-matter
     # 支持 Pjax
     js: https://cdn.jsdelivr.net/npm/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
@@ -728,7 +728,7 @@ plugins:
   # 无服务器Hexo后端,支持文章编辑,自带图床功能.目标:解决静态博客所有痛点[文章编辑、图片上传、博主活跃信息统计、博主说说、Twikoo加强版、阅读量统计等
   hpp:
     # 说说功能
-    # Set `plugins: ["hpptalk"]` to enable in page
+    # Set `plugins: ["hpptalk"]` to enable in front-matter
     # 支持 Pjax
     hpp_talk:
       css: https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk.css # 建议锁定版本
@@ -744,7 +744,7 @@ plugins:
   # https://github.com/Rock-Candy-Tea/hexo-circle-of-friends
   # https://zfe.space/post/friend-link-circle.html
   fcircle:
-    # Set `plugins: ["fcircle"]` to enable in page
+    # Set `plugins: ["fcircle"]` to enable in front-matter
     # 支持 Pjax
     api: '' # api 地址
     max_number: 20 # 页面展示文章数量

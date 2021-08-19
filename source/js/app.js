@@ -1,23 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
-  VolantisApp.init();
-  VolantisApp.subscribe();
-  volantisFancyBox.loadFancyBox();
-
-  volantis.pjax.push(() => {
-    VolantisApp.pjaxReload();
-    sessionStorage.setItem("domTitle", document.title);
-    highlightKeyWords.startFromURL()
-  }, 'app.js');
-  volantis.pjax.send(() => {
-    volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
-    volantis.dom.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
-    volantis.dom.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-    volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
-  }, 'app.js');
-  volantis.pjax.push(volantisFancyBox.pjaxReload);
-
-  locationHash();
-  highlightKeyWords.startFromURL();
+  volantis.requestAnimationFrame(() => {
+    VolantisApp.init();
+    VolantisApp.subscribe();
+    volantisFancyBox.loadFancyBox();
+    locationHash();
+    highlightKeyWords.startFromURL();
+  
+  
+    volantis.pjax.push(() => {
+      VolantisApp.pjaxReload();
+      sessionStorage.setItem("domTitle", document.title);
+      highlightKeyWords.startFromURL()
+      volantisFancyBox.pjaxReload
+    }, 'app.js');
+    volantis.pjax.send(() => {
+      volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.dom.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.dom.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+      volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
+    }, 'app.js');
+  });
 });
 
 /*锚点定位*/

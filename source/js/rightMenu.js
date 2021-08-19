@@ -598,18 +598,20 @@ const RightMenu = (() => {
 
 Object.freeze(RightMenu);
 
-if (document.readyState !== 'loading') {
-  RightMenu.init();
-
-  volantis.pjax.send(() => {
-    RightMenu.hideMenu();
-  })
-} else {
-  document.addEventListener("DOMContentLoaded", function () {
+volantis.requestAnimationFrame(() => {
+  if (document.readyState !== 'loading') {
     RightMenu.init();
 
     volantis.pjax.send(() => {
       RightMenu.hideMenu();
     })
-  })
-}
+  } else {
+    document.addEventListener("DOMContentLoaded", function () {
+      RightMenu.init();
+
+      volantis.pjax.send(() => {
+        RightMenu.hideMenu();
+      })
+    })
+  }
+});

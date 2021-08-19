@@ -1,6 +1,6 @@
 <% if (theme.plugins.highlightjs.js) { %>
 <%- js(theme.plugins.highlightjs.js) %>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>volantis.requestAnimationFrame(hljs.initHighlightingOnLoad)</script>
 <% } %>
 <script>
 volantis.pjax.push(()=>{

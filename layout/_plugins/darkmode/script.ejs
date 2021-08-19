@@ -90,6 +90,8 @@ function bindToggleButton() {
   })
 }
 applyCustomDarkModeSettings();
-document.addEventListener("DOMContentLoaded", bindToggleButton);
+document.addEventListener("DOMContentLoaded", ()=>{
+  volantis.requestAnimationFrame(bindToggleButton)
+});
 volantis.pjax.push(bindToggleButton);
 </script>

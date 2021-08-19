@@ -76,6 +76,10 @@
     createIntersectionObserver(document.documentElement.scrollHeight);
   }
 
-  document.addEventListener("DOMContentLoaded", listennSidebarTOC);
-  document.addEventListener("pjax:success", listennSidebarTOC);
+  document.addEventListener("DOMContentLoaded", ()=>{
+    volantis.requestAnimationFrame(listennSidebarTOC)
+  });
+  document.addEventListener("pjax:success", ()=>{
+    volantis.requestAnimationFrame(listennSidebarTOC)
+  });
 </script>

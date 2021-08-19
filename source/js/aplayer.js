@@ -194,5 +194,7 @@ const MainAPlayer = (() => {
 
 Object.freeze(MainAPlayer);
 
-MainAPlayer.init();
-MainAPlayer.checkAPlayer();
+volantis.requestAnimationFrame(() => {
+  MainAPlayer.init();
+  MainAPlayer.checkAPlayer();
+});

@@ -77,11 +77,11 @@ Parallax.init = () => {
   (function loop() {
     const yoffset = getScrollTop();
     if (lastPosition !== yoffset) {
-      // Avoid overcalculations
       lastPosition = yoffset;
       loadScrollPosition();
       Parallax.update();
     }
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
     window.requestAnimationFrame(loop);
   })();
 };
