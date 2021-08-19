@@ -110,8 +110,14 @@
         this.list[i].run();
       }
     };
-    this.push = (fn, name) => {
-      var f = new Item(fn, name);
+    this.push = (fn, name, requestAnimationFrame = true) => {
+      let myfn = fn
+      if (requestAnimationFrame) {
+        myfn = ()=>{
+          volantis.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
       this.list.push(f);
     };
     // 构造一个可以run的对象
@@ -121,7 +127,7 @@
       // run方法
       this.run = () => {
         try {
-          volantis.requestAnimationFrame(fn)
+          fn()
         } catch (error) {
           console.log(error);
         }
