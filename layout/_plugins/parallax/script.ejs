@@ -35,9 +35,11 @@ _%>
   }
 
   function next_parallax() {
-    if (!document.querySelector("#full")&&!document.querySelector("#half")) {
-      return
-    }
+    <% if (theme.plugins.parallax.position!="fixed") { %>
+      if (!document.querySelector("#full")&&!document.querySelector("#half")) {
+        return
+      }
+    <% } %>
     if (imgs.length>=1) {
       Parallax.options.src = imgs[index % imgs.length];
       Parallax.start();

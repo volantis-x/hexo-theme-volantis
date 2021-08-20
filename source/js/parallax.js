@@ -176,6 +176,9 @@ Parallax.renderItem = (mirror, slider) => {
   slider.style.maxWidth = "none";
 };
 Parallax.update = () => {
+  if (!Parallax.mirrors) {
+    return
+  }
   Parallax.mirrors.forEach((e) => {
     Parallax.refreshItem(e.slider);
     Parallax.renderItem(e.mirror, e.slider);
