@@ -4,15 +4,19 @@ Parallax.options.speed = 0.25;
 Parallax.options.zIndex = -100;
 Parallax.options.fade = 1500;
 Parallax.slidein = () => {
-  var opac = parseFloat(Parallax.slider.style.opacity);
+  let slider = Parallax.mirrors[0].slider;
+  if (Parallax.mirrors.length >= 2) {
+    slider = Parallax.mirrors[1].slider;
+  }
+  var opac = parseFloat(slider.style.opacity);
   if (opac !== 1) {
     opac = opac + 0.1;
-    Parallax.slider.style.opacity = opac;
+    slider.style.opacity = opac;
     setTimeout(Parallax.slidein, Parallax.options.fade / 10);
   } else {
-    let parallaxMirrors = Parallax.window.querySelectorAll(".parallax-mirror");
-    if (parallaxMirrors.length >= 2) {
-      parallaxMirrors[0].remove();
+    if (Parallax.mirrors.length >= 2) {
+      Parallax.mirrors[0].mirror.remove();
+      Parallax.mirrors.shift();
     }
   }
 };
@@ -31,8 +35,13 @@ Parallax.start = () => {
   slider.classList.add("parallax-slider");
   slider.style.opacity = 0;
   mirror.appendChild(slider);
-  Parallax.mirror = mirror;
-  Parallax.slider = slider;
+  if (!Parallax.mirrors) {
+    Parallax.mirrors = [];
+  }
+  let mirrorItem = {};
+  mirrorItem.mirror = mirror;
+  mirrorItem.slider = slider;
+  Parallax.mirrors.push(mirrorItem);
   Parallax.slidein();
   slider.addEventListener(
     "load",
@@ -81,14 +90,17 @@ Parallax.init = () => {
       loadScrollPosition();
       Parallax.update();
     }
-    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+    window.requestAnimationFrame =
+      window.requestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.webkitRequestAnimationFrame;
     window.requestAnimationFrame(loop);
   })();
 };
 
-Parallax.refresh = () => {
+Parallax.refreshItem = (slider) => {
   Parallax.options.aspectRatio =
-    Parallax.slider.naturalWidth / (Parallax.slider.naturalHeight || 1);
+    slider.naturalWidth / (slider.naturalHeight || 1);
   const aspect = Parallax.options.aspectRatio || 1;
   Parallax.options.boxWidth = Parallax.window.clientWidth;
   Parallax.options.boxHeight = Parallax.window.clientHeight;
@@ -125,7 +137,7 @@ Parallax.refresh = () => {
     Parallax.options.offsetBaseTop = (imageOffsetMin - margin / 2) | 0;
   }
 };
-Parallax.render = () => {
+Parallax.renderItem = (mirror, slider) => {
   const scrollTop = Parallax.sT;
   const scrollLeft = Parallax.sL;
   const scrollBottom = scrollTop + Parallax.wH;
@@ -142,28 +154,30 @@ Parallax.render = () => {
   } else {
     Parallax.options.visibility = "hidden";
   }
-  Parallax.mirror.style.transform =
+  mirror.style.transform =
     "translate3d(" +
     Parallax.options.mirrorLeft +
     "px, " +
     Parallax.options.mirrorTop +
     "px, 0px)";
-  Parallax.mirror.style.visibility = Parallax.options.visibility;
-  Parallax.mirror.style.height = Parallax.options.boxHeight + "px";
-  Parallax.mirror.style.width = Parallax.options.boxWidth + "px";
+  mirror.style.visibility = Parallax.options.visibility;
+  mirror.style.height = Parallax.options.boxHeight + "px";
+  mirror.style.width = Parallax.options.boxWidth + "px";
 
-  Parallax.slider.style.transform =
+  slider.style.transform =
     "translate3d(" +
     Parallax.options.offsetLeft +
     "px, " +
     Parallax.options.offsetTop +
     "px, 0px)";
-  Parallax.slider.style.position = "absolute";
-  Parallax.slider.style.height = Parallax.options.imageHeight + "px";
-  Parallax.slider.style.width = Parallax.options.imageWidth + "px";
-  Parallax.slider.style.maxWidth = "none";
+  slider.style.position = "absolute";
+  slider.style.height = Parallax.options.imageHeight + "px";
+  slider.style.width = Parallax.options.imageWidth + "px";
+  slider.style.maxWidth = "none";
 };
 Parallax.update = () => {
-  Parallax.refresh();
-  Parallax.render();
+  Parallax.mirrors.forEach((e) => {
+    Parallax.refreshItem(e.slider);
+    Parallax.renderItem(e.mirror, e.slider);
+  });
 };
