@@ -32,6 +32,7 @@ Parallax.start = () => {
   Parallax.window.appendChild(mirror);
   let slider = document.createElement("img");
   slider.src = Parallax.options.src;
+  slider.alt = "parallax";
   slider.classList.add("parallax-slider");
   slider.style.opacity = 0;
   mirror.appendChild(slider);
