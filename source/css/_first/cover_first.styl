@@ -205,7 +205,7 @@
       &:hover, &.active, &:active
         opacity: 1
         border-bottom: 2px solid var(--color-site-inner)
-  if hexo-config('cover.layout_scheme') == 'dock' || 'featured' || 'focus'
+  if hexo-config('cover.layout_scheme') == 'dock' || hexo-config('cover.layout_scheme') == 'featured' || hexo-config('cover.layout_scheme') == 'focus'
     &.dock .menu, &.featured .menu, &.focus .menu
       border-radius: $border-button + 2px
       .list-h a

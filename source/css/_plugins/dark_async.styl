@@ -7,7 +7,7 @@ async_dark()
   --card: $c-card-light
 
   // minivaline v6 or ohhho Dark Color
-  if hexo-config('comments.service') == 'minivaline' || 'ohhho'
+  if hexo-config('comments.service') == 'minivaline' || hexo-config('comments.service') == 'ohhho'
     --ohhho-color-p: var(--color-p) !important
     --ohhho-color-text: var(--color-text) !important
     --ohhho-color-card: var(--color-card) !important
