@@ -599,21 +599,14 @@ const highlightKeyWords = (() => {
       return;
     }
     volantis.cleanContentVisibility()
-    new Promise((resolve) => {
-      fn.start(keywords, post); // 渲染耗时较长
-      resolve();
-    }).then(() => {
-      let target = fn.scrollToNextHighlightKeywordMark("0");
-      let epcho = 10;
-      let CheckMarkInterval = setInterval(() => {
-        if (!target && epcho) {
-          target = fn.scrollToNextHighlightKeywordMark("0");
-          epcho--;
-        } else {
-          clearInterval(CheckMarkInterval);
-        }
-      }, 1000);
-    })
+    fn.start(keywords, post); // 渲染耗时较长
+    fn.scrollToFirstHighlightKeywordMark()
+  }
+  fn.scrollToFirstHighlightKeywordMark = () => {
+    let target = fn.scrollToNextHighlightKeywordMark("0");
+    if (!target) {
+      volantis.requestAnimationFrame(fn.scrollToFirstHighlightKeywordMark)
+    }
   }
   fn.scrollToNextHighlightKeywordMark = (id) => {
     // Next Id

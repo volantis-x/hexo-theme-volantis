@@ -21,6 +21,10 @@
 
 <!-- internal -->
 
+<% if (theme.plugins.message && theme.plugins.message.enable) { %>
+  <%- partial('../../_plugins/message/script') %>
+<% } %>
+
 <% if (theme.rightmenu.enable) { %>
   <%- partial('../../_plugins/rightmenu/layout') %>
 <% } %>
@@ -103,10 +107,6 @@
   <%- partial('../../_plugins/snackbar/script') %>
 <% } %>
 </pjax>
-
-<% if (theme.plugins.message && theme.plugins.message.enable) { %>
-  <%- partial('../../_plugins/message/script') %>
-<% } %>
 
 <%- partial('toc') %>
 
