@@ -65,10 +65,11 @@ fitst_dark()
     @media screen and (max-width: $device-mobile)
       background: var(--color-site-bg) !important
 
-@media (prefers-color-scheme: dark)
-  :root
-    --color-mode: 'dark'
-  :root:not([color-scheme])
+if hexo-config('plugins.darkmodejs.enable')
+  @media (prefers-color-scheme: dark)
+    :root
+      --color-mode: 'dark'
+    :root:not([color-scheme])
+      fitst_dark()
+  [color-scheme='dark']
     fitst_dark()
-[color-scheme='dark']
-  fitst_dark()
