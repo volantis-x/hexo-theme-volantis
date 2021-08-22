@@ -92,7 +92,7 @@
               <a class='nav icon-only forward fix-cursor-default' onclick='volantis.rightMenu.aplayerForward()'><i class='<%= faIcon %> fa-step-forward fa-fw '></i></a>
             </li>
             <li class='music volume'>
-              <a class='nav volume'  href="/" onclick="return false;" title="nav volume">
+              <div class='nav volume'>
                 <div class="aplayer-volume-bar-wrap">
                   <div class="aplayer-volume-bar fix-cursor-pointer">
                     <div class="aplayer-volume"></div>
@@ -100,7 +100,7 @@
                     <i class='right <%= faIcon %> fa-volume-up fa-fw'></i>
                   </div>
                 </div>
-              </a>
+              </div>
             </li>
           </div>
         <% } else if (item in theme.rightmenu) { %>

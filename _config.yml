@@ -843,6 +843,7 @@ search:
 ############################### Search ############################### > end
 
 ############################### Color Scheme ############################### > start
+# Accessibility: 背景色和前景色要有足够的对比度 https://web.dev/color-contrast/
 color_scheme:
   # ------------
   # 通用颜色
@@ -850,7 +851,7 @@ color_scheme:
     # 主题色
     theme: '#44D7B6'
     # 链接色
-    link: '#2196f3'
+    link: '#1b79c4'
     # 按钮色
     button: '#44D7B6'
     # 鼠标放到交互元素上时的色

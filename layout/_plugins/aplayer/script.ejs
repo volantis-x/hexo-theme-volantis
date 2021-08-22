@@ -14,54 +14,60 @@
       volantis.APlayerController.music = true;
     <% } %>
   })();
-// message see: /layout/_plugins/message/script.ejs
-<% if (theme.plugins.message.enable && theme.plugins.message.aplayer.enable) { %>
-  var checkMetings = setInterval(function() {
-  if (!document.querySelectorAll('meting-js')[0].aplayer) return;
-  if (!document.querySelectorAll('meting-js')[0].aplayer.on) return;
-  clearInterval(checkMetings);
-  try {
-    var Metings = document.querySelectorAll('meting-js');
-    Metings.forEach((item, index) => {
-      var rightMenuAplayer = $(item)[0].meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
-      if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
-      var thisAplayer =Metings[index].aplayer;
-      thisAplayer.on('play', function(e) {
-      let icon = document.getElementById('#aplayerHeaderIcon')
-      if(icon) volantis.dom.$(icon).removeClass('music').addClass('music')
-      var index = thisAplayer.list.index;
-      var title = thisAplayer.list.audios[index].title;
-      var artist = thisAplayer.list.audios[index].artist;
-        volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
-            icon: '<%- theme.plugins.message.aplayer.play %>'
-          }
-        )
-        if(rightMenuAplayer) volantis.APlayerController.status = 'play';
-      });
-      thisAplayer.on('pause', function(e) {
-        let icon = document.getElementById('#aplayerHeaderIcon')
-        if(icon) volantis.dom.$(icon).removeClass('music')
-        var index =thisAplayer.list.index;
-        var title = thisAplayer.list.audios[index].title;
-        var artist = thisAplayer.list.audios[index].artist;
-        setTimeout(() => {
-          // 歌曲播放结束也会触发 pause 事件
-          if(thisAplayer.paused)
-            volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
-                icon: '<%- theme.plugins.message.aplayer.pause %>'
+
+function SetAPlayerPlugin(){
+  let metings = document.querySelectorAll('meting-js')
+  if (metings[0].aplayer && metings[0].aplayer.on) {
+    // improve the accessibility https://web.dev/button-name/
+    let menus = document.querySelectorAll(".aplayer-icon-menu")
+    menus.forEach(e=>{
+      e.setAttribute("aria-label","Aplayer Menu")
+    })
+    // message see: /layout/_plugins/message/script.ejs
+    <% if (theme.plugins.message.enable && theme.plugins.message.aplayer.enable) { %>
+      try {
+        var Metings = document.querySelectorAll('meting-js');
+        Metings.forEach((item, index) => {
+          var rightMenuAplayer = $(item)[0].meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
+          if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
+          var thisAplayer =Metings[index].aplayer;
+          thisAplayer.on('play', function(e) {
+          let icon = document.getElementById('#aplayerHeaderIcon')
+          if(icon) volantis.dom.$(icon).removeClass('music').addClass('music')
+          var index = thisAplayer.list.index;
+          var title = thisAplayer.list.audios[index].title;
+          var artist = thisAplayer.list.audios[index].artist;
+            volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
+                icon: '<%- theme.plugins.message.aplayer.play %>'
               }
             )
-        }, 100)
-        if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
-      });
-      thisAplayer.on('error', function (e) {
-        if(rightMenuAplayer) volantis.APlayerController.status = 'error';
-      });
-    });
-
-  } catch (error) {
-
+            if(rightMenuAplayer) volantis.APlayerController.status = 'play';
+          });
+          thisAplayer.on('pause', function(e) {
+            let icon = document.getElementById('#aplayerHeaderIcon')
+            if(icon) volantis.dom.$(icon).removeClass('music')
+            var index =thisAplayer.list.index;
+            var title = thisAplayer.list.audios[index].title;
+            var artist = thisAplayer.list.audios[index].artist;
+            setTimeout(() => {
+              // 歌曲播放结束也会触发 pause 事件
+              if(thisAplayer.paused)
+                volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
+                    icon: '<%- theme.plugins.message.aplayer.pause %>'
+                  }
+                )
+            }, 100)
+            if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
+          });
+          thisAplayer.on('error', function (e) {
+            if(rightMenuAplayer) volantis.APlayerController.status = 'error';
+          });
+        });
+      } catch (error) { }
+    <% } %>
+  }else{
+    volantis.requestAnimationFrame(SetAPlayerPlugin)
   }
-}, 100);
-<% } %>
+}
+SetAPlayerPlugin()
 </script>

@@ -11,10 +11,16 @@ hexo.extend.filter.register('after_render:html', function (data) {
   // a 设置默认 href 确保链接可供抓取  https://developers.google.com/search/docs/advanced/guidelines/links-crawlable
   data = data.replace(/<a (.*?)>/gi, function (str, p) {
     if (!p) {
-      str = `<a href="/" onclick="return false;" title="Home">`
+      str = `<a href="/" onclick="return false;" title="Click me!">`
     }
-    if (p && !str.includes('href=')) {
-      str = str.replace(p, p + ' href="/" onclick="return false;" title="Home" ');
+    if (p && !str.includes('href=') && !str.includes('onclick=')) {
+      str = str.replace(p, p + ' href="/" onclick="return false;" title="Click me!" ');
+    }
+    return str
+  });
+  data = data.replace(/<a>/gi, function (str, p) {
+    if (p) {
+      str = `<a href="/" onclick="return false;" title="Click me!">`
     }
     return str
   });
