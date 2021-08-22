@@ -1,6 +1,4 @@
-#l_body
-  background-color: black !important
-
+// 异步加载的暗黑模式
 fal,
 fad,
 fa,
@@ -9,44 +7,6 @@ img,
 .lazyload
   filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
 
-//header
-#wrapper .title
-  color: var(--color-meta)
-.l_header ul.nav-list-h>li>a, ul.list-v >li>a
-  color: var(--color-list)
-.blur
-  background: var(--color-site-bg) !important
-.nav-main
-  .u-search-input
-    background: var(--color-card) !important
-#l_main .article .prev-next>a
-  background: var(--color-block)
-  &:hover
-    background: var(--color-card)
-.article blockquote
-  background: var(--color-block)
-.article-title a
-  color: var(--color-h1)
-details>summary
-  color: var(--color-p)
-  background: var(--color-site-bg)
-details
-  border: 1px solid var(--color-site-bg)
-  background: var(--color-site-bg)
-
-//search
-#u-search .modal,
-#u-search .modal-header,
-#u-search .modal-body
-  background: var(--color-card) !important
-#u-search .modal-body .modal-results .result:hover
-  background: var(--color-block) !important
-
-//phone search
-.l_header .m_search
-  @media screen and (max-width: $device-mobile)
-    background: var(--color-site-bg) !important
- 
 //side
 .widget.blogger .content .social-wrapper a.social:hover
   background: var(--color-card)

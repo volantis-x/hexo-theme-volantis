@@ -54,9 +54,9 @@
   <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
   <%_ if (theme.plugins.darkmodejs.enable) { _%>
     <script>
-      var userColorScheme=localStorage.getItem("user-color-scheme")
+      var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
-        document.documentElement.setAttribute("data-user-color-scheme", userColorScheme);
+        document.documentElement.setAttribute("color-scheme", userColorScheme);
       }
     </script>
   <%_ } _%>

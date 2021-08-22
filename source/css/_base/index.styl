@@ -1,59 +1,9 @@
 :root
-  --color-site-body: $color-site-bg
-  --color-site-bg: $color-site-bg
-  --color-site-inner: $color-site-inner
-  --color-site-footer: $color-site-footer
-  --color-card: $color-card
-  --color-text: $color-text
-  --color-block: $color-block
-  --color-inlinecode: $color-inlinecode
-  --color-codeblock: $color-codeblock
-  --color-h1: $color-h1
-  --color-h2: $color-h2
-  --color-h3: $color-h3
-  --color-h4: $color-h4
-  --color-h5: $color-h5
-  --color-h6: $color-h6
-  --color-p: $color-p
-  --color-list: $color-list
-  --color-list-hl: $color-list-hl
-  --color-meta: $color-meta
-  --color-read-bkg: $color-read-bkg
-  --color-read-post: $color-read-post
-
-*
-  box-sizing: border-box
-  outline: none
-  margin: 0
-  padding: 0
-
-html
-  color: var(--color-text)
-  width: 100%
-  height: 100%
-  font-family: $fontfamily
-  font-size: $fontsize-root
-  >
-    if hexo-config('custom_css.scrollbar.size')
-      scrollbar(convert(hexo-config('custom_css.scrollbar.size')), convert(hexo-config('custom_css.scrollbar.border')) || 0px)
-
-body
-  background-color: var(--color-site-body)
-  text-rendering: optimizelegibility
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-  line-height: $lineheight
-  -webkit-text-size-adjust: 100%
-  -ms-text-size-adjust: 100%
-  &.modal-active
-    overflow: hidden
-    @media screen and (max-width: $modal-threshold)
-      position: fixed
-      top: 0
-      right: 0
-      bottom: 0
-      left: 0
-
-
+  // tag plugin from stellar 
+  --block-hover: mix($c-block-light, $c-text-light, 98)
+  --text-p1: $c-text-light
+  --text-p3: mix($c-text-light, $c-site-bg-light, 60)
+  --card: $c-card-light
 
 ::-moz-selection {
   background: $color-selection
@@ -81,14 +31,6 @@ h1,h2,h3,h4,h6
   font-weight: normal
 
 a
-  color: $color-link
-  cursor: pointer
-  text-decoration: none
-  trans()
-  &:hover
-    color: $color-hover
-  &:active,&:hover
-    outline: 0
   &:not([href])
     cursor: default
 
@@ -121,13 +63,7 @@ pre
   display: table-cell
   vertical-align: middle
 
-
-ul,ol
-  padding-left: 0
-  li
-    list-style: none
-
-article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary
+article,aside,details,figcaption,figure,footer,hgroup,main,menu,nav,section,summary
   display: block
 
 article
@@ -154,25 +90,9 @@ sup
   vertical-align: text-top
 sub
   vertical-align: text-bottom
-img
-  border: 0
-  background: none
-  max-width: 100%
-
-svg:not(:root)
-  overflow: hidden
 
 figure
   margin: 1em 40px
-
-hr
-  -moz-box-sizing: content-box
-  box-sizing: content-box
-  height: 0
-  border: 0
-  border-radius: 1px
-  border-bottom: 1px solid alpha($color-text, .1)
-
 
 pre
   overflow: auto
@@ -189,20 +109,14 @@ code,kbd,pre,samp
   font-family: monospace, monospace
   font-size: 1em
 
-
-button,input,optgroup,select,textarea
+optgroup,select,textarea
   color: inherit /* 1 */
   font: inherit /* 2 */
   margin: 0 /* 3 */
 
-button
-  overflow: visible
-
-button,select
+select
   text-transform: none
 
-
-button,
 html input[type="button"], /* 1 */
 input[type="reset"],
 input[type="submit"]

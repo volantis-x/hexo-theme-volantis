@@ -1,43 +1,19 @@
-
-
-// 可替代 transition 使用
-transition()
-  transition: arguments
-  -moz-transition: arguments
-  -webkit-transition: arguments
-  -o-transition: arguments
-
 // 为1个属性设置动画
 trans1($op, $time = 0.2s)
   transition: $op $time ease-out
-  -moz-transition: $op $time ease-out
-  -webkit-transition: $op $time ease-out
-  -o-transition: $op $time ease-out
 
 // 为2个属性设置动画
 trans2($op1, $op2)
   transition: $op1 0.2s ease-out, $op2 0.2s ease-out
-  -moz-transition: $op1 0.2s ease-out, $op2 0.2s ease-out
-  -webkit-transition: $op1 0.2s ease-out, $op2 0.2s ease-out
-  -o-transition: $op1 0.2s ease-out, $op2 0.2s ease-out
 
 trans2pro($op1, $t1, $op2, $t2)
   transition: $op1 $t1 ease-out, $op2 $t2 ease-out
-  -moz-transition: $op1 $t1 ease-out, $op2 $t2 ease-out
-  -webkit-transition: $op1 $t1 ease-out, $op2 $t2 ease-out
-  -o-transition: $op1 $t1 ease-out, $op2 $t2 ease-out
 
 trans3($op1, $op2, $op3)
   transition: $op1 0.2s ease-out, $op2 0.2s ease-out, $op3 0.2s ease-out
-  -moz-transition: $op1 0.2s ease-out, $op2 0.2s ease-out, $op3 0.2s ease-out
-  -webkit-transition: $op1 0.2s ease-out, $op2 0.2s ease-out, $op3 0.2s ease-out
-  -o-transition: $op1 0.2s ease-out, $op2 0.2s ease-out, $op3 0.2s ease-out
 
 trans($time = 0.28s)
   transition: all $time ease
-  -moz-transition: all $time ease
-  -webkit-transition: all $time ease
-  -o-transition: all $time ease
 
 hoverable-card()
   trans()
@@ -60,9 +36,6 @@ placeholder(rules)
     rules()
 
 disable-user-select()
-  -moz-user-select: none
-  -ms-user-select: none
-  -webkit-user-select: none
   user-select: none
 
 scrollbar($w = 4px, $b = 2px, $c = $color-theme, $h = $color-hover)
@@ -94,61 +67,3 @@ scrollbar-codeblock()
       background: alpha($color-text, .5)
       &:hover
         background: $color-hover
-
-dark()
-  // Base Dark Color
-  --color-site-body: black
-  --color-read-bkg: convert(hexo-config('color_scheme.dark.site_bg'))
-  --color-read-post: convert(hexo-config('color_scheme.dark.card'))
-  --color-site-bg: convert(hexo-config('color_scheme.dark.site_bg'))
-  --color-site-inner: convert(hexo-config('color_scheme.dark.site_inner'))
-  --color-site-footer: convert(hexo-config('color_scheme.dark.site_footer'))
-  --color-card: convert(hexo-config('color_scheme.dark.card'))
-  --color-text: convert(hexo-config('color_scheme.dark.text'))
-
-  --color-block: convert(hexo-config('color_scheme.dark.block'))
-  --color-codeblock: convert(hexo-config('color_scheme.dark.codeblock'))
-  --color-inlinecode: convert(hexo-config('color_scheme.dark.inlinecode'))
-  --color-h1: convert(hexo-config('color_scheme.dark.h1'))
-  --color-h2: convert(hexo-config('color_scheme.dark.h2'))
-  --color-h3: convert(hexo-config('color_scheme.dark.h3'))
-  --color-h4: convert(hexo-config('color_scheme.dark.h4'))
-  --color-h5: convert(hexo-config('color_scheme.dark.h5'))
-  --color-h6: convert(hexo-config('color_scheme.dark.h6'))
-  --color-p: convert(hexo-config('color_scheme.dark.p'))
-  --color-list: convert(hexo-config('color_scheme.dark.list'))
-  --color-list-hl: convert(hexo-config('color_scheme.dark.list_hl'))
-  --color-meta: convert(hexo-config('color_scheme.dark.meta'))
-  --color-link: convert(hexo-config('color_scheme.dark.meta'))
-  
-  // minivaline v6 or ohhho Dark Color
-  if hexo-config('comments.service') == 'minivaline' || 'ohhho'
-    --ohhho-color-p: var(--color-p) !important
-    --ohhho-color-text: var(--color-text) !important
-    --ohhho-color-card: var(--color-card) !important
-    --ohhho-color-block: var(--color-block) !important
-    --ohhho-expand-before-background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9)) !important
-    --ohhho-expand-after-background: rgba(0,0,0,0.9) !important
-
-  // waline Dark Color https://github.com/volantis-x/hexo-theme-volantis/issues/633
-  if hexo-config('comments.service')=='waline'
-    --waline-white: #000 !important
-    --waline-light-grey: #666 !important
-    --waline-dark-grey: #999 !important
-    --waline-text-color: #888 !important
-    --waline-bgcolor: #1e1e1e !important
-    --waline-bgcolor-light: #272727 !important
-    --waline-border-color: #333 !important
-    --waline-disable-bgcolor: #444 !important
-    --waline-disable-color: #272727 !important
-    --waline-bq-color: #272727 !important
-    --waline-info-bgcolor: #272727 !important
-    --waline-info-color: #666 !important
-
-
-  // Custom Files
-  for $injects_darkFun in hexo-config('injects.darkFun')
-    @import $injects_darkFun;
-  // eg:
-  // body
-  //   --color-site-body: blue !important

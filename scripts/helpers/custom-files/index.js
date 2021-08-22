@@ -8,7 +8,7 @@ let points={
     "first",
     "style",
     "dark",
-    "darkFun",
+    "darkVar",
   ],
   views:[
     "head",

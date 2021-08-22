@@ -28,9 +28,6 @@
 
     .nav-main
       trans()
-      // transform: translateY(0 - $navbar-height)
-    &.sub .nav-main
-      transform: translateY(0 - 1 * $navbar-height)
     .nav-sub
       ::-webkit-scrollbar
         display:none
@@ -346,15 +343,6 @@ ul.list-v
   @media screen and (max-width: $device-mobile)
     display: block
   trans()
-
-
-.cover-wrapper
-  .l_header
-    trans(0.5s)
-    transform: translateY(-2 * $navbar-height)
-    &.show
-      transform: translateY(0)
-
 
 .l_header
   if hexo-config('custom_css.navbar.width') == 'auto'
