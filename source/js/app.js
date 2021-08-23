@@ -126,40 +126,47 @@ const VolantisApp = (() => {
         // } else {
         //   console.log("向上滚动");
         // }
-        fn.scrollEvents()
+        fn.scrollEventCallBack()
       }
       volantis.requestAnimationFrame(loop)
     }
     volantis.requestAnimationFrame(loop)
   }
 
-  // 滚动事件们
-  fn.scrollEvents = () => {
-    // 【移动端 PC】
+  // 滚动事件回调们
+  fn.scrollEventCallBack = () => {
+    // 【移动端 PC】//////////////////////////////////////////////////////////////////////
+
     // 显示/隐藏 Header导航 topBtn 【移动端 PC】
     const showHeaderPoint = volantis.dom.bodyAnchor.offsetTop - scrollCorrection;
     const scrollTop = fn.getScrollTop(); // 滚动条距离顶部的距离
+
     // topBtn
-    if (scrollTop > volantis.dom.bodyAnchor.offsetTop) {
-      volantis.dom.topBtn.addClass('show');
-      // 向上滚动高亮 topBtn
-      if (volantis.scroll.del > 0) {
-        volantis.dom.topBtn.removeClass('hl');
+    if (volantis.dom.topBtn) {
+      if (scrollTop > volantis.dom.bodyAnchor.offsetTop) {
+        volantis.dom.topBtn.addClass('show');
+        // 向上滚动高亮 topBtn
+        if (volantis.scroll.del > 0) {
+          volantis.dom.topBtn.removeClass('hl');
+        } else {
+          volantis.dom.topBtn.addClass('hl');
+        }
       } else {
-        volantis.dom.topBtn.addClass('hl');
+        volantis.dom.topBtn.removeClass('show').removeClass('hl');
       }
-    } else {
-      volantis.dom.topBtn.removeClass('show').removeClass('hl');
     }
+
     // Header导航
-    if (scrollTop - showHeaderPoint > -1) {
-      volantis.dom.header.addClass('show');
-    } else {
-      volantis.dom.header.removeClass('show');
+    if (volantis.dom.header) {
+      if (scrollTop - showHeaderPoint > -1) {
+        volantis.dom.header.addClass('show');
+      } else {
+        volantis.dom.header.removeClass('show');
+      }
     }
 
     // 决定一二级导航栏的切换 【向上滚动切换为一级导航栏；向下滚动切换为二级导航栏】  【移动端 PC】
-    if (pdata.ispage) {
+    if (pdata.ispage && volantis.dom.wrapper) {
       if (volantis.scroll.del > 0 && scrollTop > 100) { // 向下滚动
         volantis.dom.wrapper.addClass('sub'); // <---- 二级导航显示
       } else if (volantis.scroll.del < 0) { // 向上滚动
@@ -167,17 +174,19 @@ const VolantisApp = (() => {
       }
     }
 
-    // 【移动端】
+    // 【移动端】//////////////////////////////////////////////////////////////////////
     if (volantis.isMobile) {
       // 【移动端】 页面滚动  隐藏 移动端toc目录按钮
-      if (pdata.ispage) {
+      if (pdata.ispage && volantis.dom.tocTarget && volantis.dom.toc) {
         volantis.dom.tocTarget.removeClass('active');
         volantis.dom.toc.removeClass('active');
       }
       // 【移动端】 滚动时隐藏子菜单
-      volantis.dom.mPhoneList.forEach(function (e) {
-        volantis.dom.$(e).hide();
-      })
+      if (volantis.dom.mPhoneList) {
+        volantis.dom.mPhoneList.forEach(function (e) {
+          volantis.dom.$(e).hide();
+        })
+      }
     }
   }
   // 设置滚动锚点
