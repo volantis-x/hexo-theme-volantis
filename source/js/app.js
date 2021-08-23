@@ -122,7 +122,7 @@ const VolantisApp = (() => {
         volantis.scroll.del = scrollTop - volantis.scroll.lastScrollTop;
         volantis.scroll.lastScrollTop = scrollTop;
         // if (volantis.scroll.del > 0) {
-        //   console.log("向滚下动");
+        //   console.log("向下滚动");
         // } else {
         //   console.log("向上滚动");
         // }
@@ -158,11 +158,11 @@ const VolantisApp = (() => {
       volantis.dom.header.removeClass('show');
     }
 
-    // 决定一二级导航栏的切换 【向上滚动50px切换为一级导航栏；向下滚动50px切换为二级导航栏】  【移动端 PC】
+    // 决定一二级导航栏的切换 【向上滚动切换为一级导航栏；向下滚动切换为二级导航栏】  【移动端 PC】
     if (pdata.ispage) {
-      if (volantis.scroll.del >= 50 && scrollTop > 100) { // 向下滚动50px
+      if (volantis.scroll.del > 0 && scrollTop > 100) { // 向下滚动
         volantis.dom.wrapper.addClass('sub'); // <---- 二级导航显示
-      } else if (volantis.scroll.del <= -50) { // 向上滚动50px
+      } else if (volantis.scroll.del < 0) { // 向上滚动
         volantis.dom.wrapper.removeClass('sub'); // <---- 取消二级导航显示 一级导航显示
       }
     }
