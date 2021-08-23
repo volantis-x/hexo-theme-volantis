@@ -8,7 +8,6 @@ hexo.extend.filter.register('after_render:html', function (data) {
     if (p && !str.includes('alt=')) {
       str = str.replace(p, p + ' alt="This is a picture without description" ');
     }
-    p += " /"
     return str
   });
   // a 设置默认 href 确保链接可供抓取  https://developers.google.com/search/docs/advanced/guidelines/links-crawlable

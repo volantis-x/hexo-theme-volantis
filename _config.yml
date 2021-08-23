@@ -641,7 +641,7 @@ plugins:
   aplayer:
     enable: #true
     js:
-      aplayer: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/js/APlayer.mini.js # aplayer@1.10 魔改: 将触摸和滚轮事件监听器标记为 `passive`，以提高页面的滚动性能
+      aplayer: https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
       meting: https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
@@ -938,7 +938,7 @@ color_scheme:
 
 ############################### Custom css ############################### > start
 custom_css:
-  toc_smooth: true # TOC 目录平滑滚动效果
+  toc_smooth: false # TOC 目录平滑滚动效果
   cursor:
     enable: #true
     text: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
