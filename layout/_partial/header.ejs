@@ -69,7 +69,7 @@
                     target="<%- value.target %>"
                   <% } %>
                   <% if (value.url) { %>
-                    active-action="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>"
+                    active-action="action-<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>"
                   <% } %>>
                   <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
                 </a>

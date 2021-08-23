@@ -264,7 +264,8 @@ const VolantisApp = (() => {
     idname = idname.replace(/(\[|\]|~|#|@)/g, '\\$1');
     if (idname && volantis.dom.headerMenu) {
       volantis.dom.headerMenu.forEach(element => {
-        let id = element.querySelector("[active-action=" + idname + "]")
+        // idname 不能为数字开头, 加一个 action- 前缀
+        let id = element.querySelector("[active-action=action-" + idname + "]")
         if (id) {
           volantis.dom.$(id).addClass('active')
         }
