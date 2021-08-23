@@ -1,4 +1,5 @@
-// 异步加载的暗黑模式
+// 异步加载的暗黑模式 强制覆盖样式
+
 fal,
 fad,
 fa,
@@ -62,7 +63,7 @@ if hexo-config('comments.service')=='gitalk'
   .gt-container .gt-comment-admin .gt-comment-content
     background-color: var(--color-card)
 
-if hexo-config('comments.service')== 'minivaline' || 'ohhho'
+if hexo-config('comments.service')== 'minivaline' || hexo-config('comments.service')== 'ohhho'
   // minivaline v6 or ohhho Dark Color
   .ohhho pre
     background: var(--color-meta)
@@ -119,6 +120,29 @@ if hexo-config('comments.service')=='valine'
     background:  #393c40 !important
   .v[data-class=v] code, .v[data-class=v] pre
     background-color: #332828 !important
+
+if hexo-config('comments.service')=='twikoo'
+  .OwO
+    .OwO-body
+      color: silver !important
+      background-color: #252627 !important
+      border-color: #4a4b50 !important
+      .OwO-bar
+        border-top: 1px solid #4a4b50 !important
+        background:#4a4b50 !important
+        color: #ccc !important
+        .OwO-packages 
+          li:hover
+            background-color: #252627 !important
+          .OwO-package-active
+            background-color: #252627 !important
+      .OwO-items
+        .OwO-item
+          background:#4a4b50 !important
+          color: #ccc !important
+      .OwO-items-image
+        .OwO-item:hover
+          background-color: #252627 !important
 
 // Custom Files
 for $injects_dark in hexo-config('injects.dark')

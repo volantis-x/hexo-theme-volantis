@@ -668,12 +668,11 @@ plugins:
       # - '/artitalk/'     # artitalk 不支持 pjax
 
   # 暗黑模式 darkmode
-  # 样式：source/css/_plugins/dark.styl
   # 开关按钮：在 navbar.menu 中添加：
   # - name: 暗黑模式 # 可自定义
   #   icon: fas fa-moon # 可自定义
   #   toggle: darkmode
-  darkmodejs:
+  darkmode:
     enable: #true
 
   # 旧版 Internet Explorer 淘汰行动
@@ -759,7 +758,7 @@ plugins:
   # 消息提示
   message:
     enable: true
-    icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_plugins/message.styl
+    icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_style/_plugins/fontcolor.styl
       default: fas fa-info-circle light-blue
       quection: fas fa-question-circle light-blue
     time:     # 默认持续时间
