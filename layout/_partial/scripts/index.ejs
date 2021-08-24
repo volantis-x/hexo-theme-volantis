@@ -110,6 +110,8 @@
 
 <%- partial('toc') %>
 
+<%- partial('content-visibility-scroll-fix') %>
+
 <% if (theme.structured_data && theme.structured_data.enable) { %>
   <%- structured_data() %>
 <% } %>
@@ -118,3 +120,4 @@
 <% if (config.import && config.import.script) { %>
   <%- partial('import') %>
 <% } %>
+
