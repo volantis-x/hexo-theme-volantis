@@ -782,6 +782,16 @@ plugins:
       pause: fas fa-pause
     rightmenu:                            # 是否开启右键模块的消息通知
       enable: true
+  
+  # 标签插件样式按需加载
+  tag_plugin_load_on_demand:
+    enable: true
+    # 每个页面强制加载以下标签插件样式
+    plugins:
+      - note
+      - btns
+      - p
+      - gallery
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start

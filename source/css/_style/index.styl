@@ -1,7 +1,9 @@
 @import '_base/*'
 
 @import '_layout/*'
-@import '_tag-plugins/*'
+
+if not hexo-config('plugins.tag_plugin_load_on_demand.enable')
+  @import '_tag-plugins/*'
 
 // 暗黑模式样式放到最后加载
 @import '_plugins/index'
