@@ -3,6 +3,11 @@
   // https://www.caniuse.com/?search=content-visibility
   // https://infrequently.org/2020/12/content-visibility-scroll-fix/
   // https://infrequently.org/2020/12/resize-resilient-deferred-rendering/
+
+  // 备注 目前已知的问题:
+  // 动态修改导致的内容高度变化(例如评论框异步渲染的外部盒子高度变化) 无法提前获知, 进而导致的首次滚动条跳动无法去除 (wontfix) 事实上不使用 content-visibility 也会有跳动, 不过是比使用 content-visibility 跳动提前
+  // scrollreveal 插件潜在问题 目前尚不明确
+
   let eqIsh = (a, b, fuzz = 2) => {
     return Math.abs(a - b) <= fuzz;
   };
@@ -49,8 +54,8 @@
     });
   });
 
-  let contentVisibilityScrollFix = () => {
-    let articles = document.querySelectorAll(".post-story,article,.post-wrapper");
+  let resizeResilientDeferredRendering = (Selector) => {
+    let articles = document.querySelectorAll(Selector);
 
     if (articles.length) {
       articles.forEach((el) => {
@@ -69,6 +74,12 @@
         });
       });
     }
+  };
+
+  let contentVisibilityScrollFix = () => {
+    resizeResilientDeferredRendering(".post-story");
+    resizeResilientDeferredRendering("article");
+    resizeResilientDeferredRendering(".post-wrapper");
   };
   contentVisibilityScrollFix();
   volantis.pjax.push(contentVisibilityScrollFix);
