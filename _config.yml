@@ -575,6 +575,21 @@ plugins:
     css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/styles/default.min.css
     # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
+  # prismjs
+  # https://prismjs.com/
+  # https://hexo.io/zh-cn/docs/syntax-highlight#PrismJS
+  prismjs:
+    enable: #true # Please set hexo.config.highlight.enable = false !!! set hexo.config.prismjs.enable = true !!!
+    js:
+      - https://cdn.jsdelivr.net/npm/prismjs/components/prism-core.min.js
+      - https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js
+      - https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js
+      - https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js
+    css:
+      - https://cdn.jsdelivr.net/npm/prismjs/themes/prism-dark.css
+      - https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.css
+      - https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.css
+
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
     enable: #true

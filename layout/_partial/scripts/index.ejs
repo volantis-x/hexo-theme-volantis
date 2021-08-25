@@ -81,6 +81,10 @@
   <%- partial('../../_plugins/highlightjs/script') %>
 <% } %>
 
+<% if (theme.plugins.prismjs.enable) { %>
+  <%- partial('../../_plugins/prismjs/script') %>
+<% } %>
+
 <% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>
   <%- partial('../../_plugins/analytics/LCCounter') %>
 <% } %>
