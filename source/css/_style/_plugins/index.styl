@@ -1,12 +1,12 @@
 @import 'mathjax'
 @import 'fontcolor'
 
-if hexo-config('plugins.prismjs.enable')
-  @import 'prismjs'
-else
-  @import 'clipboard'
-  @import '_highlight'
-
+if hexo-config('plugins.code_highlight') == "prismjs"
+  @import '_prismjs/clipboard'
+  @import '_prismjs/prismjs'
+if hexo-config('plugins.code_highlight') == "highlightjs"
+  @import '_highlightjs/clipboard'
+  @import '_highlightjs/highlightjs'
 if hexo-config('plugins.message.enable')
   @import 'message'
 if hexo-config('plugins.aplayer.enable')

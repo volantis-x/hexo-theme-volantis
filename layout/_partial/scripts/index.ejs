@@ -77,11 +77,11 @@
   <%- js(theme.plugins.comment_typing.js) %>
 <% } %>
 
-<% if (theme.plugins.highlightjs.enable) { %>
+<% if (theme.plugins.code_highlight=="highlightjs") { %>
   <%- partial('../../_plugins/highlightjs/script') %>
 <% } %>
 
-<% if (theme.plugins.prismjs.enable) { %>
+<% if (theme.plugins.code_highlight=="prismjs") { %>
   <%- partial('../../_plugins/prismjs/script') %>
 <% } %>
 

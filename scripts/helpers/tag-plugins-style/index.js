@@ -80,10 +80,17 @@ hexo.extend.filter.register('before_post_render', function (data) {
   return data;
 });
 function getTagCSS(page) {
-  if (page.uuidTagCSS in hexo.theme.mycss.TagCSS) {
-    return hexo.theme.mycss.TagCSS[page.uuidTagCSS];
-  } else {
-    return hexo.theme.mycss.TagCSS["all"];
+  try {
+    if (page.uuidTagCSS in hexo.theme.mycss.TagCSS) {
+      return hexo.theme.mycss.TagCSS[page.uuidTagCSS];
+    } else {
+      return hexo.theme.mycss.TagCSS["all"];
+    }
+  } catch (error) {
+    console.error("=======================================");
+    console.error("       需要执行 hexo clean");
+    console.error("=======================================");
+    throw error
   }
 }
 hexo.extend.helper.register("TagCSS", getTagCSS);

@@ -1,11 +1,24 @@
 <% if (theme.plugins.highlightjs.js) { %>
 <%- js(theme.plugins.highlightjs.js) %>
-<script>volantis.requestAnimationFrame(hljs.initHighlightingOnLoad)</script>
-<% } %>
 <script>
+volantis.requestAnimationFrame(hljs.initHighlightingOnLoad)
 volantis.pjax.push(()=>{
 	document.querySelectorAll('pre code').forEach((block) => {
 	  hljs.highlightBlock(block);
 	});
 },"highlightjs")
 </script>
+<% } %>
+<% if(theme.plugins.highlightjs.copy_code){ %>
+<script>
+  function pjax_highlightjs_copyCode(){
+    if (!(document.querySelector(".highlight .code pre") ||
+      document.querySelector(".article pre code"))) {
+      return;
+    }
+    VolantisApp.copyCode(".highlight .code pre, .article pre code")
+  }
+  pjax_highlightjs_copyCode()
+  volantis.pjax.push(pjax_highlightjs_copyCode)
+</script>
+<% } %>

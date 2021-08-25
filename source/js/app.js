@@ -403,13 +403,8 @@ const VolantisApp = (() => {
   }
 
   // 代码块复制
-  fn.copyCode = () => {
-    if (!(document.querySelector(".highlight .code pre") ||
-      document.querySelector(".article pre code"))) {
-      return;
-    }
-
-    document.querySelectorAll(".highlight .code pre, .article pre code").forEach(node => {
+  fn.copyCode = (Selector) => {
+    document.querySelectorAll(Selector).forEach(node => {
       const test = node.insertAdjacentHTML("beforebegin", COPYHTML);
       const _BtnCopy = node.previousSibling;
       _BtnCopy.onclick = e => {
@@ -525,7 +520,8 @@ const VolantisApp = (() => {
       })
       document.querySelector("#l_header .menu-phone.list-v").removeAttribute("style")
     },
-    writeClipText: fn.writeClipText
+    writeClipText: fn.writeClipText,
+    copyCode: fn.copyCode,
   }
 })()
 Object.freeze(VolantisApp);

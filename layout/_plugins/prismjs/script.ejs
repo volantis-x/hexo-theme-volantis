@@ -4,34 +4,22 @@
 <% (theme.plugins.prismjs.css||[]).forEach(function(item) { %>
   <%- css(item) %>
 <% }) %>
-<style>
-  /* .btn-copy 对于 prismjs 有 bug */
-  .btn-copy{
-    display: none;
-  }
-</style>
-
+<% if(theme.plugins.prismjs.copy_code){ %>
 <script>
-  try {
-    Prism.plugins.toolbar.registerButton('copy-code', function(env) {
-      var button = document.createElement('button');
-      button.innerHTML = 'Copy Code';
-
-      button.addEventListener('click', function () {
-        try {
-          const range = new Range();
-          range.selectNodeContents(env.element);
-          document.getSelection().removeAllRanges();
-          document.getSelection().addRange(range);
-          navigator.clipboard.writeText(document.getSelection().toString())
-        } catch (e) {
-          console.log(e);
-          console.log('当前浏览器不支持复制功能，请检查更新或更换其他浏览器操作!');
-        }
-      });
-      return button;
-    });
-  } catch (e) {
-    console.log(e);
+  function pjax_prismjs(){
+    if (!document.querySelector("pre")) {
+      return;
+    }
+    let pres = document.querySelectorAll("pre")
+    pres.forEach(pre=>{
+      var wrapper = document.createElement('div');
+      wrapper.classList.add('code-toolbar');
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+    })
+    VolantisApp.copyCode(".code-toolbar pre")
   }
+  pjax_prismjs()
+  volantis.pjax.push(pjax_prismjs)
 </script>
+<% } %>
