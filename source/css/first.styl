@@ -3,7 +3,11 @@
 }
 // https://web.dev/content-visibility/
 // https://www.caniuse.com/?search=content-visibility
-.post-story {
+/* 
+  * Workaround for Chrome bug, part 1
+  * Chunk rendering for all but the first article.
+*/
+.post-story + .post-story, article + article , .post-wrapper + .post-wrapper{
   content-visibility: auto;
   contain-intrinsic-size: 10px 1000px;
 }
