@@ -29,10 +29,7 @@
     //    https://drafts.csswg.org/css-sizing-4/#intrinsic-size-override
     if (!old || rectNotEQ(old, rect)) {
       spaced.set(el, rect);
-      el.attributeStyleMap.set(
-        "contain-intrinsic-size",
-        `${rect.width}px ${rect.height}px`
-      );
+      el.style["contain-intrinsic-size"] = `${rect.width}px ${rect.height}px`;
     }
   };
 
@@ -70,13 +67,16 @@
       // to ensure we get called after a layout.
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          articles[0].attributeStyleMap.set("content-visibility", "auto");
+          articles[0].style["content-visibility"] = "auto";
         });
       });
     }
   };
 
   let contentVisibilityScrollFix = () => {
+    if (!("content-visibility" in document.documentElement.style)) {
+      return;
+    }
     resizeResilientDeferredRendering(".post-story");
     resizeResilientDeferredRendering("article");
     resizeResilientDeferredRendering(".post-wrapper");
