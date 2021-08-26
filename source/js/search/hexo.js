@@ -84,6 +84,9 @@ let SearchService = (() => {
   fn.buildResultList = (data) => {
     let html = "";
     data.forEach((post) => {
+      if (post.text) {
+        post.text = post.text.replace(/12345\d*/g, "") // 简易移除代码行号
+      }
       if (fn.contentSearch(post)) {
         html += fn.buildResult(post.permalink, post.title, post.digest);
       }
