@@ -26,7 +26,7 @@ pre
   line-height: 1.5
   -webkit-font-smoothing: auto
   -moz-osx-font-smoothing: auto
-  overflow: auto // test
+  // overflow: hidden // 实验中发现 overflow 这个属性设置为 hidden/auto 会导致手机端长文本代码块截断仅显示 70 行, PC端无影响.
   trans()
   if hexo-config('custom_css.body.highlight.grayscale') == true
     filter: grayscale(100%)
