@@ -4,9 +4,9 @@
 <% (theme.plugins.prismjs.css||[]).forEach(function(item) { %>
   <%- css(item) %>
 <% }) %>
-<% if(theme.plugins.prismjs.copy_code){ %>
 <script>
-  function pjax_prismjs(){
+<% if(theme.plugins.prismjs.copy_code){ %>
+  function pjax_prismjs_copyCode(){
     if (!document.querySelector("pre")) {
       return;
     }
@@ -19,7 +19,7 @@
     })
     VolantisApp.copyCode(".code-toolbar pre")
   }
-  pjax_prismjs()
-  volantis.pjax.push(pjax_prismjs)
-</script>
+  volantis.requestAnimationFrame(pjax_prismjs_copyCode)
+  volantis.pjax.push(pjax_prismjs_copyCode)
 <% } %>
+</script>
