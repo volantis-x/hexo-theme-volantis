@@ -77,12 +77,8 @@
   <%- js(theme.plugins.comment_typing.js) %>
 <% } %>
 
-<% if (theme.plugins.code_highlight=="highlightjs") { %>
-  <%- partial('../../_plugins/highlightjs/script') %>
-<% } %>
-
-<% if (theme.plugins.code_highlight=="prismjs") { %>
-  <%- partial('../../_plugins/prismjs/script') %>
+<% if (theme.plugins.code_highlight) { %>
+  <%- partial('../../_plugins/highlight/script') %>
 <% } %>
 
 <% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>

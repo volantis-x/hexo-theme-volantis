@@ -1,10 +1,5 @@
-
-pre
-  position: relative
-  -webkit-font-smoothing: auto
-  -moz-osx-font-smoothing: auto
-  scrollbar()
-  if hexo-config('custom_css.body.highlight.language') == true
+if hexo-config('custom_css.body.highlight.language') == true
+  pre
     &:before
       position: absolute
       top: 0

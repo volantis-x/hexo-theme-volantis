@@ -1,0 +1,81 @@
+// layout/friends.ejs
+if hexo-config('pages.friends.layout_scheme') == 'traditional'
+  .article.l_friends
+    .friends-group
+      .friend-content
+        display: flex
+        flex-wrap: wrap
+        margin: -0.5 * $gap
+        border-radius: $border-card
+        align-items: flex-start
+        line-height: 1.3
+        .friend-card
+          display: flex
+          border-radius: $border-codeblock
+          box-shadow: $boxshadow-card
+          padding: $gap * 0.5 0
+          margin: $gap * 0.5
+          margin-top: "calc(2.25 * %s + 32px)" % $gap
+          color: var(--color-meta)
+          background: var(--color-block)
+          justify-content: flex-start
+          align-content: flex-start
+          flex-direction: column
+          width: "calc(100%/4 - %s)" % $gap
+          @media screen and (max-width: $device-laptop)
+            width: "calc(100%/4 - %s)" % $gap
+
+          @media screen and (max-width: $device-tablet)
+            width: "calc(100%/3 - %s)" % $gap
+
+          @media screen and (max-width: $device-mobile)
+            width: "calc(100%/2 - %s)" % $gap
+
+          &:hover
+            .friend-left
+              .avatar
+                transform: scale(1.2) rotate(12deg)
+                box-shadow: $boxshadow-card-float
+
+
+
+          .friend-left
+            display: flex
+            align-self: center
+            .avatar
+              width: 64px
+              height: 64px
+              trans()
+              box-shadow: $boxshadow-card
+              margin: $gap $gap * 0.5 $gap * 0.25 $gap * 0.5
+              margin-top: "calc(-1.25 * %s - 32px)" % $gap
+              border-radius: 100%
+              border: 2px solid white
+              background: white
+
+
+          .friend-right
+            margin: $gap * 0.25 $gap * 0.5
+            display: flex
+            flex-direction: column
+            text-align: center
+            p
+              text-align: center
+
+            .friend-tags-wrapper
+              trans()
+              margin-left: -2px
+              word-break:break-all
+            p
+              margin: 0
+              &.friend-name
+                font-size: $fontsize-code
+                padding-top: 4px
+                font-weight: bold
+
+              &.tags
+                font-size: $fontsize-footnote
+                display: inline
+                background: none
+                word-wrap: break-word
+                padding-right: 4px

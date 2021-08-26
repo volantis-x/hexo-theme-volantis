@@ -1,0 +1,23 @@
+// layout/friends.ejs
+if hexo-config('pages.friends.layout_scheme') != 'traditional'
+  .md .simpleuser-group
+    margin: 0
+    display: grid
+    grid-template-columns: repeat(auto-fill, 112px)
+  .md .simpleuser
+    text-align: center
+    padding: 1em .5em
+    border-radius: 4px
+    img
+      display: block
+      width: 50px
+      height 50px
+      border-radius: 50px
+      object-fit: cover
+    img+span
+      display: block
+      font-size: $fontsize-meta
+      line-height: 1.2
+      color: var(--color-text)
+    &:hover
+      background: var(--color-site-bg)

@@ -1,0 +1,96 @@
+$hl-keyword = #9c27b0
+$hl-blue = #1E80F0
+$hl-cyan = #17AFCA
+$hl-green = #3FA33F
+$hl-light-blue = #6ECDF9
+$hl-red = #EE2B29
+$hl-orange = #FB3F1B
+$hl-amber = #FD8607
+$hl-text = alpha($color-text, .9)
+.highlight pre
+  // 行
+  .line,.params
+    color: $hl-text
+
+  .line .addition
+    color: $hl-green
+  .line .deletion
+    color: $hl-red
+
+  .marked
+    background-color: alpha(#FED542, .4)
+    padding: 2px 8px 2px 0
+    border-radius: 2px
+    width: 100%
+
+  .title, .attr, .attribute
+    color: $color-md-indigo
+
+  // 注释
+  .comment
+    color: var(--color-meta)
+
+  .keyword, .meta-keyword, .javascript .function
+    color: $hl-keyword
+
+  .type, .built_in, .tag .name
+    color: $color-md-light-blue
+
+  .variable, .regexp, .ruby .constant, .xml .tag .title, .xml .pi, .xml .doctype, .html .doctype, .css .id, .css .class, .css .pseudo
+    color: $hl-amber
+
+  .number, .preprocessor, .literal, .constant
+    color: $hl-amber
+
+  .class, .ruby .class .title, .css .rules .attribute
+    color: $color-md-orange
+
+  .string, .meta-string
+    color: darken($color-md-green, 10%)
+
+  .value, .inheritance, .header, .ruby .symbol, .xml .cdata
+    color: $color-md-green
+
+  .css .hexcolor
+    color: #66cccc
+
+  .function, .python .decorator, .python .title, .ruby .function .title, .ruby .title .keyword, .perl .sub, .javascript .title, .coffeescript .title
+    color: #6699cc
+
+
+.highlight.html,.highlight.css,.highlight.less,.highlight.stylus
+  .line
+    .tag .name, .selector-tag
+      color: $hl-red
+    .selector-class, .selector-attr
+      color: $hl-amber
+    .attribute
+      color: $color-md-indigo
+    .number
+      color: $hl-cyan
+
+
+.highlight.objc,.highlight.objectivec,.highlight.swift,.highlight.c
+  .line
+    .meta
+      color: $hl-keyword
+    .meta-string,.string
+      color: $hl-orange
+    .class
+      color: $hl-text
+      .title
+        color: $hl-blue
+    .comment
+      color: $hl-green
+
+.highlight.json
+  .line
+    .attr
+      color: #E24F5A
+    .literal
+      color: $color-md-indigo
+
+.highlight.yaml
+  .line
+    .attr
+      color: #E24F5A
