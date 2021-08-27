@@ -801,9 +801,9 @@ plugins:
       enable: true
   
   # 标签插件样式按需加载
-  # 注意这个配置是带缓存的, 每次调试需要执行 hexo clean, 否则由于错误的缓存出现异常, 建议开发者关闭该配置
+  # 注意这个配置是带缓存的, 如果修改标签插件样式每次调试需要刷新两次页面, 建议开发者关闭该配置
   tag_plugin_load_on_demand:
-    enable: #true
+    enable: true
     # 每个页面强制加载以下标签插件样式
     plugins:
       - note
