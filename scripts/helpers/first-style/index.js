@@ -7,11 +7,13 @@ function generateFirstCSS() {
     hexo.theme.context.theme_dir + "source/css/first.styl"
   );
   hexo.renderStylus(s).then((css)=>{
-    hexo.theme.mycss.FirstCSS = css;
+    hexo.locals.set('FirstCSS', function(){
+      return css
+    });
   })
 }
 function getFirstCSS() {
-  return hexo.theme.mycss.FirstCSS;
+  return hexo.locals.get('FirstCSS');
 }
 hexo.extend.filter.register("before_generate", generateFirstCSS);
 hexo.extend.helper.register("FirstCSS", getFirstCSS);

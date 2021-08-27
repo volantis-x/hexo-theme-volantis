@@ -1,10 +1,10 @@
-// 渲染 Stylus 的工具函数 hexo.renderStylus  hexo.createUuid
+// hexo.renderStylus 渲染 Stylus 的工具函数 
+// hexo.createUuid   创建 uuid
+
 const stylus = require("stylus");
 const Promise = require("bluebird");
+
 module.exports = hexo => {
-  if (!hexo.theme.mycss) {
-    hexo.theme.mycss = {}
-  }
   hexo.renderStylus = async (str) => {
     /**************************************************************************** */
     // from https://github.com/hexojs/hexo-renderer-stylus/blob/8f63a5e1ad886466ce59532978dfa34b4b3c6dc7/lib/renderer.js#L5
@@ -48,10 +48,8 @@ module.exports = hexo => {
     for (let i = 0; i < 36; i++) {
       s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
     }
-    s[14] = '4';
     s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);
     s[8] = s[13] = s[18] = s[23] = '-';
-
     return s.join('');
   };
 };
