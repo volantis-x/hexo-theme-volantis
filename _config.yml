@@ -18,7 +18,7 @@ default:
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0.alpha.1' # This is theme's version.
+  theme_version: '5.0.0.alpha.2' # This is theme's version.
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 
@@ -803,7 +803,7 @@ plugins:
   # 标签插件样式按需加载
   # 注意这个配置是带缓存的, 如果修改标签插件样式每次调试需要刷新两次页面, 建议开发者关闭该配置
   tag_plugin_load_on_demand:
-    enable: true
+    enable: #true
     # 每个页面强制加载以下标签插件样式
     plugins:
       - note

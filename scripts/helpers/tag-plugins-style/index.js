@@ -148,6 +148,9 @@ function generateTagCSS(data) {
 }
 
 function getTagCSS(page) {
+  if (!hexo.theme.config.plugins.tag_plugin_load_on_demand.enable) {
+    return
+  }
   updateTagCSS(page.uuidTagCSS)
   let TagPluginCSS = hexo.locals.get('TagPluginCSS')
   if (TagPluginCSS) {
@@ -159,6 +162,9 @@ function getTagCSS(page) {
   }
 }
 hexo.extend.filter.register("before_generate", function () {
+  if (!hexo.theme.config.plugins.tag_plugin_load_on_demand.enable) {
+    return
+  }
   let arg = process.argv[2];
   if (arg != "s" && arg != "server") {
     return
