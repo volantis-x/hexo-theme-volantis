@@ -1,0 +1,13 @@
+<script>
+  // https://www.micdz.cn/article/katex-on-volantis/
+  if (typeof renderMathInElement == "undefined") {
+    volantis.css("https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css")
+    function pjax_katex() {
+      volantis.js("https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js").then(()=>{
+        renderMathInElement(document.body);
+      })
+    }
+    volantis.js("https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js").then(pjax_katex)
+    volantis.pjax.push(pjax_katex)
+  }
+</script>
