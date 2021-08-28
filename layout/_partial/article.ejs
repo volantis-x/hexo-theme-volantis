@@ -1,6 +1,6 @@
 <article class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= post.layout %>" id="<%= post.layout %>" itemscope itemprop="blogPost">
   <%- partial('meta', {post: post, position: 'top'}) %>
-  <div id="page-plugins-helper"></div>
+  <div id="layoutHelper-page-plugins"></div>
   <%- post.content %>
   <% if (page.link) { %>
     <div class='div-ori-link'>

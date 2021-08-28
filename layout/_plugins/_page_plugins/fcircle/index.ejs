@@ -1,7 +1,5 @@
 <script>
-  window.tempDiv = document.createElement("div");
-  window.tempDiv.id = "moments_container";
-  document.querySelector("#page-plugins-helper").append(window.tempDiv);
+  volantis.layoutHelper("page-plugins",`<div id="moments_container"></div>`,{pjax:false}) // 外层有 pjax 标签
 </script>
 <script>
   var requests_url = '<%- theme.plugins.fcircle.api %>';

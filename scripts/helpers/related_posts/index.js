@@ -24,7 +24,7 @@ hexo.extend.helper.register('htmlGenerator', function(args) {
     var ret = '';
     ret += '<a class="item" href="' + list.path + '" title="' + list.title + '" rel="bookmark ">';
 
-    if (cfg.placeholder_img.length > 0) {
+    if (cfg.placeholder_img && cfg.placeholder_img.length > 0) {
       if (list.img && list.img != '') {
         ret += '<img src="' + list.img + '" />';
       } else {

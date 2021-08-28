@@ -1,4 +1,5 @@
 <script>
+  volantis.layoutHelper("comments",`<div id="minivaline_container"><i class="fas fa-cog fa-spin fa-fw fa-2x"></i></div>`)
   function load_minivaline() {
     if(!document.querySelector("#minivaline_container"))return;
     volantis.js("<%- theme.comments.minivaline.js || 'https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js' %>", pjax_minivaline)

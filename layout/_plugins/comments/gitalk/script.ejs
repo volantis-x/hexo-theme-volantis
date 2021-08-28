@@ -1,4 +1,5 @@
 <script type="text/javascript">
+  volantis.layoutHelper("comments",`<div id="gitalk-container"></div>`)
   function pjax_gitalk() {
     if(!document.querySelector("#gitalk-container"))return;
     let path = pdata.commentPath;

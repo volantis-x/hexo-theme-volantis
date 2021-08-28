@@ -1,4 +1,5 @@
 <script>
+  volantis.layoutHelper("comments",`<div id="waline"><i class="fas fa-cog fa-spin fa-fw fa-2x"></i></div>`)
   function pjax_waline() {
     if(!document.querySelector("#waline"))return;
     let pagePlaceholder = pdata.commentPlaceholder || "<%= theme.comments.waline.placeholder %>";

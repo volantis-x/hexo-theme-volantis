@@ -19,7 +19,6 @@ let points={
     "footer",
     "postEnd",
     "bodyEnd",
-    "comment",
   ]
 }
 // hexo s 和 hexo server 时监听自定义文件变动

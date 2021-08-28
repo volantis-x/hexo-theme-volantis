@@ -682,7 +682,8 @@ plugins:
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: false # false, nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      # - '/artitalk/'     # artitalk 不支持 pjax
+      # - '/artitalk/'   # artitalk 不支持 pjax
+      # - '/bbtalk/'     # bbtalk 不支持 pjax
 
   # 暗黑模式 darkmode
   # 开关按钮：在 navbar.menu 中添加：
@@ -729,7 +730,7 @@ plugins:
   # BBtalk https://bb.js.org
   bbtalk:
     # Set `plugins: ["bbtalk"]` to enable in front-matter
-    # 支持 Pjax
+    # 不支持 Pjax
     js: https://cdn.jsdelivr.net/npm/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY

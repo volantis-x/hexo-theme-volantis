@@ -99,10 +99,6 @@
 <% if (page.plugins) { %>
 <%- partial('../../_plugins/_page_plugins/index') %>
 <% } %>
-
-<% if (page.snackbar && site.data.notification && (page.snackbar in site.data.notification)) { %> 
-  <%- partial('../../_plugins/snackbar/script') %>
-<% } %>
 </pjax>
 
 <%- partial('toc') %>
