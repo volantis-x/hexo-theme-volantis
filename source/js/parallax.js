@@ -89,7 +89,7 @@ Parallax.init = () => {
     if (lastPosition !== yoffset) {
       lastPosition = yoffset;
       loadScrollPosition();
-      Parallax.update(refresh = false);
+      Parallax.update();
     }
     window.requestAnimationFrame =
       window.requestAnimationFrame ||
@@ -176,14 +176,12 @@ Parallax.renderItem = (mirror, slider) => {
   slider.style.width = Parallax.options.imageWidth + "px";
   slider.style.maxWidth = "none";
 };
-Parallax.update = (refresh = true) => {
+Parallax.update = () => {
   if (!Parallax.mirrors) {
     return
   }
   Parallax.mirrors.forEach((e) => {
-    if (refresh) {
-      Parallax.refreshItem(e.slider);
-    }
+    Parallax.refreshItem(e.slider);
     Parallax.renderItem(e.mirror, e.slider);
   });
 };
