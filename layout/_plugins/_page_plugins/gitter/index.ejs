@@ -1,0 +1,14 @@
+<%- partial( "../../chat/gitter/script") %>
+
+<script>
+  // 这里是 page plugin
+  volantis.removeGitter=()=>{
+    document.querySelectorAll(".gitter-chat-embed").forEach(e=>{
+      e.remove()
+    })
+    document.querySelectorAll(".gitter-open-chat-button").forEach(e=>{
+      e.remove()
+    })
+  }
+  volantis.pjax.send(volantis.removeGitter)
+</script>

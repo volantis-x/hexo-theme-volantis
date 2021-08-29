@@ -736,12 +736,6 @@ plugins:
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
 
-  # Tidio聊天功能
-  # https://www.tidio.com/
-  tidio:
-    enable: #true
-    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
   # HexoPlusPlus
   # https://github.com/HexoPlusPlus/HexoPlusPlus
   # https://hexoplusplus.js.org/
@@ -811,6 +805,20 @@ plugins:
       - btns
       - p
       - gallery
+
+  # 聊天功能
+  chat_service: # tidio or gitter
+
+  # Tidio
+  # https://www.tidio.com/
+  tidio:
+    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+  # Gitter
+  # https://gitter.im
+  gitter:
+    room: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
