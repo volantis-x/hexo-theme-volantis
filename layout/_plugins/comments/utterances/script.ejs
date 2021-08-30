@@ -32,7 +32,7 @@
         }
         script.setAttribute('theme', volantis.utterances.Theme );
         script.setAttribute('label','<%- theme.comments.utterances.label %>');
-        script.setAttribute('crossorigin','<%- theme.comments.utterances.crossorigin %>');
+        script.setAttribute('crossorigin', "anonymous");
         HEAD.appendChild(script);
       }, 200)
     });

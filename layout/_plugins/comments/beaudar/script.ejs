@@ -27,11 +27,11 @@
     script.setAttribute('src', 'https://beaudar.lipk.org/client.js');
     script.setAttribute('repo', '<%- theme.comments.beaudar.repo %>');
     script.setAttribute('input-position', '<%- theme.comments.beaudar.position %>');
-    script.setAttribute('crossorigin', '<%- theme.comments.beaudar.crossorigin %>');
     script.setAttribute('branch', '<%- theme.comments.beaudar.branch %>');
     script.setAttribute('comment-order', '<%- theme.comments.beaudar.order %>');
     script.setAttribute('label', '<%- theme.comments.beaudar.label %>');
     script.setAttribute('theme', volantis.beaudar.Theme);
+    script.setAttribute('crossorigin', "anonymous");
     HEAD.appendChild(script);
   }
 
