@@ -90,7 +90,7 @@
     return this.ele
   }
   volantis.dom.$ = (ele) => {
-    return new volantisDom(ele)
+    return !!ele ? new volantisDom(ele) : null;
   }
   /******************** volantis.dom ********************************/
   // 页面选择器 将dom对象缓存起来 see: /source/js/app.js etc.
