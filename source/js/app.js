@@ -220,7 +220,7 @@ const VolantisApp = (() => {
         fn.scrolltoElement(volantis.dom.commentTarget);
         e.stopImmediatePropagation();
       });
-    } else volantis.dom.comment.remove(); // 关闭了评论，则隐藏评论按钮
+    } else volantis.dom.comment.style.display='none'; // 关闭了评论，则隐藏评论按钮
 
     // 移动端toc目录按钮 【移动端】
     if (volantis.isMobile) {
@@ -239,7 +239,7 @@ const VolantisApp = (() => {
           volantis.dom.tocTarget.removeClass('active');
           volantis.dom.toc.removeClass('active');
         });
-      } else volantis.dom.toc.remove(); // 隐藏toc目录按钮
+      } else volantis.dom.toc.style.display='none'; // 隐藏toc目录按钮
     }
   }
 
