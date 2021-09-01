@@ -4,6 +4,7 @@ module.exports = (hexo,option) => {
   return {
     "@context": "http://schema.org",
     "@type": "WebSite",
+    "headline": option.website.name,
     name: option.website.name,
     url: option.website.url,
     keywords: option.website.keywords,

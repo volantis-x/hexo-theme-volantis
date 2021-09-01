@@ -7,6 +7,9 @@
 <% if (checkComment&&(theme.comments.service && theme.comments.service.length > 0)) { %>
   
   <article class="post white-box reveal <%- theme.custom_css.body.effect.join(' ') %>" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="<%- url_for(post.link || post.path) %>#comments">
+    </span>
     <p ct><%- theme.comments && theme.comments.title %></p>
     <% if (theme.comments && theme.comments.subtitle) { %>
       <p cst><%- theme.comments.subtitle %></p>

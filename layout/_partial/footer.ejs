@@ -5,18 +5,18 @@
     layout = config.theme_config.footer.layout;
   }
   %>
-  <footer class="footer clearfix">
+  <footer class="footer clearfix"  itemscope itemtype="http://schema.org/WPFooter">
     <br><br>
     <% layout.forEach(function(item){ %>
       <% if (item == 'social') { %>
         <br>
-        <div class="social-wrapper">
+        <div class="social-wrapper" itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <% (theme.site_footer.social||[]).forEach(function(value){ %>
             <% if (value.url && (value.icon || value.img || value.avatar)) { %>
               <a href="<%= url_for(value.url) %>"
                 class="social <%- value.icon %> flat-btn"
                 target="_blank"
-                rel="external nofollow noopener noreferrer">
+                rel="external nofollow noopener noreferrer" itemprop="url">
                 <% if (value.img) { %>
                   <img src="<%- value.img %>"/>
                 <% } else if (value.avatar) { %>

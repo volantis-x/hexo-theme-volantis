@@ -23,8 +23,8 @@ function buidImgFancybox(content, group) {
   imgList.forEach(item => {
     const url = (item.match(/\ssrc=['"](.*?)['"]/) || [])[1];
     const alt = (item.match(/\salt=['"](.*?)['"]/) || [])[1];
-    const newItem = item.replace('img', 'img fancybox');  // 避免出现重复替换，打个标
-    const result = `<div class='fancybox'><a class='fancybox' pjax-fancybox href='${url}' data-fancybox='${group}' data-caption='${alt}'>${newItem}</a>${buidAlt(imageTags || alt)}</div>`;
+    const newItem = item.replace('img', 'img fancybox itemprop="contentUrl"');  // 避免出现重复替换，打个标
+    const result = `<div class='fancybox'><a class='fancybox' pjax-fancybox itemscope itemtype="http://schema.org/ImageObject" itemprop="url" href='${url}' data-fancybox='${group}' data-caption='${alt}'>${newItem}</a>${buidAlt(imageTags || alt)}</div>`;
     html = html.replace(item, result.trim());
   })
   return html;
@@ -42,9 +42,9 @@ function postFancybox(args, content) {
   const group = (args[2] || 'default').trim();
 
   if (col > 0) {
-    return `<div galleryFlag class="gallery ${cls}" col='${col}' data-group='${group}'>${buidImgFancybox(content, group)}</div>`;
+    return `<div galleryFlag itemscope itemtype="http://schema.org/ImageGallery" class="gallery ${cls}" col='${col}' data-group='${group}'>${buidImgFancybox(content, group)}</div>`;
   }
-  return `<div galleryFlag class="gallery ${cls}" data-group='${group}'>${buidImgFancybox(content, group)}</div>`;
+  return `<div galleryFlag itemscope itemtype="http://schema.org/ImageGallery" class="gallery ${cls}" data-group='${group}'>${buidImgFancybox(content, group)}</div>`;
 }
 
 

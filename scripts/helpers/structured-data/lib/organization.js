@@ -4,6 +4,7 @@ module.exports = (hexo, option) => {
     "@context": "http://schema.org",
     "@type": "Organization",
     "name": option.organization.name,
+    "headline": option.organization.name,
     "url": option.organization.url,
     "logo": {
       "@type": "ImageObject",

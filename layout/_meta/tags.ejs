@@ -1,9 +1,12 @@
 <% if (post.tags && post.tags.length) { %>
   <%
   var items = [];
+  var hidden_items = [];
   post.tags.each(function(item){
     items.push('<div class="new-meta-item meta-tags"><a class="tag" href="'+url_for(item.path)+'" rel="nofollow"><i class="' + theme.article.body.meta_library.tags.icon + ' fa-fw" aria-hidden="true"></i><p>' + item.name + '</p></a></div>');
+    hidden_items.push(item.name);
   });
   %>
   <%- items.join(' ') %>
+  <span hidden itemprop="keywords"><%- hidden_items.join(' ') %></span>
 <% } %>

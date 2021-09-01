@@ -6,5 +6,10 @@
         separator: '<span class="sep"></span>',
         style: 'none'
         }) %>
+    <% for(cat of post.categories.toArray()){ %>
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="<%- url_for(cat.path) %>" itemprop="url"><span itemprop="name"><%- cat.name %></span></a>
+      </span>
+    <% } %>
   </div>
 <% } %>
