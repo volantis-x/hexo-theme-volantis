@@ -587,10 +587,11 @@ plugins:
   # highlight.js
   highlightjs:
     copy_code: true
-    # 如果开启 js, hexo.config.highlight.enable 需要设置为 false
-    js: #https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
-    css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/styles/default.min.css
-    # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
+    # 如果开启以下配置, hexo.config.highlight.enable 需要设置为 false ; hexo.config.highlight.enable 设置为 true, 则以下配置无效
+    # # 不再支持 v11.1.0 以下版本
+    # js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
+    # css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/default.min.css
+    # # # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
 
   # prismjs
   # https://prismjs.com/
@@ -989,7 +990,7 @@ color_scheme:
 
 ############################### Custom css ############################### > start
 custom_css:
-  toc_smooth: false # TOC 目录平滑滚动效果
+  toc_smooth: true # TOC 目录平滑滚动效果
   cursor:
     enable: #true
     text: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png

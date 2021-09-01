@@ -4,11 +4,11 @@
 <% } %>
 <% if (theme.plugins.highlightjs.js) { %>
   volantis.js("<%- theme.plugins.highlightjs.js %>").then(()=>{
-    volantis.requestAnimationFrame(hljs.initHighlightingOnLoad)
+    volantis.requestAnimationFrame(hljs.highlightAll)
   })
   volantis.pjax.push(()=>{
     document.querySelectorAll('pre code').forEach((block) => {
-      hljs.highlightBlock(block);
+      hljs.highlightElement(block);
     });
   },"highlightjs")
 <% } %>
