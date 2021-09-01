@@ -3,71 +3,70 @@
   volantis.APlayerController.id = '<%= theme.plugins.aplayer.id %>';  // 设定全局音乐播放ID
   volantis.APlayerController.volume = '<%= theme.plugins.aplayer.volume %>';
   volantis.css("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css");
-  // APlayer 需要在  MetingJS 之前加载
   (async () => {
+    // APlayer 需要在  MetingJS 之前加载
     await volantis.js("<%- theme.plugins.aplayer.js.aplayer %>")
     await volantis.js("<%- theme.plugins.aplayer.js.meting %>")
-
-    <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
-      // 右键 music 需要在 APlayer  MetingJS 之后加载
-      await volantis.js('<%- theme.cdn.addJS("aplayer") %>')
-      volantis.APlayerController.music = true;
-    <% } %>
+  <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
+    // 右键 music 需要在 APlayer  MetingJS 之后加载
+    await volantis.js('<%- theme.cdn.addJS("aplayer") %>')
+    volantis.APlayerController.music = true;
+  <% } %>
   })();
 
-function SetAPlayerPlugin(){
-  let metings = document.querySelectorAll('meting-js')
-  if (metings[0].aplayer && metings[0].aplayer.on) {
-    // improve the accessibility https://web.dev/button-name/
-    let menus = document.querySelectorAll(".aplayer-icon-menu")
-    menus.forEach(e=>{
-      e.setAttribute("aria-label","Aplayer Menu")
-    })
-    // message see: /layout/_plugins/message/script.ejs
-    <% if (theme.plugins.message.enable && theme.plugins.message.aplayer.enable) { %>
-      try {
-        var Metings = document.querySelectorAll('meting-js');
-        Metings.forEach((item, index) => {
-          var rightMenuAplayer = $(item)[0].meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
-          if(rightMenuAplayer)  MainAPlayer.checkAPlayer();
-          var thisAplayer =Metings[index].aplayer;
-          thisAplayer.on('play', function(e) {
-          let icon = document.getElementById('#aplayerHeaderIcon')
-          if(icon) volantis.dom.$(icon).removeClass('music').addClass('music')
-          var index = thisAplayer.list.index;
-          var title = thisAplayer.list.audios[index].title;
-          var artist = thisAplayer.list.audios[index].artist;
-            volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
-                icon: '<%- theme.plugins.message.aplayer.play %>'
+  function SetAPlayerPlugin(){
+    let Metings = document.querySelectorAll('meting-js');
+    if (Metings[0].aplayer && Metings[0].aplayer.on) {
+      // improve the accessibility https://web.dev/button-name/
+      document.querySelectorAll(".aplayer-icon-menu").forEach(e=>{
+        e.setAttribute("aria-label","Aplayer Menu")
+      })
+      // message see: /layout/_plugins/message/script.ejs
+      <% if (theme.plugins.message.enable && theme.plugins.message.aplayer.enable) { %>
+        try {
+          setTimeout(() => {
+            Metings.forEach((item, index) => {
+              const aplayer = item.aplayer;
+              const rightMenuAplayer = item.meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
+              if(rightMenuAplayer) MainAPlayer.checkAPlayer();
+              if(!aplayer) return;
+              if(aplayer.events.events.play.every(item => {return item.name !== 'messagePlay'})) {
+                aplayer.on('play', function messagePlay() {
+                  let index = aplayer.list.index;
+                  let title = aplayer.list.audios[index].title;
+                  let artist = aplayer.list.audios[index].artist;
+                  volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
+                      icon: '<%- theme.plugins.message.aplayer.play %>'
+                  });
+                  if(rightMenuAplayer) volantis.APlayerController.status = 'play';
+                });
               }
-            )
-            if(rightMenuAplayer) volantis.APlayerController.status = 'play';
-          });
-          thisAplayer.on('pause', function(e) {
-            let icon = document.getElementById('#aplayerHeaderIcon')
-            if(icon) volantis.dom.$(icon).removeClass('music')
-            var index =thisAplayer.list.index;
-            var title = thisAplayer.list.audios[index].title;
-            var artist = thisAplayer.list.audios[index].artist;
-            setTimeout(() => {
-              // 歌曲播放结束也会触发 pause 事件
-              if(thisAplayer.paused)
-                volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
-                    icon: '<%- theme.plugins.message.aplayer.pause %>'
-                  }
-                )
-            }, 100)
-            if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
-          });
-          thisAplayer.on('error', function (e) {
-            if(rightMenuAplayer) volantis.APlayerController.status = 'error';
-          });
-        });
-      } catch (error) { }
-    <% } %>
-  }else{
-    volantis.requestAnimationFrame(SetAPlayerPlugin)
+              if(item.aplayer.events.events.pause.every(item => {return item.name !== 'messagePause'})) {
+                aplayer.on('pause', function messagePause() {
+                  let index = aplayer.list.index;
+                  let title = aplayer.list.audios[index].title;
+                  let artist = aplayer.list.audios[index].artist;
+                  setTimeout(() => {
+                    // 歌曲播放结束也会触发 pause 事件，为了避免错误提示，等待一会儿
+                    if(aplayer.paused)
+                      volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
+                          icon: '<%- theme.plugins.message.aplayer.pause %>'
+                      });
+                  }, 100)
+                  if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
+                });
+              }
+            });
+          }, 500)
+        } catch (error) { console.error(error); }
+      <% } %>
+    }else{
+      volantis.requestAnimationFrame(SetAPlayerPlugin)
+    }
   }
-}
-SetAPlayerPlugin()
+
+  document.addEventListener("DOMContentLoaded", ()=>{
+    SetAPlayerPlugin();
+  });
+  volantis.pjax.push(SetAPlayerPlugin);
 </script>
