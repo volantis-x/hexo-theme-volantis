@@ -23,13 +23,13 @@
   %>
   <% if (showPin == true) { %>
     <div class='pin'>
-      <img alt="<%- post.title || 'image' %>" src='<%- theme.article.preview.pin_icon %>'/>
+      <img alt="<%- post.title %>" src='<%- theme.article.preview.pin_icon %>'/>
     </div>
   <% } %>
   <% if (post.headimg) { %>
     <div class='headimg-div'>
       <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
-        <img itemprop="image" class='headimg' alt="<%- post.title %> || 'image'" src='<%- post.headimg %>'/>
+        <img itemprop="image" class='headimg' alt="<%- post.title %>" src='<%- post.headimg %>'/>
       </a>
     </div>
   <% } else { %>
