@@ -27,13 +27,13 @@
     </div>
   <% } %>
   <% if (post.headimg) { %>
-    <div class='headimg-div' itemscope itemtype="http://schema.org/ImageObject">
-      <a class='headimg-a' href="<%- url_for(post.link || post.path) %>" itemprop="url">
-        <img  itemprop="contentUrl" class='headimg' alt="<%- post.title %> || 'image'" src='<%- post.headimg %>'/>
+    <div class='headimg-div'>
+      <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
+        <img itemprop="image" class='headimg' alt="<%- post.title %> || 'image'" src='<%- post.headimg %>'/>
       </a>
     </div>
   <% } else { %>
-    <span hidden itemscope itemtype="http://schema.org/ImageObject">
+    <span hidden>
       <meta itemprop="image" content="<%- theme.structured_data.data.logo.path %>">
     </span>
   <% } %>
