@@ -32,6 +32,10 @@
         <img  itemprop="contentUrl" class='headimg' alt="<%- post.title %> || 'image'" src='<%- post.headimg %>'/>
       </a>
     </div>
+  <% } else { %>
+    <span hidden itemscope itemtype="http://schema.org/ImageObject">
+      <meta itemprop="image" content="<%- theme.structured_data.data.logo.path %>">
+    </span>
   <% } %>
   <% if (showTitle) { %>
     <%
@@ -45,6 +49,10 @@
         <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
       </a>
     </h2>
+  <% } else { %>
+    <span hidden itemprop="name headline">
+      <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
+    </span>
   <% } %>
   <div class='md' itemprop="articleBody">
     <% if (post.excerpt) { %>

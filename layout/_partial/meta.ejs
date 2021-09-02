@@ -16,6 +16,10 @@ if (post.bottom_meta == false) {
         <img itemprop="image" class='headimg' src='<%- post.headimg %>'/>
       </a>
     </div>
+  <% } else { %>
+    <span hidden itemscope itemtype="http://schema.org/ImageObject">
+      <meta itemprop="image" content="<%- theme.structured_data.data.logo.path %>">
+    </span>
   <% } %>
   <div class="article-meta" id="top">
     <% if (post.music && post.music.enable != false) { %>
