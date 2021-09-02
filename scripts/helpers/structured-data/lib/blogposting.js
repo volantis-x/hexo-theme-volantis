@@ -16,6 +16,11 @@ module.exports = (hexo, option) => {
     author: {
       "@type": "Person",
       name: option.person.name,
+      image: {
+        "@type": "ImageObject",
+        url: option.logo.path,
+      },
+      url: option.person.url,
     },
     publisher: {
       "@type": "Organization",
@@ -46,6 +51,13 @@ module.exports = (hexo, option) => {
       url: image,
       width: 1024,
       height: 768,
+    };
+  }else{
+    blogposting.image = {
+      "@type": "ImageObject",
+      url: option.logo.path,
+      width: option.logo.width,
+      height: option.logo.height,
     };
   }
 

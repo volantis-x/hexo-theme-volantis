@@ -4,7 +4,6 @@ module.exports = (hexo, option) => {
   const breadcrumb = {
     "@context": "http://schema.org",
     "@type": "BreadcrumbList",
-    "headline": "BreadcrumbList",
     itemListElement: [
       {
         "@type": "ListItem",

@@ -8,7 +8,7 @@
   
   <article class="post white-box reveal <%- theme.custom_css.body.effect.join(' ') %>" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="<%- url_for(post.link || post.path) %>#comments">
+      <meta itemprop="discussionUrl" content="<%- url_for(path) %>#comments">
     </span>
     <p ct><%- theme.comments && theme.comments.title %></p>
     <% if (theme.comments && theme.comments.subtitle) { %>

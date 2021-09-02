@@ -6,9 +6,24 @@ const Person = require("./person");
 const BlogPosting = require("./blogposting");
 const BreadcrumbList = require("./breadcrumblist");
 
+function isObject(item) {
+  return item && typeof item === 'object' && !Array.isArray(item);
+}
+
+function merge(target, source) {
+  for (const key in source) {
+    if (isObject(target[key]) && isObject(source[key])) {
+      merge(target[key], source[key]);
+    } else {
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
+
 module.exports = function () {
   const hexo = this;
-  const option = Object.assign(config(hexo), hexo.theme.structured_data.data);
+  const option = merge(config(hexo), hexo.theme.structured_data.data);
   const builder = [Organization, Person, BreadcrumbList];
 
   if (hexo.is_post()) {

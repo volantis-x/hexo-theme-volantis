@@ -19,6 +19,7 @@
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
   <link rel="preload" href="<%- theme.cdn.map.css.style %>" as="style">
+  <%- generate_preload_fontfamily(theme) %>
   <!-- 页面元数据 -->
   <%- generate_title(config, theme, page) %>
   <%- generate_keywords(config, theme, page) %>
