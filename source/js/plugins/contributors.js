@@ -50,7 +50,7 @@ const ContributorsJS = {
       var cellALL = "";
       (data || []).forEach((item, i) => {
         var user = '<div class="user-card">';
-        user += '<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer"';
+        user += '<a class="card-link" target="_blank" rel="external noopener noreferrer"';
         user += ' href="' + item.html_url + '">';
         user += '<img alt="' + item.login + '" src="' + (item.avatar_url || cfg.avatar) + '" onerror="javascript:this.src=\'' + cfg.avatar + '\';">';
         user += '<div class="name"><span>' + item.login + '</span></div>';
