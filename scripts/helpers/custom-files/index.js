@@ -3,14 +3,14 @@
 const fs = require('hexo-fs');
 const path = require('path');
 const defaultExtname = '.ejs';
-let points={
-  styles:[
+let points = {
+  styles: [
     "first",
     "style",
     "dark",
     "darkVar",
   ],
-  views:[
+  views: [
     "head",
     "header",
     "side",
@@ -22,25 +22,25 @@ let points={
   ]
 }
 // hexo s 和 hexo server 时监听自定义文件变动
-function watchFile(path){
-  let arg=process.argv[2];
-  if(arg=="s"||arg=="server"){
+function watchFile(path) {
+  let arg = process.argv[2];
+  if (arg == "s" || arg == "server") {
     fs.watch(path)
   }
 }
 hexo.extend.filter.register('theme_inject', injects => {
 
-  let filePath={}
+  let filePath = {}
   points.styles.forEach(key => {
-    filePath[key]="source/_volantis/"+key+".styl"
+    filePath[key] = "source/_volantis/" + key + ".styl"
   });
   points.views.forEach(key => {
-    filePath[key]="source/_volantis/"+key+defaultExtname
+    filePath[key] = "source/_volantis/" + key + defaultExtname
   });
-  filePath=Object.assign(filePath, hexo.theme.config.custom_files)
+  filePath = hexo.merge(filePath, hexo.theme.config.custom_files)
   // console.log(filePath);
   // console.log(hexo.theme.config.custom_files);
-  
+
 
   points.styles.forEach(key => {
     if (filePath[key]) {
@@ -53,15 +53,15 @@ hexo.extend.filter.register('theme_inject', injects => {
     }
   });
 }, 99);
-hexo.extend.helper.register('volantis_inject', function(point) {
+hexo.extend.helper.register('volantis_inject', function (point) {
   if (this.theme.injects[point]) {
     return this.theme.injects[point]
-    .map(item => this.partial(item.layout, item.locals, item.options))
-    .join('');
+      .map(item => this.partial(item.layout, item.locals, item.options))
+      .join('');
   }
   return []
 });
-hexo.on('generateBefore', function() {
+hexo.on('generateBefore', function () {
   hexo.theme.config.custom = {};
   // Defining stylus types
   class StylusInject {
@@ -71,9 +71,9 @@ hexo.on('generateBefore', function() {
     }
     push(file) {
       // Get absolute path base on hexo dir
-      let temp_path=path.resolve(this.base_dir, file)
+      let temp_path = path.resolve(this.base_dir, file)
       watchFile(temp_path)
-      if(fs.existsSync(temp_path)){
+      if (fs.existsSync(temp_path)) {
         this.files.push(temp_path);
       }
     }
@@ -97,13 +97,13 @@ hexo.on('generateBefore', function() {
         name += path.extname(file);
       }
       // Get absolute path base on hexo dir
-      let temp_path=path.resolve(this.base_dir, file)
-      let temp_raw=""
+      let temp_path = path.resolve(this.base_dir, file)
+      let temp_raw = ""
       watchFile(temp_path)
-      if(fs.existsSync(temp_path)){
-        temp_raw=fs.readFileSync(temp_path)
+      if (fs.existsSync(temp_path)) {
+        temp_raw = fs.readFileSync(temp_path)
       }
-      this.raw(name,temp_raw, ...args);
+      this.raw(name, temp_raw, ...args);
     }
   }
   // Init injects
@@ -132,10 +132,10 @@ hexo.on('generateBefore', function() {
       const name = `inject/${type}/${injectObj.name}`;
       hexo.theme.setView(name, injectObj.raw);
       configs[name] = {
-        layout : name,
-        locals : injectObj.args[0],
+        layout: name,
+        locals: injectObj.args[0],
         options: injectObj.args[1],
-        order  : injectObj.args[2] || index
+        order: injectObj.args[2] || index
       };
     });
     // Views sort.
