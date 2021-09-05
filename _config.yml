@@ -886,7 +886,7 @@ rightmenu:
 
 ############################### Search ############################### > start
 # To use hexo search, you need to install the following plugins:
-# npm i hexo-generator-search hexo-generator-json-content
+# npm i hexo-generator-json-content
 search:
   enable: true
   service: hexo  # hexo
