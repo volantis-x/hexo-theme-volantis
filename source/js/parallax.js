@@ -10,9 +10,13 @@ Parallax.slidein = () => {
   }
   var opac = parseFloat(slider.style.opacity);
   if (opac !== 1) {
-    opac = opac + 0.1;
-    slider.style.opacity = opac;
-    setTimeout(Parallax.slidein, Parallax.options.fade / 10);
+    if (Parallax.mirrors.length >= 2) {
+      opac = opac + 0.1;
+      slider.style.opacity = opac;
+      setTimeout(Parallax.slidein, Parallax.options.fade / 10);
+    }else{
+      slider.style.opacity = 1;
+    }
   } else {
     if (Parallax.mirrors.length >= 2) {
       Parallax.mirrors[0].mirror.remove();
