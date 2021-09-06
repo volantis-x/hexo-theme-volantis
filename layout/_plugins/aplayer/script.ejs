@@ -16,6 +16,7 @@
 
   function SetAPlayerPlugin(){
     let Metings = document.querySelectorAll('meting-js');
+    if (Metings.length === 0) return;
     if (Metings[0].aplayer && Metings[0].aplayer.on) {
       // improve the accessibility https://web.dev/button-name/
       document.querySelectorAll(".aplayer-icon-menu").forEach(e=>{
