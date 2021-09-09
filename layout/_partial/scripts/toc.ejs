@@ -7,14 +7,15 @@
       const target = document.getElementById(
         decodeURI(link.getAttribute("href")).replace("#", "")
       );
+      // 解除 a 标签 href 的 锚点定位, a 标签 href 的 锚点定位 会随机启用?? 产生错位???
+      link.setAttribute("onclick","return false;")
+      link.setAttribute("toc-action","toc-"+decodeURI(link.getAttribute("href")).replace("#", ""))
+      link.setAttribute("href","/")
+      // 配置 点击 触发新的锚点定位
       link.addEventListener("click", (event) => {
         event.preventDefault();
-        window.scrollTo({
-          top: target.getBoundingClientRect().top + document.documentElement.scrollTop + 5,
-          <% if (theme.custom_css.toc_smooth) { %>
-          behavior: "smooth"
-          <% } %>
-        });
+         // 这里的 addTop 是通过错位使得 toc 自动展开.
+        volantis.scroll.to(target,{addTop: 5, observer:true})
       });
       return target;
     });

@@ -51,3 +51,9 @@ rightmenu:
   copy_image_file: "复制图片文件"
   copy_link: "复制链接"
   open_in_new_tab: "在新标签页打开"
+
+kill:
+  title: "抱歉，您的浏览器无法访问本站"
+  more: "了解详情 >"
+  noscript: "本页面需要浏览器支持（启用）JavaScript"
+  ie: "微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。"

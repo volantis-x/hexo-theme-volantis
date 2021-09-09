@@ -47,3 +47,9 @@ rightmenu:
   copy_image_src: "Copy Image Link"
   copy_link: "Copy Link"
   open_in_new_tab: "Open Link in New Tab"
+
+kill:
+  title: "Sorry, your browser cannot access this site"
+  more: "Learn more >"
+  noscript: "This page requires browser support (enable) JavaScript"
+  ie: "Microsoft has terminated support for Internet Explorer (IE) 10 and earlier versions in 2016. <br/>There are great security risks to continue using it. Please use contemporary mainstream browsers to access."
