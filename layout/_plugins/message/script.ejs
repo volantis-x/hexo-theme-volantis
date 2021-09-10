@@ -1,6 +1,6 @@
 <script>
   volantis.message = (title, message, option = {}, done = null) => {
-    if (typeof iziToast == "undefined") {
+    if (typeof iziToast === "undefined") {
       volantis.css('<%- theme.cdn.map.css.message %>')
       volantis.js('<%- theme.cdn.map.js.message %>', () => {
         tozashMessage(title, message, option, done);
@@ -19,13 +19,14 @@
         messageColor,
         titleColor,
         backgroundColor,
-        zindex
+        zindex,
+        displayMode
       } = option;
       iziToast.show({
         layout: '2',
         icon: 'Fontawesome',
         closeOnEscape: 'true',
-        displayMode: 'replace',
+        displayMode: displayMode || 'replace',
         transitionIn: transitionIn || '<%- theme.plugins.message.transitionIn %>',
         transitionOut: transitionOut || '<%- theme.plugins.message.transitionOut %>',
         messageColor: messageColor || '<%- theme.plugins.message.messageColor %>',
@@ -45,7 +46,7 @@
   };
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
-    if (typeof iziToast == "undefined") {
+    if (typeof iziToast === "undefined") {
       volantis.css('<%- theme.cdn.map.css.message %>')
       volantis.js('<%- theme.cdn.map.js.message %>', () => {
         tozashQuestion(title, message, option, success, cancel, done);
@@ -95,6 +96,28 @@
           if(done) done(instance, toast, closedBy);
         }
       });
+    }
+  }
+
+  volantis.hideMessage = (done = null) => {
+    const toast = document.querySelector('.iziToast');
+    if (!toast) {
+      if(done) done()
+      return;
+    }
+    
+    if (typeof iziToast === "undefined") {
+      volantis.css('<%- theme.cdn.map.css.message %>')
+      volantis.js('<%- theme.cdn.map.js.message %>', () => {
+        hideMessage(done);
+      });
+    } else {
+      hideMessage(done);
+    }
+
+    function hideMessage(done) {
+      iziToast.hide({}, toast);
+      if(done) done();
     }
   }
 

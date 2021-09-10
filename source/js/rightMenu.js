@@ -245,7 +245,7 @@ const RightMenu = (() => {
       fn.visible(_readingModel, false);
     }
 
-    if (volantis.APlayerController.status === 'play') {
+    if (volantis.APlayerController && MainAPlayer && MainAPlayer.APlayer.status === 'play') {
       optionFlag = true;
       fn.visible(_menuMusic);
     } else {

@@ -1,5 +1,5 @@
 <script>
-  volantis.APlayerController = {};
+  volantis.APlayerController = {}; // 音乐播放控制 - All
   volantis.APlayerController.id = '<%= theme.plugins.aplayer.id %>';  // 设定全局音乐播放ID
   volantis.APlayerController.volume = '<%= theme.plugins.aplayer.volume %>';
   volantis.css("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css");
@@ -16,7 +16,13 @@
 
   function SetAPlayerPlugin(){
     let Metings = document.querySelectorAll('meting-js');
-    if (Metings.length === 0) return;
+    if (Metings.length === 0) {
+      volantis.APlayerController.status = undefined;
+      <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
+      if(MainAPlayer) MainAPlayer.Aplayer = {};
+      <% } %>
+      return
+    };
     if (Metings[0].aplayer && Metings[0].aplayer.on) {
       // improve the accessibility https://web.dev/button-name/
       document.querySelectorAll(".aplayer-icon-menu").forEach(e=>{
@@ -27,34 +33,40 @@
         try {
           setTimeout(() => {
             Metings.forEach((item, index) => {
-              const aplayer = item.aplayer;
+              const aplayerItem = item.aplayer; if(!aplayerItem) return;
               const rightMenuAplayer = item.meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
               if(rightMenuAplayer) MainAPlayer.checkAPlayer();
-              if(!aplayer) return;
-              if(aplayer.events.events.play.every(item => {return item.name !== 'messagePlay'})) {
-                aplayer.on('play', function messagePlay() {
-                  let index = aplayer.list.index;
-                  let title = aplayer.list.audios[index].title;
-                  let artist = aplayer.list.audios[index].artist;
-                  volantis.message('音乐通知', '正在播放：' + title + ' - ' + artist, {
-                      icon: '<%- theme.plugins.message.aplayer.play %>'
-                  });
-                  if(rightMenuAplayer) volantis.APlayerController.status = 'play';
+              if(aplayerItem.events.events.play.every(item => {return item.name !== 'messagePlay'})) {
+                aplayerItem.on('play', function messagePlay() {
+                  let index = aplayerItem.list.index;
+                  let title = aplayerItem.list.audios[index].title;
+                  let artist = aplayerItem.list.audios[index].artist;
+                  setTimeout(() => {
+                    volantis.message('音乐通知', title + ' - ' + artist, {
+                      icon: '<%- theme.plugins.message.aplayer.play %>',
+                      transitionIn: 'flipInX',
+                      transitionOut: 'flipOutX'
+                    });
+                  }, 100)
+                  if(rightMenuAplayer && volantis.APlayerController) volantis.APlayerController.status = 'play';
                 });
               }
-              if(item.aplayer.events.events.pause.every(item => {return item.name !== 'messagePause'})) {
-                aplayer.on('pause', function messagePause() {
-                  let index = aplayer.list.index;
-                  let title = aplayer.list.audios[index].title;
-                  let artist = aplayer.list.audios[index].artist;
+              if(aplayerItem.events.events.pause.every(item => {return item.name !== 'messagePause'})) {
+                aplayerItem.on('pause', function messagePause() {
+                  let index = aplayerItem.list.index;
+                  let title = aplayerItem.list.audios[index].title;
+                  let artist = aplayerItem.list.audios[index].artist;
                   setTimeout(() => {
                     // 歌曲播放结束也会触发 pause 事件，为了避免错误提示，等待一会儿
-                    if(aplayer.paused)
-                      volantis.message('音乐通知', '暂停播放：' + title + ' - ' + artist, {
-                          icon: '<%- theme.plugins.message.aplayer.pause %>'
+                    if(aplayerItem.paused) {
+                      volantis.message('音乐通知', title + ' - ' + artist, {
+                        icon: '<%- theme.plugins.message.aplayer.pause %>',
+                        transitionIn: 'flipInX',
+                        transitionOut: 'flipOutX'
                       });
+                    }
                   }, 100)
-                  if(rightMenuAplayer) volantis.APlayerController.status = 'pause';
+                  if(rightMenuAplayer && volantis.APlayerController) volantis.APlayerController.status = 'pause';
                 });
               }
             });
