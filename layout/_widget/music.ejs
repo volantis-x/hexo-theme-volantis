@@ -1,5 +1,5 @@
 <% if (theme.plugins.aplayer.enable == true) { %>
-  <section class='widget <%- theme.custom_css.sidebar.effect.join(' ') %> <%- item.class %>'>
+  <section class='widget <%- page.widget_style %> <%- page.widget_platform %> <%- item.class %>'>
     <%- partial('header', {item: item}) %>
     <div class='content'>
       <%- partial('../_plugins/aplayer/layout', {post: null, where: 'widget'}) %>
