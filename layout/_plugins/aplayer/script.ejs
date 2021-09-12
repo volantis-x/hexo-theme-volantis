@@ -19,9 +19,9 @@
     if (Metings.length === 0) {
       volantis.APlayerController.status = undefined;
       <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
-      if(MainAPlayer) MainAPlayer.Aplayer = {};
+      if(typeof MainAPlayer === 'undefined') MainAPlayer.Aplayer = {};
       <% } %>
-      return
+      return;
     };
     if (Metings[0].aplayer && Metings[0].aplayer.on) {
       // improve the accessibility https://web.dev/button-name/
