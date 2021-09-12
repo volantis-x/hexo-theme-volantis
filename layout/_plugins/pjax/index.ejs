@@ -16,7 +16,7 @@
     var pjax;
     document.addEventListener('DOMContentLoaded', function () {
       pjax = new Pjax({
-        elements: 'a[href]:not([href^="#"]):not([href$=".xml"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"])',
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"]):not([target="_blank"]):not([target="view_window"])',
         selectors: [
           "title",
           <% if (!theme.plugins.pjax.cover){ %>"#l_cover",<% } %>
