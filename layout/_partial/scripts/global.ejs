@@ -344,8 +344,8 @@
     // 滚动
     window.scrollTo(opt);
     // 监视器
-    // 监视元素是否滚动到指定位置 
-    // 实验中 目前用于处理 toc 部分 lazyload 引起的 cls 导致的定位失败问题
+    // 监视并矫正元素滚动到指定位置 
+    // 目前用于处理 toc 部分 lazyload 引起的 cls 导致的定位失败问题
     if (option.observer) {
       volantis.scroll.unengine.push(()=>{
         let me = ele.getBoundingClientRect().top
