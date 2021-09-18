@@ -12,11 +12,15 @@
       let defaultPath = '<%= theme.comments.minivaline.path %>';
       path = defaultPath || decodeURI(window.location.pathname);
     }
-    new MiniValine(Object.assign(<%- JSON.stringify(theme.comments.minivaline) %>, {
-      el: '#minivaline_container',
-      pathname: path,
-      placeholder: pagePlaceholder,
-    }));
+    new MiniValine(
+      Object.assign(
+        Object.assign(<%- JSON.stringify(theme.comments.minivaline) %>, {
+          el: '#minivaline_container',
+          pathname: path,
+          placeholder: pagePlaceholder,
+        }),
+      pdata.commentConfig)
+    );
   }
   load_minivaline();
   volantis.pjax.push(()=>{

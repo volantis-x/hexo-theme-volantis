@@ -16,7 +16,7 @@
   function pjax_giscus() {
     const HEAD = check_giscus();
     if (!HEAD) return;
-    let cfg = <%- JSON.stringify(theme.comments.giscus) %>
+    let cfg = Object.assign(<%- JSON.stringify(theme.comments.giscus) %>,pdata.commentConfig)
     const script = document.createElement('script');
     script.setAttribute('src', 'https://giscus.app/client.js');
     Object.keys(cfg).forEach(k=>{

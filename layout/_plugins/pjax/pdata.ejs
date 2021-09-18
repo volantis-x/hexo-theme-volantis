@@ -1,8 +1,9 @@
 <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 <%
-var commentPath = '';                     // 自定义的评论路径
-var commentPlaceholder = '';              // 自定义的评论描述
+var commentPath = '';                         // 自定义的评论路径
+var commentPlaceholder = '';                  // 自定义的评论描述
+var commentConfig = {};                       // 自定义的评论配置
 var ispage = false;                           // 一二级导航栏切换控制
 var postTitle = '';                           // 当前文章标题，用于二级导航栏赋值
 if (theme.comments.service && theme.comments.service.length > 0) {
@@ -14,6 +15,9 @@ if (theme.comments.service && theme.comments.service.length > 0) {
       }
       if (page[service].placeholder) {
         commentPlaceholder = page[service].placeholder;
+      }
+      if (page[service].config) {
+        commentConfig = page[service].config;
       }
     }
   }
@@ -30,6 +34,7 @@ if (page && page.layout == 'post' && page.title) {
   pdata.postTitle="<%=postTitle%>";
   pdata.commentPath="<%=commentPath%>";
   pdata.commentPlaceholder="<%=commentPlaceholder%>";
+  pdata.commentConfig=<%- JSON.stringify(commentConfig) %>;
   //  see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs
   <% if (theme.plugins.pjax.enable) {%>
     // header

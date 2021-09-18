@@ -8,10 +8,14 @@
       path = defaultPath || decodeURI(window.location.pathname);
     }
     if (document.getElementById('gitalk-container') != null) {
-      var gitalk = new Gitalk(Object.assign(<%- JSON.stringify(theme.comments.gitalk) %>, {
-	  id: path,
-	  distractionFreeMode: false  // Facebook-like distraction free mode
-    }));
+      var gitalk = new Gitalk(
+        Object.assign(
+          Object.assign(<%- JSON.stringify(theme.comments.gitalk) %>, {
+            id: path,
+            distractionFreeMode: false  // Facebook-like distraction free mode
+          }),
+        pdata.commentConfig)
+      );
       gitalk.render('gitalk-container');
     }
   }

@@ -8,7 +8,7 @@
       let defaultPath = '<%= theme.comments.waline.path %>';
       path = defaultPath || decodeURI(window.location.pathname);
     }
-    new Waline(Object.assign(<%- JSON.stringify(theme.comments.waline) %>, {
+    new Waline(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.waline) %>, {
      el: '#waline',
      path: path,
      placeholder: pagePlaceholder,
@@ -20,7 +20,7 @@
       	body: formData
       }).then(resp => resp.json()).then(resp => resp.data.url);
    },
-  }));
+  }),pdata.commentConfig));
   }
   volantis.js('<%- theme.comments.waline.js || 'https://cdn.jsdelivr.net/npm/@waline/client@latest' %>').then(pjax_waline)
   volantis.pjax.push(pjax_waline);
