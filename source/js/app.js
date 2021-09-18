@@ -197,7 +197,9 @@ const VolantisApp = (() => {
         // 点击空白 隐藏
         volantis.dom.$(document).click(function (e) {
           e.stopPropagation();
-          volantis.dom.tocTarget.removeClass('active');
+          if (volantis.dom.tocTarget) {
+            volantis.dom.tocTarget.removeClass('active');
+          }
           volantis.dom.toc.removeClass('active');
         });
       } else volantis.dom.toc.style.display='none'; // 隐藏toc目录按钮

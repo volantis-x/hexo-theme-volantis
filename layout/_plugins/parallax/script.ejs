@@ -35,6 +35,9 @@ _%>
   }
 
   function next_parallax() {
+    if (typeof Parallax == "undefined") {
+      return
+    }
     <% if (theme.plugins.parallax.position!="fixed") { %>
       if (!document.querySelector("#full")&&!document.querySelector("#half")) {
         return

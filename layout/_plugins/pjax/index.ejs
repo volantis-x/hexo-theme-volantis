@@ -3,6 +3,7 @@
   1.  <pjax></pjax> 标签 pjax 标签必须存在于所有页面 否则 pjax error
   2.  script[data-pjax]
   3.  .pjax-reload script
+  4.  .pjax
 -->
 <%
   var banUrl = theme.plugins.pjax.banUrl || [];
@@ -16,12 +17,13 @@
     var pjax;
     document.addEventListener('DOMContentLoaded', function () {
       pjax = new Pjax({
-        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"]):not([target="_blank"]):not([target="view_window"])',
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"]):not([target="_blank"]):not([target="view_window"]):not([href$=".xml"])',
         selectors: [
           "title",
           <% if (!theme.plugins.pjax.cover){ %>"#l_cover",<% } %>
-          "#pjax-container",
+          "#l_main",
           "#pjax-header-nav-list",
+          ".pjax",
           "pjax", // <pjax></pjax> 标签
           "script[data-pjax], .pjax-reload script" // script标签添加data-pjax 或 script标签外层添加.pjax-reload 的script代码段重载
         ],

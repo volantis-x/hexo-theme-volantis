@@ -23,6 +23,7 @@ if (page && page.layout == 'post' && page.title) {
   postTitle = page.title;
 }
 %>
+<pjax>
 <script>
   window.pdata={}
   pdata.ispage=<%=ispage%>;
@@ -48,3 +49,4 @@ if (page && page.layout == 'post' && page.title) {
     <% }%>
   <% }%>
 </script>
+</pjax>

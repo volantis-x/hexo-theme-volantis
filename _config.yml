@@ -422,6 +422,12 @@ sidebar:
       min_depth: 2
       max_depth: 5
     # ---------------------------------------
+    # music
+    music:
+      class: music
+      display: [desktop, mobile] # [desktop, mobile]
+      pjaxReload: false
+    # ---------------------------------------
     # category widget
     category:
       class: category
