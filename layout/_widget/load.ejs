@@ -7,9 +7,11 @@
 <%
 let widget_pjax_length = 0;
 page.sidebar.forEach(function(e){
-  let widget_pjax_flag = theme.sidebar.widget_library[e].pjaxReload
-  if (widget_pjax_flag || widget_pjax_flag===undefined) {
-    widget_pjax_length ++;
+  if (e&&theme.sidebar.widget_library&&theme.sidebar.widget_library[e]) {
+    let widget_pjax_flag = theme.sidebar.widget_library[e].pjaxReload
+    if (widget_pjax_flag || widget_pjax_flag===undefined) {
+      widget_pjax_length ++;
+    }
   }
 })
 let widget_pjax_place_length = Object.keys(theme.sidebar.widget_library).length - widget_pjax_length
