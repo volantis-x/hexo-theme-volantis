@@ -1,0 +1,25 @@
+<% (theme.plugins.prismjs.js||[]).forEach(function(item) { %>
+  <%- js(item) %>
+<% }) %>
+<% (theme.plugins.prismjs.css||[]).forEach(function(item) { %>
+  <%- css(item) %>
+<% }) %>
+<script>
+<% if(theme.plugins.prismjs.copy_code){ %>
+  function pjax_prismjs_copyCode(){
+    if (!document.querySelector("pre")) {
+      return;
+    }
+    let pres = document.querySelectorAll("pre")
+    pres.forEach(pre=>{
+      var wrapper = document.createElement('div');
+      wrapper.classList.add('code-toolbar');
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+    })
+    VolantisApp.copyCode(".code-toolbar pre")
+  }
+  volantis.requestAnimationFrame(pjax_prismjs_copyCode)
+  volantis.pjax.push(pjax_prismjs_copyCode)
+<% } %>
+</script>

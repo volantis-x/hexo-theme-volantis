@@ -51,7 +51,7 @@ hexo.extend.tag.register('contributors', function(args) {
   function cell(friend) {
     if (friend.url && friend.title) {
       var cell = '<div class="user-card">';
-      cell += '<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer" href="' + friend.url + '">';
+      cell += '<a class="card-link" target="_blank" rel="external noopener noreferrer" href="' + friend.url + '">';
       cell += '<img src="' + (friend.avatar || hexo.theme.config.default.avatar) + '" onerror="javascript:this.removeAttribute(&quot;data-src&quot;);this.src=&quot;' + hexo.theme.config.default.avatar + '&quot;;"/>';
       cell += '<div class="name"><span>' + friend.title + '</span></div>';
       cell += '</a></div>'

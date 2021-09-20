@@ -1,0 +1,62 @@
+<% if (theme.plugins.killOldVersionsOfIE.enable) { %>
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+    '.kill-t{'+
+      'font-size: 2rem;'+
+    '}'+
+    '.kill-c{'+
+      'font-size: 1.2rem;'+
+    '}'+
+		'#l_header,#l_body{'+
+			'display: none;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        `<span class="kill-t"><b><%- __('kill.title')%></b></span><br/>`+
+        `<span class="kill-c"><%- __('kill.ie')%></span><br/>`+
+        `<a href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong><%- __('kill.more')%></strong></a>`+
+    '</div>');
+</script>
+<% } %>
+<% if (theme.plugins.killNoScript.enable) { %>
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+    .kill-t{
+      font-size: 2rem;
+    }
+    .kill-c{
+      font-size: 1.2rem;
+    }
+		#l_header,#l_body{
+			display: none;
+		}
+	</style>
+    <div class="kill-noscript">
+        <span class="kill-t"><b><%- __('kill.title')%></b></span><br/>
+        <span class="kill-c"><%- __('kill.noscript')%></span><br/>
+        <a href="https://www.baidu.com/s?wd=启用JavaScript"><strong><%- __('kill.more')%></strong></a>
+    </div>
+</noscript>
+<% } %>

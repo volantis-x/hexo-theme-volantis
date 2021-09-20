@@ -1,25 +1,11 @@
 $fontfamily = "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, "Lucida Console", sans-serif
 if hexo-config('custom_css.fontfamily.bodyfont')
-  if hexo-config('custom_css.fontfamily.bodyfont.name')
-    @font-face
-      font-family: hexo-config('custom_css.fontfamily.bodyfont.name')
-      src: url(hexo-config('custom_css.fontfamily.bodyfont.url'))
-      font-weight: hexo-config('custom_css.fontfamily.bodyfont.weight')
-      font-style: hexo-config('custom_css.fontfamily.bodyfont.style')
-      font-display: swap
   if hexo-config('custom_css.fontfamily.bodyfont.fontfamily')
     $fontfamily = convert(hexo-config('custom_css.fontfamily.bodyfont.fontfamily')), Menlo, Monaco, monospace, sans-serif
 
 
 $fontfamily-code = Menlo, Monaco, monospace, courier, sans-serif
 if hexo-config('custom_css.fontfamily.codefont')
-  if hexo-config('custom_css.fontfamily.codefont.name')
-    @font-face
-      font-family: hexo-config('custom_css.fontfamily.codefont.name')
-      src: url(hexo-config('custom_css.fontfamily.codefont.url'))
-      font-weight: hexo-config('custom_css.fontfamily.codefont.weight')
-      font-style: hexo-config('custom_css.fontfamily.codefont.style')
-      font-display: swap
   if hexo-config('custom_css.fontfamily.codefont.fontfamily')
     $fontfamily-code = convert(hexo-config('custom_css.fontfamily.codefont.fontfamily')), monospace, courier, sans-serif
 
@@ -27,13 +13,6 @@ if hexo-config('custom_css.fontfamily.codefont')
 
 $fontfamily-logo = $fontfamily
 if hexo-config('custom_css.fontfamily.logofont')
-  if hexo-config('custom_css.fontfamily.logofont.name')
-    @font-face
-      font-family: hexo-config('custom_css.fontfamily.logofont.name')
-      src: url(hexo-config('custom_css.fontfamily.logofont.url'))
-      font-weight: hexo-config('custom_css.fontfamily.logofont.weight')
-      font-style: hexo-config('custom_css.fontfamily.logofont.style')
-      font-display: swap
   if hexo-config('custom_css.fontfamily.logofont.fontfamily')
     $fontfamily-logo = convert(hexo-config('custom_css.fontfamily.logofont.fontfamily')), Helvetica, monospace
 

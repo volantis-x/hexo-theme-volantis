@@ -1,72 +1,48 @@
 document.addEventListener("DOMContentLoaded", function () {
-  VolantisApp.init();
-  VolantisApp.subscribe();
-  volantisFancyBox.loadFancyBox();
+  volantis.requestAnimationFrame(() => {
+    VolantisApp.init();
+    VolantisApp.subscribe();
+    volantisFancyBox.loadFancyBox();
+    highlightKeyWords.startFromURL();
+    locationHash();
 
-  volantis.pjax.push(() => {
-    VolantisApp.pjaxReload();
-    sessionStorage.setItem("domTitle", document.title);
-  }, 'app.js');
-  volantis.pjax.send(() => {
-    volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
-    volantis.dom.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
-    volantis.dom.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-    volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
-  }, 'app.js');
-  volantis.pjax.push(volantisFancyBox.pjaxReload);
-  volantis.pjax.send(() => { // 此处依赖JQ
-    if (typeof $ == "undefined") return
-    if (typeof $.fancybox != "undefined") {
-      $.fancybox.close(); // 关闭弹窗
-    }
-  }, 'fancybox');
-
-  locationHas();
+    volantis.pjax.push(() => {
+      VolantisApp.pjaxReload();
+      sessionStorage.setItem("domTitle", document.title);
+      highlightKeyWords.startFromURL()
+      volantisFancyBox.pjaxReload()
+    }, 'app.js');
+    volantis.pjax.send(() => {
+      volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.dom.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.dom.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+      volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
+    }, 'app.js');
+  });
 });
 
-// /*锚点定位*/
-const locationHas = () => {
-  /*锚点定位*/
+/*锚点定位*/
+const locationHash = () => {
   if (window.location.hash) {
     let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
     let target = document.getElementById(locationID);
     if (target) {
       setTimeout(() => {
-        if (window.location.hash.startsWith('#fn')) {
-          window.scrollTo({
-            top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop - volantis.dom.header.offsetHeight,
-            behavior: "smooth" //平滑滚动
-          });
+        if (window.location.hash.startsWith('#fn')) { // hexo-reference https://github.com/volantis-x/hexo-theme-volantis/issues/647
+          volantis.scroll.to(target,{addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant'})
         } else {
-          window.scrollTo({
-            top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop + 5,
-            behavior: "smooth" //平滑滚动
-          });
+          // 锚点中上半部有大片空白 高度大概是 volantis.dom.header.offsetHeight
+          volantis.scroll.to(target,{addTop: 5, behavior: 'instant'})
         }
       }, 1000)
     }
   }
 }
 
-// 函数防抖 (只执行最后一次点击)
-const Debounce = (fn, t) => {
-  const delay = t || 50;
-  let timer;
-  return function () {
-    const args = arguments;
-    if (timer) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-        timer = null;
-        fn.apply(this, args);
-      },
-      delay);
-  };
-};
 
 const VolantisApp = (() => {
-  const fn = {};
+  const fn = {},
+    COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fas fa-copy"></i><span>COPY</span></button>';
   let scrollCorrection = 80;
 
   fn.init = () => {
@@ -86,6 +62,7 @@ const VolantisApp = (() => {
         fn.setHeaderSearch();
       }
     }
+    volantis.scroll.push(fn.scrollEventCallBack,"scrollEventCallBack")
   }
 
   fn.event = () => {
@@ -110,22 +87,66 @@ const VolantisApp = (() => {
 
   // 校正页面定位（被导航栏挡住的区域）
   fn.scrolltoElement = (elem, correction = scrollCorrection) => {
-    window.scrollTo({
-      top: elem.offsetTop - correction,
-      behavior: 'smooth'
-    });
+    volantis.scroll.to(elem,{
+      top: elem.offsetTop - correction
+    })
   }
-  // 滚动条距离顶部的距离
-  function getScrollTop() {
-    var scrollPos;
-    if (window.pageYOffset) {
-      scrollPos = window.pageYOffset;
-    } else if (document.compatMode && document.compatMode != 'BackCompat') {
-      scrollPos = document.documentElement.scrollTop;
-    } else if (document.body) {
-      scrollPos = document.body.scrollTop;
+
+  // 滚动事件回调们
+  fn.scrollEventCallBack = () => {
+    // 【移动端 PC】//////////////////////////////////////////////////////////////////////
+
+    // 显示/隐藏 Header导航 topBtn 【移动端 PC】
+    const showHeaderPoint = volantis.dom.bodyAnchor.offsetTop - scrollCorrection;
+    const scrollTop = volantis.scroll.getScrollTop(); // 滚动条距离顶部的距离
+
+    // topBtn
+    if (volantis.dom.topBtn) {
+      if (scrollTop > volantis.dom.bodyAnchor.offsetTop) {
+        volantis.dom.topBtn.addClass('show');
+        // 向上滚动高亮 topBtn
+        if (volantis.scroll.del > 0) {
+          volantis.dom.topBtn.removeClass('hl');
+        } else {
+          volantis.dom.topBtn.addClass('hl');
+        }
+      } else {
+        volantis.dom.topBtn.removeClass('show').removeClass('hl');
+      }
     }
-    return scrollPos;
+
+    // Header导航
+    if (volantis.dom.header) {
+      if (scrollTop - showHeaderPoint > -1) {
+        volantis.dom.header.addClass('show');
+      } else {
+        volantis.dom.header.removeClass('show');
+      }
+    }
+
+    // 决定一二级导航栏的切换 【向上滚动切换为一级导航栏；向下滚动切换为二级导航栏】  【移动端 PC】
+    if (pdata.ispage && volantis.dom.wrapper) {
+      if (volantis.scroll.del > 0 && scrollTop > 100) { // 向下滚动
+        volantis.dom.wrapper.addClass('sub'); // <---- 二级导航显示
+      } else if (volantis.scroll.del < 0) { // 向上滚动
+        volantis.dom.wrapper.removeClass('sub'); // <---- 取消二级导航显示 一级导航显示
+      }
+    }
+
+    // 【移动端】//////////////////////////////////////////////////////////////////////
+    if (volantis.isMobile) {
+      // 【移动端】 页面滚动  隐藏 移动端toc目录按钮
+      if (pdata.ispage && volantis.dom.tocTarget && volantis.dom.toc) {
+        volantis.dom.tocTarget.removeClass('active');
+        volantis.dom.toc.removeClass('active');
+      }
+      // 【移动端】 滚动时隐藏子菜单
+      if (volantis.dom.mPhoneList) {
+        volantis.dom.mPhoneList.forEach(function (e) {
+          volantis.dom.$(e).hide();
+        })
+      }
+    }
   }
   // 设置滚动锚点
   fn.setScrollAnchor = () => {
@@ -139,32 +160,6 @@ const VolantisApp = (() => {
       });
     }
 
-    // 滚动监听 显示/隐藏 Header导航 topBtn 【移动端 PC】
-    let pos = document.body.scrollTop;
-    volantis.dom.$(document).scroll(Debounce(() => {
-      const showHeaderPoint = volantis.dom.bodyAnchor.offsetTop - scrollCorrection;
-      const scrollTop = getScrollTop(); // 滚动条距离顶部的距离
-      const del = scrollTop - pos;
-      pos = scrollTop;
-      // topBtn
-      if (scrollTop > volantis.dom.bodyAnchor.offsetTop) {
-        volantis.dom.topBtn.addClass('show');
-        // 向上滚动高亮 topBtn
-        if (del > 0) {
-          volantis.dom.topBtn.removeClass('hl');
-        } else {
-          volantis.dom.topBtn.addClass('hl');
-        }
-      } else {
-        volantis.dom.topBtn.removeClass('show').removeClass('hl');
-      }
-      // Header导航
-      if (scrollTop - showHeaderPoint > -1) {
-        volantis.dom.header.addClass('show');
-      } else {
-        volantis.dom.header.removeClass('show');
-      }
-    }));
   }
 
   // 设置导航栏
@@ -174,20 +169,6 @@ const VolantisApp = (() => {
 
     // 填充二级导航文章标题 【移动端 PC】
     volantis.dom.wrapper.find('.nav-sub .title').html(pdata.postTitle);
-
-    // 决定一二级导航栏的切换 【向上滚动50px切换为一级导航栏；向下滚动50px切换为二级导航栏】  【移动端 PC】
-    let pos = document.body.scrollTop;
-    volantis.dom.$(document).scroll(Debounce(() => {
-      const scrollTop = getScrollTop();
-      const del = scrollTop - pos;
-      if (del >= 50 && scrollTop > 100) { // 向下滚动50px
-        pos = scrollTop;
-        volantis.dom.wrapper.addClass('sub'); // <---- 二级导航显示
-      } else if (del <= -50) { // 向上滚动50px
-        pos = scrollTop;
-        volantis.dom.wrapper.removeClass('sub'); // <---- 取消二级导航显示 一级导航显示
-      }
-    }));
 
     // ====== bind events to every btn =========
     // 评论按钮 【移动端 PC】
@@ -200,7 +181,7 @@ const VolantisApp = (() => {
         fn.scrolltoElement(volantis.dom.commentTarget);
         e.stopImmediatePropagation();
       });
-    } else volantis.dom.comment.remove(); // 关闭了评论，则隐藏评论按钮
+    } else volantis.dom.comment.style.display='none'; // 关闭了评论，则隐藏评论按钮
 
     // 移动端toc目录按钮 【移动端】
     if (volantis.isMobile) {
@@ -216,16 +197,12 @@ const VolantisApp = (() => {
         // 点击空白 隐藏
         volantis.dom.$(document).click(function (e) {
           e.stopPropagation();
-          volantis.dom.tocTarget.removeClass('active');
+          if (volantis.dom.tocTarget) {
+            volantis.dom.tocTarget.removeClass('active');
+          }
           volantis.dom.toc.removeClass('active');
         });
-        // 页面滚动  隐藏
-        volantis.dom.$(document).scroll(Debounce(() => {
-            volantis.dom.tocTarget.removeClass('active');
-            volantis.dom.toc.removeClass('active');
-          },
-          100));
-      } else volantis.dom.toc.remove(); // 隐藏toc目录按钮
+      } else volantis.dom.toc.style.display='none'; // 隐藏toc目录按钮
     }
   }
 
@@ -263,11 +240,10 @@ const VolantisApp = (() => {
     idname = idname.replace(/(\[|\]|~|#|@)/g, '\\$1');
     if (idname && volantis.dom.headerMenu) {
       volantis.dom.headerMenu.forEach(element => {
-        if (!/^\d/.test(idname)) { // id 不能数字开头
-          let id = element.querySelector("#" + idname)
-          if (id) {
-            volantis.dom.$(id).addClass('active')
-          }
+        // idname 不能为数字开头, 加一个 action- 前缀
+        let id = element.querySelector("[active-action=action-" + idname + "]")
+        if (id) {
+          volantis.dom.$(id).addClass('active')
         }
       });
     }
@@ -326,12 +302,6 @@ const VolantisApp = (() => {
         volantis.dom.$(e).hide();
       })
     });
-    // 【移动端】 滚动时隐藏子菜单
-    volantis.dom.$(document).scroll(Debounce(() => {
-      volantis.dom.mPhoneList.forEach(function (e) {
-        volantis.dom.$(e).hide();
-      })
-    }));
   }
 
   // 设置导航栏搜索框 【移动端】
@@ -343,16 +313,16 @@ const VolantisApp = (() => {
       e.stopPropagation();
       volantis.dom.header.toggleClass('z_search-open'); // 激活移动端搜索框
       volantis.dom.switcher.toggleClass('active'); // 移动端搜索按钮
-    });
+    }, false); // false : pjax 不移除监听
     // 点击空白取消激活
     volantis.dom.$(document).click(function (e) {
       volantis.dom.header.removeClass('z_search-open');
       volantis.dom.switcher.removeClass('active');
-    });
+    }, false); // false : pjax 不移除监听
     // 移动端点击搜索框 停止事件传播
     volantis.dom.search.click(function (e) {
       e.stopPropagation();
-    });
+    }, false); // false : pjax 不移除监听
   }
 
   // 设置 tabs 标签  【移动端 PC】
@@ -375,24 +345,105 @@ const VolantisApp = (() => {
     })
   }
 
-  // 页脚跳转
+  // hexo-reference 页脚跳转 https://github.com/volantis-x/hexo-theme-volantis/issues/647
   fn.footnotes = () => {
-    let ref = document.querySelectorAll('.footnote-backref, .footnote-ref > a');
+    let ref = document.querySelectorAll('#l_main .footnote-backref, #l_main .footnote-ref > a');
     ref.forEach(function (e, i) {
-      ref[i].click = () => {}; // 强制清空原 click 事件
+      ref[i].click = () => { }; // 强制清空原 click 事件
       volantis.dom.$(e).on('click', (e) => {
         e.stopPropagation();
         e.preventDefault();
         let targetID = decodeURI(e.target.hash.split('#')[1]).replace(/\ /g, '-');
         let target = document.getElementById(targetID);
         if (target) {
-          window.scrollTo({
-            top: target.offsetTop + volantis.dom.bodyAnchor.offsetTop - volantis.dom.header.offsetHeight,
-            behavior: "smooth" //平滑滚动
-          });
+          volantis.scroll.to(target,{addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant'})
         }
       });
     })
+  }
+
+  // 代码块复制
+  fn.copyCode = (Selector) => {
+    document.querySelectorAll(Selector).forEach(node => {
+      const test = node.insertAdjacentHTML("beforebegin", COPYHTML);
+      const _BtnCopy = node.previousSibling;
+      _BtnCopy.onclick = e => {
+        e.stopPropagation();
+        const _icon = _BtnCopy.querySelector('i');
+        const _span = _BtnCopy.querySelector('span');
+
+        node.focus();
+        const range = new Range();
+        range.selectNodeContents(node);
+        document.getSelection().removeAllRanges();
+        document.getSelection().addRange(range);
+
+        const str = document.getSelection().toString();
+        fn.writeClipText(str).then(() => {
+          if (volantis.messageCopyright && volantis.messageCopyright.enable) {
+            volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
+              icon: volantis.messageCopyright.icon
+            });
+          }
+          _BtnCopy.classList.add('copied');
+          _icon.classList.remove('fa-copy');
+          _icon.classList.add('fa-check-circle');
+          _span.innerText = "COPIED";
+          setTimeout(() => {
+            _icon.classList.remove('fa-check-circle');
+            _icon.classList.add('fa-copy');
+            _span.innerText = "COPY";
+          }, 2000)
+        }).catch(e => {
+          volantis.message('系统提示', e, {
+            icon: 'fa fa-exclamation-circle red'
+          });
+          _BtnCopy.classList.add('copied-failed');
+          _icon.classList.remove('fa-copy');
+          _icon.classList.add('fa-exclamation-circle');
+          _span.innerText = "COPY FAILED";
+          setTimeout(() => {
+            _icon.classList.remove('fa-exclamation-circle');
+            _icon.classList.add('fa-copy');
+            _span.innerText = "COPY";
+          })
+        })
+      }
+    });
+  }
+
+  // 工具类：复制字符串到剪切板
+  fn.writeClipText = (str) => {
+    try {
+      return navigator.clipboard
+        .writeText(str)
+        .then(() => {
+          return Promise.resolve()
+        })
+        .catch(err => {
+          return Promise.reject(err || '复制文本失败!')
+        })
+    } catch (e) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      try {
+        let result = document.execCommand('copy')
+        document.body.removeChild(input);
+        if (!result || result === 'unsuccessful') {
+          return Promise.reject('复制文本失败!')
+        } else {
+          return Promise.resolve()
+        }
+      } catch (e) {
+        document.body.removeChild(input);
+        return Promise.reject(
+          '当前浏览器不支持复制功能，请检查更新或更换其他浏览器操作!'
+        )
+      }
+    }
   }
 
   return {
@@ -409,6 +460,7 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
+      fn.copyCode();
     },
     pjaxReload: () => {
       fn.event();
@@ -419,20 +471,16 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
+      fn.copyCode();
 
       // 移除小尾巴的移除
       document.querySelector("#l_header .nav-main").querySelectorAll('.list-v:not(.menu-phone)').forEach(function (e) {
         e.removeAttribute("style")
       })
       document.querySelector("#l_header .menu-phone.list-v").removeAttribute("style")
-      // 处理点击事件 setHeaderSearch 没有重载，需要重新绑定单个事件  【移动端】
-      if (volantis.dom.switcher) {
-        volantis.dom.$(document).click(function (e) {
-          volantis.dom.header.removeClass('z_search-open');
-          volantis.dom.switcher.removeClass('active');
-        });
-      }
-    }
+    },
+    writeClipText: fn.writeClipText,
+    copyCode: fn.copyCode,
   }
 })()
 Object.freeze(VolantisApp);
@@ -443,7 +491,7 @@ const volantisFancyBox = (() => {
   fn.initFB = () => {
     const group = new Set();
     group.add('default'); // 默认类
-    group.add('Twikoo');  // TwiKoo 类
+    group.add('Twikoo'); // TwiKoo 类
 
     if (!document.querySelector(".md .gallery img, .fancybox")) return;
     document.querySelectorAll(".md .gallery").forEach(function (ele) {
@@ -486,3 +534,203 @@ const volantisFancyBox = (() => {
   }
 })()
 Object.freeze(volantisFancyBox);
+
+// highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
+
+// Question: 锚点稳定性未知
+
+// ToDo: 查找模式 
+// 0. (/////////要知道浏览器自带全页面查找功能 CTRL + F)
+// 1. 右键开启查找模式 / 导航栏菜单开启?? / CTRL + F ???
+// 2. 查找模式面板 (可拖动? or 固定?)
+// 3. keyword mark id 从 0 开始编号 查找下一处 highlightKeyWords.scrollToNextHighlightKeywordMark() 查找上一处 scrollToPrevHighlightKeywordMark() 循环查找(取模%)
+// 4. 可输入修改 查找关键词 keywords(type:list) 
+// 5. 区分大小写 caseSensitive (/ 全字匹配?? / 正则匹配??)
+// 6. 在选定区域中查找 querySelector ??
+// 7. 关闭查找模式
+// 8. 搜索跳转 (URL 入口) 自动开启查找模式 调用 scrollToNextHighlightKeywordMark()
+
+const highlightKeyWords = (() => {
+  let fn = {}
+  fn.markNum = 0
+  fn.markNextId = -1
+  fn.startFromURL = () => {
+    const params = decodeURI(new URL(location.href).searchParams.get('keyword'));
+    const keywords = params ? params.split(' ') : [];
+    const post = document.querySelector('#l_main');
+    if (keywords.length == 1 && keywords[0] == "null") {
+      return;
+    }
+    fn.start(keywords, post); // 渲染耗时较长
+    fn.scrollToFirstHighlightKeywordMark()
+  }
+  fn.scrollToFirstHighlightKeywordMark = () => {
+    let target = fn.scrollToNextHighlightKeywordMark("0");
+    if (!target) {
+      volantis.requestAnimationFrame(fn.scrollToFirstHighlightKeywordMark)
+    }
+  }
+  fn.scrollToNextHighlightKeywordMark = (id) => {
+    // Next Id
+    let input = id || (fn.markNextId + 1) % fn.markNum;
+    fn.markNextId = parseInt(input)
+    let target = document.getElementById("keyword-mark-" + fn.markNextId);
+    if (!target) {
+      fn.markNextId = (fn.markNextId + 1) % fn.markNum;
+      target = document.getElementById("keyword-mark-" + fn.markNextId);
+    }
+    if (target) {
+      volantis.scroll.to(target,{addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
+    }
+    // Current target
+    return target
+  }
+  fn.scrollToPrevHighlightKeywordMark = (id) => {
+    // Prev Id
+    let input = id || (fn.markNextId - 1 + fn.markNum) % fn.markNum;
+    fn.markNextId = parseInt(input)
+    let target = document.getElementById("keyword-mark-" + fn.markNextId);
+    if (!target) {
+      fn.markNextId = (fn.markNextId - 1 + fn.markNum) % fn.markNum;
+      target = document.getElementById("keyword-mark-" + fn.markNextId);
+    }
+    if (target) {
+      volantis.scroll.to(target, {addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
+    }
+    // Current target
+    return target
+  }
+  fn.start = (keywords, querySelector) => {
+    fn.markNum = 0
+    if (!keywords.length || !querySelector || (keywords.length == 1 && keywords[0] == "null")) return;
+    console.log(keywords);
+    const walk = document.createTreeWalker(querySelector, NodeFilter.SHOW_TEXT, null);
+    const allNodes = [];
+    while (walk.nextNode()) {
+      if (!walk.currentNode.parentNode.matches('button, select, textarea')) allNodes.push(walk.currentNode);
+    }
+    allNodes.forEach(node => {
+      const [indexOfNode] = fn.getIndexByWord(keywords, node.nodeValue);
+      if (!indexOfNode.length) return;
+      const slice = fn.mergeIntoSlice(0, node.nodeValue.length, indexOfNode);
+      fn.highlightText(node, slice, 'keyword');
+      fn.highlightStyle()
+    });
+  }
+  fn.getIndexByWord = (words, text, caseSensitive = false) => {
+    const index = [];
+    const included = new Set();
+    words.forEach(word => {
+      const div = document.createElement('div');
+      div.innerText = word;
+      word = div.innerHTML;
+
+      const wordLen = word.length;
+      if (wordLen === 0) return;
+      let startPosition = 0;
+      let position = -1;
+      if (!caseSensitive) {
+        text = text.toLowerCase();
+        word = word.toLowerCase();
+      }
+      while ((position = text.indexOf(word, startPosition)) > -1) {
+        index.push({ position, word });
+        included.add(word);
+        startPosition = position + wordLen;
+      }
+    });
+    index.sort((left, right) => {
+      if (left.position !== right.position) {
+        return left.position - right.position;
+      }
+      return right.word.length - left.word.length;
+    });
+    return [index, included];
+  };
+  fn.mergeIntoSlice = (start, end, index) => {
+    let item = index[0];
+    let { position, word } = item;
+    const hits = [];
+    const count = new Set();
+    while (position + word.length <= end && index.length !== 0) {
+      count.add(word);
+      hits.push({
+        position,
+        length: word.length
+      });
+      const wordEnd = position + word.length;
+
+      index.shift();
+      while (index.length !== 0) {
+        item = index[0];
+        position = item.position;
+        word = item.word;
+        if (wordEnd > position) {
+          index.shift();
+        } else {
+          break;
+        }
+      }
+    }
+    return {
+      hits,
+      start,
+      end,
+      count: count.size
+    };
+  };
+  fn.highlightText = (node, slice, className) => {
+    const val = node.nodeValue;
+    let index = slice.start;
+    const children = [];
+    for (const { position, length } of slice.hits) {
+      const text = document.createTextNode(val.substring(index, position));
+      index = position + length;
+      let mark = document.createElement('mark');
+      mark.className = className;
+      mark = fn.highlightStyle(mark)
+      mark.appendChild(document.createTextNode(val.substr(position, length)));
+      children.push(text, mark);
+    }
+    node.nodeValue = val.substring(index, slice.end);
+    children.forEach(element => {
+      node.parentNode.insertBefore(element, node);
+    });
+  }
+  fn.highlightStyle = (mark) => {
+    if (!mark) return;
+    mark.id = "keyword-mark-" + fn.markNum;
+    fn.markNum++;
+    mark.style.background = "transparent";
+    mark.style["border-bottom"] = "1px dashed #ff2a2a";
+    mark.style["color"] = "#ff2a2a";
+    mark.style["font-weight"] = "bold";
+    return mark
+  }
+  fn.cleanHighlightStyle = () => {
+    document.querySelectorAll(".keyword").forEach(mark => {
+      mark.style.background = "transparent";
+      mark.style["border-bottom"] = null;
+      mark.style["color"] = null;
+      mark.style["font-weight"] = null;
+    })
+  }
+  return {
+    start: (keywords, querySelector) => {
+      fn.start(keywords, querySelector)
+    },
+    startFromURL: () => {
+      fn.startFromURL()
+    },
+    scrollToNextHighlightKeywordMark: (id) => {
+      fn.scrollToNextHighlightKeywordMark(id)
+    },
+    scrollToPrevHighlightKeywordMark: (id) => {
+      fn.scrollToPrevHighlightKeywordMark(id)
+    },
+    cleanHighlightStyle: () => {
+      fn.cleanHighlightStyle()
+    },
+  }
+})()
+Object.freeze(highlightKeyWords);

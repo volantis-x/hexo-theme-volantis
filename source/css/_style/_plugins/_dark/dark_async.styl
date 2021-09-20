@@ -1,0 +1,50 @@
+// 异步加载的暗黑模式 暗黑模式 CSS 变量
+
+async_dark()
+  // tag plugin from stellar 
+  --block-hover: mix($c-block-dark, $c-text-dark, 95)
+  --text-p1: $c-text-dark
+  --text-p3: mix($c-text-light, $c-site-bg-light, 60)
+  --card: $c-card-light
+
+  // minivaline v6 or ohhho Dark Color
+  if hexo-config('comments.service') == 'minivaline' || hexo-config('comments.service') == 'ohhho'
+    --ohhho-color-p: var(--color-p) !important
+    --ohhho-color-text: var(--color-text) !important
+    --ohhho-color-card: var(--color-card) !important
+    --ohhho-color-block: var(--color-block) !important
+    --ohhho-expand-before-background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9)) !important
+    --ohhho-expand-after-background: rgba(0,0,0,0.9) !important
+
+  // waline Dark Color https://github.com/volantis-x/hexo-theme-volantis/issues/633
+  if hexo-config('comments.service')=='waline'
+    --waline-white: #000 !important
+    --waline-light-grey: #666 !important
+    --waline-dark-grey: #999 !important
+    --waline-text-color: #888 !important
+    --waline-bgcolor: #1e1e1e !important
+    --waline-bgcolor-light: #272727 !important
+    --waline-border-color: #333 !important
+    --waline-disable-bgcolor: #444 !important
+    --waline-disable-color: #272727 !important
+    --waline-bq-color: #272727 !important
+    --waline-info-bgcolor: #272727 !important
+    --waline-info-color: #666 !important
+
+
+  // Custom Files
+  for $injects_darkVar in hexo-config('injects.darkVar')
+    @import $injects_darkVar;
+  // eg:
+  // body
+  //   --color-site-body: blue !important
+
+@media (prefers-color-scheme: dark)
+  :root
+    --color-mode: 'dark'
+  :root:not([color-scheme])
+    async_dark()
+    @import 'dark_plugins'
+[color-scheme='dark']
+  async_dark()
+  @import 'dark_plugins'

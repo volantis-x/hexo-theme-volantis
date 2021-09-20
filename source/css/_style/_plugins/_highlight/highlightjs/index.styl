@@ -1,0 +1,102 @@
+@import 'clipboard'
+@import 'language'
+@import 'color'
+
+pre
+  position: relative
+
+.hljs
+  margin: 0 - $gap !important
+  padding: $gap !important
+  -webkit-font-smoothing: auto
+  -moz-osx-font-smoothing: auto
+  scrollbar()
+
+
+.highlight
+  position: relative
+  width: 100%
+  margin: $gap-p 0
+  display: block
+  background: var(--color-block)
+  font-size: $fontsize-code
+  font-family: $fontfamily-code
+  border-radius: $border-codeblock
+  // border: 1px solid transparent
+  line-height: 1.5
+  -webkit-font-smoothing: auto
+  -moz-osx-font-smoothing: auto
+  // overflow: hidden // 实验中发现 overflow 这个属性设置为 hidden/auto 会导致手机端长文本代码块截断仅显示 70 行, PC端无影响.
+  trans()
+  if hexo-config('custom_css.body.highlight.grayscale') == true
+    filter: grayscale(100%)
+  &:hover
+    background: var(--color-codeblock)
+    if hexo-config('custom_css.body.highlight.grayscale') == true
+      filter: grayscale(0%)
+    figcaption
+      trans()
+      background: darken($color-codeblock, 5%)
+    .gutter
+      background: darken($color-codeblock, 5)
+  figcaption
+    font-size: 13px
+    position: sticky
+    left: 0
+    padding: $gap * 0.25 $gap * 0.5 $gap * 0.25 $gap * 0.5
+    background: darken($color-block, 5%)
+    border-top-left-radius: "calc(%s - 1px)" % $border-codeblock
+    border-top-right-radius: "calc(%s - 1px)" % $border-codeblock
+
+  >table
+    overflow: auto
+    display: block
+    scrollbar-codeblock()
+    td,th
+      padding: 0
+      border: none
+      line-height: 1.5
+    margin: 0
+    background-color: transparent
+    border: none
+    tr
+      background-color: transparent
+      &:hover
+        background-color: transparent
+    pre
+      overflow-y: hidden
+
+    .gutter
+      disable-user-select()
+      padding: 0 12px
+      text-align: right
+      border-width: 0
+      margin-left: 0
+      position: sticky
+      left: 0
+      z-index: 1
+      background: darken($color-block, 5)
+      pre
+        color: var(--color-meta)
+
+
+    pre
+      background: transparent
+      margin: 0
+      padding: 0
+      border: none
+      .code:before
+        display: none
+
+    .code
+      padding: $gap * 1.25 $gap
+      vertical-align: top
+      background-color: transparent
+      &:before
+        content: ""
+        position: absolute
+        top: 0
+        right: 0
+        color: var(--color-meta)
+        font-size: 13px
+        padding: 4px 8px

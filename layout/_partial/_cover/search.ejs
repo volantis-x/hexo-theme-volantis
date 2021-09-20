@@ -1,0 +1,41 @@
+<div class='cover-body'>
+  <div class='top'>
+    <% if (theme.cover.logo) { %>
+      <img no-lazy class='logo' src='<%- url_for(theme.cover.logo) %>'/>
+    <% } %>
+    <% if (theme.cover.title) { %>
+      <p class="title"><%- theme.cover.title ? theme.cover.title : config.title %></p>
+    <% } %>
+    <% if (theme.cover.subtitle) { %>
+      <p class="subtitle"><%- theme.cover.subtitle%></p>
+    <% } %>
+  </div>
+  <div class='bottom'>
+    <% if (theme.search.enable === true) { %>
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="<%- theme.cover && theme.cover.search %>" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    <% } %>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        <% if (theme.cover.features) { %>
+          <% (theme.cover.features || []).forEach(function(value){ %>
+            <a href="<%= url_for(value.url) %>"
+              <% if (value.rel) { %>
+                rel="<%- value.rel %>"
+              <% } %>
+              <% if (value.target) { %>
+                target="<%- value.target %>"
+              <% } %>
+              active-action="action-<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>">
+              <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><p><%- value.name %></p>
+            </a>
+          <%})%>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>

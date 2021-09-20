@@ -1,0 +1,88 @@
+<script>
+  volantis.APlayerController = {}; // 音乐播放控制 - All
+  volantis.APlayerController.id = '<%= theme.plugins.aplayer.id %>';  // 设定全局音乐播放ID
+  volantis.APlayerController.volume = '<%= theme.plugins.aplayer.volume %>';
+  volantis.css("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css");
+  (async () => {
+    // APlayer 需要在  MetingJS 之前加载
+    await volantis.js("<%- theme.plugins.aplayer.js.aplayer %>")
+    await volantis.js("<%- theme.plugins.aplayer.js.meting %>")
+  <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
+    // 右键 music 需要在 APlayer  MetingJS 之后加载
+    await volantis.js('<%- theme.cdn.addJS("aplayer") %>')
+    volantis.APlayerController.music = true;
+  <% } %>
+  })();
+
+  function SetAPlayerPlugin(){
+    let Metings = document.querySelectorAll('meting-js');
+    if (Metings.length === 0) {
+      volantis.APlayerController.status = undefined;
+      <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
+      if(typeof MainAPlayer === 'undefined'){
+        MainAPlayer = {};
+        MainAPlayer.Aplayer = {};
+      }
+      <% } %>
+      return;
+    };
+    if (Metings[0].aplayer && Metings[0].aplayer.on) {
+      // improve the accessibility https://web.dev/button-name/
+      document.querySelectorAll(".aplayer-icon-menu").forEach(e=>{
+        e.setAttribute("aria-label","Aplayer Menu")
+      })
+      // message see: /layout/_plugins/message/script.ejs
+      <% if (theme.plugins.message.enable && theme.plugins.message.aplayer.enable) { %>
+        try {
+          setTimeout(() => {
+            Metings.forEach((item, index) => {
+              const aplayerItem = item.aplayer; if(!aplayerItem) return;
+              const rightMenuAplayer = item.meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
+              if(rightMenuAplayer) MainAPlayer.checkAPlayer();
+              if(aplayerItem.events.events.play.every(item => {return item.name !== 'messagePlay'})) {
+                aplayerItem.on('play', function messagePlay() {
+                  let index = aplayerItem.list.index;
+                  let title = aplayerItem.list.audios[index].title;
+                  let artist = aplayerItem.list.audios[index].artist;
+                  setTimeout(() => {
+                    volantis.message('音乐通知', title + ' - ' + artist, {
+                      icon: '<%- theme.plugins.message.aplayer.play %>',
+                      transitionIn: 'flipInX',
+                      transitionOut: 'flipOutX'
+                    });
+                  }, 100)
+                  if(rightMenuAplayer && volantis.APlayerController) volantis.APlayerController.status = 'play';
+                });
+              }
+              if(aplayerItem.events.events.pause.every(item => {return item.name !== 'messagePause'})) {
+                aplayerItem.on('pause', function messagePause() {
+                  let index = aplayerItem.list.index;
+                  let title = aplayerItem.list.audios[index].title;
+                  let artist = aplayerItem.list.audios[index].artist;
+                  setTimeout(() => {
+                    // 歌曲播放结束也会触发 pause 事件，为了避免错误提示，等待一会儿
+                    if(aplayerItem.paused) {
+                      volantis.message('音乐通知', title + ' - ' + artist, {
+                        icon: '<%- theme.plugins.message.aplayer.pause %>',
+                        transitionIn: 'flipInX',
+                        transitionOut: 'flipOutX'
+                      });
+                    }
+                  }, 100)
+                  if(rightMenuAplayer && volantis.APlayerController) volantis.APlayerController.status = 'pause';
+                });
+              }
+            });
+          }, 500)
+        } catch (error) { console.error(error); }
+      <% } %>
+    }else{
+      volantis.requestAnimationFrame(SetAPlayerPlugin)
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", ()=>{
+    SetAPlayerPlugin();
+  });
+  volantis.pjax.push(SetAPlayerPlugin);
+</script>

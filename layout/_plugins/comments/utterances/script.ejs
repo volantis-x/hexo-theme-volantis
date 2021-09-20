@@ -1,0 +1,43 @@
+<script>
+  volantis.layoutHelper("comments",`<div id="utterances"></div>`)
+  volantis.utterances={}
+  volantis.utterances.ThemeLight='<%- theme.comments.utterances.theme.light %>';
+  volantis.utterances.ThemeDark='<%- theme.comments.utterances.theme.dark %>';
+  volantis.utterances.Theme=volantis.utterances.ThemeLight;
+  function pjax_utterances(){
+    if(!document.getElementById("utterances"))return;
+    <% if (theme.plugins.darkmode.enable) { %>
+      if(volantis.dark.mode=="dark"){
+        volantis.utterances.Theme=volantis.utterances.ThemeDark;
+      }else{
+        volantis.utterances.Theme=volantis.utterances.ThemeLight;
+      }
+    <% } %>
+    setTimeout(function() {
+      var checkUtterances = setInterval(function () {
+        var HEAD = document.getElementById("utterances");
+        if (!HEAD) return
+        clearInterval(checkUtterances)
+        try {
+          document.getElementById("utterances").innerHTML="";
+        } catch (error) {}
+        var script = document.createElement('script');
+        script.setAttribute('src','https://utteranc.es/client.js');
+        script.setAttribute('repo','<%- theme.comments.utterances.repo %>');
+        let issuenumber = '<%- theme.comments.utterances['issue-number'] %>';
+        if (issuenumber) {
+          script.setAttribute('issue-number', issuenumber);
+        } else {
+          script.setAttribute('issue-term', '<%- theme.comments.utterances['issue-term'] %>');
+        }
+        script.setAttribute('theme', volantis.utterances.Theme );
+        script.setAttribute('label','<%- theme.comments.utterances.label %>');
+        script.setAttribute('crossorigin', "anonymous");
+        HEAD.appendChild(script);
+      }, 200)
+    });
+  }
+  pjax_utterances();
+  volantis.pjax.push(pjax_utterances);
+  volantis.dark.push(pjax_utterances);
+</script>

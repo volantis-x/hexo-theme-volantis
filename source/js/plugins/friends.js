@@ -51,9 +51,9 @@ const FriendsJS = {
       var cellALL = "";
       arr.forEach((item, i) => {
         var user = '<div class="user-card">';
-        user += '<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer"';
+        user += '<a class="card-link" target="_blank" rel="external noopener noreferrer"';
         user += ' href="' + item.url + '">';
-        user += '<img src="' + (item.avatar || cfg.avatar) + '" onerror="javascript:this.src=\'' + cfg.avatar + '\';">';
+        user += '<img alt="' + item.title + '" src="' + (item.avatar || cfg.avatar) + '" onerror="javascript:this.src=\'' + cfg.avatar + '\';">';
         user += '<div class="name"><span>' + item.title + '</span></div>';
         user += '</a>';
         user += '</div>';
@@ -64,7 +64,7 @@ const FriendsJS = {
       try {
         el.querySelector('.loading-wrap svg').remove();
         el.querySelector('.loading-wrap p').innerText('加载失败，请稍后重试。');
-      } catch (e) {}
+      } catch (e) { }
     });
   },
   start: () => {

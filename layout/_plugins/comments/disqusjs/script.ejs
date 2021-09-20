@@ -1,0 +1,35 @@
+<script>
+  volantis.layoutHelper("comments",`<div id="disqus_thread"></div>`)
+  // from: https://github.com/ChrAlpha/hexo-theme-cards/blob/master/layout/_plugins/comments/disqusjs/source.ejs
+  function loadDisqusJS() {
+    volantis.js('https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js', pjax_DisqusJS)
+    volantis.css('https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css')
+  }
+  let path = pdata.commentPath;
+  if (path.length == 0) {
+    let defaultPath = '<%= theme.comments.disqusjs.path %>';
+    path = defaultPath || decodeURI(window.location.pathname);
+  }
+  pjax_DisqusJS = () => {
+  	new DisqusJS(Object.assign(<%- JSON.stringify(theme.comments.disqusjs) %>, {
+  		siteName: '<%= config.title %>',
+  		url: '<%= page.permalink %>',
+  		identifier: path,
+  	}));
+  };
+  var runningOnBrowser = typeof window !== "undefined";
+  var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+  var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+  if (!isBot && supportsIntersectionObserver) {
+  	var comment_observer = new IntersectionObserver(function(entries) {
+  		if (entries[0].isIntersecting) {
+  			loadDisqusJS();
+  			comment_observer.disconnect();
+  		}
+  	}, { threshold: [0] });
+  	comment_observer.observe(document.getElementById('comments'));
+  } else {
+  	loadDisqusJS();
+  }
+  volantis.pjax.push(pjax_DisqusJS);
+</script>

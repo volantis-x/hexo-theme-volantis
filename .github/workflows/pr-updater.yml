@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: update all prs
-        uses: maxkomarychev/pr-updater-action@v1.0.0
+        uses: maxkomarychev/pr-updater-action@v1.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,7 @@
+<%_(page.plugins||[]).forEach(function(item){  _%>
+  <%_if (typeof item == "string") {   _%>
+    <%- partial( item + "/index") %>
+  <%_}else if(typeof item == "object"){  _%>
+    <%- partial( Object.keys(item)[0] + "/index", { pagePlugin:item }) %>
+  <%_} _%>
+<%_ }) _%>

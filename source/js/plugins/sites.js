@@ -51,10 +51,10 @@ const SitesJS = {
       var cellALL = "";
       arr.forEach((item, i) => {
         var cell = '<div class="site-card">';
-        cell += '<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer" href="' + item.url + '">';
-        cell += '<img src="' + (item.screenshot || ('https://image.thum.io/get/width/1024/crop/768/' + item.url)) + '" onerror="javascript:this.src=\'' + cfg.screenshot + '\';"/>';
+        cell += '<a class="card-link" target="_blank" rel="external noopener noreferrer" href="' + item.url + '">';
+        cell += '<img alt="' + item.title + '" src="' + (item.screenshot || ('https://image.thum.io/get/width/1024/crop/768/' + item.url)) + '" onerror="javascript:this.src=\'' + cfg.screenshot + '\';"/>';
         cell += '<div class="info">';
-        cell += '<img src="' + (item.avatar || cfg.avatar) + '" onerror="javascript:this.src=\'' + cfg.avatar + '\';"/>';
+        cell += '<img alt="' + item.title + '" src="' + (item.avatar || cfg.avatar) + '" onerror="javascript:this.src=\'' + cfg.avatar + '\';"/>';
         cell += '<span class="title">' + item.title + '</span>';
         cell += '<span class="desc">' + (item.description || item.url) + '</span>';
         cell += '</div>';
@@ -67,7 +67,7 @@ const SitesJS = {
       try {
         el.querySelector('.loading-wrap svg').remove();
         el.querySelector('.loading-wrap p').innerText('加载失败，请稍后重试。');
-      } catch (e) {}
+      } catch (e) { }
     });
   },
   start: (cfg) => {

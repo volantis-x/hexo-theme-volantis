@@ -1,0 +1,164 @@
+<% if (theme.rightmenu.enable == true && theme.rightmenu.layout.length > 0) { %>
+  <% let faIcon = theme.rightmenu.faicon %>
+  <% function loadmenu(obj) { %>
+    <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' <%= obj.url ? 'href='+ url_for(obj.url)+'' : ''%>
+        <% if (obj.rel) { %>
+          rel="<%- obj.rel %>"
+        <% } %>
+        <% if (obj.target) { %>
+          target="<%- obj.target %>"
+        <% } %>
+        <% if (obj.onclick) { %>
+          onclick="<%- obj.onclick %>"
+        <% } %>
+        <% if (obj.id) { %>
+          id="<%- obj.id %>"
+        <% } else if (obj.url) { %>
+          id="<%= url_for(obj.url).replace(/\/|%|\./g, "")?url_for(obj.url).replace(/\/|%|\./g, ""):"home" %>"
+        <% } %>
+      >
+        <% if (obj.icon) { %><i class='<%= obj.icon %> fa-fw'></i><% } %> <%- obj.name %>
+      </a>
+    </li>
+  <% } %>
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='navigation menuNavigation-Content'>
+        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='<%= faIcon %> fa-arrow-left fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='<%= faIcon %> fa-arrow-right fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='<%= faIcon %> fa-redo fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' href='/'><i class='<%= faIcon %> fa-home fa-fw'></i></a>
+      </li>
+      <li class='option menuOption-Content'>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyText'>
+          <% let copy_text = __('rightmenu.copy_text') %>
+          <i class='<%= faIcon %> fa-copy fa-fw'></i> <%- trim(copy_text) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyPaste'>
+          <% let copy_paste = __('rightmenu.copy_paste') %>
+          <i class='<%= faIcon %> fa-paste fa-fw mR12'></i> <%- trim(copy_paste) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySelect'>
+          <% let copy_select = __('rightmenu.copy_select') %>
+          <i class='<%= faIcon %> fa-object-ungroup fa-fw mR12'></i> <%- trim(copy_select) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyCut'>
+          <% let copy_cut = __('rightmenu.copy_cut') %>
+          <i class='<%= faIcon %> fa-cut fa-fw mR12'></i> <%- trim(copy_cut) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='openTab'>
+          <% let open_in_new_tab = __('rightmenu.open_in_new_tab') %>
+          <i class='<%= faIcon %> fa-external-link-square-alt fa-fw mR12'></i> <%- trim(open_in_new_tab) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySrc'>
+          <% let copy_image_src = __('rightmenu.copy_image_src') %>
+          <i class='<%= faIcon %> fa-image fa-fw mR12'></i> <%- trim(copy_image_src) %>
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyImg'>
+          <% let copy_image_file = __('rightmenu.copy_image_file') %>
+          <i class='<%= faIcon %> fa-images fa-fw mR12'></i> <%- trim(copy_image_file) %>
+        </span>
+      </li>
+      <% theme.rightmenu.layout.forEach(function(item){ %>
+        <% if (item == 'hr') { %>
+          <hr class="menuLoad-Content">
+        <% } else if (item == 'darkmode') { %>
+          <li class='option menuOption-Content'>
+            <span class='vlts-menu opt fix-cursor-default toggle-mode-btn' id='menuDarkBtn'>
+              <i class='<%= theme.rightmenu.darkmode.icon %> fa-fw '></i> <%- trim(theme.rightmenu.darkmode.name) %>
+            </span>
+          </li>
+        <% } else if (item == 'print') { %>
+          <li class='option menuOption-Content'>
+            <span class='vlts-menu opt fix-cursor-default' id='printHtml'>
+              <i class='<%= theme.rightmenu.print.icon %> fa-fw '></i> <%- trim(theme.rightmenu.print.name) %>
+            </span>
+          </li>  
+        <% } else if (item == 'reading') { %>
+          <li class='option menuOption-Content'>
+            <span class='vlts-menu opt fix-cursor-default' id='readingModel'>
+              <i class='<%= theme.rightmenu.reading.icon %> fa-fw '></i> <%- trim(theme.rightmenu.reading.name) %>
+            </span>
+          </li>  
+        <% } else if (item == 'music' && theme.plugins.aplayer.enable == true) { %>
+          <div id="menuMusic">
+            <li class='music name menuOption-Content'>
+              <p class='nav music-title fix-cursor-default'></p>
+            </li>
+            <li class='music ctrl'>
+              <a class='nav icon-only backward fix-cursor-default' onclick='volantis.rightMenu.aplayerBackward()'><i class='<%= faIcon %> fa-step-backward fa-fw '></i></a>
+              <a class='nav icon-only toggle fix-cursor-default' onclick='volantis.rightMenu.aplayerToggle()'><i class='<%= faIcon %> fa-play fa-fw '></i></a>
+              <a class='nav icon-only forward fix-cursor-default' onclick='volantis.rightMenu.aplayerForward()'><i class='<%= faIcon %> fa-step-forward fa-fw '></i></a>
+            </li>
+            <li class='music volume'>
+              <div class='nav volume'>
+                <div class="aplayer-volume-bar-wrap">
+                  <div class="aplayer-volume-bar fix-cursor-pointer">
+                    <div class="aplayer-volume"></div>
+                    <i class='left <%= faIcon %> fa-volume-off fa-fw'></i>
+                    <i class='right <%= faIcon %> fa-volume-up fa-fw'></i>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </div>
+        <% } else if (item in theme.rightmenu) { %>
+          <% loadmenu(theme.rightmenu[item]) %>
+        <% } %>
+      <% }) %>
+    </ul>
+  </div>
+  <script>
+    volantis.rightMenu = {};
+    volantis.rightMenu.faicon = '<%- theme.rightmenu.faicon %>' || 'fa';
+    <% if (theme.plugins.aplayer.enable && (theme.rightmenu.layout||[]).includes('music')) { %>
+      volantis.rightMenu.music = true;
+      volantis.rightMenu.aplayerBackward = () => {
+        event.stopPropagation();
+        if (MainAPlayer.aplayerBackward) {
+          MainAPlayer.aplayerBackward();
+        }
+      }
+      volantis.rightMenu.aplayerToggle = () => {
+        event.stopPropagation();
+        if (MainAPlayer.aplayerToggle) {
+          MainAPlayer.aplayerToggle();
+        }
+      }
+      volantis.rightMenu.aplayerForward = () => {
+        event.stopPropagation();
+        if (MainAPlayer.aplayerForward) {
+          MainAPlayer.aplayerForward();
+        }
+      }
+    <% } %>
+    <% if(theme.rightmenu.print.defaultStyles) { %>
+      volantis.rightMenu.defaultStyles = true;
+    <% } %>
+    <% if(theme.rightmenu.print.js) { %>
+      volantis.rightMenu.printJs = true;
+      volantis.rightMenu.printJsFun = () => {
+        try {
+          <% (theme.rightmenu.print.js || []).forEach(function(item) {  %>
+            <%- item %>
+          <% }) %>
+        } catch (error) {
+          console.error(error);
+        }
+      };
+    <% } %>
+    <% if(theme.rightmenu.customPicUrl.enable) { %>
+      volantis.rightMenu.customPicUrl = true;
+      volantis.rightMenu.picOld = '<%- theme.rightmenu.customPicUrl.old %>';
+      volantis.rightMenu.picNew = '<%- theme.rightmenu.customPicUrl.new %>';
+    <% } %>
+    <% if (theme.plugins.message && !theme.plugins.message.enable) { %>
+      volantis.message = () => {}
+    <% } %>
+    <% if (theme.plugins.aplayer && !theme.plugins.aplayer.enable) { %>
+      volantis.APlayerController = {};
+    <% } %>
+    volantis.js('<%- theme.cdn.map.js.rightMenu %>')
+  </script>
+<% } %>

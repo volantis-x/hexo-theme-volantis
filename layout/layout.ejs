@@ -2,23 +2,23 @@
 <html lang="<%- config.language %>">
   <%- partial('_partial/scripts/_ctrl') _%>
   <%- partial('_partial/head') _%>
-  <body>
+  <body itemscope itemtype="http://schema.org/WebPage">
     <%- partial('_partial/header', null, {cache: false, path: path}) %>
     <div id="l_body">
       <%- partial('_partial/cover') %>
       <div id="safearea">
-        <div class="body-wrapper" id="pjax-container">
+        <div class="body-wrapper">
           <%- body %>
-          <%- partial('_third-party/pjax/pdata') %>
+          <%- partial('_plugins/pjax/pdata') %>
         </div>
         <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-        <a id="s-top" class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
+        <a id="s-top" class="fas fa-arrow-up fa-fw" href="/" onclick="return false;" title="top"></a>
       </div>
     </div>
     <div>
       <%- partial('_partial/scripts/index') %>
       <% if (theme.plugins.pjax.enable){ %>
-        <%- partial('_third-party/pjax/index') %>
+        <%- partial('_plugins/pjax/index') %>
       <% } %>
     </div>
   <!-- Custom Files bodyEnd begin-->

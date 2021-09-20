@@ -1,0 +1,161 @@
+#u-search
+  .modal
+    position: fixed
+    height: 80%
+    width: 100%
+    max-width: 640px
+    left: 50%
+    top: 0
+    margin: 64px 0px 0px -320px
+    background: var(--color-card)
+    z-index: 3
+    border-radius: $border-card
+    overflow: hidden
+    @media screen and (max-width: $modal-threshold)
+      box-shadow: none
+      max-width: none
+      top: 0
+      left: 0
+      margin: 0
+      height: 100%
+      border-radius: 0
+
+
+
+
+
+    .modal-header
+      position: relative
+      width: 100%
+      height: $navbar-height
+      z-index: 3
+      border-top-left-radius: $border-card
+      border-top-right-radius: $border-card
+      font-size: $fontsize
+      box-shadow: $boxshadow-card
+      background: lighten($color-card, 5)
+      @media screen and (max-width: $modal-threshold)
+        border-radius: 0
+        padding: 0px
+      trans()
+      .btn-close
+        display: block
+        position: absolute
+        width: 50px + 5px
+        height: $navbar-height
+        top: 0
+        right: 0
+        color: $color-theme
+        cursor: pointer
+        text-align: center
+        line-height: $navbar-height
+        vertical-align: middle
+        trans()
+        z-index: 2
+
+        &:hover
+          transform: rotate(90deg)
+
+      #u-search-modal-form
+        position: relative
+        width: 100%
+        height: 100%
+        z-index: 2
+        input
+          color: var(--color-text)
+        #u-search-modal-input
+          margin: $gap 50px
+          padding: 0 $gap * 0.5
+          width: "calc(100% - 100px - %s)" % $gap
+          @media screen and (max-width: $modal-threshold)
+            padding: 0
+          line-height: 2rem
+          border-radius: $border-card
+          vertical-align: middle
+          border: none
+          appearance: none
+          box-shadow: none
+          background: transparent
+          trans()
+          &:focus
+            border-top-left-radius: $border-card
+            border-top-right-radius: $border-card
+
+      #u-search-modal-btn-submit
+        position: absolute
+        top: 0
+        left: 0
+        padding-left: 5px
+        padding-top: 2px
+        background: transparent
+        border: none
+        width: 50px
+        height: $navbar-height
+        vertical-align: middle
+        color: $color-theme
+        z-index: 2
+
+    .modal-body
+      position: absolute
+      padding: $gap
+      width: 100%
+      height: "calc(100% - %s)" % $navbar-height
+      top: $navbar-height
+      left: 0
+      overflow-y: scroll
+      -webkit-overflow-scrolling: touch
+      background: var(--color-card)
+      border-radius: $border-card
+      scrollbar()
+      .modal-results
+        list-style: none
+        .result
+          position: relative
+          display: block
+          padding: $gap
+          border-radius: $border-card
+          b[mark]
+            color: darken($color-theme, 10)
+            text-decoration: underline
+          &:hover
+            background: var(--color-site-bg)
+            .title
+              color: var(--color-list-hl)
+
+
+          .title
+            display: inline-block
+            max-width: 100%
+            color: var(--color-list)
+            font-weight: bold
+            padding: 1px
+            margin-bottom: 2px
+            white-space: normal
+            overflow: hidden
+            text-overflow: ellipsis
+            font-size: $fontsize-h4
+          .digest
+            display: block
+            white-space: inherit
+            overflow: hidden
+            word-break: break-all
+            text-overflow: ellipsis
+            font-size: $fontsize-code
+            color: var(--color-meta)
+          .icon
+            position: absolute
+            top: 50%
+            right: 0
+            margin-top: -4px
+            font-size: 11px
+            color: var(--color-meta)
+
+
+  .modal-overlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0,0,0,0.7)
+    z-index: 1

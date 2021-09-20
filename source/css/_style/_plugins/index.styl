@@ -1,0 +1,26 @@
+@import 'mathjax'
+@import 'fontcolor'
+
+
+if hexo-config('plugins.code_highlight')
+  @import '_highlight'
+if hexo-config('plugins.message.enable')
+  @import 'message'
+if hexo-config('plugins.aplayer.enable')
+  @import 'aplayer'
+if hexo-config('plugins.pjax.enable') and hexo-config('plugins.pjax.animation')
+  @import 'pjaxanimate'
+if hexo-config('comments.service')=='valine'
+  @import 'valine'
+if hexo-config('comments.service')=='gitalk'
+  @import 'gitalk'
+if hexo-config('custom_css.cursor.enable')
+  @import 'cursor'
+if hexo-config('rightmenu.enable')
+  @import '_rightmenu/*'
+
+
+
+// 暗黑模式样式放到最后加载
+if hexo-config('plugins.darkmode.enable')
+  @import '_dark/dark_async'

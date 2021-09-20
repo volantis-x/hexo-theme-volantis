@@ -1,12 +1,15 @@
 <% if (post.categories && post.categories.length){ %>
   <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="<%- theme.article.body.meta_library.category.icon %> fa-fw" aria-hidden="true"></i>
-      <%- list_categories(post.categories, {
-          show_count: false,
-          separator: '<span class="sep"></span>',
-          style: 'none'
-          }) %>
-    </a>
+    <i class="<%- theme.article.body.meta_library.category.icon %> fa-fw" aria-hidden="true"></i>
+    <%- list_categories(post.categories, {
+        show_count: false,
+        separator: '<span class="sep"></span>',
+        style: 'none'
+        }) %>
+    <% for(cat of post.categories.toArray()){ %>
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="<%- url_for(cat.path) %>" itemprop="url"><span itemprop="name"><%- cat.name %></span></a>
+      </span>
+    <% } %>
   </div>
 <% } %>

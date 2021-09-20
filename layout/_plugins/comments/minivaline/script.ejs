@@ -1,0 +1,33 @@
+<script>
+  volantis.layoutHelper("comments",`<div id="minivaline_container"><i class="fas fa-cog fa-spin fa-fw fa-2x"></i></div>`)
+  function load_minivaline() {
+    if(!document.querySelector("#minivaline_container"))return;
+    volantis.js("<%- theme.comments.minivaline.js || 'https://cdn.jsdelivr.net/npm/minivaline@latest/dist/MiniValine.min.js' %>", pjax_minivaline)
+  };
+  function pjax_minivaline() {
+    if(!document.querySelector("#minivaline_container"))return;
+    let pagePlaceholder = pdata.commentPlaceholder || "<%= theme.comments.minivaline.placeholder %>";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '<%= theme.comments.minivaline.path %>';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    new MiniValine(
+      Object.assign(
+        Object.assign(<%- JSON.stringify(theme.comments.minivaline) %>, {
+          el: '#minivaline_container',
+          pathname: path,
+          placeholder: pagePlaceholder,
+        }),
+      pdata.commentConfig)
+    );
+  }
+  load_minivaline();
+  volantis.pjax.push(()=>{
+    if (typeof MiniValine == "undefined") {
+      load_minivaline();
+    } else {
+      pjax_minivaline();
+    }
+  },"MiniValine");
+</script>

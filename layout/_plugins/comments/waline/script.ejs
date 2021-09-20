@@ -1,0 +1,27 @@
+<script>
+  volantis.layoutHelper("comments",`<div id="waline"><i class="fas fa-cog fa-spin fa-fw fa-2x"></i></div>`)
+  function pjax_waline() {
+    if(!document.querySelector("#waline"))return;
+    let pagePlaceholder = pdata.commentPlaceholder || "<%= theme.comments.waline.placeholder %>";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '<%= theme.comments.waline.path %>';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    new Waline(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.waline) %>, {
+     el: '#waline',
+     path: path,
+     placeholder: pagePlaceholder,
+     uploadImage: function(file) {
+      const formData = new FormData();
+      formData.append('image', file);
+      return fetch('<%= theme.comments.waline.imageHosting %>', {
+      	method: 'POST',
+      	body: formData
+      }).then(resp => resp.json()).then(resp => resp.data.url);
+   },
+  }),pdata.commentConfig));
+  }
+  volantis.js('<%- theme.comments.waline.js || 'https://cdn.jsdelivr.net/npm/@waline/client@latest' %>').then(pjax_waline)
+  volantis.pjax.push(pjax_waline);
+</script>

@@ -1,0 +1,304 @@
+#l_cover
+  min-height: $navbar-height
+
+.cover-wrapper
+  top: 0
+  left: 0
+  max-width: 100%
+  height: 100vh
+  display: flex
+  flex-wrap: nowrap
+  flex-direction: column
+  align-items: center
+  align-self: center
+  align-content: center
+  color: var(--color-site-inner)
+  padding: 0 $gap
+  disable-user-select()
+  position: relative
+  overflow: hidden
+  margin-bottom: -100px
+
+  if not hexo-config('plugins.parallax.enable') and hexo-config('cover.background')
+    .cover-bg
+      position: absolute
+      width: 100%
+      height: 100%
+      background-position: center
+      background-size: cover
+      &.lazyload
+        &:not(.loaded)
+          opacity: 0
+        &.loaded
+          animation-delay: 0s
+          animation-duration: .5s
+          animation-fill-mode: forwards
+          animation-timing-function: ease-out
+          animation-name: fadeIn
+          @keyframes fadeIn
+            0%
+              opacity: 0
+              filter blur(12px)
+              transform: scale(1.02)
+            100%
+              opacity: 1
+
+  .cover-body
+    z-index: 1
+    position: relative
+    width: 100%
+    height: 100%
+  &#full
+    height: "calc(%s + 100px)" % 100vh
+    padding-bottom: 100px
+  &#half
+    max-height: 640px
+    min-height: 400px
+    height: "calc(36vh - %s + 200px)" % $navbar-height
+
+  #scroll-down
+    width: 100%
+    height: 64px
+    position: absolute
+    bottom: 100px
+    text-align: center
+    cursor: pointer
+    .scroll-down-effects
+      color: white
+      font-size: 24px
+      line-height: 64px
+      position: absolute
+      width: 24px
+      left: "calc(50% - %s)" % 12px
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .1)
+      animation: scroll-down-effect 1.5s infinite
+      @keyframes scroll-down-effect
+        0%
+          top: 0
+          opacity: 1
+        50%
+          top: -16px
+          opacity: .4
+        100%
+          top: 0
+          opacity: 1
+
+
+.cover-wrapper .cover-body
+  margin-top: $navbar-height
+  margin-bottom: 100px
+  &,.top,.bottom
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    max-width: 100%
+  .bottom
+    margin-top: $gap * 2
+  .title
+    font-family: $fontfamily-logo
+    font-size: $fontsize-large * 1.25
+    line-height: 1.2
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .1)
+  .subtitle
+    font-size: $fontsize-root * 1.25
+  .logo
+    max-height: 120px
+    max-width: "calc(100% - 4 * %s)" % $gap
+  @media screen and (min-height: 1024px)
+    .title
+      font-size: $fontsize-large * 1.2
+    .subtitle
+      font-size: $fontsize-meta * 1.2
+    .logo
+      max-height: 150px
+  .m_search
+    $iconW = 32px
+    $iconMargin = 4px
+    position: relative
+    max-width: "calc(100% - %s)" % 16px
+    width: 320px
+    vertical-align: middle
+    .form
+      position: relative
+      display: block
+      width: 100%
+    .icon,.input
+      trans()
+    .icon
+      position: absolute
+      display:block
+      line-height: 2.5rem
+      width: $iconW
+      top: 0
+      left: $iconMargin+1px
+      color: alpha($color-p, .75)
+    .input
+      display: block
+      height: 2.5rem
+      width: 100%
+      box-shadow: none
+      box-sizing: border-box
+      font-size: $fontsize-meta
+      -webkit-appearance: none
+      padding-left: $iconW + $iconMargin
+      @media screen and (max-width: $device-mobile)
+        padding-left: $iconW + $iconMargin
+      border-radius: 1.4rem
+      background: alpha($color-card, .6)
+      backdrop-filter: blur(10px)
+      border: none
+      color: var(--color-text)
+      &:hover
+        background: alpha($color-card, .8)
+      &:focus
+        background: alpha($color-card, 1)
+
+
+.cover-wrapper .list-h
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  align-items: stretch
+  border-radius: $border-button
+  disable-user-select()
+  a
+    flex: 1
+    display: flex
+    font-weight: 600
+    img
+      display: block
+      border-radius: 2px
+      margin: $gap * 0.25
+      min-width: 40px
+      max-width: 44px
+      @media screen and (max-width: $device-tablet)
+        min-width: 36px
+        max-width: 40px
+      @media screen and (max-width: $device-mobile)
+        margin: 2px $gap * 0.25
+        min-width: 32px
+        max-width: 36px
+      @media screen and (max-width: $device-mobile-m)
+        min-width: 28px
+        max-width: 32px
+
+
+.cover-wrapper
+  max-width: 100%
+  &.search .bottom .menu
+    margin-top: $gap
+    .list-h a
+      white-space: nowrap
+      flex-direction: row
+      align-items: baseline
+      padding: 2px
+      margin: 4px
+      color: var(--color-site-inner)
+      opacity: .75
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
+      border-bottom: 2px solid transparent
+      i
+        margin-right: 4px
+      p
+        font-size: $fontsize-list
+      &:hover, &.active, &:active
+        opacity: 1
+        border-bottom: 2px solid var(--color-site-inner)
+  if hexo-config('cover.layout_scheme') == 'dock' || hexo-config('cover.layout_scheme') == 'featured' || hexo-config('cover.layout_scheme') == 'focus'
+    &.dock .menu, &.featured .menu, &.focus .menu
+      border-radius: $border-button + 2px
+      .list-h a
+        flex-direction: column
+        align-items: center
+        padding: $gap * 0.75
+        line-height: 24px
+        @media screen and (max-width: $device-mobile)
+          padding: $gap * 0.75 $gap * 0.5
+        border-radius: $border-button
+        border-bottom: none
+        text-align: center
+        align-content: flex-end
+        color: alpha($color-text, .7)
+        font-size: 1.5rem
+        i
+          margin: $gap * 0.5
+        p
+          font-size: $fontsize-meta
+        &.active
+          i, i+p
+            color: $color-theme
+          img+p
+            color: var(--color-text)
+          background: var(--color-card)
+          backdrop-filter: none
+        &:hover
+          background: var(--color-card)
+
+if hexo-config('cover.layout_scheme') == 'dock'
+  .cover-wrapper.dock .top
+    margin-bottom: $gap * 3
+  .cover-wrapper.dock .menu
+    background: alpha($color-card, .5)
+    position: absolute
+    bottom: 0
+    max-width: 100%
+    .list-h
+      flex-wrap: nowrap
+      margin: 4px
+      a+a
+        margin-left: 4px
+      @media screen and (max-width: $device-mobile)
+        overflow-x: scroll
+        scrollbar(0, 0)
+    @supports (backdrop-filter: blur(20px))
+      background: alpha($color-card, .5)
+      backdrop-filter: saturate(200%) blur(20px)
+
+if hexo-config('cover.layout_scheme') == 'featured'
+  .cover-wrapper.featured .menu
+    .list-h
+      margin: -2px
+    .list-h a
+      margin: 2px
+      background: alpha($color-card, .5)
+      @supports (backdrop-filter: blur(20px))
+        background: alpha($color-card, .5)
+        backdrop-filter: saturate(200%) blur(20px)
+
+if hexo-config('cover.layout_scheme') == 'focus'
+  .cover-wrapper.focus .menu
+    .list-h
+      margin: 2px
+    trans()
+    &:hover
+      background: alpha($color-card, .5)
+      @supports (backdrop-filter: blur(20px))
+        background: alpha($color-card, .5)
+        backdrop-filter: saturate(200%) blur(20px)
+    .list-h a
+      margin: 2px
+      &:hover
+        opacity: 1
+        background: var(--color-card)
+
+if hexo-config('plugins.parallax.enable')
+  .cover-wrapper
+    #parallax-window
+      position: absolute
+      width: 100%
+      height: 100%
+      background: transparent
+
+  .parallax-mirror
+    animation-delay: 0s
+    animation-duration: .5s
+    animation-fill-mode: forwards
+    animation-timing-function: ease-out
+    animation-name: fadeIn
+    @keyframes fadeIn
+      0%
+        opacity: 0
+        filter blur(12px)
+      100%
+        opacity: 1

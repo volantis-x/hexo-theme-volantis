@@ -1,0 +1,63 @@
+if hexo-config('custom_css.body.highlight.language') == true
+  pre
+    &:before
+      position: absolute
+      top: 0
+      right: 0
+      color: var(--color-meta)
+      font-size: 13px
+      padding: 4px 8px
+    &.language-md:before,&.markdown:before
+      content: "md"
+    &.language-yaml:before
+      content: "YAML"
+    &.language-json:before
+      content: "JSON"
+
+    &.language-html:before
+      content: "HTML"
+    &.language-js:before,&.language-javascript:before
+      content: "JS"
+    &.language-css:before
+      content: "CSS"
+    &.language-less:before
+      content: "Less"
+    &.language-stylus:before
+      content: "Stylus"
+
+    &.language-bash:before
+      content: "bash"
+    &.language-shell:before
+      content: "shell"
+    &.language-sh:before
+      content: "sh"
+    &.language-ini:before
+      content: "ini"
+
+    &.language-c:before
+      content: "C"
+    &.language-cpp:before
+      content: "C++"
+    &.language-objc:before,&.language-objectivec:before
+      content: "Objective-C"
+    &.language-swift:before
+      content: "Swift"
+
+    &.language-java:before
+      content: "Java"
+    &.language-python:before
+      content: "Python"
+    &.language-php:before
+      content: "PHP"
+    &.language-rust:before
+      content: "Rust"
+    &.language-sql:before
+      content: "SQL"
+    &.language-ruby:before
+      content: "Ruby"
+    &.language-makefile:before
+      content: "Makefile"
+    &.language-go:before
+      content: "Go"
+    &.language-typescript:before
+      content: "TypeScript"

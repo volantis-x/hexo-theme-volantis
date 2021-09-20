@@ -7,14 +7,15 @@
       const target = document.getElementById(
         decodeURI(link.getAttribute("href")).replace("#", "")
       );
+      // 解除 a 标签 href 的 锚点定位, a 标签 href 的 锚点定位 会随机启用?? 产生错位???
+      link.setAttribute("onclick","return false;")
+      link.setAttribute("toc-action","toc-"+decodeURI(link.getAttribute("href")).replace("#", ""))
+      link.setAttribute("href","/")
+      // 配置 点击 触发新的锚点定位
       link.addEventListener("click", (event) => {
         event.preventDefault();
-        window.scrollTo({
-          top: target.offsetTop + document.getElementById("safearea").offsetTop + 5,
-          <% if (theme.custom_css.toc_smooth) { %>
-          behavior: "smooth"
-          <% } %>
-        });
+         // 这里的 addTop 是通过错位使得 toc 自动展开.
+        volantis.scroll.to(target,{addTop: 5, observer:true})
       });
       return target;
     });
@@ -54,8 +55,7 @@
       marginTop = Math.floor(marginTop + 10000);
       let intersectionObserver = new IntersectionObserver(
         (entries, observe) => {
-          let scrollHeight = document.documentElement.scrollHeight + document.getElementById("safearea").offsetTop +
-          5;
+          let scrollHeight = document.documentElement.scrollHeight;
           if (scrollHeight > marginTop) {
             observe.disconnect();
             createIntersectionObserver(scrollHeight);
@@ -76,6 +76,10 @@
     createIntersectionObserver(document.documentElement.scrollHeight);
   }
 
-  document.addEventListener("DOMContentLoaded", listennSidebarTOC);
-  document.addEventListener("pjax:success", listennSidebarTOC);
+  document.addEventListener("DOMContentLoaded", ()=>{
+    volantis.requestAnimationFrame(listennSidebarTOC)
+  });
+  document.addEventListener("pjax:success", ()=>{
+    volantis.requestAnimationFrame(listennSidebarTOC)
+  });
 </script>

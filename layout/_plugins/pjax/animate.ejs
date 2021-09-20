@@ -1,0 +1,31 @@
+<!-- 样式位于：source/css/_plugins/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  <% if (theme.plugins.pjax.animation == 'nprogress') { %>
+    <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+    <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
+    <script>
+      window.ShowLoading = function() {
+        NProgress.start();
+      };
+      window.HideLoading = function() {
+        NProgress.done();
+      }
+    </script>
+  <%} else if (theme.plugins.pjax.animation == 'circle') { %>
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        document.querySelector(".loading-circle").style.display="block"
+      };
+      window.HideLoading = function() {
+        document.querySelector(".loading-circle").style.display="none"
+      }
+    </script>
+  <% } %>
+	<script>
+		volantis.pjax.push(window.HideLoading,'HideLoading');
+		volantis.pjax.send(window.ShowLoading,'ShowLoading');
+		volantis.pjax.error(window.HideLoading,'HideLoading');
+	</script>
+</div>

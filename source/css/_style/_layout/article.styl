@@ -1,0 +1,325 @@
+.article
+  color: var(--color-p)
+  // word-break: break-all
+  word-wrap: break-word
+
+  a
+    word-break: break-word
+  h1.title,h2.title
+    left: 0
+    &:before
+      content: none
+  h1,h2
+    padding-bottom: .2rem
+    margin-bottom: 1rem
+    border-bottom: 1px solid alpha($color-text, 10%)
+  h1
+    text-align: $textalign-h1
+    color: var(--color-h1)
+    margin-top: $gap-h2
+  h2
+    text-align: $textalign-h2
+    color: var(--color-h2)
+    margin-top: $gap-h2
+  h3
+    text-align: $textalign-h3
+    color: var(--color-h3)
+    margin-top: $gap-h3
+  h4
+    text-align: $textalign-h4
+    color: var(--color-h4)
+    margin-top: $gap-h4
+  h5
+    font-weight: bold
+    color: var(--color-h5)
+    margin-top: $gap-p
+  h6
+    color: var(--color-h6)
+    margin-top: $gap-p
+
+  center
+    &,p
+      text-align: center
+  .aplayer
+    margin: $gap-p 0
+    display: inline-block
+    width: 400px
+    max-width: 100%
+    border-radius: 4px
+    color: #666
+
+  p.small-img,
+  div.small-img
+    img
+      width: auto
+      max-width: 100%
+      margin: 0
+      box-shadow: none
+  s
+    color: mix($color-p, $color-card, 60)
+    text-decoration-color: @color
+  p
+    margin-top: $gap-p
+    margin-bottom: $gap-p
+    text-align: $textalign-p
+    max-width: 100%
+    line-height: inherit
+
+
+  .subtitle
+    h6
+      color: alpha($color-text, 90%)
+
+  figure
+    figcaption
+      span
+        display: inline-block
+        margin-right: 5px
+
+
+
+  blockquote
+    background: var(--color-block)
+    border-left: $border-codeblock solid $color-theme
+    border-radius: $border-codeblock
+
+  blockquote
+    &,p,ul,ol
+      text-align: left
+      word-wrap: normal
+      font-size: $fontsize-list
+      margin-top: .5em
+      margin-bottom: .5em
+    position: relative
+    width: 100%
+    padding: $gap
+    trans()
+    footer
+      padding: 0
+      text-align: justify
+      color: inherit
+      font-style: italic
+      margin: $gap-p 0
+      cite
+        &::before
+          content: '----'
+          padding: 0 .3em
+
+        color: var(--color-meta)
+        margin-left: 1em
+
+
+    &.pullquote
+      &.right
+        border-left: none
+        border-right: $border-codeblock solid $color-theme
+        p
+          text-align: right
+
+  pre
+    display: block
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+    margin-top: $gap-p
+    margin-bottom: $gap-p
+    overflow: auto
+    background: var(--color-codeblock)
+    font-size: $fontsize-code
+    font-family: $fontfamily-code
+    border: 1px solid darken($color-codeblock, 6)
+    padding: $gap
+    border-radius: $border-codeblock
+    >code:not([class])
+      background: transparent
+  div>pre
+    border-radius: $border-codeblock
+    &>code:not([class])
+      padding: 0
+      margin: 0
+      background: transparent
+      color: alpha($color-text, 90%)
+  code
+    font-family: $fontfamily
+    &:not([class])
+      word-break: break-all
+      color: var(--color-inlinecode)
+      border-radius: $border-codeblock * 0.5
+
+
+  @media screen and (max-width: $device-mobile)
+    ul,ol
+      font-size: $fontsize-meta
+    figure
+      font-size: 13px
+      line-height: 1.5
+
+
+  .widget
+    background: transparent
+    margin: $gap-p 0
+    box-shadow: none
+    border-radius: $border-codeblock
+    cursor: auto
+    background: var(--color-block)
+    padding: $gap * 0.5 0
+    trans()
+    &:hover
+      box-shadow: none
+
+    &:active
+      box-shadow: none
+    header
+      padding: $gap * 0.25 .6em
+      padding-bottom: 0
+      &,a
+        color: alpha($color-text, 85%)
+
+    &.copyright,&.qrcode
+      background: none
+      padding: 0
+      header
+        display: none
+      .content
+        padding: 0
+    width: 100%
+
+    &.list, &.related_posts
+      .content
+        padding: 0 .6em !important
+        a
+          color: $color-link
+          &:hover
+            color: $color-hover
+    .content
+      padding: 0 .6em
+      margin: 0
+      ul
+        padding-left: 4px
+        margin-left: $gap
+        a
+          trans(0.1s)
+          display: inline
+          border-left: none
+          padding: 0
+          padding-left: 4px
+          color: $color-link
+          font-weight: normal
+          text-decoration: none
+          &:hover,&.active,&:active
+            border-left: none !important
+            background: none !important
+          &:hover
+            color: $color-hover
+
+      .list
+        a
+          .name
+            display: inline
+            color: $color-link
+          &:hover
+            .name
+              color: $color-hover
+
+
+    &.qrcode > .content
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      justify-content: center
+      padding-left: $gap
+      padding-right: $gap
+      &>.fancybox, &>img
+        margin: 0 $gap * 0.5
+
+      img
+        margin-bottom: 4px
+
+      margin-bottom: 4px
+
+
+  .article_footer
+    margin-top: $gap * 4
+  .widget-blur
+    backdrop-filter: none
+
+.md .footer
+  margin-top: $gap * 4
+  >div
+    margin-top: $gap-p
+    margin-bottom: $gap-p
+  .header
+    i
+      margin-right: 2px
+    line-height: 1.75
+    padding-bottom: $gap * 0.5
+    font-weight: 500
+    font-size: $fontsize-meta
+    color: var(--color-list)
+  .body
+    ul,ol
+      margin-top: 0
+      margin-bottom: 0
+  .references,.related_posts
+    background: var(--color-block)
+    border-radius: $border-codeblock
+    padding: $gap
+  .references .body a
+    font-size: $fontsize-list
+    font-weight: 500
+  .related_posts
+    .body
+      margin: 4px
+      overflow: hidden
+      border-radius: 2px
+    .body .vlts-rps
+      display: flex
+      // overflow: scroll
+      .item
+        &+.item
+          margin-left: $gap
+        flex-shrink: 0
+        width: 240px
+        &:hover
+          img
+            filter: opacity(1)
+      img
+        border-radius: 2px
+        width: 100%
+        height: 120px
+        object-fit: cover
+        filter: opacity(0.75)
+      span
+        display: block
+        text-align: justify
+        display: -webkit-box
+        -webkit-box-orient: vertical
+        overflow: hidden
+      .title
+        font-weight: 600
+        -webkit-line-clamp: 1
+      .excerpt
+        font-size: $fontsize-meta
+        color: var(--color-meta)
+        -webkit-line-clamp: 3
+
+  .copyright blockquote p
+    font-size: $fontsize-meta
+    margin: .25em 0
+    a
+      font-weight: 500
+  .donate
+    display: flex
+    margin: 0 auto
+    .imgs
+      display: inline-flex
+      margin: 0 auto
+      .fancybox
+        margin: $gap * 0.5
+      img
+        width: 80px
+
+
+article .readmore
+  display: block
+  margin-top: $gap * 1.5
+  font-size: $fontsize-meta

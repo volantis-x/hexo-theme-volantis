@@ -1,17 +1,12 @@
 /**
  * 右键音乐
  * */
-const MainAPlayer = (() => {
-  const APlayer = {};
+ const MainAPlayer = (() => {
+  const APlayer = {}; // 右键音乐所控制的播放器
   const fn = {};
 
-  fn.init = () => {
-    APlayer.id = volantis.APlayerController.id;
-    APlayer.volume = volantis.APlayerController.volume;
-  }
-
   fn.checkAPlayer = () => {
-    if (APlayer.player === undefined) {
+    if (volantis.APlayerController.status === undefined || APlayer.player === undefined) {
       fn.setAPlayerObject();
     } else if (APlayer.observer === undefined) {
       fn.setAPlayerObserver();
@@ -20,17 +15,16 @@ const MainAPlayer = (() => {
 
   // 设置全局播放器所对应的 aplyer 对象
   fn.setAPlayerObject = () => {
-    let meting = document.querySelectorAll('.footer meting-js') || [];
+    let meting = document.querySelectorAll('.footer meting-js');
     if (meting.length == 0) {
-      meting = document.querySelectorAll('meting-js') || [];
+      meting = document.querySelectorAll('meting-js');
     }
+    APlayer.player = undefined;
     meting.forEach((item, index) => {
-      if (item.meta.id == APlayer.id) {
-        if (meting[index].aplayer != undefined) {
-          APlayer.player = meting[index].aplayer;
-          fn.setAPlayerObserver();
-          fn.updateTitle();
-        }
+      if (item.meta.id == volantis.APlayerController.id && item.aplayer && APlayer.player === undefined) {
+        APlayer.player = item.aplayer;
+        fn.setAPlayerObserver();
+        fn.updateTitle();
       }
     });
   }
@@ -40,15 +34,19 @@ const MainAPlayer = (() => {
     try {
       APlayer.player.on('play', function (e) {
         fn.updateAPlayerControllerStatus(e);
+        APlayer.status = 'play';
       });
       APlayer.player.on('pause', function (e) {
         fn.updateAPlayerControllerStatus(e);
+        APlayer.status = 'pause';
       });
       APlayer.player.on('volumechange', function (e) {
         fn.onUpdateAPlayerVolume(e);
+        APlayer.status = 'volumechange';
       });
       APlayer.player.on('loadstart', function (e) {
         fn.updateTitle(e);
+        APlayer.status = 'loadstart';
       });
 
       // 监听音量手势
@@ -169,14 +167,11 @@ const MainAPlayer = (() => {
       const obj = APlayer.player.list.audios[index];
       document.getElementsByClassName('nav music-title')[0].innerHTML = obj.title;
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   }
 
   return {
-    init: () => {
-      fn.init();
-    },
     checkAPlayer: () => {
       fn.checkAPlayer();
     },
@@ -188,11 +183,13 @@ const MainAPlayer = (() => {
     },
     aplayerForward: () => {
       fn.aplayerForward();
-    }
+    },
+    APlayer: APlayer
   }
 })()
 
 Object.freeze(MainAPlayer);
 
-MainAPlayer.init();
-MainAPlayer.checkAPlayer();
+volantis.requestAnimationFrame(() => {
+  MainAPlayer.checkAPlayer();
+});

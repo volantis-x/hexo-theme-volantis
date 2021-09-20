@@ -1,4 +1,8 @@
-<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>">
+<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="<%- post.permalink %>">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="<%- config.title %>">
+  </span>
   <%
   let showPin = false;
   if (post.pin && (post.title || theme.article.preview.auto_title) && theme.article.preview.pin_icon) {
@@ -19,15 +23,19 @@
   %>
   <% if (showPin == true) { %>
     <div class='pin'>
-      <img alt="<%- post.title || 'image' %>" src='<%- theme.article.preview.pin_icon %>'/>
+      <img alt="<%- post.title %>" src='<%- theme.article.preview.pin_icon %>'/>
     </div>
   <% } %>
   <% if (post.headimg) { %>
     <div class='headimg-div'>
       <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
-        <img class='headimg' alt="<%- post.title %> || 'image'" src='<%- post.headimg %>'/>
+        <img itemprop="image" class='headimg' alt="<%- post.title %>" src='<%- post.headimg %>'/>
       </a>
     </div>
+  <% } else { %>
+    <span hidden>
+      <meta itemprop="image" content="<%- theme.structured_data.data.logo.path %>">
+    </span>
   <% } %>
   <% if (showTitle) { %>
     <%
@@ -36,13 +44,17 @@
       pinTitle = true;
     }
     %>
-    <h2 class="article-title" <%- pinTitle ? 'pin' : '' %>>
-      <a href="<%- url_for(post.link || post.path) %>">
+    <h2 class="article-title" <%- pinTitle ? 'pin' : '' %> itemprop="name headline">
+      <a href="<%- url_for(post.link || post.path) %>"  itemprop="url">
         <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
       </a>
     </h2>
+  <% } else { %>
+    <span hidden itemprop="name headline">
+      <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
+    </span>
   <% } %>
-  <div class='md'>
+  <div class='md' itemprop="articleBody">
     <% if (post.excerpt) { %>
       <%- post.excerpt %>
     <% } else if (post.description) { %>
@@ -67,8 +79,13 @@
           }
           %>
           <a class='avatar' href='<%- author.url %>'><img src='<%- author.avatar %>'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="<%- author.avatar %>">
+            <meta itemprop="name" content="<%- author.name %>">
+            <meta itemprop="url" content="<%- author.url %>">
+          </span>
         <% } %>
-        <time><%= date(post.date, config.date_format) %></time>
+        <time itemprop="dateCreated datePublished" datetime="<%- moment(post.date).format() %>"><%= date(post.date, config.date_format) %></time>
         <% if (post.categories && post.categories.length > 0) { %>
           <span class="dot"></span>
           <%- list_categories(post.categories, {
@@ -76,11 +93,16 @@
               separator: '<span class="sep"></span>',
               style: 'none'
               }) %>
+          <% for(cat of post.categories.toArray()){ %>
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="<%- url_for(cat.path) %>" itemprop="url"><span itemprop="name"><%- cat.name %></span></a>
+            </span>
+          <% } %>
         <% } %>
       </div>
       <% if (showReadmore) { %>
         <div>
-          <a class='readmore' href='<%- url_for(post.link || post.path) %>'>
+          <a class='readmore' href='<%- url_for(post.link || post.path) %>' itemprop="url">
             <%- post.link ? __('post.readoriginal') : __('post.readmore') %>
           </a>
         </div>

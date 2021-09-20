@@ -1,0 +1,15 @@
+<script>
+  volantis.layoutHelper("page-plugins",`<div id="artitalk_main"></div>`,{pjax:false}) // 外层有 pjax 标签
+</script>
+<script>
+  volantis.import.jQuery().then(()=>{
+    volantis.js("https://cdn.jsdelivr.net/npm/artitalk").then(()=>{
+      new Artitalk(Object.assign(<%- JSON.stringify(theme.plugins.artitalk) %>, {}))
+    })
+  })
+</script>
+<style>
+  #artitalk_main #lazy {
+    background: transparent !important;
+  }
+</style>

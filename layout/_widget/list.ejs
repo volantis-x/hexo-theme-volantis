@@ -1,5 +1,5 @@
 <%- partial('_pre') %>
-<section class="widget <%- item.class == 'list' ? item.class : 'list ' + item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
+<section class="widget <%- item.class == 'list' ? item.class : 'list ' + item.class %> <%- page.widget_style %> <%- page.widget_platform %> <%- page.widget_pjax %>">
   <%- partial('header', {item: item}) %>
   <div class='content'>
     <ul class="list entry navigation">
@@ -11,7 +11,7 @@
           <% if (row.target) { %>
             target="<%- row.target %>"
           <% } %>
-          id="<%= url_for(row.url).replace(/\/|%|\./g, "")?url_for(row.url).replace(/\/|%|\./g, ""):"home" %>"
+          active-action="action-<%= url_for(row.url).replace(/\/|%|\./g, "")?url_for(row.url).replace(/\/|%|\./g, ""):"home" %>"
           >
           <div class='name'>
             <% if (row.img) { %>

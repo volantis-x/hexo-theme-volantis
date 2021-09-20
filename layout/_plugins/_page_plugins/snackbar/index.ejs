@@ -1,0 +1,55 @@
+<% if (site.data.notification && (pagePlugin.snackbar in site.data.notification)) { %> 
+<% let snackbar = site.data.notification[pagePlugin.snackbar] %>
+<% if (snackbar.position == 'bottom') { %>
+  <div id="snackbar"></div>
+  <script>
+    function Snackbar(){
+      document.getElementById("snackbar").innerHTML=`<div class='snackbar-wrap' theme='<%- snackbar.theme %>'>
+      <div class="snackbar-content">
+        <div class='title'><%- markdown(snackbar.title) %></div>
+        <div class='message'><%- markdown(snackbar.message) %></div>
+        <% if (snackbar.buttons && snackbar.buttons.length > 0) { %>
+          <div class="action">
+          <% snackbar.buttons.forEach((ac, i) => { %>
+            <% if (ac.dismiss) { %>
+              <a onclick="document.getElementsByClassName('snackbar-wrap')[0].style.display = 'none'">
+                <%- ac.title %>
+              </a>
+            <% } else { %>
+              <a href='<%- ac.url %>'>
+                <%- ac.title %>
+              </a>
+            <% } %>
+          <% }) %>
+          </div>
+        <% } %>
+      </div>
+    </div>`
+    }
+  </script>
+<% } else if (snackbar.position == 'right') { %>
+  <% if (snackbar.buttons && snackbar.buttons.length > 0) { %>
+      <script>
+        function Snackbar(){
+          <% snackbar.buttons.forEach((ac, i) => { %>
+            volantis.message(
+              '<%- snackbar.title %>',
+              '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>"
+            );
+          <% }) %>
+        }
+      </script>
+  <% } %>
+<% } %>
+
+<script>
+<% if (snackbar.cache) { %>
+  if (!localStorage.getItem('Snackbar')) {
+    localStorage.setItem('Snackbar', '1');
+    Snackbar();
+  }
+<% } else { %>
+  Snackbar()
+<% }%>
+</script>
+<% } %>

@@ -1,0 +1,10 @@
+<script>
+  volantis.layoutHelper("page-plugins",`<div id="bbtalk"></div>`,{pjax:false}) // 外层有 pjax 标签
+</script>
+<script>
+  volantis.import.jQuery().then(()=>{
+    volantis.js("<%= theme.plugins.bbtalk.js %>").then(()=>{
+      bbtalk.init(Object.assign(<%- JSON.stringify(theme.plugins.bbtalk) %>, {}))
+    })
+  })
+</script>

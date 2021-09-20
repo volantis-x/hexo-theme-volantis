@@ -1,0 +1,151 @@
+$text = url(hexo-config('custom_css.cursor.text'))
+$pointer = url(hexo-config('custom_css.cursor.pointer'))
+$default = url(hexo-config('custom_css.cursor.default'))
+$not-allowed = url(hexo-config('custom_css.cursor.not-allowed'))
+$zoom-out = url(hexo-config('custom_css.cursor.zoom-out'))
+$zoom-in = url(hexo-config('custom_css.cursor.zoom-in'))
+$grab = url(hexo-config('custom_css.cursor.grab'))
+
+
+/////////////////
+// 样式覆盖区域 //
+/////////////////
+
+
+p,
+input,
+pre>span,
+textarea
+  cursor: $text,text
+
+
+.fancybox-container .fancybox-stage,
+.fancybox__carousel .is-draggable
+  cursor: $zoom-out,zoom-out
+
+
+.fancybox a,
+.fancybox-can-zoomIn .fancybox-content,
+.fancybox__carousel .fancybox__slide.can-zoom_in .fancybox__content
+  cursor: $zoom-in,zoom-in
+
+span.btn>a:not([href]):hover,
+.fancybox-button[disabled], .fancybox-button[disabled]:hover,
+.gt-container .gt-btn.is--disable,
+span.not-select
+  cursor: $not-allowed,not-allowed
+
+
+html,
+a:not([href]),
+a:not([href]) p,
+button[disabled],html input[disabled],
+.article .widget,
+#l_body .post section.meta .new-meta-box .new-meta-item .notlink,
+ul.list-v.rightmenu a,
+span.btn a:not([href]),
+div.tabs ul.nav-tabs li.tab.active a,
+article#comments #valine_container .vcards .vhead span.vnick,
+kbd,
+.a > p,
+.not-select,
+.not-select p,
+.MiniValine *,
+.aplayer .aplayer-info .aplayer-music,
+.gt-container a.is--active,
+.iziToast,
+.iziToast p,
+.iframe,
+.embed-show,
+p > img,
+p > svg,
+.fix-cursor-default
+  cursor: $default,default
+
+
+a,
+psw,
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit],
+table::-webkit-scrollbar-thumb,
+scrollbar::-webkit-scrollbar-thumb,
+#scroll-down,
+ul.list-v.rightmenu li.music a.nav.volume .aplayer-volume-bar,
+#u-search .modal .modal-header .btn-close,
+#u-search .modal .modal-footer .nav,
+article .checkbox input,
+details summary,
+.article a.link-card,
+div.tabs ul.nav-tabs li.tab a,
+.btn-copy,
+.fancybox-can-pan .fancybox-content,.fancybox-can-swipe .fancybox-content,
+.waves-effect,a.result.search-result-fix,
+.tag > p,
+.prev > p,
+.next > p,
+.author > p,
+.list-h > a > p,
+.category > a > p,
+.friend-right p,
+.v[data-class=v] a,
+.v[data-class=v] .vbtn,
+.v[data-class=v] .vicon,
+.v[data-class=v] .vcards .vcard .vhead .vnick,
+.v[data-class=v] .vcards .vcard .vh .vmeta .vat,
+.v[data-class=v] .vwrap .vemojis i,
+.v[data-class=v] .vcards .vcard .vcontent.expand,
+.aplayer .aplayer-pic,
+.aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon,
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap,
+.aplayer .aplayer-list ol li,
+.aplayer .aplayer-list ol li .aplayer-list-author,
+.aplayer .aplayer-list ol li .aplayer-list-index,
+.waves-button, .waves-button-input, .waves-button:hover, .waves-button:visited,
+.fancybox-button,
+.MiniValine .vbtn,
+.MiniValine .vcancel-comment-reply,
+.MiniValine .vcancel-comment-reply svg,
+.MiniValine .vlist .vcard .vcomment-body .vat,
+.MiniValine .vlist .vcard .vcomment-body .vhead .vname,
+.MiniValine .vinputs-area .btn-wrap .vfunction-btn svg,
+.MiniValine .vinputs-area .vextra-area .vsmile-icons img,
+.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment a,
+.gt-container .gt-btn,
+.gt-container .gt-user-inner,
+.gt-container .gt-avatar-github,
+.gt-container .gt-popup .gt-action,
+.gt-container .gt-comment-like:hover,
+.gt-container .gt-comment-edit:hover,
+.gt-container .gt-comment-reply:hover,
+.tk-icon,
+.tk-avatar img,
+.tk-meta a,
+.tk-action-icon,
+.fancybox,
+.fix-cursor-pointer
+  cursor: $pointer,pointer
+
+// 强制覆盖区域
+.cur-default
+  cursor: $default,default !important
+
+.cur-pointer,
+.carousel__button,
+.fancybox__slide
+  cursor: $pointer,pointer !important
+
+.cur-not-allowed
+  cursor: $not-allowed,not-allowed !important
+
+.cur-zoom-in,
+.fancybox__carousel .fancybox__slide.can-zoom_in .fancybox__content
+  cursor: $zoom-in,zoom-in !important
+
+.cur-zoom-out,
+.fancybox__carousel .is-draggable
+  cursor: $zoom-out,zoom-out !important
+
+.cur-text
+  cursor: $text,text !important

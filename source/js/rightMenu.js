@@ -4,7 +4,9 @@ const RightMenu = (() => {
     _rightMenuContent = document.getElementById('rightmenu-content'),
     _menuDarkBtn = document.getElementById('menuDarkBtn'),
     _printHtml = document.getElementById('printHtml'),
-    _menuMusic = document.getElementById('menuMusic');
+    _menuMusic = document.getElementById('menuMusic'),
+    _readingModel = document.getElementById('readingModel'),
+    _readBkg = document.getElementById('read_bkg');
 
   const
     _menuLoad = document.querySelectorAll('.menuLoad-Content'),
@@ -23,6 +25,12 @@ const RightMenu = (() => {
   fn.init = () => {
     fn.visible(_menuMusic, false);
     fn.visible(_menuOption, false);
+    if (_readBkg) _readBkg.parentNode.removeChild(_readBkg);
+
+    const readBkg = document.createElement("div");
+    readBkg.className = "common_read_bkg common_read_hide";
+    readBkg.id = "read_bkg";
+    window.document.body.appendChild(readBkg);
   }
 
   fn.initEvent = () => {
@@ -177,9 +185,13 @@ const RightMenu = (() => {
 
       _copyImg.onclick = () => {
         fn.writeClipImg(event, flag => {
-          if (flag) volantis.message('系统提示', '图片复制成功！', volantis.rightMenu.faicon + ' fa-images');
+          if (flag && volantis.messageRightMenu.enable) volantis.message('系统提示', '图片复制成功！', {
+            icon: volantis.rightMenu.faicon + ' fa-images'
+          });
         }, (error) => {
-          volantis.message('系统提示', '复制失败：' + error, volantis.rightMenu.faicon + ' fa-exclamation-square red');
+          if (volantis.messageRightMenu.enable) volantis.message('系统提示', '复制失败：' + error, {
+            icon: volantis.rightMenu.faicon + ' fa-exclamation-square red'
+          });
         })
       }
     } else {
@@ -203,21 +215,37 @@ const RightMenu = (() => {
     const pathName = window.location.pathname;
     if (!!_printArticle) {
       fn.visible(_printHtml);
+      fn.visible(_readingModel);
 
-      _printHtml.onclick = () => {
-        if (window.location.pathname === pathName) {
-          volantis.question('', '是否打印当前页面？<br><em style="font-size: 80%">建议打印时勾选背景图形</em><br>', () => {
-            fn.printHtml();
-          })
-        } else {
-          fn.hideMenu();
+      if (_printHtml) {
+        _printHtml.onclick = () => {
+          if (window.location.pathname === pathName) {
+            const message = '是否打印当前页面？<br><em style="font-size: 80%">建议打印时勾选背景图形</em><br>';
+            if (volantis.messageRightMenu.enable) volantis.question('', message, {}, () => {
+              fn.printHtml();
+            })
+          } else {
+            fn.hideMenu();
+          }
         }
       }
+
+      if (_readingModel) {
+        _readingModel.onclick = () => {
+          if (window.location.pathname === pathName) {
+            fn.readingModel();
+          } else {
+            fn.readingModel();
+          }
+        }
+      }
+
     } else {
       fn.visible(_printHtml, false);
+      fn.visible(_readingModel, false);
     }
 
-    if (volantis.APlayerController.status === 'play') {
+    if (volantis.APlayerController && MainAPlayer && MainAPlayer.APlayer.status === 'play') {
       optionFlag = true;
       fn.visible(_menuMusic);
     } else {
@@ -242,11 +270,17 @@ const RightMenu = (() => {
 
   // 复制字符串 
   fn.copyString = (str) => {
-    fn.writeClipText(str)
+    VolantisApp.writeClipText(str)
       .then(() => {
-        volantis.message('复制成功', str.length > 120 ? str.substring(0, 120) + '...' : str, volantis.rightMenu.faicon + ' fa-copy');
+        if (volantis.messageCopyright && volantis.messageCopyright.enable && volantis.messageRightMenu.enable) {
+          volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
+            icon: volantis.messageCopyright.icon
+          });
+        }
       }).catch(e => {
-        volantis.message('系统提示', e, volantis.rightMenu.faicon + ' fa-exclamation-square red');
+        if (volantis.messageRightMenu.enable) volantis.message('系统提示', e, {
+          icon: volantis.rightMenu.faicon + ' fa-exclamation-square red'
+        });
       })
   }
 
@@ -370,6 +404,7 @@ const RightMenu = (() => {
 
   // 执行打印页面 
   fn.printHtml = () => {
+    if (volantis.isReadModel) fn.readingModel();
     if (volantis.rightMenu.defaultStyles === true) {
       fn.setAttribute('details', 'open', 'true');
       fn.remove('.cus-article-bkg');
@@ -406,12 +441,53 @@ const RightMenu = (() => {
       volantis.rightMenu.printJsFun();
     }
 
-    $(document).click();
     setTimeout(() => {
       window.print();
       document.body.innerHTML = '';
       window.location.reload();
     }, 50);
+  }
+
+  // 阅读模式
+  fn.readingModel = () => {
+    if (typeof ScrollReveal === 'function') ScrollReveal().clean('#comments');
+    fn.fadeToggle(document.querySelector('#l_header'))
+    fn.fadeToggle(document.querySelector('footer'))
+    fn.fadeToggle(document.querySelector('#s-top'))
+    fn.fadeToggle(document.querySelector('.article-meta#bottom'))
+    fn.fadeToggle(document.querySelector('.prev-next'))
+    fn.fadeToggle(document.querySelector('#l_side'))
+    fn.fadeToggle(document.querySelector('#comments'))
+
+    fn.toggleClass(document.querySelector('#l_main'), 'common_read')
+    fn.toggleClass(document.querySelector('#l_main'), 'common_read_main')
+    fn.toggleClass(document.querySelector('#l_body'), 'common_read')
+    fn.toggleClass(document.querySelector('#safearea'), 'common_read')
+    fn.toggleClass(document.querySelector('#pjax-container'), 'common_read')
+    fn.toggleClass(document.querySelector('#read_bkg'), 'common_read_hide')
+    fn.toggleClass(document.querySelector('h1'), 'common_read_h1')
+    fn.toggleClass(document.querySelector('#post'), 'post_read')
+    fn.toggleClass(document.querySelector('#l_cover'), 'read_cover')
+    fn.toggleClass(document.querySelector('.widget.toc-wrapper'), 'post_read')
+
+    volantis.isReadModel = volantis.isReadModel === undefined ? true : !volantis.isReadModel;
+    if (volantis.isReadModel) {
+      const option = {
+        backgroundColor: 'var(--color-read-post)',
+        icon: volantis.rightMenu.faicon + ' fa-book-reader',
+        time: 5000
+      }
+      if (volantis.messageRightMenu.enable) volantis.message('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', option);
+      document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
+      document.querySelector('#l_body').addEventListener('click', (event) => {
+        if (fn.hasClass(event.target, 'common_read')) {
+          fn.readingModel();
+        }
+      });
+    } else {
+      document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
+      document.querySelector('#post').removeEventListener('click', fn.readingModel);
+    }
   }
 
   // 控制元素显示隐藏
@@ -443,39 +519,99 @@ const RightMenu = (() => {
     })
   }
 
+  fn.fadeIn = (e) => {
+    if (!e) return;
+    e.style.visibility = "visible";
+    e.style.opacity = 1;
+    e.style.display = "block";
+    e.style.transition = "all 0.5s linear";
+    return e
+  }
+
+  fn.fadeOut = (e) => {
+    if (!e) return;
+    e.style.visibility = "hidden";
+    e.style.opacity = 0;
+    e.style.display = "none";
+    e.style.transition = "all 0.5s linear";
+    return e
+  }
+
+  fn.fadeToggle = (e) => {
+    if (!e) return;
+    if (e.style.visibility == "hidden") {
+      e = fn.fadeIn(e)
+    } else {
+      e = fn.fadeOut(e)
+    }
+    return e
+  }
+
+  fn.hasClass = (e, c) => {
+    if (!e) return;
+    return e.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
+  }
+
+  fn.addClass = (e, c) => {
+    if (!e) return;
+    e.classList.add(c);
+    return e
+  }
+
+  fn.removeClass = (e, c) => {
+    if (!e) return;
+    e.classList.remove(c);
+    return e
+  }
+
+  fn.toggleClass = (e, c) => {
+    if (!e) return;
+    if (fn.hasClass(e, c)) {
+      fn.removeClass(e, c)
+    } else {
+      fn.addClass(e, c)
+    }
+    return e
+  }
+
   return {
     init: (notice = false) => {
       fn.init();
       fn.initEvent();
-      if (notice) volantis.message('系统提示', '自定义右键注册成功。');
+      if (notice && volantis.messageRightMenu.enable) volantis.message('系统提示', '自定义右键注册成功。');
     },
     destroy: (notice = false) => {
       fn.hideMenu();
       window.document.oncontextmenu = () => {
         return true
       };
-      if (notice) volantis.message('系统提示', '自定义右键注销成功。');
+      if (notice && volantis.messageRightMenu.enable) volantis.message('系统提示', '自定义右键注销成功。');
     },
     hideMenu: () => {
       fn.hideMenu();
+    },
+    readingModel: () => {
+      fn.readingModel();
     }
   }
 })()
 
 Object.freeze(RightMenu);
 
-if (document.readyState !== 'loading') {
-  RightMenu.init();
-
-  volantis.pjax.send(() => {
-    RightMenu.hideMenu();
-  })
-} else {
-  document.addEventListener("DOMContentLoaded", function () {
+volantis.requestAnimationFrame(() => {
+  if (document.readyState !== 'loading') {
     RightMenu.init();
 
     volantis.pjax.send(() => {
       RightMenu.hideMenu();
     })
-  })
-}
+  } else {
+    document.addEventListener("DOMContentLoaded", function () {
+      RightMenu.init();
+
+      volantis.pjax.send(() => {
+        RightMenu.hideMenu();
+      })
+    })
+  }
+});

@@ -1,0 +1,75 @@
+// 首屏加载的暗黑模式
+fitst_dark()
+  // Base Dark Color
+  --color-site-body: black
+  --color-read-bkg: convert(hexo-config('color_scheme.dark.site_bg'))
+  --color-read-post: convert(hexo-config('color_scheme.dark.card'))
+  --color-site-bg: convert(hexo-config('color_scheme.dark.site_bg'))
+  --color-site-inner: convert(hexo-config('color_scheme.dark.site_inner'))
+  --color-site-footer: convert(hexo-config('color_scheme.dark.site_footer'))
+  --color-card: convert(hexo-config('color_scheme.dark.card'))
+  --color-text: convert(hexo-config('color_scheme.dark.text'))
+
+  --color-block: convert(hexo-config('color_scheme.dark.block'))
+  --color-codeblock: convert(hexo-config('color_scheme.dark.codeblock'))
+  --color-inlinecode: convert(hexo-config('color_scheme.dark.inlinecode'))
+  --color-h1: convert(hexo-config('color_scheme.dark.h1'))
+  --color-h2: convert(hexo-config('color_scheme.dark.h2'))
+  --color-h3: convert(hexo-config('color_scheme.dark.h3'))
+  --color-h4: convert(hexo-config('color_scheme.dark.h4'))
+  --color-h5: convert(hexo-config('color_scheme.dark.h5'))
+  --color-h6: convert(hexo-config('color_scheme.dark.h6'))
+  --color-p: convert(hexo-config('color_scheme.dark.p'))
+  --color-list: convert(hexo-config('color_scheme.dark.list'))
+  --color-list-hl: convert(hexo-config('color_scheme.dark.list_hl'))
+  --color-meta: convert(hexo-config('color_scheme.dark.meta'))
+  --color-link: convert(hexo-config('color_scheme.dark.meta'))
+
+  img
+    filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
+  //header
+  #wrapper .title
+    color: var(--color-meta) !important
+  .l_header ul.nav-list-h>li>a, ul.list-v >li>a
+    color: var(--color-list) !important
+  .blur
+    background: var(--color-site-bg) !important
+  .nav-main
+    .u-search-input
+      background: var(--color-card) !important
+  #l_main .article .prev-next>a
+    background: var(--color-block) !important
+    &:hover
+      background: var(--color-card) !important
+  .article blockquote
+    background: var(--color-block) !important
+  .article-title a
+    color: var(--color-h1) !important
+  details>summary
+    color: var(--color-p) !important
+    background: var(--color-site-bg) !important
+  details
+    border: 1px solid var(--color-site-bg) !important
+    background: var(--color-site-bg) !important
+
+  //search
+  #u-search .modal,
+  #u-search .modal-header,
+  #u-search .modal-body
+    background: var(--color-card) !important
+  #u-search .modal-body .modal-results .result:hover
+    background: var(--color-block) !important
+
+  //phone search
+  .l_header .m_search
+    @media screen and (max-width: $device-mobile)
+      background: var(--color-site-bg) !important
+
+if hexo-config('plugins.darkmode.enable')
+  @media (prefers-color-scheme: dark)
+    :root
+      --color-mode: 'dark'
+    :root:not([color-scheme])
+      fitst_dark()
+  [color-scheme='dark']
+    fitst_dark()

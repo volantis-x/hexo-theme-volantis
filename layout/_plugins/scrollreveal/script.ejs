@@ -1,0 +1,25 @@
+<script type="text/javascript">
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal("#l_main .reveal", {
+      distance: "<%- theme.plugins.scrollreveal.distance %>",
+      duration: "<%- theme.plugins.scrollreveal.duration %>",
+      interval: "<%- theme.plugins.scrollreveal.interval %>",
+      scale: "<%- theme.plugins.scrollreveal.scale %>",
+      easing: "ease-out",
+    });
+  }
+  function init_scrollrebeal() {
+    if (typeof ScrollReveal == "undefined") {
+      volantis.requestAnimationFrame(init_scrollrebeal);
+    } else {
+      pjax_scrollrebeal();
+    }
+  }
+  volantis.js("<%- theme.plugins.scrollreveal.js %>");
+  document.addEventListener("DOMContentLoaded", init_scrollrebeal);
+  volantis.pjax.push(
+    pjax_scrollrebeal,
+    "pjax_scrollrebeal",
+    (setRequestAnimationFrame = false)
+  );
+</script>

@@ -1,0 +1,388 @@
+.l_header
+  $iconW = 36px
+  $iconMargin = 4px
+  position: fixed
+  z-index: 1000
+  top: 0
+  width: 100%
+  height: $navbar-height
+  background: var(--color-card)
+  box-shadow: $boxshadow-card
+  &.auto
+    transition: opacity .4s ease
+    visibility: hidden
+    &.show
+      opacity: 1 !important
+      visibility: visible
+  .container
+    margin-left: $gap
+    margin-right: $gap
+  #wrapper
+    height: 100%
+    disable-user-select()
+    .nav-main,.nav-sub
+      display: flex
+      flex-wrap: nowrap
+      justify-content: space-between
+      align-items: center
+
+    .nav-main
+      trans()
+    
+    // https://github.com/volantis-x/hexo-theme-volantis/issues/658
+    &.sub .nav-main
+      transform: translateY(0 - 1 * $navbar-height)
+    .nav-sub
+      ::-webkit-scrollbar
+        display:none
+      trans()
+      opacity: 0
+      height: $navbar-height
+      width: "calc(100% - 2 * %s)" % $gap
+      position: absolute
+      @media screen and (min-width: $device-2k)
+        max-width: 55vw
+        margin: auto
+    &.sub .nav-sub
+      opacity: 1
+    .title
+      position: relative
+      color: var(--color-text)
+      padding-left: $gap * 1.5
+      max-height: $navbar-height
+
+    .nav-main .title
+      txt-ellipsis()
+      flex-shrink: 0
+      line-height: $navbar-height
+      padding: 0 $gap*1.5
+      font-size: $fontsize-h3
+      font-family: $fontfamily-logo
+      img
+        height: $navbar-height
+
+  .nav-sub
+    max-width: $layout-width
+    margin: auto
+    .title
+      font-weight: bold
+      font-family: $fontfamily
+      line-height: 1.2
+      max-height: $navbar-height
+      white-space: normal
+      flex-shrink: 1
+
+
+
+  .switcher
+    display: none
+    line-height: $navbar-height
+    .s-toc
+      display: none
+    align-items: center
+    @media screen and (max-width: $device-tablet)
+      .s-toc
+        display: flex
+    >li
+      height: $navbar-height - $gap
+      trans()
+      margin: 2px
+      $height = $navbar-height - $gap
+      @media screen and (max-width: $device-mobile)
+        margin: 0 1px
+        height: $height
+      >a
+        display: flex
+        justify-content: center
+        align-items: center
+        width: $height
+        height: $height
+        padding: .85em 1.1em
+        border-radius: 100px
+        border: none
+        trans()
+        color: $color-theme
+        &:hover
+          border: none
+        &.active,&:active
+          border: none
+          background: var(--color-site-bg)
+        @media screen and (max-width: $device-mobile)
+          width: $iconW
+          height: $height
+
+  .nav-sub .switcher
+    display: flex
+
+  .m_search
+    display: flex
+    height: $navbar-height
+    width: $sidebar
+    trans()
+    @media screen and (max-width: $device-laptop)
+      width: 44px
+      min-width: 44px
+      input
+        &::placeholder
+          opacity: 0
+      &:hover
+        input
+          &::placeholder
+            opacity: 1
+        width: $sidebar
+    @media screen and (min-width: $device-mobile)
+      &:hover .input
+        &::placeholder
+          opacity: 1
+        width: 100%
+    @media screen and (max-width: $device-mobile)
+      input
+        &::placeholder
+          opacity: 1
+      min-width: 0
+
+    .form
+      position: relative
+      display: flex
+      width: 100%
+      align-items: center
+
+    .icon
+      position: absolute
+      width: $iconW
+      left: $iconMargin + 1px
+      color: var(--color-meta)
+      @media screen and (max-width: $device-mobile)
+        display: none
+    .input
+      display: block
+      padding-top: $gap * 0.5
+      padding-bottom: $gap * 0.5
+      line-height: 1.3
+      width: 100%
+      color: var(--color-text)
+      background: darken($color-card, 2)
+      box-shadow: none
+      box-sizing: border-box
+      padding-left: $iconW + $iconMargin
+      font-size: $fontsize-meta
+      border-radius: $border-searchbar
+      border: none
+      trans()
+      @media screen and (min-width: $device-mobile)
+        &:focus
+          box-shadow: $boxshadow-float
+      @media screen and (max-width: $device-mobile)
+        background: var(--color-block)
+        padding-left: $gap * 0.5
+        border: none
+        &:hover,&:focus
+          border: none
+
+
+  @media (max-width: $device-mobile)
+    .m_search
+      left: 0
+      width: 0
+      overflow: hidden
+      position: absolute
+      background: lighten($color-card, 5)
+      trans()
+      .input
+        border-radius: $navbar-height * 0.5
+        margin-left: $gap
+        padding-left: $gap
+    &.z_search-open
+      .m_search
+        width: 100%
+        .input
+          width: "calc(100% - %s)" % (3 * $gap + 2 * $iconW)
+
+ul.m-pc
+  >li>a
+    color: inherit
+    border-bottom: 2px solid transparent
+    &:active,&.active
+      border-bottom: 2px solid $color-theme
+ul.m-pc,ul.list-v
+  li:hover
+    >ul.list-v
+      display: block
+
+
+ul.nav-list-h
+  display: flex
+  align-items: stretch
+  &>li
+    position: relative
+    justify-content: center
+    height: 100%
+    line-height: 2.4
+    border-radius: $border-button
+    >a
+      -webkit-font-smoothing: antialiased
+      -moz-osx-font-smoothing: grayscale
+      font-weight: 600
+
+ul.list-v
+  z-index: 1
+  display: none
+  &.show
+    display: block
+  position: absolute
+  background: var(--color-card)
+  box-shadow: $boxshadow-dropmenu
+  margin-top: -2px - $border-card * 0.5
+  border-radius: $border-card * 0.5
+  padding: $gap * 0.5 0
+  hr
+    margin-top: $gap * 0.5
+    margin-bottom: $gap * 0.5
+  >li
+    white-space: nowrap
+    word-break: keep-all
+    &.header
+      font-size: $fontsize-footnote
+      font-weight: bold
+      line-height: 2em
+      color: var(--color-meta)
+      margin: $gap * 0.5 $gap $gap * 0.25
+      i
+        margin-right: 8px
+    ul
+      margin-left: 0
+      display: none
+      margin-top: 0 - 32px - $gap * 0.5
+  .aplayer-container
+    min-height: 64px
+    padding: $gap - 10px $gap
+  >li>a
+    trans()
+    display: block
+    color: var(--color-list)
+    font-size: $fontsize-meta
+    font-weight: bold
+    line-height: 36px
+    @media screen and (max-width: $device-laptop)
+      line-height: 40px
+    padding: 0 $gap + $border-line + 2px 0 $gap
+    text-overflow: ellipsis
+    margin: 0 4px
+    border-radius: 4px
+    >i
+      margin-right: 8px
+    &:active,&.active
+      list_active()
+    &:hover
+      list_hover()
+
+.l_header
+  .menu
+    >ul>li>a
+      display: block
+      padding: 0 8px
+      >i
+        margin-right: 4px
+
+.l_header ul.nav-list-h>li
+  color: var(--color-list)
+  line-height: $navbar-height
+  >a
+    max-height: $navbar-height
+    overflow: hidden
+    color: inherit
+    &:active,&.active
+      color: $color-theme
+  &:hover>a
+    color: var(--color-list-hl)
+  i.music
+    animation: rotate-effect 1.5s linear infinite
+    @keyframes rotate-effect
+      0%
+        transform: rotate(0)
+      25%
+        transform: rotate(90deg)
+      50%
+        transform: rotate(180deg)
+      75%
+        transform: rotate(270deg)
+      100%
+        transform: rotate(360deg)
+
+
+.menu-phone li ul.list-v
+  right: "calc(100% - 0.5 * %s)" % $gap
+  ul
+    right: "calc(100% - 0.5 * %s)" % $gap
+
+#wrapper
+  if hexo-config('custom_css.navbar.width') == 'auto'
+    max-width: $layout-width
+    margin: auto
+    @media screen and (min-width: $device-2k)
+      max-width: 55vw
+    .menu
+      flex: 1 1 auto
+      margin: 0 $gap 0 0
+      .list-v ul
+        left: "calc(100% - 0.5 * %s)" % $gap
+  else
+    .m_search
+      margin-left: auto
+      margin-right: $gap
+    .menu
+      order: 1
+    .menu li ul.list-v
+      right: 0
+      ul
+        right: "calc(100% - 0.5 * %s)" % $gap
+
+
+.menu-phone
+  display: none
+  margin-top: $gap
+  right: $gap * 0.5
+  ul
+    right: "calc(100% - 0.5 * %s)" % $gap
+  @media screen and (max-width: $device-mobile)
+    display: block
+  trans()
+
+.l_header
+  if hexo-config('custom_css.navbar.width') == 'auto'
+    max-width: 65vw
+    left: "calc((100% - %s) * 0.5)" % @max-width
+    border-bottom-left-radius: $border-card
+    border-bottom-right-radius: $border-card
+    @media screen and (max-width: $device-2k)
+      max-width: $layout-width + 2 * $gap
+      left: "calc((100% - %s) * 0.5)" % @max-width
+    @media screen and (max-width: $layout-width + 2 * $gap)
+      left: 0
+      border-radius: 0
+      max-width: 100%
+  @media screen and (max-width: $device-mobile)
+    .container
+      margin-left: 0
+      margin-right: 0
+    #wrapper
+      .nav-main
+        .title
+          padding-left: $gap
+          padding-right: $gap
+      .nav-sub
+        width: 100%
+        .title
+          overflow-y: scroll
+          margin-top: 2px
+          padding: 8px $gap
+      .switcher
+        display: flex
+        margin-right: $gap * 0.5
+    .menu
+      display:none
+
+@media screen and (max-width: $device-mobile)
+  .list-v
+    li
+      max-width: 270px

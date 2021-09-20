@@ -1,0 +1,98 @@
+<script>
+  volantis.layoutHelper("comments",`<div id="disqus_thread">
+    <div id="notShowDisqus" style="display: none;text-align: center;"><i class='fas fa-exclamation-triangle'></i>&nbsp;<%- __('post.comments_placeholder', 'Disqus') %></div>
+    <div id="load-btns"><a class="load-comments" onclick="needLoadDisqus()"><%- __('post.comments_load', 'Disqus') %></a></div>
+    <div id="loading-comments" style="display: none"><i class="fa fa-cog fa-spin fa-fw fa-2x"></i><br><%- __('post.comments_check', 'Disqus') %></div>
+  </div>
+  `)
+
+  const disqus_shortname = "<%= theme.comments.disqus.shortname %>";
+  const autoload = "<%= theme.comments.disqus.autoload %>";
+  const global_url = "<%= config.url %>"; //  must use an absolute URL; relative URLs won’t work.
+
+  function checkDisqus() {
+    // 正在检查 Disqus 能否访问...
+    const runcheck = (domain) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        const timeout = setTimeout(() => {
+          img.onerror = img.onload = null;
+          reject();
+        }, 3000);
+        img.onerror = () => {
+          clearTimeout(timeout);
+          reject();
+        };
+        img.onload = () => {
+          clearTimeout(timeout);
+          resolve();
+        };
+        img.src = `https://${domain}/favicon.ico?${+new Date()}=${+new Date()}`;
+      });
+    };
+    return Promise.all([
+      runcheck("<%= theme.comments.disqus.shortname %>.disqus.com"),
+    ]).then(loadDisqus, showError);
+  }
+
+  function loadDisqus() {
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = "<%= theme.comments.disqus.path %>";
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    if (window.DISQUS) {
+      window.DISQUS.reset({
+        reload: true,
+        config() {
+          this.page.identifier = global_url + path;
+          this.page.url = global_url + path;
+        },
+      });
+    } else {
+      window.disqus_config = function () {
+        this.page.url = global_url + path;
+        this.page.identifier = global_url + path;
+      };
+      let d = document,
+        s = d.createElement("script");
+      s.async = true;
+      s.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+
+  // 加载错误
+  function showError() {
+    volantis.dom.$(document.getElementById("loading-comments")).hide();
+    volantis.dom.$(document.getElementById("notShowDisqus")).show();
+  }
+
+  // 点击了加载
+  function needLoadDisqus() {
+    checkDisqus();
+    volantis.dom.$(document.getElementById("load-btns")).hide();
+    volantis.dom.$(document.getElementById("loading-comments")).show();
+  }
+
+  // pjax 重载
+  function pjax_disqus() {
+    // 排除当前页面不存在评论框的情形
+    if (!document.getElementById("disqus_thread")) return;
+    // 如果 DISQUS 已被实例化，则可直接加载
+    if (window.DISQUS) {
+      volantis.dom.$(document.getElementById("load-btns")).hide();
+      volantis.dom.$(document.getElementById("notShowDisqus")).hide();
+      volantis.dom.$(document.getElementById("loading-comments")).hide();
+      loadDisqus();
+    } else if (autoload == "true") {
+      // 设置自动加载但是上个页面加载失败了
+      needLoadDisqus();
+    }
+  }
+  if (autoload == "true") {
+    needLoadDisqus();
+  }
+  volantis.pjax.push(pjax_disqus);
+</script>

@@ -1,15 +1,22 @@
-// 本文件样式内联硬编码写在HTML中  内联自动化方案 see：scripts/first-style/index.js
-// https://blog.skk.moe/post/improve-fcp-for-my-blog/
-#safearea{
+#safearea {
   display: none
 }
+// https://web.dev/content-visibility/
+// https://www.caniuse.com/?search=content-visibility
+/* 
+  * Workaround for Chrome bug, part 1
+  * Chunk rendering for all but the first article.
+  * /layout/_partial/scripts/content-visibility-scroll-fix.ejs
+*/
+.post-story + .post-story, article + article , .post-wrapper + .post-wrapper{
+  content-visibility: auto;
+  contain-intrinsic-size: 10px 500px;
+}
+
 @import '_defines/*'
 
 // Project
-@import '_base'
 @import '_first/*'
-if hexo-config('plugins.darkmodejs.enable')
-  @import '_plugins/darkmode'
 
 // Custom Files
 for $injects_first in hexo-config('injects.first')

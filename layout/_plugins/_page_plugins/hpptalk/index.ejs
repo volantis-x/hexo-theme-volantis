@@ -1,0 +1,14 @@
+<script>
+  volantis.layoutHelper("page-plugins",`<div id="hpp_talk"></div>`,{pjax:false}) // 外层有 pjax 标签
+  volantis.css("<%= theme.plugins.hpp.hpp_talk.css %>")
+  volantis.js("<%= theme.plugins.hpp.hpp_talk.js %>").then(() => {
+    new hpp_talk(Object.assign( <%- JSON.stringify(theme.plugins.hpp.hpp_talk) %> , {
+      id: "hpp_talk", //容器id
+    }));
+  })
+</script>
+<style>
+  .hpp_talk_img {
+    display: inline !important;
+  }
+</style>

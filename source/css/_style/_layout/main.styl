@@ -1,0 +1,346 @@
+#safearea
+  margin: $gap $gap 0
+#l_body
+  position: relative
+  if hexo-config('custom_css.font_smoothing') == true
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+  div.loading
+    margin: $gap 0
+    width: 100%
+    display: block
+    &,p
+      text-align: center
+  #s-top
+    trans(0.6s)
+    z-index: 9
+    position: fixed
+    width: 48px
+    height: 48px
+    line-height: 48px
+    border-radius: 100%
+    bottom: $gap*2
+    right: $gap*2
+    transform: translateY(100px) scale(0)
+    transform-origin: bottom
+    color: var(--color-text)
+    @media screen and (max-width: $device-tablet)
+      right: $gap
+    &.show
+      transform: translateY(0) scale(1)
+      &.hl
+        background: $color-theme
+        color: $color-inner
+        box-shadow: $boxshadow-card
+    @media screen and (min-width: $device-tablet)
+      &:hover
+        transform: scale(1.2)
+        border-radius: 25%
+        background: $color-theme
+        color: white
+        box-shadow: $boxshadow-card-float
+        &.hl
+          box-shadow: $boxshadow-card-float
+
+#l_main
+  width: "calc(100% - 1 * %s)" % $sidebar
+  @media screen and (max-width: $device-tablet)
+    width: 100%
+  if hexo-config('sidebar.position') =='right'
+    padding-right: $gap
+  if hexo-config('sidebar.position') =='left'
+    padding-left: $gap
+  &.no_sidebar
+    width: 100%
+    padding-right: 0
+    max-width: $layout-width - $sidebar
+    @media screen and (min-width: $device-2k)
+      max-width: "calc(55vw - %s)" % $sidebar
+    margin: auto
+    ~#l_side
+      display: none
+  float: left
+  if hexo-config('sidebar.position') =='left'
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+  .post-list
+    position: relative
+    margin-bottom: $gap
+    column-gap: $gap
+    // @media screen and (max-width: $device-mobile)
+    //   margin: 0
+
+    &.multiple-columns
+      columns: 320px // 支持多列
+
+
+  .post-wrapper
+    column-break-inside: avoid
+    break-inside: avoid-column
+
+  .widget
+    .content
+      p,ul,ol,table,.tabs,details
+        margin-top: $gap-p
+        margin-bottom: $gap-p
+      .post
+        padding-top: 0
+        padding-bottom: 0
+        margin-top: $gap-p
+        margin-bottom: $gap-p
+    &.grid .content .grid.fixed a
+      width: "calc(100%/8 - 0 * %s)" % $gap
+      @media screen and (max-width: $device-laptop)
+        width: "calc(100%/7 - 0 * %s)" % $gap
+      @media screen and (max-width: $device-tablet)
+        width: "calc(100%/6 - 0 * %s)" % $gap
+      @media screen and (max-width: $device-mobile)
+        width: "calc(100%/5 - 0 * %s)" % $gap
+      @media screen and (max-width: $device-mobile-l)
+        width: "calc(100%/4 - 0 * %s)" % $gap
+      @media screen and (max-width: $device-mobile-m)
+        width: "calc(100%/3 - 0 * %s)" % $gap
+
+
+
+
+  .post
+    position: relative
+    margin-bottom: $gap
+    padding: 1.5 * $gap
+    border-radius: $border-card
+    h1.title
+      font-size: $fontsize-h1
+      margin: 0
+      border-bottom: none
+      padding-bottom: 4px
+      border-bottom: none
+    .article-meta
+      color: var(--color-meta)
+      margin-bottom: $gap
+      line-height: normal
+      &#top
+        margin-top: 1 * $gap
+        margin-bottom: 2 * $gap
+      &#bottom
+        margin-top: 2 * $gap
+        margin-bottom: 0.5 * $gap
+      .aplayer,.aplayer-pic,.thumbnail
+        width: 48px
+        height: 48px
+      .aplayer,.thumbnail
+        trans()
+        border-radius: 100%
+        float: right
+        margin: 2px
+        box-shadow: $boxshadow-card
+        &:hover
+          border-radius: 25%
+          transform: scale(1.1)
+          box-shadow: $boxshadow-card-float
+        @media screen and (max-width: $device-mobile)
+          &:hover
+            border-radius: 100%
+            transform: scale(1)
+            box-shadow: $boxshadow-card
+      .thumbnail
+        width: auto
+        border-radius: 4px
+        box-shadow: none
+        trans()
+        &:hover
+          border-radius: 4px
+          transform: scale(1.1) rotate(4deg)
+          box-shadow: none
+
+
+
+      .new-meta-box
+        trans(.1s)
+        display: flex
+        align-items: center
+        flex-wrap: wrap
+        -webkit-font-smoothing: auto
+        -moz-osx-font-smoothing: auto
+        &,p,i
+          font-size: $fontsize-code
+        .new-meta-item
+          color: var(--color-meta)
+          .notlink
+            cursor: default
+            &:hover
+              color: var(--color-meta)
+              p
+                color: var(--color-meta)
+          display: flex
+          align-items: baseline
+          justify-content: center
+          margin: 0 $gap 0 0
+          padding: 8px 0  // seo https://web.dev/tap-targets/
+          &:last-child
+            margin-right: 0
+          img,i
+            display: inline
+          i
+            margin-right: 4px
+            border-radius: 0
+            &.fa-hashtag
+              margin-right: 2px
+          p,a
+            color: var(--color-meta)
+            padding: 3px 0
+          a
+            display: flex
+            justify-content: center
+            align-items: center
+            img
+              height: 16px
+              width: 16px
+              margin-right: 8px // seo https://web.dev/tap-targets/
+            p
+              margin: 0
+              font-weight: normal
+              trans()
+            &:hover
+              color: $color-hover
+              p
+                color: $color-hover
+
+        .author
+          img,i
+            border-radius: 100%
+          img
+            transform: translateY(-0.5px)
+
+        @media screen and (max-width: $device-mobile)
+          .share
+            width: 100%
+            margin-top: $gap
+            background: var(--color-block)
+            border-radius: $border-codeblock
+
+        .share-body
+          position: relative
+          display: flex
+          justify-content: center
+          margin: 0
+          padding: 0 2px
+          a
+            padding: 0
+            margin: 0 1px
+            img
+              margin: 2px
+              height: 24px
+              @media screen and (max-width: $device-mobile)
+                height: 32px
+                margin: 8px
+              width: auto
+              background: transparent
+          div.hoverbox
+            div.target
+              display: none
+              position: absolute
+              background: var(--color-card)
+              border-radius: $border-card
+              box-shadow: $boxshadow-card-float
+              padding: 8px
+              left: 50%
+              top: -20px
+              transform: translate(-50%, -100%)
+              img
+                display: block
+                margin: 0
+                padding: 0
+                height: 128px
+                width: 128px
+                min-width: 128px
+            &:hover
+              div.target
+                display: flex
+            @media screen and (max-width: $device-mobile)
+              div.target
+                position: absolute
+
+    span>img
+      display: inline-block
+
+    a
+      img
+        display: inline
+
+
+
+  @media screen and (max-width:$device-tablet)
+    padding-right: 0
+    @media screen and (max-width: $device-mobile)
+      width: 100%
+
+
+
+
+.body-wrapper
+  position: relative
+  display: flex
+  width: 100%
+  max-width: $layout-width
+  @media screen and (min-width: $device-2k)
+    max-width: 55vw
+  margin: 0 auto
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: stretch
+
+
+
+
+article#comments
+  p[ct]
+    margin-top: 0
+    margin-bottom: $gap-p
+    font-size: $fontsize-h4
+    color: var(--color-text)
+    font-weight: 600
+  p[cst]
+    margin-top: $gap-p
+    margin-bottom: $gap-p
+    font-size: $fontsize-meta
+  #load-btns, #loading-comments
+    text-align: center
+    margin: $gap 0
+    &,a,i
+      line-height: 3em
+    a.load-comments
+      display: inline-block
+      border-radius: 2px
+      cursor: pointer
+      background: $color-button
+      color: $color-inner
+      padding-left: $gap * 3
+      padding-right: $gap * 3
+      &:hover
+        background: $color-hover
+
+.white-box
+  background: var(--color-card)
+
+// if hexo-config('plugins.scrollreveal.enable')
+//   .reveal
+//     visibility: hidden
+
+img
+  max-width 100%
+  &.lazyload:not(.placeholder)
+    transition opacity .5s ease-out 0s
+    &:not(.loaded)
+      opacity: 0
+    &.loaded
+      opacity: 1
+    if hexo-config('plugins.lazyload.blurIn') == true
+      transition filter .25s ease-out 0s
+      &:not(.loaded)
+        filter blur(8px)
+      &.loaded
+        filter none

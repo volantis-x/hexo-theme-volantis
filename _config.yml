@@ -18,7 +18,7 @@ default:
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: 'dev' # This is theme's version.
+  theme_version: '5.0.0.alpha.4' # This is theme's version.
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 
@@ -36,7 +36,8 @@ cdn:
     css:
       style: #/css/style.css # (异步加载样式)
 ########################################################################
-
+ # 平滑滚动效果
+scroll_smooth: true
 ############################### Navigation Bar ############################### > start
 # 注意事项：建议规范全站路径 URL 最后带一个 "/" 例如 "about/"
 navbar:
@@ -112,7 +113,7 @@ cover:
 pages:
   # 友链页面配置
   friends:
-    layout_scheme: traditional # simple: 简单布局, traditional: 传统布局,  sites: 网站卡片布局
+    layout_scheme: traditional # simple: 简单布局, traditional: 传统布局
 
 ############################### Article Layout ############################### > start
 # 文章布局
@@ -236,7 +237,23 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: beaudar # valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  service: giscus # giscus, beaudar, utterances, valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  # giscus
+  # https://giscus.app
+  # https://github.com/laymonage/giscus
+  giscus:
+    theme:
+      light: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/light.css
+      dark: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/dark.css
+    # 以下配置按照 yml 格式增删填写即可
+    # repo: xxx/xxx
+    # repo-id: xxx
+    # category: xxx
+    # category-id: xxx
+    # mapping: "pathname"
+    # reactions-enabled: "1"
+    # emit-metadata: "0"
+
   # beaudar
   # https://beaudar.lipk.org/
   beaudar:
@@ -250,7 +267,6 @@ comments:
       light: github-light
       dark: github-dark
     label: ✨💬✨
-    crossorigin: anonymous
   # utterances
   # https://utteranc.es/
   utterances:
@@ -261,7 +277,6 @@ comments:
       light: github-light
       dark: github-dark
     label: ✨💬✨
-    crossorigin: anonymous  
   # Valine
   # https://valine.js.org/
   valine:
@@ -407,6 +422,12 @@ sidebar:
       min_depth: 2
       max_depth: 5
     # ---------------------------------------
+    # music
+    music:
+      class: music
+      display: [desktop, mobile] # [desktop, mobile]
+      pjaxReload: false
+    # ---------------------------------------
     # category widget
     category:
       class: category
@@ -476,7 +497,7 @@ sidebar:
           text: '最后活动时间：'
           unit: '日'
     # ---------------------------------------
-    # lastupdate widget 
+    # lastupdate widget
     lastupdate:
       class: lastupdate
       display: [desktop, mobile]
@@ -537,7 +558,7 @@ plugins:
   jquery: https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js
   # fontawesome Pro 版本：https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css
   fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
-  
+
   ################ optional plugins ################
   # issues api
   sitesjs:
@@ -557,34 +578,50 @@ plugins:
 
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
+  # tips: 
+  # 这里是主题自带的图片懒加载, 实现方案位于 /scripts/filters/z-lazyload ; srcset 属性的的优先级比 src 属性要高, 注意 srcset 存放了懒加载占位图,  src 存放了原图
+  # 在支持 srcset 的浏览器或者 RSS 阅读器(还会有人使用老旧的阅读器?)上会优先读取 srcset 加载的图片(懒加载占位图), 对于 RSS 中图片丢失变成懒加载占位图的问题, 建议 自行使用脚本移除 srcset 属性 或 关闭图片懒加载 或 在 RSS 中插入 vanilla-lazyload
   lazyload:
     enable: true
     js: https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js
     onlypost: false
-    loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
+    loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # 不建议使用占位图, 建议loadingImg为空, 当前占位图会产生布局偏移, loadingImg 为空占位图是一个 1X1 像素的图片
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
 
   ######## Plugins to optimize the experience:
+  # 代码高亮
+  code_highlight: highlightjs # highlightjs or prismjs
   # highlight.js
   highlightjs:
-    enable: #true # Please set hexo.config.highlight.enable = false !!!
-    js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/highlight.min.js
-    css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/styles/default.min.css
-    # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
+    copy_code: true
+    # 如果开启以下配置, hexo.config.highlight.enable 需要设置为 false ; hexo.config.highlight.enable 设置为 true, 则以下配置无效
+    # # 不再支持 v11.1.0 以下版本
+    # js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
+    # css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/default.min.css
+    # # # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
+
+  # prismjs
+  # https://prismjs.com/
+  # https://hexo.io/zh-cn/docs/syntax-highlight#PrismJS
+  prismjs:
+    copy_code: true
+    # Please set hexo.config.highlight.enable = false !!! set hexo.config.prismjs.enable = true !!!
+    js:
+      - https://cdn.jsdelivr.net/npm/prismjs/components/prism-core.min.js
+      - https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js
+      - https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js
+    css:
+      - https://cdn.jsdelivr.net/npm/prismjs/themes/prism-dark.css
+      - https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.css
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
     enable: #true
-    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
+    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
     interval: 20 # ms
     scale: 1 # 0.1~1
-
-  # Codeblock Copy Button
-  clipboard:
-    enable: #true
-    js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
   # npm i hexo-wordcount
@@ -616,34 +653,34 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp
+      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
     enable: #true
     js:
-      aplayer: https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
+      aplayer: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/js/APlayer.mini.js # aplayer@1.10 魔改: 将触摸和滚轮事件监听器标记为 `passive`，以提高页面的滚动性能
       meting: https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
@@ -658,12 +695,8 @@ plugins:
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
     list_folded: true
-    message:          # 音乐通知，播放、暂停、失败 时的图标
-      enable: true
-      play: fas fa-play
-      pause: fas fa-pause
-  
-  # Pjax 
+
+  # Pjax
   pjax:
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
@@ -671,16 +704,15 @@ plugins:
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: false # false, nprogress, circle
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      # - '/artitalk/'     # artitalk 不支持 pjax
-      # - '/bb/'           # bbtalk 不支持 pjax
+      # - '/artitalk/'   # artitalk 不支持 pjax
+      # - '/bbtalk/'     # bbtalk 不支持 pjax
 
   # 暗黑模式 darkmode
-  # 样式：source/css/_plugins/dark.styl
   # 开关按钮：在 navbar.menu 中添加：
   # - name: 暗黑模式 # 可自定义
   #   icon: fas fa-moon # 可自定义
   #   toggle: darkmode
-  darkmodejs:
+  darkmode:
     enable: #true
 
   # 旧版 Internet Explorer 淘汰行动
@@ -700,7 +732,8 @@ plugins:
   # 使用过旧版本的请修改Leancloud shuoshuo class部分列名：https://artitalk.js.org/release.html
   # 除appID和appKEY外均为选填项
   artitalk:
-    # Set `layout: artitalk` to enable in page
+    # Set `plugins: ["artitalk"]` to enable in front-matter
+    # 不支持 Pjax
     # 配置项按照yml格式继续填写即可
     appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
     appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
@@ -718,16 +751,12 @@ plugins:
 
   # BBtalk https://bb.js.org
   bbtalk:
+    # Set `plugins: ["bbtalk"]` to enable in front-matter
+    # 不支持 Pjax
     js: https://cdn.jsdelivr.net/npm/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
-
-  # Tidio聊天功能
-  # https://www.tidio.com/
-  tidio:
-    enable: #true
-    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
   # HexoPlusPlus
   # https://github.com/HexoPlusPlus/HexoPlusPlus
@@ -735,7 +764,8 @@ plugins:
   # 无服务器Hexo后端,支持文章编辑,自带图床功能.目标:解决静态博客所有痛点[文章编辑、图片上传、博主活跃信息统计、博主说说、Twikoo加强版、阅读量统计等
   hpp:
     # 说说功能
-    # Set `hpptalk:true` to enable in page
+    # Set `plugins: ["hpptalk"]` to enable in front-matter
+    # 支持 Pjax
     hpp_talk:
       css: https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk.css # 建议锁定版本
       js: https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk_user.js # 建议锁定版本
@@ -750,7 +780,8 @@ plugins:
   # https://github.com/Rock-Candy-Tea/hexo-circle-of-friends
   # https://zfe.space/post/friend-link-circle.html
   fcircle:
-    # Set `layout: fcircle` to enable in page
+    # Set `plugins: ["fcircle"]` to enable in front-matter
+    # 支持 Pjax
     api: '' # api 地址
     max_number: 20 # 页面展示文章数量
     add_number: 10 # 每次加载增加的篇数
@@ -761,22 +792,55 @@ plugins:
   # 消息提示
   message:
     enable: true
-    icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_plugins/message.styl
+    icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_style/_plugins/fontcolor.styl
       default: fas fa-info-circle light-blue
       quection: fas fa-question-circle light-blue
     time:     # 默认持续时间
       default: 5000
       quection: 20000
     position: 'topRight'                 # 弹出位置 可选值：topRight, bottomRight, bottomLeft, topLeft, topCenter, bottomCenter, center
+    transitionIn: 'bounceInLeft'         # 弹窗打开动画 可选值：bounceInLeft, bounceInRight, bounceInUp, bounceInDown, fadeIn, fadeInDown, fadeInUp, fadeInLeft, fadeInRight, flipInX
+    transitionOut: 'fadeOutRight'        # 弹窗关闭动画 可选值：fadeOut, fadeOutUp, fadeOutDown, fadeOutLeft, fadeOutRight, flipOutX
     titleColor: 'var(--color-text)'      # 标题颜色
     messageColor: 'var(--color-text)'    # 消息颜色
     backgroundColor: 'var(--color-card)' # 默认背景色
     zindex: 2147483647                   # 层级
-    copyright:                           # 是否在复制时弹出版权提示(非右键下的操作提示)
+    copyright:                           # 是否在复制时弹出版权提示，影响范围：ctrl+c、代码块复制按钮、右键复制选项
       enable: true
       title: '知识共享许可协议'
       message: '请遵守 CC BY-NC-SA 4.0 协议。'
       icon: 'far fa-copyright light-blue'
+    aplayer:                              # 是否开启音乐通知；播放、暂停、失败 时的图标
+      enable: true
+      play: fas fa-play
+      pause: fas fa-pause
+    rightmenu:                            # 是否开启右键模块的消息通知
+      enable: true
+  
+  # 标签插件样式按需加载
+  # 注意这个配置是带缓存的, 如果修改标签插件样式每次调试需要刷新两次页面, 建议开发者关闭该配置
+  tag_plugin_load_on_demand:
+    enable: #true
+    # 每个页面强制加载以下标签插件样式
+    plugins:
+      - note
+      - btns
+      - p
+      - gallery
+
+  # 聊天功能
+  chat_service: # tidio or gitter
+
+  # Tidio
+  # https://www.tidio.com/
+  tidio:
+    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+  # Gitter
+  # https://gitter.im
+  gitter:
+    room: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
@@ -785,7 +849,7 @@ rightmenu:
   enable: true
   faicon: fa              # 公共图标类型 fa fal fas fad
   # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, music]
+  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, reading, music]
   ### 可选功能项 ###
   print:                  # 只有文章页才允许自定义打印
     name: 打印页面
@@ -796,10 +860,13 @@ rightmenu:
   darkmode:        # 需开启 plugins.darkmodejs
     name: 暗黑模式
     icon: fa fa-moon
+  reading:
+    name: 阅读模式
+    icon: fa fa-book-open
   customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
     enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
     old: #https://static.inkss.cn/img/article/
-    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/  
+    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/
   ### 自定义菜单 ###
   help:
     name: 常见问题
@@ -826,27 +893,15 @@ rightmenu:
 
 ############################### Search ############################### > start
 # To use hexo search, you need to install the following plugins:
-# npm i hexo-generator-search hexo-generator-json-content
+# npm i hexo-generator-json-content
 search:
   enable: true
-  service: hexo  # hexo, google, algolia, azure, baidu
+  service: hexo  # hexo
   js:
-  google:
-    apiKey:
-    engineId:
-  algolia:
-    applicationID:
-    apiKey:
-    indexName:
-  azure:
-    serviceName:
-    indexName:
-    queryKey:
-  baidu:
-    apiId:
 ############################### Search ############################### > end
 
 ############################### Color Scheme ############################### > start
+# Accessibility: 背景色和前景色要有足够的对比度 https://web.dev/color-contrast/
 color_scheme:
   # ------------
   # 通用颜色
@@ -854,7 +909,7 @@ color_scheme:
     # 主题色
     theme: '#44D7B6'
     # 链接色
-    link: '#2196f3'
+    link: '#1b79c4'
     # 按钮色
     button: '#44D7B6'
     # 鼠标放到交互元素上时的色
@@ -942,7 +997,6 @@ color_scheme:
 
 ############################### Custom css ############################### > start
 custom_css:
-  toc_smooth: true # TOC 目录平滑滚动效果
   cursor:
     enable: #true
     text: https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
@@ -967,7 +1021,6 @@ custom_css:
     effect: [shadow] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
-      copy_btn: true
       grayscale: false # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
@@ -1024,8 +1077,8 @@ custom_css:
 analytics:
   busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   leancloud: # 请使用自己的 id & key 以防止数据丢失
-    app_id: u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
-    app_key: jfHtEKVE24j0IVCGHbvuFClp
+    app_id: # u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
+    app_key: # jfHtEKVE24j0IVCGHbvuFClp
     custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
 ############################### Analytics ############################### > end
 
@@ -1048,8 +1101,29 @@ seo:
 # https://ogp.me/
 # https://hexo.io/zh-cn/docs/helpers#open-graph
 open_graph:
-  image: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
-  twitter_card: summary_large_image
+  image: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
+  twitter_card: summary # summary_large_image , summary
   #twitter_id:
   #twitter_site:
 ############################### Open Graph ############################### > end
+
+############################### Structured Data ############################### > start
+# SEO 入门文档: https://developers.google.com/search/docs
+# https://schema.org.cn/
+# 结构化数据用于更改搜索结果的显示效果
+# 目前内置的结构化数据: blogposting, breadcrumblist, organization, person, website
+# 目前内置的富媒体搜索结果: 路径(面包屑导航), 徽标(Logo), 站点链接搜索框(SearchAction)
+# https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+# 富媒体搜索结果测试: https://search.google.com/test/rich-results
+structured_data:
+  enable: true
+  # 以下是覆盖配置, 默认配置见 scripts/helpers/structured-data/lib/config.js
+  data:
+    person:
+      sns:
+        - https://github.com/volantis-x
+    logo:
+      path: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
+      width: 192
+      height: 192
+############################### Structured Data ############################### > end

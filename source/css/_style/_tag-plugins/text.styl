@@ -1,0 +1,31 @@
+.article
+  del
+    color: mix($color-p, $color-card, 60)
+    text-decoration-color: @color
+  u
+    color: var(--color-text)
+    text-decoration: none
+    border-bottom: 1px solid $color-mac-red
+  emp
+    color: var(--color-text)
+    border-bottom: 4px dotted $color-mac-red
+  wavy
+    color: var(--color-text)
+    text-decoration-style: wavy
+    text-decoration-line: underline
+    text-decoration-color: $color-mac-red
+  psw
+    color: transparent
+    background: mix($color-text, $color-card, 50)
+    border-radius: 2px
+    trans()
+    &:hover
+      color: var(--color-p)
+      background: none
+  kbd
+    border-radius: 4px
+    border: 1px solid mix($color-block, $color-text, 80)
+    border-bottom-width: 2px
+    background: mix($color-block, $color-card, 50)
+    padding-left: 4px
+    padding-right: 4px

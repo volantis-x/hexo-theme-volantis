@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  volantis.layoutHelper("comments",`<div id="isso-thread"></div>`)
+  function loadIsso() {
+    let d = document,
+      s = d.createElement("script");
+    s.src = "<%= theme.comments.isso.src %>";
+    s.setAttribute("data-isso", "<%= theme.comments.isso.url %>");
+    <% if (theme.comments.isso.css) { %>
+      s.setAttribute("data-isso-css", "<%= theme.comments.isso.css %>");
+    <% } %>
+    <% if (theme.comments.isso.gravatar) { %>
+      s.setAttribute("data-isso-gravatar", "true");
+      s.setAttribute("data-isso-avatar", "false");
+    <% } %>
+    (d.head || d.body).appendChild(s);
+  }
+  function pjax_isso() {
+    if (window.Isso) {
+      window.Isso.init();
+      window.Isso.fetchComments();
+    } else if (document.querySelector("#isso-thread")) {
+      loadIsso();
+    }
+  }
+  pjax_isso();
+  volantis.pjax.push(pjax_isso);
+</script>

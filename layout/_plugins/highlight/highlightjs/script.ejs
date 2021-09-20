@@ -1,0 +1,26 @@
+<script>
+<% if (theme.plugins.highlightjs.css) { %>
+  volantis.css("<%- theme.plugins.highlightjs.css %>");
+<% } %>
+<% if (theme.plugins.highlightjs.js) { %>
+  volantis.js("<%- theme.plugins.highlightjs.js %>").then(()=>{
+    volantis.requestAnimationFrame(hljs.highlightAll)
+  })
+  volantis.pjax.push(()=>{
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightElement(block);
+    });
+  },"highlightjs")
+<% } %>
+<% if(theme.plugins.highlightjs.copy_code){ %>
+  function pjax_highlightjs_copyCode(){
+    if (!(document.querySelector(".highlight .code pre") ||
+      document.querySelector(".article pre code"))) {
+      return;
+    }
+    VolantisApp.copyCode(".highlight .code pre, .article pre code")
+  }
+  volantis.requestAnimationFrame(pjax_highlightjs_copyCode)
+  volantis.pjax.push(pjax_highlightjs_copyCode)
+<% } %>
+</script>

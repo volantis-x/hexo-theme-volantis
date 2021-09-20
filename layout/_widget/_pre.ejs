@@ -18,4 +18,9 @@ if (where == 'sidebar') {
   page.widget_style += theme.custom_css.body.effect.join(' ');
 }
 page.widget_platform = pf.join(' ');
+if (item.pjaxReload || item.pjaxReload===undefined){
+  page.widget_pjax = "pjax"
+}else{
+  page.widget_pjax = ""
+}
 %>

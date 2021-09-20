@@ -2,32 +2,7 @@
   <%- meta_generator() %>
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <%_
-    function generate_seo() {
-      let robots_content="";
-      if (page.robots) {
-        robots_content = page.robots
-      } else if (theme.seo && theme.seo.robots) {
-        if (is_home()) {
-          if (page.prev == 0) {
-            robots_content=theme.seo.robots.home_first_page
-          }else{
-            robots_content=theme.seo.robots.home_other_pages
-          }
-        } else if (is_archive()) { 
-          robots_content=theme.seo.robots.archive
-        } else if (is_category()) {
-          robots_content=theme.seo.robots.category
-        } else if (is_tag()) {
-          robots_content=theme.seo.robots.tag
-        }
-      }
-      if(robots_content){
-        return `<meta name="robots" content="${robots_content}">`
-      }
-    }
-  _%>
-  <%- generate_seo() %>
+  <%- generate_seo(theme, page) %>
   <%- autoCanonical(config, page) %>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -38,82 +13,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <meta content="<%=config.title%>" name="application-name">
   <meta content="<%=config.title%>" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
   <link rel="preload" href="<%- theme.cdn.map.css.style %>" as="style">
+  <%- generate_preload_fontfamily(theme) %>
   <!-- 页面元数据 -->
-  <%_
-    var title = page.seo_title || page.title;
-    var keywords = page.keywords || '';
-    var description = page.description || '';
-    if (is_archive()) {
-      title = __('navbar.archive');
-      if (is_month()) {
-        title += __('symbol.colon') + page.year + '/' + page.month;
-      } else if (is_year()) {
-        title += __('symbol.colon') + page.year;
-      }
-    } else if (is_category()) {
-      title = __('navbar.category') + __('symbol.colon') + page.category;
-    } else if (is_tag()) {
-      title = __('navbar.tag') + __('symbol.colon') + page.tag;
-    } else if (is_home() && page.prev == 0) {
-      keywords = config.keywords || '';
-      description = config.description || '';
-    } else {
-      if ((page.layout == 'docs') && page.group && (page.group in theme.sidebar.widget_library)) {
-        let widget = theme.sidebar.widget_library[page.group];
-        if ((widget.class == 'group') && widget.seo_title) {
-          title = widget.seo_title + ": " + title;
-        }
-      }
-    }
-    if (theme.seo && theme.seo.use_tags_as_keywords) {
-      if (!keywords && page.tags && page.tags.length > 0) {
-        let tags = page.tags.map(function(t){return t.name}).join(',');
-        if (tags.length > 0) {
-          keywords += tags;
-        }
-      }
-    }
-    if (theme.seo && theme.seo.use_excerpt_as_description) {
-      if (page.description == undefined) {
-        if (page.excerpt) {
-          description = truncate(strip_html(page.excerpt), {length: 160});
-        }
-      }
-    }
-    function generate_title() {
-      let s="<title>"
-      if (title) {
-        s+=`${title} - `
-      }
-      s+=`${config.title}</title>`
-      return s
-    }
-    function generate_keywords() {
-      if(!(is_home() && page.prev == 0)){
-        if (keywords) {
-          keywords += `,`
-        }
-        keywords += `${config.keywords}`
-      }
-      return `<meta name="keywords" content="${keywords}">`
-    }
-    function generate_description() {
-      if (!description) {
-        description += config.description
-      }
-      description += ` - ${config.author} - ${config.title}`
-      return `<meta name="description" content="${description}">`
-    }
-  _%>
-  <%- generate_title() %>
-  <%- generate_keywords() %>
-  <%- generate_description() %>
+  <%- generate_title(config, theme, page) %>
+  <%- generate_keywords(config, theme, page) %>
   <%- open_graph(theme.open_graph) %>
   <!-- feed -->
   <%_ if (config.feed && config.feed.path){ _%>
@@ -136,23 +45,29 @@
     <%_ }) _%>
   <%_ } _%>
   <style>
-    /* 
-      source/css/first.styl
-      scripts/first-style/index.js
-     */
-    <%- getFirstCSS() %>
+    /* 首屏样式 */
+    <%- FirstCSS() %>
   </style>
+  <%_ if (theme.plugins.tag_plugin_load_on_demand.enable) { _%>
+  <pjax>
+    <style>
+      /* 按需加载的标签插件样式 */
+      <%- TagCSS(page) %>
+    </style>
+  </pjax>
+  <%_ } _%>
   <link rel="stylesheet" href="<%- theme.cdn.map.css.style %>" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
-  <%_ if (theme.plugins.darkmodejs.enable) { _%>
+  <%_ if (theme.plugins.darkmode.enable) { _%>
     <script>
-      var userColorScheme=localStorage.getItem("user-color-scheme")
+      var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
-        document.documentElement.setAttribute("data-user-color-scheme", userColorScheme);
+        document.documentElement.setAttribute("color-scheme", userColorScheme);
       }
     </script>
   <%_ } _%>
-  <%- partial('../_third-party/end-of-support/script') %>
+  <%- partial('../_plugins/end-of-support/script') %>
+  <%- partial('scripts/global') %>
   <!-- Custom Files head begin-->
   <%- volantis_inject('head') %>
   <!-- Custom Files head end-->
