@@ -1,9 +1,14 @@
 <% if (theme.site_footer) { %>
   <%
-  var layout = theme.site_footer.layout;
-  if (config.theme_config && config.theme_config.footer && config.theme_config.footer.layout) {
-    layout = config.theme_config.footer.layout;
-  }
+    var layout = theme.site_footer.layout;
+    if (config.theme_config && config.theme_config.footer && config.theme_config.footer.layout) {
+      layout = config.theme_config.footer.layout;
+    }
+    let theme_version = theme.info.theme_version
+    // 未发布的 alpha 版本
+    if (theme_version.indexOf("alpha")!=-1) {
+      theme_version = "dev"
+    }
   %>
   <footer class="footer clearfix"  itemscope itemtype="http://schema.org/WPFooter">
     <br><br>
@@ -34,13 +39,13 @@
         <div><%- markdown(__('footer.license')) %></div>
       <% } else if (item == 'info') { %>
         <%- __('footer.use') %>
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/<%- theme.info.theme_version %>" target="_blank" class="codename">Volantis</a>
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/<%- theme_version %>" target="_blank" class="codename">Volantis</a>
         <%- __('footer.theme') %><% if (theme.analytics.busuanzi) { %><%- __('symbol.comma') %><%- __('footer.total_views') %>
           <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
           <%- __('footer.times') %>
         <% } %>
       <% } else if (item == 'source') { %>
-        <%- markdown(__('footer.site_source', '[Volantis](https://github.com/volantis-x/hexo-theme-volantis/tree/'+theme.info.theme_version+')', 'GitHub', 'https://github.com/volantis-x/volantis-docs')) %>
+        <%- markdown(__('footer.site_source', '[Volantis](https://github.com/volantis-x/hexo-theme-volantis/tree/'+theme_version+')', 'GitHub', 'https://github.com/volantis-x/volantis-docs')) %>
       <% } else if (item == 'copyright') { %>
         <div class='copyright'>
         <%- markdown(theme.site_footer.copyright) %>
