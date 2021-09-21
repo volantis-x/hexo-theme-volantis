@@ -53,6 +53,7 @@ module.exports = hexo => {
     return s.join('');
   };
   hexo.merge = merge;
+  hexo.getType = getType;
 };
 function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
@@ -67,4 +68,11 @@ function merge(target, source) {
     }
   }
   return target;
+}
+function getType(file){
+  var filename=file;
+  var index1=filename.lastIndexOf(".");
+  var index2=filename.length;
+  var type=filename.substring(index1+1,index2);
+  return type;
 }

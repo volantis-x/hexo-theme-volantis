@@ -7,6 +7,22 @@ function postAudio(args) {
 
 function postVideo(args) {
   const src = args[0].trim();
+  // m3u8 https://github.com/volantis-x/hexo-theme-volantis/issues/606
+  // 文件扩展名为 .m3u8
+  if (hexo.getType(src) === "m3u8") {
+    let video_id = `video-${hexo.createUuid()}`
+    return `<div clsss="video"><video id="${video_id}" controls loop="false" width="100%"></video></div>
+        <script>
+          volantis.js("https://cdn.jsdelivr.net/npm/hls.js@latest").then(()=>{
+            var video = document.getElementById('${video_id}');
+            if(Hls.isSupported()) {
+              var hls = new Hls();
+              hls.loadSource('${src}');
+              hls.attachMedia(video);
+            }
+          })
+        </script>`;
+  }
   return `<div class="video"><video controls preload><source src='${src}' type='video/mp4'>Your browser does not support the video tag.</video></div>`;
 }
 
