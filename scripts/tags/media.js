@@ -19,6 +19,8 @@ function postVideo(args) {
               var hls = new Hls();
               hls.loadSource('${src}');
               hls.attachMedia(video);
+            }else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+              video.src = '${src}';
             }
           })
         </script>`;
