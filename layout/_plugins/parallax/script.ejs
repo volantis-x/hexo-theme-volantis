@@ -14,8 +14,9 @@ function shuffle(arr){
 }
 _%>
 <script>
-  var imgs = <%- JSON.stringify(imgs) %>;
-  var index = 0;
+  let imgs = <%- JSON.stringify(imgs) %>;
+  let index = 0;
+  let IntervalParallax = null;
 
   function parallax(){
     let ParallaxWindow = document.querySelector("#parallax-window");
@@ -28,7 +29,7 @@ _%>
     next_parallax();
     Parallax.init();
     if (imgs.length>1) {
-      let IntervalParallax = setInterval(function () {
+      IntervalParallax = setInterval(function () {
         next_parallax();
       }, '<%- theme.plugins.parallax.duration %>');
     }
@@ -61,6 +62,9 @@ _%>
     volantis.js('<%- theme.cdn.map.js.parallax %>').then(()=>{
       parallax()
     })
-    volantis.pjax.push(next_parallax);
+    volantis.pjax.send(()=>{
+      clearInterval(IntervalParallax)
+    },"clearIntervalParallax");
+    volantis.pjax.push(parallax);
   }
 </script>
