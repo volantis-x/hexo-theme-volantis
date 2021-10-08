@@ -112,6 +112,7 @@
   <script>
     volantis.rightMenu = {};
     volantis.rightMenu.faicon = '<%- theme.rightmenu.faicon %>' || 'fa';
+    volantis.rightMenu.musicAlwaysShow = '<%- theme.rightmenu.music.alwaysShow %>' === 'true';
     <% if (theme.plugins.aplayer.enable && (theme.rightmenu.layout||[]).includes('music')) { %>
       volantis.rightMenu.music = true;
       volantis.rightMenu.aplayerBackward = () => {

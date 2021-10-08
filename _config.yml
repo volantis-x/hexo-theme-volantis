@@ -867,6 +867,8 @@ rightmenu:
     enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
     old: #https://static.inkss.cn/img/article/
     new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/
+  music:           # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
+    alwaysShow: true
   ### 自定义菜单 ###
   help:
     name: 常见问题
