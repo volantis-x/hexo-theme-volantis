@@ -140,11 +140,13 @@ div.tabs ul.nav-tabs li.tab a,
   cursor: $not-allowed,not-allowed !important
 
 .cur-zoom-in,
-.fancybox__carousel .fancybox__slide.can-zoom_in .fancybox__content
+.fancybox__carousel .fancybox__slide.can-zoom_in .fancybox__content,
+.has-image[data-image-fit=contain].can-zoom_in .fancybox__image
   cursor: $zoom-in,zoom-in !important
 
 .cur-zoom-out,
-.fancybox__carousel .is-draggable
+.fancybox__carousel .is-draggable,
+.has-image[data-image-fit=contain].is-draggable .fancybox__image
   cursor: $zoom-out,zoom-out !important
 
 .cur-text
