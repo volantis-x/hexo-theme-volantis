@@ -1,44 +1,46 @@
 <script>
-  const artalk = {};
   volantis.layoutHelper("comments",`<div id="artalk_container"><i class="fas fa-cog fa-spin fa-fw fa-2x"></i></div>`);
   function load_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0])return;
     volantis.css("<%- theme.comments.artalk.css %>");
     volantis.js("<%- theme.comments.artalk.js %>").then(pjax_artalk);
   }
+
   function pjax_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0])return;
     let path = pdata.commentPath;
     let placeholder = pdata.commentPlaceholder || "<%= theme.comments.artalk.placeholder %>" || "";
     if (path.length == 0) {
-      let defaultPath = '<%= theme.comments.artalk.path %>';
-      path = defaultPath || decodeURI(window.location.pathname); //神奇的pathname
+      path = '<%= theme.comments.artalk.path %>' || decodeURI(window.location.pathname);
     }
-    artalk.data = Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
+    new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
       el: '#artalk_container',
       pageKey: path,
-      pageTitle: pdata.postTitle || document.title,
+      pageTitle: document.title,
       pageUrl: window.location.href,
       placeholder: placeholder,
       site: '<%= config.title %>',
       darkMode: volantis.dark.mode === "dark"
-    });
-    new Artalk(artalk.data);
+    }));
   }
 
   load_artalk();
   volantis.pjax.push(()=>{
-    if (typeof Artalk == "undefined") {
+    if (typeof Artalk === "undefined") {
       load_artalk();
     } else {
-      load_artalk();
+      pjax_artalk();
     }
   },'artalk');
 
   function dark_artalk() {
-    if(!document.querySelectorAll("#artalk_container")[0])return;
-    artalk.data.darkMode = volantis.dark.mode === "dark";
-    new Artalk(artalk.data);
+    const container = document.querySelectorAll("#artalk_container")[0];
+    if(!container) return;
+    if(volantis.dark.mode === "dark") {
+      container.classList.add('atk-dark-mode');
+    } else {
+      container.classList.remove('atk-dark-mode');
+    }
   }
   volantis.dark.push(dark_artalk);
 </script>
