@@ -237,7 +237,29 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: giscus # giscus, beaudar, utterances, valine, twikoo, waline, minivaline, disqus, disqusjs, gitalk, vssue, livere, isso, hashover
+  service: artalk 
+  # 可选评论系统 #
+
+  # artalk
+  # https://artalk.js.org/
+  # https://github.com/ArtalkJS/Artalk
+  artalk:
+    js: https://cdn.jsdelivr.net/npm/artalk@2.0.4/dist/Artalk.js
+    css: https://cdn.jsdelivr.net/npm/artalk@2.0.4/dist/Artalk.css
+    path:  # 全局评论地址
+    placeholder: 快来评论吧~ # 全局评论占位
+    server: http://127.0.0.1:8080/api # 后端服务地址
+    noComment: 还没有评论，快来评论吧~ # 评论为空时，评论列表显示字符
+    # 可选配置，按需使用
+    #sendBtn:       # 发送按钮文字
+    #emoticons:     # 表情包
+    #defaultAvatar: # 默认头像（URL or Gravatar Type）
+    #gravatar:      # 头像 Gravatar Url
+    #  cdn:        
+    #readMore:      # 查看更多配置：pageSize每次请求获取数量，autoLoad滚动到底部自动加载
+    #  pageSize:
+    #  autoLoad:
+    
   # giscus
   # https://giscus.app
   # https://github.com/laymonage/giscus
@@ -267,6 +289,7 @@ comments:
       light: github-light
       dark: github-dark
     label: ✨💬✨
+
   # utterances
   # https://utteranc.es/
   utterances:
@@ -277,6 +300,7 @@ comments:
       light: github-light
       dark: github-dark
     label: ✨💬✨
+
   # Valine
   # https://valine.js.org/
   valine:
@@ -295,6 +319,7 @@ comments:
     lang: zh-cn
     highlight: true
     mathJax: false
+
   # MiniValine
   # https://github.com/MiniValine/MiniValine
   minivaline:
@@ -304,6 +329,7 @@ comments:
     # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）
     # 下面是一个例子：
     serverURL: https://hello.com
+
   # Disqus
   # https://disqus.com
   disqus:
@@ -311,6 +337,7 @@ comments:
     # optional
     autoload: false
     path: # 全局评论地址
+
   # DisqusJS
   # https://github.com/SukkaW/DisqusJS
   disqusjs:
@@ -321,6 +348,7 @@ comments:
     #apikey:
     #admin:
     #nesting:
+
   # Gitalk
   # https://gitalk.github.io/
   gitalk:
@@ -331,6 +359,7 @@ comments:
     owner:
     admin: # []
     path: # 全局评论地址
+
   # Vssue 暂不支持Pjax
   # https://vssue.js.org/zh/
   vssue:
@@ -338,10 +367,12 @@ comments:
     repo:
     clientId:
     clientSecret:
+
   # LiveRe 暂不支持Pjax
   # https://www.livere.com
   livere:
     uid:
+
   # Isso
   # https://posativ.org/isso/
   isso:
@@ -349,10 +380,12 @@ comments:
     src: https://example.com/(path/)js/embed.min.js
     css:
     gravatar:
+
   # HashOver 暂不支持Pjax
   # https://www.barkdull.org/software/hashover
   hashover:
     src: https://example.com/(path/)comments.php
+
   # Twikoo
   # https://twikoo.js.org/
   twikoo:
@@ -361,6 +394,7 @@ comments:
     # 其他配置项按照yml格式继续填写即可 除了 [el path] 选项
     envId: xxxxxxxxxxxxxxx # 腾讯云环境id
     placeholder: #全局评论占位，也可以在管理面板中的配置管理处设置（此处优先级更高）
+
   # Waline
   # https://waline.js.org/
   waline:
