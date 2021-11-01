@@ -13,11 +13,11 @@
     if (path.length == 0) {
       path = '<%= theme.comments.artalk.path %>' || decodeURI(window.location.pathname);
     }
-    new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
+
+    volantis.artalk = new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
       el: '#artalk_container',
       pageKey: path,
       pageTitle: document.title,
-      pageUrl: window.location.href,
       placeholder: placeholder,
       site: '<%= config.title %>',
       darkMode: volantis.dark.mode === "dark"
@@ -34,13 +34,8 @@
   },'artalk');
 
   function dark_artalk() {
-    const container = document.querySelectorAll("#artalk_container")[0];
-    if(!container) return;
-    if(volantis.dark.mode === "dark") {
-      container.classList.add('atk-dark-mode');
-    } else {
-      container.classList.remove('atk-dark-mode');
-    }
+    if(!document.querySelectorAll("#artalk_container")[0]) return;
+    volantis.artalk.setDarkMode(volantis.dark.mode === "dark")
   }
   volantis.dark.push(dark_artalk);
 </script>

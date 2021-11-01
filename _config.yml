@@ -246,19 +246,19 @@ comments:
   artalk:
     js: https://cdn.jsdelivr.net/npm/artalk@2.0.4/dist/Artalk.js
     css: https://cdn.jsdelivr.net/npm/artalk@2.0.4/dist/Artalk.css
+    server: http://127.0.0.1:8080/api    # 后端服务地址
     path:  # 全局评论地址
-    placeholder: 快来评论吧~ # 全局评论占位
-    server: http://127.0.0.1:8080/api # 后端服务地址
-    noComment: 还没有评论，快来评论吧~ # 评论为空时，评论列表显示字符
+    placeholder: 来啊，快活啊 ( ゜- ゜)   # 全局评论占位
+    noComment: 快来成为第一个评论的人吧~  # 评论为空时，评论列表显示字符
     # 可选配置，按需使用
     #sendBtn:       # 发送按钮文字
     #emoticons:     # 表情包
     #defaultAvatar: # 默认头像（URL or Gravatar Type）
     #gravatar:      # 头像 Gravatar Url
-    #  cdn:        
+    #  cdn:         # "https://sdn.geekzu.org/avatar/"
     #readMore:      # 查看更多配置：pageSize每次请求获取数量，autoLoad滚动到底部自动加载
-    #  pageSize:
-    #  autoLoad:
+    #  pageSize:    # 15
+    #  autoLoad:    # false
     
   # giscus
   # https://giscus.app
