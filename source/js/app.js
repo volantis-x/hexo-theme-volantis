@@ -490,8 +490,8 @@ const volantisFancyBox = (() => {
 
   fn.initFB = () => {
     const group = new Set();
-    group.add('default'); // 默认类
-    group.add('Twikoo'); // TwiKoo 类
+    group.add('default');  // 默认类
+    group.add('Comments'); // 评论类
 
     if (!document.querySelector(".md .gallery img, .fancybox")) return;
     document.querySelectorAll(".md .gallery").forEach(function (ele) {

@@ -22,7 +22,7 @@
           item.setAttribute('fancybox', 'true');
           const url = item.getAttribute('data-lazy-src') || item.getAttribute('src');
           const alt = item.getAttribute('alt') || '';
-          const template = `<a class='fancybox' href='${url}' data-fancybox='Twikoo' data-caption='${alt}'>${item.outerHTML}</a>`;
+          const template = `<a class='fancybox' href='${url}' data-fancybox='Comments' data-caption='${alt}'>${item.outerHTML}</a>`;
           const node = document.createElement('template');
           node.innerHTML = template;
           item.parentNode.replaceChild(node.content.lastChild, item);
