@@ -244,8 +244,8 @@ comments:
   # https://artalk.js.org/
   # https://github.com/ArtalkJS/Artalk
   artalk:
-    js: https://cdn.jsdelivr.net/npm/artalk@2.1.2/dist/Artalk.js
-    css: https://cdn.jsdelivr.net/npm/artalk@2.1.2/dist/Artalk.css
+    js: https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.js
+    css: https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.css
     server: http://127.0.0.1:8080/api    # 修改为自建的后端服务地址
     path:  # 全局评论地址
     # 更多选项 https://artalk.js.org/guide/frontend/config.htm 按照yml格式继续填写即可 

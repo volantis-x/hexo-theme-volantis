@@ -29,10 +29,10 @@ const locationHash = () => {
     if (target) {
       setTimeout(() => {
         if (window.location.hash.startsWith('#fn')) { // hexo-reference https://github.com/volantis-x/hexo-theme-volantis/issues/647
-          volantis.scroll.to(target,{addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant'})
+          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
         } else {
           // 锚点中上半部有大片空白 高度大概是 volantis.dom.header.offsetHeight
-          volantis.scroll.to(target,{addTop: 5, behavior: 'instant'})
+          volantis.scroll.to(target, { addTop: 5, behavior: 'instant' })
         }
       }, 1000)
     }
@@ -62,7 +62,7 @@ const VolantisApp = (() => {
         fn.setHeaderSearch();
       }
     }
-    volantis.scroll.push(fn.scrollEventCallBack,"scrollEventCallBack")
+    volantis.scroll.push(fn.scrollEventCallBack, "scrollEventCallBack")
   }
 
   fn.event = () => {
@@ -87,7 +87,7 @@ const VolantisApp = (() => {
 
   // 校正页面定位（被导航栏挡住的区域）
   fn.scrolltoElement = (elem, correction = scrollCorrection) => {
-    volantis.scroll.to(elem,{
+    volantis.scroll.to(elem, {
       top: elem.offsetTop - correction
     })
   }
@@ -181,7 +181,7 @@ const VolantisApp = (() => {
         fn.scrolltoElement(volantis.dom.commentTarget);
         e.stopImmediatePropagation();
       });
-    } else volantis.dom.comment.style.display='none'; // 关闭了评论，则隐藏评论按钮
+    } else volantis.dom.comment.style.display = 'none'; // 关闭了评论，则隐藏评论按钮
 
     // 移动端toc目录按钮 【移动端】
     if (volantis.isMobile) {
@@ -202,7 +202,7 @@ const VolantisApp = (() => {
           }
           volantis.dom.toc.removeClass('active');
         });
-      } else volantis.dom.toc.style.display='none'; // 隐藏toc目录按钮
+      } else volantis.dom.toc.style.display = 'none'; // 隐藏toc目录按钮
     }
   }
 
@@ -356,7 +356,7 @@ const VolantisApp = (() => {
         let targetID = decodeURI(e.target.hash.split('#')[1]).replace(/\ /g, '-');
         let target = document.getElementById(targetID);
         if (target) {
-          volantis.scroll.to(target,{addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant'})
+          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
         }
       });
     })
@@ -517,19 +517,45 @@ const volantisFancyBox = (() => {
     })
   }
 
+  /**
+   * 指定元素的监听处理
+   * 
+   * @param {*} selectors 选择器
+   * @param {*} flag      分组
+   */
+  fn.reloadFancyBox = (selectors, flag) => {
+    const nodeList = document.querySelectorAll(selectors);
+    nodeList.forEach($item => {
+      if($item.hasAttribute('fancybox')) return;
+      $item.setAttribute('fancybox', '');
+      const $link = document.createElement('a');
+      $link.setAttribute('href', $item.src);
+      $link.setAttribute('data-caption', $item.alt);
+      $link.setAttribute('data-fancybox', flag);
+      $link.classList.add('fancybox');
+      $link.append($item.cloneNode());
+      $item.replaceWith($link);
+    })
+    fn.checkFacyBox();
+  }
+
+  fn.checkFacyBox = () => {
+    if (typeof Fancybox === "undefined") {
+      fn.loadFancyBox();
+    } else {
+      fn.initFB();
+    }
+  }
+
   return {
     loadFancyBox: (done = null) => {
       fn.loadFancyBox(done);
     },
-    initFancyBox: () => {
-      fn.initFB()
-    },
-    pjaxReload: () => {
-      if (typeof Fancybox === "undefined") {
-        fn.loadFancyBox();
-      } else {
-        fn.initFB();
-      }
+    initFancyBox: fn.initFB,
+    pjaxReload: fn.checkFacyBox,
+    reloadFancyBox: (selectors, flag = 'RELOAD', done = null) => {
+      fn.reloadFancyBox(selectors, flag);
+      if (done) done();
     }
   }
 })()
@@ -580,7 +606,7 @@ const highlightKeyWords = (() => {
       target = document.getElementById("keyword-mark-" + fn.markNextId);
     }
     if (target) {
-      volantis.scroll.to(target,{addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
+      volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
     }
     // Current target
     return target
@@ -595,7 +621,7 @@ const highlightKeyWords = (() => {
       target = document.getElementById("keyword-mark-" + fn.markNextId);
     }
     if (target) {
-      volantis.scroll.to(target, {addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
+      volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
     }
     // Current target
     return target
