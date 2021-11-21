@@ -106,6 +106,10 @@
   <%- partial('../../_plugins/parallax/script') %>
 <% } %>
 
+<% if (theme.plugins.swiper.enable) { %>
+  <%- partial('../../_plugins/swiper/script') %>
+<% } %>
+
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
 <% if (page.plugins) { %>
