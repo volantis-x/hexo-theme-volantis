@@ -536,10 +536,10 @@ const volantisFancyBox = (() => {
       $link.append($item.cloneNode());
       $item.replaceWith($link);
     })
-    fn.checkFacyBox();
+    fn.checkFancyBox();
   }
 
-  fn.checkFacyBox = () => {
+  fn.checkFancyBox = () => {
     if (typeof Fancybox === "undefined") {
       fn.loadFancyBox();
     } else {
@@ -552,7 +552,7 @@ const volantisFancyBox = (() => {
       fn.loadFancyBox(done);
     },
     initFancyBox: fn.initFB,
-    pjaxReload: fn.checkFacyBox,
+    pjaxReload: fn.checkFancyBox,
     reloadFancyBox: (selectors, flag = 'RELOAD', done = null) => {
       fn.reloadFancyBox(selectors, flag);
       if (done) done();
