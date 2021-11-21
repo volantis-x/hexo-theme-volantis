@@ -54,7 +54,7 @@
       <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
     </span>
   <% } %>
-  <div class='md' itemprop="articleBody">
+  <div class='md article-desc' itemprop="articleBody">
     <% if (post.excerpt) { %>
       <%- post.excerpt %>
     <% } else if (post.description) { %>
