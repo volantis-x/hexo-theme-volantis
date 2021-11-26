@@ -62,7 +62,7 @@
     <% } else if (post.content) { %>
       <% if (theme.article.preview.auto_excerpt) { %>
         <%- truncate(strip_html(post.content), {length: 200}) %>
-      <% } else { %>
+      <% } else if(!theme.article.preview.hide_excerpt) { %>
         <%- post.content %>
       <% } %>
     <% } %>
