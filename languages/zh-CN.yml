@@ -43,6 +43,7 @@ rightmenu:
   back: "返回"
   forward: "前进"
   reload: "刷新"
+  search_word: "站内搜索"
   copy_text: "复制文本"
   copy_paste: "粘贴文本"
   copy_select: "全选文本"

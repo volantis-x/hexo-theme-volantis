@@ -43,6 +43,7 @@ rightmenu:
   back: "Back"
   forward: "Forward"
   reload: "Reload"
+  search_word: "Site Search"
   copy_text: "Copy Text"
   copy_image_src: "Copy Image Link"
   copy_link: "Copy Link"

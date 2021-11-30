@@ -47,6 +47,12 @@
           <% let copy_cut = __('rightmenu.copy_cut') %>
           <i class='<%= faIcon %> fa-cut fa-fw mR12'></i> <%- trim(copy_cut) %>
         </span>
+        <% if (theme.search.enable) { %>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='searchWord'>
+          <% let search_word = __('rightmenu.search_word') %>
+          <i class='<%= faIcon %> fa-search fa-fw'></i> <%- trim(search_word) %>
+        </span>
+        <% } %>
         <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='openTab'>
           <% let open_in_new_tab = __('rightmenu.open_in_new_tab') %>
           <i class='<%= faIcon %> fa-external-link-square-alt fa-fw mR12'></i> <%- trim(open_in_new_tab) %>
