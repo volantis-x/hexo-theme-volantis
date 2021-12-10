@@ -1,5 +1,5 @@
 <% if ((theme.comments.valine && theme.comments.valine.appId && (theme.comments.valine.visitor == true))||(theme.comments.minivaline && theme.comments.minivaline.appId && (theme.comments.minivaline.visitor == true))) { %>
-  <div class="new-meta-item browse valine">
+  <!-- <div class="new-meta-item browse valine">
     <a class='notlink'>
       <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
       <%
@@ -14,7 +14,7 @@
       </p>
       </span>
     </a>
-  </div>
+  </div> -->
 <% } else if (theme.plugins.busuanzi) { %>
   <% if(!isPostList){ %>
     <div class="new-meta-item browse busuanzi">
