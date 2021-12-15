@@ -9,18 +9,25 @@
       path = defaultPath || decodeURI(window.location.pathname);
     }
     new Waline(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.waline) %>, {
-     el: '#waline',
-     path: path,
-     placeholder: pagePlaceholder,
-     uploadImage: function(file) {
-      const formData = new FormData();
-      formData.append('image', file);
-      return fetch('<%= theme.comments.waline.imageHosting %>', {
-      	method: 'POST',
+      el: '#waline',
+      path: path,
+      placeholder: pagePlaceholder,
+      uploadImage: function(file) {
+        const formData = new FormData();
+        formData.append('image', file);
+        return fetch('<%= theme.comments.waline.imageHosting %>', {
+      	  method: 'POST',
       	body: formData
-      }).then(resp => resp.json()).then(resp => resp.data.url);
-   },
-  }),pdata.commentConfig));
+        }).then(resp => resp.json()).then(resp => resp.data.url);
+    },}),pdata.commentConfig));
+    fancybox_waline()
+  }
+  function fancybox_waline() {
+    const checkFancyBox = setInterval(() => {
+      if(typeof volantisFancyBox === "undefined") return;
+      clearInterval(checkFancyBox);
+      volantisFancyBox.bind('#waline .vcontent img:not([atk-emoticon])');
+    })
   }
   volantis.js('<%- theme.comments.waline.js || 'https://cdn.jsdelivr.net/npm/@waline/client@latest' %>').then(pjax_waline)
   volantis.pjax.push(pjax_waline);

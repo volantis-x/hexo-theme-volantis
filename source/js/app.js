@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       VolantisApp.pjaxReload();
       sessionStorage.setItem("domTitle", document.title);
       highlightKeyWords.startFromURL()
-      volantisFancyBox.pjaxReload()
+      volantisFancyBox.loadFancyBox()
     }, 'app.js');
     volantis.pjax.send(() => {
       volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
@@ -490,10 +490,6 @@ const volantisFancyBox = (() => {
 
   fn.initFB = () => {
     const group = new Set();
-    group.add('default');  // 默认类
-    group.add('Comments'); // 评论类
-
-    if (!document.querySelector(".md .gallery img, .fancybox")) return;
     document.querySelectorAll(".md .gallery").forEach(function (ele) {
       if (ele.querySelector("img")) {
         group.add(ele.getAttribute('data-group') || 'default');
@@ -509,16 +505,30 @@ const volantisFancyBox = (() => {
   }
 
   fn.loadFancyBox = (done) => {
-    if (!document.querySelector(".md .gallery img, .fancybox")) return;
     volantis.css(" https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css");
     volantis.js('https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js').then(() => {
-      fn.initFB();
-      if (done) done();
+      if(done) done();
     })
   }
 
   /**
-   * 指定元素的监听处理
+   * 加载并处理图片
+   * 
+   * @param {*} checkMain 是否只处理文章区域的文章
+   * @param {*} done      FancyBox 加载完成后的动作
+   * @returns 
+   */
+  fn.checkFancyBox = (checkMain = true, done = fn.initFB) => {
+    if (!document.querySelector(".md .gallery img, .fancybox") && checkMain) return;
+    if (typeof Fancybox === "undefined") {
+      fn.loadFancyBox(done);
+    } else {
+      done();
+    }
+  }
+
+  /**
+   * 指定元素的监听处理（带分组控制）
    * 
    * @param {*} selectors 选择器
    * @param {*} flag      分组
@@ -526,7 +536,7 @@ const volantisFancyBox = (() => {
   fn.reloadFancyBox = (selectors, flag) => {
     const nodeList = document.querySelectorAll(selectors);
     nodeList.forEach($item => {
-      if($item.hasAttribute('fancybox')) return;
+      if ($item.hasAttribute('fancybox')) return;
       $item.setAttribute('fancybox', '');
       const $link = document.createElement('a');
       $link.setAttribute('href', $item.src);
@@ -536,26 +546,27 @@ const volantisFancyBox = (() => {
       $link.append($item.cloneNode());
       $item.replaceWith($link);
     })
-    fn.checkFancyBox();
+    fn.checkFancyBox(false);
   }
 
-  fn.checkFancyBox = () => {
-    if (typeof Fancybox === "undefined") {
-      fn.loadFancyBox();
-    } else {
-      fn.initFB();
-    }
+  /**
+   * 原生绑定
+   * 
+   * @param {*} selectors 选择器
+   */
+  fn.bind = (selectors) => {
+    fn.checkFancyBox(false, () => {
+      Fancybox.bind(selectors);
+    });
   }
 
   return {
-    loadFancyBox: (done = null) => {
-      fn.loadFancyBox(done);
-    },
-    initFancyBox: fn.initFB,
-    pjaxReload: fn.checkFancyBox,
-    reloadFancyBox: (selectors, flag = 'RELOAD', done = null) => {
+    loadFancyBox: fn.checkFancyBox,
+    reloadFancyBox: (selectors, flag = 'RELOAD') => {
       fn.reloadFancyBox(selectors, flag);
-      if (done) done();
+    },
+    bind: (selectors) => {
+      fn.bind(selectors)
     }
   }
 })()
