@@ -556,7 +556,9 @@ const volantisFancyBox = (() => {
    */
   fn.bind = (selectors) => {
     fn.checkFancyBox(false, () => {
-      Fancybox.bind(selectors);
+      Fancybox.bind(selectors, {
+        groupAll : true
+      });
     });
   }
 
