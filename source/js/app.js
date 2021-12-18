@@ -488,39 +488,21 @@ Object.freeze(VolantisApp);
 const volantisFancyBox = (() => {
   const fn = {};
 
-  fn.initFB = () => {
-    const group = new Set();
-    document.querySelectorAll(".md .gallery").forEach(function (ele) {
-      if (ele.querySelector("img")) {
-        group.add(ele.getAttribute('data-group') || 'default');
-      }
-    })
-
-    for (const iterator of group) {
-      if (!!iterator) Fancybox.bind('[data-fancybox="' + iterator + '"]', {
-        Hash: false,
-        Thumbs: {
-          autoStart: false,
-        }
-      });
-    }
-  }
-
   fn.loadFancyBox = (done) => {
     volantis.css(" https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css");
     volantis.js('https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js').then(() => {
-      if(done) done();
+      if (done) done();
     })
   }
 
   /**
-   * 加载并处理图片
+   * 加载及处理
    * 
    * @param {*} checkMain 是否只处理文章区域的文章
-   * @param {*} done      FancyBox 加载完成后的动作
+   * @param {*} done      FancyBox 加载完成后的动作，默认执行分组绑定
    * @returns 
    */
-  fn.checkFancyBox = (checkMain = true, done = fn.initFB) => {
+  fn.init = (checkMain = true, done = fn.groupBind) => {
     if (!document.querySelector(".md .gallery img, .fancybox") && checkMain) return;
     if (typeof Fancybox === "undefined") {
       fn.loadFancyBox(done);
@@ -530,12 +512,12 @@ const volantisFancyBox = (() => {
   }
 
   /**
-   * 指定元素的监听处理（带分组控制）
+   * 图片元素预处理
    * 
    * @param {*} selectors 选择器
-   * @param {*} flag      分组
+   * @param {*} name      分组
    */
-  fn.reloadFancyBox = (selectors, flag) => {
+  fn.elementHandling = (selectors, name) => {
     const nodeList = document.querySelectorAll(selectors);
     nodeList.forEach($item => {
       if ($item.hasAttribute('fancybox')) return;
@@ -543,12 +525,11 @@ const volantisFancyBox = (() => {
       const $link = document.createElement('a');
       $link.setAttribute('href', $item.src);
       $link.setAttribute('data-caption', $item.alt);
-      $link.setAttribute('data-fancybox', flag);
+      $link.setAttribute('data-fancybox', name);
       $link.classList.add('fancybox');
       $link.append($item.cloneNode());
       $item.replaceWith($link);
     })
-    fn.checkFancyBox(false);
   }
 
   /**
@@ -557,9 +538,9 @@ const volantisFancyBox = (() => {
    * @param {*} selectors 选择器
    */
   fn.bind = (selectors) => {
-    fn.checkFancyBox(false, () => {
+    fn.init(false, () => {
       Fancybox.bind(selectors, {
-        groupAll : true,
+        groupAll: true,
         Hash: false,
         Thumbs: {
           autoStart: false,
@@ -571,13 +552,39 @@ const volantisFancyBox = (() => {
     });
   }
 
+  /**
+   * 分组绑定
+   * 
+   * @param {*} groupName 分组名称
+   */
+  fn.groupBind = (groupName = null) => {
+    const group = new Set();
+
+    document.querySelectorAll(".md .gallery img, .fancybox").forEach(function (ele) {
+      if (ele.querySelector("img")) {
+        group.add(ele.getAttribute('data-group') || 'default');
+      }
+    })
+
+    if (!!groupName) group.add(groupName);
+
+    for (const iterator of group) {
+      if (!!iterator) Fancybox.bind('[data-fancybox="' + iterator + '"]', {
+        Hash: false,
+        Thumbs: {
+          autoStart: false,
+        }
+      });
+    }
+  }
+
   return {
-    loadFancyBox: fn.checkFancyBox,
-    reloadFancyBox: (selectors, flag = 'RELOAD') => {
-      fn.reloadFancyBox(selectors, flag);
-    },
     bind: (selectors) => {
       fn.bind(selectors)
+    },
+    groupBind: (selectors, groupName = 'default') => {
+      fn.elementHandling(selectors, groupName);
+      fn.init(false, fn.groupBind(groupName));
     }
   }
 })()
