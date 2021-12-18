@@ -4,14 +4,14 @@
 <script>
   volantis.css("https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css");
   function fancybox_vssue() {
-    if(typeof volantisFancyBox === "undefined") {
+    if(typeof VolantisFancyBox === "undefined") {
       const checkFancyBox = setInterval(() => {
-        if(typeof volantisFancyBox === "undefined") return;
+        if(typeof VolantisFancyBox === "undefined") return;
         clearInterval(checkFancyBox);
-        volantisFancyBox.bind('#vssue .vssue-comment-main img');
+        VolantisFancyBox.bind('#vssue .vssue-comment-main img');
       })
     } else {
-      volantisFancyBox.bind('#vssue .vssue-comment-main img');
+      VolantisFancyBox.bind('#vssue .vssue-comment-main img');
     }
   }
 </script>

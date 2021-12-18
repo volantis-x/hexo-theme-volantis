@@ -24,14 +24,14 @@
     }));
 
     volantis.artalk.on('comments-loaded', () => {
-      if (typeof volantisFancyBox === "undefined"){
+      if (typeof VolantisFancyBox === "undefined"){
         const checkFancyBox = setInterval(() => {
-          if(typeof volantisFancyBox === "undefined") return;
+          if(typeof VolantisFancyBox === "undefined") return;
           clearInterval(checkFancyBox);
-          volantisFancyBox.groupBind('.atk-content img:not([atk-emoticon])', 'Comments');
+          VolantisFancyBox.groupBind('.atk-content img:not([atk-emoticon])', 'Comments');
         })
       } else {
-        volantisFancyBox.groupBind('.atk-content img:not([atk-emoticon])', 'Comments');
+        VolantisFancyBox.groupBind('.atk-content img:not([atk-emoticon])', 'Comments');
       }
     })
   }

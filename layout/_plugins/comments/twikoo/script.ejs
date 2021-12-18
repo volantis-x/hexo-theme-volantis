@@ -17,14 +17,14 @@
       path: path,
       placeholder: placeholder,
       onCommentLoaded: function() {
-        if(typeof volantisFancyBox === "undefined") {
+        if(typeof VolantisFancyBox === "undefined") {
           const checkFancyBox = setInterval(() => {
-            if(typeof volantisFancyBox === "undefined") return;
+            if(typeof VolantisFancyBox === "undefined") return;
             clearInterval(checkFancyBox);
-            volantisFancyBox.groupBind('.tk-content img:not([class*="emo"])', 'Comments');
+            VolantisFancyBox.groupBind('.tk-content img:not([class*="emo"])', 'Comments');
           })
         } else {
-          volantisFancyBox.groupBind('.tk-content img:not([class*="emo"])', 'Comments');
+          VolantisFancyBox.groupBind('.tk-content img:not([class*="emo"])', 'Comments');
         }
       }
     }),pdata.commentConfig))

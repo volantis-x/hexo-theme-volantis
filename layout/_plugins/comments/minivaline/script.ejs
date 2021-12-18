@@ -24,14 +24,14 @@
     fancybox_minivaline()
   }
   function fancybox_minivaline() {
-    if(typeof volantisFancyBox === "undefined") {
+    if(typeof VolantisFancyBox === "undefined") {
       const checkFancyBox = setInterval(() => {
-        if(typeof volantisFancyBox === "undefined") return;
+        if(typeof VolantisFancyBox === "undefined") return;
         clearInterval(checkFancyBox);
-        volantisFancyBox.bind('#minivaline_container .vcomment img');
+        VolantisFancyBox.bind('#minivaline_container .vcomment img');
       })
     } else {
-      volantisFancyBox.bind('#minivaline_container .vcomment img');
+      VolantisFancyBox.bind('#minivaline_container .vcomment img');
     }
   }
   load_minivaline();

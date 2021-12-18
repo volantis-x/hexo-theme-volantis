@@ -2,15 +2,15 @@ document.addEventListener("DOMContentLoaded", function () {
   volantis.requestAnimationFrame(() => {
     VolantisApp.init();
     VolantisApp.subscribe();
-    volantisFancyBox.loadFancyBox();
+    VolantisFancyBox.init();
     highlightKeyWords.startFromURL();
     locationHash();
 
     volantis.pjax.push(() => {
       VolantisApp.pjaxReload();
+      VolantisFancyBox.init();
       sessionStorage.setItem("domTitle", document.title);
-      highlightKeyWords.startFromURL()
-      volantisFancyBox.loadFancyBox()
+      highlightKeyWords.startFromURL();
     }, 'app.js');
     volantis.pjax.send(() => {
       volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
@@ -485,7 +485,7 @@ const VolantisApp = (() => {
 })()
 Object.freeze(VolantisApp);
 
-const volantisFancyBox = (() => {
+const VolantisFancyBox = (() => {
   const fn = {};
 
   fn.loadFancyBox = (done) => {
@@ -560,7 +560,7 @@ const volantisFancyBox = (() => {
   fn.groupBind = (groupName = null) => {
     const group = new Set();
 
-    document.querySelectorAll(".md .gallery img, .fancybox").forEach(function (ele) {
+    document.querySelectorAll(".gallery").forEach(ele => {
       if (ele.querySelector("img")) {
         group.add(ele.getAttribute('data-group') || 'default');
       }
@@ -579,6 +579,7 @@ const volantisFancyBox = (() => {
   }
 
   return {
+    init: fn.init,
     bind: (selectors) => {
       fn.bind(selectors)
     },
@@ -588,7 +589,7 @@ const volantisFancyBox = (() => {
     }
   }
 })()
-Object.freeze(volantisFancyBox);
+Object.freeze(VolantisFancyBox);
 
 // highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
 
