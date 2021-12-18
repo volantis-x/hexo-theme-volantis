@@ -23,11 +23,15 @@
     fancybox_waline()
   }
   function fancybox_waline() {
-    const checkFancyBox = setInterval(() => {
-      if(typeof volantisFancyBox === "undefined") return;
-      clearInterval(checkFancyBox);
-      volantisFancyBox.bind('#waline .vcontent img:not([atk-emoticon])');
-    })
+    if(typeof volantisFancyBox === "undefined") {
+      const checkFancyBox = setInterval(() => {
+        if(typeof volantisFancyBox === "undefined") return;
+        clearInterval(checkFancyBox);
+        volantisFancyBox.bind('#waline .vcontent img:not(.vemoji)');
+      })
+    } else {
+      volantisFancyBox.bind('#waline .vcontent img:not(.vemoji)');
+    }
   }
   volantis.js('<%- theme.comments.waline.js || 'https://cdn.jsdelivr.net/npm/@waline/client@latest' %>').then(pjax_waline)
   volantis.pjax.push(pjax_waline);

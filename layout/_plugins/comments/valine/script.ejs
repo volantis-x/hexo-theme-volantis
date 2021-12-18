@@ -35,6 +35,18 @@
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
       emojiMaps: emojiMaps,
     }),pdata.commentConfig))
+    fancybox_valine()
+  }
+  function fancybox_valine() {
+    if(typeof volantisFancyBox === "undefined") {
+      const checkFancyBox = setInterval(() => {
+        if(typeof volantisFancyBox === "undefined") return;
+        clearInterval(checkFancyBox);
+        volantisFancyBox.bind('#valine_container .vcontent img:not(.vemoji)');
+      })
+    } else {
+      volantisFancyBox.bind('#valine_container .vcontent img:not(.vemoji)');
+    }
   }
   volantis.js('<%- theme.cdn.map.js.valine %>').then(pjax_valine)
   volantis.pjax.push(pjax_valine);

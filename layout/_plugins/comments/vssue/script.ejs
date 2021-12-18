@@ -1,10 +1,22 @@
-<script>
-  volantis.layoutHelper("comments",`<div id="vssue"></div>`)
-</script>
+
 <script src="https://cdn.jsdelivr.net/gh/vuejs/vue@2.6.11/dist/vue.runtime.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.github.min.js"></script>
-<script data-pjax>
+<script>
   volantis.css("https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css");
+  function fancybox_vssue() {
+    if(typeof volantisFancyBox === "undefined") {
+      const checkFancyBox = setInterval(() => {
+        if(typeof volantisFancyBox === "undefined") return;
+        clearInterval(checkFancyBox);
+        volantisFancyBox.bind('#vssue .vssue-comment-main img');
+      })
+    } else {
+      volantisFancyBox.bind('#vssue .vssue-comment-main img');
+    }
+  }
+</script>
+<script data-pjax>
+  volantis.layoutHelper("comments",`<div id="vssue"></div>`);
   new Vue({
     el: '#vssue',
     render: h => h('Vssue', {
@@ -21,4 +33,5 @@
       }
     })
   })
+  fancybox_vssue();
 </script>

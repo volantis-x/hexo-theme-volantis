@@ -17,11 +17,15 @@
       path: path,
       placeholder: placeholder,
       onCommentLoaded: function() {
-        const checkFancyBox = setInterval(() => {
-          if(typeof volantisFancyBox === "undefined") return;
-          clearInterval(checkFancyBox);
+        if(typeof volantisFancyBox === "undefined") {
+          const checkFancyBox = setInterval(() => {
+            if(typeof volantisFancyBox === "undefined") return;
+            clearInterval(checkFancyBox);
+            volantisFancyBox.reloadFancyBox('.tk-content img:not([class*="emo"])', 'Comments');
+          })
+        } else {
           volantisFancyBox.reloadFancyBox('.tk-content img:not([class*="emo"])', 'Comments');
-        })
+        }
       }
     }),pdata.commentConfig))
   }

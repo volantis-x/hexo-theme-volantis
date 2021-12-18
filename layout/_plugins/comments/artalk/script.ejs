@@ -24,11 +24,15 @@
     }));
 
     volantis.artalk.on('comments-loaded', () => {
-      const checkFancyBox = setInterval(() => {
-        if(typeof volantisFancyBox === "undefined") return;
-        clearInterval(checkFancyBox);
+      if (typeof volantisFancyBox === "undefined"){
+        const checkFancyBox = setInterval(() => {
+          if(typeof volantisFancyBox === "undefined") return;
+          clearInterval(checkFancyBox);
+          volantisFancyBox.reloadFancyBox('.atk-content img:not([atk-emoticon])', 'Comments');
+        })
+      } else {
         volantisFancyBox.reloadFancyBox('.atk-content img:not([atk-emoticon])', 'Comments');
-      })
+      }
     })
   }
 

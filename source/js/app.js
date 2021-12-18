@@ -496,10 +496,12 @@ const volantisFancyBox = (() => {
       }
     })
 
-    Fancybox.destroy();
     for (const iterator of group) {
       if (!!iterator) Fancybox.bind('[data-fancybox="' + iterator + '"]', {
-        Hash: false
+        Hash: false,
+        Thumbs: {
+          autoStart: false,
+        }
       });
     }
   }
@@ -557,7 +559,14 @@ const volantisFancyBox = (() => {
   fn.bind = (selectors) => {
     fn.checkFancyBox(false, () => {
       Fancybox.bind(selectors, {
-        groupAll : true
+        groupAll : true,
+        Hash: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: function (fancybox, carousel, slide) {
+          return slide.$trigger.alt || null
+        }
       });
     });
   }
