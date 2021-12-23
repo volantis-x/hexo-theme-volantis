@@ -22,7 +22,7 @@
   },
   "homepage": "https://volantis.js.org",
   "devDependencies": {
-    "hexo": "^5.4.0",
+    "hexo": "^6.0.0",
     "hexo-renderer-stylus": "^2.0.1",
     "hexo-renderer-ejs": "^2.0.0"
   }
