@@ -489,8 +489,8 @@ const VolantisFancyBox = (() => {
   const fn = {};
 
   fn.loadFancyBox = (done) => {
-    volantis.css(" https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css");
-    volantis.js('https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js').then(() => {
+    volantis.css('https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.css');
+    volantis.js('https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.umd.js').then(() => {
       if (done) done();
     })
   }
@@ -542,6 +542,7 @@ const VolantisFancyBox = (() => {
       Fancybox.bind(selectors, {
         groupAll: true,
         Hash: false,
+        hideScrollbar: false,
         Thumbs: {
           autoStart: false,
         },
@@ -569,8 +570,10 @@ const VolantisFancyBox = (() => {
     if (!!groupName) group.add(groupName);
 
     for (const iterator of group) {
-      if (!!iterator) Fancybox.bind('[data-fancybox="' + iterator + '"]', {
+      Fancybox.unbind('[data-fancybox="' + iterator + '"]');
+      Fancybox.bind('[data-fancybox="' + iterator + '"]', {
         Hash: false,
+        hideScrollbar: false,
         Thumbs: {
           autoStart: false,
         }
@@ -584,8 +587,14 @@ const VolantisFancyBox = (() => {
       fn.bind(selectors)
     },
     groupBind: (selectors, groupName = 'default') => {
-      fn.elementHandling(selectors, groupName);
-      fn.init(false, fn.groupBind(groupName));
+      try {
+        fn.elementHandling(selectors, groupName);
+        fn.init(false, () => {
+          fn.groupBind(groupName)
+        });
+      } catch (error) {
+        console.error(error) 
+      }
     }
   }
 })()
