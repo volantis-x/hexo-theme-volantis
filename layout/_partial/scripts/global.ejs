@@ -1,6 +1,9 @@
 <script>
   /************这个文件存放不需要重载的全局变量和全局函数*********/
   window.volantis = {}; // volantis 全局变量
+  volantis.WEBCONFIG = <%- JSON.stringify(config) %>;
+  volantis.THEMECONFIG = <%- JSON.stringify(theme) %>;
+  volantis.LASTUPDATE = new Date('<%- new Date() %>');
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
   /******************** volantis.EventListener ********************************/
   // 事件监听器 see: /source/js/app.js
