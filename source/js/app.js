@@ -71,10 +71,10 @@ const VolantisApp = (() => {
     });
 
     // 站点信息 最后活动日期
-    if(volantis.THEMECONFIG.sidebar.for_page.includes('webinfo') 
+    if (volantis.THEMECONFIG.sidebar.for_page.includes('webinfo')
       || volantis.THEMECONFIG.sidebar.for_post.includes('webinfo')) {
       const lastupd = volantis.THEMECONFIG.sidebar.widget_library.webinfo.type.lastupd;
-      if(lastupd.enable && lastupd.friendlyShow) {
+      if (lastupd.enable && lastupd.friendlyShow) {
         document.getElementById('last-update-show').innerHTML = fn.timeAgo(volantis.LASTUPDATE);
       }
     }
@@ -458,14 +458,14 @@ const VolantisApp = (() => {
 
   // 工具类：返回时间间隔
   fn.timeAgo = (dateTimeStamp) => {
-    const minute = 1e3*60, hour = minute*60, day = minute*60, week = day*7, month = day*30;
+    const minute = 1e3 * 60, hour = minute * 60, day = minute * 24, week = day * 7, month = day * 30;
     const now = new Date().getTime();
     const diffValue = now - dateTimeStamp;
     const minC = diffValue / minute,
-          hourC = diffValue / hour,
-          dayC = diffValue / day,
-          weekC = diffValue / week,
-          monthC = diffValue / month;
+      hourC = diffValue / hour,
+      dayC = diffValue / day,
+      weekC = diffValue / week,
+      monthC = diffValue / month;
     if (diffValue < 0) {
       result = ""
     } else if (monthC >= 1 && monthC < 7) {
@@ -644,7 +644,7 @@ const VolantisFancyBox = (() => {
           fn.groupBind(groupName)
         });
       } catch (error) {
-        console.error(error) 
+        console.error(error)
       }
     }
   }
