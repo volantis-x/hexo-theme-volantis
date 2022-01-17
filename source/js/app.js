@@ -458,7 +458,7 @@ const VolantisApp = (() => {
 
   // 工具类：返回时间间隔
   fn.timeAgo = (dateTimeStamp) => {
-    const minute = 1e3 * 60, hour = minute * 60, day = minute * 24, week = day * 7, month = day * 30;
+    const minute = 1e3 * 60, hour = minute * 60, day = hour * 24, week = day * 7, month = day * 30;
     const now = new Date().getTime();
     const diffValue = now - dateTimeStamp;
     const minC = diffValue / minute,
