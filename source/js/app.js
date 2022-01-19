@@ -71,7 +71,8 @@ const VolantisApp = (() => {
     });
 
     // 站点信息 最后活动日期
-    if (volantis.THEMECONFIG.sidebar.for_page.includes('webinfo')
+    if (document.getElementById('last-update-show') 
+      && volantis.THEMECONFIG.sidebar.for_page.includes('webinfo')
       || volantis.THEMECONFIG.sidebar.for_post.includes('webinfo')) {
       const lastupd = volantis.THEMECONFIG.sidebar.widget_library.webinfo.type.lastupd;
       if (lastupd.enable && lastupd.friendlyShow) {
