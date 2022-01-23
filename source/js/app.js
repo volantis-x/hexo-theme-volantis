@@ -993,3 +993,99 @@ const highlightKeyWords = (() => {
   }
 })()
 Object.freeze(highlightKeyWords);
+
+/* DOM 控制 */
+const DOMController = {
+  /**
+   * 控制元素显隐
+   */
+  visible: (ele, type = true) => {
+    if (ele) ele.style.display = type === true ? 'block' : 'none';
+  },
+
+  /**
+   * 移除元素
+   */
+  remove: (param) => {
+    const node = document.querySelectorAll(param);
+    node.forEach(ele => {
+      ele.remove();
+    })
+  },
+
+  /**
+   * 设置属性
+   */
+  setAttribute: (param, attrName, attrValue) => {
+    const node = document.querySelectorAll(param);
+    node.forEach(ele => {
+      ele.setAttribute(attrName, attrValue)
+    })
+  },
+
+  /**
+   * 设置样式
+   */
+  setStyle: (param, styleName, styleValue) => {
+    const node = document.querySelectorAll(param);
+    node.forEach(ele => {
+      ele.style[styleName] = styleValue;
+    })
+  },
+
+  fadeIn: (e) => {
+    if (!e) return;
+    e.style.visibility = "visible";
+    e.style.opacity = 1;
+    e.style.display = "block";
+    e.style.transition = "all 0.5s linear";
+    return e
+  },
+
+  fadeOut: (e) => {
+    if (!e) return;
+    e.style.visibility = "hidden";
+    e.style.opacity = 0;
+    e.style.display = "none";
+    e.style.transition = "all 0.5s linear";
+    return e
+  },
+
+  fadeToggle: (e) => {
+    if (!e) return;
+    if (e.style.visibility == "hidden") {
+      e = fn.fadeIn(e)
+    } else {
+      e = fn.fadeOut(e)
+    }
+    return e
+  },
+
+  hasClass: (e, c) => {
+    if (!e) return;
+    return e.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
+  },
+
+  addClass: (e, c) => {
+    if (!e) return;
+    e.classList.add(c);
+    return e
+  },
+
+  removeClass: (e, c) => {
+    if (!e) return;
+    e.classList.remove(c);
+    return e
+  },
+
+  toggleClass: (e, c) => {
+    if (!e) return;
+    if (fn.hasClass(e, c)) {
+      fn.removeClass(e, c)
+    } else {
+      fn.addClass(e, c)
+    }
+    return e
+  }
+}
+Object.freeze(DOMController);

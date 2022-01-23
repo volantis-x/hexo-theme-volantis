@@ -29,8 +29,8 @@ const RightMenu = (() => {
   const urlRegx = /^((https|http)?:\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/;
 
   fn.init = () => {
-    fn.visible(_menuMusic, false);
-    fn.visible(_menuOption, false);
+    DOMController.visible(_menuMusic, false);
+    DOMController.visible(_menuOption, false);
     if (_readBkg) _readBkg.parentNode.removeChild(_readBkg);
 
     const readBkg = document.createElement("div");
@@ -70,7 +70,7 @@ const RightMenu = (() => {
 
     try {
       fn.setMenuItem(event);
-      fn.visible(_rightMenuWrapper);
+      DOMController.visible(_rightMenuWrapper);
       _rightMenuWrapper.focus();
       _rightMenuWrapper.style.zIndex = '-2147483648';
       let menuWidth = _rightMenuContent.offsetWidth;
@@ -96,7 +96,7 @@ const RightMenu = (() => {
     let optionFlag = false;
     const eventTarget = event.target;
     const selectText = window.getSelection().toString();
-    fn.visible(_openTab, false); // 隐藏新标签页打开 
+    DOMController.visible(_openTab, false); // 隐藏新标签页打开 
 
     // 判断是否是输入框 
     if (eventTarget.tagName.toLowerCase() === 'input' || eventTarget.tagName.toLowerCase() === 'textarea') {
@@ -104,18 +104,18 @@ const RightMenu = (() => {
 
       // 全选 
       if (inputStr.length > 0) {
-        fn.visible(_copySelect);
+        DOMController.visible(_copySelect);
         _copySelect.onclick = () => {
           event.preventDefault();
           eventTarget.select();
         }
       } else {
-        fn.visible(_copySelect, false);
+        DOMController.visible(_copySelect, false);
       }
 
       // 剪切 
       if (selectText) {
-        fn.visible(_copyCut);
+        DOMController.visible(_copyCut);
         _copyCut.onclick = () => {
           const statrPos = eventTarget.selectionStart;
           const endPos = eventTarget.selectionEnd;
@@ -126,36 +126,36 @@ const RightMenu = (() => {
           eventTarget.focus();
         }
       } else {
-        fn.visible(_copyCut, false);
+        DOMController.visible(_copyCut, false);
       }
 
       // 粘贴 
       fn.readClipboard().then(text => {
         // 如果剪切板存在内容 
         if (!!text) {
-          fn.visible(_copyPaste);
+          DOMController.visible(_copyPaste);
           _copyPaste.onclick = () => {
             fn.insertAtCaret(eventTarget, text);
           }
         } else {
-          fn.visible(_copyPaste, false);
+          DOMController.visible(_copyPaste, false);
         }
       }).catch((err) => {
         console.error(err);
-        fn.visible(_copyPaste, false);
+        DOMController.visible(_copyPaste, false);
       });
     } else {
-      fn.visible(_copySelect, false);
-      fn.visible(_copyPaste, false);
-      fn.visible(_copyCut, false);
+      DOMController.visible(_copySelect, false);
+      DOMController.visible(_copyPaste, false);
+      DOMController.visible(_copyCut, false);
     }
 
     // 新标签打开链接 
     const eventHref = eventTarget.href;
     if (!!eventHref && urlRegx.test(eventHref)) {
       optionFlag = true;
-      fn.visible(_copyHref);
-      fn.visible(_openTab);
+      DOMController.visible(_copyHref);
+      DOMController.visible(_openTab);
       if (_copyHref) _copyHref.onclick = () => {
         fn.copyString(eventHref);
       }
@@ -163,15 +163,15 @@ const RightMenu = (() => {
         window.open(eventHref);
       }
     } else {
-      fn.visible(_copyHref, false);
+      DOMController.visible(_copyHref, false);
     }
 
     // 新标签打开图片 & 复制图片链接 
     const eventSrc = eventTarget.currentSrc;
     if (!!eventSrc && urlRegx.test(eventSrc)) {
       optionFlag = true;
-      fn.visible(_copySrc);
-      fn.visible(_openTab);
+      DOMController.visible(_copySrc);
+      DOMController.visible(_openTab);
 
       _copySrc.onclick = () => {
         fn.copyString(eventSrc);
@@ -181,13 +181,13 @@ const RightMenu = (() => {
         window.open(eventSrc);
       }
     } else {
-      fn.visible(_copySrc, false);
+      DOMController.visible(_copySrc, false);
     }
 
     // 复制图片 
     if (!!eventSrc && urlRegx.test(eventSrc) && eventSrc.trimEnd().endsWith('.png')) {
       optionFlag = true;
-      fn.visible(_copyImg);
+      DOMController.visible(_copyImg);
 
       _copyImg.onclick = () => {
         fn.writeClipImg(event, flag => {
@@ -201,14 +201,14 @@ const RightMenu = (() => {
         })
       }
     } else {
-      fn.visible(_copyImg, false);
+      DOMController.visible(_copyImg, false);
     }
 
     // 复制文本 
     if (selectText) {
       optionFlag = true;
-      fn.visible(_copyText);
-      fn.visible(_searchWord);
+      DOMController.visible(_copyText);
+      DOMController.visible(_searchWord);
 
       _copyText.onclick = () => {
         fn.copyString(selectText);
@@ -218,16 +218,16 @@ const RightMenu = (() => {
         OpenSearch(selectText);
       })
     } else {
-      fn.visible(_copyText, false);
-      fn.visible(_searchWord, false);
+      DOMController.visible(_copyText, false);
+      DOMController.visible(_searchWord, false);
     }
 
     // 打印 
     const _printArticle = document.querySelector('#post.article') || null;
     const pathName = window.location.pathname;
     if (!!_printArticle) {
-      fn.visible(_printHtml);
-      fn.visible(_readingModel);
+      DOMController.visible(_printHtml);
+      DOMController.visible(_readingModel);
 
       if (_printHtml) {
         _printHtml.onclick = () => {
@@ -253,27 +253,27 @@ const RightMenu = (() => {
       }
 
     } else {
-      fn.visible(_printHtml, false);
-      fn.visible(_readingModel, false);
+      DOMController.visible(_printHtml, false);
+      DOMController.visible(_readingModel, false);
     }
 
     if (volantis.THEMECONFIG.plugins.aplayer.enable
       && typeof MainAPlayer !== 'undefined'
       && MainAPlayer.APlayer.player !== undefined) {
       if (rightMenuConfig.music.alwaysShow) {
-        fn.visible(_menuMusic);
+        DOMController.visible(_menuMusic);
       } else if (MainAPlayer.APlayer.status === 'play') {
         optionFlag = true;
-        fn.visible(_menuMusic);
+        DOMController.visible(_menuMusic);
       } else {
-        fn.visible(_menuMusic, false);
+        DOMController.visible(_menuMusic, false);
       }
     } else {
-      fn.visible(_menuMusic, false);
+      DOMController.visible(_menuMusic, false);
     }
 
     _menuLoad.forEach(ele => {
-      fn.visible(ele, !optionFlag);
+      DOMController.visible(ele, !optionFlag);
     })
 
     if (volantis.THEMECONFIG.plugins.aplayer.enable
@@ -284,7 +284,7 @@ const RightMenu = (() => {
 
   // 隐藏菜单 
   fn.hideMenu = () => {
-    fn.visible(_rightMenuWrapper, false);
+    DOMController.visible(_rightMenuWrapper, false);
   }
 
   // 复制字符串 
@@ -425,38 +425,38 @@ const RightMenu = (() => {
   fn.printHtml = () => {
     if (volantis.isReadModel) fn.readingModel();
     if (rightMenuConfig.print.defaultStyles) {
-      fn.setAttribute('details', 'open', 'true');
-      fn.remove('.cus-article-bkg');
-      fn.remove('.iziToast-overlay');
-      fn.remove('.iziToast-wrapper');
-      fn.remove('.prev-next');
-      fn.remove('footer');
-      fn.remove('#l_header');
-      fn.remove('#l_cover');
-      fn.remove('#l_side');
-      fn.remove('#comments');
-      fn.remove('#s-top');
-      fn.remove('#BKG');
-      fn.remove('#rightmenu-wrapper');
-      fn.remove('.nav-tabs');
-      fn.remove('.parallax-mirror');
-      fn.remove('.new-meta-item.share');
-      fn.remove('div.footer');
-      fn.setStyle('body', 'backgroundColor', 'unset');
-      fn.setStyle('#l_main', 'width', '100%');
-      fn.setStyle('#post', 'boxShadow', 'none');
-      fn.setStyle('#post', 'background', 'none');
-      fn.setStyle('#post', 'padding', '0');
-      fn.setStyle('h1', 'textAlign', 'center');
-      fn.setStyle('h1', 'fontWeight', '600');
-      fn.setStyle('h1', 'fontSize', '2rem');
-      fn.setStyle('h1', 'marginBottom', '20px');
-      fn.setStyle('.tab-pane', 'display', 'block');
-      fn.setStyle('.tab-content', 'borderTop', 'none');
-      fn.setStyle('.highlight>table pre', 'whiteSpace', 'pre-wrap');
-      fn.setStyle('.highlight>table pre', 'wordBreak', 'break-all');
-      fn.setStyle('.fancybox img', 'height', 'auto');
-      fn.setStyle('.fancybox img', 'weight', 'auto');
+      DOMController.setAttribute('details', 'open', 'true');
+      DOMController.remove('.cus-article-bkg');
+      DOMController.remove('.iziToast-overlay');
+      DOMController.remove('.iziToast-wrapper');
+      DOMController.remove('.prev-next');
+      DOMController.remove('footer');
+      DOMController.remove('#l_header');
+      DOMController.remove('#l_cover');
+      DOMController.remove('#l_side');
+      DOMController.remove('#comments');
+      DOMController.remove('#s-top');
+      DOMController.remove('#BKG');
+      DOMController.remove('#rightmenu-wrapper');
+      DOMController.remove('.nav-tabs');
+      DOMController.remove('.parallax-mirror');
+      DOMController.remove('.new-meta-item.share');
+      DOMController.remove('div.footer');
+      DOMController.setStyle('body', 'backgroundColor', 'unset');
+      DOMController.setStyle('#l_main', 'width', '100%');
+      DOMController.setStyle('#post', 'boxShadow', 'none');
+      DOMController.setStyle('#post', 'background', 'none');
+      DOMController.setStyle('#post', 'padding', '0');
+      DOMController.setStyle('h1', 'textAlign', 'center');
+      DOMController.setStyle('h1', 'fontWeight', '600');
+      DOMController.setStyle('h1', 'fontSize', '2rem');
+      DOMController.setStyle('h1', 'marginBottom', '20px');
+      DOMController.setStyle('.tab-pane', 'display', 'block');
+      DOMController.setStyle('.tab-content', 'borderTop', 'none');
+      DOMController.setStyle('.highlight>table pre', 'whiteSpace', 'pre-wrap');
+      DOMController.setStyle('.highlight>table pre', 'wordBreak', 'break-all');
+      DOMController.setStyle('.fancybox img', 'height', 'auto');
+      DOMController.setStyle('.fancybox img', 'weight', 'auto');
     }
 
     setTimeout(() => {
@@ -469,24 +469,24 @@ const RightMenu = (() => {
   // 阅读模式
   fn.readingModel = () => {
     if (typeof ScrollReveal === 'function') ScrollReveal().clean('#comments');
-    fn.fadeToggle(document.querySelector('#l_header'))
-    fn.fadeToggle(document.querySelector('footer'))
-    fn.fadeToggle(document.querySelector('#s-top'))
-    fn.fadeToggle(document.querySelector('.article-meta#bottom'))
-    fn.fadeToggle(document.querySelector('.prev-next'))
-    fn.fadeToggle(document.querySelector('#l_side'))
-    fn.fadeToggle(document.querySelector('#comments'))
+    DOMController.fadeToggle(document.querySelector('#l_header'))
+    DOMController.fadeToggle(document.querySelector('footer'))
+    DOMController.fadeToggle(document.querySelector('#s-top'))
+    DOMController.fadeToggle(document.querySelector('.article-meta#bottom'))
+    DOMController.fadeToggle(document.querySelector('.prev-next'))
+    DOMController.fadeToggle(document.querySelector('#l_side'))
+    DOMController.fadeToggle(document.querySelector('#comments'))
 
-    fn.toggleClass(document.querySelector('#l_main'), 'common_read')
-    fn.toggleClass(document.querySelector('#l_main'), 'common_read_main')
-    fn.toggleClass(document.querySelector('#l_body'), 'common_read')
-    fn.toggleClass(document.querySelector('#safearea'), 'common_read')
-    fn.toggleClass(document.querySelector('#pjax-container'), 'common_read')
-    fn.toggleClass(document.querySelector('#read_bkg'), 'common_read_hide')
-    fn.toggleClass(document.querySelector('h1'), 'common_read_h1')
-    fn.toggleClass(document.querySelector('#post'), 'post_read')
-    fn.toggleClass(document.querySelector('#l_cover'), 'read_cover')
-    fn.toggleClass(document.querySelector('.widget.toc-wrapper'), 'post_read')
+    DOMController.toggleClass(document.querySelector('#l_main'), 'common_read')
+    DOMController.toggleClass(document.querySelector('#l_main'), 'common_read_main')
+    DOMController.toggleClass(document.querySelector('#l_body'), 'common_read')
+    DOMController.toggleClass(document.querySelector('#safearea'), 'common_read')
+    DOMController.toggleClass(document.querySelector('#pjax-container'), 'common_read')
+    DOMController.toggleClass(document.querySelector('#read_bkg'), 'common_read_hide')
+    DOMController.toggleClass(document.querySelector('h1'), 'common_read_h1')
+    DOMController.toggleClass(document.querySelector('#post'), 'post_read')
+    DOMController.toggleClass(document.querySelector('#l_cover'), 'read_cover')
+    DOMController.toggleClass(document.querySelector('.widget.toc-wrapper'), 'post_read')
 
     volantis.isReadModel = volantis.isReadModel === undefined ? true : !volantis.isReadModel;
     if (volantis.isReadModel) {
@@ -498,7 +498,7 @@ const RightMenu = (() => {
       if (messageRightMenu) VolantisApp.message('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', option);
       document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
       document.querySelector('#l_body').addEventListener('click', (event) => {
-        if (fn.hasClass(event.target, 'common_read')) {
+        if (DOMController.hasClass(event.target, 'common_read')) {
           fn.readingModel();
         }
       });
@@ -506,90 +506,6 @@ const RightMenu = (() => {
       document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
       document.querySelector('#post').removeEventListener('click', fn.readingModel);
     }
-  }
-
-  // 控制元素显示隐藏
-  fn.visible = (ele, type = true) => {
-    if (ele) ele.style.display = type === true ? 'block' : 'none';
-  }
-
-  // 移除元素
-  fn.remove = (param) => {
-    const node = document.querySelectorAll(param);
-    node.forEach(ele => {
-      ele.remove();
-    })
-  }
-
-  //设置属性
-  fn.setAttribute = (param, attrName, attrValue) => {
-    const node = document.querySelectorAll(param);
-    node.forEach(ele => {
-      ele.setAttribute(attrName, attrValue)
-    })
-  }
-
-  // 设置样式
-  fn.setStyle = (param, styleName, styleValue) => {
-    const node = document.querySelectorAll(param);
-    node.forEach(ele => {
-      ele.style[styleName] = styleValue;
-    })
-  }
-
-  fn.fadeIn = (e) => {
-    if (!e) return;
-    e.style.visibility = "visible";
-    e.style.opacity = 1;
-    e.style.display = "block";
-    e.style.transition = "all 0.5s linear";
-    return e
-  }
-
-  fn.fadeOut = (e) => {
-    if (!e) return;
-    e.style.visibility = "hidden";
-    e.style.opacity = 0;
-    e.style.display = "none";
-    e.style.transition = "all 0.5s linear";
-    return e
-  }
-
-  fn.fadeToggle = (e) => {
-    if (!e) return;
-    if (e.style.visibility == "hidden") {
-      e = fn.fadeIn(e)
-    } else {
-      e = fn.fadeOut(e)
-    }
-    return e
-  }
-
-  fn.hasClass = (e, c) => {
-    if (!e) return;
-    return e.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
-  }
-
-  fn.addClass = (e, c) => {
-    if (!e) return;
-    e.classList.add(c);
-    return e
-  }
-
-  fn.removeClass = (e, c) => {
-    if (!e) return;
-    e.classList.remove(c);
-    return e
-  }
-
-  fn.toggleClass = (e, c) => {
-    if (!e) return;
-    if (fn.hasClass(e, c)) {
-      fn.removeClass(e, c)
-    } else {
-      fn.addClass(e, c)
-    }
-    return e
   }
 
   return {
