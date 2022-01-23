@@ -271,11 +271,11 @@ const RightMenu = (() => {
     }
 
     if (volantis.THEMECONFIG.plugins.aplayer.enable 
-      && typeof MainAPlayer !== 'undefined' 
-      && MainAPlayer.APlayer.player !== undefined) {
+      && typeof RightMenuAplayer !== 'undefined' 
+      && RightMenuAplayer.APlayer.player !== undefined) {
       if (rightMenuConfig.music.alwaysShow) {
         DOMController.visible(_menuMusic);
-      } else if (MainAPlayer.APlayer.status === 'play') {
+      } else if (RightMenuAplayer.APlayer.status === 'play' || RightMenuAplayer.APlayer.status === 'undefined') {
         optionFlag = true;
         DOMController.visible(_menuMusic);
       } else {
@@ -291,7 +291,7 @@ const RightMenu = (() => {
 
     if (volantis.THEMECONFIG.plugins.aplayer.enable
       && volantis.THEMECONFIG.rightmenu.layout.includes('music')) {
-      MainAPlayer.checkAPlayer();
+      RightMenuAplayer.checkAPlayer();
     }
   }
 
