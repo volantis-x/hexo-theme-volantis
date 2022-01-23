@@ -1056,9 +1056,9 @@ const DOMController = {
   fadeToggle: (e) => {
     if (!e) return;
     if (e.style.visibility == "hidden") {
-      e = fn.fadeIn(e)
+      e = DOMController.fadeIn(e)
     } else {
-      e = fn.fadeOut(e)
+      e = DOMController.fadeOut(e)
     }
     return e
   },
@@ -1082,10 +1082,10 @@ const DOMController = {
 
   toggleClass: (e, c) => {
     if (!e) return;
-    if (fn.hasClass(e, c)) {
-      fn.removeClass(e, c)
+    if (DOMController.hasClass(e, c)) {
+      DOMController.removeClass(e, c)
     } else {
-      fn.addClass(e, c)
+      DOMController.addClass(e, c)
     }
     return e
   }
