@@ -295,7 +295,11 @@ const VolantisApp = (() => {
             let array = e.currentTarget.children
             for (let index = 0; index < array.length; index++) {
               const element = array[index];
-              volantis.dom.$(element).show()
+              if (volantis.dom.$(element).title === 'menu') { // 移动端菜单栏异常  
+                volantis.dom.$(element).display = "flex"      // https://github.com/volantis-x/hexo-theme-volantis/issues/706
+              } else {
+                volantis.dom.$(element).show()
+              }
             }
           }, 0);
         }
