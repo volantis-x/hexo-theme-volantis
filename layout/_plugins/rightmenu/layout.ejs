@@ -143,18 +143,6 @@
     <% if(theme.rightmenu.print.defaultStyles) { %>
       volantis.rightMenu.defaultStyles = true;
     <% } %>
-    <% if(theme.rightmenu.print.js) { %>
-      volantis.rightMenu.printJs = true;
-      volantis.rightMenu.printJsFun = () => {
-        try {
-          <% (theme.rightmenu.print.js || []).forEach(function(item) {  %>
-            <%- item %>
-          <% }) %>
-        } catch (error) {
-          console.error(error);
-        }
-      };
-    <% } %>
     <% if(theme.rightmenu.customPicUrl.enable) { %>
       volantis.rightMenu.customPicUrl = true;
       volantis.rightMenu.picOld = '<%- theme.rightmenu.customPicUrl.old %>';

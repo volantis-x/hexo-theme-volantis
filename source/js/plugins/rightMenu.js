@@ -453,10 +453,6 @@ const RightMenu = (() => {
       fn.setStyle('.fancybox img', 'weight', 'auto');
     }
 
-    if (volantis.rightMenu.printJs === true) {
-      volantis.rightMenu.printJsFun();
-    }
-
     setTimeout(() => {
       window.print();
       document.body.innerHTML = '';
