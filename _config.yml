@@ -38,8 +38,28 @@ cdn:
     css:
       style: #/css/style.css # (异步加载样式)
 ########################################################################
- # 平滑滚动效果
+# 平滑滚动效果
 scroll_smooth: true
+# 主题用到的内容资源 引用链接
+source:
+  katex:
+    js: https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js
+    css: https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css
+    render: https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js
+  mathjax:
+    js: https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js
+  structured:
+    logo: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
+  tags:
+    btns: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg
+    markdown: https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css
+    marked: https://cdn.jsdelivr.net/npm/marked/marked.min.js
+    media: https://cdn.jsdelivr.net/npm/hls.js@latest
+  githubApi: 
+    avatar: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
+    sites: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
+    screenshot: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
+
 ############################### Navigation Bar ############################### > start
 # 注意事项：建议规范全站路径 URL 最后带一个 "/" 例如 "about/"
 navbar:
@@ -306,7 +326,8 @@ comments:
   # Valine
   # https://valine.js.org/
   valine:
-    # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
+    js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
+    emojiCDN: https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/
     path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是valine的问题
     placeholder: 快来评论吧~  # 评论占位提示
     # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder emojiCDN emojiMaps] 选项
@@ -344,6 +365,8 @@ comments:
   # https://github.com/SukkaW/DisqusJS
   disqusjs:
     path: # 全局评论地址
+    js: https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js
+    css: https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css
     # 配置项按照yml格式继续填写即可 除了 [siteName url identifier] 选项
     #shortname:
     #api:
@@ -354,6 +377,7 @@ comments:
   # Gitalk
   # https://gitalk.github.io/
   gitalk:
+    js: https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js
     # 配置项按照yml格式继续填写即可 除了 [id distractionFreeMode] 选项
     clientID:
     clientSecret:
@@ -365,6 +389,9 @@ comments:
   # Vssue 暂不支持Pjax
   # https://vssue.js.org/zh/
   vssue:
+    js: https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.github.min.js
+    css: https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css
+    vue: https://cdn.jsdelivr.net/gh/vuejs/vue@2.6.11/dist/vue.runtime.min.js
     owner:
     repo:
     clientId:
@@ -718,6 +745,7 @@ plugins:
     js:
       aplayer: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/js/APlayer.mini.js # aplayer@1.10 魔改: 将触摸和滚轮事件监听器标记为 `passive`，以提高页面的滚动性能
       meting: https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
+    css: https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
@@ -735,11 +763,13 @@ plugins:
 
   # Pjax
   pjax:
+    js: https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: false # false, nprogress, circle
+    nprogress: https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
       # - '/artitalk/'   # artitalk 不支持 pjax
       # - '/bbtalk/'     # bbtalk 不支持 pjax
@@ -772,6 +802,7 @@ plugins:
     # Set `plugins: ["artitalk"]` to enable in front-matter
     # 不支持 Pjax
     # 配置项按照yml格式继续填写即可
+    js: https://cdn.jsdelivr.net/npm/artitalk
     appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
     appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
     # serverURL:  #leancloud绑定的api访问域名，使用国际版的话不需要填写
@@ -824,6 +855,7 @@ plugins:
     add_number: 10 # 每次加载增加的篇数
     opentype: '_blank' # '_blank'打开新标签,'_self'本窗口打开
     nofollow: true # 禁止搜索引擎抓取
+    imgError: https://cdn.jsdelivr.net/gh/Zfour/Butterfly-friend-poor-html/friendcircle/404.png
     # loadingCutom: # 自定义loading图 例如: <i class="fa fa-spinner fa-spin"></i> | <img src="你的图片地址" alt="加载中...">
 
   # 消息提示

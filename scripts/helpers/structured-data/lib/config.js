@@ -8,7 +8,7 @@ module.exports = function (hexo) {
       description: config.description,
     },
     logo: {
-      path: "https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png",
+      path: hexo.theme.source.structured.logo,
       width: 192,
       height: 192,
     },
