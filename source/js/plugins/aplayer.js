@@ -1,12 +1,13 @@
 /**
  * 右键音乐
  * */
- const MainAPlayer = (() => {
+const RightMenuAplayer = (() => {
+  let playStatus; // 播放器状态
   const APlayer = {}; // 右键音乐所控制的播放器
   const fn = {};
 
   fn.checkAPlayer = () => {
-    if (volantis.APlayerController.status === undefined || APlayer.player === undefined) {
+    if (playStatus === undefined || APlayer.player === undefined) {
       fn.setAPlayerObject();
     } else if (APlayer.observer === undefined) {
       fn.setAPlayerObserver();
@@ -21,7 +22,7 @@
     }
     APlayer.player = undefined;
     meting.forEach((item, index) => {
-      if (item.meta.id == volantis.APlayerController.id && item.aplayer && APlayer.player === undefined) {
+      if (item.meta.id == volantis.THEMECONFIG.plugins.aplayer.id && item.aplayer && APlayer.player === undefined) {
         APlayer.player = item.aplayer;
         fn.setAPlayerObserver();
         fn.updateTitle();
@@ -104,11 +105,11 @@
   fn.updateAPlayerControllerStatus = () => {
     try {
       if (APlayer.player.audio.paused) {
-        volantis.APlayerController.status = 'pause';
+        playStatus = 'pause';
         document.getElementsByClassName('nav toggle')[0].children[0].classList.add('fa-play');
         document.getElementsByClassName('nav toggle')[0].children[0].classList.remove('fa-pause');
       } else {
-        volantis.APlayerController.status = 'play';
+        playStatus = 'play';
         document.getElementsByClassName('nav toggle')[0].children[0].classList.remove('fa-play');
         document.getElementsByClassName('nav toggle')[0].children[0].classList.add('fa-pause');
       }
@@ -119,6 +120,7 @@
 
   // 播放/暂停
   fn.aplayerToggle = () => {
+    event.stopPropagation();
     fn.checkAPlayer();
     try {
       APlayer.player.toggle();
@@ -129,6 +131,7 @@
 
   // 上一曲
   fn.aplayerBackward = () => {
+    event.stopPropagation();
     fn.checkAPlayer();
     try {
       APlayer.player.skipBack();
@@ -140,6 +143,7 @@
 
   // 下一曲
   fn.aplayerForward = () => {
+    event.stopPropagation();
     fn.checkAPlayer();
     try {
       APlayer.player.skipForward();
@@ -172,24 +176,16 @@
   }
 
   return {
-    checkAPlayer: () => {
-      fn.checkAPlayer();
-    },
-    aplayerBackward: () => {
-      fn.aplayerBackward();
-    },
-    aplayerToggle: () => {
-      fn.aplayerToggle();
-    },
-    aplayerForward: () => {
-      fn.aplayerForward();
-    },
+    checkAPlayer: fn.checkAPlayer,
+    aplayerBackward: fn.aplayerBackward,
+    aplayerToggle: fn.aplayerToggle,
+    aplayerForward: fn.aplayerForward,
     APlayer: APlayer
   }
 })()
 
-Object.freeze(MainAPlayer);
+Object.freeze(RightMenuAplayer);
 
 volantis.requestAnimationFrame(() => {
-  MainAPlayer.checkAPlayer();
+  RightMenuAplayer.checkAPlayer();
 });

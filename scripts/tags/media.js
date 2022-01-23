@@ -6,6 +6,7 @@ function postAudio(args) {
 }
 
 function postVideo(args) {
+  const {config} = hexo;
   const src = args[0].trim();
   // m3u8 https://github.com/volantis-x/hexo-theme-volantis/issues/606
   // 文件扩展名为 .m3u8
@@ -13,7 +14,7 @@ function postVideo(args) {
     let video_id = `video-${hexo.createUuid()}`
     return `<div clsss="video"><video id="${video_id}" controls loop="false" width="100%"></video></div>
         <script>
-          volantis.js("https://cdn.jsdelivr.net/npm/hls.js@latest").then(()=>{
+          volantis.js("${hexo.theme.config.source.tags.media}").then(()=>{
             var video = document.getElementById('${video_id}');
             if(Hls.isSupported()) {
               var hls = new Hls();

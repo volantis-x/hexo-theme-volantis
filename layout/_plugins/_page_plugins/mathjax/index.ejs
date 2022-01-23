@@ -38,7 +38,7 @@
     };
     (function () {
       var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.src = "<%= theme.source.katex.js %>";
       script.defer = true;
       document.head.appendChild(script);
     })();

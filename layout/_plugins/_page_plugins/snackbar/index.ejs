@@ -32,7 +32,7 @@
       <script>
         function Snackbar(){
           <% snackbar.buttons.forEach((ac, i) => { %>
-            volantis.message(
+            VolantisApp.message(
               '<%- snackbar.title %>',
               '<%- snackbar.message %><br>' + "<a href='<%- ac.url %>'><%- ac.title %></a>"
             );

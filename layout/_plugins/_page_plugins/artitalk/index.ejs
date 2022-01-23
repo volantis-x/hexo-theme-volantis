@@ -3,7 +3,7 @@
 </script>
 <script>
   volantis.import.jQuery().then(()=>{
-    volantis.js("https://cdn.jsdelivr.net/npm/artitalk").then(()=>{
+    volantis.js("<%= theme.plugins.artitalk.js %>").then(()=>{
       new Artitalk(Object.assign(<%- JSON.stringify(theme.plugins.artitalk) %>, {}))
     })
   })

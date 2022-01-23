@@ -9,7 +9,7 @@
   var banUrl = theme.plugins.pjax.banUrl || [];
 %>
 
-<%- js('https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js') %>
+<%- js(theme.plugins.pjax.js) %>
 <% if (theme.plugins.pjax.animation){ %>
 <%- partial('animate') %>
 <% } %>

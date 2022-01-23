@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/*锚点定位*/
+/* 锚点定位 */
 const locationHash = () => {
   if (window.location.hash) {
     let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
@@ -38,8 +38,9 @@ const locationHash = () => {
     }
   }
 }
+Object.freeze(locationHash);
 
-
+/* Main */
 const VolantisApp = (() => {
   const fn = {},
     COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fas fa-copy"></i><span>COPY</span></button>';
@@ -71,13 +72,24 @@ const VolantisApp = (() => {
     });
 
     // 站点信息 最后活动日期
-    if (document.getElementById('last-update-show') 
+    if (document.getElementById('last-update-show')
       && volantis.THEMECONFIG.sidebar.for_page.includes('webinfo')
       || volantis.THEMECONFIG.sidebar.for_post.includes('webinfo')) {
       const lastupd = volantis.THEMECONFIG.sidebar.widget_library.webinfo.type.lastupd;
       if (lastupd.enable && lastupd.friendlyShow) {
-        document.getElementById('last-update-show').innerHTML = fn.timeAgo(volantis.LASTUPDATE);
+        document.getElementById('last-update-show').innerHTML = fn.utilTimeAgo(volantis.LASTUPDATE);
       }
+    }
+
+    // 消息提示 复制时弹出
+    if (volantis.THEMECONFIG.plugins.message.enable
+      && volantis.THEMECONFIG.plugins.message.copyright.enable) {
+      document.body.oncopy = function () {
+        VolantisApp.message(volantis.THEMECONFIG.plugins.message.copyright.title,
+          volantis.THEMECONFIG.plugins.message.copyright.message, {
+          icon: volantis.THEMECONFIG.plugins.message.copyright.icon
+        });
+      };
     }
   }
 
@@ -283,7 +295,11 @@ const VolantisApp = (() => {
             let array = e.currentTarget.children
             for (let index = 0; index < array.length; index++) {
               const element = array[index];
-              volantis.dom.$(element).show()
+              if (volantis.dom.$(element).title === 'menu') { // 移动端菜单栏异常  
+                volantis.dom.$(element).display = "flex"      // https://github.com/volantis-x/hexo-theme-volantis/issues/706
+              } else {
+                volantis.dom.$(element).show()
+              }
             }
           }, 0);
         }
@@ -373,8 +389,8 @@ const VolantisApp = (() => {
     })
   }
 
-  // 代码块复制
-  fn.copyCode = (Selector) => {
+  // 工具类：代码块复制
+  fn.utilCopyCode = (Selector) => {
     document.querySelectorAll(Selector).forEach(node => {
       const test = node.insertAdjacentHTML("beforebegin", COPYHTML);
       const _BtnCopy = node.previousSibling;
@@ -390,12 +406,8 @@ const VolantisApp = (() => {
         document.getSelection().addRange(range);
 
         const str = document.getSelection().toString();
-        fn.writeClipText(str).then(() => {
-          if (volantis.messageCopyright && volantis.messageCopyright.enable) {
-            volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
-              icon: volantis.messageCopyright.icon
-            });
-          }
+        fn.utilWriteClipText(str).then(() => {
+          fn.messageCopyright();
           _BtnCopy.classList.add('copied');
           _icon.classList.remove('fa-copy');
           _icon.classList.add('fa-check-circle');
@@ -406,7 +418,7 @@ const VolantisApp = (() => {
             _span.innerText = "COPY";
           }, 2000)
         }).catch(e => {
-          volantis.message('系统提示', e, {
+          VolantisApp.message('系统提示', e, {
             icon: 'fa fa-exclamation-circle red'
           });
           _BtnCopy.classList.add('copied-failed');
@@ -424,7 +436,7 @@ const VolantisApp = (() => {
   }
 
   // 工具类：复制字符串到剪切板
-  fn.writeClipText = (str) => {
+  fn.utilWriteClipText = (str) => {
     try {
       return navigator.clipboard
         .writeText(str)
@@ -458,7 +470,7 @@ const VolantisApp = (() => {
   }
 
   // 工具类：返回时间间隔
-  fn.timeAgo = (dateTimeStamp) => {
+  fn.utilTimeAgo = (dateTimeStamp) => {
     const minute = 1e3 * 60, hour = minute * 60, day = hour * 24, week = day * 7, month = day * 30;
     const now = new Date().getTime();
     const diffValue = now - dateTimeStamp;
@@ -495,6 +507,142 @@ const VolantisApp = (() => {
     return result;
   }
 
+  // 消息提示：标准
+  fn.message = (title, message, option = {}, done = null) => {
+    if (typeof iziToast === "undefined") {
+      volantis.css(volantis.THEMECONFIG.cdn.map.css.message)
+      volantis.js(volantis.THEMECONFIG.cdn.map.js.message, () => {
+        tozashMessage(title, message, option, done);
+      });
+    } else {
+      tozashMessage(title, message, option, done);
+    }
+    function tozashMessage(title, message, option, done) {
+      const {
+        icon,
+        time,
+        position,
+        transitionIn,
+        transitionOut,
+        messageColor,
+        titleColor,
+        backgroundColor,
+        zindex,
+        displayMode
+      } = option;
+      iziToast.show({
+        layout: '2',
+        icon: 'Fontawesome',
+        closeOnEscape: 'true',
+        displayMode: displayMode || 'replace',
+        transitionIn: transitionIn || volantis.THEMECONFIG.plugins.message.transitionIn,
+        transitionOut: transitionOut || volantis.THEMECONFIG.plugins.message.transitionOut,
+        messageColor: messageColor || volantis.THEMECONFIG.plugins.message.messageColor,
+        titleColor: titleColor || volantis.THEMECONFIG.plugins.message.titleColor,
+        backgroundColor: backgroundColor || volantis.THEMECONFIG.plugins.message.backgroundColor,
+        zindex: zindex || volantis.THEMECONFIG.plugins.message.zindex,
+        icon: icon || volantis.THEMECONFIG.plugins.message.icon.default,
+        timeout: time || volantis.THEMECONFIG.plugins.message.time.default,
+        position: position || volantis.THEMECONFIG.plugins.message.position,
+        title: title,
+        message: message,
+        onClosed: () => {
+          if (done) done();
+        },
+      });
+    }
+  }
+
+  // 消息提示：询问
+  fn.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
+    if (typeof iziToast === "undefined") {
+      volantis.css(volantis.THEMECONFIG.cdn.map.css.message)
+      volantis.js(volantis.THEMECONFIG.cdn.map.js.message, () => {
+        tozashQuestion(title, message, option, success, cancel, done);
+      });
+    } else {
+      tozashQuestion(title, message, option, success, cancel, done);
+    }
+
+    function tozashQuestion(title, message, option, success, cancel, done) {
+      const {
+        icon,
+        time,
+        position,
+        transitionIn,
+        transitionOut,
+        messageColor,
+        titleColor,
+        backgroundColor,
+        zindex
+      } = option;
+      iziToast.question({
+        id: 'question',
+        icon: 'Fontawesome',
+        close: false,
+        overlay: true,
+        displayMode: 'once',
+        position: 'center',
+        messageColor: messageColor || volantis.THEMECONFIG.plugins.message.messageColor,
+        titleColor: titleColor || volantis.THEMECONFIG.plugins.message.titleColor,
+        backgroundColor: backgroundColor || volantis.THEMECONFIG.plugins.message.backgroundColor,
+        zindex: zindex || volantis.THEMECONFIG.plugins.message.zindex,
+        icon: icon || volantis.THEMECONFIG.plugins.message.icon.quection,
+        timeout: time || volantis.THEMECONFIG.plugins.message.time.quection,
+        title: title,
+        message: message,
+        buttons: [
+          ['<button><b>是</b></button>', (instance, toast) => {
+            instance.hide({ transitionOut: transitionOut || 'fadeOut' }, toast, 'button');
+            if (success) success(instance, toast)
+          }],
+          ['<button><b>否</b></button>', (instance, toast) => {
+            instance.hide({ transitionOut: transitionOut || 'fadeOut' }, toast, 'button');
+            if (cancel) cancel(instance, toast)
+          }]
+        ],
+        onClosed: (instance, toast, closedBy) => {
+          if (done) done(instance, toast, closedBy);
+        }
+      });
+    }
+  }
+
+  // 消息提示：隐藏
+  fn.hideMessage = (done = null) => {
+    const toast = document.querySelector('.iziToast');
+    if (!toast) {
+      if (done) done()
+      return;
+    }
+
+    if (typeof iziToast === "undefined") {
+      volantis.css(volantis.THEMECONFIG.cdn.map.css.message)
+      volantis.js(volantis.THEMECONFIG.cdn.map.js.message, () => {
+        hideMessage(done);
+      });
+    } else {
+      hideMessage(done);
+    }
+
+    function hideMessage(done) {
+      iziToast.hide({}, toast);
+      if (done) done();
+    }
+  }
+
+  // 消息提示：复制
+  fn.messageCopyright = () => {
+    // 消息提示 复制时弹出
+    if (volantis.THEMECONFIG.plugins.message.enable
+      && volantis.THEMECONFIG.plugins.message.copyright.enable) {
+      VolantisApp.message(volantis.THEMECONFIG.plugins.message.copyright.title,
+        volantis.THEMECONFIG.plugins.message.copyright.message, {
+        icon: volantis.THEMECONFIG.plugins.message.copyright.icon
+      });
+    }
+  }
+
   return {
     init: () => {
       fn.init();
@@ -509,7 +657,6 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
-      fn.copyCode();
     },
     pjaxReload: () => {
       fn.event();
@@ -520,7 +667,6 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
-      fn.copyCode();
 
       // 移除小尾巴的移除
       document.querySelector("#l_header .nav-main").querySelectorAll('.list-v:not(.menu-phone)').forEach(function (e) {
@@ -528,15 +674,18 @@ const VolantisApp = (() => {
       })
       document.querySelector("#l_header .menu-phone.list-v").removeAttribute("style")
     },
-    writeClipText: fn.writeClipText,
-    copyCode: fn.copyCode,
-    timeAgo: (dateTimeStamp) => {
-      return fn.timeAgo(dateTimeStamp)
-    }
+    utilCopyCode: fn.utilCopyCode,
+    utilWriteClipText: fn.utilWriteClipText,
+    utilTimeAgo: fn.utilTimeAgo,
+    message: fn.message,
+    question: fn.question,
+    hideMessage: fn.hideMessage,
+    messageCopyright: fn.messageCopyright
   }
 })()
 Object.freeze(VolantisApp);
 
+/* FancyBox */
 const VolantisFancyBox = (() => {
   const fn = {};
 
@@ -635,9 +784,7 @@ const VolantisFancyBox = (() => {
 
   return {
     init: fn.init,
-    bind: (selectors) => {
-      fn.bind(selectors)
-    },
+    bind: fn.bind,
     groupBind: (selectors, groupName = 'default') => {
       try {
         fn.elementHandling(selectors, groupName);
@@ -848,3 +995,99 @@ const highlightKeyWords = (() => {
   }
 })()
 Object.freeze(highlightKeyWords);
+
+/* DOM 控制 */
+const DOMController = {
+  /**
+   * 控制元素显隐
+   */
+  visible: (ele, type = true) => {
+    if (ele) ele.style.display = type === true ? 'block' : 'none';
+  },
+
+  /**
+   * 移除元素
+   */
+  remove: (param) => {
+    const node = document.querySelectorAll(param);
+    node.forEach(ele => {
+      ele.remove();
+    })
+  },
+
+  /**
+   * 设置属性
+   */
+  setAttribute: (param, attrName, attrValue) => {
+    const node = document.querySelectorAll(param);
+    node.forEach(ele => {
+      ele.setAttribute(attrName, attrValue)
+    })
+  },
+
+  /**
+   * 设置样式
+   */
+  setStyle: (param, styleName, styleValue) => {
+    const node = document.querySelectorAll(param);
+    node.forEach(ele => {
+      ele.style[styleName] = styleValue;
+    })
+  },
+
+  fadeIn: (e) => {
+    if (!e) return;
+    e.style.visibility = "visible";
+    e.style.opacity = 1;
+    e.style.display = "block";
+    e.style.transition = "all 0.5s linear";
+    return e
+  },
+
+  fadeOut: (e) => {
+    if (!e) return;
+    e.style.visibility = "hidden";
+    e.style.opacity = 0;
+    e.style.display = "none";
+    e.style.transition = "all 0.5s linear";
+    return e
+  },
+
+  fadeToggle: (e) => {
+    if (!e) return;
+    if (e.style.visibility == "hidden") {
+      e = DOMController.fadeIn(e)
+    } else {
+      e = DOMController.fadeOut(e)
+    }
+    return e
+  },
+
+  hasClass: (e, c) => {
+    if (!e) return;
+    return e.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
+  },
+
+  addClass: (e, c) => {
+    if (!e) return;
+    e.classList.add(c);
+    return e
+  },
+
+  removeClass: (e, c) => {
+    if (!e) return;
+    e.classList.remove(c);
+    return e
+  },
+
+  toggleClass: (e, c) => {
+    if (!e) return;
+    if (DOMController.hasClass(e, c)) {
+      DOMController.removeClass(e, c)
+    } else {
+      DOMController.addClass(e, c)
+    }
+    return e
+  }
+}
+Object.freeze(DOMController);

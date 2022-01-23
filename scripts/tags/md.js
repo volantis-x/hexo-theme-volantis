@@ -1,12 +1,13 @@
 
 hexo.extend.tag.register('md', function(args) {
+  const {config} = hexo;
   const md_path = args[0].trim();
   let md_id = "md-" + hexo.createUuid()
   let mat = `
   <div id="${md_id}" class="tag-md markdown-body"></div>
   <script>
   (()=>{
-    volantis.css("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css");
+    volantis.css("${hexo.theme.config.source.tags.markdown}");
     const contentEl = document.getElementById("${md_id}");
     const loadMarkdown = (url) => {
       if (!window.fetch) {
@@ -47,7 +48,7 @@ hexo.extend.tag.register('md', function(args) {
           });
       };
     };
-    volantis.js("https://cdn.jsdelivr.net/npm/marked/marked.min.js").then(()=>{
+    volantis.js("${hexo.theme.config.source.tags.marked}").then(()=>{
       loadMarkdown("${md_path}?t=" + new Date().getTime());
     })
   })();
