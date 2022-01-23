@@ -849,8 +849,9 @@ plugins:
       enable: true
       play: fas fa-play
       pause: fas fa-pause
-    rightmenu:                            # 是否开启右键模块的消息通知
-      enable: true
+    rightmenu:                            
+      enable: true                        # 是否开启右键模块的消息通知
+      notice: true                        # 唤醒原右键菜单的通知 
   
   # 标签插件样式按需加载
   # 注意这个配置是带缓存的, 如果修改标签插件样式每次调试需要刷新两次页面, 建议开发者关闭该配置

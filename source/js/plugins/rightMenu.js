@@ -82,6 +82,7 @@ const RightMenu = (() => {
       _rightMenuWrapper.style.left = showLeft + "px";
       _rightMenuWrapper.style.top = showTop + "px";
       _rightMenuWrapper.style.zIndex = '2147483648';
+      if (volantis.THEMECONFIG.plugins.message.rightmenu.notice) fn.showMessage();
     } catch (error) {
       _rightMenuWrapper.blur();
       console.error(error);
@@ -89,6 +90,18 @@ const RightMenu = (() => {
     }
 
     return false;
+  }
+
+  // 消息提示
+  fn.showMessage = () => {
+    const NoticeRightMenu = localStorage.getItem('NoticeRightMenu') === 'true';
+    if (messageRightMenu && !NoticeRightMenu)
+      VolantisApp.message('右键菜单', '唤醒原系统菜单请使用：<kbd>Ctrl</kbd> + <kbd>右键</kbd>', {
+        icon: rightMenuConfig.faicon + ' fa-exclamation-square red',
+        time: 9000
+      }, () => {
+        localStorage.setItem('NoticeRightMenu', 'true')
+      });
   }
 
   // 菜单项设置 
@@ -257,8 +270,8 @@ const RightMenu = (() => {
       DOMController.visible(_readingModel, false);
     }
 
-    if (volantis.THEMECONFIG.plugins.aplayer.enable
-      && typeof MainAPlayer !== 'undefined'
+    if (volantis.THEMECONFIG.plugins.aplayer.enable 
+      && typeof MainAPlayer !== 'undefined' 
       && MainAPlayer.APlayer.player !== undefined) {
       if (rightMenuConfig.music.alwaysShow) {
         DOMController.visible(_menuMusic);
@@ -509,7 +522,6 @@ const RightMenu = (() => {
   }
 
   return {
-    test: 1,
     init: (notice = false) => {
       fn.init();
       fn.initEvent();
@@ -522,12 +534,8 @@ const RightMenu = (() => {
       };
       if (notice && messageRightMenu) VolantisApp.message('系统提示', '自定义右键注销成功。');
     },
-    hideMenu: () => {
-      fn.hideMenu();
-    },
-    readingModel: () => {
-      fn.readingModel();
-    }
+    hideMenu: fn.hideMenu,
+    readingModel: fn.readingModel
   }
 })()
 

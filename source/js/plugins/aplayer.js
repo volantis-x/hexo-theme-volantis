@@ -175,18 +175,10 @@ const MainAPlayer = (() => {
   }
 
   return {
-    checkAPlayer: () => {
-      fn.checkAPlayer();
-    },
-    aplayerBackward: () => {
-      fn.aplayerBackward();
-    },
-    aplayerToggle: () => {
-      fn.aplayerToggle();
-    },
-    aplayerForward: () => {
-      fn.aplayerForward();
-    },
+    checkAPlayer: fn.checkAPlayer,
+    aplayerBackward: fn.aplayerBackward,
+    aplayerToggle: fn.aplayerToggle,
+    aplayerForward: aplayerForward,
     APlayer: APlayer
   }
 })()

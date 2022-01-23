@@ -784,9 +784,7 @@ const VolantisFancyBox = (() => {
 
   return {
     init: fn.init,
-    bind: (selectors) => {
-      fn.bind(selectors)
-    },
+    bind: fn.bind,
     groupBind: (selectors, groupName = 'default') => {
       try {
         fn.elementHandling(selectors, groupName);
