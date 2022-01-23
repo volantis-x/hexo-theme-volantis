@@ -115,37 +115,5 @@
       <% }) %>
     </ul>
   </div>
-  <script>
-    volantis.rightMenu = {};
-    volantis.rightMenu.faicon = '<%- theme.rightmenu.faicon %>' || 'fa';
-    volantis.rightMenu.musicAlwaysShow = '<%- theme.rightmenu.music.alwaysShow %>' === 'true';
-
-    // <% if (theme.plugins.aplayer.enable && (theme.rightmenu.layout||[]).includes('music')) { %>
-    //   volantis.rightMenu.music = true;
-    //   volantis.rightMenu.aplayerBackward = () => {
-    //     event.stopPropagation();
-    //     if (MainAPlayer.aplayerBackward) {
-    //       MainAPlayer.aplayerBackward();
-    //     }
-    //   }
-    //   volantis.rightMenu.aplayerToggle = () => {
-    //     event.stopPropagation();
-    //     if (MainAPlayer.aplayerToggle) {
-    //       MainAPlayer.aplayerToggle();
-    //     }
-    //   }
-    //   volantis.rightMenu.aplayerForward = () => {
-    //     event.stopPropagation();
-    //     if (MainAPlayer.aplayerForward) {
-    //       MainAPlayer.aplayerForward();
-    //     }
-    //   }
-    // <% } %>
-
-    <% if (theme.plugins.aplayer && !theme.plugins.aplayer.enable) { %>
-      volantis.APlayerController = {};
-    <% } %>
-
-    volantis.js('<%- theme.cdn.map.js.rightMenu %>')
-  </script>
+  <script>volantis.js('<%- theme.cdn.map.js.rightMenu %>')</script>
 <% } %>

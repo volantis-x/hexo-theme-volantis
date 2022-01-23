@@ -192,11 +192,11 @@ const RightMenu = (() => {
       _copyImg.onclick = () => {
         fn.writeClipImg(event, flag => {
           if (flag && messageRightMenu) VolantisApp.message('系统提示', '图片复制成功！', {
-            icon: volantis.rightMenu.faicon + ' fa-images'
+            icon: rightMenuConfig.faicon + ' fa-images'
           });
         }, (error) => {
           if (messageRightMenu) VolantisApp.message('系统提示', '复制失败：' + error, {
-            icon: volantis.rightMenu.faicon + ' fa-exclamation-square red'
+            icon: rightMenuConfig.faicon + ' fa-exclamation-square red'
           });
         })
       }
@@ -257,8 +257,10 @@ const RightMenu = (() => {
       fn.visible(_readingModel, false);
     }
 
-    if (volantis.APlayerController && typeof MainAPlayer !== 'undefined' && MainAPlayer.APlayer.player !== undefined) {
-      if (volantis.rightMenu.musicAlwaysShow) {
+    if (volantis.THEMECONFIG.plugins.aplayer.enable
+      && typeof MainAPlayer !== 'undefined'
+      && MainAPlayer.APlayer.player !== undefined) {
+      if (rightMenuConfig.music.alwaysShow) {
         fn.visible(_menuMusic);
       } else if (MainAPlayer.APlayer.status === 'play') {
         optionFlag = true;
@@ -274,10 +276,9 @@ const RightMenu = (() => {
       fn.visible(ele, !optionFlag);
     })
 
-    if (volantis.rightMenu.music == true) {
-      if (volantis.APlayerController.APlayerLoaded) {
-        MainAPlayer.checkAPlayer();
-      }
+    if (volantis.THEMECONFIG.plugins.aplayer.enable
+      && volantis.THEMECONFIG.rightmenu.layout.includes('music')) {
+      MainAPlayer.checkAPlayer();
     }
   }
 
@@ -296,7 +297,7 @@ const RightMenu = (() => {
       }).catch(e => {
         if (messageRightMenu) {
           VolantisApp.message('系统提示', e, {
-            icon: volantis.rightMenu.faicon + ' fa-exclamation-square red'
+            icon: rightMenuConfig.faicon + ' fa-exclamation-square red'
           });
         }
       })
@@ -491,7 +492,7 @@ const RightMenu = (() => {
     if (volantis.isReadModel) {
       const option = {
         backgroundColor: 'var(--color-read-post)',
-        icon: volantis.rightMenu.faicon + ' fa-book-reader',
+        icon: rightMenuConfig.faicon + ' fa-book-reader',
         time: 5000
       }
       if (messageRightMenu) VolantisApp.message('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', option);

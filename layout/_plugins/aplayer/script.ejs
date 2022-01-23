@@ -10,7 +10,6 @@
   <% if (theme.rightmenu.enable && theme.rightmenu.layout.includes('music')) { %>
     // 右键 music 需要在 APlayer  MetingJS 之后加载
     await volantis.js('<%- theme.cdn.addJS("plugins/aplayer") %>')
-    volantis.APlayerController.music = true;
   <% } %>
   })();
 
@@ -37,7 +36,7 @@
           setTimeout(() => {
             Metings.forEach((item, index) => {
               const aplayerItem = item.aplayer; if(!aplayerItem) return;
-              const rightMenuAplayer = item.meta.id === volantis.APlayerController.id && volantis.APlayerController.music;
+              const rightMenuAplayer = item.meta.id === volantis.APlayerController.id;
               if(rightMenuAplayer) MainAPlayer.checkAPlayer();
               if(aplayerItem.events.events.play.every(item => {return item.name !== 'messagePlay'})) {
                 aplayerItem.on('play', function messagePlay() {
