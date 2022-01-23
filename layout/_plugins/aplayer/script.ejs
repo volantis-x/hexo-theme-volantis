@@ -45,7 +45,7 @@
                   let title = aplayerItem.list.audios[index].title;
                   let artist = aplayerItem.list.audios[index].artist;
                   setTimeout(() => {
-                    volantis.message('音乐通知', title + ' - ' + artist, {
+                    VolantisApp.message('音乐通知', title + ' - ' + artist, {
                       icon: '<%- theme.plugins.message.aplayer.play %>',
                       transitionIn: 'flipInX',
                       transitionOut: 'flipOutX'
@@ -62,7 +62,7 @@
                   setTimeout(() => {
                     // 歌曲播放结束也会触发 pause 事件，为了避免错误提示，等待一会儿
                     if(aplayerItem.paused) {
-                      volantis.message('音乐通知', title + ' - ' + artist, {
+                      VolantisApp.message('音乐通知', title + ' - ' + artist, {
                         icon: '<%- theme.plugins.message.aplayer.pause %>',
                         transitionIn: 'flipInX',
                         transitionOut: 'flipOutX'

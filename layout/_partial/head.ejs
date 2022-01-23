@@ -60,7 +60,7 @@
   <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
   <%_ if (theme.plugins.darkmode.enable) { _%>
     <script>
-      var userColorScheme=localStorage.getItem("color-scheme")
+      let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
         document.documentElement.setAttribute("color-scheme", userColorScheme);
       }

@@ -1,7 +1,7 @@
 /**
  * 右键音乐
  * */
- const MainAPlayer = (() => {
+const MainAPlayer = (() => {
   const APlayer = {}; // 右键音乐所控制的播放器
   const fn = {};
 
@@ -119,6 +119,7 @@
 
   // 播放/暂停
   fn.aplayerToggle = () => {
+    event.stopPropagation();
     fn.checkAPlayer();
     try {
       APlayer.player.toggle();
@@ -129,6 +130,7 @@
 
   // 上一曲
   fn.aplayerBackward = () => {
+    event.stopPropagation();
     fn.checkAPlayer();
     try {
       APlayer.player.skipBack();
@@ -140,6 +142,7 @@
 
   // 下一曲
   fn.aplayerForward = () => {
+    event.stopPropagation();
     fn.checkAPlayer();
     try {
       APlayer.player.skipForward();

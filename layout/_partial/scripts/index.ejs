@@ -29,10 +29,7 @@
 <% } %>
 
 <!-- internal -->
-
-<% if (theme.plugins.message && theme.plugins.message.enable) { %>
-  <%- partial('../../_plugins/message/script') %>
-<% } %>
+<%- js(theme.cdn.map.js.app) %>
 
 <% if (theme.rightmenu.enable) { %>
   <%- partial('../../_plugins/rightmenu/layout') %>
@@ -70,8 +67,6 @@
 <% if (theme.analytics.busuanzi) { %>
   <script defer src="<%- theme.analytics.busuanzi %>" data-pjax></script>
 <% } %>
-
-<%- js(theme.cdn.map.js.app) %>
 
 <!-- optional -->
 <% if (theme.search && theme.search.enable) { %>

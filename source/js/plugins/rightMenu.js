@@ -1,5 +1,10 @@
 const RightMenu = (() => {
-  const fn = {},
+  const
+    rightMenuConfig = volantis.THEMECONFIG.rightmenu,
+    messageRightMenu = volantis.THEMECONFIG.plugins.message.enable && volantis.THEMECONFIG.plugins.message.rightmenu.enable;
+
+  const
+    fn = {},
     _rightMenuWrapper = document.getElementById('rightmenu-wrapper'),
     _rightMenuContent = document.getElementById('rightmenu-content'),
     _menuDarkBtn = document.getElementById('menuDarkBtn'),
@@ -11,7 +16,7 @@ const RightMenu = (() => {
   const
     _menuLoad = document.querySelectorAll('.menuLoad-Content'),
     _menuOption = document.querySelector('.menu-Option'),
-    _searchWord = document.querySelector('.menu-Option[data-fn-type="searchWord"]'), 
+    _searchWord = document.querySelector('.menu-Option[data-fn-type="searchWord"]'),
     _copyText = document.querySelector('.menu-Option[data-fn-type="copyText"]'),
     _copyPaste = document.querySelector('.menu-Option[data-fn-type="copyPaste"]'),
     _copySelect = document.querySelector('.menu-Option[data-fn-type="copySelect"]'),
@@ -186,11 +191,11 @@ const RightMenu = (() => {
 
       _copyImg.onclick = () => {
         fn.writeClipImg(event, flag => {
-          if (flag && volantis.messageRightMenu.enable) volantis.message('系统提示', '图片复制成功！', {
+          if (flag && messageRightMenu) VolantisApp.message('系统提示', '图片复制成功！', {
             icon: volantis.rightMenu.faicon + ' fa-images'
           });
         }, (error) => {
-          if (volantis.messageRightMenu.enable) volantis.message('系统提示', '复制失败：' + error, {
+          if (messageRightMenu) VolantisApp.message('系统提示', '复制失败：' + error, {
             icon: volantis.rightMenu.faicon + ' fa-exclamation-square red'
           });
         })
@@ -209,9 +214,9 @@ const RightMenu = (() => {
         fn.copyString(selectText);
       }
 
-      !!_searchWord && (_searchWord.onclick = () => { 
-        OpenSearch(selectText); 
-      }) 
+      !!_searchWord && (_searchWord.onclick = () => {
+        OpenSearch(selectText);
+      })
     } else {
       fn.visible(_copyText, false);
       fn.visible(_searchWord, false);
@@ -228,7 +233,7 @@ const RightMenu = (() => {
         _printHtml.onclick = () => {
           if (window.location.pathname === pathName) {
             const message = '是否打印当前页面？<br><em style="font-size: 80%">建议打印时勾选背景图形</em><br>';
-            if (volantis.messageRightMenu.enable) volantis.question('', message, {}, () => {
+            if (messageRightMenu) VolantisApp.question('', message, {}, () => {
               fn.printHtml();
             })
           } else {
@@ -253,9 +258,9 @@ const RightMenu = (() => {
     }
 
     if (volantis.APlayerController && typeof MainAPlayer !== 'undefined' && MainAPlayer.APlayer.player !== undefined) {
-      if(volantis.rightMenu.musicAlwaysShow) {
+      if (volantis.rightMenu.musicAlwaysShow) {
         fn.visible(_menuMusic);
-      } else if(MainAPlayer.APlayer.status === 'play') {
+      } else if (MainAPlayer.APlayer.status === 'play') {
         optionFlag = true;
         fn.visible(_menuMusic);
       } else {
@@ -283,17 +288,17 @@ const RightMenu = (() => {
 
   // 复制字符串 
   fn.copyString = (str) => {
-    VolantisApp.writeClipText(str)
+    VolantisApp.utilWriteClipText(str)
       .then(() => {
-        if (volantis.messageCopyright && volantis.messageCopyright.enable && volantis.messageRightMenu.enable) {
-          volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
-            icon: volantis.messageCopyright.icon
-          });
+        if (messageRightMenu) {
+          VolantisApp.messageCopyright();
         }
       }).catch(e => {
-        if (volantis.messageRightMenu.enable) volantis.message('系统提示', e, {
-          icon: volantis.rightMenu.faicon + ' fa-exclamation-square red'
-        });
+        if (messageRightMenu) {
+          VolantisApp.message('系统提示', e, {
+            icon: volantis.rightMenu.faicon + ' fa-exclamation-square red'
+          });
+        }
       })
   }
 
@@ -333,8 +338,8 @@ const RightMenu = (() => {
 
   // 写入图片到剪切板 
   fn.writeClipImg = async function (event, success, error) {
-    const eventSrc = volantis.rightMenu.customPicUrl === true ?
-      event.target.currentSrc.replace(volantis.rightMenu.picOld, volantis.rightMenu.picNew) :
+    const eventSrc = rightMenuConfig.customPicUrl.enable ?
+      event.target.currentSrc.replace(rightMenuConfig.customPicUrl.old, rightMenuConfig.customPicUrl.new) :
       event.target.currentSrc;
     const parentElement = event.target.parentElement;
     try {
@@ -418,7 +423,7 @@ const RightMenu = (() => {
   // 执行打印页面 
   fn.printHtml = () => {
     if (volantis.isReadModel) fn.readingModel();
-    if (volantis.rightMenu.defaultStyles === true) {
+    if (rightMenuConfig.print.defaultStyles) {
       fn.setAttribute('details', 'open', 'true');
       fn.remove('.cus-article-bkg');
       fn.remove('.iziToast-overlay');
@@ -433,9 +438,9 @@ const RightMenu = (() => {
       fn.remove('#BKG');
       fn.remove('#rightmenu-wrapper');
       fn.remove('.nav-tabs');
-      fn.remove('.parallax-mirror'); 
-      fn.remove('.new-meta-item.share'); 
-      fn.remove('div.footer'); 
+      fn.remove('.parallax-mirror');
+      fn.remove('.new-meta-item.share');
+      fn.remove('div.footer');
       fn.setStyle('body', 'backgroundColor', 'unset');
       fn.setStyle('#l_main', 'width', '100%');
       fn.setStyle('#post', 'boxShadow', 'none');
@@ -489,7 +494,7 @@ const RightMenu = (() => {
         icon: volantis.rightMenu.faicon + ' fa-book-reader',
         time: 5000
       }
-      if (volantis.messageRightMenu.enable) volantis.message('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', option);
+      if (messageRightMenu) VolantisApp.message('系统提示', '阅读模式已开启，您可以点击屏幕空白处退出。', option);
       document.querySelector('#l_body').removeEventListener('click', fn.readingModel);
       document.querySelector('#l_body').addEventListener('click', (event) => {
         if (fn.hasClass(event.target, 'common_read')) {
@@ -587,17 +592,18 @@ const RightMenu = (() => {
   }
 
   return {
+    test: 1,
     init: (notice = false) => {
       fn.init();
       fn.initEvent();
-      if (notice && volantis.messageRightMenu.enable) volantis.message('系统提示', '自定义右键注册成功。');
+      if (notice && messageRightMenu) VolantisApp.message('系统提示', '自定义右键注册成功。');
     },
     destroy: (notice = false) => {
       fn.hideMenu();
       window.document.oncontextmenu = () => {
         return true
       };
-      if (notice && volantis.messageRightMenu.enable) volantis.message('系统提示', '自定义右键注销成功。');
+      if (notice && messageRightMenu) VolantisApp.message('系统提示', '自定义右键注销成功。');
     },
     hideMenu: () => {
       fn.hideMenu();
