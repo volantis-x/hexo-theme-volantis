@@ -20,6 +20,9 @@
         elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"]):not([target="_blank"]):not([target="view_window"]):not([href$=".xml"])',
         selectors: [
           "head title",
+          "head meta[name='description']",
+          "head meta[name='keywords']",
+          "head meta[property^='og']",
           <% if (!theme.plugins.pjax.cover){ %>"#l_cover",<% } %>
           "#l_main",
           "#pjax-header-nav-list",

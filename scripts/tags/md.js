@@ -38,7 +38,7 @@ hexo.extend.tag.register('md', function(args) {
             }
           })
           .then((resp) => {
-            let data = marked(resp.data);
+            let data = marked.parse(resp.data);
             contentEl.innerHTML = data;
           })
           .catch((error) => {

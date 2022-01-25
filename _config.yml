@@ -18,7 +18,7 @@ default:
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0-alpha.5' # This is theme's version.
+  theme_version: '5.0.0-alpha.6' # This is theme's version.
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 
@@ -53,7 +53,7 @@ source:
   tags:
     btns: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg
     markdown: https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css
-    marked: https://cdn.jsdelivr.net/npm/marked/marked.min.js
+    marked: https://cdn.jsdelivr.net/npm/marked@4/marked.min.js
     media: https://cdn.jsdelivr.net/npm/hls.js@latest
   githubApi: 
     avatar: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg

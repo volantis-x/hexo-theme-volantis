@@ -3,6 +3,10 @@
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="<%- config.title %>">
   </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="<%- config.title %>">
+    <meta itemprop="description" content="<%- config.description %>">
+  </span>
   <%
   let showPin = false;
   if (post.pin && (post.title || theme.article.preview.auto_title) && theme.article.preview.pin_icon) {
