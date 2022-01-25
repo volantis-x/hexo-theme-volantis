@@ -608,7 +608,7 @@ site_footer:
 plugins:
   ################ required plugins ################
   # jquery
-  globalJquery: true # 全局引入 jquery
+  globalJquery: false # 全局引入 jquery
   jquery: /libs/jquery/dist/jquery.min.js # https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js
   # fontawesome Pro 版本：https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css
   fontawesome: /libs/@fortawesome/fontawesome-free/css/all.min.css # https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css
