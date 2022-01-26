@@ -21,7 +21,7 @@ function postCell(args, content) {
     url = 'href=\'' + url + '\'';
   }
   let icon = '';
-  let img = hexo.theme.config.source.tags.btns;
+  let img = hexo.theme.config.default.image;
   if (args.length > 2) {
     if (args[2].indexOf(' fa-') > -1) {
       icon = args[2].trim();

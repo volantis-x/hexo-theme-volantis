@@ -82,8 +82,8 @@ const SitesJS = {
       cfg.class = el.getAttribute('class');
       cfg.el = el;
       cfg.api = api;
-      cfg.avatar = volantis.THEMECONFIG.source.githubApi.sites;
-      cfg.screenshot = volantis.THEMECONFIG.source.githubApi.screenshot;
+      cfg.avatar = volantis.THEMECONFIG.default.link;
+      cfg.screenshot = volantis.THEMECONFIG.default.cover;
       SitesJS.layout(cfg);
     }
   }

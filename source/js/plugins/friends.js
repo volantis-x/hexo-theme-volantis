@@ -79,7 +79,7 @@ const FriendsJS = {
       cfg.el = el;
       cfg.api = api;
       cfg.class = el.getAttribute('class');
-      cfg.avatar = volantis.THEMECONFIG.source.githubApi.avatar;
+      cfg.avatar = volantis.THEMECONFIG.default.avatar;
       FriendsJS.layout(cfg);
     }
   }

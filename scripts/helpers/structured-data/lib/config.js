@@ -8,7 +8,7 @@ module.exports = function (hexo) {
       description: config.description,
     },
     logo: {
-      path: hexo.theme.source.structured.logo,
+      path: /404/,
       width: 192,
       height: 192,
     },
