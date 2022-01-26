@@ -15,6 +15,23 @@ function merge(target, source) {
   return target;
 }
 
+// hexo.config.root or hexo.theme.config.cdn.prefix + /media/ or /libs/
+function checkLibPrefix(source,hexo) {
+  for (const key in source) {
+    if (isObject(source[key])) {
+      checkLibPrefix(source[key],hexo);
+    } else if(source[key] && typeof source[key] =="string") {
+      if(source[key].match(/^\/media\//g)||source[key].match(/^\/libs\//g)){
+        if(hexo.theme.config.cdn&&hexo.theme.config.cdn.prefix){
+          source[key] = hexo.theme.config.cdn.prefix + source[key]
+        }else if(hexo.config.root){
+          source[key] = hexo.config.root + source[key].slice(1)
+        }
+      }
+    }
+  }
+}
+
 module.exports = hexo => {
   if (!hexo.locals.get) return;
 
@@ -61,4 +78,5 @@ module.exports = hexo => {
       mergeLang(language);
     }
   }
+  checkLibPrefix(hexo.theme.config,hexo)
 };
