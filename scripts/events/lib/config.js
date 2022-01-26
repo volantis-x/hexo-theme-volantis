@@ -22,7 +22,7 @@ function checkLibPrefix(source,hexo) {
       checkLibPrefix(source[key],hexo);
     } else if(source[key] && typeof source[key] =="string") {
       if(source[key].match(/^\/media\//g)||source[key].match(/^\/libs\//g)){
-        if(hexo.theme.config.cdn&&hexo.theme.config.cdn.prefix){
+        if(hexo.theme.config.cdn.enable&&hexo.theme.config.cdn.prefix){
           source[key] = hexo.theme.config.cdn.prefix + source[key]
         }else if(hexo.config.root){
           source[key] = hexo.config.root + source[key].slice(1)
