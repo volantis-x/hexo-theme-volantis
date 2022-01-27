@@ -688,8 +688,8 @@ const VolantisFancyBox = (() => {
   const fn = {};
 
   fn.loadFancyBox = (done) => {
-    volantis.css('https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.css');
-    volantis.js('https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.umd.js').then(() => {
+    volantis.css(volantis.THEMECONFIG.plugins.fancybox.css);
+    volantis.js(volantis.THEMECONFIG.plugins.fancybox.js).then(() => {
       if (done) done();
     })
   }

@@ -614,6 +614,10 @@ plugins:
   marked: /libs/marked/marked.min.js # https://cdn.jsdelivr.net/npm/marked@4.0.10/marked.min.js
   # hls.js@1.1.3
   hlsjs: /libs/hls.js/dist/hls.min.js # https://cdn.jsdelivr.net/npm/hls.js@1.1.3
+  # @fancyapps/ui@4.0.12
+  fancybox:
+    css: /libs/@fancyapps/ui/dist/fancybox.css # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.css
+    js: /libs/@fancyapps/ui/dist/fancybox.umd.js # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.umd.js
   ################ optional plugins ################
   # issues api
   sitesjs:
