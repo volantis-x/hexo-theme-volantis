@@ -72,11 +72,9 @@ const VolantisApp = (() => {
     });
 
     // 站点信息 最后活动日期
-    if (document.getElementById('last-update-show')
-      && volantis.THEMECONFIG.sidebar.for_page.includes('webinfo')
-      || volantis.THEMECONFIG.sidebar.for_post.includes('webinfo')) {
+    if (volantis.THEMECONFIG.sidebar.for_page.includes('webinfo') || volantis.THEMECONFIG.sidebar.for_post.includes('webinfo')) {
       const lastupd = volantis.THEMECONFIG.sidebar.widget_library.webinfo.type.lastupd;
-      if (lastupd.enable && lastupd.friendlyShow) {
+      if (!!document.getElementById('last-update-show') && lastupd.enable && lastupd.friendlyShow) {
         document.getElementById('last-update-show').innerHTML = fn.utilTimeAgo(volantis.LASTUPDATE);
       }
     }
