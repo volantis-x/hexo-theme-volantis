@@ -27,16 +27,17 @@ info:
 # 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 cdn.enable 设置为 false
 cdn:
-  enable: false
-  prefix: # CDN 前缀，为空使用默认值，链接最后不加 "/",
-          # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
-          # 该配置默认值是："https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
+  enable: true
+  # CDN 前缀，为空使用默认值，链接最后不加 "/",
+  # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
+  # 该配置默认值是："https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
+  prefix: https://npm.elemecdn.com/hexo-theme-volantis@5.0.0-beta.2/source
   # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
   set:
     js:
-      app: #/js/app.js
+      app: /js/app.js
     css:
-      style: #/css/style.css # (异步加载样式)
+      style: /css/style.css # (异步加载样式)
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
