@@ -38,6 +38,11 @@ cdn:
     css:
       style: #/css/style.css # (异步加载样式)
 ########################################################################
+# 全局页面字符串替换  A => B (可用于临时修改错字等)
+replace:
+  - https://cdn.jsdelivr.net/npm/ => https://npm.elemecdn.com/
+
+
 # 平滑滚动效果
 scroll_smooth: true
 ############################### Navigation Bar ############################### > start
