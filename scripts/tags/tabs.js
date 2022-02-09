@@ -80,8 +80,8 @@
  
    tabNav = `<ul class="nav-tabs">${tabNav}</ul>`;
    tabContent = `<div class="tab-content">${tabContent}</div>`;
- 
-   return `<div class="tabs" id="${tabName.toLowerCase().split(' ').join('-')}">${tabNav + tabContent}</div>`;
+   // https://github.com/volantis-x/hexo-theme-volantis/issues/703
+   return `<div class="tabs" id="tab-${tabName.toLowerCase().split(' ').join('-')}">${tabNav + tabContent}</div>`;
  }
  
  hexo.extend.tag.register('tabs', postTabs, {ends: true});
