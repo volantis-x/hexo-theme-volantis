@@ -416,7 +416,7 @@ comments:
     js: https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js
     path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是waline的问题
     placeholder: 快来评论吧~  # 评论占位提示
-    imageHosting: https://7bu.top/api/upload # 图床api（默认使用去不图床）
+    # imageHosting: https://7bu.top/api/upload # 图床api（默认注释使用base64）
     # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder uploadImage] 选项
     meta: [nick,mail,link] # waline comment header info
     requiredFields: [nick,mail]
