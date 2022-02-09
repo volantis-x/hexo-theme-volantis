@@ -13,15 +13,8 @@
       <% if (item.type.runtime.enable) { %>
         <div class="webinfo-item">
           <div><%= item.type.runtime.text %></div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
+          <div id="webinfo-runtime-count"></div>
         </div>
-        <script>
-          var BirthDay = new Date(new Date('<%= item.type.runtime.data %>'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' <%= item.type.runtime.unit %>';
-        </script>
       <% } %>
 
 

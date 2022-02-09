@@ -79,6 +79,14 @@ const VolantisApp = (() => {
       }
     }
 
+    // 站点信息 运行时间
+    if(!!document.getElementById('webinfo-runtime-count')) {
+      let BirthDay = new Date(volantis.THEMECONFIG.sidebar.widget_library.webinfo.type.runtime.data);
+      let timeold = (new Date().getTime() - BirthDay.getTime());
+      let daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
+      document.getElementById('webinfo-runtime-count').innerHTML = `${daysold} ${volantis.THEMECONFIG.sidebar.widget_library.webinfo.type.runtime.unit}`;
+    }
+
     // 消息提示 复制时弹出
     if (volantis.THEMECONFIG.plugins.message.enable
       && volantis.THEMECONFIG.plugins.message.copyright.enable) {
