@@ -31,7 +31,8 @@
           "script[data-pjax], .pjax-reload script" // script标签添加data-pjax 或 script标签外层添加.pjax-reload 的script代码段重载
         ],
         cacheBust: <%= theme.plugins.pjax.cacheBust %>,   // url 地址追加时间戳，用以避免浏览器缓存
-        timeout: <%= theme.plugins.pjax.timeout %>
+        timeout: <%= theme.plugins.pjax.timeout %>,
+        <% if (theme.debug){ %> debug: true,<% } %>
       });
     });
 
@@ -61,8 +62,13 @@
     });
 
     document.addEventListener('pjax:error', function (e) {
-      // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
-      volantis.pjax.method.error.start();
-      window.location.href = e.triggerElement.href;
+      if(volantis.debug) {
+        console.error(e);
+        console.log('pjax error: \n' + JSON.stringify(e));
+      }else{
+        // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+        volantis.pjax.method.error.start();
+        window.location.href = e.triggerElement.href;
+      }
     });
 </script>
