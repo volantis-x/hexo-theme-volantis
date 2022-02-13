@@ -2,10 +2,15 @@
   /************这个文件存放不需要重载的全局变量和全局函数*********/
   window.volantis = {}; // volantis 全局变量
   volantis.debug = <%- theme.debug %>; // 开启调试模式
-  volantis.WEBCONFIG = <%- JSON.stringify(config) %>;
-  volantis.THEMECONFIG = <%- JSON.stringify(theme) %>;
   volantis.LASTUPDATE = new Date('<%- new Date() %>');
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
+
+  async function volantisInitConfig() {
+    await fetch('/volantis-webconfig.json').then(data => data.json()).then(data => {volantis.WEBCONFIG=data})
+    await fetch('/volantis-themeconfig.json').then(data => data.json()).then(data => {volantis.THEMECONFIG=data})
+  }
+  volantisInitConfig()
+
   /******************** volantis.EventListener ********************************/
   // 事件监听器 see: /source/js/app.js
   volantis.EventListener = {}
