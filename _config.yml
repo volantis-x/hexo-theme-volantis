@@ -248,7 +248,7 @@ article:
 comments:
   title: <i class='fas fa-comments'></i> 评论
   subtitle:
-  service: artalk 
+  service: giscus
   # 可选评论系统 #
 
   # artalk
