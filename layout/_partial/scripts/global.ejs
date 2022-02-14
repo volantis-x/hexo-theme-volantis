@@ -6,8 +6,17 @@
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   async function volantisInitConfig() {
-    await fetch('/volantis-webconfig.json').then(data => data.json()).then(data => {volantis.WEBCONFIG=data})
-    await fetch('/volantis-themeconfig.json').then(data => data.json()).then(data => {volantis.THEMECONFIG=data})
+    try {
+      let respThemeConfig = await fetch('/volantis-themeconfig.json');
+      let respWebConfig = await fetch('/volantis-webconfig.json');
+      volantis.THEMECONFIG = await respThemeConfig.json();
+      volantis.WEBCONFIG = await respWebConfig.json();
+    } catch (e) {
+      console.error(`主题配置读取失败： ${e}`)
+      <% if(theme.debug){ %>
+        alert(`主题配置读取失败： ${e}`);
+      <% } %>
+    }
   }
   volantisInitConfig()
 
