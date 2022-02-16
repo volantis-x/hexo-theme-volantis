@@ -78,7 +78,7 @@ const ContributorsJS = {
       cfg.el = el;
       cfg.api = api;
       cfg.class = el.getAttribute('class');
-      cfg.avatar = volantis.THEMECONFIG.default.avatar;
+      cfg.avatar = volantis.GLOBAL_CONFIG.default.avatar;
       ContributorsJS.layout(cfg);
     }
   }

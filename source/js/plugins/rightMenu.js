@@ -1,7 +1,7 @@
 const RightMenu = (() => {
   const
-    rightMenuConfig = volantis.THEMECONFIG.rightmenu,
-    messageRightMenu = volantis.THEMECONFIG.plugins.message.enable && volantis.THEMECONFIG.plugins.message.rightmenu.enable;
+    rightMenuConfig = volantis.GLOBAL_CONFIG.plugins.rightmenu,
+    messageRightMenu = volantis.GLOBAL_CONFIG.plugins.message.enable && volantis.GLOBAL_CONFIG.plugins.message.rightmenu.enable;
 
   const
     fn = {},
@@ -82,7 +82,7 @@ const RightMenu = (() => {
       _rightMenuWrapper.style.left = showLeft + "px";
       _rightMenuWrapper.style.top = showTop + "px";
       _rightMenuWrapper.style.zIndex = '2147483648';
-      if (volantis.THEMECONFIG.plugins.message.rightmenu.notice) fn.showMessage();
+      if (volantis.GLOBAL_CONFIG.plugins.message.rightmenu.notice) fn.showMessage();
     } catch (error) {
       _rightMenuWrapper.blur();
       console.error(error);
@@ -270,10 +270,10 @@ const RightMenu = (() => {
       DOMController.visible(_readingModel, false);
     }
 
-    if (volantis.THEMECONFIG.plugins.aplayer.enable 
-      && typeof RightMenuAplayer !== 'undefined' 
+    if (volantis.GLOBAL_CONFIG.plugins.aplayer.enable
+      && typeof RightMenuAplayer !== 'undefined'
       && RightMenuAplayer.APlayer.player !== undefined) {
-      if (rightMenuConfig.music.alwaysShow) {
+      if (rightMenuConfig.music_alwaysShow) {
         DOMController.visible(_menuMusic);
       } else if (RightMenuAplayer.APlayer.status === 'play' || RightMenuAplayer.APlayer.status === 'undefined') {
         optionFlag = true;
@@ -289,8 +289,8 @@ const RightMenu = (() => {
       DOMController.visible(ele, !optionFlag);
     })
 
-    if (volantis.THEMECONFIG.plugins.aplayer.enable
-      && volantis.THEMECONFIG.rightmenu.layout.includes('music')) {
+    if (volantis.GLOBAL_CONFIG.plugins.aplayer.enable
+      && rightMenuConfig.layout.includes('music')) {
       RightMenuAplayer.checkAPlayer();
     }
   }

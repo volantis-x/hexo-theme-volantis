@@ -22,7 +22,7 @@ const RightMenuAplayer = (() => {
     }
     APlayer.player = undefined;
     meting.forEach((item, index) => {
-      if (item.meta.id == volantis.THEMECONFIG.plugins.aplayer.id && item.aplayer && APlayer.player === undefined) {
+      if (item.meta.id == volantis.GLOBAL_CONFIG.plugins.aplayer.id && item.aplayer && APlayer.player === undefined) {
         APlayer.player = item.aplayer;
         fn.setAPlayerObserver();
         fn.updateTitle();

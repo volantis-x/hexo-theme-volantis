@@ -72,28 +72,28 @@ const VolantisApp = (() => {
     });
 
     // 站点信息 最后活动日期
-    if (volantis.THEMECONFIG.sidebar.for_page.includes('webinfo') || volantis.THEMECONFIG.sidebar.for_post.includes('webinfo')) {
-      const lastupd = volantis.THEMECONFIG.sidebar.widget_library.webinfo.type.lastupd;
+    if (volantis.GLOBAL_CONFIG.sidebar.for_page.includes('webinfo') || volantis.GLOBAL_CONFIG.sidebar.for_post.includes('webinfo')) {
+      const lastupd = volantis.GLOBAL_CONFIG.sidebar.webinfo.lastupd;
       if (!!document.getElementById('last-update-show') && lastupd.enable && lastupd.friendlyShow) {
-        document.getElementById('last-update-show').innerHTML = fn.utilTimeAgo(volantis.LASTUPDATE);
+        document.getElementById('last-update-show').innerHTML = fn.utilTimeAgo(volantis.GLOBAL_CONFIG.lastupdate);
       }
     }
 
     // 站点信息 运行时间
-    if(!!document.getElementById('webinfo-runtime-count')) {
-      let BirthDay = new Date(volantis.THEMECONFIG.sidebar.widget_library.webinfo.type.runtime.data);
+    if (!!document.getElementById('webinfo-runtime-count')) {
+      let BirthDay = new Date(volantis.GLOBAL_CONFIG.sidebar.webinfo.runtime.data);
       let timeold = (new Date().getTime() - BirthDay.getTime());
       let daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-      document.getElementById('webinfo-runtime-count').innerHTML = `${daysold} ${volantis.THEMECONFIG.sidebar.widget_library.webinfo.type.runtime.unit}`;
+      document.getElementById('webinfo-runtime-count').innerHTML = `${daysold} ${volantis.GLOBAL_CONFIG.sidebar.webinfo.runtime.unit}`;
     }
 
     // 消息提示 复制时弹出
-    if (volantis.THEMECONFIG.plugins.message.enable
-      && volantis.THEMECONFIG.plugins.message.copyright.enable) {
+    if (volantis.GLOBAL_CONFIG.plugins.message.enable
+      && volantis.GLOBAL_CONFIG.plugins.message.copyright.enable) {
       document.body.oncopy = function () {
-        VolantisApp.message(volantis.THEMECONFIG.plugins.message.copyright.title,
-          volantis.THEMECONFIG.plugins.message.copyright.message, {
-          icon: volantis.THEMECONFIG.plugins.message.copyright.icon
+        VolantisApp.message(volantis.GLOBAL_CONFIG.plugins.message.copyright.title,
+          volantis.GLOBAL_CONFIG.plugins.message.copyright.message, {
+          icon: volantis.GLOBAL_CONFIG.plugins.message.copyright.icon
         });
       };
     }
@@ -516,8 +516,8 @@ const VolantisApp = (() => {
   // 消息提示：标准
   fn.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css(volantis.THEMECONFIG.cdn.map.css.message)
-      volantis.js(volantis.THEMECONFIG.cdn.map.js.message, () => {
+      volantis.css(volantis.GLOBAL_CONFIG.cdn.css.message)
+      volantis.js(volantis.GLOBAL_CONFIG.cdn.js.message, () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -541,15 +541,15 @@ const VolantisApp = (() => {
         icon: 'Fontawesome',
         closeOnEscape: 'true',
         displayMode: displayMode || 'replace',
-        transitionIn: transitionIn || volantis.THEMECONFIG.plugins.message.transitionIn,
-        transitionOut: transitionOut || volantis.THEMECONFIG.plugins.message.transitionOut,
-        messageColor: messageColor || volantis.THEMECONFIG.plugins.message.messageColor,
-        titleColor: titleColor || volantis.THEMECONFIG.plugins.message.titleColor,
-        backgroundColor: backgroundColor || volantis.THEMECONFIG.plugins.message.backgroundColor,
-        zindex: zindex || volantis.THEMECONFIG.plugins.message.zindex,
-        icon: icon || volantis.THEMECONFIG.plugins.message.icon.default,
-        timeout: time || volantis.THEMECONFIG.plugins.message.time.default,
-        position: position || volantis.THEMECONFIG.plugins.message.position,
+        transitionIn: transitionIn || volantis.GLOBAL_CONFIG.plugins.message.transitionIn,
+        transitionOut: transitionOut || volantis.GLOBAL_CONFIG.plugins.message.transitionOut,
+        messageColor: messageColor || volantis.GLOBAL_CONFIG.plugins.message.messageColor,
+        titleColor: titleColor || volantis.GLOBAL_CONFIG.plugins.message.titleColor,
+        backgroundColor: backgroundColor || volantis.GLOBAL_CONFIG.plugins.message.backgroundColor,
+        zindex: zindex || volantis.GLOBAL_CONFIG.plugins.message.zindex,
+        icon: icon || volantis.GLOBAL_CONFIG.plugins.message.icon.default,
+        timeout: time || volantis.GLOBAL_CONFIG.plugins.message.time.default,
+        position: position || volantis.GLOBAL_CONFIG.plugins.message.position,
         title: title,
         message: message,
         onClosed: () => {
@@ -562,8 +562,8 @@ const VolantisApp = (() => {
   // 消息提示：询问
   fn.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css(volantis.THEMECONFIG.cdn.map.css.message)
-      volantis.js(volantis.THEMECONFIG.cdn.map.js.message, () => {
+      volantis.css(volantis.GLOBAL_CONFIG.cdn.css.message)
+      volantis.js(volantis.GLOBAL_CONFIG.cdn.js.message, () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -589,12 +589,12 @@ const VolantisApp = (() => {
         overlay: true,
         displayMode: 'once',
         position: 'center',
-        messageColor: messageColor || volantis.THEMECONFIG.plugins.message.messageColor,
-        titleColor: titleColor || volantis.THEMECONFIG.plugins.message.titleColor,
-        backgroundColor: backgroundColor || volantis.THEMECONFIG.plugins.message.backgroundColor,
-        zindex: zindex || volantis.THEMECONFIG.plugins.message.zindex,
-        icon: icon || volantis.THEMECONFIG.plugins.message.icon.quection,
-        timeout: time || volantis.THEMECONFIG.plugins.message.time.quection,
+        messageColor: messageColor || volantis.GLOBAL_CONFIG.plugins.message.messageColor,
+        titleColor: titleColor || volantis.GLOBAL_CONFIG.plugins.message.titleColor,
+        backgroundColor: backgroundColor || volantis.GLOBAL_CONFIG.plugins.message.backgroundColor,
+        zindex: zindex || volantis.GLOBAL_CONFIG.plugins.message.zindex,
+        icon: icon || volantis.GLOBAL_CONFIG.plugins.message.icon.quection,
+        timeout: time || volantis.GLOBAL_CONFIG.plugins.message.time.quection,
         title: title,
         message: message,
         buttons: [
@@ -623,8 +623,8 @@ const VolantisApp = (() => {
     }
 
     if (typeof iziToast === "undefined") {
-      volantis.css(volantis.THEMECONFIG.cdn.map.css.message)
-      volantis.js(volantis.THEMECONFIG.cdn.map.js.message, () => {
+      volantis.css(volantis.GLOBAL_CONFIG.cdn.css.message)
+      volantis.js(volantis.GLOBAL_CONFIG.cdn.js.message, () => {
         hideMessage(done);
       });
     } else {
@@ -640,11 +640,11 @@ const VolantisApp = (() => {
   // 消息提示：复制
   fn.messageCopyright = () => {
     // 消息提示 复制时弹出
-    if (volantis.THEMECONFIG.plugins.message.enable
-      && volantis.THEMECONFIG.plugins.message.copyright.enable) {
-      VolantisApp.message(volantis.THEMECONFIG.plugins.message.copyright.title,
-        volantis.THEMECONFIG.plugins.message.copyright.message, {
-        icon: volantis.THEMECONFIG.plugins.message.copyright.icon
+    if (volantis.GLOBAL_CONFIG.plugins.message.enable
+      && volantis.GLOBAL_CONFIG.plugins.message.copyright.enable) {
+      VolantisApp.message(volantis.GLOBAL_CONFIG.plugins.message.copyright.title,
+        volantis.GLOBAL_CONFIG.plugins.message.copyright.message, {
+        icon: volantis.GLOBAL_CONFIG.plugins.message.copyright.icon
       });
     }
   }
@@ -696,8 +696,8 @@ const VolantisFancyBox = (() => {
   const fn = {};
 
   fn.loadFancyBox = (done) => {
-    volantis.css(volantis.THEMECONFIG.plugins.fancybox.css);
-    volantis.js(volantis.THEMECONFIG.plugins.fancybox.js).then(() => {
+    volantis.css(volantis.GLOBAL_CONFIG.plugins.fancybox.css);
+    volantis.js(volantis.GLOBAL_CONFIG.plugins.fancybox.js).then(() => {
       if (done) done();
     })
   }
