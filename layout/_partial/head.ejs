@@ -26,7 +26,9 @@
   <%- open_graph(theme.open_graph) %>
   <!-- feed -->
   <%_ if (config.feed && config.feed.path){ _%>
-    <%- feed_tag(config.feed.path, {title: config.title}) %>
+    <%_ (config.feed.path||[]).forEach(function(item){ _%>
+      <%- feed_tag(item, {title: config.title}) %>
+    <%_ }) _%>
   <%_ } _%>
   <!-- import meta -->
   <%_ if (config.import && config.import.meta){ _%>
