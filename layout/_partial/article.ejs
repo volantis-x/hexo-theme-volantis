@@ -96,13 +96,13 @@
       <div class="prev-next">
         <% if (prev.path) { %>
           <a class='prev' href='<%- url_for(prev.path) %>'>
-            <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i><%- prev.title || '' %></p>
+            <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><%- prev.title || '' %></p>
             <p class='content'><%- prev.exp %></p>
           </a>
         <% } %>
         <% if (next.path) { %>
           <a class='next' href='<%- url_for(next.path) %>'>
-            <p class='title'><%- next.title || '' %><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+            <p class='title'><%- next.title || '' %><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
             <p class='content'><%- next.exp %></p>
           </a>
         <% } %>
@@ -114,13 +114,13 @@
     <div class="prev-next">
       <% if (post.prev) { %>
         <a class='prev' href='<%- url_for(post.prev.path) %>'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i><%- post.prev.title || '' %></p>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><%- post.prev.title || '' %></p>
           <p class='content'><%- truncate(strip_html(page.prev.content), {length: 100}) %></p>
         </a>
       <% } %>
       <% if (post.next) { %>
         <a class='next' href='<%- url_for(post.next.path) %>'>
-          <p class='title'><%- post.next.title || '' %><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='title'><%- post.next.title || '' %><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'><%- truncate(strip_html(page.next.content), {length: 100}) %></p>
         </a>
       <% } %>

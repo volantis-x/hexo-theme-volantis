@@ -57,22 +57,22 @@ navbar:
     title:
   menu:
     - name: 博客
-      icon: fas fa-rss
+      icon: fa-solid fa-rss
       url: /
     - name: 分类
-      icon: fas fa-folder-open
+      icon: fa-solid fa-folder-open
       url: categories/
     - name: 标签
-      icon: fas fa-tags
+      icon: fa-solid fa-tags
       url: tags/
     - name: 归档
-      icon: fas fa-archive
+      icon: fa-solid fa-archive
       url: archives/
     - name: 友链
-      icon: fas fa-link
+      icon: fa-solid fa-link
       url: friends/
     - name: 关于
-      icon: fas fa-info-circle
+      icon: fa-solid fa-info-circle
       url: about/
   search: Search...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
@@ -156,7 +156,7 @@ article:
       # 参考资料、相关资料等 (for layout: post/docs)
       references:
         title: 参考资料
-        icon: fas fa-quote-left
+        icon: fa-solid fa-quote-left
         # 在 front-matter 中:
         #   references:
         #     - title: 某篇文章
@@ -168,7 +168,7 @@ article:
       related_posts:
         enable: false
         title: 相关文章
-        icon: fas fa-bookmark
+        icon: fa-solid fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
         placeholder_img: https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
@@ -200,35 +200,35 @@ article:
         url: /
       # 文章创建日期
       date:
-        icon: fas fa-calendar-alt
+        icon: fa-solid fa-calendar-alt
         title: '发布于：'
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章更新日期
       updated:
-        icon: fas fa-edit
+        icon: fa-solid fa-edit
         title: '更新于：'
         format: 'll' # 日期格式 http://momentjs.com/docs/
       # 文章分类
       category:
-        icon: fas fa-folder-open
+        icon: fa-solid fa-folder-open
       # 文章浏览计数
       counter:
-        icon: fas fa-eye
+        icon: fa-solid fa-eye
         unit: '次浏览'
       # 文章评论数量：支持 valine和waline
       valinecount:
-        icon: fas fa-comment-dots
+        icon: fa-solid fa-comment-dots
         desc: '' # 条评论
       walinecount:
-        icon: fas fa-comment-dots
+        icon: fa-solid fa-comment-dots
         desc: '' # 条评论
       # 文章字数和阅读时长
       wordcount:
-        icon_wordcount: fas fa-keyboard
-        icon_duration: fas fa-hourglass-half
+        icon_wordcount: fa-solid fa-keyboard
+        icon_duration: fa-solid fa-hourglass-half
       # 文章标签
       tags:
-        icon: fas fa-hashtag
+        icon: fa-solid fa-hashtag
       # 分享
       share:
         - id: qq
@@ -246,7 +246,7 @@ article:
 
 ############################### Comments ############################### > start
 comments:
-  title: <i class='fas fa-comments'></i> 评论
+  title: <i class='fa-solid fa-comments'></i> 评论
   subtitle:
   service: giscus
   # 可选评论系统 #
@@ -453,13 +453,13 @@ sidebar:
       subtitle:
       jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        - icon: fas fa-rss
+        - icon: fa-solid fa-rss
           url: /atom.xml
-        - icon: fas fa-envelope
+        - icon: fa-solid fa-envelope
           url: mailto:me@xxx.com
         - icon: fab fa-github
           url: https://github.com/volantis-x/
-        - icon: fas fa-headphones-alt
+        - icon: fa-solid fa-headphones-alt
           url: /
     # ---------------------------------------
     # toc widget (valid only in articles)
@@ -467,7 +467,7 @@ sidebar:
       class: toc
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fas fa-list
+        icon: fa-solid fa-list
         title: 本文目录
       list_number: false
       min_depth: 2
@@ -484,7 +484,7 @@ sidebar:
       class: category
       display: [desktop] # [desktop, mobile]
       header:
-        icon: fas fa-folder-open
+        icon: fa-solid fa-folder-open
         title: 文章分类
         url: /blog/categories/
     # ---------------------------------------
@@ -493,7 +493,7 @@ sidebar:
       class: tagcloud
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fas fa-tags
+        icon: fa-solid fa-tags
         title: 热门标签
         url: /blog/tags/
       min_font: 14
@@ -516,7 +516,7 @@ sidebar:
       class: webinfo
       display: [desktop]
       header:
-        icon: fas fa-award
+        icon: fa-solid fa-award
         title: 站点信息
       type:
         article:
@@ -553,7 +553,7 @@ sidebar:
       class: lastupdate
       display: [desktop, mobile]
       header:
-        icon: fas fa-clock WISTERIA
+        icon: fa-solid fa-clock WISTERIA
         title: 最近更新
 ############################### Sidebar ############################### > end
 
@@ -565,7 +565,7 @@ tag_plugins:
   note: # style for default note:
     icon: '\f054'
     color: ''
-    iconfont: 'Font Awesome 5 Free'
+    iconfont: 'Font Awesome 6 Free'
   # {% checkbox %}
   checkbox:
     interactive: false # enable interactive for user
@@ -581,7 +581,7 @@ site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
   layout: [aplayer, social, license, analytics, info, copyright]
   social:
-    - icon: #fas fa-rss
+    - icon: #fa-solid fa-rss
       url:
     # or
     - img:
@@ -593,8 +593,8 @@ site_footer:
   source: https://github.com/volantis-x/volantis-docs/
   # analytics using leancloud
   analytics: >
-    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
-    <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
+    <span id="lc-uv">访客数为 <span id='number'><i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
   copyright: '[Copyright © 2017-2020 XXX](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
@@ -702,7 +702,8 @@ plugins:
     css: /libs/node-waves/dist/waves.min.css # https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
     js: /libs/node-waves/dist/waves.min.js # https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
 
-  # fontawesome animation
+  # fontawesome V6:  https://fontawesome.com/docs/web/style/animate
+  # fontawesome animation for fontawesome V5
   fontawesome_animation:
     enable: #true
     css: /libs/font-awesome-animation/font-awesome-animation.min.css # https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
@@ -781,7 +782,7 @@ plugins:
   # 暗黑模式 darkmode
   # 开关按钮：在 navbar.menu 中添加：
   # - name: 暗黑模式 # 可自定义
-  #   icon: fas fa-moon # 可自定义
+  #   icon: fa-solid fa-moon # 可自定义
   #   toggle: darkmode
   darkmode:
     enable: #true
@@ -866,8 +867,8 @@ plugins:
   message:
     enable: true
     icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_style/_plugins/fontcolor.styl
-      default: fas fa-info-circle light-blue
-      quection: fas fa-question-circle light-blue
+      default: fa-solid fa-info-circle light-blue
+      quection: fa-solid fa-question-circle light-blue
     time:     # 默认持续时间
       default: 5000
       quection: 20000
@@ -885,8 +886,8 @@ plugins:
       icon: 'far fa-copyright light-blue'
     aplayer:                              # 是否开启音乐通知；播放、暂停、失败 时的图标
       enable: true
-      play: fas fa-play
-      pause: fas fa-pause
+      play: fa-solid fa-play
+      pause: fa-solid fa-pause
     rightmenu:                            
       enable: true                        # 是否开启右键模块的消息通知
       notice: true                        # 唤醒原右键菜单的通知 
@@ -928,7 +929,7 @@ plugins:
 # 自定义右键菜单
 rightmenu:
   enable: true
-  faicon: fa              # 公共图标类型 fa fal fas fad
+  faicon: fa              # 公共图标类型 fa fal fa-solid fa-duotone
   # hr: 分割线, music: 音乐控制器
   layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, reading, music]
   ### 可选功能项 ###

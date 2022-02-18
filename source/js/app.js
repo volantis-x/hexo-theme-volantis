@@ -43,7 +43,7 @@ Object.freeze(locationHash);
 /* Main */
 const VolantisApp = (() => {
   const fn = {},
-    COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fas fa-copy"></i><span>COPY</span></button>';
+    COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fa-solid fa-copy"></i><span>COPY</span></button>';
   let scrollCorrection = 80;
 
   fn.init = () => {
