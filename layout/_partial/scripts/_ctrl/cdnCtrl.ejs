@@ -14,7 +14,7 @@
   theme.cdn.map.css={}
   theme.cdn.addJS=(name,source,force)=>{
     if(force){
-      theme.cdn.map.js[name]=force
+      theme.cdn.map.js[name]=force + '?time=' + Date.now()
     }else{
       if(!source){
         source=name
@@ -32,7 +32,7 @@
   }
   theme.cdn.addCSS=(name,source,force)=>{
     if(force){
-      theme.cdn.map.css[name]=force
+      theme.cdn.map.css[name]=force + '?time=' + Date.now()
     }else{
       if(!source){
         source=name
