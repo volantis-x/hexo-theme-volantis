@@ -936,7 +936,6 @@ rightmenu:
   print:                  # 只有文章页才允许自定义打印
     name: 打印页面
     icon: fa fa-print
-    defaultStyles: true   # 是否使用预制的打印样式
   darkmode:        # 需开启 plugins.darkmodejs
     name: 暗黑模式
     icon: fa fa-moon
