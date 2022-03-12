@@ -1,0 +1,10 @@
+name: 其它：额外议题
+description: 使用此模板意味着您不需要帮助，也不需要开发者优先关注此话题。
+title: "【其它】："
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 议题内容
+    validations:
+      required: true

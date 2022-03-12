@@ -1,0 +1,72 @@
+name: 反馈：主题的代码错误
+description: 此模板适用于您已经定位到了问题的具体所在，不需要协助定位问题。报告给开发者予以修复。
+title: "【反馈】："
+labels: bug-report
+body:
+  - type: markdown
+    attributes:
+      value: | 
+        请务必认真填写，足够的信息能帮助我们更快的解决问题。
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 检查清单
+      description: 请认真检查以下清单中的每一项，并在相符的项前打勾。
+      options:
+        - label: 已经搜索过，没有发现类似 issue。
+        - label: 已经将主题升级到最新版本。
+        - label: 主题官网也存在这个问题。
+  - type: input
+    id: bug-url
+    attributes:
+      label: 复现地址
+      description: 请输入可供复现的访问地址。
+  - type: textarea
+    id: description
+    attributes:
+      label: 复现步骤
+      description: 请告诉我们发生了什么？
+    validations:
+      required: true
+  - type: textarea
+    id: config-file
+    attributes:
+      label: 配置文件
+      description: 请提供您的配置文件。
+      value: |
+        <details><summary>站点配置文件</summary><p>
+
+        ```yml
+        在这里粘贴替换 `blog/_config.yml` 中修改过的部分
+        ```
+
+        </p></details>
+
+        <details><summary>主题配置文件</summary><p>
+
+        ```yml
+        在这里粘贴替换 `themes/volantis/_config.yml` 中修改过的部分
+        ```
+
+        </p></details>
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境信息
+      description: 请提供您的环境信息，打开终端在博客目录下执行命令获取内容。
+      value: |
+        <details><summary>node.js & npm</summary><p>
+
+        ```
+        在这里粘贴替换 `node -v && npm -v` 输出的信息
+        ```
+
+        </p></details>
+
+        <details><summary>package.json</summary><p>
+
+        ```
+        在这里粘贴替换 `npm ls --depth 0` 输出的信息
+        ```
+
+        </p></details>

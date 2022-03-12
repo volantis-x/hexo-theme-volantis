@@ -1,0 +1,29 @@
+name: 建议：新增或优化某一项功能
+description: 此模板适用于建议以及讨论是否新增功能或者对现有功能作出调整。
+title: "【建议】："
+labels: feature-request
+body:
+  - type: markdown
+    attributes:
+      value: | 
+        请务必认真填写，足够的信息能帮助我们了解具体的需求。
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 检查清单
+      description: 请认真检查以下清单中的每一项，并在相符的项前打勾。
+      options:
+        - label: 已经搜索过，没有发现类似 issue。
+        - label: 已经阅读 hexo 官方文档，未发现原生支持。
+  - type: textarea
+    id: description
+    attributes:
+      label: 需求描述
+      description: 请告诉我们您期望添加什么功能？
+    validations:
+      required: true
+  - type: textarea
+    id: link
+    attributes:
+      label: 参考链接
+      description: 请提供可供我们参考的链接。
