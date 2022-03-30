@@ -23,6 +23,27 @@ info:
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 # Debug 调试模式
 debug: false
+############################### CSP ###############################
+# 内容安全策略( CSP )
+# https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
+# https://content-security-policy.com/
+# 可以使用自动化工具(例如glup)自行配置更严格的安全策略替换默认的 * 和 'unsafe-inline' 
+csp: "
+  default-src 'self' https:;
+  block-all-mixed-content;
+  base-uri 'self' https:;
+  form-action 'self' https:;
+  worker-src 'self' https:;
+  connect-src 'self' https: *;
+  img-src 'self' data: https: *;
+  media-src 'self' https: *;
+  font-src 'self' data: https: *;
+  frame-src 'self' https: *;
+  manifest-src 'self' https: *;
+  child-src https:;
+  script-src 'self' https: 'unsafe-inline' *;
+  style-src 'self' https: 'unsafe-inline' *;
+"
 ############################### CDN ###############################
 # 本地静态文件使用jsdelivr的min版本加速 https://www.jsdelivr.com/features
 # 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
