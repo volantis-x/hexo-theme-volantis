@@ -6,6 +6,7 @@ const crypto = require('crypto');
 const hash = (s) => crypto.createHash("sha256").update(s).digest('base64');
 let unsafe_script_list = [
   "this.media='all';this.onload=null",
+  'this.media="all",this.onload=null',
   "errorImgAvatar(this)",
   "errorImgCover(this)",
   "return false;",
