@@ -8,6 +8,7 @@ let unsafe_script_list = [
   "this.media='all';this.onload=null",
   "errorImgAvatar(this)",
   "errorImgCover(this)",
+  "return false;",
 ]
 let unsafe_script_hash = ["'sha256-MXV1jvkHrZruEyFEOrQRjKs9WlPZC1V/3RLoKrkoDFQ='"]
 
