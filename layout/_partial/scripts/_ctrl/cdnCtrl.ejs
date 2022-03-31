@@ -4,6 +4,10 @@
   // theme.cdn.addCSS("first","first",theme.cdn.set.css.first)  => theme.cdn.map.css.first
 
   theme.cdnCtrl={}
+  theme.cdnCtrl.cdn_version = "";
+  if (theme.cdn_version) {
+    theme.cdnCtrl.cdn_version = '?time=' + theme.getStartTime;
+  }
   if (theme.cdn.enable&&theme.cdn.prefix) {
     theme.cdnCtrl.prefix=theme.cdn.prefix.replace(/\/$/g, "")
   } else {
@@ -14,7 +18,7 @@
   theme.cdn.map.css={}
   theme.cdn.addJS=(name,source,force)=>{
     if(force){
-      theme.cdn.map.js[name]=force + '?time=' + Date.now()
+      theme.cdn.map.js[name]=force + theme.cdnCtrl.cdn_version
     }else{
       if(!source){
         source=name
@@ -23,16 +27,16 @@
       if (theme.cdn.enable) {
         let suffix=theme.cdn.prefix&&theme.cdn.prefix.match(/jsdelivr/g)?'.min.js':'.js'
         source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
-        theme.cdn.map.js[name]=theme.cdnCtrl.prefix + '/js/' + source + suffix + '?time=' + Date.now()
+        theme.cdn.map.js[name]=theme.cdnCtrl.prefix + '/js/' + source + suffix + theme.cdnCtrl.cdn_version
       } else {
-        theme.cdn.map.js[name]=url_for('/js/')+ source + '.js?time=' + Date.now()
+        theme.cdn.map.js[name]=url_for('/js/')+ source + '.js' + theme.cdnCtrl.cdn_version
       }
     }
     return theme.cdn.map.js[name]
   }
   theme.cdn.addCSS=(name,source,force)=>{
     if(force){
-      theme.cdn.map.css[name]=force + '?time=' + Date.now()
+      theme.cdn.map.css[name]=force + theme.cdnCtrl.cdn_version
     }else{
       if(!source){
         source=name
@@ -41,9 +45,9 @@
       if (theme.cdn.enable&&theme.cdn.prefix) {
         let suffix=theme.cdn.prefix.match(/jsdelivr/g)?'.min.css':'.css'
         source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
-        theme.cdn.map.css[name]=theme.cdnCtrl.prefix + '/css/' + source + suffix + '?time=' + Date.now()
+        theme.cdn.map.css[name]=theme.cdnCtrl.prefix + '/css/' + source + suffix + theme.cdnCtrl.cdn_version
       } else {
-        theme.cdn.map.css[name]=url_for('/css/')+ source + '.css?time=' + Date.now()
+        theme.cdn.map.css[name]=url_for('/css/')+ source + '.css' + theme.cdnCtrl.cdn_version
       }
     }
     return theme.cdn.map.css[name]
@@ -109,5 +113,7 @@
   //  在部署时加入了 ?time=' + Date.now()
   //  使用 js(theme.cdn.map.js.app) 引入的地址会形如: /js/app.js?time=1232123123.js
   //  但是无伤大雅
+  //  更新：
+  //  ?time=' + Date.now() 替换为 theme.getStartTime 保证相同资源 hash 不变
   dfs(theme.cdn.set,[])
 _%>
