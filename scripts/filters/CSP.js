@@ -37,16 +37,15 @@ hexo.extend.filter.register('after_render:html', function(data) {
     if (/src/g.test(match)) {
       return match;
     }
+    if (/type=\"application\/ld\+json\"/g.test(match)) {
+      return match;
+    }
     return match.replace(/>/g, ` nonce='${nonce}'>`);
   });
-  // data.replace(/<pjax.*?>([\s\S]+?)<\/pjax>/gi, function (match) {
-  //   match.replace(/<script.*?>([\s\S]+?)<\/script>/gi, function (match, script) {
-  //     unsafe_script_list.push(script)
-  //     return match;
-  //   });
-  //   return match;
-  // });
   data.replace(/<script.*?>([\s\S]+?)<\/script>/gi, function (match, script) {
+    if (/type=\"application\/ld\+json\"/g.test(match)) {
+      return match;
+    }
     unsafe_script_list.push(script)
     return match;
   });
