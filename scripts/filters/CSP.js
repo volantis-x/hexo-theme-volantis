@@ -4,13 +4,17 @@
 
 const crypto = require('crypto');
 const hash = (s) => crypto.createHash("sha256").update(s).digest('base64');
+
+// script White list [scripts in event handlers (eg onclick)]. 包含压缩的 inline js
 let unsafe_script_list = [
   "this.media='all';this.onload=null",
   'this.media="all",this.onload=null',
   "errorImgAvatar(this)",
   "errorImgCover(this)",
   "return false;",
+  "return!1",
 ]
+// script hash White list
 let unsafe_script_hash = ["'sha256-MXV1jvkHrZruEyFEOrQRjKs9WlPZC1V/3RLoKrkoDFQ='"]
 
 function getRandStr(len) {
