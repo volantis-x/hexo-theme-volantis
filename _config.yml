@@ -244,10 +244,6 @@ article:
       counter:
         icon: fa-solid fa-eye
         unit: '次浏览'
-      # 文章评论数量：支持 valine和waline
-      valinecount:
-        icon: fa-solid fa-comment-dots
-        desc: '' # 条评论
       walinecount:
         icon: fa-solid fa-comment-dots
         desc: '' # 条评论

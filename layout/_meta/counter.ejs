@@ -26,26 +26,6 @@
       </p>
     </a>
   </div>
-<% } else if (
-    (theme.comments.service=='valine' && theme.comments.valine.visitor) || 
-    (theme.comments.service=='minivaline' && theme.comments.minivaline.visitor) || 
-    (theme.comments.service=='waline' && theme.comments.waline.visitor)) { %>
-  <div class="new-meta-item browse">
-    <a class='notlink'>
-      <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
-      <%
-        var path = post.path || page.path;
-        if (path.length > 9 && (path.substring(path.length - 10) == 'index.html')) {
-          path = path.substring(0, path.length - 10);
-        }
-      %>
-      <span id="<%- url_for(path) %>" class="leancloud_visitors" data-flag-title="<%- post.title || page.title %>">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
-    </a>
-  </div>
 <% } else if (theme.comments.service=='twikoo' && !!page.comments) { %>
   <div class="new-meta-item browse">
     <a class='notlink'>
