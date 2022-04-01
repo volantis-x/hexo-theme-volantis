@@ -7,7 +7,7 @@
   volantis.GLOBAL_CONFIG ={
     cdn: <%- JSON.stringify(theme.cdn.map) %>,
     default: <%- JSON.stringify(theme.default) %>,
-    lastupdate: new Date('<%- theme.getStartTime %>'),
+    lastupdate: new Date(<%- theme.getStartTime %>),
     sidebar: {
       for_page: <%- JSON.stringify(theme.sidebar.for_page) %>,
       for_post: <%- JSON.stringify(theme.sidebar.for_post) %>,
