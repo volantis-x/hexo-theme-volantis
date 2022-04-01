@@ -31,6 +31,8 @@ npm i hexo-theme-volantis
 
 See docs: https://volantis.js.org
 
+or:  https://vlts.cc
+
 or:  https://volantis.vercel.app
 
 ## Examples
