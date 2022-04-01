@@ -69,34 +69,6 @@ if hexo-config('comments.service')=='gitalk'
   .gt-container .gt-comment-admin .gt-comment-content
     background-color: var(--color-card)
 
-if hexo-config('comments.service')== 'minivaline' || hexo-config('comments.service')== 'ohhho'
-  // minivaline v6 or ohhho Dark Color
-  .ohhho pre
-    background: var(--color-meta)
-    border: 1px solid var(--color-block)
-  .ohhho .vlist .vcard .vcomment-body .vhead
-    filter: brightness(85%)
-  ////// minivaline v5 Dark Color //////////////
-  // .MiniValine .vpage .more
-  //   background: var(--color-site-bg)
-  // .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before
-  //   background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
-  // .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after
-  //   background: rgba(0,0,0,0.9)
-  // .MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre
-  //   background: var(--color-site-bg)
-  //   border: 1px solid var(--color-site-bg)
-  // .MiniValine .vinputs-area .vextra-area .vsmile-icons
-  //   background: transparent
-  // .MiniValine .vlist .vcard .vcomment-body .vhead
-  //   filter: brightness(85%)
-  // .MiniValine .vbtn
-  //   background: var(--color-card)
-  //   &:hover
-  //     background: var(--color-block)
-  // .MiniValine .vpage .more:hover
-  //   background: var(--color-card)
-
 if hexo-config('plugins.aplayer.enable')
   .aplayer
     background: var(--color-site-bg)
@@ -116,16 +88,6 @@ if hexo-config('plugins.aplayer.enable')
     border-top: 1px solid var(--color-card)
   .aplayer.aplayer-withlist .aplayer-info
     border-bottom: 1px solid var(--color-block)
-
-if hexo-config('comments.service')=='valine'
-  #valine_container button
-    background-color: var(--color-block) !important
-  #valine_container .vcards .vcontent.expand:before
-    background: none !important
-  #valine_container .vcards .vcontent.expand:after
-    background:  #393c40 !important
-  .v[data-class=v] code, .v[data-class=v] pre
-    background-color: #332828 !important
 
 if hexo-config('comments.service')=='twikoo'
   .OwO

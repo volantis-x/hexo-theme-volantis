@@ -7,15 +7,6 @@ async_dark()
   --text-p3: mix($c-text-light, $c-site-bg-light, 60)
   --card: $c-card-light
 
-  // minivaline v6 or ohhho Dark Color
-  if hexo-config('comments.service') == 'minivaline' || hexo-config('comments.service') == 'ohhho'
-    --ohhho-color-p: var(--color-p) !important
-    --ohhho-color-text: var(--color-text) !important
-    --ohhho-color-card: var(--color-card) !important
-    --ohhho-color-block: var(--color-block) !important
-    --ohhho-expand-before-background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9)) !important
-    --ohhho-expand-after-background: rgba(0,0,0,0.9) !important
-
   // waline Dark Color https://github.com/volantis-x/hexo-theme-volantis/issues/633
   if hexo-config('comments.service')=='waline'
     --waline-white: #000 !important

@@ -341,36 +341,6 @@ comments:
       dark: github-dark
     label: ✨💬✨
 
-  # Valine
-  # https://valine.js.org/
-  valine:
-    js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
-    emojiCDN: https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/
-    path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是valine的问题
-    placeholder: 快来评论吧~  # 评论占位提示
-    # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder emojiCDN emojiMaps] 选项
-    appId: # your appId
-    appKey: # your appKey
-    meta: [nick,mail,link] # valine comment header info
-    requiredFields: [nick,mail]
-    enableQQ: true # Unstable avatar link
-    recordIP: false # Record commenter IP
-    avatar: robohash # gravatar style https://valine.js.org/avatar
-    pageSize: 10 # comment list page size
-    lang: zh-cn
-    highlight: true
-    mathJax: false
-
-  # MiniValine
-  # https://github.com/MiniValine/MiniValine
-  minivaline:
-    js: https://cdn.jsdelivr.net/npm/minivaline@latest
-    path: # 全局评论地址
-    placeholder: 快来评论吧~  # 全局评论占位提示
-    # 更多选项 https://minivaline.js.org/docs/cn/#/Options 按照yml格式继续填写即可 （除了 [el path placeholder] 选项）
-    # 下面是一个例子：
-    serverURL: https://hello.com
-
   # Disqus
   # https://disqus.com
   disqus:
@@ -861,24 +831,6 @@ plugins:
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
 
-  # HexoPlusPlus
-  # https://github.com/HexoPlusPlus/HexoPlusPlus
-  # https://hexoplusplus.js.org/
-  # 无服务器Hexo后端,支持文章编辑,自带图床功能.目标:解决静态博客所有痛点[文章编辑、图片上传、博主活跃信息统计、博主说说、Twikoo加强版、阅读量统计等
-  hpp:
-    # 说说功能
-    # Set `plugins: ["hpptalk"]` to enable in front-matter
-    # 支持 Pjax
-    hpp_talk:
-      css: https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk.css # 建议锁定版本
-      js: https://cdn.jsdelivr.net/gh/HexoPlusPlus/HexoPlusPlus@latest/talk_user.js # 建议锁定版本
-      limit: 10
-      start: 0
-      # 配置项按照yml格式继续填写即可
-      # domain:
-      # themecss:
-    # HexoPlusPlus其他功能暂未集成
-
   # 友链朋友圈 hexo-circle-of-friends
   # https://github.com/Rock-Candy-Tea/hexo-circle-of-friends
   # https://fcircle-doc.js.cool/
@@ -918,17 +870,6 @@ plugins:
     rightmenu:                            
       enable: true                        # 是否开启右键模块的消息通知
       notice: true                        # 唤醒原右键菜单的通知 
-  
-  # 标签插件样式按需加载
-  # 注意这个配置是带缓存的, 如果修改标签插件样式每次调试需要刷新两次页面, 建议开发者关闭该配置
-  tag_plugin_load_on_demand:
-    enable: #true
-    # 每个页面强制加载以下标签插件样式
-    plugins:
-      - note
-      - btns
-      - p
-      - gallery
 
   # 聊天功能
   chat_service: # tidio or gitter

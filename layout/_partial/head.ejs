@@ -55,14 +55,6 @@
     /* 首屏样式 */
     <%- FirstCSS() %>
   </style>
-  <%_ if (theme.plugins.tag_plugin_load_on_demand.enable) { _%>
-  <pjax>
-    <style>
-      /* 按需加载的标签插件样式 */
-      <%- TagCSS(page) %>
-    </style>
-  </pjax>
-  <%_ } _%>
   <link rel="stylesheet" href="<%- theme.cdn.map.css.style %>" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
   <%_ if (theme.plugins.darkmode.enable) { _%>
