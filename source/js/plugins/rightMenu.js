@@ -7,7 +7,6 @@ const RightMenu = (() => {
     fn = {},
     _rightMenuWrapper = document.getElementById('rightmenu-wrapper'),
     _rightMenuContent = document.getElementById('rightmenu-content'),
-    _menuDarkBtn = document.getElementById('menuDarkBtn'),
     _printHtml = document.getElementById('printHtml'),
     _menuMusic = document.getElementById('menuMusic'),
     _readingModel = document.getElementById('readingModel'),
@@ -24,7 +23,10 @@ const RightMenu = (() => {
     _copyHref = document.querySelector('.menu-Option[data-fn-type="copyHref"]'),
     _copySrc = document.querySelector('.menu-Option[data-fn-type="copySrc"]'),
     _copyImg = document.querySelector('.menu-Option[data-fn-type="copyImg"]'),
-    _openTab = document.querySelector('.menu-Option[data-fn-type="openTab"]');
+    _openTab = document.querySelector('.menu-Option[data-fn-type="openTab"]'),
+    _backward = document.querySelector('#menuMusic .backward'),
+    _toggle = document.querySelector('#menuMusic .toggle'),
+    _forward = document.querySelector('#menuMusic .forward');
 
   const urlRegx = /^((https|http)?:\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/;
 
@@ -55,10 +57,27 @@ const RightMenu = (() => {
     }
 
     window.removeEventListener('blur', fn.hideMenu);
-    document.body.removeEventListener('click', fn.hideMenu);
-
     window.addEventListener('blur', fn.hideMenu);
+    document.body.removeEventListener('click', fn.hideMenu);
     document.body.addEventListener('click', fn.hideMenu);
+
+    _backward.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      RightMenuAplayer.aplayerBackward();
+    }
+
+    _toggle.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      RightMenuAplayer.aplayerToggle();
+    }
+
+    _forward.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      RightMenuAplayer.aplayerForward();
+    }
   }
 
   // 菜单位置设定 
