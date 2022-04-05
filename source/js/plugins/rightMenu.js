@@ -61,22 +61,22 @@ const RightMenu = (() => {
     document.body.removeEventListener('click', fn.hideMenu);
     document.body.addEventListener('click', fn.hideMenu);
 
-    _backward.onclick = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      RightMenuAplayer.aplayerBackward();
-    }
-
-    _toggle.onclick = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      RightMenuAplayer.aplayerToggle();
-    }
-
-    _forward.onclick = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      RightMenuAplayer.aplayerForward();
+    if (_forward && _toggle && _forward) {
+      _backward.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        RightMenuAplayer.aplayerBackward();
+      }
+      _toggle.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        RightMenuAplayer.aplayerToggle();
+      }
+      _forward.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        RightMenuAplayer.aplayerForward();
+      }
     }
   }
 
