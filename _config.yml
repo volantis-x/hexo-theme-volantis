@@ -1,10 +1,10 @@
 
 
 default:
-  avatar: /media/placeholder/avatar/round/3442075.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
-  link: /media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
-  cover: /media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
-  image: /media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+  avatar: volantis-static/media/placeholder/avatar/round/3442075.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
+  link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
+  cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
+  image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
 
 
 #
@@ -51,15 +51,15 @@ csp:
   # 另可以参考官网的 gulp 方案.
   # gulpfile.js https://github.com/volantis-x/community/blob/main/gulpfile.js
 ############################### CDN ###############################
-# 本地静态文件使用jsdelivr的min版本加速 https://www.jsdelivr.com/features
-# 默认使用 https://cdn.jsdelivr.net/npm/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.min.js 的CDN压缩版本(min.js)，注意版本号对应关系！！可以通过修改以下配置项覆盖
+# 本地静态文件使用 CDN 加速
+# 默认使用 https://unpkg.com/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.js ，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 cdn.enable 设置为 false
 cdn:
   enable: false
   # CDN 前缀，为空使用默认值，链接最后不加 "/",
   # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
-  # 该配置默认值是："https://cdn.jsdelivr.net/npm/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
-  prefix: https://npm.elemecdn.com/hexo-theme-volantis@5.0.0-rc.6/source
+  # 该配置默认值是："https://unpkg.com/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
+  prefix: #https://npm.elemecdn.com/hexo-theme-volantis/source
   # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
   set:
     js:
@@ -68,10 +68,13 @@ cdn:
       style: /css/style.css # (异步加载样式)
 # 请求静态资源添加时间戳 ?time=1648684470140
 cdn_version: true
+# volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
+# https://github.com/volantis-x/volantis-static
+volantis_static_cdn: https://unpkg.com/volantis-static/
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
-  - https://cdn.jsdelivr.net/npm/ => https://npm.elemecdn.com/
+  - https://cdn.jsdelivr.net/npm/ => https://unpkg.com/
 
 
 # 平滑滚动效果
@@ -81,7 +84,7 @@ scroll_smooth: true
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
-    img: /media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    img: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     icon:
     title:
   menu:
@@ -124,27 +127,27 @@ cover:
   features:
     - name: 文档
       icon: #
-      img: /media/twemoji/assets/svg/1f5c3.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
+      img: volantis-static/media/twemoji/assets/svg/1f5c3.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
       url: /v4/getting-started/
     - name: 帮助
       icon: #
-      img: /media/twemoji/assets/svg/1f516.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
+      img: volantis-static/media/twemoji/assets/svg/1f516.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
       url: faqs/
     - name: 示例
       icon: #
-      img: /media/twemoji/assets/svg/1f396.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
+      img: volantis-static/media/twemoji/assets/svg/1f396.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
       url: /examples/
     - name: 社区
       icon: #
-      img: /media/twemoji/assets/svg/1f389.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
+      img: volantis-static/media/twemoji/assets/svg/1f389.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
       url: /contributors/
     - name: 博客
       icon: #
-      img: /media/twemoji/assets/svg/1f4f0.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
+      img: volantis-static/media/twemoji/assets/svg/1f4f0.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
       url: /archives/
     - name: 源码
       icon: #
-      img: /media/twemoji/assets/svg/1f9ec.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
+      img: volantis-static/media/twemoji/assets/svg/1f9ec.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
       url: https://github.com/volantis-x/hexo-theme-volantis/
 ############################### Cover ############################### > end
 
@@ -160,7 +163,7 @@ article:
   preview:
     scheme: landscape # landscape
     # pin icon for post
-    pin_icon: /media/twemoji/assets/svg/1f4cc.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg
+    pin_icon: volantis-static/media/twemoji/assets/svg/1f4cc.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg
     # auto generate title if not exist
     auto_title: true # false, true
     # auto generate excerpt if not exist
@@ -214,8 +217,8 @@ article:
       donate:
         enable: false
         images:
-          - /media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-          - /media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+          - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+          - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # 文章底部信息
     # 从 meta_library 中取
     bottom_meta: [updated, tags, share]
@@ -224,7 +227,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: /media/org.volantis/blog/favicon/apple-touch-icon.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
+        avatar: volantis-static/media/org.volantis/blog/favicon/apple-touch-icon.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
         name: 请设置文章作者
         url: /
       # 文章创建日期
@@ -258,15 +261,15 @@ article:
       # 分享
       share:
         - id: qq
-          img:  /media/org.volantis/logo/128/qq.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png
+          img:  volantis-static/media/org.volantis/logo/128/qq.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png
         - id: qzone
-          img: /media/org.volantis/logo/128/qzone.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
+          img: volantis-static/media/org.volantis/logo/128/qzone.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
         - id: weibo
-          img: /media/org.volantis/logo/128/weibo.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
+          img: volantis-static/media/org.volantis/logo/128/weibo.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
         - id: # qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-          img: # /media/org.volantis/logo/128/wechat.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
+          img: # volantis-static/media/org.volantis/logo/128/wechat.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
         - id: # telegram
-          img: # /media/org.volantis/logo/128/telegram.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
+          img: # volantis-static/media/org.volantis/logo/128/telegram.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
 ############################### Article Layout ############################### > end
 
 
@@ -281,8 +284,8 @@ comments:
   # https://artalk.js.org/
   # https://github.com/ArtalkJS/Artalk
   artalk:
-    js: https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.js
-    css: https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.css
+    js: https://unpkg.com/artalk@2.1.3/dist/Artalk.js
+    css: https://unpkg.com/artalk@2.1.3/dist/Artalk.css
     server: http://127.0.0.1:8080/api    # 修改为自建的后端服务地址
     path:  # 全局评论地址
     # 更多选项 https://artalk.js.org/guide/frontend/config.htm 按照yml格式继续填写即可 
@@ -350,8 +353,8 @@ comments:
   # https://github.com/SukkaW/DisqusJS
   disqusjs:
     path: # 全局评论地址
-    js: https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js
-    css: https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqusjs.css
+    js: https://unpkg.com/disqusjs@1.3/dist/disqus.js
+    css: https://unpkg.com/disqusjs@1.3/dist/disqusjs.css
     # 配置项按照yml格式继续填写即可 除了 [siteName url identifier] 选项
     #shortname:
     #api:
@@ -362,7 +365,7 @@ comments:
   # Gitalk
   # https://gitalk.github.io/
   gitalk:
-    js: https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js
+    js: https://unpkg.com/gitalk@1/dist/gitalk.min.js
     # 配置项按照yml格式继续填写即可 除了 [id distractionFreeMode] 选项
     clientID:
     clientSecret:
@@ -403,7 +406,7 @@ comments:
   # Twikoo
   # https://twikoo.js.org/
   twikoo:
-    js: https://cdn.jsdelivr.net/npm/twikoo@latest # 建议锁定版本
+    js: https://unpkg.com/twikoo@latest # 建议锁定版本
     path: # 全局评论地址
     # 其他配置项按照yml格式继续填写即可 除了 [el path] 选项
     envId: xxxxxxxxxxxxxxx # 腾讯云环境id
@@ -443,7 +446,7 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop, mobile] # [desktop, mobile]
-      avatar: /media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+      avatar: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
       shape: rectangle # circle, rectangle
       url: /about/
       title:
@@ -505,8 +508,8 @@ sidebar:
       display: [desktop, mobile] # [desktop, mobile]
       height: 64px  # Automatic height if not set
       images:
-        - /media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-        - /media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # ---------------------------------------
     # webinfo widget
     webinfo:
@@ -569,7 +572,7 @@ tag_plugins:
     color: '' # color for default checkbox
   # {% link title, url, img %}
   link:
-    placeholder:  /media/org.volantis/logo/256/safari.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
+    placeholder:  volantis-static/media/org.volantis/logo/256/safari.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
 ############################### Tag Plugins ############################### > end
 
 
@@ -603,26 +606,26 @@ plugins:
   ################ required plugins ################
   # jquery
   globalJquery: false # 全局引入 jquery
-  jquery: /libs/jquery/dist/jquery.min.js # https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js
+  jquery: volantis-static/libs/jquery/dist/jquery.min.js # https://unpkg.com/jquery@3.6.0/dist/jquery.min.js
   # fontawesome Pro 版本：https://cdn.jsdelivr.net/gh/inkss/fontawesome@6.0.0/css/all.min.css
-  fontawesome: /libs/@fortawesome/fontawesome-free/css/all.min.css # https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1/css/all.min.css
+  fontawesome: volantis-static/libs/@fortawesome/fontawesome-free/css/all.min.css # https://unpkg.com/@fortawesome/fontawesome-free@6.1/css/all.min.css
   # katex@0.15.2
   katex:
-    js: /libs/katex/katex.min.js # https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js
-    css: /libs/katex/katex.min.css # https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css
-    render: /libs/katex/contrib/auto-render.min.js # https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js
+    js: volantis-static/libs/katex/katex.min.js # https://unpkg.com/katex@0.15.2/dist/katex.min.js
+    css: volantis-static/libs/katex/katex.min.css # https://unpkg.com/katex@0.15.2/dist/katex.min.css
+    render: volantis-static/libs/katex/contrib/auto-render.min.js # https://unpkg.com/katex@0.15.2/dist/contrib/auto-render.min.js
   # mathjax@3.2.0
-  mathjax: /libs/mathjax/es5/tex-mml-chtml.js # https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js
+  mathjax: volantis-static/libs/mathjax/es5/tex-mml-chtml.js # https://unpkg.com/mathjax@3.2.0/es5/tex-mml-chtml.js
   # github-markdown-css@5.1.0
-  markdown: /libs/github-markdown-css/github-markdown.css # https://cdn.jsdelivr.net/npm/github-markdown-css@5.1.0/github-markdown.min.css
+  markdown: volantis-static/libs/github-markdown-css/github-markdown.css # https://unpkg.com/github-markdown-css@5.1.0/github-markdown.min.css
   # marked@4.0.10
-  marked: /libs/marked/marked.min.js # https://cdn.jsdelivr.net/npm/marked@4.0.10/marked.min.js
+  marked: volantis-static/libs/marked/marked.min.js # https://unpkg.com/marked@4.0.10/marked.min.js
   # hls.js@1.1.3
-  hlsjs: /libs/hls.js/dist/hls.min.js # https://cdn.jsdelivr.net/npm/hls.js@1.1.3
+  hlsjs: volantis-static/libs/hls.js/dist/hls.min.js # https://unpkg.com/hls.js@1.1.3
   # @fancyapps/ui@4.0.12
   fancybox:
-    css: /libs/@fancyapps/ui/dist/fancybox.css # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.css
-    js: /libs/@fancyapps/ui/dist/fancybox.umd.js # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.umd.js
+    css: volantis-static/libs/@fancyapps/ui/dist/fancybox.css # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.css
+    js: volantis-static/libs/@fancyapps/ui/dist/fancybox.umd.js # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.umd.js
   ################ optional plugins ################
   # issues api
   sitesjs:
@@ -637,8 +640,8 @@ plugins:
   preload:
     enable: true
     service: flying_pages # instant_page, flying_pages
-    instant_page: /libs/instant_page/instant_page.js # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
-    flying_pages: /libs/flying-pages/flying-pages.min.js # https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
+    instant_page: volantis-static/libs/instant_page/instant_page.js # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
+    flying_pages: volantis-static/libs/flying-pages/flying-pages.min.js # https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
 
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
@@ -647,7 +650,7 @@ plugins:
   # 在支持 srcset 的浏览器或者 RSS 阅读器(还会有人使用老旧的阅读器?)上会优先读取 srcset 加载的图片(懒加载占位图), 对于 RSS 中图片丢失变成懒加载占位图的问题, 建议 自行使用脚本移除 srcset 属性 或 关闭图片懒加载 或 在 RSS 中插入 vanilla-lazyload
   lazyload:
     enable: true
-    js: /libs/vanilla-lazyload/dist/lazyload.min.js # https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js
+    js: volantis-static/libs/vanilla-lazyload/dist/lazyload.min.js # https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js
     onlypost: false
     loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # 不建议使用占位图, 建议loadingImg为空, 当前占位图会产生布局偏移, loadingImg 为空占位图是一个 1X1 像素的图片
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
@@ -671,17 +674,17 @@ plugins:
     copy_code: true
     # Please set hexo.config.highlight.enable = false !!! set hexo.config.prismjs.enable = true !!!
     js:
-      - https://cdn.jsdelivr.net/npm/prismjs/components/prism-core.min.js
-      - https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js
-      - https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js
+      - https://unpkg.com/prismjs/components/prism-core.min.js
+      - https://unpkg.com/prismjs/plugins/autoloader/prism-autoloader.min.js
+      - https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.min.js
     css:
-      - https://cdn.jsdelivr.net/npm/prismjs/themes/prism-dark.css
-      - https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.css
+      - https://unpkg.com/prismjs/themes/prism-dark.css
+      - https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.css
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
     enable: #true
-    js: /libs/scrollreveal/dist/scrollreveal.min.js # https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js
+    js: volantis-static/libs/scrollreveal/dist/scrollreveal.min.js # https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
     interval: 20 # ms
@@ -696,19 +699,19 @@ plugins:
   # Button Ripple Effect
   nodewaves:
     enable: #true
-    css: /libs/node-waves/dist/waves.min.css # https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
-    js: /libs/node-waves/dist/waves.min.js # https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
+    css: volantis-static/libs/node-waves/dist/waves.min.css # https://unpkg.com/node-waves@0.7.6/dist/waves.min.css
+    js: volantis-static/libs/node-waves/dist/waves.min.js # https://unpkg.com/node-waves@0.7.6/dist/waves.min.js
 
   # fontawesome V6:  https://fontawesome.com/docs/web/style/animate
   # fontawesome animation for fontawesome V5
   fontawesome_animation:
     enable: #true
-    css: /libs/font-awesome-animation/font-awesome-animation.min.css # https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
+    css: volantis-static/libs/font-awesome-animation/font-awesome-animation.min.css # https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
 
   # Typing Effects
   comment_typing:
     enable: #true
-    js: /libs/comment_typing/comment_typing.js # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
+    js: volantis-static/libs/comment_typing/comment_typing.js # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
 
   # 视差滚动效果 Slide Background
   parallax:
@@ -718,36 +721,36 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp
+      - volantis-static/media/wallpaper-minimalist/2020/001.webp
+      - volantis-static/media/wallpaper-minimalist/2020/002.webp
+      - volantis-static/media/wallpaper-minimalist/2020/003.webp
+      - volantis-static/media/wallpaper-minimalist/2020/004.webp
+      - volantis-static/media/wallpaper-minimalist/2020/005.webp
+      - volantis-static/media/wallpaper-minimalist/2020/006.webp
+      - volantis-static/media/wallpaper-minimalist/2020/012.webp
+      - volantis-static/media/wallpaper-minimalist/2020/016.webp
+      - volantis-static/media/wallpaper-minimalist/2020/019.webp
+      - volantis-static/media/wallpaper-minimalist/2020/025.webp
+      - volantis-static/media/wallpaper-minimalist/2020/033.webp
+      - volantis-static/media/wallpaper-minimalist/2020/034.webp
+      - volantis-static/media/wallpaper-minimalist/2020/035.webp
+      - volantis-static/media/wallpaper-minimalist/2020/038.webp
+      - volantis-static/media/wallpaper-minimalist/2020/039.webp
+      - volantis-static/media/wallpaper-minimalist/2020/042.webp
+      - volantis-static/media/wallpaper-minimalist/2020/046.webp
+      - volantis-static/media/wallpaper-minimalist/2020/051.webp
+      - volantis-static/media/wallpaper-minimalist/2020/052.webp
+      - volantis-static/media/wallpaper-minimalist/2020/054.webp
+      - volantis-static/media/wallpaper-minimalist/2020/056.webp
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
     enable: #true
     js:
-      aplayer: /libs/aplayer/dist/APlayer.min.js # https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
-      meting: /libs/meting/dist/Meting.min.js # https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
-    css: /libs/aplayer/dist/APlayer.min.css # https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css
+      aplayer: volantis-static/libs/aplayer/dist/APlayer.min.js # https://unpkg.com/aplayer@1.10/dist/APlayer.min.js
+      meting: volantis-static/libs/meting/dist/Meting.min.js # https://unpkg.com/meting@2.0/dist/Meting.min.js
+    css: volantis-static/libs/aplayer/dist/APlayer.min.css # https://unpkg.com/aplayer@1.10/dist/APlayer.min.css
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
@@ -765,13 +768,13 @@ plugins:
 
   # Pjax
   pjax:
-    js: /libs/pjax/pjax.min.js # https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js
+    js: volantis-static/libs/pjax/pjax.min.js # https://unpkg.com/pjax@0.2.8/pjax.min.js
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     animation: false # false, nprogress, circle
-    nprogress: /libs/nprogress/nprogress.js # https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js
+    nprogress: volantis-static/libs/nprogress/nprogress.js # https://unpkg.com/nprogress@0.2.0/nprogress.min.js
     banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
       # - '/artitalk/'   # artitalk 不支持 pjax
       # - '/bbtalk/'     # bbtalk 不支持 pjax
@@ -804,7 +807,7 @@ plugins:
     # Set `plugins: ["artitalk"]` to enable in front-matter
     # 不支持 Pjax
     # 配置项按照yml格式继续填写即可
-    js: https://cdn.jsdelivr.net/npm/artitalk
+    js: https://unpkg.com/artitalk
     appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
     appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
     # serverURL:  #leancloud绑定的api访问域名，使用国际版的话不需要填写
@@ -823,7 +826,7 @@ plugins:
   bbtalk:
     # Set `plugins: ["bbtalk"]` to enable in front-matter
     # 不支持 Pjax
-    js: https://cdn.jsdelivr.net/npm/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
+    js: https://unpkg.com/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
@@ -885,8 +888,8 @@ plugins:
   # https://www.swiper.com.cn/
   swiper:
     enable: true
-    css: /libs/swiper/swiper-bundle.min.css # https://unpkg.com/swiper@6/swiper-bundle.min.css
-    js: /libs/swiper/swiper-bundle.min.js # https://unpkg.com/swiper@6/swiper-bundle.min.js
+    css: volantis-static/libs/swiper/swiper-bundle.min.css # https://unpkg.com/swiper@6/swiper-bundle.min.css
+    js: volantis-static/libs/swiper/swiper-bundle.min.js # https://unpkg.com/swiper@6/swiper-bundle.min.js
 
 ############################### Plugins ############################### > end
 
@@ -1045,13 +1048,13 @@ color_scheme:
 custom_css:
   cursor:
     enable: #true
-    text: /media/cursor/text.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
-    pointer: /media/cursor/pointer.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
-    default: /media/cursor/left_ptr.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
-    not-allowed: /media/cursor/circle.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/circle.png
-    zoom-out: /media/cursor/zoom-out.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-out.png
-    zoom-in: /media/cursor/zoom-in.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-in.png
-    grab: /media/cursor/openhand.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/openhand.png
+    text: volantis-static/media/cursor/text.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
+    pointer: volantis-static/media/cursor/pointer.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
+    default: volantis-static/media/cursor/left_ptr.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
+    not-allowed: volantis-static/media/cursor/circle.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/circle.png
+    zoom-out: volantis-static/media/cursor/zoom-out.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-out.png
+    zoom-in: volantis-static/media/cursor/zoom-in.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-in.png
+    grab: volantis-static/media/cursor/openhand.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/openhand.png
   font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
@@ -1101,19 +1104,19 @@ custom_css:
     logofont:
       fontfamily: '"Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
       name: 'Varela Round'
-      url: /media/fonts/VarelaRound/VarelaRound-Regular.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
+      url: volantis-static/media/fonts/VarelaRound/VarelaRound-Regular.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
       weight: normal
       style: normal
     bodyfont:
       fontfamily: 'UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
       name: 'UbuntuMono'
-      url: /media/fonts/UbuntuMono/UbuntuMono-Regular.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
+      url: volantis-static/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
       weight: normal
       style: normal
     codefont:
       fontfamily: 'Menlo, UbuntuMono, Monaco'
       # name: 'Monaco'
-      # url: /media/fonts/Monaco/Monaco.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
+      # url: volantis-static/media/fonts/Monaco/Monaco.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
       # weight: normal
       # style: normal
 ############################### Custom css ############################### > end
@@ -1121,7 +1124,7 @@ custom_css:
 
 ############################### Analytics ############################### > start
 analytics:
-  busuanzi: #/libs/busuanzi/js/busuanzi.pure.mini.js #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
+  busuanzi: #volantis-static/libs/busuanzi/js/busuanzi.pure.mini.js #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   leancloud: # 请使用自己的 id & key 以防止数据丢失
     app_id: # u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
     app_key: # jfHtEKVE24j0IVCGHbvuFClp
@@ -1147,7 +1150,7 @@ seo:
 # https://ogp.me/
 # https://hexo.io/zh-cn/docs/helpers#open-graph
 open_graph:
-  image: /media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
+  image: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
   twitter_card: summary # summary_large_image , summary
   #twitter_id:
   #twitter_site:
@@ -1169,7 +1172,7 @@ structured_data:
       sns:
         - https://github.com/volantis-x
     logo:
-      path: /media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
+      path: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
       width: 192
       height: 192
 ############################### Structured Data ############################### > end
