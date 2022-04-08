@@ -721,27 +721,27 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - volantis-static/media/wallpaper-minimalist/2020/001.webp
-      - volantis-static/media/wallpaper-minimalist/2020/002.webp
-      - volantis-static/media/wallpaper-minimalist/2020/003.webp
-      - volantis-static/media/wallpaper-minimalist/2020/004.webp
-      - volantis-static/media/wallpaper-minimalist/2020/005.webp
-      - volantis-static/media/wallpaper-minimalist/2020/006.webp
-      - volantis-static/media/wallpaper-minimalist/2020/012.webp
-      - volantis-static/media/wallpaper-minimalist/2020/016.webp
-      - volantis-static/media/wallpaper-minimalist/2020/019.webp
-      - volantis-static/media/wallpaper-minimalist/2020/025.webp
-      - volantis-static/media/wallpaper-minimalist/2020/033.webp
-      - volantis-static/media/wallpaper-minimalist/2020/034.webp
-      - volantis-static/media/wallpaper-minimalist/2020/035.webp
-      - volantis-static/media/wallpaper-minimalist/2020/038.webp
-      - volantis-static/media/wallpaper-minimalist/2020/039.webp
-      - volantis-static/media/wallpaper-minimalist/2020/042.webp
-      - volantis-static/media/wallpaper-minimalist/2020/046.webp
-      - volantis-static/media/wallpaper-minimalist/2020/051.webp
-      - volantis-static/media/wallpaper-minimalist/2020/052.webp
-      - volantis-static/media/wallpaper-minimalist/2020/054.webp
-      - volantis-static/media/wallpaper-minimalist/2020/056.webp
+      - volantis-static/media/wallpaper/minimalist/2020/001.webp
+      - volantis-static/media/wallpaper/minimalist/2020/002.webp
+      - volantis-static/media/wallpaper/minimalist/2020/003.webp
+      - volantis-static/media/wallpaper/minimalist/2020/004.webp
+      - volantis-static/media/wallpaper/minimalist/2020/005.webp
+      - volantis-static/media/wallpaper/minimalist/2020/006.webp
+      - volantis-static/media/wallpaper/minimalist/2020/012.webp
+      - volantis-static/media/wallpaper/minimalist/2020/016.webp
+      - volantis-static/media/wallpaper/minimalist/2020/019.webp
+      - volantis-static/media/wallpaper/minimalist/2020/025.webp
+      - volantis-static/media/wallpaper/minimalist/2020/033.webp
+      - volantis-static/media/wallpaper/minimalist/2020/034.webp
+      - volantis-static/media/wallpaper/minimalist/2020/035.webp
+      - volantis-static/media/wallpaper/minimalist/2020/038.webp
+      - volantis-static/media/wallpaper/minimalist/2020/039.webp
+      - volantis-static/media/wallpaper/minimalist/2020/042.webp
+      - volantis-static/media/wallpaper/minimalist/2020/046.webp
+      - volantis-static/media/wallpaper/minimalist/2020/051.webp
+      - volantis-static/media/wallpaper/minimalist/2020/052.webp
+      - volantis-static/media/wallpaper/minimalist/2020/054.webp
+      - volantis-static/media/wallpaper/minimalist/2020/056.webp
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
