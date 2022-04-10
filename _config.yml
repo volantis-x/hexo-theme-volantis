@@ -1,28 +1,17 @@
-
-
+############################### Volantis ###############################
+info:
+  theme_name: Volantis # This is theme's name.
+  theme_version: '5.0.0-rc.7' # This is theme's version.
+  theme_docs: https://volantis.js.org/ # This is theme's URL.
+  theme_repo: https://github.com/volantis-x/hexo-theme-volantis
+# Debug 调试模式
+debug: false
+############################### 默认占位图 ###############################
 default:
   avatar: volantis-static/media/placeholder/avatar/round/3442075.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
   link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
   cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
   image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
-
-
-#
-# 上面的是 v5 新版通用配置，可兼容 Stellar 主题，请放心使用
-#
-# xxxxxxxx
-#
-# 下面的是 v4 旧版配置，将逐步迁移至通用配置中
-#
-
-############################### Volantis ###############################
-info:
-  theme_name: Volantis # This is theme's name.
-  theme_version: '5.0.0-alpha.12' # This is theme's version.
-  theme_docs: https://volantis.js.org/ # This is theme's URL.
-  theme_repo: https://github.com/volantis-x/hexo-theme-volantis
-# Debug 调试模式
-debug: false
 ############################### CSP ###############################
 # 内容安全策略( CSP )
 # https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
