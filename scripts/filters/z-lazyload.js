@@ -57,11 +57,14 @@ function lazyProcess(htmlContent, target) {
   });
 }
 
-module.exports.processPost = function(data) {
+let processPost = function(data) {
   data.content = lazyProcess.call(this, data.content, 'post');
   return data;
 };
 
-module.exports.processSite = function(htmlContent) {
+let processSite = function(htmlContent) {
   return lazyProcess.call(this, htmlContent, 'site');
 };
+
+hexo.extend.filter.register('after_post_render', processPost);
+hexo.extend.filter.register('after_render:html', processSite);
