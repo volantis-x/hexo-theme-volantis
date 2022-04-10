@@ -28,6 +28,7 @@ debug: false
 # https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
 # https://content-security-policy.com/
 csp:
+  enable: true
   content: "
     default-src 'self' https:;
     block-all-mixed-content;
@@ -77,6 +78,10 @@ replace:
   - https://cdn.jsdelivr.net/npm/ => https://unpkg.com/
   - https://unpkg.com/ => https://npm.elemecdn.com/
 
+# dns-prefetch preconnect x-dns-prefetch-control
+dns_prefetch:
+  # - https://unpkg.com
+  - https://npm.elemecdn.com
 
 # 平滑滚动效果
 scroll_smooth: true
