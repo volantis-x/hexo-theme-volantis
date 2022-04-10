@@ -18,7 +18,11 @@
   theme.cdn.map.css={}
   theme.cdn.addJS=(name,source,force)=>{
     if(force){
-      theme.cdn.map.js[name]=force + theme.cdnCtrl.cdn_version
+      if (force.startsWith("/")) {
+        theme.cdn.map.js[name] = revisioned(force)
+      }else{
+        theme.cdn.map.js[name] = force + theme.cdnCtrl.cdn_version
+      }
     }else{
       if(!source){
         source=name
@@ -29,14 +33,18 @@
         source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
         theme.cdn.map.js[name]=theme.cdnCtrl.prefix + '/js/' + source + suffix + theme.cdnCtrl.cdn_version
       } else {
-        theme.cdn.map.js[name]=url_for('/js/')+ source + '.js' + theme.cdnCtrl.cdn_version
+        theme.cdn.map.js[name]=url_for(revisioned('/js/'+ source + '.js'))
       }
     }
     return theme.cdn.map.js[name]
   }
   theme.cdn.addCSS=(name,source,force)=>{
     if(force){
-      theme.cdn.map.css[name]=force + theme.cdnCtrl.cdn_version
+      if (force.startsWith("/")) {
+        theme.cdn.map.css[name]= revisioned(force)
+      }else{
+        theme.cdn.map.css[name]= force + theme.cdnCtrl.cdn_version
+      }
     }else{
       if(!source){
         source=name
@@ -47,7 +55,7 @@
         source= (suffix==".min.js")?source.replace(/\.min/g, ""):source
         theme.cdn.map.css[name]=theme.cdnCtrl.prefix + '/css/' + source + suffix + theme.cdnCtrl.cdn_version
       } else {
-        theme.cdn.map.css[name]=url_for('/css/')+ source + '.css' + theme.cdnCtrl.cdn_version
+        theme.cdn.map.css[name]=url_for(revisioned('/css/'+ source + '.css'))
       }
     }
     return theme.cdn.map.css[name]
@@ -111,5 +119,7 @@
   //  但是无伤大雅
   //  更新：
   //  ?time=' + Date.now() 替换为 theme.getStartTime 保证相同资源 hash 不变
+  //  更新：
+  //  本地文件使用文件内容的hash值作为版本号 app.8c1e7c88.js see: /scripts/helpers/revisioned.js
   dfs(theme.cdn.set,[])
 _%>

@@ -67,7 +67,7 @@ cdn:
       app: /js/app.js
     css:
       style: /css/style.css # (异步加载样式)
-# 请求静态资源添加时间戳 ?time=1648684470140
+# 请求静态资源添加版本号 本地文件使用文件内容的hash值作为版本号(app.8c1e7c88.js)  其他为时间戳 (?time=1648684470140)
 cdn_version: true
 # volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
 # https://github.com/volantis-x/volantis-static
