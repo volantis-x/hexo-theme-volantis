@@ -340,6 +340,7 @@ RightMenus.fun = (() => {
       let eventName = item.firstElementChild.getAttribute('data-event');
       const id = item.firstElementChild.getAttribute('id');
       const groupName = item.firstElementChild.getAttribute('data-group');
+      if (item.firstElementChild.nodeName === "A") return;
       item.addEventListener('click', () => {
         try {
           if (RightMenus.defaultEvent.every(item => { return eventName !== item })) {
