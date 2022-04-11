@@ -201,7 +201,7 @@ RightMenus.fun = (() => {
    */
   fn.menuControl = (event) => {
     fn.globalDataSet(event);
-    _menuMusic.style.display = globalData.isShowMusic ? 'block' : 'none';
+    if(!!_menuMusic) _menuMusic.style.display = globalData.isShowMusic ? 'block' : 'none';
     _rightMenuList.forEach(item => {
       item.style.display = 'none';
       const nodeName = item.firstElementChild.nodeName;
