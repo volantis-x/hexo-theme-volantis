@@ -5,6 +5,7 @@
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
+    debug: <%- JSON.stringify(theme.debug) %>,
     cdn: <%- JSON.stringify(theme.cdn.map) %>,
     default: <%- JSON.stringify(theme.default) %>,
     lastupdate: new Date(<%- theme.getStartTime %>),
@@ -34,7 +35,8 @@
         layout: <%- JSON.stringify(theme.rightmenu.layout) %>,
         music_alwaysShow: <%- JSON.stringify(theme.rightmenu.music.alwaysShow) %>,
         customPicUrl: <%- JSON.stringify(theme.rightmenu.customPicUrl) %>
-      }
+      },      
+      rightmenus: <%- JSON.stringify(theme.rightmenus) %>
     }
   }
 

@@ -35,6 +35,10 @@
   <%- partial('../../_plugins/rightmenu/layout') %>
 <% } %>
 
+<% if (theme.rightmenus.enable) { %>
+  <%- partial('../../_plugins/rightmenus/layout') %>
+<% } %>
+
 <!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
 <% if (theme.plugins.darkmode.enable) { %>
   <%- partial('../../_plugins/darkmode/script') %>

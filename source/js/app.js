@@ -556,8 +556,8 @@ const VolantisApp = (() => {
   // 消息提示：询问
   fn.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css(volantis.GLOBAL_CONFIG.cdn.css.message)
-      volantis.js(volantis.GLOBAL_CONFIG.cdn.js.message, () => {
+      volantis.css(volantis.GLOBAL_CONFIG.plugins.message.css)
+      volantis.js(volantis.GLOBAL_CONFIG.plugins.message.js, () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -617,8 +617,8 @@ const VolantisApp = (() => {
     }
 
     if (typeof iziToast === "undefined") {
-      volantis.css(volantis.GLOBAL_CONFIG.cdn.css.message)
-      volantis.js(volantis.GLOBAL_CONFIG.cdn.js.message, () => {
+      volantis.css(volantis.GLOBAL_CONFIG.plugins.message.css)
+      volantis.js(volantis.GLOBAL_CONFIG.plugins.message.js, () => {
         hideMessage(done);
       });
     } else {
@@ -687,7 +687,8 @@ const VolantisApp = (() => {
     message: fn.message,
     question: fn.question,
     hideMessage: fn.hideMessage,
-    messageCopyright: fn.messageCopyright
+    messageCopyright: fn.messageCopyright,
+    scrolltoElement: fn.scrolltoElement
   }
 })()
 Object.freeze(VolantisApp);
@@ -1022,6 +1023,12 @@ const DOMController = {
     })
   },
 
+  removeList: (list) => {
+    list.forEach(param => {
+      DOMController.remove(param)
+    })
+  },
+
   /**
    * 设置属性
    */
@@ -1032,6 +1039,12 @@ const DOMController = {
     })
   },
 
+  setAttributeList: (list) => {
+    list.forEach(item => {
+      DOMController.setAttribute(item[0], item[1], item[2])
+    })
+  },
+
   /**
    * 设置样式
    */
@@ -1039,6 +1052,12 @@ const DOMController = {
     const node = document.querySelectorAll(param);
     node.forEach(ele => {
       ele.style[styleName] = styleValue;
+    })
+  },
+
+  setStyleList: (list) => {
+    list.forEach(item => {
+      DOMController.setStyle(item[0], item[1], item[2])
     })
   },
 
@@ -1070,6 +1089,12 @@ const DOMController = {
     return e
   },
 
+  fadeToggleList: (list) => {
+    list.forEach(param => {
+      DOMController.fadeToggle(param)
+    })
+  },
+
   hasClass: (e, c) => {
     if (!e) return;
     return e.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
@@ -1095,6 +1120,12 @@ const DOMController = {
       DOMController.addClass(e, c)
     }
     return e
+  },
+
+  toggleClassList: (list) => {
+    list.forEach(item => {
+      DOMController.toggleClass(item[0], item[1])
+    })
   }
 }
 Object.freeze(DOMController);

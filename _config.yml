@@ -892,9 +892,98 @@ plugins:
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
+
+### 自定义右键 新
+rightmenus:
+  enable: true
+  # 右键菜单项及加载顺序
+  # 内容示例：plugins.[组名], menus.[组名], hr(分割线，推荐去线留白), music(音乐控制器)
+  order: 
+    - plugins.navigation
+    - hr
+    - plugins.inputBox
+    - plugins.seletctText
+    - plugins.elementCheck
+    - menus.link
+    - hr
+    - menus.darkMode
+    - plugins.articlePage
+    - music
+  ############################
+  # - {id: '', name: '', icon: '', link: '', event: '', group: ''}
+  # id: 唯一值
+  # name: 用于菜单名称显示
+  # icon: 用于菜单图标显示
+  # link: 跳转链接
+  # event: 事件，当输入内容不为内置事件时，作 JavaScript 代码执行
+  # group: 菜单项所处分组名称
+  # 注： 
+  # 1. link/event 二选一，同时出现时仅处理 link
+  # 2. 内置事件列表： copyText, copyLink, copyPaste, copyAll, copyCut, copyImg, printMode, readMode
+  # 3. 内置组列表：navigation, inputBox, seletctText, elementCheck, articlePage
+  # 4. plugins 列允许自定义组内项目
+  # 5. menus   列允许自定义组及其内容
+  # 6. 除 navigation 外的内置组，在显示时会隐藏含 link 属性的菜单项
+  ###########################
+  # 基础项设置
+  options:
+    # 图标前缀 fa-solid, fa-regular, fa-light, fa-thin, fa-duotone, fa-brands
+    iconPrefix: fa-solid
+    # 例外，在 articlePage 组显示时（文章页）时依旧显示含 link 属性的菜单项
+    articleShowLink: false
+    # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
+    musicAlwaysShow: true
+  # 右键内置组，预置实现
+  plugins:
+    # 导航组件
+    # 横向排列，共用一行，仅显示图标 (原则上支持的数量不限)
+    navigation: 
+      - {id: 'left', name: '转到上一页', icon: 'fa-solid fa-arrow-left', event: 'history.back()', group: 'navigation'}
+      - {id: 'right', name: '转到下一页', icon: 'fa-solid fa-arrow-right', event: 'history.forward()', group: 'navigation'}
+      - {id: 'redo', name: '刷新当前页面', icon: 'fa-solid fa-redo', event: 'window.location.reload()', group: 'navigation'}
+      - {id: 'up', name: '回到顶部', icon: 'fa-solid fa-arrow-up', event: 'VolantisApp.scrolltoElement(volantis.dom.bodyAnchor)', group: 'navigation'}
+      #- {id: 'home', name: '回到首页', icon: 'fa-solid fa-home', link: '/', group: 'navigation'}
+    # 文本输入框相关组件
+    # 生效于 input/textarea，粘贴、剪切、全选
+    inputBox:
+      - {id: 'copyPaste', name: '粘贴文本', icon: 'fa-solid fa-paste', event: 'copyPaste', group: 'inputBox'}
+      - {id: 'copyAll', name: '全选文本', icon: 'fa-solid fa-object-ungroup', event: 'copyAll', group: 'inputBox'}
+      - {id: 'copyCut', name: '剪切文本', icon: 'fa-solid fa-cut', event: 'copyCut', group: 'inputBox'}
+    # 文本选中类组件
+    # 生效于右键选中文本，__text__ 为选中的文本。     
+    seletctText:
+      - {id: 'copyText', name: '复制文本', icon: 'fa-solid fa-copy', event: 'copyText', group: 'seletctText'}
+      - {id: 'searchWord', name: '站内搜索', icon: 'fa-solid fa-search', event: 'OpenSearch(__text__)', group: 'seletctText'}
+      - {id: 'bingSearch', name: '必应搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://cn.bing.com/search?q=${__text__}`)', group: 'seletctText'}
+      #- {id: 'googleSearch', name: '谷歌搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://www.google.com/search?q=${__text__}`)', group: 'seletctText'}
+    # 元素判断组件
+    # 生效于 a/img 处的右键行为，__link__ 为链接地址
+    elementCheck:
+      - {id: 'openTab', name: '新标签页打开', icon: 'fa-solid fa-external-link-square-alt', event: 'window.open(__link__)', group: 'elementCheck'}
+      - {id: 'copyLink', name: '复制链接地址', icon: 'fa-solid fa-link', event: 'copyLink', group: 'elementCheck'}
+      # 复制图片文件至剪切板，仅支持 png 格式
+      - {id: 'copyImg', name: '复制图片文件', icon: 'fa-solid fa-image', event: 'copyImg', group: 'elementCheck'}
+    # 文章页面组件
+    # 生效于 post.article 页面
+    articlePage:
+      - {id: 'printMode', name: '打印页面', icon: 'fa-solid fa-print', event: 'printMode', group: 'articlePage'}
+      - {id: 'readMode', name: '阅读模式', icon: 'fa-solid fa-book-open', event: 'readMode', group: 'articlePage'}
+  # 右键自定义菜单区域
+  menus:
+    link:
+      - {id: 'help', name: '常见问题', icon: 'fa-solid fa-question', link: 'https://volantis.js.org/faqs/', group: 'link'}
+      - {id: 'examples', name: '示例博客', icon: 'fa-solid fa-rss', link: 'https://volantis.js.org/examples/', group: 'link'}
+      - {id: 'contributors', name: '加入社区', icon: 'fa-solid fa-fan', link: 'https://volantis.js.org/contributors/', group: 'link'}
+      - hr
+      - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
+      - {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
+    darkMode: 
+      - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-moon', event: 'volantis.dark.toggle()', group: 'darkMode'}
+###
+
 # 自定义右键菜单
 rightmenu:
-  enable: true
+  enable: false
   faicon: fa              # 公共图标类型 fa fal fa-solid fa-duotone
   # hr: 分割线, music: 音乐控制器
   layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, reading, music]

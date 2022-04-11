@@ -1,7 +1,7 @@
 <script>
-  const SearchServiceDataPathRoot = ("<%- config.root %>" || "/").endsWith("/")
-    ? "<%- config.root %>" || "/"
-    : "<%- config.root %>/" || "/";
+  const SearchServiceDataPathRoot = ("<%- config.root %>" || "/").endsWith("/") ?
+    "<%- config.root %>" || "/" :
+    "<%- config.root %>/" || "/";
   const SearchServiceDataPath = SearchServiceDataPathRoot + "content.json";
 
   function loadSearchScript() {
@@ -16,16 +16,23 @@
     });
 
     document.querySelectorAll(".u-search-form").forEach((e) => {
-      e.addEventListener("submit", (event)=>{event.preventDefault();}, false);
+      e.addEventListener("submit", (event) => {
+        event.preventDefault();
+      }, false);
     });
   }
 
   // 打开并搜索 字符串 s
   function OpenSearch(s) {
-    loadSearchScript().then(() => {
+    if (typeof SearchService === 'undefined')
+      loadSearchScript().then(() => {
+        SearchService.setQueryText(s);
+        SearchService.search();
+      });
+    else {
       SearchService.setQueryText(s);
       SearchService.search();
-    });
+    }
   }
 
   // 访问含有 ?s=xxx  的链接时打开搜索 // 与搜索引擎 structured data 相关: /scripts/helpers/structured-data/lib/config.js
