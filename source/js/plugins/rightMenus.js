@@ -365,7 +365,7 @@ RightMenus.fun = (() => {
             });
           }
           if (RightMenus.messageRightMenu) {
-            VolantisApp.message('错误提示', error.message, {
+            VolantisApp.message('错误提示', error, {
               icon: rightMenuConfig.options.iconPrefix + ' fa-exclamation-square red',
               time: '15000'
             });
@@ -479,7 +479,7 @@ RightMenus.fun = (() => {
     }, (error) => {
       console.error(error);
       if (RightMenus.messageRightMenu)
-        VolantisApp.message('系统提示', '复制失败：' + error.message, {
+        VolantisApp.message('系统提示', '复制失败：' + error, {
           icon: rightMenuConfig.options.iconPrefix + ' fa-exclamation-square red',
           time: 9000
         });
@@ -551,6 +551,7 @@ RightMenus.fun = (() => {
     } else {
       document.querySelector('#l_body').removeEventListener('click', fn.readMode);
       document.querySelector('#post').removeEventListener('click', fn.readMode);
+      document.querySelector('.prev-next').style.display = 'flex'; // 单独修改 
     }
   }
 
