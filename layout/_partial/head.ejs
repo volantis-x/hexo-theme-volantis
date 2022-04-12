@@ -28,9 +28,12 @@
   <link rel="preload" href="<%- theme.cdn.map.css.style %>" as="style">
   <%- generate_preload_fontfamily(theme) %>
   <!-- 页面元数据 -->
+  <pjax>
   <%- generate_title(config, theme, page) %>
   <%- generate_keywords(config, theme, page) %>
+  <%- generate_description(config, theme, page) %>
   <%- open_graph(theme.open_graph) %>
+  </pjax>
   <!-- feed -->
   <%_ if (config.feed && config.feed.path){ _%>
     <%_ if (typeof(config.feed.path)=="string"){ _%>

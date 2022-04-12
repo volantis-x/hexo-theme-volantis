@@ -78,14 +78,24 @@ hexo.extend.helper.register("generate_keywords", function (config, theme, page) 
   }
   return `<meta name="keywords" content="${keywords}">`
 });
-// open_graph() 函数会生成一个 description 标签???  https://github.com/hexojs/hexo/blob/92b979f4a3fa8714aebd3d11c3295d466b870905/lib/plugins/helper/open_graph.js#L98
+
 hexo.extend.helper.register("generate_description", function (config, theme, page) {
   const hexo = this;
   let data = init(hexo, config, theme, page);
   let description = data.description
   if (!description) {
-    description += config.description
+    if (config.description) {
+      description = config.description
+    }else{
+      description = config.title
+    }
   }
   description += ` - ${config.author} - ${config.title}`
-  return `<meta name="description" content="${description}">`
+  return `<meta desc name="description" content="${description}">`
 });
+// open_graph() 函数会生成一个 description 标签???  https://github.com/hexojs/hexo/blob/92b979f4a3fa8714aebd3d11c3295d466b870905/lib/plugins/helper/open_graph.js#L98
+// 移除 open_graph() 函数会生成的 description
+hexo.extend.filter.register('after_render:html', function(data) {
+  data = data.replace(/<meta name="description".*>/g, "");
+  return data;
+},99);
