@@ -1043,7 +1043,7 @@ color_scheme:
   # 通用颜色
   common:
     # 主题色
-    theme: '#44D7B6'
+    theme: '#3dd9b6'
     # 链接色
     link: '#1b79c4'
     # 按钮色
@@ -1094,21 +1094,22 @@ color_scheme:
   # ------------
   # 暗色主题
   dark:
+    site_bd: '#121212'    # Dark Grey 1
     # 网站背景色
-    site_bg: '#222'
+    site_bg: '#1f1f1f'    # Dark Grey 2
     # 网站背景上的文字
     site_inner: '#eee'
     # 网站页脚文字
     site_footer: '#aaa'
     # 卡片背景色
-    card: '#333'
+    card: '#262626'       # Dark Grey 3
     # 卡片上的普通文字
     text: '#eee'
 
     # 区块和代码块背景色
-    block: '#3a3a3a'
+    block: '#434343'      # Dark Grey 4
     # 代码块高亮时的背景色
-    codeblock: '#343a3c'
+    codeblock: '#1f1f1f'  # Dark Grey 2
     # 行内代码颜色
     inlinecode: '#D56D28'
 

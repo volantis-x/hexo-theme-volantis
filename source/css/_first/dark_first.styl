@@ -1,16 +1,16 @@
 // 首屏加载的暗黑模式
 fitst_dark()
-  // Base Dark Color
-  --color-site-body: black
+  // Base Dark Color https://www.maijisheji.com/2094.html https://ant.design/docs/spec/colors-cn
+  --color-site-body: convert(hexo-config('color_scheme.dark.site_bd'))                    // Dark Grey 1
   --color-read-bkg: convert(hexo-config('color_scheme.dark.site_bg'))
   --color-read-post: convert(hexo-config('color_scheme.dark.card'))
-  --color-site-bg: convert(hexo-config('color_scheme.dark.site_bg'))
+  --color-site-bg: convert(hexo-config('color_scheme.dark.site_bg'))                      // Dark Grey 2
   --color-site-inner: convert(hexo-config('color_scheme.dark.site_inner'))
   --color-site-footer: convert(hexo-config('color_scheme.dark.site_footer'))
-  --color-card: convert(hexo-config('color_scheme.dark.card'))
+  --color-card: convert(hexo-config('color_scheme.dark.card'))                            // Dark Grey 3
   --color-text: convert(hexo-config('color_scheme.dark.text'))
 
-  --color-block: convert(hexo-config('color_scheme.dark.block'))
+  --color-block: convert(hexo-config('color_scheme.dark.block'))                           // Dark Grey 4
   --color-codeblock: convert(hexo-config('color_scheme.dark.codeblock'))
   --color-inlinecode: convert(hexo-config('color_scheme.dark.inlinecode'))
   --color-h1: convert(hexo-config('color_scheme.dark.h1'))
@@ -40,7 +40,7 @@ fitst_dark()
   #l_main .article .prev-next>a
     background: var(--color-block) !important
     &:hover
-      background: var(--color-card) !important
+      background: var(--color-site-bg) !important
   .article blockquote
     background: var(--color-block) !important
   .article-title a
