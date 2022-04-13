@@ -20,6 +20,8 @@ img,
   color: var(--color-p)
 .content a
   color: var(--color-p) !important
+  &:hover
+    color: var(--color-list-hl) !important
 .note
   background: var(--color-block) !important
 div.tabs ul.nav-tabs li.tab.active a
@@ -36,7 +38,7 @@ if hexo-config('plugins.code_highlight') == "highlightjs"
     background: var(--color-card) !important
     background-color: var(--color-card) !important
   .highlight figcaption
-    background-color: #21252b
+    background-color: #14161a
   .highlight pre .line, .highlight pre .params
     color: rgba(158, 142, 142, 0.9)
 

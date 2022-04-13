@@ -30,8 +30,6 @@ fitst_dark()
   //header
   #wrapper .title
     color: var(--color-meta) !important
-  .l_header ul.nav-list-h>li>a, ul.list-v >li>a
-    color: var(--color-list) !important
   .blur
     background: var(--color-site-bg) !important
   .nav-main
@@ -59,7 +57,8 @@ fitst_dark()
     background: var(--color-card) !important
   #u-search .modal-body .modal-results .result:hover
     background: var(--color-block) !important
-
+  .u-search-input:focus,.u-search-input:hover
+    background: var(--color-block) !important
   //phone search
   .l_header .m_search
     @media screen and (max-width: $device-mobile)
