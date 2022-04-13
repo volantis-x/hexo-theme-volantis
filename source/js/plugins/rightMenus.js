@@ -56,7 +56,15 @@ const RightMenus = {
    */
   writeClipImg: async (link, success, error) => {
     try {
-      const data = await fetch(link);
+      // 如果使用了cdn的自适应Webp，png格式的图片会返回image/webp导致复制失败
+      // 伪装一个旧版本的Safari浏览器，同时添加time用以避免获取缓存文件
+      // 请求头里设置no-cache造成了莫名其妙的cors问题
+      const data = await fetch(`${link}?time=${Date.now()}`, {
+        mode: 'cors',
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15"
+        }
+      });
       const blob = await data.blob();
       await navigator.clipboard
         .write([
@@ -66,10 +74,7 @@ const RightMenus = {
         ]).then(() => {
           success(true);
         }, (e) => {
-          if (blob.type !== 'image/png')
-            error(`当前文件类型不正确，不支持复制。`)
-          else
-            error(e);
+          error(blob.type !== 'image/png' ? '当前文件类型不正确，不支持复制。' : e);
         });
     } catch (e) {
       error(e)
@@ -201,7 +206,7 @@ RightMenus.fun = (() => {
    */
   fn.menuControl = (event) => {
     fn.globalDataSet(event);
-    if(!!_menuMusic) _menuMusic.style.display = globalData.isShowMusic ? 'block' : 'none';
+    if (!!_menuMusic) _menuMusic.style.display = globalData.isShowMusic ? 'block' : 'none';
     _rightMenuList.forEach(item => {
       item.style.display = 'none';
       const nodeName = item.firstElementChild.nodeName;
