@@ -16,9 +16,11 @@ img,
 //side
 .widget.blogger .content .social-wrapper a.social:hover
   background: var(--color-card)
+.widget >.content ul.entry a .badge, .widget >.content ul.popular-posts a .badge
+  color: unset !important
 .content
   color: var(--color-p)
-.content a
+.widget >.content a
   color: var(--color-p) !important
   &:hover
     color: var(--color-list-hl) !important
@@ -96,6 +98,8 @@ if hexo-config('plugins.aplayer.enable')
     border-top: 1px solid var(--color-card)
   .aplayer.aplayer-withlist .aplayer-info
     border-bottom: 1px solid var(--color-block)
+  .aplayer .aplayer-notice
+    background-color: var(--color-site-bg) !important
 
 if hexo-config('comments.service')=='twikoo'
   .OwO

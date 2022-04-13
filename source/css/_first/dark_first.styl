@@ -1,37 +1,37 @@
 // 首屏加载的暗黑模式
 fitst_dark()
-  // Base Dark Color https://www.maijisheji.com/2094.html https://ant.design/docs/spec/colors-cn
-  --color-site-body: convert(hexo-config('color_scheme.dark.site_bd'))                    // Dark Grey 1
-  --color-read-bkg: convert(hexo-config('color_scheme.dark.site_bg'))
-  --color-read-post: convert(hexo-config('color_scheme.dark.card'))
-  --color-site-bg: convert(hexo-config('color_scheme.dark.site_bg'))                      // Dark Grey 2
-  --color-site-inner: convert(hexo-config('color_scheme.dark.site_inner'))
-  --color-site-footer: convert(hexo-config('color_scheme.dark.site_footer'))
-  --color-card: convert(hexo-config('color_scheme.dark.card'))                            // Dark Grey 3
-  --color-text: convert(hexo-config('color_scheme.dark.text'))
+  // Base Dark Color
+  --color-site-body: $color-dark-site-body
+  --color-read-bkg: $color-dark-read-bkg
+  --color-read-post: $color-dark-read-post
+  --color-site-bg: $color-dark-site-bg
+  --color-site-inner: $color-dark-site-inner
+  --color-site-footer: $color-dark-site-footer
+  --color-card: $color-dark-card
+  --color-text: $color-dark-text
 
-  --color-block: convert(hexo-config('color_scheme.dark.block'))                           // Dark Grey 4
-  --color-codeblock: convert(hexo-config('color_scheme.dark.codeblock'))
-  --color-inlinecode: convert(hexo-config('color_scheme.dark.inlinecode'))
-  --color-h1: convert(hexo-config('color_scheme.dark.h1'))
-  --color-h2: convert(hexo-config('color_scheme.dark.h2'))
-  --color-h3: convert(hexo-config('color_scheme.dark.h3'))
-  --color-h4: convert(hexo-config('color_scheme.dark.h4'))
-  --color-h5: convert(hexo-config('color_scheme.dark.h5'))
-  --color-h6: convert(hexo-config('color_scheme.dark.h6'))
-  --color-p: convert(hexo-config('color_scheme.dark.p'))
-  --color-list: convert(hexo-config('color_scheme.dark.list'))
-  --color-list-hl: convert(hexo-config('color_scheme.dark.list_hl'))
-  --color-meta: convert(hexo-config('color_scheme.dark.meta'))
-  --color-link: convert(hexo-config('color_scheme.dark.meta'))
+  --color-block: $color-dark-block
+  --color-codeblock: $color-dark-codeblock
+  --color-inlinecode: $color-dark-inlinecode
+  --color-h1: $color-dark-h1
+  --color-h2: $color-dark-h2
+  --color-h3: $color-dark-h3
+  --color-h4: $color-dark-h4
+  --color-h5: $color-dark-h5
+  --color-h6: $color-dark-h6
+  --color-p: $color-dark-p
+  --color-list: $color-dark-list
+  --color-list-hl: $color-dark-list-hl
+  --color-meta: $color-dark-meta
+  --color-link: $color-dark-link
 
   img
     filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
   //header
-  #wrapper .title
-    color: var(--color-meta) !important
   .blur
-    background: var(--color-site-bg) !important
+    background: rgba($color-dark-site-bg, .9) !important
+  .white-box.blur
+    background: rgba($color-dark-card, .9) !important
   .nav-main
     .u-search-input
       background: var(--color-card) !important
@@ -57,8 +57,10 @@ fitst_dark()
     background: var(--color-card) !important
   #u-search .modal-body .modal-results .result:hover
     background: var(--color-block) !important
-  .u-search-input:focus,.u-search-input:hover
+  .u-search-input:hover
     background: var(--color-block) !important
+  .u-search-input:focus
+    background: var(--color-site-body) !important
   //phone search
   .l_header .m_search
     @media screen and (max-width: $device-mobile)

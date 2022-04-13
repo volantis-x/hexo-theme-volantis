@@ -65,8 +65,29 @@ $color-list-hl = convert(hexo-config('color_scheme.light.list_hl'))
 $color-meta = convert(hexo-config('color_scheme.light.meta'))
 
 // 深色配色方案在 darkmode.styl 中按需加载
+$color-dark-site-body = convert(hexo-config('color_scheme.dark.site_bd'))                    // Dark Grey 1
+$color-dark-read-bkg = convert(hexo-config('color_scheme.dark.site_bg'))
+$color-dark-read-post = convert(hexo-config('color_scheme.dark.card'))
+$color-dark-site-bg = convert(hexo-config('color_scheme.dark.site_bg'))                      // Dark Grey 2
+$color-dark-site-inner = convert(hexo-config('color_scheme.dark.site_inner'))
+$color-dark-site-footer = convert(hexo-config('color_scheme.dark.site_footer'))
+$color-dark-card = convert(hexo-config('color_scheme.dark.card'))                            // Dark Grey 3
+$color-dark-text = convert(hexo-config('color_scheme.dark.text'))
 
-
+$color-dark-block = convert(hexo-config('color_scheme.dark.block'))                           // Dark Grey 4
+$color-dark-codeblock = convert(hexo-config('color_scheme.dark.codeblock'))
+$color-dark-inlinecode = convert(hexo-config('color_scheme.dark.inlinecode'))
+$color-dark-h1 = convert(hexo-config('color_scheme.dark.h1'))
+$color-dark-h2 = convert(hexo-config('color_scheme.dark.h2'))
+$color-dark-h3 = convert(hexo-config('color_scheme.dark.h3'))
+$color-dark-h4 = convert(hexo-config('color_scheme.dark.h4'))
+$color-dark-h5 = convert(hexo-config('color_scheme.dark.h5'))
+$color-dark-h6 = convert(hexo-config('color_scheme.dark.h6'))
+$color-dark-p = convert(hexo-config('color_scheme.dark.p'))
+$color-dark-list = convert(hexo-config('color_scheme.dark.list'))
+$color-dark-list-hl = convert(hexo-config('color_scheme.dark.list_hl'))
+$color-dark-meta = convert(hexo-config('color_scheme.dark.meta'))
+$color-dark-link = convert(hexo-config('color_scheme.dark.meta'))
 
 bgcolor($c, $mix = 10)
   return mix($c, $color-card, $mix)
