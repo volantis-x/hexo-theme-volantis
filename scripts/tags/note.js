@@ -48,4 +48,27 @@ function postNoteBlock(args, content) {
 }
 
 hexo.extend.tag.register('note', postNote);
-hexo.extend.tag.register('noteblock', postNoteBlock, {ends: true});
+
+// https://github.com/volantis-x/hexo-theme-volantis/issues/712
+// {% blocknote style, title %}
+// content
+// {% endblocknote %}
+hexo.extend.tag.register('blocknote', postNoteBlock, {ends: true});
+// 兼容 noteblock
+hexo.extend.filter.register('before_post_render', function(data) {
+  data.content = data.content.replace(/{%\s+noteblock(.*)%}/g, (p,q)=>{
+    return `{% blocknote ${q} %}`
+  });
+  data.content = data.content.replace(/{%\s+endnoteblock\s+%}/g, '{% endblocknote %}');
+  return data;
+});
+// 兼容 noteblock 失败
+hexo.extend.tag.register('noteblock', postNoteBlockDeprecated, {ends: true});
+function postNoteBlockDeprecated(args, content) {
+    throw new Error(`
+==================================================================================
+        {% noteblock %} is deprecated. Use {% blocknote %} instead.
+        see: https://github.com/volantis-x/hexo-theme-volantis/issues/712
+==================================================================================
+  `);
+}
