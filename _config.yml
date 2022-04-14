@@ -1043,7 +1043,7 @@ color_scheme:
     # 主题色
     theme: '#3dd9b6'
     # 链接色
-    link: '#1b79c4'
+    link: '#2092ec'
     # 按钮色
     button: '#44D7B6'
     # 鼠标放到交互元素上时的色
@@ -1100,11 +1100,11 @@ color_scheme:
     # 卡片背景色              # Dark Grey 3
     card: '#262626'
     # 网站背景上的文字
-    site_inner: '#eee'
+    site_inner: '#eeeeeede'
     # 网站页脚文字
-    site_footer: '#aaa'
+    site_footer: '#aaaaaade'
     # 卡片上的普通文字
-    text: '#eee'
+    text: '#eeeeeede'
 
     # 区块和代码块背景色       # Dark Grey 4
     block: '#434343'
@@ -1113,21 +1113,21 @@ color_scheme:
     # 行内代码颜色
     inlinecode: '#D56D28'
 
-    # 文章部分
-    h1: '#f5f5f5'            #  Dark Grey 8
-    h2: '#f5f5f5'
-    h3: '#f0f0f0'            #  Dark Grey 7
-    h4: '#f0f0f0'
-    h5: '#f0f0f0'
-    h6: '#f0f0f0'
-    p: '#d9d9d9e6'           #  Dark Grey 6
+    # 文章部分 高强度文本的不透明度应为87％ 中等重点文字适用于60％
+    h1: '#FFFFFFde'            #  Dark Grey 8
+    h2: '#FFFFFFde'
+    h3: '#FFFFFF99'            #  Dark Grey 7
+    h4: '#FFFFFF99'
+    h5: '#FFFFFF99'
+    h6: '#FFFFFF99'
+    p: '#d9d9d9de'           #  Dark Grey 6
 
     # 列表文字                #  Dark Grey 6
-    list: '#d9d9d9d9'
+    list: '#d9d9d9de'
     # 列表 hover 时的文字
     list_hl: 'mix($color-theme, #fff, 80)'
     # 辅助性文字              #  Dark Grey 5
-    meta: '#bfbfbf'
+    meta: '#bfbfbfde'
     # 夜间图片亮度
     brightness: 70%
 ############################### Color Scheme ############################### > end
