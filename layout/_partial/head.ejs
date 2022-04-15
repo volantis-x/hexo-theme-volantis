@@ -21,19 +21,20 @@
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta content="<%=config.title%>" name="application-name">
-  <meta content="<%=config.title%>" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
+  <!-- import head_begin begin -->
+  <%_ if (config.import && config.import.head_begin){ _%>
+    <%_ ([...config.import.head_begin]).forEach(function(item){ _%>
+      <%- item %>
+    <%_ }) _%>
+  <%_ } _%>
+  <!-- import head_begin end -->
+  <%_ if (config.favicon) { _%>
+    <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
+  <%_ } _%>
   <link rel="preload" href="<%- theme.cdn.map.css.style %>" as="style">
   <%- generate_preload_fontfamily(theme) %>
-  <!-- 页面元数据 -->
-  <pjax>
-  <%- generate_title(config, theme, page) %>
-  <%- generate_keywords(config, theme, page) %>
-  <%- generate_description(config, theme, page) %>
-  <%- open_graph(theme.open_graph) %>
-  </pjax>
   <!-- feed -->
   <%_ if (config.feed && config.feed.path){ _%>
     <%_ if (typeof(config.feed.path)=="string"){ _%>
@@ -44,22 +45,13 @@
       <%_ }) _%>
     <%_ } _%>
   <%_ } _%>
-  <!-- import meta -->
-  <%_ if (config.import && config.import.meta){ _%>
-    <%_ (config.import.meta||[]).forEach(function(item){ _%>
-      <%- item %>
-    <%_ }) _%>
-  <%_ } _%>
-  <!-- link -->
-  <%_ if (config.favicon) { _%>
-    <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
-  <%_ } _%>
-  <!-- import link -->
-  <%_ if (config.import && config.import.link){ _%>
-    <%_ (config.import.link||[]).forEach(function(item){ _%>
-      <%- item %>
-    <%_ }) _%>
-  <%_ } _%>
+  <!-- 页面元数据 -->
+  <pjax>
+  <%- generate_title(config, theme, page) %>
+  <%- generate_keywords(config, theme, page) %>
+  <%- generate_description(config, theme, page) %>
+  <%- open_graph(theme.open_graph) %>
+  </pjax>
   <style>
     /* 首屏样式 */
     <%- FirstCSS() %>
@@ -76,6 +68,13 @@
   <%_ } _%>
   <%- partial('../_plugins/end-of-support/script') %>
   <%- partial('scripts/global') %>
+  <!-- import head_end begin -->
+  <%_ if (config.import && config.import.head_end){ _%>
+    <%_ ([...config.import.head_end]).forEach(function(item){ _%>
+      <%- item %>
+    <%_ }) _%>
+  <%_ } _%>
+  <!-- import head_end end -->
   <!-- Custom Files head begin-->
   <%- volantis_inject('head') %>
   <!-- Custom Files head end-->

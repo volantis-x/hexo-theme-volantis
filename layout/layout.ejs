@@ -3,6 +3,13 @@
   <%- partial('_partial/scripts/_ctrl') _%>
   <%- partial('_partial/head') _%>
   <body itemscope itemtype="http://schema.org/WebPage">
+    <!-- import body_begin begin-->
+    <%_ if (config.import && config.import.body_begin){ _%>
+      <%_ ([...config.import.body_begin]).forEach(function(item){ _%>
+        <%- item %>
+      <%_ }) _%>
+    <%_ } _%>
+    <!-- import body_begin end-->
     <%- partial('_partial/header', null, {cache: false, path: path}) %>
     <div id="l_body">
       <%- partial('_partial/cover') %>
@@ -21,8 +28,15 @@
         <%- partial('_plugins/pjax/index') %>
       <% } %>
     </div>
-  <!-- Custom Files bodyEnd begin-->
-  <%- volantis_inject('bodyEnd') %>
-  <!-- Custom Files bodyEnd end-->
+    <!-- import body_end begin-->
+    <%_ if (config.import && config.import.body_end){ _%>
+      <%_ ([...config.import.body_end]).forEach(function(item){ _%>
+        <%- item %>
+      <%_ }) _%>
+    <%_ } _%>
+    <!-- import body_end end-->
+    <!-- Custom Files bodyEnd begin-->
+    <%- volantis_inject('bodyEnd') %>
+    <!-- Custom Files bodyEnd end-->
   </body>
 </html>
