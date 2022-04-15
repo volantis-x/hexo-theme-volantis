@@ -55,30 +55,25 @@ const RightMenus = {
    * @param {*} error 
    */
   writeClipImg: async (link, success, error) => {
-    try {
-      // 如果使用了cdn的自适应Webp，png格式的图片会返回image/webp导致复制失败
-      // 伪装一个旧版本的Safari浏览器，同时添加time用以避免获取缓存文件
-      // 请求头里设置no-cache造成了莫名其妙的cors问题
-      const data = await fetch(`${link}?time=${Date.now()}`, {
-        mode: 'cors',
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15"
-        }
-      });
-      const blob = await data.blob();
-      await navigator.clipboard
-        .write([
-          new ClipboardItem({
-            [blob.type]: blob
-          })
-        ]).then(() => {
-          success(true);
-        }, (e) => {
-          error(blob.type !== 'image/png' ? '当前文件类型不正确，不支持复制。' : e);
-        });
-    } catch (e) {
-      error(e)
-    }
+    const image = new Image;
+    image.crossOrigin = "Anonymous";
+    image.addEventListener('load', () => {
+      let canvas = document.createElement("canvas");
+      let context = canvas.getContext("2d");
+      canvas.width = image.width;
+      canvas.height = image.height;
+      context.drawImage(image, 0, 0);
+      canvas.toBlob(blob => {
+        navigator.clipboard.write([
+          new ClipboardItem({ 'image/png': blob })
+        ]).then(e => {
+          success(e)
+        }).catch(e => {
+          error(e)
+        })
+      }, 'image/png')
+    }, false)
+    image.src = link;
   },
 
   /**
@@ -286,7 +281,7 @@ RightMenus.fun = (() => {
     }
 
     // 判断是否为 png 格式的图片地址
-    if (globalData.isMediaLink && globalData.mediaLinkUrl.trimEnd().endsWith('.png')) {
+    if (globalData.isMediaLink) {
       globalData.isPngImg = true;
     }
 
@@ -476,15 +471,15 @@ RightMenus.fun = (() => {
   }
 
   fn.copyImg = () => {
-    RightMenus.writeClipImg(globalData.mediaLinkUrl, flag => {
-      if (flag && RightMenus.messageRightMenu)
+    RightMenus.writeClipImg(globalData.mediaLinkUrl, e => {
+      if (RightMenus.messageRightMenu)
         VolantisApp.message('系统提示', '图片复制成功！', {
           icon: rightMenuConfig.options.iconPrefix + ' fa-images'
         });
-    }, (error) => {
-      console.error(error);
+    }, (e) => {
+      console.error(e);
       if (RightMenus.messageRightMenu)
-        VolantisApp.message('系统提示', '复制失败：' + error, {
+        VolantisApp.message('系统提示', '复制失败：' + e, {
           icon: rightMenuConfig.options.iconPrefix + ' fa-exclamation-square red',
           time: 9000
         });

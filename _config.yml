@@ -958,7 +958,6 @@ rightmenus:
     elementCheck:
       - {id: 'openTab', name: '新标签页打开', icon: 'fa-solid fa-external-link-square-alt', event: 'window.open(__link__)', group: 'elementCheck'}
       - {id: 'copyLink', name: '复制链接地址', icon: 'fa-solid fa-link', event: 'copyLink', group: 'elementCheck'}
-      # 复制图片文件至剪切板，仅支持 png 格式
       - {id: 'copyImg', name: '复制图片文件', icon: 'fa-solid fa-image', event: 'copyImg', group: 'elementCheck'}
     # 文章页面组件
     # 生效于 post.article 页面
