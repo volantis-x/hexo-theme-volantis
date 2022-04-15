@@ -7,6 +7,7 @@ hexo.on('generateBefore', () => {
   require('./lib/config')(hexo);
   require('./lib/stellar-tag-utils')(hexo);
   require('./lib/render-stylus')(hexo);
+  require('./lib/check-environment')(hexo);
 });
 
 hexo.on('ready', () => {
