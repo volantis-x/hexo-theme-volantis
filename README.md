@@ -10,7 +10,7 @@ Check your environment:
 
 ```yaml
 Hexo: 5.4 ~ 6.x
-hexo-cli: 4.x
+hexo-cli: 4.3 ~ latest
 node.js: 16.x LTS ~ latest LTS
 npm: 8.x ~ latest LTS
 ```
