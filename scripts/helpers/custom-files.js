@@ -11,13 +11,15 @@ let points = {
     "darkVar",
   ],
   views: [
-    "head",
+    "headBegin",
+    "headEnd",
     "header",
     "side",
     "topMeta",
     "bottomMeta",
     "footer",
     "postEnd",
+    "bodyBegin",
     "bodyEnd",
   ]
 }

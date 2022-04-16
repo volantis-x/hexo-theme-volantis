@@ -30,6 +30,9 @@
     <%_ }) _%>
   <%_ } _%>
   <!-- import head_begin end -->
+  <!-- Custom Files headBegin begin-->
+  <%- volantis_inject('headBegin') %>
+  <!-- Custom Files headBegin end-->
   <%_ if (config.favicon) { _%>
     <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <%_ } _%>
@@ -75,7 +78,7 @@
     <%_ }) _%>
   <%_ } _%>
   <!-- import head_end end -->
-  <!-- Custom Files head begin-->
-  <%- volantis_inject('head') %>
-  <!-- Custom Files head end-->
+  <!-- Custom Files headEnd begin-->
+  <%- volantis_inject('headEnd') %>
+  <!-- Custom Files headEnd end-->
 </head>

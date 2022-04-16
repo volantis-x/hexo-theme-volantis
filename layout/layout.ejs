@@ -10,6 +10,9 @@
       <%_ }) _%>
     <%_ } _%>
     <!-- import body_begin end-->
+    <!-- Custom Files bodyBegin begin-->
+    <%- volantis_inject('bodyBegin') %>
+    <!-- Custom Files bodyBegin end-->
     <%- partial('_partial/header', null, {cache: false, path: path}) %>
     <div id="l_body">
       <%- partial('_partial/cover') %>
