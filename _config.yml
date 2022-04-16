@@ -276,19 +276,19 @@ comments:
   # https://artalk.js.org/
   # https://github.com/ArtalkJS/Artalk
   artalk:
-    js: https://unpkg.com/artalk@2.1.3/dist/Artalk.js
-    css: https://unpkg.com/artalk@2.1.3/dist/Artalk.css
+    js: https://unpkg.com/artalk@2.1.9/dist/Artalk.js
+    css: https://unpkg.com/artalk@2.1.9/dist/Artalk.css
     server: http://127.0.0.1:8080/api    # 修改为自建的后端服务地址
     path:  # 全局评论地址
-    # 更多选项 https://artalk.js.org/guide/frontend/config.htm 按照yml格式继续填写即可 
+    # 更多选项 https://artalk.js.org/guide/frontend/config.html 按照yml格式继续填写即可 
     # 除了 [el pageKey pageTitle site] 选项
     # 下面是一些例子：
-    placeholder: 来啊，快活啊 ( ゜- ゜)   # 全局评论占位
-    noComment: 快来成为第一个评论的人吧~  # 评论为空时，评论列表显示字符
-    pagination:
-      readMore: true   # 加载更多模式
-      autoLoad: false  # 滚动到底部自动加载
-      pageSize: 10     # 每次请求获取数量
+    #placeholder: 来啊，快活啊 ( ゜- ゜)   # 全局评论占位
+    #noComment: 快来成为第一个评论的人吧~  # 评论为空时，评论列表显示字符
+    #pagination:
+    #  readMore: true   # 加载更多模式
+    #  autoLoad: false  # 滚动到底部自动加载
+    #  pageSize: 10     # 每次请求获取数量
     
   # giscus
   # https://giscus.app
@@ -901,6 +901,7 @@ rightmenus:
     - plugins.inputBox
     - plugins.seletctText
     - plugins.elementCheck
+    - plugins.elementImage
     - menus.link
     - hr
     - menus.darkMode
@@ -917,7 +918,7 @@ rightmenus:
   # 注： 
   # 1. link/event 二选一，同时出现时仅处理 link
   # 2. 内置事件列表： copyText, copyLink, copyPaste, copyAll, copyCut, copyImg, printMode, readMode
-  # 3. 内置组列表：navigation, inputBox, seletctText, elementCheck, articlePage
+  # 3. 内置组列表：navigation, inputBox, seletctText, elementCheck, elementImage, articlePage
   # 4. plugins 列允许自定义组内项目
   # 5. menus   列允许自定义组及其内容
   # 6. 除 navigation 外的内置组，在显示时会隐藏含 link 属性的菜单项
@@ -927,9 +928,9 @@ rightmenus:
     # 图标前缀 fa-solid, fa-regular, fa-light, fa-thin, fa-duotone, fa-brands
     iconPrefix: fa-solid
     # 例外，在 articlePage 组显示时（文章页）时依旧显示含 link 属性的菜单项
-    articleShowLink: true
+    articleShowLink: false
     # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
-    musicAlwaysShow: true
+    musicAlwaysShow: false
     # 适用于复制图片文件的场景，当图片源未设置 Access-Control-Allow-Origin 时，图片复制由于 CORS 问题失败
     # 你可以自行部署相应项目解决该问题，详见：https://github.com/Rob--W/cors-anywhere 或者 https://github.com/Zibri/cloudflare-cors-anywhere
     corsAnywhere: 
@@ -956,12 +957,16 @@ rightmenus:
       - {id: 'searchWord', name: '站内搜索', icon: 'fa-solid fa-search', event: 'OpenSearch(__text__)', group: 'seletctText'}
       - {id: 'bingSearch', name: '必应搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://cn.bing.com/search?q=${__text__}`)', group: 'seletctText'}
       #- {id: 'googleSearch', name: '谷歌搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://www.google.com/search?q=${__text__}`)', group: 'seletctText'}
-    # 元素判断组件
-    # 生效于 a/img 处的右键行为，__link__ 为链接地址
+    # 链接判断组件
+    # 生效于链接处的右键行为，__link__ 为链接地址
     elementCheck:
       - {id: 'openTab', name: '新标签页打开', icon: 'fa-solid fa-external-link-square-alt', event: 'window.open(__link__)', group: 'elementCheck'}
       - {id: 'copyLink', name: '复制链接地址', icon: 'fa-solid fa-link', event: 'copyLink', group: 'elementCheck'}
-      - {id: 'copyImg', name: '复制图片文件', icon: 'fa-solid fa-image', event: 'copyImg', group: 'elementCheck'}
+    # 图片判断类组件
+    # 生效于图片类的右键行为，__link__ 为链接地址
+    elementImage:
+      - {id: 'copyImg', name: '复制图片', icon: 'fa-solid fa-image', event: 'copyImg', group: 'elementImage'}
+      - {id: 'googleImg', name: '谷歌识图', icon: 'fa-solid fa-images', event: 'window.open(`https://www.google.com.hk/searchbyimage?image_url=${__link__}`)', group: 'elementImage'}
     # 文章页面组件
     # 生效于 post.article 页面
     articlePage:

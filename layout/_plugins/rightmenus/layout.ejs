@@ -1,7 +1,7 @@
 <%
   const rightMenu = {
     defaultEvent: ['copyText', 'copyLink', 'copyPaste', 'copyAll', 'copyCut', 'copyImg', 'printMode', 'readMode'],
-    defaultGroup: ['navigation', 'inputBox', 'seletctText', 'elementCheck', 'articlePage'],
+    defaultGroup: ['navigation', 'inputBox', 'seletctText', 'elementCheck', 'elementImage', 'articlePage'],
     dataGet: (data, keyStr) => {
       const keys = keyStr.split('.');
       let currentData = data;
@@ -45,7 +45,7 @@
 
 <% rightMenu.loadMenu = item => { %>
 <%   if(item === undefined) { %>
-  <hr class="menuLoad-Content" >
+    <hr class="menuLoad-Content" >
 <%   } else if(item['id'] === undefined) { %>
     <hr class="menuLoad-Content" >
 <%   } else if(item['link'] === undefined) { %>
@@ -85,7 +85,7 @@
   <!-- RightMenusFunction['<%- item.id %>'] = (fun) => {fun()} -->
 <%     } else if (item['group'] === 'seletctText') { %>  
   RightMenusFunction['<%- item.id %>'] = (__text__) => {<%- item.event %>}
-<%     } else if (item['group'] === 'elementCheck') { %>  
+<%     } else if (item['group'] === 'elementCheck' || item['group'] === 'elementImage') { %>  
   RightMenusFunction['<%- item.id %>'] = (__link__) => {<%- item.event %>}
 <%     } else { %>  
   RightMenusFunction['<%- item.id %>'] = () => {<%- item.event %>}

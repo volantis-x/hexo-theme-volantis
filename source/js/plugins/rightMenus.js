@@ -1,10 +1,11 @@
 
 const RightMenus = {
   defaultEvent: ['copyText', 'copyLink', 'copyPaste', 'copyAll', 'copyCut', 'copyImg', 'printMode', 'readMode'],
-  defaultGroup: ['navigation', 'inputBox', 'seletctText', 'elementCheck', 'articlePage'],
+  defaultGroup: ['navigation', 'inputBox', 'seletctText', 'elementCheck', 'elementImage', 'articlePage'],
   messageRightMenu: volantis.GLOBAL_CONFIG.plugins.message.enable && volantis.GLOBAL_CONFIG.plugins.message.rightmenu.enable,
   corsAnywhere: volantis.GLOBAL_CONFIG.plugins.rightmenus.options.corsAnywhere,
   urlRegx: /^((https|http)?:\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/,
+  imgRegx: /\.(jpe?g|png|webp|svg|gif|jifi)$/,
 
   /**
    * 加载右键菜单
@@ -117,12 +118,12 @@ RightMenus.fun = (() => {
     _rightMenuWrapper = document.getElementById('rightmenu-wrapper'),
     _rightMenuContent = document.getElementById('rightmenu-content'),
     _rightMenuList = document.querySelectorAll('#rightmenu-content li.menuLoad-Content'),
+    _rightMenuListWithHr = document.querySelectorAll('#rightmenu-content li, #rightmenu-content hr, #menuMusic'),
     _readBkg = document.getElementById('read_bkg'),
     _menuMusic = document.getElementById('menuMusic'),
     _backward = document.querySelector('#menuMusic .backward'),
     _toggle = document.querySelector('#menuMusic .toggle'),
-    _forward = document.querySelector('#menuMusic .forward'),
-    _menuHr = document.querySelectorAll('#rightmenu-content hr');
+    _forward = document.querySelector('#menuMusic .forward');
 
   // 公共数据
   let globalData = {
@@ -134,7 +135,7 @@ RightMenus.fun = (() => {
     linkUrl: '',
     isMediaLink: false,
     mediaLinkUrl: '',
-    isPngImg: false,
+    isImage: false,
     isArticle: false,
     pathName: '',
     isReadClipboard: false,
@@ -233,7 +234,9 @@ RightMenus.fun = (() => {
             break;
           case 'elementCheck':
             if (globalData.isLink || globalData.isMediaLink) item.style.display = 'block';
-            if (itemEvent === 'copyImg' && !globalData.isPngImg) item.style.display = 'none';
+            break;
+          case 'elementImage':
+            if (globalData.isImage) item.style.display = 'block';
             break;
           case 'articlePage':
             if (globalData.isArticle) item.style.display = 'block';
@@ -250,9 +253,28 @@ RightMenus.fun = (() => {
         item.style.display = 'block';
       }
     })
-    _menuHr.forEach(item => {
-      item.style.display = globalData.statusCheck ? 'none' : 'block';
+
+
+    let elementHrItem = { item: null, hide: true };
+    _rightMenuListWithHr.forEach((item) => {
+      if (item.nodeName === "HR") {
+        item.style.display = 'block';
+        if (!elementHrItem.item) {
+          elementHrItem.item = item;
+          return;
+        }
+        if (elementHrItem.hide || elementHrItem.item.nextElementSibling.nodeName === "hr") {
+          elementHrItem.item.style.display = 'none';
+        }
+        elementHrItem.item = item;
+        elementHrItem.hide = true;
+      } else {
+        if (item.style.display === 'block' && elementHrItem.hide) {
+          elementHrItem.hide = false;
+        }
+      }
     })
+    if (!!elementHrItem.item && elementHrItem.hide) elementHrItem.item.style.display = 'none';
   }
 
   /**
@@ -282,9 +304,9 @@ RightMenus.fun = (() => {
       globalData.mediaLinkUrl = event.target.currentSrc;
     }
 
-    // 判断是否为 png 格式的图片地址
-    if (globalData.isMediaLink) {
-      globalData.isPngImg = true;
+    // 判断是否为图片地址
+    if (globalData.isMediaLink && RightMenus.imgRegx.test(globalData.mediaLinkUrl)) {
+      globalData.isImage = true;
     }
 
     // 判断是否为文章页面
@@ -350,6 +372,8 @@ RightMenus.fun = (() => {
               RightMenusFunction[id](globalData.selectText)
             } else if (groupName === 'elementCheck') {
               RightMenusFunction[id](globalData.isLink ? globalData.linkUrl : globalData.mediaLinkUrl)
+            } else if (groupName === 'elementImage') {
+              RightMenusFunction[id](globalData.mediaLinkUrl)
             } else {
               RightMenusFunction[id]()
             }
