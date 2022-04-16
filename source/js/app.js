@@ -637,7 +637,7 @@ const VolantisApp = (() => {
     // 消息提示 复制时弹出
     if (volantis.GLOBAL_CONFIG.plugins.message.enable
       && volantis.GLOBAL_CONFIG.plugins.message.copyright.enable
-      && messageCopyrightShow < 3) {
+      && messageCopyrightShow < 1) {
       messageCopyrightShow++;
       VolantisApp.message(volantis.GLOBAL_CONFIG.plugins.message.copyright.title,
         volantis.GLOBAL_CONFIG.plugins.message.copyright.message, {
