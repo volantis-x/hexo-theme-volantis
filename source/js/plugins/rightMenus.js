@@ -3,6 +3,7 @@ const RightMenus = {
   defaultEvent: ['copyText', 'copyLink', 'copyPaste', 'copyAll', 'copyCut', 'copyImg', 'printMode', 'readMode'],
   defaultGroup: ['navigation', 'inputBox', 'seletctText', 'elementCheck', 'articlePage'],
   messageRightMenu: volantis.GLOBAL_CONFIG.plugins.message.enable && volantis.GLOBAL_CONFIG.plugins.message.rightmenu.enable,
+  corsAnywhere: volantis.GLOBAL_CONFIG.plugins.rightmenus.options.corsAnywhere,
   urlRegx: /^((https|http)?:\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/,
 
   /**
@@ -73,7 +74,7 @@ const RightMenus = {
         })
       }, 'image/png')
     }, false)
-    image.src = link;
+    image.src = `${RightMenus.corsAnywhere ? RightMenus.corsAnywhere : ''}${link}`;
   },
 
   /**
@@ -210,21 +211,22 @@ RightMenus.fun = (() => {
       if (globalData.statusCheck || globalData.isArticle) {
         switch (groupName) {
           case 'inputBox':
-            if (globalData.isInputBox) item.style.display = 'block';
-            if (itemEvent === 'copyCut' && !globalData.selectText) item.style.display = 'none';
-            // 判断剪切板是否包含文本
-            // Note: 异步? 导致了此处判断只能写这里（存在些微时间差）
-            if (itemEvent === 'copyPaste')
-              RightMenus.readClipboard().then(text => {
-                if (!!text) {
-                  globalData.isReadClipboard = true;
-                  globalData.readClipboard = text;
-                } else {
+            if (globalData.isInputBox) {
+              item.style.display = 'block';
+              if (itemEvent === 'copyCut' && !globalData.selectText) item.style.display = 'none';
+              if (itemEvent === 'copyAll' && !globalData.inputValue) item.style.display = 'none';
+              if (globalData.isInputBox && itemEvent === 'copyPaste')
+                RightMenus.readClipboard().then(text => {
+                  if (!!text) {
+                    globalData.isReadClipboard = true;
+                    globalData.readClipboard = text;
+                  } else {
+                    item.style.display = 'none';
+                  }
+                }).catch(() => {
                   item.style.display = 'none';
-                }
-              }).catch(() => {
-                item.style.display = 'none';
-              })
+                })
+            }
             break;
           case 'seletctText':
             if (!!globalData.selectText) item.style.display = 'block';
@@ -471,18 +473,27 @@ RightMenus.fun = (() => {
   }
 
   fn.copyImg = () => {
+    if (volantis.GLOBAL_CONFIG.plugins.message.rightmenu.notice) {
+      VolantisApp.message('系统提示', '复制中，请等待。', {
+        icon: rightMenuConfig.options.iconPrefix + ' fa-images'
+      })
+    }
     RightMenus.writeClipImg(globalData.mediaLinkUrl, e => {
-      if (RightMenus.messageRightMenu)
+      if (RightMenus.messageRightMenu) {
+        VolantisApp.hideMessage();
         VolantisApp.message('系统提示', '图片复制成功！', {
           icon: rightMenuConfig.options.iconPrefix + ' fa-images'
         });
+      }
     }, (e) => {
       console.error(e);
-      if (RightMenus.messageRightMenu)
+      if (RightMenus.messageRightMenu) {
+        VolantisApp.hideMessage();
         VolantisApp.message('系统提示', '复制失败：' + e, {
           icon: rightMenuConfig.options.iconPrefix + ' fa-exclamation-square red',
           time: 9000
         });
+      }
     })
   }
 
