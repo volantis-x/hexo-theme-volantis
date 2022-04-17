@@ -66,9 +66,9 @@
 
 <% 
   if (theme.comments.service && theme.comments.service.length > 0) {
-    try {
-      partial('../../_plugins/comments/' + theme.comments.service + '/script')
-    } catch (e) {
+    try { %>
+      <%- partial('../../_plugins/comments/' + theme.comments.service + '/script') %>
+    <% } catch (e) {
       // error friendly
       console.log(`
 ===============================================================================
