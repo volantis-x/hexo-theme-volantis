@@ -43,11 +43,9 @@ const RightMenuAplayer = (() => {
       });
       APlayer.player.on('volumechange', function (e) {
         fn.onUpdateAPlayerVolume(e);
-        APlayer.status = 'volumechange';
       });
       APlayer.player.on('loadstart', function (e) {
         fn.updateTitle(e);
-        APlayer.status = 'loadstart';
       });
 
       // 监听音量手势
