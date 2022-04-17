@@ -20,7 +20,8 @@
       pageTitle: document.title,
       placeholder: placeholder,
       site: '<%= config.title %>',
-      darkMode: volantis.dark.mode === "dark"
+      darkMode: volantis.dark.mode === "dark",
+      pvEl: '#artalk_visitors'
     }));
 
     volantis.artalk.on('comments-loaded', () => {
