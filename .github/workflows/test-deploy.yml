@@ -30,6 +30,7 @@ jobs:
         npm install hexo-cli -g
         npm run start
     - name: Deploy
+      if: ${{ matrix.node_version == '16' }}
       uses: peaceiris/actions-gh-pages@v3
       with:
         deploy_key: ${{ secrets.MHUIG_DEPLOY_KEY }}
@@ -62,6 +63,7 @@ jobs:
         npm install hexo-cli -g
         npm run start
     - name: Deploy
+      if: ${{ matrix.node_version == '16' }}
       uses: peaceiris/actions-gh-pages@v3
       with:
         deploy_key: ${{ secrets.MHUIG_DEPLOY_KEY }}
