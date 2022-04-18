@@ -76,27 +76,30 @@ scroll_smooth: true
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
-    img: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
-    icon:
-    title:
+    # img: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    icon: 
+    title: Fuxxの博客
   menu:
-    - name: 博客
-      icon: fa-solid fa-rss
+    - name: 首页
+      icon: fas fa-rss
       url: /
     - name: 分类
-      icon: fa-solid fa-folder-open
+      icon: fas fa-folder-open
       url: categories/
     - name: 标签
-      icon: fa-solid fa-tags
+      icon: fas fa-tags
       url: tags/
+    - name: 热度
+      icon: fas fa-fire
+      url: hot/
     - name: 归档
-      icon: fa-solid fa-archive
+      icon: fas fa-archive
       url: archives/
     - name: 友链
-      icon: fa-solid fa-link
+      icon: fas fa-link
       url: friends/
     - name: 关于
-      icon: fa-solid fa-info-circle
+      icon: fas fa-info-circle
       url: about/
   search: Search...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
@@ -105,42 +108,35 @@ navbar:
 ############################### Cover ############################### > start
 cover:
   height_scheme: full # full, half
-  layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  layout_scheme: search # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
-  # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
-  logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
-  title: 'Volantis'
-  subtitle: ''
-  search: A Wonderful Theme for Hexo # search bar placeholder
+  # background: https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture # 官方背景
+  background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200 # Bing
+  # background: http://www.dmoe.cc/random.php # 二次元
+  # background: https://cdn.seovx.com/d/?mom=302 # 二次元
+  logo:  # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
+  title: 'Fuxxの博客'
+  subtitle: '' # 永远相信美好的事情即将发生
+  search: Start with search # search bar placeholder
   features:
-    - name: 文档
-      icon: #
-      img: volantis-static/media/twemoji/assets/svg/1f5c3.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
-      url: /v4/getting-started/
-    - name: 帮助
-      icon: #
-      img: volantis-static/media/twemoji/assets/svg/1f516.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
-      url: faqs/
-    - name: 示例
-      icon: #
-      img: volantis-static/media/twemoji/assets/svg/1f396.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
-      url: /examples/
-    - name: 社区
-      icon: #
-      img: volantis-static/media/twemoji/assets/svg/1f389.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
-      url: /contributors/
-    - name: 博客
-      icon: #
-      img: volantis-static/media/twemoji/assets/svg/1f4f0.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
-      url: /archives/
-    - name: 源码
-      icon: #
-      img: volantis-static/media/twemoji/assets/svg/1f9ec.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
-      url: https://github.com/volantis-x/hexo-theme-volantis/
+    - name: 分类
+      icon: fas fa-folder-open
+      url: categories/
+    - name: 标签
+      icon: fas fa-tags
+      url: tags/
+    - name: 归档
+      icon: fas fa-archive
+      url: archives/
+    - name: 友链
+      icon: fas fa-link
+      url: friends/
+    - name: 关于
+      icon: fas fa-info-circle
+      url: about/
 ############################### Cover ############################### > end
 
 pages:
@@ -172,7 +168,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, counter] #启用评论数量需在此添加
+    top_meta: [author, category, date, counter, wordcount, valinecount] #启用评论数量需在此添加
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -180,7 +176,7 @@ article:
       # 参考资料、相关资料等 (for layout: post/docs)
       references:
         title: 参考资料
-        icon: fa-solid fa-quote-left
+        icon: fas fa-quote-left
         # 在 front-matter 中:
         #   references:
         #     - title: 某篇文章
@@ -192,7 +188,7 @@ article:
       related_posts:
         enable: false
         title: 相关文章
-        icon: fa-solid fa-bookmark
+        icon: fas fa-bookmark
         max_count: 5
         # 设为空则不使用文章头图
         placeholder_img: https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
@@ -200,8 +196,9 @@ article:
       # 版权声明组件 (for layout: post)
       copyright:
         enable: true
-        permalink: '本文永久链接是：'
+        permalink: '本文链接：'
         content:
+          - '作者：Fuxx-1@Github'
           - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
           - permalink
       # ----------------
@@ -219,9 +216,9 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: volantis-static/media/org.volantis/blog/favicon/apple-touch-icon.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
-        name: 请设置文章作者
-        url: /
+        avatar: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/avatar.jpg
+        name: Fuxx-1 # 请设置文章作者
+        url: /about/
       # 文章创建日期
       date:
         icon: fa-solid fa-calendar-alt
@@ -269,7 +266,7 @@ article:
 comments:
   title: <i class='fa-solid fa-comments'></i> 评论
   subtitle:
-  service: giscus
+  service: waline
   # 可选评论系统 #
 
   # artalk
@@ -404,7 +401,7 @@ comments:
     envId: xxxxxxxxxxxxxxx # 腾讯云环境id
     placeholder: #全局评论占位，也可以在管理面板中的配置管理处设置（此处优先级更高）
 
-  # Waline
+  # 
   # https://waline.js.org/
   waline:
     js: https://npm.elemecdn.com/@waline/client@1.6.0/dist/Waline.min.js
@@ -414,7 +411,7 @@ comments:
     # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder uploadImage] 选项
     meta: [nick,mail,link] # waline comment header info
     requiredFields: [nick,mail]
-    serverURL: xxxxxxxxxxxxxxx # Waline 的服务端地址（必填） 测试用地址: https://waline-ruddy.vercel.app
+    serverURL: https://comment.newimg.ltd # Waline 的服务端地址（必填） 测试用地址: https://waline-ruddy.vercel.app
     avatar: robohash # gravatar style https://waline.js.org/client/basic.html#avatar
     avatarCDN: #https://sdn.geekzu.org/avatar/
     pageSize: 10 # 评论每页显示数量
@@ -426,66 +423,71 @@ comments:
 
 ############################### Sidebar ############################### > start
 sidebar:
-  position: right # left right
   # 主页、分类、归档等独立页面
-  for_page: [blogger, category, tagcloud, donate]
+  for_page: [blogger, webinfo, category, tagcloud, music]
+  # , qrcode
   # layout: docs/post 这类文章页面
-  for_post: [toc]
+  for_post: [toc, music]
   # 侧边栏组件库
   widget_library:
     # ---------------------------------------
     # blogger info widget
     blogger:
       class: blogger
-      display: [desktop, mobile] # [desktop, mobile]
-      avatar: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
-      shape: rectangle # circle, rectangle
+      display: [desktop] # [desktop, mobile]
+      avatar: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/avatar.jpg
+      shape: circle # circle, rectangle
       url: /about/
-      title:
-      subtitle:
-      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      title: Fuxx-1
+      subtitle: 永远相信美好的事情即将发生
+      jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        - icon: fa-solid fa-rss
+        - icon: fas fa-rss
           url: /atom.xml
-        - icon: fa-solid fa-envelope
-          url: mailto:me@xxx.com
+        - icon: fas fa-envelope
+          url: http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=NVNATUBNXFRbUnVERBtWWlg
         - icon: fab fa-github
-          url: https://github.com/volantis-x/
-        - icon: fa-solid fa-headphones-alt
-          url: /
+          url: https://github.com/fuxx-1/
+        - icon: fab fa-qq
+          url: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/QQ.jpg
+        # - icon: fas fa-headphones-alt
+        #   url: /
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
       class: toc
       display: [desktop, mobile] # [desktop, mobile]
       header:
-        icon: fa-solid fa-list
-        title: 本文目录
+        icon: fas fa-list
+        title: 目录
       list_number: false
-      min_depth: 2
+      min_depth: 1
       max_depth: 5
     # ---------------------------------------
     # music
     music:
       class: music
       display: [desktop, mobile] # [desktop, mobile]
-      pjaxReload: false
+      header:
+        icon: fas fa-headphones-alt
+        title: 音乐
+      pjaxReload: true
     # ---------------------------------------
     # category widget
     category:
       class: category
       display: [desktop] # [desktop, mobile]
       header:
-        icon: fa-solid fa-folder-open
+        icon: fas fa-folder-open
         title: 文章分类
         url: /blog/categories/
     # ---------------------------------------
     # tagcloud widget
     tagcloud:
       class: tagcloud
-      display: [desktop, mobile] # [desktop, mobile]
+      display: [desktop] # [desktop, mobile]
       header:
-        icon: fa-solid fa-tags
+        icon: fas fa-tags
         title: 热门标签
         url: /blog/tags/
       min_font: 14
@@ -497,18 +499,18 @@ sidebar:
     # qrcode widget
     qrcode:
       class: qrcode
-      display: [desktop, mobile] # [desktop, mobile]
+      display: [desktop] # [desktop, mobile]
       height: 64px  # Automatic height if not set
       images:
-        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+        - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+        - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # ---------------------------------------
     # webinfo widget
     webinfo:
       class: webinfo
       display: [desktop]
       header:
-        icon: fa-solid fa-award
+        icon: fas fa-award
         title: 站点信息
       type:
         article:
@@ -545,7 +547,7 @@ sidebar:
       class: lastupdate
       display: [desktop, mobile]
       header:
-        icon: fa-solid fa-clock WISTERIA
+        icon: fas fa-clock WISTERIA
         title: 最近更新
 ############################### Sidebar ############################### > end
 
@@ -571,9 +573,9 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, analytics, info, copyright]
+  layout: [social, license, analytics, br, copyright]
   social:
-    - icon: #fa-solid fa-rss
+    - icon: #fas fa-rss
       url:
     # or
     - img:
@@ -585,12 +587,12 @@ site_footer:
   source: https://github.com/volantis-x/volantis-docs/
   # analytics using leancloud
   analytics: >
-    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
-    <span id="lc-uv">访客数为 <span id='number'><i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
+    <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
-  copyright: '[Copyright © since 2017 XXX](/)'
+  copyright: '[Copyright © 2020-Now newimg.ltd](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
-  br: '<br>'
+  br: '陕ICP备2021011674号<br>'
 ############################### Site Footer ############################### > end
 
 ############################### Plugins ############################### > start
@@ -707,46 +709,33 @@ plugins:
 
   # 视差滚动效果 Slide Background
   parallax:
-    enable: #true
+    enable: true
     position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
     shuffle: true         # shuffle playlist
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - volantis-static/media/wallpaper/minimalist/2020/001.webp
-      - volantis-static/media/wallpaper/minimalist/2020/002.webp
-      - volantis-static/media/wallpaper/minimalist/2020/003.webp
-      - volantis-static/media/wallpaper/minimalist/2020/004.webp
-      - volantis-static/media/wallpaper/minimalist/2020/005.webp
-      - volantis-static/media/wallpaper/minimalist/2020/006.webp
-      - volantis-static/media/wallpaper/minimalist/2020/012.webp
-      - volantis-static/media/wallpaper/minimalist/2020/016.webp
-      - volantis-static/media/wallpaper/minimalist/2020/019.webp
-      - volantis-static/media/wallpaper/minimalist/2020/025.webp
-      - volantis-static/media/wallpaper/minimalist/2020/033.webp
-      - volantis-static/media/wallpaper/minimalist/2020/034.webp
-      - volantis-static/media/wallpaper/minimalist/2020/035.webp
-      - volantis-static/media/wallpaper/minimalist/2020/038.webp
-      - volantis-static/media/wallpaper/minimalist/2020/039.webp
-      - volantis-static/media/wallpaper/minimalist/2020/042.webp
-      - volantis-static/media/wallpaper/minimalist/2020/046.webp
-      - volantis-static/media/wallpaper/minimalist/2020/051.webp
-      - volantis-static/media/wallpaper/minimalist/2020/052.webp
-      - volantis-static/media/wallpaper/minimalist/2020/054.webp
-      - volantis-static/media/wallpaper/minimalist/2020/056.webp
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/0.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/1.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/2.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/3.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/4.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/6.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/7.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/8.jpg
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
-    enable: #true
+    enable: true
     js:
       aplayer: volantis-static/libs/aplayer/dist/APlayer.min.js # https://unpkg.com/aplayer@1.10/dist/APlayer.min.js
       meting: volantis-static/libs/meting/dist/Meting.min.js # https://unpkg.com/meting@2.0/dist/Meting.min.js
     css: volantis-static/libs/aplayer/dist/APlayer.min.css # https://unpkg.com/aplayer@1.10/dist/APlayer.min.css
     # Required
-    server: netease   # netease, tencent, kugou, xiami, baidu
+    server: tencent   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
-    id: 3175833810    # song id / playlist id / album id / search keyword
+    id: 6559921027    # song id / playlist id / album id / search keyword
     # Optional
     fixed: false      # enable fixed mode
     theme: '#1BCDFC'  # main color
@@ -777,7 +766,7 @@ plugins:
   #   icon: fa-solid fa-moon # 可自定义
   #   toggle: darkmode
   darkmode:
-    enable: #true
+    enable: true
 
   # 旧版 Internet Explorer 淘汰行动
   # https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support
@@ -872,7 +861,7 @@ plugins:
   # Tidio
   # https://www.tidio.com/
   tidio:
-    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    id: qfmxenxm3vbbzuagnt9kj52ykueuibfn
 
   # Gitter
   # https://gitter.im
@@ -975,12 +964,12 @@ rightmenus:
   # 右键自定义菜单区域
   menus:
     link:
-      - {id: 'help', name: '常见问题', icon: 'fa-solid fa-question', link: 'https://volantis.js.org/faqs/', group: 'link'}
-      - {id: 'examples', name: '示例博客', icon: 'fa-solid fa-rss', link: 'https://volantis.js.org/examples/', group: 'link'}
-      - {id: 'contributors', name: '加入社区', icon: 'fa-solid fa-fan', link: 'https://volantis.js.org/contributors/', group: 'link'}
+      # - {id: 'help', name: '常见问题', icon: 'fa-solid fa-question', link: 'https://volantis.js.org/faqs/', group: 'link'}
+      # - {id: 'examples', name: '示例博客', icon: 'fa-solid fa-rss', link: 'https://volantis.js.org/examples/', group: 'link'}
+      # - {id: 'contributors', name: '加入社区', icon: 'fa-solid fa-fan', link: 'https://volantis.js.org/contributors/', group: 'link'}
       - hr
-      - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
-      - {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
+      # - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
+      # - {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
     darkMode: 
       - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-moon', event: 'volantis.dark.toggle()', group: 'darkMode'}
 ###
@@ -990,7 +979,7 @@ rightmenu:
   enable: false
   faicon: fa              # 公共图标类型 fa fal fa-solid fa-duotone
   # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, reading, music]
+  layout: [home, hr, print, darkmode, reading, music]
   ### 可选功能项 ###
   print:                  # 只有文章页才允许自定义打印
     name: 打印页面
@@ -1015,7 +1004,7 @@ rightmenu:
   examples:
     name: 示例博客
     icon: fa fa-rss
-    url: https://volantis.js.org/examples/
+    url: https://volWalineantis.js.org/examples/
   contributors:
     name: 加入社区
     icon: fa fa-fan fa-spin
@@ -1048,9 +1037,9 @@ color_scheme:
   # 通用颜色
   common:
     # 主题色
-    theme: '#3dd9b6'
+    theme: '#44D7B6'
     # 链接色
-    link: '#2092ec'
+    link: '#1b79c4'
     # 按钮色
     button: '#44D7B6'
     # 鼠标放到交互元素上时的色
@@ -1098,43 +1087,40 @@ color_scheme:
     meta: '#888'
   # ------------
   # 暗色主题
-  # https://www.maijisheji.com/2094.html
   dark:
-    # 网站最深底色            # Dark Grey 1
-    site_bd: '#121212'
-    # 网站背景色              # Dark Grey 2
-    site_bg: '#1f1f1f'
-    # 卡片背景色              # Dark Grey 3
-    card: '#262626'
+    # 网站背景色
+    site_bg: '#222'
     # 网站背景上的文字
-    site_inner: '#eeeeeede'
+    site_inner: '#eee'
     # 网站页脚文字
-    site_footer: '#aaaaaade'
+    site_footer: '#aaa'
+    # 卡片背景色
+    card: '#333'
     # 卡片上的普通文字
-    text: '#eeeeeede'
+    text: '#eee'
 
-    # 区块和代码块背景色       # Dark Grey 4
-    block: '#434343'
-    # 代码块高亮时的背景色     # Dark Grey 2
-    codeblock: '#1f1f1f'
+    # 区块和代码块背景色
+    block: '#3a3a3a'
+    # 代码块高亮时的背景色
+    codeblock: '#343a3c'
     # 行内代码颜色
     inlinecode: '#D56D28'
 
-    # 文章部分 高强度文本的不透明度应为87％ 中等重点文字适用于60％
-    h1: '#FFFFFFde'            #  Dark Grey 8
-    h2: '#FFFFFFde'
-    h3: '#FFFFFF99'            #  Dark Grey 7
-    h4: '#FFFFFF99'
-    h5: '#FFFFFF99'
-    h6: '#FFFFFF99'
-    p: '#d9d9d9de'           #  Dark Grey 6
+    # 文章部分
+    h1: '#eee'
+    h2: '#eee'
+    h3: '#ddd'
+    h4: '#ddd'
+    h5: '#ddd'
+    h6: '#ddd'
+    p: '#bbb'
 
-    # 列表文字                #  Dark Grey 6
-    list: '#d9d9d9de'
+    # 列表文字
+    list: '#aaa'
     # 列表 hover 时的文字
     list_hl: 'mix($color-theme, #fff, 80)'
-    # 辅助性文字              #  Dark Grey 5
-    meta: '#bfbfbfde'
+    # 辅助性文字
+    meta: '#888'
     # 夜间图片亮度
     brightness: 70%
 ############################### Color Scheme ############################### > end
@@ -1142,7 +1128,7 @@ color_scheme:
 ############################### Custom css ############################### > start
 custom_css:
   cursor:
-    enable: #true
+    enable: true
     text: volantis-static/media/cursor/text.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
     pointer: volantis-static/media/cursor/pointer.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
     default: volantis-static/media/cursor/left_ptr.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
@@ -1221,8 +1207,8 @@ custom_css:
 analytics:
   busuanzi: #volantis-static/libs/busuanzi/js/busuanzi.pure.mini.js #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   leancloud: # 请使用自己的 id & key 以防止数据丢失
-    app_id: # u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
-    app_key: # jfHtEKVE24j0IVCGHbvuFClp
+    app_id: h3tIB2qbjXY5drW5YPWukzq9-gzGzoHsz # u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
+    app_key: dBV0MUqkcaL9TBlq0XVEPL94 # jfHtEKVE24j0IVCGHbvuFClp
     custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
 ############################### Analytics ############################### > end
 
