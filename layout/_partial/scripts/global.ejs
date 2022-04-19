@@ -378,7 +378,6 @@
         volantis.scroll.unengine.push(()=>{
           let me = ele.getBoundingClientRect().top
           if(!(me >= -option.observerDic && me <= option.observerDic)){
-            ele.VolantisScrollObserver=0;
             volantis.scroll.to(ele, option)
           }
           volantis.scroll.unengine.remove("unengineObserver")
