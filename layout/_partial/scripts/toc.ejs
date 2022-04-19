@@ -17,7 +17,7 @@
       link.addEventListener("click", (event) => {
         event.preventDefault();
         // 这里的 addTop 是通过错位使得 toc 自动展开.
-        volantis.scroll.to(target,{addTop: 5, observer:false})
+        volantis.scroll.to(target,{addTop: 5, observer:true})
         // Anchor id
         history.pushState(null, document.title, "#" + target.id);
       });
