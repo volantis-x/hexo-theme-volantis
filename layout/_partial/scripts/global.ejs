@@ -372,7 +372,7 @@
     // 监视器
     // 监视并矫正元素滚动到指定位置 
     // 用于处理 lazyload 引起的 cls 导致的定位失败问题
-    option.observer = true // 默认强制开启
+    // option.observer = false
     if (option.observer) {
       setTimeout(()=>{
         volantis.scroll.unengine.push(()=>{
