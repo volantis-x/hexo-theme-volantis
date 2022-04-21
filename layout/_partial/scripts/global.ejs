@@ -181,12 +181,11 @@
     error: new RunItem(),
     send: new RunItem(),
   };
-  volantis.pjax = {
-    ...volantis.pjax,
+  volantis.pjax = Object.assign(volantis.pjax, {
     push: volantis.pjax.method.complete.push,
     error: volantis.pjax.method.error.push,
     send: volantis.pjax.method.send.push,
-  };
+  });
   /********************  Dark Mode  ********************************/
   // /layout/_partial/scripts/darkmode.ejs
   // volantis.dark.mode 当前模式 dark or light
@@ -196,10 +195,9 @@
   volantis.dark.method = {
     toggle: new RunItem(),
   };
-  volantis.dark = {
-    ...volantis.dark,
+  volantis.dark = Object.assign(volantis.dark, {
     push: volantis.dark.method.toggle.push,
-  };
+  });
   /********************  Message  ********************************/
   // VolantisApp.message
   /********************  isMobile  ********************************/
@@ -309,10 +307,9 @@
     engine: new RunItem(),
     unengine: new RunItem(),
   };
-  volantis.scroll = {
-    ...volantis.scroll,
+  volantis.scroll = Object.assign(volantis.scroll, {
     push: volantis.scroll.engine.push,
-  };
+  });
   // 滚动条距离顶部的距离
   volantis.scroll.getScrollTop = () =>{
     let scrollPos;
@@ -339,6 +336,8 @@
         // } else {
         //   console.log("向上滚动");
         // }
+        // 注销过期的unengine未滚动事件
+        volantis.scroll.unengine.list=[]
         volantis.scroll.engine.start();
       }else{
         volantis.scroll.unengine.start();
@@ -372,17 +371,19 @@
     window.scrollTo(opt);
     // 监视器
     // 监视并矫正元素滚动到指定位置 
-    // 目前用于处理 toc 部分 lazyload 引起的 cls 导致的定位失败问题 [存在Bug]
-    // if (option.observer) {
-    //   volantis.scroll.unengine.push(()=>{
-    //     let me = ele.getBoundingClientRect().top
-    //     if(!(me >= -option.observerDic && me <= option.observerDic)){
-    //       volantis.scroll.to(ele, option)
-    //     }else{
-    //       volantis.scroll.unengine.remove("unengineObserver")
-    //     }
-    //   },"unengineObserver")
-    // }
+    // 用于处理 lazyload 引起的 cls 导致的定位失败问题
+    // option.observer = false
+    if (option.observer) {
+      setTimeout(()=>{
+        volantis.scroll.unengine.push(()=>{
+          let me = ele.getBoundingClientRect().top
+          if(!(me >= -option.observerDic && me <= option.observerDic)){
+            volantis.scroll.to(ele, option)
+          }
+          volantis.scroll.unengine.remove("unengineObserver")
+        },"unengineObserver")
+      },1000)
+    }
   }
   /******************************************************************************/
   /******************************************************************************/
