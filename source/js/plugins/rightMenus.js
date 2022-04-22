@@ -5,7 +5,7 @@ const RightMenus = {
   messageRightMenu: volantis.GLOBAL_CONFIG.plugins.message.enable && volantis.GLOBAL_CONFIG.plugins.message.rightmenu.enable,
   corsAnywhere: volantis.GLOBAL_CONFIG.plugins.rightmenus.options.corsAnywhere,
   urlRegx: /^((https|http)?:\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/,
-  imgRegx: /\.(jpe?g|png|webp|svg|gif|jifi)$/,
+  imgRegx: /\.(jpe?g|png|webp|svg|gif|jifi)(-|_|!|\?|\/)?.*$/,
 
   /**
    * 加载右键菜单
