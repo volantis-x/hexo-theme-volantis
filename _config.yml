@@ -281,7 +281,7 @@ comments:
   artalk:
     js: https://unpkg.com/artalk@2.2.6/dist/Artalk.js
     css: https://unpkg.com/artalk@2.2.6/dist/Artalk.css
-    server: http://127.0.0.1:8080/api    # 修改为自建的后端服务地址
+    server: http://127.0.0.1:8080    # 修改为自建的后端服务地址
     path:  # 全局评论地址
     # 更多选项 https://artalk.js.org/guide/frontend/config.html 按照yml格式继续填写即可 
     # 除了 [el pageKey pageTitle site pvEl] 选项
