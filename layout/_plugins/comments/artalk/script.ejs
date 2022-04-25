@@ -19,21 +19,24 @@
       pageKey: path,
       pageTitle: document.title,
       placeholder: placeholder,
+      useBackendConf: true,
       site: '<%= config.title %>',
       darkMode: volantis.dark.mode === "dark",
       pvEl: '#artalk_visitors'
     }));
 
-    volantis.artalk.on('comments-loaded', () => {
-      if (typeof VolantisFancyBox === "undefined"){
-        const checkFancyBox = setInterval(() => {
-          if(typeof VolantisFancyBox === "undefined") return;
-          clearInterval(checkFancyBox);
+    volantis.artalk.then(ctx => {
+      ctx.on('comments-loaded', () => {
+        if (typeof VolantisFancyBox === "undefined"){
+          const checkFancyBox = setInterval(() => {
+            if(typeof VolantisFancyBox === "undefined") return;
+            clearInterval(checkFancyBox);
+            VolantisFancyBox.groupBind('.atk-content img:not([atk-emoticon])', 'Comments');
+          })
+        } else {
           VolantisFancyBox.groupBind('.atk-content img:not([atk-emoticon])', 'Comments');
-        })
-      } else {
-        VolantisFancyBox.groupBind('.atk-content img:not([atk-emoticon])', 'Comments');
-      }
+        }
+      })
     })
   }
 
@@ -48,7 +51,9 @@
 
   function dark_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0]) return;
-    volantis.artalk.setDarkMode(volantis.dark.mode === "dark")
+    volantis.artalk.then(ctx => {
+      ctx.setDarkMode(volantis.dark.mode === "dark")
+    })
   }
   volantis.dark.push(dark_artalk);
 </script>

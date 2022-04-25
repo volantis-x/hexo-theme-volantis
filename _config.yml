@@ -279,18 +279,14 @@ comments:
   # https://artalk.js.org/
   # https://github.com/ArtalkJS/Artalk
   artalk:
-    js: https://unpkg.com/artalk@2.2.7/dist/Artalk.js
-    css: https://unpkg.com/artalk@2.2.7/dist/Artalk.css
-    server: http://127.0.0.1:8080    # 修改为自建的后端服务地址
+    js: https://yours-artalk-domain/dist/Artalk.js   # or https://unpkg.com/artalk@2.2.8/dist/Artalk.js
+    css: https://yours-artalk-domain/dist/Artalk.css # or https://unpkg.com/artalk@2.2.8/dist/Artalk.css
+    server: https://yours-artalk-domain    # 修改为自建的后端服务地址
     path:  # 全局评论地址
-    # 更多选项 https://artalk.js.org/guide/frontend/config.html 按照yml格式继续填写即可 
-    # 除了 [el pageKey pageTitle site pvEl] 选项
-    # 下面是一些例子：
-    #placeholder: 来啊，快活啊 ( ゜- ゜)   # 全局评论占位
-    #pagination:
-    #  readMore: true   # 加载更多模式
-    #  autoLoad: false  # 滚动到底部自动加载
-    #  pageSize: 10     # 每次请求获取数量
+    placeholder: # 评论占位
+    # 更多置项可在 Artalk 后端进行配置，详见 https://artalk.js.org/guide/backend/fe-control.html
+    # 也可以在此处继续参考上方例子进行配置，不建议重写配置的字段除上方所述外还有：
+    # [el, useBackendConf, pageKey, pageTitle, site, darkMode, pvEl]
     
   # giscus
   # https://giscus.app
