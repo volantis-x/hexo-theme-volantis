@@ -254,7 +254,11 @@ RightMenus.fun = (() => {
       }
     })
 
+    // 执行外部事件
+    volantis.mouseEvent = event;
+    volantis.rightmenu.method.handle.start()
 
+    // 过滤 HR 元素
     let elementHrItem = { item: null, hide: true };
     _rightMenuListWithHr.forEach((item) => {
       if (item.nodeName === "HR") {
