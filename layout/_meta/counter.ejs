@@ -26,7 +26,7 @@
       </p>
     </a>
   </div>
-  -<% } else if (theme.comments.service=='waline' && theme.comments.waline.visitor) { %>
+<% } else if (theme.comments.service=='waline' && theme.comments.waline.visitor) { %>
   <div class="new-meta-item browse">
     <a class='notlink'>
       <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
@@ -55,7 +55,19 @@
       </span>
     </a>
   </div>
-  <% } else if (theme.comments.service=='artalk' && !!page.comments) { %>
+<% } else if (theme.comments.service=='discuss' && !!page.comments) { %>
+  <div class="new-meta-item browse">
+    <a class='notlink'>
+      <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
+      <p>
+        <span id="Discuss-Visitors">
+          <i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
+        </span>
+      </p>
+      </span>
+    </a>
+  </div>
+<% } else if (theme.comments.service=='artalk' && !!page.comments) { %>
     <div class="new-meta-item browse">
       <a class='notlink'>
         <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
@@ -67,4 +79,4 @@
         </p>
       </a>
     </div>
-  <% } %>
+<% } %>

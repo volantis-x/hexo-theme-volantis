@@ -423,6 +423,14 @@ comments:
     lang: zh-CN
     visitor: true
 
+  # Discuss
+  # https://discuss.js.org
+  discuss:
+    js: https://cdn.jsdelivr.net/npm/discuss/dist/Discuss.js # 建议锁定版本
+    serverURLs: # Discuss server address url
+    visitor: true
+    options: # https://discuss.js.org/Quick-Start.html#path
+
 
 ############################### Comments ############################### > end
 
