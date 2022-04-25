@@ -25,23 +25,23 @@
         </div>
       <% } %>
 
-      <% if (item.type.visitcounter.siteuv.enable && item.type.visitcounter.service) { %>
+      <% if (item.type.visitcounter.siteuv.enable && (!!theme.analytics.busuanz || !!theme.analytics.leancloud.app_id)) { %>
         <div class="webinfo-item">
           <div><%= item.type.visitcounter.siteuv.text %></div>
-          <% if (item.type.visitcounter.service == "busuanzi") {%>
+          <% if (!!theme.analytics.busuanz) {%>
           <div><span id="busuanzi_value_site_uv"><i class="fa-solid fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> <%= item.type.visitcounter.siteuv.unit %></div>
-          <% } else if (item.type.visitcounter.service == "leancloud") { %>
+          <% } else { %>
           <div><span id="lc-uv"><span id='number'><i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> <%= item.type.visitcounter.siteuv.unit %></div>
           <% } %>
         </div>
       <% } %>
 
-      <% if (item.type.visitcounter.sitepv.enable && item.type.visitcounter.service) { %>
+      <% if (item.type.visitcounter.sitepv.enable && (!!theme.analytics.busuanz || !!theme.analytics.leancloud.app_id)) { %>
         <div class="webinfo-item">
           <div><%= item.type.visitcounter.sitepv.text %></div>
-          <% if (item.type.visitcounter.service == "busuanzi") {%>
+          <% if (!!theme.analytics.busuanz) {%>
           <div><span id="busuanzi_value_site_pv"><i class="fa-solid fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> <%= item.type.visitcounter.sitepv.unit %></div>
-          <% } else if (item.type.visitcounter.service == "leancloud") { %>
+          <% } else { %>
           <div><span id="lc-sv"><span id='number'><i class="fa-solid fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span></span> <%= item.type.visitcounter.sitepv.unit %></div>
           <% } %>
         </div>

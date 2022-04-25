@@ -535,7 +535,6 @@ sidebar:
           text: '本站总字数：'   # 需要启用 wordcount
           unit: '字'
         visitcounter:
-          service: leancloud  # busuanzi, leancloud
           siteuv:
             enable: true
             text: '本站访客数：'
