@@ -1,9 +1,18 @@
-'use strict';
+// 环境配置检查可以避免一些奇葩的报错
+
 const exec = require('child_process').exec;
 module.exports =(hexo) => {
   if (!hexo.checkEnvironment) {
     hexo.checkEnvironment=1;
     hexo.log.info(`Checking environment configuration...`);
+
+    // Checking configuration
+    let checkConfiguration = require('./check-configuration')(hexo);
+    if (checkConfiguration!==true) {
+      CheckConfError(hexo,checkConfiguration);
+    }
+
+    // Checking environment
     exec('node -v', (err, stdout, stderr) => {
       if (err) {
         CheckError(hexo,`node.js: ${err}`);
@@ -52,4 +61,14 @@ node.js: 16.x LTS ~ latest LTS
 npm: 8.x ~ latest LTS
 ============================================================`);
   throw new Error('环境配置检查失败！| Environment configuration check failed!');
+}
+
+function CheckConfError(hexo,msg) {
+  hexo.log.error(`
+============================================================
+配置文件检查失败！| Configuration check failed!
+============================================================
+${msg}
+============================================================`);
+  throw new Error('配置文件检查失败！| Configuration check failed!');
 }
