@@ -10,7 +10,7 @@
     let placeholder = pdata.commentPlaceholder || "<%= theme.comments.twikoo.placeholder %>" || "";
     if (path.length == 0) {
       let defaultPath = '<%= theme.comments.twikoo.path %>';
-      path = defaultPath || "decodeURI(window.location.pathname)"; //神奇的pathname 没错,twikoo这里就是字符串,不要乱动了
+      path = defaultPath || decodeURI(window.location.pathname);
     }
     twikoo.init(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.twikoo) %>, {
       el: '#twikoo_container',
