@@ -295,7 +295,7 @@ const VolantisApp = (() => {
             let array = e.currentTarget.children
             for (let index = 0; index < array.length; index++) {
               const element = array[index];
-              if (volantis.dom.$(element).title === 'menu') { // 移动端菜单栏异常  
+              if (volantis.dom.$(element).title === 'menu') { // 移动端菜单栏异常
                 volantis.dom.$(element).display = "flex"      // https://github.com/volantis-x/hexo-theme-volantis/issues/706
               } else {
                 volantis.dom.$(element).show()
@@ -809,12 +809,12 @@ Object.freeze(VolantisFancyBox);
 
 // highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
 // Question: 锚点稳定性未知
-// ToDo: 查找模式 
+// ToDo: 查找模式
 // 0. (/////////要知道浏览器自带全页面查找功能 CTRL + F)
 // 1. 右键开启查找模式 / 导航栏菜单开启?? / CTRL + F ???
 // 2. 查找模式面板 (可拖动? or 固定?)
 // 3. keyword mark id 从 0 开始编号 查找下一处 highlightKeyWords.scrollToNextHighlightKeywordMark() 查找上一处 scrollToPrevHighlightKeywordMark() 循环查找(取模%)
-// 4. 可输入修改 查找关键词 keywords(type:list) 
+// 4. 可输入修改 查找关键词 keywords(type:list)
 // 5. 区分大小写 caseSensitive (/ 全字匹配?? / 正则匹配??)
 // 6. 在选定区域中查找 querySelector ??
 // 7. 关闭查找模式

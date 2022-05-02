@@ -10,7 +10,7 @@ hexo.extend.helper.register('generate_seo', function (theme, page) {
       }else{
         robots_content=theme.seo.robots.home_other_pages
       }
-    } else if (hexo.is_archive()) { 
+    } else if (hexo.is_archive()) {
       robots_content=theme.seo.robots.archive
     } else if (hexo.is_category()) {
       robots_content=theme.seo.robots.category

@@ -1,4 +1,4 @@
-// hexo.renderStylus 渲染 Stylus 的工具函数 
+// hexo.renderStylus 渲染 Stylus 的工具函数
 // hexo.createUuid   创建 uuid
 
 const stylus = require("stylus");

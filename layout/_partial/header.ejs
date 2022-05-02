@@ -61,7 +61,7 @@
               </li>
             <% } else { %>
               <li>
-                <a class="menuitem flat-box faa-parent animated-hover" 
+                <a class="menuitem flat-box faa-parent animated-hover"
                 <%- value.url ? `href="` + url_for(value.url) + `" title="` + (value.description || value.name) + `"`
                         : ` href="/" onclick="return false;" title="` + (value.description || value.name) + `"` %>
                   <% if (value.rel) { %>
