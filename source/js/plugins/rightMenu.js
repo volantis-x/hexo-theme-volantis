@@ -80,7 +80,7 @@ const RightMenu = (() => {
     }
   }
 
-  // 菜单位置设定 
+  // 菜单位置设定
   fn.popMenu = (event) => {
     let mouseClientX = event.clientX;
     let mouseClientY = event.clientY;
@@ -123,18 +123,18 @@ const RightMenu = (() => {
       });
   }
 
-  // 菜单项设置 
+  // 菜单项设置
   fn.setMenuItem = (event) => {
     let optionFlag = false;
     const eventTarget = event.target;
     const selectText = window.getSelection().toString();
-    DOMController.visible(_openTab, false); // 隐藏新标签页打开 
+    DOMController.visible(_openTab, false); // 隐藏新标签页打开
 
-    // 判断是否是输入框 
+    // 判断是否是输入框
     if (eventTarget.tagName.toLowerCase() === 'input' || eventTarget.tagName.toLowerCase() === 'textarea') {
       const inputStr = eventTarget.value;
 
-      // 全选 
+      // 全选
       if (inputStr.length > 0) {
         DOMController.visible(_copySelect);
         _copySelect.onclick = () => {
@@ -145,7 +145,7 @@ const RightMenu = (() => {
         DOMController.visible(_copySelect, false);
       }
 
-      // 剪切 
+      // 剪切
       if (selectText) {
         DOMController.visible(_copyCut);
         _copyCut.onclick = () => {
@@ -161,9 +161,9 @@ const RightMenu = (() => {
         DOMController.visible(_copyCut, false);
       }
 
-      // 粘贴 
+      // 粘贴
       fn.readClipboard().then(text => {
-        // 如果剪切板存在内容 
+        // 如果剪切板存在内容
         if (!!text) {
           DOMController.visible(_copyPaste);
           _copyPaste.onclick = () => {
@@ -182,7 +182,7 @@ const RightMenu = (() => {
       DOMController.visible(_copyCut, false);
     }
 
-    // 新标签打开链接 
+    // 新标签打开链接
     const eventHref = eventTarget.href;
     if (!!eventHref && urlRegx.test(eventHref)) {
       optionFlag = true;
@@ -198,7 +198,7 @@ const RightMenu = (() => {
       DOMController.visible(_copyHref, false);
     }
 
-    // 新标签打开图片 & 复制图片链接 
+    // 新标签打开图片 & 复制图片链接
     const eventSrc = eventTarget.currentSrc;
     if (!!eventSrc && urlRegx.test(eventSrc)) {
       optionFlag = true;
@@ -216,7 +216,7 @@ const RightMenu = (() => {
       DOMController.visible(_copySrc, false);
     }
 
-    // 复制图片 
+    // 复制图片
     if (!!eventSrc && urlRegx.test(eventSrc) && eventSrc.trimEnd().endsWith('.png')) {
       optionFlag = true;
       DOMController.visible(_copyImg);
@@ -236,7 +236,7 @@ const RightMenu = (() => {
       DOMController.visible(_copyImg, false);
     }
 
-    // 复制文本 
+    // 复制文本
     if (selectText) {
       optionFlag = true;
       DOMController.visible(_copyText);
@@ -254,7 +254,7 @@ const RightMenu = (() => {
       DOMController.visible(_searchWord, false);
     }
 
-    // 打印 
+    // 打印
     const _printArticle = document.querySelector('#post.article') || null;
     const pathName = window.location.pathname;
     if (!!_printArticle) {
@@ -314,12 +314,12 @@ const RightMenu = (() => {
     }
   }
 
-  // 隐藏菜单 
+  // 隐藏菜单
   fn.hideMenu = () => {
     DOMController.visible(_rightMenuWrapper, false);
   }
 
-  // 复制字符串 
+  // 复制字符串
   fn.copyString = (str) => {
     VolantisApp.utilWriteClipText(str)
       .then(() => {
@@ -335,7 +335,7 @@ const RightMenu = (() => {
       })
   }
 
-  // 写入文本到剪切板 
+  // 写入文本到剪切板
   fn.writeClipText = (str) => {
     try {
       return navigator.clipboard
@@ -369,7 +369,7 @@ const RightMenu = (() => {
     }
   }
 
-  // 写入图片到剪切板 
+  // 写入图片到剪切板
   fn.writeClipImg = async function (event, success, error) {
     const eventSrc = rightMenuConfig.customPicUrl.enable ?
       event.target.currentSrc.replace(rightMenuConfig.customPicUrl.old, rightMenuConfig.customPicUrl.new) :
@@ -413,14 +413,14 @@ const RightMenu = (() => {
     }
   }
 
-  // 请求读取剪切板 
+  // 请求读取剪切板
   fn.readClipboard = async () => {
     const result = await navigator.permissions.query({
       name: 'clipboard-read'
     });
     if (result.state === 'granted' || result.state === 'prompt') {
-      // 修改为 .read()  可以获取剪切板中的文字/图片 
-      // 返回的是 ClipboardItem 
+      // 修改为 .read()  可以获取剪切板中的文字/图片
+      // 返回的是 ClipboardItem
       return navigator.clipboard
         .readText()
         .then(text => text)
@@ -429,7 +429,7 @@ const RightMenu = (() => {
     return Promise.reject(result);
   }
 
-  // 粘贴文本 
+  // 粘贴文本
   fn.insertAtCaret = (elemt, value) => {
     const startPos = elemt.selectionStart,
       endPos = elemt.selectionEnd;
@@ -453,7 +453,7 @@ const RightMenu = (() => {
     }
   }
 
-  // 执行打印页面 
+  // 执行打印页面
   fn.printHtml = () => {
     if (volantis.isReadModel) fn.readingModel();
     DOMController.setAttribute('details', 'open', 'true');

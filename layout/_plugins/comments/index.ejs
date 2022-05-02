@@ -5,7 +5,7 @@
     }
 %>
 <% if (checkComment&&(theme.comments.service && theme.comments.service.length > 0)) { %>
-  
+
   <article class="post white-box <%- theme.custom_css.body.effect.join(' ') %>" id="comments">
     <span hidden>
       <meta itemprop="discussionUrl" content="<%- url_for(path) %>#comments">
@@ -14,11 +14,11 @@
     <% if (theme.comments && theme.comments.subtitle) { %>
       <p cst><%- theme.comments.subtitle %></p>
     <% } %>
-    
+
     <div id="layoutHelper-comments"></div>
 
   </article>
-  
+
 <% } else { %>
   <% page.comments = false; %>
 <% } %>

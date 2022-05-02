@@ -12,7 +12,7 @@
       el: '#waline',
       path: path,
       placeholder: pagePlaceholder,
-      
+
       // https://github.com/volantis-x/hexo-theme-volantis/issues/713
       <% if(theme.comments.waline.imageHosting){ %>
         uploadImage: function(file) {
@@ -29,7 +29,7 @@
           }).then(resp => resp.json()).then(resp => resp.data.links.url);
         }
       <% } %>
-  
+
   }),pdata.commentConfig));
     fancybox_waline()
   }

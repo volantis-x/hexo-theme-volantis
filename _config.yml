@@ -287,7 +287,7 @@ comments:
     # 更多置项可在 Artalk 后端进行配置，详见 https://artalk.js.org/guide/backend/fe-control.html
     # 也可以在此处继续参考上方例子进行配置，不建议重写配置的字段除上方所述外还有：
     # [el, useBackendConf, pageKey, pageTitle, site, darkMode, pvEl]
-    
+
   # giscus
   # https://giscus.app
   # https://github.com/laymonage/giscus
@@ -867,9 +867,9 @@ plugins:
       enable: true
       play: fa-solid fa-play
       pause: fa-solid fa-pause
-    rightmenu:                            
+    rightmenu:
       enable: true                        # 是否开启右键模块的消息通知
-      notice: true                        # 唤醒原右键菜单的通知 
+      notice: true                        # 唤醒原右键菜单的通知
 
   # 聊天功能
   chat_service: # tidio or gitter
@@ -883,7 +883,7 @@ plugins:
   # https://gitter.im
   gitter:
     room: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  
+
   # swiper
   # https://www.swiper.com.cn/
   swiper:
@@ -900,7 +900,7 @@ rightmenus:
   enable: true
   # 右键菜单项及加载顺序
   # 内容示例：plugins.[组名], menus.[组名], hr(分割线，推荐去线留白), music(音乐控制器)
-  order: 
+  order:
     - plugins.navigation
     - hr
     - plugins.inputBox
@@ -943,7 +943,7 @@ rightmenus:
   plugins:
     # 导航组件
     # 横向排列，共用一行，仅显示图标 (原则上支持的数量不限)
-    navigation: 
+    navigation:
       - {id: 'left', name: '转到上一页', icon: 'fa-solid fa-arrow-left', event: 'history.back()', group: 'navigation'}
       - {id: 'right', name: '转到下一页', icon: 'fa-solid fa-arrow-right', event: 'history.forward()', group: 'navigation'}
       - {id: 'redo', name: '刷新当前页面', icon: 'fa-solid fa-redo', event: 'window.location.reload()', group: 'navigation'}
@@ -956,7 +956,7 @@ rightmenus:
       - {id: 'copyAll', name: '全选文本', icon: 'fa-solid fa-object-ungroup', event: 'copyAll', group: 'inputBox'}
       - {id: 'copyCut', name: '剪切文本', icon: 'fa-solid fa-cut', event: 'copyCut', group: 'inputBox'}
     # 文本选中类组件
-    # 生效于右键选中文本，__text__ 为选中的文本。     
+    # 生效于右键选中文本，__text__ 为选中的文本。
     seletctText:
       - {id: 'copyText', name: '复制文本', icon: 'fa-solid fa-copy', event: 'copyText', group: 'seletctText'}
       - {id: 'searchWord', name: '站内搜索', icon: 'fa-solid fa-search', event: 'OpenSearch(__text__)', group: 'seletctText'}
@@ -986,7 +986,7 @@ rightmenus:
       - hr
       - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
       - {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
-    darkMode: 
+    darkMode:
       - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-moon', event: 'volantis.dark.toggle()', group: 'darkMode'}
 ###
 

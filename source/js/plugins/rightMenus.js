@@ -37,7 +37,7 @@ const RightMenus = {
 
   /**
    * 写入文本到剪切板
-   * @param {String} text 
+   * @param {String} text
    */
   writeClipText: text => {
     return navigator.clipboard
@@ -52,9 +52,9 @@ const RightMenus = {
 
   /**
    * 写入图片到剪切板
-   * @param {*} link 
-   * @param {*} success 
-   * @param {*} error 
+   * @param {*} link
+   * @param {*} success
+   * @param {*} error
    */
   writeClipImg: async (link, success, error) => {
     const image = new Image;
@@ -80,8 +80,8 @@ const RightMenus = {
 
   /**
    * 粘贴文本到剪切板
-   * @param {*} elemt 
-   * @param {*} value 
+   * @param {*} elemt
+   * @param {*} value
    */
   insertAtCaret: (elemt, value) => {
     const startPos = elemt.selectionStart,
@@ -168,7 +168,7 @@ RightMenus.fun = (() => {
 
   /**
    * 右键菜单位置设定
-   * @param {*} event 
+   * @param {*} event
    */
   fn.menuPosition = (event) => {
     try {
@@ -199,7 +199,7 @@ RightMenus.fun = (() => {
 
   /**
    * 菜单项控制
-   * @param {*} event 
+   * @param {*} event
    */
   fn.menuControl = (event) => {
     fn.globalDataSet(event);
@@ -283,7 +283,7 @@ RightMenus.fun = (() => {
 
   /**
    * 元素状态判断/全局数据设置
-   * @param {*} event 
+   * @param {*} event
    */
   fn.globalDataSet = (event) => {
     globalData = Object.assign({}, globalDataBackup);
@@ -590,7 +590,7 @@ RightMenus.fun = (() => {
     } else {
       document.querySelector('#l_body').removeEventListener('click', fn.readMode);
       document.querySelector('#post').removeEventListener('click', fn.readMode);
-      document.querySelector('.prev-next').style.display = 'flex'; // 单独修改 
+      document.querySelector('.prev-next').style.display = 'flex'; // 单独修改
     }
   }
 

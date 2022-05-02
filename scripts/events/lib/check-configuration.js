@@ -5,14 +5,14 @@ module.exports =(hexo) => {
     if (!config.title) {
       return `title 未配置！
 see: https://hexo.io/zh-cn/docs/configuration
-title not configured! 
+title not configured!
 see: https://hexo.io/zh-cn/docs/configuration`
     }
     if (!config.description) {
       return `description 未配置！
 description主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词。
 see: https://hexo.io/zh-cn/docs/configuration
-description not configured! 
+description not configured!
 see: https://hexo.io/zh-cn/docs/configuration`
     }
     if (themeConfig?.search?.service===`google`||themeConfig?.search?.service===`algolia`||themeConfig?.search?.service===`azure`||themeConfig?.search?.service===`baidu`) {
