@@ -40,6 +40,7 @@
 
     // 方案一：
     volantis.activateNavIndex=0
+    activateNavByIndex(navItems[volantis.activateNavIndex])
     volantis.scroll.push(()=>{
       if (targets[0].getBoundingClientRect().top >= 0) {
         volantis.activateNavIndex = 0

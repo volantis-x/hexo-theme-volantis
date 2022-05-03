@@ -834,6 +834,7 @@ const highlightKeyWords = (() => {
     fn.scrollToFirstHighlightKeywordMark()
   }
   fn.scrollToFirstHighlightKeywordMark = () => {
+    volantis.cleanContentVisibility();
     let target = fn.scrollToNextHighlightKeywordMark("0");
     if (!target) {
       volantis.requestAnimationFrame(fn.scrollToFirstHighlightKeywordMark)

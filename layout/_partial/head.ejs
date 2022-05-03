@@ -1,5 +1,6 @@
 <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/<%- theme.info.theme_version %>'>
   <%- meta_generator() %>
+  <meta name="Volantis" content="<%- theme.info.theme_version %>">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <%- generate_seo(theme, page) %>
@@ -49,12 +50,10 @@
     <%_ } _%>
   <%_ } _%>
   <!-- 页面元数据 -->
-  <pjax>
   <%- generate_title(config, theme, page) %>
   <%- generate_keywords(config, theme, page) %>
   <%- generate_description(config, theme, page) %>
   <%- open_graph(theme.open_graph) %>
-  </pjax>
   <style>
     /* 首屏样式 */
     <%- FirstCSS() %>
