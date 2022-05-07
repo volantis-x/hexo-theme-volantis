@@ -13,10 +13,6 @@
       path = defaultPath || decodeURI(window.location.pathname);
     }
 
-    const style = document.createElement('style')
-    style.textContent = '#Discuss .D-comments-wrap{min-height:200px}'
-    document.head.appendChild(style)
-
     Discuss.init(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.discuss) %>, {
       el: '#discuss_container',
       path: path,
