@@ -23,16 +23,18 @@ const RightMenus = {
    * @returns text
    */
   readClipboard: async () => {
-    const result = await navigator.permissions.query({
-      name: 'clipboard-read'
-    });
-    if (result.state === 'granted' || result.state === 'prompt') {
-      return navigator.clipboard
-        .readText()
-        .then(text => text)
-        .catch(err => Promise.reject(err));
+    let clipboardText;
+    const result = await navigator.permissions.query({ name: 'clipboard-read' });
+    switch (result.state) {
+      case 'granted':
+      case 'prompt':
+        clipboardText = await navigator.clipboard.readText()
+        break;
+      default:
+        window.clipboardRead = false;
+        break;
     }
-    return Promise.reject(result);
+    return clipboardText;
   },
 
   /**
@@ -75,7 +77,7 @@ const RightMenus = {
         })
       }, 'image/png')
     }, false)
-    image.src = `${RightMenus.corsAnywhere ? RightMenus.corsAnywhere : ''}${link}`;
+    image.src = `${link}?(lll￢ω￢)`;
   },
 
   /**
@@ -138,8 +140,7 @@ RightMenus.fun = (() => {
     isImage: false,
     isArticle: false,
     pathName: '',
-    isReadClipboard: false,
-    readClipboard: '',
+    isReadClipboard: true,
     isShowMusic: false,
     statusCheck: false
   }
@@ -216,17 +217,7 @@ RightMenus.fun = (() => {
               item.style.display = 'block';
               if (itemEvent === 'copyCut' && !globalData.selectText) item.style.display = 'none';
               if (itemEvent === 'copyAll' && !globalData.inputValue) item.style.display = 'none';
-              if (globalData.isInputBox && itemEvent === 'copyPaste')
-                RightMenus.readClipboard().then(text => {
-                  if (!!text) {
-                    globalData.isReadClipboard = true;
-                    globalData.readClipboard = text;
-                  } else {
-                    item.style.display = 'none';
-                  }
-                }).catch(() => {
-                  item.style.display = 'none';
-                })
+              if (itemEvent === 'copyPaste' && !globalData.isReadClipboard) item.style.display = 'none';
             }
             break;
           case 'seletctText':
@@ -294,6 +285,11 @@ RightMenus.fun = (() => {
     if (event.target.tagName.toLowerCase() === 'input' || event.target.tagName.toLowerCase() === 'textarea') {
       globalData.isInputBox = true;
       globalData.inputValue = event.target.value;
+    }
+
+    // 判断是否允许读取剪切板
+    if (globalData.isInputBox && window.clipboardRead === false) {
+      globalData.isReadClipboard = false;
     }
 
     // 判断是否包含链接
@@ -485,8 +481,15 @@ RightMenus.fun = (() => {
     globalData.mouseEvent.target.select();
   }
 
-  fn.copyPaste = () => {
-    RightMenus.insertAtCaret(globalData.mouseEvent.target, globalData.readClipboard);
+  fn.copyPaste = async () => {
+    const result = await RightMenus.readClipboard() || '';
+    if (RightMenus.messageRightMenu && window.clipboardRead === false) {
+      VolantisApp.message('系统提示', '未授予剪切板读取权限！');
+    } else if (RightMenus.messageRightMenu && result === '') {
+      VolantisApp.message('系统提示', '仅支持复制文本内容！');
+    } else {
+      RightMenus.insertAtCaret(globalData.mouseEvent.target, result);
+    }
   }
 
   fn.copyCut = () => {

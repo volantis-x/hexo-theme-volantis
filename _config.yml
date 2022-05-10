@@ -936,9 +936,6 @@ rightmenus:
     articleShowLink: false
     # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
     musicAlwaysShow: false
-    # 适用于复制图片文件的场景，当图片源未设置 Access-Control-Allow-Origin 时，图片复制由于 CORS 问题失败
-    # 你可以自行部署相应项目解决该问题，详见：https://github.com/Rob--W/cors-anywhere 或者 https://github.com/Zibri/cloudflare-cors-anywhere
-    corsAnywhere: 
   # 右键内置组，预置实现
   plugins:
     # 导航组件
