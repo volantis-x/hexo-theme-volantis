@@ -26,7 +26,7 @@
       </p>
     </a>
   </div>
-<% } else if (theme.comments.service=='waline' && theme.comments.waline.visitor) { %>
+<% } else if (theme.comments.service=='waline' && theme.comments.waline.pageview) { %>
   <div class="new-meta-item browse">
     <a class='notlink'>
       <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
@@ -36,11 +36,7 @@
           path = path.substring(0, path.length - 10);
         }
       %>
-      <span id="<%- url_for(path) %>" class="leancloud_visitors" data-flag-title="<%- post.title || page.title %>">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
+      <span data-path="<%- url_for(path) %>" class="waline-pageview-count"></span>
     </a>
   </div>
 <% } else if (theme.comments.service=='twikoo' && !!page.comments) { %>
