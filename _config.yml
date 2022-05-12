@@ -408,19 +408,19 @@ comments:
     js: https://unpkg.com/@waline/client@v2/dist/waline.js
     css: https://unpkg.com/@waline/client@v2/dist/waline.css
     path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是waline的问题
-    placeholder: 快来评论吧~  # 评论占位提示
-    serverURL:  # Waline 的服务端地址（必填） 测试用地址: https://waline-ruddy.vercel.app
+    placeholder: # 评论占位提示
+    serverURL: # Waline 的服务端地址（必填） 测试用地址: https://waline.vercel.app
     imageUploader:
       # 以兰空图床为例，下列填写内容为：
       # url: https://xxxxxx/api/v1/upload
       # token: Bearer xxxxxxxxxxxxxx
       # resp: data.links.url
       api:   # 图床地址
-      token: # 可图床验证
+      token: # 图床验证
       resp:  # 图片地址返回值的字段
     pageview: true # 浏览量统计
     comment: true  # 评论数统计
-    # 其他配置项按照yml格式继续填写即可 除了 [el path placeholder imageUploader] 选项
+    # 其他配置项按照yml格式继续填写即可 除了 [el path imageUploader] 选项
     # 组件属性地址：https://waline.js.org/reference/component.html
     # meta: ['nick', 'mail', 'link']
 
