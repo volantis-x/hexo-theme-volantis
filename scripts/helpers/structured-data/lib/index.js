@@ -24,15 +24,7 @@ function merge(target, source) {
 module.exports = function () {
   const hexo = this;
   const option = merge(config(hexo), hexo.theme.structured_data.data);
-  const builder = [Organization, Person, BreadcrumbList];
-
-  if (hexo.is_post()) {
-    builder.push(BlogPosting);
-  } else {
-    builder.push(WebSite);
-  }
-
+  const builder = [Organization, Person, BreadcrumbList, WebSite, BlogPosting];
   const jsonld = JSON.stringify(builder.map((f) => f(hexo, option)));
-
   return `<script type="application/ld+json">${jsonld}</script>`;
 };

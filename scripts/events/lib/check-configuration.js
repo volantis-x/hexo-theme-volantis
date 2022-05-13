@@ -4,12 +4,14 @@ module.exports =(hexo) => {
     let themeConfig = hexo.theme.config;
     if (!config.title) {
       return `title 未配置！
+请在站点配置 _config.yml 中配置 title
 see: https://hexo.io/zh-cn/docs/configuration
 title not configured!
 see: https://hexo.io/zh-cn/docs/configuration`
     }
     if (!config.description) {
       return `description 未配置！
+请在站点配置 _config.yml 中配置 description
 description主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词。
 see: https://hexo.io/zh-cn/docs/configuration
 description not configured!
