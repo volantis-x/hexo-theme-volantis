@@ -1,0 +1,2 @@
+call git pull
+pause
