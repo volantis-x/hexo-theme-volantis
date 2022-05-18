@@ -443,10 +443,10 @@ const VolantisApp = (() => {
         return Promise.resolve()
       })
       .catch(e => {
-        const input = document.createElement('input');
+        const input = document.createElement('textarea');
         input.setAttribute('readonly', 'readonly');
         document.body.appendChild(input);
-        input.setAttribute('value', str);
+        input.innerHTML = str;
         input.select();
         try {
           let result = document.execCommand('copy')
