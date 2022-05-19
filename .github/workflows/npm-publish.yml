@@ -1,8 +1,9 @@
 name: npm-publish
 on:
-  release:
-    types: [published]
   workflow_dispatch:
+  # release:
+  #   types: [published]
+
 jobs:
   npm-publish:
     name: npm-publish
@@ -11,7 +12,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: Set up Node.js
-      uses: actions/setup-node@master
+      uses: actions/setup-node@main
       with:
         node-version: 12
         registry-url: https://registry.npmjs.org
