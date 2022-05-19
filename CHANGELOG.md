@@ -1,5 +1,12 @@
 # Changelog
 
+### [5.1.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.1.0...v5.1.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* **#761:** overflow ([74e0d04](https://github.com/volantis-x/hexo-theme-volantis/commit/74e0d04a47d17c513f0d29ecaceb49b51d63ee18))
+
 ## [5.1.0](https://github.com/volantis-x/hexo-theme-volantis/compare/5.0.0...v5.1.0) (2022-05-19)
 
 
