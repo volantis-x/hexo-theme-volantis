@@ -1,5 +1,7 @@
 'use strict';
 
+const { version } = require('../../../package.json');
+
 function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
 }
@@ -85,4 +87,5 @@ module.exports = hexo => {
     }
   }
   volantis_static_cdn(hexo.theme.config,hexo);
+  hexo.theme.config.info.theme_version = version;
 };

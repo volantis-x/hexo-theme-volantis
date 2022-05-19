@@ -13,7 +13,7 @@ jobs:
           release-type: node
           package-name: hexo-theme-volantis
   npm-publish:
-    if: ${{ contains(github.event.head_commit.message, 'chore\(dev\)') && contains(github.event.head_commit.message, 'release') }}
+    if: ${{ contains(github.event.head_commit.message, 'chore(dev)') && contains(github.event.head_commit.message, 'release') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,3 +26,10 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+  test:
+    if: ${{ contains(github.event.head_commit.message, 'chore(test)') && contains(github.event.head_commit.message, 'version') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: |
+          echo test
