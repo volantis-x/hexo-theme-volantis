@@ -17,7 +17,7 @@ function buidImgFancybox(content, group) {
   if(html.startsWith('<p>') &&  html.endsWith('</p>')) {  // 去除无用的 p 标签包裹
     html=html.substring(0, html.length-4).substring(3);
   }
-  
+
   let imageTags = html.includes('image-caption') ? 'image' : undefined;
   let imgList = html.match(/<img.*?>/g) || [];
   imgList.forEach(item => {

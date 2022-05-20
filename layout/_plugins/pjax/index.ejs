@@ -1,4 +1,4 @@
-<!-- 
+<!--
   pjax重载区域接口：
   1.  <pjax></pjax> 标签 pjax 标签必须存在于所有页面 否则 pjax error
   2.  script[data-pjax]
@@ -19,6 +19,9 @@
       pjax = new Pjax({
         elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"]):not([onclick="return!1"]):not([target="_blank"]):not([target="view_window"]):not([href$=".xml"])',
         selectors: [
+          "head title",
+          "head meta[name=keywords]",
+          "head meta[name=description]",
           <% if (!theme.plugins.pjax.cover){ %>"#l_cover",<% } %>
           "#l_main",
           "#pjax-header-nav-list",

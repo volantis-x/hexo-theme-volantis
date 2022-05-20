@@ -8,7 +8,7 @@ fa-thin,
 fal,
 fad,
 fa,
-svg.iconfont,    
+svg.iconfont,
 img,
 .lazyload
   filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
@@ -57,7 +57,7 @@ if hexo-config('plugins.code_highlight') == "highlightjs"
   border-color: var(--color-site-bg) !important
 blockquote p
   color: var(--color-p)
-  
+
 // tags
 #archive-page .archive .all-tags ul li span
   color: var(--color-text)
@@ -111,7 +111,7 @@ if hexo-config('comments.service')=='twikoo'
         border-top: 1px solid #4a4b50 !important
         background:#4a4b50 !important
         color: #ccc !important
-        .OwO-packages 
+        .OwO-packages
           li:hover
             background-color: #252627 !important
           .OwO-package-active
@@ -123,6 +123,10 @@ if hexo-config('comments.service')=='twikoo'
       .OwO-items-image
         .OwO-item:hover
           background-color: #252627 !important
+          
+if hexo-config('comments.service')=='discuss'
+  #Discuss .D-emot
+    background: #333841
 
 // Custom Files
 for $injects_dark in hexo-config('injects.dark')

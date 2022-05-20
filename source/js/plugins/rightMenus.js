@@ -5,7 +5,7 @@ const RightMenus = {
   messageRightMenu: volantis.GLOBAL_CONFIG.plugins.message.enable && volantis.GLOBAL_CONFIG.plugins.message.rightmenu.enable,
   corsAnywhere: volantis.GLOBAL_CONFIG.plugins.rightmenus.options.corsAnywhere,
   urlRegx: /^((https|http)?:\/\/)+[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/,
-  imgRegx: /\.(jpe?g|png|webp|svg|gif|jifi)$/,
+  imgRegx: /\.(jpe?g|png|webp|svg|gif|jifi)(-|_|!|\?|\/)?.*$/,
 
   /**
    * 加载右键菜单
@@ -23,21 +23,23 @@ const RightMenus = {
    * @returns text
    */
   readClipboard: async () => {
-    const result = await navigator.permissions.query({
-      name: 'clipboard-read'
-    });
-    if (result.state === 'granted' || result.state === 'prompt') {
-      return navigator.clipboard
-        .readText()
-        .then(text => text)
-        .catch(err => Promise.reject(err));
+    let clipboardText;
+    const result = await navigator.permissions.query({ name: 'clipboard-read' });
+    switch (result.state) {
+      case 'granted':
+      case 'prompt':
+        clipboardText = await navigator.clipboard.readText()
+        break;
+      default:
+        window.clipboardRead = false;
+        break;
     }
-    return Promise.reject(result);
+    return clipboardText;
   },
 
   /**
    * 写入文本到剪切板
-   * @param {String} text 
+   * @param {String} text
    */
   writeClipText: text => {
     return navigator.clipboard
@@ -52,9 +54,9 @@ const RightMenus = {
 
   /**
    * 写入图片到剪切板
-   * @param {*} link 
-   * @param {*} success 
-   * @param {*} error 
+   * @param {*} link
+   * @param {*} success
+   * @param {*} error
    */
   writeClipImg: async (link, success, error) => {
     const image = new Image;
@@ -75,13 +77,13 @@ const RightMenus = {
         })
       }, 'image/png')
     }, false)
-    image.src = `${RightMenus.corsAnywhere ? RightMenus.corsAnywhere : ''}${link}`;
+    image.src = `${link}?(lll￢ω￢)`;
   },
 
   /**
    * 粘贴文本到剪切板
-   * @param {*} elemt 
-   * @param {*} value 
+   * @param {*} elemt
+   * @param {*} value
    */
   insertAtCaret: (elemt, value) => {
     const startPos = elemt.selectionStart,
@@ -138,8 +140,7 @@ RightMenus.fun = (() => {
     isImage: false,
     isArticle: false,
     pathName: '',
-    isReadClipboard: false,
-    readClipboard: '',
+    isReadClipboard: true,
     isShowMusic: false,
     statusCheck: false
   }
@@ -168,7 +169,7 @@ RightMenus.fun = (() => {
 
   /**
    * 右键菜单位置设定
-   * @param {*} event 
+   * @param {*} event
    */
   fn.menuPosition = (event) => {
     try {
@@ -199,7 +200,7 @@ RightMenus.fun = (() => {
 
   /**
    * 菜单项控制
-   * @param {*} event 
+   * @param {*} event
    */
   fn.menuControl = (event) => {
     fn.globalDataSet(event);
@@ -216,17 +217,7 @@ RightMenus.fun = (() => {
               item.style.display = 'block';
               if (itemEvent === 'copyCut' && !globalData.selectText) item.style.display = 'none';
               if (itemEvent === 'copyAll' && !globalData.inputValue) item.style.display = 'none';
-              if (globalData.isInputBox && itemEvent === 'copyPaste')
-                RightMenus.readClipboard().then(text => {
-                  if (!!text) {
-                    globalData.isReadClipboard = true;
-                    globalData.readClipboard = text;
-                  } else {
-                    item.style.display = 'none';
-                  }
-                }).catch(() => {
-                  item.style.display = 'none';
-                })
+              if (itemEvent === 'copyPaste' && !globalData.isReadClipboard) item.style.display = 'none';
             }
             break;
           case 'seletctText':
@@ -254,7 +245,11 @@ RightMenus.fun = (() => {
       }
     })
 
+    // 执行外部事件
+    volantis.mouseEvent = event;
+    volantis.rightmenu.method.handle.start()
 
+    // 过滤 HR 元素
     let elementHrItem = { item: null, hide: true };
     _rightMenuListWithHr.forEach((item) => {
       if (item.nodeName === "HR") {
@@ -279,7 +274,7 @@ RightMenus.fun = (() => {
 
   /**
    * 元素状态判断/全局数据设置
-   * @param {*} event 
+   * @param {*} event
    */
   fn.globalDataSet = (event) => {
     globalData = Object.assign({}, globalDataBackup);
@@ -290,6 +285,11 @@ RightMenus.fun = (() => {
     if (event.target.tagName.toLowerCase() === 'input' || event.target.tagName.toLowerCase() === 'textarea') {
       globalData.isInputBox = true;
       globalData.inputValue = event.target.value;
+    }
+
+    // 判断是否允许读取剪切板
+    if (globalData.isInputBox && window.clipboardRead === false) {
+      globalData.isReadClipboard = false;
     }
 
     // 判断是否包含链接
@@ -481,8 +481,15 @@ RightMenus.fun = (() => {
     globalData.mouseEvent.target.select();
   }
 
-  fn.copyPaste = () => {
-    RightMenus.insertAtCaret(globalData.mouseEvent.target, globalData.readClipboard);
+  fn.copyPaste = async () => {
+    const result = await RightMenus.readClipboard() || '';
+    if (RightMenus.messageRightMenu && window.clipboardRead === false) {
+      VolantisApp.message('系统提示', '未授予剪切板读取权限！');
+    } else if (RightMenus.messageRightMenu && result === '') {
+      VolantisApp.message('系统提示', '仅支持复制文本内容！');
+    } else {
+      RightMenus.insertAtCaret(globalData.mouseEvent.target, result);
+    }
   }
 
   fn.copyCut = () => {
@@ -586,7 +593,7 @@ RightMenus.fun = (() => {
     } else {
       document.querySelector('#l_body').removeEventListener('click', fn.readMode);
       document.querySelector('#post').removeEventListener('click', fn.readMode);
-      document.querySelector('.prev-next').style.display = 'flex'; // 单独修改 
+      document.querySelector('.prev-next').style.display = 'flex'; // 单独修改
     }
   }
 

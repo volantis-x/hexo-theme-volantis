@@ -87,6 +87,9 @@ let SearchService = (() => {
       if (post.text) {
         post.text = post.text.replace(/12345\d*/g, "") // 简易移除代码行号
       }
+      if (!post.title&&post.text) {
+        post.title = post.text.trim().slice(0,15)
+      }
       if (fn.contentSearch(post)) {
         html += fn.buildResult(post.permalink, post.title, post.digest);
       }

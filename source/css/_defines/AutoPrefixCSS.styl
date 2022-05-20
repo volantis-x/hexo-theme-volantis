@@ -1,4 +1,4 @@
-// AutoPrefixCSS  
+// AutoPrefixCSS
 // https://github.com/stylus/nib
 
 vendor-prefixes ?= webkit khtml moz o ms
@@ -15,7 +15,7 @@ vendor(prop, only = null ,vendor-property = true, args)
 
 animation()
   vendor(prop:'animation', only: null,  vendor-property: true, args:arguments)
-  
+
 // B
 box-orient()
   vendor(prop:'box-orient', only: webkit moz ms official,  vendor-property: true, args:arguments)
@@ -28,7 +28,7 @@ border-radius()
 
 box-shadow()
   vendor(prop:'box-shadow', only: webkit official,  vendor-property: true, args:arguments)
-  
+
 border-image()
   vendor(prop:'border-image', only: webkit moz o official,  vendor-property: true, args:arguments)
 
@@ -43,7 +43,7 @@ box-sizing()
 
 backface-visibility()
   vendor(prop:'backface-visibility', only: webkit moz ms official,  vendor-property: true, args:arguments)
-  
+
 background-size()
   vendor(prop:'background-size', only: webkit moz official,  vendor-property: true, args:arguments)
 
@@ -116,7 +116,7 @@ display(value)
     display -ms-flexbox     /* TWEENER - IE 10 */
     display -webkit-flex    /* NEW - Chrome */
     display flex        /* NEW, Spec - Opera 12.1, Firefox 20+ */
-     
+
   if arguments != 'flex'
     display: arguments;
   else
@@ -160,7 +160,7 @@ flex-direction(value)
   -webkit-flex-direction value
   -ms-flex-direction value
   flex-direction value
-  
+
 flexbox(value)
   // Initializing a flexbox container
   display -webkit-box    /* OLD - iOS 6-, Safari 3.1-6 */
@@ -227,7 +227,7 @@ flex-group(value)
   -ms-flex-order value
   -webkit-order value
   order value
-  
+
 flex-self(value)
   // Function for aligning the flex elements (align-self)
   if value == start or value == end
@@ -265,8 +265,8 @@ flex-justify(value)
     -webkit-justify-content value
     -ms-flex-pack distribute
     justify-content value
-    
-  
+
+
 font-smoothing()
   vendor(prop:'font-smoothing', only: webkit,  vendor-property: true, args:arguments)
 // G
@@ -305,22 +305,22 @@ print-color-adjust()
 // T
 text-size-adjust()
   vendor(prop:'text-size-adjust', only: null,  vendor-property: true, args:arguments)
-  
+
 transition()
-  vendor(prop:'transition', only: null,  vendor-property: true, args:arguments) 
-  
+  vendor(prop:'transition', only: null,  vendor-property: true, args:arguments)
+
 transition-property()
   vendor(prop:'transition-property', only: null,  vendor-property: true, args:arguments)
-  
+
 transition-duration()
   vendor(prop:'transition-duration', only: null,  vendor-property: true, args:arguments)
-  
+
 transition-timing-function()
   vendor(prop:'transition-timing-function', only: null,  vendor-property: true, args:arguments)
-  
+
 transition-delay()
   vendor(prop:'transition-delay', only: null,  vendor-property: true, args:arguments)
-  
+
 transform()
   vendor(prop:'transform', only: null,  vendor-property: true, args:arguments)
 

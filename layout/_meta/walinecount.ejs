@@ -5,10 +5,11 @@
     if (path.length > 9 && (path.substring(path.length - 10) == 'index.html')) {
       path = path.substring(0, path.length - 10);
     }
+    if(!!theme.comments.waline.path) path = theme.comments.waline.path
   %>
   <a href="<%- url_for(path) %>#comments">
     <i class="<%- theme.article.body.meta_library.walinecount.icon %> fa-fw"></i>
-    <span id="<%- url_for(path) %>" class="waline-comment-count"></span>
+    <span data-path="<%- url_for(path) %>" class="waline-comment-count"></span>
     <span class="leancloud-comments-count">&nbsp;<%- theme.article.body.meta_library.walinecount.desc %></span>
   </a>
 </div>

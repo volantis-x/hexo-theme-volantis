@@ -1,0 +1,30 @@
+<script>
+  volantis.layoutHelper("comments",`<div id="discuss_container"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`)
+  function load_discuss() {
+    if(!document.querySelectorAll("#discuss_container")[0])return;
+    volantis.js("<%- theme.comments.discuss.js %>", pjax_discuss)
+  }
+  function pjax_discuss() {
+    if(!document.querySelectorAll("#discuss_container")[0])return;
+    let path = pdata.commentPath;
+    let placeholder = pdata.commentPlaceholder || "<%= theme.comments.discuss.ph %>" || "";
+    if (path.length == 0) {
+      let defaultPath = '<%= theme.comments.discuss.path %>';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    Discuss.init(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.discuss) %>, {
+      el: '#discuss_container',
+      path: path,
+      ph: placeholder
+    }),pdata.commentConfig))
+  }
+  load_discuss();
+  volantis.pjax.push(()=>{
+    if (typeof Discuss == "undefined") {
+      load_discuss();
+    } else {
+      pjax_discuss();
+    }
+  },'discuss');
+</script>

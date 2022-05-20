@@ -4,10 +4,8 @@ module.exports = (hexo, option) => {
   const blogposting = {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description || hexo.strip_html(post.excerpt),
-    datePublished: post.date.toISOString(),
-    dateModified: post.updated.toISOString(),
+    headline: post.title || post.seo_title,
+    description: post.description || hexo.strip_html(post.excerpt) || config.description,
     inLanguage: config.language,
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -37,12 +35,26 @@ module.exports = (hexo, option) => {
 
   blogposting.wordCount = hexo.strip_html(post.excerpt).length;
 
+  if (post.date) {
+    blogposting.datePublished = post.date.toISOString();
+  }
+  if (post.updated) {
+    blogposting.dateModified = post.updated.toISOString();
+  }
   if (post.categories && post.categories.length) {
-    blogposting.articleSection = post.categories.data[0].name;
+    if (post.categories.data) {
+      blogposting.articleSection = post.categories.data[0].name;
+    } else {
+      blogposting.articleSection = post.categories[0];
+    }
   }
 
   if (post.tags && post.tags.length) {
-    blogposting.keywords = post.tags.map((tag) => tag.name).join(",");
+    if (post.tags.data) {
+      blogposting.keywords = post.tags.map((tag) => tag.name).join(",");
+    } else {
+      blogposting.keywords = post.tags.map((tag) => tag).join(",");
+    }
   }
   let image = post.headimg || "";
   if (image) {
