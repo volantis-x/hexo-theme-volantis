@@ -1,0 +1,35 @@
+name: release-please
+on:
+  push:
+    branches: [ dev ]
+  workflow_dispatch:
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: node
+          package-name: hexo-theme-volantis
+  npm-publish:
+    if: ${{ contains(github.event.head_commit.message, 'chore(dev)') && contains(github.event.head_commit.message, 'release') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+      - name: Publish
+        run: |
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+  test:
+    if: ${{ contains(github.event.head_commit.message, 'chore(test)') && contains(github.event.head_commit.message, 'version') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: |
+          echo test
