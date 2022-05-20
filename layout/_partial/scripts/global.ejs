@@ -35,7 +35,7 @@
         layout: <%- JSON.stringify(theme.rightmenu.layout) %>,
         music_alwaysShow: <%- JSON.stringify(theme.rightmenu.music.alwaysShow) %>,
         customPicUrl: <%- JSON.stringify(theme.rightmenu.customPicUrl) %>
-      },      
+      },
       rightmenus: <%- JSON.stringify(theme.rightmenus) %>
     }
   }
@@ -185,6 +185,16 @@
     push: volantis.pjax.method.complete.push,
     error: volantis.pjax.method.error.push,
     send: volantis.pjax.method.send.push,
+  });
+  /******************** RightMenu ********************************/
+  // volantis.rightmenu.handle(callBack[,"callBackName"]) 外部菜单项控制
+  // 可在 volantis.mouseEvent 处获取右键事件
+  volantis.rightmenu = {};
+  volantis.rightmenu.method = {
+    handle: new RunItem(),
+  }
+  volantis.rightmenu = Object.assign(volantis.rightmenu, {
+    handle: volantis.rightmenu.method.handle.push,
   });
   /********************  Dark Mode  ********************************/
   // /layout/_partial/scripts/darkmode.ejs
@@ -365,12 +375,12 @@
       opt.top += option.addTop
     }
     if (!("observerDic" in option)) {
-      option.observerDic = 25
+      option.observerDic = 100
     }
     // 滚动
     window.scrollTo(opt);
     // 监视器
-    // 监视并矫正元素滚动到指定位置 
+    // 监视并矫正元素滚动到指定位置
     // 用于处理 lazyload 引起的 cls 导致的定位失败问题
     // option.observer = false
     if (option.observer) {
@@ -385,6 +395,19 @@
       },1000)
     }
   }
+  /********************** Content Visibility ********************************/
+  // 见 source/css/first.styl 如果遇到任何问题 删除 .post-story 即可
+  // 一个元素被声明 content-visibility 属性后 如果元素不在 viewport 中 浏览器不会计算其后代元素样式和属性 从而节省 Style & Layout 耗时
+  // content-visibility 的副作用: 锚点失效 等等(实验初期 暂不明确), 使用此方法清除样式
+  volantis.cleanContentVisibility = ()=>{
+    if (document.querySelector(".post-story")) {
+      console.log("cleanContentVisibility");
+      document.querySelectorAll(".post-story").forEach(e=>{
+        e.classList.remove("post-story")
+      })
+    }
+  }
+  /******************************************************************************/
   /******************************************************************************/
   /******************************************************************************/
   //图像加载出错时的处理

@@ -114,13 +114,13 @@
     <div class="prev-next">
       <% if (post.prev) { %>
         <a class='prev' href='<%- url_for(post.prev.path) %>'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><%- post.prev.title || post.prev.seo_title || '' %></p>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><%- post.prev.title || post.prev.seo_title || date(post.date, theme.article.body.meta_library.date.format) %></p>
           <p class='content'><%- truncate(strip_html(page.prev.content), {length: 100}) %></p>
         </a>
       <% } %>
       <% if (post.next) { %>
         <a class='next' href='<%- url_for(post.next.path) %>'>
-          <p class='title'><%- post.next.title || post.next.seo_title || '' %><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='title'><%- post.next.title || post.next.seo_title || date(post.date, theme.article.body.meta_library.date.format) %><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'><%- truncate(strip_html(page.next.content), {length: 100}) %></p>
         </a>
       <% } %>

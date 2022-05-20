@@ -20,10 +20,10 @@
         } else {
           if(Array.isArray(data)) {
             data.forEach(item => {
-              rightMenu.loadMenu(item) 
-            })  
+              rightMenu.loadMenu(item)
+            })
           } else {
-            rightMenu.loadMenu(data)   
+            rightMenu.loadMenu(data)
           }
         }
       })
@@ -33,10 +33,10 @@
         let data = rightMenu.dataGet(theme.rightmenus, item);
         if(Array.isArray(data)) {
           data.forEach(item => {
-            rightMenu.rederFunction(item) 
-          })  
+            rightMenu.rederFunction(item)
+          })
         } else {
-          rightMenu.rederFunction(data)   
+          rightMenu.rederFunction(data)
         }
       })
     }
@@ -54,14 +54,14 @@
       <i class="<%- item.icon %> fa-fw"></i>
       <%- item.name %>
     </span>
-  </li> 
+  </li>
 <%   } else { %>
   <li class="menuLoad-Content">
     <a class="vlts-menu fix-cursor-default" id="<%- item.id %>" href="<%- item.link %>" data-group="<%- item.group %>">
       <i class="<%- item.icon %> fa-fw"></i>
       <%- item.name %>
     </a>
-  </li> 
+  </li>
 <%   } %>
 <% } %>
 
@@ -69,7 +69,7 @@
 <% rightMenu.loadNavigation = objs => { %>
   <li class='navigation menuNavigation-Content'>
 <%   objs.forEach(item => { %>
-<%     if(item.link === undefined) { %> 
+<%     if(item.link === undefined) { %>
     <a class="nav icon-only fix-cursor-default" onclick="<%- item.event %>"><i class="<%- item.icon %> fa-fw"></i></a>
 <%     } else { %>
     <a class="nav icon-only fix-cursor-default" href="<%- item.link %>"><i class="<%- item.icon %> fa-fw"></i></a>
@@ -79,18 +79,18 @@
 <% } %>
 
 
-<% rightMenu.rederFunction = item => { %> 
+<% rightMenu.rederFunction = item => { %>
 <%   if (!!item && !!item['event'] && item['group'] !== 'navigation') { %>
 <%     if (rightMenu.defaultEvent.some(value => { return value === item['event'] })) { %>
   <!-- RightMenusFunction['<%- item.id %>'] = (fun) => {fun()} -->
-<%     } else if (item['group'] === 'seletctText') { %>  
+<%     } else if (item['group'] === 'seletctText') { %>
   RightMenusFunction['<%- item.id %>'] = (__text__) => {<%- item.event %>}
-<%     } else if (item['group'] === 'elementCheck' || item['group'] === 'elementImage') { %>  
+<%     } else if (item['group'] === 'elementCheck' || item['group'] === 'elementImage') { %>
   RightMenusFunction['<%- item.id %>'] = (__link__) => {<%- item.event %>}
-<%     } else { %>  
+<%     } else { %>
   RightMenusFunction['<%- item.id %>'] = () => {<%- item.event %>}
-<%     } %>  
-<%   } %>  
+<%     } %>
+<%   } %>
 <% } %>
 
 

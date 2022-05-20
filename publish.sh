@@ -37,7 +37,7 @@ function commit() {
   git rebase dev
   # 切换回 dev 开发分支
   git checkout dev
-  
+
   # 推送
   printf "\n\n> \033[32m%s\033[0m" 'git push origin --all'
   printf "\n"

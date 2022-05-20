@@ -119,7 +119,31 @@ module.exports = (hexo, option) => {
       position: 3,
       item: {
         "@id": config.url + config.root + page.path,
-        name: page.title,
+        name: page.title || page.seo_title,
+      },
+    });
+  }
+
+  if (hexo.is_page()&&page.categories) {
+    let temp = "/"
+    for (let index = 0; index < page.categories.length; index++) {
+      const cat = page.categories[index];
+      temp = temp + cat + "/"
+      breadcrumb.itemListElement.push({
+        "@type": "ListItem",
+        position: 2,
+        item: {
+          "@id": config.url + config.root + config.category_dir + temp,
+          name: cat,
+        },
+      })
+    }
+    breadcrumb.itemListElement.push({
+      "@type": "ListItem",
+      position: 3,
+      item: {
+        "@id": config.url + config.root + page.path,
+        name: page.title || page.seo_title,
       },
     });
   }
