@@ -220,7 +220,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: https://fuxx-img.oss-cn-beijing.aliyuncs.com/img/202205191058929.jpg # https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/avatar.jpg
+        avatar: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/avatar.jpg
         name: Fuxx-1 # 请设置文章作者
         url: /about/
       # 文章创建日期
@@ -446,21 +446,21 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop] # [desktop, mobile]
-      avatar: https://fuxx-img.oss-cn-beijing.aliyuncs.com/img/202205191058929.jpg # https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/avatar.jpg
+      avatar: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/avatar.jpg
       shape: circle # circle, rectangle
       url: /about/
       title: Fuxx-1
       subtitle: 永远相信美好的事情即将发生
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
-      social:
-        - icon: fas fa-rss
-          url: /atom.xml
-        - icon: fas fa-envelope
-          url: http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=NVNATUBNXFRbUnVERBtWWlg
-        - icon: fab fa-github
-          url: https://github.com/fuxx-1/
-        - icon: fab fa-qq
-          url: https://fuxx-img.oss-cn-beijing.aliyuncs.com/img/202205191100054.jpg # https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/QQ.jpg
+      social: true
+        # - icon: fas fa-rss
+        #   url: /atom.xml
+        # - icon: fas fa-envelope
+        #   url: http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=NVNATUBNXFRbUnVERBtWWlg
+        # - icon: fab fa-github
+        #   url: https://github.com/fuxx-1/
+        # - icon: fab fa-qq
+        #   url: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/QQ.jpg
         # - icon: fas fa-headphones-alt
         #   url: /
     # ---------------------------------------
@@ -470,10 +470,10 @@ sidebar:
       display: [desktop, mobile] # [desktop, mobile]
       header:
         icon: fas fa-list
-        title: 目录
+        title: 本文目录
       list_number: false
-      min_depth: 1
-      max_depth: 5
+      min_depth: 2
+      max_depth: 7
     # ---------------------------------------
     # music
     music:
@@ -583,16 +583,27 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [social, license, analytics, br, copyright]
+  # social,
+  layout: [license, analytics, br, copyright]
   social:
-    - icon: #fas fa-rss
-      url:
-    # or
-    - img:
-      url:
-    # or
-    - avatar:
-      url:
+    - icon: fas fa-rss
+      url: /atom.xml
+    - icon: fas fa-envelope
+      url: http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=NVNATUBNXFRbUnVERBtWWlg
+    - icon: fab fa-github
+      url: https://github.com/fuxx-1/
+    - icon: fab fa-qq
+      url: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/QQ.jpg
+    # - icon: fas fa-headphones-alt
+    #   url: /
+    # - icon: #fas fa-rss
+    #   url:
+    # # or
+    # - img:
+    #   url:
+    # # or
+    # - avatar:
+    #   url:
   # site source
   source: https://github.com/volantis-x/volantis-docs/
   # analytics using leancloud
@@ -725,18 +736,14 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://fuxx-img.oss-cn-beijing.aliyuncs.com/img/202205191042556.jpg
-      - https://fuxx-img.oss-cn-beijing.aliyuncs.com/img/202205191042555.jpg
-      - https://fuxx-img.oss-cn-beijing.aliyuncs.com/img/202205191042548.jpg
-      - https://fuxx-img.oss-cn-beijing.aliyuncs.com/img/202205191042546.jpg
-      # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/0.jpg
-      # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/1.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/0.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/1.jpg
       # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/2.jpg
       # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/3.jpg
       # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/4.jpg
       # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/6.jpg
-      # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/7.jpg
-      # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/8.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/7.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/8.jpg
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
@@ -933,7 +940,7 @@ rightmenus:
     # 例外，在 articlePage 组显示时（文章页）时依旧显示含 link 属性的菜单项
     articleShowLink: false
     # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
-    musicAlwaysShow: false
+    musicAlwaysShow: true
   # 右键内置组，预置实现
   plugins:
     # 导航组件
