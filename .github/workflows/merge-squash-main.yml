@@ -6,7 +6,7 @@ jobs:
   merge:
     runs-on: ubuntu-latest
     steps:
-      - name: merge-squash-main
+      - name: merge-to-main
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
@@ -15,10 +15,7 @@ jobs:
           git fetch origin
           git checkout main
           git reset --hard dc9134662502ed2aa8d39dfa09ffe81650a2b024
-          git merge --squash dev
-          ver=$(cat ./package.json | sed -n -e 's/^.*version": "//p' | cut -d'"' -f1)
-          echo $ver
-          git commit -m "$ver"
+          git merge dev
           git push --force "https://github-actions[bot]:${{ secrets.GITHUB_TOKEN }}@github.com/volantis-x/hexo-theme-volantis.git" main:main
       - name: sync-coding
         run: |
