@@ -284,9 +284,19 @@ comments:
     server: https://yours-artalk-domain    # 修改为自建的后端服务地址
     path:  # 全局评论地址
     placeholder: # 评论占位
+    # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
+    # 配置此项时将覆盖服务端上传能力
+    imgUploader:
+      # 以兰空图床为例，下列填写内容为：
+      # url: 'https://xxxxxx/api/v1/upload'
+      # token: 'Bearer xxxxxxxxxxxxxx'
+      # resp: 'data.links.url'
+      api: # 图床地址
+      token: # 图床验证
+      resp: # 图片地址返回值的字段
     # 更多置项可在 Artalk 后端进行配置，详见 https://artalk.js.org/guide/backend/fe-control.html
     # 也可以在此处继续参考上方例子进行配置，不建议重写配置的字段除上方所述外还有：
-    # [el, useBackendConf, pageKey, pageTitle, site, darkMode, pvEl]
+    # [el, useBackendConf, pageKey, pageTitle, site, darkMode, pvEl, imgUploader]
 
   # giscus
   # https://giscus.app
