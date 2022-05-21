@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.2.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.1.1...v5.2.0) (2022-05-21)
+
+
+### Features
+
+* **artalk:** Add support for using custom imgUploader ([b69c502](https://github.com/volantis-x/hexo-theme-volantis/commit/b69c502565d8b4d6d1ad1a58fdc3fc00ac200cef))
+
 ### [5.1.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.1.0...v5.1.1) (2022-05-19)
 
 
