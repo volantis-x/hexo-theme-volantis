@@ -17,7 +17,7 @@
       path = path.replaceAll('/index.html', '/')
     }
 
-    volantis.artalk = new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
+    new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
       el: '#artalk_container',
       pageKey: path,
       pageTitle: document.title,
@@ -46,8 +46,8 @@
       <% } %>
     }));
 
-    volantis.artalk.then(ctx => {
-      ctx.on('comments-loaded', () => {
+    Artalk.Use(ctx => {
+      ctx.on('list-loaded', () => {
         if (typeof VolantisFancyBox === "undefined"){
           const checkFancyBox = setInterval(() => {
             if(typeof VolantisFancyBox === "undefined") return;
@@ -72,7 +72,7 @@
 
   function dark_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0]) return;
-    volantis.artalk.then(ctx => {
+    Artalk.Use(ctx => {
       ctx.setDarkMode(volantis.dark.mode === "dark")
     })
   }
