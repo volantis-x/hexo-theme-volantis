@@ -245,7 +245,11 @@ article:
       # waline 文章评论数量
       walinecount:
         icon: fa-solid fa-comment-dots
-        desc: '' # 条评论
+        desc: '条评论' # 条评论
+      # artalk 文章评论数量
+      artalkcount:
+        icon: fa-solid fa-comment-dots
+        desc: '条评论' # 条评论
       # 文章字数和阅读时长
       wordcount:
         icon_wordcount: fa-solid fa-keyboard
