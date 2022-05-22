@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.3.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.2.0...v5.3.0) (2022-05-22)
+
+
+### Features
+
+* **meta:** add artalk comment count ([75c5eeb](https://github.com/volantis-x/hexo-theme-volantis/commit/75c5eeb688d52289f466d8e26b84352d7dae74b9))
+
+
+### Bug Fixes
+
+* **artalk:** fancybox/darkmode ([c03684d](https://github.com/volantis-x/hexo-theme-volantis/commit/c03684dd6d7feced55969bddc4c357a65ec0333c))
+* **meta_library:** counter ([7d42316](https://github.com/volantis-x/hexo-theme-volantis/commit/7d42316a80909125938774b9685b4962486ecc65))
+
 ## [5.2.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.1.1...v5.2.0) (2022-05-21)
 
 
