@@ -12,6 +12,7 @@ on:
 
 jobs:
   comment:
+    if: github.repository == 'volantis-x/hexo-theme-volantis'
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3

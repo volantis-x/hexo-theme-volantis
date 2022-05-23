@@ -1,34 +1,9 @@
-name: release-please
+name: merge-squash-main
 on:
-  push:
-    branches: [ dev ]
   workflow_dispatch:
 
 jobs:
-  release-please:
-    if: github.repository == 'volantis-x/hexo-theme-volantis'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: google-github-actions/release-please-action@v3
-        with:
-          release-type: node
-          package-name: hexo-theme-volantis
-  npm-publish:
-    if: ${{ contains(github.event.head_commit.message, 'chore(dev)') && contains(github.event.head_commit.message, 'release') && github.repository == 'volantis-x/hexo-theme-volantis' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org
-      - name: Publish
-        run: |
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
   merge:
-    if: ${{ contains(github.event.head_commit.message, 'chore(dev)') && contains(github.event.head_commit.message, 'release') && github.repository == 'volantis-x/hexo-theme-volantis' }}
     runs-on: ubuntu-latest
     steps:
       - name: merge-to-main
