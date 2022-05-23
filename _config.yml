@@ -471,8 +471,8 @@ sidebar:
         icon: fas fa-list
         title: 本文目录
       list_number: false
-      min_depth: 2
-      max_depth: 7
+      min_depth: 1
+      max_depth: 5
     # ---------------------------------------
     # music
     music:
@@ -583,7 +583,7 @@ tag_plugins:
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
   # social,
-  layout: [license, analytics, br, copyright]
+  layout: [license, analytics, ICP, copyright]
   social:
     - icon: fas fa-rss
       url: /atom.xml
@@ -612,7 +612,7 @@ site_footer:
   # site copyright
   copyright: '[Copyright © 2020-Now newimg.ltd](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
-  br: '陕ICP备2021011674号<br>'
+  ICP: '陕ICP备2021011674号<br>'
 ############################### Site Footer ############################### > end
 
 ############################### Plugins ############################### > start
@@ -707,24 +707,24 @@ plugins:
   ######## Plugins for SEO:
   # npm i hexo-wordcount
   wordcount:
-    enable: #true
+    enable: true
 
   ######## Plugins for ...
   # Button Ripple Effect
   nodewaves:
-    enable: #true
+    enable: true
     css: volantis-static/libs/node-waves/dist/waves.min.css # https://unpkg.com/node-waves@0.7.6/dist/waves.min.css
     js: volantis-static/libs/node-waves/dist/waves.min.js # https://unpkg.com/node-waves@0.7.6/dist/waves.min.js
 
   # fontawesome V6:  https://fontawesome.com/docs/web/style/animate
   # fontawesome animation for fontawesome V5
   fontawesome_animation:
-    enable: #true
+    enable: true
     css: volantis-static/libs/font-awesome-animation/font-awesome-animation.min.css # https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
 
   # Typing Effects
   comment_typing:
-    enable: #true
+    enable: true
     js: volantis-static/libs/comment_typing/comment_typing.js # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
 
   # 视差滚动效果 Slide Background
