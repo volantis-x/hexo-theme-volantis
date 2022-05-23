@@ -13,8 +13,11 @@
     if (path.length == 0) {
       path = '<%= theme.comments.artalk.path %>' || decodeURI(window.location.pathname);
     }
+    if(!'<%= config.permalink %>'.includes('/index.html')) {
+      path = path.replaceAll('/index.html', '/')
+    }
 
-    volantis.artalk = new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
+    new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
       el: '#artalk_container',
       pageKey: path,
       pageTitle: document.title,
@@ -22,11 +25,29 @@
       useBackendConf: true,
       site: '<%= config.title %>',
       darkMode: volantis.dark.mode === "dark",
-      pvEl: '#artalk_visitors'
+      pvEl: '#artalk_visitors',
+
+      <% if(!!theme.comments.artalk.imgUploader?.api){ %>
+      imgUploader: function(file) {
+        let headers = new Headers();
+        headers.set('Accept', 'application/json');
+        <% if(!!theme.comments.artalk.imgUploader?.token) { %>
+          headers.set('Authorization', '<%= theme.comments.artalk.imgUploader?.token %>')
+        <% } %>
+        let formData = new FormData();
+        formData.append('file', file);
+        return fetch('<%= theme.comments.artalk.imgUploader?.api %>',{
+          method: 'POST',
+          body: formData,
+          headers: headers
+          }).then((resp) => resp.json())
+            .then((resp) => resp.<%= theme.comments.artalk.imgUploader?.resp %>)
+      },
+      <% } %>
     }));
 
-    volantis.artalk.then(ctx => {
-      ctx.on('comments-loaded', () => {
+    Artalk.Use(ctx => {
+      ctx.on('list-loaded', () => {
         if (typeof VolantisFancyBox === "undefined"){
           const checkFancyBox = setInterval(() => {
             if(typeof VolantisFancyBox === "undefined") return;
@@ -51,7 +72,7 @@
 
   function dark_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0]) return;
-    volantis.artalk.then(ctx => {
+    Artalk.Use(ctx => {
       ctx.setDarkMode(volantis.dark.mode === "dark")
     })
   }

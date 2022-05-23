@@ -171,7 +171,10 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, counter, wordcount, valinecount] #启用评论数量需在此添加
+    top_meta: [author, category, date, counter] #启用评论数量需在此添加
+    # 文章底部信息
+    # 从 meta_library 中取
+    bottom_meta: [updated, tags, share]
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -211,9 +214,6 @@ article:
         images:
           - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
           - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-    # 文章底部信息
-    # 从 meta_library 中取
-    bottom_meta: [updated, tags, share]
     # meta library
     meta_library:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
@@ -242,7 +242,11 @@ article:
       # waline 文章评论数量
       walinecount:
         icon: fa-solid fa-comment-dots
-        desc: '' # 条评论
+        desc: '条评论' # 条评论
+      # artalk 文章评论数量
+      artalkcount:
+        icon: fa-solid fa-comment-dots
+        desc: '条评论' # 条评论
       # 文章字数和阅读时长
       wordcount:
         icon_wordcount: fa-solid fa-keyboard
@@ -281,9 +285,19 @@ comments:
     server: https://yours-artalk-domain    # 修改为自建的后端服务地址
     path:  # 全局评论地址
     placeholder: # 评论占位
+    # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
+    # 配置此项时将覆盖服务端上传能力
+    imgUploader:
+      # 以兰空图床为例，下列填写内容为：
+      # url: 'https://xxxxxx/api/v1/upload'
+      # token: 'Bearer xxxxxxxxxxxxxx'
+      # resp: 'data.links.url'
+      api: # 图床地址
+      token: # 图床验证
+      resp: # 图片地址返回值的字段
     # 更多置项可在 Artalk 后端进行配置，详见 https://artalk.js.org/guide/backend/fe-control.html
     # 也可以在此处继续参考上方例子进行配置，不建议重写配置的字段除上方所述外还有：
-    # [el, useBackendConf, pageKey, pageTitle, site, darkMode, pvEl]
+    # [el, useBackendConf, pageKey, pageTitle, site, darkMode, pvEl, imgUploader]
 
   # giscus
   # https://giscus.app
@@ -607,8 +621,8 @@ site_footer:
   source: https://github.com/volantis-x/volantis-docs/
   # analytics using leancloud
   analytics: >
-    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
-    <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
+    <span id="lc-uv">访客数为 <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
   copyright: '[Copyright © 2020-Now newimg.ltd](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
@@ -827,7 +841,7 @@ plugins:
   bbtalk:
     # Set `plugins: ["bbtalk"]` to enable in front-matter
     # 不支持 Pjax
-    js: https://unpkg.com/bbtalk@0.1.5/dist/bbtalk.min.js # BBtalk.js
+    js: https://unpkg.com/bbtalk@0/dist/bbtalk.js # BBtalk.js
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
