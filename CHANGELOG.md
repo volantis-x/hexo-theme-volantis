@@ -1,5 +1,12 @@
 # Changelog
 
+### [5.3.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.3.0...v5.3.1) (2022-05-23)
+
+
+### Bug Fixes
+
+* **bbtalk:** js config ([4bb7a12](https://github.com/volantis-x/hexo-theme-volantis/commit/4bb7a12a8d1ab384a223b946e7da1f3ecf60c9ac))
+
 ## [5.3.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.2.0...v5.3.0) (2022-05-22)
 
 
