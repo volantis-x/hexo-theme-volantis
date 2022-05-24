@@ -1,5 +1,13 @@
 # Changelog
 
+### [5.3.2](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.3.1...v5.3.2) (2022-05-24)
+
+
+### Bug Fixes
+
+* **check:** Check environment first ([f5692dd](https://github.com/volantis-x/hexo-theme-volantis/commit/f5692dd862cb0790a656866853e41908b2967de6))
+* **revisioned:** calcFileHash ([1402b9e](https://github.com/volantis-x/hexo-theme-volantis/commit/1402b9ea7747bdcf60e6190b243970567c033528))
+
 ### [5.3.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.3.0...v5.3.1) (2022-05-23)
 
 
