@@ -6,12 +6,6 @@ module.exports =(hexo) => {
     hexo.checkEnvironment=1;
     hexo.log.info(`Checking environment configuration...`);
 
-    // Checking configuration
-    let checkConfiguration = require('./check-configuration')(hexo);
-    if (checkConfiguration!==true) {
-      CheckConfError(hexo,checkConfiguration);
-    }
-
     // Checking environment
     exec('node -v', (err, stdout, stderr) => {
       if (err) {
@@ -38,7 +32,11 @@ module.exports =(hexo) => {
               hexo.log.info(`hexo-cli 版本：${stdout}`);
               CheckError(hexo,`hexo-cli 版本过低，请升级至 4.1 以上版本！`);
             }else{
-              hexo.log.info(`Check environment configuration success!`);
+              // Checking configuration
+              let checkConfiguration = require('./check-configuration')(hexo);
+              if (checkConfiguration!==true) {
+                CheckConfError(hexo,checkConfiguration);
+              }
             }
           }
         });
