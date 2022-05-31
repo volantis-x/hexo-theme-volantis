@@ -67,7 +67,7 @@ const VolantisApp = (() => {
   }
 
   fn.event = () => {
-    volantis.dom.$(document.getElementById("scroll-down")).on('click', function () {
+    volantis.dom.$(document.getElementById("scroll-down"))?.on('click', function () {
       fn.scrolltoElement(volantis.dom.bodyAnchor);
     });
 
