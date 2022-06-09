@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.4.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.3.2...v5.4.0) (2022-06-09)
+
+
+### Features
+
+* **VolantisRequest:** Fetch, POST, Get ([ea98dbc](https://github.com/volantis-x/hexo-theme-volantis/commit/ea98dbcc4c3a9bfc0bf6de452e0da826276ff29c))
+
+
+### Bug Fixes
+
+* **fcircle:** CDN ([#765](https://github.com/volantis-x/hexo-theme-volantis/issues/765)) ([35a2e97](https://github.com/volantis-x/hexo-theme-volantis/commit/35a2e971da07eb30e4cb9a0fdeaafe74580cbcd0))
+
 ### [5.3.2](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.3.1...v5.3.2) (2022-05-24)
 
 
