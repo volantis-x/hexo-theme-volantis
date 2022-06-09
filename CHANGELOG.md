@@ -1,5 +1,37 @@
 # Changelog
 
+## [5.5.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.4.0...v5.5.0) (2022-06-09)
+
+
+### Features
+
+* **artalk:** Add support for using custom imgUploader ([b69c502](https://github.com/volantis-x/hexo-theme-volantis/commit/b69c502565d8b4d6d1ad1a58fdc3fc00ac200cef))
+* **meta:** add artalk comment count ([75c5eeb](https://github.com/volantis-x/hexo-theme-volantis/commit/75c5eeb688d52289f466d8e26b84352d7dae74b9))
+* release-please ([97efd35](https://github.com/volantis-x/hexo-theme-volantis/commit/97efd352d3f44d7f12a813db89c07ab0ba56e188))
+* **VolantisRequest:** Fetch, POST, Get ([ea98dbc](https://github.com/volantis-x/hexo-theme-volantis/commit/ea98dbcc4c3a9bfc0bf6de452e0da826276ff29c))
+
+
+### Bug Fixes
+
+* **#761:** overflow ([74e0d04](https://github.com/volantis-x/hexo-theme-volantis/commit/74e0d04a47d17c513f0d29ecaceb49b51d63ee18))
+* 621 ([ac37bf7](https://github.com/volantis-x/hexo-theme-volantis/commit/ac37bf756c876ebf659a3abd9e4e4ee3467c7549))
+* 703 ([034d684](https://github.com/volantis-x/hexo-theme-volantis/commit/034d6847050472d7fe89335d65f371112c7449e8))
+* 706 移动端菜单栏异常 ([e1f63b3](https://github.com/volantis-x/hexo-theme-volantis/commit/e1f63b33d47a992c278eb51471e5e2816ebc138f))
+* 713 ([e1233de](https://github.com/volantis-x/hexo-theme-volantis/commit/e1233de457648ea46597a5ec4875efc5011e58b5))
+* 740 ([a845788](https://github.com/volantis-x/hexo-theme-volantis/commit/a845788c9dbc1c251e93ca6e8b557d6e1bfb849e))
+* **artalk:** fancybox/darkmode ([c03684d](https://github.com/volantis-x/hexo-theme-volantis/commit/c03684dd6d7feced55969bddc4c357a65ec0333c))
+* **bbtalk:** js config ([4bb7a12](https://github.com/volantis-x/hexo-theme-volantis/commit/4bb7a12a8d1ab384a223b946e7da1f3ecf60c9ac))
+* **check:** Check environment first ([f5692dd](https://github.com/volantis-x/hexo-theme-volantis/commit/f5692dd862cb0790a656866853e41908b2967de6))
+* Discuss 评论系统适配深色模式 ([#752](https://github.com/volantis-x/hexo-theme-volantis/issues/752)) ([86002b6](https://github.com/volantis-x/hexo-theme-volantis/commit/86002b67af0060e21e9ac2514aeee64377e01e69))
+* error friendly ([3bffeab](https://github.com/volantis-x/hexo-theme-volantis/commit/3bffeabc2399cd3dda5816c13b1b56be25d7f95f))
+* **fcircle:** CDN ([#765](https://github.com/volantis-x/hexo-theme-volantis/issues/765)) ([35a2e97](https://github.com/volantis-x/hexo-theme-volantis/commit/35a2e971da07eb30e4cb9a0fdeaafe74580cbcd0))
+* **meta_library:** counter ([7d42316](https://github.com/volantis-x/hexo-theme-volantis/commit/7d42316a80909125938774b9685b4962486ecc65))
+* no-title ([48c70f8](https://github.com/volantis-x/hexo-theme-volantis/commit/48c70f8c13dd4d6dc7fa1bb5226c5987fde7971f))
+* **revisioned:** calcFileHash ([1402b9e](https://github.com/volantis-x/hexo-theme-volantis/commit/1402b9ea7747bdcf60e6190b243970567c033528))
+* **twikoo:** 所有页面都说同一个path的bug ([14de40b](https://github.com/volantis-x/hexo-theme-volantis/commit/14de40bbe12e1e1679a60a58e0d501625d0e7ff2))
+* 为 Discuss 添加最低高度 ([#742](https://github.com/volantis-x/hexo-theme-volantis/issues/742)) ([9bf70de](https://github.com/volantis-x/hexo-theme-volantis/commit/9bf70debfb8a38da89a7bf5f7bd7634d504aa457))
+* 修复Discuss评论区表情包在深色模式下，css权重低的bug ([#753](https://github.com/volantis-x/hexo-theme-volantis/issues/753)) ([872baf7](https://github.com/volantis-x/hexo-theme-volantis/commit/872baf7481b1bb6e47381638c5c346fb232a398a))
+
 ## [5.4.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.3.2...v5.4.0) (2022-06-09)
 
 
