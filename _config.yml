@@ -59,7 +59,7 @@ cdn:
 cdn_version: true
 # volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
 # https://github.com/volantis-x/volantis-static
-volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1649552113628/
+volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924/
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
@@ -852,10 +852,10 @@ plugins:
   fcircle:
     # Set `plugins: ["fcircle"]` to enable in front-matter
     # 支持 Pjax
-    api: '' # api 地址
-    message: '与主机通讯中……'  # 占位文字
-    css: 'https://cdn.jsdelivr.net/gh/lmm214/immmmm/themes/hello-friend/static/fcircle-beta.css'
-    js: 'https://cdn.jsdelivr.net/gh/lmm214/immmmm/themes/hello-friend/static/fcircle-beta.js'
+    api: https://fcircle-api.example.com/ # api 地址
+    message: 与主机通讯中……  # 占位文字
+    css: volantis-static/libs/fcircle/fcircle.css
+    js: volantis-static/libs/fcircle/fcircle.js
 
   # 消息提示 
   # izitoast@1.4.0
