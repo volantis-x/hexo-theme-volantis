@@ -14,7 +14,7 @@
       path = '<%= theme.comments.artalk.path %>' || decodeURI(window.location.pathname);
     }
     if(!'<%= config.permalink %>'.includes('/index.html')) {
-      path = path.replaceAll('/index.html', '/')
+      path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
     }
 
     new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
