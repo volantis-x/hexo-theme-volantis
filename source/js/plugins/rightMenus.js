@@ -191,7 +191,7 @@ RightMenus.fun = (() => {
       _rightMenuWrapper.style.top = `${showTop}px`;
       if (volantis.GLOBAL_CONFIG.plugins.message.rightmenu.notice) fn.menuNotic();
     } catch (error) {
-      if (volantis.GLOBAL_CONFIG.debug) console.error(error);
+      console.error(error);
       fn.hideMenu();
       return true;
     }
@@ -316,7 +316,7 @@ RightMenus.fun = (() => {
     }
 
     // 判断是否显示音乐控制器
-    if (volantis.GLOBAL_CONFIG.plugins.aplayer.enable
+    if (volantis.GLOBAL_CONFIG.plugins.aplayer?.enable
       && typeof RightMenuAplayer !== 'undefined'
       && RightMenuAplayer.APlayer.player !== undefined) {
       if (rightMenuConfig.options.musicAlwaysShow
