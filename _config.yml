@@ -210,6 +210,40 @@ article:
         content:
           - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
           - permalink
+         # 自定义版权组件：精细到文章的版权声明
+        custom: true # 开启后替代上方内容的版权显示
+        customData:
+          default: type1  # 默认授权声明
+          #############################
+          # 你可以在文章的 front-matter 覆盖默认版权声明
+          # 配置示例（均可选）： 
+          # copyright:
+          #   type: type3           # 当前文章版权声明类型
+          #   author: 张三          # 本文作者
+          #   ref:                  # 原文出处
+          #     title:              # 原文出处 - 标题
+          #     url:                # 原文出处 - 链接
+          #############################
+          rules:
+            type1: 
+              text: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh#" target="_blank">CC BY-NC-SA 4.0</a>
+              desc: 署名-非商业性使用-相同方式共享 4.0 国际。
+            type2: 
+              text: 禁止转载引用
+              desc: 除非获得原作者的单独授权，任何第三方不得转载！
+            type3: 
+              text: 原作许可协议
+              desc: 本文转载自他站，转载或引用本文时，请遵守原作许可协议！
+            type4: 
+              text: 来自互联网
+              desc: 本文来自互联网，未知来源，侵权请联系删除。
+            type5:
+              text: 允许规范转载
+              desc: 转载请保留本文转载地址，著作权归作者所有！
+            type6:
+              text: 允许付费转载
+              desc: 您可以联系作者通过付费方式获得授权。
+            # 还能自行添加更多
       # ----------------
       # 打赏组件 (for layout: post)
       donate:
@@ -1117,6 +1151,9 @@ color_scheme:
     list_hl: 'mix($color-theme, #000, 80)'
     # 辅助性文字
     meta: '#888'
+    
+    # 版权卡片背景色
+    copyright_bkg: '#f5f5f5'
   # ------------
   # 暗色主题
   # https://www.maijisheji.com/2094.html
@@ -1156,6 +1193,8 @@ color_scheme:
     list_hl: 'mix($color-theme, #fff, 80)'
     # 辅助性文字              #  Dark Grey 5
     meta: '#bfbfbfde'
+    # 版权卡片背景色
+    copyright_bkg: '#21252b'
     # 夜间图片亮度
     brightness: 70%
 ############################### Color Scheme ############################### > end
