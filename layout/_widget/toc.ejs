@@ -1,7 +1,7 @@
 <%- partial('_pre') %>
 <% var realcontent = (page.encrypt == true) ? page.origin : page.content; %>
 <% if (realcontent && page.toc != false && toc(realcontent).length > 0) { %>
-  <section class="widget toc-wrapper <%- page.widget_style %> <%- page.widget_platform %> <%- page.widget_pjax %>" id="toc-div" <% if (page.encrypt == true) { %>style="display:none" <% } %>>
+  <section class="widget toc-wrapper <%- page.widget_platform %> <%- page.widget_pjax %>" id="toc-div" <% if (page.encrypt == true) { %>style="display:none" <% } %>>
     <%- partial('header', {item: item}) %>
     <div class='content'>
         <%- toc(realcontent, {list_number: item.list_number, min_depth: item.min_depth, max_depth: item.max_depth}) %>

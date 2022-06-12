@@ -23,6 +23,10 @@ post:
     link: 本文链接
     license_title: 版权声明
     license_content: "本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"
+    date: 发布于
+    updated: 更新于
+    references: 原文出处
+    license: 许可协议
 footer:
   license: '博客内容遵循 [署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)'
   use: 本站使用

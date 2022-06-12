@@ -14,10 +14,10 @@
       path = '<%= theme.comments.artalk.path %>' || decodeURI(window.location.pathname);
     }
     if(!'<%= config.permalink %>'.includes('/index.html')) {
-      path = path.replaceAll('/index.html', '/')
+      path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
     }
 
-    new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
+    volantis.artalk = new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
       el: '#artalk_container',
       pageKey: path,
       pageTitle: document.title,
@@ -72,7 +72,7 @@
 
   function dark_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0]) return;
-    Artalk.Use(ctx => {
+    volantis.artalk.then(ctx => {
       ctx.setDarkMode(volantis.dark.mode === "dark")
     })
   }

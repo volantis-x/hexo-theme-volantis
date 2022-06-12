@@ -63,6 +63,7 @@ $color-p = convert(hexo-config('color_scheme.light.p'))
 $color-list = convert(hexo-config('color_scheme.light.list'))
 $color-list-hl = convert(hexo-config('color_scheme.light.list_hl'))
 $color-meta = convert(hexo-config('color_scheme.light.meta'))
+$color-copyright-bkg = convert(hexo-config('color_scheme.light.copyright_bkg'))
 
 // 深色配色方案在 darkmode.styl 中按需加载
 $color-dark-site-body = convert(hexo-config('color_scheme.dark.site_bd'))                    // Dark Grey 1
@@ -88,6 +89,7 @@ $color-dark-list = convert(hexo-config('color_scheme.dark.list'))
 $color-dark-list-hl = convert(hexo-config('color_scheme.dark.list_hl'))
 $color-dark-meta = convert(hexo-config('color_scheme.dark.meta'))
 $color-dark-link = convert(hexo-config('color_scheme.dark.meta'))
+$color-dark-copyright-bkg = convert(hexo-config('color_scheme.dark.copyright_bkg'))
 
 bgcolor($c, $mix = 10)
   return mix($c, $color-card, $mix)

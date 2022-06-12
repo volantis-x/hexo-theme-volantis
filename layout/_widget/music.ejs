@@ -1,6 +1,6 @@
 <%- partial('_pre') %>
 <% if (theme.plugins.aplayer.enable == true) { %>
-  <section class='widget <%- page.widget_style %> <%- page.widget_platform %> <%- page.widget_pjax %> <%- item.class %>'>
+  <section class='widget <%- page.widget_platform %> <%- page.widget_pjax %> <%- item.class %>'>
     <%- partial('header', {item: item}) %>
     <div class='content'>
       <%- partial('../_plugins/aplayer/layout', {post: null, where: 'widget'}) %>
