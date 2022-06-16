@@ -138,6 +138,8 @@
 
 <%- partial('content-visibility-scroll-fix') %>
 
+<%- partial('../../_plugins/slow-network/script') %>
+
 <% if (theme.structured_data && theme.structured_data.enable) { %>
   <%- structured_data() %>
 <% } %>
