@@ -1,5 +1,29 @@
 # Changelog
 
+## [5.5.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.4.0...v5.5.0) (2022-06-18)
+
+
+### Features
+
+* **copyright:** 精确到文章的版权声明 ([1621fbb](https://github.com/volantis-x/hexo-theme-volantis/commit/1621fbb211057b037bb28328a364fbe4fc32df5a))
+* **scrollreveal&style.css:** slow network ([c31f54a](https://github.com/volantis-x/hexo-theme-volantis/commit/c31f54a01537bd68b83ed289a406b154499d8f21))
+* **widget:** 允许侧边栏卡片的粘性定位 ([5d5c9d5](https://github.com/volantis-x/hexo-theme-volantis/commit/5d5c9d5e7e288eb654922c4659dfdc5a1442ceda))
+
+
+### Bug Fixes
+
+* **artalk:** 深色模式主动切换修复 ([e4a7e2d](https://github.com/volantis-x/hexo-theme-volantis/commit/e4a7e2d247a8ab63365b1c0c6fc04e8f9bdb5656))
+* **background:** [#776](https://github.com/volantis-x/hexo-theme-volantis/issues/776) bing ([26dc230](https://github.com/volantis-x/hexo-theme-volantis/commit/26dc230ab6377356edb86a21e7c7267433110ac1))
+* **comment:** 指定地址的评论计数统计 ([482601a](https://github.com/volantis-x/hexo-theme-volantis/commit/482601ae02ce686bce1aff6b961dd6ead28a6985))
+* **rightmenu:** aplayer disable ([1c89b63](https://github.com/volantis-x/hexo-theme-volantis/commit/1c89b631371c89975f9977550d8a5c2f586b5fd5))
+* **walinecount:** 移除重复代码 ([2e2e05d](https://github.com/volantis-x/hexo-theme-volantis/commit/2e2e05d7ca19e94f6036c48b3448c58d0401e10b))
+* **widget:** z-index ([c9c823c](https://github.com/volantis-x/hexo-theme-volantis/commit/c9c823cf772f5c26f54ddc82064e5bba79c76331))
+
+
+### Performance Improvements
+
+* **GLOBAL_CONFIG:** 减少不必要的配置输出 ([2aa234f](https://github.com/volantis-x/hexo-theme-volantis/commit/2aa234f47be05c711f4af526d0e293f5dd8e7926))
+
 ## [5.4.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.3.2...v5.4.0) (2022-06-09)
 
 
