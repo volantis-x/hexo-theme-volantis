@@ -116,8 +116,8 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  # background: https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture # 官方背景
-  background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200 # Bing
+  background: https://fastly.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg
+  # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200 # Bing
   # background: http://www.dmoe.cc/random.php # 二次元
   # background: https://cdn.seovx.com/d/?mom=302 # 二次元
   logo:  # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
@@ -726,9 +726,9 @@ plugins:
     copy_code: true
     # 如果开启以下配置, hexo.config.highlight.enable 需要设置为 false ; hexo.config.highlight.enable 设置为 true, 则以下配置无效
     # # 不再支持 v11.1.0 以下版本
-    # js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
-    # css: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/default.min.css
-    # # # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
+    # js: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
+    # css: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css
+    # # # more: https://www.jsdelivr.com/package/npm/@highlightjs/cdn-assets?path=styles
 
   # prismjs
   # https://prismjs.com/
