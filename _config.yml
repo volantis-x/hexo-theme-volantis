@@ -324,7 +324,7 @@ comments:
     placeholder: # 评论占位
     # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
     # 配置此项时将覆盖服务端上传能力
-    imgUploader:
+    imageUploader:
       # 以兰空图床为例，下列填写内容为：
       # url: 'https://xxxxxx/api/v1/upload'
       # token: 'Bearer xxxxxxxxxxxxxx'
