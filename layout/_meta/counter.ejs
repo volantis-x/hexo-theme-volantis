@@ -12,9 +12,19 @@
 
   if(commentPath) path = commentPath;
   path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
+
+  let checkComment = false;
+  if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id
+    || theme.analytics.busuanzi
+    || theme.comments.service=='waline' && theme.comments.waline.pageview
+    || theme.comments.service=='twikoo'
+    || theme.comments.service=='discuss'
+    || theme.comments.service=='artalk') {
+    checkComment = !checkComment;
+  } 
 %>
 
-<% if (!!page.comments) { %>
+<% if (!!page.comments && checkComment) { %>
 <div class="new-meta-item browse">
   <a class='notlink'>
     <p>

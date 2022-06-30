@@ -202,13 +202,13 @@ article:
       # 版权声明组件 (for layout: post)
       copyright:
         enable: true
-        permalink: '本文链接：'
+        permalink: '本文永久链接是：'
         content:
           - '作者：Fuxx-1@Github'
           - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
           - permalink
          # 自定义版权组件：精细到文章的版权声明
-        custom: true # 开启后替代上方内容的版权显示
+        custom: false # 开启后替代上方内容的版权显示
         customData:
           default: type1  # 默认授权声明
           #############################
@@ -321,7 +321,7 @@ comments:
     placeholder: # 评论占位
     # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
     # 配置此项时将覆盖服务端上传能力
-    imgUploader:
+    imageUploader:
       # 以兰空图床为例，下列填写内容为：
       # url: 'https://xxxxxx/api/v1/upload'
       # token: 'Bearer xxxxxxxxxxxxxx'
@@ -577,21 +577,21 @@ sidebar:
           text: '文章数目：'
           unit: '篇'
         runtime:
-          enable: true
+          enable: false
           data: '2020/01/01'    # 填写建站日期
           text: '已运行时间：'
           unit: '天'
         wordcount:
-          enable: true
+          enable: false
           text: '本站总字数：'   # 需要启用 wordcount
           unit: '字'
         visitcounter:
           siteuv:
-            enable: true
+            enable: false
             text: '本站访客数：'
             unit: '人'
           sitepv:
-            enable: true
+            enable: false
             text: '本站总访问量：'
             unit: '次'
         lastupd:
@@ -950,7 +950,7 @@ plugins:
 
 ### 自定义右键 新
 rightmenus:
-  enable: true
+  enable: false
   # 右键菜单项及加载顺序
   # 内容示例：plugins.[组名], menus.[组名], hr(分割线，推荐去线留白), music(音乐控制器)
   order:
@@ -986,7 +986,7 @@ rightmenus:
     # 图标前缀 fa-solid, fa-regular, fa-light, fa-thin, fa-duotone, fa-brands
     iconPrefix: fa-solid
     # 例外，在 articlePage 组显示时（文章页）时依旧显示含 link 属性的菜单项
-    articleShowLink: false
+    articleShowLink: true
     # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
     musicAlwaysShow: true
   # 右键内置组，预置实现

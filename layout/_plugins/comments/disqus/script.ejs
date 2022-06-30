@@ -71,6 +71,7 @@
 
   // 点击了加载
   function needLoadDisqus() {
+    if(!document.querySelectorAll("#layoutHelper-comments")[0])return;
     checkDisqus();
     volantis.dom.$(document.getElementById("load-btns")).hide();
     volantis.dom.$(document.getElementById("loading-comments")).show();
