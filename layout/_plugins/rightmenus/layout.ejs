@@ -82,7 +82,7 @@
 <% rightMenu.rederFunction = item => { %>
 <%   if (!!item && !!item['event'] && item['group'] !== 'navigation') { %>
 <%     if (rightMenu.defaultEvent.some(value => { return value === item['event'] })) { %>
-  <!-- RightMenusFunction['<%- item.id %>'] = (fun) => {fun()} -->
+  //RightMenusFunction['<%- item.id %>'] = (fun) => {fun()}
 <%     } else if (item['group'] === 'seletctText') { %>
   RightMenusFunction['<%- item.id %>'] = (__text__) => {<%- item.event %>}
 <%     } else if (item['group'] === 'elementCheck' || item['group'] === 'elementImage') { %>
