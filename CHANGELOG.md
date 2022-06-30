@@ -1,5 +1,29 @@
 # Changelog
 
+## [5.6.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.5.0...v5.6.0) (2022-06-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **artalk:** imgUploader -> imageUploader
+
+### Bug Fixes
+
+* **comment:** disqus ([6656237](https://github.com/volantis-x/hexo-theme-volantis/commit/665623793b7610f2d9be8c1338c23e82f1b98159))
+* **highlightjs:** cdn npm ([2caa1fb](https://github.com/volantis-x/hexo-theme-volantis/commit/2caa1fb1e630381ed9ea019038a4d8580d17703c))
+* **meta:** counter ([7470b7a](https://github.com/volantis-x/hexo-theme-volantis/commit/7470b7abcfbc545e5552363c85b9562e42e75541))
+* **rightmenu:** [#779](https://github.com/volantis-x/hexo-theme-volantis/issues/779) ([9023ce5](https://github.com/volantis-x/hexo-theme-volantis/commit/9023ce573d8ad0595990dafb13553817d749fee8))
+
+
+### Code Refactoring
+
+* **artalk:** imgUploader -> imageUploader ([8cde195](https://github.com/volantis-x/hexo-theme-volantis/commit/8cde195b30c2111338ac2bcec45bcaf145867ccf))
+
+
+### Miscellaneous Chores
+
+* release 5.6.0 ([cd60196](https://github.com/volantis-x/hexo-theme-volantis/commit/cd60196d4dc730d9d8d238ad1958f868b103ebfb))
+
 ## [5.5.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.4.0...v5.5.0) (2022-06-18)
 
 
