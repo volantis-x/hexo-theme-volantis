@@ -201,16 +201,16 @@ article:
       # ----------------
       # 版权声明组件 (for layout: post)
       copyright:
-        enable: true
+        enable: false
         permalink: '本文永久链接是：'
         content:
           - '作者：Fuxx-1@Github'
           - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
           - permalink
          # 自定义版权组件：精细到文章的版权声明
-        custom: false # 开启后替代上方内容的版权显示
+        custom: true # 开启后替代上方内容的版权显示
         customData:
-          default: type1  # 默认授权声明
+          default: type5  # 默认授权声明
           #############################
           # 你可以在文章的 front-matter 覆盖默认版权声明
           # 配置示例（均可选）： 
