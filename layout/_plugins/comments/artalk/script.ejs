@@ -31,17 +31,17 @@
       imgUploader: function(file) {
         let headers = new Headers();
         headers.set('Accept', 'application/json');
-        <% if(!!theme.comments.artalk.imgUploader?.token) { %>
-          headers.set('Authorization', '<%= theme.comments.artalk.imgUploader?.token %>')
+        <% if(!!theme.comments.artalk.imageUploader?.token) { %>
+          headers.set('Authorization', '<%= theme.comments.artalk.imageUploader?.token %>')
         <% } %>
         let formData = new FormData();
         formData.append('file', file);
-        return fetch('<%= theme.comments.artalk.imgUploader?.api %>',{
+        return fetch('<%= theme.comments.artalk.imageUploader?.api %>',{
           method: 'POST',
           body: formData,
           headers: headers
           }).then((resp) => resp.json())
-            .then((resp) => resp.<%= theme.comments.artalk.imgUploader?.resp %>)
+            .then((resp) => resp.<%= theme.comments.artalk.imageUploader?.resp %>)
       },
       <% } %>
     }));
