@@ -71,4 +71,12 @@ volantis.pjax.push(()=>{_hmt.push(['_trackPageview', document.location.pathname]
     })
   </script>
 <% } %>
-  
+
+<% if (config.perf_51_la) { %>
+  <script src="https://sdk.51.la/perf/js-sdk-perf.min.js" crossorigin="anonymous"></script>
+  <script>
+    volantis.js("https://sdk.51.la/perf/js-sdk-perf.min.js").then(() => {
+      new LingQue.Monitor().init({id:"<%= config.perf_51_la %>",sendSuspicious:true});
+    })
+  </script>
+<% } %>
