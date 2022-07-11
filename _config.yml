@@ -201,7 +201,7 @@ article:
       # ----------------
       # 版权声明组件 (for layout: post)
       copyright:
-        enable: false
+        enable: true
         permalink: '本文永久链接是：'
         content:
           - '作者：Fuxx-1@Github'
@@ -577,12 +577,12 @@ sidebar:
           text: '文章数目：'
           unit: '篇'
         runtime:
-          enable: false
+          enable: true
           data: '2020/01/01'    # 填写建站日期
           text: '已运行时间：'
           unit: '天'
         wordcount:
-          enable: false
+          enable: true
           text: '本站总字数：'   # 需要启用 wordcount
           unit: '字'
         visitcounter:
@@ -715,20 +715,22 @@ plugins:
     enable: true
     js: volantis-static/libs/vanilla-lazyload/dist/lazyload.min.js # https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js
     onlypost: false
-    loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # 不建议使用占位图, 建议loadingImg为空, 当前占位图会产生布局偏移, loadingImg 为空占位图是一个 1X1 像素的图片
+    loadingImg: https://fastly.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # 不建议使用占位图, 建议loadingImg为空, 当前占位图会产生布局偏移, loadingImg 为空占位图是一个 1X1 像素的图片
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
 
   ######## Plugins to optimize the experience:
   # 代码高亮
-  code_highlight: highlightjs # highlightjs or prismjs
+  code_highlight: prismjs # highlightjs or prismjs
   # highlight.js
   highlightjs:
     copy_code: true
-    # 如果开启以下配置, hexo.config.highlight.enable 需要设置为 false ; hexo.config.highlight.enable 设置为 true, 则以下配置无效
-    # # 不再支持 v11.1.0 以下版本
-    # js: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
+    # 如果开启 js, hexo.config.highlight.enable 需要设置为 false
+    js: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
+    # css: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/github-gist.min.css
     # css: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css
-    # # # more: https://www.jsdelivr.com/package/npm/@highlightjs/cdn-assets?path=styles
+    css: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/github.min.css
+    # https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.5.1/styles/github.min.css
+    # more: https://www.jsdelivr.com/package/npm/@highlightjs/cdn-assets?path=styles
 
   # prismjs
   # https://prismjs.com/
@@ -740,9 +742,18 @@ plugins:
       - https://unpkg.com/prismjs/components/prism-core.min.js
       - https://unpkg.com/prismjs/plugins/autoloader/prism-autoloader.min.js
       - https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.min.js
+      - https://unpkg.com/prismjs/plugins/download-button/prism-download-button.min.js
+      # - https://unpkg.com/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js
+      - https://unpkg.com/prismjs/plugins/diff-highlight/prism-diff-highlight.min.js
+      - https://unpkg.com/prismjs/plugins/line-highlight/prism-line-highlight.min.js
+
     css:
-      - https://unpkg.com/prismjs/themes/prism-dark.css
-      - https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.css
+      - https://unpkg.com/prismjs/plugins/inline-color/prism-inline-color.min.css
+      # - https://unpkg.com/prismjs/themes/prism.min.css # 默认主题
+      - https://unpkg.com/prism-themes/themes/prism-one-light.min.css # one-light主题
+      - https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.min.css
+      - https://unpkg.com/prismjs/plugins/diff-highlight/prism-diff-highlight.min.css
+      - https://unpkg.com/prismjs/plugins/line-highlight/prism-line-highlight.min.css
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
