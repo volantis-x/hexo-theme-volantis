@@ -1,6 +1,6 @@
 # Changelog
 
-## [5.7.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.6.0...v5.7.0) (2022-07-10)
+## [5.7.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.6.0...v5.7.0) (2022-07-15)
 
 
 ### Features
