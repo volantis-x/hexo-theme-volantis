@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.7.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.6.0...v5.7.0) (2022-07-15)
+
+
+### Features
+
+* add LingQue.Monitor ([f6f166e](https://github.com/volantis-x/hexo-theme-volantis/commit/f6f166e0e2834bc3c765383b4c21643df9bf7dc6))
+* **tag:** add pandown ([#785](https://github.com/volantis-x/hexo-theme-volantis/issues/785)) ([efc1966](https://github.com/volantis-x/hexo-theme-volantis/commit/efc1966f1b976a0c59ef5b08da41838bda0e7a83))
+
+
+### Bug Fixes
+
+* **artalk:** imageUploader ([#782](https://github.com/volantis-x/hexo-theme-volantis/issues/782)) ([c573d0c](https://github.com/volantis-x/hexo-theme-volantis/commit/c573d0c59b3dda882d88475ce44635647c64e4eb))
+
 ## [5.6.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.5.0...v5.6.0) (2022-06-30)
 
 
