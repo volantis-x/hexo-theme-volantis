@@ -1,4 +1,5 @@
 <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/<%- theme.info.theme_version %>'>
+  <!-- 引入骛霞文楷 -->
   <link rel="stylesheet" href="//unpkg.com/lxgw-wenkai-webfont@latest/style.css" />
   <%- meta_generator() %>
   <meta name="Volantis" content="<%- theme.info.theme_version %>">
@@ -8,47 +9,47 @@
   <%- autoCanonical(config, page) %>
   <!-- 渲染优化 -->
   <%_ if (theme.dns_prefetch && theme.dns_prefetch.length){ _%>
-    <meta http-equiv='x-dns-prefetch-control' content='on' />
-    <%_ ([...theme.dns_prefetch]).forEach(function(item){ _%>
-      <link rel='dns-prefetch' href='<%- item %>'>
-      <link rel="preconnect" href="<%- item %>" crossorigin>
-    <%_ }) _%>
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <%_ ([...theme.dns_prefetch]).forEach(function(item){ _%>
+  <link rel='dns-prefetch' href='<%- item %>'>
+  <link rel="preconnect" href="<%- item %>" crossorigin>
+  <%_ }) _%>
   <%_ } _%>
   <meta name="renderer" content="webkit">
   <meta name="force-rendering" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <%_ if (theme.csp.enable) { _%>
-    <meta http-equiv="Content-Security-Policy" content="<%- theme.csp.content %>">
+  <meta http-equiv="Content-Security-Policy" content="<%- theme.csp.content %>">
   <%_ } _%>
-  <meta name="HandheldFriendly" content="True" >
+  <meta name="HandheldFriendly" content="True">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
   <!-- import head_begin begin -->
   <%_ if (config.import && config.import.head_begin){ _%>
-    <%_ ([...config.import.head_begin]).forEach(function(item){ _%>
-      <%- item %>
-    <%_ }) _%>
+  <%_ ([...config.import.head_begin]).forEach(function(item){ _%>
+  <%- item %>
+  <%_ }) _%>
   <%_ } _%>
   <!-- import head_begin end -->
   <!-- Custom Files headBegin begin-->
   <%- volantis_inject('headBegin') %>
   <!-- Custom Files headBegin end-->
   <%_ if (config.favicon) { _%>
-    <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
+  <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <%_ } _%>
   <link rel="preload" href="<%- theme.cdn.map.css.style %>" as="style">
   <%- generate_preload_fontfamily(theme) %>
   <!-- feed -->
   <%_ if (config.feed && config.feed.path){ _%>
-    <%_ if (typeof(config.feed.path)=="string"){ _%>
-      <%- feed_tag(config.feed.path, {title: config.title}) %>
-    <%_ }else{ _%>
-      <%_ ([...config.feed.path]).forEach(function(item){ _%>
-        <%- feed_tag(item, {title: config.title}) %>
-      <%_ }) _%>
-    <%_ } _%>
+  <%_ if (typeof(config.feed.path)=="string"){ _%>
+  <%- feed_tag(config.feed.path, {title: config.title}) %>
+  <%_ }else{ _%>
+  <%_ ([...config.feed.path]).forEach(function(item){ _%>
+  <%- feed_tag(item, {title: config.title}) %>
+  <%_ }) _%>
+  <%_ } _%>
   <%_ } _%>
   <!-- 页面元数据 -->
   <%- generate_title(config, theme, page) %>
@@ -60,22 +61,23 @@
     <%- FirstCSS() %>
   </style>
   <link rel="stylesheet" href="<%- theme.cdn.map.css.style %>" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
+  <noscript>
+    <link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
   <%_ if (theme.plugins.darkmode.enable) { _%>
-    <script>
-      let userColorScheme=localStorage.getItem("color-scheme")
-      if(userColorScheme){
-        document.documentElement.setAttribute("color-scheme", userColorScheme);
-      }
-    </script>
+  <script>
+    let userColorScheme = localStorage.getItem("color-scheme")
+    if (userColorScheme) {
+      document.documentElement.setAttribute("color-scheme", userColorScheme);
+    }
+  </script>
   <%_ } _%>
   <%- partial('../_plugins/end-of-support/script') %>
   <%- partial('scripts/global') %>
   <!-- import head_end begin -->
   <%_ if (config.import && config.import.head_end){ _%>
-    <%_ ([...config.import.head_end]).forEach(function(item){ _%>
-      <%- item %>
-    <%_ }) _%>
+  <%_ ([...config.import.head_end]).forEach(function(item){ _%>
+  <%- item %>
+  <%_ }) _%>
   <%_ } _%>
   <!-- import head_end end -->
   <!-- Custom Files headEnd begin-->
