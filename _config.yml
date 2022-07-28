@@ -7,10 +7,10 @@ info:
 debug: false
 ############################### 默认占位图 ###############################
 default:
-  avatar: volantis-static/media/placeholder/avatar/round/3442075.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
-  link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
-  cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
-  image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+  avatar: volantis-static/media/placeholder/avatar/round/3442075.svg # https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
+  link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
+  cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
+  image: volantis-static/media/placeholder/image/2659360.svg # https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
 ############################### CSP ###############################
 # 内容安全策略( CSP ) meta 标签 http-equiv="Content-Security-Policy"
 # https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
@@ -42,9 +42,9 @@ csp:
 # 默认使用 https://unpkg.com/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.js ，注意版本号对应关系！！可以通过修改以下配置项覆盖
 # 开发者注意 cdn.enable 设置为 false
 cdn:
-  enable: true
+  enable: false
   # CDN 前缀，为空使用默认值，链接最后不加 "/",
-  # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
+  # 例如： https://gcore.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
   # 该配置默认值是："https://unpkg.com/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
   prefix: #https://unpkg.com/hexo-theme-volantis/source
   # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
@@ -63,7 +63,7 @@ volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924/
 ########################################################################
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
-  - https://cdn.jsdelivr.net/npm/ => https://unpkg.com/
+  - https://cdn.jsdelivr.net/npm/ => https://gcore.jsdelivr.net/npm/ # https://unpkg.com/
   - https://cdn.jsdelivr.net/gh/ => https://gcore.jsdelivr.net/gh/
 
 
@@ -79,7 +79,7 @@ scroll_smooth: true
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
-    # img: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    # img: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     icon: 
     title: Fuxxの博客
   menu:
@@ -291,15 +291,15 @@ article:
       # 分享
       share:
         - id: qq
-          img:  volantis-static/media/org.volantis/logo/128/qq.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png
+          img:  volantis-static/media/org.volantis/logo/128/qq.png #  https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png
         - id: qzone
-          img: volantis-static/media/org.volantis/logo/128/qzone.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
+          img: volantis-static/media/org.volantis/logo/128/qzone.png #  https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
         - id: weibo
-          img: volantis-static/media/org.volantis/logo/128/weibo.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
+          img: volantis-static/media/org.volantis/logo/128/weibo.png #  https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
         - id: # qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-          img: # volantis-static/media/org.volantis/logo/128/wechat.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
+          img: # volantis-static/media/org.volantis/logo/128/wechat.png #  https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
         - id: # telegram
-          img: # volantis-static/media/org.volantis/logo/128/telegram.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
+          img: # volantis-static/media/org.volantis/logo/128/telegram.png #  https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
 ############################### Article Layout ############################### > end
 
 
@@ -348,8 +348,8 @@ comments:
     # lang: "zh-CN"
     # 以上配置按照 yml 格式增删填写即可
     theme:
-      light: "light" # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/light.css
-      dark: "dark" # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/dark.css
+      light: "light" # https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/light.css
+      dark: "dark" # https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/dark.css
 
   # beaudar
   # https://beaudar.lipk.org/
@@ -507,7 +507,7 @@ sidebar:
         # - icon: fab fa-github
         #   url: https://github.com/fuxx-1/
         # - icon: fab fa-qq
-        #   url: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/QQ.jpg
+        #   url: https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/QQ.jpg
         # - icon: fas fa-headphones-alt
         #   url: /
     # ---------------------------------------
@@ -624,7 +624,7 @@ tag_plugins:
     color: '' # color for default checkbox
   # {% link title, url, img %}
   link:
-    placeholder:  volantis-static/media/org.volantis/logo/256/safari.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
+    placeholder:  volantis-static/media/org.volantis/logo/256/safari.png # https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
 ############################### Tag Plugins ############################### > end
 
 
@@ -670,7 +670,7 @@ plugins:
   # jquery
   globalJquery: false # 全局引入 jquery
   jquery: volantis-static/libs/jquery/dist/jquery.min.js # https://unpkg.com/jquery@3.6.0/dist/jquery.min.js
-  # fontawesome Pro 版本：https://cdn.jsdelivr.net/gh/inkss/fontawesome@6.0.0/css/all.min.css
+  # fontawesome Pro 版本：https://gcore.jsdelivr.net/gh/inkss/fontawesome@6.0.0/css/all.min.css
   fontawesome: volantis-static/libs/@fortawesome/fontawesome-free/css/all.min.css # https://unpkg.com/@fortawesome/fontawesome-free@6.1/css/all.min.css
   # katex@0.15.2
   katex:
@@ -703,8 +703,8 @@ plugins:
   preload:
     enable: true
     service: flying_pages # instant_page, flying_pages
-    instant_page: volantis-static/libs/instant_page/instant_page.js # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
-    flying_pages: volantis-static/libs/flying-pages/flying-pages.min.js # https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
+    instant_page: volantis-static/libs/instant_page/instant_page.js # https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
+    flying_pages: volantis-static/libs/flying-pages/flying-pages.min.js # https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
 
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
@@ -715,7 +715,7 @@ plugins:
     enable: true
     js: volantis-static/libs/vanilla-lazyload/dist/lazyload.min.js # https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js
     onlypost: false
-    loadingImg: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # 不建议使用占位图, 建议loadingImg为空, 当前占位图会产生布局偏移, loadingImg 为空占位图是一个 1X1 像素的图片
+    loadingImg: https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # 不建议使用占位图, 建议loadingImg为空, 当前占位图会产生布局偏移, loadingImg 为空占位图是一个 1X1 像素的图片
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
 
   ######## Plugins to optimize the experience:
@@ -729,7 +729,7 @@ plugins:
     # css: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/github-gist.min.css
     # css: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css
     css: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/github.min.css
-    # https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.5.1/styles/github.min.css
+    # https://gcore.jsdelivr.net/npm/@highlightjs/cdn-assets@11.5.1/styles/github.min.css
     # more: https://www.jsdelivr.com/package/npm/@highlightjs/cdn-assets?path=styles
 
   # prismjs
@@ -780,12 +780,12 @@ plugins:
   # fontawesome animation for fontawesome V5
   fontawesome_animation:
     enable: true
-    css: volantis-static/libs/font-awesome-animation/font-awesome-animation.min.css # https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
+    css: volantis-static/libs/font-awesome-animation/font-awesome-animation.min.css # https://gcore.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css
 
   # Typing Effects
   comment_typing:
     enable: true
-    js: volantis-static/libs/comment_typing/comment_typing.js # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
+    js: volantis-static/libs/comment_typing/comment_typing.js # https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js
 
   # 视差滚动效果 Slide Background
   parallax:
@@ -797,12 +797,12 @@ plugins:
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
       - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/0.jpg
       - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/1.jpg
-      # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/2.jpg
-      # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/3.jpg
-      # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/4.jpg
-      # - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/6.jpg
-      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/7.jpg
-      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/8.jpg
+      # - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/2.jpg
+      # - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/3.jpg
+      # - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/4.jpg
+      # - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/6.jpg
+      - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/7.jpg
+      - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/8.jpg
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
@@ -1070,7 +1070,7 @@ rightmenu:
   customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
     enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
     old: #https://static.inkss.cn/img/article/
-    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/
+    new: #https://gcore.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/
   music:           # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
     alwaysShow: true
   ### 自定义菜单 ###
@@ -1211,13 +1211,13 @@ color_scheme:
 custom_css:
   cursor:
     enable: true
-    text: volantis-static/media/cursor/text.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
-    pointer: volantis-static/media/cursor/pointer.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
-    default: volantis-static/media/cursor/left_ptr.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
-    not-allowed: volantis-static/media/cursor/circle.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/circle.png
-    zoom-out: volantis-static/media/cursor/zoom-out.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-out.png
-    zoom-in: volantis-static/media/cursor/zoom-in.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-in.png
-    grab: volantis-static/media/cursor/openhand.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/openhand.png
+    text: volantis-static/media/cursor/text.png # https://gcore.jsdelivr.net/gh/inkss/common@1/cursor/text.png
+    pointer: volantis-static/media/cursor/pointer.png # https://gcore.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
+    default: volantis-static/media/cursor/left_ptr.png # https://gcore.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
+    not-allowed: volantis-static/media/cursor/circle.png # https://gcore.jsdelivr.net/gh/inkss/common@1/cursor/circle.png
+    zoom-out: volantis-static/media/cursor/zoom-out.png # https://gcore.jsdelivr.net/gh/inkss/common@1/cursor/zoom-out.png
+    zoom-in: volantis-static/media/cursor/zoom-in.png # https://gcore.jsdelivr.net/gh/inkss/common@1/cursor/zoom-in.png
+    grab: volantis-static/media/cursor/openhand.png # https://gcore.jsdelivr.net/gh/inkss/common@1/cursor/openhand.png
   font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
@@ -1269,7 +1269,7 @@ custom_css:
       name: 'LXGW WenKai' # 'Monaco'
       # fontfamily: '"Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
       # name: 'Varela Round'
-      # url: # volantis-static/media/fonts/VarelaRound/VarelaRound-Regular.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
+      # url: # volantis-static/media/fonts/VarelaRound/VarelaRound-Regular.ttf # https://gcore.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
       weight: normal
       style: normal
     bodyfont:
@@ -1277,13 +1277,13 @@ custom_css:
       name: 'LXGW WenKai' # 'Monaco'
       # fontfamily: 'UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
       # name: 'UbuntuMono'
-      # url: # volantis-static/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
+      # url: # volantis-static/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf # https://gcore.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
       weight: normal
       style: normal
     codefont:
       fontfamily: '"LXGW WenKai", sans-serif' # 'Menlo, UbuntuMono, Monaco'
       name: 'LXGW WenKai' # 'Monaco'
-      # url: volantis-static/media/fonts/Monaco/Monaco.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
+      # url: volantis-static/media/fonts/Monaco/Monaco.ttf # https://gcore.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
       # weight: normal
       # style: normal
 ############################### Custom css ############################### > end
@@ -1291,7 +1291,7 @@ custom_css:
 
 ############################### Analytics ############################### > start
 analytics:
-  busuanzi: #volantis-static/libs/busuanzi/js/busuanzi.pure.mini.js #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
+  busuanzi: #volantis-static/libs/busuanzi/js/busuanzi.pure.mini.js #https://gcore.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   leancloud: # 请使用自己的 id & key 以防止数据丢失
     app_id: h3tIB2qbjXY5drW5YPWukzq9-gzGzoHsz # u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
     app_key: dBV0MUqkcaL9TBlq0XVEPL94 # jfHtEKVE24j0IVCGHbvuFClp
@@ -1317,7 +1317,7 @@ seo:
 # https://ogp.me/
 # https://hexo.io/zh-cn/docs/helpers#open-graph
 open_graph:
-  image: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
+  image: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
   twitter_card: summary # summary_large_image , summary
   #twitter_id:
   #twitter_site:
@@ -1339,7 +1339,7 @@ structured_data:
       sns:
         - https://github.com/volantis-x
     logo:
-      path: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
+      path: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
       width: 192
       height: 192
 ############################### Structured Data ############################### > end
