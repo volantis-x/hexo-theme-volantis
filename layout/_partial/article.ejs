@@ -106,7 +106,7 @@
             <blockquote>
               <% (footer_widget.copyright.content||[]).forEach(function(row){ %>
                 <% if (row == 'permalink') { %>
-                  <p><%- footer_widget.copyright.permalink %><a href=<%- decodeURI(page.permalink) %>><%- decodeURI(page.permalink) %></a></p>
+                  <p><%- footer_widget.copyright.permalink %><a href="<%- decodeURI(page.permalink) %>"><%- decodeURI(page.permalink) %></a></p>
                 <% } else { %>
                   <%- markdown(row) %>
                 <% } %>
