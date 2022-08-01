@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.7.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.0...v5.7.1) (2022-07-26)
+
+
+### Bug Fixes
+
+* drop node 14 ([694046b](https://github.com/volantis-x/hexo-theme-volantis/commit/694046b934be663001226fedd4fb6b2535ec9d59))
+
 ## [5.7.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.6.0...v5.7.0) (2022-07-15)
 
 
