@@ -13,7 +13,7 @@
       path = defaultPath || decodeURI(window.location.pathname);
     }
 
-    Discuss.init(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.discuss) %>, {
+    discuss.init(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.discuss) %>, {
       el: '#discuss_container',
       path: path,
       ph: placeholder
@@ -21,7 +21,7 @@
   }
   load_discuss();
   volantis.pjax.push(()=>{
-    if (typeof Discuss == "undefined") {
+    if (typeof discuss == "undefined") {
       load_discuss();
     } else {
       pjax_discuss();

@@ -12,7 +12,7 @@ jobs:
     name: A job to Test deploying for dev.
     strategy:
       matrix:
-        node_version: ['14', '16']
+        node_version: ['18', '16']
     steps:
     - name: Setup Node.js
       uses: actions/setup-node@v1
@@ -45,7 +45,7 @@ jobs:
     name: A job to Test deploying for test.
     strategy:
       matrix:
-        node_version: ['14', '16']
+        node_version: ['18', '16']
     steps:
     - name: Setup Node.js
       uses: actions/setup-node@v1
