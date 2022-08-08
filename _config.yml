@@ -253,7 +253,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/avatar.jpg
+        avatar: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/avatar/avatar.webp
         name: Fuxx-1 # 请设置文章作者
         url: /about/
       # 文章创建日期
@@ -493,7 +493,7 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop] # [desktop, mobile]
-      avatar: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/avatar.jpg
+      avatar: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/avatar/avatar.webp
       shape: circle # circle, rectangle
       url: /about/
       title: Fuxx-1
@@ -641,7 +641,7 @@ site_footer:
     - icon: fab fa-github
       url: https://github.com/fuxx-1/
     - icon: fab fa-qq
-      url: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/QQ.jpg
+      url: https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/Files/img/private/QQ.webp
     # - icon: fas fa-headphones-alt
     #   url: /
     # - icon: #fas fa-rss
@@ -795,14 +795,11 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/0.jpg
-      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/1.jpg
-      # - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/2.jpg
-      # - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/3.jpg
-      # - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/4.jpg
-      # - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/6.jpg
-      - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/7.jpg
-      - https://gcore.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/8.jpg
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/webp/001.webp
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/webp/002.webp
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/webp/004.webp
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/webp/008.webp
+      - https://cdn.jsdelivr.net/gh/Fuxx-1/StaticFile@main/background/webp/016.webp
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
@@ -817,10 +814,10 @@ plugins:
     type: playlist    # song, playlist, album, search, artist
     id: 6559921027    # song id / playlist id / album id / search keyword
     # Optional
-    fixed: false      # enable fixed mode
+    fixed: true      # enable fixed mode
     theme: '#1BCDFC'  # main color
     autoplay: false   # audio autoplay
-    order: list       # player play order, values: 'list', 'random'
+    order: random       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
     volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
