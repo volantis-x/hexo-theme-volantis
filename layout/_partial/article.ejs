@@ -1,5 +1,5 @@
 <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= post.layout %>" id="<%= post.layout %>" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="<%- post.permalink %>">
+  <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="<%- config.title %>">
   </span>
@@ -69,7 +69,7 @@
           %>
           <div class="copyright license">
             <div class="license-title"><%- post.title %></div>
-            <div class="license-link"><a href="<%- page.permalink %>"><%- page.permalink %></a>
+            <div class="license-link"><a href="<%- decodeURI(page.permalink) %>"><%- decodeURI(page.permalink) %></a>
             </div>
             <div class="license-meta">
               <div class="license-meta-item">
@@ -106,7 +106,7 @@
             <blockquote>
               <% (footer_widget.copyright.content||[]).forEach(function(row){ %>
                 <% if (row == 'permalink') { %>
-                  <p><%- footer_widget.copyright.permalink %><a href=<%- page.permalink %>><%- page.permalink %></a></p>
+                  <p><%- footer_widget.copyright.permalink %><a href="<%- decodeURI(page.permalink) %>"><%- decodeURI(page.permalink) %></a></p>
                 <% } else { %>
                   <%- markdown(row) %>
                 <% } %>
