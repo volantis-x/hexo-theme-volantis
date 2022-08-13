@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.7.2](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.1...v5.7.2) (2022-08-01)
+
+
+### Bug Fixes
+
+* fix Chinese urlencode displaying problem in permalink ([#794](https://github.com/volantis-x/hexo-theme-volantis/issues/794)) ([677b820](https://github.com/volantis-x/hexo-theme-volantis/commit/677b8207f7e0863470ffcb8fd9f287ca7ec1e9cf))
+* 加引号处理herf属性中空格导致的地址错误 ([#796](https://github.com/volantis-x/hexo-theme-volantis/issues/796)) ([2bb4043](https://github.com/volantis-x/hexo-theme-volantis/commit/2bb4043bbf58eb6080e3e5743817ad4420409937))
+
 ## [5.7.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.0...v5.7.1) (2022-07-26)
 
 
