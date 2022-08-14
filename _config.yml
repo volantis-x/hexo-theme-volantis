@@ -11,6 +11,62 @@ default:
   link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
   cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
   image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+
+
+############################### CDN System ###############################
+
+cdn_system:
+  # 静态资源版本控制
+  # 本地文件使用文件内容的hash值作为版本号(app.8c1e7c88.js)  其他为时间戳 (?v=1648684470140)
+  # 建议静态资源设置标头 浏览器缓存一年边缘缓存一个月 cache-control: max-age=86400, s-maxage=31536000 如果有更新记得刷新缓存
+  version: true
+  # ========================================================================
+  # cdn数据配置文件见 "theme/_cdn.yml", 可以在 source/_data/_cdn.yml 覆盖 theme/_cdn.yml
+  # 变量说明：
+  # ${site_root} 站点根目录 一般是 "/"
+  # ${name}      package 名称 见 "theme/_cdn.yml"
+  # ${version}   package 版本 见 "theme/_cdn.yml"
+  # ${file}      文件路径 见 "theme/_cdn.yml"
+  system_conf:
+    # CDN 优先级 从高到低排序
+    priority: [custom, local, npm, volantis-static, cdnjs]
+
+    # 自定义配置 使用 "theme/_cdn.yml" 中的名称作为配置项的键
+    custom:
+      enable: true
+      #volantis_style: /css/style.css
+      #volantis_app: /js/app.js
+
+    # 主题 /js与/css目录 （一般放在本地，可以在此处配置站点CDN https://mycdn.com/${site_root}/${file}）
+    local:
+      enable: true
+      # local CDN 格式
+      format: ${site_root}/${file}
+    # npm
+    # https://www.npmjs.com/
+    npm:
+      enable: true
+      # npm CDN 格式
+      format: https://unpkg.com/${name}@${version}/${file}
+    # volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
+    # https://github.com/volantis-x/volantis-static
+    volantis-static:
+      enable: true
+      # volantis-static CDN 格式
+      format: https://unpkg.com/volantis-static@0.0.1654736714924/${file}
+    # cdnjs
+    # https://cdnjs.com/
+    cdnjs:
+      enable: true
+      # cdnjs CDN 格式
+      format: https://cdnjs.cloudflare.com/ajax/libs/${name}/${version}/${file}
+  # ========================================================================
+
+
+
+
+
+
 ############################### CSP ###############################
 # 内容安全策略( CSP ) meta 标签 http-equiv="Content-Security-Policy"
 # https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
