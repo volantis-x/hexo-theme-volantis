@@ -39,7 +39,7 @@ cdn_system:
       #volantis_style: /css/style.css
       #volantis_app: /js/app.js
 
-    # 主题 /js与/css目录 （一般放在本地，可以在此处配置站点CDN https://mycdn.com/${site_root}/${file}）
+    # 主题 /js与/css目录 （一般放在本地，可以在此处配置站点CDN）,"theme/_cdn.yml" 中以 "volantis_" 开头的名称
     # Tip: 在本配置文件中 匹配以 "volantis-local" 开头的链接路径替换为该格式的前缀开头 prefix
     local:
       enable: true
@@ -56,7 +56,7 @@ cdn_system:
       prefix: https://unpkg.com
       # npm CDN 格式
       format: ${prefix}/${name}@${version}/${file}
-    # volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
+    # volantis static 静态资源文件 npm 包 CDN 地址
     # https://github.com/volantis-x/volantis-static
     # Tip: 在本配置文件中 匹配以 "volantis-static" 开头的链接路径替换为该格式的前缀开头 prefix
     volantis-static:
