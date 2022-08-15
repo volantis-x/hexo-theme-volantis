@@ -62,7 +62,7 @@ const getRevisionedFilePath = (filePath, revision) => {
 
 const revisioned = (filePath) => {
   if (!hexo.theme.config.cdn_version) {
-    return;
+    return filePath;
   }
   let arg = process.argv[2];
   if (arg == "s" || arg == "server") {
@@ -160,7 +160,7 @@ const replaceRevisionPlaceholder = async () => {
       })
     );
   } catch (error) {
-    
+    hexo.log.error("cdn_version ERROR: " + error);
   }
 };
 

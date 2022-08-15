@@ -12,9 +12,9 @@ module.exports =(hexo) => {
         CheckError(hexo,`node.js: ${err}`);
       }
       let nodeVersion = stdout.match(/v(\d*)/)[1];
-      if (nodeVersion<14) {
+      if (nodeVersion<16) {
         hexo.log.info(`node.js 版本：${stdout}`);
-        CheckError(hexo,`node.js 版本过低，请升级至 v14.x 以上版本！`);
+        CheckError(hexo,`node.js 版本过低，请升级至 v16.x 及以上版本！`);
       }else{
         exec('hexo -v', (err, stdout, stderr) => {
           if (err) {

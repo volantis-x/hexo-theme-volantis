@@ -136,7 +136,9 @@
 
 <%- partial('toc') %>
 
-<%- partial('content-visibility-scroll-fix') %>
+<% if (theme.content_visibility) { %>
+  <%- partial('content-visibility-scroll-fix') %>
+<% } %>
 
 <%- partial('../../_plugins/slow-network/script') %>
 

@@ -1,3 +1,9 @@
+
+# ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# 这里是 6.0.0-alpha 分支
+# Breaking Change 会放到这个分支
+# ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
@@ -120,17 +126,21 @@ cdn:
   # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
   set:
     js:
-      app: /js/app.js
+      #app: /js/app.js
     css:
-      style: /css/style.css # (异步加载样式)
+      #style: /css/style.css # (异步加载样式)
 # 静态资源版本控制
 # 本地文件使用文件内容的hash值作为版本号(app.8c1e7c88.js)  其他为时间戳 (?time=1648684470140)
 # 建议静态资源设置标头 浏览器缓存一年边缘缓存一个月 cache-control: max-age=86400, s-maxage=31536000 如果有更新记得刷新缓存
-cdn_version: true
+cdn_version: false
 # volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
 # https://github.com/volantis-x/volantis-static
 volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924/
 ########################################################################
+#  https://web.dev/content-visibility/
+#  https://www.caniuse.com/?search=content-visibility
+content_visibility: false
+
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
   - https://cdn.jsdelivr.net/npm/ => https://unpkg.com/
@@ -545,7 +555,7 @@ comments:
   # Discuss
   # https://discuss.js.org
   discuss:
-    js: https://cdn.jsdelivr.net/npm/discuss/dist/Discuss.js # 建议锁定版本
+    js: https://cdn.jsdelivr.net/npm/discuss/dist/discuss.js # 建议锁定版本
     serverURLs: # Discuss server address url
     # https://discuss.js.org/Quick-Start.html#path
 
@@ -803,7 +813,7 @@ plugins:
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    enable: true
+    enable: #true
     js: volantis-static/libs/scrollreveal/dist/scrollreveal.min.js # https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms

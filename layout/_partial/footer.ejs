@@ -5,10 +5,14 @@
       layout = config.theme_config.footer.layout;
     }
     let theme_version = theme.info.theme_version
-    // 未发布的 alpha 版本
-    if (theme_version.indexOf("alpha")!=-1) {
-      theme_version = "dev"
-    }
+    // // 未发布的 alpha 版本
+    // if (theme_version.indexOf("alpha")!=-1) {
+    //   theme_version = "dev"
+    // }
+    // // 从 5.7.2 以后的版本以 v开头（release-please的奇怪设定）
+    // else if (theme_version.indexOf("beta")==-1||theme_version.indexOf("rc")==-1) {
+    //   theme_version = "v" + theme_version
+    // }
   %>
   <footer class="footer clearfix"  itemscope itemtype="http://schema.org/WPFooter">
     <br><br>
@@ -39,13 +43,13 @@
         <div><%- markdown(__('footer.license')) %></div>
       <% } else if (item == 'info') { %>
         <%- __('footer.use') %>
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/<%- theme_version %>" target="_blank" class="codename">Volantis</a>
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/#<%- theme_version %>" target="_blank" class="codename">Volantis</a>
         <%- __('footer.theme') %><% if (theme.analytics.busuanzi) { %><%- __('symbol.comma') %><%- __('footer.total_views') %>
           <span id="busuanzi_value_site_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
           <%- __('footer.times') %>
         <% } %>
       <% } else if (item == 'source') { %>
-        <%- markdown(__('footer.site_source', '[Volantis](https://github.com/volantis-x/hexo-theme-volantis/tree/'+theme_version+')', 'GitHub', 'https://github.com/volantis-x/volantis-docs')) %>
+        <%- markdown(__('footer.site_source', '[Volantis](https://github.com/volantis-x/hexo-theme-volantis/#'+theme_version+')', 'GitHub', 'https://github.com/volantis-x/volantis-docs')) %>
       <% } else if (item == 'copyright') { %>
         <div class='copyright'>
         <%- markdown(theme.site_footer.copyright) %>

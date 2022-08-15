@@ -1,5 +1,37 @@
 # Changelog
 
+## [5.7.4](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.3...v5.7.4) (2022-08-15)
+
+
+### Bug Fixes
+
+* **#793:** 修复空值 ([302c98f](https://github.com/volantis-x/hexo-theme-volantis/commit/302c98fc5b0c725fb77c6bb33d7537f8f1f2062f))
+
+## [5.7.3](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.2...v5.7.3) (2022-08-15)
+
+
+### Bug Fixes
+
+* **#781:** content_visibility: false ([0c719be](https://github.com/volantis-x/hexo-theme-volantis/commit/0c719be17e8affb28dd42c9c8bfb52e3e21d9790))
+* **#793:** cdn_version: false ([cf60678](https://github.com/volantis-x/hexo-theme-volantis/commit/cf6067860312fbd6afd4ba6c14867d9ef86832fd))
+* **#793:** 移除默认配置 ([4d82dff](https://github.com/volantis-x/hexo-theme-volantis/commit/4d82dff4d41c513cfa0124cbed7e42b60236d9de))
+* **#798:** footer version link 404 ([a2a2d90](https://github.com/volantis-x/hexo-theme-volantis/commit/a2a2d90dc96fd00bb14cd742e0f05d253ef4ebed))
+
+## [5.7.2](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.1...v5.7.2) (2022-08-01)
+
+
+### Bug Fixes
+
+* fix Chinese urlencode displaying problem in permalink ([#794](https://github.com/volantis-x/hexo-theme-volantis/issues/794)) ([677b820](https://github.com/volantis-x/hexo-theme-volantis/commit/677b8207f7e0863470ffcb8fd9f287ca7ec1e9cf))
+* 加引号处理herf属性中空格导致的地址错误 ([#796](https://github.com/volantis-x/hexo-theme-volantis/issues/796)) ([2bb4043](https://github.com/volantis-x/hexo-theme-volantis/commit/2bb4043bbf58eb6080e3e5743817ad4420409937))
+
+## [5.7.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.0...v5.7.1) (2022-07-26)
+
+
+### Bug Fixes
+
+* drop node 14 ([694046b](https://github.com/volantis-x/hexo-theme-volantis/commit/694046b934be663001226fedd4fb6b2535ec9d59))
+
 ## [5.7.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.6.0...v5.7.0) (2022-07-15)
 
 
