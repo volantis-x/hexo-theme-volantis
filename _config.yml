@@ -61,6 +61,10 @@ cdn_version: false
 # https://github.com/volantis-x/volantis-static
 volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924/
 ########################################################################
+#  https://web.dev/content-visibility/
+#  https://www.caniuse.com/?search=content-visibility
+content_visibility: false
+
 # 全局页面字符串替换  A => B (可用于临时修改错字等)
 replace:
   - https://cdn.jsdelivr.net/npm/ => https://unpkg.com/
