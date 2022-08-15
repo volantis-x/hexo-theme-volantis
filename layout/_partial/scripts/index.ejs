@@ -12,24 +12,24 @@
 </script>
 
 <script>
-  <% if (theme.plugins.fontawesome) { %>
-  volantis.css("<%- theme.plugins.fontawesome %>");
+  <% if (theme.plugins.fontawesome.enable) { %>
+  volantis.css("<%- theme.cdn.fontawesome %>");
   <% } %>
   <% if (theme.plugins.fontawesome_animation.enable) { %>
   volantis.css("<%- theme.plugins.fontawesome_animation.css %>");
   <% } %>
   <% if (theme.plugins.nodewaves.enable) { %>
-  volantis.css("<%- theme.plugins.nodewaves.css %>");
+  volantis.css("<%- theme.cdn.nodewaves_css %>");
   <% } %>
 </script>
 
 <!-- required -->
 <% if (theme.plugins.globalJquery) { %>
-  <%- js(theme.plugins.jquery) %>
+  <%- js(theme.cdn.jquery) %>
 <% } %>
 
 <!-- internal -->
-<%- js(theme.cdn.map.js.app) %>
+<%- js(theme.cdn.volantis_app) %>
 
 <% if (theme.rightmenu.enable) { %>
   <%- partial('../../_plugins/rightmenu/layout') %>

@@ -12,6 +12,13 @@ volantis_app:
   npm: true
   static: false
   cdnjs: false
+volantis_aplayer:
+  name: hexo-theme-volantis
+  file: source/js/plugins/aplayer.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
 volantis_parallax:
   name: hexo-theme-volantis
   file: source/js/plugins/parallax.js
@@ -151,7 +158,7 @@ flying-pages:
   file: flying-pages.min.js
   version: 2.1.2
   npm: false # 不是最新版本 npm三年没更新了 version: 2.0.6
-  static: true
+  static: false #...
   cdnjs: false
 vanilla-lazyload:
   name: vanilla-lazyload
@@ -170,7 +177,7 @@ scrollreveal:
 nodewaves_css:
   name: node-waves
   file: dist/waves.min.css
-  version: 0.7.6
+  version: 0.7.6 
   npm: true
   static: true
   cdnjs: true

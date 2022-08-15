@@ -108,22 +108,6 @@ csp:
   # 可以使用自动程序替换默认的 'unsafe-inline' 和 * 生成更严格的内容安全策略.
   # 另可以参考官网的 gulp 方案.
   # gulpfile.js https://github.com/volantis-x/community/blob/main/gulpfile.js
-############################### CDN ###############################
-# 本地静态文件使用 CDN 加速
-# 默认使用 https://unpkg.com/hexo-theme-volantis@<%- theme.info.theme_version %>/source/js/*.js ，注意版本号对应关系！！可以通过修改以下配置项覆盖
-# 开发者注意 cdn.enable 设置为 false
-cdn:
-  enable: false
-  # CDN 前缀，为空使用默认值，链接最后不加 "/",
-  # 例如： https://cdn.jsdelivr.net/gh/volantis-x/volantis-x.github.io@gh-page 填写最后编译生成的源码CDN地址前缀，此路径下应该含有/js与/css目录,
-  # 该配置默认值是："https://unpkg.com/hexo-theme-volantis@"+ theme.info.theme_version +"/source"
-  prefix: #https://unpkg.com/hexo-theme-volantis/source
-  # 以下配置可以覆盖 cdn.prefix,配置项的值可以为空，但是要使用CDN必须依据路径填写配置项的键
-  set:
-    js:
-      #app: /js/app.js
-    css:
-      #style: /css/style.css # (异步加载样式)
 
 ########################################################################
 #  https://web.dev/content-visibility/
@@ -725,26 +709,9 @@ plugins:
   ################ required plugins ################
   # jquery
   globalJquery: false # 全局引入 jquery
-  jquery: volantis-static/libs/jquery/dist/jquery.min.js # https://unpkg.com/jquery@3.6.0/dist/jquery.min.js
-  # fontawesome Pro 版本：https://cdn.jsdelivr.net/gh/inkss/fontawesome@6.0.0/css/all.min.css
-  fontawesome: volantis-static/libs/@fortawesome/fontawesome-free/css/all.min.css # https://unpkg.com/@fortawesome/fontawesome-free@6.1/css/all.min.css
-  # katex@0.15.2
-  katex:
-    js: volantis-static/libs/katex/katex.min.js # https://unpkg.com/katex@0.15.2/dist/katex.min.js
-    css: volantis-static/libs/katex/katex.min.css # https://unpkg.com/katex@0.15.2/dist/katex.min.css
-    render: volantis-static/libs/katex/contrib/auto-render.min.js # https://unpkg.com/katex@0.15.2/dist/contrib/auto-render.min.js
-  # mathjax@3.2.0
-  mathjax: volantis-static/libs/mathjax/es5/tex-mml-chtml.js # https://unpkg.com/mathjax@3.2.0/es5/tex-mml-chtml.js
-  # github-markdown-css@5.1.0
-  markdown: volantis-static/libs/github-markdown-css/github-markdown.css # https://unpkg.com/github-markdown-css@5.1.0/github-markdown.min.css
-  # marked@4.0.10
-  marked: volantis-static/libs/marked/marked.min.js # https://unpkg.com/marked@4.0.10/marked.min.js
-  # hls.js@1.1.3
-  hlsjs: volantis-static/libs/hls.js/dist/hls.min.js # https://unpkg.com/hls.js@1.1.3
-  # @fancyapps/ui@4.0.12
-  fancybox:
-    css: volantis-static/libs/@fancyapps/ui/dist/fancybox.css # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.css
-    js: volantis-static/libs/@fancyapps/ui/dist/fancybox.umd.js # https://unpkg.com/@fancyapps/ui@4.0.12/dist/fancybox.umd.js
+  # fontawesome
+  fontawesome:
+    enable: true
   ################ optional plugins ################
   # issues api
   sitesjs:
@@ -759,8 +726,6 @@ plugins:
   preload:
     enable: true
     service: flying_pages # instant_page, flying_pages
-    instant_page: volantis-static/libs/instant_page/instant_page.js # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js
-    flying_pages: volantis-static/libs/flying-pages/flying-pages.min.js # https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js
 
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
@@ -769,7 +734,6 @@ plugins:
   # 在支持 srcset 的浏览器或者 RSS 阅读器(还会有人使用老旧的阅读器?)上会优先读取 srcset 加载的图片(懒加载占位图), 对于 RSS 中图片丢失变成懒加载占位图的问题, 建议 自行使用脚本移除 srcset 属性 或 关闭图片懒加载 或 在 RSS 中插入 vanilla-lazyload
   lazyload:
     enable: true
-    js: volantis-static/libs/vanilla-lazyload/dist/lazyload.min.js # https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js
     onlypost: false
     loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # 不建议使用占位图, 建议loadingImg为空, 当前占位图会产生布局偏移, loadingImg 为空占位图是一个 1X1 像素的图片
     blurIn: true # 模糊加载效果 （loadingImg为空时有效）
@@ -803,7 +767,6 @@ plugins:
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
     enable: #true
-    js: volantis-static/libs/scrollreveal/dist/scrollreveal.min.js # https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js
     distance: 32px
     duration: 800 # ms
     interval: 20 # ms
@@ -818,8 +781,6 @@ plugins:
   # Button Ripple Effect
   nodewaves:
     enable: #true
-    css: volantis-static/libs/node-waves/dist/waves.min.css # https://unpkg.com/node-waves@0.7.6/dist/waves.min.css
-    js: volantis-static/libs/node-waves/dist/waves.min.js # https://unpkg.com/node-waves@0.7.6/dist/waves.min.js
 
   # fontawesome V6:  https://fontawesome.com/docs/web/style/animate
   # fontawesome animation for fontawesome V5
@@ -866,10 +827,6 @@ plugins:
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
     enable: #true
-    js:
-      aplayer: volantis-static/libs/aplayer/dist/APlayer.min.js # https://unpkg.com/aplayer@1.10/dist/APlayer.min.js
-      meting: volantis-static/libs/meting/dist/Meting.min.js # https://unpkg.com/meting@2.0/dist/Meting.min.js
-    css: volantis-static/libs/aplayer/dist/APlayer.min.css # https://unpkg.com/aplayer@1.10/dist/APlayer.min.css
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
@@ -887,7 +844,6 @@ plugins:
 
   # Pjax
   pjax:
-    js: volantis-static/libs/pjax/pjax.min.js # https://unpkg.com/pjax@0.2.8/pjax.min.js
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.

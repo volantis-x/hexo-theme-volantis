@@ -103,11 +103,11 @@ function match_cdn_source(key) {
 
 // 收集 CDN 资源
 function collect_cdn_source() {
-  hexo.theme.config.cdn1 = {}
+  hexo.theme.config.cdn = {}
   Object.keys(cdn_info).forEach(e => {
-    hexo.theme.config.cdn1[e] = match_cdn_source(e)
+    hexo.theme.config.cdn[e] = match_cdn_source(e)
   })
-  console.log(hexo.theme.config.cdn1);
+  console.log(hexo.theme.config.cdn);
 }
 
 hexo.on('generateBefore', () => {
