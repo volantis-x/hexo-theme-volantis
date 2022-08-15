@@ -35,7 +35,7 @@ cdn_system:
   # ${version}     package 版本 见 "theme/_cdn.yml"
   # ${file}        文件路径 见 "theme/_cdn.yml"
   # ${min_file}    文件路径 ${file} 后添加 .min. (jsdelivr、cdnjs 官方自带压缩)
-  system_conf:
+  system_config:
     # CDN 优先级 从高到低排序
     priority: [custom, local, cdnjs, npm, volantis-static]
 
@@ -65,7 +65,7 @@ cdn_system:
     # volantis static 静态资源文件 npm 包 CDN 地址
     # https://github.com/volantis-x/volantis-static
     # Tip: 在本配置文件中 匹配以 "volantis-static" 开头的链接路径替换为该格式的前缀开头 prefix
-    volantis-static:
+    static:
       enable: true
       # CDN 链接前缀
       prefix: https://unpkg.com/volantis-static@0.0.1654736714924
