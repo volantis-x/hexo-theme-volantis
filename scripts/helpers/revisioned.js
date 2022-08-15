@@ -160,7 +160,7 @@ const replaceRevisionPlaceholder = async () => {
       })
     );
   } catch (error) {
-    
+    hexo.log.error("cdn_version ERROR: " + error);
   }
 };
 

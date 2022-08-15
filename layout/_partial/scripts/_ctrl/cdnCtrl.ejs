@@ -65,7 +65,7 @@
       const element = n[key];
       if(element && typeof element !="string"){
         dfs(element,path.concat(key))
-      }else{
+      }else if(element){
         let op=path.concat(key)
         let source=""
         for (let index = 1; index < op.length; index++) {
@@ -122,5 +122,6 @@
   //  ?time=' + Date.now() 替换为 theme.getStartTime 保证相同资源 hash 不变
   //  更新：
   //  本地文件使用文件内容的hash值作为版本号 app.8c1e7c88.js see: /scripts/helpers/revisioned.js
+  
   dfs(theme.cdn.set,[])
 _%>
