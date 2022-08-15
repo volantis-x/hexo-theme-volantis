@@ -1,54 +1,63 @@
 volantis_style:
   name: hexo-theme-volantis
   file: css/style.css
+  local: true
   npm: false
   static: false
   cdnjs: false
 volantis_app:
   name: hexo-theme-volantis
   file: source/js/app.js
+  local: true
   npm: true
   static: false
   cdnjs: false
 volantis_parallax:
   name: hexo-theme-volantis
   file: source/js/plugins/parallax.js
+  local: true
   npm: true
   static: false
   cdnjs: false
 volantis_rightMenu:
   name: hexo-theme-volantis
   file: source/js/plugins/rightMenu.js
+  local: true
   npm: true
   static: false
   cdnjs: false
 volantis_rightMenus:
   name: hexo-theme-volantis
   file: source/js/plugins/rightMenus.js
+  local: true
   npm: true
   static: false
   cdnjs: false
 volantis_tags_sites:
   name: hexo-theme-volantis
   file: source/js/plugins/tags/sites.js
+  local: true
   npm: true
   static: false
   cdnjs: false
 volantis_tags_friends:
   name: hexo-theme-volantis
   file: source/js/plugins/tags/friends.js
+  local: true
   npm: true
   static: false
   cdnjs: false
 volantis_tags_contributors:
   name: hexo-theme-volantis
   file: source/js/plugins/tags/contributors.js
+  local: true
   npm: true
   static: false
   cdnjs: false
 volantis_search_hexo:
   name: hexo-theme-volantis
   file: source/js/search/hexo.js
+  local: true
   npm: true
   static: false
   cdnjs: false
@@ -56,6 +65,7 @@ jquery:
   name: jquery
   file: dist/jquery.min.js
   version: 3.6.0
+  local: false
   npm: true
   static: true
   cdnjs: true

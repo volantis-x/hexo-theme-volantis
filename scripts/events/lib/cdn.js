@@ -1,5 +1,8 @@
 const { version } = require('../../../package.json');
+const path = require('path')
 const site_root = hexo.config.root;
+const cdn_info = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '/_cdn.yml'), engine: 'yaml' })
+
 function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
 }
@@ -50,4 +53,9 @@ function volantis_cdn_system_prefix(source, hexo) {
 
 hexo.on('generateBefore', () => {
   volantis_cdn_system_prefix(hexo.theme.config, hexo);
+  // 可以在 source/_data/cdn.yml 覆盖 theme/_cdn.yml
+  const data = hexo.locals.get('data');
+  if (data.cdn) {
+    merge(cdn_info, data.cdn);
+  }
 });
