@@ -27,7 +27,7 @@ cdn_system:
   # 建议静态资源设置标头 浏览器缓存一年边缘缓存一个月 cache-control: max-age=86400, s-maxage=31536000 如果有更新记得刷新缓存
   version: true
   # ========================================================================
-  # cdn数据配置文件见 "theme/_cdn.yml", 可以在 source/_data/_cdn.yml 覆盖 theme/_cdn.yml
+  # cdn数据配置文件见 "theme/_cdn.yml", 可以在 source/_data/cdn.yml 覆盖 theme/_cdn.yml
   # 变量说明：
   # ${prefix}      CDN 链接前缀
   # ${site_root}   站点根目录 一般是 "/"
