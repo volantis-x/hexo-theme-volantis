@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.7.4](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.3...v5.7.4) (2022-08-15)
+
+
+### Bug Fixes
+
+* **#793:** 修复空值 ([302c98f](https://github.com/volantis-x/hexo-theme-volantis/commit/302c98fc5b0c725fb77c6bb33d7537f8f1f2062f))
+
 ## [5.7.3](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.2...v5.7.3) (2022-08-15)
 
 
