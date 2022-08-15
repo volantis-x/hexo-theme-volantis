@@ -1,5 +1,22 @@
 # Changelog
 
+## [5.7.4](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.3...v5.7.4) (2022-08-15)
+
+
+### Bug Fixes
+
+* **#793:** 修复空值 ([302c98f](https://github.com/volantis-x/hexo-theme-volantis/commit/302c98fc5b0c725fb77c6bb33d7537f8f1f2062f))
+
+## [5.7.3](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.2...v5.7.3) (2022-08-15)
+
+
+### Bug Fixes
+
+* **#781:** content_visibility: false ([0c719be](https://github.com/volantis-x/hexo-theme-volantis/commit/0c719be17e8affb28dd42c9c8bfb52e3e21d9790))
+* **#793:** cdn_version: false ([cf60678](https://github.com/volantis-x/hexo-theme-volantis/commit/cf6067860312fbd6afd4ba6c14867d9ef86832fd))
+* **#793:** 移除默认配置 ([4d82dff](https://github.com/volantis-x/hexo-theme-volantis/commit/4d82dff4d41c513cfa0124cbed7e42b60236d9de))
+* **#798:** footer version link 404 ([a2a2d90](https://github.com/volantis-x/hexo-theme-volantis/commit/a2a2d90dc96fd00bb14cd742e0f05d253ef4ebed))
+
 ## [5.7.2](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.1...v5.7.2) (2022-08-01)
 
 

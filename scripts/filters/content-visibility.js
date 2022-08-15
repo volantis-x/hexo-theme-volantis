@@ -2,24 +2,26 @@
 // https://www.caniuse.com/?search=content-visibility
 // 在文章内容渲染时将每两个 <h2> 之间的内容分为一块 用 <div class="post-story"></div> 包裹起来。然后为 .post-story 声明 content-visibility: auto
 hexo.extend.filter.register('after_post_render', function (data) {
-  let dataList = data.content.split('\n')
-  let mydata = ``
-  let flag = 1
-  dataList.forEach(e => {
-    let yy = e.replace(/<h2.*?>.*?<\/h2>/, function (str) {
-      if (flag) {
-        flag = 0
-        return `<div class="story post-story">` + str
-      } else {
-        return `</div><div class="story post-story">` + str
-      }
-    })
-    mydata += yy
-    mydata += "\n"
-  });
-  if (!flag) {
-    mydata += `</div>`
+  if (this.theme.config.content_visibility) {
+    let dataList = data.content.split('\n')
+    let mydata = ``
+    let flag = 1
+    dataList.forEach(e => {
+      let yy = e.replace(/<h2.*?>.*?<\/h2>/, function (str) {
+        if (flag) {
+          flag = 0
+          return `<div class="story post-story">` + str
+        } else {
+          return `</div><div class="story post-story">` + str
+        }
+      })
+      mydata += yy
+      mydata += "\n"
+    });
+    if (!flag) {
+      mydata += `</div>`
+    }
+    data.content = mydata
   }
-  data.content = mydata
   return data;
 });
