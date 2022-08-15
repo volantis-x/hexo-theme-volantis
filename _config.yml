@@ -124,13 +124,7 @@ cdn:
       #app: /js/app.js
     css:
       #style: /css/style.css # (异步加载样式)
-# 静态资源版本控制
-# 本地文件使用文件内容的hash值作为版本号(app.8c1e7c88.js)  其他为时间戳 (?time=1648684470140)
-# 建议静态资源设置标头 浏览器缓存一年边缘缓存一个月 cache-control: max-age=86400, s-maxage=31536000 如果有更新记得刷新缓存
-cdn_version: false
-# volantis static 静态资源文件 npm 包 CDN 地址 (后面加 "/" )
-# https://github.com/volantis-x/volantis-static
-volantis_static_cdn: https://unpkg.com/volantis-static@0.0.1654736714924/
+
 ########################################################################
 #  https://web.dev/content-visibility/
 #  https://www.caniuse.com/?search=content-visibility

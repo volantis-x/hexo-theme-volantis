@@ -61,7 +61,7 @@ const getRevisionedFilePath = (filePath, revision) => {
 };
 
 const revisioned = (filePath) => {
-  if (!hexo.theme.config.cdn_version) {
+  if (!hexo.theme.config.cdn_system.version) {
     return filePath;
   }
   let arg = process.argv[2];
@@ -87,7 +87,7 @@ const calcFileHash = async (filePath) => {
 
 const replaceRevisionPlaceholder = async () => {
 
-  if (!hexo.theme.config.cdn_version) {
+  if (!hexo.theme.config.cdn_system.version) {
     return;
   }
   try {

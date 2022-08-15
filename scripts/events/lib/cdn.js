@@ -93,7 +93,7 @@ function match_cdn_source(key) {
             min_file,
             prefix,
           }
-          return format.replace(/\$\{(.+?)\}/g, (match, $1) => value[$1])
+          return format?.replace(/\$\{(.+?)\}/g, (match, $1) => value[$1]) || null
         }
       }
     }
