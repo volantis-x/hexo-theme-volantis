@@ -30,25 +30,23 @@ cdn_system:
   # cdn数据配置文件见 "theme/_cdn.yml", 可以在 source/_data/cdn.yml 覆盖 theme/_cdn.yml
   # 变量说明：
   # ${prefix}      CDN 链接前缀
-  # ${site_root}   站点根目录 一般是 "/"
+  # ${site_root}   站点根目录 一般是 "/", 只能在 prefix 中使用。
   # ${name}        package 名称 见 "theme/_cdn.yml"
   # ${version}     package 版本 见 "theme/_cdn.yml"
   # ${file}        文件路径 见 "theme/_cdn.yml"
   # ${min_file}    文件路径 ${file} 后添加 .min. (jsdelivr、cdnjs 官方自带压缩)
   system_config:
-    # CDN 优先级 从高到低排序
-    priority: [custom, local, cdnjs, npm, volantis-static]
+    # CDN 优先级 从高到低排序 写入 priority 列表即表示启用(enable)
+    priority: [custom, local, cdnjs, npm, static]
 
     # 自定义配置 使用 "theme/_cdn.yml" 中的名称作为配置项的键
     custom:
-      enable: true
       #volantis_style: /css/style.css
       #volantis_app: /js/app.js
 
     # 主题 /js与/css目录 （一般放在本地，可以在此处配置站点CDN）,"theme/_cdn.yml" 中以 "volantis_" 开头的名称
     # Tip: 在本配置文件中 匹配以 "volantis-local" 开头的链接路径替换为该格式的前缀开头 prefix
     local:
-      enable: true
       # CDN 链接前缀
       prefix: ${site_root}
       # local CDN 格式
@@ -57,7 +55,6 @@ cdn_system:
     # https://www.npmjs.com/
     # Tip: 在本配置文件中 匹配以 "volantis-npm" 开头的链接路径替换为该格式的前缀开头 prefix
     npm:
-      enable: true
       # CDN 链接前缀
       prefix: https://unpkg.com
       # npm CDN 格式
@@ -66,7 +63,6 @@ cdn_system:
     # https://github.com/volantis-x/volantis-static
     # Tip: 在本配置文件中 匹配以 "volantis-static" 开头的链接路径替换为该格式的前缀开头 prefix
     static:
-      enable: true
       # CDN 链接前缀
       prefix: https://unpkg.com/volantis-static@0.0.1654736714924
       # volantis-static CDN 格式
@@ -75,7 +71,6 @@ cdn_system:
     # https://cdnjs.com/
     # Tip: 在本配置文件中 匹配以 "volantis-cdnjs" 开头的链接路径替换为该格式的前缀开头 prefix
     cdnjs:
-      enable: true
       # CDN 链接前缀
       prefix: https://cdnjs.cloudflare.com/ajax/libs
       # cdnjs CDN 格式
