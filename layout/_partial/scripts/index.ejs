@@ -13,23 +13,23 @@
 
 <script>
   <% if (theme.plugins.fontawesome) { %>
-  volantis.css("<%- theme.plugins.fontawesome %>");
+  volantis.css("<%- theme.cdn.fontawesome %>");
   <% } %>
   <% if (theme.plugins.fontawesome_animation.enable) { %>
-  volantis.css("<%- theme.plugins.fontawesome_animation.css %>");
+  volantis.css("<%- theme.cdn['font-awesome-animation'] %>");
   <% } %>
   <% if (theme.plugins.nodewaves.enable) { %>
-  volantis.css("<%- theme.plugins.nodewaves.css %>");
+  volantis.css("<%- theme.cdn.nodewaves_css %>");
   <% } %>
 </script>
 
 <!-- required -->
 <% if (theme.plugins.globalJquery) { %>
-  <%- js(theme.plugins.jquery) %>
+  <%- js(theme.cdn.jquery) %>
 <% } %>
 
 <!-- internal -->
-<%- js(theme.cdn.map.js.app) %>
+<%- js(theme.cdn.volantis_app) %>
 
 <% if (theme.rightmenu.enable) { %>
   <%- partial('../../_plugins/rightmenu/layout') %>
@@ -87,7 +87,7 @@
 
 
 <% if (theme.analytics.busuanzi) { %>
-  <script defer src="<%- theme.analytics.busuanzi %>" data-pjax></script>
+  <script defer src="<%- theme.cdn.busuanzi %>" data-pjax></script>
 <% } %>
 
 <!-- optional -->
@@ -100,7 +100,7 @@
 <% } %>
 
 <% if (theme.plugins.comment_typing.enable) { %>
-  <%- js(theme.plugins.comment_typing.js) %>
+  <%- js(theme.cdn.comment_typing) %>
 <% } %>
 
 <% if (theme.plugins.code_highlight) { %>

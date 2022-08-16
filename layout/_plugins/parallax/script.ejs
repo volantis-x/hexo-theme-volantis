@@ -63,7 +63,7 @@ _%>
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('<%- theme.cdn.map.js.parallax %>').then(()=>{
+    volantis.js('<%- theme.cdn.volantis_parallax %>').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{

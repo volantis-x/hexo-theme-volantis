@@ -17,29 +17,6 @@ function merge(target, source) {
   return target;
 }
 
-// volantis_static_cdn
-function volantis_static_cdn(source,hexo) {
-  for (const key in source) {
-    if (isObject(source[key])) {
-      volantis_static_cdn(source[key],hexo);
-    } else if(source[key] && typeof source[key] =="string") {
-      if(source[key].match(/^volantis-static\//g)){
-        source[key] = hexo.theme.config.volantis_static_cdn + source[key].replace(/^volantis-static\//g,"")
-      }
-    } else if(source[key] && Array.isArray(source[key]) && source[key].length>0) {
-      source[key].forEach((item,index)=>{
-        if(item && typeof item =="string") {
-          if(item.match(/^volantis-static\//g)){
-            source[key][index] = hexo.theme.config.volantis_static_cdn + item.replace(/^volantis-static\//g,"")
-          }
-        }else if (isObject(item)){
-          volantis_static_cdn(item,hexo);
-        }
-      })
-    }
-  }
-}
-
 module.exports = hexo => {
   if (!hexo.locals.get) return;
 
@@ -86,6 +63,5 @@ module.exports = hexo => {
       mergeLang(language);
     }
   }
-  volantis_static_cdn(hexo.theme.config,hexo);
   hexo.theme.config.info.theme_version = version;
 };

@@ -5,8 +5,7 @@
   const SearchServiceDataPath = SearchServiceDataPathRoot + "content.json";
 
   function loadSearchScript() {
-    // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("<%- theme.cdn.map.js.search %>");
+    return volantis.js("<%- theme.cdn['volantis_search_' + theme.search.service] %>");
   }
 
   function loadSearchService() {
