@@ -349,7 +349,7 @@ izitoast_css:
   npm: true
   static: true
   cdnjs: true
-izitoast_css:
+izitoast_js:
   name: izitoast
   file: dist/js/iziToast.min.js
   version: 1.4.0
