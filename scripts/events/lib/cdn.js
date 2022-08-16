@@ -122,7 +122,8 @@ function collect_cdn_source() {
   Object.keys(cdn_info).forEach(e => {
     hexo.theme.config.cdn[e] = match_cdn_source(e)
   })
-  console.log(hexo.theme.config.cdn);
+  if(hexo.theme.config.debug)
+    console.log(hexo.theme.config.cdn);
 }
 
 hexo.on('generateBefore', () => {
