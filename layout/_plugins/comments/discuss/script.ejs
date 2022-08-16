@@ -2,7 +2,7 @@
   volantis.layoutHelper("comments",`<div id="discuss_container"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`)
   function load_discuss() {
     if(!document.querySelectorAll("#discuss_container")[0])return;
-    volantis.js("<%- theme.comments.discuss.js %>", pjax_discuss)
+    volantis.js("<%- theme.cdn.discuss %>", pjax_discuss)
   }
   function pjax_discuss() {
     if(!document.querySelectorAll("#discuss_container")[0])return;

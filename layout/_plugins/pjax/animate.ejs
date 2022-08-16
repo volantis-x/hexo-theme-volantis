@@ -2,7 +2,7 @@
 
 <div class="pjax-animate">
   <% if (theme.plugins.pjax.animation == 'nprogress') { %>
-    <script src="<%- theme.plugins.pjax.nprogress %>"></script>
+    <script src="<%- theme.cdn.nprogress %>"></script>
     <div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed: 100})</script></div>
     <script>
       window.ShowLoading = function() {

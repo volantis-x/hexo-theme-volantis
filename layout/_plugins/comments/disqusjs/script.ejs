@@ -2,8 +2,8 @@
   volantis.layoutHelper("comments",`<div id="disqus_thread"></div>`)
   // from: https://github.com/ChrAlpha/hexo-theme-cards/blob/master/layout/_plugins/comments/disqusjs/source.ejs
   function loadDisqusJS() {
-    volantis.js('<%= theme.comments.disqusjs.js %>', pjax_DisqusJS)
-    volantis.css('<%= theme.comments.disqusjs.css %>')
+    volantis.js('<%= theme.cdn.disqusjs_js %>', pjax_DisqusJS)
+    volantis.css('<%= theme.cdn.disqusjs_css %>')
   }
   let path = pdata.commentPath;
   if (path.length == 0) {

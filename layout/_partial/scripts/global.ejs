@@ -47,6 +47,8 @@
       <% } %>
     }
   }
+  volantis.GLOBAL_CONFIG.plugins.message.css = "<%- theme.cdn.izitoast_css %>";
+  volantis.GLOBAL_CONFIG.plugins.message.js = "<%- theme.cdn.izitoast_js %>";
 
   /******************** volantis.EventListener ********************************/
   // 事件监听器 see: /source/js/app.js
@@ -282,7 +284,7 @@
   volantis.import = {
     jQuery: () => {
       if (typeof jQuery == "undefined") {
-        return volantis.js("<%- theme.plugins.jquery %>")
+        return volantis.js("<%- theme.cdn.jquery %>")
       } else {
         return new Promise(resolve => {
           resolve()

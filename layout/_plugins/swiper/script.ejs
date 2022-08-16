@@ -1,8 +1,8 @@
 <script>
   function load_swiper() {
     if (!document.querySelectorAll(".swiper-container")[0]) return;
-    volantis.css("<%- theme.plugins.swiper.css %>");
-    volantis.js("<%- theme.plugins.swiper.js %>").then(() => {
+    volantis.css("<%- theme.cdn.swiper_css %>");
+    volantis.js("<%- theme.cdn.swiper_js %>").then(() => {
       pjax_swiper();
     });
   }
