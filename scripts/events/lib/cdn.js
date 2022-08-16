@@ -2,6 +2,7 @@ const { version } = require('../../../package.json');
 const theme_version = version;
 const path = require('path')
 const site_root = hexo.config.root;
+// _cdn.yml
 const cdn_info = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '/_cdn.yml'), engine: 'yaml' })
 
 function isObject(item) {
@@ -59,9 +60,11 @@ const minFile = (file) => {
 // 匹配 CDN 资源
 function match_cdn_source(key) {
   if (key && cdn_info[key]) {
+    // _cdn.yml item
     const info = cdn_info[key];
     const system_config = hexo.theme.config.cdn_system.system_config;
     for (const iterator of system_config.priority) {
+      // priority item
       if (iterator === "custom") {
         if (system_config.custom) {
           const r = system_config.custom[info.name];
@@ -73,15 +76,27 @@ function match_cdn_source(key) {
         if (info[iterator] === true) {
           const prefix = system_config[iterator].prefix?.replace(/\$\{site_root\}/g, site_root);
           const format = system_config[iterator].format;
-          const name = info.name;
+          let name = info.name;
           let file = info.file;
           if (iterator === "cdnjs") {
-            file = file.replace(/^[lib|dist]*\/|browser\//g, '')
+            if (info.cdnjs_name) {
+              name = info.cdnjs_name;
+            }
+            if (info.cdnjs_file) {
+              file = info.cdnjs_file;
+            } else {
+              file = file.replace(/^[lib|dist]*\/|browser\//g, '');
+            }
           }
           if (info.local === true) {
             file = file.replace(/^source\//g, '')
           }
-          const min_file = minFile(file)
+          let min_file = minFile(file)
+          if (iterator === "cdnjs") {
+            if (info.cdnjs_no_min_file) {
+              min_file = file;
+            }
+          }
           let version = info.version;
           if (info.local === true) {
             version = theme_version

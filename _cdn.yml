@@ -1,3 +1,5 @@
+# cdnjs 的 version 不能使用 latest
+
 volantis_style:
   name: hexo-theme-volantis
   file: css/style.css
@@ -78,6 +80,7 @@ jquery:
   cdnjs: true
 fontawesome:
   name: "@fortawesome/fontawesome-free"
+  cdnjs_name: font-awesome
   file: css/all.min.css
   version: 6.1.1
   npm: true
@@ -85,6 +88,7 @@ fontawesome:
   cdnjs: true
 katex_js:
   name: katex
+  cdnjs_name: KaTeX
   file: dist/katex.min.js
   version: 0.15.2
   npm: true
@@ -92,6 +96,7 @@ katex_js:
   cdnjs: true
 katex_css:
   name: katex
+  cdnjs_name: KaTeX
   file: dist/katex.min.css
   version: 0.15.2
   npm: true
@@ -99,6 +104,7 @@ katex_css:
   cdnjs: true
 katex_render:
   name: katex
+  cdnjs_name: KaTeX
   file: dist/contrib/auto-render.min.js
   version: 0.15.2
   npm: true
@@ -121,7 +127,7 @@ markdown:
 marked:
   name: marked
   file: marked.min.js
-  version: 4.0.10
+  version: 4.0.18
   npm: true
   static: true
   cdnjs: true
@@ -134,15 +140,17 @@ hlsjs:
   cdnjs: true
 fancybox_css:
   name: "@fancyapps/ui"
+  cdnjs_name: fancyapps-ui
   file: dist/fancybox.css
-  version: 4.0.12
+  version: 4.0.31
   npm: true
   static: true
   cdnjs: true
 fancybox_js:
   name: "@fancyapps/ui"
+  cdnjs_name: fancyapps-ui
   file: dist/fancybox.umd.js
-  version: 4.0.12
+  version: 4.0.31
   npm: true
   static: true
   cdnjs: true
@@ -169,6 +177,7 @@ vanilla-lazyload:
   cdnjs: true
 scrollreveal:
   name: scrollreveal
+  cdnjs_name: scrollReveal.js
   file: dist/scrollreveal.min.js
   version: 4.0.9
   npm: true
@@ -233,7 +242,7 @@ font-awesome-animation:
 comment_typing:
   name: comment_typing
   file: comment_typing.js
-  version: latest
+  version: unknown
   npm: false # comment_typing.js 来源未知
   static: true
   cdnjs: false
@@ -264,46 +273,50 @@ disqusjs_js:
   version: 1.3
   npm: true
   static: false
-  cdnjs: true
+  cdnjs: false # 主题未适配 3.0.1 版本
 disqusjs_css:
   name: disqusjs
   file: dist/disqusjs.css
   version: 1.3
   npm: true
   static: false
-  cdnjs: true
+  cdnjs: false # 主题未适配 3.0.1 版本
 gitalk:
   name: gitalk
   file: dist/gitalk.min.js
-  version: 1
+  version: 1.7.2
   npm: true
   static: false
   cdnjs: true
 twikoo:
   name: twikoo
   file: dist/twikoo.min.js
-  version: latest
+  version: 1.6.5
   npm: true
   static: false
   cdnjs: true
 waline_css:
   name: "@waline/client"
+  cdnjs_name: waline
   file: dist/waline.css
-  version: latest
+  version: 2.6.3
   npm: true
   static: false
   cdnjs: true
 waline_js:
   name: "@waline/client"
+  cdnjs_name: waline
   file: dist/waline.js
-  version: latest
+  version: 2.6.3
   npm: true
   static: false
   cdnjs: true
 discuss:
   name: discuss
   file: dist/discuss.js
-  version: latest
+  cdnjs_file: dist/discuss.js
+  cdnjs_no_min_file: true
+  version: 1.1.4
   npm: true
   static: false
   cdnjs: true
@@ -330,18 +343,20 @@ vssue_vue:
   cdnjs: true
 swiper_js:
   name: swiper
+  cdnjs_name: Swiper
   file: swiper-bundle.min.js
-  version: 6
+  version: 8.3.2
   npm: true
   static: true
-  cdnjs: false # Swiper ???
+  cdnjs: true
 swiper_css:
   name: swiper
+  cdnjs_name: Swiper
   file: swiper-bundle.min.css
-  version: 6
+  version: 8.3.2
   npm: true
   static: true
-  cdnjs: false # Swiper ???
+  cdnjs: true
 izitoast_css:
   name: izitoast
   file: dist/css/iziToast.min.css
@@ -359,14 +374,14 @@ izitoast_js:
 fcircle_css:
   name: fcircle
   file: fcircle.css
-  version: latest
+  version: unknown
   npm: false
   static: true
   cdnjs: false
 fcircle_js:
   name: fcircle
   file: fcircle.js
-  version: latest
+  version: unknown
   npm: false
   static: true
   cdnjs: false
@@ -380,7 +395,7 @@ bbtalk:
 artitalk:
   name: artitalk
   file: artitalk.js
-  version: latest
+  version: 3.3.4
   npm: true
   static: false
   cdnjs: false

@@ -74,7 +74,7 @@ cdn_system:
       # CDN 链接前缀
       prefix: https://cdnjs.cloudflare.com/ajax/libs
       # cdnjs CDN 格式
-      format: ${prefix}/${name}/${version}/${file}
+      format: ${prefix}/${name}/${version}/${min_file}
   # ========================================================================
 
 
