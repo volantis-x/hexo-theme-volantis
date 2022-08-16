@@ -8,6 +8,7 @@
     debug: <%- JSON.stringify(theme.debug) %>,
     default: <%- JSON.stringify(theme.default) %>,
     lastupdate: new Date(<%- theme.getStartTime %>),
+    cdn: <%- JSON.stringify(theme.cdn) %>,
     sidebar: {
       for_page: <%- JSON.stringify(theme.sidebar.for_page) %>,
       for_post: <%- JSON.stringify(theme.sidebar.for_post) %>,
@@ -24,10 +25,6 @@
     },
     plugins: {
       message: <%- JSON.stringify(theme.plugins.message) %>,
-      fancybox: {
-        css: "<%- theme.cdn.fancybox_css %>",
-        js: "<%- theme.cdn.fancybox_js %>",
-      },
       <% if(theme.plugins.aplayer.enable) { %>
       aplayer: {
         id: <%- JSON.stringify(theme.plugins.aplayer.id) %>,
@@ -47,8 +44,6 @@
       <% } %>
     }
   }
-  volantis.GLOBAL_CONFIG.plugins.message.css = "<%- theme.cdn.izitoast_css %>";
-  volantis.GLOBAL_CONFIG.plugins.message.js = "<%- theme.cdn.izitoast_js %>";
 
   /******************** volantis.EventListener ********************************/
   // 事件监听器 see: /source/js/app.js

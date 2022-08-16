@@ -506,8 +506,8 @@ const VolantisApp = (() => {
   // 消息提示：标准
   fn.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css(volantis.GLOBAL_CONFIG.plugins.message.css)
-      volantis.js(volantis.GLOBAL_CONFIG.plugins.message.js, () => {
+      volantis.css(volantis.GLOBAL_CONFIG.cdn.izitoast_css)
+      volantis.js(volantis.GLOBAL_CONFIG.cdn.izitoast_js, () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -552,8 +552,8 @@ const VolantisApp = (() => {
   // 消息提示：询问
   fn.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css(volantis.GLOBAL_CONFIG.plugins.message.css)
-      volantis.js(volantis.GLOBAL_CONFIG.plugins.message.js, () => {
+      volantis.css(volantis.GLOBAL_CONFIG.cdn.izitoast_css)
+      volantis.js(volantis.GLOBAL_CONFIG.cdn.izitoast_js, () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -613,8 +613,8 @@ const VolantisApp = (() => {
     }
 
     if (typeof iziToast === "undefined") {
-      volantis.css(volantis.GLOBAL_CONFIG.plugins.message.css)
-      volantis.js(volantis.GLOBAL_CONFIG.plugins.message.js, () => {
+      volantis.css(volantis.GLOBAL_CONFIG.cdn.izitoast_css)
+      volantis.js(volantis.GLOBAL_CONFIG.cdn.izitoast_js, () => {
         hideMessage(done);
       });
     } else {
@@ -694,8 +694,8 @@ const VolantisFancyBox = (() => {
   const fn = {};
 
   fn.loadFancyBox = (done) => {
-    volantis.css(volantis.GLOBAL_CONFIG.plugins.fancybox.css);
-    volantis.js(volantis.GLOBAL_CONFIG.plugins.fancybox.js).then(() => {
+    volantis.css(volantis.GLOBAL_CONFIG.cdn.fancybox_css);
+    volantis.js(volantis.GLOBAL_CONFIG.cdn.fancybox_js).then(() => {
       if (done) done();
     })
   }
