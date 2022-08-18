@@ -86,7 +86,7 @@
 
 
 
-<% if (theme.analytics.busuanzi) { %>
+<% if (theme.plugins.busuanzi.enable) { %>
   <script defer src="<%- theme.cdn.busuanzi %>" data-pjax></script>
 <% } %>
 
@@ -105,10 +105,6 @@
 
 <% if (theme.plugins.code_highlight) { %>
   <%- partial('../../_plugins/highlight/script') %>
-<% } %>
-
-<% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>
-  <%- partial('../../_plugins/analytics/LCCounter') %>
 <% } %>
 
 <% if (config.google_analytics_key || config.baidu_analytics_key || config.tencent_aegis_id || config.v6_51_la || config.perf_51_la) { %>

@@ -6,7 +6,7 @@
   4.  .pjax
 -->
 <%
-  var banUrl = theme.plugins.pjax.banUrl || [];
+  var excludeList = theme.plugins.pjax.exclude || [];
 %>
 
 <%- js(theme.cdn.pjax) %>
@@ -41,9 +41,9 @@
       try {
         var currentUrl = window.location.pathname;
         var targetUrl = e.triggerElement.href;
-        var banUrl = <%- '["' + banUrl.join('", "') + '"]' %>;
-        if (banUrl[0] != "") {
-          banUrl.forEach(item => {
+        var excludeList = <%- '["' + excludeList.join('", "') + '"]' %>;
+        if (excludeList[0] != "") {
+          excludeList.forEach(item => {
             if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
               window.location.href = targetUrl;
             }

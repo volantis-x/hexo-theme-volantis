@@ -14,9 +14,8 @@
   path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
 
   let checkComment = false;
-  if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id
-    || theme.analytics.busuanzi
-    || theme.comments.service=='waline' && theme.comments.waline.pageview
+  if (theme.plugins.busuanzi.enable
+    || (theme.comments.service=='waline' && theme.comments.waline.pageview)
     || theme.comments.service=='twikoo'
     || theme.comments.service=='discuss'
     || theme.comments.service=='artalk') {
@@ -29,11 +28,7 @@
   <a class='notlink'>
     <p>
       <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
-      <% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>
-      <span id="lc-pv" data-title="<%- post.title || page.title %>" data-path="<%- url_for(path) %>">
-        <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
-      </span>
-      <% } else if (theme.analytics.busuanzi) { %>
+      <% if (theme.plugins.busuanzi.enable) { %>
       <span id="busuanzi_value_page_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
       <% } else if (theme.comments.service=='waline' && theme.comments.waline.pageview) { %>
       <span data-path="<%- url_for(path) %>" class="waline-pageview-count">
