@@ -31,14 +31,6 @@
         enable:<%- JSON.stringify(theme.plugins.aplayer.enable) %>
       },
       <% } %>
-      <% if(theme.rightmenu.enable) { %>
-      rightmenu: {
-        faicon: <%- JSON.stringify(theme.rightmenu.faicon) %>,
-        layout: <%- JSON.stringify(theme.rightmenu.layout) %>,
-        music_alwaysShow: <%- JSON.stringify(theme.rightmenu.music.alwaysShow) %>,
-        customPicUrl: <%- JSON.stringify(theme.rightmenu.customPicUrl) %>
-      },
-      <% } %>
       <% if(theme.rightmenus.enable) { %>
       rightmenus: <%- JSON.stringify(theme.rightmenus) %>
       <% } %>

@@ -28,13 +28,6 @@ volantis_parallax:
   npm: true
   static: false
   cdnjs: false
-volantis_rightMenu:
-  name: hexo-theme-volantis
-  file: source/js/plugins/rightMenu.js
-  local: true
-  npm: true
-  static: false
-  cdnjs: false
 volantis_rightMenus:
   name: hexo-theme-volantis
   file: source/js/plugins/rightMenus.js

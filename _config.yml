@@ -953,7 +953,7 @@ plugins:
 
 ############################### Rightmenu ############################### > start
 
-### 自定义右键 新
+### 自定义右键
 rightmenus:
   enable: false
   # 右键菜单项及加载顺序
@@ -1044,51 +1044,6 @@ rightmenus:
     darkMode:
       - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-moon', event: 'volantis.dark.toggle()', group: 'darkMode'}
 ###
-
-# 自定义右键菜单
-rightmenu:
-  enable: false
-  faicon: fa              # 公共图标类型 fa fal fa-solid fa-duotone
-  # hr: 分割线, music: 音乐控制器
-  layout: [home, hr, help, examples, contributors, hr, source_docs, source_theme, hr, print, darkmode, reading, music]
-  ### 可选功能项 ###
-  print:                  # 只有文章页才允许自定义打印
-    name: 打印页面
-    icon: fa fa-print
-  darkmode:        # 需开启 plugins.darkmodejs
-    name: 暗黑模式
-    icon: fa fa-moon
-  reading:
-    name: 阅读模式
-    icon: fa fa-book-open
-  customPicUrl:    # 右键的图片复制：只有 Chrome 支持，且只支持 PNG 格式的图片。
-    enable: false  # 如果使用了对象存储且开启了自适应 Webp，那么可以提供额外的链接用以替换图片的访问地址
-    old: #https://static.inkss.cn/img/article/
-    new: #https://cdn.jsdelivr.net/gh/inkss/inkss-cdn@master/img/article/
-  music:           # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
-    alwaysShow: true
-  ### 自定义菜单 ###
-  help:
-    name: 常见问题
-    icon: fa fa-question
-    url: https://volantis.js.org/faqs/
-  examples:
-    name: 示例博客
-    icon: fa fa-rss
-    url: https://volantis.js.org/examples/
-  contributors:
-    name: 加入社区
-    icon: fa fa-fan fa-spin
-    url: https://volantis.js.org/contributors/
-  source_docs:
-    name: 本站源码
-    icon: fa fa-code-branch
-    url: https://github.com/volantis-x/volantis-docs/
-  source_theme:
-    name: 主题源码
-    icon: fa fa-code-branch
-    url: https://github.com/volantis-x/hexo-theme-volantis/
-############################### Rightmenu ############################### > end
 
 
 ############################### Search ############################### > start
