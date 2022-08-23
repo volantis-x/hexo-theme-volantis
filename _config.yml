@@ -22,19 +22,21 @@ default:
 ############################### CDN System ###############################
 
 cdn_system:
+  # CDN 优先级 从高到低排序 写入 priority 列表即表示启用(enable)
+  priority: [custom, local, cdnjs, npm, static]
   # ========================================================================
   # cdn数据配置文件见 "theme/_cdn.yml", 可以在 source/_data/cdn.yml 覆盖 theme/_cdn.yml
   # 变量说明：
-  # ${prefix}      CDN 链接前缀
-  # ${site_root}   站点根目录 一般是 "/", 只能在 prefix 中使用。
-  # ${name}        package 名称 见 "theme/_cdn.yml"
-  # ${version}     package 版本 见 "theme/_cdn.yml"
-  # ${file}        文件路径 见 "theme/_cdn.yml"
-  # ${min_file}    文件路径 ${file} 后添加 .min. (jsdelivr、cdnjs 官方自带压缩)
+  # 以下变量只能在 `prefix` 中使用。
+  # ${site_root}                站点根目录 一般是 "/"
+  # 以下变量只能在 `format` 中使用。
+  # ${prefix}                   CDN 链接前缀
+  # ${name}                     package 名称 见 "theme/_cdn.yml"
+  # ${version}                  package 版本 见 "theme/_cdn.yml"
+  # ${file}                     文件路径 见 "theme/_cdn.yml"
+  # ${min_file}                 文件路径 ${file} 后添加 .min. (jsdelivr、cdnjs 官方自带压缩)
+  # ${timestamp}                Hexo运行时的时间戳(eg：1661246702300), 可用于静态资源版本控制 format: ${prefix}${file}?v=${timestamp}
   system_config:
-    # CDN 优先级 从高到低排序 写入 priority 列表即表示启用(enable)
-    priority: [custom, local, cdnjs, npm, static]
-
     # 自定义配置 使用 "theme/_cdn.yml" 中的名称作为配置项的键
     custom:
       busuanzi: https://cdn.dusays.com/bsz.js  # 杜老师友情赞助

@@ -104,7 +104,7 @@ function match_cdn_source(key) {
     // _cdn.yml item
     const info = cdn_info[key];
     const system_config = hexo.theme.config.cdn_system.system_config;
-    for (const iterator of system_config.priority) {
+    for (const iterator of hexo.theme.config.cdn_system.priority) {
       // priority item
       if (iterator === "custom") {
         if (system_config.custom) {
@@ -142,12 +142,14 @@ function match_cdn_source(key) {
           if (info.local === true) {
             version = theme_version
           }
+          const timestamp = hexo.theme.config.getStartTime;
           const value = {
             version,
             name,
             file,
             min_file,
             prefix,
+            timestamp,
           }
           return format?.replace(/\$\{(.+?)\}/g, (match, $1) => value[$1]) || null
         }
@@ -177,16 +179,18 @@ function collect_cdn_source() {
   Object.keys(cdn_info).forEach(e => {
     hexo.theme.config.cdn[e] = match_cdn_source(e)
   })
-  if(hexo.theme.config.debug)
+  if (hexo.theme.config.debug)
     console.log(hexo.theme.config.cdn);
 }
 
 hexo.on('generateBefore', () => {
+  /* It's replacing the prefix of the source with the prefix you set in the configuration file. */
   volantis_cdn_system_prefix(hexo.theme.config, hexo);
   // 可以在 source/_data/cdn.yml 覆盖 theme/_cdn.yml
   const data = hexo.locals.get('data');
   if (data.cdn) {
     merge(cdn_info, data.cdn);
   }
+  /* Collecting the CDN source for each library. */
   collect_cdn_source();
 });
