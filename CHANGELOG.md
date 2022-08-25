@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.7.5](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.4...v5.7.5) (2022-08-25)
+
+
+### Bug Fixes
+
+* **pandown:** Uncaught TypeError: pandown is not a function ([371b1ec](https://github.com/volantis-x/hexo-theme-volantis/commit/371b1ece729a719f102854d3175ce440f90b4a14))
+* search ([7f11915](https://github.com/volantis-x/hexo-theme-volantis/commit/7f11915c4c672f427a6044e2614ed85e7e052587))
+
 ## [5.7.4](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.3...v5.7.4) (2022-08-15)
 
 
