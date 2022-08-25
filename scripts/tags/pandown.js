@@ -24,10 +24,10 @@ hexo.extend.tag.register('pandown', function(args) {
     }
     let result = '';
     // js
-    result += '<div class="tag pandown-tags"><script type="text/javascript" src="https://unpkg.com/pandown"></script>';
+    result += '<div class="tag pandown-tags">';
     //pandown
     result += '<pandown type="'+type+'" url="'+url+'" pwd="'+pwd+'" fname="'+fname+'"></pandown>'
     //调用
-    result += '<script>pandown()</script></div>'
+    result += '<script>volantis.js("https://unpkg.com/pandown").then(pandown)</script></div>'
     return result;
 });
