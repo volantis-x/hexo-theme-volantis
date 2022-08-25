@@ -1,5 +1,5 @@
 let SearchService = (() => {
-  fn = {};
+  const fn = {};
   fn.queryText = null;
   fn.data = null;
   fn.template = `<div id="u-search">
@@ -58,8 +58,8 @@ let SearchService = (() => {
       fn.data = await fn.fetchData();
     }
     let results = "";
-    results += fn.buildResultList(data.pages);
-    results += fn.buildResultList(data.posts);
+    results += fn.buildResultList(fn.data.pages);
+    results += fn.buildResultList(fn.data.posts);
     document.querySelector("#u-search .modal-results").innerHTML = results;
     window.pjax && pjax.refresh(document.querySelector("#u-search"));
     document.addEventListener("keydown", function f(event) {
@@ -76,7 +76,7 @@ let SearchService = (() => {
     return fetch(SearchServiceDataPath)
       .then((response) => response.text())
       .then((res) => {
-        data = JSON.parse(res);
+        const data = JSON.parse(res);
         // console.log(data);
         return data;
       });
@@ -87,8 +87,8 @@ let SearchService = (() => {
       if (post.text) {
         post.text = post.text.replace(/12345\d*/g, "") // 简易移除代码行号
       }
-      if (!post.title&&post.text) {
-        post.title = post.text.trim().slice(0,15)
+      if (!post.title && post.text) {
+        post.title = post.text.trim().slice(0, 15)
       }
       if (fn.contentSearch(post)) {
         html += fn.buildResult(post.permalink, post.title, post.digest);
