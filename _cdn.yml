@@ -63,6 +63,27 @@ volantis_search_hexo:
   npm: true
   static: false
   cdnjs: false
+volantis_search_algolia:
+  name: hexo-theme-volantis
+  file: source/js/search/algolia.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+algolia_search_v4:
+  name: algoliasearch
+  file: dist/algoliasearch-lite.umd.js
+  version: 4.14.2
+  npm: true
+  static: false
+  cdnjs: false
+instantsearch_v4:
+  name: instantsearch.js
+  file: dist/instantsearch.production.min.js
+  version: 4.44.0
+  npm: true
+  static: false
+  cdnjs: false
 jquery:
   name: jquery
   file: dist/jquery.min.js

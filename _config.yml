@@ -1052,7 +1052,11 @@ rightmenus:
 # npm i hexo-generator-json-content
 search:
   enable: true
-  service: hexo  # hexo
+  service: hexo  # hexo, algolia
+  algolia:
+    searchAsYouType: true # If false, triggers the search only on submit.
+    hitsPerPage: 5 # Set the number of hits per page.
+    placeholder: 'Search...' # The placeholder text of the input.
 
 ############################### Search ############################### > end
 

@@ -1,10 +1,9 @@
 <script>
-  const SearchServiceDataPathRoot = ("<%- config.root %>" || "/").endsWith("/") ?
-    "<%- config.root %>" || "/" :
-    "<%- config.root %>/" || "/";
-  const SearchServiceDataPath = SearchServiceDataPathRoot + "content.json";
-
-  function loadSearchScript() {
+  async function loadSearchScript() {
+    <% if(theme.search.service === 'algolia') { %>
+      await volantis.js("<%- theme.cdn.algolia_search_v4 %>")
+      await volantis.js("<%- theme.cdn.instantsearch_v4 %>")
+    <% } %>
     return volantis.js("<%- theme.cdn['volantis_search_' + theme.search.service] %>");
   }
 

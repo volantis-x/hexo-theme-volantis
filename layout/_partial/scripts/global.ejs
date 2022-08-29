@@ -5,10 +5,16 @@
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
+    root: '<%- config.root %>',
     debug: <%- JSON.stringify(theme.debug) %>,
     default: <%- JSON.stringify(theme.default) %>,
     lastupdate: new Date(<%- theme.getStartTime %>),
-    cdn: <%- JSON.stringify(theme.cdn) %>,
+    cdn: {
+      izitoast_css: '<%- theme.cdn.izitoast_css %>',
+      izitoast_js: '<%- theme.cdn.izitoast_js %>',
+      fancybox_css: '<%- theme.cdn.fancybox_css %>',
+      fancybox_js: '<%- theme.cdn.fancybox_js %>'
+    },
     sidebar: {
       for_page: <%- JSON.stringify(theme.sidebar.for_page) %>,
       for_post: <%- JSON.stringify(theme.sidebar.for_post) %>,
@@ -33,6 +39,28 @@
       <% } %>
       <% if(theme.rightmenus.enable) { %>
       rightmenus: <%- JSON.stringify(theme.rightmenus) %>
+      <% } %>
+    },
+    search: {
+      <% if(theme.search.service === 'algolia') { %>
+        appId: '<%- env.ALGOLIA_APP_ID || config.algolia.appId || config.algolia.applicationID %>',
+        indexName: '<%- env.ALGOLIA_APP_ID || config.algolia.indexName %>',
+        apiKey: '<%- env.ALGOLIA_API_KEY || config.algolia.apiKey %>',
+        hitsPerPage: '<%- theme.search.algolia.hitsPerPage %>',
+        placeholder: '<%- theme.search.algolia.placeholder %>',
+        searchAsYouType: <%- theme.search.algolia.searchAsYouType %>,
+      <% } %>
+
+      <% if(theme.search.service === 'hexo') { %>
+        dataPath: '("<%- config.root %>" || "/").endsWith("/") ? "<%- config.root %>" || "/" : "<%- config.root %>/" || "/" + "<%- config?.jsonContent?.file || "content.json" %>"'
+      <% } %>
+    },
+    languages: {
+      <% if(theme.search.service === 'algolia') { %>
+        algolia: {
+          hits_empty: "<%- __('search.algolia_search.hits_empty') %>",
+          hits_stats: "<%- __('search.algolia_search.hits_stats') %>",
+        }
       <% } %>
     }
   }

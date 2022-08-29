@@ -73,7 +73,7 @@ let SearchService = (() => {
     document.querySelector("#u-search").style.display = "none";
   };
   fn.fetchData = () => {
-    return fetch(SearchServiceDataPath)
+    return fetch(volantis.GLOBAL_CONFIG.search.dataPath)
       .then((response) => response.text())
       .then((res) => {
         const data = JSON.parse(res);
