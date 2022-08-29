@@ -10,9 +10,8 @@
       );
       targets.push(target)
       // 解除 a 标签 href 的 锚点定位, a 标签 href 的 锚点定位 会随机启用?? 产生错位???
-      link.setAttribute("onclick","return false;")
       link.setAttribute("toc-action","toc-"+decodeURI(link.getAttribute("href")).replace("#", ""))
-      link.setAttribute("href","/")
+      link.removeAttribute("href")
       // 配置 点击 触发新的锚点定位
       link.addEventListener("click", (event) => {
         event.preventDefault();

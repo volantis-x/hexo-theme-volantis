@@ -105,8 +105,8 @@ csp:
     style-src 'self' https: 'unsafe-inline' *;
   "
   # 可以使用自动程序替换默认的 'unsafe-inline' 和 * 生成更严格的内容安全策略.
-  # 另可以参考官网的 gulp 方案.
-  # gulpfile.js https://github.com/volantis-x/community/blob/main/gulpfile.js
+  # 另可以参考官网之前的 gulp 方案.（CSP Level 3 ：Safari 15.4+ Chrome 59+ Firefox 58+ Edge 79+）
+  # gulpfile.js https://gist.github.com/MHuiG/e50ce64fd94f641f679a0736fef925e4
 
 ########################################################################
 #  https://web.dev/content-visibility/

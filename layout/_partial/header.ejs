@@ -4,9 +4,9 @@
     <div class='nav-sub'>
       <p class="title"></p>
       <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
-        <li><a id="s-comment" class="fa-solid fa-comments fa-fw" target="_self"  href="/" onclick="return false;" title="comment"></a></li>
+        <li><a id="s-comment" class="fa-solid fa-comments fa-fw" target="_self" title="comment"></a></li>
         <% if (page.sidebar == undefined || page.sidebar != false) { %>
-          <li><a id="s-toc" class="s-toc fa-solid fa-list fa-fw" target="_self"  href="/" onclick="return false;" title="toc"></a></li>
+          <li><a id="s-toc" class="s-toc fa-solid fa-list fa-fw" target="_self" title="toc"></a></li>
         <% } %>
       </ul>
     </div>
@@ -63,7 +63,7 @@
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
                 <%- value.url ? `href="` + url_for(value.url) + `" title="` + (value.description || value.name) + `"`
-                        : ` href="/" onclick="return false;" title="` + (value.description || value.name) + `"` %>
+                        : ` title="` + (value.description || value.name) + `"` %>
                   <% if (value.rel) { %>
                     rel="<%- value.rel %>"
                   <% } %>
@@ -101,10 +101,10 @@
 
 			<ul class='switcher nav-list-h m-phone'>
 				<% if (theme.search.enable === true) { %>
-					<li><a class="s-search fa-solid fa-search fa-fw" target="_self" href="/" onclick="return false;" title="search"></a></li>
+					<li><a class="s-search fa-solid fa-search fa-fw" target="_self" title="search"></a></li>
 				<% } %>
 				<li>
-          <a class="s-menu fa-solid fa-bars fa-fw" target="_self" href="/" onclick="return false;" title="menu"></a>
+          <a class="s-menu fa-solid fa-bars fa-fw" target="_self" title="menu"></a>
           <ul class="menu-phone list-v navigation white-box">
             <% menu_list.forEach(function(value){ %>
               <% menu(value, 'mobile') %>
