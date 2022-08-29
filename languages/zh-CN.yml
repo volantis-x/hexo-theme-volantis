@@ -5,7 +5,7 @@ navbar:
 
 post:
   pin: 置顶
-  readmore: <i class="fal fa-books fa-fw" aria-hidden="true" title="Read Me"></i> 阅读更多
+  readmore: 阅读全文
   readoriginal: 去源站阅读
   wordcount: '字数：%s 字'
   duration: '时长：%s 分钟'
