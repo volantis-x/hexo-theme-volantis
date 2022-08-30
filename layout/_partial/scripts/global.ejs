@@ -52,7 +52,7 @@
       <% } %>
 
       <% if(theme.search.service === 'hexo') { %>
-        dataPath: '("<%- config.root %>" || "/").endsWith("/") ? "<%- config.root %>" || "/" : "<%- config.root %>/" || "/" + "<%- config?.jsonContent?.file || "content.json" %>"'
+        dataPath: (("<%- config.root %>" || "/").endsWith("/") ? "<%- config.root %>" || "/" : "<%- config.root %>/" || "/") + "<%- config?.jsonContent?.file || "content.json" %>"
       <% } %>
     },
     languages: {
