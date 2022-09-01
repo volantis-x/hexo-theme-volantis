@@ -55,8 +55,5 @@ kill:
 search:
   title: Search
   load_data: Loading the Database
-  algolia_search:
-    hits_empty: "We didn't find any results for the search: ${query}."
-    hits_stats: '${hits} results found in ${time} ms'
-  local_search:
-    hits_empty: "We didn't find any results for the search: ${query}"
+  hits_empty: "We didn't find any results for the search: ${query}."
+  hits_stats: '${hits} results found in ${time} ms'

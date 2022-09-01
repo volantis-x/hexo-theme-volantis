@@ -11,6 +11,18 @@
     z-index: 3
     border-radius: $border-card
     overflow: hidden
+    .search-icon,
+    #resule-hits-empty
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      i
+        font-size: 8em;
+        color: #e8e8e8
+        margin-bottom 10px
     @media screen and (max-width: $modal-threshold)
       box-shadow: none
       max-width: none
@@ -154,6 +166,87 @@
     background: rgba(0,0,0,0.7)
     z-index: 1
 
+
+if hexo-config('search.service') == 'meilisearch'
+  #u-search
+    .modal-header
+      .ais-SearchBox-input
+        margin: $gap 50px
+        padding: 0 $gap * 0.5
+        width: "calc(100% - 100px - %s)" % $gap
+        @media screen and (max-width: $modal-threshold)
+          padding: 0
+        line-height: 2rem
+        border-radius: $border-card
+        vertical-align: middle
+        border: none
+        appearance: none
+        box-shadow: none
+        background: transparent
+        trans()
+        &:focus
+          border-top-left-radius: $border-card
+          border-top-right-radius: $border-card
+    .modal .modal-body
+      height: "calc(100% - %s)" % 115px
+      .ais-Hits-list
+        list-style: none
+        .result
+          position: relative
+          display: block
+          padding: $gap
+          border-radius: $border-card
+          b[mark]
+            color: darken($color-theme, 10)
+            text-decoration: underline
+            font-size 120%
+            background-color #ffe600
+          &:hover
+            background: var(--color-site-bg)
+            .title
+              color: var(--color-list-hl)
+          .title
+            display: inline-block
+            max-width: 100%
+            color: var(--color-list)
+            font-weight: bold
+            padding: 1px
+            margin-bottom: 2px
+            white-space: normal
+            overflow: hidden
+            text-overflow: ellipsis
+            font-size: $fontsize-h4
+          .digest
+            display: block
+            white-space: inherit
+            overflow: hidden
+            word-break: break-all
+            text-overflow: ellipsis
+            font-size: $fontsize-code
+            color: var(--color-meta)
+          .icon
+            position: absolute
+            top: 50%
+            right: 0
+            margin-top: -4px
+            font-size: 11px
+            color: var(--color-meta)
+    footer
+      position: absolute;
+      bottom: 0;
+      padding: 0 16px;
+      width: 100%;
+      height: 51px;
+      hr
+        margin 5px 0
+      #meilisearch-info
+        height 40px
+        line-height 40px
+        font-size 14px
+        div
+          display: inline
+        .meilisearch-poweredBy
+          float: right
 
 if hexo-config('search.service') == 'algolia'
   #u-search

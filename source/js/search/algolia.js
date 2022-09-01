@@ -13,7 +13,9 @@ let SearchService = (() => {
     </header>
     <main class="modal-body">
       <div id="algolia-search-results">
-        <div id="algolia-hits"></div>
+        <div id="algolia-hits">
+          <div class="search-icon"><i class="fa-sharp fa-solid fa-telescope"></i></i></div>
+        </div>
       </div>
     </main>
     <footer>
@@ -105,7 +107,7 @@ let SearchService = (() => {
         },
         empty: function (data) {
           return (
-            `<div id="algolia-hits-empty">${volantis.GLOBAL_CONFIG.languages.algolia.hits_empty.replace(/\$\{query}/, data.query)}</div>`
+            `<div id="resule-hits-empty"><i class="fa-solid fa-box-open"></i><p>${volantis.GLOBAL_CONFIG.languages.search.hits_empty.replace(/\$\{query}/, data.query)}</p></div>`
           )
         }
       }
@@ -115,7 +117,7 @@ let SearchService = (() => {
       container: '#algolia-info > .algolia-stats',
       templates: {
         text: function (data) {
-          const stats = volantis.GLOBAL_CONFIG.languages.algolia.hits_stats
+          const stats = volantis.GLOBAL_CONFIG.languages.search.hits_stats
             .replace(/\$\{hits}/, data.nbHits)
             .replace(/\$\{time}/, data.processingTimeMS)
           return (
@@ -162,7 +164,6 @@ let SearchService = (() => {
   }
 
   fn.search = () => {
-    search?.refresh();
     document.querySelector("#u-search").style.display = "block";
     document.addEventListener("keydown", event => {
       if (event.code === "Escape") {

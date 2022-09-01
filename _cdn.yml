@@ -84,6 +84,20 @@ instantsearch_v4:
   npm: true
   static: false
   cdnjs: false
+volantis_search_meilisearch:
+  name: hexo-theme-volantis
+  file: source/js/search/meilisearch.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+instant_meilisearch:
+  name: "@meilisearch/instant-meilisearch"
+  file: dist/instant-meilisearch.umd.min.js
+  version: 0.8.1
+  npm: true
+  static: false
+  cdnjs: false
 jquery:
   name: jquery
   file: dist/jquery.min.js

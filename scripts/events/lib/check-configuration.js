@@ -16,8 +16,8 @@ see: https://hexo.io/zh-cn/docs/configuration
 description is not configured!`
     }
     if (themeConfig?.search?.service===`google`||themeConfig?.search?.service===`azure`||themeConfig?.search?.service===`baidu`) {
-      return `原 google, algolia, azure, baidu 站内搜索 系祖传代码, 且文档丢失, 不便后续维护 在 5.0 版本被移除
-The google, algolia, azure, baidu site search is ancestral code, and the document is lost, which is inconvenient for subsequent maintenance. It was removed in version 5.0
+      return `原 google, azure, baidu 站内搜索 系祖传代码, 且文档丢失, 不便后续维护 在 5.0 版本被移除
+The google, azure, baidu site search is ancestral code, and the document is lost, which is inconvenient for subsequent maintenance. It was removed in version 5.0
 see: https://volantis.js.org/v5/theme-settings/#站内搜索`
     }
     if (`backstretch` in themeConfig?.plugins) {

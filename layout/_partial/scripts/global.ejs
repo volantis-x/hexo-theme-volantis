@@ -52,14 +52,21 @@
       <% } %>
 
       <% if(theme.search.service === 'hexo') { %>
-        dataPath: (("<%- config.root %>" || "/").endsWith("/") ? "<%- config.root %>" || "/" : "<%- config.root %>/" || "/") + "<%- config?.jsonContent?.file || "content.json" %>"
+        dataPath: (("<%- config.root %>" || "/").endsWith("/") ? "<%- config.root %>" || "/" : "<%- config.root %>/" || "/") + "<%- config?.jsonContent?.file || "content.json" %>",
+      <% } %>
+
+      <% if(theme.search.service === 'meilisearch') { %>
+        placeholder: '<%- theme.search.meilisearch.placeholder %>',
+        apiKey: '<%- theme.search.meilisearch.searchKey %>',
+        indexName: '<%- theme.search.meilisearch.indexName %>',
+        appId: '<%- theme.search.meilisearch.hostUrl %>',
       <% } %>
     },
     languages: {
-      <% if(theme.search.service === 'algolia') { %>
-        algolia: {
-          hits_empty: "<%- __('search.algolia_search.hits_empty') %>",
-          hits_stats: "<%- __('search.algolia_search.hits_stats') %>",
+      <% if(theme.search.enable) { %>
+        search: {
+          hits_empty: "<%- __('search.hits_empty') %>",
+          hits_stats: "<%- __('search.hits_stats') %>",
         }
       <% } %>
     }

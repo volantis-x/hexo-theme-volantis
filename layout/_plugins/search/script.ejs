@@ -4,6 +4,11 @@
       await volantis.js("<%- theme.cdn.algolia_search_v4 %>")
       await volantis.js("<%- theme.cdn.instantsearch_v4 %>")
     <% } %>
+        
+    <% if(theme.search.service === 'meilisearch') { %>
+      await volantis.js("<%- theme.cdn.instantsearch_v4 %>")
+      await volantis.js("<%- theme.cdn.instant_meilisearch %>")
+    <% } %>
     return volantis.js("<%- theme.cdn['volantis_search_' + theme.search.service] %>");
   }
 
