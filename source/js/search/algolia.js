@@ -1,6 +1,6 @@
 let SearchService = (() => {
   const fn = {};
-  let search, algolia;
+  let search, algolia, timerId; 
 
   fn.template = `<div id="u-search">
   <div class="modal">
@@ -83,6 +83,10 @@ let SearchService = (() => {
       placeholder: algolia.placeholder,
       templates: {
         input: 'algolia-input'
+      },
+      queryHook(query, refine) {
+        clearTimeout(timerId)
+        timerId = setTimeout(() => refine(query), 500)
       }
     })
 

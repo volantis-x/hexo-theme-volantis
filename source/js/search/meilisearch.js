@@ -1,6 +1,6 @@
 let SearchService = (() => {
   const fn = {};
-  let search, meilisearch;
+  let search, meilisearch, timerId; 
 
   fn.template = `<div id="u-search">
   <div class="modal">
@@ -86,6 +86,10 @@ let SearchService = (() => {
       placeholder: meilisearch.placeholder,
       templates: {
         input: 'meilisearch-input'
+      },
+      queryHook(query, refine) {
+        clearTimeout(timerId)
+        timerId = setTimeout(() => refine(query), 500)
       }
     })
 
