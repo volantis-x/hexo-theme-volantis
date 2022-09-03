@@ -1,7 +1,7 @@
 let SearchService = (() => {
   const fn = {};
   let search, algolia, timerId; 
-
+  fn.queryText = null;
   fn.template = `<div id="u-search">
   <div class="modal">
     <header class="modal-header" class="clearfix">
@@ -57,7 +57,14 @@ let SearchService = (() => {
     document.querySelectorAll(".u-search-form").forEach((e) => {
       e.addEventListener("submit", fn.onSubmit, false);
     });
-
+    document.querySelector("#algolia-search-input").addEventListener("input", event => {
+      let input = event.target.querySelector(".ais-SearchBox-input");
+      if (input) {
+        fn.queryText = input.value;
+      } else {
+        fn.queryText = event.target.value;
+      }
+    })
   }
 
   fn.setAlgolia = () => {
@@ -94,6 +101,7 @@ let SearchService = (() => {
       container: '#algolia-hits',
       templates: {
         item(data) {
+          const keyword = !!fn.queryText ? `?keyword=${fn.queryText}` : ''
           const link = data.permalink ? data.permalink : `${volantis.GLOBAL_CONFIG.root}${data.path}`
           const result = data._highlightResult
           const content = result.contentStripTruncate
@@ -104,7 +112,7 @@ let SearchService = (() => {
                 ? fn.cutContent(result.content.value)
                 : ''
           return `
-            <a href="${link}" class="result">
+            <a href="${link}${keyword}" class="result">
             <span class="title">${result.title.value || 'no-title'}</span>
             <span class="digest">${content}</span>
             </a>`
@@ -157,6 +165,7 @@ let SearchService = (() => {
   }
 
   fn.setQueryText = queryText => {
+    fn.queryText = queryText;
     if (!search) {
       fn.init()
     }
