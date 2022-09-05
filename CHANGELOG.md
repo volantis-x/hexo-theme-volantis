@@ -1,5 +1,21 @@
 # Changelog
 
+## [5.7.6](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.5...v5.7.6) (2022-09-05)
+
+
+### Performance Improvements
+
+* **debug:** env pjax rightMenus ([7b569cc](https://github.com/volantis-x/hexo-theme-volantis/commit/7b569cce425c0b630f00e378449c4d8809e471fe))
+* **side:** 如果 sidebar 为空，隐藏 sidebar ([a264a8c](https://github.com/volantis-x/hexo-theme-volantis/commit/a264a8c6f7cb8fd2537af227bd0297fcb17d720c))
+
+## [5.7.5](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.4...v5.7.5) (2022-08-25)
+
+
+### Bug Fixes
+
+* **pandown:** Uncaught TypeError: pandown is not a function ([371b1ec](https://github.com/volantis-x/hexo-theme-volantis/commit/371b1ece729a719f102854d3175ce440f90b4a14))
+* search ([7f11915](https://github.com/volantis-x/hexo-theme-volantis/commit/7f11915c4c672f427a6044e2614ed85e7e052587))
+
 ## [5.7.4](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.3...v5.7.4) (2022-08-15)
 
 
