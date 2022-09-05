@@ -71,7 +71,7 @@ cdn_system:
     # Tip: 在本配置文件中 匹配以 "volantis-cdnjs" 开头的链接路径替换为该格式的前缀开头 prefix
     cdnjs:
       # CDN 链接前缀
-      prefix: https://cdnjs.cloudflare.com/ajax/libs
+      prefix: https://cdn.bootcdn.net/ajax/libs
       # cdnjs CDN 格式
       format: ${prefix}/${name}/${version}/${min_file}
   # ========================================================================
@@ -122,7 +122,7 @@ replace:
 # dns-prefetch preconnect x-dns-prefetch-control
 dns_prefetch:
   - https://unpkg.com
-  - https://cdnjs.cloudflare.com
+  - https://cdn.bootcdn.net
 
 
 # 平滑滚动效果
