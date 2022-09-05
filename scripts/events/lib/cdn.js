@@ -179,7 +179,7 @@ function collect_cdn_source() {
   Object.keys(cdn_info).forEach(e => {
     hexo.theme.config.cdn[e] = match_cdn_source(e)
   })
-  if (hexo.theme.config.debug)
+  if (hexo.theme.config.debug == "cdn")
     console.log(hexo.theme.config.cdn);
 }
 
