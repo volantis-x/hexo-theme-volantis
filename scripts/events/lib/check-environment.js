@@ -57,6 +57,10 @@ Hexo: 5.4 ~ 6.x
 hexo-cli: 4.3 ~ latest
 node.js: 16.x LTS ~ latest LTS
 npm: 8.x ~ latest LTS
+============================================================
+# 当前 Debug 调试模式
+debug: env
+关闭调试模式主题配置文件设置 debug: false
 ============================================================`);
   throw new Error('环境配置检查失败！| Environment configuration check failed!');
 }
@@ -67,6 +71,10 @@ function CheckConfError(hexo,msg) {
 配置文件检查失败！| Configuration check failed!
 ============================================================
 ${msg}
+============================================================
+# 当前 Debug 调试模式
+debug: env
+关闭调试模式主题配置文件设置 debug: false
 ============================================================`);
   throw new Error('配置文件检查失败！| Configuration check failed!');
 }
