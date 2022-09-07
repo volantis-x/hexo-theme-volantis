@@ -1,5 +1,5 @@
 <script>
-  volantis.layoutHelper("comments",`<div id="discuss_container"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`)
+  volantis.layoutHelper("comments",`<div id="discuss_container"></div>`)
   function load_discuss() {
     if(!document.querySelectorAll("#discuss_container")[0])return;
     volantis.js("<%- theme.comments.discuss.js %>", pjax_discuss)
