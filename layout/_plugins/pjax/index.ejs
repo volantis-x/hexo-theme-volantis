@@ -61,7 +61,7 @@
     });
 
     document.addEventListener('pjax:error', function (e) {
-      if(volantis.debug) {
+      if(volantis.debug === "pjax") {
         console.error(e);
         console.log('pjax error: \n' + JSON.stringify(e));
       }else{

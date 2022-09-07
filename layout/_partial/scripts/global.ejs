@@ -391,6 +391,7 @@
   volantis.scroll.handleScrollEvents()
   // 触发页面滚动至目标元素位置
   volantis.scroll.to = (ele, option = {}) =>{
+    if (!ele) return;
     // 默认配置
     opt = {
       top: ele.getBoundingClientRect().top + document.documentElement.scrollTop,
