@@ -126,10 +126,10 @@
 <% } %>
 </pjax>
 
-<%- partial('toc') %>
+<%- partial('../../_plugins/toc/script') %>
 
 <% if (theme.content_visibility) { %>
-  <%- partial('content-visibility-scroll-fix') %>
+  <%- partial('../../_plugins/content-visibility/script') %>
 <% } %>
 
 <%- partial('../../_plugins/slow-network/script') %>

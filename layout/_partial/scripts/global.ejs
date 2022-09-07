@@ -173,18 +173,18 @@
     this.push = (fn, name, setRequestAnimationFrame = true) => {
       let myfn = fn
       if (setRequestAnimationFrame) {
-        myfn = ()=>{
+        myfn = () => {
           volantis.requestAnimationFrame(fn)
         }
       }
       var f = new Item(myfn, name);
       this.list.push(f);
     };
-    this.remove = (name) =>{
+    this.remove = (name) => {
       for (let index = 0; index < this.list.length; index++) {
         const e = this.list[index];
         if (e.name == name) {
-          this.list.splice(index,1);
+          this.list.splice(index, 1);
         }
       }
     }
@@ -317,19 +317,19 @@
   /********************** requestAnimationFrame ********************************/
   // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
   // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
-  volantis.requestAnimationFrame = (fn)=>{
+  volantis.requestAnimationFrame = (fn) => {
     if (!window.requestAnimationFrame) {
       window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
     }
     window.requestAnimationFrame(fn)
   }
   /************************ layoutHelper *****************************************/
-  volantis.layoutHelper = (helper, html, opt)=>{
-    opt = Object.assign({clean:false, pjax:true}, opt)
+  volantis.layoutHelper = (helper, html, opt) => {
+    opt = Object.assign({ clean: false, pjax: true }, opt)
     function myhelper(helper, html, clean) {
       volantis.tempDiv = document.createElement("div");
       volantis.tempDiv.innerHTML = html;
-      let layoutHelper = document.querySelector("#layoutHelper-"+helper)
+      let layoutHelper = document.querySelector("#layoutHelper-" + helper)
       if (layoutHelper) {
         if (clean) {
           layoutHelper.innerHTML = ""
@@ -339,9 +339,9 @@
     }
     myhelper(helper, html, opt.clean)
     if (opt.pjax) {
-      volantis.pjax.push(()=>{
+      volantis.pjax.push(() => {
         myhelper(helper, html, opt.clean)
-      },"layoutHelper-"+helper)
+      }, "layoutHelper-" + helper)
     }
   }
   /****************************** 滚动事件处理 ****************************************/
@@ -353,7 +353,7 @@
     push: volantis.scroll.engine.push,
   });
   // 滚动条距离顶部的距离
-  volantis.scroll.getScrollTop = () =>{
+  volantis.scroll.getScrollTop = () => {
     let scrollPos;
     if (window.pageYOffset) {
       scrollPos = window.pageYOffset;
@@ -379,9 +379,9 @@
         //   console.log("向上滚动");
         // }
         // 注销过期的unengine未滚动事件
-        volantis.scroll.unengine.list=[]
+        volantis.scroll.unengine.list = []
         volantis.scroll.engine.start();
-      }else{
+      } else {
         volantis.scroll.unengine.start();
       }
       volantis.requestAnimationFrame(loop)
@@ -390,7 +390,7 @@
   }
   volantis.scroll.handleScrollEvents()
   // 触发页面滚动至目标元素位置
-  volantis.scroll.to = (ele, option = {}) =>{
+  volantis.scroll.to = (ele, option = {}) => {
     if (!ele) return;
     // 默认配置
     opt = {
@@ -417,25 +417,25 @@
     // 用于处理 lazyload 引起的 cls 导致的定位失败问题
     // option.observer = false
     if (option.observer) {
-      setTimeout(()=>{
-        volantis.scroll.unengine.push(()=>{
+      setTimeout(() => {
+        volantis.scroll.unengine.push(() => {
           let me = ele.getBoundingClientRect().top
-          if(!(me >= -option.observerDic && me <= option.observerDic)){
+          if (!(me >= -option.observerDic && me <= option.observerDic)) {
             volantis.scroll.to(ele, option)
           }
           volantis.scroll.unengine.remove("unengineObserver")
-        },"unengineObserver")
-      },1000)
+        }, "unengineObserver")
+      }, 1000)
     }
   }
   /********************** Content Visibility ********************************/
   // 见 source/css/first.styl 如果遇到任何问题 删除 .post-story 即可
   // 一个元素被声明 content-visibility 属性后 如果元素不在 viewport 中 浏览器不会计算其后代元素样式和属性 从而节省 Style & Layout 耗时
   // content-visibility 的副作用: 锚点失效 等等(实验初期 暂不明确), 使用此方法清除样式
-  volantis.cleanContentVisibility = ()=>{
+  volantis.cleanContentVisibility = () => {
     if (document.querySelector(".post-story")) {
       console.log("cleanContentVisibility");
-      document.querySelectorAll(".post-story").forEach(e=>{
+      document.querySelectorAll(".post-story").forEach(e => {
         e.classList.remove("post-story")
       })
     }
