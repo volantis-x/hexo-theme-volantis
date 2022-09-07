@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.7.6](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.5...v5.7.6) (2022-09-05)
+
+
+### Performance Improvements
+
+* **debug:** env pjax rightMenus ([7b569cc](https://github.com/volantis-x/hexo-theme-volantis/commit/7b569cce425c0b630f00e378449c4d8809e471fe))
+* **side:** 如果 sidebar 为空，隐藏 sidebar ([a264a8c](https://github.com/volantis-x/hexo-theme-volantis/commit/a264a8c6f7cb8fd2537af227bd0297fcb17d720c))
+
 ## [5.7.5](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.4...v5.7.5) (2022-08-25)
 
 
