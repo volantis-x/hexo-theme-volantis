@@ -143,8 +143,6 @@ function match_cdn_source(key) {
             version = theme_version
           }
           const timestamp = hexo.theme.config.getStartTime;
-          const pace_color = hexo.theme.config?.plugins?.pace?.color;
-          const pace_theme = hexo.theme.config?.plugins?.pace?.theme;
           const value = {
             version,
             name,
@@ -152,12 +150,16 @@ function match_cdn_source(key) {
             min_file,
             prefix,
             timestamp,
-            pace_color,
-            pace_theme,
           }
           let res = format;
+          let p = 0;
           while (/\$\{(.+?)\}/g.test(res)) {
-            res = res?.replace(/\$\{(.+?)\}/g, (match, $1) => value[$1]) || null
+            res = res?.replace(/\$\{(.+?)\}/g, (match, $1) => value[$1] ? value[$1] : eval($1)) || null
+            // 防止死循环。。。
+            p++;
+            if (p > 20) {
+              break;
+            }
           }
           return res
         }
