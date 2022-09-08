@@ -1,0 +1,7 @@
+<script>
+  volantis.js("<%- theme.cdn.pace_js %>").then(() => {
+    Pace.options.restartOnPushState = false;
+    volantis.pjax.send(Pace.restart);
+  })
+  volantis.css("<%- theme.cdn.pace_css %>");
+</script>

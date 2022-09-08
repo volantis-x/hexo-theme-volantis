@@ -119,6 +119,10 @@
   <%- partial('../../_plugins/swiper/script') %>
 <% } %>
 
+<% if (theme.plugins.pace.enable) { %>
+  <%- partial('../../_plugins/pace/script') %>
+<% } %>
+
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
 <% if (page.plugins) { %>

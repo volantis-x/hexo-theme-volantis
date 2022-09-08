@@ -838,10 +838,17 @@ plugins:
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
     timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
-    animation: false     # false, nprogress, circle
     exclude:             # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
       # - '/artitalk/'   # artitalk 不支持 pjax
       # - '/bbtalk/'     # bbtalk 不支持 pjax
+
+  # pace
+  # An automatic web page progress bar.
+  # https://github.com/CodeByZach/pace
+  pace:
+    enable: true
+    color: blue # black, blue, green, orange, pink, purple, red, silver, white, yellow
+    theme: minimal # big-counter, bounce, barber-shop, center-atom, center-circle, center-radar, center-simple, corner-indicator, fill-left, flat-top, flash, loading-bar, mac-osx, material, minimal
 
   # 暗黑模式 darkmode
   # 开关按钮：在 navbar.menu 中添加：

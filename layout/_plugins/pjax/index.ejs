@@ -10,9 +10,6 @@
 %>
 
 <%- js(theme.cdn.pjax) %>
-<% if (theme.plugins.pjax.animation){ %>
-<%- partial('animate') %>
-<% } %>
 <script>
     var pjax;
     document.addEventListener('DOMContentLoaded', function () {

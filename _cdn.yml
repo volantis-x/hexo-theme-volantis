@@ -253,13 +253,6 @@ pjax:
   npm: true
   static: true
   cdnjs: true
-nprogress:
-  name: nprogress
-  file: nprogress.min.js
-  version: 0.2.0
-  npm: true
-  static: true
-  cdnjs: true
 font-awesome-animation:
   name: font-awesome-animation
   file: css/font-awesome-animation.min.css
@@ -427,8 +420,22 @@ artitalk:
   npm: true
   static: false
   cdnjs: false
-
-
+pace_js:
+  name: pace-js
+  cdnjs_name: pace
+  file: pace.min.js
+  version: 1.2.4
+  npm: true
+  static: false
+  cdnjs: true
+pace_css:
+  name: pace-js
+  cdnjs_name: pace
+  file: themes/${pace_color}/pace-theme-${pace_theme}.css
+  version: 1.2.4
+  npm: true
+  static: false
+  cdnjs: true
 
 
 
