@@ -1,4 +1,6 @@
 <% if (post.tags && post.tags.length) { %>
+  <% try { %>
+  <%# 在 _posts/ 外使用 tags 会报错  %>
   <%
   var items = [];
   var hidden_items = [];
@@ -9,4 +11,5 @@
   %>
   <%- items.join(' ') %>
   <span hidden itemprop="keywords"><%- hidden_items.join(' ') %></span>
+  <% }catch (error) {} %>
 <% } %>
