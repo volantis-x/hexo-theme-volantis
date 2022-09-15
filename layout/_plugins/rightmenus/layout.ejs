@@ -100,13 +100,13 @@
     <p class='nav music-title fix-cursor-default'></p>
   </li>
   <li class='music ctrl'>
-    <a class='nav icon-only backward fix-cursor-default' href="/" onclick="return false;" title="backward">
+    <a class='nav icon-only backward fix-cursor-default'  title="backward">
       <i class='<%= theme.rightmenus.options.iconPrefix %> fa-step-backward fa-fw'></i>
     </a>
-    <a class='nav icon-only toggle fix-cursor-default' href="/" onclick="return false;" title="toggle">
+    <a class='nav icon-only toggle fix-cursor-default'  title="toggle">
       <i class='<%= theme.rightmenus.options.iconPrefix %> fa-play fa-fw'></i>
     </a>
-    <a class='nav icon-only forward fix-cursor-default' href="/" onclick="return false;" title="forward">
+    <a class='nav icon-only forward fix-cursor-default'  title="forward">
       <i class='<%= theme.rightmenus.options.iconPrefix %> fa-step-forward fa-fw'></i>
     </a>
   </li>
@@ -130,7 +130,7 @@
     <% rightMenu.initMenu() %>
   </ul>
 </div>
-<script src="<%- theme.cdn.map.js.rightMenus %>"></script>
+<script src="<%- theme.cdn.volantis_rightMenus %>"></script>
 <script>
   const RightMenusFunction = {};
   <% rightMenu.initFunction() %>

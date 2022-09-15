@@ -60,6 +60,9 @@ let SearchService = (() => {
     let results = "";
     results += fn.buildResultList(fn.data.pages);
     results += fn.buildResultList(fn.data.posts);
+    if (results === "") {
+      results = `<div id="resule-hits-empty"><i class="fa-solid fa-box-open"></i><p>${volantis.GLOBAL_CONFIG.languages.search.hits_empty.replace(/\$\{query}/, fn.queryText)}</p></div>`
+    }
     document.querySelector("#u-search .modal-results").innerHTML = results;
     window.pjax && pjax.refresh(document.querySelector("#u-search"));
     document.addEventListener("keydown", function f(event) {
@@ -73,7 +76,7 @@ let SearchService = (() => {
     document.querySelector("#u-search").style.display = "none";
   };
   fn.fetchData = () => {
-    return fetch(SearchServiceDataPath)
+    return fetch(volantis.GLOBAL_CONFIG.search.dataPath)
       .then((response) => response.text())
       .then((res) => {
         const data = JSON.parse(res);

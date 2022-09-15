@@ -2,8 +2,8 @@
   volantis.layoutHelper("comments",`<div id="artalk_container"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`);
   function load_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0])return;
-    volantis.css("<%- theme.comments.artalk.css %>");
-    volantis.js("<%- theme.comments.artalk.js %>").then(pjax_artalk);
+    volantis.css("<%- theme.cdn.artalk_css %>");
+    volantis.js("<%- theme.cdn.artalk_js %>").then(pjax_artalk);
   }
 
   function pjax_artalk() {

@@ -7,7 +7,7 @@ hexo.extend.tag.register('md', function(args) {
   <div id="${md_id}" class="tag-md markdown-body"></div>
   <script>
   (()=>{
-    volantis.css("${hexo.theme.config.plugins.markdown}");
+    volantis.css("${hexo.theme.config.cdn.markdown}");
     const contentEl = document.getElementById("${md_id}");
     const loadMarkdown = (url) => {
       if (!window.fetch) {
@@ -48,7 +48,7 @@ hexo.extend.tag.register('md', function(args) {
           });
       };
     };
-    volantis.js("${hexo.theme.config.plugins.marked}").then(()=>{
+    volantis.js("${hexo.theme.config.cdn.marked}").then(()=>{
       loadMarkdown("${md_path}?t=" + new Date().getTime());
     })
   })();

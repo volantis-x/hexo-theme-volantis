@@ -2,6 +2,7 @@ navbar:
   archive: 歸檔
   category: 分類
   tag: 標籤
+
 post:
   pin: 置頂
   readmore: 閱讀全文
@@ -23,6 +24,7 @@ post:
     link: 文章連結
     license_title: 版權聲明
     license_content: "本網誌所有文章除特別聲明外，均採用 %s 許可協議。轉載請註明出處！"
+
 footer:
   license: '博客內容遵循 [姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0) 協議](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW)'
   use: 本站使用
@@ -32,6 +34,7 @@ footer:
   times: 次
   site_source: 本站使用 %s 作為主題，您可以在 %s 找到[本站源碼](%s)。
   site_views: 總訪問量約為 %s 次，訪問人數約為 %s 人。
+
 symbol:
   comma: "，"
   period: "。"
@@ -39,18 +42,14 @@ symbol:
   brackets_l: "（"
   brackets_r: "）"
 
-rightmenu:
-  back: "返回"
-  forward: "前进"
-  reload: "刷新"
-  search_word: "站內搜索"
-  copy_text: "複製文本"
-  copy_image_src: "複製圖片地址"
-  copy_link: "複製鏈接"
-  open_in_new_tab: "在新標籤頁打開"
-
 kill:
   title: "抱歉，您的瀏覽器無法訪問本站"
   more: "了解詳情 >"
   noscript: "本頁面需要瀏覽器支持（啟用）JavaScript"
   ie: "微軟已經於2016年終止了對 Internet Explorer (IE) 10 及更早版本的支持，<br/>繼續使用存在極大的安全隱患，請使用當代主流的瀏覽器進行訪問。"
+
+search:
+  title: 搜尋
+  load_data: 資料庫載入中
+  hits_empty: '找不到您查詢的內容：${query}'
+  hits_stats: '找到 ${hits} 條結果，用時 ${time} 毫秒'

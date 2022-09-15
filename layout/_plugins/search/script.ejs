@@ -1,12 +1,15 @@
 <script>
-  const SearchServiceDataPathRoot = ("<%- config.root %>" || "/").endsWith("/") ?
-    "<%- config.root %>" || "/" :
-    "<%- config.root %>/" || "/";
-  const SearchServiceDataPath = SearchServiceDataPathRoot + "content.json";
-
-  function loadSearchScript() {
-    // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("<%- theme.cdn.map.js.search %>");
+  async function loadSearchScript() {
+    <% if(theme.search.service === 'algolia') { %>
+      await volantis.js("<%- theme.cdn.algolia_search_v4 %>")
+      await volantis.js("<%- theme.cdn.instantsearch_v4 %>")
+    <% } %>
+        
+    <% if(theme.search.service === 'meilisearch') { %>
+      await volantis.js("<%- theme.cdn.instantsearch_v4 %>")
+      await volantis.js("<%- theme.cdn.instant_meilisearch %>")
+    <% } %>
+    return volantis.js("<%- theme.cdn['volantis_search_' + theme.search.service] %>");
   }
 
   function loadSearchService() {

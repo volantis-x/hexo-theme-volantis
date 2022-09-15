@@ -13,27 +13,23 @@
 
 <script>
   <% if (theme.plugins.fontawesome) { %>
-  volantis.css("<%- theme.plugins.fontawesome %>");
+  volantis.css("<%- theme.cdn.fontawesome %>");
   <% } %>
   <% if (theme.plugins.fontawesome_animation.enable) { %>
-  volantis.css("<%- theme.plugins.fontawesome_animation.css %>");
+  volantis.css("<%- theme.cdn['font-awesome-animation'] %>");
   <% } %>
   <% if (theme.plugins.nodewaves.enable) { %>
-  volantis.css("<%- theme.plugins.nodewaves.css %>");
+  volantis.css("<%- theme.cdn.nodewaves_css %>");
   <% } %>
 </script>
 
 <!-- required -->
 <% if (theme.plugins.globalJquery) { %>
-  <%- js(theme.plugins.jquery) %>
+  <%- js(theme.cdn.jquery) %>
 <% } %>
 
 <!-- internal -->
-<%- js(theme.cdn.map.js.app) %>
-
-<% if (theme.rightmenu.enable) { %>
-  <%- partial('../../_plugins/rightmenu/layout') %>
-<% } %>
+<%- js(theme.cdn.volantis_app) %>
 
 <% if (theme.rightmenus.enable) { %>
   <%- partial('../../_plugins/rightmenus/layout') %>
@@ -56,11 +52,11 @@
   <%- partial('../../_plugins/preload/script') %>
 <% } %>
 
-<% if (theme.plugins.scrollreveal.enable && theme.plugins.scrollreveal.js) { %>
+<% if (theme.plugins.scrollreveal.enable) { %>
    <%- partial('../../_plugins/scrollreveal/script') %>
 <% } %>
 
-<% if (theme.plugins.aplayer && theme.plugins.aplayer.enable && theme.plugins.aplayer.js) { %>
+<% if (theme.plugins.aplayer && theme.plugins.aplayer.enable) { %>
   <%- partial('../../_plugins/aplayer/script') %>
 <% } %>
 
@@ -86,8 +82,8 @@
 
 
 
-<% if (theme.analytics.busuanzi) { %>
-  <script defer src="<%- theme.analytics.busuanzi %>" data-pjax></script>
+<% if (theme.plugins.busuanzi.enable) { %>
+  <script defer src="<%- theme.cdn.busuanzi %>" data-pjax></script>
 <% } %>
 
 <!-- optional -->
@@ -100,15 +96,11 @@
 <% } %>
 
 <% if (theme.plugins.comment_typing.enable) { %>
-  <%- js(theme.plugins.comment_typing.js) %>
+  <%- js(theme.cdn.comment_typing) %>
 <% } %>
 
 <% if (theme.plugins.code_highlight) { %>
   <%- partial('../../_plugins/highlight/script') %>
-<% } %>
-
-<% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>
-  <%- partial('../../_plugins/analytics/LCCounter') %>
 <% } %>
 
 <% if (config.google_analytics_key || config.baidu_analytics_key || config.tencent_aegis_id || config.v6_51_la || config.perf_51_la) { %>
@@ -127,6 +119,10 @@
   <%- partial('../../_plugins/swiper/script') %>
 <% } %>
 
+<% if (theme.plugins.pace.enable) { %>
+  <%- partial('../../_plugins/pace/script') %>
+<% } %>
+
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
 <% if (page.plugins) { %>
@@ -134,10 +130,10 @@
 <% } %>
 </pjax>
 
-<%- partial('toc') %>
+<%- partial('../../_plugins/toc/script') %>
 
 <% if (theme.content_visibility) { %>
-  <%- partial('content-visibility-scroll-fix') %>
+  <%- partial('../../_plugins/content-visibility/script') %>
 <% } %>
 
 <%- partial('../../_plugins/slow-network/script') %>

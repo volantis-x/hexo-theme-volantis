@@ -37,7 +37,7 @@
   <%_ if (config.favicon) { _%>
     <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <%_ } _%>
-  <link rel="preload" href="<%- theme.cdn.map.css.style %>" as="style">
+  <link rel="preload" href="<%- theme.cdn.volantis_style %>" as="style">
   <%- generate_preload_fontfamily(theme) %>
   <!-- feed -->
   <%_ if (config.feed && config.feed.path){ _%>
@@ -58,8 +58,8 @@
     /* 首屏样式 */
     <%- FirstCSS() %>
   </style>
-  <link rel="stylesheet" href="<%- theme.cdn.map.css.style %>" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="<%- theme.cdn.map.css.style %>"></noscript>
+  <link rel="stylesheet" href="<%- theme.cdn.volantis_style %>" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="<%- theme.cdn.volantis_style %>"></noscript>
   <%_ if (theme.plugins.darkmode.enable) { _%>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")

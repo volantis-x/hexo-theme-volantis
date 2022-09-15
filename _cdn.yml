@@ -1,0 +1,442 @@
+# cdnjs 的 version 不能使用 latest
+
+volantis_style:
+  name: hexo-theme-volantis
+  file: css/style.css
+  local: true
+  npm: false
+  static: false
+  cdnjs: false
+volantis_app:
+  name: hexo-theme-volantis
+  file: source/js/app.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_aplayer:
+  name: hexo-theme-volantis
+  file: source/js/plugins/aplayer.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_parallax:
+  name: hexo-theme-volantis
+  file: source/js/plugins/parallax.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_rightMenus:
+  name: hexo-theme-volantis
+  file: source/js/plugins/rightMenus.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_tags_sites:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/sites.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_tags_friends:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/friends.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_tags_contributors:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/contributors.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_search_hexo:
+  name: hexo-theme-volantis
+  file: source/js/search/hexo.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_search_algolia:
+  name: hexo-theme-volantis
+  file: source/js/search/algolia.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+algolia_search_v4:
+  name: algoliasearch
+  file: dist/algoliasearch-lite.umd.js
+  version: 4.14.2
+  npm: true
+  static: false
+  cdnjs: false
+instantsearch_v4:
+  name: instantsearch.js
+  file: dist/instantsearch.production.min.js
+  version: 4.44.0
+  npm: true
+  static: false
+  cdnjs: false
+volantis_search_meilisearch:
+  name: hexo-theme-volantis
+  file: source/js/search/meilisearch.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+instant_meilisearch:
+  name: "@meilisearch/instant-meilisearch"
+  file: dist/instant-meilisearch.umd.min.js
+  version: 0.8.1
+  npm: true
+  static: false
+  cdnjs: false
+jquery:
+  name: jquery
+  file: dist/jquery.min.js
+  version: 3.6.0
+  local: false
+  npm: true
+  static: true
+  cdnjs: true
+fontawesome:
+  name: "@fortawesome/fontawesome-free"
+  cdnjs_name: font-awesome
+  file: css/all.min.css
+  version: 6.1.1
+  npm: true
+  static: true
+  cdnjs: true
+katex_js:
+  name: katex
+  cdnjs_name: KaTeX
+  file: dist/katex.min.js
+  version: 0.15.2
+  npm: true
+  static: true
+  cdnjs: true
+katex_css:
+  name: katex
+  cdnjs_name: KaTeX
+  file: dist/katex.min.css
+  version: 0.15.2
+  npm: true
+  static: true
+  cdnjs: true
+katex_render:
+  name: katex
+  cdnjs_name: KaTeX
+  file: dist/contrib/auto-render.min.js
+  version: 0.15.2
+  npm: true
+  static: true
+  cdnjs: true
+mathjax:
+  name: mathjax
+  file: es5/tex-mml-chtml.js
+  version: 3.2.0
+  npm: true
+  static: true
+  cdnjs: true
+markdown:
+  name: github-markdown-css
+  file: github-markdown.min.css
+  version: 5.1.0
+  npm: true
+  static: true
+  cdnjs: true
+marked:
+  name: marked
+  file: marked.min.js
+  version: 4.0.18
+  npm: true
+  static: true
+  cdnjs: true
+hlsjs:
+  name: hls.js
+  file: dist/hls.min.js
+  version: 1.1.3
+  npm: true
+  static: true
+  cdnjs: true
+fancybox_css:
+  name: "@fancyapps/ui"
+  cdnjs_name: fancyapps-ui
+  file: dist/fancybox.css
+  version: 4.0.31
+  npm: true
+  static: true
+  cdnjs: true
+fancybox_js:
+  name: "@fancyapps/ui"
+  cdnjs_name: fancyapps-ui
+  file: dist/fancybox.umd.js
+  version: 4.0.31
+  npm: true
+  static: true
+  cdnjs: true
+instant_page:
+  name: instant.page
+  file: instantpage.min.js
+  version: 5.1.1
+  npm: true
+  static: true
+  cdnjs: true
+flying-pages:
+  name: flying-pages
+  file: flying-pages.min.js
+  version: 2.1.2
+  npm: false # 不是最新版本 npm三年没更新了 version: 2.0.6
+  static: true
+  cdnjs: false
+vanilla-lazyload:
+  name: vanilla-lazyload
+  file: dist/lazyload.min.js
+  version: 17.1.0
+  npm: true
+  static: true
+  cdnjs: true
+scrollreveal:
+  name: scrollreveal
+  cdnjs_name: scrollReveal.js
+  file: dist/scrollreveal.min.js
+  version: 4.0.9
+  npm: true
+  static: true
+  cdnjs: true
+nodewaves_css:
+  name: node-waves
+  file: dist/waves.min.css
+  version: 0.7.6 
+  npm: true
+  static: true
+  cdnjs: true
+nodewaves_js:
+  name: node-waves
+  file: dist/waves.min.js
+  version: 0.7.6
+  npm: true
+  static: true
+  cdnjs: true
+aplayer_js:
+  name: aplayer
+  file: dist/APlayer.min.js
+  version: 1.10.1
+  npm: true
+  static: true
+  cdnjs: true
+aplayer_css:
+  name: aplayer
+  file: dist/APlayer.min.css
+  version: 1.10.1
+  npm: true
+  static: true
+  cdnjs: true
+meting:
+  name: meting
+  file: dist/Meting.min.js
+  version: 2.0
+  npm: true
+  static: true
+  cdnjs: false
+pjax:
+  name: pjax
+  file: pjax.min.js
+  version: 0.2.8
+  npm: true
+  static: true
+  cdnjs: true
+font-awesome-animation:
+  name: font-awesome-animation
+  file: css/font-awesome-animation.min.css
+  version: 1.1.1
+  npm: true
+  static: true
+  cdnjs: false
+comment_typing:
+  name: comment_typing
+  file: comment_typing.js
+  version: unknown
+  npm: false # comment_typing.js 来源未知
+  static: true
+  cdnjs: false
+busuanzi:
+  name: busuanzi
+  file: bsz.pure.mini.js
+  version: 2.3.0
+  npm: true
+  static: true
+  cdnjs: false
+artalk_js:
+  name: artalk
+  file: dist/Artalk.js
+  version: 2.3.4
+  npm: true
+  static: false
+  cdnjs: true
+artalk_css:
+  name: artalk
+  file: dist/Artalk.css
+  version: 2.3.4
+  npm: true
+  static: false
+  cdnjs: true
+disqusjs_js:
+  name: disqusjs
+  file: dist/disqus.js
+  version: 1.3
+  npm: true
+  static: false
+  cdnjs: false # 主题未适配 3.0.1 版本
+disqusjs_css:
+  name: disqusjs
+  file: dist/disqusjs.css
+  version: 1.3
+  npm: true
+  static: false
+  cdnjs: false # 主题未适配 3.0.1 版本
+gitalk:
+  name: gitalk
+  file: dist/gitalk.min.js
+  version: 1.7.2
+  npm: true
+  static: false
+  cdnjs: true
+twikoo:
+  name: twikoo
+  file: dist/twikoo.min.js
+  version: 1.6.5
+  npm: true
+  static: false
+  cdnjs: true
+waline_css:
+  name: "@waline/client"
+  cdnjs_name: waline
+  file: dist/waline.css
+  version: 2.6.3
+  npm: true
+  static: false
+  cdnjs: true
+waline_js:
+  name: "@waline/client"
+  cdnjs_name: waline
+  file: dist/waline.js
+  version: 2.6.3
+  npm: true
+  static: false
+  cdnjs: true
+discuss:
+  name: discuss
+  file: dist/discuss.js
+  cdnjs_file: dist/discuss.js
+  cdnjs_no_min_file: true
+  version: 1.1.4
+  npm: true
+  static: false
+  cdnjs: true
+vssue_js:
+  name: vssue
+  file: dist/vssue.github.min.js
+  version: 1.4.4
+  npm: true
+  static: false
+  cdnjs: false
+vssue_css:
+  name: vssue
+  file: dist/vssue.min.css
+  version: 1.4.4
+  npm: true
+  static: false
+  cdnjs: false
+vssue_vue:
+  name: vue
+  file: dist/vue.runtime.min.js
+  version: 2.6.1
+  npm: true
+  static: false
+  cdnjs: true
+swiper_js:
+  name: swiper
+  cdnjs_name: Swiper
+  file: swiper-bundle.min.js
+  version: 8.3.2
+  npm: true
+  static: true
+  cdnjs: true
+swiper_css:
+  name: swiper
+  cdnjs_name: Swiper
+  file: swiper-bundle.min.css
+  version: 8.3.2
+  npm: true
+  static: true
+  cdnjs: true
+izitoast_css:
+  name: izitoast
+  file: dist/css/iziToast.min.css
+  version: 1.4.0
+  npm: true
+  static: true
+  cdnjs: true
+izitoast_js:
+  name: izitoast
+  file: dist/js/iziToast.min.js
+  version: 1.4.0
+  npm: true
+  static: true
+  cdnjs: true
+fcircle_css:
+  name: fcircle
+  file: fcircle.css
+  version: unknown
+  npm: false
+  static: true
+  cdnjs: false
+fcircle_js:
+  name: fcircle
+  file: fcircle.js
+  version: unknown
+  npm: false
+  static: true
+  cdnjs: false
+bbtalk:
+  name: bbtalk
+  file: dist/bbtalk.js
+  version: 0.1.5
+  npm: true
+  static: false
+  cdnjs: false
+artitalk:
+  name: artitalk
+  file: artitalk.js
+  version: 3.3.4
+  npm: true
+  static: false
+  cdnjs: false
+pace_js:
+  name: pace-js
+  cdnjs_name: pace
+  file: pace.min.js
+  version: 1.2.4
+  npm: true
+  static: false
+  cdnjs: true
+pace_css:
+  name: pace-js
+  cdnjs_name: pace
+  file: themes/${hexo.theme.config?.plugins?.pace?.color}/pace-theme-${hexo.theme.config?.plugins?.pace?.theme}.css
+  version: 1.2.4
+  npm: true
+  static: false
+  cdnjs: true
+
+
+
+

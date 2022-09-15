@@ -2,6 +2,7 @@ navbar:
   archive: Archive
   category: Category
   tag: Tag
+
 post:
   pin: Top
   readmore: Read More
@@ -27,6 +28,7 @@ post:
     updated: Update
     references: References
     license: License
+
 footer:
   license: 'Blog content follows the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)'
   use: Use
@@ -36,6 +38,7 @@ footer:
   times: times
   site_source: Uses %s as theme. You can find [source](%s) in %s.
   site_views: The visits is about %s, and the visitors is about %s.
+
 symbol:
   comma: ", "
   period: ". "
@@ -43,18 +46,14 @@ symbol:
   brackets_l: "("
   brackets_r: ")"
 
-rightmenu:
-  back: "Back"
-  forward: "Forward"
-  reload: "Reload"
-  search_word: "Site Search"
-  copy_text: "Copy Text"
-  copy_image_src: "Copy Image Link"
-  copy_link: "Copy Link"
-  open_in_new_tab: "Open Link in New Tab"
-
 kill:
   title: "Sorry, your browser cannot access this site"
   more: "Learn more >"
   noscript: "This page requires browser support (enable) JavaScript"
   ie: "Microsoft has terminated support for Internet Explorer (IE) 10 and earlier versions in 2016. <br/>There are great security risks to continue using it. Please use contemporary mainstream browsers to access."
+
+search:
+  title: Search
+  load_data: Loading the Database
+  hits_empty: "We didn't find any results for the search: ${query}."
+  hits_stats: '${hits} results found in ${time} ms'

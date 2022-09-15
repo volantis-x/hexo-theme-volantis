@@ -1,4 +1,4 @@
-<% if (theme.comments.service == 'waline'){ %>
+<% if (theme.comments.service == 'waline' && theme.comments.waline.comment && page.comments !== false){ %>
 <div class="new-meta-item comments-count">
   <% 
     let commentPath;

@@ -44,7 +44,7 @@
       <% } else if (item == 'info') { %>
         <%- __('footer.use') %>
         <a href="https://github.com/volantis-x/hexo-theme-volantis/#<%- theme_version %>" target="_blank" class="codename">Volantis</a>
-        <%- __('footer.theme') %><% if (theme.analytics.busuanzi) { %><%- __('symbol.comma') %><%- __('footer.total_views') %>
+        <%- __('footer.theme') %><% if (theme.plugins.busuanzi.enable) { %><%- __('symbol.comma') %><%- __('footer.total_views') %>
           <span id="busuanzi_value_site_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
           <%- __('footer.times') %>
         <% } %>

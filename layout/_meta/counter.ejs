@@ -14,12 +14,11 @@
   path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
 
   let checkComment = false;
-  if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id
-    || theme.analytics.busuanzi
-    || theme.comments.service=='waline' && theme.comments.waline.pageview
-    || theme.comments.service=='twikoo'
-    || theme.comments.service=='discuss'
-    || theme.comments.service=='artalk') {
+  if (theme.plugins.busuanzi.enable
+    || (theme.comments.service=='waline' && theme.comments.waline.pageview)
+    || (theme.comments.service=='twikoo' && theme.comments.twikoo.visitor)
+    || (theme.comments.service=='discuss' && theme.comments.discuss.visitStat)
+    || (theme.comments.service=='artalk' && theme.comments.artalk.visitor)) {
     checkComment = !checkComment;
   } 
 %>
@@ -29,29 +28,27 @@
   <a class='notlink'>
     <p>
       <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
-      <% if (theme.analytics && theme.analytics.leancloud && theme.analytics.leancloud.app_id) { %>
-      <span id="lc-pv" data-title="<%- post.title || page.title %>" data-path="<%- url_for(path) %>">
-        <span id='number'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
-      </span>
-      <% } else if (theme.analytics.busuanzi) { %>
-      <span id="busuanzi_value_page_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
-      <% } else if (theme.comments.service=='waline' && theme.comments.waline.pageview) { %>
+      <% if (theme.comments.service=='waline' && theme.comments.waline.pageview) { %>
       <span data-path="<%- url_for(path) %>" class="waline-pageview-count">
         <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
       </span>
-      <% } else if (theme.comments.service=='twikoo') { %>
+      <% } else if (theme.comments.service=='twikoo' && theme.comments.twikoo.visitor) { %>
       <span id="twikoo_visitors">
         <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
       </span>
-      <% } else if (theme.comments.service=='discuss') { %>
+      <% } else if (theme.comments.service=='discuss' && theme.comments.discuss.visitStat) { %>
       <span id="Discuss-Visitors">
         <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
       </span>
-      <% } else if (theme.comments.service=='artalk') { %>
+      <% } else if (theme.comments.service=='artalk' && theme.comments.artalk.visitor) { %>
       <span id="artalk_visitors" data-page-key="<%- url_for(path) %>">
         <i class="fa-light fa-loader fa-spin fa-fw" aria-hidden="true"></i>
       </span>
-      <% } %>
+      <% } else if (theme.plugins.busuanzi.enable) { %>
+      <span id="busuanzi_value_page_pv">
+        <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
+      </span>
+      <% } %>  
       <span><%- theme.article.body.meta_library.counter.unit %></span>
     </p>
   </a>

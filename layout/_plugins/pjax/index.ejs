@@ -6,18 +6,16 @@
   4.  .pjax
 -->
 <%
-  var banUrl = theme.plugins.pjax.banUrl || [];
+  var excludeList = theme.plugins.pjax.exclude || [];
 %>
 
-<%- js(theme.plugins.pjax.js) %>
-<% if (theme.plugins.pjax.animation){ %>
-<%- partial('animate') %>
-<% } %>
+<%- js(theme.cdn.pjax) %>
 <script>
     var pjax;
     document.addEventListener('DOMContentLoaded', function () {
       pjax = new Pjax({
         elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"]):not([onclick="return!1"]):not([target="_blank"]):not([target="view_window"]):not([href$=".xml"])',
+        // 这里的 selectors 需要保证每个页面都含有相同的数目
         selectors: [
           "head title",
           "head meta[name=keywords]",
@@ -27,7 +25,6 @@
           "#pjax-header-nav-list",
           ".pjax",
           "pjax", // <pjax></pjax> 标签
-          "script[data-pjax], .pjax-reload script" // script标签添加data-pjax 或 script标签外层添加.pjax-reload 的script代码段重载
         ],
         cacheBust: <%= theme.plugins.pjax.cacheBust %>,   // url 地址追加时间戳，用以避免浏览器缓存
         timeout: <%= theme.plugins.pjax.timeout %>,
@@ -41,9 +38,9 @@
       try {
         var currentUrl = window.location.pathname;
         var targetUrl = e.triggerElement.href;
-        var banUrl = <%- '["' + banUrl.join('", "') + '"]' %>;
-        if (banUrl[0] != "") {
-          banUrl.forEach(item => {
+        var excludeList = <%- '["' + excludeList.join('", "') + '"]' %>;
+        if (excludeList[0] != "") {
+          excludeList.forEach(item => {
             if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
               window.location.href = targetUrl;
             }
@@ -56,12 +53,25 @@
     });
 
     document.addEventListener('pjax:complete', function () {
+      // 这里的 script 不需要保证每个页面都含有相同的数目
+      document.querySelectorAll('script[data-pjax], .pjax-reload script').forEach(e=>{
+        const code = e.text || e.textContent || e.innerHTML || '';
+        const script = document.createElement('script');
+        Object.keys(e.attributes).forEach(i=>{
+          script.setAttribute(e.attributes[i].nodeName,e.attributes[i].nodeValue)
+        })
+        if (code) {
+          script.appendChild(document.createTextNode(code));
+        }
+        e.parentNode.replaceChild(script, e);
+      });
+
       // 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
       volantis.pjax.method.complete.start();
     });
 
     document.addEventListener('pjax:error', function (e) {
-      if(volantis.debug) {
+      if(volantis.debug === "pjax") {
         console.error(e);
         console.log('pjax error: \n' + JSON.stringify(e));
       }else{

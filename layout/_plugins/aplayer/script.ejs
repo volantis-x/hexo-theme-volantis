@@ -1,12 +1,12 @@
 <script>
-  volantis.css("<%- theme.plugins.aplayer.css %>");
+  volantis.css("<%- theme.cdn.aplayer_css %>");
   (async () => {
     // APlayer 需要在  MetingJS 之前加载
-    await volantis.js("<%- theme.plugins.aplayer.js.aplayer %>")
-    await volantis.js("<%- theme.plugins.aplayer.js.meting %>")
-  <% if ((theme.rightmenu.enable || theme.rightmenus.enable) && theme.rightmenu.layout.includes('music')) { %>
+    await volantis.js("<%- theme.cdn.aplayer_js %>")
+    await volantis.js("<%- theme.cdn.meting %>")
+  <% if (theme.rightmenus.enable && theme.rightmenus.order.includes('music')) { %>
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('<%- theme.cdn.addJS("plugins/aplayer") %>')
+    await volantis.js('<%- theme.cdn.volantis_aplayer %>')
   <% } %>
   })();
 
@@ -24,7 +24,7 @@
           setTimeout(() => {
             Metings.forEach((item, index) => {
               const aplayerItem = item.aplayer; if(!aplayerItem) return;
-              const rightAplayerCheck = '<%= theme.rightmenu.layout.includes("music") %>' === 'true'
+              const rightAplayerCheck = '<%= theme.rightmenus.order.includes("music") %>' === 'true'
                 && item.meta.id === '<%= theme.plugins.aplayer.id %>';
               if(rightAplayerCheck) RightMenuAplayer.checkAPlayer();
               if(aplayerItem.events.events.play.every(item => {return item.name !== 'messagePlay'})) {

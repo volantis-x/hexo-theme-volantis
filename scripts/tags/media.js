@@ -14,7 +14,7 @@ function postVideo(args) {
     let video_id = `video-${hexo.createUuid()}`
     return `<div clsss="video"><video id="${video_id}" controls loop="false" width="100%"></video></div>
         <script>
-          volantis.js("${hexo.theme.config.plugins.hlsjs}").then(()=>{
+          volantis.js("${hexo.theme.config.cdn.hlsjs}").then(()=>{
             var video = document.getElementById('${video_id}');
             if(Hls.isSupported()) {
               var hls = new Hls();

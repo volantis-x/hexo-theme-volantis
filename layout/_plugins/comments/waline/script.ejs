@@ -56,7 +56,7 @@
     }
   }
 
-  volantis.css('<%= theme.comments.waline.css %>')
-  volantis.js('<%- theme.comments.waline.js %>').then(pjax_waline)
+  volantis.css('<%= theme.cdn.waline_css %>')
+  volantis.js('<%- theme.cdn.waline_js %>').then(pjax_waline)
   volantis.pjax.push(pjax_waline);
 </script>

@@ -2,6 +2,7 @@ navbar:
   archive: 归档
   category: 分类
   tag: 标签
+
 post:
   pin: 置顶
   readmore: 阅读全文
@@ -27,6 +28,7 @@ post:
     updated: 更新于
     references: 原文出处
     license: 许可协议
+
 footer:
   license: '博客内容遵循 [署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)'
   use: 本站使用
@@ -36,6 +38,7 @@ footer:
   times: 次
   site_source: 本站使用 %s 作为主题，您可以在 %s 找到[本站源码](%s)。
   site_views: 总访问量约为 %s 次，访问人数约为 %s 人。
+
 symbol:
   comma: "，"
   period: "。"
@@ -43,22 +46,15 @@ symbol:
   brackets_l: "（"
   brackets_r: "）"
 
-rightmenu:
-  back: "返回"
-  forward: "前进"
-  reload: "刷新"
-  search_word: "站内搜索"
-  copy_text: "复制文本"
-  copy_paste: "粘贴文本"
-  copy_select: "全选文本"
-  copy_cut: "剪切文本"
-  copy_image_src: "复制图片地址"
-  copy_image_file: "复制图片文件"
-  copy_link: "复制链接"
-  open_in_new_tab: "在新标签页打开"
-
 kill:
   title: "抱歉，您的浏览器无法访问本站"
   more: "了解详情 >"
   noscript: "本页面需要浏览器支持（启用）JavaScript"
   ie: "微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。"
+
+search:
+  title: 搜索
+  load_data: 数据库加载中
+  hits_empty: '找不到您查询的内容：${query}'
+  hits_stats: '找到 ${hits} 条结果，用时 ${time} 毫秒'
+

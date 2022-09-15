@@ -19,6 +19,6 @@
       gitalk.render('gitalk-container');
     }
   }
-  volantis.js('<%= theme.comments.gitalk.js %>').then(pjax_gitalk)
+  volantis.js('<%= theme.cdn.gitalk %>').then(pjax_gitalk)
   volantis.pjax.push(pjax_gitalk);
 </script>
