@@ -235,7 +235,7 @@ const VolantisApp = (() => {
           }
           volantis.dom.toc.removeClass('active');
         });
-      } else volantis.dom.toc.style.display = 'none'; // 隐藏toc目录按钮
+      } else if (volantis.dom.toc) volantis.dom.toc.style.display = 'none'; // 隐藏toc目录按钮
     }
   }
 

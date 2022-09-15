@@ -17,6 +17,7 @@
   }
   volantis.js("<%- theme.cdn.scrollreveal %>");
   document.addEventListener("DOMContentLoaded", init_scrollrebeal);
+  setTimeout(init_scrollrebeal,10000);
   volantis.pjax.push(
     pjax_scrollrebeal,
     "pjax_scrollrebeal",

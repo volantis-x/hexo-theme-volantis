@@ -246,6 +246,21 @@ article:
         #       url: https://
         # 即可显示此组件。
       # ----------------
+      # 文章推荐 (for layout: post/docs)
+      # 推荐算法需要依赖中文分词工具，nodejieba只支持中英文 npm i nodejieba -S
+      recommended_article:
+        enable: false
+        layout: ["post", "docs"]
+        title: 推荐阅读
+        icon: fa-solid fa-bookmark
+        max_count: 6
+        placeholder_img: https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg
+        # 不展示文章推荐
+        # front-matter 使用 skip_recommended_article: true 关闭
+        # 不在以下文件夹文章中展示文章推荐 根目录是source/
+        skip_dirs:
+          - wiki/
+      # ----------------
       # 相关文章，需要安装插件 (for layout: post)
       # npm i hexo-related-popular-posts
       related_posts:

@@ -179,6 +179,11 @@
       <% } %>
     </div>
   <% } %>
+  <!-- 文章推荐 -->
+  <% let footer_widget = theme.article.body.footer_widget; %>
+  <% if (footer_widget.recommended_article && footer_widget.recommended_article.enable == true && footer_widget.recommended_article.layout.includes(page.layout) && !page.skip_recommended_article) { %>
+    <%- 文章推荐生成器(post) %>
+  <% } %>
   <!-- Custom Files postEnd begin-->
   <%- volantis_inject('postEnd') %>
   <!-- Custom Files postEnd end-->

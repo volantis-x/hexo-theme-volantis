@@ -371,3 +371,46 @@ article .readmore
       border-bottom: 1px solid var(--color-meta);
       &:hover
         border-bottom-color: #ff5722
+.recommended-article
+  overflow: hidden
+  .recommended-article-header
+    margin-top: $gap * 0.5
+    margin-left: $gap * 0.5
+    margin-right: 0
+  .recommended-article-group
+    display: flex
+    flex-wrap: wrap
+    overflow: hidden
+    @media screen and (max-width: $device-tablet)
+      height: 190px
+      overflow: scroll
+      &::-webkit-scrollbar
+        width: 0 !important
+      -ms-overflow-style: none
+    .recommended-article-item
+      display: flex
+      flex-wrap: wrap
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden
+      width: "calc(100%/3 - %s)" % $gap
+      @media screen and (max-width: $device-tablet)
+        width: "calc(100%/2 - %s)" % $gap
+      @media screen and (max-width: $device-mobile)
+        width: "calc(100% - %s)" % $gap
+      max-height: 200px
+      margin-top: $gap * 0.5
+      margin-left: $gap * 0.5
+      margin-right: 0
+      img
+        display: flex;
+        width: 100%
+        height: 150px
+      span
+        display: block
+        text-align: justify
+        display: -webkit-box
+        -webkit-box-orient: vertical
+        -webkit-line-clamp: 1;
+        overflow: hidden
