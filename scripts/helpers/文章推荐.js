@@ -39,6 +39,7 @@ function 数据清洗(数据) {
   ]
   数据 = 数据.replace(/\s/g, " ")
   数据 = 数据.replace(/\!\[(.*?)\]\(.*?\)/g, (_a, b) => { return b })
+  数据 = 数据.replace(/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/g, " ")
   for (const 标点符号 of 标点符号列表) {
     数据 = 数据.replace(new RegExp("\\" + 标点符号, "g"), " ")
   }
