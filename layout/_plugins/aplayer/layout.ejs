@@ -2,29 +2,37 @@
 let aplayer = theme.plugins.aplayer;
 %>
 <% if (theme.plugins.aplayer.enable == true) { %>
-  <% if (post && post.music) { %>
-    <meting-js
-      mini='true'
-      volume='<%- post.music.volume || aplayer.volume %>'
-      loop='<%- post.music.loop || aplayer.loop %>'
-      order='<%- post.music.order || aplayer.order %>'
-      server='<%- post.music.server || aplayer.server %>'
-      type='<%- post.music.type || aplayer.type %>'
-      id='<%- post.music.id || aplayer.id %>'>
-    </meting-js>
+  <% if (aplayer.source == "meting") { %>
+    <% if (post && post.music) { %>
+      <meting-js
+        mini='true'
+        volume='<%- post.music.volume || aplayer.volume %>'
+        loop='<%- post.music.loop || aplayer.loop %>'
+        order='<%- post.music.order || aplayer.order %>'
+        server='<%- post.music.server || aplayer.server %>'
+        type='<%- post.music.type || aplayer.type %>'
+        id='<%- post.music.id || aplayer.id %>'>
+      </meting-js>
+    <% } else { %>
+      <meting-js
+        theme='<%- aplayer.theme %>'
+        autoplay='<%- aplayer.autoplay %>'
+        volume='<%- aplayer.volume %>'
+        loop='<%- aplayer.loop %>'
+        order='<%- aplayer.order %>'
+        fixed='<%- aplayer.fixed %>'
+        list-max-height='<%- aplayer.list_max_height %>'
+        server='<%- aplayer.server %>'
+        type='<%- aplayer.type %>'
+        id='<%- aplayer.id %>'
+        list-folded='<%- aplayer.list_folded %>'>
+      </meting-js>
+    <% } %>
   <% } else { %>
-    <meting-js
-      theme='<%- aplayer.theme %>'
-      autoplay='<%- aplayer.autoplay %>'
-      volume='<%- aplayer.volume %>'
-      loop='<%- aplayer.loop %>'
-      order='<%- aplayer.order %>'
-      fixed='<%- aplayer.fixed %>'
-      list-max-height='<%- aplayer.list_max_height %>'
-      server='<%- aplayer.server %>'
-      type='<%- aplayer.type %>'
-      id='<%- aplayer.id %>'
-      list-folded='<%- aplayer.list_folded %>'>
-    </meting-js>
+    <% if (post && post.music) { %>
+      <div class="aplayer-local-min"></div>
+    <% } else { %>
+      <div class="aplayer-local"></div>
+    <% } %>
   <% } %>
 <% } %>
