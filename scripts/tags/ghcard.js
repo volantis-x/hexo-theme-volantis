@@ -20,10 +20,10 @@ hexo.extend.tag.register('ghcard', function(args) {
   if (path.includes('/')) {
     // is repo
     const ps = path.split('/');
-    url += 'https://github-readme-stats.vercel.app/api/pin/?username=' + ps[0] + '&repo=' + ps[1];
+    url += 'https://github-readme-stats.xaoxuu.com/api/pin/?username=' + ps[0] + '&repo=' + ps[1];
   } else {
     // is user
-    url += 'https://github-readme-stats.vercel.app/api/?username=' + path;
+    url += 'https://github-readme-stats.xaoxuu.com/api/?username=' + path;
   }
   if (args.length > 1) {
     for (let i = 1; i < args.length; i++) {
