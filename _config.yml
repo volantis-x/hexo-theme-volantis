@@ -246,6 +246,21 @@ article:
         #       url: https://
         # 即可显示此组件。
       # ----------------
+      # 文章推荐 (for layout: post/docs)
+      # 推荐算法需要依赖中文分词工具，nodejieba只支持中英文 npm i nodejieba -S
+      recommended_article:
+        enable: false
+        layout: ["post", "docs"]
+        title: 推荐阅读
+        icon: fa-solid fa-bookmark
+        max_count: 6
+        placeholder_img: https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg
+        # 不展示文章推荐
+        # front-matter 使用 skip_recommended_article: true 关闭
+        # 不在以下文件夹文章中展示文章推荐 根目录是source/
+        skip_dirs:
+          - wiki/
+      # ----------------
       # 相关文章，需要安装插件 (for layout: post)
       # npm i hexo-related-popular-posts
       related_posts:
@@ -814,13 +829,31 @@ plugins:
       - volantis-static/media/wallpaper/minimalist/2020/056.webp
 
   # APlayer is only available in mainland China.
+  # https://aplayer.js.org/#/zh-Hans/
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
     enable: #true
+    source: meting # meting：从 MetingJS API 获取音乐数据（API经常不稳定） / local：本地音乐数据
+    # ============= meting begin =============
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
     id: 3175833810    # song id / playlist id / album id / search keyword
+    # ============= meting end =============
+    # ============= local begin ==============
+    # local 暂时没有适配右键 和 post.music 迷你模式
+    audio:
+      - name: 'Fly'
+        artist: 'Marshmello'
+        url: '/music/fly.mp3'
+        lrc: '/music/fly.lrc'
+        cover: '/music/fly.jpg'
+      - name: 'Avem'
+        artist: 'Alan Walker'
+        url: '/music/Avem.mp3'
+        lrc: '/music/Avem.lrc'
+        cover: '/music/Avem.jpg'
+    # ============= local end ================
     # Optional
     fixed: false      # enable fixed mode
     theme: '#1BCDFC'  # main color
