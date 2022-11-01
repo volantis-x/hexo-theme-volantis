@@ -943,8 +943,8 @@ plugins:
     page_turning_number: 10  # 点击加载更多时，一次最多加载几篇文章，默认10
     error_img: https://cravatar.cn/avatar/57d8260dfb55501c37dde588e7c3852c # 头像加载失败时，默认头像地址
     sort_rule: created # 进入页面时第一次的排序规则,可选值：created/updated
-    app: https://npm.elemecdn.com/fcircle-theme-yyyz@1.0.3/dist/app.min.js # app.min.js的url
-    bundle: https://npm.elemecdn.com/fcircle-theme-yyyz@1.0.3/dist/bundle.js # bundle.js的url
+    app: https://npm.elemecdn.com/fcircle-theme-yyyz@1.0.5/dist/app.min.js # app.min.js的url
+    bundle: https://npm.elemecdn.com/fcircle-theme-yyyz@1.0.5/dist/bundle.js # bundle.js的url
 
   # 消息提示 
   # izitoast
