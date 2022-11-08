@@ -337,9 +337,11 @@
     volantis.requestAnimationFrame(loop)
   }
   volantis.scroll.handleScrollEvents()
+  volantis.scroll.ele = null;
   // 触发页面滚动至目标元素位置
   volantis.scroll.to = (ele, option = {}) => {
     if (!ele) return;
+    volantis.scroll.ele = ele;
     // 默认配置
     opt = {
       top: ele.getBoundingClientRect().top + document.documentElement.scrollTop,
@@ -366,6 +368,9 @@
     // option.observer = false
     if (option.observer) {
       setTimeout(() => {
+        if (volantis.scroll.ele != ele) {
+          return
+        }
         volantis.scroll.unengine.push(() => {
           let me = ele.getBoundingClientRect().top
           if (!(me >= -option.observerDic && me <= option.observerDic)) {
