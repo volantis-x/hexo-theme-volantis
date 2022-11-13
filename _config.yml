@@ -39,7 +39,7 @@ cdn_system:
   system_config:
     # 自定义配置 使用 "theme/_cdn.yml" 中的名称作为配置项的键
     custom:
-      busuanzi: https://cdn.dusays.com/bsz.js  # 杜老师友情赞助
+      busuanzi: https://npm.elemecdn.com/penndu@1.0.0/bsz.js  # 杜老师友情赞助
       #volantis_style: /css/style.css
       #volantis_app: /js/app.js
 
