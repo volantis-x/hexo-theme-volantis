@@ -389,6 +389,7 @@ comments:
     path:  # 全局评论地址
     placeholder: # 评论占位
     visitor: true # 是否显示文章阅读数
+    latex: false # 启用 Latex 支持
     # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
     # 配置此项时将覆盖服务端上传能力
     imageUploader:

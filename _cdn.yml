@@ -288,6 +288,13 @@ artalk_css:
   npm: true
   static: false
   cdnjs: true
+artalk_katex:
+  name: "@artalk/plugin-katex"
+  file: dist/artalk-plugin-katex.js
+  version: 0.1.4
+  npm: true
+  static: false
+  cdnjs: false
 disqusjs_js:
   name: disqusjs
   file: dist/disqus.js

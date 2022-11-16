@@ -3,7 +3,14 @@
   function load_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0])return;
     volantis.css("<%- theme.cdn.artalk_css %>");
+    <% if (theme.comments.artalk.latex) { %>
+    volantis.css("<%- theme.cdn.katex_css %>");
+    volantis.js("<%- theme.cdn.katex_js %>");
+    volantis.js("<%- theme.cdn.artalk_js %>");
+    volantis.js("<%- theme.cdn.artalk_katex %>").then(pjax_artalk);
+    <% } else { %>
     volantis.js("<%- theme.cdn.artalk_js %>").then(pjax_artalk);
+    <% } %>
   }
 
   function pjax_artalk() {
