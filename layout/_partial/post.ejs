@@ -21,7 +21,7 @@
     showCat = true;
   }
   let showReadmore = false;
-  if (theme.article.preview.readmore == 'always' || theme.article.preview.auto_excerpt || ((post.readmore != false) && (post.excerpt || post.description || post.link))) {
+  if (theme.article.preview.readmore == 'always' || ((post.readmore != false) && (theme.article.preview.auto_excerpt || post.excerpt || post.description || post.link))) {
     showReadmore = true;
   }
   %>
