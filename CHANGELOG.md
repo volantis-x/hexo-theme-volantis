@@ -1,5 +1,39 @@
 # Changelog
 
+## [6.0.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.6...v6.0.0) (2022-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* 移除 nprogress
+
+### Features
+
+* **#415:** 添加阅读进度百分比显示 ([94b6830](https://github.com/volantis-x/hexo-theme-volantis/commit/94b6830e6e6bee7bad2ce7cb1f6b5b966da9c26a))
+* aplayer 从本地加载音乐数据 ([eec7e47](https://github.com/volantis-x/hexo-theme-volantis/commit/eec7e4708d95a7c8e001eb0634361df9a387f5b8))
+* **artalk:** 支持 Latex ([6c5fa6b](https://github.com/volantis-x/hexo-theme-volantis/commit/6c5fa6b8b915f9b9fb216c1bace1609cf74405ae))
+* Update Artalk Version to 2.4.3 ([0a7004e](https://github.com/volantis-x/hexo-theme-volantis/commit/0a7004ef30f0b1ecaa33572375f6ce751c01ebbc))
+* Update Fcircle Version ([72e655f](https://github.com/volantis-x/hexo-theme-volantis/commit/72e655f4f3393c65a5fef41680867053f647e81c))
+* Update Fcircle Version to 1.0.5 ([a3079ee](https://github.com/volantis-x/hexo-theme-volantis/commit/a3079ee4136227c48d5c889b0160b935f6ff483a))
+* 添加 pacejs ([3ce85d9](https://github.com/volantis-x/hexo-theme-volantis/commit/3ce85d9e721943a0a05e51df459bf8e80e48e160))
+* 添加文章推荐算法 ([684c403](https://github.com/volantis-x/hexo-theme-volantis/commit/684c40333b16b5d1df1a9e4a7f1da90216e5a17a))
+
+
+### Bug Fixes
+
+* **#824:** 边界条件 ([5b6cb2b](https://github.com/volantis-x/hexo-theme-volantis/commit/5b6cb2bc9770489e96b901a9229ac1ea5bc3b89e))
+* **friends:** comment disable ([c9cfb0e](https://github.com/volantis-x/hexo-theme-volantis/commit/c9cfb0e1d62a2b5ac27f974f493736d8894bf9eb))
+* **pjax:** hexo-blog-encrypt ([d6571ca](https://github.com/volantis-x/hexo-theme-volantis/commit/d6571ca1684eb1cc74f640d127de36af038faea1))
+* **RightMenus:** Reader Mode ([3207bbf](https://github.com/volantis-x/hexo-theme-volantis/commit/3207bbf1257505b3056491498ef622fa979fe00f))
+* yml string to list ([8691c23](https://github.com/volantis-x/hexo-theme-volantis/commit/8691c2351b9d03be9f56461e6f5431162c35733d))
+* 兼容 hexo-blog-encrypt ([d96ef76](https://github.com/volantis-x/hexo-theme-volantis/commit/d96ef767f8d03db65a4221bd626143bf07138ed4))
+
+
+### Performance Improvements
+
+* **cdnjs:** 替换Cloudflare为BootCDN ([4421b03](https://github.com/volantis-x/hexo-theme-volantis/commit/4421b03d16418ba42d09f915fc3eb791607810e4))
+* **debug:** description 的配置检查改为warn警告并使用默认值 [#801](https://github.com/volantis-x/hexo-theme-volantis/issues/801) ([56c09f6](https://github.com/volantis-x/hexo-theme-volantis/commit/56c09f6880ea6ae42c671c3127d59948b6295ab6))
+
 ## [5.7.6](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.5...v5.7.6) (2022-09-05)
 
 
