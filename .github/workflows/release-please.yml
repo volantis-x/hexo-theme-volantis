@@ -13,6 +13,8 @@ jobs:
         with:
           release-type: node
           package-name: hexo-theme-volantis
+          include-v-in-tag: false
+          default-branch: dev
   npm-publish:
     if: ${{ contains(github.event.head_commit.message, 'chore(dev)') && contains(github.event.head_commit.message, 'release') && github.repository == 'volantis-x/hexo-theme-volantis' }}
     runs-on: ubuntu-latest

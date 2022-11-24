@@ -2,52 +2,26 @@ name: Sync Coding
 
 on:
   push:
-    branches: 
-    - main
-    - dev
-  # pull_request:
-  #   branches: [ main ]
   release:
-    types: [ published ]
+    types: [published]
 
 jobs:
-  main:
-    if: github.ref == 'refs/heads/main'
+  sync:
     runs-on: ubuntu-latest
 
     steps:
       - name: Run Curl
         run: |
-          curl -u ${{ secrets.CODING_TOKEN_API }} \
-             -v -X POST  'https://volantis-x.coding.net/api/cci/job/387490/trigger' \
-             -H 'Content-Type: application/json' \
-             -d '
-              {
-                "envs": [
-                  {
-                    "name": "BRANCH",
-                    "value": "main",
-                    "sensitive": 0
-                  }
-                ]
-              }'
-  dev:
-    if: github.ref == 'refs/heads/dev'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Run Curl
-        run: |
-          curl -u ${{ secrets.CODING_TOKEN_API }} \
-             -v -X POST  'https://volantis-x.coding.net/api/cci/job/387490/trigger' \
-             -H 'Content-Type: application/json' \
-             -d '
-              {
-                "envs": [
-                  {
-                    "name": "BRANCH",
-                    "value": "dev",
-                    "sensitive": 0
-                  }
-                ]
-              }'
+            curl -u ${{ secrets.CODING_TOKEN_API }} \
+               -v -X POST  'https://volantis-x.coding.net/api/cci/job/387490/trigger' \
+               -H 'Content-Type: application/json' \
+               -d '
+                {
+                  "envs": [
+                    {
+                      "name": "BRANCH",
+                      "value": "${{ github.ref_name }}",
+                      "sensitive": 0
+                    }
+                  ]
+                }'
