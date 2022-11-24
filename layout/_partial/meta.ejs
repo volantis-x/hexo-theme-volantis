@@ -35,7 +35,7 @@ if (post.bottom_meta == false) {
         <%- post.title %>
       </h1>
       <div class='new-meta-box'>
-        <% (topMetas).forEach(function(meta) { %>
+        <% getList(topMetas).forEach(function(meta) { %>
           <% if (meta in theme.article.body.meta_library){ %>
             <%- partial('../_meta/' + meta, {post: post}) %>
           <% } %>
@@ -53,7 +53,7 @@ if (post.bottom_meta == false) {
 <% } else if (position == 'bottom') { %>
   <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
-      <% (bottomMetas).forEach(function(meta){ %>
+      <% getList(bottomMetas).forEach(function(meta){ %>
         <% if (meta in theme.article.body.meta_library) { %>
           <%- partial('../_meta/' + meta, {post: post}) %>
         <% } %>

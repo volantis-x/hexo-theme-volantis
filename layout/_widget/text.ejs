@@ -2,7 +2,7 @@
 <section class="widget <%- item.class %> <%- page.widget_platform %> <%- page.widget_pjax %>">
   <%- partial('header', {item: item}) %>
   <div class='content'>
-    <% (item.content||[]).forEach(function(row){ %>
+    <% getList(item.content).forEach(function(row){ %>
       <%- markdown(row) %>
     <% }) %>
   </div>

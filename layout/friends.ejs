@@ -4,7 +4,7 @@
     <%- partial('_partial/meta',{post: page, position: 'top'}) %>
     <%- page.excerpt %>
     <% if (site.data.friends){ %>
-      <% site.data.friends.forEach((group, i) => { %>
+      <% getList(site.data.friends).forEach((group, i) => { %>
         <div class='friends-group'>
           <br>
           <h2 class='friend-header'>
@@ -15,7 +15,7 @@
           <%} %>
           <% if (theme.pages.friends.layout_scheme == 'traditional') { %>
             <div class='friend-content'>
-              <% (group.items||[]).forEach(function(item){ %>
+              <% getList(group.items).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
                   <a class='friend-card'
                     target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>">
@@ -28,7 +28,7 @@
                       <p class="friend-name"><%- item.title %></p>
                       <% if (item.keywords) { %>
                         <div class='friend-tags-wrapper'>
-                        <% (item.keywords||[]).forEach(function(keyword){ %>
+                        <% getList(item.keywords).forEach(function(keyword){ %>
                           <p class="tags"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><%= keyword %></p>
                         <% }) %>
                         </div>
@@ -45,7 +45,7 @@
             </div>
           <% } else { %>
             <div class='simpleuser-group'>
-              <% (group.items||[]).forEach(function(item){ %>
+              <% getList(group.items).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
                   <a class="simpleuser" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>">
                     <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>

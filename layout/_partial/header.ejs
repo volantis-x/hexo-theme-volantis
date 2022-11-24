@@ -77,7 +77,7 @@
                 </a>
                 <% if (value.rows) { %>
                   <ul class="list-v">
-                    <% value.rows.forEach(function(value){ %>
+                    <% getList(value.rows).forEach(function(value){ %>
                       <% menu(value, type) %>
                     <%})%>
                   </ul>
@@ -85,7 +85,7 @@
               </li>
             <% } %>
           <% } %>
-          <% menu_list.forEach(function(value){ %>
+          <% getList(menu_list).forEach(function(value){ %>
             <% menu(value, 'pc') %>
           <% }) %>
 				</ul>
@@ -106,7 +106,7 @@
 				<li>
           <a class="s-menu fa-solid fa-bars fa-fw" target="_self" href="/" onclick="return false;" title="menu"></a>
           <ul class="menu-phone list-v navigation white-box">
-            <% menu_list.forEach(function(value){ %>
+            <% getList(menu_list).forEach(function(value){ %>
               <% menu(value, 'mobile') %>
             <% }) %>
           </ul>

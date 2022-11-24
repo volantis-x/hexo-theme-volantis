@@ -5,7 +5,7 @@
   <body itemscope itemtype="http://schema.org/WebPage">
     <!-- import body_begin begin-->
     <%_ if (config.import && config.import.body_begin){ _%>
-      <%_ ([...config.import.body_begin]).forEach(function(item){ _%>
+      <%_ getList(config.import.body_begin).forEach(function(item){ _%>
         <%- item %>
       <%_ }) _%>
     <%_ } _%>
@@ -33,7 +33,7 @@
     </div>
     <!-- import body_end begin-->
     <%_ if (config.import && config.import.body_end){ _%>
-      <%_ ([...config.import.body_end]).forEach(function(item){ _%>
+      <%_ getList(config.import.body_end).forEach(function(item){ _%>
         <%- item %>
       <%_ }) _%>
     <%_ } _%>

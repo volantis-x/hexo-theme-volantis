@@ -1,7 +1,7 @@
 <%
 var pf = [];
 if (item.display) {
-  item.display.forEach(function(p){
+  getList(item.display).forEach(function(p){
     pf.push(p);
   });
 } else {

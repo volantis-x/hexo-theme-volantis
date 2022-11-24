@@ -1,7 +1,7 @@
 <%
   let widget_library_temp = [];
 %>
-<% (widgets||[]).forEach(function(widget){ %>
+<% getList(widgets).forEach(function(widget){ %>
   <% if (theme.sidebar.widget_library && (widget in theme.sidebar.widget_library)){ %>
     <% let w = theme.sidebar.widget_library[widget]; w.id = widget; %>
     <% if(w.sticky) { %>
@@ -22,7 +22,7 @@
 
 <%
 let widget_pjax_length = 0;
-page.sidebar.forEach(function(e){
+getList(page.sidebar).forEach(function(e){
   if (e&&theme.sidebar.widget_library&&theme.sidebar.widget_library[e]) {
     let widget_pjax_flag = theme.sidebar.widget_library[e].pjaxReload
     let widget_stickys = theme.sidebar.widget_library[e].sticky
