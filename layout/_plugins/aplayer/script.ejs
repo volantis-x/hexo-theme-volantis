@@ -28,7 +28,7 @@
                 const aplayerItem = item.aplayer; if(!aplayerItem) return;
                 const rightAplayerCheck = '<%= theme.rightmenus.order.includes("music") %>' === 'true'
                   && item.meta.id === '<%= theme.plugins.aplayer.id %>';
-                if(rightAplayerCheck) RightMenuAplayer.checkAPlayer();
+                if(rightAplayerCheck && typeof RightMenuAplayer !="undefined") RightMenuAplayer.checkAPlayer();
                 if(aplayerItem.events.events.play.every(item => {return item.name !== 'messagePlay'})) {
                   aplayerItem.on('play', function messagePlay() {
                     let index = aplayerItem.list.index;
