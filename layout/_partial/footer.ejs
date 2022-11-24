@@ -20,7 +20,7 @@
       <% if (item == 'social') { %>
         <br>
         <div class="social-wrapper" itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <% (theme.site_footer.social||[]).forEach(function(value){ %>
+          <% getList(theme.site_footer.social).forEach(function(value){ %>
             <% if (value.url && (value.icon || value.img || value.avatar)) { %>
               <a href="<%= url_for(value.url) %>"
                 class="social <%- value.icon %> flat-btn"

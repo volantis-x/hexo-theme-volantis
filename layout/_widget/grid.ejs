@@ -3,7 +3,7 @@
   <%- partial('header', {item: item}) %>
   <div class='content'>
     <div class="grid navigation<%- item.fixed ? ' fixed' : '' %>">
-      <% (item.rows||[]).forEach(function(row){ %>
+      <% getList(item.rows).forEach(function(row){ %>
         <a class="flat-box" href="<%- url_for(row.url) %>"
           <% if (row.rel) { %>
             rel="<%- row.rel %>"

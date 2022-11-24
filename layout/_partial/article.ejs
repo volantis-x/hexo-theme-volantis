@@ -33,7 +33,7 @@
           </section>
           <section class='body'>
             <ul>
-              <% (page.references||[]).forEach(function(row){ %>
+              <% getList(page.references).forEach(function(row){ %>
                 <li>
                   <a href="<%- url_for(row.url) %>" rel="external nofollow noopener noreferrer" target="_blank">
                   <%- row.title || url_for(row.url) %>
@@ -104,7 +104,7 @@
         <% } else { %>
           <div class='copyright'>
             <blockquote>
-              <% (footer_widget.copyright.content||[]).forEach(function(row){ %>
+              <% getList(footer_widget.copyright.content).forEach(function(row){ %>
                 <% if (row == 'permalink') { %>
                   <p><%- footer_widget.copyright.permalink %><a href="<%- decodeURI(page.permalink) %>"><%- decodeURI(page.permalink) %></a></p>
                 <% } else { %>
@@ -119,7 +119,7 @@
       <% if (['post'].includes(page.layout) && footer_widget.donate && footer_widget.donate.enable == true) { %>
         <div class='donate'>
           <div class='imgs'>
-            <% (footer_widget.donate.images||[]).forEach(function(url){ %>
+            <% getList(footer_widget.donate.images).forEach(function(url){ %>
               <img src='<%- url_for(url) %>'>
             <% }) %>
           </div>

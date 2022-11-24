@@ -3,7 +3,7 @@
   <div class='content'>
     <% if (item.blockquote == true) { %>
       <blockquote>
-        <% (item.content||[]).forEach(function(row){ %>
+        <% getList(item.content).forEach(function(row){ %>
           <% if (row == 'permalink') { %>
             <p><%- item.permalink %><a href=<%- page.permalink %>><%- page.permalink %></a></p>
           <% } else { %>
@@ -12,7 +12,7 @@
         <% }) %>
       </blockquote>
     <% } else { %>
-      <% (item.content||[]).forEach(function(row){ %>
+      <% getList(item.content).forEach(function(row){ %>
         <% if (row == 'permalink') { %>
           <p><%- item.permalink %><a href=<%- page.permalink %>><%- page.permalink %></a></p>
         <% } else { %>

@@ -28,7 +28,7 @@
     <% } %>
     <% if (item.social && item.social.length > 0) { %>
       <div class="social-wrapper">
-        <% (item.social||[]).forEach(function(value){ %>
+        <% getList(item.social).forEach(function(value){ %>
           <% if (value.url && (value.icon || value.img || value.avatar)) { %>
             <a href="<%= url_for(value.url) %>"
               class="social <%- value.icon %> flat-btn"

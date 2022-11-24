@@ -1,7 +1,7 @@
-<% (theme.plugins.prismjs.js||[]).forEach(function(item) { %>
+<% getList(theme.plugins.prismjs.js).forEach(function(item) { %>
   <%- js(item) %>
 <% }) %>
-<% (theme.plugins.prismjs.css||[]).forEach(function(item) { %>
+<% getList(theme.plugins.prismjs.css).forEach(function(item) { %>
   <%- css(item) %>
 <% }) %>
 <script>

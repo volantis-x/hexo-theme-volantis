@@ -22,7 +22,7 @@
     <div class='menu navigation'>
       <div class='list-h'>
         <% if (theme.cover.features) { %>
-          <% (theme.cover.features || []).forEach(function(value){ %>
+          <% getList(theme.cover.features).forEach(function(value){ %>
             <a href="<%= url_for(value.url) %>"
               <% if (value.rel) { %>
                 rel="<%- value.rel %>"
