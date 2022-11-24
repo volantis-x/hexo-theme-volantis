@@ -20,7 +20,7 @@ let SearchService = (() => {
   <div id="modal-overlay" class="modal-overlay"></div>
 </div>
 `;
-  fn.init = () => {
+  fn.init = async () => {
     let div = document.createElement("div");
     div.innerHTML += fn.template;
     document.body.append(div);
@@ -35,6 +35,9 @@ let SearchService = (() => {
     document
       .querySelector("#modal-overlay")
       .addEventListener("click", fn.close, false);
+    if (!fn.data) {
+      fn.data = await fn.fetchData();
+    }
   };
   fn.onSubmit = (event) => {
     event.preventDefault();

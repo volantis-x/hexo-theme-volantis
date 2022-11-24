@@ -8,6 +8,7 @@
       Pace.stop();
       Pace.trigger('start');
       Pace.bar.update(volantis.scroll.progress() * 100);
+      document.body.className = document.body.className.replaceAll("pace-running ","");
     },"阅读进度")
     // todo：配置项开关, 哪些页面添加阅读进度
   })
