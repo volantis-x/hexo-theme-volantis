@@ -1,6 +1,6 @@
 <script type="text/javascript">
   volantis.layoutHelper("comments",`<div id="gitalk-container"></div>`)
-  function gitalk() {
+  function p_gitalk() {
     if(!document.querySelector("#gitalk-container"))return;
     let path = pdata.commentPath;
     if (path.length == 0) {
@@ -19,5 +19,5 @@
       gitalk.render('gitalk-container');
     }
   }
-  volantis.js('<%= theme.cdn.gitalk %>').then(gitalk)
+  volantis.js('<%= theme.cdn.gitalk %>').then(p_gitalk)
 </script>
