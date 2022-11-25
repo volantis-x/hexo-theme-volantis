@@ -88,6 +88,3 @@ const FriendsJS = {
 
 
 FriendsJS.start();
-document.addEventListener('pjax:complete', function () {
-  FriendsJS.start();
-});

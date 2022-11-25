@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-volantis",
-  "version": "6.0.0-alpha.0",
+  "version": "6.0.0-alpha.1",
   "description": "Elegant and powerful theme for Hexo.",
   "main": "package.json",
   "scripts": {
@@ -22,13 +22,8 @@
   },
   "homepage": "https://volantis.js.org",
   "dependencies": {
-    "hexo-renderer-stylus": "^2.0.1",
-    "hexo-renderer-ejs": "^2.0.0",
-    "hexo-generator-json-content": "^4.2.3"
-  },
-  "devDependencies": {
-    "hexo": "^6.1.0",
-    "hexo-renderer-stylus": "^2.0.1",
+    "hexo": "^6.3.0",
+    "hexo-renderer-stylus": "^2.1.0",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-generator-json-content": "^4.2.3"
   }

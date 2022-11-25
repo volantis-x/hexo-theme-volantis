@@ -140,9 +140,6 @@ let SearchService = (() => {
 
     search.start()
 
-    window.pjax && search.on('render', () => {
-      window.pjax.refresh(document.getElementById('meilisearch-hits'))
-    })
   }
 
   fn.setQueryText = queryText => {
@@ -217,4 +214,3 @@ let SearchService = (() => {
 Object.freeze(SearchService);
 
 SearchService.init();
-document.addEventListener("pjax:send", SearchService.close);

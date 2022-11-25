@@ -19,7 +19,6 @@
       <div id="safearea">
         <div class="body-wrapper">
           <%- body %>
-          <%- partial('_plugins/pjax/pdata') %>
         </div>
         <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
         <a id="s-top" class="fa-solid fa-arrow-up fa-fw" title="top"></a>
@@ -27,9 +26,6 @@
     </div>
     <div>
       <%- partial('_partial/scripts/index') %>
-      <% if (theme.plugins.pjax.enable){ %>
-        <%- partial('_plugins/pjax/index') %>
-      <% } %>
     </div>
     <!-- import body_end begin-->
     <%_ if (config.import && config.import.body_end){ _%>

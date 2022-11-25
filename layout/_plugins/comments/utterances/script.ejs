@@ -4,7 +4,7 @@
   volantis.utterances.ThemeLight='<%- theme.comments.utterances.theme.light %>';
   volantis.utterances.ThemeDark='<%- theme.comments.utterances.theme.dark %>';
   volantis.utterances.Theme=volantis.utterances.ThemeLight;
-  function pjax_utterances(){
+  function p_utterances(){
     if(!document.getElementById("utterances"))return;
     <% if (theme.plugins.darkmode.enable) { %>
       if(volantis.dark.mode=="dark"){
@@ -37,7 +37,6 @@
       }, 200)
     });
   }
-  pjax_utterances();
-  volantis.pjax.push(pjax_utterances);
-  volantis.dark.push(pjax_utterances);
+  p_utterances();
+  volantis.dark.push(p_utterances);
 </script>

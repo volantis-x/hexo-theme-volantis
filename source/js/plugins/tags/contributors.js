@@ -87,6 +87,3 @@ const ContributorsJS = {
 
 
 ContributorsJS.start();
-document.addEventListener('pjax:complete', function () {
-  ContributorsJS.start();
-});

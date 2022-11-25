@@ -12,30 +12,10 @@
   <% } %>
 <% }) %>
 
-<div class="widget-sticky pjax">
+<div class="widget-sticky">
 <% if(widget_library_temp.length !== 0) { %>
   <% widget_library_temp.forEach( w => { %>
   <%- partial(w.class, {item: w, where: where}) %>
   <% }) %>
 <% } %>
 </div>
-
-<%
-let widget_pjax_length = 0;
-getList(page.sidebar).forEach(function(e){
-  if (e&&theme.sidebar.widget_library&&theme.sidebar.widget_library[e]) {
-    let widget_pjax_flag = theme.sidebar.widget_library[e].pjaxReload
-    let widget_stickys = theme.sidebar.widget_library[e].sticky
-    if (widget_stickys !== true && (widget_pjax_flag || widget_pjax_flag===undefined)) {
-      widget_pjax_length ++;
-    }
-  }
-})
-let widget_pjax_place_length = Object.keys(theme.sidebar.widget_library).length - widget_pjax_length
-%>
-<!-- 没有 pjax 占位会报错 万恶的 pjax -->
-<% for(let i=0;i<widget_pjax_place_length;i++){ %>
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
-<% } %>

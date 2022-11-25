@@ -66,9 +66,5 @@ _%>
     volantis.js('<%- theme.cdn.volantis_parallax %>').then(()=>{
       parallax()
     })
-    volantis.pjax.send(()=>{
-      clearInterval(IntervalParallax)
-    },"clearIntervalParallax");
-    volantis.pjax.push(parallax);
   }
 </script>

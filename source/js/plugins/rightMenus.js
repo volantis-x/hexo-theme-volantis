@@ -12,10 +12,6 @@ const RightMenus = {
    */
   initialMenu: () => {
     RightMenus.fun.init();
-    volantis.pjax.send(() => {
-      RightMenus.fun.hideMenu();
-      if (volantis.isReadModel) RightMenus.fun.readMode();
-    })
   },
 
   /**
@@ -576,7 +572,6 @@ RightMenus.fun = (() => {
     DOMController.toggleClassList([
       [document.querySelector('#l_main'), 'common_read'], [document.querySelector('#l_main'), 'common_read_main'],
       [document.querySelector('#l_body'), 'common_read'], [document.querySelector('#safearea'), 'common_read'],
-      [document.querySelector('#pjax-container'), 'common_read'], [document.querySelector('#read_bkg'), 'common_read_hide'],
       [document.querySelector('h1'), 'common_read_h1'], [document.querySelector('#post'), 'post_read'],
       [document.querySelector('#l_cover'), 'read_cover'], [document.querySelector('.widget.toc-wrapper'), 'post_read']
     ]);

@@ -7,13 +7,13 @@
     volantis.css("<%- theme.cdn.katex_css %>");
     volantis.js("<%- theme.cdn.katex_js %>");
     volantis.js("<%- theme.cdn.artalk_js %>");
-    volantis.js("<%- theme.cdn.artalk_katex %>").then(pjax_artalk);
+    volantis.js("<%- theme.cdn.artalk_katex %>").then(p_artalk);
     <% } else { %>
-    volantis.js("<%- theme.cdn.artalk_js %>").then(pjax_artalk);
+    volantis.js("<%- theme.cdn.artalk_js %>").then(p_artalk);
     <% } %>
   }
 
-  function pjax_artalk() {
+  function p_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0])return;
     let path = pdata.commentPath;
     let placeholder = pdata.commentPlaceholder || "<%= theme.comments.artalk.placeholder %>" || "";
@@ -69,13 +69,6 @@
   }
 
   load_artalk();
-  volantis.pjax.push(()=>{
-    if (typeof Artalk === "undefined") {
-      load_artalk();
-    } else {
-      pjax_artalk();
-    }
-  },'artalk');
 
   function dark_artalk() {
     if(!document.querySelectorAll("#artalk_container")[0]) return;

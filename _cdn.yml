@@ -246,13 +246,6 @@ meting:
   npm: true
   static: true
   cdnjs: false
-pjax:
-  name: pjax
-  file: pjax.min.js
-  version: 0.2.8
-  npm: true
-  static: true
-  cdnjs: true
 font-awesome-animation:
   name: font-awesome-animation
   file: css/font-awesome-animation.min.css

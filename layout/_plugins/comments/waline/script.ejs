@@ -1,7 +1,7 @@
 <script>
   volantis.layoutHelper("comments",`<div id="waline"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`)
   
-  function pjax_waline() {
+  function p_waline() {
     if(!document.querySelector("#waline"))return;
     let locale = {};
     let path = pdata.commentPath;
@@ -57,6 +57,5 @@
   }
 
   volantis.css('<%= theme.cdn.waline_css %>')
-  volantis.js('<%- theme.cdn.waline_js %>').then(pjax_waline)
-  volantis.pjax.push(pjax_waline);
+  volantis.js('<%- theme.cdn.waline_js %>').then(p_waline)
 </script>

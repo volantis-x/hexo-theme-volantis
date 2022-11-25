@@ -83,7 +83,7 @@
 
 
 <% if (theme.plugins.busuanzi.enable) { %>
-  <script defer src="<%- theme.cdn.busuanzi %>" data-pjax></script>
+  <script defer src="<%- theme.cdn.busuanzi %>"></script>
 <% } %>
 
 <!-- optional -->
@@ -123,12 +123,9 @@
   <%- partial('../../_plugins/pace/script') %>
 <% } %>
 
-<!-- pjax 标签必须存在于所有页面 否则 pjax error -->
-<pjax>
 <% if (page.plugins) { %>
 <%- partial('../../_plugins/_page_plugins/index') %>
 <% } %>
-</pjax>
 
 <%- partial('../../_plugins/toc/script') %>
 

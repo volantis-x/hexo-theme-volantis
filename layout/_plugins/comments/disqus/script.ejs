@@ -77,23 +77,7 @@
     volantis.dom.$(document.getElementById("loading-comments")).show();
   }
 
-  // pjax 重载
-  function pjax_disqus() {
-    // 排除当前页面不存在评论框的情形
-    if (!document.getElementById("disqus_thread")) return;
-    // 如果 DISQUS 已被实例化，则可直接加载
-    if (window.DISQUS) {
-      volantis.dom.$(document.getElementById("load-btns")).hide();
-      volantis.dom.$(document.getElementById("notShowDisqus")).hide();
-      volantis.dom.$(document.getElementById("loading-comments")).hide();
-      loadDisqus();
-    } else if (autoload == "true") {
-      // 设置自动加载但是上个页面加载失败了
-      needLoadDisqus();
-    }
-  }
   if (autoload == "true") {
     needLoadDisqus();
   }
-  volantis.pjax.push(pjax_disqus);
 </script>

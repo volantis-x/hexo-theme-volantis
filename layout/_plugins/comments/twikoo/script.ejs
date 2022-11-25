@@ -2,9 +2,9 @@
   volantis.layoutHelper("comments",`<div id="twikoo_container"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`)
   function load_twikoo() {
     if(!document.querySelectorAll("#twikoo_container")[0])return;
-    volantis.js("<%- theme.cdn.twikoo %>", pjax_twikoo)
+    volantis.js("<%- theme.cdn.twikoo %>", p_twikoo)
   }
-  function pjax_twikoo() {
+  function p_twikoo() {
     if(!document.querySelectorAll("#twikoo_container")[0])return;
     let path = pdata.commentPath;
     let placeholder = pdata.commentPlaceholder || "<%= theme.comments.twikoo.placeholder %>" || "";
@@ -30,11 +30,4 @@
     }),pdata.commentConfig))
   }
   load_twikoo();
-  volantis.pjax.push(()=>{
-    if (typeof twikoo == "undefined") {
-      load_twikoo();
-    } else {
-      pjax_twikoo();
-    }
-  },'twikoo');
 </script>

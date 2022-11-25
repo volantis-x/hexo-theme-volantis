@@ -10,7 +10,7 @@ info:
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 # Debug 调试模式
-debug: env # false: 关闭调试模式， env：环境配置检查， pjax：调试pjax，rightMenus: 调试右键, cdn: 调试 CDN System
+debug: env # false: 关闭调试模式， env：环境配置检查， rightMenus: 调试右键, cdn: 调试 CDN System
 ############################### 默认占位图 ###############################
 default:
   avatar: volantis-static/media/placeholder/avatar/round/3442075.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
@@ -477,7 +477,6 @@ comments:
     admin: # []
     path: # 全局评论地址
 
-  # Vssue 暂不支持Pjax
   # https://vssue.js.org/zh/
   vssue:
     owner:
@@ -485,7 +484,6 @@ comments:
     clientId:
     clientSecret:
 
-  # LiveRe 暂不支持Pjax
   # https://www.livere.com
   livere:
     uid:
@@ -498,7 +496,6 @@ comments:
     css:
     gravatar:
 
-  # HashOver 暂不支持Pjax
   # https://www.barkdull.org/software/hashover
   hashover:
     src: https://example.com/(path/)comments.php
@@ -588,7 +585,6 @@ sidebar:
     music:
       class: music
       display: [desktop, mobile] # [desktop, mobile]
-      pjaxReload: false
     # ---------------------------------------
     # category widget
     category:
@@ -866,16 +862,6 @@ plugins:
     list_folded: true
     autoHide: true    # hide automaticaly
 
-  # Pjax
-  pjax:
-    enable: true
-    cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
-    timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
-    cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
-    exclude:             # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      # - '/artitalk/'   # artitalk 不支持 pjax
-      # - '/bbtalk/'     # bbtalk 不支持 pjax
-
   # pace
   # An automatic web page progress bar.
   # https://github.com/CodeByZach/pace
@@ -910,7 +896,6 @@ plugins:
   # 除appID和appKEY外均为选填项
   artitalk:
     # Set `plugins: ["artitalk"]` to enable in front-matter
-    # 不支持 Pjax
     # 配置项按照yml格式继续填写即可
     appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
     appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
@@ -929,7 +914,6 @@ plugins:
   # BBtalk https://bb.js.org
   bbtalk:
     # Set `plugins: ["bbtalk"]` to enable in front-matter
-    # 不支持 Pjax
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
     serverURLs: https://bbapi.heson10.com # Request Api 域名
@@ -939,7 +923,6 @@ plugins:
   # https://fcircle-doc.js.cool/
   fcircle:
     # Set `plugins: ["fcircle"]` to enable in front-matter
-    # 支持 Pjax
     private_api_url: https://fcircle-api.example.com/ # api 地址
     page_turning_number: 10  # 点击加载更多时，一次最多加载几篇文章，默认10
     error_img: https://cravatar.cn/avatar/57d8260dfb55501c37dde588e7c3852c # 头像加载失败时，默认头像地址
