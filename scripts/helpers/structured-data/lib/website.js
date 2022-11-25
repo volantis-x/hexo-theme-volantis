@@ -1,4 +1,4 @@
-module.exports = (hexo,option) => {
+module.exports = (hexo, option) => {
   const { config } = hexo;
 
   return {

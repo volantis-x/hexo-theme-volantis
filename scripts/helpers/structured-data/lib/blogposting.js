@@ -64,7 +64,7 @@ module.exports = (hexo, option) => {
       width: 1024,
       height: 768,
     };
-  }else{
+  } else {
     blogposting.image = {
       "@type": "ImageObject",
       url: option.logo.path,

@@ -7,19 +7,19 @@
 
 'use strict';
 
-hexo.extend.tag.register('friends', function(args) {
+hexo.extend.tag.register('friends', function (args) {
   args = hexo.args.map(args, ['only', 'not', 'repo', 'api']);
   if (args.only) {
-    if(/::/g.test(args.only)){
+    if (/::/g.test(args.only)) {
       args.only = args.only.split('::');
-    }else{
+    } else {
       args.only = args.only.split(',');
     }
   }
   if (args.not) {
-    if(/::/g.test(args.not)){
+    if (/::/g.test(args.not)) {
       args.not = args.not.split('::');
-    }else{
+    } else {
       args.not = args.not.split(',');
     }
   }
@@ -39,10 +39,10 @@ hexo.extend.tag.register('friends', function(args) {
   function groupHeader(group) {
     var header = '<div class="group-header">';
     if (group.title) {
-      header += hexo.render.renderSync({text: group.title, engine: 'markdown'}).split('\n').join('');
+      header += hexo.render.renderSync({ text: group.title, engine: 'markdown' }).split('\n').join('');
     }
     if (group.description) {
-      header += hexo.render.renderSync({text: group.description, engine: 'markdown'}).split('\n').join('');
+      header += hexo.render.renderSync({ text: group.description, engine: 'markdown' }).split('\n').join('');
     }
     header += '</div>';
     return header;

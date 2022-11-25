@@ -7,10 +7,10 @@
 function postTabs(args, content) {
   var tabBlock = /<!--\s*tab (.*?)\s*-->\n([\w\W\s\S]*?)<!--\s*endtab\s*-->/g;
 
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   var tabName = args[0];
@@ -31,36 +31,36 @@ function postTabs(args, content) {
 
   for (var i = 0; i < matches.length; i += 2) {
     var tabParameters = matches[i].split('@');
-    var postContent   = matches[i + 1];
-    var tabCaption    = tabParameters[0] || '';
-    var tabIcon       = tabParameters[1] || '';
-    var tabHref       = '';
+    var postContent = matches[i + 1];
+    var tabCaption = tabParameters[0] || '';
+    var tabIcon = tabParameters[1] || '';
+    var tabHref = '';
 
 
     // 兼容aplayer插件 https://github.com/volantis-x/hexo-theme-volantis/issues/575
-    var aplayerTag=0
-    var aplayerTagReg=/\<div.*class=\"aplayer aplayer-tag-marker\"(.|\n)*\<\/script\>/g
-    if(/class="aplayer aplayer-tag-marker"/g.test(postContent)){
-      aplayerTag=aplayerTagReg.exec(postContent)[0]
-      postContent=postContent.replace(aplayerTagReg,"@aplayerTag@")
+    var aplayerTag = 0
+    var aplayerTagReg = /\<div.*class=\"aplayer aplayer-tag-marker\"(.|\n)*\<\/script\>/g
+    if (/class="aplayer aplayer-tag-marker"/g.test(postContent)) {
+      aplayerTag = aplayerTagReg.exec(postContent)[0]
+      postContent = postContent.replace(aplayerTagReg, "@aplayerTag@")
     }
 
     // 兼容 gallery 标签
-    var fancyboxTag=0
+    var fancyboxTag = 0
     var fancyboxTagReg = /\<div.*galleryFlag(.|\n)*\<\/span\>\<\/div\>\<\/div\>/g
-    if(/galleryFlag/g.test(postContent)) {
-      fancyboxTag=fancyboxTagReg.exec(postContent)[0]
-      postContent=postContent.replace(fancyboxTagReg,"@fancyboxTag@")
+    if (/galleryFlag/g.test(postContent)) {
+      fancyboxTag = fancyboxTagReg.exec(postContent)[0]
+      postContent = postContent.replace(fancyboxTagReg, "@fancyboxTag@")
     }
 
-    postContent = hexo.render.renderSync({text: postContent, engine: 'markdown'}).trim();
+    postContent = hexo.render.renderSync({ text: postContent, engine: 'markdown' }).trim();
 
-    if(aplayerTag){
-      postContent=postContent.replace(/\<pre\>\<code\>.*@aplayerTag@.*\<\/code><\/pre>/,aplayerTag)
+    if (aplayerTag) {
+      postContent = postContent.replace(/\<pre\>\<code\>.*@aplayerTag@.*\<\/code><\/pre>/, aplayerTag)
     }
 
-    if(fancyboxTag){
-      postContent=postContent.replace(/.*@fancyboxTag@.*/,fancyboxTag)
+    if (fancyboxTag) {
+      postContent = postContent.replace(/.*@fancyboxTag@.*/, fancyboxTag)
     }
 
     tabId += 1;
@@ -84,6 +84,6 @@ function postTabs(args, content) {
   return `<div class="tabs" id="tab-${tabName.toLowerCase().split(' ').join('-')}">${tabNav + tabContent}</div>`;
 }
 
-hexo.extend.tag.register('tabs', postTabs, {ends: true});
-hexo.extend.tag.register('subtabs', postTabs, {ends: true});
-hexo.extend.tag.register('subsubtabs', postTabs, {ends: true});
+hexo.extend.tag.register('tabs', postTabs, { ends: true });
+hexo.extend.tag.register('subtabs', postTabs, { ends: true });
+hexo.extend.tag.register('subsubtabs', postTabs, { ends: true });

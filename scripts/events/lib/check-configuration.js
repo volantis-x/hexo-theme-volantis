@@ -1,4 +1,4 @@
-module.exports =(hexo) => {
+module.exports = (hexo) => {
   try {
     let config = hexo.config;
     let themeConfig = hexo.theme.config;
@@ -17,7 +17,7 @@ description主要用于SEO，告诉搜索引擎一个关于您站点的简单描
 see: https://hexo.io/zh-cn/docs/configuration
 description is not configured!`);
     }
-    if (themeConfig?.search?.service===`google`||themeConfig?.search?.service===`azure`||themeConfig?.search?.service===`baidu`) {
+    if (themeConfig?.search?.service === `google` || themeConfig?.search?.service === `azure` || themeConfig?.search?.service === `baidu`) {
       return `原 google, azure, baidu 站内搜索 系祖传代码, 且文档丢失, 不便后续维护 在 5.0 版本被移除
 The google, azure, baidu site search is ancestral code, and the document is lost, which is inconvenient for subsequent maintenance. It was removed in version 5.0
 see: https://volantis.js.org/v5/theme-settings/#站内搜索`
@@ -27,17 +27,17 @@ see: https://volantis.js.org/v5/theme-settings/#站内搜索`
 jquery.backstretch was removed in version 5.0, replaced by parallax
 see: https://volantis.js.org/v5/theme-settings/#幻灯片背景-视差滚动效果`
     }
-    if ("valinecount" in themeConfig?.article?.body?.top_meta||"valinecount" in themeConfig?.article?.body?.bottom_meta||"valinecount" in themeConfig?.article?.body?.meta_library) {
+    if ("valinecount" in themeConfig?.article?.body?.top_meta || "valinecount" in themeConfig?.article?.body?.bottom_meta || "valinecount" in themeConfig?.article?.body?.meta_library) {
       return `ValineCount 在 5.0 版本被移除
 ValineCount has been removed in version 5.0
 see: https://volantis.js.org/v5/theme-settings/#文章布局配置`
     }
-    if (themeConfig?.comments?.service=="valine"||themeConfig?.comments?.service=="minivaline") {
+    if (themeConfig?.comments?.service == "valine" || themeConfig?.comments?.service == "minivaline") {
       return `Valine 在 5.0 版本被移除
 Valine has been removed in version 5.0
 see: https://volantis.js.org/v5/theme-settings/#选择评论系统`
     }
-  } catch (error) {}
+  } catch (error) { }
   hexo.log.info(`Check environment configuration success!`);
   return true;
 };

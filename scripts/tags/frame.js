@@ -12,11 +12,11 @@
 // {% frame device | video=xxx | part=top %}
 // {% frame device | video=xxx | part=bottom %}
 // device: iphone11,
-hexo.extend.tag.register('frame', function(args) {
-  if(/::/g.test(args)){
+hexo.extend.tag.register('frame', function (args) {
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(' | ');
   }
   // 所有支持的参数

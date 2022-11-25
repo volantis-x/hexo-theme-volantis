@@ -11,11 +11,11 @@
 // {% image url, bg=#eee %}
 // {% image url, alt=haha, width=400px %}
 // {% image url, alt=haha, width=400px, bg=#eee %}
-hexo.extend.tag.register('image', function(args) {
-  if(/::/g.test(args)){
+hexo.extend.tag.register('image', function (args) {
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   const url = args[0].trim();
@@ -74,11 +74,11 @@ hexo.extend.tag.register('image', function(args) {
 
 // {% inlineimage url %}
 // {% inlineimage url, height=22px %}
-hexo.extend.tag.register('inlineimage', function(args) {
-  if(/::/g.test(args)){
+hexo.extend.tag.register('inlineimage', function (args) {
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   const url = args[0].trim();

@@ -1,7 +1,7 @@
 'use strict';
 
 function renderImg(content) {
-  return `${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}`;
+  return `${hexo.render.renderSync({ text: content, engine: 'markdown' }).split('\n').join('')}`;
 }
 
 function buidAlt(alt) {
@@ -14,8 +14,8 @@ function buidAlt(alt) {
 
 function buidImgFancybox(content, group) {
   let html = renderImg(content).trim();
-  if(html.startsWith('<p>') &&  html.endsWith('</p>')) {  // 去除无用的 p 标签包裹
-    html=html.substring(0, html.length-4).substring(3);
+  if (html.startsWith('<p>') && html.endsWith('</p>')) {  // 去除无用的 p 标签包裹
+    html = html.substring(0, html.length - 4).substring(3);
   }
 
   let imageTags = html.includes('image-caption') ? 'image' : undefined;
@@ -31,10 +31,10 @@ function buidImgFancybox(content, group) {
 }
 
 function postFancybox(args, content) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   const cls = args[0];
@@ -49,4 +49,4 @@ function postFancybox(args, content) {
 
 
 
-hexo.extend.tag.register('gallery', postFancybox, {ends: true});
+hexo.extend.tag.register('gallery', postFancybox, { ends: true });

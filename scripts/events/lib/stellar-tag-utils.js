@@ -13,7 +13,7 @@ module.exports = hexo => {
       if (Array.isArray(args) == false) {
         return args;
       }
-      var map = {others: Array()};
+      var map = { others: Array() };
       args.forEach((arg, i) => {
         let kv = arg.trim();
         if (kv.includes('://') && kv.split(':').length == 2) {
@@ -42,7 +42,7 @@ module.exports = hexo => {
         });
         // 最后一段合并到最后一个参数中
         if (map.others.length > 0) {
-          map[others[others.length-1]] += ' ' + map.others.join(' ');
+          map[others[others.length - 1]] += ' ' + map.others.join(' ');
           map.others = [];
         }
       }

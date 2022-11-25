@@ -124,7 +124,7 @@ module.exports = (hexo, option) => {
     });
   }
 
-  if (hexo.is_page()&&page.categories) {
+  if (hexo.is_page() && page.categories) {
     let temp = "/"
     for (let index = 0; index < page.categories.length; index++) {
       const cat = page.categories[index];

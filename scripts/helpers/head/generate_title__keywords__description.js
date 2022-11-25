@@ -86,7 +86,7 @@ hexo.extend.helper.register("generate_description", function (config, theme, pag
   if (!description) {
     if (config.description) {
       description = config.description
-    }else{
+    } else {
       description = config.title
     }
   }
@@ -95,7 +95,7 @@ hexo.extend.helper.register("generate_description", function (config, theme, pag
 });
 // open_graph() 函数会生成一个 description 标签???  https://github.com/hexojs/hexo/blob/92b979f4a3fa8714aebd3d11c3295d466b870905/lib/plugins/helper/open_graph.js#L98
 // 移除 open_graph() 函数会生成的 description
-hexo.extend.filter.register('after_render:html', function(data) {
+hexo.extend.filter.register('after_render:html', function (data) {
   data = data.replace(/<meta name="description".*>/g, "");
   return data;
-},99);
+}, 99);

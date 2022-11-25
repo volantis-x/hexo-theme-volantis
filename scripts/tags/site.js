@@ -7,7 +7,7 @@
 
 'use strict';
 
-hexo.extend.tag.register('sites', function(args) {
+hexo.extend.tag.register('sites', function (args) {
   args = hexo.args.map(args, ['only', 'not', 'repo', 'api']);
   if (args.only) {
     args.only = args.only.split(',');
@@ -31,10 +31,10 @@ hexo.extend.tag.register('sites', function(args) {
   function groupHeader(group) {
     var header = '<div class="group-header">';
     if (group.title) {
-      header += hexo.render.renderSync({text: group.title, engine: 'markdown'}).split('\n').join('');
+      header += hexo.render.renderSync({ text: group.title, engine: 'markdown' }).split('\n').join('');
     }
     if (group.description) {
-      header += hexo.render.renderSync({text: group.description, engine: 'markdown'}).split('\n').join('');
+      header += hexo.render.renderSync({ text: group.description, engine: 'markdown' }).split('\n').join('');
     }
     header += '</div>';
     return header;

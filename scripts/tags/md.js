@@ -1,6 +1,6 @@
 
-hexo.extend.tag.register('md', function(args) {
-  const {config} = hexo;
+hexo.extend.tag.register('md', function (args) {
+  const { config } = hexo;
   const md_path = args[0].trim();
   let md_id = "md-" + hexo.createUuid()
   let mat = `

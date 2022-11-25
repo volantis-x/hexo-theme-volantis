@@ -6,7 +6,7 @@ function postAudio(args) {
 }
 
 function postVideo(args) {
-  const {config} = hexo;
+  const { config } = hexo;
   const src = args[0].trim();
   // m3u8 https://github.com/volantis-x/hexo-theme-volantis/issues/606
   // 文件扩展名为 .m3u8
@@ -30,10 +30,10 @@ function postVideo(args) {
 }
 
 function postVideos(args, content) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   var cls = args[0];
@@ -50,4 +50,4 @@ function postVideos(args, content) {
 
 hexo.extend.tag.register('audio', postAudio);
 hexo.extend.tag.register('video', postVideo);
-hexo.extend.tag.register('videos', postVideos, {ends: true});
+hexo.extend.tag.register('videos', postVideos, { ends: true });

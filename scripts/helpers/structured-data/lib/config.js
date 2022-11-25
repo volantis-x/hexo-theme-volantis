@@ -1,5 +1,5 @@
 module.exports = function (hexo) {
-  const {config} = hexo;
+  const { config } = hexo;
   return {
     person: {
       name: config.author,

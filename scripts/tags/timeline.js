@@ -13,23 +13,23 @@ function postTimeline(args, content) {
 }
 
 function postTimenode(args, content) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   var time = args[0];
-  return `<div class="timenode"><div class="meta"><p>${hexo.render.renderSync({text: time, engine: 'markdown'})}</p></div><div class="body">${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}</div></div>`;
+  return `<div class="timenode"><div class="meta"><p>${hexo.render.renderSync({ text: time, engine: 'markdown' })}</p></div><div class="body">${hexo.render.renderSync({ text: content, engine: 'markdown' }).split('\n').join('')}</div></div>`;
 }
 
 
 // {% timeline %}
 // ... timenode ...
 // {% endtimeline %}
-hexo.extend.tag.register('timeline', postTimeline, {ends: true});
+hexo.extend.tag.register('timeline', postTimeline, { ends: true });
 
 // {% timenode time %}
 // what happened
 // {% endtimenode %}
-hexo.extend.tag.register('timenode', postTimenode, {ends: true});
+hexo.extend.tag.register('timenode', postTimenode, { ends: true });
