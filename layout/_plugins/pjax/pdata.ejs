@@ -38,7 +38,7 @@ if (page && page.layout == 'post' && page.title) {
   <% if (theme.plugins.pjax.enable) {%>
     // header
     var l_header=document.getElementById("l_header");
-    <% if (theme.pjax_cover.frontMatterCover == "none") {%>
+    <% if (theme.cover_ctrl.frontMatterCover == "none") {%>
     l_header.classList.add("show");
     <% } else {%>
     l_header.classList.remove("show");
@@ -47,9 +47,9 @@ if (page && page.layout == 'post' && page.title) {
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="<%=theme.pjax_cover.frontMatterCover%>";
-      cover_wrapper.style.display="<%=theme.pjax_cover.coverWrapperDisplay%>";
-      scroll_down.style.display="<%=theme.pjax_cover.scrollDownDisplay%>";
+      cover_wrapper.id="<%=theme.cover_ctrl.frontMatterCover%>";
+      cover_wrapper.style.display="<%=theme.cover_ctrl.coverWrapperDisplay%>";
+      scroll_down.style.display="<%=theme.cover_ctrl.scrollDownDisplay%>";
     <% }%>
   <% }%>
 </script>
