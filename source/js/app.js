@@ -814,17 +814,6 @@ const VolantisFancyBox = (() => {
 Object.freeze(VolantisFancyBox);
 
 // highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
-// Question: 锚点稳定性未知
-// ToDo: 查找模式
-// 0. (/////////要知道浏览器自带全页面查找功能 CTRL + F)
-// 1. 右键开启查找模式 / 导航栏菜单开启?? / CTRL + F ???
-// 2. 查找模式面板 (可拖动? or 固定?)
-// 3. keyword mark id 从 0 开始编号 查找下一处 highlightKeyWords.scrollToNextHighlightKeywordMark() 查找上一处 scrollToPrevHighlightKeywordMark() 循环查找(取模%)
-// 4. 可输入修改 查找关键词 keywords(type:list)
-// 5. 区分大小写 caseSensitive (/ 全字匹配?? / 正则匹配??)
-// 6. 在选定区域中查找 querySelector ??
-// 7. 关闭查找模式
-// 8. 搜索跳转 (URL 入口) 自动开启查找模式 调用 scrollToNextHighlightKeywordMark()
 const highlightKeyWords = (() => {
   let fn = {}
   fn.markNum = 0
@@ -861,21 +850,21 @@ const highlightKeyWords = (() => {
     // Current target
     return target
   }
-  fn.scrollToPrevHighlightKeywordMark = (id) => {
-    // Prev Id
-    let input = id || (fn.markNextId - 1 + fn.markNum) % fn.markNum;
-    fn.markNextId = parseInt(input)
-    let target = document.getElementById("keyword-mark-" + fn.markNextId);
-    if (!target) {
-      fn.markNextId = (fn.markNextId - 1 + fn.markNum) % fn.markNum;
-      target = document.getElementById("keyword-mark-" + fn.markNextId);
-    }
-    if (target) {
-      volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
-    }
-    // Current target
-    return target
-  }
+  // fn.scrollToPrevHighlightKeywordMark = (id) => {
+  //   // Prev Id
+  //   let input = id || (fn.markNextId - 1 + fn.markNum) % fn.markNum;
+  //   fn.markNextId = parseInt(input)
+  //   let target = document.getElementById("keyword-mark-" + fn.markNextId);
+  //   if (!target) {
+  //     fn.markNextId = (fn.markNextId - 1 + fn.markNum) % fn.markNum;
+  //     target = document.getElementById("keyword-mark-" + fn.markNextId);
+  //   }
+  //   if (target) {
+  //     volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
+  //   }
+  //   // Current target
+  //   return target
+  // }
   fn.start = (keywords, querySelector) => {
     fn.markNum = 0
     if (!keywords.length || !querySelector || (keywords.length == 1 && keywords[0] == "null")) return;
@@ -983,30 +972,30 @@ const highlightKeyWords = (() => {
     mark.style["font-weight"] = "bold";
     return mark
   }
-  fn.cleanHighlightStyle = () => {
-    document.querySelectorAll(".keyword").forEach(mark => {
-      mark.style.background = "transparent";
-      mark.style["border-bottom"] = null;
-      mark.style["color"] = null;
-      mark.style["font-weight"] = null;
-    })
-  }
+  // fn.cleanHighlightStyle = () => {
+  //   document.querySelectorAll(".keyword").forEach(mark => {
+  //     mark.style.background = "transparent";
+  //     mark.style["border-bottom"] = null;
+  //     mark.style["color"] = null;
+  //     mark.style["font-weight"] = null;
+  //   })
+  // }
   return {
-    start: (keywords, querySelector) => {
-      fn.start(keywords, querySelector)
-    },
+    // start: (keywords, querySelector) => {
+    //   fn.start(keywords, querySelector)
+    // },
     startFromURL: () => {
       fn.startFromURL()
     },
-    scrollToNextHighlightKeywordMark: (id) => {
-      fn.scrollToNextHighlightKeywordMark(id)
-    },
-    scrollToPrevHighlightKeywordMark: (id) => {
-      fn.scrollToPrevHighlightKeywordMark(id)
-    },
-    cleanHighlightStyle: () => {
-      fn.cleanHighlightStyle()
-    },
+    // scrollToNextHighlightKeywordMark: (id) => {
+    //   fn.scrollToNextHighlightKeywordMark(id)
+    // },
+    // scrollToPrevHighlightKeywordMark: (id) => {
+    //   fn.scrollToPrevHighlightKeywordMark(id)
+    // },
+    // cleanHighlightStyle: () => {
+    //   fn.cleanHighlightStyle()
+    // },
   }
 })()
 Object.freeze(highlightKeyWords);
@@ -1137,46 +1126,46 @@ const DOMController = {
 }
 Object.freeze(DOMController);
 
-const VolantisRequest = {
-  timeoutFetch: (url, ms, requestInit) => {
-    const controller = new AbortController()
-    requestInit.signal?.addEventListener('abort', () => controller.abort())
-    let promise = fetch(url, { ...requestInit, signal: controller.signal })
-    if (ms > 0) {
-      const timer = setTimeout(() => controller.abort(), ms)
-      promise.finally(() => { clearTimeout(timer) })
-    }
-    promise = promise.catch((err) => {
-      throw ((err || {}).name === 'AbortError') ? new Error(`Fetch timeout: ${url}`) : err
-    })
-    return promise
-  },
+// const VolantisRequest = {
+//   timeoutFetch: (url, ms, requestInit) => {
+//     const controller = new AbortController()
+//     requestInit.signal?.addEventListener('abort', () => controller.abort())
+//     let promise = fetch(url, { ...requestInit, signal: controller.signal })
+//     if (ms > 0) {
+//       const timer = setTimeout(() => controller.abort(), ms)
+//       promise.finally(() => { clearTimeout(timer) })
+//     }
+//     promise = promise.catch((err) => {
+//       throw ((err || {}).name === 'AbortError') ? new Error(`Fetch timeout: ${url}`) : err
+//     })
+//     return promise
+//   },
 
-  Fetch: async (url, requestInit, timeout = 15000) => {
-    const resp = await VolantisRequest.timeoutFetch(url, timeout, requestInit);
-    if (!resp.ok) throw new Error(`Fetch error: ${url} | ${resp.status}`);
-    let json = await resp.json()
-    if (!json.success) throw json
-    return json
-  },
+//   Fetch: async (url, requestInit, timeout = 15000) => {
+//     const resp = await VolantisRequest.timeoutFetch(url, timeout, requestInit);
+//     if (!resp.ok) throw new Error(`Fetch error: ${url} | ${resp.status}`);
+//     let json = await resp.json()
+//     if (!json.success) throw json
+//     return json
+//   },
 
-  POST: async (url, data) => {
-    const requestInit = {
-      method: 'POST',
-    }
-    if (data) {
-      const formData = new FormData();
-      Object.keys(data).forEach(key => formData.append(key, String(data[key])))
-      requestInit.body = formData;
-    }
-    const json = await VolantisRequest.Fetch(url, requestInit)
-    return json.data;
-  },
+//   POST: async (url, data) => {
+//     const requestInit = {
+//       method: 'POST',
+//     }
+//     if (data) {
+//       const formData = new FormData();
+//       Object.keys(data).forEach(key => formData.append(key, String(data[key])))
+//       requestInit.body = formData;
+//     }
+//     const json = await VolantisRequest.Fetch(url, requestInit)
+//     return json.data;
+//   },
 
-  Get: async (url, data) => {
-    const json = await VolantisRequest.Fetch(url + (data ? (`?${new URLSearchParams(data)}`) : ''), {
-      method: 'GET'
-    })
-  }
-}
-Object.freeze(VolantisRequest);
+//   Get: async (url, data) => {
+//     const json = await VolantisRequest.Fetch(url + (data ? (`?${new URLSearchParams(data)}`) : ''), {
+//       method: 'GET'
+//     })
+//   }
+// }
+// Object.freeze(VolantisRequest);
