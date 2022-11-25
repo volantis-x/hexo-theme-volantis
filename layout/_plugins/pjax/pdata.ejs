@@ -34,7 +34,7 @@ if (page && page.layout == 'post' && page.title) {
   pdata.commentPath="<%=commentPath%>";
   pdata.commentPlaceholder="<%=commentPlaceholder%>";
   pdata.commentConfig=<%- JSON.stringify(commentConfig) %>;
-  //  see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs
+  //  see: /layout/_partial/scripts/_ctrl.ejs
   <% if (theme.plugins.pjax.enable) {%>
     // header
     var l_header=document.getElementById("l_header");
