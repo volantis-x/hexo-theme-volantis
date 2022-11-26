@@ -20,9 +20,6 @@ hexo.extend.tag.register('sites', function(args) {
     sites = {};
   }
   var api = args.api;
-  if (args.repo) {
-    api = 'https://issues-api.xaoxuu.com' + '/v1/' + args.repo;
-  }
   if (api) {
     sites = {
       group: {
