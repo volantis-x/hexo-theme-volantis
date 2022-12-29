@@ -1,0 +1,15 @@
+// 自定义note标签样式
+// https://fontawesome.com/v5.15/icons?d=gallery&p=2 F12 找到before节点的十六进制代码
+
+div.note
+  // code
+  &.code::before
+    content: '\f121'
+  &.bell::before
+    content: '\f0f3'
+  &.keyboard::before
+    content: '\f11c'
+  &.star::before
+    content: '\f762'
+  &.wabeform::before
+    content: '\f8f1'

@@ -1,0 +1,17 @@
+// 链接下划线样式
+.article a:not([class]):not([data-fancybox]),
+.content > a
+  position: relative
+  text-decoration: none
+  &:before
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px
+    height: 1px
+    width: 100%
+    background: #FF3142
+    transform: scale(0)
+    transition: all 0.5s
+  &:hover:before
+    transform: scale(1)
