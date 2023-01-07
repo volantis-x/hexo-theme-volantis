@@ -1,7 +1,7 @@
 <div class="new-meta-item share -mob-share-list">
   <div class="-mob-share-list share-body">
     <% getList(theme.article.body.meta_library.share).forEach(function(item){ %>
-      <% if (item.id == 'qrcode'){ %>
+      <% if (item.id == 'qrcode' && (item.img || item.icon)){ %>
         <% var src = qrcode(url,{margin:1,size:8}); %>
         <div class='hoverbox'>
           <a class='share'><img src="<%- item.img %>"></a>
