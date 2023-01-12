@@ -24,10 +24,10 @@
             let headers = new Headers();
             headers.set('Accept', 'application/json');
             <% if(!!theme.comments.waline.imageUploader?.token) { %>
-              headers.set('Authorization', '<%= theme.comments.waline.imageUploader?.token %>')
+              headers.set('<%= theme.comments.waline.imageUploader?.tokenName %>', '<%= theme.comments.waline.imageUploader?.token %>')
             <% } %>
             let formData = new FormData();
-            formData.append('file', file);
+            formData.append('<%= theme.comments.waline.imageUploader?.fileName %>', file);
             return fetch('<%= theme.comments.waline.imageUploader?.api %>',{
               method: 'POST',
               body: formData,
