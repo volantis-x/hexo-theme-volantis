@@ -516,13 +516,24 @@ comments:
     placeholder: # 评论占位提示
     serverURL: # Waline 的服务端地址（必填） 测试用地址: https://waline.vercel.app
     imageUploader:
-      # 以兰空图床为例，下列填写内容为：
+      # 适配了兰空图床V1、V2版本
+      # 以兰空图床V1为例，下列填写内容为：
+      # fileName: file
+      # tokenName: Authorization
       # url: https://xxxxxx/api/v1/upload
       # token: Bearer xxxxxxxxxxxxxx
       # resp: data.links.url
-      api:   # 图床地址
+      # 以兰空图床V2为例，下列填写内容为：
+      # fileName: image
+      # tokenName: token
+      # url: https://xxxxxx/api/upload
+      # token: xxxxxxxxxxxxxx
+      # resp: data.url
+      fileName: # 根据版本二选一
+      tokenName: # 根据版本二选一
+      api: # 图床 api 地址
       token: # 图床验证
-      resp:  # 图片地址返回值的字段
+      resp: # 图片地址返回值的字段
     pageview: true # 是否显示文章阅读数
     comment: true  # 是否显示文章评论数
     # 其他配置项按照yml格式继续填写即可 除了 [el path imageUploader] 选项
