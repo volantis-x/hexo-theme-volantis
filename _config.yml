@@ -520,13 +520,13 @@ comments:
       # 以兰空图床V1为例，下列填写内容为：
       # fileName: file
       # tokenName: Authorization
-      # url: https://xxxxxx/api/v1/upload
+      # api: https://xxxxxx/api/v1/upload
       # token: Bearer xxxxxxxxxxxxxx
       # resp: data.links.url
       # 以兰空图床V2为例，下列填写内容为：
       # fileName: image
       # tokenName: token
-      # url: https://xxxxxx/api/upload
+      # api: https://xxxxxx/api/upload
       # token: xxxxxxxxxxxxxx
       # resp: data.url
       fileName: # 根据版本二选一
