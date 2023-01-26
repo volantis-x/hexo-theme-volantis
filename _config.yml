@@ -900,7 +900,8 @@ plugins:
   # 主题中的某些插件必须启用JavaScript才能正常工作，例如开启scrollreveal如果禁用JavaScript会导致卡片消失
   killNoScript:
     enable: true
-
+  
+  # Artitalk最新部署方式 https://blog.wyblog1.tk/2023/01/26/2023%E5%B9%B4artalk%E5%92%8Cbbtalk%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F/
   # Artitalk https://artitalk.js.org
   # 配置过程请参考：https://artitalk.js.org/doc.html
   # 使用过旧版本的请修改Leancloud shuoshuo class部分列名：https://artitalk.js.org/release.html
@@ -910,7 +911,7 @@ plugins:
     # 配置项按照yml格式继续填写即可
     appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
     appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
-    # serverURL:  #leancloud绑定的api访问域名，使用国际版的话不需要填写
+    serverURL: #leancloud绑定的api访问域名，使用国际版的话需要填写
     # lang: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
     # pageSize: #每页说说的显示数量
     # shuoPla: #在编辑说说的输入框中的占位符
@@ -922,12 +923,13 @@ plugins:
     # color3: #说说字体颜色
     # cssUrl: #自定义css接口
 
+  # BBtalk最新部署方式 https://blog.wyblog1.tk/2023/01/26/2023%E5%B9%B4artalk%E5%92%8Cbbtalk%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F/
   # BBtalk https://bb.js.org
   bbtalk:
     # Set `plugins: ["bbtalk"]` to enable in front-matter
     appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
     appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
-    serverURLs: https://bbapi.heson10.com # Request Api 域名
+    serverURLs: # 自己的leancloud域名(国内版和国外版必填)
 
   # 友链朋友圈 hexo-circle-of-friends
   # https://github.com/Rock-Candy-Tea/hexo-circle-of-friends
