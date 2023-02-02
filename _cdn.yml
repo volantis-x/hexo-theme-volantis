@@ -312,7 +312,7 @@ gitalk:
 twikoo:
   name: twikoo
   file: dist/twikoo.min.js
-  version: 1.6.8
+  version: 1.6.9
   npm: true
   static: false
   cdnjs: true
