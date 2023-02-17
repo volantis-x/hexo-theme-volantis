@@ -6,17 +6,17 @@
 
 ## 修改说明
 
-本主题基于Volantis6修改，增添了一些自己用的小部件。
+本主题基于 Volantis6 修改，增添了一些自己用的小部件。
 
 - [x] 超链接下划线样式
-- [ ] 行内代码样式（行号及字体）
-- [ ] 增添少许note标签的小图标
+- [x] Markdown 渲染样式
+- [x] 少许 note 标签的小图标
 - [ ] 点击烟花效果
-- [ ] 泡泡上升效果
+- [ ] 页底鱼群
 
 
 
-## 超链接下划线
+## 超链接浮动下划线
 
 参考枋柚梓老师的 [Volantis 主题修改合集](https://inkss.cn/blog/610620a9/)
 
@@ -28,13 +28,6 @@
 
 修改文件 `/themes/volantis/source/css/_likey/note.styl` 
 
-## 行内代码样式
+## Markdown 渲染样式
 
-参考 [Volantis - 更改行间代码行数及字体](https://lyrikp.art/2022/04/01/vlts-highlights/)
-
-修改文件  
-
-`/themes/volantis/source/css/_likey/codeblock.styl`   
-
-`/themes/volantis/layout/_plugins/highlight/highlightjs/script.ejs`
-
+修改文件 `theme/volantis/source/css/_style/_layout/md.styl`

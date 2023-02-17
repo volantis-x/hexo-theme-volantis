@@ -29,6 +29,7 @@
     text-align: $textalign-h4
     color: var(--color-h4)
     margin-top: $gap-h4
+    font-family: Optima-Regular
   h5
     font-weight: bold
     color: var(--color-h5)
@@ -65,7 +66,6 @@
     max-width: 100%
     line-height: inherit
 
-
   .subtitle
     h6
       color: alpha($color-text, 90%)
@@ -75,8 +75,6 @@
       span
         display: inline-block
         margin-right: 5px
-
-
 
   blockquote
     background: var(--color-block)
@@ -143,7 +141,11 @@
     &:not([class])
       word-break: break-all
       color: var(--color-inlinecode)
-      border-radius: $border-codeblock * 0.5
+      padding: 1px 7px 1px;
+      font-size: 0.92rem
+      border-radius: 4px
+      background-color: rgba(242,202,201,0.2)
+      border: 1px solid rgba(242,202,201,1)
 
 
   @media screen and (max-width: $device-mobile)

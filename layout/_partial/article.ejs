@@ -22,7 +22,7 @@
   <% if (['post','docs'].includes(page.layout)) { %>
     <% let footer_widget = theme.article.body.footer_widget; %>
     <div class='footer'>
-       <!-- 参考资料、相关资料等 -->
+      <!-- 参考资料、相关资料等 -->
       <% if (page.references && page.references.length > 0) { %>
         <div class='references'>
           <section class='header'>
@@ -44,7 +44,7 @@
           </section>
         </div>
       <% } %>
-       <!-- 相关文章 -->
+      <!-- 相关文章 -->
       <% if (['post'].includes(page.layout) && footer_widget.related_posts && footer_widget.related_posts.enable == true) { %>
         <%-
         htmlGenerator(

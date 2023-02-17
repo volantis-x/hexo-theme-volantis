@@ -214,7 +214,7 @@ scrollreveal:
 nodewaves_css:
   name: node-waves
   file: dist/waves.min.css
-  version: 0.7.6 
+  version: 0.7.6
   npm: true
   static: true
   cdnjs: true
@@ -320,18 +320,18 @@ waline_css:
   name: "@waline/client"
   cdnjs_name: waline
   file: dist/waline.css
-  version: 2.6.3
+  version: 2
   npm: true
   static: false
-  cdnjs: true
+  cdnjs: false
 waline_js:
   name: "@waline/client"
   cdnjs_name: waline
   file: dist/waline.js
-  version: 2.6.3
+  version: 2
   npm: true
   static: false
-  cdnjs: true
+  cdnjs: false
 discuss:
   name: discuss
   file: dist/discuss.js
@@ -436,7 +436,3 @@ pace_css:
   npm: true
   static: false
   cdnjs: true
-
-
-
-
