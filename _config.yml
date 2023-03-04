@@ -921,6 +921,13 @@ plugins:
     # color2: #说说背景颜色2&按钮颜色2
     # color3: #说说字体颜色
     # cssUrl: #自定义css接口
+    
+  # Memos https://usememos.com
+  memos:
+    # Set `plugins: ["memos"]` to enable in front-matter
+    url: 'https://s.dusays.com/' # 替换成自己的域名，也可以用杜老师的平台托管
+    limit: '10' # 展示数量限制
+    id: '1' # 替换成自己的用户的ID
 
   # BBtalk https://bb.js.org
   bbtalk:
