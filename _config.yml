@@ -671,6 +671,14 @@ sidebar:
       header:
         icon: fa-solid fa-clock WISTERIA
         title: 最近更新
+    # ---------------------------------------
+    # Artalk widget
+    artalk:
+      class: artalk
+      stickys: true
+      display: [desktop, mobile]
+    # ---------------------------------------
+    # Memos widget
     memos_carousel:
       class: memos_carousel
       display: [desktop, mobile]
