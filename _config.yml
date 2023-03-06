@@ -671,8 +671,8 @@ sidebar:
       header:
         icon: fa-solid fa-clock WISTERIA
         title: 最近更新
-    memos:
-      class: memos
+    memos_carousel:
+      class: memos_carousel
       display: [desktop, mobile]
       header:
         icon: fa-solid fa-volume-high
@@ -681,7 +681,7 @@ sidebar:
       limit: '10' # 展示数量限制
       creatorId: '1' # 替换成自己的用户的ID
       tag: '说说' # 要展示的内容的标签
-      memos_page: '/memos/' # 说说页面的地址
+      memos_page: '/shuoshuo/' # 说说页面的地址
       image: 'fa-solid fa-image' # 图片替换成图标
       link: 'fa-solid fa-link' # 链接替换成图标
       placeholder: '说说加载中...' # 占位符
