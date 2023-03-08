@@ -2,7 +2,7 @@
 <section class="widget <%- page.widget_platform %>">
     <%- partial('header', {item: item}) %>
     <div class='content'>
-        <div class='bber-talk' onclick=`location.pathname='<%- item.memos_page %>'>
+        <div class='bber-talk'>
             <ul class='talk-list'><%- item.placeholder %></ul>
         </div>
     </div>
@@ -18,5 +18,5 @@
             link_icon: '<i class="fa-solid fa-link"></i>',
         }
     </script>
-    <script src="https://npm.elemecdn.com/penndu@3.0.0/memos_carousel.js"></script>
+    <script>volantis.js("<%- theme.cdn.memos_carousel_js %>");</script>
 </section>
