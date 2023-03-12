@@ -363,3 +363,23 @@
   position: sticky
   top: $navbar-height + $gap
   z-index 10
+
+.bber-talk
+  padding 0.2rem 1rem
+  :hover
+    border-color: #49b1f5
+    box-shadow: none
+  a
+    color: var(--font-color)
+  .talk-list
+    display: block !important
+    max-height: 25px
+    overflow: hidden
+    :hover
+      color: #49b1f5 !important
+      transition: all .2s ease-in-out
+    .item
+      text-overflow: ellipsis
+      white-space: nowrap
+      width: 98%
+      overflow: hidden

@@ -671,6 +671,29 @@ sidebar:
       header:
         icon: fa-solid fa-clock WISTERIA
         title: 最近更新
+    # ---------------------------------------
+    # Artalk widget
+    artalk:
+      class: artalk
+      stickys: true
+      display: [desktop, mobile]
+    # ---------------------------------------
+    # Memos widget
+    memos_carousel:
+      class: memos_carousel
+      display: [desktop, mobile]
+      header:
+        icon: fa-solid fa-volume-high
+        title: 说说
+        url: /blog/memos/ # 说说页面的地址
+      url: 'https://s.dusays.com/' # 替换城自己的域名，也可以用杜老师的平台托管
+      limit: '10' # 展示数量限制
+      creatorId: '1' # 替换成自己的用户的ID
+      tag: '' # 要展示的内容的标签
+      image: 'fa-solid fa-image' # 图片替换成图标
+      link: 'fa-solid fa-link' # 链接替换成图标
+      placeholder: '说说加载中...' # 占位符
+
 ############################### Sidebar ############################### > end
 
 
@@ -921,6 +944,13 @@ plugins:
     # color2: #说说背景颜色2&按钮颜色2
     # color3: #说说字体颜色
     # cssUrl: #自定义css接口
+    
+  # Memos https://usememos.com
+  memos:
+    # Set `plugins: ["memos"]` to enable in front-matter
+    url: 'https://s.dusays.com/' # 替换成自己的域名，也可以用杜老师的平台托管
+    limit: '10' # 展示数量限制
+    id: '1' # 替换成自己的用户的ID
 
   # BBtalk https://bb.js.org
   bbtalk:

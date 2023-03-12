@@ -436,3 +436,10 @@ pace_css:
   npm: true
   static: false
   cdnjs: true
+memos_carousel_js:
+  name: penndu
+  file: memos_carousel.js
+  version: 3.0.0
+  npm: true
+  static: false
+  cdnjs: false
