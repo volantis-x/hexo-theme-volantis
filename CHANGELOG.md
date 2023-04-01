@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.7.8](https://github.com/volantis-x/hexo-theme-volantis/compare/5.7.7...5.7.8) (2023-04-01)
+
+
+### Bug Fixes
+
+* **LeancloudCounter:** 修复 leancloud 配置特定 appId 值导致 custom_api_server 不生效问题 ([#861](https://github.com/volantis-x/hexo-theme-volantis/issues/861)) ([90e470d](https://github.com/volantis-x/hexo-theme-volantis/commit/90e470d8e2e0125f468acc81820ef7addc91f723))
+
 ## [5.7.7](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.6...5.7.7) (2022-11-24)
 
 
