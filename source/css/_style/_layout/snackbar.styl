@@ -1,0 +1,51 @@
+.snackbar-wrap
+  position: fixed
+  width: 100%
+  left: 0
+  bottom: 0
+  background: $color-theme
+  padding: $gap
+  z-index: 2
+
+.snackbar-content
+  max-width: $layout-width
+  margin: $gap auto
+  @media screen and (max-width: $layout-width)
+    max-width: 100%
+
+.snackbar-content
+  p
+    margin-top: .5rem
+    margin-bottom: .5rem
+    color: $color-inner
+  .title
+    font-size: $fontsize-h2
+    font-weight: 600
+  .action
+    display: block
+    margin: 1.5rem 0 - $gap * 0.25
+    a
+      margin: $gap * 0.25
+      cursor: pointer
+      color: $color-inner
+      display: inline-block
+      padding: .4em 2em
+      font-weight: 600
+      border-radius: 2px
+      border: 1px solid $color-inner
+      &:hover
+        color: $color-theme
+        background: $color-inner
+
+.snackbar-wrap
+  &[theme='warning']
+    background: #F7E751
+    .snackbar-content
+      p
+        color: black
+      a
+        color: black
+        border-color: black
+        &:hover
+          color: #F7E751
+          background: black

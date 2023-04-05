@@ -1,0 +1,77 @@
+// 首屏加载的暗黑模式
+fitst_dark()
+  // Base Dark Color
+  --color-site-body: $color-dark-site-body
+  --color-read-bkg: $color-dark-read-bkg
+  --color-read-post: $color-dark-read-post
+  --color-site-bg: $color-dark-site-bg
+  --color-site-inner: $color-dark-site-inner
+  --color-site-footer: $color-dark-site-footer
+  --color-card: $color-dark-card
+  --color-text: $color-dark-text
+
+  --color-block: $color-dark-block
+  --color-codeblock: $color-dark-codeblock
+  --color-inlinecode: $color-dark-inlinecode
+  --color-h1: $color-dark-h1
+  --color-h2: $color-dark-h2
+  --color-h3: $color-dark-h3
+  --color-h4: $color-dark-h4
+  --color-h5: $color-dark-h5
+  --color-h6: $color-dark-h6
+  --color-p: $color-dark-p
+  --color-list: $color-dark-list
+  --color-list-hl: $color-dark-list-hl
+  --color-meta: $color-dark-meta
+  --color-link: $color-dark-link
+  --color-copyright-bkg: $color-dark-copyright-bkg
+
+  img
+    filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
+  //header
+  .blur
+    background: rgba($color-dark-site-bg, .9) !important
+  .white-box.blur
+    background: rgba($color-dark-card, .9) !important
+  .nav-main
+    .u-search-input
+      background: var(--color-card) !important
+  #l_main .article .prev-next>a
+    background: var(--color-block) !important
+    &:hover
+      background: var(--color-site-bg) !important
+  .article blockquote
+    background: var(--color-block) !important
+  .article-title a
+    color: var(--color-h1) !important
+  details>summary
+    color: var(--color-p) !important
+    background: var(--color-site-bg) !important
+  details
+    border: 1px solid var(--color-site-bg) !important
+    background: var(--color-site-bg) !important
+
+  //search
+  #u-search .modal,
+  #u-search .modal-header,
+  #u-search .modal-body
+    background: var(--color-card) !important
+  #u-search .modal-body .modal-results .result:hover
+    background: var(--color-block) !important
+  .u-search-input:hover
+    background: var(--color-block) !important
+  .u-search-input:focus
+    background: var(--color-site-body) !important
+  //phone search
+  .l_header .m_search
+    @media screen and (max-width: $device-mobile)
+      background: var(--color-site-bg) !important
+
+if hexo-config('plugins.darkmode.enable')
+  @media (prefers-color-scheme: dark)
+    :root
+      --color-mode: 'dark'
+    :root:not([color-scheme])
+      fitst_dark()
+  [color-scheme='dark']
+    fitst_dark()

@@ -1,0 +1,69 @@
+<%- partial('_pre') %>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+  <article id="<%= page.layout %>" class="md post article article-entry l_friends white-box reveal <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= page.layout %>" itemscope itemprop="blogPost">
+    <%- partial('_partial/meta',{post: page, position: 'top'}) %>
+    <%- page.excerpt %>
+    <% if (site.data.friends){ %>
+      <% getList(site.data.friends).forEach((group, i) => { %>
+        <div class='friends-group'>
+          <br>
+          <h2 class='friend-header'>
+            <%- group.group %>
+          </h2>
+          <% if (group.description) { %>
+            <%- markdown(group.description) %>
+          <%} %>
+          <% if (theme.pages.friends.layout_scheme == 'traditional') { %>
+            <div class='friend-content'>
+              <% getList(group.items).forEach(function(item){ %>
+                <% if (item.url && item.title) { %>
+                  <a class='friend-card'
+                    target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>">
+                    <div class='friend-left'>
+                      <% if (item.avatar) { %>
+                        <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
+                      <% } %>
+                    </div>
+                    <div class='friend-right'>
+                      <p class="friend-name"><%- item.title %></p>
+                      <% if (item.keywords) { %>
+                        <div class='friend-tags-wrapper'>
+                        <% getList(item.keywords).forEach(function(keyword){ %>
+                          <p class="tags"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><%= keyword %></p>
+                        <% }) %>
+                        </div>
+                      <% } %>
+                      <% if(item.description){ %>
+                        <div class='friend-tags-wrapper'>
+                          <p class="tags"><%= item.description %></p>
+                        </div>
+                      <% } %>
+                    </div>
+                  </a>
+                <% } %>
+              <% }) %>
+            </div>
+          <% } else { %>
+            <div class='simpleuser-group'>
+              <% getList(group.items).forEach(function(item){ %>
+                <% if (item.url && item.title) { %>
+                  <a class="simpleuser" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>">
+                    <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>
+                    <span><%- item.title %></span>
+                  </a>
+                <% } %>
+              <% }) %>
+            </div>
+          <% } %>
+        </div>
+      <% }) %>
+    <% } %>
+    <br><br>
+    <%- page.more %>
+    <%- partial('_partial/meta',{post: page, position: 'bottom'}) %>
+  </article>
+  <% if (page.comments == undefined || page.comments != false) { %>
+  <%- partial('_plugins/comments/index',{post: page}) %>
+  <% } %>
+</div>
+<%- partial('_partial/side') %>

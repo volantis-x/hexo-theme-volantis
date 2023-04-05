@@ -1,35 +1,27 @@
 <%- partial('_pre') %>
-<% page.comments = false; %>
-<div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+<%
+page.comments = false;
+if (!page.robots) {
+  page.robots = 'noindex,follow';
+}
+%>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.posts && site.posts.length > 0) { %>
-    <% if (page.layout == 'tag') { %>
-      <section class="post-list <%- theme.layout.multiple_columns ? 'multiple-columns' : '' %>">
-        <div class='post-wrapper'>
-          <article id="archive-page" class="post article white-box reveal <%- theme.style.body.effect.join(' ') %>">
-            <section class="archive">
-              <div class="archive-item archive-year mark">
-                <h2><%- page.title %></h2>
-              </div>
-              <div class="archive-item all-tags">
-                <% let tc = theme.widget.tagcloud; %>
-                <%- tagcloud(site.tags, {
-                    min_font: tc.min_font,
-                    max_font: tc.max_font,
-                    color: tc.color,
-                    start_color: tc.start_color,
-                    end_color: tc.end_color,
-                }) %>
-              </div>
-              <br>
-              <%- page.content %>
-            </section>
-          </article>
-        </div>
-      </section>
+    <% if ((page.layout == 'tag')||(page.layout == 'tags')) { %>
+      <div class='post-wrapper'>
+        <article id="tag" class="post article white-box reveal <%- theme.custom_css.body.effect.join(' ') %>">
+          <h2><%- page.title %></h2>
+          <div class="all-tags">
+            <% let tc = theme.sidebar.widget_library.tagcloud; %>
+            <%- list_tags({}) %>
+          </div>
+          <br>
+          <%- page.content %>
+        </article>
+      </div>
     <% } else { %>
       <%- partial('_partial/archive') %>
     <% } %>
   <% } %>
 </div>
 <%- partial('_partial/side') %>
-

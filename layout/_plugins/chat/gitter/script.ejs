@@ -1,0 +1,17 @@
+<script>
+// https://sidecar.gitter.im/
+((window.gitter = {}).chat = {}).options = {
+  room: `<%- theme.plugins.gitter.room %>`
+};
+volantis.js("https://sidecar.gitter.im/dist/sidecar.v1.js")
+</script>
+
+<style>
+  .gitter-chat-embed{
+    z-index: 10000;
+  }
+  .gitter-open-chat-button{
+    left: 10px;
+    right: unset;
+  }
+</style>

@@ -1,158 +1,79 @@
-<head hexo-theme='https://volantis.js.org/#<%- theme.info.version %>'>
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#<%- theme.info.theme_version %>'>
+  <%- meta_generator() %>
+  <meta name="Volantis" content="<%- theme.info.theme_version %>">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <% if (page.robots) { %>
-    <meta name="robots" content="<%- page.robots %>">
-  <% } else if (theme.seo && theme.seo.robots) { %>
-    <% if (is_home()) { %>
-      <% if (page.prev == 0) { %>
-        <meta name="robots" content="<%- theme.seo.robots.home_first_page %>">
-      <% } else { %>
-        <meta name="robots" content="<%- theme.seo.robots.home_other_pages %>">
-      <% } %>
-    <% } else if (is_archive()) { %>
-      <meta name="robots" content="<%- theme.seo.robots.archive %>">
-    <% } else if (is_category()) { %>
-      <meta name="robots" content="<%- theme.seo.robots.category %>">
-    <% } else if (is_tag()) { %>
-      <meta name="robots" content="<%- theme.seo.robots.tag %>">
-    <% } %>
-  <% } %>
+  <%- generate_seo(theme, page) %>
+  <%- autoCanonical(config, page) %>
   <!-- 渲染优化 -->
+  <%_ if (theme.dns_prefetch && theme.dns_prefetch.length){ _%>
+    <meta http-equiv='x-dns-prefetch-control' content='on' />
+    <%_ getList(theme.dns_prefetch).forEach(function(item){ _%>
+      <link rel='dns-prefetch' href='<%- item %>'>
+      <link rel="preconnect" href="<%- item %>" crossorigin>
+    <%_ }) _%>
+  <%_ } _%>
   <meta name="renderer" content="webkit">
   <meta name="force-rendering" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <%_ if (theme.csp.enable) { _%>
+    <meta http-equiv="Content-Security-Policy" content="<%- theme.csp.content %>">
+  <%_ } _%>
   <meta name="HandheldFriendly" content="True" >
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <!-- 页面元数据 -->
-  <%
-    var title = page.seo_title || page.title;
-    var keywords = page.keywords || '';
-    var description = page.description || '';
-    if (is_archive()) {
-      title = __('navbar.archive');
-      if (is_month()) {
-        title += __('symbol.colon') + page.year + '/' + page.month;
-      } else if (is_year()) {
-        title += __('symbol.colon') + page.year;
-      }
-    } else if (is_category()) {
-      title = __('navbar.category') + __('symbol.colon') + page.category;
-    } else if (is_tag()) {
-      title = __('navbar.tag') + __('symbol.colon') + page.tag;
-    } else if (is_home() && page.prev == 0) {
-      keywords = config.keywords || '';
-      description = config.description || '';
-    }
-    if (theme.seo && theme.seo.use_tags_as_keywords) {
-      if (!keywords && page.tags && page.tags.length > 0) {
-        let tags = page.tags.map(function(t){return t.name}).join(',');
-        if (tags.length > 0) {
-          keywords += tags;
-        }
-      }
-    }
-    if (theme.seo && theme.seo.use_excerpt_as_description) {
-      if (page.description == undefined) {
-        if (page.excerpt) {
-          description = truncate(strip_html(page.excerpt), {length: 160});
-        }
-      }
-    }
-  %>
-  <title><% if (title) { %><%= title %> - <% } %><%= config.title %></title>
-  <% if (keywords){ %>
-    <meta name="keywords" content="<%- keywords %>">
-  <% } %>
-
-  <% if (description){ %>
-    <meta name="description" content="<%- description %>">
-  <% } %>
-
-  <!-- feed -->
-  <% if (config.feed && config.feed.path){ %>
-    <%- feed_tag(config.feed.path, {title: config.title}) %>
-  <% } %>
-
-  <!-- import meta -->
-  <% if (config.import && config.import.meta){ %>
-    <% (config.import.meta||[]).forEach(function(item){ %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <!-- import head_begin begin -->
+  <%_ if (config.import && config.import.head_begin){ _%>
+    <%_ getList(config.import.head_begin).forEach(function(item){ _%>
       <%- item %>
-    <% }) %>
-  <% } %>
-
-  <!-- link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
-  <%- css('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css') %>
-
-  <% if (theme.plugins.nodewaves && theme.plugins.nodewaves.css) { %>
-    <%- css(theme.plugins.nodewaves.css) %>
-  <% } %>
-
-  <% if (config.favicon) { %>
+    <%_ }) _%>
+  <%_ } _%>
+  <!-- import head_begin end -->
+  <!-- Custom Files headBegin begin-->
+  <%- volantis_inject('headBegin') %>
+  <!-- Custom Files headBegin end-->
+  <%_ if (config.favicon) { _%>
     <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
-  <% } %>
-
-  <% if (theme.plugins.aplayer.enable) { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
-  <% } %>
-
-  <% if (theme.comments.service == 'vssue') { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/meteorlxy/vssue@1.4.4/packages/vssue/dist/vssue.min.css">
-  <% } %>
-
-  <!-- import link -->
-  <% if (config.import && config.import.link){ %>
-  <% (config.import.link||[]).forEach(function(item){ %>
-  <%- item %><% }) %>
-  <% } %>
-
-  <% if (config.highlight.enable != true) { %>
-    <% if (theme.plugins.highlightjs && theme.plugins.highlightjs.css) { %>
-      <%- css(theme.plugins.highlightjs.css) %>
-    <% } %>
-  <% } %>
-  <% if (config.use_cdn && theme.info.cdn && theme.info.cdn.css) { %>
-    <%- css(theme.info.cdn.css) %>
-  <% } else { %>
-    <%- css('css/style.css') %>
-  <% } %>
-  <!-- 加载自定义css -->
-  <%- css('css/iconfont.css') %>
-  <%- css('css/custom.css') %>
-  <% if (config.google_analytics_key) { %>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <%_ } _%>
+  <link rel="preload" href="<%- theme.cdn.volantis_style %>" as="style">
+  <%- generate_preload_fontfamily(theme) %>
+  <!-- feed -->
+  <%_ if (config.feed && config.feed.path){ _%>
+    <%_ getList(config.feed.path).forEach(function(item){ _%>
+      <%- feed_tag(item, {title: config.title}) %>
+    <%_ }) _%>
+  <%_ } _%>
+  <!-- 页面元数据 -->
+  <%- generate_title(config, theme, page) %>
+  <%- generate_keywords(config, theme, page) %>
+  <%- generate_description(config, theme, page) %>
+  <%- open_graph(theme.open_graph) %>
+  <style>
+    /* 首屏样式 */
+    <%- FirstCSS() %>
+  </style>
+  <link rel="stylesheet" href="<%- theme.cdn.volantis_style %>" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="<%- theme.cdn.volantis_style %>"></noscript>
+  <%_ if (theme.plugins.darkmode.enable) { _%>
     <script>
-	setTimeout(function() {
-	  let script = document.createElement('script');
-	  script.src = "https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>";
-	  script.defer=true;
-	  document.body.appendChild(script);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '<%- config.google_analytics_key %>');
-	}, 5000);
+      let userColorScheme=localStorage.getItem("color-scheme")
+      if(userColorScheme){
+        document.documentElement.setAttribute("color-scheme", userColorScheme);
+      }
     </script>
-  <% } %>
-  <% if (config.baidu_analytics_key) { %>
-    <!-- ba -->
-    <script>
-    var _hmt = _hmt || [];
-    (function() {
-	  setTimeout(function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>";
-		hm.defer=true;
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-	  }, 5000);
-    })();
-    </script>
-  <% } %>
-  <!-- 载入自定义插件 -->
-  <%- js('https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js') %>
-
+  <%_ } _%>
+  <%- partial('../_plugins/end-of-support/script') %>
+  <%- partial('scripts/global') %>
+  <!-- import head_end begin -->
+  <%_ if (config.import && config.import.head_end){ _%>
+    <%_ getList(config.import.head_end).forEach(function(item){ _%>
+      <%- item %>
+    <%_ }) _%>
+  <%_ } _%>
+  <!-- import head_end end -->
+  <!-- Custom Files headEnd begin-->
+  <%- volantis_inject('headEnd') %>
+  <!-- Custom Files headEnd end-->
 </head>

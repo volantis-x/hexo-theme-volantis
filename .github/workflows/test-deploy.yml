@@ -1,0 +1,42 @@
+name: Test to deploy
+
+on:
+  push:
+    branches:
+    - 6.0
+    - dev
+    - test
+jobs:
+  dev:
+    runs-on: ubuntu-latest
+    name: A job to Test deploying for dev.
+    strategy:
+      matrix:
+        node_version: ['18', '16']
+    steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node_version }}
+    - name: Clone
+      run: |
+        git clone https://github.com/volantis-x/volantis-x.github.io
+        cd volantis-x.github.io
+        git clone -b ${{ github.ref_name }} https://github.com/volantis-x/hexo-theme-volantis themes/volantis
+    - name: Generate Public Files
+      run: |
+        cd volantis-x.github.io
+        npm i
+        npm install hexo-cli -g
+        npm run start
+    - name: Deploy
+      if: ${{ matrix.node_version == '16' }}
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.MHUIG_DEPLOY_KEY }}
+        external_repository: volantis-x/volantis-x.github.io
+        publish_branch: gh-pages
+        force_orphan: true
+        publish_dir: ./volantis-x.github.io/public
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'

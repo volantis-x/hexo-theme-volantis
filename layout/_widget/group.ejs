@@ -1,14 +1,18 @@
 <%
-if (page.layout == 'page' || page.layout == 'post') {
+if (page.layout == 'page' || page.layout == 'docs' || page.layout == 'post') {
   var rows = new Array();
-  site.posts.each(function(post){
-    if ((post.short_title || post.title) && post.path && (post.group == item.id)) {
-      rows.push({name: post.short_title || post.title, url: post.path, order: (post.order || 0)})
+  site.posts.each(function(p){
+    if (p.path && (p.group == item.id)) {
+      if ((p.short_title != false || (p.short_title == undefined && p.title))) {
+        rows.push({name: p.short_title || p.title, url: p.path, order: (p.order || 0)})
+      }
     }
   })
-  site.pages.each(function(post){
-    if ((post.short_title || post.title) && post.path && (post.group == item.id)) {
-      rows.push({name: post.short_title || post.title, url: post.path, order: (post.order || 0)})
+  site.pages.each(function(p){
+    if (p.path && (p.group == item.id)) {
+      if ((p.short_title != false || (p.short_title == undefined && p.title))) {
+        rows.push({name: p.short_title || p.title, url: p.path, order: (p.order || 0)})
+      }
     }
   })
   rows.sort(function(a,b){

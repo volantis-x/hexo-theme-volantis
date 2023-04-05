@@ -1,0 +1,8 @@
+if hexo-config('custom_css.fontfamily.codefont')
+  if hexo-config('custom_css.fontfamily.codefont.name')
+    @font-face
+      font-family: hexo-config('custom_css.fontfamily.codefont.name')
+      src: url(hexo-config('custom_css.fontfamily.codefont.url'))
+      font-weight: hexo-config('custom_css.fontfamily.codefont.weight')
+      font-style: hexo-config('custom_css.fontfamily.codefont.style')
+      font-display: swap

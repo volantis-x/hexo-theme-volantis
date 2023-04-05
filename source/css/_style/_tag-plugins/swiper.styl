@@ -1,0 +1,44 @@
+.swiper-container
+  width: 100%
+  border-radius: 4px
+  --gap-p: 2rem
+.swiper-container:not(.swiper-container-initialized)
+  display: none
+div.swiper-slide
+  text-align: center
+  display: -webkit-box
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+  align-self: center
+  -webkit-box-pack: center
+  -ms-flex-pack: center
+  -webkit-justify-content: center
+  justify-content: center
+  -webkit-box-align: center
+  -ms-flex-align: center
+  -webkit-align-items: center
+  align-items: center
+  width: 50%
+  img
+    border-radius: 4px
+
+.swiper-container[width='max'] div.swiper-slide
+  width: 100%
+
+.swiper-container[width='min'] div.swiper-slide
+  width: 25%
+
+.swiper-button-prev,.swiper-button-next
+  padding: 1rem 0.5rem
+  margin-top: -2rem !important
+  border-radius: 4px
+  background: alpha(white, 0.25)
+  trans1 background
+  --swiper-theme-color: black !important
+  &:after
+    font-size: 1.2rem !important
+    font-weight: 700 !important
+  &:hover
+    background: white !important
+    --swiper-theme-color: $color-hover !important

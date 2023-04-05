@@ -1,0 +1,97 @@
+#l_side .toc-wrapper
+  z-index: 1
+  overflow: hidden
+  border-radius: $border-card
+  //position: sticky
+  //top: $navbar-height + $gap
+  trans()
+  line-height: 1.6
+  header
+    position: sticky
+    width: 100%
+    top: 0
+    padding-bottom: $gap * 0.25
+  .content
+    max-height: "calc(100vh - %s)" % ($gap * 5 + $navbar-height)
+    a
+      border-left: $border-line solid transparent
+      &.active
+        list_active()
+        border-left: $border-line solid $color-theme
+      &:hover
+        list_hover()
+        border-left: $border-line solid $color-theme
+
+
+  trans()
+  @media screen and (max-width: $device-tablet)
+    z-index: 1001
+    position: fixed
+    max-height: 1000px
+    width: auto
+    max-width: "calc(100% - 2 * %s)" % $gap
+    top: $navbar-height - $gap
+    right: $gap
+    border-radius: $border-card * 0.5
+    box-shadow: $boxshadow-float
+    border: 1px solid darken($color-block, 6)
+    visibility: hidden
+    transform: scale(0,0)
+    transform-origin: right top
+    &.active
+      visibility: visible
+      transform: scale(1,1)
+  @media screen and (max-width: $device-mobile-m)
+    right: 0
+
+  a
+    padding-left: 8px
+    color: var(--color-meta)
+    font-size: $fontsize-meta
+    display: inline-block
+
+  ul,ol
+    .toc-child a
+      font-weight: normal
+    .toc-item.toc-level-1
+      .toc-child a
+        padding-left: 0.8 * $gap
+    .toc-item.toc-level-2
+      .toc-child a
+        padding-left: 1.6 * $gap
+    .toc-item.toc-level-3
+      .toc-child a
+        padding-left: 2.4 * $gap
+    .toc-item.toc-level-4
+      .toc-child a
+        padding-left: 3.2 * $gap
+    .toc-item.toc-level-5
+      .toc-child a
+        padding-left: 4 * $gap
+    .toc-item.toc-level-6
+      .toc-child a
+        padding-left: 4.8 * $gap
+
+    li
+      a
+        padding: 0 $gap * 0.5 0 ($gap - 5px)
+        font-weight: bold
+        width: 100%
+      width: auto
+      text-align: left
+
+  &:empty
+    display:none
+
+  .toc-child
+    font-size: 1rem
+    overflow: hidden
+    transition: max-height 0.6s ease-in
+    max-height: 0
+  .toc-item
+    &.active
+      &>.toc-link
+        list_active()
+        border-left: $border-line solid $color-theme
+      &>.toc-child
+        max-height: 1000px

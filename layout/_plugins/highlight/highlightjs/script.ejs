@@ -1,0 +1,20 @@
+<script>
+<% if (theme.plugins.highlightjs.css) { %>
+  volantis.css("<%- theme.plugins.highlightjs.css %>");
+<% } %>
+<% if (theme.plugins.highlightjs.js) { %>
+  volantis.js("<%- theme.plugins.highlightjs.js %>").then(()=>{
+    volantis.requestAnimationFrame(hljs.highlightAll)
+  })
+<% } %>
+<% if(theme.plugins.highlightjs.copy_code){ %>
+  function p_highlightjs_copyCode(){
+    if (!(document.querySelector(".highlight .code pre") ||
+      document.querySelector(".article pre code"))) {
+      return;
+    }
+    VolantisApp.utilCopyCode(".highlight .code pre, .article pre code")
+  }
+  volantis.requestAnimationFrame(p_highlightjs_copyCode)
+<% } %>
+</script>

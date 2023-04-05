@@ -1,0 +1,347 @@
+// AutoPrefixCSS
+// https://github.com/stylus/nib
+
+vendor-prefixes ?= webkit khtml moz o ms
+
+vendor(prop, only = null ,vendor-property = true, args)
+  if (only and official in only) or !only
+    {prop}: args
+  if vendor-property
+    for prefix in vendor-prefixes
+      unless only and !(prefix in only)
+        {'-' + prefix + '-' + prop}: args
+
+// A
+
+animation()
+  vendor(prop:'animation', only: null,  vendor-property: true, args:arguments)
+
+// B
+box-orient()
+  vendor(prop:'box-orient', only: webkit moz ms official,  vendor-property: true, args:arguments)
+
+box-pack()
+  vendor(prop:'box-pack', only: webkit moz ms official,  vendor-property: true, args:arguments)
+
+border-radius()
+  vendor(prop:'border-radius', only: webkit official,  vendor-property: true, args:arguments)
+
+box-shadow()
+  vendor(prop:'box-shadow', only: webkit official,  vendor-property: true, args:arguments)
+
+border-image()
+  vendor(prop:'border-image', only: webkit moz o official,  vendor-property: true, args:arguments)
+
+background-image()
+  if match('-gradient\(', ''+arguments)
+    vendor(prop:'background-image', only: null,  vendor-property: false, args:arguments)
+  else
+    background-image arguments
+
+box-sizing()
+  vendor(prop:'box-sizing', only: webkit moz official,  vendor-property: true, args:arguments)
+
+backface-visibility()
+  vendor(prop:'backface-visibility', only: webkit moz ms official,  vendor-property: true, args:arguments)
+
+background-size()
+  vendor(prop:'background-size', only: webkit moz official,  vendor-property: true, args:arguments)
+
+/*
+ * Legacy syntax support for background-clip and background-origin
+ */
+
+legacy-bg-values(property, args)
+  legacy_args = ()
+  importance = unquote('')
+  for subargs in args
+    for arg in subargs
+      if arg in (border-box padding-box content-box)
+        arg = unquote('border')  if arg == border-box
+        arg = unquote('padding') if arg == padding-box
+        arg = unquote('content') if arg == content-box
+      if arg != '!important'
+        push(legacy_args,arg)
+      else
+        importance = !important
+  vendor(prop:property, only: moz webkit,  vendor-property: true, args: unquote(join(', ',legacy_args)) importance)
+
+background-clip()
+  if arguments[0] == text
+    vendor(prop:'background-clip', only: webkit,  vendor-property: true, args:arguments)
+  else
+    legacy-bg-values('background-clip', arguments)
+    background-clip: arguments
+// C
+
+
+column-count()
+  vendor(prop:'column-count', only: webkit moz official,  vendor-property: true, args:arguments)
+
+column-gap()
+  vendor(prop:'column-gap', only: webkit moz official,  vendor-property: true, args:arguments)
+
+column-rule()
+  vendor(prop:'column-rule', only: webkit moz official,  vendor-property: true, args:arguments)
+
+column-rule-color()
+  vendor(prop:'column-rule-color', only: webkit moz official,  vendor-property: true, args:arguments)
+
+column-rule-width()
+  vendor(prop:'column-rule-width', only: webkit moz official,  vendor-property: true, args:arguments)
+
+column-rule-style()
+  vendor(prop:'column-rule-style', only: webkit moz official,  vendor-property: true, args:arguments)
+
+column-width()
+  vendor(prop:'column-width', only: webkit moz official,  vendor-property: true, args:arguments)
+
+column-span()
+  vendor(prop:'column-span', only: webkit official,  vendor-property: true, args:arguments)
+
+column-fill()
+  vendor(prop:'column-fill', only: moz,  vendor-property: true, args:arguments)
+
+
+// D
+display(value)
+  // Initializing a flexbox container
+  display -webkit-box    /* OLD - iOS 6-, Safari 3.1-6 */
+  display -moz-box     /* OLD - Firefox 19- (buggy but mostly works) */
+  if value == inline-flex
+    display -ms-inline-flexbox    /* TWEENER - IE 10 */
+    display -webkit-inline-flex   /* NEW - Chrome */
+    display value           /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  else if value == flex
+    display -ms-flexbox     /* TWEENER - IE 10 */
+    display -webkit-flex    /* NEW - Chrome */
+    display flex        /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+  if arguments != 'flex'
+    display: arguments;
+  else
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+// E
+
+// F
+flex-wrap(value)
+  // Implementation of the flex-wrap attribute.
+  vendor(prop:'flex-wrap',only: null,  vendor-property: true, args:value)
+
+flex-flow()
+  vendor(prop:'flex-flow',only: null,  vendor-property: true, args:arguments)
+
+flex-direction(value)
+  // Implementation of flex-direction attributes.
+  if value == row
+    -webkit-box-direction normal
+    -moz-box-direction normal
+    -webkit-box-orient horizontal
+    -moz-box-orient horizontal
+  else if value == row-reverse
+    -webkit-box-direction reverse
+    -moz-box-direction reverse
+    -webkit-box-orient horizontal
+    -moz-box-orient horizontal
+  else if value == column
+    -webkit-box-direction normal
+    -moz-box-direction normal
+    -webkit-box-orient vertical
+    -moz-box-orient vertical
+  else if value == column-reverse
+    -webkit-box-direction reverse
+    -moz-box-direction reverse
+    -webkit-box-orient vertical
+    -moz-box-orient vertical
+  -webkit-flex-direction value
+  -ms-flex-direction value
+  flex-direction value
+
+flexbox(value)
+  // Initializing a flexbox container
+  display -webkit-box    /* OLD - iOS 6-, Safari 3.1-6 */
+  display -moz-box     /* OLD - Firefox 19- (buggy but mostly works) */
+  if value == inline-flex
+    display -ms-inline-flexbox    /* TWEENER - IE 10 */
+    display -webkit-inline-flex   /* NEW - Chrome */
+    display value           /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  else if value == flex
+    display -ms-flexbox     /* TWEENER - IE 10 */
+    display -webkit-flex    /* NEW - Chrome */
+    display flex        /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+flex(grow = 0, shrink = 0)
+  // For configuring the flex elements
+  -webkit-box-flex grow
+  -moz-box-flex grow
+  -webkit-flex grow shrink
+  -ms-flex grow shrink
+  flex grow shrink
+
+flex-content(value)
+  // Implements the align-content settings
+  if value == space-around
+    -webkit-align-content value
+    -ms-flex-line-pack distribute
+    align-content value
+  else if value == space-between
+    -webkit-align-content value
+    -ms-flex-line-pack justify
+    align-content value
+  else if value == end or value == start
+    -webkit-align-content flex-+value
+    -ms-flex-line-pack value
+    align-content flex-+value
+  else
+    -webkit-align-content value
+    -ms-flex-line-pack value
+    align-content value
+
+flex-align(value)
+  // Function for align-items
+  if value == start or value == end
+    -webkit-box-align value
+    -moz-box-align value
+    -webkit-align-items flex-+value
+    -ms-flex-align value
+    align-items flex-+value
+  else
+    -webkit-box-align value
+    -moz-box-align value
+    -webkit-align-items value
+    -ms-flex-align value
+
+flex-firefox()
+  // Helper to manage inline bugs in legacy Firefox
+  width 100%
+  -moz-box-sizing border-box
+
+flex-group(value)
+  // Manages ordering of the flex elements within a container
+  -webkit-box-ordinal-group value
+  -moz-box-ordinal-group value
+  -ms-flex-order value
+  -webkit-order value
+  order value
+
+flex-self(value)
+  // Function for aligning the flex elements (align-self)
+  if value == start or value == end
+    -webkit-align-self flex-+value
+    -ms-flex-item-align value
+    align-self flex-+value
+  else
+    -webkit-align-self value
+    -ms-flex-item-align value
+    align-self value
+
+flex-justify(value)
+  // Implements the justify-content settings.
+  if value == start || value == end
+    -webkit-box-pack value
+    -moz-box-pack value
+    -webkit-justify-content flex-+value
+    -ms-flex-pack value
+    justify-content flex-+value
+  else if value == center
+    -webkit-box-pack value
+    -moz-box-pack value
+    -webkit-justify-content value
+    -ms-flex-pack value
+    justify-content value
+  else if value == space-between
+    -webkit-box-pack justify
+    -moz-box-pack justify
+    -webkit-justify-content value
+    -ms-flex-pack justify
+    justify-content value
+  else if value == space-around
+    -webkit-box-pack justify
+    -moz-box-pack justify
+    -webkit-justify-content value
+    -ms-flex-pack distribute
+    justify-content value
+
+
+font-smoothing()
+  vendor(prop:'font-smoothing', only: webkit,  vendor-property: true, args:arguments)
+// G
+
+// H
+
+// I
+
+// J
+justify-content()
+  vendor(prop:'justify-content',only: null,  vendor-property: true, args:arguments)
+
+// K
+
+// L
+
+// M
+
+// N
+
+// O
+
+opacity()
+  vendor(prop:'opacity', only: webkit moz official,  vendor-property: true, args:arguments)
+
+// P
+print-color-adjust()
+  vendor(prop:'print-color-adjust',only: null,  vendor-property: true, args:arguments)
+
+// Q
+
+// R
+
+// S
+
+// T
+text-size-adjust()
+  vendor(prop:'text-size-adjust', only: null,  vendor-property: true, args:arguments)
+
+transition()
+  vendor(prop:'transition', only: null,  vendor-property: true, args:arguments)
+
+transition-property()
+  vendor(prop:'transition-property', only: null,  vendor-property: true, args:arguments)
+
+transition-duration()
+  vendor(prop:'transition-duration', only: null,  vendor-property: true, args:arguments)
+
+transition-timing-function()
+  vendor(prop:'transition-timing-function', only: null,  vendor-property: true, args:arguments)
+
+transition-delay()
+  vendor(prop:'transition-delay', only: null,  vendor-property: true, args:arguments)
+
+transform()
+  vendor(prop:'transform', only: null,  vendor-property: true, args:arguments)
+
+transform-origin()
+  vendor(prop:'transform-origin', only: null,  vendor-property: true, args:arguments)
+
+transform-style()
+  vendor(prop:'transform-style', only: null,  vendor-property: true, args:arguments)
+
+// U
+user-select()
+  vendor(prop:'user-select', only: webkit moz ms official,  vendor-property: true, args:arguments)
+
+
+// V
+
+// W
+
+// X
+
+// Y
+
+// Z
+

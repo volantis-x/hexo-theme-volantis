@@ -1,0 +1,64 @@
+footer.footer
+  position: relative
+  padding: 40px 10px 120px 10px
+  width: 100%
+  color: var(--color-site-footer)
+  margin: 0px auto
+  > div {
+    p {
+      color: rgba(8, 8, 8, 0.75);
+    }
+  }
+  &,p
+    font-size: $fontsize-code
+  overflow: hidden
+  text-align: center
+  .licenses
+    color: fade(@color_text_main, 50%)
+  .social-wrapper
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    margin: 4px $gap * 0.5
+
+  .site-statement
+    span, a
+      color: rgba(8, 8, 8, 0.75);
+
+  a
+    color: var(--color-site-footer)
+    padding: 0
+    trans()
+    &:hover
+      color: $color-hover
+    &:not(.social):hover
+      text-decoration: underline
+    &.social
+      position: relative
+      display: inline-block
+      text-align: center
+      display: flex
+      justify-content: center
+      align-items: center
+      min-width: 36px
+      min-height: 36px
+      margin: 4px
+      opacity: .75
+      border-radius: 4px
+      font-size: 1rem
+      img
+        margin: 8px
+        height: 24px
+      &:hover
+        color: $color-hover
+        background: alpha(@color, 0.1)
+
+
+
+  .copyright
+    margin-top: $gap
+    p
+      font-size: $fontsize-footnote
+
+  @media screen and (max-width: $device-tablet)
+    justify-content: center

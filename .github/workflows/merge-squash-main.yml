@@ -1,0 +1,34 @@
+name: merge-squash-main
+on:
+  workflow_dispatch:
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: merge-to-main
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git clone https://github.com/volantis-x/hexo-theme-volantis.git hexo-theme-volantis
+          cd hexo-theme-volantis
+          git fetch origin
+          git checkout main
+          git reset --hard dc9134662502ed2aa8d39dfa09ffe81650a2b024
+          git merge dev
+          git push --force "https://github-actions[bot]:${{ secrets.GITHUB_TOKEN }}@github.com/volantis-x/hexo-theme-volantis.git" main:main
+      - name: sync-coding
+        run: |
+          curl -u ${{ secrets.CODING_TOKEN_API }} \
+             -v -X POST  'https://volantis-x.coding.net/api/cci/job/387490/trigger' \
+             -H 'Content-Type: application/json' \
+             -d '
+              {
+                "envs": [
+                  {
+                    "name": "BRANCH",
+                    "value": "main",
+                    "sensitive": 0
+                  }
+                ]
+              }'

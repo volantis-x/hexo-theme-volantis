@@ -1,63 +1,103 @@
+/**
+ * image.js v4 | https://volantis.js.org
+ */
+
 'use strict';
 
-function postImage(args) {
-  args = args.join(' ').split(',')
-  let url = (args[0]||'').trim()
-  let title = ''
-  let width = ''
-  function getP2(p2) {
-    let px = p2.match(/^[0-9]*px$/g)
-    if (px) {
-      width = px[0]
-    } else {
-      title = p2
-    }
-  }
-  if (args.length > 2) {
-    getP2(args[1].trim())
-    getP2(args[2].trim())
-  } else if (args.length > 1) {
-    getP2(args[1].trim())
-  }
-  if (width.length > 0) {
-    if (title.length > 0) {
-      return `<img src='${url}' alt='${title}' style='width:${width}'>`;
-    } else {
-      return `<img src='${url}' style='width:${width}'>`;
-    }
-  } else {
-    if (title.length > 0) {
-      return `<img src='${url}' alt='${title}'>`;
-    } else {
-      return `<img src='${url}'>`;
-    }
-  }
-}
-
-function postInlineImage(args) {
-  args = args.join(' ').split(',')
-  let url = (args[0]||'').trim()
-  let height = '1.5em'
-  function getP2(p2) {
-    let px = p2.match(/^[0-9]*px$/g)
-    if (px) {
-      height = px[0]
-    }
-  }
-  if (args.length > 1) {
-    getP2(args[1].trim())
-  }
-  return `<img class='inline' src='${url}' style='height:${height}'>`;
-}
-
-
 // {% image url %}
-// {% image url, title %}
-// {% image url, width(px) %}
-// {% image url, title, width(px) %}
-hexo.extend.tag.register('image', postImage);
+// {% image url, alt=haha %}
+// {% image url, width=50% %}
+// {% image url, height=32px %}
+// {% image url, bg=#eee %}
+// {% image url, alt=haha, width=400px %}
+// {% image url, alt=haha, width=400px, bg=#eee %}
+hexo.extend.tag.register('image', function(args) {
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
+  const url = args[0].trim();
+  let alt = '';
+  let bg = '';
+  let style = '';
+  if (args.length > 1) {
+    for (let i = 1; i < args.length; i++) {
+      const tmp = args[i].trim();
+      if (tmp.includes('alt=')) {
+        alt = tmp.substring(4, tmp.length);
+      } else if (tmp.includes('width=')) {
+        style += 'width:' + tmp.substring(6, tmp.length) + ';';
+      } else if (tmp.includes('height=')) {
+        style += 'height:' + tmp.substring(7, tmp.length) + ';';
+      } else if (tmp.includes('bg=')) {
+        bg = tmp.substring(3, tmp.length);
+      }
+    }
+  }
+  function img(url, alt, style) {
+    let img = '';
+    img += '<img class="img" src="' + url + '"';
+    if (alt.length > 0) {
+      img += ' alt="' + alt + '"';
+    } else {
+      img += ' alt="image"';
+    }
+    if (style.length > 0) {
+      img += ' style="' + style + '"';
+    }
+    img += '/>';
+    return img;
+  }
+
+  let ret = '';
+  // wrap
+  ret += '<div class="img-wrap">';
+  // bg
+  ret += '<div class="img-bg"';
+  if (bg.length > 0) {
+    ret += ' style="background:' + bg + '"';
+  }
+  ret += '>';
+  ret += img(url, alt, style);
+  ret += '</div>';
+
+  if (alt.length > 0) {
+    ret += '<span class="image-caption">' + alt + '</span>';
+  }
+
+  ret += '</div>';
+  return ret;
+});
 
 
-// {% image-inline url %}
-// {% image-inline url, height(px) %}
-hexo.extend.tag.register('inlineimage', postInlineImage);
+// {% inlineimage url %}
+// {% inlineimage url, height=22px %}
+hexo.extend.tag.register('inlineimage', function(args) {
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
+  }
+  else{
+    args = args.join(' ').split(',');
+  }
+  const url = args[0].trim();
+  let ret = '';
+  ret += '<img no-lazy class="inline" src="' + url + '"';
+  let style = '';
+  if (args.length > 1) {
+    for (let i = 1; i < args.length; i++) {
+      const tmp = args[i].trim();
+      if (tmp.includes('height=')) {
+        style += 'height:' + tmp.substring(7, tmp.length) + ';';
+      }
+    }
+  }
+  if (style.length > 0) {
+    ret += ' style="' + style + '"';
+  } else {
+    ret += ' style="height:1.5em"';
+  }
+  ret += '/>';
+  return ret;
+});

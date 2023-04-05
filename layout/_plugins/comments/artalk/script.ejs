@@ -1,0 +1,74 @@
+<script>
+  volantis.layoutHelper("comments",`<div id="artalk_container"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`);
+  function load_artalk() {
+    if(!document.querySelectorAll("#artalk_container")[0])return;
+    volantis.css("<%- theme.cdn.artalk_css %>");
+    <% if (theme.comments.artalk.latex) { %>
+    volantis.css("<%- theme.cdn.katex_css %>");
+    volantis.js("<%- theme.cdn.katex_js %>");
+    volantis.js("<%- theme.cdn.artalk_js %>");
+    volantis.js("<%- theme.cdn.artalk_katex %>").then(p_artalk);
+    <% } else { %>
+    volantis.js("<%- theme.cdn.artalk_js %>").then(p_artalk);
+    <% } %>
+  }
+
+  function p_artalk() {
+    if(!document.querySelectorAll("#artalk_container")[0])return;
+    let path = pdata.commentPath;
+    let placeholder = pdata.commentPlaceholder || "<%= theme.comments.artalk.placeholder %>" || "";
+    if (path.length == 0) {
+      path = '<%= theme.comments.artalk.path %>' || decodeURI(window.location.pathname);
+    }
+    if(!'<%= config.permalink %>'.includes('/index.html')) {
+      path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
+    }
+
+    volantis.artalk = new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
+      el: '#artalk_container',
+      pageKey: path,
+      pageTitle: document.title,
+      placeholder: placeholder,
+      useBackendConf: true,
+      site: '<%= config.title %>',
+      darkMode: volantis.dark.mode === "dark",
+      pvEl: '#artalk_visitors',
+
+      <% if(!!theme.comments.artalk.imageUploader?.api){ %>
+      imgUploader: function(file) {
+        let headers = new Headers();
+        headers.set('Accept', 'application/json');
+        <% if(!!theme.comments.artalk.imageUploader?.token) { %>
+          headers.set('Authorization', '<%= theme.comments.artalk.imageUploader?.token %>')
+        <% } %>
+        let formData = new FormData();
+        formData.append('file', file);
+        return fetch('<%= theme.comments.artalk.imageUploader?.api %>',{
+          method: 'POST',
+          body: formData,
+          headers: headers
+          }).then((resp) => resp.json())
+            .then((resp) => resp.<%= theme.comments.artalk.imageUploader?.resp %>)
+      },
+      <% } %>
+    }));
+
+    if (typeof VolantisFancyBox === "undefined"){
+      const checkFancyBox = setInterval(() => {
+        if(typeof VolantisFancyBox === "undefined") return;
+        clearInterval(checkFancyBox);
+        VolantisFancyBox.bind('.atk-content img:not([atk-emoticon])');
+      })
+    } else {
+      VolantisFancyBox.bind('.atk-content img:not([atk-emoticon])');
+    }
+  }
+
+  load_artalk();
+
+  function dark_artalk() {
+    if(!document.querySelectorAll("#artalk_container")[0]) return;
+    volantis?.artalk?.setDarkMode(volantis.dark.mode === "dark")
+  }
+  volantis.dark.push(dark_artalk);
+</script>

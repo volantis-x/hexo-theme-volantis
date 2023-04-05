@@ -1,6 +1,6 @@
-<div class="new-meta-item date">
+<div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="<%- moment(post.date).format() %>">
   <a class='notlink'>
-    <i class="<%- theme.meta.date.icon %> fa-fw" aria-hidden="true"></i>
-    <p><%- theme.meta.date.title + date(post.date, theme.meta.date.format) %></p>
+    <i class="<%- theme.article.body.meta_library.date.icon %> fa-fw" aria-hidden="true"></i>
+    <p><%- theme.article.body.meta_library.date.title + date(post.date, theme.article.body.meta_library.date.format) %></p>
   </a>
 </div>

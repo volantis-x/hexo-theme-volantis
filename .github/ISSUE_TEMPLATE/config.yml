@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 提问一个关于Volantis的问题或者寻求支持
+    url: https://github.com/volantis-x/hexo-theme-volantis/discussions/new
+    about: Ask a question about volantis or get support
+  - name: 提问的智慧
+    url: https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md
+    about: How To Ask Questions The Smart Way

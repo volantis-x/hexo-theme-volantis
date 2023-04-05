@@ -1,0 +1,30 @@
+<% if (theme.comments.service == 'artalk' && page.comments !== false) { %> 
+  <div class="new-meta-item comments-count"> 
+    <% 
+      let commentPath;
+      let path = post.path || page.path;
+      if (theme.comments.service && theme.comments.service.length > 0) {
+        let service = theme.comments.service;
+        if (page.comments == undefined || page.comments != false) {
+          if (service in page && page[service].path) {
+            commentPath = page[service].path;
+          }
+        }
+      }
+      if(!!theme.comments.artalk.path) path = theme.comments.artalk.path
+      if(commentPath) path = commentPath;
+      path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
+    %> 
+    <a href="<%- url_for(path) %>#comments"> 
+      <i class="<%- theme.article.body.meta_library.artalkcount.icon %> fa-fw"></i> 
+      <p> 
+        <span data-page-key="<%- url_for(path) %>" id="ArtalkCount"> 
+          <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
+        </span> 
+        <% if(theme.article.body.meta_library.artalkcount.desc) { %> 
+          <span class="leancloud-comments-count">&nbsp;<%- theme.article.body.meta_library.artalkcount.desc %></span> 
+        <% } %> 
+      </p>       
+    </a> 
+  </div> 
+<% } %> 

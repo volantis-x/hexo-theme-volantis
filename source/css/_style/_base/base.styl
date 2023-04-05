@@ -1,0 +1,196 @@
+:root
+  // tag plugin from stellar
+  --block-hover: mix($c-block-light, $c-text-light, 98)
+  --text-p1: $c-text-light
+  --text-p3: mix($c-text-light, $c-site-bg-light, 60)
+  --card: $c-card-light
+
+::-moz-selection {
+  background: $color-selection
+}
+
+::selection {
+  background: $color-selection
+}
+
+
+h1
+  font-size: $fontsize-h1
+h2
+  font-size: $fontsize-h2
+h3
+  font-size: $fontsize-h3
+h4
+  font-size: $fontsize-h4
+h5
+  font-size: $fontsize-h5
+h6
+  font-size: $fontsize-h6
+
+h1,h2,h3,h4,h6
+  font-weight: normal
+
+a
+  &:not([href])
+    cursor: default
+
+
+pre
+  tab-size: 4
+  -moz-tab-size: 4
+  -o-tab-size: 4
+  -webkit-tab-size: 4
+
+.clearfix
+  zoom: 1
+  &:before,&:after
+    content: " "
+    display: table
+  &:after
+    clear: both
+
+.hidden
+  text-indent: -9999px
+  visibility: hidden
+  display: none
+
+.inner
+  position: relative
+  width: 80%
+  max-width: 710px
+  margin: 0 auto
+.vertical
+  display: table-cell
+  vertical-align: middle
+
+article,aside,details,figcaption,figure,footer,hgroup,main,menu,nav,section,summary
+  display: block
+
+article
+  overflow: hidden
+
+abbr[title]
+  border-bottom: 1px dotted
+b,strong
+  font-weight: bold
+dfn
+  font-style: italic
+h1
+  font-size: 2em
+  margin: 0.67em 0
+mark
+  background: #ff0
+  color: #000
+small
+  font-size: 80%
+sub,sup
+  font-size: 50%
+  line-height: 1em
+sup
+  vertical-align: text-top
+sub
+  vertical-align: text-bottom
+
+figure
+  margin: 1em 40px
+
+pre
+  overflow: auto
+
+span.dot,span.sep
+  font-size: 0.9em
+  margin: 0 .2rem
+span.dot:before
+  content: '·'
+span.sep:before
+  content: '/'
+
+code,kbd,pre,samp
+  font-family: monospace, monospace
+  font-size: 1em
+
+optgroup,select,textarea
+  color: inherit /* 1 */
+  font: inherit /* 2 */
+  margin: 0 /* 3 */
+
+select
+  text-transform: none
+
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"]
+  -webkit-appearance: button /* 2 */
+  cursor: pointer /* 3 */
+
+
+button[disabled],html input[disabled]
+  cursor: default
+
+button::-moz-focus-inner,
+input::-moz-focus-inner
+  border: 0
+  padding: 0
+
+
+input[type="checkbox"],
+input[type="radio"]
+  box-sizing: border-box /* 1 */
+  padding: 0 /* 2 */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button
+  height: auto
+
+
+input[type="search"]
+  -webkit-appearance: textfield /* 1 */
+  -moz-box-sizing: content-box
+  -webkit-box-sizing: content-box /* 2 */
+  box-sizing: content-box
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration
+  -webkit-appearance: none
+
+
+fieldset
+  border: 1px solid #c0c0c0
+  margin: 0 2px
+  padding: 0.35em 0.625em 0.75em
+
+
+legend
+  border: 0 /* 1 */
+  padding: 0 /* 2 */
+
+textarea
+  overflow: auto
+
+optgroup
+  font-weight: bold
+
+
+table:not([class])
+  border-collapse: collapse
+  overflow: auto
+  display: inline-block
+  max-width: 100%
+  vertical-align: text-top
+  th
+    background-color: darken($color-block, 2)
+  td,th
+    padding: 8px 16px
+    border: 2px solid darken($color-block, 2)
+    line-height: 1.5
+    font-size: 90%
+  tr
+    word-break: keep-all
+    background-color: lighten($color-block, 3)
+    trans()
+    &:hover
+      background-color: darken($color-block, 2)
+
+
+td,th
+  padding: 0

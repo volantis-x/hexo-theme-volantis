@@ -1,0 +1,15 @@
+<script>
+  volantis.layoutHelper("page-plugins",`<div id="artitalk_main"></div>`)
+</script>
+<script>
+  volantis.import.jQuery().then(()=>{
+    volantis.js("<%= theme.cdn.artitalk %>").then(()=>{
+      new Artitalk(<%- JSON.stringify(theme.plugins.artitalk) %>)
+    })
+  })
+</script>
+<style>
+  #artitalk_main #lazy {
+    background: transparent !important;
+  }
+</style>

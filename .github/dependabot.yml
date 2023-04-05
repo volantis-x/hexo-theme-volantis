@@ -1,0 +1,18 @@
+version: 2
+updates:
+  # daily update for deps
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+      time: '08:00'
+      timezone: Asia/Shanghai
+    open-pull-requests-limit: 50
+
+  # daily update for github actions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+      time: '08:00'
+      timezone: Asia/Shanghai

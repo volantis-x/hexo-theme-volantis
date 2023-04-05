@@ -1,0 +1,36 @@
+//代码块复制按钮
+.highlight
+  //方便copy代码按钮（btn-copy）的定位
+  position: relative
+
+.btn-copy
+  z-index: 1
+  display: inline-block
+  cursor: pointer
+  border: none
+  disable-user-select()
+  -webkit-appearance: none
+  font-family: Menlo, $fontfamily-code
+  font-size: 11px
+  font-weight: bold
+  padding: $gap * 0.25 $gap * 0.5
+  >i
+    margin-right: 4px
+  color: var(--color-meta)
+  background: var(--color-block)
+  border-radius: 3px
+  box-shadow: $boxshadow-card
+  position: absolute
+  top: 1px
+  right: 1px
+  opacity: 0
+  trans()
+  &:hover
+    color: $color-hover
+    background: bgcolor($color-hover)
+
+.highlight:hover .btn-copy
+  opacity: 1
+
+.article pre:hover .btn-copy
+  opacity: 1

@@ -1,0 +1,85 @@
+// 以后关于 md 渲染方面的都写到这里
+.md
+  >p
+    padding-top: 4px
+  h1,h2,h3,h4,h5,h6
+    position: relative
+    pointer-events: none
+    margin-top: 0
+    font-weight: 500
+    >a
+      color: inherit
+      pointer-events: auto
+      &:hover
+        color: $color-hover
+    &:before
+      content: ''
+      display: block
+      margin-top: 0 - $navbar-height +  $gap
+      height: $navbar-height + $gap * 2
+      visibility: hidden
+      pointer-events: none
+  h1,h2
+    &:before
+      margin-top: $gap-h2 - $navbar-height - $gap * 1
+  .article-meta+h1,.article-meta+h2
+    margin-top: $gap-h2 - $navbar-height - $gap * 4
+  h3,h4,h5,h6
+    margin-bottom: $gap-p
+  h3
+    &:before
+      margin-top: $gap-h3 - $navbar-height - $gap
+  h4
+    &:before
+      margin-top: $gap-h4 - $navbar-height - $gap
+  h5
+    font-weight: bold
+  h2+h3:before
+    margin-top: $gap-h2 - $navbar-height - $gap * 4
+  ul,ol
+    font-size: $fontsize-list
+    list-style: initial
+    padding-left: 8px
+    margin-left: $gap
+    margin-top: $gap-p
+    margin-bottom: $gap-p
+    ul,ol
+      margin-top: 0
+      margin-bottom: 0
+    li
+      margin-top: 0px
+      margin-bottom: 0px
+      li
+        margin-top: 0
+        margin-bottom: 0
+      p
+        margin-top: 4px
+        margin-bottom: 0
+    &.task-list
+      padding-left: 0
+      margin-left: 4px
+      li
+        list-style: none
+        input
+          margin-right: 4px
+
+
+  ul>li
+    list-style: initial
+  ol>li
+    list-style: decimal
+
+  .div-ori-link
+    display: block
+    text-align: center
+    margin: 4rem 0
+  .ori-link
+    margin: auto
+    padding: 1em 3em
+    border: 1px solid $color-theme
+    border-radius: $border-button
+    color: $color-theme
+    font-weight: 500
+    &:hover
+      color: $color-hover
+      border-color: $color-hover

@@ -1,0 +1,162 @@
+div.note
+  $border-codeblock = 4px
+  bg($c)
+    return mix($c, $color-card, 10)
+  border($c)
+    return mix($c, $color-card, 100)
+  position: relative
+  margin-top: $gap-p
+  margin-bottom: $gap-p
+  padding: $gap
+  padding-left: "calc(16px + %s)" % $gap
+  border-radius: $border-codeblock
+  font-size: $fontsize-list
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+    if $note-icons
+      margin-top: 3px
+    else
+      margin-top: 0
+
+    margin-bottom: 0
+    padding-top: 0 !important
+    border-bottom: initial
+
+  p,
+  ul,
+  ol,
+  blockquote,
+  img
+    margin-top: $gap-p * 0.5
+    margin-bottom: $gap-p * 0.5
+  .link-card
+    background: var(--color-card)
+  &::before
+    position: absolute
+    top: "calc(50% - %s * 0.5)" % (24px)
+    left 4px
+    width: 24px
+    height: 24px
+    text-align: center
+    font-weight: 600
+    line-height: 24px
+    vertical-align: middle
+    font-family: hexo-config('tag_plugins.note.iconfont')
+
+  background: var(--color-block)
+  border-left: $border-codeblock solid $color-theme
+  &::before
+    color: $color-theme
+    content: '\f054'
+  if hexo-config('tag_plugins.note') && hexo-config('tag_plugins.note.icon')
+    &::before
+      content: hexo-config('tag_plugins.note.icon') || '\f054'
+    if hexo-config('tag_plugins.note.color')
+      $c = convert(hexo-config('tag_plugins.note.color')) || mix($color-text, $color-card, 80)
+      background: bg($c)
+      border-color: border($c)
+      &::before
+        color: border($c)
+
+  &.quote
+    background: bg($color-md-blue)
+    border-color: border($color-md-blue)
+    &::before
+      color: border($color-md-blue)
+      content: '\f10d'
+  &.info
+    background: bg($color-theme)
+    border-color: border($color-theme)
+    &::before
+      color: border($color-theme)
+      content: '\f129'
+  &.success,&.done
+    background: bg($color-mac-green)
+    border-color: border($color-mac-green)
+    &::before
+      color: border($color-mac-green)
+      content: '\f00c'
+  &.warning
+    background: bg($color-mac-yellow)
+    border-color: border($color-mac-yellow)
+    &::before
+      color: border($color-mac-yellow)
+      content: '\f12a'
+  &.danger,&.error
+    background: bg($color-mac-red)
+    border-color: border($color-mac-red)
+    &::before
+      color: border($color-mac-red)
+      content: '\f00d'
+  &.radiation::before
+    content: '\f7b9'
+  &.bug::before
+    content: '\f188'
+  &.idea::before
+    content: '\f0eb'
+  &.link::before
+    content: '\f0c1'
+  &.paperclip::before
+    content: '\f0c6'
+  &.todo::before
+    content: '\f0ae'
+  &.message::before
+    content: '\f4ad'
+  &.guide::before
+    content: '\f277'
+  &.download::before
+    content: '\f019'
+  &.up::before
+    content: '\f102'
+  &.undo::before
+    content: '\f2ea'
+  &.play::before
+    content: '\f144'
+
+
+  &.clear
+    background: none
+    border-color: none
+  &.light
+    background: mix($color-text, $color-card, 5)
+    border-color: mix($color-text, $color-card, 50)
+    &::before
+      color: mix($color-text, $color-card, 50)
+  &.gray
+    background: mix($color-text, $color-card, 5)
+    border-color: mix($color-text, $color-card, 80)
+    &::before
+      color: mix($color-text, $color-card, 80)
+  &.theme
+    background: bg($color-theme)
+    border-color: border($color-theme)
+    &::before
+      color: border($color-theme)
+  &.red
+    background: bg($color-mac-red)
+    border-color: border($color-mac-red)
+    &::before
+      color: border($color-mac-red)
+  &.yellow
+    background: bg($color-mac-yellow)
+    border-color: border($color-mac-yellow)
+    &::before
+      color: border($color-mac-yellow)
+  &.green
+    background: bg($color-mac-green)
+    border-color: border($color-mac-green)
+    &::before
+      color: border($color-mac-green)
+  &.cyan
+    background: bg($color-mac-cyan)
+    border-color: border($color-mac-cyan)
+    &::before
+      color: border($color-mac-cyan)
+  &.blue
+    background: bg($color-md-blue)
+    border-color: border($color-md-blue)
+    &::before
+      color: border($color-md-blue)

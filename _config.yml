@@ -1,43 +1,1283 @@
-############################### Style ###############################
-style:
-  font_smoothing: false # font-smoothing for webkit
+
+# ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# 这里是 6.0.0-alpha 分支
+# Breaking Change 会放到这个分支
+# ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
+############################### Volantis ###############################
+info:
+  theme_name: Volantis # This is theme's name.
+  theme_docs: https://volantis.js.org/ # This is theme's URL.
+  theme_repo: https://github.com/volantis-x/hexo-theme-volantis
+# Debug 调试模式
+debug: env # false: 关闭调试模式， env：环境配置检查， rightMenus: 调试右键, cdn: 调试 CDN System
+############################### 默认占位图 ###############################
+default:
+  avatar: volantis-static/media/placeholder/avatar/round/3442075.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
+  link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
+  cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
+  image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+
+
+############################### CDN System ###############################
+
+cdn_system:
+  # CDN 优先级 从高到低排序 写入 priority 列表即表示启用(enable)
+  priority: [custom, local, cdnjs, npm, static]
+  # ========================================================================
+  # cdn数据配置文件见 "theme/_cdn.yml", 可以在 source/_data/cdn.yml 覆盖 theme/_cdn.yml
+  # 变量说明：
+  # 以下变量只能在 `prefix` 中使用。
+  # ${site_root}                站点根目录 一般是 "/"
+  # 以下变量只能在 `format` 中使用。
+  # ${prefix}                   CDN 链接前缀
+  # ${name}                     package 名称 见 "theme/_cdn.yml"
+  # ${version}                  package 版本 见 "theme/_cdn.yml"
+  # ${file}                     文件路径 见 "theme/_cdn.yml"
+  # ${min_file}                 文件路径 ${file} 后添加 .min. (jsdelivr、cdnjs 官方自带压缩)
+  # ${timestamp}                Hexo运行时的时间戳(eg：1661246702300), 可用于静态资源版本控制 format: ${prefix}${file}?v=${timestamp}
+  system_config:
+    # 自定义配置 使用 "theme/_cdn.yml" 中的名称作为配置项的键
+    custom:
+      busuanzi: https://npm.elemecdn.com/penndu@1.0.0/bsz.js  # 杜老师友情赞助
+      #volantis_style: /css/style.css
+      #volantis_app: /js/app.js
+
+    # 主题 /js与/css目录 （一般放在本地，可以在此处配置站点CDN）,"theme/_cdn.yml" 中以 "volantis_" 开头的名称
+    # Tip: 在本配置文件中 匹配以 "volantis-local" 开头的链接路径替换为该格式的前缀开头 prefix
+    local:
+      # CDN 链接前缀
+      prefix: ${site_root}
+      # local CDN 格式
+      format: ${prefix}${file}
+    # npm
+    # https://www.npmjs.com/
+    # Tip: 在本配置文件中 匹配以 "volantis-npm" 开头的链接路径替换为该格式的前缀开头 prefix
+    npm:
+      # CDN 链接前缀
+      prefix: https://unpkg.com
+      # npm CDN 格式
+      format: ${prefix}/${name}@${version}/${file}
+    # volantis static 静态资源文件 npm 包 CDN 地址
+    # https://github.com/volantis-x/volantis-static
+    # Tip: 在本配置文件中 匹配以 "volantis-static" 开头的链接路径替换为该格式的前缀开头 prefix
+    static:
+      # CDN 链接前缀
+      prefix: https://unpkg.com/volantis-static@0.0.1660614606622
+      # volantis-static CDN 格式
+      format: ${prefix}/libs/${name}/${file}
+    # cdnjs
+    # https://cdnjs.com/
+    # Tip: 在本配置文件中 匹配以 "volantis-cdnjs" 开头的链接路径替换为该格式的前缀开头 prefix
+    cdnjs:
+      # CDN 链接前缀
+      prefix: https://cdn.bootcdn.net/ajax/libs
+      # cdnjs CDN 格式
+      format: ${prefix}/${name}/${version}/${min_file}
+  # ========================================================================
+
+
+
+
+
+
+############################### CSP ###############################
+# 内容安全策略( CSP ) meta 标签 http-equiv="Content-Security-Policy"
+# https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
+# https://content-security-policy.com/
+# 也可以设为 false 在 HTTP 标头中设置 https://volantis.js.org/v5/advanced-settings/#设置-HTTP-响应标头
+csp:
+  enable: true
+  content: "
+    default-src 'self' https:;
+    block-all-mixed-content;
+    base-uri 'self' https:;
+    form-action 'self' https:;
+    worker-src 'self' https:;
+    connect-src 'self' https: *;
+    img-src 'self' data: https: *;
+    media-src 'self' https: *;
+    font-src 'self' data: https: *;
+    frame-src 'self' https: *;
+    manifest-src 'self' https: *;
+    child-src https:;
+    script-src 'self' https: 'unsafe-inline' *;
+    style-src 'self' https: 'unsafe-inline' *;
+  "
+  # 可以使用自动程序替换默认的 'unsafe-inline' 和 * 生成更严格的内容安全策略.
+  # 另可以参考官网之前的 gulp 方案.（CSP Level 3 ：Safari 15.4+ Chrome 59+ Firefox 58+ Edge 79+）
+  # gulpfile.js https://gist.github.com/MHuiG/e50ce64fd94f641f679a0736fef925e4
+
+########################################################################
+#  https://web.dev/content-visibility/
+#  https://www.caniuse.com/?search=content-visibility
+content_visibility: false
+
+# 全局页面字符串替换  A => B (可用于临时修改错字等)
+replace:
+  - https://cdn.jsdelivr.net/npm/ => https://unpkg.com/
+  - https://cdn.jsdelivr.net/gh/ => https://gcore.jsdelivr.net/gh/
+
+
+# dns-prefetch preconnect x-dns-prefetch-control
+dns_prefetch:
+  - https://unpkg.com
+  - https://cdn.bootcdn.net
+
+
+# 平滑滚动效果
+scroll_smooth: true
+############################### Navigation Bar ############################### > start
+# 注意事项：建议规范全站路径 URL 最后带一个 "/" 例如 "about/"
+navbar:
+  visiable: auto # always, auto
+  logo: # choose [img] or [icon + title]
+    img: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    icon:
+    title:
+  menu:
+    - name: 博客
+      icon: fa-solid fa-rss
+      url: /
+    - name: 分类
+      icon: fa-solid fa-folder-open
+      url: categories/
+    - name: 标签
+      icon: fa-solid fa-tags
+      url: tags/
+    - name: 归档
+      icon: fa-solid fa-archive
+      url: archives/
+    - name: 友链
+      icon: fa-solid fa-link
+      url: friends/
+    - name: 关于
+      icon: fa-solid fa-info-circle
+      url: about/
+  search: Search...   # Search bar placeholder
+############################### Navigation Bar ############################### > end
+
+
+############################### Cover ############################### > start
+cover:
+  height_scheme: full # full, half
+  layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  display:
+    home: true
+    archive: true
+    others: false # can be written in front-matter 'cover: true'
+  background: https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg
+  # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
+  logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
+  title: 'Volantis'
+  subtitle: ''
+  search: A Wonderful Theme for Hexo # search bar placeholder
+  features:
+    - name: 文档
+      icon: #
+      img: volantis-static/media/twemoji/assets/svg/1f5c3.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
+      url: /v4/getting-started/
+    - name: 帮助
+      icon: #
+      img: volantis-static/media/twemoji/assets/svg/1f516.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
+      url: faqs/
+    - name: 示例
+      icon: #
+      img: volantis-static/media/twemoji/assets/svg/1f396.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
+      url: /examples/
+    - name: 社区
+      icon: #
+      img: volantis-static/media/twemoji/assets/svg/1f389.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
+      url: /contributors/
+    - name: 博客
+      icon: #
+      img: volantis-static/media/twemoji/assets/svg/1f4f0.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
+      url: /archives/
+    - name: 源码
+      icon: #
+      img: volantis-static/media/twemoji/assets/svg/1f9ec.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
+      url: https://github.com/volantis-x/hexo-theme-volantis/
+############################### Cover ############################### > end
+
+pages:
+  # 友链页面配置
+  friends:
+    layout_scheme: traditional # simple: 简单布局, traditional: 传统布局
+
+############################### Article Layout ############################### > start
+# 文章布局
+article:
+  # 文章列表页面的文章卡片布局方案
+  preview:
+    scheme: landscape # landscape
+    # pin icon for post
+    pin_icon: volantis-static/media/twemoji/assets/svg/1f4cc.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4cc.svg
+    # auto generate title if not exist
+    auto_title: true # false, true
+    # auto generate excerpt if not exist
+    auto_excerpt: true # false, true
+    # hide excerpt
+    hide_excerpt: false
+    # show split line or not
+    line_style: solid # hidden, solid, dashed, dotted
+    # show author
+    author: false # true, false
+    # show readmore button
+    readmore: auto # auto, always
+  # 文章详情页面的文章卡片本体布局方案
+  body:
+    # 文章顶部信息
+    # 从 meta_library 中取
+    top_meta: [author, category, date, counter] #启用评论数量需在此添加
+    # 文章底部信息
+    # 从 meta_library 中取
+    bottom_meta: [updated, tags, share]
+    # ----------------
+    # 文章页脚组件
+    footer_widget:
+      # ----------------
+      # 参考资料、相关资料等 (for layout: post/docs)
+      references:
+        title: 参考资料
+        icon: fa-solid fa-quote-left
+        # 在 front-matter 中:
+        #   references:
+        #     - title: 某篇文章
+        #       url: https://
+        # 即可显示此组件。
+      # ----------------
+      # 文章推荐 (for layout: post/docs)
+      # 推荐算法需要依赖中文分词工具，nodejieba只支持中英文 npm i nodejieba -S
+      recommended_article:
+        enable: false
+        layout: ["post", "docs"]
+        title: 推荐阅读
+        icon: fa-solid fa-bookmark
+        max_count: 6
+        placeholder_img: https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg
+        # 不展示文章推荐
+        # front-matter 使用 skip_recommended_article: true 关闭
+        # 不在以下文件夹文章中展示文章推荐 根目录是source/
+        skip_dirs:
+          - wiki/
+      # ----------------
+      # 相关文章，需要安装插件 (for layout: post)
+      # npm i hexo-related-popular-posts
+      related_posts:
+        enable: false
+        title: 相关文章
+        icon: fa-solid fa-bookmark
+        max_count: 5
+        # 设为空则不使用文章头图
+        placeholder_img: https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg
+      # ----------------
+      # 版权声明组件 (for layout: post)
+      copyright:
+        enable: false
+        permalink: '本文永久链接是：'
+        content:
+          - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
+          - permalink
+         # 自定义版权组件：精细到文章的版权声明
+        custom: false # 开启后替代上方内容的版权显示
+        customData:
+          default: type1  # 默认授权声明
+          #############################
+          # 你可以在文章的 front-matter 覆盖默认版权声明
+          # 配置示例（均可选）： 
+          # copyright:
+          #   type: type3           # 当前文章版权声明类型
+          #   author: 张三          # 本文作者
+          #   ref:                  # 原文出处
+          #     title:              # 原文出处 - 标题
+          #     url:                # 原文出处 - 链接
+          #############################
+          rules:
+            type1: 
+              text: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh#" target="_blank">CC BY-NC-SA 4.0</a>
+              desc: 署名-非商业性使用-相同方式共享 4.0 国际。
+            type2: 
+              text: 禁止转载引用
+              desc: 除非获得原作者的单独授权，任何第三方不得转载！
+            type3: 
+              text: 原作许可协议
+              desc: 本文转载自他站，转载或引用本文时，请遵守原作许可协议！
+            type4: 
+              text: 来自互联网
+              desc: 本文来自互联网，未知来源，侵权请联系删除。
+            type5:
+              text: 允许规范转载
+              desc: 转载请保留本文转载地址，著作权归作者所有！
+            type6:
+              text: 允许付费转载
+              desc: 您可以联系作者通过付费方式获得授权。
+            # 还能自行添加更多
+      # ----------------
+      # 打赏组件 (for layout: post)
+      donate:
+        enable: false
+        images:
+          - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+          - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+    # meta library
+    meta_library:
+      # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
+      # https://volantis.js.org/advanced-settings/#多人协同
+      author:
+        avatar: volantis-static/media/org.volantis/blog/favicon/apple-touch-icon.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
+        name: 请设置文章作者
+        url: /
+      # 文章创建日期
+      date:
+        icon: fa-solid fa-calendar-alt
+        title: '发布于：'
+        format: 'll' # 日期格式 http://momentjs.com/docs/
+      # 文章更新日期
+      updated:
+        icon: fa-solid fa-edit
+        title: '更新于：'
+        format: 'll' # 日期格式 http://momentjs.com/docs/
+      # 文章分类
+      category:
+        icon: fa-solid fa-folder-open
+      # 文章浏览计数
+      counter:
+        icon: fa-solid fa-eye
+        unit: '次浏览'
+      # waline 文章评论数量
+      walinecount:
+        icon: fa-solid fa-comment-dots
+        desc: '条评论' # 条评论
+      # artalk 文章评论数量
+      artalkcount:
+        icon: fa-solid fa-comment-dots
+        desc: '条评论' # 条评论
+      # 文章字数和阅读时长
+      wordcount:
+        icon_wordcount: fa-solid fa-keyboard
+        icon_duration: fa-solid fa-hourglass-half
+      # 文章标签
+      tags:
+        icon: fa-solid fa-hashtag
+      # 分享
+      share:
+        - id: qq
+          img:  volantis-static/media/org.volantis/logo/128/qq.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png
+        - id: qzone
+          img: volantis-static/media/org.volantis/logo/128/qzone.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
+        - id: weibo
+          img: volantis-static/media/org.volantis/logo/128/weibo.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
+        - id: # qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
+          img: # volantis-static/media/org.volantis/logo/128/wechat.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
+        - id: # telegram
+          img: # volantis-static/media/org.volantis/logo/128/telegram.png #  https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
+############################### Article Layout ############################### > end
+
+
+############################### Comments ############################### > start
+comments:
+  title: <i class='fa-solid fa-comments'></i> 评论
+  subtitle:
+  service: giscus
+  # 可选评论系统 #
+
+  # artalk
+  # https://artalk.js.org/
+  # https://github.com/ArtalkJS/Artalk
+  artalk:
+    server: https://yours-artalk-domain    # 修改为自建的后端服务地址
+    path:  # 全局评论地址
+    placeholder: # 评论占位
+    visitor: true # 是否显示文章阅读数
+    latex: false # 启用 Latex 支持
+    # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
+    # 配置此项时将覆盖服务端上传能力
+    imageUploader:
+      # 以兰空图床为例，下列填写内容为：
+      # url: 'https://xxxxxx/api/v1/upload'
+      # token: 'Bearer xxxxxxxxxxxxxx'
+      # resp: 'data.links.url'
+      api: # 图床地址
+      token: # 图床验证
+      resp: # 图片地址返回值的字段
+    # 更多置项可在 Artalk 后端进行配置，详见 https://artalk.js.org/guide/backend/fe-control.html
+    # 也可以在此处继续参考上方例子进行配置，不建议重写配置的字段除上方所述外还有：
+    # [el, useBackendConf, pageKey, pageTitle, site, darkMode, pvEl, imgUploader]
+
+  # giscus
+  # https://giscus.app
+  # https://github.com/laymonage/giscus
+  giscus:
+    # 以下配置按照 yml 格式增删填写即可
+    # repo: xxx/xxx
+    # repo-id: xxx
+    # category: xxx
+    # category-id: xxx
+    # mapping: "pathname"
+    # reactions-enabled: "1"
+    # emit-metadata: "0"
+    # lang: "zh-CN"
+    # 以上配置按照 yml 格式增删填写即可
+    theme:
+      light: "light" # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/light.css
+      dark: "dark" # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/dark.css
+
+  # beaudar
+  # https://beaudar.lipk.org/
+  beaudar:
+    repo: xxx/xxx
+    issue-term: pathname
+    issue-number:
+    branch: main
+    position: top
+    order: desc
+    theme:
+      light: github-light
+      dark: github-dark
+    label: ✨💬✨
+
+  # utterances
+  # https://utteranc.es/
+  utterances:
+    repo: xxx/xxx
+    issue-term: pathname
+    issue-number:
+    theme:
+      light: github-light
+      dark: github-dark
+    label: ✨💬✨
+
+  # Disqus
+  # https://disqus.com
+  disqus:
+    shortname:
+    # optional
+    autoload: false
+    path: # 全局评论地址
+
+  # DisqusJS
+  # https://github.com/SukkaW/DisqusJS
+  disqusjs:
+    path: # 全局评论地址
+    # 配置项按照yml格式继续填写即可 除了 [siteName url identifier] 选项
+    #shortname:
+    #api:
+    #apikey:
+    #admin:
+    #nesting:
+
+  # Gitalk
+  # https://gitalk.github.io/
+  gitalk:
+    # 配置项按照yml格式继续填写即可 除了 [id distractionFreeMode] 选项
+    clientID:
+    clientSecret:
+    repo:
+    owner:
+    admin: # []
+    path: # 全局评论地址
+
+  # https://vssue.js.org/zh/
+  vssue:
+    owner:
+    repo:
+    clientId:
+    clientSecret:
+
+  # https://www.livere.com
+  livere:
+    uid:
+
+  # Isso
+  # https://posativ.org/isso/
+  isso:
+    url: https://example.com/(path/)
+    src: https://example.com/(path/)js/embed.min.js
+    css:
+    gravatar:
+
+  # https://www.barkdull.org/software/hashover
+  hashover:
+    src: https://example.com/(path/)comments.php
+
+  # Twikoo
+  # https://twikoo.js.org/
+  twikoo:
+    path: # 全局评论地址
+    # 其他配置项按照yml格式继续填写即可 除了 [el path] 选项
+    envId: xxxxxxxxxxxxxxx # 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+    placeholder: #全局评论占位，也可以在管理面板中的配置管理处设置（此处优先级更高）
+    visitor: true # 是否显示文章阅读数
+
+  # Waline
+  # https://waline.js.org/
+  waline:
+    path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是waline的问题
+    placeholder: # 评论占位提示
+    serverURL: # Waline 的服务端地址（必填） 测试用地址: https://waline.vercel.app
+    imageUploader:
+      # 适配了兰空图床V1、V2版本
+      # 以兰空图床V1为例，下列填写内容为：
+      # fileName: file
+      # tokenName: Authorization
+      # api: https://xxxxxx/api/v1/upload
+      # token: Bearer xxxxxxxxxxxxxx
+      # resp: data.links.url
+      # 以兰空图床V2为例，下列填写内容为：
+      # fileName: image
+      # tokenName: token
+      # api: https://xxxxxx/api/upload
+      # token: xxxxxxxxxxxxxx
+      # resp: data.url
+      fileName: # 根据版本二选一
+      tokenName: # 根据版本二选一
+      api: # 图床 api 地址
+      token: # 图床验证
+      resp: # 图片地址返回值的字段
+    pageview: true # 是否显示文章阅读数
+    comment: true  # 是否显示文章评论数
+    # 其他配置项按照yml格式继续填写即可 除了 [el path imageUploader] 选项
+    # 组件属性地址：https://waline.js.org/reference/component.html
+    # meta: ['nick', 'mail', 'link']
+
+  # Discuss
+  # https://discuss.js.org
+  discuss:
+    serverURLs: # Discuss server address url
+    visitStat: true # 是否显示文章阅读数
+    # https://discuss.js.org/Quick-Start.html#path
+
+
+############################### Comments ############################### > end
+
+############################### Sidebar ############################### > start
+sidebar:
+  position: right # left right
+  # 主页、分类、归档等独立页面
+  for_page: [blogger, category, tagcloud, donate]
+  # layout: docs/post 这类文章页面
+  for_post: [toc]
+  # 侧边栏组件库
+  widget_library:
+    # ---------------------------------------
+    # blogger info widget
+    blogger:
+      class: blogger
+      display: [desktop, mobile] # [desktop, mobile]
+      avatar: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+      shape: rectangle # circle, rectangle
+      url: /about/
+      title:
+      subtitle:
+      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      social:
+        - icon: fa-solid fa-rss
+          url: /atom.xml
+        - icon: fa-solid fa-envelope
+          url: mailto:me@xxx.com
+        - icon: fab fa-github
+          url: https://github.com/volantis-x/
+        - icon: fa-solid fa-headphones-alt
+          url: /
+    # ---------------------------------------
+    # toc widget (valid only in articles)
+    toc:
+      class: toc
+      display: [desktop, mobile] # [desktop, mobile]
+      sticky: true
+      header:
+        icon: fa-solid fa-list
+        title: 本文目录
+      list_number: false
+      min_depth: 2
+      max_depth: 5
+    # ---------------------------------------
+    # music
+    music:
+      class: music
+      display: [desktop, mobile] # [desktop, mobile]
+    # ---------------------------------------
+    # category widget
+    category:
+      class: category
+      display: [desktop] # [desktop, mobile]
+      header:
+        icon: fa-solid fa-folder-open
+        title: 文章分类
+        url: /blog/categories/
+    # ---------------------------------------
+    # tagcloud widget
+    tagcloud:
+      class: tagcloud
+      display: [desktop, mobile] # [desktop, mobile]
+      header:
+        icon: fa-solid fa-tags
+        title: 热门标签
+        url: /blog/tags/
+      min_font: 14
+      max_font: 24
+      color: true
+      start_color: '#999'
+      end_color: '#555'
+    # ---------------------------------------
+    # qrcode widget
+    qrcode:
+      class: qrcode
+      display: [desktop, mobile] # [desktop, mobile]
+      height: 64px  # Automatic height if not set
+      images:
+        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+    # ---------------------------------------
+    # webinfo widget
+    webinfo:
+      class: webinfo
+      display: [desktop]
+      header:
+        icon: fa-solid fa-award
+        title: 站点信息
+      type:
+        article:
+          enable: true
+          text: '文章数目：'
+          unit: '篇'
+        runtime:
+          enable: false
+          data: '2020/01/01'    # 填写建站日期
+          text: '已运行时间：'
+          unit: '天'
+        wordcount:
+          enable: false
+          text: '本站总字数：'   # 需要启用 wordcount
+          unit: '字'
+        visitcounter:
+          enable: true
+          siteuv:
+            text: '本站访客数：'
+            unit: '人'
+          sitepv:
+            text: '本站总访问量：'
+            unit: '次'
+        lastupd:
+          enable: true
+          friendlyShow: true    # 更友好的时间显示
+          text: '最后活动时间：'
+          unit: '日'
+    # ---------------------------------------
+    # lastupdate widget
+    lastupdate:
+      class: lastupdate
+      display: [desktop, mobile]
+      header:
+        icon: fa-solid fa-clock WISTERIA
+        title: 最近更新
+    # ---------------------------------------
+    # Artalk widget
+    artalk:
+      class: artalk
+      stickys: true
+      display: [desktop, mobile]
+    # ---------------------------------------
+    # Memos widget
+    memos_carousel:
+      class: memos_carousel
+      display: [desktop, mobile]
+      header:
+        icon: fa-solid fa-volume-high
+        title: 说说
+        url: /blog/memos/ # 说说页面的地址
+      url: 'https://s.dusays.com/' # 替换城自己的域名，也可以用杜老师的平台托管
+      limit: '10' # 展示数量限制
+      creatorId: '1' # 替换成自己的用户的ID
+      tag: '' # 要展示的内容的标签
+      image: 'fa-solid fa-image' # 图片替换成图标
+      link: 'fa-solid fa-link' # 链接替换成图标
+      placeholder: '说说加载中...' # 占位符
+
+############################### Sidebar ############################### > end
+
+
+############################### Tag Plugins ############################### > start
+# 内置标签插件的配置
+tag_plugins:
+  # {% note text %}
+  note: # style for default note:
+    icon: '\f054'
+    color: ''
+    iconfont: 'Font Awesome 6 Free'
+  # {% checkbox %}
+  checkbox:
+    interactive: false # enable interactive for user
+    color: '' # color for default checkbox
+  # {% link title, url, img %}
+  link:
+    placeholder:  volantis-static/media/org.volantis/logo/256/safari.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
+############################### Tag Plugins ############################### > end
+
+
+############################### Site Footer ############################### > start
+site_footer:
+  # layout of footer: [aplayer, social, license, info, copyright]
+  layout: [aplayer, social, license, info, copyright]
+  social:
+    - icon: #fa-solid fa-rss
+      url:
+    # or
+    - img:
+      url:
+    # or
+    - avatar:
+      url:
+  # site source
+  source: https://github.com/volantis-x/volantis-docs/
+  # analytics using busuanzi
+  analytics: >
+    <span>本站总访问量为 <span id='busuanzi_value_site_pv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
+    <span>访客数为 <span id='busuanzi_value_site_uv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+  # site copyright
+  copyright: '[Copyright © since 2017 XXX](/)'
+  # You can add your own property here. (Support markdown, for example: br: '<br>')
+  br: '<br>'
+############################### Site Footer ############################### > end
+
+############################### Plugins ############################### > start
+plugins:
+  ################ required plugins ################
+  # jquery
+  globalJquery: false # 全局引入 jquery
+  # fontawesome
+  fontawesome: true
+  ################ optional plugins ################
+  # issues api
+  sitesjs:
+    enable: true
+  friendsjs:
+    enable: true
+  contributorsjs:
+    enable: true
+
+  ######## Plugins to improve loading speed:
+  # 预加载
+  preload:
+    enable: true
+    service: flying_pages # instant_page, flying_pages
+
+  # 图片懒加载
+  # https://www.npmjs.com/package/vanilla-lazyload
+  # tips: 
+  # 这里是主题自带的图片懒加载, 实现方案位于 /scripts/filters/z-lazyload ; srcset 属性的的优先级比 src 属性要高, 注意 srcset 存放了懒加载占位图,  src 存放了原图
+  # 在支持 srcset 的浏览器或者 RSS 阅读器(还会有人使用老旧的阅读器?)上会优先读取 srcset 加载的图片(懒加载占位图), 对于 RSS 中图片丢失变成懒加载占位图的问题, 建议 自行使用脚本移除 srcset 属性 或 关闭图片懒加载 或 在 RSS 中插入 vanilla-lazyload
+  lazyload:
+    enable: true
+    onlypost: false
+    loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg # 不建议使用占位图, 建议loadingImg为空, 当前占位图会产生布局偏移, loadingImg 为空占位图是一个 1X1 像素的图片
+    blurIn: true # 模糊加载效果 （loadingImg为空时有效）
+
+  ######## Plugins to optimize the experience:
+  # 代码高亮
+  code_highlight: highlightjs # highlightjs or prismjs
+  # highlight.js
+  highlightjs:
+    copy_code: true
+    # 如果开启以下配置, hexo.config.highlight.enable 需要设置为 false ; hexo.config.highlight.enable 设置为 true, 则以下配置无效
+    # # 不再支持 v11.1.0 以下版本
+    # js: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/highlight.min.js # Please set hexo.config.highlight.enable = false !!!
+    # css: https://unpkg.com/@highlightjs/cdn-assets@11.5.1/styles/default.min.css
+    # # # more: https://www.jsdelivr.com/package/npm/@highlightjs/cdn-assets?path=styles
+
+  # prismjs
+  # https://prismjs.com/
+  # https://hexo.io/zh-cn/docs/syntax-highlight#PrismJS
+  prismjs:
+    copy_code: true
+    # Please set hexo.config.highlight.enable = false !!! set hexo.config.prismjs.enable = true !!!
+    js:
+      - https://unpkg.com/prismjs/components/prism-core.min.js
+      - https://unpkg.com/prismjs/plugins/autoloader/prism-autoloader.min.js
+      - https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.min.js
+    css:
+      - https://unpkg.com/prismjs/themes/prism-dark.css
+      - https://unpkg.com/prismjs/plugins/line-numbers/prism-line-numbers.css
+
+  # https://scrollrevealjs.org/api/reveal.html
+  scrollreveal:
+    enable: #true
+    distance: 32px
+    duration: 800 # ms
+    interval: 20 # ms
+    scale: 1 # 0.1~1
+
+  ######## Plugins for Count:
+  # npm i hexo-wordcount
+  wordcount:
+    enable: #true
+
+  busuanzi:
+    enable: #true
+
+  ######## Plugins for ...
+  # Button Ripple Effect
+  nodewaves:
+    enable: #true
+
+  # fontawesome V6:  https://fontawesome.com/docs/web/style/animate
+  # fontawesome animation for fontawesome V5
+  fontawesome_animation:
+    enable: #true
+ 
+  # Typing Effects
+  comment_typing:
+    enable: #true
+ 
+  # 视差滚动效果 Slide Background
+  parallax:
+    enable: #true
+    position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
+    shuffle: true         # shuffle playlist
+    duration: 10000       # Duration (ms)
+    fade: 1500            # fade duration (ms) (Not more than 1500)
+    images:               # For personal use only. At your own risk if used for commercial purposes !!!
+      - volantis-static/media/wallpaper/minimalist/2020/001.webp
+      - volantis-static/media/wallpaper/minimalist/2020/002.webp
+      - volantis-static/media/wallpaper/minimalist/2020/003.webp
+      - volantis-static/media/wallpaper/minimalist/2020/004.webp
+      - volantis-static/media/wallpaper/minimalist/2020/005.webp
+      - volantis-static/media/wallpaper/minimalist/2020/006.webp
+      - volantis-static/media/wallpaper/minimalist/2020/012.webp
+      - volantis-static/media/wallpaper/minimalist/2020/016.webp
+      - volantis-static/media/wallpaper/minimalist/2020/019.webp
+      - volantis-static/media/wallpaper/minimalist/2020/025.webp
+      - volantis-static/media/wallpaper/minimalist/2020/033.webp
+      - volantis-static/media/wallpaper/minimalist/2020/034.webp
+      - volantis-static/media/wallpaper/minimalist/2020/035.webp
+      - volantis-static/media/wallpaper/minimalist/2020/038.webp
+      - volantis-static/media/wallpaper/minimalist/2020/039.webp
+      - volantis-static/media/wallpaper/minimalist/2020/042.webp
+      - volantis-static/media/wallpaper/minimalist/2020/046.webp
+      - volantis-static/media/wallpaper/minimalist/2020/051.webp
+      - volantis-static/media/wallpaper/minimalist/2020/052.webp
+      - volantis-static/media/wallpaper/minimalist/2020/054.webp
+      - volantis-static/media/wallpaper/minimalist/2020/056.webp
+
+  # APlayer is only available in mainland China.
+  # https://aplayer.js.org/#/zh-Hans/
+  # APlayer config: https://github.com/metowolf/MetingJS
+  aplayer:
+    enable: #true
+    source: meting # meting：从 MetingJS API 获取音乐数据（API经常不稳定） / local：本地音乐数据
+    # ============= meting begin =============
+    # Required
+    server: netease   # netease, tencent, kugou, xiami, baidu
+    type: playlist    # song, playlist, album, search, artist
+    id: 3175833810    # song id / playlist id / album id / search keyword
+    # ============= meting end =============
+    # ============= local begin ==============
+    # local 暂时没有适配右键 和 post.music 迷你模式
+    audio:
+      - name: 'Fly'
+        artist: 'Marshmello'
+        url: '/music/fly.mp3'
+        lrc: '/music/fly.lrc'
+        cover: '/music/fly.jpg'
+      - name: 'Avem'
+        artist: 'Alan Walker'
+        url: '/music/Avem.mp3'
+        lrc: '/music/Avem.lrc'
+        cover: '/music/Avem.jpg'
+    # ============= local end ================
+    # Optional
+    fixed: false      # enable fixed mode
+    theme: '#1BCDFC'  # main color
+    autoplay: false   # audio autoplay
+    order: list       # player play order, values: 'list', 'random'
+    loop: all         # player loop play, values: 'all', 'one', 'none'
+    volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+    list_max_height: 320px # list max height
+    list_folded: true
+    autoHide: true    # hide automaticaly
+
+  # pace
+  # An automatic web page progress bar.
+  # https://github.com/CodeByZach/pace
+  pace:
+    enable: true
+    color: blue # black, blue, green, orange, pink, purple, red, silver, white, yellow
+    theme: minimal # big-counter, bounce, barber-shop, center-atom, center-circle, center-radar, center-simple, corner-indicator, fill-left, flat-top, flash, loading-bar, mac-osx, material, minimal
+
+  # 暗黑模式 darkmode
+  # 开关按钮：在 navbar.menu 中添加：
+  # - name: 暗黑模式 # 可自定义
+  #   icon: fa-solid fa-moon # 可自定义
+  #   toggle: darkmode
+  darkmode:
+    enable: #true
+
+  # 旧版 Internet Explorer 淘汰行动
+  # https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support
+  # 本主题不支持Internet Explorer的任何版本!!!
+  killOldVersionsOfIE:
+    enable: true
+
+  # 禁用JavaScript提示
+  # 本页面需要浏览器支持（启用）JavaScript
+  # 主题中的某些插件必须启用JavaScript才能正常工作，例如开启scrollreveal如果禁用JavaScript会导致卡片消失
+  killNoScript:
+    enable: true
+
+  # Artitalk https://artitalk.js.org
+  # 配置过程请参考：https://artitalk.js.org/doc.html
+  # 使用过旧版本的请修改Leancloud shuoshuo class部分列名：https://artitalk.js.org/release.html
+  # 除appID和appKEY外均为选填项
+  artitalk:
+    # Set `plugins: ["artitalk"]` to enable in front-matter
+    # 配置项按照yml格式继续填写即可
+    appId: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
+    appKey: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
+    # serverURL:  #leancloud绑定的api访问域名，使用国际版的话不需要填写
+    # lang: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
+    # pageSize: #每页说说的显示数量
+    # shuoPla: #在编辑说说的输入框中的占位符
+    # avatarPla: #自定义头像url的输入框的占位符
+    # motion: #加载动画的开关，1为开，0为关，默认为开
+    # bgImg: #说说输入框背景图片url
+    # color1: #说说背景颜色1&按钮颜色1
+    # color2: #说说背景颜色2&按钮颜色2
+    # color3: #说说字体颜色
+    # cssUrl: #自定义css接口
+    
+  # Memos https://usememos.com
+  memos:
+    # Set `plugins: ["memos"]` to enable in front-matter
+    url: 'https://s.dusays.com/' # 替换成自己的域名，也可以用杜老师的平台托管
+    limit: '10' # 展示数量限制
+    id: '1' # 替换成自己的用户的ID
+
+  # BBtalk https://bb.js.org
+  bbtalk:
+    # Set `plugins: ["bbtalk"]` to enable in front-matter
+    appId: 0KzOX4vC7Jsk6vzUGNeEiUaI-gzGzoHsz # your appID
+    appKey: HwCiWuxfpvKiLm4teCUgTIba # your appKEY
+    serverURLs: https://bbapi.heson10.com # Request Api 域名
+
+  # 友链朋友圈 hexo-circle-of-friends
+  # https://github.com/Rock-Candy-Tea/hexo-circle-of-friends
+  # https://fcircle-doc.js.cool/
+  fcircle:
+    # Set `plugins: ["fcircle"]` to enable in front-matter
+    private_api_url: https://fcircle-api.example.com/ # api 地址
+    page_init_number: 20 # 初始加载几篇文章
+    page_turning_number: 10  # 点击加载更多时，一次最多加载几篇文章，默认10
+    error_img: https://cravatar.cn/avatar/57d8260dfb55501c37dde588e7c3852c # 头像加载失败时，默认头像地址
+    sort_rule: created # 进入页面时第一次的排序规则,可选值：created/updated
+    expire_days: 1 # 本地文章缓存数据过期时间（天）
+    js: https://npm.elemecdn.com/fcircle-theme-yyyz@1.0.13/dist/fcircle.min.js # fcircle.min.js的url
+
+  # 消息提示 
+  # izitoast
+  message:
+    enable: true
+    icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_style/_plugins/fontcolor.styl
+      default: fa-solid fa-info-circle light-blue
+      quection: fa-solid fa-question-circle light-blue
+    time:     # 默认持续时间
+      default: 5000
+      quection: 20000
+    position: 'topRight'                 # 弹出位置 可选值：topRight, bottomRight, bottomLeft, topLeft, topCenter, bottomCenter, center
+    transitionIn: 'bounceInLeft'         # 弹窗打开动画 可选值：bounceInLeft, bounceInRight, bounceInUp, bounceInDown, fadeIn, fadeInDown, fadeInUp, fadeInLeft, fadeInRight, flipInX
+    transitionOut: 'fadeOutRight'        # 弹窗关闭动画 可选值：fadeOut, fadeOutUp, fadeOutDown, fadeOutLeft, fadeOutRight, flipOutX
+    titleColor: 'var(--color-text)'      # 标题颜色
+    messageColor: 'var(--color-text)'    # 消息颜色
+    backgroundColor: 'var(--color-card)' # 默认背景色
+    zindex: 2147483647                   # 层级
+    copyright:                           # 是否在复制时弹出版权提示，影响范围：ctrl+c、代码块复制按钮、右键复制选项
+      enable: true
+      title: '知识共享许可协议'
+      message: '请遵守 CC BY-NC-SA 4.0 协议。'
+      icon: 'far fa-copyright light-blue'
+    aplayer:                              # 是否开启音乐通知；播放、暂停、失败 时的图标
+      enable: true
+      play: fa-solid fa-play
+      pause: fa-solid fa-pause
+    rightmenu:
+      enable: true                        # 是否开启右键模块的消息通知
+      notice: true                        # 唤醒原右键菜单的通知
+
+  # 聊天功能
+  chat_service: # tidio or gitter
+
+  # Tidio
+  # https://www.tidio.com/
+  tidio:
+    id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+  # Gitter
+  # https://gitter.im
+  gitter:
+    room: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+  # swiper
+  # https://www.swiper.com.cn/
+  swiper:
+    enable: true
+
+############################### Plugins ############################### > end
+
+############################### Rightmenu ############################### > start
+
+### 自定义右键
+rightmenus:
+  enable: false
+  # 右键菜单项及加载顺序
+  # 内容示例：plugins.[组名], menus.[组名], hr(分割线，推荐去线留白), music(音乐控制器)
+  order:
+    - plugins.navigation
+    - hr
+    - plugins.inputBox
+    - plugins.seletctText
+    - plugins.elementCheck
+    - plugins.elementImage
+    - menus.link
+    - hr
+    - menus.darkMode
+    - plugins.articlePage
+    - music
+  ############################
+  # - {id: '', name: '', icon: '', link: '', event: '', group: ''}
+  # id: 唯一值
+  # name: 用于菜单名称显示
+  # icon: 用于菜单图标显示
+  # link: 跳转链接
+  # event: 事件，当输入内容不为内置事件时，作 JavaScript 代码执行
+  # group: 菜单项所处分组名称
+  # 注： 
+  # 1. link/event 二选一，同时出现时仅处理 link
+  # 2. 内置事件列表： copyText, copyLink, copyPaste, copyAll, copyCut, copyImg, printMode, readMode
+  # 3. 内置组列表：navigation, inputBox, seletctText, elementCheck, elementImage, articlePage
+  # 4. plugins 列允许自定义组内项目
+  # 5. menus   列允许自定义组及其内容
+  # 6. 除 navigation 外的内置组，在显示时会隐藏含 link 属性的菜单项
+  ###########################
+  # 基础项设置
+  options:
+    # 图标前缀 fa-solid, fa-regular, fa-light, fa-thin, fa-duotone, fa-brands
+    iconPrefix: fa-solid
+    # 例外，在 articlePage 组显示时（文章页）时依旧显示含 link 属性的菜单项
+    articleShowLink: true
+    # 当设定全局音乐播放器时，是否一直显示音乐控制菜单。false：仅当音乐播放时启用
+    musicAlwaysShow: true
+  # 右键内置组，预置实现
+  plugins:
+    # 导航组件
+    # 横向排列，共用一行，仅显示图标 (原则上支持的数量不限)
+    navigation:
+      - {id: 'left', name: '转到上一页', icon: 'fa-solid fa-arrow-left', event: 'history.back()', group: 'navigation'}
+      - {id: 'right', name: '转到下一页', icon: 'fa-solid fa-arrow-right', event: 'history.forward()', group: 'navigation'}
+      - {id: 'redo', name: '刷新当前页面', icon: 'fa-solid fa-redo', event: 'window.location.reload()', group: 'navigation'}
+      - {id: 'up', name: '回到顶部', icon: 'fa-solid fa-arrow-up', event: 'VolantisApp.scrolltoElement(volantis.dom.bodyAnchor)', group: 'navigation'}
+      #- {id: 'home', name: '回到首页', icon: 'fa-solid fa-home', link: '/', group: 'navigation'}
+    # 文本输入框相关组件
+    # 生效于 input/textarea，粘贴、剪切、全选
+    inputBox:
+      - {id: 'copyPaste', name: '粘贴文本', icon: 'fa-solid fa-paste', event: 'copyPaste', group: 'inputBox'}
+      - {id: 'copyAll', name: '全选文本', icon: 'fa-solid fa-object-ungroup', event: 'copyAll', group: 'inputBox'}
+      - {id: 'copyCut', name: '剪切文本', icon: 'fa-solid fa-cut', event: 'copyCut', group: 'inputBox'}
+    # 文本选中类组件
+    # 生效于右键选中文本，__text__ 为选中的文本。
+    seletctText:
+      - {id: 'copyText', name: '复制文本', icon: 'fa-solid fa-copy', event: 'copyText', group: 'seletctText'}
+      - {id: 'searchWord', name: '站内搜索', icon: 'fa-solid fa-search', event: 'OpenSearch(__text__)', group: 'seletctText'}
+      - {id: 'bingSearch', name: '必应搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://cn.bing.com/search?q=${__text__}`)', group: 'seletctText'}
+      #- {id: 'googleSearch', name: '谷歌搜索', icon: 'fa-solid fa-search', event: 'window.open(`https://www.google.com/search?q=${__text__}`)', group: 'seletctText'}
+    # 链接判断组件
+    # 生效于链接处的右键行为，__link__ 为链接地址
+    elementCheck:
+      - {id: 'openTab', name: '新标签页打开', icon: 'fa-solid fa-external-link-square-alt', event: 'window.open(__link__)', group: 'elementCheck'}
+      - {id: 'copyLink', name: '复制链接地址', icon: 'fa-solid fa-link', event: 'copyLink', group: 'elementCheck'}
+    # 图片判断类组件
+    # 生效于图片类的右键行为，__link__ 为链接地址
+    elementImage:
+      - {id: 'copyImg', name: '复制图片', icon: 'fa-solid fa-image', event: 'copyImg', group: 'elementImage'}
+      - {id: 'googleImg', name: '谷歌识图', icon: 'fa-solid fa-images', event: 'window.open(`https://www.google.com.hk/searchbyimage?image_url=${__link__}`)', group: 'elementImage'}
+    # 文章页面组件
+    # 生效于 post.article 页面
+    articlePage:
+      - {id: 'printMode', name: '打印页面', icon: 'fa-solid fa-print', event: 'printMode', group: 'articlePage'}
+      - {id: 'readMode', name: '阅读模式', icon: 'fa-solid fa-book-open', event: 'readMode', group: 'articlePage'}
+  # 右键自定义菜单区域
+  menus:
+    link:
+      - {id: 'help', name: '常见问题', icon: 'fa-solid fa-question', link: 'https://volantis.js.org/faqs/', group: 'link'}
+      - {id: 'examples', name: '示例博客', icon: 'fa-solid fa-rss', link: 'https://volantis.js.org/examples/', group: 'link'}
+      - {id: 'contributors', name: '加入社区', icon: 'fa-solid fa-fan', link: 'https://volantis.js.org/contributors/', group: 'link'}
+      - hr
+      - {id: 'source_docs', name: '本站源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/volantis-docs/', group: 'link'}
+      - {id: 'source_theme', name: '主题源码', icon: 'fa-solid fa-code-branch', link: 'https://github.com/volantis-x/hexo-theme-volantis/', group: 'link'}
+    darkMode:
+      - {id: 'darkMode', name: '暗黑模式', icon: 'fa-solid fa-moon', event: 'volantis.dark.toggle()', group: 'darkMode'}
+###
+
+
+############################### Search ############################### > start
+# To use hexo search, you need to install the following plugins:
+# npm i hexo-generator-json-content
+search:
+  enable: true
+  service: hexo  # hexo, algolia, meilisearch
+  algolia:
+    searchAsYouType: true # If false, triggers the search only on submit.
+    hitsPerPage: 5 # Set the number of hits per page.
+    placeholder: 'Search...' # The placeholder text of the input.
+  meilisearch:
+    placeholder: 'Search...'
+    searchKey: ''
+    indexName: ''
+    hostUrl: ''
+
+############################### Search ############################### > end
+
+############################### Color Scheme ############################### > start
+# Accessibility: 背景色和前景色要有足够的对比度 https://web.dev/color-contrast/
+# https://ant.design/docs/spec/colors-cn
+color_scheme:
+  # ------------
+  # 通用颜色
+  common:
+    # 主题色
+    theme: '#3dd9b6'
+    # 链接色
+    link: '#2092ec'
+    # 按钮色
+    button: '#44D7B6'
+    # 鼠标放到交互元素上时的色
+    hover: '#ff5722'
+    # 主题色块内部的文字颜色
+    inner: '#fff'
+    # 选中区域文字的背景颜色
+    selection: 'alpha(#2196f3, 0.2)'
+  # ------------
+  # 亮色主题（默认）
+  light:
+    # 网站背景色
+    site_bg: '#f4f4f4'
+    # 网站背景上的文字
+    site_inner: '#fff'
+    # 网站页脚文字
+    site_footer: '#666'
+
+    # 卡片背景色
+    card: '#fff'
+    # 卡片上的普通文字
+    text: '#444'
+
+    # 区块和代码块背景色
+    block: '#f6f6f6'
+    # 代码块高亮时的背景色
+    codeblock: '#FFF7EA'
+    # 行内代码颜色
+    inlinecode: '#c74f00'
+
+    # 文章部分
+    h1: '#3a3a3a'
+    h2: '#3a3a3a'
+    h3: '#333'
+    h4: '#444'
+    h5: '#555'
+    h6: '#666'
+    p: '#444'
+
+    # 列表文字
+    list: '#666'
+    # 列表 hover 时的文字
+    list_hl: 'mix($color-theme, #000, 80)'
+    # 辅助性文字
+    meta: '#888'
+    
+    # 版权卡片背景色
+    copyright_bkg: '#f5f5f5'
+  # ------------
+  # 暗色主题
+  # https://www.maijisheji.com/2094.html
+  dark:
+    # 网站最深底色            # Dark Grey 1
+    site_bd: '#121212'
+    # 网站背景色              # Dark Grey 2
+    site_bg: '#1f1f1f'
+    # 卡片背景色              # Dark Grey 3
+    card: '#262626'
+    # 网站背景上的文字
+    site_inner: '#eeeeeede'
+    # 网站页脚文字
+    site_footer: '#aaaaaade'
+    # 卡片上的普通文字
+    text: '#eeeeeede'
+
+    # 区块和代码块背景色       # Dark Grey 4
+    block: '#434343'
+    # 代码块高亮时的背景色     # Dark Grey 2
+    codeblock: '#1f1f1f'
+    # 行内代码颜色
+    inlinecode: '#D56D28'
+
+    # 文章部分 高强度文本的不透明度应为87％ 中等重点文字适用于60％
+    h1: '#FFFFFFde'            #  Dark Grey 8
+    h2: '#FFFFFFde'
+    h3: '#FFFFFF99'            #  Dark Grey 7
+    h4: '#FFFFFF99'
+    h5: '#FFFFFF99'
+    h6: '#FFFFFF99'
+    p: '#d9d9d9de'           #  Dark Grey 6
+
+    # 列表文字                #  Dark Grey 6
+    list: '#d9d9d9de'
+    # 列表 hover 时的文字
+    list_hl: 'mix($color-theme, #fff, 80)'
+    # 辅助性文字              #  Dark Grey 5
+    meta: '#bfbfbfde'
+    # 版权卡片背景色
+    copyright_bkg: '#21252b'
+    # 夜间图片亮度
+    brightness: 70%
+############################### Color Scheme ############################### > end
+
+############################### Custom css ############################### > start
+custom_css:
+  cursor:
+    enable: #true
+    text: volantis-static/media/cursor/text.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/text.png
+    pointer: volantis-static/media/cursor/pointer.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/pointer.png
+    default: volantis-static/media/cursor/left_ptr.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/left_ptr.png
+    not-allowed: volantis-static/media/cursor/circle.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/circle.png
+    zoom-out: volantis-static/media/cursor/zoom-out.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-out.png
+    zoom-in: volantis-static/media/cursor/zoom-in.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/zoom-in.png
+    grab: volantis-static/media/cursor/openhand.png # https://cdn.jsdelivr.net/gh/inkss/common@1/cursor/openhand.png
+  font_smoothing: true # font-smoothing for webkit
   max_width: 1080px # Sum of body width and sidebar width (This limit will be exceeded when the device width is greater than 2000px, reaching 75% of the total width)
   scrollbar:
     size: 4px
     border: 2px
-    color: '#2196f3'
-    hover: '#ff5722'
   navbar:
     height: 64px
     width: auto # auto, max
-    effect: [shadow, blur] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
   sidebar:
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
   body:
-    effect: [shadow] # [shadow, floatable, blur]
+    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
-      copy_btn: true
-      grayscale: true # Enable grayscale effect
+      grayscale: false # Enable grayscale effect
     text_align: # left, right, justify, center
       h1: left
       h2: left
       h3: left
       h4: left
       p: justify
-    note: # style for default note: {% note text %}
-      icon: '\f054'
-      color: ''
-    checkbox:
-      enable: true # enable for user
-      color: '' # color for default checkbox
   gap:
     h2: 48px # Spacing above H2 (only px unit)
     h3: 24px # Spacing above H3 (only px unit)
     h4: 16px # Spacing above H4 (only px unit)
-    paragraph: .6rem # Paragraph spacing between paragraphs
-    row: .4rem # Paragraph spacing between other elements
-    line_height: 1.65 # normal, 1.5, 1.75, 2 ...
+    p: 1em # Paragraph spacing between paragraphs
+    line_height: 1.6 # normal, 1.5, 1.75, 2 ...
   border_radius:
     card: 8px
     codeblock: 4px
@@ -45,343 +1285,38 @@ style:
     button: 4px
   fontsize:
     root: 16px
-    h1: 1.625rem
-    h2: 1.375rem
+    h1: 1.5rem # 不推荐用在文章中
+    h2: 1.5rem
     h3: 1.25rem
     h4: 1.125rem
     h5: 1rem
     h6: 1rem
-    body: .9375rem
     list: .9375rem
     meta: .875rem
     code: .8125rem
-    footnote: .75rem
+    footnote: .78125rem
   fontfamily:
     logofont:
       fontfamily: '"Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
       name: 'Varela Round'
-      url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
+      url: volantis-static/media/fonts/VarelaRound/VarelaRound-Regular.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf
       weight: normal
       style: normal
     bodyfont:
-      fontfamily: 'UbuntuMono, "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
+      fontfamily: 'UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
       name: 'UbuntuMono'
-      url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
+      url: volantis-static/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf
       weight: normal
       style: normal
-      offset: 0.1rem # Correct baseline for zh-CN
     codefont:
       fontfamily: 'Menlo, UbuntuMono, Monaco'
       # name: 'Monaco'
-      # url: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/Monaco/Monaco.ttf
+      # url: volantis-static/media/fonts/Monaco/Monaco.ttf # https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/Monaco/Monaco.ttf
       # weight: normal
       # style: normal
-  # color:
-  #   site: '#21232F' # Website background color
-  #   site_inner: '#fff' # Text color inside the website background
-  #   site_footer: '#666' # Footer text color inside the website background
-  #   card: '#444' # Card background color
-  #   text: '#fff' # The color of the text on the card.
-  #   theme: '#ff9800' # Main color
-  #   link: '#1BCDFC' # Link color
-  #   hover: '#ff5722' # Link highlight color
-  #   inner: '#333' # Text color inside the button
-  #   block: '#555' # Block color
-  #   inlinecode: '#555' # Inline code color
-  #   codeblock: '#555' # Codeblock color
-  #   p: '#ccc' # Paragraph color
+############################### Custom css ############################### > end
 
-
-
-
-############################### Layout ###############################
-cover:
-  scheme: docs # docs, blog
-  display:
-    home: true
-    archive: true
-    others: false # can be written in front-matter 'cover: true'
-  logo: https://i.loli.net/2020/07/22/2OYbPxZjhdFce3L.png
-  title: ''
-  subtitle: ''
-  search: A Wonderful Theme for Hexo # search bar placeholder
-  features:
-    - name: 文档
-      icon: fas fa-book
-      url: https://volantis.js.org/getting-started/
-    - name: 博文
-      icon: fas fa-rss
-      url: https://volantis.js.org/archives/
-    - name: 示例
-      icon: fas fa-play-circle
-      url: https://volantis.js.org/examples/
-    - name: 源码
-      icon: fas fa-file-code
-      url: https://github.com/volantis-x/hexo-theme-volantis/
-      rel: external nofollow noopener noreferrer
-      target: _blank
-    - name: 鸣谢
-      icon: fas fa-handshake
-      url: https://volantis.js.org/contributors/
-
-
-# Navigation Bar
-navbar:
-  logo: # choose [img] or [icon + title]
-    img: https://i.loli.net/2020/07/22/Xw9pZTkyhSPOY8M.png
-    icon:
-    title:
-  menu:
-    # The following can be written in `blog/source/_data/menu.yml`
-    - name: 博客
-      icon: fas fa-rss
-      url: /
-    - name: 分类
-      icon: fas fa-folder-open
-      url: categories/
-    - name: 标签
-      icon: fas fa-tags
-      url: tags/
-    - name: 归档
-      icon: fas fa-archive
-      url: archives/
-    - name: 友链
-      icon: fas fa-link
-      url: friends/
-    - name: 关于
-      icon: fas fa-info-circle
-      url: about/
-  search: Search...   # Search bar placeholder
-
-
-
-layout:
-  # The following can be written in `blog/source/_data/layout.yml`
-  # 文章列表（主页、自定义的列表）布局
-  on_list:
-    # 列表中每一篇文章的meta信息
-    meta: [title, author, category, date, wordcount, counter, valinecount, pin]
-    # 列表类页面的侧边栏
-    sidebar: [blogger, category, tagcloud, qrcode]
-    # read more button
-    readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
-  # 页面布局
-  on_page:
-    # 文章页面主体元素，你也可以在页面的Front-matter中设置
-    body: [article, comments]
-    # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
-    # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
-    # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
-    meta:
-      header: [title, author, category, date, pin]
-      footer: [updated, tags, btns, share]
-    # 文章页面的侧边栏
-    sidebar: [qrcode, toc]
-  # 文章布局，参数继承自 on_page
-  on_post:
-    # 文章页脚，自动在每一篇文章末尾添加
-    article_footer: [references, related_repos, copyright, donate]
-  # 其他的页面布局暂时等于 on_list
-
-
-# meta library
-meta:
-  # 文章标题
-  title: # 暂无配置
-  # 默认文章作者（可在front-matter中覆盖）
-  author:
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
-    name: Mr. X
-    url: https://xaoxuu.com
-  # 文章创建日期
-  date:
-    icon: fas fa-calendar-alt
-    title: '发布于：'
-    format: 'll' # 日期格式 http://momentjs.com/docs/
-  # 文章更新日期
-  updated:
-    icon: fas fa-edit
-    title: '更新于：'
-    format: 'll' # 日期格式 http://momentjs.com/docs/
-  # 文章分类
-  category:
-    icon: fas fa-folder-open
-  # 文章置顶
-  pin:
-    icon: fas fa-angle-double-up
-  # 文章浏览计数
-  counter:
-    icon: fas fa-eye
-  # 文章评论数量：只支持 valine
-  valinecount:
-    icon: fas fa-comment-dots
-    desc: '' # 条评论
-  # 文章字数和阅读时长
-  wordcount:
-    icon_wordcount: fas fa-keyboard
-    icon_duration: fas fa-hourglass-half
-  # 文章标签
-  tags:
-    icon: fas fa-hashtag
-  # 分享
-  share:
-    - id: qq
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png
-    - id: qzone
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png
-    - id: weibo
-      img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png
-    # - id: qrcode # 当id为qrcode时需要安装插件  npm i -S hexo-helper-qrcode
-    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png
-    # - id: telegram
-    #   img: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/telegram.png
-  # 链接
-  btns:
-    edit:
-      icon: fas fa-edit
-      title: 在GitHub上编辑此页
-      color: '#888'
-    repo: # 源码链接
-      icon: fas fa-file-code
-      title: 源码
-      color: '#508EF2'
-    bug: # BUG反馈链接
-      icon: fas fa-bug
-      title: BUG
-      color: '#FE5F58'
-    doubt: # 疑问链接
-      icon: fas fa-question-circle
-      title: 疑问
-      color: '#FFBD2B'
-    idea: # 建议链接
-      icon: fas fa-lightbulb
-      title: 建议
-      color: '#3DC550'
-    faq: # FAQ链接
-      icon: fas fa-comments
-      title: FAQ
-      color: '#29B1C9'
-    feedback: # 反馈链接
-      icon: fas fa-comment-dots
-      title: 反馈
-      color: '#1BCDFC'
-
-# widget library
-widget:
-  # The following can be written in `blog/source/_data/widget.yml`
-  # ---------------------------------------
-  # blogger info widget
-  blogger:
-    class: blogger
-    display: [desktop, mobile] # [desktop, mobile]
-    avatar: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png
-    shape: rectangle # circle, rectangle
-    url: /about/
-    title:
-    subtitle:
-    jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
-    social: true
-  # ---------------------------------------
-  # toc widget (valid only in articles)
-  toc:
-    class: toc
-    display: [desktop, mobile] # [desktop, mobile]
-    header:
-      icon: fas fa-list
-      title: 本文目录
-    list_number: false
-    min_depth: 2
-    max_depth: 5
-  # ---------------------------------------
-  # category widget
-  category:
-    class: category
-    display: [desktop] # [desktop, mobile]
-    header:
-      icon: fas fa-folder-open
-      title: 文章分类
-      url: /blog/categories/
-  # ---------------------------------------
-  # tagcloud widget
-  tagcloud:
-    class: tagcloud
-    display: [desktop, mobile] # [desktop, mobile]
-    header:
-      icon: fas fa-tags
-      title: 热门标签
-      url: /blog/tags/
-    min_font: 14
-    max_font: 24
-    color: true
-    start_color: '#999'
-    end_color: '#555'
-  # ---------------------------------------
-  # related posts widget
-  related_posts:
-    class: related_posts # npm i -S hexo-related-popular-posts
-    display: [desktop, mobile] # [desktop, mobile]
-    header:
-      icon: fas fa-bookmark
-      title: 相关文章
-    max_count: 5
-  # ---------------------------------------
-  # copyright widget (valid only in articles)
-  copyright:
-    class: copyright
-    display: [desktop, mobile] # [desktop, mobile]
-    blockquote: true
-    permalink: '本文永久链接是：'
-    content:
-      - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
-      - permalink
-  # ---------------------------------------
-  # qrcode widget
-  donate:
-    class: qrcode
-    display: [desktop, mobile] # [desktop, mobile]
-    height: 64px  # Automatic height if not set
-    fancybox: true
-    images:
-      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
-      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
-  # ---------------------------------------
-  # references widget
-  references:
-    class: references # is subclass of list
-    display: [desktop, mobile] # [desktop, mobile]
-    header:
-      icon: fas fa-quote-left
-      title: 参考资料
-  related_repos:
-    class: references # is subclass of list
-    display: [desktop, mobile] # [desktop, mobile]
-    header:
-      icon: fab fa-github
-      title: 源码链接
-
-  # You can add your own widget here or 'blog/source/_data/widget.yml'
-  # class: text, list, grid, qrcode, page, ... see more at https://volantis.js.org/
-
-
-
-footer:
-  # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, info, copyright]
-  social:
-    - icon: fas fa-rss
-      url: atom.xml
-    - icon: fas fa-envelope
-      url: mailto:me@xaoxuu.com
-    - icon: fab fa-github
-      url: https://github.com/xaoxuu
-    - icon: fas fa-headphones-alt
-      url: https://music.163.com/#/user/home?id=63035382
-  copyright: '[Copyright © 2017-2020 Mr. X](https://xaoxuu.com)'
-  # You can add your own property here. (Support markdown, for example: br: '<br>')
-  br: '<br>'
-
-
-############################### SEO ###############################
+############################### SEO ############################### > start
 seo:
   # When there are no keywords in the article's front-matter, use tags as keywords.
   use_tags_as_keywords: true
@@ -394,247 +1329,35 @@ seo:
     category: noindex,follow
     tag: noindex,follow
     # robots can be written in front-matter
+############################### SEO ############################### > end
 
+############################### Open Graph ############################### > start
+# https://ogp.me/
+# https://hexo.io/zh-cn/docs/helpers#open-graph
+open_graph:
+  image: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
+  twitter_card: summary # summary_large_image , summary
+  #twitter_id:
+  #twitter_site:
+############################### Open Graph ############################### > end
 
-############################### Plugins ###############################
-plugins:
-  ######## Plugins to improve loading speed:
-  # Preload (The menu's url must end with ‘/’)
-  instant_page: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js
-
-  ######## Plugins to optimize the experience:
-  # highlight.js
-  highlightjs:
-    js: https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js
-    css: https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/styles/solarized-light.css
-    # more: https://www.jsdelivr.com/package/npm/highlight.js?path=styles
-
-  # https://scrollrevealjs.org/api/reveal.html
-  scrollreveal:
-    js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js
-    distance: 32px
-    duration: 800 # ms
-    interval: 20 # ms
-    scale: 1 # 0.1~1
-
-  # Codeblock Copy Button
-  clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
-
-  ######## Plugins for SEO:
-  # Traffic statistics (very slow loading)
-  busuanzi: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
-
-  # npm i --save hexo-wordcount
-  wordcount: #true
-
-  ######## Plugins for ...
-  # Button Ripple Effect
-  nodewaves:
-    css: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css
-    js: https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js
-
-  # Typing Effects
-  comment_typing: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js
-
-  # Slide Background
-  backstretch:
-    enable: true
-    js: https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js
-    position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
-    shuffle: true         # shuffle playlist
-    duration: 20000       # Duration (ms)
-    fade: 1500            # fade duration (ms) (Not more than 1500)
-    images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/35F12181-F0E9-45BD-B134-37E4B4A660CF.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/AEB33F9D-7294-4CF1-B8C5-3020748A9D45.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/2884F904-F1F3-479E-AE27-5EBC291B63B0.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/10A0FCE5-36A1-4AD0-8CF0-019259A89E03.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/250662D4-5A21-4AAA-BB63-CD25CF97CFF1.jpeg
-      # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/298468D7-E388-44A8-8CC5-8213BDC33CED.jpeg
-
-  # APlayer is only available in mainland China.
-  # APlayer config: https://github.com/metowolf/MetingJS
-  aplayer:
-    enable: true
-    js:
-      - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
-      - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
-    # Required
-    server: netease   # netease, tencent, kugou, xiami, baidu
-    type: playlist    # song, playlist, album, search, artist
-    id: 3175833810    # song id / playlist id / album id / search keyword
-    # Optional
-    fixed: false      # enable fixed mode
-    theme: '#1BCDFC'  # main color
-    autoplay: false   # audio autoplay
-    order: list       # player play order, values: 'list', 'random'
-    loop: all         # player loop play, values: 'all', 'one', 'none'
-    volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
-    list_max_height: 340px # list max height
-    list_folded: true
-  pjax:
-    enable: true
-    timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
-    cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
-    animation: nprogress # nprogress, circle
-    banUrl:              # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
-      # - '/about/index.html'
-
-  # Artitalk https://artitalk.js.org
-  # 配置过程请参考：https://artitalk.js.org/doc.html
-  # 除appID和appKEY外均为选填项
-  Artitalk:
-    enable: false # true为开启，false为关闭
-    appID: ogP8qj3veMh0LFpFWMPOyF0X-MdYXbMMI # your appID
-    appKEY: nHXLd3N3Jgh460t2iRQKWAtr # your appKEY
-    # severurl:  #leancloud绑定的安全域名，使用国际版的话不需要填写
-    # slanguage: # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
-    # per: #每页说说的显示数量
-    # placeholder1: #在编辑说说的输入框中的占位符
-    # placeholder2: #自定义头像url的输入框的占位符
-    # lazy: #加载动画的开关，1为开，0为关，默认为开
-    # bgimg: #说说输入框背景图片url
-    # color1: #说说背景颜色1&按钮颜色1
-    # color2: #说说背景颜色2&按钮颜色2
-    # color3: #说说字体颜色
-
-
-
-
-############################### Comments ###############################
-comments:
-  title: <i class='fas fa-comments'></i> 评论
-  subtitle:
-  service: valine # valine, minivaline, disqus, gitalk, vssue, livere, isso, hashover
-  # Valine
-  # https://valine.js.org/
-  valine: # 请将 appId appKey 修改为自己的，否则评论数据是共享的。
-    appId: dogUA2FSKGTo029M1SEwGROT-MdYXbMMI # your appId
-    appKey: u0NdtQ8nvHoMdJPSYqm1LRxE # your appKey
-    # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
-    path: # All pages use the same path (share the same comments data)
-    meta: nick,mail,link # valine comment header info
-    requiredFields: ['nick','mail']
-    enableQQ: true # Unstable avatar link
-    placeholder: 快来评论吧~ # valine comment input placeholder(like: Please leave your footprints )
-    avatar: robohash # gravatar style https://valine.js.org/avatar
-    pageSize: 10 # comment list page size
-    lang: zh-cn
-    highlight: true
-    visitor: true
-    mathJax: false
-  # MiniValine
-  # https://github.com/MiniValine/MiniValine
-  minivaline:
-    appId: # your appId
-    appKey: # your appKey
-    js: https://cdn.jsdelivr.net/npm/minivaline@2/dist/MiniValine.min.js
-    mode: xCss # DesertsP or xCss
-    placeholder: 快来评论吧~ # Comment box placeholder
-    path: # All pages use the same path (share the same comments data)
-    math: true # Support MathJax.
-    md: true # Support Markdown.
-    enableQQ: false # Enable QQ avatar API.
-    NoRecordIP: false # Do not record commenter IP.
-    visitor: true # Article reading statistics.
-    maxNest: 6 # Sub-comment maximum nesting depth.
-    pageSize: 6 # Pagination size.
-    adminEmailMd5: de8a7aa53d07e6b6bceb45c64027763d # The MD5 of Admin Email to show Admin Flag.[ Just Only DesertsP Style mode]
-    tagMeta: # The String Array of Words to show Flag.[ Just Only xCss Style mode]
-      - 管理员
-      - 小伙伴
-      - 访客
-    master: # The MD5 String Array of master Email to show master Flag.[ Just Only xCss Style mode]
-      - de8a7aa53d07e6b6bceb45c64027763d
-    friends: # The MD5 String Array of friends Email to show friends Flag. [ Just Only xCss Style mode]
-      - b5bd5d836c7a0091aa8473e79ed4c25e
-      - adb7d1cd192658a55c0ad22a3309cecf
-      - 3ce1e6c77b4910f1871106cb30dc62b0
-      - cfce8dc43725cc14ffcd9fb4892d5bfc
-    # MiniValine's display language depends on user's browser or system environment
-    # If you want everyone visiting your site to see a uniform language, you can set a force language value
-    # Available values: en  | zh-CN | (and many more)
-    # More i18n info: https://github.com/MiniValine/minivaline-i18n
-    lang:
-    # Expression Url.
-    # https://github.com/MiniValine/MiniValine/blob/master/.github/FAQ.md#how-to-customize-emoticons
-    emoticonUrl:
-      - https://cdn.jsdelivr.net/npm/alus@latest
-      - https://cdn.jsdelivr.net/gh/MiniValine/qq@latest
-      - https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@latest
-      - https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest
-      - https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest
-      - https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest
-  # Disqus
-  # https://disqus.com
-  disqus:
-    shortname:
-  # Gitalk
-  # https://gitalk.github.io/
-  gitalk:
-    clientID:
-    clientSecret:
-    repo:
-    owner:
-    admin: # []
-  # Vssue
-  # https://vssue.js.org/zh/
-  vssue:
-    owner:
-    repo:
-    clientId:
-    clientSecret:
-  # LiveRe
-  # https://www.livere.com
-  livere:
-    uid:
-  # Isso
-  # https://posativ.org/isso/
-  isso:
-    url: https://example.com/(path/)
-    src: https://example.com/(path/)js/embed.min.js
-  # HashOver
-  # https://www.barkdull.org/software/hashover
-  hashover:
-    src: https://example.com/(path/)comments.php
-
-
-
-############################### Search ###############################
-# To use hexo search, you need to install the following plugins:
-# npm i -S hexo-generator-search hexo-generator-json-content
-search:
+############################### Structured Data ############################### > start
+# SEO 入门文档: https://developers.google.com/search/docs
+# https://schema.org.cn/
+# 结构化数据用于更改搜索结果的显示效果
+# 目前内置的结构化数据: blogposting, breadcrumblist, organization, person, website
+# 目前内置的富媒体搜索结果: 路径(面包屑导航), 徽标(Logo), 站点链接搜索框(SearchAction)
+# https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+# 富媒体搜索结果测试: https://search.google.com/test/rich-results
+structured_data:
   enable: true
-  service: hexo  # hexo, google, algolia, azure, baidu
-  # js: https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@3.0/js/search.js
-  google:
-    apiKey:
-    engineId:
-  algolia:
-    applicationID:
-    apiKey:
-    indexName:
-  azure:
-    serviceName:
-    indexName:
-    queryKey:
-  baidu:
-    apiId:
-
-
-
-############################### Theme Information ###############################
-info:
-  name: Volantis # This is theme's name.
-  version: '3.0-beta1' # This is theme's version.
-  docs: https://volantis.js.org/ # This is theme's URL.
-  repo: https://github.com/volantis-x/hexo-theme-volantis
-  cdn:
-    js:
-    css:
+  # 以下是覆盖配置, 默认配置见 scripts/helpers/structured-data/lib/config.js
+  data:
+    person:
+      sns:
+        - https://github.com/volantis-x
+    logo:
+      path: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
+      width: 192
+      height: 192
+############################### Structured Data ############################### > end

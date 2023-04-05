@@ -1,0 +1,39 @@
+<%_
+  // 为保证初次进入页面流畅，要求浏览器禁用Javascript时(仅HTML渲染)封面控制正常
+  // layout/_partial/cover.ejs
+  // layout/_partial/header.ejs
+  theme.cover_ctrl={}
+  theme.cover_ctrl.enableCover = false; // 封面是否开启
+  theme.cover_ctrl.frontMatterCover = 'none';  // 封面控制
+  theme.cover_ctrl.coverWrapperDisplay = 'none';
+  theme.cover_ctrl.scrollDownDisplay = 'none';
+  theme.cover_ctrl.headerShow = 'show';
+  if(theme.cover && theme.cover.height_scheme) {
+    theme.cover_ctrl.enableCover = true;
+  }
+  if (theme.cover_ctrl.enableCover && page && page.cover) {
+    theme.cover_ctrl.frontMatterCover = page.cover;
+    if (is_home() && page.prev == 0 && theme.cover.height_scheme == 'full') {
+    theme.cover_ctrl.frontMatterCover = 'full';
+    } else {
+    theme.cover_ctrl.frontMatterCover = 'half';
+    }
+  }
+  /*cover*/
+  if (theme.cover_ctrl.frontMatterCover == "full") {
+    theme.cover_ctrl.coverWrapperDisplay= "";
+    theme.cover_ctrl.scrollDownDisplay = "";
+  } else if (theme.cover_ctrl.frontMatterCover == "half"){
+    theme.cover_ctrl.coverWrapperDisplay= "";
+    theme.cover_ctrl.scrollDownDisplay = "none";
+  } else if (theme.cover_ctrl.frontMatterCover == "none"){
+    theme.cover_ctrl.coverWrapperDisplay= "none";
+    theme.cover_ctrl.scrollDownDisplay = "none";
+  }
+  /*header*/
+  if (theme.cover_ctrl.frontMatterCover == "none") {
+    theme.cover_ctrl.headerShow="show";
+  } else {
+    theme.cover_ctrl.headerShow="";
+  }
+_%>

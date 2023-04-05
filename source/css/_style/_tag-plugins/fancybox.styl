@@ -1,0 +1,100 @@
+div.gallery
+  margin: $gap-p 0
+  overflow: hidden
+  $sp = 1px
+  &+.gallery
+    margin-top: 0 - $gap-p
+  >.fancybox,>p>.fancybox
+    margin: $sp
+    padding: 0
+    position: relative
+    a
+      height: 100%
+      width: 100%
+    img
+      object-fit: cover
+      height: 100%
+      width: 100%
+    .image-caption
+      opacity: 0
+      transform: translateY(100%)
+      transition: all 0.3s ease
+      pointer-events: none
+      position: absolute
+      width: 100%
+      bottom: 0
+      text-align: center
+      background: rgba(0, 0, 0, 0.3)
+      color: #fff
+      &:empty
+        display:none
+    &:hover
+      .image-caption
+        opacity: 1
+        transform: translateY(0)
+  &,>p
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-wrap: nowrap
+    padding: 0 !important
+    align-items: stretch
+  &[col]
+    flex-wrap: wrap
+    justify-content: flex-start
+  &[col='2']>.fancybox
+    width: "calc(50% - 2 * %s)" % $sp
+  &[col='3']>.fancybox
+    width: "calc(33.33% - 2 * %s)" % $sp
+  &[col='4']>.fancybox
+    width: "calc(25% - 2 * %s)" % $sp
+  &[col='5']>.fancybox
+    width: "calc(20% - 2 * %s)" % $sp
+  &[col='6']>.fancybox
+    width: "calc(16.66% - 2 * %s)" % $sp
+  &[col='7']>.fancybox
+    width: "calc(14.2857% - 2 * %s)" % $sp
+  &[col='8']>.fancybox
+    width: "calc(12.5% - 2 * %s)" % $sp
+  >p
+    margin: 0
+  &.left,&.left>p
+    justify-content: flex-start
+  &.center,&.center>p
+    justify-content: center
+  &.right,&.right>p
+    justify-content: flex-end
+  &.stretch,&.stretch>p
+    align-items: stretch
+
+
+.fancybox-container
+  .fancybox-stage
+    cursor: zoom-out
+
+div.fancybox
+  margin-top: $gap-p
+  margin-bottom: $gap-p
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  flex-wrap: nowrap
+  padding: 0 !important
+  overflow: hidden
+  border-radius: 2px
+  @media screen and (max-width: $device-mobile)
+    border-radius: 1px
+  a
+    line-height: 0
+    margin: 0 auto
+    align-items: stretch
+  .gallery
+    overflow: hidden
+  .image-caption
+    font-size: $fontsize-code
+    padding-top: $gap-p * 0.5
+    padding-bottom: $gap-p
+    color: var(--color-meta)
+    &:empty
+      display: none

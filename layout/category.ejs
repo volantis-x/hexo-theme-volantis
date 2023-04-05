@@ -1,38 +1,35 @@
 <%- partial('_pre') %>
-<% page.comments = false; %>
-<div class='l_main<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+<% 
+page.comments = false;
+if (!page.robots) {
+  page.robots = 'noindex,follow';
+}
+%>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
   <% if (site.posts && site.posts.length > 0) { %>
-    <% if (page.layout == 'category') { %>
-      <section class="post-list <%- theme.layout.multiple_columns ? 'multiple-columns' : '' %>">
-        <div class='post-wrapper'>
-          <article id="archive-page" class="post article white-box reveal <%- theme.style.body.effect.join(' ') %>">
-            <section class="archive">
-              <div class="archive-item archive-year mark">
-                <h2><%- page.title %></h2>
-              </div>
-              <div class="archive-item archive-post mark all-categories">
-                <% if (site.categories.length){ %>
-                  <% site.categories.sort('path').each(function(category){ %>
-                    <a class="<%= category.parent ? ' child' : ''%>" href="<%= url_for(category.path) %>">
-                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;<%= category.name %></time>
-                      <span class="title">
-                        (<%- category.posts.length %>)
-                      </span>
-                    </a>
-                  <% }) %>
-                <% } %>
-              </div>
-              <br>
-              <%- page.content %>
-            </section>
-          </article>
-        </div>
-      </section>
+    <% if ((page.layout == 'category')||(page.layout == 'categories') ) { %>
+      <div class='post-wrapper'>
+        <article id="cat" class="post article white-box reveal <%- theme.custom_css.body.effect.join(' ') %>">
+          <h2><%- page.title %></h2>
+          <div class="all-cats">
+            <% if (site.categories.length){ %>
+              <% site.categories.sort('path').each(function(category){ %>
+                <a class="<%= category.parent ? ' child' : ''%>" href="<%= url_for(category.path) %>">
+                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;<%= category.name %></span>
+                  <span class="title">
+                    (<%- category.posts.length %>)
+                  </span>
+                </a>
+              <% }) %>
+            <% } %>
+          </div>
+          <br>
+          <%- page.content %>
+        </article>
+      </div>
     <% } else { %>
       <%- partial('_partial/archive') %>
     <% } %>
   <% } %>
-
 </div>
 <%- partial('_partial/side') %>
-

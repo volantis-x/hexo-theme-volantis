@@ -1,0 +1,25 @@
+#safearea {
+  display: none
+}
+
+if hexo-config('content_visibility')
+  // https://web.dev/content-visibility/
+  // https://www.caniuse.com/?search=content-visibility
+  /*
+    * Workaround for Chrome bug, part 1
+    * Chunk rendering for all but the first article.
+    * /layout/_partial/scripts/content-visibility-scroll-fix.ejs
+  */
+  .post-story + .post-story{
+    content-visibility: auto;
+    contain-intrinsic-size: 10px 500px;
+  }
+
+@import '_defines/*'
+
+// Project
+@import '_first/*'
+
+// Custom Files
+for $injects_first in hexo-config('injects.first')
+  @import $injects_first;

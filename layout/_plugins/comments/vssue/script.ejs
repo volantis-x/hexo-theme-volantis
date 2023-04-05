@@ -1,0 +1,37 @@
+
+<script src="<%- theme.cdn.vssue_vue %>"></script>
+<script src="<%- theme.cdn.vssue_js %>"></script>
+<script>
+  volantis.css("<%- theme.cdn.vssue_css %>");
+  function fancybox_vssue() {
+    if(typeof VolantisFancyBox === "undefined") {
+      const checkFancyBox = setInterval(() => {
+        if(typeof VolantisFancyBox === "undefined") return;
+        clearInterval(checkFancyBox);
+        VolantisFancyBox.bind('#vssue .vssue-comment-main img');
+      })
+    } else {
+      VolantisFancyBox.bind('#vssue .vssue-comment-main img');
+    }
+  }
+</script>
+<script>
+  volantis.layoutHelper("comments",`<div id="vssue"></div>`);
+  new Vue({
+    el: '#vssue',
+    render: h => h('Vssue', {
+      props: {
+        title: "<%- (page.seo_title || page.title) + ' - ' + config.title %>",
+        options: {
+          owner: '<%- theme.comments.vssue.owner %>',
+          repo: '<%- theme.comments.vssue.repo %>',
+          clientId: '<%- theme.comments.vssue.clientId %>',
+          clientSecret: '<%- theme.comments.vssue.clientSecret %>',
+          prefix: '',
+          autoCreateIssue: true,
+        },
+      }
+    })
+  })
+  fancybox_vssue();
+</script>

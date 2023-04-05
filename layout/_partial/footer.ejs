@@ -1,51 +1,67 @@
-<% if (theme.footer) { %>
+<% if (theme.site_footer) { %>
   <%
-  var layout = theme.footer.layout;
-  if (config.theme_config && config.theme_config.footer && config.theme_config.footer.layout) {
-    layout = config.theme_config.footer.layout;
-  }
-  // console.log(__('footer.use'))
+    var layout = theme.site_footer.layout;
+    if (config.theme_config && config.theme_config.footer && config.theme_config.footer.layout) {
+      layout = config.theme_config.footer.layout;
+    }
+    let theme_version = theme.info.theme_version
+    // // 未发布的 alpha 版本
+    // if (theme_version.indexOf("alpha")!=-1) {
+    //   theme_version = "dev"
+    // }
+    // // 从 5.7.2 以后的版本以 v开头（release-please的奇怪设定）
+    // else if (theme_version.indexOf("beta")==-1||theme_version.indexOf("rc")==-1) {
+    //   theme_version = "v" + theme_version
+    // }
   %>
-  <footer class="clearfix">
+  <footer class="footer clearfix"  itemscope itemtype="http://schema.org/WPFooter">
     <br><br>
     <% layout.forEach(function(item){ %>
       <% if (item == 'social') { %>
         <br>
-        <div class="social-wrapper">
-          <% (theme.footer.social||[]).forEach(function(value){ %>
-            <% if (value.url && value.icon) { %>
+        <div class="social-wrapper" itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <% getList(theme.site_footer.social).forEach(function(value){ %>
+            <% if (value.url && (value.icon || value.img || value.avatar)) { %>
               <a href="<%= url_for(value.url) %>"
                 class="social <%- value.icon %> flat-btn"
                 target="_blank"
-                rel="external nofollow noopener noreferrer">
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                <% if (value.img) { %>
+                  <img src="<%- value.img %>"/>
+                <% } else if (value.avatar) { %>
+                  <img src="<%- value.avatar %>" style="border-radius:120px"/>
+                <% } %>
               </a>
-            <%}%>
-          <%})%>
+            <% } %>
+          <% }) %>
         </div>
       <% } else if (item == 'aplayer') { %>
         <div class="aplayer-container">
-          <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
+          <%- partial('../_plugins/aplayer/layout', {post: null, where: 'footer'}) %>
         </div>
       <% } else if (item == 'license') { %>
         <div><%- markdown(__('footer.license')) %></div>
       <% } else if (item == 'info') { %>
-        <div class="site-statement">
-          <span><%- __('footer.use') %></span>
-          <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
-          <span><%- __('footer.theme') %></span><% if (theme.plugins.busuanzi) { %><span><%- __('symbol.comma') %></span><span><%- __('footer.total_views') %></span>
-            <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-            <span><%- __('footer.times') %></span>
-          <% } %>
-        </div>
+        <%- __('footer.use') %>
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/#<%- theme_version %>" target="_blank" class="codename">Volantis</a>
+        <%- __('footer.theme') %><% if (theme.plugins.busuanzi.enable) { %><%- __('symbol.comma') %><%- __('footer.total_views') %>
+          <span id="busuanzi_value_site_pv"><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span>
+          <%- __('footer.times') %>
+        <% } %>
+      <% } else if (item == 'source') { %>
+        <%- markdown(__('footer.site_source', '[Volantis](https://github.com/volantis-x/hexo-theme-volantis/#'+theme_version+')', 'GitHub', 'https://github.com/volantis-x/volantis-docs')) %>
       <% } else if (item == 'copyright') { %>
         <div class='copyright'>
-        <%- markdown(theme.footer.copyright) %>
+        <%- markdown(theme.site_footer.copyright) %>
         </div>
       <% } else { %>
-        <% if (item in theme.footer) { %>
-          <div><%- markdown(theme.footer[item]) %></div>
+        <% if (item in theme.site_footer) { %>
+          <div><%- markdown(theme.site_footer[item]) %></div>
         <% } %>
       <% } %>
     <% }) %>
+    <!-- Custom Files footer begin-->
+    <%- volantis_inject('footer') %>
+    <!-- Custom Files footer end-->
   </footer>
 <% } %>

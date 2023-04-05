@@ -1,5 +1,7 @@
 'use strict';
 
+const { version } = require('../../../package.json');
+
 function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
 }
@@ -22,16 +24,17 @@ module.exports = hexo => {
   if (!data) return;
 
   /**
-   * Merge configs from _data/next.yml into hexo.theme.config.
-   * If `override`, configs in next.yml will rewrite configs in hexo.theme.config.
-   * If next.yml not exists, merge all `theme_config.*` into hexo.theme.config.
+   * Merge configs from _data/volantis.yml into hexo.theme.config.
+   * If `override`, configs in volantis.yml will rewrite configs in hexo.theme.config.
+   * If volantis.yml not exists, merge all `theme_config.*` into hexo.theme.config.
    */
-  if (data.next) {
-    if (data.next.override) {
-      hexo.theme.config = data.next;
+
+  if (data.volantis) {
+    if (data.volantis.override) {
+      hexo.theme.config = data.volantis;
     } else {
-      merge(hexo.config, data.next);
-      merge(hexo.theme.config, data.next);
+      merge(hexo.config, data.volantis);
+      merge(hexo.theme.config, data.volantis);
     }
   } else {
     merge(hexo.theme.config, hexo.config.theme_config);
@@ -42,7 +45,7 @@ module.exports = hexo => {
     hexo.config.relative_link = false;
   }
   hexo.config.meta_generator = false;
-
+  hexo.theme.config.getStartTime = Date.now();
   // Custom languages support. Introduced in NexT v6.3.0.
   if (data.languages) {
     var { language } = hexo.config;
@@ -53,11 +56,12 @@ module.exports = hexo => {
     };
 
     if (Array.isArray(language)) {
-      for (let lang of language) {
+      for (const lang of language) {
         mergeLang(lang);
       }
     } else {
       mergeLang(language);
     }
   }
+  hexo.theme.config.info.theme_version = version;
 };

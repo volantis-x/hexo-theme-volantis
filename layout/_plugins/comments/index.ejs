@@ -1,0 +1,24 @@
+<%
+    var checkComment = true;
+    if (page.comments && page.comments == false) {
+      checkComment = false;
+    }
+%>
+<% if (checkComment&&(theme.comments.service && theme.comments.service.length > 0)) { %>
+
+  <article class="post white-box <%- theme.custom_css.body.effect.join(' ') %>" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="<%- url_for(path) %>#comments">
+    </span>
+    <p ct><%- theme.comments && theme.comments.title %></p>
+    <% if (theme.comments && theme.comments.subtitle) { %>
+      <p cst><%- theme.comments.subtitle %></p>
+    <% } %>
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+<% } else { %>
+  <% page.comments = false; %>
+<% } %>

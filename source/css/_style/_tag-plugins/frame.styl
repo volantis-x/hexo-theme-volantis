@@ -1,0 +1,55 @@
+.md .frame-wrap
+  position: relative
+  overflow: hidden
+  margin: 0 auto
+  max-width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  img,video
+    border-radius: 0
+.md .frame-wrap .frame
+  z-index: 1
+  display: block
+  position: absolute;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+.md .img-wrap .frame-wrap
+  &[part]
+    height: auto
+
+.md .frame-wrap
+  &#iphone11
+    img,video
+      width: 287px
+      margin-top: 19px
+      margin-bottom: 20px
+    .frame
+      background-image: url(https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/frame/iphone11.svg);
+      width: 329px
+      height: 658px
+  &[part='top']
+    img,video
+      margin-bottom: 0 !important
+  &:not([part='bottom'])
+    .frame
+      top: 0
+  &[part='bottom']
+    img,video
+      bottom: 0
+      margin-top: 0 !important
+    .frame
+      bottom: 0
+
+@media screen and (max-width: $device-mobile)
+  .md .frame-wrap
+    &#iphone11
+      img,video
+        width: 208px
+        margin-top: 13px
+        margin-bottom: 14px
+      .frame
+        width: 238px
+        height: 476px

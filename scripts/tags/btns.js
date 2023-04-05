@@ -7,28 +7,33 @@ function postBtns(args, content) {
 }
 
 function postCell(args, content) {
-  args = args.join(' ').split(',')
-  let text = args[0] || ''
-  let url = args[1] || ''
-  text = text.trim()
-  url = url.trim()
-  if (url.length > 0) {
-    url = "href='" + url + "'"
+  if(/::/g.test(args)){
+    args = args.join(' ').split('::');
   }
-  let icon = ''
-  let img = 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg'
+  else{
+    args = args.join(' ').split(',');
+  }
+  let text = args[0] || '';
+  let url = args[1] || '';
+  text = text.trim();
+  url = url.trim();
+  if (url.length > 0) {
+    url = 'href=\'' + url + '\'';
+  }
+  let icon = '';
+  let img = hexo.theme.config.default.image;
   if (args.length > 2) {
     if (args[2].indexOf(' fa-') > -1) {
-      icon = args[2].trim()
+      icon = args[2].trim();
     } else {
-      img = args[2].trim()
+      img = args[2].trim();
     }
   }
   if (icon.length > 0) {
-    return `<a ${url} title='${text}'><i class='${icon}'></i>${text}</a>`
-  } else {
-    return `<a ${url} title='${text}'><img src='${img}'>${text}</a>`
+    return `<a class="button" ${url} title='${text}'><i class='${icon}'></i>${text}</a>`;
   }
+  return `<a class="button" ${url} title='${text}'><img src='${img}'>${text}</a>`;
+
 }
 
 hexo.extend.tag.register('btns', postBtns, {ends: true});

@@ -1,12 +1,12 @@
-<header class="l_header<%- page.sidebar == false ? ' no_sidebar' : '' %> <%- theme.style.navbar.effect.join(' ') %>">
+<header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header <%- theme.navbar.visiable %> <%- theme.custom_css.navbar.effect.join(' ') %> <%- theme.cover_ctrl.headerShow %>" <%- (theme.navbar.visiable == 'auto' && theme.cover.height_scheme) ? "style='opacity: 0'" : "" %> >
   <div class='container'>
-  <div class='wrapper'>
+  <div id='wrapper'>
     <div class='nav-sub'>
       <p class="title"></p>
-      <ul class='switcher nav-list-h' id="pjax-header-nav-list">
-        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+      <ul class='switcher nav-list-h m-phone'>
+        <li><a id="s-comment" class="fa-solid fa-comments fa-fw" target="_self" title="comment"></a></li>
         <% if (page.sidebar == undefined || page.sidebar != false) { %>
-          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+          <li><a id="s-toc" class="s-toc fa-solid fa-list fa-fw" target="_self" title="toc"></a></li>
         <% } %>
       </ul>
     </div>
@@ -27,29 +27,29 @@
       <% } %>
 
 			<div class='menu navigation'>
-				<ul class='nav-list-h'>
+				<ul class='nav-list-h m-pc'>
           <%
-          let menu_list;
-          if (site.data && site.data.menu && site.data.menu) {
-            menu_list = site.data.menu;
-          } else {
-            menu_list = theme.navbar.menu;
-          }
-          menu_list = menu_list || [];
+          let menu_list = theme.navbar.menu;
           %>
           <% function menu(value, type) { %>
             <% if (value.name == 'hr') { %>
               <hr>
+            <% } else if (value.toggle == 'darkmode') { %>
+              <li>
+                <a class="menuitem flat-box header toggle-mode-btn">
+                  <i class='<%= value.icon %> fa-fw'></i><%- value.name %>
+                </a>
+              <li>
             <% } else if (value.icon && value.icon.indexOf('fa-compact-disc') > -1 && value.url  == undefined && value.rows  == undefined) { %>
               <% if (type == 'pc') { %>
                 <li>
-                  <a class="flat-box">
+                  <a class="menuitem flat-box">
                     <i class='<%= value.icon %> fa-fw music'></i><%- value.name %>
                   </a>
                   <ul class="list-v">
                     <li>
                       <div class="aplayer-container">
-                        <%- partial('../_third-party/aplayer', {post: null, where: 'footer'}) %>
+                        <%- partial('../_plugins/aplayer/layout', {post: null, where: 'footer'}) %>
                       </div>
                     </li>
                   </ul>
@@ -61,7 +61,9 @@
               </li>
             <% } else { %>
               <li>
-                <a class="flat-box" <%= value.url ? 'href='+ url_for(value.url)+'' : ''%>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                <%- value.url ? `href="` + url_for(value.url) + `" title="` + (value.description || value.name) + `"`
+                        : ` title="` + (value.description || value.name) + `"` %>
                   <% if (value.rel) { %>
                     rel="<%- value.rel %>"
                   <% } %>
@@ -69,13 +71,13 @@
                     target="<%- value.target %>"
                   <% } %>
                   <% if (value.url) { %>
-                    id="<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>"
+                    active-action="action-<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>"
                   <% } %>>
                   <% if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><%- value.name %>
                 </a>
                 <% if (value.rows) { %>
                   <ul class="list-v">
-                    <% value.rows.forEach(function(value){ %>
+                    <% getList(value.rows).forEach(function(value){ %>
                       <% menu(value, type) %>
                     <%})%>
                   </ul>
@@ -83,32 +85,37 @@
               </li>
             <% } %>
           <% } %>
-          <% menu_list.forEach(function(value){ %>
+          <% getList(menu_list).forEach(function(value){ %>
             <% menu(value, 'pc') %>
           <% }) %>
 				</ul>
 			</div>
-
+      <% if (theme.search.enable) { %>
       <div class="m_search">
         <form name="searchform" class="form u-search-form">
-          <i class="icon fas fa-search fa-fw"></i>
+          <i class="icon fa-solid fa-search fa-fw"></i>
           <input type="text" class="input u-search-input" placeholder="<%- theme.navbar && theme.navbar.search %>" />
         </form>
       </div>
+      <% } %>
 
-			<ul class='switcher nav-list-h'>
+			<ul class='switcher nav-list-h m-phone'>
 				<% if (theme.search.enable === true) { %>
-					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+					<li><a class="s-search fa-solid fa-search fa-fw" target="_self" title="search"></a></li>
 				<% } %>
 				<li>
-          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <a class="s-menu fa-solid fa-bars fa-fw" target="_self" title="menu"></a>
           <ul class="menu-phone list-v navigation white-box">
-            <% menu_list.forEach(function(value){ %>
+            <% getList(menu_list).forEach(function(value){ %>
               <% menu(value, 'mobile') %>
             <% }) %>
           </ul>
         </li>
 			</ul>
+
+      <!-- Custom Files header begin -->
+      <%- volantis_inject('header') %>
+      <!-- Custom Files header end -->
 		</div>
 	</div>
   </div>

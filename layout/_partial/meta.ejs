@@ -1,79 +1,66 @@
-<% if(is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
-  var isPostList = true;
-} else {
-  var isPostList = false;
+<%
+var topMetas = theme.article.body.top_meta || [];
+if (post.top_meta == false) {
+  topMetas = [];
 }
-var topMetas;
-if (isPostList) {
-  topMetas = theme.layout.on_list.meta || [];
-} else {
-  topMetas = theme.layout.on_page.meta.header || [];
-}
-if (post.meta && (post.meta.header !== undefined && post.meta.header !== null)) {
-  if (post.meta.header.length) {
-    topMetas = post.meta.header;
-  } else {
-    topMetas = [];
-  }
-}
-var bottomMetas;
-if (isPostList) {
+var bottomMetas = theme.article.body.bottom_meta || [];
+if (post.bottom_meta == false) {
   bottomMetas = [];
-} else {
-  bottomMetas = theme.layout.on_page.meta.footer || [];
-}
-if (post.meta && (post.meta.footer !== undefined && post.meta.footer !== null)) {
-  if (post.meta.footer.length) {
-    bottomMetas = post.meta.footer;
-  } else {
-    bottomMetas = [];
-  }
 }
 %>
 
-<% if (position == 'header') { %>
-  <section class='meta'>
-    <% if (topMetas.length == 1 && topMetas.indexOf('centertitle') > -1) { %>
-      <% if(isPostList){ %>
-        <h2 class="title"><p class="p center h2"><%- post.title || post.seo_title %></p></h2><br>
-      <% } else { %>
-        <% if (post.title || page.title || config.title) { %>
-          <h1 class="title"><p class="p center h1"><%- post.title || post.seo_title %></p></h1><br>
-        <% } %>
-      <% } %>
-    <% } else { %>
-      <% if (post.music && post.music.enable != false) { %>
-        <%- partial('../_third-party/aplayer', {post: post, where: 'meta'}) %>
-      <% } %>
-      <% if(post.thumbnail && post.thumbnail.length){ %>
-        <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'><img class='thumbnail' src='<%- post.thumbnail %>'></a>
-      <% } %>
-      <div class="meta" id="header-meta">
-        <% if((topMetas).indexOf('title') > -1){ %>
-          <%- partial('../_meta/' + 'title', {post: post, isPostList: isPostList}) %>
-        <% } %>
-        <div class='new-meta-box'>
-          <% (topMetas).forEach(function(meta){ %>
-            <% if((meta != 'title') && (meta in theme.meta)){ %>
-              <%- partial('../_meta/' + meta, {post: post, isPostList: isPostList}) %>
-            <% } %>
-          <% }) %>
-        </div>
-        <% if ((topMetas).length > 0){ %>
-          <hr>
-        <% } %>
-      </div>
+<% if (position == 'top') { %>
+  <% if (post.headimg) { %>
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img itemprop="image" class='headimg' src='<%- post.headimg %>'/>
+      </a>
+    </div>
+  <% } else { %>
+    <span hidden>
+      <meta itemprop="image" content="<%- theme.structured_data.data.logo.path %>">
+    </span>
+  <% } %>
+  <div class="article-meta" id="top">
+    <% if (post.music && post.music.enable != false) { %>
+      <%- partial('../_plugins/aplayer/layout', {post: post, where: 'meta'}) %>
     <% } %>
-  </section>
-<% } else if (position == 'footer') { %>
-  <section class='meta' id="footer-meta">
+    <% if (post.thumbnail && post.thumbnail.length){ %>
+      <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
+        <img itemprop="image" class='thumbnail' src='<%- post.thumbnail %>'>
+      </a>
+    <% } %>
+    <% if (post.title) { %>
+      <h1 class="title" itemprop="name headline">
+        <%- post.title %>
+      </h1>
+      <div class='new-meta-box'>
+        <% getList(topMetas).forEach(function(meta) { %>
+          <% if (meta in theme.article.body.meta_library){ %>
+            <%- partial('../_meta/' + meta, {post: post}) %>
+          <% } %>
+        <% }) %>
+        <!-- Custom Files topMeta begin-->
+        <%- volantis_inject('topMeta') %>
+        <!-- Custom Files topMeta end-->
+      </div>
+    <% } else { %>
+      <span hidden itemprop="name headline">
+        <%- post.title %>
+      </span>
+    <% } %>
+  </div>
+<% } else if (position == 'bottom') { %>
+  <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
-      <% (bottomMetas).forEach(function(meta){ %>
-        <% if((meta != 'title') && (meta in theme.meta)){ %>
-          <!-- updated: 更新日期, tags标签等 -->
-          <%- partial('../_meta/' + meta, {post: post, isPostList: isPostList}) %>
+      <% getList(bottomMetas).forEach(function(meta){ %>
+        <% if (meta in theme.article.body.meta_library) { %>
+          <%- partial('../_meta/' + meta, {post: post}) %>
         <% } %>
       <% }) %>
     </div>
-  </section>
+    <!-- Custom Files bottomMeta begin -->
+    <%- volantis_inject('bottomMeta') %>
+    <!-- Custom Files bottomMeta end -->
+  </div>
 <% } %>

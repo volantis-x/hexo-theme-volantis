@@ -1,13 +1,19 @@
+// 为1个属性设置动画
+trans1($op, $time = 0.2s)
+  transition: $op $time ease-out
 
+// 为2个属性设置动画
+trans2($op1, $op2)
+  transition: $op1 0.2s ease-out, $op2 0.2s ease-out
+
+trans2pro($op1, $t1, $op2, $t2)
+  transition: $op1 $t1 ease-out, $op2 $t2 ease-out
+
+trans3($op1, $op2, $op3)
+  transition: $op1 0.2s ease-out, $op2 0.2s ease-out, $op3 0.2s ease-out
 
 trans($time = 0.28s)
   transition: all $time ease
-  -moz-transition: all $time ease
-  -webkit-transition: all $time ease
-  -o-transition: all $time ease
-
-// bgcolor($color = #ccc)
-//   return lighten(desaturate($color, 10%), 88%)
 
 hoverable-card()
   trans()
@@ -30,12 +36,9 @@ placeholder(rules)
     rules()
 
 disable-user-select()
-  -moz-user-select: none
-  -ms-user-select: none
-  -webkit-user-select: none
   user-select: none
 
-scrollbar($w = 4px, $b = 2px, $c = alpha(mix($color-p, $color-card, 80), .4), $h = mix($color-p, $color-card, 80))
+scrollbar($w = 4px, $b = 2px, $c = $color-theme, $h = $color-hover)
   &::-webkit-scrollbar
     height: $w
     width: $w
@@ -47,3 +50,20 @@ scrollbar($w = 4px, $b = 2px, $c = alpha(mix($color-p, $color-card, 80), .4), $h
     border-radius: $b
     &:hover
       background: $h
+
+
+scrollbar-codeblock()
+  &::-webkit-scrollbar
+    height: 4px
+    width: 4px
+  &::-webkit-scrollbar-track-piece
+    background: transparent
+  &::-webkit-scrollbar-thumb
+    background: transparent
+    cursor: pointer
+    border-radius: $border-codeblock
+  &:hover
+    &::-webkit-scrollbar-thumb
+      background: alpha($color-text, .5)
+      &:hover
+        background: $color-hover

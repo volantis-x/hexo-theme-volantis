@@ -2,13 +2,17 @@ navbar:
   archive: 归档
   category: 分类
   tag: 标签
+
 post:
   pin: 置顶
-  read_more: 阅读全文
-  wordcount: '字数：%s字'
-  duration: '时长：%s分钟'
+  readmore: 阅读全文
+  readoriginal: 去源站阅读
+  wordcount: '字数：%s 字'
+  duration: '时长：%s 分钟'
   comments: 评论
-  comments_placeholder: 无法加载%s评论系统，请确保您的网络能够正常访问。
+  comments_load: 点击加载 %s 评论
+  comments_check: 正在检查 %s 能否访问...
+  comments_placeholder: 无法加载 %s 评论系统，请确保您的网络能够正常访问。
   copy_button: 复制
   copy_success: 复制成功
   copy_failure: 复制失败
@@ -20,6 +24,11 @@ post:
     link: 本文链接
     license_title: 版权声明
     license_content: "本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"
+    date: 发布于
+    updated: 更新于
+    references: 原文出处
+    license: 许可协议
+
 footer:
   license: '博客内容遵循 [署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)'
   use: 本站使用
@@ -27,9 +36,25 @@ footer:
   total_views: 总访问量为
   total_visitors: 总访客量
   times: 次
+  site_source: 本站使用 %s 作为主题，您可以在 %s 找到[本站源码](%s)。
+  site_views: 总访问量约为 %s 次，访问人数约为 %s 人。
+
 symbol:
   comma: "，"
   period: "。"
   colon: "："
   brackets_l: "（"
   brackets_r: "）"
+
+kill:
+  title: "抱歉，您的浏览器无法访问本站"
+  more: "了解详情 >"
+  noscript: "本页面需要浏览器支持（启用）JavaScript"
+  ie: "微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。"
+
+search:
+  title: 搜索
+  load_data: 数据库加载中
+  hits_empty: '找不到您查询的内容：${query}'
+  hits_stats: '找到 ${hits} 条结果，用时 ${time} 毫秒'
+

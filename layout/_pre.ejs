@@ -1,4 +1,4 @@
-<%
+<%_
 if (page.cover == undefined && theme.cover) {
   if (is_home() && page.prev == 0) {
     page.cover = theme.cover.display.home;
@@ -8,24 +8,20 @@ if (page.cover == undefined && theme.cover) {
     page.cover = theme.cover.display.others;
   }
 }
-if (site.data && site.data.layout) {
-  theme.layout = site.data.layout;
-}
 if (is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
   if (page.sidebar == undefined) {
-    if (theme.layout.on_list.sidebar.length == 0) {
+    if (theme.sidebar.for_page.length == 0) {
       page.sidebar = [];
     } else {
-      page.sidebar = theme.layout.on_list.sidebar;
+      page.sidebar = theme.sidebar.for_page;
     }
   }
-
 } else {
   if (page.sidebar == undefined) {
-    if (theme.layout.on_page.sidebar.length == 0) {
+    if (theme.sidebar.for_post.length == 0) {
       page.sidebar = [];
     } else {
-      page.sidebar = theme.layout.on_page.sidebar;
+      page.sidebar = theme.sidebar.for_post;
     }
   }
 }
@@ -36,14 +32,14 @@ if (page.sidebar == false) {
 if (config.theme_config && config.theme_config.style) {
   let style = config.theme_config.style;
   if (style.navbar && style.navbar.effect) {
-    theme.style.navbar.effect = style.navbar.effect;
+    theme.custom_css.navbar.effect = style.navbar.effect;
   }
   if (style.sidebar && style.sidebar.effect) {
-    theme.style.sidebar.effect = style.sidebar.effect;
+    theme.custom_css.sidebar.effect = style.sidebar.effect;
   }
   if (style.body && style.body.effect) {
-    theme.style.body.effect = style.body.effect;
+    theme.custom_css.body.effect = style.body.effect;
   }
 }
 
-%>
+_%>

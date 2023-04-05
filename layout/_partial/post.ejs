@@ -1,23 +1,117 @@
-<article class="post white-box <%- theme.style.body.effect.join(' ') %> reveal <%= (post.title) ? "" : "no-title" %>">
-  <%- partial('meta',{post:post, position:'header'}) %>
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <% if (post.excerpt) { %>
-        <%- post.excerpt %>
-      <% } else if (post.description) { %>
-        <p><%- post.description %></p>
-      <% } else { %>
+<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="<%- config.title %>">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="<%- config.title %>">
+    <meta itemprop="description" content="<%- config.description %>">
+  </span>
+  <%
+  let showPin = false;
+  if (post.pin && (post.title || theme.article.preview.auto_title) && theme.article.preview.pin_icon) {
+    showPin = true;
+  }
+  let showTitle = false;
+  if (theme.article.preview.auto_title || (post.title && (post.link || post.path))) {
+    showTitle = true;
+  }
+  let showCat = false;
+  if (post.categories && post.categories.length > 0) {
+    showCat = true;
+  }
+  let showReadmore = false;
+  if (theme.article.preview.readmore == 'always' || ((post.readmore != false) && (theme.article.preview.auto_excerpt || post.excerpt || post.description || post.link))) {
+    showReadmore = true;
+  }
+  %>
+  <% if (showPin == true) { %>
+    <div class='pin'>
+      <img alt="<%- post.title %>" src='<%- theme.article.preview.pin_icon %>'/>
+    </div>
+  <% } %>
+  <% if (post.headimg) { %>
+    <div class='headimg-div'>
+      <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
+        <img itemprop="image" class='headimg' alt="<%- post.title %>" src='<%- post.headimg %>'/>
+      </a>
+    </div>
+  <% } else { %>
+    <span hidden>
+      <meta itemprop="image" content="<%- theme.structured_data.data.logo.path %>">
+    </span>
+  <% } %>
+  <% if (showTitle) { %>
+    <%
+    let pinTitle = false;
+    if (showPin && !post.headimg) {
+      pinTitle = true;
+    }
+    %>
+    <h2 class="article-title" <%- pinTitle ? 'pin' : '' %> itemprop="name headline">
+      <a href="<%- url_for(post.link || post.path) %>"  itemprop="url">
+        <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
+      </a>
+    </h2>
+  <% } else { %>
+    <span hidden itemprop="name headline">
+      <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
+    </span>
+  <% } %>
+  <div class='md article-desc' itemprop="articleBody">
+    <% if (post.excerpt) { %>
+      <%- post.excerpt %>
+    <% } else if (post.description) { %>
+      <p><%- post.description %></p>
+    <% } else if (post.content) { %>
+      <% if (theme.article.preview.auto_excerpt) { %>
+        <%- truncate(strip_html(post.content), {length: 200}) %>
+      <% } else if(!theme.article.preview.hide_excerpt) { %>
         <%- post.content %>
       <% } %>
-    </div>
-    <% if (theme.layout.on_list.readmore) { %>
-      <% if ((post.readmore != false) && (post.excerpt || post.description || post.link)) { %>
-        <div class="button readmore">
-          <a href="<%- url_for(post.link || post.path) %>">
-            <%- theme.layout.on_list.readmore %>
+    <% } %>
+  </div>
+  <% if (showCat || showReadmore || theme.article.preview.author) { %>
+    <div class='meta-v3' line_style='<%- theme.article.preview.line_style %>'>
+      <div>
+        <% if (theme.article.preview.author) { %>
+          <%
+          let author = theme.article.body.meta_library.author;
+          let aid = post.author;
+          if (aid && site.data && site.data.author && (aid in site.data.author)) {
+            author = site.data.author[aid];
+          }
+          %>
+          <a class='avatar' href='<%- author.url %>'><img src='<%- author.avatar %>'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="<%- author.avatar %>">
+            <meta itemprop="name" content="<%- author.name %>">
+            <meta itemprop="url" content="<%- author.url %>">
+          </span>
+        <% } %>
+        <time itemprop="dateCreated datePublished" datetime="<%- moment(post.date).format() %>"><%= date(post.date, config.date_format) %></time>
+        <% if (post.categories && post.categories.length > 0) { %>
+          <span class="dot"></span>
+          <%- list_categories(post.categories, {
+              show_count: false,
+              separator: '<span class="sep"></span>',
+              style: 'none'
+              }) %>
+          <% for(cat of post.categories.toArray()){ %>
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="<%- url_for(cat.path) %>" itemprop="url"><span itemprop="name"><%- cat.name %></span></a>
+            </span>
+          <% } %>
+        <% } %>
+      </div>
+      <% if (showReadmore) { %>
+        <div>
+          <a class='readmore' href='<%- url_for(post.link || post.path) %>' itemprop="url">
+            <%- post.link ? __('post.readoriginal') : __('post.readmore') %>
           </a>
         </div>
       <% } %>
-    <% } %>
-  </section>
-</article>
+    </div>
+  <% } %>
+
+</div>

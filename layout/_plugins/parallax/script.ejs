@@ -1,0 +1,70 @@
+<%_
+theme.plugins.parallax.images = theme.plugins.parallax.images || page.images;
+if (theme.plugins.parallax.shuffle) {
+  // shuffle 只一次 防止 hash 变化
+  if (typeof theme.plugins.parallax.shuffle_end==='undefined') {
+    shuffle(theme.plugins.parallax.images);
+    theme.plugins.parallax.shuffle_end=1;
+  }
+}
+function shuffle(arr){
+  var n = arr.length;
+  while(n--) {
+    var index = Math.floor(Math.random() * n);
+    var temp = arr[index];
+    arr[index] = arr[n];
+    arr[n] = temp;
+  }
+}
+_%>
+<script>
+  let imgs = <%- JSON.stringify(theme.plugins.parallax.images) %>;
+  let index = 0;
+  let IntervalParallax = null;
+
+  function parallax(){
+    let ParallaxWindow = document.querySelector("#parallax-window");
+    <% if (theme.plugins.parallax.position=="fixed") { %>
+      ParallaxWindow = document.querySelector("html");
+    <% } %>
+    Parallax.window = ParallaxWindow;
+    Parallax.options.fade = <%- theme.plugins.parallax.fade %>;
+    Parallax.cache = 1;
+    next_parallax();
+    Parallax.init();
+    if (imgs.length>1) {
+      IntervalParallax = setInterval(function () {
+        next_parallax();
+      }, '<%- theme.plugins.parallax.duration %>');
+    }
+  }
+
+  function next_parallax() {
+    if (typeof Parallax == "undefined") {
+      return
+    }
+    <% if (theme.plugins.parallax.position!="fixed") { %>
+      if (!document.querySelector("#full")&&!document.querySelector("#half")) {
+        return
+      }
+    <% } %>
+    if (imgs.length>=1) {
+      Parallax.options.src = imgs[index % imgs.length];
+      Parallax.start();
+      index++;
+      if (Parallax.cache) {
+        fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
+        if (index == imgs.length) {
+          Parallax.cache = 0;
+        }
+      }
+    }
+  }
+  var runningOnBrowser = typeof window !== "undefined";
+  var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+  if (!isBot) {
+    volantis.js('<%- theme.cdn.volantis_parallax %>').then(()=>{
+      parallax()
+    })
+  }
+</script>

@@ -1,0 +1,17 @@
+name: PR update
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  autoupdate:
+    if: github.repository == 'volantis-x/hexo-theme-volantis'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: update all prs
+        uses: maxkomarychev/pr-updater-action@v1.0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

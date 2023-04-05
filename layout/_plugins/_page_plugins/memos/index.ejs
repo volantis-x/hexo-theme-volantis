@@ -1,0 +1,15 @@
+<script>
+  volantis.layoutHelper("page-plugins", `<div id="bber"></div>`)
+</script>
+<script>
+  var bbMemos = {
+    memos: '<%- theme.plugins.memos.url %>',
+    limit: '<%- theme.plugins.memos.limit %>',
+    creatorId: '<%- theme.plugins.memos.id %>',
+    domId: '#bber',
+  }
+</script>
+<script src="https://npm.elemecdn.com/penndu@2.0.0/memos.js"></script>
+<script src="https://npm.elemecdn.com/marked/marked.min.js"></script>
+<script src="https://jsd.onmicrosoft.cn/gh/Tokinx/ViewImage/view-image.min.js"></script>
+<script src="https://jsd.onmicrosoft.cn/gh/Tokinx/Lately/lately.min.js"></script>

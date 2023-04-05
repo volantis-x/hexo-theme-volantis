@@ -1,0 +1,56 @@
+.common_read
+  z-index: auto !important
+  opacity: 1 !important
+  overflow: visible !important
+  transform: none !important
+  animation: none !important
+  position: relative !important
+
+.body-wrapper.common_read
+  display: block
+
+#safearea.common_read
+  padding-bottom: 16px
+  @media screen and (max-width: 900px)
+    padding: 0
+    margin: 0
+
+#l_body.common_read
+  z-index: 2147483646 !important;
+
+.read_cover
+  min-height: 10px !important
+  @media screen and (max-width: 900px)
+    min-height: 0 !important
+
+.common_read_bkg
+  background-color: var(--color-read-bkg) !important
+  opacity: 1 !important
+  display: block !important
+  position: fixed !important
+  top: 0 !important
+  left: 0 !important
+  right: 0 !important
+  bottom: 0 !important
+  z-index: 2147483645 !important
+  transition: opacity 1s cubic-bezier(.23,1,.32,1) 0ms !important
+
+.common_read_hide
+  opacity: 0 !important
+  z-index: -2147483645 !important
+
+.common_read_main
+  width: 840px !important;
+  padding: 0 !important;
+  margin: 0 auto;
+  float: initial !important;
+  @media screen and (max-width: 900px)
+    width: auto !important;
+
+.post_read
+  background-color: var(--color-read-post) !important
+  z-index: 2147483646 !important
+  overflow: visible !important
+  font-size: 1.15rem !important
+  border-radius: 0 !important;
+  box-shadow: 0 6px 12px 3px #00000033

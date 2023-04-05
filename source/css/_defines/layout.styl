@@ -11,32 +11,33 @@ $device-4k = 2560px
 
 
 // site layout
-$layout-width = convert(hexo-config('style.max_width')) || 1080px
+$layout-width = convert(hexo-config('custom_css.max_width')) || 1080px
 $sidebar = 240px
 $modal-threshold = 680px
-$navbar-height = convert(hexo-config('style.navbar.height')) || 64px
+$navbar-height = convert(hexo-config('custom_css.navbar.height')) || 64px
 
 // gap
-$gap = convert(hexo-config('style.gap.base')) || 16px // base gap
-$gap-h2 = convert(hexo-config('style.gap.h2')) || 48px
-$gap-h3 = convert(hexo-config('style.gap.h3')) || 32px
-$gap-h4 = convert(hexo-config('style.gap.h4')) || 16px
-$gap-paragraph = convert(hexo-config('style.gap.paragraph')) || 1rem  // 区块间距
-$gap-row = convert(hexo-config('style.gap.row')) || .5rem       // 行间距
-$gap-card = $gap
+$gap = convert(hexo-config('custom_css.gap.base')) || 16px // base gap
+$gap-h2 = convert(hexo-config('custom_css.gap.h2')) || 48px
+$gap-h3 = convert(hexo-config('custom_css.gap.h3')) || 32px
+$gap-h4 = convert(hexo-config('custom_css.gap.h4')) || 16px
+// 新的段落间距，以实际字体大小为基准
+$gap-p = convert(hexo-config('custom_css.gap.p')) || 1em
+
+
 
 // border width
 $border-line = 2px
 
 // border radius
-$border-card = convert(hexo-config('style.border_radius.card')) || 12px
-$border-codeblock = convert(hexo-config('style.border_radius.codeblock')) || 4px
-$border-searchbar = convert(hexo-config('style.border_radius.searchbar')) || 8px
-$border-button = convert(hexo-config('style.border_radius.button')) || 2px
+$border-card = convert(hexo-config('custom_css.border_radius.card')) || 12px
+$border-codeblock = convert(hexo-config('custom_css.border_radius.codeblock')) || 4px
+$border-searchbar = convert(hexo-config('custom_css.border_radius.searchbar')) || 8px
+$border-button = convert(hexo-config('custom_css.border_radius.button')) || 2px
 
 // text align
-$textalign-h1 = convert(hexo-config('style.body.text_align.h1')) || left
-$textalign-h2 = convert(hexo-config('style.body.text_align.h2')) || left
-$textalign-h3 = convert(hexo-config('style.body.text_align.h3')) || left
-$textalign-h4 = convert(hexo-config('style.body.text_align.h4')) || left
-$textalign-p = convert(hexo-config('style.body.text_align.p')) || justify
+$textalign-h1 = convert(hexo-config('custom_css.body.text_align.h1')) || left
+$textalign-h2 = convert(hexo-config('custom_css.body.text_align.h2')) || left
+$textalign-h3 = convert(hexo-config('custom_css.body.text_align.h3')) || left
+$textalign-h4 = convert(hexo-config('custom_css.body.text_align.h4')) || left
+$textalign-p = convert(hexo-config('custom_css.body.text_align.p')) || justify

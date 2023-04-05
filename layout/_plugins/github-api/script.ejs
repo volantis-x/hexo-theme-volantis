@@ -1,0 +1,23 @@
+<script>
+  function loadIssuesJS() {
+    <% if (theme.plugins.sitesjs.enable) { %>
+      const sites_api = document.getElementById('sites-api');
+      if (sites_api != undefined && typeof SitesJS === 'undefined') {
+        volantis.js("<%- theme.cdn.volantis_tags_sites %>")
+      }
+    <% } %>
+    <% if (theme.plugins.friendsjs.enable) { %>
+      const friends_api = document.getElementById('friends-api');
+      if (friends_api != undefined && typeof FriendsJS === 'undefined') {
+        volantis.js("<%- theme.cdn.volantis_tags_friends %>")
+      }
+    <% } %>
+    <% if (theme.plugins.contributorsjs.enable) { %>
+      const contributors_api = document.getElementById('contributors-api');
+      if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
+        volantis.js("<%- theme.cdn.volantis_tags_contributors %>")
+      }
+    <% } %>
+  };
+  loadIssuesJS()
+</script>

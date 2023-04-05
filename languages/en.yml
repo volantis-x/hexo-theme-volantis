@@ -2,12 +2,16 @@ navbar:
   archive: Archive
   category: Category
   tag: Tag
+
 post:
   pin: Top
-  read_more: Read More
+  readmore: Read More
+  readoriginal: Read Original
   wordcount: '%s words'
   duration: '%s min'
   comments: Comments
+  comments_load: Load %s
+  comments_check: Checking if %s is accessible...
   comments_placeholder: Unable to load %s, please make sure your network can access.
   copy_button: Copy
   copy_success: Copied
@@ -20,6 +24,11 @@ post:
     link: Post link
     license_title: Copyright Notice
     license_content: "All articles in this blog are licensed under %s unless stating additionally."
+    date: Posted on
+    updated: Update
+    references: References
+    license: License
+
 footer:
   license: 'Blog content follows the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)'
   use: Use
@@ -27,9 +36,24 @@ footer:
   total_views: total visits
   total_visitors: total visitors
   times: times
+  site_source: Uses %s as theme. You can find [source](%s) in %s.
+  site_views: The visits is about %s, and the visitors is about %s.
+
 symbol:
   comma: ", "
   period: ". "
   colon: ": "
   brackets_l: "("
   brackets_r: ")"
+
+kill:
+  title: "Sorry, your browser cannot access this site"
+  more: "Learn more >"
+  noscript: "This page requires browser support (enable) JavaScript"
+  ie: "Microsoft has terminated support for Internet Explorer (IE) 10 and earlier versions in 2016. <br/>There are great security risks to continue using it. Please use contemporary mainstream browsers to access."
+
+search:
+  title: Search
+  load_data: Loading the Database
+  hits_empty: "We didn't find any results for the search: ${query}."
+  hits_stats: '${hits} results found in ${time} ms'

@@ -1,0 +1,14 @@
+<script>
+    volantis.layoutHelper("page-plugins", `<div id="hexo-circle-of-friends-root"></div>`)
+</script>
+<script>
+    let UserConfig = {
+        private_api_url: '<%- theme.plugins.fcircle.private_api_url %>',
+        page_init_number: '<%- theme.plugins.fcircle.page_init_number %>',
+        page_turning_number: '<%- theme.plugins.fcircle.page_turning_number %>',
+        error_img: '<%- theme.plugins.fcircle.error_img%>',
+        sort_rule: '<%- theme.plugins.fcircle.sort_rule %>',
+        expire_days: '<%- theme.plugins.fcircle.expire_days %>'
+    }
+</script>
+<script type="text/javascript" src="<%- theme.plugins.fcircle.js %>"></script>

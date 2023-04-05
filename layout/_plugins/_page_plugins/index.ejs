@@ -1,0 +1,27 @@
+<%_
+getList(page.plugins).forEach(function(item){
+  try {
+      if (typeof item == "string") { _%>
+        <%- partial( item + "/index") %>
+<%_   }else if(typeof item == "object"){    _%>
+      <%- partial( Object.keys(item)[0] + "/index", { pagePlugin:item }) %>
+<%_   }
+  } catch (error) {
+    // error friendly
+    console.log(`
+===============================================================================
+    没有找到页面插件：${item}
+    请检查是否存在该插件，或者检查插件名称是否正确：${item}
+    出问题的页面：${page.path}
+    see: https://volantis.js.org/v6/page-settings/#页面插件-page-plugins
+================================================================================
+    There is no page plugin: ${item}
+    Please check if the plugin exists, or check the plugin name is correct: ${item}
+    The page that has problem: ${page.path}
+    see: https://volantis.js.org/v6/page-settings/#页面插件-page-plugins
+=================================================================================`);
+  }
+
+})
+
+_%>

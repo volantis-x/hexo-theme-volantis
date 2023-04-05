@@ -1,0 +1,17 @@
+if hexo-config('custom_css.fontfamily.bodyfont')
+  if hexo-config('custom_css.fontfamily.bodyfont.name')
+    @font-face
+      font-family: hexo-config('custom_css.fontfamily.bodyfont.name')
+      src: url(hexo-config('custom_css.fontfamily.bodyfont.url'))
+      font-weight: hexo-config('custom_css.fontfamily.bodyfont.weight')
+      font-style: hexo-config('custom_css.fontfamily.bodyfont.style')
+      font-display: swap
+
+if hexo-config('custom_css.fontfamily.logofont')
+  if hexo-config('custom_css.fontfamily.logofont.name')
+    @font-face
+      font-family: hexo-config('custom_css.fontfamily.logofont.name')
+      src: url(hexo-config('custom_css.fontfamily.logofont.url'))
+      font-weight: hexo-config('custom_css.fontfamily.logofont.weight')
+      font-style: hexo-config('custom_css.fontfamily.logofont.style')
+      font-display: swap

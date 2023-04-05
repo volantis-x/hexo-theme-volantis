@@ -1,4 +1,4 @@
-// color lib
+// -------- 这些是方便开发预定义的颜色，不需要动态改变 --------
 $color-md-red = #f44336
 $color-md-pink = #E91E63
 $color-md-purple = #9c27b0
@@ -29,38 +29,89 @@ $color-google-green = #3AA757
 $color-google-yellow = #FABB2D
 $color-google-red = #E8453C
 
+$color-read-bkg = #e0d8c8
+$color-read-post = #f8f1e2
+
 
 // common
-$color-site = convert(hexo-config('style.color.site')) || #f4f4f4
-$color-site-inner = convert(hexo-config('style.color.site_inner')) || #555
-$color-site-footer = convert(hexo-config('style.color.site_footer')) || #666
-$color-card = convert(hexo-config('style.color.card')) || white
-$color-text = convert(hexo-config('style.color.text')) || #444
-$color-theme = convert(hexo-config('style.color.theme')) || #44D7B6
-$color-link = convert(hexo-config('style.color.link')) || #32C5FF
-$color-hover = convert(hexo-config('style.color.hover')) || #ff5722
-$color-inner = convert(hexo-config('style.color.inner')) || white
-$color-block = convert(hexo-config('style.color.block')) || #f6f6f6
-$color-selection = alpha(#2196f3, 0.2)
+$color-theme = convert(hexo-config('color_scheme.common.theme'))
+$color-link = convert(hexo-config('color_scheme.common.link'))
+$color-button = convert(hexo-config('color_scheme.common.button'))
+$color-hover = convert(hexo-config('color_scheme.common.hover'))
+$color-inner = convert(hexo-config('color_scheme.common.inner'))
+$color-selection = convert(hexo-config('color_scheme.common.selection'))
 
-// code
-$color-inlinecode = convert(hexo-config('style.color.inlinecode')) || #f6f6f6
-$color-codeblock = convert(hexo-config('style.color.codeblock')) || #FFF7EA
-// blockquote
-$color-blockquote = convert(hexo-config('style.color.blockquote')) || $color-theme
-// mathjax
-$color-mathjax = #fff0
 
-// title color
-$color-h1 = convert(hexo-config('style.color.h1')) || $color-text
-$color-h2 = convert(hexo-config('style.color.h2')) || $color-text
-$color-h3 = convert(hexo-config('style.color.h3')) || $color-text
-$color-h4 = convert(hexo-config('style.color.h4')) || $color-text
-$color-h5 = convert(hexo-config('style.color.h5')) || $color-text
-$color-h6 = convert(hexo-config('style.color.h6')) || $color-text
-$color-p = convert(hexo-config('style.color.p')) || #555
+// -------- 动态配色方案 --------
+// 默认浅色
+$color-site-bg = convert(hexo-config('color_scheme.light.site_bg'))
+$color-site-inner = convert(hexo-config('color_scheme.light.site_inner'))
+$color-site-footer = convert(hexo-config('color_scheme.light.site_footer'))
+$color-card = convert(hexo-config('color_scheme.light.card'))
+$color-text = convert(hexo-config('color_scheme.light.text'))
 
-$color-meta = alpha($color-text, .65)
+$color-block = convert(hexo-config('color_scheme.light.block'))
+$color-codeblock = convert(hexo-config('color_scheme.light.codeblock'))
+$color-inlinecode = convert(hexo-config('color_scheme.light.inlinecode'))
+$color-h1 = convert(hexo-config('color_scheme.light.h1'))
+$color-h2 = convert(hexo-config('color_scheme.light.h2'))
+$color-h3 = convert(hexo-config('color_scheme.light.h3'))
+$color-h4 = convert(hexo-config('color_scheme.light.h4'))
+$color-h5 = convert(hexo-config('color_scheme.light.h5'))
+$color-h6 = convert(hexo-config('color_scheme.light.h6'))
+$color-p = convert(hexo-config('color_scheme.light.p'))
+$color-list = convert(hexo-config('color_scheme.light.list'))
+$color-list-hl = convert(hexo-config('color_scheme.light.list_hl'))
+$color-meta = convert(hexo-config('color_scheme.light.meta'))
+$color-copyright-bkg = convert(hexo-config('color_scheme.light.copyright_bkg'))
+
+// 深色配色方案在 darkmode.styl 中按需加载
+$color-dark-site-body = convert(hexo-config('color_scheme.dark.site_bd'))                    // Dark Grey 1
+$color-dark-read-bkg = convert(hexo-config('color_scheme.dark.site_bg'))
+$color-dark-read-post = convert(hexo-config('color_scheme.dark.card'))
+$color-dark-site-bg = convert(hexo-config('color_scheme.dark.site_bg'))                      // Dark Grey 2
+$color-dark-site-inner = convert(hexo-config('color_scheme.dark.site_inner'))
+$color-dark-site-footer = convert(hexo-config('color_scheme.dark.site_footer'))
+$color-dark-card = convert(hexo-config('color_scheme.dark.card'))                            // Dark Grey 3
+$color-dark-text = convert(hexo-config('color_scheme.dark.text'))
+
+$color-dark-block = convert(hexo-config('color_scheme.dark.block'))                           // Dark Grey 4
+$color-dark-codeblock = convert(hexo-config('color_scheme.dark.codeblock'))
+$color-dark-inlinecode = convert(hexo-config('color_scheme.dark.inlinecode'))
+$color-dark-h1 = convert(hexo-config('color_scheme.dark.h1'))
+$color-dark-h2 = convert(hexo-config('color_scheme.dark.h2'))
+$color-dark-h3 = convert(hexo-config('color_scheme.dark.h3'))
+$color-dark-h4 = convert(hexo-config('color_scheme.dark.h4'))
+$color-dark-h5 = convert(hexo-config('color_scheme.dark.h5'))
+$color-dark-h6 = convert(hexo-config('color_scheme.dark.h6'))
+$color-dark-p = convert(hexo-config('color_scheme.dark.p'))
+$color-dark-list = convert(hexo-config('color_scheme.dark.list'))
+$color-dark-list-hl = convert(hexo-config('color_scheme.dark.list_hl'))
+$color-dark-meta = convert(hexo-config('color_scheme.dark.meta'))
+$color-dark-link = convert(hexo-config('color_scheme.dark.meta'))
+$color-dark-copyright-bkg = convert(hexo-config('color_scheme.dark.copyright_bkg'))
 
 bgcolor($c, $mix = 10)
   return mix($c, $color-card, $mix)
+
+list_active()
+  color: var(--color-list-hl)
+list_hover()
+  color: var(--color-list-hl)
+  background: var(--color-site-bg)
+
+// tag plugin from stellar : color
+// 浅色页面
+$c-site-bg-light = #f8f8f8
+$c-block-light = #f2f2f2
+$c-title-light = #000
+$c-text-light = #222
+$c-card-light = white
+
+// 深色页面
+$c-site-bg-dark = black
+$c-block-dark = #111
+$c-title-dark = #fff
+$c-text-dark = #fff
+$c-card-dark = #333
+

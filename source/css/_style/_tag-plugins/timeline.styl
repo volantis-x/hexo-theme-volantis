@@ -1,0 +1,75 @@
+div.timenode
+  position: relative
+  &:before, &:after
+    content: ''
+    z-index: 1
+    position: absolute
+    background: alpha($color-theme, .5)
+    width: 2px
+    left: 7px
+  &:before
+    top: 0px
+    height: 6px
+  &:after
+    top: 26px
+    height: "calc(100% - %s)" % 26px
+  &:last-child
+    &:after
+      height: "calc(100% - 26px - %s)" % $gap
+      border-bottom-left-radius: 2px
+      border-bottom-right-radius: 2px
+  .meta,.body
+    max-width: "calc(100% - %s)" % (16px + 8px)
+  .meta
+    position: relative
+    color: var(--color-meta)
+    font-size: $fontsize-meta
+    line-height: 32px
+    height: 32px
+    &:before, &:after
+      content: ''
+      position: absolute
+      top: 8px
+      z-index: 2
+    &:before
+      background: alpha($color-theme, .5)
+      width: 16px
+      height: 16px
+      border-radius: 8px
+    &:after
+      background: $color-theme
+      margin-left: 2px
+      margin-top: 2px
+      width: 12px
+      height: 12px
+      border-radius: 6px
+      transform: scale(0.5)
+      trans()
+    p
+      font-weight: bold
+      margin: 0 0 0 16px + 8px
+  .body
+    margin: 4px 0 $gap 16px + 8px
+    padding: $gap
+    border-radius: $border-card
+    background: var(--color-block)
+    display: inline-block
+    &:empty
+      display: none
+    >*
+      &:first-child
+        margin-top: $gap-p * 0.25
+      &:last-child
+        margin-bottom: $gap-p * 0.25
+    .highlight
+      border: 1px solid mix($color-block, $color-text, 90)
+
+
+div.timenode:hover
+  .meta
+    color: var(--color-text)
+    &:before
+      background: alpha($color-hover, .5)
+    &:after
+      background: $color-hover
+      transform: scale(1)

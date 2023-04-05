@@ -1,0 +1,61 @@
+<script>
+  volantis.layoutHelper("comments",`<div id="waline"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`)
+  
+  function p_waline() {
+    if(!document.querySelector("#waline"))return;
+    let locale = {};
+    let path = pdata.commentPath;
+    let pagePlaceholder = pdata.commentPlaceholder || "<%= theme.comments.waline.placeholder %>";
+    if (path.length == 0) {
+      let defaultPath = '<%= theme.comments.waline.path %>';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    if(pagePlaceholder.length != 0) {
+      locale.placeholder = pagePlaceholder;
+    }
+
+    try {
+      Waline.init(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.waline) %>, {
+        el: '#waline',
+        path: path,
+        // https://github.com/volantis-x/hexo-theme-volantis/issues/713
+        <% if(!!theme.comments.waline.imageUploader?.api){ %>
+          imageUploader: function(file) {
+            let headers = new Headers();
+            headers.set('Accept', 'application/json');
+            <% if(!!theme.comments.waline.imageUploader?.token) { %>
+              headers.set('<%= theme.comments.waline.imageUploader?.tokenName %>', '<%= theme.comments.waline.imageUploader?.token %>')
+            <% } %>
+            let formData = new FormData();
+            formData.append('<%= theme.comments.waline.imageUploader?.fileName %>', file);
+            return fetch('<%= theme.comments.waline.imageUploader?.api %>',{
+              method: 'POST',
+              body: formData,
+              headers: headers
+              }).then((resp) => resp.json())
+                .then((resp) => resp.<%= theme.comments.waline.imageUploader?.resp %>)
+          },
+        <% } %>
+        locale,
+      }),pdata.commentConfig));
+    } catch (error) {
+      alert(`Waline ${error}`)
+    }
+    fancybox_waline()
+  }
+
+  function fancybox_waline() {
+    if(typeof VolantisFancyBox === "undefined") {
+      const checkFancyBox = setInterval(() => {
+        if(typeof VolantisFancyBox === "undefined") return;
+        clearInterval(checkFancyBox);
+        VolantisFancyBox.bind('#waline .wl-content img:not(.wl-emoji)');
+      })
+    } else {
+      VolantisFancyBox.bind('#waline .wl-content img:not(.wl-emoji)');
+    }
+  }
+
+  volantis.css('<%= theme.cdn.waline_css %>')
+  volantis.js('<%- theme.cdn.waline_js %>').then(p_waline)
+</script>

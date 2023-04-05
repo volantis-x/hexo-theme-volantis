@@ -1,0 +1,70 @@
+<% if (config.google_analytics_key) { %>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- https://github.com/volantis-x/hexo-theme-volantis/issues/63 -->
+<script>
+	setTimeout(function() {
+	  volantis.js("https://www.googletagmanager.com/gtag/js?id=<%- config.google_analytics_key %>");
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', '<%- config.google_analytics_key %>');
+	}, 1000);
+</script>
+<% } %>
+
+<% if (config.baidu_analytics_key) { %>
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  setTimeout(function() {
+    volantis.js("https://hm.baidu.com/hm.js?<%= config.baidu_analytics_key %>")
+  }, 1000);
+})();
+</script>
+<% } %>
+
+<% if (config.tencent_aegis_id) { %>
+<script>
+  const genUuid = () => {
+    let s = [];
+    let hexDigits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    for (let i = 0; i < 36; i++) {
+      s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1)
+    }
+    s[14] = "4"
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1)
+    s[8] = s[13] = s[18] = s[23] = "-"
+    let uuid = s.join("")
+    return uuid;
+  }
+  setTimeout(() => {
+    let uin = localStorage.getItem('Aegis_UIN');
+    if(!uin) {
+      uin = genUuid();
+      localStorage.setItem('Aegis_UIN', uin);
+    }
+    volantis.js("https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js").then(()=>{
+      const aegis=new Aegis({id:"<%- config.tencent_aegis_id %>",reportApiSpeed:true,reportAssetSpeed:true,spa:true,uin:uin});
+    })
+  }, 1000)
+</script>
+<% } %>
+
+<% if (config.v6_51_la) { %>
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+  <script>
+    volantis.js("https://sdk.51.la/js-sdk-pro.min.js").then(() => {
+      LA.init({id: "<%= config.v6_51_la %>",ck: "<%= config.v6_51_la %>",autoTrack:true,hashMode:true})
+    })
+  </script>
+<% } %>
+
+<% if (config.perf_51_la) { %>
+  <script src="https://sdk.51.la/perf/js-sdk-perf.min.js" crossorigin="anonymous"></script>
+  <script>
+    volantis.js("https://sdk.51.la/perf/js-sdk-perf.min.js").then(() => {
+      new LingQue.Monitor().init({id:"<%= config.perf_51_la %>",sendSuspicious:true});
+    })
+  </script>
+<% } %>

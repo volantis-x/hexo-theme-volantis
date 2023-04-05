@@ -1,0 +1,101 @@
+<%
+var commentPath = '';                         // 自定义的评论路径
+var commentPlaceholder = '';                  // 自定义的评论描述
+var commentConfig = {};                       // 自定义的评论配置
+var ispage = false;                           // 一二级导航栏切换控制
+var postTitle = '';                           // 当前文章标题，用于二级导航栏赋值
+if (theme.comments.service && theme.comments.service.length > 0) {
+  let service = theme.comments.service;
+  if (page.comments == undefined || page.comments != false) {
+    if (service in page) {
+      if (page[service].path) {
+        commentPath = page[service].path;
+      }
+      if (page[service].placeholder) {
+        commentPlaceholder = page[service].placeholder;
+      }
+      if (page[service].config) {
+        commentConfig = page[service].config;
+      }
+    }
+  }
+}
+if (page && page.layout == 'post' && page.title) {
+  ispage = true;
+  postTitle = page.title;
+}
+%>
+<script>
+  window.pdata={}
+  pdata.ispage=<%=ispage%>;
+  pdata.commentPath="<%=commentPath%>";
+  pdata.commentPlaceholder="<%=commentPlaceholder%>";
+  pdata.commentConfig=<%- JSON.stringify(commentConfig) %>;
+  volantis.GLOBAL_CONFIG ={
+    root: '<%- config.root %>',
+    debug: <%- JSON.stringify(theme.debug) %>,
+    default: <%- JSON.stringify(theme.default) %>,
+    lastupdate: new Date(<%- theme.getStartTime %>),
+    cdn: {
+      izitoast_css: '<%- theme.cdn.izitoast_css %>',
+      izitoast_js: '<%- theme.cdn.izitoast_js %>',
+      fancybox_css: '<%- theme.cdn.fancybox_css %>',
+      fancybox_js: '<%- theme.cdn.fancybox_js %>'
+    },
+    sidebar: {
+      for_page: <%- JSON.stringify(theme.sidebar.for_page) %>,
+      for_post: <%- JSON.stringify(theme.sidebar.for_post) %>,
+      webinfo: {
+        lastupd: {
+          enable: <%- JSON.stringify(theme.sidebar.widget_library.webinfo.type.lastupd.enable) %>,
+          friendlyShow: <%- JSON.stringify(theme.sidebar.widget_library.webinfo.type.lastupd.friendlyShow) %>
+        },
+        runtime: {
+          data: <%- JSON.stringify(theme.sidebar.widget_library.webinfo.type.runtime.data) %>,
+          unit: <%- JSON.stringify(theme.sidebar.widget_library.webinfo.type.runtime.unit) %>
+        }
+      }
+    },
+    plugins: {
+      message: <%- JSON.stringify(theme.plugins.message) %>,
+      <% if(theme.plugins.aplayer.enable) { %>
+      aplayer: {
+        id: <%- JSON.stringify(theme.plugins.aplayer.id) %>,
+        enable:<%- JSON.stringify(theme.plugins.aplayer.enable) %>
+      },
+      <% } %>
+      <% if(theme.rightmenus.enable) { %>
+      rightmenus: <%- JSON.stringify(theme.rightmenus) %>
+      <% } %>
+    },
+    search: {
+      <% if(theme.search.service === 'algolia') { %>
+        appId: '<%- env.ALGOLIA_APP_ID || config.algolia.appId || config.algolia.applicationID %>',
+        indexName: '<%- env.ALGOLIA_APP_ID || config.algolia.indexName %>',
+        apiKey: '<%- env.ALGOLIA_API_KEY || config.algolia.apiKey %>',
+        hitsPerPage: '<%- theme.search.algolia.hitsPerPage %>',
+        placeholder: '<%- theme.search.algolia.placeholder %>',
+        searchAsYouType: <%- theme.search.algolia.searchAsYouType %>,
+      <% } %>
+
+      <% if(theme.search.service === 'hexo') { %>
+        dataPath: (("<%- config.root %>" || "/").endsWith("/") ? "<%- config.root %>" || "/" : "<%- config.root %>/" || "/") + "<%- config?.jsonContent?.file || "content.json" %>",
+      <% } %>
+
+      <% if(theme.search.service === 'meilisearch') { %>
+        placeholder: '<%- theme.search.meilisearch.placeholder %>',
+        apiKey: '<%- theme.search.meilisearch.searchKey %>',
+        indexName: '<%- theme.search.meilisearch.indexName %>',
+        appId: '<%- theme.search.meilisearch.hostUrl %>',
+      <% } %>
+    },
+    languages: {
+      <% if(theme.search.enable) { %>
+        search: {
+          hits_empty: "<%- __('search.hits_empty') %>",
+          hits_stats: "<%- __('search.hits_stats') %>",
+        }
+      <% } %>
+    }
+  }
+</script>

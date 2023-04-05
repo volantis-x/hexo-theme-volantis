@@ -1,0 +1,27 @@
+<%
+function genList() {
+  let content = '';
+  site.posts.filter(p => {
+    return p.title && p.title.length > 0;
+  }).sort("updated", -1).limit(5).each(item => {
+    content += `<li><a class="widget-last" href="${url_for(item.link || item.path)}">`;
+    content += '<div class="item">';
+    content += `<time>${date(item.updated, config.date_format)}</time>`;
+    item.categories.limit(1).forEach((cat, i) => {
+      content += `<span>${cat.name}</span>`;
+    });
+    content += '</div>';
+    content += `<span>${item.title}</span>`;
+    content += '</a></li>';
+    content += '';
+  })
+  return `<ul class="list entry navigation">${content}</ul>`;
+}
+%>
+<%- partial('_pre') %>
+<section class="widget <%- page.widget_platform %>">
+  <%- partial('header', {item: item}) %>
+  <div class='content'>
+    <%- genList() %>
+  </div>
+</section>

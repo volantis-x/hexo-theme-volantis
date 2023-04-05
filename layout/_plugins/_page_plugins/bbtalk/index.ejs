@@ -1,0 +1,10 @@
+<script>
+  volantis.layoutHelper("page-plugins",`<div id="bbtalk"></div>`)
+</script>
+<script>
+  volantis.import.jQuery().then(()=>{
+    volantis.js("<%= theme.cdn.bbtalk %>").then(()=>{
+      bbtalk.init(<%- JSON.stringify(theme.plugins.bbtalk) %>)
+    })
+  })
+</script>

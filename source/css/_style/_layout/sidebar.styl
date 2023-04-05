@@ -1,0 +1,385 @@
+#l_side
+  width: $sidebar
+  float: right
+  if hexo-config('sidebar.position') =='left'
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
+    order: 1;
+  position: relative
+  display: flex
+  flex-direction: column
+  @media screen and (max-width: $device-tablet)
+    width: 100%
+  .widget
+    overflow: hidden
+    &.sticky
+      position: sticky
+      top: $navbar-height + $gap
+      z-index: 1
+    >.content
+      max-height: 200vh
+      @media screen and (max-width: $device-tablet)
+        max-height: none
+      overflow: auto
+      scrollbar()
+      text-align: justify
+      font-size: $fontsize-meta
+      max-width: 100%
+
+
+.widget
+  z-index: 0
+  background: var(--color-card)
+  margin-bottom: $gap
+  border-radius: $border-card
+  width: 100%
+  display: none
+  ul,ol
+    li
+      margin-top: 0
+      margin-bottom: 0
+  &.desktop
+    display: block
+  @media screen and (max-width: $device-tablet)
+    display: none !important
+    &.mobile
+      display: block !important
+
+
+  header
+    border-top-left-radius: $border-card
+    border-top-right-radius: $border-card
+    padding: "calc(%s - 2px)" % $gap
+    font-weight: bold
+    font-size: $fontsize-meta
+    padding-bottom: 0
+    &,a
+      color: var(--color-meta)
+    >a:hover
+      color: $color-hover
+
+    span.name
+      margin-left: $gap * 0.5
+
+
+  >.content
+    padding: $gap * 0.5 0
+    p
+      margin-top: $gap-p
+      margin-bottom: $gap-p
+      &:first-child
+        margin-top: $gap-p * 0.5
+    ul>li
+      a
+        color: var(--color-meta)
+        padding: 0 $gap
+        padding-left: $gap * 0.5 + 4px
+        line-height: 2
+        display: flex
+        justify-content: space-between
+        align-content: center
+        border-left: $border-line solid transparent
+        trans()
+    ul.entry, ul.popular-posts
+      list-style: none
+      a
+        color: var(--color-list)
+        .name
+          flex: auto
+        .badge
+          flex:none
+          font-weight: normal
+          font-size: $fontsize-meta
+          color: alpha($color-text, .7)
+        &.active
+          border-left: $border-line solid $color-theme
+          list_active()
+          .badge
+            color: alpha($color-theme, .9)
+        &.child
+          padding-left: $gap * 2
+        &:hover
+          border-left: $border-line solid $color-theme
+          list_hover()
+
+
+
+  &.blogger
+    trans()
+    .content
+      padding: 0
+      display: flex
+      flex-direction: column
+      align-items: stretch
+      >.avatar
+        align-self: center
+        overflow: hidden
+        position: relative
+        border-top-left-radius: $border-card
+        border-top-right-radius: $border-card
+        line-height: 0
+        &.circle
+          border-radius: 100%
+          width: 128px
+          height: 128px
+          margin-top: $gap * 2
+          margin-bottom: $gap-p
+          img
+            display: block
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+        @media screen and (max-width: $device-tablet)
+          width: 80px
+          height: 80px
+          border-radius: 100%
+          border: 2px solid white
+          img
+            display: block
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            position: absolute
+      .text
+        :first-child
+          margin-top: $gap
+      h2
+        text-align: center
+        font-weight: bold
+        margin: $gap * 0.5
+        @media screen and (max-width: $device-tablet)
+          margin: $gap * 0.5
+      p
+        text-align: center
+        font-weight: bold
+        margin: $gap * 0.5 $gap * 0.5 0 $gap * 0.5
+        empty-cells: hide
+      .social-wrapper
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        margin: 4px $gap * 0.25
+        a
+          color: var(--color-meta)
+          padding: 0
+          trans()
+          &:hover
+            color: $color-hover
+          &.social
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 32px
+            height: 32px
+            margin: 4px
+            border-radius: 100px
+            &:hover
+              background: bgcolor($color-theme)
+              color: $color-theme
+
+        @media screen and (max-width: $device-tablet)
+          justify-content: center
+          display: none
+
+    @media screen and (max-width: $device-tablet)
+      box-shadow: none
+      background: transparent !important
+      margin-top: 2 * $gap
+      backdrop-filter: none
+      color: var(--color-site-inner)
+
+
+
+  &.text
+    .content
+      &,p
+        font-size: $fontsize-meta
+        word-break: break-all
+      padding: $gap * 0.25 $gap
+      a
+        color: $color-link
+        trans()
+        &:hover
+          color: $color-hover
+        &:active
+          color: darken($color-hover, 25%)
+
+
+  &.list
+    .content
+      padding: $gap * 0.5 0
+      a
+        font-size: $fontsize-meta
+        font-weight: bold
+        line-height: 1.5
+        padding-top: 6px
+        padding-bottom: 6px
+        img,i
+          margin-right: 4px
+        i
+          margin-left: 1px
+        img
+          vertical-align: middle
+          height: 20px
+          width: 20px
+          margin-bottom: 4px
+          &#round
+            border-radius: 100%
+
+
+  &.grid
+    .content
+      .grid
+        border: none
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-around
+        padding: $gap * 0.25 $gap
+        a
+          text-align: center
+          border-radius: $border-line
+          margin: 0
+          padding: 4px 8px
+          display: flex
+          flex-direction: column
+          align-items: center
+          font-size: $fontsize-footnote
+          font-weight: bold
+          color: alpha($color-text, 70%)
+          line-height: 1.5
+          word-wrap: break-word
+          i
+            margin-top: .3em
+            margin-bottom: .3em
+            font-size: 1.8em
+
+          img
+            display: inline
+            vertical-align: middle
+            margin-bottom: 4px
+            &#round
+              border-radius: 100%
+
+          &.active
+            list_hover()
+          &:hover
+            list_hover()
+            border-radius: $border-line
+
+
+        &.fixed a
+          width: "calc(100%/3 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-tablet)
+            width: "calc(100%/6 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile)
+            width: "calc(100%/5 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile-l)
+            width: "calc(100%/4 - 0 * %s)" % $gap
+          @media screen and (max-width: $device-mobile-m)
+            width: "calc(100%/3 - 0 * %s)" % $gap
+
+
+  &.tagcloud
+    .content
+      text-align: justify
+      padding: $gap * 0.5 $gap
+      a
+        display: inline-block
+        trans()
+        line-height: 1.2em
+        margin: 4px 0
+        border-bottom: 1px solid transparent
+        &:hover
+          color: $color-hover !important //to cover inline style.
+          border-bottom: 1px solid $color-hover
+
+
+
+  &.related_posts
+    .content
+      font-weight: bold
+      ul
+        margin-top: $gap * 0.5
+        margin-bottom: $gap * 0.5
+      h3
+        font-size: $fontsize-meta
+        font-weight: bold
+        margin: 0
+        a
+          line-height: inherit
+          padding-top: 4px
+          padding-bottom: 4px
+
+
+
+  &.qrcode
+    .content
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      justify-content: space-around
+      padding-left: $gap
+      padding-right: $gap
+      &,img
+        margin-bottom: 4px
+
+
+#l_side>.widget.page
+  >.content
+    padding-top: 0
+    padding-left: $gap - 4px
+    padding-right: $gap - 4px
+
+
+.webinfo
+  padding 0.2rem 1rem
+  .webinfo-item
+    display block
+    padding 4px 0 0
+    div
+      &:first-child
+        display inline-block
+      &:last-child
+        display inline-block
+        float right
+
+.widget-last
+  display: block !important
+  .item
+    display: flex
+    justify-content: space-between
+    font-size: 0.8rem
+  .item-title
+    width: 100%  // 设定宽度
+    display: inline-block  // 将 span 当作块级元素
+    white-space: nowrap  // 不换行
+    overflow: hidden  // 超出宽度部分隐藏
+    text-overflow: ellipsis  // 超出部分以点号替代
+
+.widget-sticky
+  position: sticky
+  top: $navbar-height + $gap
+  z-index 10
+
+.bber-talk
+  padding 0.2rem 1rem
+  :hover
+    border-color: #49b1f5
+    box-shadow: none
+  a
+    color: var(--font-color)
+  .talk-list
+    display: block !important
+    max-height: 25px
+    overflow: hidden
+    :hover
+      color: #49b1f5 !important
+      transition: all .2s ease-in-out
+    .item
+      text-overflow: ellipsis
+      white-space: nowrap
+      width: 98%
+      overflow: hidden

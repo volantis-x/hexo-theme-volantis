@@ -1,17 +1,17 @@
 <%- partial('_pre') %>
-<section class="widget <%- item.class %> <%- page.widget_style %> <%- page.widget_platform %>">
+<section class="widget <%- item.class %> <%- page.widget_platform %>">
   <%- partial('header', {item: item}) %>
   <div class='content'>
     <div class="grid navigation<%- item.fixed ? ' fixed' : '' %>">
-      <% (item.rows||[]).forEach(function(row){ %>
-        <a class="flat-box" title="<%- url_for(row.url) %>" href="<%- url_for(row.url) %>"
+      <% getList(item.rows).forEach(function(row){ %>
+        <a class="flat-box" href="<%- url_for(row.url) %>"
           <% if (row.rel) { %>
             rel="<%- row.rel %>"
           <% } %>
           <% if (row.target) { %>
             target="<%- row.target %>"
           <% } %>
-          id="<%= url_for(row.url).replace(/\/|%|\./g, "")?url_for(row.url).replace(/\/|%|\./g, ""):"home" %>">
+          active-action="action-<%= url_for(row.url).replace(/\/|%|\./g, "")?url_for(row.url).replace(/\/|%|\./g, ""):"home" %>">
           <% if (row.img) { %>
             <img src="<%- row.img %>">
           <% } else if(row.avatar) { %>

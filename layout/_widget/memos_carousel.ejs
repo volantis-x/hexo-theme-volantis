@@ -1,0 +1,22 @@
+<%- partial('_pre') %>
+<section class="widget <%- page.widget_platform %>">
+    <%- partial('header', {item: item}) %>
+    <div class='content'>
+        <div class='bber-talk'>
+            <ul class='talk-list'><%- item.placeholder %></ul>
+        </div>
+    </div>
+    <script>
+        <% var api = item.url; %>
+        <% var params = 'api/memo?creatorId=' + item.creatorId + '&tag=' + item.tag + '&limit=' + item.limit %>
+        <% if (!api.endsWith("/")) { %>
+            <% api += "/"; %>
+        <% } %>
+        var bbCarouselMemos = {
+            api: '<%- api %>' + '<%- params %>',
+            image_icon: '<i class="fa-solid fa-image"></i>',
+            link_icon: '<i class="fa-solid fa-link"></i>',
+        }
+    </script>
+    <script>volantis.js("<%- theme.cdn.memos_carousel_js %>");</script>
+</section>

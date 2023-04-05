@@ -1,0 +1,11 @@
+<script>
+  // https://www.micdz.cn/article/katex-on-volantis/
+  if (typeof renderMathInElement == "undefined") {
+    volantis.css("<%= theme.cdn.katex_css %>")
+    volantis.js("<%= theme.cdn.katex_js %>").then(() => {
+      volantis.js("<%= theme.cdn.katex_render %>").then(() => {
+        renderMathInElement(document.body);
+      })
+    })
+  }
+</script>

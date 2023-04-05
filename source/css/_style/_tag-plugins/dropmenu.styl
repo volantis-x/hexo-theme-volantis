@@ -1,0 +1,22 @@
+div.dropmenu-wrapper
+  display: inline-block
+
+div.dropmenu
+  position: relative
+  display: inline-block
+  trans()
+  color: $color-link
+  &:hover
+    color: inherit
+    >ul
+      display: block
+      left: 0
+      margin-left: 0
+      margin-top: 0px
+  ul>li
+    list-style: none
+    >a
+      &:hover
+        text-decoration: none !important
+  .list-v .list-v
+    left: "calc(100% - 0.5 * %s)" % $gap

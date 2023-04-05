@@ -1,0 +1,117 @@
+article
+  &#arc,&#cat,&#tag
+    padding-top: $gap * 3
+    padding-bottom: $gap * 3
+    h2
+      font-weight: 600
+      &:first-child
+        margin-top: 0
+
+
+// 归档页面
+article#arc
+  margin-bottom: $gap * 2
+  padding-bottom: $gap * 4
+  .timenode
+    &:before,&:after
+      margin-left: 12px
+    .meta
+      padding: 6px 0
+      line-height: 1.5
+      height: auto
+      max-width: 100%
+      display: flex
+      font-size: $fontsize-list
+      font-weight: 500
+      border-radius: 2px
+      color: var(--color-list)
+      &:before
+        display: none
+      &:after
+        margin-left: 14px
+      &:hover
+        color: var(--color-p)
+        background: var(--color-site-bg)
+      time
+        color: var(--color-meta)
+        margin-left: $gap * 0.25 + 30px
+        margin-right: $gap * 0.25
+        flex-shrink: 0
+        width: 60px
+      i
+        line-height: 1.5
+        color: $color-hover
+        &.red
+          color: $color-mac-red
+        &.green
+          color: $color-mac-green
+        &.yellow
+          color: $color-mac-yellow
+        &.blue
+          color: $color-mac-cyan
+        &.theme
+          color: $color-theme
+        &.accent
+          color: $color-hover
+        &.orange
+          color: $color-md-deep-orange
+
+
+// 分类页面
+article#cat
+  .all-cats
+    a
+      display: block
+      padding: $gap * 0.5 $gap
+      border-radius: $border-button
+      color: var(--color-list)
+      font-size: $fontsize-list
+      font-weight: 500
+      &:hover
+        list_hover()
+      &.child
+        padding-left: 3 * $gap
+
+// 标签页面
+article#tag
+  .all-tags
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    justify-content: flex-start
+    align-items: baseline
+    text-align: center
+    ul
+      margin: 0 -8px
+      padding: 0
+      display: flex
+      flex-wrap: wrap
+      li
+        list-style: none
+        margin: 8px
+        border-radius: $border-button
+        overflow: hidden
+        display: flex
+        position: relative
+        font-size: $fontsize-list
+        a
+          display: inline-block
+          color: var(--color-list)
+          padding: 4px 52px 4px 16px
+          background: var(--color-block)
+          font-weight: 500
+          &:hover
+            background: $color-hover
+            color: $color-inner
+        span
+          &:before
+            content: 'x'
+          color: var(--color-meta)
+          background: var(--color-card)
+          padding: 2px 8px
+          border-radius: $border-button - 2px
+          pointer-events: none
+          position: absolute
+          right: 2px
+          top: 2px
+          height: "calc(100% - %s)" % 4px

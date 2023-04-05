@@ -1,17 +1,13 @@
-@import '_defines/*'
-// project
-@import '_base'
-@import '_tag-plugins/*'
-@import '_highlight'
-@import '_third-party/*'
-@import '_layout/*'
-@import '_custom/*'
+#safearea{
+  display: block
+}
 
-// search
-// if hexo-config('algolia_search.enable')
-//   @import '_search/index'
-//   @import '_search/algolia'
-//
-// if hexo-config('local_search') && hexo-config('local_search.enable')
-//   @import '_search/index'
-//   @import '_search/local-search'
+@import '_defines/*'
+
+// Project
+@import '_style'
+
+// Custom Files
+for $injects_style in hexo-config('injects.style')
+  @import $injects_style;
+

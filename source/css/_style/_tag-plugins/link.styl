@@ -1,0 +1,67 @@
+.md .tag.link
+  margin-top: $gap-p
+  margin-bottom: $gap-p
+
+.md .link-card
+  margin-right: $gap-p
+  background: var(--color-block)
+  display: inline-flex
+  align-items: center
+  cursor: pointer
+  text-align: center
+  width: $device-mobile-l - 4 * $gap
+  max-width: 100%
+  box-shadow: $boxshadow-card
+  @media screen and (max-width: $device-mobile-l)
+    max-width: 100%
+    width: 100%
+  color: var(--color-p)
+  border-radius: $border-card
+  &:hover
+    box-shadow: $boxshadow-float, $boxshadow-card-float
+
+
+.md .link-card
+  div.left,div.right
+    pointer-events: none
+  div.left
+    width: 54px
+    height: 54px
+    margin: 12px
+    overflow: hidden
+    flex-shrink: 0
+    position: relative
+    i
+      font-size: 32px
+      line-height: 48px
+      margin-left: 4px
+    img
+      display: block
+      position: absolute
+      border-radius: $border-card / 4
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+  div.right
+    overflow: hidden
+    margin-right: 16px
+  p
+    margin: 0
+    txt-ellipsis()
+  p.text
+    font-weight: bold
+  p.url
+    flex-shrink: 0
+    color: var(--color-meta)
+    font-size: $fontsize-code
+
+.md .link-group
+  display: grid
+  grid-template-columns: 1fr 1fr
+  @media screen and (max-width: $device-mobile-l * 2)
+    grid-template-columns: 1fr
+  grid-gap: $gap
+  .tag.link
+    margin: 0
+  .link-card
+    width: 100%

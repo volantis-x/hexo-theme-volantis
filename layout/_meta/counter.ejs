@@ -1,31 +1,56 @@
-<% if ((theme.comments.valine && theme.comments.valine.appId && (theme.comments.valine.visitor == true))||(theme.comments.minivaline && theme.comments.minivaline.appId && (theme.comments.minivaline.visitor == true))) { %>
-  <!-- <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
-      <%
-        var path = post.path || page.path;
-        if (path.length > 9 && (path.substring(path.length - 10) == 'index.html')) {
-          path = path.substring(0, path.length - 10);
-        }
-      %>
-      <span id="<%- url_for(path) %>" class="leancloud_visitors" data-flag-title="<%- post.title || page.title %>">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
+<%
+  let path = post.path || page.path;
+  let commentPath;
+  if (theme.comments.service && theme.comments.service.length > 0) {
+    let service = theme.comments.service;
+    if (page.comments == undefined || page.comments != false) {
+      if (service in page && page[service].path) {
+        commentPath = page[service].path;
+      }
+    }
+  }
+
+  if(commentPath) path = commentPath;
+  path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
+
+  let checkComment = false;
+  if (theme.plugins.busuanzi.enable
+    || (theme.comments.service=='waline' && theme.comments.waline.pageview)
+    || (theme.comments.service=='twikoo' && theme.comments.twikoo.visitor)
+    || (theme.comments.service=='discuss' && theme.comments.discuss.visitStat)
+    || (theme.comments.service=='artalk' && theme.comments.artalk.visitor)) {
+    checkComment = !checkComment;
+  } 
+%>
+
+<% if (!!page.comments && checkComment) { %>
+<div class="new-meta-item browse">
+  <a class='notlink'>
+    <p>
+      <i class="<%- theme.article.body.meta_library.counter.icon %> fa-fw" aria-hidden="true"></i>
+      <% if (theme.comments.service=='waline' && theme.comments.waline.pageview) { %>
+      <span data-path="<%- url_for(path) %>" class="waline-pageview-count">
+        <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
       </span>
-    </a>
-  </div> -->
-<% } else if (theme.plugins.busuanzi) { %>
-  <% if(!isPostList){ %>
-    <div class="new-meta-item browse busuanzi">
-      <a class='notlink'>
-        <i class="<%- theme.meta.counter.icon %> fa-fw" aria-hidden="true"></i>
-        <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-      </a>
-    </div>
-  <% } %>
+      <% } else if (theme.comments.service=='twikoo' && theme.comments.twikoo.visitor) { %>
+      <span id="twikoo_visitors">
+        <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
+      </span>
+      <% } else if (theme.comments.service=='discuss' && theme.comments.discuss.visitStat) { %>
+      <span id="Discuss-Visitors">
+        <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
+      </span>
+      <% } else if (theme.comments.service=='artalk' && theme.comments.artalk.visitor) { %>
+      <span id="artalk_visitors" data-page-key="<%- url_for(path) %>">
+        <i class="fa-light fa-loader fa-spin fa-fw" aria-hidden="true"></i>
+      </span>
+      <% } else if (theme.plugins.busuanzi.enable) { %>
+      <span id="busuanzi_value_page_pv">
+        <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
+      </span>
+      <% } %>  
+      <span><%- theme.article.body.meta_library.counter.unit %></span>
+    </p>
+  </a>
+</div>
 <% } %>
