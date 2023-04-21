@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.7.7](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.6...5.7.7) (2022-11-24)
+
+
+### Bug Fixes
+
+* **#824:** 边界条件 ([13f4e0e](https://github.com/volantis-x/hexo-theme-volantis/commit/13f4e0e6be464519a1ea3e020b5da1b1396c1254))
+* yml string to list ([11ab545](https://github.com/volantis-x/hexo-theme-volantis/commit/11ab545b52967e639938be00f78cc6bdefa885d4))
+
+
+### Performance Improvements
+
+* **debug:** description 的配置检查改为warn警告并使用默认值 [#801](https://github.com/volantis-x/hexo-theme-volantis/issues/801) ([f82f547](https://github.com/volantis-x/hexo-theme-volantis/commit/f82f54718b081439ea40e5a105ba81be15c60de0))
+* **readmore:** readmore:false 优先级高于 auto_excerpt:true ([302bf4e](https://github.com/volantis-x/hexo-theme-volantis/commit/302bf4e101689c0df9e0b8cbb1778dd18a8d5567))
+
 ## [5.7.6](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.5...v5.7.6) (2022-09-05)
 
 
