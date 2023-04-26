@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.7.9](https://github.com/volantis-x/hexo-theme-volantis/compare/5.7.8...5.7.9) (2023-04-26)
+
+
+### Bug Fixes
+
+* 修复移动端web菜单栏无法收缩；特性：浏览器滚动条复杂样式从配置文件传入 ([#877](https://github.com/volantis-x/hexo-theme-volantis/issues/877)) ([91288f9](https://github.com/volantis-x/hexo-theme-volantis/commit/91288f916dee43baadac9750a39de6d3933a6737))
+
 ## [5.7.8](https://github.com/volantis-x/hexo-theme-volantis/compare/5.7.7...5.7.8) (2023-04-01)
 
 
