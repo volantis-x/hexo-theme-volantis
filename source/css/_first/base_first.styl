@@ -37,7 +37,7 @@ html
   font-size: $fontsize-root
   >
     if hexo-config('custom_css.scrollbar.size')
-      scrollbar(convert(hexo-config('custom_css.scrollbar.size')), convert(hexo-config('custom_css.scrollbar.border')) || 0px)
+      scrollbar(convert(hexo-config('custom_css.scrollbar.size')), convert(hexo-config('custom_css.scrollbar.border')) || 0px, convert(hexo-config('custom_css.scrollbar.background')), convert(hexo-config('custom_css.scrollbar.hover_background')))
 
 body
   background-color: var(--color-site-body)

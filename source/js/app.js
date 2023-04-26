@@ -291,23 +291,41 @@ const VolantisApp = (() => {
           volantis.dom.$(e).click(function (e) {
             e.stopPropagation();
             // 关闭已经展开的子菜单
-            e.currentTarget.parentElement.childNodes.forEach(function (e) {
-              if (Object.prototype.toString.call(e) == '[object HTMLLIElement]') {
-                e.childNodes.forEach(function (e) {
-                  if (Object.prototype.toString.call(e) == '[object HTMLUListElement]') {
-                    volantis.dom.$(e).hide()
-                  }
-                })
-              }
-            })
+            // e.currentTarget.parentElement.childNodes.forEach(function (e) {
+            //   if (Object.prototype.toString.call(e) == '[object HTMLLIElement]') {
+            //     e.childNodes.forEach(function (e) {
+            //       if (Object.prototype.toString.call(e) == '[object HTMLUListElement]') {
+            //         volantis.dom.$(e).hide()
+            //       }
+            //     })
+            //   }
+            // })
             // 点击展开子菜单
+             /*
+            jasonhuang: 这里出现两个错误
+            第一个: 本来以上代码下拉菜单再次点击又被隐藏了，下面的代码又把它打开了。当第一次点击.s-menu fa-solid fa-bars fa-fw这个元素时，下拉菜单要打开。再点的时候应该把下拉菜单关闭，不应该再执行以下代码.需要先判断
+                    ul.menu-phone list-v navigation white-box打开没有。但是不能凭借style.display是否为none不严谨， 应该是window.getComputedStyle
+                    这一题，如果是用jquery，寻找e.currentTarget也就是被点击的li标签， 其中的子元素.menu-phone很简单$(e.currentTarget).children('.menu-phone')
+                    直接找e.currentTarget的子元素中类名为menu-phone的（找className或classList），判断他是否处于打开的状态。那这里不一定有jquery，只能原生
+
+                    其实上面那串代码用不到了，直接判断是否打开，取反就好了,应该和 下面写一起，否则也太混乱了
+            第二个：volantis.dom.$(element).display这种设置样式是无效的，class，id可以这么用，但是这是样式。得volantis.dom.$(element).style.display
+            我看了volantis.dom.$(element)返回的dom对象，而jquery(element)返回的是jquery对象。这是不一样的
+            我看了下结构， volantis.dom.$(element)和element引用是一样的，区别是增加了show，hide，click, toggleClass等方法
+            */
             let array = e.currentTarget.children
             for (let index = 0; index < array.length; index++) {
               const element = array[index];
               if (volantis.dom.$(element).title === 'menu') { // 移动端菜单栏异常
-                volantis.dom.$(element).display = "flex"      // https://github.com/volantis-x/hexo-theme-volantis/issues/706
+                volantis.dom.$(element).style.display = "flex"      // https://github.com/volantis-x/hexo-theme-volantis/issues/706
               } else {
-                volantis.dom.$(element).show()
+                // 判断.menu-phone元素style.display是否为none
+                let is_hiding = window.getComputedStyle(element).display === 'none'
+                if(is_hiding) {
+                  volantis.dom.$(element).show()
+                } else {
+                  volantis.dom.$(element).hide()
+                }
               }
             }
           }, 0);
