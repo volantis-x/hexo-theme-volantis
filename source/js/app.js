@@ -322,8 +322,6 @@ const VolantisApp = (() => {
                 我们要点击外部的menu icon时要关闭的是.menu-phone而不是.menuitem
               */
               let array = e.currentTarget.children
-              console.log(e.currentTarget)
-              console.log(array)
               for (let index = 0; index < array.length; index++) {
                 const element = array[index];
                 if (volantis.dom.$(element).title === 'menu') { // 移动端菜单栏异常
