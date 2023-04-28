@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.7.10](https://github.com/volantis-x/hexo-theme-volantis/compare/5.7.9...5.7.10) (2023-04-28)
+
+
+### Bug Fixes
+
+* 修复移动端菜单栏按钮点击没有收起二级子菜单的问题 ([#880](https://github.com/volantis-x/hexo-theme-volantis/issues/880)) ([bb7738b](https://github.com/volantis-x/hexo-theme-volantis/commit/bb7738b9dcfa375e263ee4ca648d437703b15182))
+
 ## [5.7.9](https://github.com/volantis-x/hexo-theme-volantis/compare/5.7.8...5.7.9) (2023-04-26)
 
 
