@@ -4,6 +4,7 @@ Actions: .github/workflows/**/*
 Dependencies: package.json
 Configurations: _config.yml
 CSS: source/css/**/*
+JS: source/js/**/*
 Layout: layout/**/*
 Scripts: scripts/**/*
 i18n: languages/**/*
