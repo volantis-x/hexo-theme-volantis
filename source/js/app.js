@@ -285,49 +285,73 @@ const VolantisApp = (() => {
   fn.setGlobalHeaderMenuEvent = () => {
     if (volantis.isMobile) {
       // 【移动端】 关闭已经展开的子菜单 点击展开子菜单
-      document.querySelectorAll('#l_header .m-phone li').forEach(function (e) {
-        if (e.querySelector(".list-v")) {
+      document.querySelectorAll('#l_header .m-phone li').forEach(function (_e) {
+        if (_e.querySelector(".list-v")) {
           // 点击菜单
-          volantis.dom.$(e).click(function (e) {
+          volantis.dom.$(_e).click(function (e) {  
             e.stopPropagation();
-            // 关闭已经展开的子菜单
-            // e.currentTarget.parentElement.childNodes.forEach(function (e) {
-            //   if (Object.prototype.toString.call(e) == '[object HTMLLIElement]') {
-            //     e.childNodes.forEach(function (e) {
-            //       if (Object.prototype.toString.call(e) == '[object HTMLUListElement]') {
-            //         volantis.dom.$(e).hide()
-            //       }
-            //     })
-            //   }
-            // })
-            // 点击展开子菜单
-             /*
-            jasonhuang: 这里出现两个错误
-            第一个: 本来以上代码下拉菜单再次点击又被隐藏了，下面的代码又把它打开了。当第一次点击.s-menu fa-solid fa-bars fa-fw这个元素时，下拉菜单要打开。再点的时候应该把下拉菜单关闭，不应该再执行以下代码.需要先判断
-                    ul.menu-phone list-v navigation white-box打开没有。但是不能凭借style.display是否为none不严谨， 应该是window.getComputedStyle
-                    这一题，如果是用jquery，寻找e.currentTarget也就是被点击的li标签， 其中的子元素.menu-phone很简单$(e.currentTarget).children('.menu-phone')
-                    直接找e.currentTarget的子元素中类名为menu-phone的（找className或classList），判断他是否处于打开的状态。那这里不一定有jquery，只能原生
+            let menuType = ''
+            // 关闭.menu-phone
+            Array.from(e.currentTarget.children).some(val => {
+              if(val.classList.contains('s-menu')) {
+                menuType = 'menu' // 代表点击的是一级菜单外层的icon
+                return
+              }
+              if(val.classList.contains('menuitem')) {
+                menuType = 'item' // 点击的是下拉一级菜单
+                return
+              }
+            })
+            if(menuType === 'item') {
+              // 关闭已经展开的子菜单, 这一步是针对点击多个拥有二级子菜单的一级菜单，关闭其他所有一级菜单的二级菜单
+              // ①
+              e.currentTarget.parentElement.childNodes.forEach(function (e2) {
+                if (Object.prototype.toString.call(e2) == '[object HTMLLIElement]') {
+                  e2.childNodes.forEach(function (e1) {
+                    if (Object.prototype.toString.call(e1) == '[object HTMLUListElement]') {
+                      volantis.dom.$(e1).hide()
+                    }
+                  })
+                }
+              })
+              // 点击展开二级子菜单
 
-                    其实上面那串代码用不到了，直接判断是否打开，取反就好了,应该和 下面写一起，否则也太混乱了
-            第二个：volantis.dom.$(element).display这种设置样式是无效的，class，id可以这么用，但是这是样式。得volantis.dom.$(element).style.display
-            我看了volantis.dom.$(element)返回的dom对象，而jquery(element)返回的是jquery对象。这是不一样的
-            我看了下结构， volantis.dom.$(element)和element引用是一样的，区别是增加了show，hide，click, toggleClass等方法
-            */
-            let array = e.currentTarget.children
-            for (let index = 0; index < array.length; index++) {
-              const element = array[index];
-              if (volantis.dom.$(element).title === 'menu') { // 移动端菜单栏异常
-                volantis.dom.$(element).style.display = "flex"      // https://github.com/volantis-x/hexo-theme-volantis/issues/706
-              } else {
-                // 判断.menu-phone元素style.display是否为none
-                let is_hiding = window.getComputedStyle(element).display === 'none'
-                if(is_hiding) {
-                  volantis.dom.$(element).show()
+              /* 
+                由于采用事件委托，因此此处点击， 两种情况，currentTarget指向菜单按钮a.s-menu和ul的共同父元素li， 第二，指向ul中的li元素，也就是子菜单
+                区分：情况一的第一个子元素a的类名是s-menu；情况二的子元素a的类名为menuitem
+                我们要点击外部的menu icon时要关闭的是.menu-phone而不是.menuitem
+              */
+              let array = e.currentTarget.children
+              for (let index = 0; index < array.length; index++) {
+                const element = array[index];
+                if (volantis.dom.$(element).title === 'menu') { // 移动端菜单栏异常
+                  volantis.dom.$(element).style.display = "flex"      // https://github.com/volantis-x/hexo-theme-volantis/issues/706
                 } else {
-                  volantis.dom.$(element).hide()
+                  volantis.dom.$(element).show()
                 }
               }
+            } else {  
+              let menuPhone = document.querySelector('.switcher .menu-phone')
+              let isHiding = window.getComputedStyle(menuPhone).display === 'none'
+              if(isHiding) {
+                volantis.dom.$(menuPhone).show()
+              } else {
+                volantis.dom.$(menuPhone).hide()
+                // 别忘了再执行①
+                // 准备关闭所有二级菜单, 注意此时的e和点击一级菜单时候的e层级不同
+                // 此处好像不能使用变量存储的menuPhone？要重新查询
+                document.querySelector('.switcher .menu-phone').childNodes.forEach(function (e2) {
+                  if (Object.prototype.toString.call(e2) == '[object HTMLLIElement]') {
+                    e2.childNodes.forEach(function (e1) {
+                      if (Object.prototype.toString.call(e1) == '[object HTMLUListElement]') {
+                        volantis.dom.$(e1).hide()
+                      }
+                    })
+                  }
+                })
+              }
             }
+
           }, 0);
         }
       })
@@ -346,7 +370,7 @@ const VolantisApp = (() => {
     }
     fn.setPageHeaderMenuEvent();
   }
-
+  
   // 【移动端】隐藏子菜单
   fn.setPageHeaderMenuEvent = () => {
     if (!volantis.isMobile) return
