@@ -15,7 +15,9 @@
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <%_ if (page.import && page.import.body_begin){ _%>
-      <%- page.import.body_begin %>
+      <%_ getList(page.import.body_begin).forEach(function(item){ _%>
+        <%- item %>
+      <%_ }) _%>
     <%_ } _%>
     <!-- front-matter body_begin end -->
     <%- partial('_partial/header', null, {cache: false, path: path}) %>
@@ -48,8 +50,10 @@
     <!-- Custom Files bodyEnd end-->
     <!-- front-matter body_end begin -->
     <%_ if (page.import && page.import.body_end){ _%>
-      <%- page.import.body_end %>
-      <%_ } _%>
-      <!-- front-matter body_end end -->
+      <%_ getList(page.import.body_end).forEach(function(item){ _%>
+        <%- item %>
+      <%_ }) _%>
+    <%_ } _%>
+    <!-- front-matter body_end end -->
   </body>
 </html>
