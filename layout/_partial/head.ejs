@@ -34,6 +34,11 @@
   <!-- Custom Files headBegin begin-->
   <%- volantis_inject('headBegin') %>
   <!-- Custom Files headBegin end-->
+  <!-- front-matter head_begin begin -->
+  <%_ if (page.import && page.import.head_begin){ _%>
+    <%- page.import.head_begin %>
+  <%_ } _%>
+  <!-- front-matter head_begin end -->
   <%_ if (config.favicon) { _%>
     <link rel="shortcut icon" type='image/x-icon' href="<%- url_for(config.favicon) %>">
   <%_ } _%>
@@ -76,4 +81,9 @@
   <!-- Custom Files headEnd begin-->
   <%- volantis_inject('headEnd') %>
   <!-- Custom Files headEnd end-->
+  <!-- front-matter head_end begin -->
+  <%_ if (page.import && page.import.head_end){ _%>
+    <%- page.import.head_end %>
+  <%_ } _%>
+  <!-- front-matter head_end end -->
 </head>
