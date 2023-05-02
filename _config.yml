@@ -124,6 +124,11 @@ dns_prefetch:
   - https://unpkg.com
   - https://cdn.bootcdn.net
 
+# AI摘要
+# https://github.com/zhheo/Post-Abstract-AI
+TianliGpt:
+  post: true
+  api:
 
 # 平滑滚动效果
 scroll_smooth: true

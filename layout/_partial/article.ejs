@@ -11,6 +11,9 @@
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
     <%- post.content %>
+    <% if (theme.TianliGpt.post) { %>
+      <%- partial('_partial/ai_abstract') %>
+    <% } %>
   </div>
   <% if (page.link) { %>
     <div class='div-ori-link'>

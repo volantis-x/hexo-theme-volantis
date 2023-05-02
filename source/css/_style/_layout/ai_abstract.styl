@@ -1,0 +1,155 @@
+:root
+  --heo-none: #00000000
+  --heo-theme = var(--theme-link)
+  --heo-main: var(--theme-link)
+  --heo-snackbar-time: 5s
+  --heo-theme-none: #4259ef01
+  --heo-background: var(--site-bg)
+  --heo-hovertext: var(--text-code)
+  --heo-secondtext: var(--text-p0)
+  --heo-scrollbar: rgba(60, 60, 67, 0.4)
+  --heo-secondbg: var(--block)
+  --heo-card-bg: var(--block)
+  --heo-card-bg-none: rgba(255, 255, 255, 0)
+  --heo-card-border: var(--block-border)
+  --heo-shadow-border: 0 8px 16px -4px #2c2d300c
+  --style-border: 1px solid var(--heo-card-border)
+  --style-border-always: 1px solid var(--heo-card-border)
+
+.post-TianliGPT
+  background: var(--block)
+  border-radius: 12px
+  padding: 12px
+  line-height: 1.3
+  border: var(--style-border-always)
+  margin: 16px 0
+
+  @media screen and (max-width: 768px)
+    .post-TianliGPT
+      margin-top: 22px
+
+.tianliGPT-title
+  display: flex
+  color: var(--theme-link)
+  border-radius: 8px
+  align-items: center
+  padding: 0 12px
+  cursor: default
+  user-select: none
+
+.tianliGPT-title-text
+  font-weight: bold
+  margin-left: 8px
+  line-height: 1
+
+.tianliGPT-explanation
+  margin-top: 12px
+  padding: 8px 12px
+  background: var(--card)
+  border-radius: 8px
+  border: var(--style-border-always)
+  font-size: 15px
+  line-height: 1.4
+  display: flex
+
+.tianliGPT-suggestions
+  display: flex
+  flex-wrap: wrap
+
+.tianliGPT-suggestions .tianliGPT-suggestions-item
+  margin-top: 12px
+  padding: 8px 12px
+  background: var(--card)
+  border-radius: 8px 8px 8px 0
+  border: var(--style-border-always)
+  font-size: 15px
+  line-height: 1.4
+  display: flex
+  width: fit-content
+  margin-right: 12px
+  cursor: pointer
+  transition: 0.3s
+
+.tianliGPT-suggestions .tianliGPT-suggestions-item:hover
+  background: var(--heo-main)
+  color: var(--text-p0)
+
+.blinking-cursor
+  background-color: var(--heo-main)
+  width: 10px
+  height: 16px
+  display: inline-block
+  vertical-align: middle
+  animation: blinking-cursor 0.5s infinite
+  -webkit-animation: blinking-cursor 0.5s infinite
+  margin-left: 4px
+
+@keyframes blinking-cursor
+  0%
+    opacity: 1
+
+  40%
+    opacity: 1
+
+  50%
+    opacity: 0
+
+  90%
+    opacity: 0
+
+  100%
+    opacity: 1
+
+.tianliGPT-tag
+  font-size: 12px
+  background-color: var(--theme-link)
+  color: var(--card)
+  font-weight: bold
+  border-radius: 4px
+  margin-left: auto
+  line-height: 1
+  padding: 4px
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  transition: 0.3s
+
+.tianliGPT-tag:hover
+  background: var(--text-p2)
+  color: var(--card)
+
+ins.adsbygoogle
+  margin: 16px 0
+  background: var(--card)
+  border-radius: 12px
+  overflow: hidden
+  border: var(--style-border-always)
+
+#tianliGPT-Toggle
+  font-size: 12px
+  background: var(--theme-link)
+  color: var(--card)
+  padding: 4px
+  border-radius: 4px
+  margin-left: 6px
+  transform: scale(0.8)
+  cursor: pointer
+  transition: 0.3s
+  font-weight: bold
+
+#tianliGPT-Toggle:hover
+  background: var(--block-hover)
+  color: var(--card)
+
+.tianliGPT-title-icon
+  width: 20px
+  height: 20px
+
+.tianliGPT-title-icon svg
+  width: 20px
+  height: 20px
+  fill: var(--heo-main)
+
+.tianliGPT-title-icon svg path
+  fill: var(--heo-main)
