@@ -127,7 +127,7 @@ dns_prefetch:
 # AI摘要
 # https://github.com/zhheo/Post-Abstract-AI
 TianliGpt:
-  enable: true
+  post: false
   api:
 
 # 平滑滚动效果
