@@ -1,7 +1,7 @@
 <% if (is_post()) { %>
   <script>
     let tianliGPT_postSelector = '#post #post-body';
-    let tianliGPT_key = '<%= theme.tianliGPT.api %>';
+    let tianliGPT_key = '<%= theme.plugins.tianliGPT.key %>';
   </script>
   <script>
 function insertAIDiv(selector) {
@@ -182,7 +182,3 @@ try {
   console.error("TianliGPT：我没有看懂你编写的自定义链接规则，所以我决定不执行摘要功能", error);
 }
 }
-
-checkURLAndRun();
-  </script>
-  <% } %>

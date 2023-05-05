@@ -124,14 +124,7 @@ if hexo-config('comments.service')=='twikoo'
         .OwO-item:hover
           background-color: #252627 !important
 
-// Custom Files
-for $injects_dark in hexo-config('injects.dark')
-  @import $injects_dark;
-// eg:
-// body
-//   --color-site-body: blue !important
-
-if hexo-config('tianliGPT.enable')
+if hexo-config('plugins.tianliGPT.enable')
   /* AI */
   .post-TianliGPT {
     background: #30343f;
@@ -294,3 +287,10 @@ if hexo-config('tianliGPT.enable')
   .tianliGPT-title-icon svg path {
     fill: #f2b94b;
   }
+
+// Custom Files
+for $injects_dark in hexo-config('injects.dark')
+  @import $injects_dark;
+// eg:
+// body
+//   --color-site-body: blue !important

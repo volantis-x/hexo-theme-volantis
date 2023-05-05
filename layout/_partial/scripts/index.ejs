@@ -139,3 +139,6 @@
   <%- structured_data() %>
 <% } %>
 
+<% if (theme.plugins.tianliGPT.enable) { %>
+  <%- partial('../../_plugins/tianligpt/script') %>
+<% } %>

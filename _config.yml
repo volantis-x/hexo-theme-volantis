@@ -124,12 +124,6 @@ dns_prefetch:
   - https://unpkg.com
   - https://cdn.bootcdn.net
 
-# AI摘要
-# https://github.com/zhheo/Post-Abstract-AI
-tianliGPT:
-  enable: true
-  api: 
-
 # 平滑滚动效果
 scroll_smooth: true
 ############################### Navigation Bar ############################### > start
@@ -1024,6 +1018,12 @@ plugins:
   # https://www.swiper.com.cn/
   swiper:
     enable: true
+
+  # AI摘要
+  # https://github.com/zhheo/Post-Abstract-AI
+  tianliGPT:
+    enable: false
+    key: 5Q5mpqRK5DkwT1X9Gi5e
 
 ############################### Plugins ############################### > end
 
