@@ -152,7 +152,20 @@
       }
       tianliGPT.fetchTianliGPT(content).then(summary => {
         const aiExplanationDiv = document.querySelector('.tianliGPT-explanation');
-        aiExplanationDiv.innerHTML = summary;
+        <% if (theme.plugins.tianliGPT.typewriter) { %>
+          var t = 0;
+          function typeWriter() {
+            if (t < summary.length) {
+              aiExplanationDiv.innerHTML = summary.slice(0, t) + '<span class="blinking-cursor"></span>';
+              t++;
+              setTimeout(typeWriter, 50);
+            }
+            else aiExplanationDiv.innerHTML = summary;
+          }
+          typeWriter();
+        <% } else { %>
+          aiExplanationDiv.innerHTML = summary;
+        <% } %>
       })
     }
 

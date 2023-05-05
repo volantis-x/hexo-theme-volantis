@@ -1025,6 +1025,7 @@ plugins:
     enable: false
     key: 5Q5mpqRK5DkwT1X9Gi5e
     wordLimit: 1000 # 摘要字数限制 (⚠️危险：更改此变量损失已消耗过的key，因为你提交的内容发生了变化。)
+    typewriter: true # 打字机效果
 
 ############################### Plugins ############################### > end
 
