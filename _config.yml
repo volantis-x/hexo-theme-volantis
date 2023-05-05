@@ -124,7 +124,6 @@ dns_prefetch:
   - https://unpkg.com
   - https://cdn.bootcdn.net
 
-
 # 平滑滚动效果
 scroll_smooth: true
 ############################### Navigation Bar ############################### > start
@@ -1019,6 +1018,13 @@ plugins:
   # https://www.swiper.com.cn/
   swiper:
     enable: true
+
+  # AI摘要
+  # https://github.com/zhheo/Post-Abstract-AI
+  tianliGPT:
+    enable: false
+    key: 5Q5mpqRK5DkwT1X9Gi5e
+    wordLimit: 1000 # 摘要字数限制 (⚠️危险：更改此变量损失已消耗过的key，因为你提交的内容发生了变化。)
 
 ############################### Plugins ############################### > end
 
