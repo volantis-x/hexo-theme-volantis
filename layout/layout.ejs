@@ -13,6 +13,13 @@
     <!-- Custom Files bodyBegin begin-->
     <%- volantis_inject('bodyBegin') %>
     <!-- Custom Files bodyBegin end-->
+    <!-- front-matter body_begin begin -->
+    <%_ if (page.import && page.import.body_begin){ _%>
+      <%_ getList(page.import.body_begin).forEach(function(item){ _%>
+        <%- item %>
+      <%_ }) _%>
+    <%_ } _%>
+    <!-- front-matter body_begin end -->
     <%- partial('_partial/header', null, {cache: false, path: path}) %>
     <div id="l_body">
       <%- partial('_partial/cover') %>
@@ -41,5 +48,12 @@
     <!-- Custom Files bodyEnd begin-->
     <%- volantis_inject('bodyEnd') %>
     <!-- Custom Files bodyEnd end-->
+    <!-- front-matter body_end begin -->
+    <%_ if (page.import && page.import.body_end){ _%>
+      <%_ getList(page.import.body_end).forEach(function(item){ _%>
+        <%- item %>
+      <%_ }) _%>
+    <%_ } _%>
+    <!-- front-matter body_end end -->
   </body>
 </html>
