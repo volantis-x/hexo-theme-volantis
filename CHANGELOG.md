@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.8.0](https://github.com/volantis-x/hexo-theme-volantis/compare/5.7.10...5.8.0) (2023-05-06)
+
+
+### Features
+
+* **head and body template:** 支持在front-matter中动态插入css和js，支持引入多个 ([#883](https://github.com/volantis-x/hexo-theme-volantis/issues/883)) ([3146360](https://github.com/volantis-x/hexo-theme-volantis/commit/3146360ecf3955314768fde46226632bf86b4e45))
+
 ## [5.7.10](https://github.com/volantis-x/hexo-theme-volantis/compare/5.7.9...5.7.10) (2023-04-28)
 
 
