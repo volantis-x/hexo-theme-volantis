@@ -37,6 +37,9 @@ see: https://volantis.js.org/v5/theme-settings/#文章布局配置`
 Valine has been removed in version 5.0
 see: https://volantis.js.org/v5/theme-settings/#选择评论系统`
     }
+    if (config?.highlight?.hljs) {
+      return `主题不兼容 hljs ，请在 config.highlight.hljs 处修改为 false 关闭。`
+    }
   } catch (error) {}
   hexo.log.info(`Check environment configuration success!`);
   return true;
