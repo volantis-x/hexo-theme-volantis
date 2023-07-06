@@ -17,7 +17,6 @@
   if (theme.plugins.busuanzi.enable
     || (theme.comments.service=='waline' && theme.comments.waline.pageview)
     || (theme.comments.service=='twikoo' && theme.comments.twikoo.visitor)
-    || (theme.comments.service=='discuss' && theme.comments.discuss.visitStat)
     || (theme.comments.service=='artalk' && theme.comments.artalk.visitor)) {
     checkComment = !checkComment;
   } 
@@ -34,10 +33,6 @@
       </span>
       <% } else if (theme.comments.service=='twikoo' && theme.comments.twikoo.visitor) { %>
       <span id="twikoo_visitors">
-        <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
-      </span>
-      <% } else if (theme.comments.service=='discuss' && theme.comments.discuss.visitStat) { %>
-      <span id="Discuss-Visitors">
         <i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i>
       </span>
       <% } else if (theme.comments.service=='artalk' && theme.comments.artalk.visitor) { %>

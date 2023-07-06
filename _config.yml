@@ -539,14 +539,6 @@ comments:
     # 组件属性地址：https://waline.js.org/reference/component.html
     # meta: ['nick', 'mail', 'link']
 
-  # Discuss
-  # https://discuss.js.org
-  discuss:
-    serverURLs: # Discuss server address url
-    visitStat: true # 是否显示文章阅读数
-    # https://discuss.js.org/Quick-Start.html#path
-
-
 ############################### Comments ############################### > end
 
 ############################### Sidebar ############################### > start
