@@ -332,6 +332,15 @@ waline_js:
   npm: true
   static: false
   cdnjs: true
+discuss:
+  name: discuss
+  file: dist/discuss.js
+  cdnjs_file: dist/discuss.js
+  cdnjs_no_min_file: true
+  version: 1.1.4
+  npm: true
+  static: false
+  cdnjs: true
 vssue_js:
   name: vssue
   file: dist/vssue.github.min.js
