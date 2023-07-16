@@ -8,7 +8,7 @@
     </div>
     <script>
         <% var api = item.url; %>
-        <% var params = 'api/memo?creatorId=' + item.creatorId + '&tag=' + item.tag + '&limit=' + item.limit %>
+        <% var params = 'api/v1/memo?creatorId=' + item.creatorId + '&tag=' + item.tag + '&limit=' + item.limit %>
         <% if (!api.endsWith("/")) { %>
             <% api += "/"; %>
         <% } %>
