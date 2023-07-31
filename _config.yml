@@ -387,7 +387,7 @@ comments:
     server: https://yours-artalk-domain    # 修改为自建的后端服务地址
     path:  # 全局评论地址
     placeholder: # 评论占位
-    visitor: true # 是否显示文章阅读数
+    pv: true # 是否显示文章阅读数，counter未设置未其他服务则可以开启
     latex: false # 启用 Latex 支持
     # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
     # 配置此项时将覆盖服务端上传能力
