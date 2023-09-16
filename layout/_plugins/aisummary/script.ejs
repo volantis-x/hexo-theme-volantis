@@ -1,0 +1,248 @@
+<% if (is_post()) { %>
+<script>
+Ning = {
+		debug: !0,
+		var: {},
+		console: {
+			success: e => {
+				Ning.debug && console.log(`%c${e}`, "border-left: 5px solid green;text-decoration: none;border-radius: 3px;color:#000 !important;background:write;padding: 3px")
+			},
+			warning: e => {
+				Ning.debug && console.log(`%c${e}`, "border-left: 5px solid yellow;text-decoration: none;border-radius: 3px;color:#000 !important;background:write;padding: 3px")
+			},
+			info: e => {
+				Ning.debug && console.log(`%c${e}`, "border-left: 5px solid dodgerblue;text-decoration: none;border-radius: 3px;color:#000 !important;background:write;padding: 3px")
+			},
+			error: e => {
+				Ning.debug && console.log(`%c${e}`, "border-left: 5px solid red;text-decoration: none;border-radius: 3px;color:#000 !important;background:write;padding: 3px")
+			},
+			debug: e => {
+				Ning.debug && console.log(`%c${e}`, "border-left: 5px solid gray;text-decoration: none;border-radius: 3px;color:#000 !important;background:write;padding: 3px")
+			},
+			logo: () => {
+				console.log("%c     _ _             \n    | (_) __ _ _ __  \n _  | | |/ _\\` | '_ \\\n| |_| | | (_| | | | |\n \\___/|_|\\__,_|_| |_|", "color:white;!important;background:dodgerblue;padding: 3px;text-align: center;")
+			}
+		},
+		plugins: {
+			lazyload: function() {
+				var e = document.documentElement.clientHeight,
+					t = document.querySelectorAll("img[lazyload]");
+				Array.prototype.forEach.call(t, (function(t, n) {
+					var o, i;
+					"" !== t.getAttribute("lazyload") && ((o = t.getBoundingClientRect())
+						.bottom >= 0 && o.top < e && ((i = new Image)
+							.src = t.getAttribute("lazyload"), i.onload = function() {
+								t.src = i.src, Ning.console.success(i.src + " 加载成功");
+								let e = new CustomEvent("Ning:lazyload:load", {
+									detail: {
+										url: i.src,
+										dom: t
+									}
+								});
+								document.dispatchEvent(e), window.dispatchEvent(e)
+							}, i.onerror = function() {
+								t.setAttribute("lazyload", i.src), Ning.console.error(i.src + " 加载失败");
+								let e = new CustomEvent("Ning:lazyload:error", {
+									detail: {
+										url: i.src,
+										dom: t
+									}
+								});
+								document.dispatchEvent(e), window.dispatchEvent(e)
+							}, t.removeAttribute("lazyload")))
+				}))
+			},
+			read: function() {
+				if (0 !== document.body.classList.value.indexOf("read")) {
+					document.body.classList.add("read"), document.body.addEventListener("click", Ning.plugins.read);
+					let e = new CustomEvent("Ning:read", {
+						detail: !0
+					});
+					document.dispatchEvent(e), window.dispatchEvent(e)
+				} else {
+					document.body.removeEventListener("click", Ning.plugins.read), document.body.classList.remove("read");
+					let e = new CustomEvent("Ning:read", {
+						detail: !1
+					});
+					document.dispatchEvent(e), window.dispatchEvent(e)
+				}
+			}
+		},
+		onload: {
+			list: [],
+			state: !1,
+			Promise: function(e, ...t) {
+				return new Promise((function(n) {
+					n(e(...t))
+				}))
+			},
+			add: function(e, ...t) {
+				if (this.state) try {
+					e(...t)
+				} catch (t) {
+					Ning.console.error(t)
+				} else this.list.push({
+					fn: e,
+					e: t
+				});
+				let n = new CustomEvent("Ning:add_onload", {
+					detail: {
+						fn: e,
+						e: t
+					}
+				});
+				document.dispatchEvent(n), window.dispatchEvent(n)
+			},
+			run: function(e = !1) {
+				if (this.state) return 0;
+				this.state = !0;
+				for (let e = 0; e < this.list.length; e++) try {
+					this.Promise(this.list[e].fn, ...this.list[e].e)
+						.then()
+				} catch (e) {
+					Ning.console.error(e)
+				}
+				let t = new CustomEvent("Ning:onload", {
+					detail: {
+						list: this.list
+					}
+				});
+				document.dispatchEvent(t), window.dispatchEvent(t)
+			}
+		},
+		dark: {
+			set: function(e) {
+				Ning.console.info(e ? "切换为暗色模式" : "切换为亮色模式"), "boolean" != typeof e && Ning.console.error("set(n),n must be a boolean"), Ning.var.dark = e;
+				let t = new CustomEvent("Ning:dark_set", {
+					detail: Ning.var.dark
+				});
+				document.dispatchEvent(t), window.dispatchEvent(t), localStorage.setItem("dark", e), e ? document.body.classList.add("dark") : document.body.classList.remove("dark")
+			},
+			change: function() {
+				Ning.var.dark ? this.set(!1) : this.set(!0)
+			}
+		},
+		load: {
+			js: function(e, t = void 0) {
+				Ning.onload.add((function(e, t) {
+					var n = document.createElement("script");
+					t = t || function() {};
+					window.dispatchEvent(new CustomEvent("Ning:onload_js", {
+						detail: {
+							url: e,
+							fn: t
+						}
+					})), n.type = "text/javascript", n.onload = function() {
+						Ning.console.success(e + " 加载成功"), t()
+					}, n.onerror = function() {
+						Ning.console.error(e + " 加载失败")
+					}, n.src = e, document.getElementsByTagName("head")[0].appendChild(n)
+				}), e, t)
+			},
+			css: function(e, t = void 0) {
+				Ning.onload.add((function(e, t = void 0) {
+					var n = document.createElement("link");
+					t = t || function() {};
+					window.dispatchEvent(new CustomEvent("Ning:onload_css", {
+						detail: {
+							url: e,
+							fn: t
+						}
+					})), n.rel = "stylesheet", n.href = e, n.onload = function() {
+						Ning.console.success(e + " 加载成功"), t()
+					}, n.onerror = function() {
+						Ning.console.error(e + " 加载失败")
+					}, document.getElementsByTagName("head")[0].appendChild(n)
+				}), e, t)
+			}
+		},
+		msg: function(e) {
+			document.msg = document.getElementById("msg");
+			let t = `MsgCard-${(new Date).getTime()}`;
+			document.msg.innerHTML = `<div class="card w-full ${e.color?"color-"+e.color+"-full":""}" id="${t}"><div><div class="title"><i class="${e.icon||""}"></i> ${e.title||""}</div><div class="text">${e.msg||e.text||""}</div></div></div>` + document.msg.innerHTML, "function" == typeof e.click && document.getElementById(t)
+				.addEventListener("click", e.click);
+			let n = new CustomEvent("Ning:onmsg", {
+				detail: e
+			});
+			document.dispatchEvent(n), window.dispatchEvent(n), setTimeout((function(e) {
+				let t = new CustomEvent("Ning:add_onload", {
+					detail: e
+				});
+				document.dispatchEvent(t), window.dispatchEvent(t), document.getElementById(e)
+					.remove()
+			}), e.timeout || 3e3, t)
+		}
+	}, DOMLoadStartTime = (new Date)
+	.getTime(), window.addEventListener("DOMContentLoaded", (function() {
+		Ning.console.info("DOM加载完毕, 用时" + ((new Date)
+				.getTime() - DOMLoadStartTime)
+			.toString() + "ms"), "true" === localStorage.getItem("dark") && Ning.dark.set(!0), Ning.console.logo(), Ning.onload.run(), document.documentElement.offsetWidth > 672 ? document.getElementsByClassName("menu")[0].style.display = "flex" : document.getElementsByClassName("menu")[0].style.display = "none"
+	})), "/" !== window.location.pathname[window.location.pathname.length - 1] && -1 === window.location.pathname.split("/")[0].indexOf(".") && "/" !== window.location.pathname && history.pushState({}, "", window.location.pathname + "/"), window.addEventListener("resize", (function() {
+		document.documentElement.offsetWidth > 672 ? document.getElementsByClassName("menu")[0].style.display = "flex" : document.getElementsByClassName("menu")[0].style.display = "none"
+	}));
+</script>
+<style>
+}.ai-summary {
+	background:#f1f3f8;
+	border-radius:10px;
+	padding:12px;
+	line-height:1.3;
+	border:1px solid #e3e8f7;
+	margin-bottom:16px
+}
+.ai-summary .title {
+	display:flex;
+	color:#425aef;
+	border-radius:8px;
+	align-items:center;
+	padding:0 12px;
+	cursor:default;
+	user-select:none
+}
+.ai-summary .title .title {
+	font-weight:700;
+	margin-left:8px;
+	line-height:1
+}
+.ai-summary .content {
+	margin-top:12px;
+	padding:8px 12px;
+	background:#fff;
+	border-radius:8px;
+	border:1px solid #e3e8f7;
+	color:#334155;
+	font-size:15px;
+	line-height:1.4;
+	display:block
+}
+</style>
+<div class=ai-summary>
+                        <div class=title>
+                            <svg xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink width=20px height=20px viewBox="0 0 48 48">
+                                <g stroke=none stroke-width=1 fill=none fill-rule=evenodd>
+                                    <path d="M34.717885,5.03561087 C36.12744,5.27055371 37.079755,6.60373651 36.84481,8.0132786 L35.7944,14.3153359 L38.375,14.3153359 C43.138415,14.3153359 47,18.1768855 47,22.9402569 L47,34.4401516 C47,39.203523 43.138415,43.0650727 38.375,43.0650727 L9.625,43.0650727 C4.861585,43.0650727 1,39.203523 1,34.4401516 L1,22.9402569 C1,18.1768855 4.861585,14.3153359 9.625,14.3153359 L12.2056,14.3153359 L11.15519,8.0132786 C10.920245,6.60373651 11.87256,5.27055371 13.282115,5.03561087 C14.69167,4.80066802 16.024865,5.7529743 16.25981,7.16251639 L17.40981,14.0624532 C17.423955,14.1470924 17.43373,14.2315017 17.43948,14.3153359 L30.56052,14.3153359 C30.56627,14.2313867 30.576045,14.1470924 30.59019,14.0624532 L31.74019,7.16251639 C31.975135,5.7529743 33.30833,4.80066802 34.717885,5.03561087 Z M38.375,19.4902885 L9.625,19.4902885 C7.719565,19.4902885 6.175,21.0348394 6.175,22.9402569 L6.175,34.4401516 C6.175,36.3455692 7.719565,37.89012 9.625,37.89012 L38.375,37.89012 C40.280435,37.89012 41.825,36.3455692 41.825,34.4401516 L41.825,22.9402569 C41.825,21.0348394 40.280435,19.4902885 38.375,19.4902885 Z M14.8575,23.802749 C16.28649,23.802749 17.445,24.9612484 17.445,26.3902253 L17.445,28.6902043 C17.445,30.1191812 16.28649,31.2776806 14.8575,31.2776806 C13.42851,31.2776806 12.27,30.1191812 12.27,28.6902043 L12.27,26.3902253 C12.27,24.9612484 13.42851,23.802749 14.8575,23.802749 Z M33.1425,23.802749 C34.57149,23.802749 35.73,24.9612484 35.73,26.3902253 L35.73,28.6902043 C35.73,30.1191812 34.57149,31.2776806 33.1425,31.2776806 C31.71351,31.2776806 30.555,30.1191812 30.555,28.6902043 L30.555,26.3902253 C30.555,24.9612484 31.71351,23.802749 33.1425,23.802749 Z" fill=#425aef fill-rule=nonzero></path>
+                                </g>
+                            </svg>
+                            <div class=title>智能摘要</div>
+                        </div>
+                        <div class=content id=ai-summary>获取中……</div>
+                    </div>
+                    <script>
+                        function ai_summary() {
+                            Ning.console.debug(`AI摘要插件
+API URL: <%= theme.plugins.aisummary.apiurl %>;
+Key: <%= theme.plugins.aisummary.key %>
+发送的内容: ` + (document.title + " " + document.getElementById("post").innerText.replaceAll("\n", " ")).substring(0, 201)),
+                            fetch("<%= theme.plugins.aisummary.apiurl %>/?key=<%= theme.plugins.aisummary.key %>&content=" + (document.title + " " + document.getElementById("post").innerText.replaceAll("\n", " ")).substring(0, 201)).then(function(t) {
+                                t.json().then(function(t) {
+                                    document.getElementById("ai-summary").innerHTML = t.summary
+                                }).catch(function(t) {
+                                    document.getElementById("ai-summary").innerHTML = "代码出现故障：" + t
+                                })
+                            }).catch(function(t) {
+                                document.getElementById("ai-summary").innerHTML = "代码出现故障：" + t
+                            })
+                        }
+                        Ning.onload.add(ai_summary)
+                    </script>
+<% } %>

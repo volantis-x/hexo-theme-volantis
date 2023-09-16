@@ -1027,6 +1027,13 @@ plugins:
     wordLimit: 1000 # 摘要字数限制 (⚠️危险：更改此变量损失已消耗过的key，因为你提交的内容发生了变化。)
     typewriter: true # 打字机效果
 
+  # 文章AI摘要
+  # 免费，但是有bug
+  aisummary:
+    enable: false
+    apiurl: https://ai.ning0818.top # 使用vercel部署"https://github.com/ning0818/ai-postsummary"
+    key:  # 留空
+
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
