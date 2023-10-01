@@ -1030,7 +1030,7 @@ plugins:
   # 文章AI摘要
   # 免费，但是有bug
   aisummary:
-    enable: false
+    enable: true
     apiurl: https://ai.ning0818.top # 使用vercel部署"https://github.com/ning0818/ai-postsummary"
     key:  # 留空
 

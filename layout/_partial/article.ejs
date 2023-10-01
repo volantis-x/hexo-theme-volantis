@@ -10,6 +10,9 @@
   <%- partial('meta', {post: post, position: 'top'}) %>
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
+    <% if (theme.plugins.aisummary.enable) { %>
+      <%- partial('../_plugins/aisummary/script') %>
+    <% } %>
     <%- post.content %>
   </div>
   <% if (page.link) { %>
