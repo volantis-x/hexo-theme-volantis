@@ -24,7 +24,7 @@
       path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
     }
 
-    volantis.artalk = new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
+    Artalk.init(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
       el: '#artalk_container',
       pageKey: path,
       pageTitle: document.title,

@@ -270,14 +270,14 @@ busuanzi:
 artalk_js:
   name: artalk
   file: dist/Artalk.js
-  version: 2.6.4
+  version: 2.7.2
   npm: true
   static: false
   cdnjs: true
 artalk_css:
   name: artalk
   file: dist/Artalk.css
-  version: 2.6.4
+  version: 2.7.2
   npm: true
   static: false
   cdnjs: true
