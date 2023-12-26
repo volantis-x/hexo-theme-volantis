@@ -73,14 +73,14 @@ volantis_search_algolia:
 algolia_search_v4:
   name: algoliasearch
   file: dist/algoliasearch-lite.umd.js
-  version: 4.20.0
+  version: 4.22.0
   npm: true
   static: false
   cdnjs: false
 instantsearch_v4:
   name: instantsearch.js
   file: dist/instantsearch.production.min.js
-  version: 4.60.0
+  version: 4.63.0
   npm: true
   static: false
   cdnjs: false
@@ -110,7 +110,7 @@ fontawesome:
   name: "@fortawesome/fontawesome-free"
   cdnjs_name: font-awesome
   file: css/all.min.css
-  version: 6.4.2
+  version: 6.5.1
   npm: true
   static: true
   cdnjs: true
@@ -148,21 +148,21 @@ mathjax:
 markdown:
   name: github-markdown-css
   file: github-markdown.min.css
-  version: 5.4.0
+  version: 5.5.0
   npm: true
   static: true
   cdnjs: true
 marked:
   name: marked
   file: marked.min.js
-  version: 9.1.5
+  version: 11.1.0
   npm: true
   static: true
   cdnjs: true
 hlsjs:
   name: hls.js
   file: dist/hls.min.js
-  version: 1.4.12
+  version: 1.4.14
   npm: true
   static: true
   cdnjs: true
@@ -170,7 +170,7 @@ fancybox_css:
   name: "@fancyapps/ui"
   cdnjs_name: fancyapps-ui
   file: dist/fancybox/fancybox.css
-  version: 5.0.26
+  version: 5.0.32
   npm: true
   static: true
   cdnjs: true
@@ -178,7 +178,7 @@ fancybox_js:
   name: "@fancyapps/ui"
   cdnjs_name: fancyapps-ui
   file: dist/fancybox/fancybox.umd.js
-  version: 5.0.26
+  version: 5.0.32
   npm: true
   static: true
   cdnjs: true
@@ -284,7 +284,7 @@ artalk_css:
 artalk_katex:
   name: "@artalk/plugin-katex"
   file: dist/artalk-plugin-katex.js
-  version: 0.1.5
+  version: 0.1.6
   npm: true
   static: false
   cdnjs: false
@@ -312,7 +312,7 @@ gitalk:
 twikoo:
   name: twikoo
   file: dist/twikoo.min.js
-  version: 1.6.22
+  version: 1.6.27
   npm: true
   static: false
   cdnjs: true
@@ -320,7 +320,7 @@ waline_css:
   name: "@waline/client"
   cdnjs_name: waline
   file: dist/waline.css
-  version: 2.15.8
+  version: 3.0.0-alpha.8
   npm: true
   static: false
   cdnjs: true
@@ -328,7 +328,7 @@ waline_js:
   name: "@waline/client"
   cdnjs_name: waline
   file: dist/waline.js
-  version: 2.15.8
+  version: 3.0.0-alpha.8
   npm: true
   static: false
   cdnjs: true
@@ -358,7 +358,7 @@ vssue_css:
 vssue_vue:
   name: vue
   file: dist/vue.runtime.min.js
-  version: 2.7.15
+  version: 3.3.13
   npm: true
   static: false
   cdnjs: true
@@ -366,7 +366,7 @@ swiper_js:
   name: swiper
   cdnjs_name: Swiper
   file: swiper-bundle.min.js
-  version: 11.0.3
+  version: 11.0.5
   npm: true
   static: true
   cdnjs: true
@@ -374,7 +374,7 @@ swiper_css:
   name: swiper
   cdnjs_name: Swiper
   file: swiper-bundle.min.css
-  version: 11.0.3
+  version: 11.0.5
   npm: true
   static: true
   cdnjs: true
