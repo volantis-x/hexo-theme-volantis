@@ -320,7 +320,7 @@ waline_css:
   name: "@waline/client"
   cdnjs_name: waline
   file: dist/waline.css
-  version: 3.0.0-alpha.8
+  version: 2.15.8
   npm: true
   static: false
   cdnjs: true
@@ -328,7 +328,7 @@ waline_js:
   name: "@waline/client"
   cdnjs_name: waline
   file: dist/waline.js
-  version: 3.0.0-alpha.8
+  version: 2.15.8
   npm: true
   static: false
   cdnjs: true
