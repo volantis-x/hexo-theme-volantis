@@ -24,6 +24,8 @@
   "dependencies": {
     "hexo": "^6.3.0",
     "hexo-generator-json-content": "^4.2.3",
+    "hexo": "^7.0.0",
+    "hexo-renderer-stylus": "^3.0.0",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-stylus": "^3.0.1"
   }

@@ -10,7 +10,7 @@ jobs:
     if: github.repository == 'volantis-x/hexo-theme-volantis'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: update all prs
         uses: maxkomarychev/pr-updater-action@v1.0.1
         with:
