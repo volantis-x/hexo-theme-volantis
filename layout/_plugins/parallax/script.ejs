@@ -29,14 +29,16 @@ _%>
     <% } %>
     Parallax.window = ParallaxWindow;
     Parallax.options.fade = <%- theme.plugins.parallax.fade %>;
-    Parallax.cache = 1;
-    next_parallax();
+    Parallax.cache = 0;
+	next_parallax();
     Parallax.init();
-    if (imgs.length>1) {
+	index++;
+	// 不要切图
+/*     if (imgs.length>1) {
       IntervalParallax = setInterval(function () {
         next_parallax();
       }, '<%- theme.plugins.parallax.duration %>');
-    }
+    } */
   }
 
   function next_parallax() {
@@ -49,7 +51,8 @@ _%>
       }
     <% } %>
     if (imgs.length>=1) {
-      Parallax.options.src = imgs[index % imgs.length];
+	  Parallax.options.src = imgs[new Date().getTime() % imgs.length];
+      //Parallax.options.src = imgs[index % imgs.length];
       Parallax.start();
       index++;
       if (Parallax.cache) {

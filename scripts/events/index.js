@@ -16,8 +16,10 @@ hexo.on('ready', () => {
   const { version } = require('../../package.json');
   hexo.log.info(`
 ============================================================
-  Volantis ${version}
+  Forked from Volantis ${version}
+  Forked by JustPureH2O
   Docs: https://volantis.js.org/
-  Repo: https://github.com/volantis-x/hexo-theme-volantis/
+  OriginalRepo: https://github.com/volantis-x/hexo-theme-volantis/
+  ForkedRepo: https://github.com/JustPureH2O/hexo-theme-volantis/
 ============================================================`);
 });

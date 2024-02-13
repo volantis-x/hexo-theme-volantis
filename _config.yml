@@ -830,33 +830,25 @@ plugins:
  
   # 视差滚动效果 Slide Background
   parallax:
-    enable: #true
+    enable: true
     position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
     shuffle: true         # shuffle playlist
-    duration: 10000       # Duration (ms)
+    duration: 10000000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - volantis-static/media/wallpaper/minimalist/2020/001.webp
-      - volantis-static/media/wallpaper/minimalist/2020/002.webp
-      - volantis-static/media/wallpaper/minimalist/2020/003.webp
-      - volantis-static/media/wallpaper/minimalist/2020/004.webp
-      - volantis-static/media/wallpaper/minimalist/2020/005.webp
-      - volantis-static/media/wallpaper/minimalist/2020/006.webp
-      - volantis-static/media/wallpaper/minimalist/2020/012.webp
-      - volantis-static/media/wallpaper/minimalist/2020/016.webp
-      - volantis-static/media/wallpaper/minimalist/2020/019.webp
-      - volantis-static/media/wallpaper/minimalist/2020/025.webp
-      - volantis-static/media/wallpaper/minimalist/2020/033.webp
-      - volantis-static/media/wallpaper/minimalist/2020/034.webp
-      - volantis-static/media/wallpaper/minimalist/2020/035.webp
-      - volantis-static/media/wallpaper/minimalist/2020/038.webp
-      - volantis-static/media/wallpaper/minimalist/2020/039.webp
-      - volantis-static/media/wallpaper/minimalist/2020/042.webp
-      - volantis-static/media/wallpaper/minimalist/2020/046.webp
-      - volantis-static/media/wallpaper/minimalist/2020/051.webp
-      - volantis-static/media/wallpaper/minimalist/2020/052.webp
-      - volantis-static/media/wallpaper/minimalist/2020/054.webp
-      - volantis-static/media/wallpaper/minimalist/2020/056.webp
+      - https://pic.imgdb.cn/item/6540c482c458853aef7f8b87.jpg
+      - https://pic.imgdb.cn/item/65c9e1289f345e8d03167448.png
+      - https://pic.imgdb.cn/item/65c9e1459f345e8d0316c9e9.png
+      - https://pic.imgdb.cn/item/65c9e1cb9f345e8d031859ff.jpg
+      - https://pic.imgdb.cn/item/65c9e1d99f345e8d031880fb.jpg
+      - https://pic.imgdb.cn/item/65c9e3669f345e8d031d15fb.jpg
+      - https://pic.imgdb.cn/item/65c9e3679f345e8d031d1666.jpg
+      - https://pic.imgdb.cn/item/65cadda39f345e8d03bdbdcf.png
+      - https://pic.imgdb.cn/item/65cadda19f345e8d03bdb814.png
+      - https://pic.imgdb.cn/item/65cafc889f345e8d030bb9b7.png
+      - https://pic.imgdb.cn/item/65cafcdd9f345e8d030caa6d.png
+    # JustPureH2O Additions
+    info: /picinfo/banners/
 
   # APlayer is only available in mainland China.
   # https://aplayer.js.org/#/zh-Hans/
@@ -1362,7 +1354,7 @@ structured_data:
   data:
     person:
       sns:
-        - https://github.com/volantis-x
+        - https://justpureh2o.github.io/about/
     logo:
       path: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
       width: 192
