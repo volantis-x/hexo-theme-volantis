@@ -22,11 +22,11 @@
   },
   "homepage": "https://volantis.js.org",
   "dependencies": {
-    "hexo": "^6.3.0",
-    "hexo-generator-json-content": "^4.2.3",
     "hexo": "^7.0.0",
-    "hexo-renderer-stylus": "^3.0.0",
+    "hexo-generator-json-content": "^4.2.3",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-stylus": "^3.0.1"
+    "hexo-renderer-stylus": "^3.0.0",
+    "stylus": "^0.62.0",
+    "stylus-loader": "^8.1.0"
   }
 }
