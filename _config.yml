@@ -835,20 +835,7 @@ plugins:
     shuffle: true         # shuffle playlist
     duration: 10000000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
-    images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://pic.imgdb.cn/item/6540c482c458853aef7f8b87.jpg
-      - https://pic.imgdb.cn/item/65c9e1289f345e8d03167448.png
-      - https://pic.imgdb.cn/item/65c9e1459f345e8d0316c9e9.png
-      - https://pic.imgdb.cn/item/65c9e1cb9f345e8d031859ff.jpg
-      - https://pic.imgdb.cn/item/65c9e1d99f345e8d031880fb.jpg
-      - https://pic.imgdb.cn/item/65c9e3669f345e8d031d15fb.jpg
-      - https://pic.imgdb.cn/item/65c9e3679f345e8d031d1666.jpg
-      - https://pic.imgdb.cn/item/65cadda39f345e8d03bdbdcf.png
-      - https://pic.imgdb.cn/item/65cadda19f345e8d03bdb814.png
-      - https://pic.imgdb.cn/item/65cafc889f345e8d030bb9b7.png
-      - https://pic.imgdb.cn/item/65cafcdd9f345e8d030caa6d.png
-    # JustPureH2O Additions
-    info: /picinfo/banners/
+    # Moved to Root Config
 
   # APlayer is only available in mainland China.
   # https://aplayer.js.org/#/zh-Hans/
