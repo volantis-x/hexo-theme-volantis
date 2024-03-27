@@ -1,7 +1,7 @@
 
 module.exports = (hexo, option) => {
   return {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org.cn",
     "@type": "Organization",
     "name": option.organization.name,
     "url": option.organization.url,

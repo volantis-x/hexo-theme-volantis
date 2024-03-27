@@ -2,7 +2,7 @@ module.exports = (hexo, option) => {
   const { config, page } = hexo;
 
   const breadcrumb = {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org.cn",
     "@type": "BreadcrumbList",
     itemListElement: [
       {

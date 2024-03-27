@@ -5,7 +5,7 @@ if (aid && site.data && site.data.author && (aid in site.data.author)) {
   author = site.data.author[aid];
 }
 %>
-<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
   <a itemprop="url" class='author' href="<%- author.url %>" rel="nofollow">
     <img itemprop="image" src="<%- author.avatar %>">
     <p itemprop="name"><%- author.name %></p>

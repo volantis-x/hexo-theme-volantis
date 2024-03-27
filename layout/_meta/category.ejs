@@ -10,7 +10,7 @@
     <i class="<%- theme.article.body.meta_library.category.icon %> fa-fw" aria-hidden="true"></i>
     <%- show_categories %>
     <% for(cat of post.categories.toArray()){ %>
-      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+      <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
         <a href="<%- url_for(cat.path) %>" itemprop="url"><span itemprop="name"><%- cat.name %></span></a>
       </span>
     <% } %>

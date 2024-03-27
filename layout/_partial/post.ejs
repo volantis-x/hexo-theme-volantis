@@ -1,9 +1,9 @@
-<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  itemscope itemtype="http://schema.org/Article" >
+<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  itemscope itemtype="https://schema.org.cn/Article" >
   <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="<%- config.title %>">
   </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
     <meta itemprop="name" content="<%- config.title %>">
     <meta itemprop="description" content="<%- config.description %>">
   </span>
@@ -83,7 +83,7 @@
           }
           %>
           <a class='avatar' href='<%- author.url %>'><img src='<%- author.avatar %>'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <span hidden itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
             <meta itemprop="image" content="<%- author.avatar %>">
             <meta itemprop="name" content="<%- author.name %>">
             <meta itemprop="url" content="<%- author.url %>">
@@ -98,7 +98,7 @@
               style: 'none'
               }) %>
           <% for(cat of post.categories.toArray()){ %>
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+            <span hidden itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
               <a href="<%- url_for(cat.path) %>" itemprop="url"><span itemprop="name"><%- cat.name %></span></a>
             </span>
           <% } %>
