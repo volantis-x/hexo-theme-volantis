@@ -731,8 +731,8 @@ const VolantisFancyBox = (() => {
         Thumbs: {
           autoStart: false,
         },
-        caption: function (fancybox, carousel, slide) {
-          return slide.$trigger.alt || null
+        caption: function (fancybox, slide) {
+          return slide.thumbEl?.alt || "";
         }
       });
     });
