@@ -3,12 +3,6 @@
     <% if (theme.cover.logo) { %>
       <img no-lazy class='logo' src='<%- url_for(theme.cover.logo) %>'/>
     <% } %>
-
-    // Customizable Minecraft-style splash texts 自定义MC闪烁标题
-    <% if (theme.plugins.minecraft_splash.enable) { %>
-      <%- partial("../_justpureh2o/minecraft_splash.ejs") %>
-    <% } %>
-
     <% if (theme.cover.title) { %>
       <p class="title"><%- theme.cover.title ? theme.cover.title : config.title %></p>
     <% } %>
