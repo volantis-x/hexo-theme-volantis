@@ -1,9 +1,9 @@
-<article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= post.layout %>" id="<%= post.layout %>" itemscope itemprop="blogPost">
+<article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= post.layout %>" id="<%= post.layout %>" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+  <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="<%- config.title %>">
   </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+  <span hidden itemprop="post" itemscope itemtype="https://schema.org.cn/Post">
     <meta itemprop="name" content="<%- config.title %>">
     <meta itemprop="description" content="<%- config.description %>">
   </span>

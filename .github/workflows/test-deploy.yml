@@ -31,7 +31,7 @@ jobs:
         npm run start
     - name: Deploy
       if: ${{ matrix.node_version == '16' }}
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         deploy_key: ${{ secrets.MHUIG_DEPLOY_KEY }}
         external_repository: volantis-x/volantis-x.github.io

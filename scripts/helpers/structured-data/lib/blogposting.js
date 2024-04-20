@@ -2,7 +2,7 @@ module.exports = (hexo, option) => {
   const { config, page: post } = hexo;
 
   const blogposting = {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org.cn",
     "@type": "BlogPosting",
     headline: post.title || post.seo_title,
     description: post.description || hexo.strip_html(post.excerpt) || config.description,

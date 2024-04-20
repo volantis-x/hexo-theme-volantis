@@ -14,12 +14,12 @@
     //   theme_version = "v" + theme_version
     // }
   %>
-  <footer class="footer clearfix"  itemscope itemtype="http://schema.org/WPFooter">
+  <footer class="footer clearfix"  itemscope itemtype="https://schema.org.cn/WPFooter">
     <br><br>
     <% layout.forEach(function(item){ %>
       <% if (item == 'social') { %>
         <br>
-        <div class="social-wrapper" itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <div class="social-wrapper" itemprop="about" itemscope itemtype="https://schema.org.cn/Thing">
           <% getList(theme.site_footer.social).forEach(function(value){ %>
             <% if (value.url && (value.icon || value.img || value.avatar)) { %>
               <a href="<%= url_for(value.url) %>"
