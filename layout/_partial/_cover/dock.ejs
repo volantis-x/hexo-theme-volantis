@@ -5,9 +5,8 @@
     <% } %>
 
     // Customizable Minecraft-style splash texts 自定义MC闪烁标题
-    <% if (theme.cover.splash) { %>
-      // Placeholder text, will be replaced by script 占位文字，后期使用js动态替换
-      <p id="mc_splash" class="minecraft_splash">Minecraft!</p>
+    <% if (theme.plugins.minecraft_splash.enable) { %>
+      <%- partial("../_justpureh2o/minecraft_splash.ejs") %>
     <% } %>
 
     <% if (theme.cover.title) { %>
