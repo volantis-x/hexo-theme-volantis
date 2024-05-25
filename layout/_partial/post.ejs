@@ -1,4 +1,4 @@
-<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  itemscope itemtype="https://schema.org.cn/Article" >
+<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %> <% if (post.indent) { %> text-indent: 2em <% } %>"  itemscope itemtype="https://schema.org.cn/Article" >
   <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="<%- config.title %>">
