@@ -9,9 +9,17 @@
   </span>
   <%- partial('meta', {post: post, position: 'top'}) %>
   <div id="layoutHelper-page-plugins"></div>
-  <div id="post-body" itemprop="articleBody">
-    <%- post.content %>
-  </div>
+  <!-- 缩进 -->
+  <% if (page.indent) { %>
+	 <div id="post-body" itemscope="articleBody" style="text-indent:2em;">
+	   <%- post.content %>
+	 </div>  
+  <% } else { %>
+	 <div id="post-body" itemprop="articleBody">
+	   <%- post.content %>
+	 </div>
+  <% } %>
+ 
   <% if (page.link) { %>
     <div class='div-ori-link'>
       <a class='ori-link' href='<%- url_for(post.link || post.path) %>'>
