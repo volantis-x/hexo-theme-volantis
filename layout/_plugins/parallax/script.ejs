@@ -1,5 +1,5 @@
 <%_
-theme.plugins.parallax.images = theme.plugins.parallax.images || page.images;
+theme.plugins.parallax.images = theme.plugins.parallax.images || page.images || site.data.banner.images;
 if (theme.plugins.parallax.shuffle) {
   // shuffle 只一次 防止 hash 变化
   if (typeof theme.plugins.parallax.shuffle_end==='undefined') {
@@ -18,7 +18,11 @@ function shuffle(arr){
 }
 _%>
 <script>
-  let imgs = <%- JSON.stringify(theme.plugins.parallax.images) %>;
+  let pc_imgs = <%- JSON.stringify(theme.plugins.parallax.images) %>;
+  let mobile_imgs = [];
+  <% if (site.data.banner_mobile.enabled) { %>
+	mobile_imgs = <%- JSON.stringify(site.data.banner_mobile.images) %>;
+  <% } %>	
   let index = 0;
   let IntervalParallax = null;
 
@@ -50,14 +54,16 @@ _%>
         return
       }
     <% } %>
-    if (imgs.length>=1) {
-	  Parallax.options.src = imgs[new Date().getTime() % imgs.length];
-      //Parallax.options.src = imgs[index % imgs.length];
+	let width = window.innerWidth || document.body.clientWidth;
+	let height = window.innerHeight || document.body.clientHeight;
+	let src_imgs = (height / width > 1.3 && mobile_imgs.length >= 1) ? mobile_imgs : pc_imgs;
+    if (pc_imgs.length>=1) {
+	  Parallax.options.src = pc_imgs[new Date().getTime() % pc_imgs.length];
       Parallax.start();
       index++;
       if (Parallax.cache) {
-        fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
-        if (index == imgs.length) {
+        fetch(pc_imgs[index % pc_imgs.length] +"?t=" + new Date().getTime());
+        if (index == pc_imgs.length) {
           Parallax.cache = 0;
         }
       }
