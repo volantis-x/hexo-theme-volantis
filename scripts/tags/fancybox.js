@@ -22,7 +22,7 @@ function buidImgFancybox(content, group) {
   let imgList = html.match(/<img.*?>/g) || [];
   imgList.forEach(item => {
     const url = (item.match(/\ssrc=['"](.*?)['"]/) || [])[1];
-    const alt = (item.match(/\salt=['"](.*?)['"]/) || [])[1];
+    const alt = (item.match(/\salt=['"](.*?)['"]/) || [])[1] || '';
     const newItem = item.replace('img', 'img fancybox itemprop="contentUrl"');  // 避免出现重复替换，打个标
     const result = `<div class='fancybox'><a class='fancybox' itemscope itemtype="https://schema.org.cn/ImageObject" itemprop="url" href='${url}' data-fancybox='${group}' data-caption='${alt}'>${newItem}</a>${buidAlt(imageTags || alt)}</div>`;
     html = html.replace(item, result.trim());
