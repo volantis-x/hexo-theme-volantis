@@ -36,7 +36,7 @@
         <img itemprop="image" class='headimg' alt="<%- post.title %>" src='<%- post.headimg %>'/>
       </a>
     </div>
-  <% else if (post.live2d) { %>
+  <% } else if (post.live2d) { %>
     <div class='headimg-div'>
       <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
         <iframe width="100%" height="100%" src="<%- post.live2d %>" alt="BA Memory Player"></iframe>
