@@ -263,7 +263,7 @@ comment_typing:
 busuanzi:
   name: penndu
   file: bsz.js
-  version: 13.0.0
+  version: 16.0.0
   npm: true
   static: true
   cdnjs: false
