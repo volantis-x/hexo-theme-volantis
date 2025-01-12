@@ -48,15 +48,8 @@
   }
 
   function fancybox_waline() {
-    if (typeof VolantisFancyBox === "undefined") {
-      const checkFancyBox = setInterval(() => {
-        if (typeof VolantisFancyBox === "undefined") return;
-        clearInterval(checkFancyBox);
-        VolantisFancyBox.bind('#waline .wl-content img:not(.wl-emoji)');
-      });
-    } else {
-      VolantisFancyBox.bind('#waline .wl-content img:not(.wl-emoji)');
-    }
+    const fancyBoxInstance = new VolantisFancyBox();
+    fancyBoxInstance.bind('#waline .wl-content img:not(.wl-emoji)');
   }
 
   volantis.css('<%= theme.cdn.waline_css %>');

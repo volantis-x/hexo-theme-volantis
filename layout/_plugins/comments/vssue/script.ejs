@@ -4,15 +4,8 @@
 <script>
   volantis.css("<%- theme.cdn.vssue_css %>");
   function fancybox_vssue() {
-    if(typeof VolantisFancyBox === "undefined") {
-      const checkFancyBox = setInterval(() => {
-        if(typeof VolantisFancyBox === "undefined") return;
-        clearInterval(checkFancyBox);
-        VolantisFancyBox.bind('#vssue .vssue-comment-main img');
-      })
-    } else {
-      VolantisFancyBox.bind('#vssue .vssue-comment-main img');
-    }
+    const fancyBoxInstance = new VolantisFancyBox();
+    fancyBoxInstance.bind('#vssue .vssue-comment-main img');
   }
 </script>
 <script>

@@ -23,7 +23,7 @@ default:
 
 cdn_system:
   # CDN 优先级 从高到低排序 写入 priority 列表即表示启用(enable)
-  priority: [custom, local, cdnjs, npm, static]
+  priority: [custom, local, npm, static, cdnjs]
   # ========================================================================
   # cdn数据配置文件见 "theme/_cdn.yml", 可以在 source/_data/cdn.yml 覆盖 theme/_cdn.yml
   # 变量说明：

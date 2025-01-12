@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   volantis.requestAnimationFrame(() => {
     VolantisApp.init();
     VolantisApp.subscribe();
-    VolantisFancyBox.init();
+    new VolantisFancyBox();
     highlightKeyWords.startFromURL();
     locationHash();
   });
@@ -670,118 +670,117 @@ const VolantisApp = (() => {
 Object.freeze(VolantisApp);
 
 /* FancyBox */
-const VolantisFancyBox = (() => {
-  const fn = {};
-
-  fn.loadFancyBox = (done) => {
-    volantis.css(volantis.GLOBAL_CONFIG.cdn.fancybox_css);
-    volantis.js(volantis.GLOBAL_CONFIG.cdn.fancybox_js).then(() => {
-      if (done) done();
-    })
+class VolantisFancyBox {
+  constructor(checkMain = true) {
+    this.option = {
+      Hash: false,
+      groupAll: true,
+      caption: (fancybox, slide) => slide.thumbEl?.alt || "",
+      wheel: "slide",
+      contentClick: 'iterateZoom',
+      Thumbs: {
+        showOnStart: false
+      },
+      Images: {
+        content: (_ref, slide) => {
+          const imgElement = slide.thumbEl;
+          const pictureElement = imgElement.closest('picture');
+          if (imgElement.hasAttribute('data-src')) {
+            imgElement.setAttribute('src', imgElement.getAttribute('data-src'));
+          }
+          if (pictureElement) {
+            pictureElement.classList.remove("lazy");
+            let sources = pictureElement.getElementsByTagName('source');
+            for (let source of sources) {
+              if (source.hasAttribute('data-srcset')) {
+                source.setAttribute('srcset', source.getAttribute('data-srcset'));
+              }
+            }
+            return pictureElement.outerHTML;
+          } else {
+            return imgElement.outerHTML;
+          }
+        },
+        Panzoom: {
+          maxScale: 1.5,
+          panMode: "mousemove",
+          mouseMoveFactor: 1.1,
+          mouseMoveFriction: 0.12,
+        }
+      },
+      Toolbar: {
+        display: {
+          left: ["infobar"],
+          middle: [
+            "zoomIn",
+            "zoomOut",
+            "toggle1to1",
+            "rotateCCW",
+            "rotateCW",
+            "flipX",
+            "flipY",
+          ],
+          right: ["slideshow", "download", "thumbs", "close"],
+        },
+      }
+    };
+    this.#init(checkMain);
   }
 
-  /**
-   * 加载及处理
-   * 
-   * @param {*} checkMain 是否只处理文章区域的文章
-   * @param {*} done      FancyBox 加载完成后的动作，默认执行分组绑定
-   * @returns 
-   */
-  fn.init = (checkMain = true, done = fn.groupBind) => {
+  #init(checkMain) {
     if (!document.querySelector(".md .gallery img, .fancybox") && checkMain) return;
+    this.groupBind();
+  }
+
+  async #checkFancybox(done) {
     if (typeof Fancybox === "undefined") {
-      fn.loadFancyBox(done);
+      await volantis.css(volantis.GLOBAL_CONFIG.cdn.fancybox_css);
+      await volantis.js(volantis.GLOBAL_CONFIG.cdn.fancybox_js);
+      done.call(this);
     } else {
-      done();
+      done.call(this);
     }
   }
 
-  /**
-   * 图片元素预处理
-   * 
-   * @param {*} selectors 选择器
-   * @param {*} name      分组
-   */
-  fn.elementHandling = (selectors, name) => {
-    const nodeList = document.querySelectorAll(selectors);
-    nodeList.forEach($item => {
+  #elementHandling(selectors, groupName) {
+    if (!selectors) return;
+    document.querySelectorAll(selectors).forEach($item => {
       if ($item.hasAttribute('fancybox')) return;
       $item.setAttribute('fancybox', '');
       const $link = document.createElement('a');
-      $link.setAttribute('href', $item.src);
-      $link.setAttribute('data-caption', $item.alt);
-      $link.setAttribute('data-fancybox', name);
+      $link.setAttribute('href', $item.src || $item.dataset?.src);
+      $link.setAttribute('data-caption', $item.alt || '');
+      $link.setAttribute('data-fancybox', groupName);
       $link.classList.add('fancybox');
       $link.append($item.cloneNode());
       $item.replaceWith($link);
-    })
-  }
-
-  /**
-   * 原生绑定
-   * 
-   * @param {*} selectors 选择器
-   */
-  fn.bind = (selectors) => {
-    fn.init(false, () => {
-      Fancybox.bind(selectors, {
-        groupAll: true,
-        Hash: false,
-        hideScrollbar: false,
-        Thumbs: {
-          autoStart: false,
-        },
-        caption: function (fancybox, slide) {
-          return slide.thumbEl?.alt || "";
-        }
-      });
     });
   }
 
-  /**
-   * 分组绑定
-   * 
-   * @param {*} groupName 分组名称
-   */
-  fn.groupBind = (groupName = null) => {
-    const group = new Set();
+  bind(selectors) {
+    this.#checkFancybox(() => {
+      Fancybox?.unbind(selectors);
+      Fancybox?.bind(selectors, this.option);
+    });
+  }
 
-    document.querySelectorAll(".gallery").forEach(ele => {
-      if (ele.querySelector("img")) {
-        group.add(ele.getAttribute('data-group') || 'default');
-      }
-    })
-
-    if (!!groupName) group.add(groupName);
-
-    for (const iterator of group) {
-      Fancybox.unbind('[data-fancybox="' + iterator + '"]');
-      Fancybox.bind('[data-fancybox="' + iterator + '"]', {
-        Hash: false,
-        hideScrollbar: false,
-        Thumbs: {
-          autoStart: false,
+  groupBind(selectors, groupName = 'default') {
+    this.#checkFancybox(() => {
+      this.#elementHandling(selectors, groupName);
+      const group = new Set();
+      document.querySelectorAll('.gallery').forEach(ele => {
+        if (ele.querySelector("img")) {
+          group.add(ele.getAttribute('data-group') || 'default');
         }
       });
-    }
+      if (groupName) group.add(groupName);
+      group.forEach(name => {
+        Fancybox?.unbind(`[data-fancybox="${name}"]`);
+        Fancybox?.bind(`[data-fancybox="${name}"]`, this.option);
+      });
+    });
   }
-
-  return {
-    init: fn.init,
-    bind: fn.bind,
-    groupBind: (selectors, groupName = 'default') => {
-      try {
-        fn.elementHandling(selectors, groupName);
-        fn.init(false, () => {
-          fn.groupBind(groupName)
-        });
-      } catch (error) {
-        console.error(error)
-      }
-    }
-  }
-})()
-Object.freeze(VolantisFancyBox);
+}
 
 // highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
 // Question: 锚点稳定性未知
