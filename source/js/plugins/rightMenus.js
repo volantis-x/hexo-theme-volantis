@@ -596,6 +596,8 @@ RightMenus.fun = (() => {
       document.querySelector('#post').removeEventListener('click', fn.readMode);
       DOMController.setStyle('.prev-next', 'display', 'flex');
       DOMController.setStyle('.copyright.license', 'margin', '15px -40px');
+      // 恢复 header 透明度
+      DOMController.setStyle('#l_header', 'opacity', 1);
     }
   }
 
