@@ -39,7 +39,7 @@ cdn_system:
   system_config:
     # 自定义配置 使用 "theme/_cdn.yml" 中的名称作为配置项的键
     custom:
-      busuanzi: https://npm.onmicrosoft.cn/penndu@16.0.0/bsz.js  # 杜老师友情赞助
+      busuanzi: https://jsd.onmicrosoft.cn/npm/penndu@17.0.0/bsz.js  # 杜老师友情赞助
       #volantis_style: /css/style.css
       #volantis_app: /js/app.js
 
@@ -230,7 +230,7 @@ article:
     top_meta: [author, category, date, counter] #启用评论数量需在此添加
     # 文章底部信息
     # 从 meta_library 中取
-    bottom_meta: [updated, tags, share]
+    bottom_meta: [更新于, tags, share]
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -293,7 +293,7 @@ article:
           #############################
           rules:
             type1: 
-              text: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh#" target="_blank">CC BY-NC-SA 4.0</a>
+              text: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans#" target="_blank">CC BY-NC-SA 4.0</a>
               desc: 署名-非商业性使用-相同方式共享 4.0 国际。
             type2: 
               text: 禁止转载引用
