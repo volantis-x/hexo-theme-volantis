@@ -4,10 +4,10 @@
       <img no-lazy class='logo' src='<%- url_for(theme.cover.logo) %>'/>
     <% } %>
     <% if (theme.cover.title) { %>
-      <p class="title"><%- theme.cover.title ? theme.cover.title : config.title %></p>
+      <p class="title" style="text-shadow:0 0 8px rgba(58, 62, 65, 0.4), 0 2px 4px rgba(44, 47, 50, 0.3), 0 4px 12px rgba(33, 36, 39, 0.25);"><%- theme.cover.title ? theme.cover.title : config.title %></p>
     <% } %>
     <% if (theme.cover.subtitle) { %>
-      <p class="subtitle"><%- theme.cover.subtitle%></p>
+      <p class="subtitle" style="text-shadow: 0 0 8px rgba(58, 62, 65, 0.6), 0 2px 4px rgba(44, 47, 50, 0.5), 0 4px 12px rgba(33, 36, 39, 0.4);"><%- theme.cover.subtitle%></p>
     <% } %>
   </div>
   <div class='bottom'>
