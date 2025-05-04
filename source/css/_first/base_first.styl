@@ -106,7 +106,7 @@ button
     background: alpha($color-card, .9) !important
     backdrop-filter: saturate(200%) blur(20px)
 
-if hexo-config('comments.service')=='discuss' || hexo-config('comments.service')=='twikoo' || hexo-config('comments.service')=='waline'
+if hexo-config('comments.service')=='discuss' || hexo-config('comments.service')=='twikoo' || hexo-config('comments.service')=='waline' || hexo-config('comments.service')=='artalk'
   .blur#comments
     @supports (backdrop-filter: blur(20px))
       backdrop-filter: unset
