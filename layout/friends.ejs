@@ -18,7 +18,7 @@
               <% getList(group.items).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
                   <a class='friend-card'
-                    target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>">
+                    target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>" style="background-color: <%- item.color %>">
                     <div class='friend-left'>
                       <% if (item.avatar) { %>
                         <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
@@ -47,7 +47,7 @@
             <div class='simpleuser-group'>
               <% getList(group.items).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
-                  <a class="simpleuser" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>">
+                  <a class="simpleuser" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>" style="background-color: <%- item.color %>">
                     <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>
                     <span><%- item.title %></span>
                   </a>
