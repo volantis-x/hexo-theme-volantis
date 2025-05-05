@@ -17,11 +17,14 @@
             <div class='friend-content'>
               <% getList(group.items).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
-                  <a class='friend-card <% if (theme.pages.friends.link_block_color === true && item.color) { %>color-bk-dark<% } %>'
+                  <a class='friend-card <% if (theme.pages.friends.link_block_color.enable === true && item.color) { %>color-bk-dark<% } %>'
                     target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>"
-                    <% if (theme.pages.friends.link_block_color === true) { %>
-                      style="<% if (item.color) { %>background-color: <%- item.color %>;<% } %> <% if (item.color) { %>color: var(--link-color);<% } %>"
-                    <% } %>
+                    <% if (theme.pages.friends.link_block_color.enable === true) { %>
+                      style="<% if (item.color) { %>background-color: <%- item.color %>;<% } %> 
+                             <% if (theme.pages.friends.link_block_color.unified_font === true) { %>color: var(--color-link-bg);<% } else { %>
+                               <% if (item.color) { %>color: var(--color-link-bg);<% } %>
+                             <% } %>"
+                  <% } %>
                   >
                     <div class='friend-left'>
                       <% if (item.avatar) { %>
@@ -51,10 +54,13 @@
             <div class='simpleuser-group'>
               <% getList(group.items).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
-                  <a class="simpleuser <% if (theme.pages.friends.link_block_color === true && item.color) { %>color-bk-dark<% } %>" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>" 
-                    <% if (theme.pages.friends.link_block_color === true && item.color) { %>
-                      style="background-color: <%- item.color %>"
-                    <% } %>
+                  <a class="simpleuser <% if (theme.pages.friends.link_block_color.enable === true && item.color) { %>color-bk-dark<% } %>" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>" 
+                    <% if (theme.pages.friends.link_block_color.enable === true) { %>
+                      style="<% if (item.color) { %>background-color: <%- item.color %>;<% } %> 
+                             <% if (theme.pages.friends.link_block_color.unified_font === true) { %>color: var(--color-link-bg);<% } else { %>
+                               <% if (item.color) { %>color: var(--color-link-bg);<% } %>
+                             <% } %>"
+                  <% } %>
                   >
                     <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>
                     <span><%- item.title %></span>
