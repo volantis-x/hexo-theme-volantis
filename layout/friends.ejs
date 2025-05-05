@@ -20,7 +20,7 @@
                   <a class='friend-card'
                     target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>"
                     <% if (theme.pages.friends.link_block_color === true) { %>
-                      style="background-color: <%- item.color %>;color: var(--link-color)"
+                      style="<% if (item.color) { %>background-color: <%- item.color %>;<% } %> <% if (item.color) { %>color: var(--link-color);<% } %>"
                     <% } %>
                   >
                     <div class='friend-left'>
@@ -51,7 +51,11 @@
             <div class='simpleuser-group'>
               <% getList(group.items).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
-                  <a class="simpleuser" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>" style="background-color: <%- item.color %>">
+                  <a class="simpleuser" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>" 
+                    <% if (theme.pages.friends.link_block_color === true && item.color) { %>
+                      style="background-color: <%- item.color %>"
+                    <% } %>
+                  >
                     <img src="<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>"/>
                     <span><%- item.title %></span>
                   </a>
