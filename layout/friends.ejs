@@ -18,7 +18,11 @@
               <% getList(group.items).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
                   <a class='friend-card'
-                    target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>" style="background-color: <%- item.color %>">
+                    target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>"
+                    <% if (theme.pages.friends.link_block_color === true) { %>
+                      style="background-color: <%- item.color %>;color: var(--link-color)"
+                    <% } %>
+                  >
                     <div class='friend-left'>
                       <% if (item.avatar) { %>
                         <img class='avatar' src='<%- item.avatar || (theme.plugins.lazyload && theme.plugins.lazyload.loadingImg) %>'/>
