@@ -202,7 +202,9 @@ pages:
   # 友链页面配置
   friends:
     layout_scheme: traditional # simple: 简单布局, traditional: 传统布局
-    link_block_color: false # 友链块颜色开关
+    link_block_color:
+      enable: false #友链块颜色开关，用 color: '颜色' 字段
+      unified_font: false # 是否统一友链块文字，true则所有文字都会成黑，false只有
 
 ############################### Article Layout ############################### > start
 # 文章布局
