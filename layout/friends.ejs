@@ -17,7 +17,7 @@
             <div class='friend-content'>
               <% getList(group.items).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
-                  <a class='friend-card'
+                  <a class='friend-card <% if (theme.pages.friends.link_block_color === true && item.color) { %>color-bk-dark<% } %>'
                     target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>"
                     <% if (theme.pages.friends.link_block_color === true) { %>
                       style="<% if (item.color) { %>background-color: <%- item.color %>;<% } %> <% if (item.color) { %>color: var(--link-color);<% } %>"
@@ -51,7 +51,7 @@
             <div class='simpleuser-group'>
               <% getList(group.items).forEach(function(item){ %>
                 <% if (item.url && item.title) { %>
-                  <a class="simpleuser" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>" 
+                  <a class="simpleuser <% if (theme.pages.friends.link_block_color === true && item.color) { %>color-bk-dark<% } %>" target="_blank" rel="external noopener noreferrer" href="<%- url_for(item.url || '/') %>" 
                     <% if (theme.pages.friends.link_block_color === true && item.color) { %>
                       style="background-color: <%- item.color %>"
                     <% } %>
