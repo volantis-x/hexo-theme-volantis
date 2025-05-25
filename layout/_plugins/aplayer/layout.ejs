@@ -3,7 +3,7 @@ let aplayer = theme.plugins.aplayer;
 %>
 <% if (theme.plugins.aplayer.enable == true) { %>
   <% if (aplayer.source == "meting") { %>
-    <% if (is_post() || is_page && post.music) { %>
+    <% if ((is_post() || is_page()) && post && post.music) { %>
       <meting-js
         mini='true'
         volume='<%- post.music.volume || aplayer.volume %>'
@@ -29,7 +29,7 @@ let aplayer = theme.plugins.aplayer;
       </meting-js>
     <% } %>
   <% } else { %>
-    <% if (is_post() && is_page && post.music) { %>
+    <% if ((is_post() || is_page()) && post && post.music) { %>
       <div class="aplayer-local-min"></div>
     <% } else { %>
       <div class="aplayer-local"></div>
