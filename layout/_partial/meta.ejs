@@ -24,6 +24,7 @@ if (post.bottom_meta == false) {
   <div class="article-meta" id="top">
     <% if (post.music && post.music.enable != false) { %>
       <%- partial('../_plugins/aplayer/layout', {post: post, where: 'meta'}) %>
+      <%- partial('../_plugins/aplayer/script') %>
     <% } %>
     <% if (post.thumbnail && post.thumbnail.length){ %>
       <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
