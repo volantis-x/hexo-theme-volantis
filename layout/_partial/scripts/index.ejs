@@ -59,7 +59,7 @@
 <% if (theme.plugins.aplayer && theme.plugins.aplayer.enable) { %>
   <% if (!is_post() && !is_page()) { %>
     <%- partial('../../_plugins/aplayer/script') %>
-    <%- partial('../../_plugins/aplayer/layout') %>
+    <%- partial('../../_plugins/aplayer/layout', { post: page }) %>
   <% } %>
   <% if (is_post() || is_page()) { %>
     <% if (!page.music) { %>
