@@ -1,0 +1,14 @@
+<script>
+    volantis.layoutHelper("page-plugins", `<div id="friend-circle-lite-root"></div>`)
+</script>
+<script>
+    if (typeof UserConfig === 'undefined') {
+        var UserConfig = {
+            private_api_url: '<%- theme.plugins.fcircle_lite.private_api_url %>',
+            page_turning_number: <%- theme.plugins.fcircle_lite.page_turning_number %>,
+            error_img: '<%- theme.plugins.fcircle_lite.error_img %>',
+        }
+    }
+</script>
+<link rel="stylesheet" href="<%- theme.plugins.fcircle_lite.css %>">
+<script src="<%- theme.plugins.fcircle_lite.js %>"></script>
