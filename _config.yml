@@ -978,6 +978,7 @@ plugins:
   # https://github.com/willow-god/Friend-Circle-Lite
   # https://blog.liushen.fun/posts/4dc716ec/
   fcircle_lite:
+    # Set `plugins: ["fcircle_lite"]` to enable in front-matter
     private_api_url:              # 填写你的fc_Lite地址
     page_turning_number: 20 # 点击加载更多时，一次最多加载几篇文章，默认20
     error_img: https://i.p-i.vip/30/20240815-66bced9226a36.webp # 头像加载失败时，默认头像地址
