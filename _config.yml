@@ -974,6 +974,17 @@ plugins:
     expire_days: 1 # 本地文章缓存数据过期时间（天）
     js: https://npm.elemecdn.com/fcircle-theme-yyyz@1.0.13/dist/fcircle.min.js # fcircle.min.js的url
 
+  # 轻量友链朋友圈
+  # https://github.com/willow-god/Friend-Circle-Lite
+  # https://blog.liushen.fun/posts/4dc716ec/
+  fcircle_lite:
+    # Set `plugins: ["fcircle_lite"]` to enable in front-matter
+    private_api_url:              # 填写你的fc_Lite地址
+    page_turning_number: 20 # 点击加载更多时，一次最多加载几篇文章，默认20
+    error_img: https://i.p-i.vip/30/20240815-66bced9226a36.webp # 头像加载失败时，默认头像地址
+    css: https://fastly.jsdelivr.net/gh/willow-god/Friend-Circle-Lite/main/fclite.min.css # CSS文件地址
+    js: https://fastly.jsdelivr.net/gh/willow-god/Friend-Circle-Lite/main/fclite.min.js # JS文件地址
+
   # 消息提示 
   # izitoast
   message:
