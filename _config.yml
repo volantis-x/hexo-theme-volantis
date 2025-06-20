@@ -755,6 +755,8 @@ plugins:
     enable: true
   friendsjs:
     enable: true
+  fpostsjs:
+    enable: true
   contributorsjs:
     enable: true
 

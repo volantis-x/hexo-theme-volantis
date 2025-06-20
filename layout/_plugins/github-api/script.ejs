@@ -12,6 +12,12 @@
         volantis.js("<%- theme.cdn.volantis_tags_friends %>")
       }
     <% } %>
+    <% if (theme.plugins.fpostsjs.enable) { %>
+      const fpostsjs = document.getElementById('fposts-api');
+      if (fpostsjs != undefined && typeof FpostsJS === 'undefined') {
+        volantis.js("<%- theme.cdn.volantis_tags_friends_and_posts %>")
+      }
+    <% } %>
     <% if (theme.plugins.contributorsjs.enable) { %>
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {

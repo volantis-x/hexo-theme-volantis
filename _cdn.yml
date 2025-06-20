@@ -49,6 +49,13 @@ volantis_tags_friends:
   npm: true
   static: false
   cdnjs: false
+volantis_tags_friends_and_posts:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/fposts.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
 volantis_tags_contributors:
   name: hexo-theme-volantis
   file: source/js/plugins/tags/contributors.js

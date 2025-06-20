@@ -30,6 +30,6 @@
   "videos": ["media.styl"],
   "frame": ["frame.styl"],
   "contributors": ["friends.styl"],
-  "friends": ["friends.styl"],
+  "friends": ["friends.styl","fposts.styl"],
   "swiper": ["swiper.styl"]
 }
