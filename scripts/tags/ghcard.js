@@ -13,17 +13,18 @@ hexo.extend.tag.register('ghcard', function(args) {
   else{
     args = args.join(' ').split(',');
   }
+  const host = hexo.theme.config.api_host.ghcard
   const path = args[0].trim();
   let card = '';
   card += '<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/' + path + '">';
   let url = '';
   if (path.includes('/')) {
     // is repo
-    const ps = path.split('/');
-    url += 'https://github-readme-stats.xaoxuu.com/api/pin/?username=' + ps[0] + '&repo=' + ps[1];
+    const ps = path.split('/')
+    url = `${host}/api/pin/?username=${ps[0]}&repo=${ps[1]}`
   } else {
     // is user
-    url += 'https://github-readme-stats.xaoxuu.com/api/?username=' + path;
+    url = `${host}/api/?username=${path}`
   }
   if (args.length > 1) {
     for (let i = 1; i < args.length; i++) {
