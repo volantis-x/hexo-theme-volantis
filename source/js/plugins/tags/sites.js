@@ -52,12 +52,23 @@ const SitesJS = {
       arr.forEach((item, i) => {
         var cell = '<div class="site-card">';
         cell += '<a class="card-link" target="_blank" rel="external noopener noreferrer" href="' + item.url + '">';
-        cell += '<img alt="' + item.title + '" src="' + (item.screenshot || ('https://image.thum.io/get/width/1024/crop/768/' + item.url)) + '" onerror="errorImgCover(this)"/>';
+        cell += '<img alt="' + item.title + '" src="' + (item.cover || item.snapshot || item.screenshot || ('https://image.thum.io/get/width/1024/crop/768/' + item.url)) + '" onerror="errorImgCover(this)"/>';
         cell += '<div class="info">';
-        cell += '<img alt="' + item.title + '" src="' + (item.avatar || cfg.avatar) + '" onerror="errorImgAvatar(this)"/>';
+        cell += '<img alt="' + item.title + '" src="' + (item.icon || item.avatar || cfg.avatar) + '" onerror="errorImgAvatar(this)"/>';
         cell += '<span class="title">' + item.title + '</span>';
         cell += '<span class="desc">' + (item.description || item.url) + '</span>';
         cell += '</div>';
+        cell += `<div class="labels">`;
+        for (let label of item.labels) {
+          if (label.lightness > 75) {
+            cell += `<div class="label" style="background:#${label.color};color:hsla(${label.hue}, ${label.saturation}%, 20%, 1);">${label.name}</div>`;
+          } else if (label.saturation > 90 && label.lightness > 40) {
+            cell += `<div class="label" style="background:#${label.color};color:hsla(${label.hue}, 50%, 20%, 1);">${label.name}</div>`;
+          } else {
+            cell += `<div class="label" style="background:#${label.color};color:white">${label.name}</div>`;
+          }
+        }
+        cell += `</div>`;
         cell += '</a>';
         cell += '</div>';
         cellALL += cell;

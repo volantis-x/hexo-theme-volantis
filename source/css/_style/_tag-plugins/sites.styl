@@ -35,6 +35,7 @@
   width: 100%
   display: flex
   flex-direction: column
+  position: relative
   >img
     width: 100%
     height 120px
@@ -77,11 +78,35 @@
       -webkit-box-orient: vertical
       overflow: hidden
       -webkit-line-clamp: 2
+  
+  .labels
+    position: absolute
+    top: 2px
+    right: 2px
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-end
+    pointer-events: none
+    user-select: none
+    opacity 1
+    trans1 all
+    .label
+      font-weight: 500
+      color: white
+      font-size: 12px
+      padding: 3px 6px 2px 6px
+      margin: 2px
+      line-height: 1
+      border-radius: 16px
+
 
 // transform
 .sites-wrap .site-card .card-link
   >img
     trans()
   &:hover
+    .labels
+      opacity 0
+      transform: translateY(-4px)
     >img
       box-shadow: $boxshadow-float, $boxshadow-card-float
