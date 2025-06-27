@@ -58,10 +58,10 @@
 
 <% if (theme.plugins.aplayer && theme.plugins.aplayer.enable) { %>
   <% if (!is_post() && !is_page()) { %>
-      <%- partial('../../_plugins/aplayer/script') %>
-      <% if (theme.plugins.aplayer.fixed == true ) { %>
-        <%- partial('../../_plugins/aplayer/layout', { post: page }) %>
-      <% } %>
+    <%- partial('../../_plugins/aplayer/script') %>
+    <% if (theme.plugins.aplayer.fixed == true ) { %>
+      <%- partial('../../_plugins/aplayer/layout', { post: page }) %>
+    <% } %>
   <% } %>
   <% if (is_post() || is_page()) { %>
     <%- partial('../../_plugins/aplayer/script') %>
