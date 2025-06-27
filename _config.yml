@@ -890,7 +890,7 @@ plugins:
         cover: '/music/Avem.jpg'
     # ============= local end ================
     # Optional
-    fixed: false      # enable fixed mode
+    fixed: false      # enable fixed mode 此处true会对footer与sidebar开启的aplayer造成影响
     theme: '#1BCDFC'  # main color
     autoplay: false   # audio autoplay
     order: list       # player play order, values: 'list', 'random'
