@@ -59,14 +59,14 @@
 <% if (theme.plugins.aplayer && theme.plugins.aplayer.enable) { %>
   <% if (!is_post() && !is_page()) { %>
     <%- partial('../../_plugins/aplayer/script') %>
-    <%- partial('../../_plugins/aplayer/layout', { post: page }) %>
+    <% if (theme.plugins.aplayer.fixed == true ) { %>
+      <%- partial('../../_plugins/aplayer/layout', { post: page }) %>
+    <% } %>
   <% } %>
   <% if (is_post() || is_page()) { %>
-    <% if (!page.music) { %>
-      <%- partial('../../_plugins/aplayer/script') %>
-      <%- partial('../../_plugins/aplayer/layout', { post: page }) %>
-    <% } else { %>
-      <%- partial('../../_plugins/aplayer/script') %>
+    <%- partial('../../_plugins/aplayer/script') %>
+    <% if (!page.music && theme.plugins.aplayer.fixed == true ) { %>
+        <%- partial('../../_plugins/aplayer/layout', { post: page }) %>
     <% } %>
   <% } %>
 <% } %>
