@@ -1,23 +1,37 @@
 <script>
-  volantis.layoutHelper("comments",`<div id="artalk_container"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`);
+  volantis.layoutHelper("comments", `<div id="artalk_container"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`);
+
   function load_artalk() {
-    if(!document.querySelectorAll("#artalk_container")[0])return;
+    if (!document.querySelector("#artalk_container")) return;
+
     volantis.css("<%- theme.comments.artalk.css %>");
-    volantis.js("<%- theme.comments.artalk.js %>").then(pjax_artalk);
+
+    volantis.js("<%- theme.comments.artalk.js %>")
+      .then(() => {
+        if (typeof Artalk === 'undefined') {
+          console.error('Artalk.js loaded but Artalk is not defined');
+          return;
+        }
+        return pjax_artalk();
+      })
+      .catch(err => {
+        console.error('Failed to load Artalk.js:', err);
+      });
   }
 
   function pjax_artalk() {
-    if(!document.querySelectorAll("#artalk_container")[0])return;
+    if (!document.querySelector("#artalk_container")) return;
+
     let path = pdata.commentPath;
     let placeholder = pdata.commentPlaceholder || "<%= theme.comments.artalk.placeholder %>" || "";
-    if (path.length == 0) {
+    if (!path) {
       path = '<%= theme.comments.artalk.path %>' || decodeURI(window.location.pathname);
     }
-    if(!'<%= config.permalink %>'.includes('/index.html')) {
-      path = path.replaceAll('/index.html', '/').replaceAll('.html', '')
+    if (!'<%= config.permalink %>'.includes('/index.html')) {
+      path = path.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
     }
 
-    volantis.artalk = new Artalk(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
+    volantis.artalk = Artalk.init(Object.assign(<%- JSON.stringify(theme.comments.artalk) %>, {
       el: '#artalk_container',
       pageKey: path,
       pageTitle: document.title,
@@ -32,49 +46,51 @@
         let headers = new Headers();
         headers.set('Accept', 'application/json');
         <% if(!!theme.comments.artalk.imageUploader?.token) { %>
-          headers.set('Authorization', '<%= theme.comments.artalk.imageUploader?.token %>')
+          headers.set('Authorization', '<%= theme.comments.artalk.imageUploader?.token %>');
         <% } %>
         let formData = new FormData();
         formData.append('file', file);
-        return fetch('<%= theme.comments.artalk.imageUploader?.api %>',{
+        return fetch('<%= theme.comments.artalk.imageUploader?.api %>', {
           method: 'POST',
           body: formData,
           headers: headers
-          }).then((resp) => resp.json())
-            .then((resp) => resp.<%= theme.comments.artalk.imageUploader?.resp %>)
+        })
+        .then(resp => resp.json())
+        .then(resp => resp.<%= theme.comments.artalk.imageUploader?.resp %>);
       },
       <% } %>
     }));
 
     Artalk.use(ctx => {
       ctx.on('list-loaded', () => {
-        if (typeof VolantisFancyBox === "undefined"){
+        if (typeof VolantisFancyBox === "undefined") {
           const checkFancyBox = setInterval(() => {
-            if(typeof VolantisFancyBox === "undefined") return;
+            if (typeof VolantisFancyBox === "undefined") return;
             clearInterval(checkFancyBox);
             VolantisFancyBox.groupBind('.atk-content img:not([atk-emoticon])', 'Comments');
-          })
+          }, 100);
         } else {
           VolantisFancyBox.groupBind('.atk-content img:not([atk-emoticon])', 'Comments');
         }
-      })
-    })
+      });
+    });
   }
 
   load_artalk();
-  volantis.pjax.push(()=>{
+
+  volantis.pjax.push(() => {
     if (typeof Artalk === "undefined") {
       load_artalk();
     } else {
       pjax_artalk();
     }
-  },'artalk');
+  }, 'artalk');
 
   function dark_artalk() {
-    if(!document.querySelectorAll("#artalk_container")[0]) return;
-    volantis.artalk.then(ctx => {
-      ctx.setDarkMode(volantis.dark.mode === "dark")
-    })
+    if (!document.querySelector("#artalk_container")) return;
+    if (volantis.artalk && typeof volantis.artalk.setDarkMode === 'function') {
+      volantis.artalk.setDarkMode(volantis.dark.mode === "dark");
+    }
   }
   volantis.dark.push(dark_artalk);
 </script>
