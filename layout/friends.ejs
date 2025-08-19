@@ -4,7 +4,7 @@
     <%- partial('_partial/meta',{post: page, position: 'top'}) %>
     <%- page.excerpt %>
     <% if (site.data.friends){ %>
-      <% getList(site.data.friends).forEach((group, i) => { %>
+      <% getList(site.data.friends.items).forEach((group, i) => { %>
         <div class='friends-group'>
           <br>
           <h2 class='friend-header'>
