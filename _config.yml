@@ -1,16 +1,10 @@
-
-# ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-# 这里是 6.0.0-alpha 分支
-# Breaking Change 会放到这个分支
-# ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_docs: https://volantis.js.org/ # This is theme's URL.
+  theme_docs: https://www.shimxo.qzz.io/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 # Debug 调试模式
-debug: env # false: 关闭调试模式， env：环境配置检查， rightMenus: 调试右键, cdn: 调试 CDN System
+debug: false # false: 关闭调试模式， env：环境配置检查， rightMenus: 调试右键, cdn: 调试 CDN System
 ############################### 默认占位图 ###############################
 default:
   avatar: volantis-static/media/placeholder/avatar/round/3442075.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg
@@ -129,9 +123,9 @@ scroll_smooth: true
 ############################### Navigation Bar ############################### > start
 # 注意事项：建议规范全站路径 URL 最后带一个 "/" 例如 "about/"
 navbar:
-  visiable: auto # always, auto
+  visiable: always # always, auto
   logo: # choose [img] or [icon + title]
-    img: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    img: https://cdn.jsdelivr.net/gh/shimoxi123/img/img/6894b49f58cb8da5c80fd8e5.webpvolantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     icon:
     title:
   menu:
@@ -141,9 +135,9 @@ navbar:
     - name: 分类
       icon: fa-solid fa-folder-open
       url: categories/
-    - name: 标签
-      icon: fa-solid fa-tags
-      url: tags/
+    # - name: 标签
+    #   icon: fa-solid fa-tags
+    #   url: tags/
     - name: 归档
       icon: fa-solid fa-archive
       url: archives/
@@ -153,19 +147,22 @@ navbar:
     - name: 关于
       icon: fa-solid fa-info-circle
       url: about/
+    - name: 暗黑模式 # 可自定义
+      icon: fa-solid fa-moon # 可自定义
+      toggle: darkmode
   search: Search...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
 
 
 ############################### Cover ############################### > start
 cover:
-  height_scheme: full # full, half
-  layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  height_scheme: half # full, half
+  layout_scheme: featured # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg
+  background: https://cdn.jsdelivr.net/gh/shimoxi123/img/img/MCV_SummerDrop_Hero_DotNet_Homepage_1920x1080.webp
   # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
   logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
   title: 'Volantis'
@@ -327,7 +324,7 @@ article:
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
         avatar: volantis-static/media/org.volantis/blog/favicon/apple-touch-icon.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
-        name: 请设置文章作者
+        name: 石墨烯积木
         url: /
       # 文章创建日期
       date:
@@ -380,7 +377,7 @@ article:
 comments:
   title: <i class='fa-solid fa-comments'></i> 评论
   subtitle:
-  service: giscus
+  service: twikoo
   # 可选评论系统 #
 
   # artalk
@@ -507,7 +504,7 @@ comments:
   twikoo:
     path: # 全局评论地址
     # 其他配置项按照yml格式继续填写即可 除了 [el path] 选项
-    envId: xxxxxxxxxxxxxxx # 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+    envId: https://pinlun.shimoxi.qzz.io/.netlify/functions/twikoo # 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
     placeholder: #全局评论占位，也可以在管理面板中的配置管理处设置（此处优先级更高）
     visitor: true # 是否显示文章阅读数
 
@@ -576,11 +573,11 @@ sidebar:
         - icon: fa-solid fa-rss
           url: /atom.xml
         - icon: fa-solid fa-envelope
-          url: mailto:me@xxx.com
+          url: mailto:boke@shimoxi.qzz.io
         - icon: fab fa-github
-          url: https://github.com/volantis-x/
-        - icon: fa-solid fa-headphones-alt
-          url: /
+          url: https://github.com/shimoxi123/
+        # - icon: fa-solid fa-headphones-alt
+        #   url: /
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
@@ -590,7 +587,7 @@ sidebar:
       header:
         icon: fa-solid fa-list
         title: 本文目录
-      list_number: false
+      list_number: true
       min_depth: 2
       max_depth: 5
     # ---------------------------------------
@@ -914,7 +911,7 @@ plugins:
   #   icon: fa-solid fa-moon # 可自定义
   #   toggle: darkmode
   darkmode:
-    enable: #true
+    enable: true
 
   # 旧版 Internet Explorer 淘汰行动
   # https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support
