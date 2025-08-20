@@ -170,11 +170,11 @@ navbar:
         - name: hr
         - name: 资源站
           icon: fa-solid fa-download
-          url: https://www.shimoxi.icu/
+          url: "https://www.shimoxi.icu/"
 
         - name: 联系邮箱
           icon: fas fa-envelope
-          url: friends/
+          url: boke@shimoxi.dpdns.org
   search: 搜索   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
 
@@ -230,7 +230,7 @@ cover:
       url: friends/
     - name: 资源站
       icon: fa-solid fa-download
-      url: https://www.shimoxi.qzz.io/
+      url: "https://www.shimoxi.icu"
 
     - name: 关于
       icon: fa-solid fa-info-circle
