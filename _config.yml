@@ -132,9 +132,9 @@ navbar:
     - name: 博客
       icon: fa-solid fa-rss
       url: /
-    - name: 分类
-      icon: fa-solid fa-folder-open
-      url: categories/
+    # - name: 分类
+    #   icon: fa-solid fa-folder-open
+    #   url: categories/
     # - name: 标签
     #   icon: fa-solid fa-tags
     #   url: tags/
@@ -144,13 +144,30 @@ navbar:
     - name: 友链
       icon: fa-solid fa-link
       url: friends/
-    - name: 关于
-      icon: fa-solid fa-info-circle
-      url: about/
+    # - name: 关于
+    #   icon: fa-solid fa-info-circle
+    #   url: about/
     - name: 暗黑模式 # 可自定义
       icon: fa-solid fa-moon # 可自定义
       toggle: darkmode
-  search: Search...   # Search bar placeholder
+      # darkmode: true
+
+    - name: 更多
+      icon: fa-solid fa-ellipsis-v
+      rows:
+        - name: 主题源码
+          url: https://github.com/volantis-x/hexo-theme-volantis/
+          icon: fa-brands fa-github
+        - name: 分类
+          icon: fa-solid fa-folder-open
+          url: categories/
+        - name: 标签
+          icon: fa-solid fa-tags
+          url: tags/
+        - name: 联系邮箱
+          icon: fas fa-envelope
+          url: friends/
+  search: 搜索   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
 
 
@@ -197,19 +214,27 @@ cover:
     - name: 归档
       icon: fa-solid fa-archive
       url: archives/
-    - name: 分类
-      icon: fa-solid fa-folder-open
-      url: categories/
+    # - name: 分类
+    #   icon: fa-solid fa-folder-open
+    #   url: categories/
     - name: 友链
       icon: fa-solid fa-link
       url: friends/
+    - name: 资源站
+      icon: fa-solid fa-download
+      url: https://www.shimoxi.qzz.io/
+
+
+    - name: 关于
+      icon: fa-solid fa-info-circle
+      url: about/
 
 
 
 pages:
   # 友链页面配置
   friends:
-    layout_scheme: simple # simple: 简单布局, traditional: 传统布局
+    layout_scheme: traditional # simple: 简单布局, traditional: 传统布局
     link_block_color:
       enable: false #友链块颜色开关，用 color: '颜色' 字段
       unified_font: false # 是否统一友链块文字，true则所有文字都会成黑，false只有
@@ -571,24 +596,24 @@ sidebar:
   widget_library:
     # ---------------------------------------
     # blogger info widget
-    blogger:
-      class: blogger
-      display: [desktop, mobile] # [desktop, mobile]
-      avatar: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
-      shape: rectangle # circle, rectangle
-      url: /about/
-      title:
-      subtitle:
-      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
-      social:
-        - icon: fa-solid fa-rss
-          url: /atom.xml
-        - icon: fa-solid fa-envelope
-          url: mailto:boke@shimoxi.qzz.io
-        - icon: fab fa-github
-          url: https://github.com/shimoxi123/
-        # - icon: fa-solid fa-headphones-alt
-        #   url: /
+    # blogger:
+    #   class: blogger
+    #   display: [desktop, mobile] # [desktop, mobile]
+    #   avatar: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    #   shape: rectangle # circle, rectangle
+    #   url: /about/
+    #   title:
+    #   subtitle:
+    #   jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
+    #   social:
+    #     # - icon: fa-solid fa-rss
+    #     #   url: /atom.xml
+    #     - icon: fa-solid fa-envelope
+    #       url: mailto:boke@shimoxi.qzz.io
+    #     - icon: fab fa-github
+    #       url: https://github.com/shimoxi123/
+    #     # - icon: fa-solid fa-headphones-alt
+    #     #   url: /
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
@@ -1174,7 +1199,7 @@ color_scheme:
   # 通用颜色
   common:
     # 主题色
-    theme: '#3dd9b6'
+    theme: '#03A9F4'
     # 链接色
     link: '#2092ec'
     # 按钮色
@@ -1205,7 +1230,7 @@ color_scheme:
     # 代码块高亮时的背景色
     codeblock: '#FFF7EA'
     # 行内代码颜色
-    inlinecode: '#c74f00'
+    inlinecode: '#D32F2F'
 
     # 文章部分
     h1: '#3a3a3a'
@@ -1300,7 +1325,7 @@ custom_css:
     text_align: # left, right, justify, center
       h1: left
       h2: left
-      h3: left
+      h3: center
       h4: left
       p: justify
   gap:
