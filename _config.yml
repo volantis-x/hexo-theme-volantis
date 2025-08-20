@@ -164,6 +164,14 @@ navbar:
         - name: 标签
           icon: fa-solid fa-tags
           url: tags/
+        - name: 友链
+          icon: fa-solid fa-link
+          url: friends/
+        - name: hr
+        - name: 资源站
+          icon: fa-solid fa-download
+          url: https://www.shimoxi.icu/
+
         - name: 联系邮箱
           icon: fas fa-envelope
           url: friends/
@@ -223,7 +231,6 @@ cover:
     - name: 资源站
       icon: fa-solid fa-download
       url: https://www.shimoxi.qzz.io/
-
 
     - name: 关于
       icon: fa-solid fa-info-circle
@@ -1182,9 +1189,9 @@ search:
   algolia:
     searchAsYouType: true # If false, triggers the search only on submit.
     hitsPerPage: 5 # Set the number of hits per page.
-    placeholder: 'Search...' # The placeholder text of the input.
+    placeholder: '搜索' # The placeholder text of the input.
   meilisearch:
-    placeholder: 'Search...'
+    placeholder: '搜索'
     searchKey: ''
     indexName: ''
     hostUrl: ''
