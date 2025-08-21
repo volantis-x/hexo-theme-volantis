@@ -231,9 +231,9 @@ cover:
     - name: 资源站
       icon: fa-solid fa-download
       url: "https://www.shimoxi.icu"
-    - name: 本站永久访问地址
+    - name: 本站加速访问地址
       icon: far fa-external-link-alt
-      url: https://www.shimoxi.qzz.io/
+      url: https://www.shimoxi.icu/
 
     - name: 关于
       icon: fa-solid fa-info-circle
