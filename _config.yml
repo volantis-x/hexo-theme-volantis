@@ -233,7 +233,7 @@ cover:
       url: "https://www.shimoxi.icu"
     - name: 本站加速访问地址
       icon: far fa-external-link-alt
-      url: https://www.shimoxi.icu/
+      url: https://b.shimoxi.icu/
 
     - name: 关于
       icon: fa-solid fa-info-circle
