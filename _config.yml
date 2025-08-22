@@ -125,7 +125,7 @@ scroll_smooth: true
 navbar:
   visiable: always # always, auto
   logo: # choose [img] or [icon + title]
-    img: https://cdn.jsdelivr.net/gh/shimoxi123/img/img/6894b49f58cb8da5c80fd8e5.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    img: https://jihulab.com/shimoxijimu/img2/raw/main/pictures/2025/08/22_13_42_2_6894b49f58cb8da5c80fd8e5.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     icon:
     title:
   menu:
@@ -151,7 +151,7 @@ navbar:
       icon: fa-solid fa-moon # 可自定义
       toggle: darkmode
       # darkmode: true
-
+    - name: hr
     - name: 更多
       icon: fa-solid fa-ellipsis-v
       rows:
@@ -167,11 +167,13 @@ navbar:
         - name: 友链
           icon: fa-solid fa-link
           url: friends/
-        - name: hr
+        - name: 关于
+          icon: fa-solid fa-info-circle
+          url: about/
+
         - name: 资源站
           icon: fa-solid fa-download
           url: "https://www.shimoxi.icu/"
-
         - name: 联系邮箱
           icon: fas fa-envelope
           url: boke@shimoxi.dpdns.org
@@ -187,7 +189,7 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: https://cdn.jsdelivr.net/gh/shimoxi123/img/img/MCV_SummerDrop_Hero_DotNet_Homepage_1920x1080.webp
+  background: https://jihulab.com/shimoxijimu/img2/raw/main/pictures/2025/08/22_13_44_25_MCV_SummerDrop_Hero_DotNet_Homepage_1920x1080.webp
   # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
   logo: 
   title: 
@@ -235,9 +237,9 @@ cover:
       icon: far fa-external-link-alt
       url: https://b.shimoxi.icu/
 
-    - name: 关于
-      icon: fa-solid fa-info-circle
-      url: about/
+    # - name: 关于
+    #   icon: fa-solid fa-info-circle
+    #   url: about/
 
 
 
@@ -369,7 +371,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: volantis-static/media/org.volantis/blog/favicon/apple-touch-icon.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
+        avatar: https://jihulab.com/shimoxijimu/img2/raw/main/pictures/2025/08/22_13_42_2_6894b49f58cb8da5c80fd8e5.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
         name: 石墨烯积木
         url: /
       # 文章创建日期
