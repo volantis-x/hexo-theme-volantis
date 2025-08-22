@@ -170,6 +170,7 @@ navbar:
         - name: 关于
           icon: fa-solid fa-info-circle
           url: about/
+        - name: hr
 
         - name: 资源站
           icon: fa-solid fa-download
@@ -234,7 +235,7 @@ cover:
       icon: fa-solid fa-download
       url: "https://www.shimoxi.icu"
     - name: 本站加速访问地址
-      icon: far fa-external-link-alt
+      icon: fa-external-link
       url: https://b.shimoxi.icu/
 
     # - name: 关于
@@ -791,9 +792,9 @@ site_footer:
 plugins:
   ################ required plugins ################
   # jquery
-  globalJquery: false # 全局引入 jquery
+  globalJquery: true # 全局引入 jquery
   # fontawesome
-  fontawesome: true
+  fontawesome: true # 确保为 true 以启用 Font Awesome
   ################ optional plugins ################
   # issues api
   sitesjs:
