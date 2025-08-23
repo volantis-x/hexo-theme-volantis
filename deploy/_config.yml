@@ -557,6 +557,9 @@ comments:
     envId: https://pinlun.shimoxi.qzz.io/.netlify/functions/twikoo # 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
     placeholder: #全局评论占位，也可以在管理面板中的配置管理处设置（此处优先级更高）
     visitor: true # 是否显示文章阅读数
+    # 统一路径标识符，忽略域名差异
+    region: # 可选，腾讯云环境地域
+    lang: zh-CN # 可选，评论区语言
 
   # Waline
   # https://waline.js.org/

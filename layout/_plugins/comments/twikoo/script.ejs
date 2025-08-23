@@ -10,11 +10,32 @@
     let placeholder = pdata.commentPlaceholder || "<%= theme.comments.twikoo.placeholder %>" || "";
     if (path.length == 0) {
       let defaultPath = '<%= theme.comments.twikoo.path %>';
+      // 使用统一的路径标识符，忽略域名差异
       path = defaultPath || decodeURI(window.location.pathname);
+      // 确保路径一致性：移除可能的域名相关前缀
+      if (path.startsWith('/blog/')) {
+        path = path.substring(5); // 移除 /blog/ 前缀
+      }
+      // 确保路径以 / 开头
+      if (!path.startsWith('/')) {
+        path = '/' + path;
+      }
     }
+    // 使用标准化的路径确保跨平台同步
+    const normalizedPath = (function(originalPath) {
+      // 移除可能的域名相关前缀
+      let normalized = originalPath.replace(/^\/blog\//, '/').replace(/^\/hexo\//, '/');
+      // 确保以 / 开头
+      if (!normalized.startsWith('/')) normalized = '/' + normalized;
+      // 移除末尾的 index.html 和 .html
+      normalized = normalized.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+      console.log('Twikoo 路径标准化:', originalPath, '->', normalized);
+      return normalized;
+    })(path);
+    
     twikoo.init(Object.assign(Object.assign(<%- JSON.stringify(theme.comments.twikoo) %>, {
       el: '#twikoo_container',
-      path: path,
+      path: normalizedPath,
       placeholder: placeholder,
       onCommentLoaded: function() {
         const fancyBoxInstance = new VolantisFancyBox();
