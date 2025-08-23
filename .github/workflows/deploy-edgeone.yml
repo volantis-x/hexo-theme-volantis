@@ -33,10 +33,13 @@ jobs:
           fi
           BRANCH="EdgeOne-Pages"
 
-          # 创建或切换分支
-          if git show-ref --verify --quiet refs/heads/$BRANCH; then
-            git checkout $BRANCH
+          # 检查远程分支是否存在
+          if git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1; then
+            echo "Remote branch $BRANCH exists, fetching..."
+            git fetch origin $BRANCH
+            git checkout -B $BRANCH origin/$BRANCH
           else
+            echo "Remote branch $BRANCH does not exist, creating new branch..."
             git checkout -b $BRANCH
           fi
 
@@ -50,7 +53,13 @@ jobs:
               cp "$SRC" "$DEST"
               git add "$DEST"
               git commit -m "Update __config.yml from 6.0 branch"
-              git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+              
+              # 尝试推送，如果失败则强制推送
+              if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
+                echo "Normal push failed, trying force push..."
+                git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+              fi
+              
               echo "Changes committed and pushed to $BRANCH branch."
             else
               echo "$DEST unchanged, no update needed."
