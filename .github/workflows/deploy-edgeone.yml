@@ -195,9 +195,11 @@ jobs:
               echo "Triggering main repository update..."
               curl -X POST \
                 -H "Accept: application/vnd.github.v3+json" \
-                -H "Authorization: token ${{ secrets.PERSONAL_TOKEN }}" \
+                -H "Authorization: Bearer ${{ secrets.PERSONAL_TOKEN }}" \
+                -H "User-Agent: GitHub-Actions" \
                 https://api.github.com/repos/shimoxi123/blog-hexo/dispatches \
-                -d '{"event_type":"submodule-updated","client_payload":{"submodule":"themes/volantis","branch":"EdgeOne-Pages"}}'
+                -d '{"event_type":"submodule-updated","client_payload":{"submodule":"themes/volantis","branch":"EdgeOne-Pages"}}' \
+                || echo "Failed to trigger main repository update"
               
             else
               echo "❌ Commit failed - no changes to commit or commit error"
