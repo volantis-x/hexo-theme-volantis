@@ -1,7 +1,7 @@
 ############################### Volantis ###############################
 info:
   theme_name: Volantis # This is theme's name.
-  theme_docs: https://www.shimxo.qzz.io/ # This is theme's URL.
+  theme_docs: https://www.shimxo.icu/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
 # Debug 调试模式
 debug: env # false: 关闭调试模式， env：环境配置检查， rightMenus: 调试右键, cdn: 调试 CDN System

@@ -94,29 +94,58 @@ jobs:
           echo "Copying files from deploy/ directory to root..."
           DEPLOY_DIR="deploy"
           
+          # 确保我们在 6.0 分支上获取 deploy 文件
+          git checkout 6.0
+          
           if [[ -d "$DEPLOY_DIR" ]]; then
+            echo "Deploy directory found, processing files..."
             for file in "$DEPLOY_DIR"/*; do
               if [[ -f "$file" ]]; then
                 filename=$(basename "$file")
                 echo "Processing deploy file: $filename"
                 
-                # 比较文件是否有变化
-                if ! cmp -s "$file" "$filename" 2>/dev/null; then
-                  echo "Copying $filename from $file to root directory..."
-                  cp "$file" "$filename"
+                # 切换到目标分支
+                git checkout $BRANCH
+                
+                # 从 6.0 分支复制 deploy 文件到根目录
+                if git show 6.0:"$file" > "$filename" 2>/dev/null; then
+                  echo "Successfully copied $filename from 6.0:$file"
+                else
+                  echo "Failed to get $file from 6.0 branch using git show, trying checkout method..."
+                  git checkout 6.0
+                  if [[ -f "$file" ]]; then
+                    cp "$file" "../$filename"
+                    git checkout $BRANCH
+                    mv "../$filename" "$filename"
+                  else
+                    echo "File $file not found in 6.0 branch"
+                    git checkout $BRANCH
+                    continue
+                  fi
+                fi
+                
+                # 检查文件是否有变化
+                if git diff --quiet HEAD "$filename" 2>/dev/null; then
+                  echo "Deploy file $filename unchanged."
+                else
+                  echo "Adding deploy file $filename to staging..."
                   git add "$filename"
                   CHANGES_MADE=true
-                else
-                  echo "Deploy file $filename unchanged."
                 fi
               fi
             done
           else
             echo "Deploy directory not found, skipping deploy files copy."
           fi
+          
+          # 确保最后在目标分支上
+          git checkout $BRANCH
 
           # 提交并推送变化
           if [[ "$CHANGES_MADE" == true ]]; then
+            echo "Staging area status:"
+            git status --porcelain
+            
             echo "Committing changes..."
             git commit -m "Sync changes from 6.0 branch and deploy files ($(echo ${{ github.sha }} | cut -c1-7))"
             
@@ -127,7 +156,9 @@ jobs:
               git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
             fi
             
-            echo "Changes committed and pushed to $BRANCH branch."
+            echo "✅ Changes committed and pushed to $BRANCH branch successfully."
           else
-            echo "No changes to commit."
+            echo "ℹ️ No changes to commit."
           fi
+          
+          echo "🎉 Sync process completed!"
