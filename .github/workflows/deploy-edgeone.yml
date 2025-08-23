@@ -1,0 +1,52 @@
+name: Deploy EdgeOne-Pages Incremental Optimized
+
+on:
+  push:
+    branches:
+      - main   # 当 main 分支有推送时触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+
+      - name: Deploy only changed files to EdgeOne-Pages
+        run: |
+          BRANCH="EdgeOne-Pages"
+
+          if git show-ref --verify --quiet refs/heads/$BRANCH; then
+            git checkout $BRANCH
+          else
+            git checkout -b $BRANCH
+          fi
+
+          declare -A FILES
+          FILES=(["deploy/EdgeOne__config.yml"]="__config.yml" ["deploy/.gitmodules"]=".gitmodules")
+
+          for SRC in "${!FILES[@]}"; do
+            DEST="${FILES[$SRC]}"
+            if ! cmp -s "$SRC" "$DEST" 2>/dev/null; then
+              echo "Updating $DEST from $SRC..."
+              cp "$SRC" "$DEST"
+              git add "$DEST"
+            else
+              echo "$DEST unchanged."
+            fi
+          done
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Incremental update for $BRANCH from main"
+            git push origin $BRANCH
+          fi
