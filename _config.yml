@@ -174,10 +174,11 @@ navbar:
 
         - name: 资源站
           icon: fa-solid fa-download
-          url: "https://www.shimoxi.icu/"
+          url: ziyuan/
         - name: 联系邮箱
           icon: fas fa-envelope
-          url: boke@shimoxi.dpdns.org
+          url: "mailto:boke@shimoxi.dpdns.org"
+
   search: 搜索   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
 
@@ -233,7 +234,7 @@ cover:
       url: friends/
     - name: 资源站
       icon: fa-solid fa-download
-      url: "https://www.shimoxi.icu"
+      url: ziyuan/
     - name: 本站加速访问地址
       icon: fa-external-link
       url: https://b.shimoxi.icu/
