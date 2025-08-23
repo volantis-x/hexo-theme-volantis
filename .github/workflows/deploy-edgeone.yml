@@ -182,11 +182,15 @@ jobs:
             
             echo "Committing changes..."
             if git commit -m "${ORIGINAL_COMMIT_MSG} (${COMMIT_ID})"; then
-              # 尝试推送，如果失败则强制推送
+              # 尝试推送，处理并发冲突
               echo "Pushing to remote..."
               if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
-                echo "Normal push failed, trying force push..."
-                git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+                echo "Push failed, trying to rebase and retry..."
+                git pull --rebase https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+                if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
+                  echo "Rebase push failed, trying force push as last resort..."
+                  git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+                fi
               fi
               
               echo "✅ Changes committed and pushed to $BRANCH branch successfully."
