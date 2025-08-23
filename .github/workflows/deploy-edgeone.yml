@@ -122,6 +122,12 @@ jobs:
               if git show 6.0:"$DEPLOY_DIR/$filename" > "$filename" 2>/dev/null; then
                 echo "Successfully copied $filename from 6.0:$DEPLOY_DIR/$filename"
                 
+                # 特殊处理 .gitmodules 文件
+                if [[ "$filename" == ".gitmodules" ]]; then
+                  echo "Updated .gitmodules content:"
+                  cat "$filename"
+                fi
+                
                 # 检查文件是否有变化
                 if git diff --quiet HEAD "$filename" 2>/dev/null; then
                   echo "Deploy file $filename unchanged."
