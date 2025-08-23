@@ -1,4 +1,4 @@
-name: Deploy EdgeOne-Pages Incremental for Fork
+name: Deploy EdgeOne-Pages Incremental from Deploy Directory
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
           git config user.email "shimoxijimu@users.noreply.github.com"
 
       # 3️⃣ 增量部署 EdgeOne-Pages
-      - name: Deploy only changed __config.yml to EdgeOne-Pages
+      - name: Deploy EdgeOne__config.yml to EdgeOne-Pages
         run: |
           BRANCH="EdgeOne-Pages"
 
@@ -34,22 +34,22 @@ jobs:
             git checkout -b $BRANCH
           fi
 
-          # 只同步 EdgeOne__config.yml
+          # 同步 EdgeOne__config.yml 文件
           SRC="deploy/EdgeOne__config.yml"
           DEST="__config.yml"
 
-          if ! cmp -s "$SRC" "$DEST" 2>/dev/null; then
-            echo "Updating $DEST from $SRC..."
-            cp "$SRC" "$DEST"
-            git add "$DEST"
+          if [[ -f "$SRC" ]]; then
+            if ! cmp -s "$SRC" "$DEST" 2>/dev/null; then
+              echo "Updating $DEST from $SRC..."
+              cp "$SRC" "$DEST"
+              git add "$DEST"
+              git commit -m "Update __config.yml from 6.0 branch"
+              git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+              echo "Changes committed and pushed to $BRANCH branch."
+            else
+              echo "$DEST unchanged, no update needed."
+            fi
           else
-            echo "$DEST unchanged."
-          fi
-
-          # 提交并推送变化
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "Incremental update for $BRANCH from main"
-            git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+            echo "Error: Source file $SRC not found."
+            exit 1
           fi
