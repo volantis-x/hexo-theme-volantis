@@ -1,0 +1,4 @@
+[submodule "themes/volantis"]
+	path = themes/volantis
+	url = https://gitee.com/shimoxijimu/volantis
+	branch = gitee-6.0
