@@ -25,6 +25,12 @@ jobs:
       # 3️⃣ 增量部署 EdgeOne-Pages
       - name: Deploy EdgeOne__config.yml to EdgeOne-Pages
         run: |
+          # 检查是否有 PERSONAL_TOKEN
+          if [[ -z "${{ secrets.PERSONAL_TOKEN }}" ]]; then
+            echo "Warning: PERSONAL_TOKEN not found. Please set PERSONAL_TOKEN in repository secrets to enable deployment."
+            echo "Skipping deployment..."
+            exit 0
+          fi
           BRANCH="EdgeOne-Pages"
 
           # 创建或切换分支
