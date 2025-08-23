@@ -41,6 +41,17 @@ jobs:
           CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
           echo "Changed files:"
           echo "$CHANGED_FILES"
+          
+          # 确保关键配置文件总是被同步（从根目录）
+          ESSENTIAL_FILES="package.json pnpm-workspace.yaml"
+          for essential_file in $ESSENTIAL_FILES; do
+            if git ls-tree 6.0:"$essential_file" >/dev/null 2>&1; then
+              if ! echo "$CHANGED_FILES" | grep -q "^$essential_file$"; then
+                echo "Adding essential file: $essential_file"
+                CHANGED_FILES="$CHANGED_FILES"$'\n'"$essential_file"
+              fi
+            fi
+          done
 
           # 检查远程分支是否存在
           if git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1; then
@@ -130,6 +141,29 @@ jobs:
           # 检查最终暂存区状态
           echo "Current staging area after deploy files:"
           git status --porcelain
+          
+          # 额外同步根目录的关键配置文件
+          echo "Syncing essential root files..."
+          ROOT_ESSENTIAL_FILES="package.json pnpm-workspace.yaml"
+          for essential_file in $ROOT_ESSENTIAL_FILES; do
+            if git ls-tree 6.0:"$essential_file" >/dev/null 2>&1; then
+              echo "Syncing essential file: $essential_file"
+              if git show 6.0:"$essential_file" > "$essential_file" 2>/dev/null; then
+                echo "Successfully synced $essential_file from 6.0 branch"
+                
+                # 检查文件是否有变化
+                if git diff --quiet HEAD "$essential_file" 2>/dev/null; then
+                  echo "Essential file $essential_file unchanged."
+                else
+                  echo "Adding essential file $essential_file to staging..."
+                  git add "$essential_file"
+                  CHANGES_MADE=true
+                fi
+              else
+                echo "Failed to sync $essential_file from 6.0 branch"
+              fi
+            fi
+          done
           
           # 确保最后在目标分支上
           git checkout $BRANCH
