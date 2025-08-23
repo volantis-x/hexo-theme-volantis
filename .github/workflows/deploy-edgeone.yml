@@ -190,6 +190,15 @@ jobs:
               fi
               
               echo "✅ Changes committed and pushed to $BRANCH branch successfully."
+              
+              # 通知主仓库子模块已更新
+              echo "Triggering main repository update..."
+              curl -X POST \
+                -H "Accept: application/vnd.github.v3+json" \
+                -H "Authorization: token ${{ secrets.PERSONAL_TOKEN }}" \
+                https://api.github.com/repos/shimoxi123/blog-hexo/dispatches \
+                -d '{"event_type":"submodule-updated","client_payload":{"submodule":"themes/volantis","branch":"EdgeOne-Pages"}}'
+              
             else
               echo "❌ Commit failed - no changes to commit or commit error"
             fi
