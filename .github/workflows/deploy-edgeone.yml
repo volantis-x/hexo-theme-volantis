@@ -94,35 +94,22 @@ jobs:
           echo "Copying files from deploy/ directory to root..."
           DEPLOY_DIR="deploy"
           
-          # 确保我们在 6.0 分支上获取 deploy 文件
-          git checkout 6.0
+          # 检查当前暂存区状态
+          echo "Current staging area before deploy files:"
+          git status --porcelain
           
-          if [[ -d "$DEPLOY_DIR" ]]; then
-            echo "Deploy directory found, processing files..."
-            for file in "$DEPLOY_DIR"/*; do
-              if [[ -f "$file" ]]; then
-                filename=$(basename "$file")
-                echo "Processing deploy file: $filename"
-                
-                # 切换到目标分支
-                git checkout $BRANCH
-                
-                # 从 6.0 分支复制 deploy 文件到根目录
-                if git show 6.0:"$file" > "$filename" 2>/dev/null; then
-                  echo "Successfully copied $filename from 6.0:$file"
-                else
-                  echo "Failed to get $file from 6.0 branch using git show, trying checkout method..."
-                  git checkout 6.0
-                  if [[ -f "$file" ]]; then
-                    cp "$file" "../$filename"
-                    git checkout $BRANCH
-                    mv "../$filename" "$filename"
-                  else
-                    echo "File $file not found in 6.0 branch"
-                    git checkout $BRANCH
-                    continue
-                  fi
-                fi
+          if git ls-tree 6.0:"$DEPLOY_DIR" >/dev/null 2>&1; then
+            echo "Deploy directory found in 6.0 branch, processing files..."
+            
+            # 获取 deploy 目录中的文件列表（不切换分支）
+            DEPLOY_FILES=$(git ls-tree --name-only 6.0:"$DEPLOY_DIR" 2>/dev/null || echo "")
+            
+            for filename in $DEPLOY_FILES; do
+              echo "Processing deploy file: $filename"
+              
+              # 从 6.0 分支复制 deploy 文件到根目录
+              if git show 6.0:"$DEPLOY_DIR/$filename" > "$filename" 2>/dev/null; then
+                echo "Successfully copied $filename from 6.0:$DEPLOY_DIR/$filename"
                 
                 # 检查文件是否有变化
                 if git diff --quiet HEAD "$filename" 2>/dev/null; then
@@ -132,35 +119,46 @@ jobs:
                   git add "$filename"
                   CHANGES_MADE=true
                 fi
+              else
+                echo "Failed to get $DEPLOY_DIR/$filename from 6.0 branch"
               fi
             done
           else
-            echo "Deploy directory not found, skipping deploy files copy."
+            echo "Deploy directory not found in 6.0 branch, skipping deploy files copy."
           fi
+          
+          # 检查最终暂存区状态
+          echo "Current staging area after deploy files:"
+          git status --porcelain
           
           # 确保最后在目标分支上
           git checkout $BRANCH
 
           # 提交并推送变化
-          if [[ "$CHANGES_MADE" == true ]]; then
-            echo "Staging area status:"
-            git status --porcelain
-            
+          echo "Final branch check: $(git branch --show-current)"
+          echo "Final staging area status:"
+          STAGED_FILES=$(git status --porcelain)
+          echo "$STAGED_FILES"
+          
+          # 检查是否真的有文件需要提交
+          if [[ -n "$STAGED_FILES" ]] || [[ "$CHANGES_MADE" == true ]]; then
             # 获取原始提交信息
             ORIGINAL_COMMIT_MSG=$(git log --format=%B -n 1 ${{ github.sha }})
             COMMIT_ID=$(echo ${{ github.sha }} | cut -c1-7)
             
             echo "Committing changes..."
-            git commit -m "${ORIGINAL_COMMIT_MSG} (${COMMIT_ID})"
-            
-            # 尝试推送，如果失败则强制推送
-            echo "Pushing to remote..."
-            if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
-              echo "Normal push failed, trying force push..."
-              git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+            if git commit -m "${ORIGINAL_COMMIT_MSG} (${COMMIT_ID})"; then
+              # 尝试推送，如果失败则强制推送
+              echo "Pushing to remote..."
+              if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
+                echo "Normal push failed, trying force push..."
+                git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+              fi
+              
+              echo "✅ Changes committed and pushed to $BRANCH branch successfully."
+            else
+              echo "❌ Commit failed - no changes to commit or commit error"
             fi
-            
-            echo "✅ Changes committed and pushed to $BRANCH branch successfully."
           else
             echo "ℹ️ No changes to commit."
           fi
