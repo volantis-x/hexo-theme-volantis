@@ -146,8 +146,12 @@ jobs:
             echo "Staging area status:"
             git status --porcelain
             
+            # 获取原始提交信息
+            ORIGINAL_COMMIT_MSG=$(git log --format=%B -n 1 ${{ github.sha }})
+            COMMIT_ID=$(echo ${{ github.sha }} | cut -c1-7)
+            
             echo "Committing changes..."
-            git commit -m "Sync changes from 6.0 branch and deploy files ($(echo ${{ github.sha }} | cut -c1-7))"
+            git commit -m "${ORIGINAL_COMMIT_MSG} (${COMMIT_ID})"
             
             # 尝试推送，如果失败则强制推送
             echo "Pushing to remote..."
