@@ -1,4 +1,4 @@
-name: Deploy EdgeOne-Pages Incremental from Deploy Directory
+name: Sync 6.0 Branch Changes to EdgeOne-Pages
 
 on:
   push:
@@ -11,10 +11,11 @@ jobs:
 
     steps:
       # 1️⃣ 检出仓库
-      - name: Checkout main branch
+      - name: Checkout 6.0 branch
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          token: ${{ secrets.PERSONAL_TOKEN }}
 
       # 2️⃣ 设置 Git 用户
       - name: Set up Git
@@ -22,8 +23,8 @@ jobs:
           git config user.name "shimoxijimu-actions"
           git config user.email "shimoxijimu@users.noreply.github.com"
 
-      # 3️⃣ 增量部署 EdgeOne-Pages
-      - name: Deploy EdgeOne__config.yml to EdgeOne-Pages
+      # 3️⃣ 同步 6.0 分支的所有变化到 EdgeOne-Pages
+      - name: Sync all changes from 6.0 to EdgeOne-Pages
         run: |
           # 检查是否有 PERSONAL_TOKEN
           if [[ -z "${{ secrets.PERSONAL_TOKEN }}" ]]; then
@@ -31,7 +32,15 @@ jobs:
             echo "Skipping deployment..."
             exit 0
           fi
+          
+          echo "Starting sync process..."
           BRANCH="EdgeOne-Pages"
+
+          # 获取当前提交的变更文件列表
+          echo "Getting changed files from this push..."
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
 
           # 检查远程分支是否存在
           if git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1; then
@@ -43,28 +52,82 @@ jobs:
             git checkout -b $BRANCH
           fi
 
-          # 同步 EdgeOne__config.yml 文件
-          SRC="deploy/EdgeOne__config.yml"
-          DEST="__config.yml"
+          echo "Current branch: $(git branch --show-current)"
 
-          if [[ -f "$SRC" ]]; then
-            if ! cmp -s "$SRC" "$DEST" 2>/dev/null; then
-              echo "Updating $DEST from $SRC..."
-              cp "$SRC" "$DEST"
-              git add "$DEST"
-              git commit -m "Update __config.yml from 6.0 branch"
+          # 切换回 6.0 分支获取最新文件
+          git checkout 6.0
+
+          # 同步变更的文件
+          CHANGES_MADE=false
+          
+          while IFS= read -r file; do
+            if [[ -n "$file" && -f "$file" ]]; then
+              echo "Processing changed file: $file"
               
-              # 尝试推送，如果失败则强制推送
-              if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
-                echo "Normal push failed, trying force push..."
-                git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+              # 切换到目标分支
+              git checkout $BRANCH
+              
+              # 创建目标目录（如果需要）
+              target_dir=$(dirname "$file")
+              if [[ "$target_dir" != "." ]]; then
+                mkdir -p "$target_dir"
               fi
               
-              echo "Changes committed and pushed to $BRANCH branch."
-            else
-              echo "$DEST unchanged, no update needed."
+              # 从 6.0 分支复制文件
+              git checkout 6.0 -- "$file"
+              
+              # 检查文件是否真的有变化
+              if git diff --quiet HEAD "$file" 2>/dev/null; then
+                echo "$file unchanged."
+              else
+                echo "Adding $file to staging..."
+                git add "$file"
+                CHANGES_MADE=true
+              fi
             fi
+          done <<< "$CHANGED_FILES"
+
+          # 切换回目标分支进行后续操作
+          git checkout $BRANCH
+
+          # 额外步骤：将 deploy 目录下的文件复制到根目录
+          echo "Copying files from deploy/ directory to root..."
+          DEPLOY_DIR="deploy"
+          
+          if [[ -d "$DEPLOY_DIR" ]]; then
+            for file in "$DEPLOY_DIR"/*; do
+              if [[ -f "$file" ]]; then
+                filename=$(basename "$file")
+                echo "Processing deploy file: $filename"
+                
+                # 比较文件是否有变化
+                if ! cmp -s "$file" "$filename" 2>/dev/null; then
+                  echo "Copying $filename from $file to root directory..."
+                  cp "$file" "$filename"
+                  git add "$filename"
+                  CHANGES_MADE=true
+                else
+                  echo "Deploy file $filename unchanged."
+                fi
+              fi
+            done
           else
-            echo "Error: Source file $SRC not found."
-            exit 1
+            echo "Deploy directory not found, skipping deploy files copy."
+          fi
+
+          # 提交并推送变化
+          if [[ "$CHANGES_MADE" == true ]]; then
+            echo "Committing changes..."
+            git commit -m "Sync changes from 6.0 branch and deploy files ($(echo ${{ github.sha }} | cut -c1-7))"
+            
+            # 尝试推送，如果失败则强制推送
+            echo "Pushing to remote..."
+            if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
+              echo "Normal push failed, trying force push..."
+              git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+            fi
+            
+            echo "Changes committed and pushed to $BRANCH branch."
+          else
+            echo "No changes to commit."
           fi
