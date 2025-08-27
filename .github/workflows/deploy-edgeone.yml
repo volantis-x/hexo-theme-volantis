@@ -52,17 +52,11 @@ jobs:
 
           echo "Current branch: $(git branch --show-current)"
 
-          # 第一步：同步 6.0 分支的所有内容
-          echo "Step 1: Syncing all content from 6.0 branch..."
-          
-          # 检查是否需要同步
-          if git diff --quiet HEAD origin/6.0; then
-            echo "EdgeOne-Pages branch is already up to date with 6.0 branch"
-          else
-            echo "Syncing content from 6.0 branch..."
-            git reset --hard origin/6.0
-            echo "✅ Content synced from 6.0 branch."
-          fi
+          # 第一步：强制同步 6.0 分支的所有内容
+          echo "Step 1: Force syncing all content from 6.0 branch..."
+          echo "Resetting EdgeOne-Pages branch to match 6.0 branch exactly..."
+          git reset --hard origin/6.0
+          echo "✅ Content force synced from 6.0 branch."
 
           # 第二步：复制 deploy 文件夹下的文件到根目录
           echo "Step 2: Copying files from deploy/ directory to root..."
@@ -106,22 +100,10 @@ jobs:
             echo "Deploy directory not found, skipping deploy files copy."
           fi
 
-          # 检查是否有变更需要推送
-          if git diff --quiet HEAD origin/$BRANCH 2>/dev/null; then
-            echo "ℹ️ No changes to push to remote."
-          else
-            # 推送到远程仓库
-            echo "Pushing changes to remote..."
-            if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
-              echo "Push failed, trying to rebase and retry..."
-              git pull --rebase https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
-              if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
-                echo "Rebase push failed, trying force push as last resort..."
-                git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
-              fi
-            fi
-            echo "✅ Changes pushed to $BRANCH branch successfully."
-          fi
+          # 强制推送到远程仓库
+          echo "Force pushing changes to remote..."
+          git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+          echo "✅ Changes force pushed to $BRANCH branch successfully."
           
           # 通知主仓库子模块已更新
           echo "Triggering main repository update..."
