@@ -54,14 +54,14 @@ jobs:
 
           # 第一步：同步 6.0 分支的所有内容
           echo "Step 1: Syncing all content from 6.0 branch..."
-          git reset --hard origin/6.0
           
-          # 提交同步的内容
-          echo "Committing synced content..."
-          if git commit --allow-empty -m "${ORIGINAL_COMMIT_MSG} (${COMMIT_ID})"; then
-            echo "✅ Content synced and committed."
+          # 检查是否需要同步
+          if git diff --quiet HEAD origin/6.0; then
+            echo "EdgeOne-Pages branch is already up to date with 6.0 branch"
           else
-            echo "ℹ️ No changes to commit for sync step."
+            echo "Syncing content from 6.0 branch..."
+            git reset --hard origin/6.0
+            echo "✅ Content synced from 6.0 branch."
           fi
 
           # 第二步：复制 deploy 文件夹下的文件到根目录
@@ -71,11 +71,25 @@ jobs:
           if [[ -d "$DEPLOY_DIR" ]]; then
             echo "Deploy directory found, copying files..."
             
+            # 显示 deploy 目录内容
+            echo "Files in deploy directory:"
+            ls -la "$DEPLOY_DIR"
+            
             # 复制 deploy 目录下的所有文件到根目录（覆盖同名文件）
-            cp -rf "$DEPLOY_DIR"/* . 2>/dev/null || echo "No files to copy from deploy directory"
+            if ls "$DEPLOY_DIR"/* >/dev/null 2>&1; then
+              cp -rf "$DEPLOY_DIR"/* . 
+              echo "Copied regular files from deploy directory"
+            fi
             
             # 复制隐藏文件
-            cp -rf "$DEPLOY_DIR"/.[^.]* . 2>/dev/null || echo "No hidden files to copy from deploy directory"
+            if ls "$DEPLOY_DIR"/.[^.]* >/dev/null 2>&1; then
+              cp -rf "$DEPLOY_DIR"/.[^.]* .
+              echo "Copied hidden files from deploy directory"
+            fi
+            
+            # 显示当前目录状态
+            echo "Current directory status:"
+            git status --porcelain
             
             # 添加所有变更到暂存区
             git add .
@@ -83,7 +97,7 @@ jobs:
             # 检查是否有变更需要提交
             if ! git diff --cached --quiet; then
               echo "Committing deploy files..."
-              git commit -m "Deploy files from deploy/ directory (${COMMIT_ID})"
+              git commit -m "${ORIGINAL_COMMIT_MSG} + Deploy files (${COMMIT_ID})"
               echo "✅ Deploy files committed."
             else
               echo "ℹ️ No deploy files changes to commit."
@@ -92,18 +106,22 @@ jobs:
             echo "Deploy directory not found, skipping deploy files copy."
           fi
 
-          # 推送到远程仓库
-          echo "Pushing to remote..."
-          if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
-            echo "Push failed, trying to rebase and retry..."
-            git pull --rebase https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+          # 检查是否有变更需要推送
+          if git diff --quiet HEAD origin/$BRANCH 2>/dev/null; then
+            echo "ℹ️ No changes to push to remote."
+          else
+            # 推送到远程仓库
+            echo "Pushing changes to remote..."
             if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
-              echo "Rebase push failed, trying force push as last resort..."
-              git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+              echo "Push failed, trying to rebase and retry..."
+              git pull --rebase https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+              if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
+                echo "Rebase push failed, trying force push as last resort..."
+                git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+              fi
             fi
+            echo "✅ Changes pushed to $BRANCH branch successfully."
           fi
-          
-          echo "✅ Changes pushed to $BRANCH branch successfully."
           
           # 通知主仓库子模块已更新
           echo "Triggering main repository update..."
