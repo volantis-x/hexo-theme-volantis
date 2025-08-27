@@ -23,8 +23,8 @@ jobs:
           git config user.name "shimoxijimu-actions"
           git config user.email "shimoxijimu@users.noreply.github.com"
 
-      # 3️⃣ 同步 6.0 分支的所有变化到 EdgeOne-Pages
-      - name: Sync all changes from 6.0 to EdgeOne-Pages
+      # 3️⃣ 同步 6.0 分支内容到 EdgeOne-Pages
+      - name: Sync 6.0 branch to EdgeOne-Pages
         run: |
           # 检查是否有 PERSONAL_TOKEN
           if [[ -z "${{ secrets.PERSONAL_TOKEN }}" ]]; then
@@ -36,23 +36,10 @@ jobs:
           echo "Starting sync process..."
           BRANCH="EdgeOne-Pages"
 
-          # 获取当前提交的变更文件列表
-          echo "Getting changed files from this push..."
-          CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
-          echo "Changed files:"
-          echo "$CHANGED_FILES"
+          # 获取原始提交信息和ID
+          ORIGINAL_COMMIT_MSG=$(git log --format=%B -n 1 ${{ github.sha }})
+          COMMIT_ID=$(echo ${{ github.sha }} | cut -c1-7)
           
-          # 确保关键配置文件总是被同步（从根目录）
-          ESSENTIAL_FILES="package.json pnpm-workspace.yaml"
-          for essential_file in $ESSENTIAL_FILES; do
-            if git ls-tree 6.0:"$essential_file" >/dev/null 2>&1; then
-              if ! echo "$CHANGED_FILES" | grep -q "^$essential_file$"; then
-                echo "Adding essential file: $essential_file"
-                CHANGED_FILES="$CHANGED_FILES"$'\n'"$essential_file"
-              fi
-            fi
-          done
-
           # 检查远程分支是否存在
           if git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1; then
             echo "Remote branch $BRANCH exists, fetching..."
@@ -65,157 +52,67 @@ jobs:
 
           echo "Current branch: $(git branch --show-current)"
 
-          # 切换回 6.0 分支获取最新文件
-          git checkout 6.0
-
-          # 同步变更的文件
-          CHANGES_MADE=false
+          # 第一步：同步 6.0 分支的所有内容
+          echo "Step 1: Syncing all content from 6.0 branch..."
+          git reset --hard origin/6.0
           
-          while IFS= read -r file; do
-            if [[ -n "$file" && -f "$file" ]]; then
-              echo "Processing changed file: $file"
-              
-              # 切换到目标分支
-              git checkout $BRANCH
-              
-              # 创建目标目录（如果需要）
-              target_dir=$(dirname "$file")
-              if [[ "$target_dir" != "." ]]; then
-                mkdir -p "$target_dir"
-              fi
-              
-              # 从 6.0 分支复制文件
-              git checkout 6.0 -- "$file"
-              
-              # 检查文件是否真的有变化
-              if git diff --quiet HEAD "$file" 2>/dev/null; then
-                echo "$file unchanged."
-              else
-                echo "Adding $file to staging..."
-                git add "$file"
-                CHANGES_MADE=true
-              fi
-            fi
-          done <<< "$CHANGED_FILES"
+          # 提交同步的内容
+          echo "Committing synced content..."
+          if git commit --allow-empty -m "${ORIGINAL_COMMIT_MSG} (${COMMIT_ID})"; then
+            echo "✅ Content synced and committed."
+          else
+            echo "ℹ️ No changes to commit for sync step."
+          fi
 
-          # 切换回目标分支进行后续操作
-          git checkout $BRANCH
-
-          # 额外步骤：将 deploy 目录下的文件复制到根目录
-          echo "Copying files from deploy/ directory to root..."
+          # 第二步：复制 deploy 文件夹下的文件到根目录
+          echo "Step 2: Copying files from deploy/ directory to root..."
           DEPLOY_DIR="deploy"
           
-          # 检查当前暂存区状态
-          echo "Current staging area before deploy files:"
-          git status --porcelain
-          
-          if git ls-tree 6.0:"$DEPLOY_DIR" >/dev/null 2>&1; then
-            echo "Deploy directory found in 6.0 branch, processing files..."
+          if [[ -d "$DEPLOY_DIR" ]]; then
+            echo "Deploy directory found, copying files..."
             
-            # 获取 deploy 目录中的文件列表（不切换分支）
-            DEPLOY_FILES=$(git ls-tree --name-only 6.0:"$DEPLOY_DIR" 2>/dev/null || echo "")
+            # 复制 deploy 目录下的所有文件到根目录（覆盖同名文件）
+            cp -rf "$DEPLOY_DIR"/* . 2>/dev/null || echo "No files to copy from deploy directory"
             
-            for filename in $DEPLOY_FILES; do
-              echo "Processing deploy file: $filename"
-              
-              # 从 6.0 分支复制 deploy 文件到根目录
-              if git show 6.0:"$DEPLOY_DIR/$filename" > "$filename" 2>/dev/null; then
-                echo "Successfully copied $filename from 6.0:$DEPLOY_DIR/$filename"
-                
-                # 特殊处理 .gitmodules 文件
-                if [[ "$filename" == ".gitmodules" ]]; then
-                  echo "Updated .gitmodules content:"
-                  cat "$filename"
-                fi
-                
-                # 检查文件是否有变化
-                if git diff --quiet HEAD "$filename" 2>/dev/null; then
-                  echo "Deploy file $filename unchanged."
-                else
-                  echo "Adding deploy file $filename to staging..."
-                  git add "$filename"
-                  CHANGES_MADE=true
-                fi
-              else
-                echo "Failed to get $DEPLOY_DIR/$filename from 6.0 branch"
-              fi
-            done
-          else
-            echo "Deploy directory not found in 6.0 branch, skipping deploy files copy."
-          fi
-          
-          # 检查最终暂存区状态
-          echo "Current staging area after deploy files:"
-          git status --porcelain
-          
-          # 额外同步根目录的关键配置文件
-          echo "Syncing essential root files..."
-          ROOT_ESSENTIAL_FILES="package.json pnpm-workspace.yaml"
-          for essential_file in $ROOT_ESSENTIAL_FILES; do
-            if git ls-tree 6.0:"$essential_file" >/dev/null 2>&1; then
-              echo "Syncing essential file: $essential_file"
-              if git show 6.0:"$essential_file" > "$essential_file" 2>/dev/null; then
-                echo "Successfully synced $essential_file from 6.0 branch"
-                
-                # 检查文件是否有变化
-                if git diff --quiet HEAD "$essential_file" 2>/dev/null; then
-                  echo "Essential file $essential_file unchanged."
-                else
-                  echo "Adding essential file $essential_file to staging..."
-                  git add "$essential_file"
-                  CHANGES_MADE=true
-                fi
-              else
-                echo "Failed to sync $essential_file from 6.0 branch"
-              fi
-            fi
-          done
-          
-          # 确保最后在目标分支上
-          git checkout $BRANCH
-
-          # 提交并推送变化
-          echo "Final branch check: $(git branch --show-current)"
-          echo "Final staging area status:"
-          STAGED_FILES=$(git status --porcelain)
-          echo "$STAGED_FILES"
-          
-          # 检查是否真的有文件需要提交
-          if [[ -n "$STAGED_FILES" ]] || [[ "$CHANGES_MADE" == true ]]; then
-            # 获取原始提交信息
-            ORIGINAL_COMMIT_MSG=$(git log --format=%B -n 1 ${{ github.sha }})
-            COMMIT_ID=$(echo ${{ github.sha }} | cut -c1-7)
+            # 复制隐藏文件
+            cp -rf "$DEPLOY_DIR"/.[^.]* . 2>/dev/null || echo "No hidden files to copy from deploy directory"
             
-            echo "Committing changes..."
-            if git commit -m "${ORIGINAL_COMMIT_MSG} (${COMMIT_ID})"; then
-              # 尝试推送，处理并发冲突
-              echo "Pushing to remote..."
-              if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
-                echo "Push failed, trying to rebase and retry..."
-                git pull --rebase https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
-                if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
-                  echo "Rebase push failed, trying force push as last resort..."
-                  git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
-                fi
-              fi
-              
-              echo "✅ Changes committed and pushed to $BRANCH branch successfully."
-              
-              # 通知主仓库子模块已更新
-              echo "Triggering main repository update..."
-              curl -X POST \
-                -H "Accept: application/vnd.github.v3+json" \
-                -H "Authorization: Bearer ${{ secrets.PERSONAL_TOKEN }}" \
-                -H "User-Agent: GitHub-Actions" \
-                https://api.github.com/repos/shimoxi123/blog-hexo/dispatches \
-                -d '{"event_type":"submodule-updated","client_payload":{"submodule":"themes/volantis","branch":"EdgeOne-Pages"}}' \
-                || echo "Failed to trigger main repository update"
-              
+            # 添加所有变更到暂存区
+            git add .
+            
+            # 检查是否有变更需要提交
+            if ! git diff --cached --quiet; then
+              echo "Committing deploy files..."
+              git commit -m "Deploy files from deploy/ directory (${COMMIT_ID})"
+              echo "✅ Deploy files committed."
             else
-              echo "❌ Commit failed - no changes to commit or commit error"
+              echo "ℹ️ No deploy files changes to commit."
             fi
           else
-            echo "ℹ️ No changes to commit."
+            echo "Deploy directory not found, skipping deploy files copy."
           fi
+
+          # 推送到远程仓库
+          echo "Pushing to remote..."
+          if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
+            echo "Push failed, trying to rebase and retry..."
+            git pull --rebase https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+            if ! git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH; then
+              echo "Rebase push failed, trying force push as last resort..."
+              git push --force https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/${{ github.repository }} $BRANCH
+            fi
+          fi
+          
+          echo "✅ Changes pushed to $BRANCH branch successfully."
+          
+          # 通知主仓库子模块已更新
+          echo "Triggering main repository update..."
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: Bearer ${{ secrets.PERSONAL_TOKEN }}" \
+            -H "User-Agent: GitHub-Actions" \
+            https://api.github.com/repos/shimoxi123/blog-hexo/dispatches \
+            -d '{"event_type":"submodule-updated","client_payload":{"submodule":"themes/volantis","branch":"EdgeOne-Pages"}}' \
+            || echo "Failed to trigger main repository update"
           
           echo "🎉 Sync process completed!"

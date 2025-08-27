@@ -151,7 +151,7 @@ navbar:
       icon: fa-solid fa-moon # 可自定义
       toggle: darkmode
       # darkmode: true
-    - name: hr
+
     - name: 更多
       icon: fa-solid fa-ellipsis-v
       rows:
@@ -196,7 +196,7 @@ cover:
   logo: 
   title: 
   subtitle: ''
-  search: A Wonderful Theme for Hexo # search bar placeholder
+  search: 搜索 # search bar placeholder
   features:
     # - name: 文档
     #   icon: #
