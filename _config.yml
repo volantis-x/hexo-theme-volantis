@@ -244,7 +244,6 @@ cover:
     #   url: about/
 
 
-
 pages:
   # 友链页面配置
   friends:
@@ -684,11 +683,21 @@ sidebar:
       rows:
         - name: 反馈BUG
           icon: fas fa-bug
-          url: "https://github.com/shimoxi123/blog-hexo"
+          url: "https://github.com/shimoxi123/blog-hexo/issues"
         - name: 资源站
           icon: fa-solid fa-download
           url: /ziyuan/
 
+    # ---------------------------------------
+    # qrcode widget
+    qrcode:
+      class: qrcode
+      display: [desktop, mobile] # [desktop, mobile]
+      height: 64px  # Automatic height if not set
+      images:
+        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+    # ---------------------------------------
     # webinfo widget
     webinfo:
       class: webinfo
@@ -723,15 +732,6 @@ sidebar:
           friendlyShow: true    # 更友好的时间显示
           text: '最后活动时间：'
           unit: '日'
-    # ---------------------------------------
-    # qrcode widget
-    qrcode:
-      class: qrcode
-      display: [desktop, mobile] # [desktop, mobile]
-      height: 64px  # Automatic height if not set
-      images:
-        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
 
     # ---------------------------------------
     # lastupdate widget
