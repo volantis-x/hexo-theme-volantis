@@ -606,31 +606,31 @@ comments:
 sidebar:
   position: right # left right
   # 主页、分类、归档等独立页面
-  for_page: [blogger, category, tagcloud, donate]
+  for_page: [category, donate,feedback,webinfo]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
   widget_library:
     # ---------------------------------------
     # blogger info widget
-    # blogger:
-    #   class: blogger
-    #   display: [desktop, mobile] # [desktop, mobile]
-    #   avatar: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
-    #   shape: rectangle # circle, rectangle
-    #   url: /about/
-    #   title:
-    #   subtitle:
-    #   jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
-    #   social:
-    #     # - icon: fa-solid fa-rss
-    #     #   url: /atom.xml
-    #     - icon: fa-solid fa-envelope
-    #       url: mailto:boke@shimoxi.qzz.io
-    #     - icon: fab fa-github
-    #       url: https://github.com/shimoxi123/
-    #     # - icon: fa-solid fa-headphones-alt
-    #     #   url: /
+    blogger:
+      class: blogger
+      display: [desktop, mobile] # [desktop, mobile]
+      avatar: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+      shape: rectangle # circle, rectangle
+      url: /about/
+      title:
+      subtitle:
+      jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      social:
+        - icon: fa-solid fa-rss
+          url: /atom.xml
+        - icon: fa-solid fa-envelope
+          url: mailto:boke@shimoxi.qzz.io
+        - icon: fab fa-github
+          url: https://github.com/shimoxi123/
+        - icon: fa-solid fa-headphones-alt
+          url: /
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
@@ -659,6 +659,7 @@ sidebar:
         url: /blog/categories/
     # ---------------------------------------
     # tagcloud widget
+
     tagcloud:
       class: tagcloud
       display: [desktop, mobile] # [desktop, mobile]
@@ -671,16 +672,23 @@ sidebar:
       color: true
       start_color: '#999'
       end_color: '#555'
-    # ---------------------------------------
-    # qrcode widget
-    qrcode:
-      class: qrcode
-      display: [desktop, mobile] # [desktop, mobile]
-      height: 64px  # Automatic height if not set
-      images:
-        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-    # ---------------------------------------
+
+    feedback:
+      class: grid
+      display: [desktop, mobile]
+      header:
+        icon: fas fa-headset
+        title: 联系作者
+        url: "mailto:boke@shimoxi.dpdns.org"
+      fixed: true # 固定宽度
+      rows:
+        - name: 反馈BUG
+          icon: fas fa-bug
+          url: "https://github.com/shimoxi123/blog-hexo"
+        - name: 资源站
+          icon: fa-solid fa-download
+          url: /ziyuan/
+
     # webinfo widget
     webinfo:
       class: webinfo
@@ -694,8 +702,8 @@ sidebar:
           text: '文章数目：'
           unit: '篇'
         runtime:
-          enable: false
-          data: '2020/01/01'    # 填写建站日期
+          enable: true
+          data: '2025/08/19'    # 填写建站日期
           text: '已运行时间：'
           unit: '天'
         wordcount:
@@ -715,6 +723,16 @@ sidebar:
           friendlyShow: true    # 更友好的时间显示
           text: '最后活动时间：'
           unit: '日'
+    # ---------------------------------------
+    # qrcode widget
+    qrcode:
+      class: qrcode
+      display: [desktop, mobile] # [desktop, mobile]
+      height: 64px  # Automatic height if not set
+      images:
+        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+
     # ---------------------------------------
     # lastupdate widget
     lastupdate:
