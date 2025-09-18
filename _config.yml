@@ -1349,11 +1349,11 @@ custom_css:
   navbar:
     height: 64px
     width: auto # auto, max
-    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
+    effect: [shadow, floatable] # [shadow, floatable, blur]
   sidebar:
-    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
+    effect: [shadow, floatable] # [shadow, floatable, blur]
   body:
-    effect: [shadow, floatable, blur] # [shadow, floatable, blur]
+    effect: [shadow, floatable] # [shadow, floatable, blur]
     highlight:
       language: true # show language of codeblock
       grayscale: false # Enable grayscale effect
