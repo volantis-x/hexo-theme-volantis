@@ -425,7 +425,7 @@ article:
 ############################### Comments ############################### > start
 comments:
   title: <i class='fa-solid fa-comments'></i> 评论
-  subtitle:
+  subtitle: <a href="https://weavatar.com/user/avatar">更改头像</a>
   service: twikoo
   # 可选评论系统 #
 
