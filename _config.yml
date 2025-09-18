@@ -144,9 +144,9 @@ navbar:
     - name: 友链
       icon: fa-solid fa-link
       url: friends/
-    # - name: 关于
-    #   icon: fa-solid fa-info-circle
-    #   url: about/
+    - name: 关于
+      icon: fa-solid fa-info-circle
+      url: about/
     - name: 暗黑模式 # 可自定义
       icon: fa-solid fa-moon # 可自定义
       toggle: darkmode
