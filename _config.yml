@@ -1360,7 +1360,7 @@ custom_css:
     text_align: # left, right, justify, center
       h1: left
       h2: left
-      h3: center
+      h3: left
       h4: left
       p: justify
   gap:
