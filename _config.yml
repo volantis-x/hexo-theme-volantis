@@ -179,6 +179,9 @@ navbar:
         - name: 幸运转盘
           icon: fa-solid fa-circle-radiation
           url: html/zhuanpan/
+        - name: win12
+          icon: fa-brands fa-windows
+          url: html/win12/desktop.html
         - name: 联系邮箱
           icon: fas fa-envelope
           url: "mailto:boke@shimoxi.dpdns.org"
@@ -1351,8 +1354,8 @@ custom_css:
     size: 4px
     border: 2px
   navbar:
-    height: 64px
-    width: max # auto, max
+    height: 56px
+    width: auto # auto, max
     effect: [shadow, floatable] # [shadow, floatable, blur]
   sidebar:
     effect: [shadow, floatable] # [shadow, floatable, blur]
