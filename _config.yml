@@ -242,9 +242,6 @@ cover:
     - name: 资源站
       icon: fa-solid fa-download
       url: ziyuan/
-    - name: 本站加速访问地址
-      icon: fa-external-link
-      url: https://b.shimoxi.icu/
 
     # - name: 关于
     #   icon: fa-solid fa-info-circle
