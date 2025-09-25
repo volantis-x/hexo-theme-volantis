@@ -167,9 +167,6 @@ navbar:
         - name: 友链
           icon: fa-solid fa-link
           url: friends/
-        - name: 关于
-          icon: fa-solid fa-info-circle
-          url: about/
 
         - name: hr
 
@@ -679,18 +676,18 @@ sidebar:
     feedback:
       class: grid
       display: [desktop, mobile]
-      header:
-        icon: fas fa-headset
-        title: 联系作者
-        url: "mailto:boke@shimoxi.dpdns.org"
+      # header:
+      #   icon: fas fa-headset
+      #   title: 联系作者
+      #   url: "mailto:boke@shimoxi.dpdns.org"
       fixed: true # 固定宽度
       rows:
+        - name: 联系邮箱
+          icon: fas fa-envelope
+          url: "mailto:boke@shimoxi.dpdns.org"
         - name: 反馈BUG
           icon: fas fa-bug
           url: "https://github.com/shimoxi123/blog-hexo/issues"
-        - name: 资源站
-          icon: fa-solid fa-download
-          url: /ziyuan/
 
     # ---------------------------------------
     # qrcode widget
