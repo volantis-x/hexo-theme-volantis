@@ -173,9 +173,9 @@ navbar:
         - name: 资源站
           icon: fa-solid fa-download
           url: ziyuan/
-        - name: 幸运转盘
-          icon: fa-solid fa-circle-radiation
-          url: html/zhuanpan/
+        # - name: 幸运转盘
+        #   icon: fa-solid fa-circle-radiation
+        #   url: html/zhuanpan/
         - name: win12
           icon: fa-brands fa-windows
           url: html/win12/desktop.html
