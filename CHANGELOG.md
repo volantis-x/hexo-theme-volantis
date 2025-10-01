@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.8.1](https://github.com/volantis-x/hexo-theme-volantis/compare/5.8.0...5.8.1) (2025-08-10)
+
+
+### Bug Fixes
+
+* 修改artalk的ejs文件适配2.9.1新版本 ([#943](https://github.com/volantis-x/hexo-theme-volantis/issues/943)) ([2447977](https://github.com/volantis-x/hexo-theme-volantis/commit/2447977efad1a17177686cf4ed68d23c49809bce))
+
 ## [5.8.0](https://github.com/volantis-x/hexo-theme-volantis/compare/5.7.10...5.8.0) (2023-05-06)
 
 
