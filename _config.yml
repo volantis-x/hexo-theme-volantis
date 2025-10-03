@@ -1427,7 +1427,7 @@ seo:
 # https://ogp.me/
 # https://hexo.io/zh-cn/docs/helpers#open-graph
 open_graph:
-  image: volantis-static/media/org.volantis/blog/favicon/android-chrome-192x192.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
+  image:  # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png
   twitter_card: summary # summary_large_image , summary
   #twitter_id:
   #twitter_site:
