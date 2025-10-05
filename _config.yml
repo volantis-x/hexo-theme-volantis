@@ -792,7 +792,7 @@ tag_plugins:
 ############################### Site Footer ############################### > start
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, info, copyright]
+  layout: [aplayer, social, license, info, ICP, copyright]
   social:
     - icon: #fa-solid fa-rss
       url:
@@ -810,6 +810,13 @@ site_footer:
     <span>访客数为 <span id='busuanzi_site_uv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
   copyright: '[Copyright © since 2017 XXX](/)'
+  ICP: >
+    <a href="https://icp.gov.moe/?keyword=20250337" target="_blank" rel="noopener noreferrer">
+      <img src="https://jihulab.com/shimoxijimu/img2/raw/main/pictures/ico64_2025100517_b5570c33215a6240.webp" alt="萌ICP备标志" width="20" height="20" style="vertical-align:middle; margin-right:6px;">
+      萌ICP备20250337号
+    </a>
+
+
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 ############################### Site Footer ############################### > end
