@@ -125,7 +125,7 @@ scroll_smooth: true
 navbar:
   visiable: always # always, auto
   logo: # choose [img] or [icon + title]
-    img: https://jihulab.com/shimoxijimu/img2/raw/main/pictures/2025/08/22_13_42_2_6894b49f58cb8da5c80fd8e5.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    img: img/2025/08/22_13_42_2_6894b49f58cb8da5c80fd8e5.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     icon:
     title:
   menu:
@@ -195,7 +195,7 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: https://jihulab.com/shimoxijimu/img2/raw/main/pictures/mc_wallpaper_movie_vista_1920x1080_2025_08_29_15_48_18_e28055cb8e5ea88b.webp
+  background: img/mc_wallpaper_movie_vista_1920x1080_2025_08_29_15_48_18_e28055cb8e5ea88b.webp
   # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
   logo: 
   title: 
@@ -373,7 +373,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: https://jihulab.com/shimoxijimu/img2/raw/main/pictures/2025/08/22_13_42_2_6894b49f58cb8da5c80fd8e5.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
+        avatar: img/2025/08/22_13_42_2_6894b49f58cb8da5c80fd8e5.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
         name: 石墨烯积木
         url: /
       # 文章创建日期
@@ -812,7 +812,7 @@ site_footer:
   copyright: '[Copyright © since 2017 XXX](/)'
   ICP: >
     <a href="https://icp.gov.moe/?keyword=20250337" target="_blank" rel="noopener noreferrer">
-      <img src="https://jihulab.com/shimoxijimu/img2/raw/main/pictures/ico64_2025100517_b5570c33215a6240.webp" alt="萌ICP备标志" width="20" height="20" style="vertical-align:middle; margin-right:6px;">
+      <img src="img/ico64_2025100517_b5570c33215a6240.webp" alt="萌ICP备标志" width="20" height="20" style="vertical-align:middle; margin-right:6px;">
       萌ICP备20250337号
     </a>
 
