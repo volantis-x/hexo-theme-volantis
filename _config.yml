@@ -125,7 +125,7 @@ scroll_smooth: true
 navbar:
   visiable: always # always, auto
   logo: # choose [img] or [icon + title]
-    img: img/2025/08/22_13_42_2_6894b49f58cb8da5c80fd8e5.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    img: https://gcore.jsdelivr.net/gh/shimoxi123/img/logo.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
     icon:
     title:
   menu:
@@ -195,9 +195,9 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: img/mc_wallpaper_movie_vista_1920x1080_2025_08_29_15_48_18_e28055cb8e5ea88b.webp
+  background: https://cdn.jsdelivr.net/gh/shimoxi123/img/img/mc_wallpape_2025101114_37657dbd9df62c38.webp
   # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
-  logo: 
+  logo: https://gcore.jsdelivr.net/gh/shimoxi123/img/logo.webp
   title: 
   subtitle: ''
   search: 搜索 # search bar placeholder
@@ -373,7 +373,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: img/2025/08/22_13_42_2_6894b49f58cb8da5c80fd8e5.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
+        avatar: https://cdn.jsdelivr.net/gh/shimoxi123/img/blob/main/logo.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
         name: 石墨烯积木
         url: /
       # 文章创建日期
