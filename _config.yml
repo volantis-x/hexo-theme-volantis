@@ -176,9 +176,7 @@ navbar:
         # - name: 幸运转盘
         #   icon: fa-solid fa-circle-radiation
         #   url: html/zhuanpan/
-        - name: win12
-          icon: fa-brands fa-windows
-          url: html/win12/desktop.html
+
         - name: 联系邮箱
           icon: fas fa-envelope
           url: "mailto:boke@shimoxi.dpdns.org"
