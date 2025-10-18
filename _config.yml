@@ -193,7 +193,7 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: https://cdn.jsdelivr.net/gh/shimoxi123/img/img/mc_wallpape_2025101114_37657dbd9df62c38.webp
+  background: https://img.shimoxi.qzz.io/img/mc_wallpaper_movie_vista_1920x1080_2025_08_29_15_48_18_e28055cb8e5ea88b_2025101817_37657dbd9df62c38.webp
   # background: https://bing.ioliu.cn/v1/rand?w=1920&h=1200
   logo: https://gcore.jsdelivr.net/gh/shimoxi123/img/logo.webp
   title: 
@@ -371,7 +371,7 @@ article:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: https://cdn.jsdelivr.net/gh/shimoxi123/img/blob/main/logo.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
+        avatar: https://img.shimoxi.qzz.io/logo.webp # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
         name: 石墨烯积木
         url: /
       # 文章创建日期
