@@ -147,6 +147,9 @@ navbar:
     - name: 关于
       icon: fa-solid fa-info-circle
       url: about/
+    - name: 推广
+      icon: 
+      url: aff/
     - name: 暗黑模式 # 可自定义
       icon: fa-solid fa-moon # 可自定义
       toggle: darkmode
