@@ -4,6 +4,13 @@ on:
   # release:
   #   types: [published]
 
+permissions:
+  id-token: write # 需要给 GitHub Action 添加 id-token 权限，否则无法生成 OIDC 令牌
+  # packages: write
+  # contents: write
+  # issues: write
+  # pull-requests: write
+
 jobs:
   npm-publish:
     name: npm-publish
@@ -14,10 +21,11 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 12
+        node-version: 24 #  npm CLI 的版本需要在 11.5.1 版本或以上才支持 OIDC
         registry-url: https://registry.npmjs.org
     - name: Publish
       run: |
         npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+# 不再需要配置 NPM TOKEN
+#      env:
+#        NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
