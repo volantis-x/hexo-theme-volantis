@@ -15,20 +15,25 @@ jobs:
           package-name: hexo-theme-volantis
           include-v-in-tag: false
           default-branch: dev
-  npm-publish:
-    if: ${{ contains(github.event.head_commit.message, 'chore(dev)') && contains(github.event.head_commit.message, 'release') && github.repository == 'volantis-x/hexo-theme-volantis' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org
-      - name: Publish
-        run: |
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+
+# 过时的 publish actions 不再起作用
+#  npm-publish:
+#    if: ${{ contains(github.event.head_commit.message, 'chore(dev)') && contains(github.event.head_commit.message, 'release') && github.repository == 'volantis-x/hexo-theme-volantis' }}
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: actions/setup-node@v4
+#        with:
+#          node-version: 16
+#          registry-url: https://registry.npmjs.org
+#      - name: Publish
+#        run: |
+#          npm publish
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+
+
+  
   merge:
     if: ${{ contains(github.event.head_commit.message, 'chore(dev)') && contains(github.event.head_commit.message, 'release') && github.repository == 'volantis-x/hexo-theme-volantis' }}
     runs-on: ubuntu-latest
