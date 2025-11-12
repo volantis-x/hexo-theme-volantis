@@ -29,7 +29,7 @@
 <% } %>
 
 <!-- internal -->
-<%- js(theme.cdn.volantis_app) %>
+<script src="<%- theme.cdn.volantis_app %>"></script>
 
 <% if (theme.rightmenus.enable) { %>
   <%- partial('../../_plugins/rightmenus/layout') %>
@@ -138,7 +138,4 @@
 
 <%- partial('../../_plugins/slow-network/script') %>
 
-<% if (theme.structured_data && theme.structured_data.enable) { %>
-  <%- structured_data() %>
-<% } %>
 

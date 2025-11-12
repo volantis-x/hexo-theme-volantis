@@ -294,7 +294,7 @@ article:
           #############################
           rules:
             type1: 
-              text: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh#" target="_blank">CC BY-NC-SA 4.0</a>
+              text: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans#" target="_blank">CC BY-NC-SA 4.0</a>
               desc: 署名-非商业性使用-相同方式共享 4.0 国际。
             type2: 
               text: 禁止转载引用
