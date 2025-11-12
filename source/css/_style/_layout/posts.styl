@@ -1,5 +1,5 @@
 .article-title
-  font-weight: 500
+  font-weight: bold
   margin-bottom: $gap * 0.75
   line-height: 1.4
   a
@@ -34,7 +34,6 @@
   border-top: 4px dotted alpha($color-text, 0.1)
 
 .meta-v3
-  margin-top: $gap
   padding-top: $gap * 0.75
   display: flex
   flex-wrap: wrap
@@ -44,6 +43,7 @@
     display: flex
     align-items: center
     user-select: none
+    flex-wrap: wrap
   time
     font-size: $fontsize-meta
   .category-link
@@ -54,7 +54,10 @@
     &:hover
       color: $color-hover
   .readmore
+    color: var(--color-meta);
     font-weight: bold
+    &:hover
+      color: #ff5722
   .avatar
     line-height: 0
     margin-right: .75em
@@ -67,9 +70,7 @@
 
 .headimg-div
   display: block
-  margin-left: 0 - 1.5 * $gap
-  margin-top: 0 - 1.5 * $gap
-  margin-bottom: 1.25 * $gap
+  margin: (-1.5 * $gap) (-1.5 * $gap) (1.25 * $gap)
   width: "calc(100% + 3 * %s)" % $gap
   .headimg-a
     display: block
@@ -86,11 +87,54 @@
     width: 100%
     height: 100%
     transition transform 3s ease-out
+    transition: transform 3s ease-out
     &:hover
       transform: scale(1.1)
     &.lazyload:not(.placeholder)
-      transition transform 3s ease-out, opacity .5s ease-out
+      transition: transform 3s ease-out, opacity 0.5s ease-out
       &:not(.loaded)
         opacity: 0
       &.loaded
         opacity: 1
+
+.headimg-div.headimg-cover
+  margin-bottom: -1.5 * $gap 
+  .headimg-a
+    height: 380px
+    @media screen and (max-width: $device-tablet)
+      height: 350px
+    @media screen and (max-width: $device-mobile)
+      height: 320px
+  &:before
+    content: ''
+    z-index: 1
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    height: 152px
+    transition: all 0.2s ease-out
+    backdrop-filter: saturate(120%) blur(1em)
+    mask: linear-gradient(transparent, rgba(0, 0, 0, 0.75), #000)
+  .cover-info
+    padding: 1.5 * $gap
+    @media screen and (max-width: $device-tablet)
+      padding: $gap
+    position: absolute
+    bottom: 0
+    width: 100%
+    line-height: 1.2
+    color: #fff
+    z-index: 2
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2))
+    .text
+      color: inherit
+      transition: all 0.2s ease-out
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+    .headline
+      margin-bottom: $gap * 0.75
+      font-weight: bold
+      line-height: 1.4
+      font-size: 1.5rem
+    .caption
+      font-size: 1rem
