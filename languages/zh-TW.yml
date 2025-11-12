@@ -26,7 +26,7 @@ post:
     license_content: "本網誌所有文章除特別聲明外，均採用 %s 許可協議。轉載請註明出處！"
 
 footer:
-  license: '博客內容遵循 [姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0) 協議](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW)'
+  license: '博客內容遵循 [姓名標示-非商業性-相同方式分享 4.0 國際 (CC BY-NC-SA 4.0) 協議](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hant)'
   use: 本站使用
   theme: 作為主題
   total_views: 總訪問量為

@@ -29,15 +29,28 @@ function init(hexo, config, theme, page) {
     }
   }
   if (theme.seo && theme.seo.use_tags_as_keywords) {
-    if (!keywords && page.tags && page.tags.length > 0) {
+    if(!keywords){
+    if (page.categories && page.categories.length > 0) {
+      let categories = page.categories
+        .map(function (tag) {
+          return tag.name ? tag.name : tag;
+        })
+        .join(",");
+      if (categories.length > 0) {
+        keywords += categories;
+      }
+    }
+    if (page.tags && page.tags.length > 0) {
       let tags = page.tags
-        .map(function (t) {
-          return t.name;
+        .map(function (tag) {
+          return tag.name ? tag.name : tag;
         })
         .join(",");
       if (tags.length > 0) {
+        keywords += ", ";
         keywords += tags;
       }
+    }
     }
   }
   if (theme.seo && theme.seo.use_excerpt_as_description) {

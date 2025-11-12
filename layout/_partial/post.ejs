@@ -3,9 +3,9 @@
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="<%- config.title %>">
   </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="<%- config.title %>">
-    <meta itemprop="description" content="<%- config.description %>">
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="name" content="<%- post.title || post.seo_title || config.title %>">
+    <meta itemprop="description" content="<%- post.description || config.description %>">
   </span>
   <%
   let showPin = false;

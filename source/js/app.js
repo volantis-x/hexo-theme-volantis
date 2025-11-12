@@ -26,10 +26,16 @@ const locationHash = () => {
   if (window.location.hash) {
     let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
     let target = document.getElementById(locationID);
+    if (locationID && !target) {
+      locationID = decodeURIComponent(window.location.hash.split('#')[1]).replace(/\ /g, '-');
+      target = document.getElementById(locationID);
+    }
     if (target) {
       setTimeout(() => {
         if (window.location.hash.startsWith('#fn')) { // hexo-reference https://github.com/volantis-x/hexo-theme-volantis/issues/647
           volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant', observer: true })
+        } else if (window.location.hash.startsWith('#mjx')) { // mathjax
+          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 25, behavior: 'instant', observer: true })
         } else {
           // 锚点中上半部有大片空白 高度大概是 volantis.dom.header.offsetHeight
           volantis.scroll.to(target, { addTop: 5, behavior: 'instant', observer: true })
@@ -382,6 +388,23 @@ const VolantisApp = (() => {
     })
   }
 
+  // mathjax 引用跳转
+  fn.mathjaxRef = () => {
+    let ref = document.querySelectorAll('mjx-container a[href]');
+    ref.forEach(function (e, i) {
+      ref[i].click = () => { }; // 强制清空原 click 事件
+      let targetID = decodeURIComponent(ref[i].getAttribute('href').split('#')[1]).replace(/\ /g, '-');
+      volantis.dom.$(e).on('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        let target = document.getElementById(targetID);
+        if (target) {
+          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 25, behavior: 'instant' })
+        }
+      });
+    })
+  }
+
   // hexo-reference 页脚跳转 https://github.com/volantis-x/hexo-theme-volantis/issues/647
   fn.footnotes = () => {
     let ref = document.querySelectorAll('#l_main .footnote-backref, #l_main .footnote-ref > a');
@@ -669,6 +692,7 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
+      fn.mathjaxRef();
     },
     pjaxReload: () => {
       fn.event();
@@ -679,6 +703,7 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
+      fn.mathjaxRef();
 
       // 移除小尾巴的移除
       document.querySelector("#l_header .nav-main").querySelectorAll('.list-v:not(.menu-phone)').forEach(function (e) {
