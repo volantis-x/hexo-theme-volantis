@@ -1,17 +1,24 @@
 name: release-please
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - 6.x
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
   release-please:
     if: github.repository == 'volantis-x/hexo-theme-volantis'
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - uses: googleapis/release-please-action@v4
         with:
           release-type: node
           package-name: hexo-theme-volantis
           include-v-in-tag: false
-          default-branch: 6.x
+          target-branch: 6.x
 
   
