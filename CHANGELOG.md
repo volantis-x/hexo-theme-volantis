@@ -1,5 +1,44 @@
 # Changelog
 
+## [7.0.0-alpha.0](https://github.com/volantis-x/hexo-theme-volantis/compare/6.0.0-alpha.0...v7.0.0-alpha.0) (2025-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove pjax
+
+### Features
+
+* **fcircle:** 支持初始文章数量设置、本地缓存时间设置 ([e8538d1](https://github.com/volantis-x/hexo-theme-volantis/commit/e8538d1d6ff5c16102cd3ea0cfa46805724db37f))
+* **friend_card color:** 友链块颜色添加 ([#938](https://github.com/volantis-x/hexo-theme-volantis/issues/938)) ([0df39f6](https://github.com/volantis-x/hexo-theme-volantis/commit/0df39f6f534f0b79705bc583f4dcf05c13dd3cf3))
+* **TianliGPT:** 新增 AI 摘要 ([#885](https://github.com/volantis-x/hexo-theme-volantis/issues/885)) ([72c51a0](https://github.com/volantis-x/hexo-theme-volantis/commit/72c51a0f4f7489b3b79337be44a8087c1778ed20))
+* Update Artalk Version to 2.5.1 ([e9cd1e2](https://github.com/volantis-x/hexo-theme-volantis/commit/e9cd1e24ced4110dd5b8118c08fc006b22b2ea01))
+* 增加轻量朋友圈 ([#940](https://github.com/volantis-x/hexo-theme-volantis/issues/940)) ([600d465](https://github.com/volantis-x/hexo-theme-volantis/commit/600d46538a2c7cf7dec7899d321b0e6798038f64))
+
+
+### Bug Fixes
+
+* 862 ([7099d82](https://github.com/volantis-x/hexo-theme-volantis/commit/7099d82fafea76828b852499b6ab705ba04a97d7))
+* Aplayer显示问题 ([#939](https://github.com/volantis-x/hexo-theme-volantis/issues/939)) ([e433cf7](https://github.com/volantis-x/hexo-theme-volantis/commit/e433cf7055b966d1bea8f959ce84d42d93700eed))
+* aplayer显示问题（2） ([#942](https://github.com/volantis-x/hexo-theme-volantis/issues/942)) ([b18900c](https://github.com/volantis-x/hexo-theme-volantis/commit/b18900c61e3d596b586b9402742f5dbd30d10a41))
+* **artalk:** darkmode ([8d2394a](https://github.com/volantis-x/hexo-theme-volantis/commit/8d2394aa3e8a665702f26a686e85adcf59cd114d))
+* **artalk:** update version to 2.7.3 ([fa776c3](https://github.com/volantis-x/hexo-theme-volantis/commit/fa776c3ecae38d1c760794c6784dc050ee1cb0d7))
+* **artalk:** 无法设置不使用后端配置 ([a0d91de](https://github.com/volantis-x/hexo-theme-volantis/commit/a0d91de6286e2571e8d2ff11b0108f0a6a2bb423))
+* **highlight:** hljs [#888](https://github.com/volantis-x/hexo-theme-volantis/issues/888) ([5dc32b4](https://github.com/volantis-x/hexo-theme-volantis/commit/5dc32b4cfcba580b8592d229c090c6c298c62e38))
+* import app for site root ([9678bbb](https://github.com/volantis-x/hexo-theme-volantis/commit/9678bbb5503cbe854f8b837397027ea101ddb997))
+* **tianligpt:** bug ([e800e6b](https://github.com/volantis-x/hexo-theme-volantis/commit/e800e6b549ef64052d8e2507b410d43c9bb8d841))
+* wrong behavior when there's no img provided for qrcode ([#840](https://github.com/volantis-x/hexo-theme-volantis/issues/840)) ([d19ad96](https://github.com/volantis-x/hexo-theme-volantis/commit/d19ad9612fe22d2925e1a5efe25deb0f7e96b931))
+* 修复waline v3的引入问题 ([#926](https://github.com/volantis-x/hexo-theme-volantis/issues/926)) ([c4535bb](https://github.com/volantis-x/hexo-theme-volantis/commit/c4535bbd2ea799eba911785c743ad351d0c6671f))
+* 修复waline v3的黑暗模式 ([#927](https://github.com/volantis-x/hexo-theme-volantis/issues/927)) ([3f44402](https://github.com/volantis-x/hexo-theme-volantis/commit/3f44402e62e2859b5ef732c6da350379864e68ff))
+* 修复图片alt为空时Fancybox caption输出undefined的问题 ([#925](https://github.com/volantis-x/hexo-theme-volantis/issues/925)) ([faae66b](https://github.com/volantis-x/hexo-theme-volantis/commit/faae66b9662e83bf3c53bf21678c3f5ffc70a553))
+* 对友链块一些语法修正 ([#945](https://github.com/volantis-x/hexo-theme-volantis/issues/945)) ([f66b6cc](https://github.com/volantis-x/hexo-theme-volantis/commit/f66b6ccc997a41ab54e9ddd6a9b8f33edf2dee30))
+* 阅读模式打开再关闭之后，导航栏消失的问题 ([#928](https://github.com/volantis-x/hexo-theme-volantis/issues/928)) ([54c9c59](https://github.com/volantis-x/hexo-theme-volantis/commit/54c9c590fc8012af39a109c09b97b0a689f82569))
+
+
+### Miscellaneous Chores
+
+* remove pjax ([bafb07c](https://github.com/volantis-x/hexo-theme-volantis/commit/bafb07c0120aae2602f2241a52dc16002941206d))
+
 ## [5.7.6](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.5...v5.7.6) (2022-09-05)
 
 
