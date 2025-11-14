@@ -1,6 +1,6 @@
 # Changelog
 
-## [6.0.1-alpha.0](https://github.com/volantis-x/hexo-theme-volantis/compare/6.0.0-alpha.0...v6.0.1-alpha.0) (2025-11-14)
+## [6.0.0](https://github.com/volantis-x/hexo-theme-volantis/compare/6.0.0...v5.8.1) (2025-11-14)
 
 
 ### Bug Fixes
