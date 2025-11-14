@@ -1,7 +1,5 @@
 name: release-please
 on:
-  push:
-    branches: [  ]
   workflow_dispatch:
 
 jobs:
