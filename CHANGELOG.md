@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.0.1-alpha.0](https://github.com/volantis-x/hexo-theme-volantis/compare/6.0.0-alpha.0...v6.0.1-alpha.0) (2025-11-14)
+
+
+### Bug Fixes
+
+* pjax ([#950](https://github.com/volantis-x/hexo-theme-volantis/issues/950)) ([01489d0](https://github.com/volantis-x/hexo-theme-volantis/commit/01489d0a09a572a18e90afd693d3247508139885))
+* pjax 修复内存泄露引起的页面卡顿问题 ([204b01f](https://github.com/volantis-x/hexo-theme-volantis/commit/204b01f89245361e9cbaf42451e703a2120b7a78))
+
 ## [5.7.6](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.5...v5.7.6) (2022-09-05)
 
 
