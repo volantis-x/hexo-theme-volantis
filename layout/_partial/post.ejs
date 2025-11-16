@@ -64,17 +64,17 @@ const classes = {
   
   <!-- 隐藏的发布者信息，使用schema.org的Organization类型 -->
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="<%- escapeHTML(config.title) %>">
+    <meta itemprop="name" content="<%- config.title %>">
   </span>
   <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="name" content="<%- escapeHTML(post.title || post.seo_title || config.title) %>">
-    <meta itemprop="description" content="<%- escapeHTML(post.description || config.description) %>">
+    <meta itemprop="name" content="<%- post.title || post.seo_title || config.title %>">
+    <meta itemprop="description" content="<%- post.description || config.description %>">
   </span>
 
   <!-- 显示置顶图标（如果计算得出需要显示） -->
   <% if (showPin) { %>
     <div class='pin'>
-      <img alt="<%- escapeHTML(post.title) %>" src='<%- theme.article.preview.pin_icon %>'/>
+      <img alt="<%- post.title %>" src='<%- theme.article.preview.pin_icon %>'/>
     </div>
   <% } %>
   
@@ -82,7 +82,7 @@ const classes = {
   <% if (post.headimg) { %>
     <div class='<%= classes.headimg %>'>
       <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
-        <img itemprop="image" class='headimg' alt="<%- escapeHTML(articleTitle) %>" src='<%- post.headimg %>'/>
+        <img itemprop="image" class='headimg' alt="<%- articleTitle %>" src='<%- post.headimg %>'/>
         <% if (post.headimg && post.imgcover) { %>
           <div class="cover-info" position="bottom">
             <% if (showTitle) { %>
