@@ -50,7 +50,7 @@ const author = getAuthor();
 // CSS类名集中管理，便于统一修改样式
 const classes = {
   container: `post post-v3 white-box reveal ${theme.custom_css.body.effect.join(' ')}`,
-  headimg: `headimg-div ${post?.cover ? 'headimg-cover' : ''}`,
+  headimg: `headimg-div ${post?.imgcover ? 'headimg-cover' : ''}`,
   title: 'article-title',
   description: 'md article-desc',
   meta: 'meta-v3'
@@ -83,7 +83,7 @@ const classes = {
     <div class='<%= classes.headimg %>'>
       <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
         <img itemprop="image" class='headimg' alt="<%- articleTitle %>" src='<%- post.headimg %>'/>
-        <% if (post.headimg && post.cover) { %>
+        <% if (post.headimg && post.imgcover) { %>
           <div class="cover-info" position="bottom">
             <% if (showTitle) { %>
               <div class="text headline"><%- articleTitle %></div>
@@ -120,7 +120,7 @@ const classes = {
   <% } %>
 
   <!-- 一般场景 -->
-  <% if (!(post.headimg && post.cover)) { %>
+  <% if (!(post.headimg && post.imgcover)) { %>
     <!-- 文章标题区域，使用schema.org的name和headline属性 -->
     <% if (showTitle) { %>
       <h2 class="<%= classes.title %>" itemprop="name headline">
