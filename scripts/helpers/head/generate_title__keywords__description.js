@@ -71,12 +71,14 @@ hexo.extend.helper.register("generate_title", function (config, theme, page) {
   const hexo = this;
   let data = init(hexo, config, theme, page);
   let title = data.title
-  let s = "<title>"
+  let s = ""
   if (title) {
     s += `${title} - `
   }
-  s += `${config.title}</title>`
-  return s
+  s += `${config.title}`
+  s = hexo.strip_html(s)
+  s = s.replace(/"/sg, '')
+  return `<title>${s}</title>`
 });
 
 hexo.extend.helper.register("generate_keywords", function (config, theme, page) {
@@ -89,6 +91,8 @@ hexo.extend.helper.register("generate_keywords", function (config, theme, page) 
     }
     keywords += `${config.keywords}`
   }
+  keywords = hexo.strip_html(keywords)
+  keywords = keywords.replace(/"/sg, '')
   return `<meta name="keywords" content="${keywords}">`
 });
 
@@ -104,6 +108,8 @@ hexo.extend.helper.register("generate_description", function (config, theme, pag
     }
   }
   description += ` - ${config.author} - ${config.title}`
+  description = hexo.strip_html(description)
+  description = description.replace(/"/sg, '')
   return `<meta desc name="description" content="${description}">`
 });
 // open_graph() 函数会生成一个 description 标签???  https://github.com/hexojs/hexo/blob/92b979f4a3fa8714aebd3d11c3295d466b870905/lib/plugins/helper/open_graph.js#L98
