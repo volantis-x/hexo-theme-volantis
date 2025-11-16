@@ -1,3 +1,14 @@
+function addImagePreviewIfNoNoindex(robotsContent) {
+    // 检查是否不包含 'noindex' 且尚未包含 max-image-preview
+    if (!robotsContent.toLowerCase().includes('noindex') && 
+        !robotsContent.toLowerCase().includes('max-image-preview')) {
+        // 处理行尾标点，确保添加格式正确
+        const trimmed = robotsContent.trim();
+        const needsSemicolon = trimmed && !trimmed.endsWith(',');
+        return `${robotsContent}${needsSemicolon ? ',' : ''} max-image-preview:large`;
+    }
+    return robotsContent;
+}
 hexo.extend.helper.register('generate_seo', function (theme, page) {
   const hexo = this;
   let robots_content = "";
@@ -19,8 +30,9 @@ hexo.extend.helper.register('generate_seo', function (theme, page) {
     }
   }
   if (robots_content) {
-    return `<meta name="robots" content="${robots_content}">`
+    robots_content = addImagePreviewIfNoNoindex(robots_content)
+    return `<meta name="robots" content="${robots_content},noarchive">`
   }else{
-    return `<meta name="robots" content="index,follow">`
+    return `<meta name="robots" content="index,follow,max-image-preview:large,noarchive">`
   }
 });

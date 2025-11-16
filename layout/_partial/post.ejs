@@ -1,11 +1,11 @@
 <div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="<%- config.title %>">
+    <meta itemprop="name" content="<%- escape_html(strip_html(config.title)) %>">
   </span>
   <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="name" content="<%- post.title || post.seo_title || config.title %>">
-    <meta itemprop="description" content="<%- post.description || config.description %>">
+    <meta itemprop="name" content="<%- escape_html(strip_html(post.title || post.seo_title || config.title)) %>">
+    <meta itemprop="description" content="<%- escape_html(strip_html(post.description || config.description)) %>">
   </span>
   <%
   let showPin = false;
