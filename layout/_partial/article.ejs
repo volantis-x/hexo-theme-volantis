@@ -168,13 +168,13 @@
       <% if (post.prev) { %>
         <a class='prev' href='<%- url_for(post.prev.path) %>'>
           <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><%- post.prev.title || post.prev.seo_title || date(post.date, theme.article.body.meta_library.date.format) %></p>
-          <p class='content'><%- strip_html(page.description) || truncate(strip_html(page.prev.content), {length: 100}) %></p>
+          <p class='content'><%- page.prev.description ? strip_html(page.prev.description) : truncate(strip_html(page.prev.content), {length: 100}) %></p>
         </a>
       <% } %>
       <% if (post.next) { %>
         <a class='next' href='<%- url_for(post.next.path) %>'>
           <p class='title'><%- strip_html(post.next.title || post.next.seo_title || date(post.date, theme.article.body.meta_library.date.format)) %><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'><%- strip_html(page.description) || truncate(strip_html(page.next.content), {length: 100}) %></p>
+          <p class='content'><%- page.next.description ? strip_html(page.next.description) : truncate(strip_html(page.next.content), {length: 100}) %></p>
         </a>
       <% } %>
     </div>
