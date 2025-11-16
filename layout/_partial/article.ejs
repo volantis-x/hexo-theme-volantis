@@ -1,7 +1,7 @@
 <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= post.layout %>" id="<%= post.layout %>" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="<%- config.title %>">
+    <meta itemprop="name" content="<%- strip_html(config.title) %>">
   </span>
   <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="name" content="<%- strip_html(post.title || post.seo_title || config.title) %>">
