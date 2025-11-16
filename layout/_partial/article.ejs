@@ -137,10 +137,10 @@
     site.pages.each(function(p){
       if ((p.title || p.seo_title) && p.path && (p.group == post.group)) {
         if (p.order < post.order && (p.order > prev.order || prev.order == undefined)) {
-          prev = {title: strip_html(p.title || p.seo_title), exp: strip_html(p.description) || truncate(strip_html(p.content), {length: 100}), path: p.path, order: p.order};
+          prev = {title: strip_html(p.title || p.seo_title), exp: p.description ? strip_html(p.description) : truncate(strip_html(p.content), {length: 100}), path: p.path, order: p.order};
         }
         if (p.order > post.order && (p.order < next.order || next.order == undefined)) {
-          next = {title: strip_html(p.title || p.seo_title), exp: strip_html(p.description) || truncate(strip_html(p.content), {length: 100}), path: p.path, order: p.order};
+          next = {title: strip_html(p.title || p.seo_title), exp: p.description ? strip_html(p.description) : truncate(strip_html(p.content), {length: 100}), path: p.path, order: p.order};
         }
       }
     })
