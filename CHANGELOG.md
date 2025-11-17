@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.0...v6.0.1) (2025-11-17)
+
+
+### Bug Fixes
+
+* escape_html & strip_html ([#964](https://github.com/volantis-x/hexo-theme-volantis/issues/964)) ([2c9b4b0](https://github.com/volantis-x/hexo-theme-volantis/commit/2c9b4b00df3dcd73d1337fbf6abcc63695b824ca))
+
 ## [6.0.0](https://github.com/volantis-x/hexo-theme-volantis/compare/6.0.0...v5.8.1) (2025-11-14)
 
 
