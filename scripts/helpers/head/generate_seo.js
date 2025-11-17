@@ -31,8 +31,8 @@ hexo.extend.helper.register('generate_seo', function (theme, page) {
   }
   if (robots_content) {
     robots_content = addImagePreviewIfNoNoindex(robots_content)
-    return `<meta name="robots" content="${robots_content},noarchive">`
+    return `<meta name="robots" content="${robots_content}">`
   }else{
-    return `<meta name="robots" content="index,follow,max-image-preview:large,noarchive">`
+    return `<meta name="robots" content="index,follow,max-image-preview:large">`
   }
 });
