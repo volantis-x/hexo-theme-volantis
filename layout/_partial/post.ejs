@@ -64,11 +64,11 @@ const classes = {
   
   <!-- 隐藏的发布者信息，使用schema.org的Organization类型 -->
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="<%- escape_html(config.title) %>">
+    <meta itemprop="name" content="<%- escape_html(strip_html(config.title)) %>">
   </span>
   <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="name" content="<%- escape_html(post.title || post.seo_title || config.title) %>">
-    <meta itemprop="description" content="<%- escape_html(post.description || config.description) %>">
+    <meta itemprop="name" content="<%- escape_html(strip_html(post.title || post.seo_title || config.title)) %>">
+    <meta itemprop="description" content="<%- escape_html(strip_html(post.description || config.description)) %>">
   </span>
 
   <!-- 显示置顶图标（如果计算得出需要显示） -->

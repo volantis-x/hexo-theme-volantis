@@ -3,7 +3,9 @@ on:
   push:
     branches:
       - main
-      - dev
+      - 7.x
+      - 6.x
+      - 5.x
 jobs:
   triage:
     if: github.repository == 'volantis-x/hexo-theme-volantis'
