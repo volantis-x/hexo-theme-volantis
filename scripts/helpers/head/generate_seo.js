@@ -29,6 +29,10 @@ hexo.extend.helper.register('generate_seo', function (theme, page) {
       robots_content = theme.seo.robots.tag
     }
   }
+  const IS_BACKUP = process.env.IS_BACKUP === 'true';
+  if (IS_BACKUP) {
+    robots_content = 'noindex, nofollow, noarchive';
+  }
   if (robots_content) {
     robots_content = addImagePreviewIfNoNoindex(robots_content)
     return `<meta name="robots" content="${robots_content}">`
