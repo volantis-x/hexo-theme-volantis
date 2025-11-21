@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.0.2](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.1...v6.0.2) (2025-11-21)
+
+
+### Bug Fixes
+
+* offsetHeight ([746201a](https://github.com/volantis-x/hexo-theme-volantis/commit/746201af1da5afa04800d8d83dfeb014b87014d7))
+* remove noarchive ([dc40369](https://github.com/volantis-x/hexo-theme-volantis/commit/dc403691071a07cb433de34becdb0d35e59c9afa))
+
 ## [6.0.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.0...v6.0.1) (2025-11-17)
 
 
