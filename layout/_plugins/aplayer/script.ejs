@@ -94,6 +94,7 @@
 
       // post.music 迷你模式 pjax
       function aplayerMin(){
+        if(!document.querySelector('.aplayer-local-min')) return;
         document.querySelectorAll('.aplayer-local-min').forEach(e=>{
           new APlayer(Object.assign({
             container: e,
@@ -112,7 +113,7 @@
         })
       };
       aplayerMin();
-      volantis.pjax.push(aplayerMin)
+      volantis.pjax.push(aplayerMin);
       // 右键 todo...
     })
   <% }  %>
