@@ -109,7 +109,7 @@
             preload: 'auto',
             lrcType: 3,
             audio: <%- JSON.stringify(theme.plugins.aplayer.audio) %>
-          },{}));
+          },JSON.parse(e.querySelector('.aplayer-local-min-conf').innerText)));
         })
       };
       aplayerMin();
