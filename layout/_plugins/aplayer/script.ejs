@@ -92,10 +92,27 @@
         });
       })
 
-      // post.music 迷你模式 pjax todo...
-      // document.querySelectorAll('.aplayer-local-min').forEach(e=>{
-      //   // todo...
-      // })
+      // post.music 迷你模式 pjax
+      function aplayerMin(){
+        document.querySelectorAll('.aplayer-local-min').forEach(e=>{
+          new APlayer(Object.assign({
+            container: e,
+            min: true,
+            order: "<%-theme.plugins.aplayer.order %>",
+            volume: "<%-theme.plugins.aplayer.volume %>",
+            autoplay: <%-theme.plugins.aplayer.autoplay %>,
+            loop: "<%-theme.plugins.aplayer.loop %>",
+            theme: "<%-theme.plugins.aplayer.theme %>",
+            listMaxHeight: "<%-theme.plugins.aplayer.list_max_height %>",
+            listFolded: "<%-theme.plugins.aplayer.list_folded %>",
+            preload: 'auto',
+            lrcType: 3,
+            audio: <%- JSON.stringify(theme.plugins.aplayer.audio) %>
+          },{});
+        })
+      };
+      aplayerMin();
+      volantis.pjax.push(aplayerMin)
       // 右键 todo...
     })
   <% }  %>
