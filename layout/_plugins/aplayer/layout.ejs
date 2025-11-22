@@ -30,7 +30,7 @@ let aplayer = theme.plugins.aplayer;
     <% } %>
   <% } else { %>
     <% if (post && post.music) { %>
-      <div class="aplayer-local-min"></div>
+      <div class="aplayer-local-min"><div class="aplayer-local-min-conf" style="display: none;"><%- JSON.stringify(post.music) %></div></div>
     <% } else { %>
       <div class="aplayer-local"></div>
     <% } %>
