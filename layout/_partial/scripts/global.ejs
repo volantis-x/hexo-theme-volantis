@@ -407,10 +407,7 @@
     unengine: new RunItem(),
   };
   volantis.scroll = Object.assign(volantis.scroll, {
-    push: (fn, name, setRequestAnimationFrame) => {
-      // 防抖
-      volantis.scroll.engine.push(volantis.debounce(fn), name, setRequestAnimationFrame);
-    },
+    push: volantis.scroll.engine.push,
   });
   // 滚动条距离顶部的距离
   volantis.scroll.getScrollTop = () => {
@@ -444,10 +441,8 @@
   // 使用 requestAnimationFrame 处理滚动事件
   // `volantis.scroll.del` 中存储了一个数值, 该数值检测一定时间间隔内滚动条滚动的位移, 数值的检测频率是浏览器的刷新频率. 数值为正数时, 表示向下滚动. 数值为负数时, 表示向上滚动.
   volantis.scroll.handleScrollEvents = () => {
-    volantis.scroll.lastScrollTop = volantis.scroll.getScrollTop();
-    let isRequesting = false; // 标记是否已注册rAF回调
-    // 用节流函数包裹核心逻辑
-    const throttledLoop = volantis.throttle(() => {
+    volantis.scroll.lastScrollTop = volantis.scroll.getScrollTop()
+    function loop() {
       const scrollTop = volantis.scroll.getScrollTop();
       if (volantis.scroll.lastScrollTop !== scrollTop) {
         volantis.scroll.del = scrollTop - volantis.scroll.lastScrollTop;
@@ -463,18 +458,11 @@
       } else {
         volantis.scroll.unengine.start();
       }
-      isRequesting = false; // 执行完毕后重置标记
-     });
-     function loop() {
-       throttledLoop(); // 执行节流后的逻辑
-       if (!isRequesting) {
-         isRequesting = true;
-         volantis.requestAnimationFrame(loop); // 仅在未注册时注册下一帧
-       }
-     }
-    volantis.requestAnimationFrame(loop);
+      volantis.requestAnimationFrame(loop)
+    }
+    volantis.requestAnimationFrame(loop)
   }
-  volantis.scroll.handleScrollEvents();
+  volantis.scroll.handleScrollEvents()
   volantis.scroll.ele = null;
   // 触发页面滚动至目标元素位置
   volantis.scroll.to = (ele, option = {}) => {
