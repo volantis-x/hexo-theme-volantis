@@ -346,6 +346,30 @@
       }
     }
   }
+  /********************** 节流和防抖 ********************************/
+  // 节流函数：确保指定时间内仅执行一次 时间戳版本的节流实现
+  volantis.throttle=(func, delay = 200) => {
+    let lastTime = 0;
+    return function (...args) {
+      const now = Date.now();
+      if (now - lastTime >= delay) {
+        func.apply(this, args);
+        lastTime = now;
+      }
+    };
+  }
+  // 防抖函数 setTimeout实现
+  volantis.debounce=(func, wait = 200) => {
+    let timer = null;
+    return function () {
+      if (timer) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(() => {
+        func.apply(this, arguments)
+        timer = null
+      }, wait)
+    }
   /********************** requestAnimationFrame ********************************/
   // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
   // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
