@@ -406,9 +406,9 @@
     unengine: new RunItem(),
   };
   volantis.scroll = Object.assign(volantis.scroll, {
-    push: (...args) => {
+    push: (fn, name, setRequestAnimationFrame) => {
       // 防抖
-      volantis.debounce(volantis.scroll.engine.push(...args))
+      volantis.scroll.engine.push(volantis.debounce(fn), name, setRequestAnimationFrame);
     },
   });
   // 滚动条距离顶部的距离
