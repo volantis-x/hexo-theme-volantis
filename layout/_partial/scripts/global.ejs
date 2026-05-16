@@ -599,7 +599,7 @@ volantis.clearAllTimers = function (){
     clearTimeout(i);
   });
 }
-volantis.pjax.send(volantis.clearAllTimers)
+volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
   /******************************************************************************/
 </script>
 <%- partial('./config') %>
