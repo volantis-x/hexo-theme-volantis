@@ -376,10 +376,12 @@
   // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
   volantis.requestAnimationFrame = (fn) => {
     if (!window.requestAnimationFrame) {
-      window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || function (callback) {
+        return window.setTimeout(callback, 1000 / 60);
+      };
     }
-    window.requestAnimationFrame(fn)
-  }
+    return window.requestAnimationFrame(fn);
+  };
   /************************ layoutHelper *****************************************/
   volantis.layoutHelper = (helper, html, opt) => {
     opt = Object.assign({ clean: false, pjax: true }, opt)
