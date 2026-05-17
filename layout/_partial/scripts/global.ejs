@@ -292,14 +292,20 @@ volantis.getFunctionHash(func) {
       }
     };
     this.push = (fn, name, setRequestAnimationFrame = true) => {
+      if (typeof fn !== 'function') return;
       let myfn = fn
       if (setRequestAnimationFrame) {
         myfn = () => {
           volantis.requestAnimationFrame(fn)
         }
       }
-      var f = new Item(myfn, name);
-      this.list.push(f);
+      name = name || volantis.getFunctionHash(fn)
+      const idx = this.list.findIndex(item => item.name === name);
+      if (idx !== -1) {
+        this.list[idx] = new Item(myfn, name);
+        return;
+      }
+      this.list.push(new Item(myfn, name));
     };
     this.remove = (name) => {
       for (let index = 0; index < this.list.length; index++) {
