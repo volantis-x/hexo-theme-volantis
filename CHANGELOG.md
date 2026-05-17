@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.3](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.2...v6.0.3) (2026-05-17)
+
+
+### Bug Fixes
+
+* debounce ([#969](https://github.com/volantis-x/hexo-theme-volantis/issues/969)) ([faf3590](https://github.com/volantis-x/hexo-theme-volantis/commit/faf35904b8fcb25f888314c9031af5f7fda26526))
+
 ## [6.0.2](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.1...v6.0.2) (2025-11-21)
 
 
