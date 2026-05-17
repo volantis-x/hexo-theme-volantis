@@ -106,7 +106,7 @@
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
   /******************** volantis.getFunctionHash ********************************/
 // 纯MD5实现（参考RFC 1321标准）
-function md5(str) {
+volantis.md5= (str) => {
     function rotateLeft(n, s) { return (n << s) | (n >>> (32 - s)); }
     function toHex(n) {
         let hexChars = "0123456789abcdef";
@@ -181,11 +181,11 @@ function md5(str) {
 }
 
 // 获取函数内容的MD5哈希
-volantis.getFunctionHash(func) {
+volantis.getFunctionHash= (func) => {
     // 提取函数源码字符串
     const funcStr = func.toString();
     // 计算哈希值
-    return md5(funcStr);
+    return volantis.md5(funcStr);
 }
 
 // 测试示例
