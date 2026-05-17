@@ -1,26 +1,23 @@
 # Configuration for labeler - https://github.com/actions/labeler
 
-Actions:
-  - changed-files:
-    - any-glob-to-any-file: .github/workflows/**/*
+Actions: 
+- changed-files:
+  - any-glob-to-any-file: .github/workflows/**/*
 Dependencies: 
-  - changed-files:
-    - any-glob-to-any-file: package.json
+- changed-files:
+  - any-glob-to-any-file: package.json
 Configurations: 
-  - changed-files:
-    - any-glob-to-any-file: _config.yml
+- changed-files:
+  - any-glob-to-any-file: _config.yml
 CSS: 
-  - changed-files:
-    - any-glob-to-any-file: source/css/**/*
-JS: 
-  - changed-files:
-    - any-glob-to-any-file: source/js/**/*
+- changed-files:
+  - any-glob-to-any-file: source/css/**/*
 Layout: 
-  - changed-files:
-    - any-glob-to-any-file: layout/**/*
+- changed-files:
+  - any-glob-to-any-file: layout/**/*
 Scripts: 
-  - changed-files:
-    - any-glob-to-any-file: scripts/**/*
+- changed-files:
+  - any-glob-to-any-file: scripts/**/*
 i18n: 
-  - changed-files:
-    - any-glob-to-any-file: languages/**/*
+- changed-files:
+  - any-glob-to-any-file: languages/**/*
