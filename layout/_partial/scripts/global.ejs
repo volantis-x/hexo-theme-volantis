@@ -120,7 +120,7 @@ volantis.simpleTextHash= (str) => {
   return hash.toString(16).padStart(8, '0');
 }
 
-// 获取函数内容的MD5哈希
+// 获取函数内容的哈希
 volantis.getFunctionHash= (func) => {
     // 提取函数源码字符串
     const funcStr = func.toString();
