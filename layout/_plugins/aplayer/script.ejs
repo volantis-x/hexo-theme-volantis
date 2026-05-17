@@ -72,7 +72,7 @@
     document.addEventListener("DOMContentLoaded", ()=>{
       SetAPlayerPlugin();
     });
-    volantis.pjax.push(SetAPlayerPlugin);
+    volantis.pjax.push(SetAPlayerPlugin,"SetAPlayerPlugin");
   <% } else { %>
     volantis.js("<%- theme.cdn.aplayer_js %>").then(()=>{
       document.querySelectorAll('.aplayer-local').forEach(e=>{
@@ -92,10 +92,28 @@
         });
       })
 
-      // post.music 迷你模式 pjax todo...
-      // document.querySelectorAll('.aplayer-local-min').forEach(e=>{
-      //   // todo...
-      // })
+      // post.music 迷你模式 pjax
+      function aplayerMin(){
+        if(!document.querySelector('.aplayer-local-min')) return;
+        document.querySelectorAll('.aplayer-local-min').forEach(e=>{
+          new APlayer(Object.assign({
+            container: e,
+            mini: true,
+            order: "<%-theme.plugins.aplayer.order %>",
+            volume: "<%-theme.plugins.aplayer.volume %>",
+            autoplay: <%-theme.plugins.aplayer.autoplay %>,
+            loop: "<%-theme.plugins.aplayer.loop %>",
+            theme: "<%-theme.plugins.aplayer.theme %>",
+            listMaxHeight: "<%-theme.plugins.aplayer.list_max_height %>",
+            listFolded: "<%-theme.plugins.aplayer.list_folded %>",
+            preload: 'auto',
+            lrcType: 3,
+            audio: <%- JSON.stringify(theme.plugins.aplayer.audio) %>
+          },JSON.parse(e.querySelector('.aplayer-local-min-conf').innerText)));
+        })
+      };
+      aplayerMin();
+      volantis.pjax.push(aplayerMin,"aplayerMin");
       // 右键 todo...
     })
   <% }  %>

@@ -16,6 +16,7 @@ function init(hexo, config, theme, page) {
   } else if (hexo.is_home() && page.prev == 0) {
     keywords = config.keywords || "";
     description = config.description || "";
+    title = config.seo_title || config.title;
   } else {
     if (
       page.layout == "docs" &&
