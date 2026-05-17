@@ -72,7 +72,7 @@
     document.addEventListener("DOMContentLoaded", ()=>{
       SetAPlayerPlugin();
     });
-    volantis.pjax.push(SetAPlayerPlugin);
+    volantis.pjax.push(SetAPlayerPlugin,"SetAPlayerPlugin");
   <% } else { %>
     volantis.js("<%- theme.cdn.aplayer_js %>").then(()=>{
       document.querySelectorAll('.aplayer-local').forEach(e=>{
@@ -113,7 +113,7 @@
         })
       };
       aplayerMin();
-      volantis.pjax.push(aplayerMin);
+      volantis.pjax.push(aplayerMin,"aplayerMin");
       // 右键 todo...
     })
   <% }  %>
