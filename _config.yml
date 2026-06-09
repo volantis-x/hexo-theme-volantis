@@ -63,7 +63,7 @@ cdn_system:
     # Tip: 在本配置文件中 匹配以 "volantis-static" 开头的链接路径替换为该格式的前缀开头 prefix
     static:
       # CDN 链接前缀
-      prefix: https://unpkg.com/volantis-static@0.0.1660614606622
+      prefix: https://unpkg.com/volantis-static@0.0.1761982841160
       # volantis-static CDN 格式
       format: ${prefix}/libs/${name}/${file}
     # cdnjs
@@ -71,7 +71,7 @@ cdn_system:
     # Tip: 在本配置文件中 匹配以 "volantis-cdnjs" 开头的链接路径替换为该格式的前缀开头 prefix
     cdnjs:
       # CDN 链接前缀
-      prefix: https://cdn.bootcdn.net/ajax/libs
+      prefix: https://cdnjs.cloudflare.com/ajax/libs
       # cdnjs CDN 格式
       format: ${prefix}/${name}/${version}/${min_file}
   # ========================================================================
@@ -122,7 +122,6 @@ replace:
 # dns-prefetch preconnect x-dns-prefetch-control
 dns_prefetch:
   - https://unpkg.com
-  - https://cdn.bootcdn.net
 
 # 平滑滚动效果
 scroll_smooth: true
