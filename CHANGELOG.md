@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.4](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.3...v6.0.4) (2026-06-09)
+
+
+### Bug Fixes
+
+* bootcdn被投毒 ([e8f7c33](https://github.com/volantis-x/hexo-theme-volantis/commit/e8f7c33dddb2d23066e12ce81ad168bc0e3da0a1))
+
 ## [6.0.3](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.2...v6.0.3) (2026-05-17)
 
 
