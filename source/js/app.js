@@ -33,14 +33,14 @@ const locationHash = () => {
     if (target) {
       setTimeout(() => {
         if (window.location.hash.startsWith('#fn')) { // hexo-reference https://github.com/volantis-x/hexo-theme-volantis/issues/647
-          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant', observer: true })
+          VolantisApp.scrolltoElement(target,VolantisApp.getScrollCorrection() - VolantisApp.REM, 'instant', true);
         } else if (window.location.hash.startsWith('#mjx')) { // mathjax
-          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 25, behavior: 'instant', observer: true })
+          VolantisApp.scrolltoElement(target,VolantisApp.getScrollCorrection() + VolantisApp.REM, 'instant', true);
         } else {
-          // 锚点中上半部有大片空白 高度大概是 volantis.dom.header.offsetHeight
-          volantis.scroll.to(target, { addTop: 5, behavior: 'instant', observer: true })
+          // 文章标题锚点 锚点中上半部有大片空白 高度大概是 volantis.dom.header.offsetHeight=64
+          VolantisApp.scrolltoElement(target,VolantisApp.REM, 'instant', true);
         }
-      }, 1000)
+      }, 500)
     }
   }
 }
@@ -50,11 +50,12 @@ Object.freeze(locationHash);
 const VolantisApp = (() => {
   const fn = {},
     COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fa-solid fa-copy"></i><span>COPY</span></button>';
+  const REM = parseFloat(getComputedStyle(document.documentElement).fontSize); // 16
   let scrollCorrection = 80;
 
   fn.init = () => {
     if (volantis.dom.header) {
-      scrollCorrection = volantis.dom.header.clientHeight + 16;
+      scrollCorrection = volantis.dom.header.clientHeight + REM; // 64+16
     }
 
     window.onresize = () => {
@@ -109,7 +110,7 @@ const VolantisApp = (() => {
   }
 
   fn.restData = () => {
-    scrollCorrection = volantis.dom.header ? volantis.dom.header.clientHeight + 16 : 80;
+    scrollCorrection = volantis.dom.header ? volantis.dom.header.clientHeight + REM : 80;
   }
 
   fn.setIsMobile = () => {
@@ -123,10 +124,17 @@ const VolantisApp = (() => {
   }
 
   // 校正页面定位（被导航栏挡住的区域）
-  fn.scrolltoElement = (elem, correction = scrollCorrection) => {
-    volantis.scroll.to(elem, {
+  fn.scrolltoElement = (elem, correction = scrollCorrection, behavior = null, observer = false) => {
+    let opt = {
       top: elem.getBoundingClientRect().top + document.documentElement.scrollTop - correction
-    })
+    };
+    if (behavior){
+      opt.behavior=behavior;
+    };
+    if (observer){
+      opt.observer=observer;
+    };
+    volantis.scroll.to(elem, opt);
   }
 
   // 滚动事件回调们
@@ -399,7 +407,7 @@ const VolantisApp = (() => {
         e.preventDefault();
         let target = document.getElementById(targetID);
         if (target) {
-          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 25, behavior: 'instant' })
+          fn.scrolltoElement(target, scrollCorrection + REM, 'instant');
         }
       });
     })
@@ -407,16 +415,16 @@ const VolantisApp = (() => {
 
   // hexo-reference 页脚跳转 https://github.com/volantis-x/hexo-theme-volantis/issues/647
   fn.footnotes = () => {
-    let ref = document.querySelectorAll('#l_main .footnote-backref, #l_main .footnote-ref > a');
+    let ref = document.querySelectorAll('#l_main a[rel=footnote],#footnotelist a[rev=footnote],#l_main .footnote-backref, #l_main .footnote-ref > a');
     ref.forEach(function (e, i) {
       ref[i].click = () => { }; // 强制清空原 click 事件
+      let targetID = decodeURIComponent(ref[i].getAttribute('href').split('#')[1]).replace(/\ /g, '-');
       volantis.dom.$(e).on('click', (e) => {
         e.stopPropagation();
         e.preventDefault();
-        let targetID = decodeURI(e.target.hash.split('#')[1]).replace(/\ /g, '-');
         let target = document.getElementById(targetID);
         if (target) {
-          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
+          fn.scrolltoElement(target, scrollCorrection - REM, 'instant');
         }
       });
     })
@@ -719,7 +727,11 @@ const VolantisApp = (() => {
     question: fn.question,
     hideMessage: fn.hideMessage,
     messageCopyright: fn.messageCopyright,
-    scrolltoElement: fn.scrolltoElement
+    scrolltoElement: fn.scrolltoElement,
+    getScrollCorrection: ()=>{
+      return scrollCorrection;
+    },
+    REM:REM
   }
 })()
 Object.freeze(VolantisApp);
