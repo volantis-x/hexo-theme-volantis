@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.5](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.4...v6.0.5) (2026-07-08)
+
+
+### Bug Fixes
+
+* 修复锚点定位 ([f589671](https://github.com/volantis-x/hexo-theme-volantis/commit/f58967153414817eafc59fceb48b60184f6f3dd9))
+
 ## [6.0.4](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.3...v6.0.4) (2026-06-09)
 
 
