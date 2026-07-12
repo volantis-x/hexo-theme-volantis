@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.0.6](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.5...v6.0.6) (2026-07-12)
+
+
+### Bug Fixes
+
+* [#840](https://github.com/volantis-x/hexo-theme-volantis/issues/840) ([c076ef0](https://github.com/volantis-x/hexo-theme-volantis/commit/c076ef0825696b118df7be6bc83448d5bef062c7))
+* [#888](https://github.com/volantis-x/hexo-theme-volantis/issues/888) ([4db506f](https://github.com/volantis-x/hexo-theme-volantis/commit/4db506fc14e387c47290bb53d93ff149db7d5721))
+* [#923](https://github.com/volantis-x/hexo-theme-volantis/issues/923) [#866](https://github.com/volantis-x/hexo-theme-volantis/issues/866) ([1076c15](https://github.com/volantis-x/hexo-theme-volantis/commit/1076c15fd076d9eace0cb79583163c46afda5079))
+* [#928](https://github.com/volantis-x/hexo-theme-volantis/issues/928) ([00765ac](https://github.com/volantis-x/hexo-theme-volantis/commit/00765ac90af02358b90bf6ffb248ac5f39b66f3f))
+* [#967](https://github.com/volantis-x/hexo-theme-volantis/issues/967) ([acb334f](https://github.com/volantis-x/hexo-theme-volantis/commit/acb334f4944ef72c4c54d6fa3ce85f2991419292))
+
 ## [6.0.5](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.4...v6.0.5) (2026-07-08)
 
 
