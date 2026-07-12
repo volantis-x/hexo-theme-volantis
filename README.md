@@ -10,7 +10,7 @@
 Check your environment:
 
 ```yaml
-Hexo: 5.4 ~ 6.x
+Hexo: 5.4 ~ 8.x
 hexo-cli: 4.3 ~ latest
 node.js: 16.x LTS ~ latest LTS
 npm: 8.x ~ latest LTS
@@ -31,8 +31,6 @@ npm i hexo-theme-volantis
 ## Usage
 
 See docs: https://volantis.js.org
-
-or:  https://volantis.vercel.app
 
 ## Examples
 
