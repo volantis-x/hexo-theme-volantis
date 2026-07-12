@@ -2,7 +2,7 @@
   // https://github.com/CodeByZach/pace/issues/531
   window.paceOptions = {
     eventLag: {
-	  	lagThreshold: 30,
+	  lagThreshold: 30,
   	},
     ajax: { 
       ignoreURLs: ['signalr', '__browserLink', 'browserLinkSignalR'], 
@@ -14,7 +14,7 @@
   volantis.js("<%- theme.cdn.pace_js %>").then(() => {
     Pace.options.restartOnPushState = false;
     volantis.pjax.send(Pace.restart,"Pace.restart");
-    volantis.pjax.push(()=>{setTimeout(()=>{Pace.stop()},2000)},"Pace.stop");
+    volantis.pjax.push(()=>{setTimeout(()=>{Pace.stop()},1200)},"Pace.stop");
     // 阅读进度
     volantis.scroll.push(volantis.debounce(() => {
       Pace.stop();
