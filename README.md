@@ -36,7 +36,7 @@ See docs: https://volantis.js.org
 
 See examples: https://volantis.js.org/examples/
 
-Add your blog to examples page: https://github.com/volantis-x/examples/issues/
+Add your blog to examples page: https://github.com/volantis-x/hexo-theme-volantis-showcase/issues
 
 ## Feedback
 
