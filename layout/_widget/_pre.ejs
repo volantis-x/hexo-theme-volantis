@@ -7,6 +7,9 @@ if (item.display) {
 } else {
   pf = ['desktop', 'mobile'];
 }
+if (typeof page.widget_style == "undefined"){
+  page.widget_style = "";
+}
 if (where == 'sidebar') {
   page.widget_style += theme.custom_css.sidebar.effect.join(' ');
 } else if (where == 'body') {
