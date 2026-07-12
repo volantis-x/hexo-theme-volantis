@@ -1,7 +1,9 @@
 <script>
   // https://github.com/CodeByZach/pace/issues/531
   window.paceOptions = {
-    eventLag: false,
+    eventLag: {
+	  	lagThreshold: 30,
+  	},
     ajax: { 
       ignoreURLs: ['signalr', '__browserLink', 'browserLinkSignalR'], 
       trackWebSockets: false 
