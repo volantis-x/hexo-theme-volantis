@@ -3,7 +3,7 @@ hexo.extend.generator.register('index_topic', function (locals) {
   const data = Object.assign({
       layout: 'index_topic',
       index: true,
-      title: "专栏",
+      title: "Topic",
       // robots: "noindex,follow",
       // sitemap: false,
       keywords: ["topic"],
