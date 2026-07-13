@@ -1,0 +1,23 @@
+<%- partial('_pre') %>
+<% page.comments = false; %>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+  <% if (site.pages && site.pages.length > 0) { %>
+    <section class="post-list">
+      <% site.pages.sort("-date").each(function(post){ %>
+        <% if (post.group && post.group == page.group && post.layout != 'list') { %>
+          <div class='post-wrapper'>
+            <%- partial('_partial/post', {post: post, index: false}) %>
+          </div>
+        <% } %>
+      <% }) %>
+      <% site.posts.sort("-date").each(function(post){ %>
+        <% if (post.group && post.group == page.group && post.layout != 'list') { %>
+          <div class='post-wrapper'>
+            <%- partial('_partial/post', {post: post, index: false}) %>
+          </div>
+        <% } %>
+      <% }) %>
+    </section>
+  <% } %>
+</div>
+<%- partial('_partial/side') %>
