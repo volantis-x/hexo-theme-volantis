@@ -24,6 +24,16 @@ site_tree:
   404:
     layout: page
     path: '/404.html'
+    data:
+      body: [article, comments]
+      top_meta: false
+      bottom_meta: false
+      sidebar: []
+      index: false
+      robots: noindex,nofollow
+      sitemap: false
+      date: "2020-1-1 1:1"
+      content: 404
     
     
     
