@@ -14,6 +14,11 @@ hexo.on('generateBefore', () => {
   }
 });
 
+hexo.on('generateAfter', () => {
+  require('./lib/tree-merge-posts')(hexo);
+});
+
+
 hexo.on('ready', () => {
   const { version } = require('../../package.json');
   hexo.log.info(`
