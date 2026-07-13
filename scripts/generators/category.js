@@ -1,6 +1,6 @@
 hexo.extend.generator.register('categories', function (locals) {
   const { site_tree } = hexo.theme.config;
-  if (!site_tree.tag.enable) return;
+  if (!site_tree.category.enable) return;
   const data = Object.assign({
       layout: 'category',
       index: true,
