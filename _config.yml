@@ -32,7 +32,6 @@ site_tree:
       index: false
       robots: noindex,nofollow
       sitemap: false
-      date: "2020-1-1 1:1"
       content: 404
     
     
