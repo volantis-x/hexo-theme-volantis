@@ -7,7 +7,7 @@ hexo.extend.generator.register('categories', function (locals) {
       title: "Categories",
       // robots: "noindex,follow",
       sitemap: false,
-      keywords: ["categorise"],
+      keywords: ["categories"],
       description: "categories",
       meta: {
         header: [],
