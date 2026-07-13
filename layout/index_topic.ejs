@@ -1,7 +1,7 @@
 <%- partial('_pre') %>
 <% page.comments = false; %>
 <%
-function layout_topic_list(partial) {
+function layout_topic_list() {
   var el = ''
   const { publish_list, tree } = theme.topic
   for (let id of publish_list) {
@@ -10,22 +10,15 @@ function layout_topic_list(partial) {
       continue
     }
     el += `<div class='post-wrapper'>`
-    el += partial(topic)
+    el += partial('_partial/post', {post: topic, index: false})
     el += `</div>`
   }
-  return el
-}
-function layoutDiv() {
-  var el = ''
-  el += layout_topic_list(function(topic) {
-    return partial('_partial/post', {post: topic, index: false})
-  })
   return el
 }
 %>
 <div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
     <section class="post-list">
-        <%- layoutDiv() %>
+        <%- layout_topic_list() %>
     </section>
 </div>
 <%- partial('_partial/side') %>
