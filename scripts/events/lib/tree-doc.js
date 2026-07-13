@@ -206,6 +206,5 @@ module.exports = ctx => {
   wiki.all_tags = all_tags
   wiki.all_pages = wiki_pages
   ctx.theme.config.wiki = wiki
-  console.log(wiki)
 
 }
