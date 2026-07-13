@@ -2,7 +2,7 @@ hexo.extend.generator.register('404', function (locals) {
   const { site_tree } = hexo.theme.config;
   if (!site_tree["404"].enable) return;
   const data = Object.assign({
-      layout: site_tree["404"].layout,
+      layout: "page",
       body: ["article", "comments"],
       top_meta: false,
       bottom_meta: false,
@@ -15,7 +15,7 @@ hexo.extend.generator.register('404', function (locals) {
   }, site_tree["404"].data||{});
   return {
     path: site_tree["404"].path,
-    layout: [site_tree["404"].layout],
+    layout: [data.layout],
     data: data
   }
 })
