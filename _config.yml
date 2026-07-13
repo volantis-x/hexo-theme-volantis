@@ -20,8 +20,8 @@ default:
 ######## Main ########
 # 站点主结构树
 site_tree:
-  # 错误页配置
-  404_page:
+  # 404 错误页配置
+  404:
     layout: page
     path: '/404.html'
     
