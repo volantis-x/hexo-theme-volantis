@@ -20,18 +20,24 @@ default:
 ######## Main ########
 # 站点主结构树
 site_tree:
-  # 404 错误页
+  # 404 错误页配置
   404:
-    enable: true
-    layout: page
-    path: '/404.html'
-  # 标签页
+    enable: true # 或者设为false，自己创建页面
+    # 以下遵守页面 Front-matter 写法
+    # data:
+    #   robots: noindex,nofollow
+  # 标签页配置
   tag:
-    enable: true
-  # 分类页
+    enable: true # 或者设为false，自己创建页面
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "所有标签"
+  # 分类页配置
   category:
-    enable: true
-    
+    enable: true # 或者设为false，自己创建页面
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "所有分类"
     
     
 
