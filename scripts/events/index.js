@@ -5,7 +5,8 @@
 hexo.on('generateBefore', () => {
   // Merge config.
   require('./lib/config')(hexo);
-  require('./lib/topic-tree')(hexo);
+  require('./lib/tree-doc')(hexo);
+  require('./lib/tree-topic')(hexo);
   require('./lib/stellar-tag-utils')(hexo);
   require('./lib/render-stylus')(hexo);
   if (hexo.theme.config.debug === "env") {
