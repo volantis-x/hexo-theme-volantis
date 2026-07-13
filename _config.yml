@@ -21,9 +21,10 @@ default:
 # 站点主结构树
 site_tree:
   # 错误页配置
-  error_page:
-    menu_id: post
-    '404': '/404/'
+  404_page:
+    path: '/404.html'
+    layout: page
+    
     
 
 ############################### CDN System ###############################
