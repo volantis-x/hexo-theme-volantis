@@ -16,6 +16,9 @@ hexo.extend.generator.register('wiki', function (locals) {
       date: "2020-1-1 1:1",
       content: ''
   }, site_tree.index_wiki.data||{});
+  if (wiki.shelf.length == 0) {
+    return {}
+  }
   const wikiIdList = Object.keys(wiki.tree)
   if (wikiIdList.length == 0) {
     return {}
