@@ -22,7 +22,7 @@ default:
 site_tree:
   # 404 错误页配置
   404:
-    enable: true
+    enable: false
     layout: page
     path: '/404.html'
     
