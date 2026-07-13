@@ -39,6 +39,10 @@ site_tree:
     # 以下遵守页面 Front-matter 写法
     data:
       title: "所有分类"
+  # 博客专栏列表页配置
+  index_topic:
+    base_dir: topic # 只影响自动生成的页面路径
+    menu_id: post # 未在 front-matter 中指定 menu_id 时，layout 为 topic 的页面默认使用这里配置的 menu_id
     
     
 
