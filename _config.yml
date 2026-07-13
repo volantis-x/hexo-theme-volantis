@@ -42,7 +42,9 @@ site_tree:
   # 博客专栏列表页配置
   index_topic:
     base_dir: topic # 只影响自动生成的页面路径
-    
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "专栏"    
     
     
 
