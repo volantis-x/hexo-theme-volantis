@@ -44,8 +44,13 @@ site_tree:
     base_dir: topic # 只影响自动生成的页面路径
     # 以下遵守页面 Front-matter 写法
     data:
-      title: "专栏"    
-    
+      title: "专栏"
+  # 文档列表页配置
+  index_wiki:
+    base_dir: wiki # 只影响自动生成的页面路径
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "Wiki"
     
 
 ############################### CDN System ###############################
