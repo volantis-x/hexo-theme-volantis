@@ -4,8 +4,8 @@ hexo.extend.generator.register('index_topic', function (locals) {
       layout: 'index_topic',
       index: true,
       title: "专栏",
-      robots: "noindex,follow",
-      site
+      // robots: "noindex,follow",
+      // sitemap: false,
       keywords: ["topic"],
       description: "topic",
       meta: {
@@ -19,13 +19,10 @@ hexo.extend.generator.register('index_topic', function (locals) {
   const topicIdList = Object.keys(topic.tree)
   if (topicIdList.length == 0) {
     return {}
-  }
-  
+  }  
   return {
     path: site_tree.index_topic.base_dir + '/index.html',
-    layout: ['index_topic'],
-    data: {
-      layout: 'index_topic',
-    }
+    layout: [data.layout],
+    data: data
   }
 })
