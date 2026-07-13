@@ -16,6 +16,7 @@ default:
   link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
   cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
   image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+  topic: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/10433048.png
 
 ############################### Main ###############################
 # 站点主结构树
