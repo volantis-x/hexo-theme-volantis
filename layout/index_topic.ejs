@@ -10,7 +10,9 @@ function layout_topic_list() {
       continue
     }
     el += `<div class='post-wrapper'>`
-    el += partial('_partial/post', {post: topic, index: false})
+    el += `<a href="${pretty_url(topic.homepage?.path || '/')}">`
+    el += partial('_partial/topic_card', {post: topic, index: false})
+    el += `</a>`
     el += `</div>`
   }
   return el
