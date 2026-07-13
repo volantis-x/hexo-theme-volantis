@@ -17,6 +17,14 @@ default:
   cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
   image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
 
+######## Main ########
+# 站点主结构树
+site_tree:
+  # 错误页配置
+  error_page:
+    menu_id: post
+    '404': '/404/'
+    
 
 ############################### CDN System ###############################
 
