@@ -1,7 +1,7 @@
 <%
 function layoutDiv() {
   var el = '';
-  el += '<article class="md-text">';
+  el += '<article class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> >';
   el += `<div class="preview"><img src="${topic.icon ? topic.icon : theme.default.topic}"/></div>`
   el += '<div class="excerpt">';
   el += '<h2 class="post-title">' + (topic.title || topic.name) + '</h2>';
