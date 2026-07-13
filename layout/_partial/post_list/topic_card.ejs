@@ -1,0 +1,19 @@
+<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  >
+
+    <div class='headimg-div'>
+        <img itemprop="image" class='headimg' alt="<%- topic.title || topic.name %>" src='<%- topic.icon ? topic.icon : theme.default.topic %>'/>
+    </div>
+
+
+    <h2 class="article-title">
+        <%- (topic.title || topic.name) ? (topic.title || topic.name) : date(topic.date, theme.article.body.meta_library.date.format) %>
+    </h2>
+ 
+  <div class='md article-desc'>
+    <% if (topic.description) { %>
+      <p><%- topic.description %></p>
+    <% } 
+  </div>
+
+
+</div>
