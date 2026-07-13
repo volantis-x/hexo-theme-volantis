@@ -23,6 +23,7 @@ site_tree:
   # 404 错误页配置
   404:
     enable: true # 或者设为false，自己创建页面
+    path: '/404.html'
     # 以下遵守页面 Front-matter 写法
     # data:
     #   robots: noindex,nofollow
