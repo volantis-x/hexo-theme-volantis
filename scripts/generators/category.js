@@ -16,7 +16,7 @@ hexo.extend.generator.register('categories', function (locals) {
       sidebar: [],
       date: "2020-1-1 1:1",
       content: ''
-  }, site_tree.tag.data||{});
+  }, site_tree.category.data||{});
   if (locals.categories && locals.categories.length > 0) {
     return {
       path: hexo.config.category_dir + '/index.html',
