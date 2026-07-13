@@ -1,16 +1,19 @@
 <%- partial('_pre') %>
 <% page.comments = false; %>
 <%
-function layout_topic_list() {
+function layout_wiki_list() {
   var el = ''
-  const { publish_list, tree } = theme.topic
-  for (let id of publish_list) {
-    const topic = tree[id]
-    if (topic == null) {
+  const { shelf, tree } = theme.wiki
+  for (let pid of shelf) {
+    let proj = tree[pid]
+    if (proj == null) {
+      continue
+    }
+    if (proj.pages == undefined || proj.pages.length === 0) {
       continue
     }
     el += `<div class='post-wrapper'>`
-    el += partial('_partial/post', {post: topic, index: false})
+    el += partial('_partial/post', {post: proj, index: false})
     el += `</div>`
   }
   return el
@@ -18,7 +21,7 @@ function layout_topic_list() {
 %>
 <div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
     <section class="post-list">
-        <%- layout_topic_list() %>
+        <%- layout_wiki_list() %>
     </section>
 </div>
 <%- partial('_partial/side') %>
