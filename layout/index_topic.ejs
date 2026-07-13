@@ -11,7 +11,7 @@ function layout_topic_list() {
     }
     el += `<div class='post-wrapper'>`
     el += `<a href="${pretty_url(topic.homepage?.path || '/')}">`
-    el += partial('_partial/topic_card', {topic: topic})
+    el += partial('_partial/post_list/topic_card', {topic: topic})
     el += `</a>`
     el += `</div>`
   }
