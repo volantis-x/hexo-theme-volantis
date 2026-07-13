@@ -20,11 +20,17 @@ default:
 ######## Main ########
 # 站点主结构树
 site_tree:
-  # 404 错误页配置
+  # 404 错误页
   404:
-    enable: false
+    enable: true
     layout: page
     path: '/404.html'
+  # 标签页
+  tag:
+    enable: true
+  # 分类页
+  category:
+    enable: true
     
     
     
