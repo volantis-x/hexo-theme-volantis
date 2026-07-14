@@ -30,7 +30,7 @@ site_tree:
     # 以下遵守页面 Front-matter 写法
     data:
       sidebar: []
-      #robots: noindex,nofollow
+      robots: "noindex,nofollow"
       #content: "404HTML"
   # 标签页配置
   tag:
@@ -39,6 +39,7 @@ site_tree:
     data:
       title: "所有标签"
       sidebar: []
+      robots: "noindex,follow"
   # 分类页配置
   category:
     enable: true # 或者设为false，自己创建页面
@@ -46,6 +47,7 @@ site_tree:
     data:
       title: "所有分类"
       sidebar: []
+      robots: "noindex,follow"
   # 博客专栏列表页配置
   index_topic:
     base_dir: topic # 只影响自动生成的页面路径
@@ -53,6 +55,7 @@ site_tree:
     data:
       title: "专栏"
       sidebar: []
+      robots: "noindex,follow"
   # 文档列表页配置
   index_wiki:
     base_dir: wiki # 只影响自动生成的页面路径
@@ -60,6 +63,7 @@ site_tree:
     data:
       title: "Wiki"
       sidebar: []
+      robots: "noindex,follow"
     
 
 ############################### CDN System ###############################
