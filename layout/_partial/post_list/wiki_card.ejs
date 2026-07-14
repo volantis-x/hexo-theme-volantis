@@ -8,11 +8,9 @@
      </div>
      <% if (proj.tags && proj.tags.length > 0) { %>
        <div class="meta-v3">
-       <%- list_categories(proj.tags, {
-        show_count: false,
-        separator: '<span class="sep"></span>',
-        style: 'none'
-        }) %>
+       <% for (let tag of proj.tags) { %>
+        <span class="tag"><%- tag %></span>
+       <% } %>
        </div>
      <% } %>
     <h2 class="article-title">
