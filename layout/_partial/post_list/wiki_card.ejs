@@ -1,19 +1,19 @@
 <div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  >
-
     <div class='wiki-img-div'>
+      <% if (proj.svg) { %>
+        <%- proj.svg %>
+      <% } else { %>
         <img class='wiki-img' alt="<%- proj.title || proj.name %>" src='<%- proj.icon ? proj.icon : theme.default.project %>'/>
+      <% } %>
     </div>
 
 
     <h2 class="article-title">
         <%- proj.title || proj.name %>
-    </h2>
- 
+    </h2> 
   <div class='md article-desc'>
     <% if (proj.description) { %>
       <p><%- proj.description %></p>
     <% } %>
   </div>
-
-
 </div>
