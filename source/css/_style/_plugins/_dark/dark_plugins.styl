@@ -13,6 +13,20 @@ img,
 .lazyload
   filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
 
+// shadow
+.shadow
+  box-shadow: $boxshadow-card-dark
+  &.floatable
+    trans()
+    &:hover
+      box-shadow: $boxshadow-card-float-dark
+#l_side .toc-wrapper
+  @media screen and (max-width: $device-tablet)
+    box-shadow: $boxshadow-float-dark
+
+
+
+
 //side
 .widget.blogger .content .social-wrapper a.social:hover
   background: var(--color-card)
