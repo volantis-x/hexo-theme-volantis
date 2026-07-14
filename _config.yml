@@ -257,7 +257,7 @@ article:
     # show author
     author: false # true, false
     # show readmore button
-    readmore: auto # auto, always
+    readmore: auto # auto, always, false
   # 文章详情页面的文章卡片本体布局方案
   body:
     # 文章顶部信息
