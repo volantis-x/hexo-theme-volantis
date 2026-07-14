@@ -1,0 +1,8 @@
+<%# 笔记本列表页主体部分 %>
+<% for (const notebook of Object.values(theme.notebooks.tree)) { %>
+  <div class="post-list wiki">
+    <a class="post-card wiki<%= scrollreveal(' ') %>" href="<%= pretty_url(notebook.base_dir) %>">
+      <%- include('_partial/main/notebook/notebook_card', { notebook: notebook }) %>
+    </a>
+  </div>
+<% } %>
