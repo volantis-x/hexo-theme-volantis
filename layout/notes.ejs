@@ -1,0 +1,12 @@
+<%# 笔记列表页主体部分 %>
+<div class="post-list post">
+  <% page.posts.each(post => { %>
+    <a
+      class="post-card<%= scrollreveal(' ') %> post"
+      href="<%= pretty_url(post.link || post.path) %><%= page.activeTag ? `?tag=${page.activeTag}` : '' %>"
+    >
+      <%- include('_partial/main/notebook/note_card', { note: post }) %>
+    </a>
+  <% }) %>
+</div>
+<%- include('_partial/main/notebook/paginator') %>
