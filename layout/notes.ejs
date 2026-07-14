@@ -1,12 +1,13 @@
 <%# 笔记列表页主体部分 %>
-<div class="post-list post">
+<%- partial('_pre') %>
+<% page.comments = false; %>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+<section class="post-list post">
   <% page.posts.each(post => { %>
-    <a
-      class="post-card<%= scrollreveal(' ') %> post"
-      href="<%= pretty_url(post.link || post.path) %><%= page.activeTag ? `?tag=${page.activeTag}` : '' %>"
-    >
-      <%- include('_partial/main/notebook/note_card', { note: post }) %>
+    <a href="<%= pretty_url(post.link || post.path) %><%= page.activeTag ? `?tag=${page.activeTag}` : '' %>">
+      <%- include('_partial/notebook/note_card', { note: post }) %>
     </a>
   <% }) %>
+</section>
 </div>
-<%- include('_partial/main/notebook/paginator') %>
+<%- partial('_partial/side') %>
