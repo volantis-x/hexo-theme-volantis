@@ -8,9 +8,11 @@
      </div>
      <% if (proj.tags && proj.tags.length > 0) { %>
        <div class="meta-v3">
+        <div class="caps">
        <% for (let tag of proj.tags) { %>
-        <span class="tag"><%- tag %></span>
+        <span class="cap"><%- tag %></span>
        <% } %>
+        </div>
        </div>
      <% } %>
     <h2 class="article-title">
