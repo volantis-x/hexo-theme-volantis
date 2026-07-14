@@ -13,7 +13,7 @@ hexo.extend.generator.register('tags', function (locals) {
         header: [],
         footer: []
       },
-      sidebar: [],
+      //sidebar: [],
       date: "2020-1-1 1:1",
       content: ''
   }, site_tree.tag.data||{});
