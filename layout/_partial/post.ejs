@@ -53,6 +53,13 @@ const getAuthor = () => {
 // 获取作者信息
 const author = getAuthor();
 
+const coverPosition =  (()=>{
+  if (post.topicline) {
+    return "top";
+  }
+  return "bottom";
+})();
+
 
 // CSS类名集中管理，便于统一修改样式
 const classes = {
@@ -87,11 +94,14 @@ const classes = {
   
   <!-- 显示文章头图（如果存在） -->
   <% if (post.headimg) { %>
-    <div class='<%= classes.headimg %>'>
+    <div class='<%= classes.headimg %>' position="<%- coverPosition %>">
       <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
         <img itemprop="image" class='headimg' alt="<%- escape_html(articleTitle) %>" src='<%- post.headimg %>'/>
         <% if (post.headimg && post.imgcover) { %>
-          <div class="cover-info" position="bottom">
+          <div class="cover-info" position="<%- coverPosition %>">
+            <% if (post.topicline) { %>
+              <div class="text topicline"><%- post.topicline %></div>
+            <% } %>
             <% if (showTitle) { %>
               <div class="text headline"><%- articleTitle %></div>
             <% } else { %>
