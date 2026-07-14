@@ -126,23 +126,36 @@
     position: absolute
     left: 0
     right: 0
-    bottom: 0
     height: 152px
     transition: all 0.2s ease-out
     backdrop-filter: saturate(120%) blur(1em)
-    mask: linear-gradient(transparent, rgba(0, 0, 0, 0.75), #000)
+  &[position=top]:before
+    top: 0
+    mask: linear-gradient(black, rgba(black, 0.75), transparent)
+    -webkit-mask: linear-gradient(black, rgba(black, 0.75), transparent)
+  &[position=bottom]:before
+    bottom: 0
+    mask: linear-gradient(transparent, rgba(black, 0.75), black)
+    -webkit-mask: linear-gradient(transparent, rgba(black, 0.75), black)
+
+
+
 
   .cover-info
     padding: 1.5 * $gap
     @media screen and (max-width: $device-tablet)
       padding: $gap
     position: absolute
-    bottom: 0
     width: 100%
     line-height: 1.2
     color: #fff
     z-index: 2
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2))
+    &[position=top]
+      top: 0
+      background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0))
+    &[position=bottom]
+      bottom: 0
+      background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.2))
     .text
       color: inherit
       transition: all 0.2s ease-out
