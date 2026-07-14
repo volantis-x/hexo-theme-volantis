@@ -1,0 +1,65 @@
+<%
+function relatedPostsInTopic() {
+  if (page.topic?.length == 0) {
+    return ''
+  }
+  const topic = theme.topic.tree[page.topic]
+  if (topic == null) {
+    return ''
+  }
+  var el = ''
+  el += `<widget class="widget-wrapper related post-list">`
+  el += `<div class="widget-header dis-select">`
+  el += `<span class="name">${__('btn.topic') + __('symbol.colon') + (topic.name || topic.title)}</span>`
+  el += `</div>`
+  el += `<div class="widget-body">`
+  for (let post of topic.pages) {
+    const isActive = post.path == page.path
+    el += `<a class="item${isActive ? ' active' : ''}" href="${pretty_url(post.path)}">`
+    el += `<span class="title">${post.title}</span>`
+    if (isActive) {
+      el += icon('default:bookmark.active')
+    }
+    el += `</a>`
+  }
+  el += `</div>`
+  el += `</widget>`
+  return el
+}
+function relatedWiki() {
+  let thisItemObject = theme.wiki.tree[page.wiki]
+  if (thisItemObject == null) {
+    return ''
+  }
+  const relatedItems = thisItemObject.relatedItems || []
+  var el = ''
+  for (let relatedItem of relatedItems) {
+    el += `<widget class="widget-wrapper${scrollreveal(' ')} post-card">`
+    el += `<div class="widget-header dis-select">`
+    el += `<span class="name">${__('meta.more') + __('symbol.colon') + relatedItem.name}</span>`
+    el += `</div>`
+    el += `<div class="widget-body">`
+    for (let id of relatedItem.items) {
+      // 同一个分组中的其它项目
+      let item = theme.wiki.tree[id]
+      el += `<a class="item wiki" href="${pretty_url(item.homepage?.path)}">`
+      el += `<span class="title">${item.title}</span>`
+      if (item.description && item.description.length > 0) {
+        el += `<span class="excerpt">${item.description}</span>`
+      }
+      el += `</a>`
+    }
+    el += `</div>`
+    el += `</widget>`
+  }
+  return el
+}
+function layoutDiv() {
+  if (page.wiki?.length > 0) {
+    return relatedWiki()
+  } else if (page.topic?.length > 0) {
+    return relatedPostsInTopic()
+  }
+}
+%>
+<%- layoutDiv() %>
