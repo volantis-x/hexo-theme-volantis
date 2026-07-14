@@ -3,6 +3,25 @@ hexo.extend.generator.register('notebooks', function (locals) {
   if (!notebooks?.tree || Object.keys(notebooks.tree).length === 0) {
     return []
   }
+  const noteBooksData = Object.assign({
+      layout: 'notebooks',
+      index: true,
+      title: "Notebooks",
+      robots: "noindex,follow",
+      sitemap: false,
+      keywords: ["notebooks"],
+      description: "notebooks",
+      meta: {
+        header: [],
+        footer: []
+      },
+      //sidebar: [],
+      date: "2020-1-1 1:1",
+      content: ''
+  }, site_tree.notebooks.data||{});
+  const noteData = Object.assign(notebooksData,{
+      layout: 'notes',
+  });
   // 不用 blog 和 notebooks 时不必依赖 hexo-pagination
   const pagination = require('hexo-pagination')
 
@@ -36,11 +55,8 @@ hexo.extend.generator.register('notebooks', function (locals) {
   // The index page of all notebooks.
   routes.push({
     path: site_tree.notebooks.base_dir + '/index.html',
-    layout: ['notebooks'],
-    data: {
-      layout: 'notebooks',
-      menu_id: site_tree.notebooks.menu_id,
-    }
+    layout: [noteBooksData.layout],
+    data: noteBooksData
   })
 
   for (const notebook of Object.values(notebooks.tree)) {
