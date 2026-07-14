@@ -1,5 +1,68 @@
-<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  itemscope itemtype="http://schema.org/Article" >
+<%
+/**
+ * 文章预览卡片模板
+ * 用于Hexo博客主题，用于渲染文章列表中的单篇文章预览
+ */
+
+// 计算是否显示置顶图标：需同时满足文章置顶、存在标题（或自动生成标题）、主题启用置顶图标
+const showPin = post.pin && (post.title || theme.article.preview.auto_title) && theme.article.preview.pin_icon;
+
+// 计算是否显示分类：存在分类且数量大于0
+const showCategories = post.categories && post.categories.length > 0;
+
+// 计算是否显示标签：存在标签且数量大于0
+const showTags = post.tags && post.tags.length > 0;
+
+// 计算是否显示"阅读更多"按钮：
+// 1. 主题设置为始终显示 或
+// 2. 主题启用自动摘要 或
+// 3. 文章未禁用readmore且存在摘要/描述/链接
+const showReadmore = theme.article.preview.readmore === 'always' || 
+                    theme.article.preview.auto_excerpt || 
+                    (post.readmore !== false && (post.excerpt || post.description || post.link));
+
+// 确定文章标题：优先使用post.title或post.seo_title，都不存在则用日期作为标题
+const articleTitle = (post.title || post.seo_title) || 
+                    date(post.date, theme.article.body.meta_library.date.format);
+
+let showTitle = false;
+if (theme.article.preview.auto_title || (post.title && (post.link || post.path))) {
+  showTitle = true;
+}
+
+// 内部函数：获取作者信息
+const getAuthor = () => {
+  // 默认使用主题配置的作者信息
+  let author = theme.article.body.meta_library.author;
+  const authorId = post.author;
+  
+  // 如果文章指定了作者且存在该作者数据，则使用文章指定的作者
+  if (authorId && site?.data?.author?.[authorId]) {
+    author = site.data.author[authorId];
+  }
+  return author;
+};
+
+// 获取作者信息
+const author = getAuthor();
+
+
+// CSS类名集中管理，便于统一修改样式
+const classes = {
+  container: `post post-v3 white-box reveal ${theme.custom_css.body.effect.join(' ')}`,
+  headimg: `headimg-div ${post?.imgcover ? 'headimg-cover' : ''}`,
+  title: 'article-title',
+  description: 'md article-desc',
+  meta: 'meta-v3'
+};
+%>
+
+<!-- 文章预览卡片容器，使用schema.org的Article类型进行结构化数据标记 -->
+<div class="<%= classes.container %>" itemscope itemtype="http://schema.org/Article">
+  <!-- 标记文章的主要页面链接 -->
   <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
+  
+  <!-- 隐藏的发布者信息，使用schema.org的Organization类型 -->
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="<%- escape_html(strip_html(config.title)) %>">
   </span>
@@ -7,111 +70,154 @@
     <meta itemprop="name" content="<%- escape_html(strip_html(post.title || post.seo_title || config.title)) %>">
     <meta itemprop="description" content="<%- escape_html(strip_html(post.description || config.description)) %>">
   </span>
-  <%
-  let showPin = false;
-  if (post.pin && (post.title || theme.article.preview.auto_title) && theme.article.preview.pin_icon) {
-    showPin = true;
-  }
-  let showTitle = false;
-  if (theme.article.preview.auto_title || (post.title && (post.link || post.path))) {
-    showTitle = true;
-  }
-  let showCat = false;
-  if (post.categories && post.categories.length > 0) {
-    showCat = true;
-  }
-  let showReadmore = false;
-  if (theme.article.preview.readmore == 'always' || ((post.readmore != false) && (theme.article.preview.auto_excerpt || post.excerpt || post.description || post.link))) {
-    showReadmore = true;
-  }
-  %>
-  <% if (showPin == true) { %>
+
+  <!-- 显示置顶图标（如果计算得出需要显示） -->
+  <% if (showPin) { %>
     <div class='pin'>
-      <img alt="<%- post.title %>" src='<%- theme.article.preview.pin_icon %>'/>
+      <img alt="<%- escape_html(post.title) %>" src='<%- theme.article.preview.pin_icon %>'/>
     </div>
   <% } %>
+  
+  <!-- 显示文章头图（如果存在） -->
   <% if (post.headimg) { %>
-    <div class='headimg-div'>
+    <div class='<%= classes.headimg %>'>
       <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
-        <img itemprop="image" class='headimg' alt="<%- post.title %>" src='<%- post.headimg %>'/>
+        <img itemprop="image" class='headimg' alt="<%- escape_html(articleTitle) %>" src='<%- post.headimg %>'/>
+        <% if (post.headimg && post.imgcover) { %>
+          <div class="cover-info" position="bottom">
+            <% if (showTitle) { %>
+              <div class="text headline"><%- articleTitle %></div>
+            <% } else { %>
+              <span hidden itemprop="name headline"><%- articleTitle %></span>
+            <% } %>
+            <div class="text caption">
+              <% if (post.excerpt) { %>
+              <!-- 显示文章摘要 -->
+                <%- post.excerpt %>
+              <% } else if (post.description) { %>
+                <!-- 若没有摘要则显示描述 -->
+                <%- post.description %>
+              <% } else if (post.content) { %>
+                <!-- 若既没有摘要也没有描述，则使用文章内容 -->
+                <% if (theme.article.preview.auto_excerpt) { %>
+                  <!-- 主题启用自动摘要时，显示截断后的内容（200字符） -->
+                  <%- truncate(strip_html(post.content), {length: 200}) %>
+                <% } else if (!theme.article.preview.hide_excerpt) { %>
+                  <!-- 未禁用摘要显示时，显示完整内容 -->
+                  <%- post.content %>
+                <% } %>
+              <% } %>
+            </div>
+          </div>
+        <% } %>
       </a>
     </div>
   <% } else { %>
+    <!-- 如果没有头图，使用主题配置的默认图片作为结构化数据 -->
     <span hidden>
       <meta itemprop="image" content="<%- theme.structured_data.data.logo.path %>">
     </span>
   <% } %>
-  <% if (showTitle) { %>
-    <%
-    let pinTitle = false;
-    if (showPin && !post.headimg) {
-      pinTitle = true;
-    }
-    %>
-    <h2 class="article-title" <%- pinTitle ? 'pin' : '' %> itemprop="name headline">
-      <a href="<%- url_for(post.link || post.path) %>"  itemprop="url">
-        <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
-      </a>
-    </h2>
-  <% } else { %>
-    <span hidden itemprop="name headline">
-      <%- (post.title || post.seo_title) ? (post.title || post.seo_title) : date(post.date, theme.article.body.meta_library.date.format) %>
-    </span>
-  <% } %>
-  <div class='md article-desc' itemprop="articleBody">
-    <% if (post.excerpt) { %>
-      <%- post.excerpt %>
-    <% } else if (post.description) { %>
-      <p><%- post.description %></p>
-    <% } else if (post.content) { %>
-      <% if (theme.article.preview.auto_excerpt) { %>
-        <%- truncate(strip_html(post.content), {length: 200}) %>
-      <% } else if(!theme.article.preview.hide_excerpt) { %>
-        <%- post.content %>
-      <% } %>
+
+  <!-- 一般场景 -->
+  <% if (!(post.headimg && post.imgcover)) { %>
+    <!-- 文章标题区域，使用schema.org的name和headline属性 -->
+    <% if (showTitle) { %>
+      <h2 class="<%= classes.title %>" itemprop="name headline">
+        <a href="<%- url_for(post.link || post.path) %>" itemprop="url">
+          <%- articleTitle %>
+        </a>
+      </h2>
+    <% } else { %>
+        <span hidden itemprop="name headline"><%- articleTitle %></span>
     <% } %>
-  </div>
-  <% if (showCat || showReadmore || theme.article.preview.author) { %>
-    <div class='meta-v3' line_style='<%- theme.article.preview.line_style %>'>
-      <div>
-        <% if (theme.article.preview.author) { %>
-          <%
-          let author = theme.article.body.meta_library.author;
-          let aid = post.author;
-          if (aid && site.data && site.data.author && (aid in site.data.author)) {
-            author = site.data.author[aid];
-          }
-          %>
-          <a class='avatar' href='<%- author.url %>'><img src='<%- author.avatar %>'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="<%- author.avatar %>">
-            <meta itemprop="name" content="<%- author.name %>">
-            <meta itemprop="url" content="<%- author.url %>">
-          </span>
+    <!-- 文章摘要/描述区域，使用schema.org的articleBody属性 -->
+    <div class="<%= classes.description %>" itemprop="articleBody">
+      <% if (post.excerpt) { %>
+        <!-- 显示文章摘要 -->
+        <%- post.excerpt %>
+      <% } else if (post.description) { %>
+        <!-- 若没有摘要则显示描述 -->
+        <p><%- post.description %></p>
+      <% } else if (post.content) { %>
+        <!-- 若既没有摘要也没有描述，则使用文章内容 -->
+        <% if (theme.article.preview.auto_excerpt) { %>
+          <!-- 主题启用自动摘要时，显示截断后的内容（200字符） -->
+          <%- truncate(strip_html(post.content), {length: 200}) %>
+        <% } else if (!theme.article.preview.hide_excerpt) { %>
+          <!-- 未禁用摘要显示时，显示完整内容 -->
+          <%- post.content %>
         <% } %>
-        <time itemprop="dateCreated datePublished" datetime="<%- moment(post.date).format() %>"><%= date(post.date, config.date_format) %></time>
-        <% if (post.categories && post.categories.length > 0) { %>
-          <span class="dot"></span>
-          <%- list_categories(post.categories, {
-              show_count: false,
-              separator: '<span class="sep"></span>',
-              style: 'none'
-              }) %>
-          <% for(cat of post.categories.toArray()){ %>
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="<%- url_for(cat.path) %>" itemprop="url"><span itemprop="name"><%- cat.name %></span></a>
-            </span>
-          <% } %>
-        <% } %>
-      </div>
-      <% if (showReadmore) { %>
-        <div>
-          <a class='readmore' href='<%- url_for(post.link || post.path) %>' itemprop="url">
-            <%- post.link ? __('post.readoriginal') : __('post.readmore') %>
-          </a>
-        </div>
       <% } %>
     </div>
-  <% } %>
+    
+    <!-- 元信息区域（作者、日期、分类、标签等），仅在需要显示其中至少一项时才渲染 -->
+    <% if (showCategories || showTags || showReadmore || theme.article.preview.author) { %>
+      <div class="<%= classes.meta %>" line_style='<%- theme.article.preview.line_style %>'>
+        <div>
+          <!-- 显示作者信息（如果主题设置启用） -->
+          <% if (theme.article.preview.author) { %>
+            <a class='avatar' href='<%- author.url %>'><img src='<%- author.avatar %>'></a>
+          <% } %>
+            <!-- 作者结构化数据，使用schema.org的Person类型 -->
+            <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <meta itemprop="image" content="<%- author.avatar %>">
+              <meta itemprop="name" content="<%- author.name %>">
+              <meta itemprop="url" content="<%- author.url %>">
+            </span>
 
+          
+          <!-- 显示文章更新时间，使用schema.org的dateModified属性 -->
+          <time class="update-time" itemprop="dateModified" 
+                datetime="<%- moment(post.updated).format() %>" 
+                title="<%- date(post.updated, theme.article.body.meta_library.updated.format) %>">
+            <%= date(post.updated, config.date_format) %>
+          </time>
+          
+          <!-- 显示文章分类（如果需要显示） -->
+          <% if (showCategories) { %>
+            <span class="dot"></span>
+            <%- list_categories(post.categories, {
+                show_count: false,
+                separator: '<span class="sep"></span>',
+                style: 'none'
+              }) %>
+            
+            <!-- 分类的结构化数据 -->
+            <% post.categories.toArray().forEach(cat => { %>
+              <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <a href="<%- url_for(cat.path) %>" itemprop="url"><span itemprop="name"><%- cat.name %></span></a>
+              </span>
+            <% }) %>
+          <% } %>
+          
+          <!-- 显示文章标签（如果需要显示） -->
+          <% if (showTags) { %>
+            <span class="dot"></span>
+            <%- list_categories(post.tags, {
+                show_count: false,
+                separator: '<span class="sep"></span>',
+                style: 'none'
+              }) %>
+            
+            <!-- 标签的结构化数据 -->
+            <% post.tags.toArray().forEach(tag => { %>
+              <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <a href="<%- url_for(tag.path) %>" itemprop="url"><span itemprop="name"><%- tag.name %></span></a>
+              </span>
+            <% }) %>
+          <% } %>
+        </div>
+        
+        <!-- 阅读更多按钮 -->
+        <% if (showReadmore) { %>
+          <div>
+            <a class='readmore' href='<%- url_for(post.link || post.path) %>'>
+              <%- post.link ? __('post.readoriginal') : __('post.readmore') %>
+            </a>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+  <% } %>
 </div>
