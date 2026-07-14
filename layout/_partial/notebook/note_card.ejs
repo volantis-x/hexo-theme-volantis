@@ -1,0 +1,36 @@
+<%# 笔记卡片 %>
+<article class="md-text">
+  <% if (note.cover) { %>
+    <div class="post-cover">
+      <img src="<%= note.cover %>" alt="cover" />
+    </div>
+  <% } %>
+  <h2 class="post-title"><%= note.title %></h2>
+  <div class="excerpt<% if (theme.plugins.heti?.enable) { %> heti<% } %>">
+    <p>
+      <% if (note.excerpt) { %>
+        <%= strip_html(note.excerpt) %>
+      <% } else if (note.description) { %>
+        <%= note.description %>
+      <% } else if (note.content && theme.notebook.auto_excerpt > 0) { %>
+        <%= truncate(strip_html(note.content), { length: theme.notebook.auto_excerpt }) %>
+      <% } %>
+    </p>
+  </div>
+  <div class="meta cap">
+    <% if (note.pin) { %>
+      <span class="pin"><%- icon('solar:pin-linear') %></span>
+    <% } %>
+    <span class="cap" id="post-meta">
+      <%- icon('default:calendar') %>
+      <time datetime="<%= date_xml(note.updated || note.date) %>"><%= date(note.updated || note.date, config.date_format) %></time>
+    </span>
+    <% if (note.tags) { %>
+      <% note.tags.forEach((tag, i) => { %>
+        <span class="cap breadcrumb" %>>
+          <span class="tag"><%= tag %></span>
+        </span>
+      <% }) %>
+    <% } %>
+  </div>
+</article>
