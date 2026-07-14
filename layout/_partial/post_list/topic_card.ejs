@@ -6,9 +6,9 @@
         <img class='wiki-img' alt="<%- topic.title || topic.name %>" src='<%- topic.icon ? topic.icon : theme.default.topic %>'/>
       <% } %>
     </div>
-    <h2 class="article-title">
+    <p><span class="p logo center large">
         <%- topic.title || topic.name %>
-    </h2>
+    </span></p>
   <div class='md article-desc'>
     <% if (topic.description) { %>
       <p><%- topic.description %></p>
