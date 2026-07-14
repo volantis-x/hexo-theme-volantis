@@ -5,7 +5,7 @@ hexo.extend.generator.register('tags', function (locals) {
       layout: 'tag',
       index: true,
       title: "Tags",
-      // robots: "noindex,follow",
+      robots: "noindex,follow",
       sitemap: false,
       keywords: ["tags"],
       description: "tags",
