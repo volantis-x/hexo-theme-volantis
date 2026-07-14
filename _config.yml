@@ -72,6 +72,21 @@ site_tree:
       title: "笔记本"
       sidebar: []
       robots: "noindex,follow"
+  # 笔记列表页配置
+  notes:
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "笔记"
+      sidebar: []
+      robots: "noindex,follow"
+  # 笔记页配置
+  note:
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "笔记散页"
+      sidebar: []
+      robots: "index,follow"
+
 
 
 ######## Notebook ########
