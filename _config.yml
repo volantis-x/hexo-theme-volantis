@@ -104,14 +104,6 @@ notebook:
   # 注意：置顶的笔记会始终排在最前面。
   # 在 front-matter 中设置 pin:true|number 或 sticky:true|number 来置顶。
   order_by: -updated
-  # 是否在笔记页面显示许可协议。false 表示不显示。true 表示沿用主题许可协议内容。也可以给定具体的文本指定协议内容。
-  # 可以在笔记本 yaml 的 license 字段中覆盖此参数。
-  # 可以在笔记的 front-matter/license 中覆盖此参数。
-  license: false
-  # 是否在笔记页面显示分享按钮。
-  # 可以在笔记本 yaml 的 share 字段中覆盖此参数。
-  # 可以在笔记的 front-matter/share 中覆盖此参数。
-  share: false
 
 
 
