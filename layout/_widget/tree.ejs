@@ -1,0 +1,71 @@
+<%
+const proj = theme.wiki.tree[page.wiki]
+
+function layoutTocHeader(title) {
+  var el = ''
+  el += `<div class="widget-header dis-select">`
+  el += `<span class="name">${title || __("meta.toc")}</span>`
+  el += `</div>`
+  return el
+}
+
+function layoutDocTree(pages) {
+  var el = ''
+  for (let p of pages) {
+    if (p.title == null || p.title.length == 0) {
+      continue
+    }
+    let isActive = ''
+    if (p.path === page.path) {
+      isActive += ' active'
+    }
+    if (proj.pages.length > 1) {
+      let href = pretty_url(p.path);
+      if (p.is_homepage) {
+        href += '#start'
+      }
+      el += `<a class="link${isActive}" href="${href}">`
+      el += `<span class="toc-text">${p.title}</span>`
+      if (isActive.length > 0) {
+        el += icon('default:bookmark.active')
+      }
+      el += `</a>`
+    }
+  }
+  return el
+}
+
+
+function layoutDiv(fallback) {
+  if (proj == null) {
+    return ''
+  }
+  if (proj.pages == null || proj.pages.length == 0) {
+    return ''
+  }
+  if (proj.sections == null || proj.sections.length == 0) {
+    return ''
+  }
+  var el = ''
+  for (let sec of proj.sections) {
+    if (sec.pages.length == 0) {
+      continue
+    }
+    if (sec.title?.length > 0) {
+      el += layoutTocHeader(sec.title)
+    }
+    const docTree = layoutDocTree(sec.pages)
+    if (docTree.trim().length > 0) {
+      el += `<div class="widget-body fs14">${docTree}</div>`
+    }
+  }
+  if (el.trim().length > 0) {
+    return `<widget class="widget-wrapper doc-tree post-list">${el}</widget>`
+  } else {
+    return ''
+  }
+}
+
+%>
+
+<%- layoutDiv() %>
