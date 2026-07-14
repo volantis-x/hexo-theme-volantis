@@ -48,8 +48,6 @@ function prepareNotebook(id, info, ctx) {
   notebook.auto_excerpt ||= ctx.theme.config.notebook.auto_excerpt || 0
   notebook.per_page ??= ctx.theme.config.notebook.per_page ?? ctx.config.per_page ?? 10
   notebook.order_by ||= ctx.theme.config.notebook.order_by || '-updated'
-  notebook.license ??= ctx.theme.config.notebook.license
-  notebook.share ??= ctx.theme.config.notebook.share
 
 
   const tagMap = new Map() // tagId: tagInfo
