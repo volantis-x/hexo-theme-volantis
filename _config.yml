@@ -30,8 +30,8 @@ site_tree:
     # 以下遵守页面 Front-matter 写法
     data:
       sidebar: []
-    #  robots: noindex,nofollow
-    #  content: "404HTML"
+      #robots: noindex,nofollow
+      #content: "404HTML"
   # 标签页配置
   tag:
     enable: true # 或者设为false，自己创建页面
