@@ -15,13 +15,26 @@ hexo.extend.generator.register('notebooks', function (locals) {
         header: [],
         footer: []
       },
-      //sidebar: [],
+      sidebar: [],
       date: "2020-1-1 1:1",
       content: ''
   }, site_tree.notebooks.data||{});
-  const noteData = Object.assign(notebooksData,{
+  const notesData = Object.assign({
       layout: 'notes',
-  });
+      index: true,
+      title: "Notes",
+      robots: "noindex,follow",
+      sitemap: false,
+      keywords: ["notes"],
+      description: "notes",
+      meta: {
+        header: [],
+        footer: []
+      },
+      sidebar: [],
+      date: "2020-1-1 1:1",
+      content: ''
+  }, site_tree.notes.data||{});
   // 不用 blog 和 notebooks 时不必依赖 hexo-pagination
   const pagination = require('hexo-pagination')
 
@@ -68,13 +81,11 @@ hexo.extend.generator.register('notebooks', function (locals) {
       const notes = pages.filter(p => tag.noteSet.has(p._id))
       const slices = paginationWithEmpty(tag.path, notes, {
         perPage: notebook.per_page,
-        layout: ['notes'],
-        data: {
-          layout: 'notes',
-          menu_id: notebook.menu_id,
+        layout: [notesData.layout],
+        data: Object.assign(notesData,{
           notebook: notebook.id,
           activeTag: tag.id,
-        }
+        })
       })
       routes.push(...slices)
     }
