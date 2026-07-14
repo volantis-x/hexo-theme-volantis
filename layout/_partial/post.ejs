@@ -17,9 +17,16 @@ const showTags = post.tags && post.tags.length > 0;
 // 1. 主题设置为始终显示 或
 // 2. 主题启用自动摘要 或
 // 3. 文章未禁用readmore且存在摘要/描述/链接
-const showReadmore = theme.article.preview.readmore === 'always' || 
+const showReadmore = (()=>{
+  if (theme.article.preview.readmore === false){
+    return false;
+  }else{
+    return theme.article.preview.readmore === 'always' || 
                     theme.article.preview.auto_excerpt || 
                     (post.readmore !== false && (post.excerpt || post.description || post.link));
+  }
+})();
+
 
 // 确定文章标题：优先使用post.title或post.seo_title，都不存在则用日期作为标题
 const articleTitle = (post.title || post.seo_title) || 
