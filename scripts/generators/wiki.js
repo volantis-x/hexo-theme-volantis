@@ -31,6 +31,7 @@ hexo.extend.generator.register('wiki', function (locals) {
       filter: false
     })
   })
+  /* wiki tag 页面
   if (wiki.all_tags) {
     for (let id of Object.keys(wiki.all_tags)) {
       let tag = wiki.all_tags[id]
@@ -44,6 +45,6 @@ hexo.extend.generator.register('wiki', function (locals) {
         })
       })
     }
-  }
+  }*/
   return ret
 })
