@@ -7,6 +7,7 @@ hexo.on('generateBefore', () => {
   require('./lib/config')(hexo);
   require('./lib/tree-doc')(hexo);
   require('./lib/tree-topic')(hexo);
+  require('./lib/tree-notebooks')(hexo);
   require('./lib/stellar-tag-utils')(hexo);
   require('./lib/render-stylus')(hexo);
   if (hexo.theme.config.debug === "env") {
