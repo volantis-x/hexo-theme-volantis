@@ -12,7 +12,7 @@ hexo.extend.generator.register('index_topic', function (locals) {
         header: [],
         footer: []
       },
-      sidebar: [],
+      //sidebar: [],
       date: "2020-1-1 1:1",
       content: ''
   }, site_tree.index_topic.data||{});
