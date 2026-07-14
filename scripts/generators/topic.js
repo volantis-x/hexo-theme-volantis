@@ -4,8 +4,8 @@ hexo.extend.generator.register('index_topic', function (locals) {
       layout: 'index_topic',
       index: true,
       title: "Topic",
-      // robots: "noindex,follow",
-      // sitemap: false,
+      robots: "noindex,follow",
+      sitemap: false,
       keywords: ["topic"],
       description: "topic",
       meta: {
