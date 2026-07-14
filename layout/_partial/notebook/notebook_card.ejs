@@ -1,0 +1,10 @@
+<%# 笔记本信息卡片 %>
+<article class="md-text">
+  <div class="preview"><img src="<%= notebook.icon || theme.default.project %>" alt="icon"/></div>
+  <div class="excerpt">
+    <h2 class="post-title"><%= notebook.title || notebook.name %></h2>
+    <% if (notebook.description) { %>
+      <p><%= notebook.description %></p>
+    <% } %>
+  </div>
+</article>
