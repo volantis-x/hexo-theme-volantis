@@ -5,9 +5,16 @@
       <% } else { %>
         <img class='wiki-img' alt="<%- proj.title || proj.name %>" src='<%- proj.icon ? proj.icon : theme.default.project %>'/>
       <% } %>
-    </div>
-
-
+     </div>
+     <% if (proj.tags && proj.tags.length > 0) { %>
+       <div class="meta-v3">
+       <%- list_categories(proj.tags, {
+        show_count: false,
+        separator: '<span class="sep"></span>',
+        style: 'none'
+        }) %>
+       </div>
+     <% } %>
     <h2 class="article-title">
         <%- proj.title || proj.name %>
     </h2> 
