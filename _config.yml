@@ -29,7 +29,8 @@ site_tree:
     path: '/404.html'
     # 以下遵守页面 Front-matter 写法
     # data:
-    #   robots: noindex,nofollow
+    #  robots: noindex,nofollow
+    #  content: "404HTML"
   # 标签页配置
   tag:
     enable: true # 或者设为false，自己创建页面
