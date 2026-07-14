@@ -42,6 +42,7 @@
   color: var(--color-meta)
   >div
     display: flex
+    flex-wrap: wrap
     align-items: center
     user-select: none
   time
@@ -94,3 +95,47 @@
         opacity: 0
       &.loaded
         opacity: 1
+
+
+.headimg-div.headimg-cover
+  margin-bottom: -1.5 * $gap 
+  .headimg-a
+    height: 380px
+    @media screen and (max-width: $device-tablet)
+      height: 350px
+    @media screen and (max-width: $device-mobile)
+      height: 320px
+  &:before
+    content: ''
+    z-index: 1
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    height: 152px
+    transition: all 0.2s ease-out
+    backdrop-filter: saturate(120%) blur(1em)
+    mask: linear-gradient(transparent, rgba(0, 0, 0, 0.75), #000)
+  .cover-info
+    padding: 1.5 * $gap
+    @media screen and (max-width: $device-tablet)
+      padding: $gap
+    position: absolute
+    bottom: 0
+    width: 100%
+    line-height: 1.2
+    color: #fff
+    z-index: 2
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2))
+    .text
+      color: inherit
+      transition: all 0.2s ease-out
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+    .headline
+      margin-bottom: $gap * 0.75
+      font-weight: bold
+      line-height: 1.4
+      font-size: 1.5rem
+    .caption
+      font-size: 1rem
+  
