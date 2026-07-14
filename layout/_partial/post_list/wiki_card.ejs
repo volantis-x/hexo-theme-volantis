@@ -8,9 +8,9 @@
      </div>
      <% if (proj.tags && proj.tags.length > 0) { %>
        <div class="meta-v3">
-        <div class="caps">
+        <div class="caps new-meta-item meta-tags">
        <% for (let tag of proj.tags) { %>
-        <span class="cap"><%- tag %></span>
+        <i class="<%- theme.article.body.meta_library.tags.icon %> fa-fw" aria-hidden="true"></i><span class="cap"><%- tag %></span>
        <% } %>
         </div>
        </div>
