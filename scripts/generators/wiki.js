@@ -4,8 +4,8 @@ hexo.extend.generator.register('wiki', function (locals) {
       layout: 'index_wiki',
       index: true,
       title: "Wiki",
-      // robots: "noindex,follow",
-      // sitemap: false,
+      robots: "noindex,follow",
+      sitemap: false,
       keywords: ["wiki"],
       description: "wiki",
       meta: {
