@@ -1,0 +1,59 @@
+<%# 笔记本的标签树 %>
+<% const notebook = theme.notebooks.tree[page.notebook] %>
+<% const tagTree = notebook?.tagTree %>
+<% const isLeaf = tag => tag.id === '' || tag.children.length === 0 %>
+<% const getTagcon = tag => {
+  const tagcons = theme.notebook.tagcons || {}
+  return tagcons[tag.name] || tagcons[tag.id] || tagcons[tag.part] || tagcons[tag.part.toLowerCase()] || tagcons['']
+} %>
+
+<% function layoutTag(tag, level) { %>
+  <% const active = page.activeTag === tag.id %>
+  <a class="link<%= active ? ' active' : '' %>" href="<%= pretty_url(tag.path) %>">
+    <span class="toc-text"<% if (level > 0) { %> style="padding-left: <%= level * 0.875 %>rem;"<% } %>>
+      <% if (tag.id === '') { %>
+        <%= __('meta.all_notes') %>
+      <% } else { %>
+        <% const tagcon = item.show_tagcon && getTagcon(tag) %>
+        <% if (tagcon) { %><span class="tagcon"><%- icon(tagcon) %></span><% } %>
+        <%= tag.part %>
+      <% } %>
+    </span>
+    <span class="toc-text tag-switcher-wrapper">
+      <span class="tag-switcher" />
+    </span>
+  </a>
+<% } %>
+
+<% function layoutChildTags(tag, level) { %>
+  <% for (const child of tag.children) { %>
+    <%= tagAndSub(tagTree.get(child), level + 1) %>
+  <% } %>
+<% } %>
+
+<% function tagAndSub(tag, level) { %>
+  <% if (!tag) return '' %>
+  <% const active = page.activeTag === tag.id %>
+  <% const expanded = item.expand_all || (item.expand_active && active) || page.activeTag?.startsWith(`${tag.id}/`) %>
+  <% const classes = [isLeaf(tag) ? ' leaf-tag' : ' parent-tag', expanded ? ' expanded' : ''] %>
+  <div class="tag-subtree<%= classes.join('') %>" data-tag="<%= tag.id %>">
+    <%= layoutTag(tag, level) %>
+    <% if (!isLeaf(tag)) { %>
+      <%= layoutChildTags(tag, level) %>
+    <% } %>
+  </div>
+<% } %>
+
+<% if (tagTree) { %>
+  <widget class="widget-wrapper<%= scrollreveal(' ') %> post-list">
+    <div class="widget-header dis-select">
+      <span class="name"><%= __('meta.tag_tree') %></span>
+    </div>
+    <div class="widget-body fs14 tag-tree">
+      <%= tagAndSub(tagTree.get(''), 0) %>
+      <% for (const child of tagTree.get('').children) { %>
+        <%= tagAndSub(tagTree.get(child), 0) %>
+      <% } %>
+    </div>
+  </widget>
+<% } %>
