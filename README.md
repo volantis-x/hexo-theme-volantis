@@ -10,10 +10,10 @@
 Check your environment:
 
 ```yaml
-Hexo: 5.4 ~ latest
+Hexo: 7.3 ~ latest
 hexo-cli: 4.3 ~ latest
-node.js: 16.x LTS ~ latest LTS
-npm: 8.x ~ latest LTS
+node.js: 22.x LTS ~ latest LTS
+npm: 10.x ~ latest LTS
 ```
 
 Edit your `_config.yml`:
