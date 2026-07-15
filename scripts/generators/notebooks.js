@@ -31,7 +31,7 @@ hexo.extend.generator.register('notebooks', function (locals) {
         header: [],
         footer: []
       },
-      sidebar: [],
+      //sidebar: [],
       date: "2020-1-1 1:1",
       content: ''
   }, site_tree.notes.data||{});
