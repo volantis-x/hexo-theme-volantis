@@ -63,7 +63,7 @@ const classes = {
   <!-- 显示文章头图（如果存在） -->
   <% if (post.headimg) { %>
     <div class='<%= classes.headimg %>' position="<%- coverPosition %>">
-      <a class='headimg-a'>
+      <a class='headimg-a' href="<%- url_for(post.link || post.path) %>">
         <img itemprop="image" class='headimg' alt="<%- escape_html(articleTitle) %>" src='<%- post.headimg %>'/>
         <% if (post.headimg && post.imgcover) { %>
           <div class="cover-info" position="<%- coverPosition %>">
