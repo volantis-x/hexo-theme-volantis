@@ -45,9 +45,9 @@ function prepareNotebook(id, info, ctx) {
   }
 
   notebook.sort ||= 0
-  notebook.auto_excerpt ||= ctx.theme.config.notebook.auto_excerpt || 0
-  notebook.per_page ??= ctx.theme.config.notebook.per_page ?? ctx.config.per_page ?? 10
-  notebook.order_by ||= ctx.theme.config.notebook.order_by || '-updated'
+  notebook.auto_excerpt ||= 128
+  notebook.per_page ??=  ctx.config.per_page ?? 10
+  notebook.order_by ||= '-updated'
 
 
   const tagMap = new Map() // tagId: tagInfo
