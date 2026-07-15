@@ -152,9 +152,9 @@ const classes = {
           <% }) %>
             
             <!-- 标签的结构化数据 -->
-            <% post.tags.toArray().forEach(tag => { %>
+            <% post.tags.forEach(tag => { %>
               <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                <a href="<%- url_for(tag.path) %>" itemprop="url"><span itemprop="name"><%- tag.name %></span></a>
+                <span itemprop="name"><%- tag.name %></span>
               </span>
             <% }) %>
           <% } %>
