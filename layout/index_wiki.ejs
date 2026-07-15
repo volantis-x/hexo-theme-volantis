@@ -14,7 +14,7 @@ function layout_wiki_list() {
     }
     el += `<div class='post-wrapper'>`
     el += `<a href="${pretty_url(proj.homepage?.path || '/')}">`
-    el += partial('_partial/post_list/wiki_card', {proj: proj})
+    el += partial('_partial/card_list/wiki_card', {proj: proj})
     el += `</a>`
     el += `</div>`
   }
