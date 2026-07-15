@@ -1,13 +1,6 @@
 <%
 const proj = theme.wiki.tree[page.wiki]
 
-function layoutTocHeader(title) {
-  var el = ''
-  el += `<div class="widget-header dis-select">`
-  el += `<span class="name">${title || __("meta.toc")}</span>`
-  el += `</div>`
-  return el
-}
 
 function layoutDocTree(pages) {
   var el = ''
@@ -27,7 +20,7 @@ function layoutDocTree(pages) {
       el += `<a class="link${isActive}" href="${href}">`
       el += `<span class="toc-text">${p.title}</span>`
       if (isActive.length > 0) {
-        el += icon('default:bookmark.active')
+        el += 'icon.active'
       }
       el += `</a>`
     }
@@ -51,16 +44,13 @@ function layoutDiv(fallback) {
     if (sec.pages.length == 0) {
       continue
     }
-    if (sec.title?.length > 0) {
-      el += layoutTocHeader(sec.title)
-    }
     const docTree = layoutDocTree(sec.pages)
     if (docTree.trim().length > 0) {
-      el += `<div class="widget-body fs14">${docTree}</div>`
+      el += `<div class="widget-body">${docTree}</div>`
     }
   }
   if (el.trim().length > 0) {
-    return `<widget class="widget-wrapper doc-tree post-list">${el}</widget>`
+    return el
   } else {
     return ''
   }
@@ -68,4 +58,11 @@ function layoutDiv(fallback) {
 
 %>
 
-<%- layoutDiv() %>
+
+<%- partial('_pre') %>
+<section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
+  <%- partial('header', {item: item}) %>
+  <div class='content'>
+    <%- layoutDiv() %>
+  </div>
+</section>
