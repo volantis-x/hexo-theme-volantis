@@ -2,7 +2,7 @@
 <%- partial('_pre') %>
 <% page.comments = false; %>
 <div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
-<section class="post-list">
+<section class="post-list wiki">
   <% page.posts.each(post => { %>
     <a href="<%= pretty_url(post.link || post.path) %><%= page.activeTag ? `?tag=${page.activeTag}` : '' %>">
       <%- include('_partial/card_list/note_card', { post: post }) %>
