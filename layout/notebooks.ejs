@@ -5,7 +5,7 @@
 <% for (const notebook of Object.values(theme.notebooks.tree)) { %>
   <section class="post-list wiki">
     <a href="<%= pretty_url(notebook.base_dir) %>">
-      <%- include('_partial/notebook/notebook_card', { notebook: notebook }) %>
+      <%- include('_partial/card_list/notebook_card', { notebook: notebook }) %>
     </a>
   </section>
 <% } %>
