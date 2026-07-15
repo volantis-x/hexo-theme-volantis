@@ -18,7 +18,7 @@ hexo.extend.console.register('new-note', 'Create a new note', {
 
   const date = new Date();
   const filename = `${name}.md`;
-  const notebookDir = path.join(hexo.source_dir, 'notebooks', book);
+  const notebookDir = path.join(hexo.source_dir, hexo.notebooks_dir || 'notebooks', book);
   if (!fs.existsSync(notebookDir)) {
     fs.mkdirSync(notebookDir, { recursive: true });
   }
