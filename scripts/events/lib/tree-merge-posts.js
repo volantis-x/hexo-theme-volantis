@@ -6,7 +6,7 @@ class RelatedPage {
     this.id = page._id
     this.wiki = page.wiki
     this.topic = page.topic
-    this.title = page.title
+    this.title = page.title || page.short_title || page.seo_title
     this.path = page.path
     this.path_key = page.path.replace('.html', '')
     this.layout = page.layout
