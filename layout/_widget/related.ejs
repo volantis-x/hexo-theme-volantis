@@ -62,4 +62,10 @@ function layoutDiv() {
   }
 }
 %>
-<%- layoutDiv() %>
+<%- partial('_pre') %>
+<section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
+  <%- partial('header', {item: item}) %>
+  <div class='content'>
+    <%- layoutDiv() %>
+  </div>
+</section>
