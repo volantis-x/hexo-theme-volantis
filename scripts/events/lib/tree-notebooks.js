@@ -49,7 +49,11 @@ function prepareNotebook(id, info, ctx) {
   notebook.per_page ??=  ctx.config.per_page ?? 10
   notebook.order_by ||= '-updated'
 
+  notebook.sidebar ??= ctx.theme.config.sidebar.for.notes
+  notebook.note_sidebar ??= ctx.theme.config.sidebar.for.note
 
+
+  
   const tagMap = new Map() // tagId: tagInfo
   notebook.tagTree = tagMap
 
