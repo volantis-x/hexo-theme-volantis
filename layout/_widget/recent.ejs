@@ -12,14 +12,14 @@ function layoutDiv() {
     })
     arr = arr.sort((p1, p2) => p1.updated > p2.updated ? -1 : 1)
   } else if (page.layout === 'notebooks') {
-    arr = site.pages.filter(p => p.notebook).sort('-updated')
+    arr = [...site.pages,...site.posts].filter(p => p.notebook).sort('-updated')
   } else if (page.notebook) {
-    arr = site.pages.filter(p => p.notebook === page.notebook).sort('-updated')
+    arr = [...site.pages,...site.posts].filter(p => p.notebook === page.notebook).sort('-updated')
   } else {
     arr = site.posts.filter( p => p.title && p.title.length > 0)
     arr = arr.sort("updated", -1)
   }
-  el += '<div class="widget-body fs14">'
+  el += '<div class="widget-body">'
   arr = arr.filter(p => p.title?.length > 0)
   arr.length = item.limit
   arr.forEach(post => {
