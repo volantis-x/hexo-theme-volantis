@@ -3,8 +3,7 @@
  * 笔记预览卡片模板
  * 用于Hexo博客主题，用于渲染笔记列表中的单篇文章预览
  */
-const post = note;
-post.headimg = note.cover
+
 
 // 计算是否显示置顶图标：需同时满足文章置顶、存在标题（或自动生成标题）、主题启用置顶图标
 const showPin = post.pin && (post.title || theme.article.preview.auto_title) && theme.article.preview.pin_icon;
