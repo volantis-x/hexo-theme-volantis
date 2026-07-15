@@ -45,15 +45,14 @@
 <% } %>
 
 <% if (tagTree) { %>
-  <widget class="widget-wrapper<%= scrollreveal(' ') %> post-list">
-    <div class="widget-header dis-select">
-      <span class="name"><%= __('meta.tag_tree') %></span>
-    </div>
-    <div class="widget-body fs14 tag-tree">
+<%- partial('_pre') %>
+<section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
+  <%- partial('header', {item: item}) %>
+  <div class='content'>
       <%= tagAndSub(tagTree.get(''), 0) %>
       <% for (const child of tagTree.get('').children) { %>
         <%= tagAndSub(tagTree.get(child), 0) %>
       <% } %>
-    </div>
-  </widget>
+  </div>
+</section>
 <% } %>
