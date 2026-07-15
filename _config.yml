@@ -61,7 +61,7 @@ site_tree:
     base_dir: wiki # 只影响自动生成的页面路径
     # 以下遵守页面 Front-matter 写法
     data:
-      title: "Wiki"
+      title: "项目"
       #sidebar: []
       robots: "noindex,follow"
   # 笔记本列表页配置
@@ -237,18 +237,18 @@ cover:
   subtitle: ''
   search: A Wonderful Theme for Hexo # search bar placeholder
   features:
-    - name: Wiki
+    - name: 项目
       icon: #
       img: volantis-static/media/twemoji/assets/svg/1f5c3.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
       url: /wiki/
-    - name: 专栏
-      icon: #
-      img: volantis-static/media/twemoji/assets/svg/1f516.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
-      url: /topic/
     - name: 笔记
       icon: #
-      img: volantis-static/media/twemoji/assets/svg/1f396.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
+      img: volantis-static/media/twemoji/assets/svg/1f516.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
       url: /notebooks/
+    - name: 专栏
+      icon: #
+      img: volantis-static/media/twemoji/assets/svg/1f396.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
+      url: /topic/
     - name: 博客
       icon: #
       img: volantis-static/media/twemoji/assets/svg/1f4f0.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
