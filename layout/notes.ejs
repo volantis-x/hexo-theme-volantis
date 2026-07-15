@@ -5,7 +5,7 @@
 <section class="post-list post">
   <% page.posts.each(post => { %>
     <a href="<%= pretty_url(post.link || post.path) %><%= page.activeTag ? `?tag=${page.activeTag}` : '' %>">
-      <%- include('_partial/notebook/note_card', { note: post }) %>
+      <%- include('_partial/card_list/note_card', { note: post }) %>
     </a>
   <% }) %>
 </section>
