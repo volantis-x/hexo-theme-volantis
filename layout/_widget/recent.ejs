@@ -1,58 +1,27 @@
 <%
-function layoutDiv() {
-  var el = ``
-  var arr = [];
-  if (page.wiki) {
-    arr = theme.wiki.all_pages.filter( p => {
-      if (p.wiki) {
-        let proj = theme.wiki.tree[p.wiki];
-        return proj?.index != false;
-      }
-      return false
-    })
-    arr = arr.sort((p1, p2) => p1.updated > p2.updated ? -1 : 1)
-  } else if (page.layout === 'notebooks') {
-    arr = site.pages.filter(p => p.notebook).sort('-updated')
-  } else if (page.notebook) {
-    arr = site.pages.filter(p => p.notebook === page.notebook).sort('-updated')
-  } else {
-    arr = site.posts.filter( p => p.title && p.title.length > 0)
-    arr = arr.sort("updated", -1)
-  }
-  el += '<div class="widget-body fs14">'
-  arr = arr.filter(p => p.title?.length > 0)
-  arr.length = item.limit
-  arr.forEach(post => {
-    if (!post) { return }
-    el += `<a class="item title" href="${pretty_url(post.link || post.path)}">`
-    el += '<span class="title">'
-    if (post.wiki) {
-      const proj = theme.wiki.tree[post.wiki];
-      let name = proj?.name || post?.wiki;
-      if (name) {
-        el += '<strong>' + name + '</strong>' + '<span class="dot"></span>';
-      }
-    } else if (page.layout === 'notebooks') {
-      const notebook = theme.notebooks.tree[post.notebook]
-      const name = notebook?.name || post.notebook
-      if (name) {
-        el += '<strong>' + name + '</strong>' + '<span class="dot"></span>';
-      }
-    }
-    el += post.title + '</span>';
-    el += '</a>';
-    el += '';
-  });
-  el += '</div>';
-  return el;
+function genList() {
+  let content = '';
+  site.posts.filter(p => {
+    return p.title && p.title.length > 0;
+  }).sort("updated", -1).limit(5).each(item => {
+    content += `<li><a class="widget-last" href="${url_for(item.link || item.path)}">`;
+    content += '<div class="item">';
+    content += `<time>${date(item.updated, config.date_format)}</time>`;
+    item.categories.limit(1).forEach((cat, i) => {
+      content += `<span>${cat.name}</span>`;
+    });
+    content += '</div>';
+    content += `<span>${item.title}</span>`;
+    content += '</a></li>';
+    content += '';
+  })
+  return `<ul class="list entry navigation">${content}</ul>`;
 }
 %>
-
-
 <%- partial('_pre') %>
 <section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
   <%- partial('header', {item: item}) %>
   <div class='content'>
-    <%- layoutDiv() %>
+    <%- genList() %>
   </div>
 </section>
