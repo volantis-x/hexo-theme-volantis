@@ -4,7 +4,7 @@
 <div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
 <section class="post-list wiki">
   <% page.posts.each(post => { %>
-    <a href="<%= pretty_url(post.link || post.path) %><%= page.activeTag ? `?tag=${page.activeTag}` : '' %>">
+    <a href="<%= pretty_url(post.link || post.path) %>">
       <%- include('_partial/card_list/note_card', { post: post }) %>
     </a>
   <% }) %>
