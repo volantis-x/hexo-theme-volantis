@@ -728,6 +728,14 @@ sidebar:
       header:
         icon: fa-solid fa-clock WISTERIA
         title: 最近更新
+    # ---------------------------------------
+    # recent widget
+    recent:
+      class: recent
+      display: [desktop, mobile]
+      header:
+        icon: fa-solid fa-clock WISTERIA
+        title: 最近更新
 ############################### Sidebar ############################### > end
 
 
