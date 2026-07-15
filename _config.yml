@@ -89,23 +89,6 @@ site_tree:
 
 
 
-######## Notebook ########
-notebook:
-  # 如果没有指定 excerpt 和 description，将自动取多长的内容作为文章摘要。
-  auto_excerpt: 128
-  # 可以为某个 tag 设定图标（显示在标签树中）。
-  tagcons:
-    '': solar:hashtag-square-bold
-  # 每页显示多少篇笔记。0 表示不分页，null 则 fallback 到 hexo 的配置。
-  # 可以在笔记本 yaml 的 per_page 字段中覆盖此参数。
-  per_page: null
-  # 笔记的排序方式。默认按照 updated 降序排序。
-  # 可以在笔记本 yaml 的 order_by 字段中覆盖此参数。
-  # 注意：置顶的笔记会始终排在最前面。
-  # 在 front-matter 中设置 pin:true|number 或 sticky:true|number 来置顶。
-  order_by: -updated
-
-
 
 ############################### CDN System ###############################
 
