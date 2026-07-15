@@ -736,6 +736,18 @@ sidebar:
       header:
         icon: fa-solid fa-clock WISTERIA
         title: 最近更新
+      limit: 10 # Count of posts
+    # ---------------------------------------
+    # 页面树（与当前页面强关联的上下篇文章列表）
+    tree:
+      class: tree
+    related:
+      class: related
+    tagtree:
+      class: tagtree
+      expand_all: false # 是否展开所有节点
+      expand_active: true # 是否展开当前节点
+      show_tagcon: true # 是否显示标签 icon
 ############################### Sidebar ############################### > end
 
 
