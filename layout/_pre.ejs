@@ -8,23 +8,7 @@ if (page.cover == undefined && theme.cover) {
     page.cover = theme.cover.display.others;
   }
 }
-/*if (is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
-  if (page.sidebar == undefined) {
-    if (theme.sidebar.for_page.length == 0) {
-      page.sidebar = [];
-    } else {
-      page.sidebar = theme.sidebar.for_page;
-    }
-  }
-} else {
-  if (page.sidebar == undefined) {
-    if (theme.sidebar.for_post.length == 0) {
-      page.sidebar = [];
-    } else {
-      page.sidebar = theme.sidebar.for_post;
-    }
-  }
-}*/
+
 
 const wiki = theme.wiki.tree[page.wiki]
 const topic = theme.topic.tree[page.topic]
@@ -68,14 +52,14 @@ if (page.sidebar == undefined || page.sidebar == null) {
     sidebar = []
   }
 
-  if (topic?.leftbar) {
-    sidebar = topic.leftbar
+  if (topic?.sidebar) {
+    sidebar = topic.sidebar
   }
-  if (wiki?.leftbar) {
-    sidebar = wiki.leftbar
+  if (wiki?.sidebar) {
+    sidebar = wiki.sidebar
   }
 
-  page.leftbar = sidebar
+  page.sidebar = sidebar
 }
 
 
