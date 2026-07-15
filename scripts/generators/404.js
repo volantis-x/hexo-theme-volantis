@@ -6,7 +6,7 @@ hexo.extend.generator.register('404', function (locals) {
       body: ["article", "comments"],
       top_meta: false,
       bottom_meta: false,
-      //sidebar: [],
+      sidebar: [],
       index: false,
       robots: "noindex,nofollow",
       sitemap: false,
