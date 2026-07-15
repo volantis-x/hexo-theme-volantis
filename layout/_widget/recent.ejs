@@ -1,16 +1,6 @@
 <%
 function layoutDiv() {
-  var el = `<widget class="widget-wrapper${scrollreveal(' ')} recent post-list">`
-  // header
-  el += '<div class="widget-header dis-select">';
-  el += '<span class="name">' + __("meta.recent_update") + '</span>';
-  if (item.rss) {
-    el += '<a class="cap-action" id="rss" title="Subscribe" href="' + item.rss + '">';
-    el += icon('default:rss')
-    el += '</a>';
-  }
-  el += '</div>';
-  // body
+  var el = ``
   var arr = [];
   if (page.wiki) {
     arr = theme.wiki.all_pages.filter( p => {
@@ -53,9 +43,16 @@ function layoutDiv() {
     el += '</a>';
     el += '';
   });
-  el += '</div>';
-  el += '</widget>';
+
   return el;
 }
 %>
-<%- layoutDiv() %>
+
+
+<%- partial('_pre') %>
+<section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
+  <%- partial('header', {item: item}) %>
+  <div class='content'>
+    <%- layoutDiv() %>
+  </div>
+</section>
