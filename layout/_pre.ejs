@@ -27,8 +27,8 @@ if (page.sidebar == undefined || page.sidebar == null) {
     sidebar = notebook ? notebook.sidebar : site_tree.notes
   } else if (notebook) {
     // 笔记本文章内页
-    sidebar = site_tree.note
-  } else if (is_category() || is_tag() || is_archive() || ['category', 'tag', 'archives'].includes(page.layout)) {
+    sidebar = notebook.note_sidebar ?? site_tree.note
+  } else if (is_category() || is_tag() || is_archive() || ['category', 'tag', 'archive'].includes(page.layout)) {
     sidebar = site_tree.index_blog
   } else if (page.layout === 'index_topic') {
     // 专栏列表页等同于博客列表页
@@ -41,6 +41,8 @@ if (page.sidebar == undefined || page.sidebar == null) {
   } else if (page.wiki?.length > 0) {
     sidebar = site_tree.wiki
   } else if (page.layout === 'list') {
+    sidebar = site_tree.page
+  } else if (page.layout === 'docs') {
     sidebar = site_tree.page
   } else if (page.layout === 'page') {
     sidebar = site_tree.page
