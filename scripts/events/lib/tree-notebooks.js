@@ -5,7 +5,7 @@ class NotePage {
   constructor(page) {
     this.id = page._id
     this.notebook = page.notebook
-    this.title = page.title
+    this.title = page.title || page.short_title || page.seo_title
     this.tags = page.tags
     this.path = page.path
     this.path_key = page.path.replace('.html', '')
