@@ -12,10 +12,10 @@
   <a class="link<%= active ? ' active' : '' %>" href="<%= pretty_url(tag.path) %>">
     <span class="toc-text"<% if (level > 0) { %> style="padding-left: <%= level * 0.875 %>rem;"<% } %>>
       <% if (tag.id === '') { %>
-        <%= __('meta.all_notes') %>
+        All Notes
       <% } else { %>
         <% const tagcon = item.show_tagcon && getTagcon(tag) %>
-        <% if (tagcon) { %><span class="tagcon"><%- icon(tagcon) %></span><% } %>
+        <% if (tagcon) { %><span class="tagcon">tagcon</span><% } %>
         <%= tag.part %>
       <% } %>
     </span>
