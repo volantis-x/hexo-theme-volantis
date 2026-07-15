@@ -69,11 +69,9 @@ const classes = {
             <% if (post.topicline) { %>
               <div class="text topicline"><%- post.topicline %></div>
             <% } %>
-            <% if (showTitle) { %>
+
               <div class="text headline"><%- articleTitle %></div>
-            <% } else { %>
-              <span hidden itemprop="name headline"><%- articleTitle %></span>
-            <% } %>
+
             <div class="text caption">
               <% if (post.excerpt) { %>
               <!-- 显示文章摘要 -->
