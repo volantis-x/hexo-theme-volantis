@@ -63,6 +63,7 @@ const classes = {
   <!-- 显示文章头图（如果存在） -->
   <% if (post.headimg) { %>
     <div class='<%= classes.headimg %>' position="<%- coverPosition %>">
+      <a class='headimg-a'>
         <img itemprop="image" class='headimg' alt="<%- escape_html(articleTitle) %>" src='<%- post.headimg %>'/>
         <% if (post.headimg && post.imgcover) { %>
           <div class="cover-info" position="<%- coverPosition %>">
@@ -92,6 +93,7 @@ const classes = {
             </div>
           </div>
         <% } %>
+       </a>
     </div>
   <% } else { %>
     <!-- 如果没有头图，使用主题配置的默认图片作为结构化数据 -->
