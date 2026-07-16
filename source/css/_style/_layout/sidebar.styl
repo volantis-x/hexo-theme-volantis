@@ -372,7 +372,7 @@
   justify-content: end
   align-items: center
   &:hover
-    color: var(--theme)
+    color: var(--color-list-hl)
 
 .widget-body.tag-tree .tag-subtree.parent-tag > a .tag-switcher
   display: inline-block
@@ -401,7 +401,46 @@
   justify-content: space-between
   align-items: center
   padding: 6px 16px
-    
+  &:hover
+    color: var(--color-list-hl)
+
+.widget-body a.active
+  color: var(--color-list-hl)
+
+.widget-wrapper
+  .widget-header
+    padding-left: 6px
+    padding-right: 6px
+    display: flex
+    justify-content: space-between
+    align-items: baseline
+    line-height: 28px
+    font-weight: 500
+    font-size: $fs-13
+    color: var(--color-p)
+    .item 
+      display: block
+    >span
+      text-align: left
+      opacity 0.6
+    &:empty
+      display: none
+
+  .widget-body
+    color: var(--color-p)
+    p
+      margin-top: .5em
+      margin-bottom: .5em
+      line-height: 1.5
+
+
+
+
+
+
+
+
+
 
 
 
