@@ -3,8 +3,14 @@
 <% const tagTree = notebook?.tagTree %>
 <% const isLeaf = tag => tag.id === '' || tag.children.length === 0 %>
 <% const getTagcon = tag => {
+  const tagcons = theme.notebook.tagcons || {}
+  return tagcons[tag.name] || tagcons[tag.id] || tagcons[tag.part] || tagcons[tag.part.toLowerCase()] || tagcons['']
+}
+const icon = tag => {
   return `<i class="${theme.article.body.meta_library.tags.icon} fa-fw" aria-hidden="true"></i>`;
-} %>
+}
+
+%>
 
 <% function layoutTag(tag, level) { %>
   <% const active = page.activeTag === tag.id %>
@@ -14,7 +20,7 @@
         All Notes
       <% } else { %>
         <% const tagcon = item.show_tagcon && getTagcon(tag) %>
-        <% if (tagcon) { %><span class="tagcon">tagcon</span><% } %>
+        <% if (tagcon) { %><span class="tagcon"><%- icon(tagcon) %></span><% } %>
         <%= tag.part %>
       <% } %>
     </span>
