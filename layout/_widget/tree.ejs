@@ -1,6 +1,13 @@
 <%
 const proj = theme.wiki.tree[page.wiki]
 
+function layoutTocHeader(title) {
+  var el = ''
+  el += `<div class="widget-header dis-select">`
+  el += `<span class="name">${title || 目录}</span>`
+  el += `</div>`
+  return el
+}
 
 function layoutDocTree(pages) {
   var el = ''
@@ -43,6 +50,9 @@ function layoutDiv(fallback) {
   for (let sec of proj.sections) {
     if (sec.pages.length == 0) {
       continue
+    }
+    if (sec.title?.length > 0) {
+      el += layoutTocHeader(sec.title)
     }
     const docTree = layoutDocTree(sec.pages)
     if (docTree.trim().length > 0) {
