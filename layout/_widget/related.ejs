@@ -34,6 +34,8 @@ function relatedWiki() {
   const relatedItems = thisItemObject.relatedItems || []
   var el = ''
   for (let relatedItem of relatedItems) {
+    el += `<section class="widget ${page.widget_platform} ${page.widget_style} ${page.widget_pjax}">`
+    el += `<div class='content'>`
     el += `<widget class="widget-wrapper post-card">`
     el += `<div class="widget-header dis-select">`
     el += `<span class="name">${relatedItem.name}</span>`
@@ -51,6 +53,8 @@ function relatedWiki() {
     }
     el += `</div>`
     el += `</widget>`
+    el += `</div>`
+    el += `</section>`
   }
   return el
 }
@@ -62,11 +66,6 @@ function layoutDiv() {
   }
 }
 %>
-<% if (page.wiki?.length > 0 || page.topic?.length > 0) { %>
+
 <%- partial('_pre') %>
-<section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
-  <div class='content'>
-    <%- layoutDiv() %>
-  </div>
-</section>
-<% } %>
+<%- layoutDiv() %>
