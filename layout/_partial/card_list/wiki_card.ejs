@@ -1,0 +1,26 @@
+<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  >
+    <div class='wiki-img-div'>
+      <% if (proj.svg) { %>
+        <%- proj.svg %>
+      <% } else { %>
+        <img class='wiki-img' alt="<%- proj.title || proj.name %>" src='<%- proj.icon ? proj.icon : theme.default.project %>'/>
+      <% } %>
+     </div>
+     <% if (proj.tags && proj.tags.length > 0) { %>
+       <div class="meta-v3">
+        <div class="caps new-meta-item meta-tags">
+       <% for (let tag of proj.tags) { %>
+        <i class="<%- theme.article.body.meta_library.tags.icon %> fa-fw" aria-hidden="true"></i><span class="cap"><%- tag %></span>
+       <% } %>
+        </div>
+       </div>
+     <% } %>
+    <p><span class="md p logo center large">
+        <%- proj.title || proj.name %>
+    </span></p>
+  <div class='md article-desc'>
+    <% if (proj.description) { %>
+      <p><%- proj.description %></p>
+    <% } %>
+  </div>
+</div>

@@ -363,3 +363,89 @@
   position: sticky
   top: $navbar-height + $gap
   z-index 10
+
+// tag-tree
+.widget-body.tag-tree .tag-subtree > a > .tag-switcher-wrapper
+  width: 1.75rem
+  height: 0.875rem
+  display: flex
+  justify-content: end
+  align-items: center
+  &:hover
+    color: var(--color-list-hl)
+
+.widget-body.tag-tree .tag-subtree.parent-tag > a .tag-switcher
+  display: inline-block
+  height: 0.5rem
+  width: 0.5rem
+  border-width: 1px
+  border-style: none solid solid none
+  transform: translateX(-25%) rotate(-45deg)
+
+.widget-body.tag-tree .tag-subtree.parent-tag.expanded > a .tag-switcher
+  transform: translateY(-25%) rotate(45deg)
+
+.widget-body.tag-tree .tag-subtree.parent-tag > .tag-subtree
+  display: none
+
+.widget-body.tag-tree .tag-subtree.parent-tag.expanded > .tag-subtree
+  display: block
+
+.widget-body.tag-tree .tag-subtree .tagcon
+  font-size: smaller
+  opacity: 0.4
+  margin-right: 0.25rem
+
+.widget-body a
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 6px 16px
+  color: var(--color-list)
+  &:hover
+    border-left: $border-line solid $color-theme
+    list_hover()
+
+.widget-body a.active
+  border-left: $border-line solid $color-theme
+  list_active()
+
+.widget-wrapper
+  .widget-header
+    border-top-left-radius: $border-card
+    border-top-right-radius: $border-card
+    padding: "calc(%s - 2px)" % $gap
+    font-weight: bold
+    font-size: $fontsize-meta
+    padding-bottom: 0
+    &,a
+      color: var(--color-list)
+    >a:hover
+      color: $color-hover
+    span.name
+      margin-left: $gap * 0.5
+    .item 
+      display: block
+    >span
+      text-align: left
+      opacity 0.6
+    &:empty
+      display: none
+
+  .widget-body
+    p
+      margin-top: .5em
+      margin-bottom: .5em
+      line-height: 1.5
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+<%# 笔记列表页主体部分 %>
+<%- partial('_pre') %>
+<% page.comments = false; %>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+<section class="post-list wiki">
+  <% page.posts.each(post => { %>
+    <a href="<%= pretty_url(post.link || post.path) %>">
+      <%- include('_partial/card_list/note_card', { post: post }) %>
+    </a>
+  <% }) %>
+</section>
+</div>
+<%- partial('_partial/side') %>

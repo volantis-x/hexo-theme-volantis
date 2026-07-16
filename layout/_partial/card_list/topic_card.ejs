@@ -1,0 +1,17 @@
+<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  >
+    <div class='wiki-img-div'>
+      <% if (topic.svg) { %>
+        <%- topic.svg %>
+      <% } else { %>
+        <img class='wiki-img' alt="<%- topic.title || topic.name %>" src='<%- topic.icon ? topic.icon : theme.default.topic %>'/>
+      <% } %>
+    </div>
+    <p><span class="md p logo center large">
+        <%- topic.title || topic.name %>
+    </span></p>
+  <div class='md article-desc'>
+    <% if (topic.description) { %>
+      <p><%- topic.description %></p>
+    <% } %>
+  </div>
+</div>

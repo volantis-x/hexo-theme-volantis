@@ -88,9 +88,9 @@ const VolantisApp = (() => {
     }
 
     // 站点信息 最后活动日期
-    if (volantis.GLOBAL_CONFIG.sidebar.for_page.includes('webinfo') || volantis.GLOBAL_CONFIG.sidebar.for_post.includes('webinfo')) {
+    if (!!document.getElementById('last-update-show')) {
       const lastupd = volantis.GLOBAL_CONFIG.sidebar.webinfo.lastupd;
-      if (!!document.getElementById('last-update-show') && lastupd.enable && lastupd.friendlyShow) {
+      if (lastupd.enable && lastupd.friendlyShow) {
         document.getElementById('last-update-show').innerHTML = fn.utilTimeAgo(volantis.GLOBAL_CONFIG.lastupdate);
       }
     }
@@ -101,6 +101,18 @@ const VolantisApp = (() => {
       let timeold = (new Date().getTime() - BirthDay.getTime());
       let daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
       document.getElementById('webinfo-runtime-count').innerHTML = `${daysold} ${volantis.GLOBAL_CONFIG.sidebar.webinfo.runtime.unit}`;
+    }
+
+    // notebook sidebar.tagtree 标签展开
+    if (!!document.querySelector('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')) {
+      const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+      for (const tagSwitcher of tagSwitchers) {
+        tagSwitcher.addEventListener('click', (e) => {
+          const parent = e.target.closest('.tag-subtree.parent-tag')
+          parent.classList.toggle('expanded')
+          e.preventDefault()
+        })
+      }
     }
 
     // 消息提示 复制时弹出

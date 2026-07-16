@@ -8,23 +8,65 @@ if (page.cover == undefined && theme.cover) {
     page.cover = theme.cover.display.others;
   }
 }
-if (is_home() || is_category() || is_archive() || is_tag() || page.layout == 'list') {
-  if (page.sidebar == undefined) {
-    if (theme.sidebar.for_page.length == 0) {
-      page.sidebar = [];
-    } else {
-      page.sidebar = theme.sidebar.for_page;
-    }
+
+
+const wiki = theme.wiki.tree[page.wiki]
+const topic = theme.topic.tree[page.topic]
+const notebook = theme.notebooks.tree[page.notebook]
+
+if (page.sidebar == undefined || page.sidebar == null) {
+  const site_tree = theme.sidebar.for
+  var sidebar
+  if (is_home()) {
+    sidebar = site_tree.home
+  } else if (page.layout === 'notebooks') {
+    // 笔记本列表页
+    sidebar = site_tree.notebooks
+  } else if (page.layout === 'notes') {
+    // 笔记列表页
+    sidebar = notebook ? notebook.sidebar : site_tree.notes
+  } else if (notebook) {
+    // 笔记本文章内页
+    sidebar = notebook.note_sidebar ?? site_tree.note
+  } else if (is_category() || is_tag() || is_archive() || ['category', 'tag', 'archive'].includes(page.layout)) {
+    sidebar = site_tree.index_blog
+  } else if (page.layout === 'index_topic') {
+    // 专栏列表页等同于博客列表页
+    sidebar = site_tree.index_blog
+  } else if (page.topic?.length > 0) {
+    // 专栏文章内页等同于普通文章内页
+    sidebar = site_tree.post
+  } else if (page.layout === 'index_wiki') {
+    sidebar = site_tree.index_wiki
+  } else if (page.wiki?.length > 0) {
+    sidebar = site_tree.wiki
+  } else if (page.layout === 'list') {
+    sidebar = site_tree.page
+  } else if (page.layout === 'docs') {
+    sidebar = site_tree.page
+  } else if (page.layout === 'page') {
+    sidebar = site_tree.page
+  } else if (page.layout === 'post') {
+    sidebar = site_tree.post
+  } else if (page.layout == null || page.layout == undefined) {
+    sidebar = site_tree.page
+  } else {
+    sidebar = []
   }
-} else {
-  if (page.sidebar == undefined) {
-    if (theme.sidebar.for_post.length == 0) {
-      page.sidebar = [];
-    } else {
-      page.sidebar = theme.sidebar.for_post;
-    }
+
+  if (topic?.sidebar) {
+    sidebar = topic.sidebar
   }
+  if (wiki?.sidebar) {
+    sidebar = wiki.sidebar
+  }
+
+  page.sidebar = sidebar
 }
+
+
+
+
 if (page.sidebar == false) {
   page.sidebar = [];
 }
