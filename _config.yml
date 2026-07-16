@@ -754,7 +754,7 @@ sidebar:
         icon: fa-solid fa-clock WISTERIA
         title: 最近更新
     # ---------------------------------------
-    # recent widget # # for wiki notebooks
+    # recent widget # # for posts pages wiki notebooks
     recent:
       class: recent
       display: [desktop, mobile]
