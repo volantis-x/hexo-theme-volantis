@@ -363,3 +363,41 @@
   position: sticky
   top: $navbar-height + $gap
   z-index 10
+
+
+.widget-body.tag-tree .tag-subtree > a > .tag-switcher-wrapper
+  width: 1.75rem
+  height: 0.875rem
+  display: flex
+  justify-content: end
+  align-items: center
+  &:hover
+    color: var(--theme)
+
+.widget-body.tag-tree .tag-subtree.parent-tag > a .tag-switcher
+  display: inline-block
+  height: 0.5rem
+  width: 0.5rem
+  border-width: 1px
+  border-style: none solid solid none
+  transform: translateX(-25%) rotate(-45deg)
+
+.widget-body.tag-tree .tag-subtree.parent-tag.expanded > a .tag-switcher
+  transform: translateY(-25%) rotate(45deg)
+
+.widget-body.tag-tree .tag-subtree.parent-tag > .tag-subtree
+  display: none
+
+.widget-body.tag-tree .tag-subtree.parent-tag.expanded > .tag-subtree
+  display: block
+
+.widget-body.tag-tree .tag-subtree .tagcon
+  font-size: smaller
+  opacity: 0.4
+  margin-right: 0.25rem
+
+
+
+
+
+
