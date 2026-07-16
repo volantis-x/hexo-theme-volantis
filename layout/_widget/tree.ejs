@@ -20,7 +20,7 @@ function layoutDocTree(pages) {
       el += `<a class="link${isActive}" href="${href}">`
       el += `<span class="toc-text">${p.title}</span>`
       if (isActive.length > 0) {
-        el += 'icon.active'
+        el += '' // icon.active
       }
       el += `</a>`
     }
