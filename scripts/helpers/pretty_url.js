@@ -2,8 +2,8 @@
 
 // 站点 _config.yml 推荐配置：
 // pretty_urls:
-//  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
-//  trailing_html: false # Set to false to remove trailing '.html' from permalinks
+//   trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+//   trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 
 hexo.extend.helper.register('pretty_url', function (path = '') {
