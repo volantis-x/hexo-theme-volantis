@@ -44,9 +44,9 @@ function relatedWiki() {
       let item = theme.wiki.tree[id]
       el += `<a class="item wiki" href="${pretty_url(item.homepage?.path)}">`
       el += `<span class="title">${item.title}</span>`
-      if (item.description && item.description.length > 0) {
+      /*if (item.description && item.description.length > 0) {
         el += `<span class="excerpt">${item.description}</span>`
-      }
+      }*/ // 太长了
       el += `</a>`
     }
     el += `</div>`
@@ -62,9 +62,9 @@ function layoutDiv() {
   }
 }
 %>
+
 <%- partial('_pre') %>
 <section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
-  <%- partial('header', {item: item}) %>
   <div class='content'>
     <%- layoutDiv() %>
   </div>
