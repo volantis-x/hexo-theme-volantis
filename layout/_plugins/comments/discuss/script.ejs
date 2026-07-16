@@ -2,9 +2,9 @@
   volantis.layoutHelper("comments",`<div id="discuss_container"></div>`)
   function load_discuss() {
     if(!document.querySelectorAll("#discuss_container")[0])return;
-    volantis.js("<%- theme.cdn.discuss %>", p_discuss)
+    volantis.js("<%- theme.cdn.discuss %>", pjax_discuss)
   }
-  function p_discuss() {
+  function pjax_discuss() {
     if(!document.querySelectorAll("#discuss_container")[0])return;
     let path = pdata.commentPath;
     let placeholder = pdata.commentPlaceholder || "<%= theme.comments.discuss.ph %>" || "";
@@ -20,4 +20,11 @@
     }),pdata.commentConfig))
   }
   load_discuss();
+  volantis.pjax.push(()=>{
+    if (typeof discuss == "undefined") {
+      load_discuss();
+    } else {
+      pjax_discuss();
+    }
+  },'discuss');
 </script>

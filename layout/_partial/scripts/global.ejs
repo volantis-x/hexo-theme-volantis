@@ -3,6 +3,24 @@
   window.volantis = {}; // volantis 全局变量
   volantis.debug = "<%- theme.debug %>"; // 调试模式
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
+  /******************** volantis.EventListener ********************************/
+  // 事件监听器 see: /source/js/app.js
+  volantis.EventListener = {}
+  // 这里存放pjax切换页面时将被移除的事件监听器
+  volantis.EventListener.list = []
+  //构造方法
+  function volantisEventListener(type, f, ele) {
+    this.type = type
+    this.f = f
+    this.ele = ele
+  }
+  // 移除事件监听器
+  volantis.EventListener.remove = () => {
+    volantis.EventListener.list.forEach(function (i) {
+      i.ele.removeEventListener(i.type, i.f, false)
+    })
+    volantis.EventListener.list = []
+  }
   /******************** volantis.dom.$ ********************************/
   // 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
   function volantisDom(ele) {
@@ -35,8 +53,12 @@
       return this.ele
     }
     // ==============================================================
-    this.ele.on = (c, f) => {
+    // 参数 r 为 true 表示pjax切换页面时事件监听器将被移除，false不移除
+    this.ele.on = (c, f, r = 1) => {
       this.ele.addEventListener(c, f, false)
+      if (r) {
+        volantis.EventListener.list.push(new volantisEventListener(c, f, this.ele))
+      }
       return this.ele
     }
     this.ele.click = (f, r) => {
@@ -111,6 +133,22 @@
       };
     }
   }
+  /******************** Pjax ********************************/
+  // /layout/_plugins/pjax/index.ejs
+  // volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
+  // volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
+  // volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
+  volantis.pjax = {};
+  volantis.pjax.method = {
+    complete: new RunItem(),
+    error: new RunItem(),
+    send: new RunItem(),
+  };
+  volantis.pjax = Object.assign(volantis.pjax, {
+    push: volantis.pjax.method.complete.push,
+    error: volantis.pjax.method.error.push,
+    send: volantis.pjax.method.send.push,
+  });
   /******************** RightMenu ********************************/
   // volantis.rightmenu.handle(callBack[,"callBackName"]) 外部菜单项控制
   // 可在 volantis.mouseEvent 处获取右键事件
@@ -218,7 +256,7 @@
   }
   /************************ layoutHelper *****************************************/
   volantis.layoutHelper = (helper, html, opt) => {
-    opt = Object.assign({ clean: false}, opt)
+    opt = Object.assign({ clean: false, pjax: true }, opt)
     function myhelper(helper, html, clean) {
       volantis.tempDiv = document.createElement("div");
       volantis.tempDiv.innerHTML = html;
@@ -231,6 +269,11 @@
       }
     }
     myhelper(helper, html, opt.clean)
+    if (opt.pjax) {
+      volantis.pjax.push(() => {
+        myhelper(helper, html, opt.clean)
+      }, "layoutHelper-" + helper)
+    }
   }
   /****************************** 滚动事件处理 ****************************************/
   volantis.scroll = {

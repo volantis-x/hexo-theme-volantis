@@ -1,0 +1,83 @@
+<!--
+  pjax重载区域接口：
+  1.  <pjax></pjax> 标签 pjax 标签必须存在于所有页面 否则 pjax error
+  2.  script[data-pjax]
+  3.  .pjax-reload script
+  4.  .pjax
+-->
+<%
+  var excludeList = theme.plugins.pjax.exclude || [];
+%>
+
+<%- js(theme.cdn.pjax) %>
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"]):not([onclick="return!1"]):not([target="_blank"]):not([target="view_window"]):not([href$=".xml"])',
+        // 这里的 selectors 需要保证每个页面都含有相同的数目
+        selectors: [
+          "head title",
+          "head meta[name=keywords]",
+          "head meta[name=description]",
+          <% if (!theme.plugins.pjax.cover){ %>"#l_cover",<% } %>
+          "#l_main",
+          "#pjax-header-nav-list",
+          ".pjax",
+          "pjax", // <pjax></pjax> 标签
+        ],
+        cacheBust: <%= theme.plugins.pjax.cacheBust %>,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: <%= theme.plugins.pjax.timeout %>,
+        <% if (theme.debug === "pjax"){ %> debug: true,<% } %>
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var excludeList = <%- '["' + excludeList.join('", "') + '"]' %>;
+        if (excludeList[0] != "") {
+          excludeList.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 这里的 script 不需要保证每个页面都含有相同的数目
+      document.querySelectorAll('script[data-pjax], .pjax-reload script').forEach(e=>{
+        const code = e.text || e.textContent || e.innerHTML || '';
+        const script = document.createElement('script');
+        Object.keys(e.attributes).forEach(i=>{
+          script.setAttribute(e.attributes[i].nodeName,e.attributes[i].nodeValue)
+        })
+        if (code) {
+          script.appendChild(document.createTextNode(code));
+        }
+        e.parentNode.replaceChild(script, e);
+      });
+
+      // 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.complete.start();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      if(volantis.debug === "pjax") {
+        console.error(e);
+        console.log('pjax error: \n' + JSON.stringify(e));
+      }else{
+        // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+        volantis.pjax.method.error.start();
+        window.location.href = e.triggerElement.href;
+      }
+    });
+</script>

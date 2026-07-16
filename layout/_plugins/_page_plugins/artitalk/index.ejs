@@ -1,10 +1,10 @@
 <script>
-  volantis.layoutHelper("page-plugins",`<div id="artitalk_main"></div>`)
+  volantis.layoutHelper("page-plugins",`<div id="artitalk_main"></div>`,{pjax:false}) // 外层有 pjax 标签
 </script>
 <script>
   volantis.import.jQuery().then(()=>{
     volantis.js("<%= theme.cdn.artitalk %>").then(()=>{
-      new Artitalk(<%- JSON.stringify(theme.plugins.artitalk) %>)
+      new Artitalk(Object.assign(<%- JSON.stringify(theme.plugins.artitalk) %>, {}))
     })
   })
 </script>

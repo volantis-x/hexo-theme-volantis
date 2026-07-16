@@ -2,6 +2,7 @@
   volantis.css("<%- theme.cdn.pace_css %>");
   volantis.js("<%- theme.cdn.pace_js %>").then(() => {
     Pace.options.restartOnPushState = false;
+    volantis.pjax.send(Pace.restart);
     // 阅读进度
     volantis.scroll.push(() => {
       Pace.stop();

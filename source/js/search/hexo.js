@@ -67,6 +67,7 @@ let SearchService = (() => {
       results = `<div id="resule-hits-empty"><i class="fa-solid fa-box-open"></i><p>${volantis.GLOBAL_CONFIG.languages.search.hits_empty.replace(/\$\{query}/, fn.queryText)}</p></div>`
     }
     document.querySelector("#u-search .modal-results").innerHTML = results;
+    window.pjax && pjax.refresh(document.querySelector("#u-search"));
     document.addEventListener("keydown", function f(event) {
       if (event.code === "Escape") {
         fn.close();
@@ -191,3 +192,7 @@ let SearchService = (() => {
 Object.freeze(SearchService);
 
 SearchService.init();
+document.addEventListener("pjax:success", SearchService.init);
+document.addEventListener("pjax:send", function () {
+  document.querySelector("#u-search").style.display = "none";
+});

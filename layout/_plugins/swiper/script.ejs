@@ -3,13 +3,13 @@
     if (!document.querySelectorAll(".swiper-container")[0]) return;
     volantis.css("<%- theme.cdn.swiper_css %>");
     volantis.js("<%- theme.cdn.swiper_js %>").then(() => {
-      p_swiper();
+      pjax_swiper();
     });
   }
 
   load_swiper();
 
-  function p_swiper() {
+  function pjax_swiper() {
     volantis.swiper = new Swiper('.swiper-container', {
       slidesPerView: 'auto',
       spaceBetween: 8,
@@ -26,4 +26,12 @@
     });
   }
 
+  volantis.pjax.push(() => {
+    if (!document.querySelectorAll(".swiper-container")[0]) return;
+    if (typeof volantis.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
 </script>

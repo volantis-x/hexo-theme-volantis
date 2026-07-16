@@ -13,7 +13,7 @@
     return document.getElementById("giscus_container");
   }
 
-  function p_giscus() {
+  function pjax_giscus() {
     const HEAD = check_giscus();
     if (!HEAD) return;
     let cfg = Object.assign(<%- JSON.stringify(theme.comments.giscus) %>,pdata.commentConfig)
@@ -41,6 +41,7 @@
     const giscusIframe = document.querySelector('iframe.giscus-frame');
     giscusIframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
   }
-  p_giscus();
+  pjax_giscus();
+  volantis.pjax.push(pjax_giscus);
   volantis.dark.push(dark_giscus);
 </script>

@@ -6,7 +6,7 @@
 <% }) %>
 <script>
 <% if(theme.plugins.prismjs.copy_code){ %>
-  function p_prismjs_copyCode(){
+  function pjax_prismjs_copyCode(){
     if (!document.querySelector("pre")) {
       return;
     }
@@ -19,6 +19,7 @@
     })
     VolantisApp.utilCopyCode(".code-toolbar pre")
   }
-  volantis.requestAnimationFrame(p_prismjs_copyCode)
+  volantis.requestAnimationFrame(pjax_prismjs_copyCode)
+  volantis.pjax.push(pjax_prismjs_copyCode)
 <% } %>
 </script>

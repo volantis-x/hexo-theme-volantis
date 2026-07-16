@@ -72,6 +72,7 @@
     document.addEventListener("DOMContentLoaded", ()=>{
       SetAPlayerPlugin();
     });
+    volantis.pjax.push(SetAPlayerPlugin);
   <% } else { %>
     volantis.js("<%- theme.cdn.aplayer_js %>").then(()=>{
       document.querySelectorAll('.aplayer-local').forEach(e=>{
@@ -91,7 +92,7 @@
         });
       })
 
-      // post.music 迷你模式 todo...
+      // post.music 迷你模式 pjax todo...
       // document.querySelectorAll('.aplayer-local-min').forEach(e=>{
       //   // todo...
       // })

@@ -14,7 +14,7 @@
     <% } %>
     (d.head || d.body).appendChild(s);
   }
-  function p_isso() {
+  function pjax_isso() {
     if (window.Isso) {
       window.Isso.init();
       window.Isso.fetchComments();
@@ -22,5 +22,6 @@
       loadIsso();
     }
   }
-  p_isso();
+  pjax_isso();
+  volantis.pjax.push(pjax_isso);
 </script>
