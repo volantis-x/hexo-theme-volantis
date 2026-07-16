@@ -53,7 +53,7 @@ const icon = tag => {
 <%- partial('_pre') %>
 <section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
   <%- partial('header', {item: item}) %>
-  <div class='content tag-tree'>
+  <div class='content widget-body tag-tree'>
       <%= tagAndSub(tagTree.get(''), 0) %>
       <% for (const child of tagTree.get('').children) { %>
         <%= tagAndSub(tagTree.get(child), 0) %>
