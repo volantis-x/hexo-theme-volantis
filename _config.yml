@@ -609,10 +609,6 @@ comments:
 ############################### Sidebar ############################### > start
 sidebar:
   position: right # left right
-  # 主页、分类、归档等独立页面
-  #for_page: [blogger, category, tagcloud, donate]
-  # layout: docs/post 这类文章页面
-  #for_post: [toc]
   ##########################
   # 站点主结构 Sidebar 配置
   for:
@@ -650,7 +646,7 @@ sidebar:
       url: /about/
       title:
       subtitle:
-      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
         - icon: fa-solid fa-rss
           url: /atom.xml
