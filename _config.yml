@@ -766,12 +766,9 @@ sidebar:
     # 页面树（与当前页面强关联的上下篇文章列表） # only for wiki
     tree:
       class: tree
-    # 相关文章 # for 专栏 wiki
+    # 强关联的上下文章 # for 专栏 wiki(按分类)
     related:
       class: related
-      header:
-        icon: fa-solid fa-clock
-        title: related
     # 标签树 # only for notes
     tagtree:
       class: tagtree
