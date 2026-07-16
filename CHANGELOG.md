@@ -1,5 +1,20 @@
 # Changelog
 
+## [6.1.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.6...v6.1.0) (2026-07-16)
+
+
+### Features
+
+* readmore 支持全局关闭 ([af50455](https://github.com/volantis-x/hexo-theme-volantis/commit/af50455d8827e82303caf269f600ef00fb8c7f4c))
+* Sidebar 配置变更 ([af50455](https://github.com/volantis-x/hexo-theme-volantis/commit/af50455d8827e82303caf269f600ef00fb8c7f4c))
+* 新增 wiki，笔记，专栏 ([#974](https://github.com/volantis-x/hexo-theme-volantis/issues/974)) ([af50455](https://github.com/volantis-x/hexo-theme-volantis/commit/af50455d8827e82303caf269f600ef00fb8c7f4c))
+* 自动生成404，标签，分类页面 ([af50455](https://github.com/volantis-x/hexo-theme-volantis/commit/af50455d8827e82303caf269f600ef00fb8c7f4c))
+
+
+### Bug Fixes
+
+* [#935](https://github.com/volantis-x/hexo-theme-volantis/issues/935) ([95223b7](https://github.com/volantis-x/hexo-theme-volantis/commit/95223b73b57a54069d274aba3ba2521dbfeb520d))
+
 ## [6.0.6](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.5...v6.0.6) (2026-07-12)
 
 
