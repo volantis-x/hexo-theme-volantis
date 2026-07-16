@@ -1,11 +1,11 @@
 <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= post.layout %>" id="<%= post.layout %>" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="<%- config.title %>">
+    <meta itemprop="name" content="<%- escape_html(strip_html(config.title)) %>">
   </span>
   <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="name" content="<%- post.title || post.seo_title || config.title %>">
-    <meta itemprop="description" content="<%- post.description || config.description %>">
+    <meta itemprop="name" content="<%- escape_html(strip_html(post.title || post.seo_title || config.title)) %>">
+    <meta itemprop="description" content="<%- escape_html(strip_html(post.description || config.description)) %>">
   </span>
   <%- partial('meta', {post: post, position: 'top'}) %>
   <div id="layoutHelper-page-plugins"></div>
@@ -137,10 +137,10 @@
     site.pages.each(function(p){
       if ((p.title || p.seo_title) && p.path && (p.group == post.group)) {
         if (p.order < post.order && (p.order > prev.order || prev.order == undefined)) {
-          prev = {title: p.title || p.seo_title, exp: truncate(strip_html(p.content), {length: 100}), path: p.path, order: p.order};
+          prev = {title: strip_html(p.title || p.seo_title), exp: p.description ? strip_html(p.description) : truncate(strip_html(p.content), {length: 100}), path: p.path, order: p.order};
         }
         if (p.order > post.order && (p.order < next.order || next.order == undefined)) {
-          next = {title: p.title || p.seo_title, exp: truncate(strip_html(p.content), {length: 100}), path: p.path, order: p.order};
+          next = {title: strip_html(p.title || p.seo_title), exp: p.description ? strip_html(p.description) : truncate(strip_html(p.content), {length: 100}), path: p.path, order: p.order};
         }
       }
     })
@@ -168,13 +168,13 @@
       <% if (post.prev) { %>
         <a class='prev' href='<%- url_for(post.prev.path) %>'>
           <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><%- post.prev.title || post.prev.seo_title || date(post.date, theme.article.body.meta_library.date.format) %></p>
-          <p class='content'><%- truncate(strip_html(page.prev.content), {length: 100}) %></p>
+          <p class='content'><%- page.prev.description ? strip_html(page.prev.description) : truncate(strip_html(page.prev.content), {length: 100}) %></p>
         </a>
       <% } %>
       <% if (post.next) { %>
         <a class='next' href='<%- url_for(post.next.path) %>'>
-          <p class='title'><%- post.next.title || post.next.seo_title || date(post.date, theme.article.body.meta_library.date.format) %><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'><%- truncate(strip_html(page.next.content), {length: 100}) %></p>
+          <p class='title'><%- strip_html(post.next.title || post.next.seo_title || date(post.date, theme.article.body.meta_library.date.format)) %><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'><%- page.next.description ? strip_html(page.next.description) : truncate(strip_html(page.next.content), {length: 100}) %></p>
         </a>
       <% } %>
     </div>

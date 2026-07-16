@@ -36,10 +36,10 @@ module.exports = (hexo, option) => {
   blogposting.wordCount = hexo.strip_html(post.excerpt).length;
 
   if (post.date) {
-    blogposting.datePublished = post.date.toISOString();
+    blogposting.datePublished = new Date(post.date).toISOString();
   }
   if (post.updated) {
-    blogposting.dateModified = post.updated.toISOString();
+    blogposting.dateModified = new Date(post.updated).toISOString();
   }
   if (post.categories && post.categories.length) {
     if (post.categories.data) {
@@ -64,7 +64,7 @@ module.exports = (hexo, option) => {
       width: 1024,
       height: 768,
     };
-  }else{
+  } else {
     blogposting.image = {
       "@type": "ImageObject",
       url: option.logo.path,

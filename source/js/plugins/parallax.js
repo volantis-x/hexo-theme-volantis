@@ -14,7 +14,7 @@ Parallax.slidein = () => {
       opac = opac + 0.1;
       slider.style.opacity = opac;
       setTimeout(Parallax.slidein, Parallax.options.fade / 10);
-    }else{
+    } else {
       slider.style.opacity = 1;
     }
   } else {

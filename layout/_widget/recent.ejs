@@ -1,0 +1,58 @@
+<%
+function layoutDiv() {
+  var el = `<widget class="widget-wrapper} recent post-list">`
+  // body
+  var arr = [];
+  if (page.wiki || page.layout == 'index_wiki') {
+    arr = theme.wiki.all_pages.filter( p => {
+      if (p.wiki) {
+        let proj = theme.wiki.tree[p.wiki];
+        return proj?.index != false;
+      }
+      return false
+    })
+    arr = arr.sort((p1, p2) => p1.updated > p2.updated ? -1 : 1)
+  } else if (page.layout === 'notebooks') {
+    arr = site.pages.filter(p => p.notebook).sort('-updated')
+  } else if (page.notebook) {
+    arr = site.pages.filter(p => p.notebook === page.notebook).sort('-updated')
+  } else {
+    arr = site.posts.filter( p => p.title && p.title.length > 0)
+    arr = arr.sort("updated", -1)
+  }
+  el += '<div class="widget-body fs14">'
+  arr = arr.filter(p => p.title?.length > 0)
+  arr.length = item.limit
+  arr.forEach(post => {
+    if (!post) { return }
+    el += `<a class="item title" href="${pretty_url(post.link || post.path)}">`
+    el += '<span class="title">'
+    if (post.wiki) {
+      const proj = theme.wiki.tree[post.wiki];
+      let name = proj?.name || post?.wiki;
+      if (name) {
+        el += '<strong>' + name + '</strong>' + '<span class="dot"></span>';
+      }
+    } else if (page.layout === 'notebooks') {
+      const notebook = theme.notebooks.tree[post.notebook]
+      const name = notebook?.name || post.notebook
+      if (name) {
+        el += '<strong>' + name + '</strong>' + '<span class="dot"></span>';
+      }
+    }
+    el += post.title + '</span>';
+    el += '</a>';
+    el += '';
+  });
+  el += '</div>';
+  el += '</widget>';
+  return el;
+}
+%>
+<%- partial('_pre') %>
+<section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
+  <%- partial('header', {item: item}) %>
+  <div class='content'>
+    <%- layoutDiv() %>
+  </div>
+</section>

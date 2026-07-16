@@ -69,10 +69,10 @@ function merge(target, source) {
   }
   return target;
 }
-function getType(file){
-  var filename=file;
-  var index1=filename.lastIndexOf(".");
-  var index2=filename.length;
-  var type=filename.substring(index1+1,index2);
+function getType(file) {
+  var filename = file;
+  var index1 = filename.lastIndexOf(".");
+  var index2 = filename.length;
+  var type = filename.substring(index1 + 1, index2);
   return type;
 }

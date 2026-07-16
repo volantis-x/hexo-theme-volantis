@@ -1,7 +1,5 @@
 'use strict';
 
-const fs = require('hexo-fs');
-
 function lazyProcess(htmlContent, target) {
   const cfg = this.theme.config.plugins.lazyload;
   if (cfg == undefined || cfg.enable != true) {
@@ -13,7 +11,7 @@ function lazyProcess(htmlContent, target) {
     }
   }
   const loadingImg = cfg.loadingImg;
-  return htmlContent.replace(/<img(.*?)src="(.*?)"(.*?)>/gi, function(str, p1, p2) {
+  return htmlContent.replace(/<img(.*?)src="(.*?)"(.*?)>/gi, function (str, p1, p2) {
     // might be duplicate
     if (/data-srcset/gi.test(str)) {
       return str;
@@ -57,12 +55,12 @@ function lazyProcess(htmlContent, target) {
   });
 }
 
-let processPost = function(data) {
+let processPost = function (data) {
   data.content = lazyProcess.call(this, data.content, 'post');
   return data;
 };
 
-let processSite = function(htmlContent) {
+let processSite = function (htmlContent) {
   return lazyProcess.call(this, htmlContent, 'site');
 };
 

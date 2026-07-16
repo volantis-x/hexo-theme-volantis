@@ -1,5 +1,75 @@
 # Changelog
 
+## [6.1.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.6...v6.1.0) (2026-07-16)
+
+
+### Features
+
+* readmore 支持全局关闭 ([af50455](https://github.com/volantis-x/hexo-theme-volantis/commit/af50455d8827e82303caf269f600ef00fb8c7f4c))
+* Sidebar 配置变更 ([af50455](https://github.com/volantis-x/hexo-theme-volantis/commit/af50455d8827e82303caf269f600ef00fb8c7f4c))
+* 新增 wiki，笔记，专栏 ([#974](https://github.com/volantis-x/hexo-theme-volantis/issues/974)) ([af50455](https://github.com/volantis-x/hexo-theme-volantis/commit/af50455d8827e82303caf269f600ef00fb8c7f4c))
+* 自动生成404，标签，分类页面 ([af50455](https://github.com/volantis-x/hexo-theme-volantis/commit/af50455d8827e82303caf269f600ef00fb8c7f4c))
+
+
+### Bug Fixes
+
+* [#935](https://github.com/volantis-x/hexo-theme-volantis/issues/935) ([95223b7](https://github.com/volantis-x/hexo-theme-volantis/commit/95223b73b57a54069d274aba3ba2521dbfeb520d))
+
+## [6.0.6](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.5...v6.0.6) (2026-07-12)
+
+
+### Bug Fixes
+
+* [#840](https://github.com/volantis-x/hexo-theme-volantis/issues/840) ([c076ef0](https://github.com/volantis-x/hexo-theme-volantis/commit/c076ef0825696b118df7be6bc83448d5bef062c7))
+* [#888](https://github.com/volantis-x/hexo-theme-volantis/issues/888) ([4db506f](https://github.com/volantis-x/hexo-theme-volantis/commit/4db506fc14e387c47290bb53d93ff149db7d5721))
+* [#923](https://github.com/volantis-x/hexo-theme-volantis/issues/923) [#866](https://github.com/volantis-x/hexo-theme-volantis/issues/866) ([1076c15](https://github.com/volantis-x/hexo-theme-volantis/commit/1076c15fd076d9eace0cb79583163c46afda5079))
+* [#928](https://github.com/volantis-x/hexo-theme-volantis/issues/928) ([00765ac](https://github.com/volantis-x/hexo-theme-volantis/commit/00765ac90af02358b90bf6ffb248ac5f39b66f3f))
+* [#967](https://github.com/volantis-x/hexo-theme-volantis/issues/967) ([acb334f](https://github.com/volantis-x/hexo-theme-volantis/commit/acb334f4944ef72c4c54d6fa3ce85f2991419292))
+
+## [6.0.5](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.4...v6.0.5) (2026-07-08)
+
+
+### Bug Fixes
+
+* 修复锚点定位 ([f589671](https://github.com/volantis-x/hexo-theme-volantis/commit/f58967153414817eafc59fceb48b60184f6f3dd9))
+
+## [6.0.4](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.3...v6.0.4) (2026-06-09)
+
+
+### Bug Fixes
+
+* bootcdn被投毒 ([e8f7c33](https://github.com/volantis-x/hexo-theme-volantis/commit/e8f7c33dddb2d23066e12ce81ad168bc0e3da0a1))
+
+## [6.0.3](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.2...v6.0.3) (2026-05-17)
+
+
+### Bug Fixes
+
+* debounce ([#969](https://github.com/volantis-x/hexo-theme-volantis/issues/969)) ([faf3590](https://github.com/volantis-x/hexo-theme-volantis/commit/faf35904b8fcb25f888314c9031af5f7fda26526))
+
+## [6.0.2](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.1...v6.0.2) (2025-11-21)
+
+
+### Bug Fixes
+
+* offsetHeight ([746201a](https://github.com/volantis-x/hexo-theme-volantis/commit/746201af1da5afa04800d8d83dfeb014b87014d7))
+* remove noarchive ([dc40369](https://github.com/volantis-x/hexo-theme-volantis/commit/dc403691071a07cb433de34becdb0d35e59c9afa))
+
+## [6.0.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.0...v6.0.1) (2025-11-17)
+
+
+### Bug Fixes
+
+* escape_html & strip_html ([#964](https://github.com/volantis-x/hexo-theme-volantis/issues/964)) ([2c9b4b0](https://github.com/volantis-x/hexo-theme-volantis/commit/2c9b4b00df3dcd73d1337fbf6abcc63695b824ca))
+
+## [6.0.0](https://github.com/volantis-x/hexo-theme-volantis/compare/6.0.0...v5.8.1) (2025-11-14)
+
+
+### Bug Fixes
+
+* pjax ([#950](https://github.com/volantis-x/hexo-theme-volantis/issues/950)) ([01489d0](https://github.com/volantis-x/hexo-theme-volantis/commit/01489d0a09a572a18e90afd693d3247508139885))
+* pjax 修复内存泄露引起的页面卡顿问题 ([204b01f](https://github.com/volantis-x/hexo-theme-volantis/commit/204b01f89245361e9cbaf42451e703a2120b7a78))
+
 ## [5.7.6](https://github.com/volantis-x/hexo-theme-volantis/compare/v5.7.5...v5.7.6) (2022-09-05)
 
 

@@ -6,7 +6,7 @@
 var util = require('hexo-util');
 
 // Examples of helper
-hexo.extend.helper.register('htmlGenerator', function(args) {
+hexo.extend.helper.register('htmlGenerator', function (args) {
   if (!args || !args.json || args.json.length == 0) return '';
   const cfg = hexo.theme.config.article.body.footer_widget.related_posts;
   var returnHTML = '';
@@ -35,10 +35,10 @@ hexo.extend.helper.register('htmlGenerator', function(args) {
     ret += '<span class="title">' + list.title + '</span>';
 
     if (list.excerpt && list.excerpt.length > 0) {
-      ret += '<span class="excerpt">' + util.truncate(util.stripHTML(list.excerpt), {length: 64}) + '</span>';
+      ret += '<span class="excerpt">' + util.truncate(util.stripHTML(list.excerpt), { length: 64 }) + '</span>';
     }
 
-    ret +=  '</a>';
+    ret += '</a>';
     return ret;
   }
 

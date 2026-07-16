@@ -66,6 +66,9 @@
   <%_ } _%>
   <%- partial('../_plugins/end-of-support/script') %>
   <%- partial('scripts/global') %>
+  <% if (theme.structured_data && theme.structured_data.enable) { %>
+    <%- structured_data() %>
+  <% } %>
   <!-- import head_end begin -->
   <%_ if (config.import && config.import.head_end){ _%>
     <%_ getList(config.import.head_end).forEach(function(item){ _%>

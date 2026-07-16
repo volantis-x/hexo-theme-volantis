@@ -26,15 +26,21 @@ const locationHash = () => {
   if (window.location.hash) {
     let locationID = decodeURI(window.location.hash.split('#')[1]).replace(/\ /g, '-');
     let target = document.getElementById(locationID);
+    if (locationID && !target) {
+      locationID = decodeURIComponent(window.location.hash.split('#')[1]).replace(/\ /g, '-');
+      target = document.getElementById(locationID);
+    }
     if (target) {
       setTimeout(() => {
         if (window.location.hash.startsWith('#fn')) { // hexo-reference https://github.com/volantis-x/hexo-theme-volantis/issues/647
-          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant', observer: true })
+          VolantisApp.scrolltoElement(target,VolantisApp.getScrollCorrection() - VolantisApp.REM, 'instant', true);
+        } else if (window.location.hash.startsWith('#mjx')) { // mathjax
+          VolantisApp.scrolltoElement(target,VolantisApp.getScrollCorrection() + VolantisApp.REM, 'instant', true);
         } else {
-          // 锚点中上半部有大片空白 高度大概是 volantis.dom.header.offsetHeight
-          volantis.scroll.to(target, { addTop: 5, behavior: 'instant', observer: true })
+          // 文章标题锚点 锚点中上半部有大片空白 高度大概是 volantis.dom.header.offsetHeight=64
+          VolantisApp.scrolltoElement(target,VolantisApp.REM, 'instant', true);
         }
-      }, 1000)
+      }, 500)
     }
   }
 }
@@ -44,11 +50,12 @@ Object.freeze(locationHash);
 const VolantisApp = (() => {
   const fn = {},
     COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fa-solid fa-copy"></i><span>COPY</span></button>';
+  const REM = parseFloat(getComputedStyle(document.documentElement).fontSize); // 16
   let scrollCorrection = 80;
 
   fn.init = () => {
     if (volantis.dom.header) {
-      scrollCorrection = volantis.dom.header.clientHeight + 16;
+      scrollCorrection = volantis.dom.header.clientHeight + REM; // 64+16
     }
 
     window.onresize = () => {
@@ -63,7 +70,7 @@ const VolantisApp = (() => {
         fn.setHeaderSearch();
       }
     }
-    volantis.scroll.push(fn.scrollEventCallBack, "scrollEventCallBack")
+    volantis.scroll.push(volantis.debounce(fn.scrollEventCallBack), "scrollEventCallBack")
   }
 
   fn.event = () => {
@@ -81,9 +88,9 @@ const VolantisApp = (() => {
     }
 
     // 站点信息 最后活动日期
-    if (volantis.GLOBAL_CONFIG.sidebar.for_page.includes('webinfo') || volantis.GLOBAL_CONFIG.sidebar.for_post.includes('webinfo')) {
+    if (!!document.getElementById('last-update-show')) {
       const lastupd = volantis.GLOBAL_CONFIG.sidebar.webinfo.lastupd;
-      if (!!document.getElementById('last-update-show') && lastupd.enable && lastupd.friendlyShow) {
+      if (lastupd.enable && lastupd.friendlyShow) {
         document.getElementById('last-update-show').innerHTML = fn.utilTimeAgo(volantis.GLOBAL_CONFIG.lastupdate);
       }
     }
@@ -96,6 +103,18 @@ const VolantisApp = (() => {
       document.getElementById('webinfo-runtime-count').innerHTML = `${daysold} ${volantis.GLOBAL_CONFIG.sidebar.webinfo.runtime.unit}`;
     }
 
+    // notebook sidebar.tagtree 标签展开
+    if (!!document.querySelector('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')) {
+      const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+      for (const tagSwitcher of tagSwitchers) {
+        tagSwitcher.addEventListener('click', (e) => {
+          const parent = e.target.closest('.tag-subtree.parent-tag')
+          parent.classList.toggle('expanded')
+          e.preventDefault()
+        })
+      }
+    }
+
     // 消息提示 复制时弹出
     document.body.oncopy = function () {
       fn.messageCopyright()
@@ -103,7 +122,7 @@ const VolantisApp = (() => {
   }
 
   fn.restData = () => {
-    scrollCorrection = volantis.dom.header ? volantis.dom.header.clientHeight + 16 : 80;
+    scrollCorrection = volantis.dom.header ? volantis.dom.header.clientHeight + REM : 80;
   }
 
   fn.setIsMobile = () => {
@@ -117,10 +136,17 @@ const VolantisApp = (() => {
   }
 
   // 校正页面定位（被导航栏挡住的区域）
-  fn.scrolltoElement = (elem, correction = scrollCorrection) => {
-    volantis.scroll.to(elem, {
+  fn.scrolltoElement = (elem, correction = scrollCorrection, behavior = null, observer = false) => {
+    let opt = {
       top: elem.getBoundingClientRect().top + document.documentElement.scrollTop - correction
-    })
+    };
+    if (behavior){
+      opt.behavior=behavior;
+    };
+    if (observer){
+      opt.observer=observer;
+    };
+    volantis.scroll.to(elem, opt);
   }
 
   // 滚动事件回调们
@@ -382,18 +408,35 @@ const VolantisApp = (() => {
     })
   }
 
-  // hexo-reference 页脚跳转 https://github.com/volantis-x/hexo-theme-volantis/issues/647
-  fn.footnotes = () => {
-    let ref = document.querySelectorAll('#l_main .footnote-backref, #l_main .footnote-ref > a');
+  // mathjax 引用跳转
+  fn.mathjaxRef = () => {
+    let ref = document.querySelectorAll('mjx-container a[href]');
     ref.forEach(function (e, i) {
       ref[i].click = () => { }; // 强制清空原 click 事件
+      let targetID = decodeURIComponent(ref[i].getAttribute('href').split('#')[1]).replace(/\ /g, '-');
       volantis.dom.$(e).on('click', (e) => {
         e.stopPropagation();
         e.preventDefault();
-        let targetID = decodeURI(e.target.hash.split('#')[1]).replace(/\ /g, '-');
         let target = document.getElementById(targetID);
         if (target) {
-          volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
+          fn.scrolltoElement(target, scrollCorrection + REM, 'instant');
+        }
+      });
+    })
+  }
+
+  // hexo-reference 页脚跳转 https://github.com/volantis-x/hexo-theme-volantis/issues/647
+  fn.footnotes = () => {
+    let ref = document.querySelectorAll('#l_main a[rel=footnote],#footnotelist a[rev=footnote],#l_main .footnote-backref, #l_main .footnote-ref > a');
+    ref.forEach(function (e, i) {
+      ref[i].click = () => { }; // 强制清空原 click 事件
+      let targetID = decodeURIComponent(ref[i].getAttribute('href').split('#')[1]).replace(/\ /g, '-');
+      volantis.dom.$(e).on('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        let target = document.getElementById(targetID);
+        if (target) {
+          fn.scrolltoElement(target, scrollCorrection - REM, 'instant');
         }
       });
     })
@@ -669,6 +712,7 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
+      fn.mathjaxRef();
     },
     pjaxReload: () => {
       fn.event();
@@ -679,6 +723,7 @@ const VolantisApp = (() => {
       fn.setScrollAnchor();
       fn.setTabs();
       fn.footnotes();
+      fn.mathjaxRef();
 
       // 移除小尾巴的移除
       document.querySelector("#l_header .nav-main").querySelectorAll('.list-v:not(.menu-phone)').forEach(function (e) {
@@ -694,7 +739,11 @@ const VolantisApp = (() => {
     question: fn.question,
     hideMessage: fn.hideMessage,
     messageCopyright: fn.messageCopyright,
-    scrolltoElement: fn.scrolltoElement
+    scrolltoElement: fn.scrolltoElement,
+    getScrollCorrection: ()=>{
+      return scrollCorrection;
+    },
+    REM:REM
   }
 })()
 Object.freeze(VolantisApp);
@@ -813,17 +862,6 @@ class VolantisFancyBox {
 }
 
 // highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
-// Question: 锚点稳定性未知
-// ToDo: 查找模式
-// 0. (/////////要知道浏览器自带全页面查找功能 CTRL + F)
-// 1. 右键开启查找模式 / 导航栏菜单开启?? / CTRL + F ???
-// 2. 查找模式面板 (可拖动? or 固定?)
-// 3. keyword mark id 从 0 开始编号 查找下一处 highlightKeyWords.scrollToNextHighlightKeywordMark() 查找上一处 scrollToPrevHighlightKeywordMark() 循环查找(取模%)
-// 4. 可输入修改 查找关键词 keywords(type:list)
-// 5. 区分大小写 caseSensitive (/ 全字匹配?? / 正则匹配??)
-// 6. 在选定区域中查找 querySelector ??
-// 7. 关闭查找模式
-// 8. 搜索跳转 (URL 入口) 自动开启查找模式 调用 scrollToNextHighlightKeywordMark()
 const highlightKeyWords = (() => {
   let fn = {}
   fn.markNum = 0
@@ -860,21 +898,21 @@ const highlightKeyWords = (() => {
     // Current target
     return target
   }
-  fn.scrollToPrevHighlightKeywordMark = (id) => {
-    // Prev Id
-    let input = id || (fn.markNextId - 1 + fn.markNum) % fn.markNum;
-    fn.markNextId = parseInt(input)
-    let target = document.getElementById("keyword-mark-" + fn.markNextId);
-    if (!target) {
-      fn.markNextId = (fn.markNextId - 1 + fn.markNum) % fn.markNum;
-      target = document.getElementById("keyword-mark-" + fn.markNextId);
-    }
-    if (target) {
-      volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
-    }
-    // Current target
-    return target
-  }
+  // fn.scrollToPrevHighlightKeywordMark = (id) => {
+  //   // Prev Id
+  //   let input = id || (fn.markNextId - 1 + fn.markNum) % fn.markNum;
+  //   fn.markNextId = parseInt(input)
+  //   let target = document.getElementById("keyword-mark-" + fn.markNextId);
+  //   if (!target) {
+  //     fn.markNextId = (fn.markNextId - 1 + fn.markNum) % fn.markNum;
+  //     target = document.getElementById("keyword-mark-" + fn.markNextId);
+  //   }
+  //   if (target) {
+  //     volantis.scroll.to(target, { addTop: - volantis.dom.header.offsetHeight - 5, behavior: 'instant' })
+  //   }
+  //   // Current target
+  //   return target
+  // }
   fn.start = (keywords, querySelector) => {
     fn.markNum = 0
     if (!keywords.length || !querySelector || (keywords.length == 1 && keywords[0] == "null")) return;
@@ -982,30 +1020,30 @@ const highlightKeyWords = (() => {
     mark.style["font-weight"] = "bold";
     return mark
   }
-  fn.cleanHighlightStyle = () => {
-    document.querySelectorAll(".keyword").forEach(mark => {
-      mark.style.background = "transparent";
-      mark.style["border-bottom"] = null;
-      mark.style["color"] = null;
-      mark.style["font-weight"] = null;
-    })
-  }
+  // fn.cleanHighlightStyle = () => {
+  //   document.querySelectorAll(".keyword").forEach(mark => {
+  //     mark.style.background = "transparent";
+  //     mark.style["border-bottom"] = null;
+  //     mark.style["color"] = null;
+  //     mark.style["font-weight"] = null;
+  //   })
+  // }
   return {
-    start: (keywords, querySelector) => {
-      fn.start(keywords, querySelector)
-    },
+    // start: (keywords, querySelector) => {
+    //   fn.start(keywords, querySelector)
+    // },
     startFromURL: () => {
       fn.startFromURL()
     },
-    scrollToNextHighlightKeywordMark: (id) => {
-      fn.scrollToNextHighlightKeywordMark(id)
-    },
-    scrollToPrevHighlightKeywordMark: (id) => {
-      fn.scrollToPrevHighlightKeywordMark(id)
-    },
-    cleanHighlightStyle: () => {
-      fn.cleanHighlightStyle()
-    },
+    // scrollToNextHighlightKeywordMark: (id) => {
+    //   fn.scrollToNextHighlightKeywordMark(id)
+    // },
+    // scrollToPrevHighlightKeywordMark: (id) => {
+    //   fn.scrollToPrevHighlightKeywordMark(id)
+    // },
+    // cleanHighlightStyle: () => {
+    //   fn.cleanHighlightStyle()
+    // },
   }
 })()
 Object.freeze(highlightKeyWords);
@@ -1136,46 +1174,46 @@ const DOMController = {
 }
 Object.freeze(DOMController);
 
-const VolantisRequest = {
-  timeoutFetch: (url, ms, requestInit) => {
-    const controller = new AbortController()
-    requestInit.signal?.addEventListener('abort', () => controller.abort())
-    let promise = fetch(url, { ...requestInit, signal: controller.signal })
-    if (ms > 0) {
-      const timer = setTimeout(() => controller.abort(), ms)
-      promise.finally(() => { clearTimeout(timer) })
-    }
-    promise = promise.catch((err) => {
-      throw ((err || {}).name === 'AbortError') ? new Error(`Fetch timeout: ${url}`) : err
-    })
-    return promise
-  },
+// const VolantisRequest = {
+//   timeoutFetch: (url, ms, requestInit) => {
+//     const controller = new AbortController()
+//     requestInit.signal?.addEventListener('abort', () => controller.abort())
+//     let promise = fetch(url, { ...requestInit, signal: controller.signal })
+//     if (ms > 0) {
+//       const timer = setTimeout(() => controller.abort(), ms)
+//       promise.finally(() => { clearTimeout(timer) })
+//     }
+//     promise = promise.catch((err) => {
+//       throw ((err || {}).name === 'AbortError') ? new Error(`Fetch timeout: ${url}`) : err
+//     })
+//     return promise
+//   },
 
-  Fetch: async (url, requestInit, timeout = 15000) => {
-    const resp = await VolantisRequest.timeoutFetch(url, timeout, requestInit);
-    if (!resp.ok) throw new Error(`Fetch error: ${url} | ${resp.status}`);
-    let json = await resp.json()
-    if (!json.success) throw json
-    return json
-  },
+//   Fetch: async (url, requestInit, timeout = 15000) => {
+//     const resp = await VolantisRequest.timeoutFetch(url, timeout, requestInit);
+//     if (!resp.ok) throw new Error(`Fetch error: ${url} | ${resp.status}`);
+//     let json = await resp.json()
+//     if (!json.success) throw json
+//     return json
+//   },
 
-  POST: async (url, data) => {
-    const requestInit = {
-      method: 'POST',
-    }
-    if (data) {
-      const formData = new FormData();
-      Object.keys(data).forEach(key => formData.append(key, String(data[key])))
-      requestInit.body = formData;
-    }
-    const json = await VolantisRequest.Fetch(url, requestInit)
-    return json.data;
-  },
+//   POST: async (url, data) => {
+//     const requestInit = {
+//       method: 'POST',
+//     }
+//     if (data) {
+//       const formData = new FormData();
+//       Object.keys(data).forEach(key => formData.append(key, String(data[key])))
+//       requestInit.body = formData;
+//     }
+//     const json = await VolantisRequest.Fetch(url, requestInit)
+//     return json.data;
+//   },
 
-  Get: async (url, data) => {
-    const json = await VolantisRequest.Fetch(url + (data ? (`?${new URLSearchParams(data)}`) : ''), {
-      method: 'GET'
-    })
-  }
-}
-Object.freeze(VolantisRequest);
+//   Get: async (url, data) => {
+//     const json = await VolantisRequest.Fetch(url + (data ? (`?${new URLSearchParams(data)}`) : ''), {
+//       method: 'GET'
+//     })
+//   }
+// }
+// Object.freeze(VolantisRequest);

@@ -1,7 +1,6 @@
 
 # ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-# 这里是 7.0.0-alpha 分支
-# Breaking Change 会放到这个分支
+# 这里是 6.x 分支
 # ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 
 ############################### Volantis ###############################
@@ -17,6 +16,72 @@ default:
   link: volantis-static/media/placeholder/link/8f277b4ee0ecd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/link/8f277b4ee0ecd.svg
   cover: volantis-static/media/placeholder/cover/76b86c0226ffd.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/cover/76b86c0226ffd.svg
   image: volantis-static/media/placeholder/image/2659360.svg # https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg
+  topic: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/10433048.png
+  project: https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2779789.png
+
+
+############################### Main ###############################
+# 站点主结构树
+site_tree:
+  # 404 错误页配置
+  404:
+    enable: true # 或者设为false，自己创建页面
+    path: '/404.html'
+    # 以下遵守页面 Front-matter 写法
+    data:
+      sidebar: []
+      robots: "noindex,nofollow"
+      #content: "404HTML"
+  # 标签页配置
+  tag:
+    enable: true # 或者设为false，自己创建页面
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "所有标签"
+      #sidebar: []
+      robots: "noindex,follow"
+  # 分类页配置
+  category:
+    enable: true # 或者设为false，自己创建页面
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "所有分类"
+      #sidebar: []
+      robots: "noindex,follow"
+  # 博客专栏列表页配置
+  index_topic:
+    base_dir: topic # 只影响自动生成的页面路径
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "专栏"
+      #sidebar: []
+      robots: "noindex,follow"
+  # 文档列表页配置
+  index_wiki:
+    base_dir: wiki # 只影响自动生成的页面路径
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "项目"
+      #sidebar: []
+      robots: "noindex,follow"
+  # 笔记本列表页配置
+  notebooks:
+    base_dir: notebooks # 笔记本列表页的路径。以及未指定 base_dir 的笔记本的路径前缀。
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "笔记本"
+      #sidebar: []
+      robots: "noindex,follow"
+  # 笔记列表页配置
+  notes:
+    # 以下遵守页面 Front-matter 写法
+    data:
+      title: "笔记"
+      #sidebar: []
+      robots: "noindex,follow"
+
+
+
 
 
 ############################### CDN System ###############################
@@ -34,7 +99,7 @@ cdn_system:
   # ${name}                     package 名称 见 "theme/_cdn.yml"
   # ${version}                  package 版本 见 "theme/_cdn.yml"
   # ${file}                     文件路径 见 "theme/_cdn.yml"
-  # ${min_file}                 文件路径 ${file} 后添加 .min. (jsdelivr、cdnjs 官方自带压缩)
+  # ${min_file}                 文件路径 ${file} 后添加 .min. (jsdelivrcdnjs 官方自带压缩)
   # ${timestamp}                Hexo运行时的时间戳(eg：1661246702300), 可用于静态资源版本控制 format: ${prefix}${file}?v=${timestamp}
   system_config:
     # 自定义配置 使用 "theme/_cdn.yml" 中的名称作为配置项的键
@@ -123,6 +188,7 @@ replace:
 dns_prefetch:
   - https://unpkg.com
 
+
 # 平滑滚动效果
 scroll_smooth: true
 ############################### Navigation Bar ############################### > start
@@ -171,26 +237,26 @@ cover:
   subtitle: ''
   search: A Wonderful Theme for Hexo # search bar placeholder
   features:
-    - name: 文档
+    - name: 项目
       icon: #
       img: volantis-static/media/twemoji/assets/svg/1f5c3.svg # https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
-      url: /v4/getting-started/
-    - name: 帮助
+      url: /wiki/
+    - name: 笔记
       icon: #
       img: volantis-static/media/twemoji/assets/svg/1f516.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
-      url: faqs/
-    - name: 示例
+      url: /notebooks/
+    - name: 专栏
       icon: #
       img: volantis-static/media/twemoji/assets/svg/1f396.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
-      url: /examples/
-    - name: 社区
-      icon: #
-      img: volantis-static/media/twemoji/assets/svg/1f389.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
-      url: /contributors/
+      url: /topic/
     - name: 博客
       icon: #
       img: volantis-static/media/twemoji/assets/svg/1f4f0.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
       url: /archives/
+    - name: 社区
+      icon: #
+      img: volantis-static/media/twemoji/assets/svg/1f389.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
+      url: https://volantis.js.org/
     - name: 源码
       icon: #
       img: volantis-static/media/twemoji/assets/svg/1f9ec.svg #  https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
@@ -224,7 +290,7 @@ article:
     # show author
     author: false # true, false
     # show readmore button
-    readmore: auto # auto, always
+    readmore: auto # auto, always, false
   # 文章详情页面的文章卡片本体布局方案
   body:
     # 文章顶部信息
@@ -557,10 +623,31 @@ comments:
 ############################### Sidebar ############################### > start
 sidebar:
   position: right # left right
-  # 主页、分类、归档等独立页面
-  for_page: [blogger, category, tagcloud, donate]
-  # layout: docs/post 这类文章页面
-  for_post: [toc]
+  ##########################
+  # 站点主结构 Sidebar 配置
+  for:
+    # -- 列表类页面 -- #
+    # 主页配置
+    home: [blogger, category, tagcloud, recent]
+    # 博客列表页配置 （归档、标签、分类、专栏）
+    index_blog: [blogger,recent]
+    # 文档列表页配置
+    index_wiki: [related, recent]
+    # 笔记本列表页配置
+    notebooks: [recent]
+    # 笔记列表页配置
+    notes: [tagtree, recent]
+    # -- 内容类页面 -- #
+    # 博客文章内页配置 (同博客专栏文章内页)
+    post: [toc, related, recent]
+    # 文档内页配置
+    wiki: [toc, tree, related, recent]
+    # 笔记内页配置
+    note: [toc, tagtree, recent]
+    # 其它自定义页面配置 layout: page
+    page: [toc, recent]
+
+  ##########################
   # 侧边栏组件库
   widget_library:
     # ---------------------------------------
@@ -573,7 +660,7 @@ sidebar:
       url: /about/
       title:
       subtitle:
-      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
         - icon: fa-solid fa-rss
           url: /atom.xml
@@ -669,7 +756,7 @@ sidebar:
           text: '最后活动时间：'
           unit: '日'
     # ---------------------------------------
-    # lastupdate widget
+    # lastupdate widget # only for posts
     lastupdate:
       class: lastupdate
       display: [desktop, mobile]
@@ -677,6 +764,30 @@ sidebar:
         icon: fa-solid fa-clock WISTERIA
         title: 最近更新
     # ---------------------------------------
+    # recent widget # # for posts wiki notebooks
+    recent:
+      class: recent
+      display: [desktop, mobile]
+      header:
+        icon: fa-solid fa-clock
+        title: 最近更新
+      limit: 10 # Count of posts
+    # ---------------------------------------
+    # 页面树（与当前页面强关联的上下篇文章列表） # only for wiki
+    tree:
+      class: tree
+    # 强关联的上下文章 # for 专栏 wiki(按分类)
+    related:
+      class: related
+    # 标签树 # only for notes
+    tagtree:
+      class: tagtree
+      header:
+        icon: fa-solid fa-tags
+        title: 标签
+      expand_all: false # 是否展开所有节点
+      expand_active: true # 是否展开当前节点
+      show_tagcon: true # 是否显示标签 icon
     # Artalk widget
     artalk:
       class: artalk
@@ -879,7 +990,7 @@ plugins:
     id: 3175833810    # song id / playlist id / album id / search keyword
     # ============= meting end =============
     # ============= local begin ==============
-    # local 暂时没有适配右键 和 post.music 迷你模式
+    # local 暂时没有适配右键
     audio:
       - name: 'Fly'
         artist: 'Marshmello'
@@ -907,7 +1018,7 @@ plugins:
   pjax:
     enable: true
     cover: true          # 封面是否pjax处理 false：每次切换页面封面都重载，适合封面较少的情况 true：封面经过Pjax处理，适合封面较多的情况
-    timeout: 5000        # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
+    timeout: 900         # The timeout in milliseconds for the XHR requests. Set to 0 to disable the timeout.
     cacheBust: false     # When set to true, Pjax appends a timestamp  to skip the browser cache.
     exclude:             # 被屏蔽的 url 地址将不启用 pjax 跳转，可以在控制台下使用 window.location.pathname 获取
       # - '/artitalk/'   # artitalk 不支持 pjax

@@ -1,0 +1,26 @@
+<%- partial('_pre') %>
+<% page.comments = false; %>
+<%
+function layout_topic_list() {
+  var el = ''
+  const { publish_list, tree } = theme.topic
+  for (let id of publish_list) {
+    const topic = tree[id]
+    if (topic == null) {
+      continue
+    }
+    el += `<div class='post-wrapper'>`
+    el += `<a href="${pretty_url(topic.homepage?.path || '/')}">`
+    el += partial('_partial/card_list/topic_card', {topic: topic})
+    el += `</a>`
+    el += `</div>`
+  }
+  return el
+}
+%>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+    <section class="post-list wiki">
+        <%- layout_topic_list() %>
+    </section>
+</div>
+<%- partial('_partial/side') %>

@@ -1,0 +1,18 @@
+<%# 笔记本信息卡片 %>
+<div class="post post-v3 white-box reveal <%- theme.custom_css.body.effect.join(' ') %>"  >
+    <div class='wiki-img-div'>
+      <% if (notebook.svg) { %>
+        <%- notebook.svg %>
+      <% } else { %>
+        <img class='wiki-img' alt="<%- notebook.title || notebook.name %>" src='<%- notebook.icon ? notebook.icon : theme.default.project %>'/>
+      <% } %>
+    </div>
+    <p><span class="md p logo center large">
+        <%- notebook.title || notebook.name %>
+    </span></p>
+  <div class='md article-desc'>
+    <% if (notebook.description) { %>
+      <p><%- notebook.description %></p>
+    <% } %>
+  </div>
+</div>

@@ -1,14 +1,14 @@
 <%- partial('_pre') %>
-<section class="widget <%- item.class %> <%- page.widget_platform %> <%- page.widget_pjax %>">
+<section class="widget <%- item.class %> <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
   <div class='content'>
     <% if (item.avatar) { %>
       <% if (item.url) { %>
         <a class='avatar flat-box <%- item.shape %>' href='<%- url_for(item.url) %>'>
-          <img no-lazy src='<%- item.avatar %>'/>
+          <img no-lazy src='<%- item.avatar %>' alt='avatar' />
         </a>
       <% } else { %>
         <div class='avatar'>
-          <img no-lazy src='<%- item.avatar %>'/>
+          <img no-lazy src='<%- item.avatar %>' alt='avatar' />
         </div>
       <% } %>
     <% } %>
@@ -35,9 +35,9 @@
               target="_blank"
               rel="external nofollow noopener noreferrer">
               <% if (value.img) { %>
-                <img src="<%- value.img %>"/>
+                <img src="<%- value.img %>"  alt='social' />
               <% } else if (value.avatar) { %>
-                <img src="<%- value.avatar %>" style="border-radius:120px"/>
+                <img src="<%- value.avatar %>"  alt='social' style="border-radius:120px"/>
               <% } %>
             </a>
           <% } %>

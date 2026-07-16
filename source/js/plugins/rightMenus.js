@@ -545,17 +545,17 @@ RightMenus.fun = (() => {
     DOMController.removeList([
       '.cus-article-bkg', '.iziToast-overlay', '.iziToast-wrapper', '.prev-next',
       'footer', '#l_header', '#l_cover', '#l_side', '#comments', '#s-top', '#BKG',
-      '#rightmenu-wrapper', '.nav-tabs', '.parallax-mirror', '.new-meta-item.share', 
+      '#rightmenu-wrapper', '.nav-tabs', '.parallax-mirror', '.new-meta-item.share',
       '.new-meta-box', 'button.btn-copy', 'iframe'
     ]);
     DOMController.setStyleList([
-      ['body', 'backgroundColor', 'unset'], ['#l_main, .copyright.license', 'width', '100%'],  
-      ['#post', 'boxShadow', 'none'], ['#post', 'background', 'none'], ['#post', 'padding', '0'],  
-      ['h1', 'textAlign', 'center'], ['h1', 'fontWeight', '600'], ['h1', 'fontSize', '2rem'], ['h1', 'marginBottom', '20px'], 
-      ['.tab-pane', 'display', 'block'], ['.tab-content', 'borderTop', 'none'], ['.highlight>table pre', 'whiteSpace', 'pre-wrap'], 
-      ['.highlight>table pre', 'wordBreak', 'break-all'], ['.fancybox img', 'height', 'auto'], ['.fancybox img', 'weight', 'auto'], 
-      ['.copyright.license', 'margin', '0'], ['.copyright.license', 'padding', '1.25em 20px'],  
-      ['figure.highlight, .copyright.license', 'display', 'inline-block'], 
+      ['body', 'backgroundColor', 'unset'], ['#l_main, .copyright.license', 'width', '100%'],
+      ['#post', 'boxShadow', 'none'], ['#post', 'background', 'none'], ['#post', 'padding', '0'],
+      ['h1', 'textAlign', 'center'], ['h1', 'fontWeight', '600'], ['h1', 'fontSize', '2rem'], ['h1', 'marginBottom', '20px'],
+      ['.tab-pane', 'display', 'block'], ['.tab-content', 'borderTop', 'none'], ['.highlight>table pre', 'whiteSpace', 'pre-wrap'],
+      ['.highlight>table pre', 'wordBreak', 'break-all'], ['.fancybox img', 'height', 'auto'], ['.fancybox img', 'weight', 'auto'],
+      ['.copyright.license', 'margin', '0'], ['.copyright.license', 'padding', '1.25em 20px'],
+      ['figure.highlight, .copyright.license', 'display', 'inline-block'],
     ]);
     setTimeout(() => {
       window.print();
@@ -571,7 +571,7 @@ RightMenus.fun = (() => {
       document.querySelector('#l_cover'), document.querySelector('footer'),
       document.querySelector('#s-top'), document.querySelector('.article-meta#bottom'),
       document.querySelector('.prev-next'), document.querySelector('#l_side'),
-      document.querySelector('#comments'), 
+      document.querySelector('#comments'),
     ]);
     DOMController.toggleClassList([
       [document.querySelector('#l_main'), 'common_read'], [document.querySelector('#l_main'), 'common_read_main'],

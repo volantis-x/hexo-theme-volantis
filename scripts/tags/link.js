@@ -2,11 +2,11 @@
 
 // {% link title, url %}
 // {% link title, url, img %}
-hexo.extend.tag.register('link', function(args) {
-  if(/::/g.test(args)){
+hexo.extend.tag.register('link', function (args) {
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   let text = '';
@@ -36,10 +36,10 @@ hexo.extend.tag.register('link', function(args) {
   return result;
 });
 
-hexo.extend.tag.register('linkgroup', function(args, content) {
+hexo.extend.tag.register('linkgroup', function (args, content) {
   let ret = '';
   ret += '<div class="link-group">';
   ret += content;
   ret += '</div>';
   return ret;
-}, {ends: true});
+}, { ends: true });

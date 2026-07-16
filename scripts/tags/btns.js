@@ -7,10 +7,10 @@ function postBtns(args, content) {
 }
 
 function postCell(args, content) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   let text = args[0] || '';
@@ -36,5 +36,5 @@ function postCell(args, content) {
 
 }
 
-hexo.extend.tag.register('btns', postBtns, {ends: true});
+hexo.extend.tag.register('btns', postBtns, { ends: true });
 hexo.extend.tag.register('cell', postCell);

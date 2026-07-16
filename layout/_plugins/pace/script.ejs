@@ -1,15 +1,27 @@
 <script>
+  // https://github.com/CodeByZach/pace/issues/531
+  window.paceOptions = {
+    eventLag: {
+	  lagThreshold: 30,
+  	},
+    ajax: { 
+      ignoreURLs: ['signalr', '__browserLink', 'browserLinkSignalR'], 
+      trackWebSockets: false 
+    } 
+  }
+  // 引入脚本
   volantis.css("<%- theme.cdn.pace_css %>");
   volantis.js("<%- theme.cdn.pace_js %>").then(() => {
     Pace.options.restartOnPushState = false;
-    volantis.pjax.send(Pace.restart);
+    volantis.pjax.send(Pace.restart,"Pace.restart");
+    volantis.pjax.push(()=>{setTimeout(()=>{Pace.stop()},1200)},"Pace.stop");
     // 阅读进度
-    volantis.scroll.push(() => {
+    volantis.scroll.push(volantis.debounce(() => {
       Pace.stop();
       Pace.trigger('start');
       Pace.bar.update(volantis.scroll.progress() * 100);
       document.body.className = document.body.className.replaceAll("pace-running ","");
-    },"阅读进度")
+    }),"阅读进度")
     // todo：配置项开关, 哪些页面添加阅读进度
   })
 </script>

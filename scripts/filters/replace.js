@@ -2,7 +2,7 @@
 
 'use strict';
 
-hexo.extend.filter.register('after_render:html', function(data) {
+hexo.extend.filter.register('after_render:html', function (data) {
   if (hexo.theme.config.replace) {
     const replacements = hexo.theme.config.replace.map(e => {
       const [a, b] = e.split(" => ");

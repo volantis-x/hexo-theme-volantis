@@ -1,10 +1,10 @@
 'use strict';
 
 function postCheckbox(args) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   var cls = '';
@@ -24,15 +24,15 @@ function postCheckbox(args) {
   }
   if (text.length > 0) {
     return `<div class='checkbox${cls}'><input type="checkbox" ${checked ? 'checked="checked"' : ''}/>
-            ${hexo.render.renderSync({text: text, engine: 'markdown'}).split('\n').join('')}
+            ${hexo.render.renderSync({ text: text, engine: 'markdown' }).split('\n').join('')}
             </div>`;
   }
 }
 function postRadio(args) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   var cls = '';
@@ -52,7 +52,7 @@ function postRadio(args) {
   }
   if (text.length > 0) {
     return `<div class='checkbox${cls}'><input type="radio" ${checked ? 'checked="checked"' : ''}/>
-            ${hexo.render.renderSync({text: text, engine: 'markdown'}).split('\n').join('')}
+            ${hexo.render.renderSync({ text: text, engine: 'markdown' }).split('\n').join('')}
             </div>`;
   }
 }

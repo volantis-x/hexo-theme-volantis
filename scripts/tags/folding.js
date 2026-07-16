@@ -1,10 +1,10 @@
 'use strict';
 
 function postFolding(args, content) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   let style = '';
@@ -18,17 +18,17 @@ function postFolding(args, content) {
   if (style != undefined) {
     return `<details ${style}><summary> ${title} </summary>
               <div class='content'>
-              ${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}
+              ${hexo.render.renderSync({ text: content, engine: 'markdown' }).split('\n').join('')}
               </div>
             </details>`;
   }
   return `<details><summary> ${title} </summary>
               <div class='content'>
-              ${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}
+              ${hexo.render.renderSync({ text: content, engine: 'markdown' }).split('\n').join('')}
               </div>
             </details>`;
 
 
 }
 
-hexo.extend.tag.register('folding', postFolding, {ends: true});
+hexo.extend.tag.register('folding', postFolding, { ends: true });

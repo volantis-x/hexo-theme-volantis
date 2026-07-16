@@ -6,8 +6,8 @@ function generateFirstCSS() {
   let s = fs.readFileSync(
     hexo.theme.context.theme_dir + "source/css/first.styl"
   );
-  hexo.renderStylus(s).then((css)=>{
-    hexo.locals.set('FirstCSS', function(){
+  hexo.renderStylus(s).then((css) => {
+    hexo.locals.set('FirstCSS', function () {
       return css
     });
   })

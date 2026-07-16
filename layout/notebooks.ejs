@@ -1,0 +1,13 @@
+<%# 笔记本列表页主体部分 %>
+<%- partial('_pre') %>
+<% page.comments = false; %>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+<% for (const notebook of Object.values(theme.notebooks.tree)) { %>
+  <section class="post-list wiki">
+    <a href="<%= pretty_url(notebook.base_dir) %>">
+      <%- include('_partial/card_list/notebook_card', { notebook: notebook }) %>
+    </a>
+  </section>
+<% } %>
+</div>
+<%- partial('_partial/side') %>

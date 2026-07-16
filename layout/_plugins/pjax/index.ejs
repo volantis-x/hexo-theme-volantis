@@ -11,6 +11,37 @@
 
 <%- js(theme.cdn.pjax) %>
 <script>
+// 性能监控与降级控制
+const performanceMonitor = {
+  slowThreshold: 800,     // 慢请求阈值(毫秒)
+  slowCount: 0,           // 连续慢请求计数
+  maxSlowAllowed: 1,      // 允许的最大连续慢请求数
+  requestStartTime: 0,    // 请求开始时间戳
+
+  // 记录请求开始时间
+  start() {
+    this.requestStartTime = Date.now();
+  },
+
+  // 计算请求耗时并判断
+  check() {
+    const duration = Date.now() - this.requestStartTime;
+    
+    if (duration > this.slowThreshold) {
+      this.slowCount++;
+    } else {
+      this.slowCount = 0;    // 耗时正常，重置计数
+    }
+  },
+  // 测试结果
+  res(){
+    // 连续慢请求达到阈值，强制刷新
+    if (this.slowCount >= this.maxSlowAllowed) {         
+      return true;    // 需要降级
+    }
+    return false;     // 无需降级
+  }
+};
     var pjax;
     document.addEventListener('DOMContentLoaded', function () {
       pjax = new Pjax({
@@ -25,6 +56,14 @@
           "#pjax-header-nav-list",
           ".pjax",
           "pjax", // <pjax></pjax> 标签
+          // 临时测试
+          "meta[name=robots]",
+          "link[rel=canonical]",
+          "meta[property='og:title']",
+          "meta[property='og:description']",
+          "meta[property='og:url']",
+          "meta[property='og:image']",
+          "script[type='application/ld+json']",
         ],
         cacheBust: <%= theme.plugins.pjax.cacheBust %>,   // url 地址追加时间戳，用以避免浏览器缓存
         timeout: <%= theme.plugins.pjax.timeout %>,
@@ -33,7 +72,8 @@
     });
 
     document.addEventListener('pjax:send', function (e) {
-      //window.stop(); // 相当于点击了浏览器的停止按钮
+      window.stop(); // 相当于点击了浏览器的停止按钮
+      performanceMonitor.start();  // 请求开始计时
 
       try {
         var currentUrl = window.location.pathname;
@@ -46,6 +86,9 @@
             }
           });
         }
+        if (performanceMonitor.res()){
+          window.location.href = targetUrl;
+        }
       } catch (error) {}
 
       // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
@@ -53,6 +96,8 @@
     });
 
     document.addEventListener('pjax:complete', function () {
+      // 降级控制检测
+      performanceMonitor.check()
       // 这里的 script 不需要保证每个页面都含有相同的数目
       document.querySelectorAll('script[data-pjax], .pjax-reload script').forEach(e=>{
         const code = e.text || e.textContent || e.innerHTML || '';

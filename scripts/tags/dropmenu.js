@@ -1,10 +1,10 @@
 'use strict';
 
 function postMenu(args, content) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   if (args.length == 1) {
@@ -46,10 +46,10 @@ function postMenu(args, content) {
   }
 }
 function postSubmenu(args, content) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   const text = args[0] || '';
@@ -75,10 +75,10 @@ function postSubmenu(args, content) {
 }
 
 function postMenuItem(args) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   let text = args[0] || '';
@@ -118,6 +118,6 @@ function postMenuItem(args) {
 // {% menu 标题 %}
 // {% menu 前缀, 标题 %}
 // {% menu 前缀, 标题, 后缀 %}
-hexo.extend.tag.register('menu', postMenu, {ends: true});
-hexo.extend.tag.register('submenu', postSubmenu, {ends: true});
+hexo.extend.tag.register('menu', postMenu, { ends: true });
+hexo.extend.tag.register('submenu', postSubmenu, { ends: true });
 hexo.extend.tag.register('menuitem', postMenuItem);

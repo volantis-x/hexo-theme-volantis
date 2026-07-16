@@ -1,10 +1,10 @@
 'use strict';
 
 function postBtn(args) {
-  if(/::/g.test(args)){
+  if (/::/g.test(args)) {
     args = args.join(' ').split('::');
   }
-  else{
+  else {
     args = args.join(' ').split(',');
   }
   let cls = '';

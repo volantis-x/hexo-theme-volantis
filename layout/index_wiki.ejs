@@ -1,0 +1,29 @@
+<%- partial('_pre') %>
+<% page.comments = false; %>
+<%
+function layout_wiki_list() {
+  var el = ''
+  const { shelf, tree } = theme.wiki
+  for (let pid of shelf) {
+    let proj = tree[pid]
+    if (proj == null) {
+      continue
+    }
+    if (proj.pages == undefined || proj.pages.length === 0) {
+      continue
+    }
+    el += `<div class='post-wrapper'>`
+    el += `<a href="${pretty_url(proj.homepage?.path || '/')}">`
+    el += partial('_partial/card_list/wiki_card', {proj: proj})
+    el += `</a>`
+    el += `</div>`
+  }
+  return el
+}
+%>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+    <section class="post-list wiki">
+        <%- layout_wiki_list() %>
+    </section>
+</div>
+<%- partial('_partial/side') %>

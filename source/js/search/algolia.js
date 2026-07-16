@@ -1,6 +1,6 @@
 let SearchService = (() => {
   const fn = {};
-  let search, algolia, timerId; 
+  let search, algolia, timerId;
   fn.queryText = null;
   fn.template = `<div id="u-search">
   <div class="modal">

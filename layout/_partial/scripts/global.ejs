@@ -1,8 +1,138 @@
 <script>
   /************这个文件存放不需要重载的全局变量和全局函数*********/
-  window.volantis = {}; // volantis 全局变量
+  // window.volantis = {}; // volantis 全局变量
+/**
+ * 内存安全的全局 volantis 对象实现
+ * 特性：
+ * 1. 支持 window.volantis.xxx = yyy 直观赋值语法
+ * 2. 基于 WeakMap 存储数据，自动回收内存
+ * 3. 支持属性枚举（如 Object.keys(window.volantis)）
+ * 4. 支持删除属性（delete window.volantis.xxx）
+ */
+(function initializeVolantis() {
+  // 1. 初始化 WeakMap 存储实际数据（键：volantisProxy 实例，值：属性键值对）
+  const volantisDataStore = new WeakMap();
+
+  // 2. 创建 Proxy 代理处理属性访问
+  const volantisProxy = new Proxy({}, {
+    /**
+     * 拦截属性读取（如 window.volantis.dom）
+     * @param {Object} target - 代理目标对象（仅作为占位符，不存储数据）
+     * @param {string} prop - 访问的属性名
+     * @returns {any} 属性值或 undefined
+     */
+    get(target, prop) {
+      const data = volantisDataStore.get(volantisProxy);
+      return data?.[prop]; // 使用可选链避免数据未初始化时的错误
+    },
+
+    /**
+     * 拦截属性赋值（如 window.volantis.dom = "a"）
+     * @param {Object} target - 代理目标对象
+     * @param {string} prop - 赋值的属性名
+     * @param {any} value - 赋值的属性值
+     * @returns {boolean} 赋值是否成功
+     */
+    set(target, prop, value) {
+      // 初始化数据容器（若不存在）
+      if (!volantisDataStore.has(volantisProxy)) {
+        volantisDataStore.set(volantisProxy, Object.create(null)); // 使用无原型对象避免原型污染
+      }
+      // 存储属性值
+      const data = volantisDataStore.get(volantisProxy);
+      data[prop] = value;
+      return true; // 符合 Proxy 规范，返回成功标志
+    },
+
+    /**
+     * 拦截属性删除（如 delete window.volantis.dom）
+     * @param {Object} target - 代理目标对象
+     * @param {string} prop - 要删除的属性名
+     * @returns {boolean} 删除是否成功
+     */
+    deleteProperty(target, prop) {
+      const data = volantisDataStore.get(volantisProxy);
+      if (!data || !Object.prototype.hasOwnProperty.call(data, prop)) {
+        return false; // 属性不存在，删除失败
+      }
+      delete data[prop];
+      // 若数据为空，清理 WeakMap 条目（优化内存回收）
+      if (Object.keys(data).length === 0) {
+        volantisDataStore.delete(volantisProxy);
+      }
+      return true;
+    },
+
+    /**
+     * 拦截属性枚举（如 Object.keys(window.volantis)）
+     * @param {Object} target - 代理目标对象
+     * @returns {string[]} 可枚举的属性名数组
+     */
+    ownKeys(target) {
+      const data = volantisDataStore.get(volantisProxy);
+      return data ? Object.keys(data) : [];
+    },
+
+    /**
+     * 拦截属性描述符查询（如 Object.getOwnPropertyDescriptor）
+     * @param {Object} target - 代理目标对象
+     * @param {string} prop - 属性名
+     * @returns {PropertyDescriptor|undefined} 属性描述符
+     */
+    getOwnPropertyDescriptor(target, prop) {
+      const data = volantisDataStore.get(volantisProxy);
+      if (!data || !Object.prototype.hasOwnProperty.call(data, prop)) {
+        return undefined;
+      }
+      return {
+        value: data[prop],
+        writable: true,
+        enumerable: true,
+        configurable: true
+      };
+    }
+  });
+
+  // 3. 挂载到 window 对象，暴露全局访问入口
+  Object.defineProperty(window, 'volantis', {
+    value: volantisProxy,
+    writable: true, // 允许后续手动设置为 null 触发清理
+    configurable: true,
+    enumerable: true
+  });
+
+})();
   volantis.debug = "<%- theme.debug %>"; // 调试模式
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
+  /******************** volantis.getFunctionHash ********************************/
+// 简易文本哈希
+volantis.simpleTextHash= (str) => {
+  // 初始哈希值：选择质数5381（DJB2算法推荐的起始值）
+  let hash = 5381;
+  // 遍历每个字符，更新哈希值
+  for (let i = 0; i < str.length; i++) {
+    // 等价于 hash = hash * 33 + charCode（位移运算更高效）
+    hash = (hash << 5) + hash + str.charCodeAt(i);
+    // 避免数值过大溢出（可选：取模2^32，模拟32位无符号整数）
+    hash = hash & hash; // 或 hash >>> 0（转换为无符号）
+  }
+  // 转换为十六进制字符串，确保至少8位（补前导零）
+  return hash.toString(16).padStart(8, '0');
+}
+
+// 获取函数内容的哈希
+volantis.getFunctionHash= (func) => {
+    // 提取函数源码字符串
+    const funcStr = func.toString();
+    // 计算哈希值
+    return volantis.simpleTextHash(funcStr);
+}
+
+// 测试示例
+//function sampleFunc(a, b) {
+//    return a * b + 10;
+//}
+//console.log(volantis.getFunctionHash(sampleFunc)); // 输出函数源码的MD5哈希
   /******************** volantis.EventListener ********************************/
   // 事件监听器 see: /source/js/app.js
   volantis.EventListener = {}
@@ -19,7 +149,7 @@
     volantis.EventListener.list.forEach(function (i) {
       i.ele.removeEventListener(i.type, i.f, false)
     })
-    volantis.EventListener.list = []
+    volantis.EventListener.list = [];
   }
   /******************** volantis.dom.$ ********************************/
   // 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
@@ -102,14 +232,20 @@
       }
     };
     this.push = (fn, name, setRequestAnimationFrame = true) => {
+      if (typeof fn !== 'function') return;
       let myfn = fn
       if (setRequestAnimationFrame) {
         myfn = () => {
           volantis.requestAnimationFrame(fn)
         }
       }
-      var f = new Item(myfn, name);
-      this.list.push(f);
+      name = name || volantis.getFunctionHash(fn)
+      const idx = this.list.findIndex(item => item.name === name);
+      if (idx !== -1) {
+        this.list[idx] = new Item(myfn, name);
+        return;
+      }
+      this.list.push(new Item(myfn, name));
     };
     this.remove = (name) => {
       for (let index = 0; index < this.list.length; index++) {
@@ -122,7 +258,7 @@
     // 构造一个可以run的对象
     function Item(fn, name) {
       // 函数名称
-      this.name = name || fn.name;
+      this.name = name || volantis.getFunctionHash(fn);
       // run方法
       this.run = () => {
         try {
@@ -245,15 +381,42 @@
       }
     }
   }
+  /********************** 节流和防抖 ********************************/
+  // 节流函数：确保指定时间内仅执行一次 时间戳版本的节流实现
+  volantis.throttle=(func, delay = 200) => {
+    let lastTime = 0;
+    return function (...args) {
+      const now = Date.now();
+      if (now - lastTime >= delay) {
+        func.apply(this, args);
+        lastTime = now;
+      }
+    };
+  };
+  // 防抖函数 setTimeout实现
+  volantis.debounce=(func, wait = 200) => {
+    let timer = null;
+    return function () {
+      if (timer) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(() => {
+        func.apply(this, arguments)
+        timer = null
+      }, wait)
+    };
+  };
   /********************** requestAnimationFrame ********************************/
   // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
   // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
   volantis.requestAnimationFrame = (fn) => {
     if (!window.requestAnimationFrame) {
-      window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || function (callback) {
+        return window.setTimeout(callback, 1000 / 60);
+      };
     }
-    window.requestAnimationFrame(fn)
-  }
+    return window.requestAnimationFrame(fn);
+  };
   /************************ layoutHelper *****************************************/
   volantis.layoutHelper = (helper, html, opt) => {
     opt = Object.assign({ clean: false, pjax: true }, opt)
@@ -405,6 +568,73 @@
     img.src = "<%- theme.default.cover %>";
     img.onerror = null;
   }
+  /******************************************************************************/
+// Hack Interval
+// 保存原生定时器方法
+const nativeSetTimeout = window.setTimeout;
+const nativeSetInterval = window.setInterval;
+const nativeClearTimeout = window.clearTimeout;
+const nativeClearInterval = window.clearInterval;
+
+// 存储活动定时器ID的数组
+volantis.activeTimeout = [];
+volantis.activeInterval = [];
+
+// 重写setTimeout：执行后自动移除ID
+window.setTimeout = function(callback, delay, ...args) {
+  // 包装回调函数，执行后从列表移除ID
+  const wrappedCallback = function(...innerArgs) {
+    try {
+      // 执行原始回调（保持this指向和参数传递）
+      return callback.apply(this, innerArgs);
+    } finally {
+      // 无论回调是否报错，均移除ID
+      const index = volantis.activeTimeout.indexOf(timerId);
+      if (index !== -1) volantis.activeTimeout.splice(index, 1);
+    }
+  };
+  
+  // 调用原生setTimeout获取ID
+  const timerId = nativeSetTimeout(wrappedCallback, delay, ...args);
+  // 添加到活动列表
+  volantis.activeTimeout.push(timerId);
+  return timerId;
+};
+
+// 重写setInterval：需显式清除才移除ID
+window.setInterval = function(callback, delay, ...args) {
+  const timerId = nativeSetInterval(callback, delay, ...args);
+  volantis.activeInterval.push(timerId);
+  return timerId;
+};
+
+// 重写清除方法：同步移除ID列表记录
+window.clearTimeout = function(timerId) {
+  nativeClearTimeout(timerId);
+  const index = volantis.activeTimeout.indexOf(timerId);
+  if (index !== -1) volantis.activeTimeout.splice(index, 1);
+};
+
+window.clearInterval = function(timerId) {
+  nativeClearInterval(timerId);
+  const index = volantis.activeInterval.indexOf(timerId);
+  if (index !== -1) volantis.activeInterval.splice(index, 1);
+};
+volantis.getActiveInterval = function () {
+  return [...volantis.activeInterval];
+}
+volantis.getActiveTimeout = function () {
+  return [...volantis.activeTimeout];
+}
+volantis.clearAllTimers = function (){
+  volantis.getActiveInterval().forEach(function(i) {
+    clearInterval(i);
+  });
+  volantis.getActiveTimeout().forEach(function(i) {
+    clearTimeout(i);
+  });
+}
+volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
   /******************************************************************************/
 </script>
 <%- partial('./config') %>
