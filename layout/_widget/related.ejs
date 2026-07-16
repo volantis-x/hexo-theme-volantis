@@ -9,6 +9,8 @@ function relatedPostsInTopic() {
     return ''
   }
   var el = ''
+  el += `<section class="widget ${page.widget_platform} ${page.widget_style} ${page.widget_pjax}">`
+  el += `<div class='content'>`
   el += `<widget class="widget-wrapper related post-list">`
   el += `<div class="widget-header dis-select">`
   el += `<span class="name">专栏：${(topic.name || topic.title)}</span>`
@@ -25,6 +27,8 @@ function relatedPostsInTopic() {
   }
   el += `</div>`
   el += `</widget>`
+  el += `</div>`
+  el += `</section>`
   return el
 }
 function relatedWiki() {
