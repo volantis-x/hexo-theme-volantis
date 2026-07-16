@@ -88,9 +88,9 @@ const VolantisApp = (() => {
     }
 
     // 站点信息 最后活动日期
-    if (volantis.GLOBAL_CONFIG.sidebar.for_page.includes('webinfo') || volantis.GLOBAL_CONFIG.sidebar.for_post.includes('webinfo')) {
+    if (!!document.getElementById('last-update-show')) {
       const lastupd = volantis.GLOBAL_CONFIG.sidebar.webinfo.lastupd;
-      if (!!document.getElementById('last-update-show') && lastupd.enable && lastupd.friendlyShow) {
+      if (lastupd.enable && lastupd.friendlyShow) {
         document.getElementById('last-update-show').innerHTML = fn.utilTimeAgo(volantis.GLOBAL_CONFIG.lastupdate);
       }
     }
