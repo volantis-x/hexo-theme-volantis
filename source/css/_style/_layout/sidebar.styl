@@ -401,11 +401,14 @@
   justify-content: space-between
   align-items: center
   padding: 6px 16px
+  color: var(--color-p)
   &:hover
     color: var(--color-list-hl)
+    border-left: 2px solid var(--color-list-hl)
+
 
 .widget-body a.active
-  color: var(--color-list-hl)
+  border-left: 2px solid var(--color-list-hl)
 
 .widget-wrapper
   .widget-header
@@ -415,9 +418,11 @@
     justify-content: space-between
     align-items: baseline
     line-height: 28px
-    font-weight: 500
-    font-size: $fs-13
+    font-weight: 700
+    font-size: .875rem
     color: var(--color-p)
+    .name:
+      margin-left: 8px
     .item 
       display: block
     >span
