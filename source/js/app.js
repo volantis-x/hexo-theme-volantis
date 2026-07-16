@@ -103,6 +103,18 @@ const VolantisApp = (() => {
       document.getElementById('webinfo-runtime-count').innerHTML = `${daysold} ${volantis.GLOBAL_CONFIG.sidebar.webinfo.runtime.unit}`;
     }
 
+    // notebook sidebar.tagtree 标签展开
+    if (!!document.querySelector('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')) {
+      const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+      for (const tagSwitcher of tagSwitchers) {
+        tagSwitcher.addEventListener('click', (e) => {
+          const parent = e.target.closest('.tag-subtree.parent-tag')
+          parent.classList.toggle('expanded')
+          e.preventDefault()
+        })
+      }
+    }
+
     // 消息提示 复制时弹出
     document.body.oncopy = function () {
       fn.messageCopyright()
