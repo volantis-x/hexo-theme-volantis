@@ -10,7 +10,7 @@ function relatedPostsInTopic() {
   var el = ''
   el += `<widget class="widget-wrapper related post-list">`
   el += `<div class="widget-header dis-select">`
-  el += `<span class="name">${__('btn.topic') + __('symbol.colon') + (topic.name || topic.title)}</span>`
+  el += `<span class="name">${(topic.name || topic.title)}</span>`
   el += `</div>`
   el += `<div class="widget-body">`
   for (let post of topic.pages) {
@@ -18,7 +18,7 @@ function relatedPostsInTopic() {
     el += `<a class="item${isActive ? ' active' : ''}" href="${pretty_url(post.path)}">`
     el += `<span class="title">${post.title}</span>`
     if (isActive) {
-      el += icon('default:bookmark.active')
+      el += "" //icon('default:bookmark.active')
     }
     el += `</a>`
   }
@@ -34,9 +34,9 @@ function relatedWiki() {
   const relatedItems = thisItemObject.relatedItems || []
   var el = ''
   for (let relatedItem of relatedItems) {
-    el += `<widget class="widget-wrapper${scrollreveal(' ')} post-card">`
+    el += `<widget class="widget-wrapper post-card">`
     el += `<div class="widget-header dis-select">`
-    el += `<span class="name">${__('meta.more') + __('symbol.colon') + relatedItem.name}</span>`
+    el += `<span class="name">${relatedItem.name}</span>`
     el += `</div>`
     el += `<div class="widget-body">`
     for (let id of relatedItem.items) {
@@ -66,6 +66,6 @@ function layoutDiv() {
 <section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
   <%- partial('header', {item: item}) %>
   <div class='content'>
-    <%# layoutDiv() %>
+    <%- layoutDiv() %>
   </div>
 </section>
