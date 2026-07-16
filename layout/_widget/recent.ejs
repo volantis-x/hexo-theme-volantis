@@ -1,8 +1,9 @@
 <%
 function layoutDiv() {
-  var el = '';
+  var el = `<widget class="widget-wrapper} recent post-list">`
+  // body
   var arr = [];
-  if (page.wiki) {
+  if (page.wiki || page.layout == 'index_wiki') {
     arr = theme.wiki.all_pages.filter( p => {
       if (p.wiki) {
         let proj = theme.wiki.tree[p.wiki];
@@ -19,7 +20,7 @@ function layoutDiv() {
     arr = site.posts.filter( p => p.title && p.title.length > 0)
     arr = arr.sort("updated", -1)
   }
-  el += '<div class="widget-body">'
+  el += '<div class="widget-body fs14">'
   arr = arr.filter(p => p.title?.length > 0)
   arr.length = item.limit
   arr.forEach(post => {
@@ -44,6 +45,7 @@ function layoutDiv() {
     el += '';
   });
   el += '</div>';
+  el += '</widget>';
   return el;
 }
 %>
