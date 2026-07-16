@@ -2,6 +2,12 @@
 
 'use strict';
 
+const configLib = require('./lib/config');
+const stellarTagUtilsLib = require('./lib/stellar-tag-utils');
+const renderStylusLib = require('./lib/render-stylus');
+const checkEnvironmentLib = require('./lib/check-environment');
+const { version } = require('../../package.json');
+
 hexo.on('generateBefore', () => {
   // Merge config.
   require('./lib/config')(hexo);
@@ -10,8 +16,11 @@ hexo.on('generateBefore', () => {
   require('./lib/tree-notebooks')(hexo);
   require('./lib/stellar-tag-utils')(hexo);
   require('./lib/render-stylus')(hexo);
+  configLib(hexo);
+  stellarTagUtilsLib(hexo);
+  renderStylusLib(hexo);
   if (hexo.theme.config.debug === "env") {
-    require('./lib/check-environment')(hexo);
+    checkEnvironmentLib(hexo);
   }
 });
 
@@ -21,7 +30,6 @@ hexo.on('generateAfter', () => {
 
 
 hexo.on('ready', () => {
-  const { version } = require('../../package.json');
   hexo.log.info(`
 ============================================================
   Volantis ${version}

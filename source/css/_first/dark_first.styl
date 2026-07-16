@@ -25,6 +25,7 @@ fitst_dark()
   --color-meta: $color-dark-meta
   --color-link: $color-dark-link
   --color-copyright-bkg: $color-dark-copyright-bkg
+  --link-color:rgb(228, 228, 228)
 
   img
     filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
@@ -75,3 +76,6 @@ if hexo-config('plugins.darkmode.enable')
       fitst_dark()
   [color-scheme='dark']
     fitst_dark()
+    .friend-card.color-bk-dark {
+      filter: brightness(0.8);
+    }

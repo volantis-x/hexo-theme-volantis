@@ -34,8 +34,10 @@ footer:
   use: 本站使用
   theme: 作为主题
   total_views: 总访问量为
+  page_views: 本页总访客量为
   total_visitors: 总访客量
   times: 次
+  peoples: 人
   site_source: 本站使用 %s 作为主题，您可以在 %s 找到[本站源码](%s)。
   site_views: 总访问量约为 %s 次，访问人数约为 %s 人。
 

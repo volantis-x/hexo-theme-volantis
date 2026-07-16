@@ -17,15 +17,8 @@
       path: path,
       placeholder: placeholder,
       onCommentLoaded: function() {
-        if(typeof VolantisFancyBox === "undefined") {
-          const checkFancyBox = setInterval(() => {
-            if(typeof VolantisFancyBox === "undefined") return;
-            clearInterval(checkFancyBox);
-            VolantisFancyBox.groupBind('.tk-content img:not([class*="emo"])', 'Comments');
-          })
-        } else {
-          VolantisFancyBox.groupBind('.tk-content img:not([class*="emo"])', 'Comments');
-        }
+        const fancyBoxInstance = new VolantisFancyBox();
+        fancyBoxInstance.groupBind('.tk-content img:not([class*="emo"])', 'Comments');
       }
     }),pdata.commentConfig))
   }

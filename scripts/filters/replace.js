@@ -4,11 +4,13 @@
 
 hexo.extend.filter.register('after_render:html', function (data) {
   if (hexo.theme.config.replace) {
-    hexo.theme.config.replace.forEach(e => {
-      let s = e.split(" => ")
-      let a = s[0]
-      let b = s[1]
-      data = data.replace(new RegExp(a, "g"), b);
+    const replacements = hexo.theme.config.replace.map(e => {
+      const [a, b] = e.split(" => ");
+      return { regex: new RegExp(a, "g"), replacement: b };
+    });
+
+    replacements.forEach(({ regex, replacement }) => {
+      data = data.replace(regex, replacement);
     });
   }
   return data;
