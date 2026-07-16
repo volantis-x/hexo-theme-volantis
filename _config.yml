@@ -746,7 +746,7 @@ sidebar:
           text: '最后活动时间：'
           unit: '日'
     # ---------------------------------------
-    # lastupdate widget
+    # lastupdate widget # only for posts
     lastupdate:
       class: lastupdate
       display: [desktop, mobile]
@@ -754,34 +754,31 @@ sidebar:
         icon: fa-solid fa-clock WISTERIA
         title: 最近更新
     # ---------------------------------------
-    # recent widget
+    # recent widget # # for wiki notebooks
     recent:
       class: recent
       display: [desktop, mobile]
       header:
-        icon: fa-solid fa-clock WISTERIA
-        title: recent
+        icon: fa-solid fa-clock
+        title: 最近更新
       limit: 10 # Count of posts
     # ---------------------------------------
     # 页面树（与当前页面强关联的上下篇文章列表）
     tree:
       class: tree
-      header:
-        icon: fa-solid fa-clock WISTERIA
-        title: tree
     related:
       class: related
       header:
-        icon: fa-solid fa-clock WISTERIA
+        icon: fa-solid fa-clock
         title: related
     tagtree:
       class: tagtree
       header:
-        icon: fa-solid fa-clock WISTERIA
-        title: tagtree
+        icon: fa-solid fa-tags
+        title: 标签
       expand_all: false # 是否展开所有节点
       expand_active: true # 是否展开当前节点
-      show_tagcon: true # 是否显示标签 icon
+
 ############################### Sidebar ############################### > end
 
 
