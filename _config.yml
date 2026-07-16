@@ -88,7 +88,7 @@ site_tree:
 
 cdn_system:
   # CDN 优先级 从高到低排序 写入 priority 列表即表示启用(enable)
-  priority: [custom, local, cdnjs, npm, static]
+  priority: [custom, local, npm, static, cdnjs]
   # ========================================================================
   # cdn数据配置文件见 "theme/_cdn.yml", 可以在 source/_data/cdn.yml 覆盖 theme/_cdn.yml
   # 变量说明：
@@ -104,7 +104,7 @@ cdn_system:
   system_config:
     # 自定义配置 使用 "theme/_cdn.yml" 中的名称作为配置项的键
     custom:
-      busuanzi: https://npm.elemecdn.com/penndu@1.0.0/bsz.js  # 杜老师友情赞助
+      busuanzi: https://jsd.onmicrosoft.cn/npm/penndu@17.0.0/bsz.js  # 杜老师友情赞助
       #volantis_style: /css/style.css
       #volantis_app: /js/app.js
 
@@ -267,6 +267,9 @@ pages:
   # 友链页面配置
   friends:
     layout_scheme: traditional # simple: 简单布局, traditional: 传统布局
+    link_block_color:
+      enable: false #友链块颜色开关，用 color: '颜色' 字段
+      unified_font: false # 是否统一友链块文字，true则所有文字都会成黑，false只有
 
 ############################### Article Layout ############################### > start
 # 文章布局
@@ -572,7 +575,7 @@ comments:
   twikoo:
     path: # 全局评论地址
     # 其他配置项按照yml格式继续填写即可 除了 [el path] 选项
-    envId: xxxxxxxxxxxxxxx # 腾讯云环境id
+    envId: xxxxxxxxxxxxxxx # 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
     placeholder: #全局评论占位，也可以在管理面板中的配置管理处设置（此处优先级更高）
     visitor: true # 是否显示文章阅读数
 
@@ -583,13 +586,24 @@ comments:
     placeholder: # 评论占位提示
     serverURL: # Waline 的服务端地址（必填） 测试用地址: https://waline.vercel.app
     imageUploader:
-      # 以兰空图床为例，下列填写内容为：
-      # url: https://xxxxxx/api/v1/upload
+      # 适配了兰空图床V1、V2版本
+      # 以兰空图床V1为例，下列填写内容为：
+      # fileName: file
+      # tokenName: Authorization
+      # api: https://xxxxxx/api/v1/upload
       # token: Bearer xxxxxxxxxxxxxx
       # resp: data.links.url
-      api:   # 图床地址
+      # 以兰空图床V2为例，下列填写内容为：
+      # fileName: image
+      # tokenName: token
+      # api: https://xxxxxx/api/upload
+      # token: xxxxxxxxxxxxxx
+      # resp: data.url
+      fileName: # 根据版本二选一
+      tokenName: # 根据版本二选一
+      api: # 图床 api 地址
       token: # 图床验证
-      resp:  # 图片地址返回值的字段
+      resp: # 图片地址返回值的字段
     pageview: true # 是否显示文章阅读数
     comment: true  # 是否显示文章评论数
     # 其他配置项按照yml格式继续填写即可 除了 [el path imageUploader] 选项
@@ -774,6 +788,28 @@ sidebar:
       expand_all: false # 是否展开所有节点
       expand_active: true # 是否展开当前节点
       show_tagcon: true # 是否显示标签 icon
+    # Artalk widget
+    artalk:
+      class: artalk
+      stickys: true
+      display: [desktop, mobile]
+    # ---------------------------------------
+    # Memos widget
+    memos_carousel:
+      class: memos_carousel
+      display: [desktop, mobile]
+      header:
+        icon: fa-solid fa-volume-high
+        title: 说说
+        url: /blog/memos/ # 说说页面的地址
+      url: 'https://s.dusays.com/' # 替换城自己的域名，也可以用杜老师的平台托管
+      limit: '10' # 展示数量限制
+      creatorId: '1' # 替换成自己的用户的ID
+      tag: '' # 要展示的内容的标签
+      image: 'fa-solid fa-image' # 图片替换成图标
+      link: 'fa-solid fa-link' # 链接替换成图标
+      placeholder: '说说加载中...' # 占位符
+
 ############################### Sidebar ############################### > end
 
 
@@ -812,8 +848,8 @@ site_footer:
   source: https://github.com/volantis-x/volantis-docs/
   # analytics using busuanzi
   analytics: >
-    <span>本站总访问量为 <span id='busuanzi_value_site_pv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
-    <span>访客数为 <span id='busuanzi_value_site_uv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+    <span>本站总访问量为 <span id='busuanzi_site_pv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
+    <span>访客数为 <span id='busuanzi_site_uv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
   copyright: '[Copyright © since 2017 XXX](/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
@@ -832,6 +868,8 @@ plugins:
   sitesjs:
     enable: true
   friendsjs:
+    enable: true
+  fpostsjs:
     enable: true
   contributorsjs:
     enable: true
@@ -966,7 +1004,7 @@ plugins:
         cover: '/music/Avem.jpg'
     # ============= local end ================
     # Optional
-    fixed: false      # enable fixed mode
+    fixed: false      # enable fixed mode 此处true会对footer与sidebar开启的aplayer造成影响
     theme: '#1BCDFC'  # main color
     autoplay: false   # audio autoplay
     order: list       # player play order, values: 'list', 'random'
@@ -1035,6 +1073,13 @@ plugins:
     # color2: #说说背景颜色2&按钮颜色2
     # color3: #说说字体颜色
     # cssUrl: #自定义css接口
+    
+  # Memos https://usememos.com
+  memos:
+    # Set `plugins: ["memos"]` to enable in front-matter
+    url: 'https://s.dusays.com/' # 替换成自己的域名，也可以用杜老师的平台托管
+    limit: '10' # 展示数量限制
+    id: '1' # 替换成自己的用户的ID
 
   # BBtalk https://bb.js.org
   bbtalk:
@@ -1051,11 +1096,23 @@ plugins:
     # Set `plugins: ["fcircle"]` to enable in front-matter
     # 支持 Pjax
     private_api_url: https://fcircle-api.example.com/ # api 地址
+    page_init_number: 20 # 初始加载几篇文章
     page_turning_number: 10  # 点击加载更多时，一次最多加载几篇文章，默认10
     error_img: https://cravatar.cn/avatar/57d8260dfb55501c37dde588e7c3852c # 头像加载失败时，默认头像地址
     sort_rule: created # 进入页面时第一次的排序规则,可选值：created/updated
-    app: https://npm.elemecdn.com/fcircle-theme-yyyz@1.0.5/dist/app.min.js # app.min.js的url
-    bundle: https://npm.elemecdn.com/fcircle-theme-yyyz@1.0.5/dist/bundle.js # bundle.js的url
+    expire_days: 1 # 本地文章缓存数据过期时间（天）
+    js: https://npm.elemecdn.com/fcircle-theme-yyyz@1.0.13/dist/fcircle.min.js # fcircle.min.js的url
+
+  # 轻量友链朋友圈
+  # https://github.com/willow-god/Friend-Circle-Lite
+  # https://blog.liushen.fun/posts/4dc716ec/
+  fcircle_lite:
+    # Set `plugins: ["fcircle_lite"]` to enable in front-matter
+    private_api_url:              # 填写你的fc_Lite地址
+    page_turning_number: 20 # 点击加载更多时，一次最多加载几篇文章，默认20
+    error_img: https://i.p-i.vip/30/20240815-66bced9226a36.webp # 头像加载失败时，默认头像地址
+    css: https://fastly.jsdelivr.net/gh/willow-god/Friend-Circle-Lite/main/fclite.min.css # CSS文件地址
+    js: https://fastly.jsdelivr.net/gh/willow-god/Friend-Circle-Lite/main/fclite.min.js # JS文件地址
 
   # 消息提示 
   # izitoast
@@ -1104,6 +1161,14 @@ plugins:
   # https://www.swiper.com.cn/
   swiper:
     enable: true
+
+  # AI摘要
+  # https://github.com/zhheo/Post-Abstract-AI
+  tianliGPT:
+    enable: false
+    key: 5Q5mpqRK5DkwT1X9Gi5e
+    wordLimit: 1000 # 摘要字数限制 (⚠️危险：更改此变量损失已消耗过的key，因为你提交的内容发生了变化。)
+    typewriter: true # 打字机效果
 
 ############################### Plugins ############################### > end
 
@@ -1446,3 +1511,11 @@ structured_data:
       width: 192
       height: 192
 ############################### Structured Data ############################### > end
+
+
+api_host:
+  ghapi: https://api.github.com
+  ghraw: https://raw.githubusercontent.com
+  gist: https://gist.github.com
+  # https://github.com/anuraghazra/github-readme-stats
+  ghcard: https://github-readme-stats.vercel.app

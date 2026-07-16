@@ -29,7 +29,9 @@
 <% } %>
 
 <!-- internal -->
+<!-- 这里不能使用 Hexo 内置的 helper: js(theme.cdn.volantis_app) ， 会导致多加一个 config.site_root -->
 <script src="<%- theme.cdn.volantis_app %>"></script>
+
 
 <% if (theme.rightmenus.enable) { %>
   <%- partial('../../_plugins/rightmenus/layout') %>
@@ -57,7 +59,18 @@
 <% } %>
 
 <% if (theme.plugins.aplayer && theme.plugins.aplayer.enable) { %>
-  <%- partial('../../_plugins/aplayer/script') %>
+  <% if (!is_post() && !is_page()) { %>
+    <%- partial('../../_plugins/aplayer/script') %>
+    <% if (theme.plugins.aplayer.fixed == true ) { %>
+      <%- partial('../../_plugins/aplayer/layout', { post: page }) %>
+    <% } %>
+  <% } %>
+  <% if (is_post() || is_page()) { %>
+    <%- partial('../../_plugins/aplayer/script') %>
+    <% if (!page.music && theme.plugins.aplayer.fixed == true ) { %>
+        <%- partial('../../_plugins/aplayer/layout', { post: page }) %>
+    <% } %>
+  <% } %>
 <% } %>
 
 <%
@@ -139,3 +152,6 @@
 <%- partial('../../_plugins/slow-network/script') %>
 
 
+<% if (theme.plugins.tianliGPT.enable) { %>
+  <%- partial('../../_plugins/tianligpt/script') %>
+<% } %>

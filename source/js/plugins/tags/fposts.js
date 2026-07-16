@@ -1,4 +1,4 @@
-const SitesJS = {
+const FpostsJS = {
   requestAPI: (url, callback, timeout) => {
     let retryTimes = 5;
 
@@ -45,19 +45,19 @@ const SitesJS = {
   },
   layout: (cfg) => {
     const el = cfg.el;
-    SitesJS.requestAPI(cfg.api, function (data) {
+    const default_avatar = cfg.avatar;
+    
+    FpostsJS.requestAPI(cfg.api, function (data) {
       el.querySelector('.loading-wrap').remove();
       const arr = data.content;
       var cellALL = "";
       arr.forEach((item, i) => {
-        var cell = '<div class="site-card">';
-        cell += '<a class="card-link" target="_blank" rel="external noopener noreferrer" href="' + item.url + '">';
-        cell += '<img alt="' + item.title + '" src="' + (item.cover || item.snapshot || item.screenshot || ('https://image.thum.io/get/width/1024/crop/768/' + item.url)) + '" onerror="errorImgCover(this)"/>';
-        cell += '<div class="info">';
-        cell += '<img alt="' + item.title + '" src="' + (item.icon || item.avatar || cfg.avatar) + '" onerror="errorImgAvatar(this)"/>';
-        cell += '<span class="title">' + item.title + '</span>';
-        cell += '<span class="desc">' + (item.description || item.url) + '</span>';
-        cell += '</div>';
+        var cell = `<div class="grid-cell user-post-card">`;
+        cell += `<div class="avatar-box">`;
+        cell += `<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer" href="${item.html_url || item.url}">`;;
+        cell += `<img src="${item.avatar_url || item.avatar || item.icon || default_avatar}" onerror="javascript:this.removeAttribute(\'data-src\');this.src=\'${default_avatar}\';"/>`;
+        cell += `<span class="title">${item.title || item.login}</span>`;
+        cell += `</a>`;
         cell += `<div class="labels">`;
         for (let label of item.labels) {
           if (label.lightness > 75) {
@@ -69,11 +69,32 @@ const SitesJS = {
           }
         }
         cell += `</div>`;
-        cell += '</a>';
-        cell += '</div>';
+        cell += `</div>`;
+        cell += `<div class="previews">`;
+        if (item.description) {
+          cell += `<div class="desc">${item.description || item.issue_number || ''}</div>`;
+        } else {
+          cell += `<div class="desc">#${item.issue_number}</div>`;
+        }
+        cell += `<div class="posts">`;
+        
+        if (item.posts?.length > 0) {
+          for (let post of item.posts) {
+            cell += `<a class="post-link" target="_blank" rel="external nofollow noopener noreferrer" href="${post.link}">`;
+            cell += `<span class="title">${post.title}</span>`;
+            cell += `<span class="date">${post.published}</span>`;
+            cell += `</a>`;
+          }
+        } else {
+          cell += `<span class="no-post">${item.feed?.length > 0 ? 'RSS 解析失败' : '未设置 RSS 链接'}</span>`;
+        }
+        cell += `</div>`;
+        cell += `</div>`;
+        cell += `</div>`;
         cellALL += cell;
       });
-      el.querySelector('.group-body').innerHTML = cellALL;
+      
+      el.querySelector('.grid-box').innerHTML = cellALL;
     }, function () {
       try {
         el.querySelector('.loading-wrap svg').remove();
@@ -81,8 +102,8 @@ const SitesJS = {
       } catch (e) { }
     });
   },
-  start: (cfg) => {
-    const els = document.getElementsByClassName('sitesjs-wrap');
+  start: () => {
+    const els = document.getElementsByClassName('users-posts-wrap');
     for (var i = 0; i < els.length; i++) {
       const el = els[i];
       const api = el.getAttribute('api');
@@ -90,18 +111,15 @@ const SitesJS = {
         continue;
       }
       var cfg = new Object();
-      cfg.class = el.getAttribute('class');
       cfg.el = el;
       cfg.api = api;
-      cfg.avatar = volantis.GLOBAL_CONFIG.default.link;
-      cfg.screenshot = volantis.GLOBAL_CONFIG.default.cover;
-      SitesJS.layout(cfg);
+      cfg.class = el.getAttribute('class');
+      cfg.avatar = volantis.GLOBAL_CONFIG.default.avatar;
+      FpostsJS.layout(cfg);
     }
   }
 }
 
 
-SitesJS.start();
-document.addEventListener('pjax:complete', function () {
-  SitesJS.start();
-});
+
+FpostsJS.start();
