@@ -364,7 +364,7 @@
   top: $navbar-height + $gap
   z-index 10
 
-
+// tag-tree
 .widget-body.tag-tree .tag-subtree > a > .tag-switcher-wrapper
   width: 1.75rem
   height: 0.875rem
@@ -396,10 +396,17 @@
   opacity: 0.4
   margin-right: 0.25rem
 
-.widget-body a
+.widget-body.tag-tree a
   display: flex
   justify-content: space-between
   align-items: center
+
+.widget-body.tag-tree a
+    font-size: .875rem
+    padding: 6px 16px
+    display: block
+    border-radius: 8px
+    transition: background .2s ease-out
 
 
 
