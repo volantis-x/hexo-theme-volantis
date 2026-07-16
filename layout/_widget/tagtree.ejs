@@ -3,8 +3,10 @@
 <% const tagTree = notebook?.tagTree %>
 <% const isLeaf = tag => tag.id === '' || tag.children.length === 0 %>
 <% const getTagcon = tag => {
-  const tagcons = theme.notebook.tagcons || {}
+  return true;
+  /*const tagcons = theme.notebook.tagcons || {}
   return tagcons[tag.name] || tagcons[tag.id] || tagcons[tag.part] || tagcons[tag.part.toLowerCase()] || tagcons['']
+*/
 }
 const icon = tag => {
   return `<i class="${theme.article.body.meta_library.tags.icon} fa-fw" aria-hidden="true"></i>`;
