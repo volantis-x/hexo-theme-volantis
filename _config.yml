@@ -1145,17 +1145,12 @@ plugins:
       notice: true                        # 唤醒原右键菜单的通知
 
   # 聊天功能
-  chat_service: # tidio or gitter
+  chat_service: # tidio 
 
   # Tidio
   # https://www.tidio.com/
   tidio:
     id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-  # Gitter
-  # https://gitter.im
-  gitter:
-    room: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
   # swiper
   # https://www.swiper.com.cn/
