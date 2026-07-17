@@ -121,7 +121,7 @@ const classes = {
                   <%- truncate(strip_html(post.content), {length: 200}) %>
                 <% } else if (!theme.article.preview.hide_excerpt) { %>
                   <!-- 未禁用摘要显示时，显示完整内容 -->
-                  <%- post.content %>
+                  <%- strip_html(post.content) %>
                 <% } %>
               <% } %>
             </div>
