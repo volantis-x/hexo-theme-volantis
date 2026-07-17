@@ -86,8 +86,8 @@ const classes = {
                   <!-- 主题启用自动摘要时，显示截断后的内容（200字符） -->
                   <%- truncate(strip_html(post.content), {length: 200}) %>
                 <% } else if (!theme.article.preview.hide_excerpt) { %>
-                  <!-- 未禁用摘要显示时，显示完整内容 -->
-                  <%- post.content %>
+                  <!-- 未禁用摘要显示时，因为 a 标签不能嵌套html交互元素，这里依然显示截断后的内容 -->
+                  <%- truncate(strip_html(post.content), {length: 200}) %>
                 <% } %>
               <% } %>
             </div>
@@ -124,8 +124,8 @@ const classes = {
           <!-- 主题启用自动摘要时，显示截断后的内容（200字符） -->
           <%- truncate(strip_html(post.content), {length: 200}) %>
         <% } else if (!theme.article.preview.hide_excerpt) { %>
-          <!-- 未禁用摘要显示时，显示完整内容 -->
-          <%- post.content %>
+          <!-- 未禁用摘要显示时，因为 a 标签不能嵌套html交互元素，这里依然显示截断后的内容 -->
+          <%- truncate(strip_html(post.content), {length: 200}) %>
         <% } %>
       <% } %>
     </div>

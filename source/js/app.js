@@ -2,13 +2,14 @@ document.addEventListener("DOMContentLoaded", function () {
   volantis.requestAnimationFrame(() => {
     VolantisApp.init();
     VolantisApp.subscribe();
-    new VolantisFancyBox();
+    const fancyBoxInstance = new VolantisFancyBox();
+    fancyBoxInstance.bind('#post-body img:not([fancybox])');
     highlightKeyWords.startFromURL();
     locationHash();
 
     volantis.pjax.push(() => {
       VolantisApp.pjaxReload();
-      VolantisFancyBox.init();
+      fancyBoxInstance.bind('#post-body img:not([fancybox])');
       sessionStorage.setItem("domTitle", document.title);
       highlightKeyWords.startFromURL();
     }, 'app.js');
