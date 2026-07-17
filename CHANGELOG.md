@@ -1,5 +1,18 @@
 # Changelog
 
+## [6.2.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.1.0...v6.2.0) (2026-07-17)
+
+
+### Features
+
+* 合并 7.x alpha 到 6.x ([#976](https://github.com/volantis-x/hexo-theme-volantis/issues/976)) ([9a942ff](https://github.com/volantis-x/hexo-theme-volantis/commit/9a942fff205619b532dfca0aefa25c8f318b47cb))
+
+
+### Bug Fixes
+
+* 修复fancybox的error ([#978](https://github.com/volantis-x/hexo-theme-volantis/issues/978)) ([1183a55](https://github.com/volantis-x/hexo-theme-volantis/commit/1183a55ad277a79dcf089a3d645451e990ace7ba))
+* 修复启用imgcover并禁用hide_excerpt时页面错乱的问题 ([#977](https://github.com/volantis-x/hexo-theme-volantis/issues/977)) ([a59d020](https://github.com/volantis-x/hexo-theme-volantis/commit/a59d020a94665837073fa60af097eb45d53a4d24))
+
 ## [6.1.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.0.6...v6.1.0) (2026-07-16)
 
 
