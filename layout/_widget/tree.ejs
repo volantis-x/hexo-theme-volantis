@@ -21,9 +21,9 @@ function layoutDocTree(pages) {
     }
     if (proj.pages.length > 1) {
       let href = pretty_url(p.path);
-      if (p.is_homepage) {
+      /*if (p.is_homepage) {
         href += '#start'
-      }
+      }*/
       el += `<a class="link${isActive}" href="${href}">`
       el += `<span class="toc-text">${p.title}</span>`
       if (isActive.length > 0) {
