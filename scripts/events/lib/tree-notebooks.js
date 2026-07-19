@@ -90,7 +90,7 @@ function prepareNotebook(id, info, ctx) {
             id: tagId,
             name: tagName,
             part: part,
-            path: `${notebook.base_dir}/tags/${tagId}`,
+            path: `${notebook.base_dir}/tags/${tagId}/`,
             parent: parent.id,
             childSet: new Set(),
             noteSet: new Set(),
