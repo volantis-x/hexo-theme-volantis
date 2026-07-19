@@ -1,5 +1,20 @@
 # Changelog
 
+## [6.3.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.2.0...v6.3.0) (2026-07-19)
+
+
+### Features
+
+* 新增NProgress ([#987](https://github.com/volantis-x/hexo-theme-volantis/issues/987)) ([8b914a1](https://github.com/volantis-x/hexo-theme-volantis/commit/8b914a16220f55dd93c0db3c2667f9416c015fd8))
+
+
+### Bug Fixes
+
+* [#980](https://github.com/volantis-x/hexo-theme-volantis/issues/980) ([#989](https://github.com/volantis-x/hexo-theme-volantis/issues/989)) ([34203e5](https://github.com/volantis-x/hexo-theme-volantis/commit/34203e517be79395c3d2d06bf73d78eb754cfeaf))
+* [#984](https://github.com/volantis-x/hexo-theme-volantis/issues/984) ([#986](https://github.com/volantis-x/hexo-theme-volantis/issues/986)) ([6931b09](https://github.com/volantis-x/hexo-theme-volantis/commit/6931b0958778d988b72e2a051fd27345316f7f53))
+* swiper ([#988](https://github.com/volantis-x/hexo-theme-volantis/issues/988)) ([7697702](https://github.com/volantis-x/hexo-theme-volantis/commit/7697702856508788c00c3bc2c01ce9b478a9f8f5))
+* 移除 gitter ([#983](https://github.com/volantis-x/hexo-theme-volantis/issues/983)) ([8c4c338](https://github.com/volantis-x/hexo-theme-volantis/commit/8c4c338bada4e81e3905ba8992245946524ec66e))
+
 ## [6.2.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.1.0...v6.2.0) (2026-07-17)
 
 
