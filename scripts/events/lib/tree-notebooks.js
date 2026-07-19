@@ -44,6 +44,8 @@ function prepareNotebook(id, info, ctx) {
     notebook.base_dir = notebooksBaseDir ? `${notebooksBaseDir}/${id}` : id
   }
 
+  notebook.base_dir = notebook.base_dir + "/"
+
   notebook.sort ||= 0
   notebook.auto_excerpt ||= 128
   notebook.per_page ??=  ctx.config.per_page ?? 10
