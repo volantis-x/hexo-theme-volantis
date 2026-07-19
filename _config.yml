@@ -1029,8 +1029,17 @@ plugins:
   # https://github.com/CodeByZach/pace
   pace:
     enable: true
+    read_progress: true # 页面阅读进度
     color: blue # black, blue, green, orange, pink, purple, red, silver, white, yellow
     theme: minimal # big-counter, bounce, barber-shop, center-atom, center-circle, center-radar, center-simple, corner-indicator, fill-left, flat-top, flash, loading-bar, mac-osx, material, minimal
+
+
+  # nprogress
+  # For slim progress bars like on YouTube, Medium, etc
+  # https://github.com/rstacruz/nprogress
+  nprogress:
+    enable: #true
+
 
   # 暗黑模式 darkmode
   # 开关按钮：在 navbar.menu 中添加：
@@ -1512,5 +1521,5 @@ api_host:
   ghapi: https://api.github.com
   ghraw: https://raw.githubusercontent.com
   gist: https://gist.github.com
-  # https://github.com/anuraghazra/github-readme-stats
-  ghcard: https://github-readme-stats.vercel.app
+  # https://github.com/stats-organization/github-stats-extended ## eol: https://github.com/anuraghazra/github-readme-stats
+  ghcard: https://github-stats-extended.vercel.app

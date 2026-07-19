@@ -83,11 +83,11 @@
 ===============================================================================
     没有找到评论插件：${theme.comments.service}
     请检查是否存在该插件，或者检查插件名称是否正确：${theme.comments.service}
-    see: https://volantis.js.org/v5/theme-settings/#选择评论系统
+    see: https://volantis.js.org/v6/theme-settings/#选择评论系统
 ================================================================================
     There is no comments plugin: ${theme.comments.service}
     Please check if the plugin exists, or check the plugin name is correct: ${theme.comments.service}
-    see: https://volantis.js.org/v5/theme-settings/#选择评论系统
+    see: https://volantis.js.org/v6/theme-settings/#选择评论系统
 =================================================================================`)
     }
   }
@@ -136,6 +136,16 @@
   <%- partial('../../_plugins/pace/script') %>
 <% } %>
 
+<% if (theme.plugins.nprogress && theme.plugins.nprogress.enable){ %>
+  <%- partial('../../_plugins/nprogress/index') %>
+<% } %>
+
+
+<!-- pjax -->
+<% if (theme.plugins.pjax.enable){ %>
+  <%- partial('../../_plugins/pjax/index') %>
+<% } %>
+
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
 <% if (page.plugins) { %>
@@ -155,3 +165,7 @@
 <% if (theme.plugins.tianliGPT.enable) { %>
   <%- partial('../../_plugins/tianligpt/script') %>
 <% } %>
+
+
+
+

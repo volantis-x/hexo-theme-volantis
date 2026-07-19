@@ -14,7 +14,12 @@
   volantis.js("<%- theme.cdn.pace_js %>").then(() => {
     Pace.options.restartOnPushState = false;
     volantis.pjax.send(Pace.restart,"Pace.restart");
-    volantis.pjax.push(()=>{setTimeout(()=>{Pace.stop()},1200)},"Pace.stop");
+    volantis.pjax.push(()=>{
+      setTimeout(()=>{
+        Pace.stop();
+        document.body.className = document.body.className.replaceAll("pace-running ","");
+    },1200)},"Pace.stop");
+    <% if (theme.plugins.pace.read_progress) { %>
     // 阅读进度
     volantis.scroll.push(volantis.debounce(() => {
       Pace.stop();
@@ -23,5 +28,6 @@
       document.body.className = document.body.className.replaceAll("pace-running ","");
     }),"阅读进度")
     // todo：配置项开关, 哪些页面添加阅读进度
+    <% } %>
   })
 </script>

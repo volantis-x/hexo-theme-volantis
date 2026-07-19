@@ -46,6 +46,7 @@ module.exports = hexo => {
   }
   hexo.config.meta_generator = false;
   hexo.theme.config.getStartTime = Date.now();
+  hexo.config.highlight.hljs = false;
   // Custom languages support. Introduced in NexT v6.3.0.
   if (data.languages) {
     var { language } = hexo.config;
