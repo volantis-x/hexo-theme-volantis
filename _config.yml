@@ -1521,5 +1521,5 @@ api_host:
   ghapi: https://api.github.com
   ghraw: https://raw.githubusercontent.com
   gist: https://gist.github.com
-  # https://github.com/anuraghazra/github-readme-stats
-  ghcard: https://github-readme-stats.vercel.app
+  # https://github.com/stats-organization/github-stats-extended ## eol: https://github.com/anuraghazra/github-readme-stats
+  ghcard: https://github-stats-extended.vercel.app
