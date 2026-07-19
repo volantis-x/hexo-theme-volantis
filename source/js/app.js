@@ -3,13 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     VolantisApp.init();
     VolantisApp.subscribe();
     const fancyBoxInstance = new VolantisFancyBox();
-    fancyBoxInstance.bind('#post-body img:not([fancybox])');
+    fancyBoxInstance.bind('#post-body img[fancybox]');
     highlightKeyWords.startFromURL();
     locationHash();
 
     volantis.pjax.push(() => {
       VolantisApp.pjaxReload();
-      fancyBoxInstance.bind('#post-body img:not([fancybox])');
+      fancyBoxInstance.bind('#post-body img[fancybox]');
       sessionStorage.setItem("domTitle", document.title);
       highlightKeyWords.startFromURL();
     }, 'app.js');
