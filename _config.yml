@@ -1029,6 +1029,7 @@ plugins:
   # https://github.com/CodeByZach/pace
   pace:
     enable: true
+    read_progress: true # 页面阅读进度
     color: blue # black, blue, green, orange, pink, purple, red, silver, white, yellow
     theme: minimal # big-counter, bounce, barber-shop, center-atom, center-circle, center-radar, center-simple, corner-indicator, fill-left, flat-top, flash, loading-bar, mac-osx, material, minimal
 
