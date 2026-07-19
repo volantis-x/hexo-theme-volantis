@@ -10,7 +10,7 @@
 'use strict';
 
 hexo.extend.tag.register('swiper', function (args, content) {
-  args = hexo.args.map(args, ['width']);
+  args = hexo.args.map(args, ['width', 'effect']);
   var el = '';
   function slide() {
     let imgs = hexo.render.renderSync({ text: content, engine: 'markdown' });
@@ -24,7 +24,7 @@ hexo.extend.tag.register('swiper', function (args, content) {
   }
   el += '<div class="tag-plugin swiper-container"';
   if (args.width && args.width.length > 0) {
-    el += ' ' + hexo.args.joinTags(args, 'width').join(' ');
+    el += ' ' + hexo.args.joinTags(args, ['width', 'effect']).join(' ')
   }
   el += '>';
   el += '<div class="swiper-wrapper">';
