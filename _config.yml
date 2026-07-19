@@ -1028,7 +1028,7 @@ plugins:
   # An automatic web page progress bar.
   # https://github.com/CodeByZach/pace
   pace:
-    enable: #true
+    enable: true
     read_progress: true # 页面阅读进度
     color: blue # black, blue, green, orange, pink, purple, red, silver, white, yellow
     theme: minimal # big-counter, bounce, barber-shop, center-atom, center-circle, center-radar, center-simple, corner-indicator, fill-left, flat-top, flash, loading-bar, mac-osx, material, minimal
@@ -1038,7 +1038,7 @@ plugins:
   # For slim progress bars like on YouTube, Medium, etc
   # https://github.com/rstacruz/nprogress
   nprogress:
-    enable: true
+    enable: #true
 
 
   # 暗黑模式 darkmode
