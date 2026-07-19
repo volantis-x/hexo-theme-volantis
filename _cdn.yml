@@ -459,7 +459,7 @@ memos_carousel_js:
   cdnjs: false
 nprogress_js:
   name: nprogress
-  cdnjs_name: pace
+  cdnjs_name: nprogress
   file: nprogress.js
   version: 0.2.0
   npm: true
@@ -467,7 +467,7 @@ nprogress_js:
   cdnjs: true
 nprogress_css:
   name: nprogress
-  cdnjs_name: pace
+  cdnjs_name: nprogress
   file: nprogress.css
   version: 0.2.0
   npm: true
