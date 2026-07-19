@@ -44,6 +44,8 @@ function prepareNotebook(id, info, ctx) {
     notebook.base_dir = notebooksBaseDir ? `${notebooksBaseDir}/${id}` : id
   }
 
+  notebook.base_dir = notebook.base_dir + "/";
+
   notebook.sort ||= 0
   notebook.auto_excerpt ||= 128
   notebook.per_page ??=  ctx.config.per_page ?? 10
@@ -61,7 +63,7 @@ function prepareNotebook(id, info, ctx) {
     id: '',
     name: '',
     part: '',
-    path: notebook.base_dir + "/",
+    path: notebook.base_dir,
     parent: null, // parent tag id
     childSet: new Set(), // child tag ids
     noteSet: new Set(), // note ids
@@ -90,7 +92,7 @@ function prepareNotebook(id, info, ctx) {
             id: tagId,
             name: tagName,
             part: part,
-            path: `${notebook.base_dir}/tags/${tagId}/`,
+            path: `${notebook.base_dir}tags/${tagId}/`,
             parent: parent.id,
             childSet: new Set(),
             noteSet: new Set(),
