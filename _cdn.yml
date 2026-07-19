@@ -457,3 +457,20 @@ memos_carousel_js:
   npm: true
   static: false
   cdnjs: false
+nprogress_js:
+  name: nprogress
+  cdnjs_name: pace
+  file: nprogress.min.js
+  version: 0.2.0
+  npm: true
+  static: false
+  cdnjs: true
+nprogress_css:
+  name: nprogress
+  cdnjs_name: pace
+  file: nprogress.min.css
+  version: 0.2.0
+  npm: true
+  static: false
+  cdnjs: true
+  
