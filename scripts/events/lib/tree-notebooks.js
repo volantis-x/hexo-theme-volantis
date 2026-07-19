@@ -61,7 +61,7 @@ function prepareNotebook(id, info, ctx) {
     id: '',
     name: '',
     part: '',
-    path: notebook.base_dir,
+    path: notebook.base_dir + "/",
     parent: null, // parent tag id
     childSet: new Set(), // child tag ids
     noteSet: new Set(), // note ids
