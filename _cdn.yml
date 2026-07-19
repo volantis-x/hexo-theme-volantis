@@ -380,7 +380,7 @@ swiper_js:
   name: swiper
   cdnjs_name: Swiper
   file: swiper-bundle.min.js
-  version: 8.3.2
+  version: 11.1.14
   npm: true
   static: true
   cdnjs: true
@@ -388,7 +388,7 @@ swiper_css:
   name: swiper
   cdnjs_name: Swiper
   file: swiper-bundle.min.css
-  version: 8.3.2
+  version: 11.1.14
   npm: true
   static: true
   cdnjs: true
