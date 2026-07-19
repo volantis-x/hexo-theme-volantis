@@ -1,0 +1,12 @@
+<% if (theme.plugins.nprogress.enable) { %>
+<link rel="stylesheet" href="<%- theme.cdn.nprogress_css %>">
+<script type="text/javascript" src="<%- theme.cdn.nprogress_js %>"></script>
+<script>
+  volantis.pjax.push(()=> {
+    NProgress?.done();
+  },"NProgress.done");
+  volantis.pjax.send(()=> {
+    NProgress?.start();
+  },"NProgress.start");
+</script>
+<% } %>
