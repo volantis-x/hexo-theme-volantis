@@ -136,6 +136,10 @@
   <%- partial('../../_plugins/pace/script') %>
 <% } %>
 
+<% if (theme.plugins.nprogress && theme.plugins.nprogress.enable){ %>
+  <%- partial('../../_plugins/nprogress/index') %>
+<% } %>
+
 
 <!-- pjax -->
 <% if (theme.plugins.pjax.enable){ %>
@@ -161,3 +165,7 @@
 <% if (theme.plugins.tianliGPT.enable) { %>
   <%- partial('../../_plugins/tianligpt/script') %>
 <% } %>
+
+
+
+
