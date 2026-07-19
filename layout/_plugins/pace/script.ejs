@@ -19,7 +19,7 @@
         Pace.stop();
         document.body.className = document.body.className.replaceAll("pace-running ","");
     },1200)},"Pace.stop");
-    <% if (theme.pace.read_progress) { %>
+    <% if (theme.plugins.pace.read_progress) { %>
     // 阅读进度
     volantis.scroll.push(volantis.debounce(() => {
       Pace.stop();
