@@ -345,6 +345,12 @@ class TaskItem {
 // volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
 // volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
 // volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
+volantis.pjax = {};
+volantis.pjax.method = {
+  complete: new RunItem(),
+  error: new RunItem(),
+  send: new RunItem()
+};
 volantis.pjax = Object.assign(volantis.pjax, {
   push: volantis.pjax.method.complete.push.bind(volantis.pjax.method.complete),
   error: volantis.pjax.method.error.push.bind(volantis.pjax.method.error),
