@@ -1,9 +1,9 @@
 name: release-please
 on:
   workflow_dispatch:
-  #push:
-  #  branches:
-  #    - 6.x
+  push:
+    branches:
+      - 6.x
 permissions:
   contents: write
   issues: write
