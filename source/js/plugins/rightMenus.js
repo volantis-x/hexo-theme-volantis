@@ -15,7 +15,7 @@ const RightMenus = {
     volantis.pjax.send(() => {
       RightMenus.fun.hideMenu();
       if (volantis.isReadModel) RightMenus.fun.readMode();
-    })
+    },"rightMenus")
   },
 
   /**
