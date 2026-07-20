@@ -16,16 +16,12 @@ body:
         - label: 已经搜索过，没有发现类似 issue。
         - label: 已经搜索过[主题文档](https://volantis.js.org/)，没有发现相关内容。
         - label: 已经尝试使用过[最新版](https://github.com/volantis-x/hexo-theme-volantis/releases)，问题依旧存在。
-  - type: dropdown
+  - type: input
     id: theme-version
     attributes:
       label: 主题版本
       description: 请选择您所使用的主题版本。
-      options:
-        - 6.x
-        - 5.x
-        - 4.x
-        - Other
+      placeholder:  6.1.0 或 git hash
     validations:
       required: true
   - type: input
