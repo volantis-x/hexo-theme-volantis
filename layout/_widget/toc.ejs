@@ -1,5 +1,5 @@
 <%- partial('_pre') %>
-<% var realcontent = (page.encrypt == true) ? page.origin : page.content; %>
+<% let realcontent = (page.encrypt == true) ? page.origin : page.content; %>
 <% if (realcontent && page.toc != false && toc(realcontent).length > 0) { %>
   <section class="widget toc-wrapper <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>" id="toc-div" <% if (page.encrypt == true) { %>style="display:none" <% } %>>
     <%- partial('header', {item: item}) %>
@@ -9,6 +9,6 @@
   </section>
 <% }else{ %>
   <div class="<%- page.widget_pjax %>">
-    <!-- pjax占位 -->
+    <!-- pjax占位 toc-->
   </div>
 <% } %>
