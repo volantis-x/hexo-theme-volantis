@@ -148,6 +148,13 @@ katex_render:
 mathjax:
   name: mathjax
   file: es5/tex-mml-chtml.js
+  version: 4.1.3
+  npm: true
+  static: false
+  cdnjs: true
+mathjax3:
+  name: mathjax
+  file: es5/tex-mml-chtml.js
   version: 3.2.2
   npm: true
   static: true
