@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.4.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.3.0...v6.4.0) (2026-07-20)
+
+
+### Features
+
+* mathjax v4 ([#992](https://github.com/volantis-x/hexo-theme-volantis/issues/992)) ([c7638d1](https://github.com/volantis-x/hexo-theme-volantis/commit/c7638d17d267aba1891d8825c81fb480f4dd7312))
+
 ## [6.3.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.2.0...v6.3.0) (2026-07-19)
 
 
