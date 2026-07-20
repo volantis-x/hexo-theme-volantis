@@ -6,4 +6,8 @@
       <%- popular_posts( { maxCount: item.max_count , ulClass: 'popular-posts' , PPMixingRate: 0.2 } , page ) %>
     </div>
   </section>
+<% }else{ %>
+  <div class="<%- page.widget_pjax %>">
+    <!-- pjax占位 -->
+  </div>
 <% } %>
