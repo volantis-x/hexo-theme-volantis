@@ -1,0 +1,17 @@
+<%_
+
+if (config.theme_config && config.theme_config.style) {
+  let style = config.theme_config.style;
+  if (style.navbar && style.navbar.effect) {
+    theme.custom_css.navbar.effect = style.navbar.effect;
+  }
+  if (style.sidebar && style.sidebar.effect) {
+    theme.custom_css.sidebar.effect = style.sidebar.effect;
+  }
+  if (style.body && style.body.effect) {
+    theme.custom_css.body.effect = style.body.effect;
+  }
+}
+
+_%>
+
