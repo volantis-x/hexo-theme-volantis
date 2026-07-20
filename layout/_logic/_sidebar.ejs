@@ -1,5 +1,4 @@
 <%_
-
 const wiki = theme.wiki.tree[page.wiki]
 const topic = theme.topic.tree[page.topic]
 const notebook = theme.notebooks.tree[page.notebook]
@@ -54,12 +53,7 @@ if (page.sidebar == undefined || page.sidebar == null) {
   page.sidebar = sidebar
 }
 
-
-
-
 if (page.sidebar == false) {
   page.sidebar = [];
 }
-
 _%>
-
