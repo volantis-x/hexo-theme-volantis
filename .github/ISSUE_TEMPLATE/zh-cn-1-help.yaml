@@ -21,7 +21,7 @@ body:
     attributes:
       label: 主题版本
       description: 请选择您所使用的主题版本。
-      placeholder:  6.1.0 或 git hash
+      placeholder:  如：6.1.0
     validations:
       required: true
   - type: input
