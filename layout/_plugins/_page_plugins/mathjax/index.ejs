@@ -9,7 +9,7 @@
         }
       },
       tex: {
-        inlineMath: {'[+]': [['$', '$']]},
+        inlineMath: {'[+]': [['$', '$'], ['\\(', '\\)']]},
         tags: 'ams'
       },
       options: {
@@ -45,6 +45,7 @@
   } else {
     // 文章章节标题不能为 “MathJax” ，否则会报错。
     MathJax.startup.document.state(0);
+    MathJax.typesetClear();
     MathJax.texReset();
     MathJax.typesetPromise();
   }
