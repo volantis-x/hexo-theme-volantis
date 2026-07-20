@@ -341,21 +341,15 @@ class TaskItem {
   }
 }
 /******************** Pjax ********************************/
-  // /layout/_plugins/pjax/index.ejs
-  // volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
-  // volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
-  // volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
-  volantis.pjax = {};
-  volantis.pjax.method = {
-    complete: new RunItem(),
-    error: new RunItem(),
-    send: new RunItem(),
-  };
-  volantis.pjax = Object.assign(volantis.pjax, {
-    push: volantis.pjax.method.complete.push,
-    error: volantis.pjax.method.error.push,
-    send: volantis.pjax.method.send.push,
-  });
+// /layout/_plugins/pjax/index.ejs
+// volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
+// volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
+// volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
+volantis.pjax = Object.assign(volantis.pjax, {
+  push: volantis.pjax.method.complete.push.bind(volantis.pjax.method.complete),
+  error: volantis.pjax.method.error.push.bind(volantis.pjax.method.error),
+  send: volantis.pjax.method.send.push.bind(volantis.pjax.method.send)
+});
   /******************** RightMenu ********************************/
   // volantis.rightmenu.handle(callBack[,"callBackName"]) 外部菜单项控制
   // 可在 volantis.mouseEvent 处获取右键事件
