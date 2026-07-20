@@ -123,3 +123,6 @@ const FpostsJS = {
 
 
 FpostsJS.start();
+document.addEventListener('pjax:complete', function () {
+  FpostsJS.start();
+});
