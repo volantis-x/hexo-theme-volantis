@@ -531,8 +531,9 @@ volantis.layoutHelper = (helper, html, opt = {}) => {
     volantis.pjax.push(handleLayout, `layoutHelper-${helper}`);
   }
 };
-  /****************************** 滚动事件处理 ****************************************/
-  volantis.scroll = {
+/****************************** 滚动事件处理 ****************************************/
+// 滚动事件处理
+volantis.scroll = {
     engine: new RunItem(),
     unengine: new RunItem(),
   };
@@ -654,15 +655,14 @@ volantis.layoutHelper = (helper, html, opt = {}) => {
 /******************************************************************************/
 //图像加载出错时的处理
 // 图片错误降级
-function errorImgAvatar(img) {
-  img.src = volantis.GLOBAL_CONFIG.default.avatar;
-  img.onerror = null;
-}
-
-function errorImgCover(img) {
-  img.src = volantis.GLOBAL_CONFIG.default.cover;
-  img.onerror = null;
-}
+  function errorImgAvatar(img) {
+    img.src = "<%- theme.default.avatar %>";
+    img.onerror = null;
+  }
+  function errorImgCover(img) {
+    img.src = "<%- theme.default.cover %>";
+    img.onerror = null;
+  }
 /******************************************************************************/
 // Hack Interval
 // 保存原生定时器方法
