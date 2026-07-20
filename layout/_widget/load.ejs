@@ -24,7 +24,7 @@
   Object.keys(theme.sidebar.widget_library).forEach(function(key) {
     if (!page.sidebar.includes(key)) {
       let w = theme.sidebar.widget_library[key];
-      if (w.sticky !== true || w.pjaxReload !== false) {
+      if (w.pjaxReload !== false) {
 %>
 <div class="widget pjax"><!-- pjax占位 <%- key %>--></div>
 <%
