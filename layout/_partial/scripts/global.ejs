@@ -1,6 +1,21 @@
 <script>
-  /************这个文件存放不需要重载的全局变量和全局函数*********/
-  // window.volantis = {}; // volantis 全局变量
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+/**
+ * Volantis 主题全局变量
+ * 定义 window.volantis 全局对象和基础工具函数，需在所有其他脚本之前同步加载。
+ *
+ * 模块结构：
+ *   volantis.dom          - DOM 选择与封装
+ *   volantis.EventListener - 事件监听器管理（Pjax 清理）
+ *   volantis.pjax         - Pjax 生命周期回调
+ *   volantis.dark         - 暗色模式切换
+ *   volantis.js/css       - 动态脚本/样式加载（按需加载用）
+ *   volantis.scroll       - 滚动事件引擎
+ *   volantis.layoutHelper - 布局注入辅助
+ *   volantis.requestAnimationFrame - rAF 兼容封装
+ */
+// 全局变量和函数
+// window.volantis = {}; // volantis 全局变量
 /**
  * 内存安全的全局 volantis 对象实现
  * 特性：
@@ -102,9 +117,10 @@
   });
 
 })();
-  volantis.debug = "<%- theme.debug %>"; // 调试模式
-  volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
-  /******************** volantis.getFunctionHash ********************************/
+volantis.debug = "<%- theme.debug %>"; // 调试模式
+// 页面DOM操作模块
+volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
+/******************** volantis.getFunctionHash ********************************/
 // 简易文本哈希
 volantis.simpleTextHash= (str) => {
   // 初始哈希值：选择质数5381（DJB2算法推荐的起始值）
@@ -132,160 +148,215 @@ volantis.getFunctionHash= (func) => {
 //function sampleFunc(a, b) {
 //    return a * b + 10;
 //}
-//console.log(volantis.getFunctionHash(sampleFunc)); // 输出函数源码的MD5哈希
-  /******************** volantis.EventListener ********************************/
-  // 事件监听器 see: /source/js/app.js
-  volantis.EventListener = {}
-  // 这里存放pjax切换页面时将被移除的事件监听器
-  volantis.EventListener.list = []
-  //构造方法
-  function volantisEventListener(type, f, ele) {
-    this.type = type
-    this.f = f
-    this.ele = ele
+//console.log(volantis.getFunctionHash(sampleFunc)); // 输出函数源码的哈希
+/******************** volantis.EventListener ********************************/
+// 事件监听器 see: /source/js/app.js
+// 事件监听器模块
+volantis.EventListener = {
+  list: [],
+
+  // 移除所有需要清理的事件监听器
+  remove() {
+    this.list.forEach(listener => {
+      listener.ele.removeEventListener(listener.type, listener.f, false);
+    });
+    this.list = [];
   }
-  // 移除事件监听器
-  volantis.EventListener.remove = () => {
-    volantis.EventListener.list.forEach(function (i) {
-      i.ele.removeEventListener(i.type, i.f, false)
-    })
-    volantis.EventListener.list = [];
+};
+
+// 事件监听器构造函数
+class VolantisEventListener {
+  constructor(type, handler, element) {
+    this.type = type;
+    this.f = handler;
+    this.ele = element;
   }
-  /******************** volantis.dom.$ ********************************/
-  // 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
-  function volantisDom(ele) {
-    if (!ele) ele = document.createElement("div")
-    this.ele = ele;
-    // ==============================================================
-    this.ele.find = (c) => {
-      let q = this.ele.querySelector(c)
-      if (q)
-        return new volantisDom(q)
-    }
-    // ==============================================================
-    this.ele.hasClass = (c) => {
-      return this.ele.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
-    }
-    this.ele.addClass = (c) => {
-      this.ele.classList.add(c);
-      return this.ele
-    }
-    this.ele.removeClass = (c) => {
-      this.ele.classList.remove(c);
-      return this.ele
-    }
-    this.ele.toggleClass = (c) => {
-      if (this.ele.hasClass(c)) {
-        this.ele.removeClass(c)
-      } else {
-        this.ele.addClass(c)
-      }
-      return this.ele
-    }
-    // ==============================================================
-    // 参数 r 为 true 表示pjax切换页面时事件监听器将被移除，false不移除
-    this.ele.on = (c, f, r = 1) => {
-      this.ele.addEventListener(c, f, false)
-      if (r) {
-        volantis.EventListener.list.push(new volantisEventListener(c, f, this.ele))
-      }
-      return this.ele
-    }
-    this.ele.click = (f, r) => {
-      this.ele.on("click", f, r)
-      return this.ele
-    }
-    this.ele.scroll = (f, r) => {
-      this.ele.on("scroll", f, r)
-      return this.ele
-    }
-    // ==============================================================
-    this.ele.html = (c) => {
-      // if(c=== undefined){
-      //   return this.ele.innerHTML
-      // }else{
-      this.ele.innerHTML = c
-      return this.ele
-      // }
-    }
-    // ==============================================================
-    this.ele.hide = (c) => {
-      this.ele.style.display = "none"
-      return this.ele
-    }
-    this.ele.show = (c) => {
-      this.ele.style.display = "block"
-      return this.ele
-    }
-    // ==============================================================
-    return this.ele
-  }
-  volantis.dom.$ = (ele) => {
-    return !!ele ? new volantisDom(ele) : null;
-  }
-  /******************** RunItem ********************************/
-  function RunItem() {
-    this.list = []; // 存放回调函数
-    this.start = () => {
-      for (var i = 0; i < this.list.length; i++) {
-        this.list[i].run();
-      }
-    };
-    this.push = (fn, name, setRequestAnimationFrame = true) => {
-      if (typeof fn !== 'function') return;
-      let myfn = fn
-      if (setRequestAnimationFrame) {
-        myfn = () => {
-          volantis.requestAnimationFrame(fn)
+}
+/******************** volantis.dom.$ ********************************/
+// 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
+// DOM 操作封装
+class VolantisDom {
+  constructor(ele) {
+    this._ele = ele || document.createElement('div');
+    return new Proxy(this, {
+      get(target, prop) {
+        if (target[prop] !== undefined) {
+          return target[prop];
         }
-      }
-      name = name || volantis.getFunctionHash(fn)
-      const idx = this.list.findIndex(item => item.name === name);
-      if (idx !== -1) {
-        this.list[idx] = new Item(myfn, name);
-        return;
-      }
-      this.list.push(new Item(myfn, name));
-    };
-    this.remove = (name) => {
-      for (let index = 0; index < this.list.length; index++) {
-        const e = this.list[index];
-        if (e.name == name) {
-          this.list.splice(index, 1);
+        if (target._ele[prop] !== undefined) {
+          if (typeof target._ele[prop] === 'function') {
+            return target._ele[prop].bind(target._ele);
+          }
+          return target._ele[prop];
         }
+        return undefined;
+      },
+      set(target, prop, value) {
+        if (target._ele[prop] !== undefined) {
+          target._ele[prop] = value;
+          return true;
+        }
+        target[prop] = value;
+        return true;
       }
+    });
+  }
+
+  // 自定义方法
+  find(selector) {
+    const found = this._ele.querySelector(selector);
+    return found ? new VolantisDom(found) : null;
+  }
+
+  hasClass(className) {
+    return this._ele.classList.contains(className);
+  }
+
+  addClass(classNames) {
+    if (typeof classNames !== 'string') return this;
+    classNames.split(' ').forEach(className => {
+      className && this._ele.classList.add(className);
+    });
+    return this;
+  }
+
+  removeClass(classNames) {
+    if (typeof classNames !== 'string') return this;
+    classNames.split(' ').forEach(className => {
+      className && this._ele.classList.remove(className);
+    });
+    return this;
+  }
+
+  toggleClass(classNames) {
+    if (typeof classNames !== 'string') return this;
+    classNames.split(' ').forEach(className => {
+      className && this._ele.classList.toggle(className);
+    });
+    return this;
+  }
+
+  on(event, handler, removeOnPjax = true) {
+    if (typeof handler !== 'function') return this;
+    this._ele.addEventListener(event, handler, false);
+    if (removeOnPjax) {
+      volantis.EventListener.list.push(
+        new VolantisEventListener(event, handler, this._ele)
+      );
     }
-    // 构造一个可以run的对象
-    function Item(fn, name) {
-      // 函数名称
-      this.name = name || volantis.getFunctionHash(fn);
-      // run方法
-      this.run = () => {
-        try {
-          fn()
-        } catch (error) {
-          console.log(error);
-        }
+    return this;
+  }
+
+  click(handler, removeOnPjax) {
+    return this.on('click', handler, removeOnPjax);
+  }
+
+  scroll(handler, removeOnPjax) {
+    return this.on('scroll', handler, removeOnPjax);
+  }
+
+  html(content) {
+    if (content === undefined) {
+      return this._ele.innerHTML;
+    }
+    this._ele.innerHTML = content;
+    return this;
+  }
+
+  hide() {
+    this._ele.classList.remove('show');
+    this._ele.style.removeProperty('display');
+    return this;
+  }
+
+  show() {
+    this._ele.classList.add('show');
+    this._ele.style.removeProperty('display');
+    return this;
+  }
+}
+// DOM 选择工厂函数
+volantis.dom.$ = (ele) => {
+  if (!ele) return null;
+  if (ele instanceof VolantisDom) {
+    return ele;
+  }
+  if (ele instanceof NodeList || ele instanceof HTMLCollection) {
+    return Array.from(ele).map(item => new VolantisDom(item));
+  }
+  if (ele instanceof Node) {
+    return new VolantisDom(ele);
+  }
+  return null;
+};
+/******************** RunItem ********************************/
+// 任务执行管理器
+class RunItem {
+  constructor() {
+    this.list = [];
+  }
+
+  start() {
+    this.list.forEach(item => item.run());
+  }
+
+  // name 存在时同名替换，否则追加
+  push(fn, name, useRequestAnimationFrame = true) {
+    if (typeof fn !== 'function') return;
+
+    let taskFn = fn;
+    if (useRequestAnimationFrame) {
+      taskFn = () => {
+        volantis.requestAnimationFrame(fn);
       };
     }
+
+    name = name || volantis.getFunctionHash(fn)
+    const idx = this.list.findIndex(item => item.name === name);
+    if (idx !== -1) {
+      this.list[idx] = new TaskItem(taskFn, name);
+      return;
+    }
+    this.list.push(new TaskItem(taskFn, name));
   }
-  /******************** Pjax ********************************/
-  // /layout/_plugins/pjax/index.ejs
-  // volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
-  // volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
-  // volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
-  volantis.pjax = {};
-  volantis.pjax.method = {
-    complete: new RunItem(),
-    error: new RunItem(),
-    send: new RunItem(),
-  };
-  volantis.pjax = Object.assign(volantis.pjax, {
-    push: volantis.pjax.method.complete.push,
-    error: volantis.pjax.method.error.push,
-    send: volantis.pjax.method.send.push,
-  });
-  /******************** RightMenu ********************************/
+
+  remove(name) {
+    if (typeof name !== 'string') return;
+    this.list = this.list.filter(item => item.name !== name);
+  }
+}
+
+class TaskItem {
+  constructor(fn, name) {
+    this.name = name || volantis.getFunctionHash(fn);
+    this.fn = fn;
+  }
+
+  run() {
+    try {
+      this.fn();
+    } catch (error) {
+      console.error(`Error executing task ${this.name}:`, error);
+    }
+  }
+}
+/******************** Pjax ********************************/
+// /layout/_plugins/pjax/index.ejs
+// volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
+// volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
+// volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
+volantis.pjax = {};
+volantis.pjax.method = {
+  complete: new RunItem(),
+  error: new RunItem(),
+  send: new RunItem()
+};
+volantis.pjax = Object.assign(volantis.pjax, {
+  push: volantis.pjax.method.complete.push.bind(volantis.pjax.method.complete),
+  error: volantis.pjax.method.error.push.bind(volantis.pjax.method.error),
+  send: volantis.pjax.method.send.push.bind(volantis.pjax.method.send)
+});
+/******************** RightMenu ********************************/
   // volantis.rightmenu.handle(callBack[,"callBackName"]) 外部菜单项控制
   // 可在 volantis.mouseEvent 处获取右键事件
   volantis.rightmenu = {};
@@ -293,20 +364,20 @@ volantis.getFunctionHash= (func) => {
     handle: new RunItem(),
   }
   volantis.rightmenu = Object.assign(volantis.rightmenu, {
-    handle: volantis.rightmenu.method.handle.push,
+    handle: volantis.rightmenu.method.handle.push.bind(volantis.rightmenu.method.handle),
   });
-  /********************  Dark Mode  ********************************/
+/********************  Dark Mode  ********************************/
   // /layout/_partial/scripts/darkmode.ejs
   // volantis.dark.mode 当前模式 dark or light
   // volantis.dark.toggle() 暗黑模式触发器
   // volantis.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
-  volantis.dark = {};
-  volantis.dark.method = {
-    toggle: new RunItem(),
-  };
-  volantis.dark = Object.assign(volantis.dark, {
-    push: volantis.dark.method.toggle.push,
-  });
+volantis.dark = {};
+volantis.dark.method = {
+  toggle: new RunItem()
+};
+volantis.dark = Object.assign(volantis.dark, {
+  push: volantis.dark.method.toggle.push.bind(volantis.dark.method.toggle)
+});
   /********************  Message  ********************************/
   // VolantisApp.message
   /********************  isMobile  ********************************/
@@ -323,51 +394,75 @@ volantis.getFunctionHash= (func) => {
   //     await volantis.js("...theme.plugins.aplayer.js.meting...")
   // })();
 
-  // 已经加入了setTimeout
-  volantis.js = (src, cb) => {
-    return new Promise(resolve => {
-      setTimeout(function () {
-        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
-        var script = document.createElement("script");
-        script.setAttribute("type", "text/javascript");
-        if (cb) {
-          if (JSON.stringify(cb)) {
-            for (let p in cb) {
-              if (p == "onload") {
-                script[p] = () => {
-                  cb[p]()
-                  resolve()
-                }
-              } else {
-                script[p] = cb[p]
-                script.onload = resolve
-              }
-            }
-          } else {
-            script.onload = () => {
-              cb()
-              resolve()
-            };
-          }
+// 脚本动态加载（按需加载用）
+// volantis.js(src, cb)  cb: onload 回调或属性对象 {defer:true, onload:()=>{}}
+// volantis.css(src)
+volantis.js = (src, cb) => {
+  const escapeSelector = str => str.replace(/[#".'()[\]]/g, '\\$&');
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+    const existingScript = document.querySelector(`script[src="${escapeSelector(src)}"]`);
+    if (existingScript) {
+      resolve();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = src;
+
+    const handleLoad = () => {
+      if (typeof cb === 'function') cb();
+      resolve();
+    };
+
+    script.onload = handleLoad;
+    script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+
+    if (cb && typeof cb === 'object' && !Array.isArray(cb)) {
+      for (const p in cb) {
+        if (!cb.hasOwnProperty(p)) continue;
+        if (p === 'onload') {
+          script.onload = () => {
+            cb[p]();
+            resolve();
+          };
+        } else if (p === 'pjax') {
+          script.setAttribute('pjax', '');
+          script.setAttribute('data-pjax', '');
+        } else if (cb[p] === true) {
+          script.setAttribute(p, '');
         } else {
-          script.onload = resolve
+          script.setAttribute(p, cb[p]);
         }
-        script.setAttribute("src", src);
-        HEAD.appendChild(script);
-      });
+      }
+    }
+
+    (document.head || document.documentElement).appendChild(script);
     });
-  }
-  volantis.css = (src) => {
-    return new Promise(resolve => {
-      setTimeout(function () {
-        var link = document.createElement('link');
-        link.rel = "stylesheet";
-        link.href = src;
-        link.onload = resolve;
-        document.getElementsByTagName("head")[0].appendChild(link);
-      });
+  });
+};
+
+volantis.css = (src) => {
+  const escapeSelector = str => str.replace(/[#".'()[\]]/g, '\\$&');
+  return new Promise((resolve, reject) => {
+   setTimeout(function () {
+    const existingLink = document.querySelector(`link[href="${escapeSelector(src)}"]`);
+    if (existingLink) {
+      resolve();
+      return;
+    }
+    const link = document.createElement('link');
+    Object.assign(link, {
+      rel: 'stylesheet',
+      href: src,
+      onload: () => resolve(),
+      onerror: () => reject(new Error(`Failed to load CSS: ${src}`))
     });
-  }
+    document.head.appendChild(link);
+    });
+  });
+};
+
+
   /********************按需加载的插件********************************/
   // volantis.import.jQuery().then(()=>{})
   volantis.import = {
@@ -417,34 +512,33 @@ volantis.getFunctionHash= (func) => {
     }
     return window.requestAnimationFrame(fn);
   };
-  /************************ layoutHelper *****************************************/
-  volantis.layoutHelper = (helper, html, opt) => {
-    opt = Object.assign({ clean: false, pjax: true }, opt)
-    function myhelper(helper, html, clean) {
-      volantis.tempDiv = document.createElement("div");
-      volantis.tempDiv.innerHTML = html;
-      let layoutHelper = document.querySelector("#layoutHelper-" + helper)
-      if (layoutHelper) {
-        if (clean) {
-          layoutHelper.innerHTML = ""
-        }
-        layoutHelper.append(volantis.tempDiv);
-      }
+/************************ layoutHelper *****************************************/
+// Layout Helper
+volantis.layoutHelper = (helper, html, opt = {}) => {
+  const { clean = false, pjax = true } = { ...opt };
+  const handleLayout = () => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    const layoutHelper = document.querySelector(`#layoutHelper-${helper}`);
+    if (layoutHelper) {
+      if (clean) layoutHelper.innerHTML = '';
+      layoutHelper.append(tempDiv);
     }
-    myhelper(helper, html, opt.clean)
-    if (opt.pjax) {
-      volantis.pjax.push(() => {
-        myhelper(helper, html, opt.clean)
-      }, "layoutHelper-" + helper)
-    }
+  };
+
+  handleLayout();
+  if (pjax) {
+    volantis.pjax.push(handleLayout, `layoutHelper-${helper}`);
   }
-  /****************************** 滚动事件处理 ****************************************/
-  volantis.scroll = {
+};
+/****************************** 滚动事件处理 ****************************************/
+// 滚动事件处理
+volantis.scroll = {
     engine: new RunItem(),
     unengine: new RunItem(),
   };
   volantis.scroll = Object.assign(volantis.scroll, {
-    push: volantis.scroll.engine.push,
+    push: volantis.scroll.engine.push.bind(volantis.scroll.engine),
   });
   // 滚动条距离顶部的距离
   volantis.scroll.getScrollTop = () => {
@@ -556,10 +650,11 @@ volantis.getFunctionHash= (func) => {
       })
     }
   }
-  /******************************************************************************/
-  /******************************************************************************/
-  /******************************************************************************/
-  //图像加载出错时的处理
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+//图像加载出错时的处理
+// 图片错误降级
   function errorImgAvatar(img) {
     img.src = "<%- theme.default.avatar %>";
     img.onerror = null;
@@ -568,7 +663,7 @@ volantis.getFunctionHash= (func) => {
     img.src = "<%- theme.default.cover %>";
     img.onerror = null;
   }
-  /******************************************************************************/
+/******************************************************************************/
 // Hack Interval
 // 保存原生定时器方法
 const nativeSetTimeout = window.setTimeout;
@@ -635,6 +730,20 @@ volantis.clearAllTimers = function (){
   });
 }
 volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
-  /******************************************************************************/
+/******************************************************************************/
+// DOMContentLoaded：缓存 DOM 引用
+document.addEventListener('DOMContentLoaded', function () {
+  /******************** volantis.dom ********************************/
+  // 页面选择器 将dom对象缓存起来 see: /source/js/app.js etc.
+  volantis.dom.bodyAnchor = volantis.dom.$(document.getElementById("safearea")); // 页面主体
+  volantis.dom.topBtn = volantis.dom.$(document.getElementById('s-top')); // 向上
+  volantis.dom.wrapper = volantis.dom.$(document.getElementById('wrapper')); // 整个导航栏
+  volantis.dom.coverAnchor = volantis.dom.$(document.querySelector('#l_cover .cover-wrapper')); // 1个
+  volantis.dom.switcher = volantis.dom.$(document.querySelector('#l_header .switcher .s-search')); // 搜索按钮   移动端 1个
+  volantis.dom.header = volantis.dom.$(document.getElementById('l_header')); // 移动端导航栏
+  volantis.dom.search = volantis.dom.$(document.querySelector('#l_header .m_search')); // 搜索框 桌面端 移动端 1个
+  volantis.dom.mPhoneList = volantis.dom.$(document.querySelectorAll('#l_header .m-phone .list-v')); //  手机端 子菜单 多个
+});
+/******************************************************************************/
 </script>
 <%- partial('./config') %>

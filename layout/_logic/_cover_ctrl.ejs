@@ -3,16 +3,16 @@
   // layout/_plugins/pjax/pdata.ejs
   // layout/_partial/cover.ejs
   // layout/_partial/header.ejs
-  theme.cover_ctrl={}
+  theme.cover_ctrl = {};
   theme.cover_ctrl.enableCover = false; // 封面是否开启
   theme.cover_ctrl.frontMatterCover = 'none';  // 封面控制
   theme.cover_ctrl.coverWrapperDisplay = 'none';
   theme.cover_ctrl.scrollDownDisplay = 'none';
   theme.cover_ctrl.headerShow = 'show';
-  if(theme.cover && theme.cover.height_scheme) {
+  if (theme.cover && theme.cover.height_scheme) {
     theme.cover_ctrl.enableCover = true;
   }
-  if(theme.plugins.pjax.enable&&theme.plugins.pjax.cover) {
+  if (theme.plugins.pjax.enable && theme.plugins.pjax.cover) {
     theme.cover_ctrl.enableCover = true;
   }
   if (theme.cover_ctrl.enableCover && page && page.cover) {

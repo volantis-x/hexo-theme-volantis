@@ -1,0 +1,21 @@
+<%
+let pf = [];
+if (item.display) {
+  getList(item.display).forEach(function(p){
+    pf.push(p);
+  });
+} else {
+  pf = ['desktop', 'mobile'];
+}
+if (where == 'sidebar') {
+  page.widget_style = theme.custom_css.sidebar.effect.join(' ');
+} else if (where == 'body') {
+  page.widget_style = theme.custom_css.body.effect.join(' ');
+}
+page.widget_platform = pf.join(' ');
+if (item.pjaxReload === false){
+  page.widget_pjax = "";
+}else{
+  page.widget_pjax = "pjax"
+}
+%>

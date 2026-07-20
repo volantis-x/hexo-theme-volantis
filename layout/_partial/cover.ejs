@@ -1,7 +1,7 @@
 <div id="l_cover">
   <% if (theme.plugins.pjax.enable) { %>
     <% if (theme.cover_ctrl.enableCover) { %>
-      <!-- see: /layout/_partial/scripts/_ctrl.ejs -->
+      <!-- see: /layout/_logic/_cover_ctrl.ejs -->
       <div id="<%- theme.cover_ctrl.frontMatterCover %>" class='cover-wrapper <%- page.layout %> <%- theme.cover.layout_scheme %>' style="display: <%- theme.cover_ctrl.coverWrapperDisplay %>;">
         <%- partial("./_cover/layout") %>
         <div id="scroll-down" style="display: <%- theme.cover_ctrl.scrollDownDisplay %>;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
