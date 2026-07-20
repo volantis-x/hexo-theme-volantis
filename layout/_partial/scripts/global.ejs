@@ -350,7 +350,7 @@ volantis.pjax = Object.assign(volantis.pjax, {
   error: volantis.pjax.method.error.push.bind(volantis.pjax.method.error),
   send: volantis.pjax.method.send.push.bind(volantis.pjax.method.send)
 });
-  /******************** RightMenu ********************************/
+/******************** RightMenu ********************************/
   // volantis.rightmenu.handle(callBack[,"callBackName"]) 外部菜单项控制
   // 可在 volantis.mouseEvent 处获取右键事件
   volantis.rightmenu = {};
@@ -358,20 +358,20 @@ volantis.pjax = Object.assign(volantis.pjax, {
     handle: new RunItem(),
   }
   volantis.rightmenu = Object.assign(volantis.rightmenu, {
-    handle: volantis.rightmenu.method.handle.push,
+    handle: volantis.rightmenu.method.handle.push.bind(volantis.rightmenu.method.handle),
   });
-  /********************  Dark Mode  ********************************/
+/********************  Dark Mode  ********************************/
   // /layout/_partial/scripts/darkmode.ejs
   // volantis.dark.mode 当前模式 dark or light
   // volantis.dark.toggle() 暗黑模式触发器
   // volantis.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
-  volantis.dark = {};
-  volantis.dark.method = {
-    toggle: new RunItem(),
-  };
-  volantis.dark = Object.assign(volantis.dark, {
-    push: volantis.dark.method.toggle.push,
-  });
+volantis.dark = {};
+volantis.dark.method = {
+  toggle: new RunItem()
+};
+volantis.dark = Object.assign(volantis.dark, {
+  push: volantis.dark.method.toggle.push.bind(volantis.dark.method.toggle)
+});
   /********************  Message  ********************************/
   // VolantisApp.message
   /********************  isMobile  ********************************/
@@ -532,7 +532,7 @@ volantis.scroll = {
     unengine: new RunItem(),
   };
   volantis.scroll = Object.assign(volantis.scroll, {
-    push: volantis.scroll.engine.push,
+    push: volantis.scroll.engine.push.bind(volantis.scroll.engine),
   });
   // 滚动条距离顶部的距离
   volantis.scroll.getScrollTop = () => {
