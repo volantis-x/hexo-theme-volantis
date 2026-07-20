@@ -72,7 +72,7 @@ function layoutDiv() {
 }
 function pjax_layoutDiv() {
   const s = layoutDiv();
-  if (s.length > 0) {
+  if (s && s.length > 0) {
     return s;
   } else {
     return `<div class="${page.widget_pjax}"><!-- pjax占位 --></div>`
