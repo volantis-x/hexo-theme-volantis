@@ -1,3 +1,5 @@
+// 按钮标签插件样式（内联按钮 + 按钮组）
+// 内联按钮：span.btn 包裹的链接按钮
 // inline btn
 .article span.btn, .md span.btn
   display: inline
@@ -16,7 +18,7 @@
       opacity: 0.5
       &:hover
         cursor: $not-allowed,not-allowed
-
+  // 默认边框按钮和常规按钮样式
   & a, &.regular a
     color: $color-button
     border: 1px solid @color
@@ -25,10 +27,10 @@
       border-color: $color-hover
     i
       margin-right: 4px
-
+  // 常规和实心按钮加大内边距
   &.regular a, &.solid a
     padding: 8px 12px
-
+  // 实心按钮：无边框，使用主题色背景
   &.solid a
     border: none
     background: $color-button
@@ -36,18 +38,17 @@
     &:hover
       color: $color-inner
       background: $color-hover
-
+  // 大号按钮
   &.large a
     font-size: 1rem
     padding: 12px 36px
     i
       margin-right: 8px
-
   &.center
     display: block
     text-align: center
 
-
+// 按钮组：div.btns 包裹的多按钮容器
 // btns
 .article div.btns, .md div.btns
   margin: 0 -0.5 * $gap
@@ -61,16 +62,21 @@
   align-items: flex-start
   overflow: visible
   line-height: 1.8
+  // 宽松布局：加大水平内边距
   &.wide>a
     padding-left: $gap*2
     padding-right: $gap*2
+  // 填充模式：按钮自动撑满可用宽度
   &.fill>a
     flex-grow: 1
     width: auto
+  // 均匀分布对齐
   &.around
     justify-content: space-around
+  // 居中对齐
   &.center
     justify-content: center
+  // 响应式网格布局：2-5 列，移动端自动降列
   &.grid2>a
     width: "calc(100%/2 - %s)" % $gap
     @media screen and (max-width: $device-laptop)
@@ -103,6 +109,7 @@
       width: "calc(100%/3 - %s)" % $gap
     @media screen and (max-width: $device-mobile)
       width: "calc(100%/2 - %s)" % $gap
+  // 按钮组内单个链接按钮（卡片样式）
   a
     trans()
     text-decoration: none
@@ -118,6 +125,7 @@
     flex-direction: column
     padding: $gap * 0.5
     text-align: center
+    // 按钮图标/图片样式（圆形浮动于卡片上方）
     &>img:first-child, &>i:first-child
       trans()
       height: 64px
@@ -149,6 +157,7 @@
     &:not([href])
       cursor: default
       color: inherit
+    // 悬停效果：背景色变化 + 图标上浮放大
     &[href]:hover
       background: alpha($color-hover, 15%)
       &,b
@@ -158,9 +167,11 @@
         box-shadow: $boxshadow-float
       &>i:first-child
         background: $color-hover
+  // 圆形图标变体
   &.circle a
     &>img:first-child, &>i:first-child
       border-radius: 32px
+  // 圆角图标变体
   &.rounded a
     &>img:first-child, &>i:first-child
       border-radius: 16px
