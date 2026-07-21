@@ -1,19 +1,26 @@
+// 行内文本装饰样式（删除线/下划线/着重号/波浪线/密码/kbd）
+
 .article
+  // 删除线：降低文字和线条颜色对比度
   del
     color: mix($color-p, $color-card, 60)
     text-decoration-color: @color
+  // 下划线：红色实线下划线
   u
     color: var(--color-text)
     text-decoration: none
     border-bottom: 1px solid $color-mac-red
+  // 着重号：红色点状底线
   emp
     color: var(--color-text)
     border-bottom: 4px dotted $color-mac-red
+  // 波浪线：红色波浪下划线
   wavy
     color: var(--color-text)
     text-decoration-style: wavy
     text-decoration-line: underline
     text-decoration-color: $color-mac-red
+  // 密码遮罩：默认透明，悬停显示
   psw
     color: transparent
     background: mix($color-text, $color-card, 50)
@@ -22,6 +29,7 @@
     &:hover
       color: var(--color-p)
       background: none
+  // 键盘按键：类 macOS 风格的立体阴影效果
   kbd
     border-radius: 4px
     border: 1px solid mix($color-block, $color-text, 80)
