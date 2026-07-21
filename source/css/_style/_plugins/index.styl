@@ -22,8 +22,16 @@ if hexo-config('custom_css.cursor.enable')
 // 右键菜单
   if hexo-config('rightmenus.enable')
   @import '_rightmenu/*'
-
+// 图片灯箱 fancybox
 @import 'fancybox'
+// 搜索服务（hexo / algolia / meilisearch 三选一）
+if hexo-config('search.enable')
+  if hexo-config('search.service')=='hexo'
+    @import '_search/hexo'
+  else if hexo-config('search.service')=='algolia'
+    @import '_search/algolia'
+  else if hexo-config('search.service')=='meilisearch'
+    @import '_search/meilisearch'
 
 // 暗色模式（需最后加载以覆盖亮色变量）
 // 暗黑模式样式放到最后加载
