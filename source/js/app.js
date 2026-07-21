@@ -299,6 +299,7 @@ const VolantisApp = (() => {
     if (idname.length == 0) {
       idname = 'home';
     }
+    // 处理分页和索引页面
     var page = idname.match(/page\d{0,}$/g);
     if (page) {
       page = page[0];
@@ -309,8 +310,8 @@ const VolantisApp = (() => {
       index = index[0];
       idname = idname.split(index)[0];
     }
-    // 转义字符如 [, ], ~, #, @
-    idname = idname.replace(/(\[|\]|~|#|@)/g, '\\$1');
+    // 转义 CSS 选择器中的特殊字符
+    idname = CSS.escape(idname);
     if (idname && volantis.dom.headerMenu) {
       volantis.dom.headerMenu.forEach(element => {
         // idname 不能为数字开头, 加一个 action- 前缀
