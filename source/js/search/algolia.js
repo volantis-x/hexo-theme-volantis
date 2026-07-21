@@ -1,18 +1,15 @@
-// Algolia 搜索服务：基于 instantsearch.js 的搜索界面
 let SearchService = (() => {
   const fn = {};
   let search, algolia, timerId;
   fn.queryText = null;
-
-  // 搜索弹窗模板
   fn.template = `<div id="u-search">
   <div class="modal">
     <header class="modal-header" class="clearfix">
       <button type="submit" id="u-search-modal-btn-submit" class="u-search-btn-submit">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span class="fa-solid fa-search"></span>
       </button>
       <div id="algolia-search-input"></div>
-      <a id="u-search-btn-close" class="btn-close"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </a>
+      <a id="u-search-btn-close" class="btn-close"> <span class="fa-solid fa-times"></span> </a>
     </header>
     <main class="modal-body">
       <div id="algolia-search-results">
@@ -34,7 +31,6 @@ let SearchService = (() => {
   </div>
   `;
 
-  // 初始化搜索界面
   fn.init = () => {
     let div = document.createElement("div");
     div.innerHTML += fn.template;
@@ -49,12 +45,8 @@ let SearchService = (() => {
       document.querySelector('#u-search main.modal-body').style.textAlign = 'center';
       document.querySelector('#u-search .modal').style.maxHeight = '128px';
     }
-
-    fn.uSearch = document.querySelector("#u-search");
-    fn.uSearchModal = document.querySelector("#u-search > .modal");
   }
 
-  // 事件绑定
   fn.event = () => {
     document
       .querySelector("#u-search-btn-close")
@@ -75,7 +67,6 @@ let SearchService = (() => {
     })
   }
 
-  // 配置 Algolia 搜索实例和组件
   fn.setAlgolia = () => {
     search = instantsearch({
       indexName: algolia.indexName,
@@ -159,7 +150,7 @@ let SearchService = (() => {
       templates: {
         first: '<i class="fas fa-angle-double-left"></i>',
         last: '<i class="fas fa-angle-double-right"></i>',
-        previous: '<i class="far fa-angle-left"></i>',
+        previous: '<i class="fas fa-angle-left"></i>',
         next: '<i class="fas fa-angle-right"></i>'
       }
     })
@@ -173,7 +164,6 @@ let SearchService = (() => {
     })
   }
 
-  // 设置查询关键词
   fn.setQueryText = queryText => {
     fn.queryText = queryText;
     if (!search) {
@@ -186,12 +176,8 @@ let SearchService = (() => {
     })
   }
 
-  // 显示搜索弹窗
   fn.search = () => {
-    fn.uSearch.style.display = "block";
-    setTimeout(() => {
-      fn.uSearchModal.style.transform = "translate(0px, 0px)";
-    }, 100);
+    document.querySelector("#u-search").style.display = "block";
     document.addEventListener("keydown", event => {
       if (event.code === "Escape") {
         fn.close();
@@ -199,7 +185,6 @@ let SearchService = (() => {
     }, { once: true })
   }
 
-  // 表单提交处理
   fn.onSubmit = (event) => {
     event.preventDefault();
     let input = event.target.querySelector(".u-search-input");
@@ -207,7 +192,6 @@ let SearchService = (() => {
     fn.search();
   };
 
-  // 截取搜索结果摘要
   fn.cutContent = content => {
     if (content === '') return ''
 
@@ -235,12 +219,8 @@ let SearchService = (() => {
     return matchContent
   }
 
-  // 关闭搜索弹窗
   fn.close = () => {
-    fn.uSearchModal.style.transform = "translateY(120%)";
-    setTimeout(() => {
-      fn.uSearch.style.display = "none";
-    }, 400);
+    document.querySelector("#u-search").style.display = "none";
   };
 
   return {
