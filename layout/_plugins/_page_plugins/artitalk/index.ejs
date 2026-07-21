@@ -5,7 +5,7 @@
   volantis.import.jQuery().then(()=>{
     volantis.js("<%= theme.cdn.artitalk %>").then(()=>{
       new Artitalk(Object.assign(<%- JSON.stringify(theme.plugins.artitalk) %>, {}))
-    })
+    },"artitalk")
   })
 </script>
 <style>
