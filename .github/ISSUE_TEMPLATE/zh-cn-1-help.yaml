@@ -20,7 +20,7 @@ body:
     id: theme-version
     attributes:
       label: 主题版本
-      description: 请选择您所使用的主题版本。
+      description: 请输入您所使用的主题版本。
       placeholder:  如：6.1.0
     validations:
       required: true
