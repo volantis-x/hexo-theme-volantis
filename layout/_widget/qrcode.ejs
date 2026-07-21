@@ -3,7 +3,7 @@
   <%- partial('header', {item: item}) %>
   <div class='content article-entry'>
     <% getList(item.images).forEach(function(url){ %>
-      <img src='<%- url_for(url) %>'
+      <img alt="qrcode" src='<%- url_for(url) %>'
       <% if (item.height) { %>
         height='<%- item.height %>'
       <% } %>/>
