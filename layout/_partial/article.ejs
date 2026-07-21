@@ -1,4 +1,5 @@
 <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= post.layout %>" id="<%= post.layout %>" itemscope itemprop="blogPost">
+  <!-- 结构化数据：统一解码永久链接 -->
   <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="<%- escape_html(strip_html(config.title)) %>">
