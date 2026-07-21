@@ -1,7 +1,12 @@
+// 插件样式条件编译：根据主题配置决定是否编入
+
+
+//数学公式 mathjax
 @import 'mathjax'
+// 字体颜色
 @import 'fontcolor'
 
-
+// 代码高亮
 if hexo-config('plugins.code_highlight')
   @import '_highlight'
 if hexo-config('plugins.message.enable')
@@ -14,11 +19,13 @@ if hexo-config('comments.service')=='gitalk'
   @import 'gitalk'
 if hexo-config('custom_css.cursor.enable')
   @import 'cursor'
-if hexo-config('rightmenus.enable')
+// 右键菜单
+  if hexo-config('rightmenus.enable')
   @import '_rightmenu/*'
 
 @import 'fancybox'
 
+// 暗色模式（需最后加载以覆盖亮色变量）
 // 暗黑模式样式放到最后加载
 if hexo-config('plugins.darkmode.enable')
   @import '_dark/dark_async'
