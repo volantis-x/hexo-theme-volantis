@@ -9,21 +9,29 @@
 // 代码高亮
 if hexo-config('plugins.code_highlight')
   @import '_highlight'
+
 if hexo-config('plugins.message.enable')
   @import 'message'
+
 if hexo-config('plugins.aplayer.enable')
   @import 'aplayer'
+
 if hexo-config('plugins.tianliGPT.enable')
   @import 'tianliGPT'
+
 if hexo-config('comments.service')=='gitalk'
   @import 'gitalk'
+// 鼠标指针
 if hexo-config('custom_css.cursor.enable')
   @import 'cursor'
+
 // 右键菜单
-  if hexo-config('rightmenus.enable')
+if hexo-config('rightmenus.enable')
   @import '_rightmenu/*'
+
 // 图片灯箱 fancybox
 @import 'fancybox'
+
 // 搜索服务（hexo / algolia / meilisearch 三选一）
 if hexo-config('search.enable')
   if hexo-config('search.service')=='hexo'
