@@ -1,3 +1,4 @@
+// 折叠区块样式（details/summary 标签）
 details
   display: block
   padding: $gap
@@ -6,6 +7,7 @@ details
   background: var(--color-card)
   font-size: $fontsize-list
   trans()
+  // 折叠标题栏：悬停时显示 + 号提示
   summary
     cursor: pointer
     padding: $gap
@@ -29,10 +31,11 @@ details
         top: 50%
         transform: translateY(-50%)
         right: $gap
-
+  // 默认边框和背景
   border: 1px solid var(--color-block)
   >summary
     background: var(--color-block)
+  // 颜色变体：蓝/青/绿/黄/红
   &[blue]
     border-color: bgcolor($color-md-blue)
     >summary
@@ -53,7 +56,7 @@ details
     border-color: bgcolor($color-mac-red)
     >summary
       background: bgcolor($color-mac-red)
-
+// 展开状态：显示分隔线，标题栏切换为 - 号
 details[open]
   border-color: alpha($color-p, .2)
   >summary
@@ -86,6 +89,7 @@ details[open]
     &:hover
       &:after
         content: '-'
+  // 展开内容区域：弹跳动画 + 子元素首尾去边距
   >div.content
     padding: $gap
     margin: 0 - $gap
