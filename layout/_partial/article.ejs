@@ -1,6 +1,7 @@
 <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md <%- theme.custom_css.body.effect.join(' ') %> article-type-<%= post.layout %>" id="<%= post.layout %>" itemscope itemprop="blogPost">
   <!-- 结构化数据：统一解码永久链接 -->
   <link itemprop="mainEntityOfPage" href="<%- decodeURI(post.permalink) %>">
+  <!-- 结构化数据：发布者信息（隐藏） -->
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="<%- escape_html(strip_html(config.title)) %>">
   </span>
@@ -8,11 +9,15 @@
     <meta itemprop="name" content="<%- escape_html(strip_html(post.title || post.seo_title || config.title)) %>">
     <meta itemprop="description" content="<%- escape_html(strip_html(post.description || config.description)) %>">
   </span>
+  <!-- 文章顶部元信息：标题、作者、日期等（复用子模板） -->
   <%- partial('meta', {post: post, position: 'top'}) %>
+  <!-- 插件注入点 -->
   <div id="layoutHelper-page-plugins"></div>
+  <!-- 文章核心内容区 -->
   <div id="post-body" itemprop="articleBody">
     <%- post.content %>
   </div>
+  <!-- 原文链接/阅读更多：仅当page.link存在时显示 -->
   <% if (page.link) { %>
     <div class='div-ori-link'>
       <a class='ori-link' href='<%- url_for(post.link || post.path) %>'>
@@ -20,10 +25,11 @@
       </a>
     </div>
   <% } %>
+  <!-- 文章底部组件区：仅对「post」「docs」布局生效 -->
   <% if (['post','docs'].includes(page.layout)) { %>
     <% let footer_widget = theme.article.body.footer_widget; %>
     <div class='footer'>
-       <!-- 参考资料、相关资料等 -->
+       <!-- 参考资料：仅当参考列表非空时显示 -->
       <% if (page.references && page.references.length > 0) { %>
         <div class='references'>
           <section class='header'>
@@ -53,17 +59,20 @@
         )
         %>
       <% } %>
-      <!-- 版权声明组件 -->
+      <!-- 版权声明：post布局+启用+未禁用时显示 -->
       <% if (['post'].includes(page.layout) && footer_widget.copyright && footer_widget.copyright.enable == true && post.copyright != false) { %>
         <% if (footer_widget.copyright.custom) { %>
           <%
+            // 作者信息逻辑：优先文章作者，其次站点默认作者
             let author = theme.article.body.meta_library.author;
             let aid = post.author;
             if (aid && site.data && site.data.author && (aid in site.data.author)) {
               author = site.data.author[aid];
             }
+            // 统一日期格式化
             let articleCreate =  date(post.date, theme.article.body.meta_library.date.format);
             let articleUpdate = date(post.updated, theme.article.body.meta_library.updated.format);
+            // 版权规则：优先文章配置，其次主题默认
             let copyrightRule = post.copyright?.type || theme.article.body.footer_widget.copyright.customData.default;
             let copyrightRuleText = theme.article.body.footer_widget.copyright.customData.rules[copyrightRule]?.text;
             let copyrightRuleDesc = theme.article.body.footer_widget.copyright.customData.rules[copyrightRule]?.desc;
@@ -81,12 +90,14 @@
                 <div class="license-meta-title"><%- __('post.copyright.date') %></div>
                 <div class="license-meta-text"><%- articleCreate %></div>
               </div>
+              <!-- 仅当创建/更新日期不同时显示更新时间 -->
               <% if (articleCreate !== articleUpdate) { %>
               <div class="license-meta-item">
                 <div class="license-meta-title"><%- __('post.copyright.updated') %></div>
                 <div class="license-meta-text"><%- articleUpdate %></div>
               </div>
               <% } %>
+              <!-- 显示参考来源（若有） -->
               <% if (post.copyright?.ref?.title) { %>
               <div class="license-meta-item">
                 <div class="license-meta-title"><%- __('post.copyright.references') %></div>
@@ -103,6 +114,7 @@
             <div class="license-statement"><%- copyrightRuleDesc %></div>
           </div>
         <% } else { %>
+          <!-- 默认版权声明：支持Markdown解析 -->
           <div class='copyright'>
             <blockquote>
               <% getList(footer_widget.copyright.content).forEach(function(row){ %>
@@ -128,18 +140,23 @@
       <% } %>
     </div>
   <% } %>
+  <!-- 文章底部元信息：复用子模板 -->
   <% if (['page', 'post', 'docs'].includes(post.layout)) { %>
     <%- partial('meta', {post: post, position: 'bottom'}) %>
   <% } %>
+  <!-- 文档导航（group+order） -->
   <% if ((post.group != undefined) && (post.order != undefined)) { %>
     <%
     let prev = new Object();
     let next = new Object();
+    // 遍历同分组页面，筛选上/下一篇
     site.pages.each(function(p){
       if ((p.title || p.seo_title) && p.path && (p.group == post.group)) {
+        // 上一篇：order更小且最接近当前
         if (p.order < post.order && (p.order > prev.order || prev.order == undefined)) {
           prev = {title: strip_html(p.title || p.seo_title), exp: p.description ? strip_html(p.description) : truncate(strip_html(p.content), {length: 100}), path: p.path, order: p.order};
         }
+        // 下一篇：order更大且最接近当前
         if (p.order > post.order && (p.order < next.order || next.order == undefined)) {
           next = {title: strip_html(p.title || p.seo_title), exp: p.description ? strip_html(p.description) : truncate(strip_html(p.content), {length: 100}), path: p.path, order: p.order};
         }
@@ -189,8 +206,8 @@
   <%- volantis_inject('postEnd') %>
   <!-- Custom Files postEnd end-->
 </article>
-
-<% if (page.comments == undefined || page.comments != false) { %>
+<!-- 评论区：仅当未明确禁用时显示 -->
+<% if (page.comments !== false) { %>
   <%- partial('../_plugins/comments/index') %>
 <% } %>
 
