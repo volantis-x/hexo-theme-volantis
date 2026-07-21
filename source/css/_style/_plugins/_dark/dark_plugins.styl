@@ -30,6 +30,30 @@ img,
     .modal-header
       box-shadow: $boxshadow-card-dark
 
+// 搜索弹窗
+#u-search .modal,
+#u-search .modal-header,
+#u-search .modal-body
+  background var(--color-card) !important
+#u-search .modal-body .modal-results .result:hover
+  background var(--color-block) !important
+.u-search-input:hover
+  background var(--color-block) !important
+.u-search-input:focus
+  background var(--color-site-body) !important
+.l_header .m_search
+  @media screen and (max-width: $device-mobile)
+    background var(--color-site-bg) !important
+
+// 搜索弹窗深色专用变量
+#u-search
+  --primary-color unquote('color-mix(in srgb, #4285f4 85%, #fff)')
+  --border-color #383838
+  --highlight-bg #3d2f08
+  --highlight-color #f0b922
+  --shadow-color rgba(0, 0, 0, 0.3)
+  --text-secondary #2dc79e
+  --bg-hover #1e1e1e
 
 
 //side
