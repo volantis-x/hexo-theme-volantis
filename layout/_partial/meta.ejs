@@ -27,7 +27,7 @@ if (post.bottom_meta == false) {
     <% } %>
     <% if (post.thumbnail && post.thumbnail.length){ %>
       <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
-        <img itemprop="image" class='thumbnail' src='<%- post.thumbnail %>'>
+        <img itemprop="image" alt="thumbnail" class='thumbnail' src='<%- post.thumbnail %>'>
       </a>
     <% } %>
     <% if (post.title) { %>
