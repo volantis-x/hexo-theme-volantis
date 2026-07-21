@@ -1,13 +1,17 @@
+// 主样式入口：变量/混入 → 组件样式 → 用户注入
+
+// 安全区域占位
 #safearea{
   display: block
 }
 
+// 全局定义（变量、混入、动画）
 @import '_defines/*'
 
-// Project
+// 组件样式（基础、布局、标签插件、插件条件编译）
 @import '_style'
 
-// Custom Files
+// 用户自定义注入样式 // Custom Files
 for $injects_style in hexo-config('injects.style')
   @import $injects_style;
 
