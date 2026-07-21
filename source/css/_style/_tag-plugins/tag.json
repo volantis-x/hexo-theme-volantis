@@ -24,7 +24,7 @@
   "menu": ["dropmenu.styl"],
   "inlineimage": ["image.styl"],
   "image": ["image.styl"],
-  "gallery": ["fancybox.styl"],
+  "gallery": ["gallery.styl"],
   "audio": ["media.styl"],
   "video": ["media.styl"],
   "videos": ["media.styl"],
