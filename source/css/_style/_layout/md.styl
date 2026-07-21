@@ -1,4 +1,6 @@
 // 以后关于 md 渲染方面的都写到这里
+
+// 标题锚点偏移
 .md
   >p
     padding-top: 4px
@@ -36,6 +38,7 @@
     font-weight: bold
   h2+h3:before
     margin-top: $gap-h2 - $navbar-height - $gap * 4
+  // 列表样式
   ul,ol
     font-size: $fontsize-list
     list-style: initial
@@ -68,7 +71,7 @@
     list-style: initial
   ol>li
     list-style: decimal
-
+   // 原文链接按钮
   .div-ori-link
     display: block
     text-align: center
