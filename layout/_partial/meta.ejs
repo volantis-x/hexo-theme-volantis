@@ -1,8 +1,8 @@
 <%
-var topMetas = Array.isArray(post.top_meta)
+let topMetas = Array.isArray(post.top_meta)
   ? post.top_meta
   : (post.top_meta === false ? [] : (theme.article.body.top_meta || []));
-var bottomMetas = Array.isArray(post.bottom_meta)
+let bottomMetas = Array.isArray(post.bottom_meta)
   ? post.bottom_meta
   : (post.bottom_meta === false ? [] : (theme.article.body.bottom_meta || []));
 let articlTitle = post.title || date(post.date, theme.article.body.meta_library.date.format);
