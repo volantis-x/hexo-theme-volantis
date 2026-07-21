@@ -1,3 +1,4 @@
+// 字体和字号定义
 $fontfamily = "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, "Lucida Console", sans-serif
 if hexo-config('custom_css.fontfamily.bodyfont')
   if hexo-config('custom_css.fontfamily.bodyfont.fontfamily')
@@ -18,7 +19,7 @@ if hexo-config('custom_css.fontfamily.logofont')
 
 
 
-
+// 字号
 // font size
 $fontsize-root = convert(hexo-config('custom_css.fontsize.root')) || 16px
 $fontsize-h1 = convert(hexo-config('custom_css.fontsize.h1')) || 1.625rem    // 26px
@@ -33,14 +34,16 @@ $fontsize-code = convert(hexo-config('custom_css.fontsize.code')) || .8125rem  /
 $fontsize-footnote = convert(hexo-config('custom_css.fontsize.footnote')) || .75rem  // the smallest (12px)
 
 // line-height
+// 行高
 $lineheight = hexo-config('custom_css.gap.line_height') || 1.7
-
+// 大号标题字号
 $fontsize-large = 2.5rem
 $fontsize-huge = 4rem
 $fontsize-ultra = 6rem
 
 
 // font size
+// 字号
 $fs-root = 16px
 $fs-15 = .9375rem
 $fs-14 = .875rem

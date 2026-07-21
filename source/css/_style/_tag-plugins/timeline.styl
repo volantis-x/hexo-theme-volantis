@@ -1,3 +1,9 @@
+// 时间线组件样式（timenode + timelines-common 两套实现）
+// ============================================
+// 竖线节点式时间线（timeline / timenode 标签）
+// ============================================
+
+
 div.timenode
   position: relative
   &:before, &:after
@@ -26,6 +32,7 @@ div.timenode
     font-size: $fontsize-meta
     line-height: 32px
     height: 32px
+    // 双层圆形标记（外圈 + 内圈）
     &:before, &:after
       content: ''
       position: absolute

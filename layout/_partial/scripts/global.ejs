@@ -478,7 +478,7 @@ volantis.css = (src) => {
   }
   /********************** 节流和防抖 ********************************/
   // 节流函数：确保指定时间内仅执行一次 时间戳版本的节流实现
-  volantis.throttle=(func, delay = 200) => {
+  volantis.throttle = (func, delay = 200) => {
     let lastTime = 0;
     return function (...args) {
       const now = Date.now();
@@ -489,7 +489,7 @@ volantis.css = (src) => {
     };
   };
   // 防抖函数 setTimeout实现
-  volantis.debounce=(func, wait = 200) => {
+  volantis.debounce = (func, wait = 200) => {
     let timer = null;
     return function () {
       if (timer) {
@@ -511,6 +511,17 @@ volantis.css = (src) => {
       };
     }
     return window.requestAnimationFrame(fn);
+  };
+  // 3. 基于 requestAnimationFrame 的节流函数
+  volantis.rafThrottle = (fn) => {
+      let rafId = null
+      return (...args) => {
+        if (rafId) return
+        rafId = volantis.requestAnimationFrame(() => {
+          fn(...args)
+          rafId = null
+        })
+      }
   };
 /************************ layoutHelper *****************************************/
 // Layout Helper
@@ -655,14 +666,15 @@ volantis.scroll = {
 /******************************************************************************/
 //图像加载出错时的处理
 // 图片错误降级
-  function errorImgAvatar(img) {
-    img.src = "<%- theme.default.avatar %>";
-    img.onerror = null;
-  }
-  function errorImgCover(img) {
-    img.src = "<%- theme.default.cover %>";
-    img.onerror = null;
-  }
+function errorImgAvatar(img) {
+  img.src = volantis.GLOBAL_CONFIG.default.avatar;
+  img.onerror = null;
+}
+
+function errorImgCover(img) {
+  img.src = volantis.GLOBAL_CONFIG.default.cover;
+  img.onerror = null;
+}
 /******************************************************************************/
 // Hack Interval
 // 保存原生定时器方法

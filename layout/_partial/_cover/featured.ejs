@@ -1,7 +1,7 @@
 <div class='cover-body'>
   <div class='top'>
     <% if (theme.cover.logo) { %>
-      <img no-lazy class='logo' src='<%- url_for(theme.cover.logo) %>'/>
+      <img no-lazy alt="logo" class='logo' src='<%- url_for(theme.cover.logo) %>'/>
     <% } %>
     <% if (theme.cover.title) { %>
       <p class="title"><%- theme.cover.title ? theme.cover.title : config.title %></p>
@@ -23,7 +23,7 @@
                 target="<%- value.target %>"
               <% } %>
               active-action="action-<%= url_for(value.url).replace(/\/|%|\./g, "")?url_for(value.url).replace(/\/|%|\./g, ""):"home" %>">
-              <% if (value.img) { %><img src='<%= value.img %>'><% } else if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><p><%- value.name %></p>
+              <% if (value.img) { %><img alt="img" src='<%= value.img %>'><% } else if (value.icon) { %><i class='<%= value.icon %> fa-fw'></i><% } %><p><%- value.name %></p>
             </a>
           <%})%>
         <% } %>

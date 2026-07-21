@@ -13,9 +13,9 @@
           <% } %>
           active-action="action-<%= url_for(row.url).replace(/\/|%|\./g, "")?url_for(row.url).replace(/\/|%|\./g, ""):"home" %>">
           <% if (row.img) { %>
-            <img src="<%- row.img %>">
+            <img alt="gird" src="<%- row.img %>">
           <% } else if(row.avatar) { %>
-            <img src="<%- row.avatar %>" id="round">
+            <img alt="avatar" src="<%- row.avatar %>" id="round">
           <% } else { %>
             <i class="<%= row.icon %> fa-fw" aria-hidden="true"></i>
           <% } %>

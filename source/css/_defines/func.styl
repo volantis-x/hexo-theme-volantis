@@ -1,3 +1,4 @@
+// 工具函数和混合宏
 // 为1个属性设置动画
 trans1($op, $time = 0.2s)
   transition: $op $time ease-out
@@ -8,23 +9,23 @@ trans2($op1, $op2)
 
 trans2pro($op1, $t1, $op2, $t2)
   transition: $op1 $t1 ease-out, $op2 $t2 ease-out
-
+// 为3个属性设置动画
 trans3($op1, $op2, $op3)
   transition: $op1 0.2s ease-out, $op2 0.2s ease-out, $op3 0.2s ease-out
-
+// 全属性过渡
 trans($time = 0.28s)
   transition: all $time ease
-
+// 卡片悬浮效果
 hoverable-card()
   trans()
   &:hover
     box-shadow: 0 0 4px rgba(0,0,0,.1), 0 0 8px rgba(0,0,0,.08)
-
+// 文本省略号
 txt-ellipsis()
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
-
+// 占位符样式
 placeholder(rules)
   &::-webkit-input-placeholder
     rules()
@@ -34,10 +35,10 @@ placeholder(rules)
     rules()
 	&:-ms-input-placeholder
     rules()
-
+// 禁止文本选中
 disable-user-select()
   user-select: none
-
+// 自定义滚动条
 scrollbar($w = 4px, $b = 2px, $c = $color-theme, $h = $color-hover)
   &::-webkit-scrollbar
     height: $w
@@ -51,7 +52,7 @@ scrollbar($w = 4px, $b = 2px, $c = $color-theme, $h = $color-hover)
     &:hover
       background: $h
 
-
+// 代码块滚动条
 scrollbar-codeblock()
   &::-webkit-scrollbar
     height: 4px

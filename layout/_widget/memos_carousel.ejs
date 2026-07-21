@@ -1,5 +1,5 @@
 <%- partial('_pre') %>
-<section class="widget <%- page.widget_platform %> <%- page.widget_style %> ">
+<section class="widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %>">
     <%- partial('header', {item: item}) %>
     <div class='content'>
         <div class='bber-talk'>
@@ -7,12 +7,12 @@
         </div>
     </div>
     <script>
-        <% var api = item.url; %>
-        <% var params = 'api/v1/memo?creatorId=' + item.creatorId + '&tag=' + item.tag + '&limit=' + item.limit %>
+        <% let api = item.url; %>
+        <% let params = 'api/v1/memo?creatorId=' + item.creatorId + '&tag=' + item.tag + '&limit=' + item.limit %>
         <% if (!api.endsWith("/")) { %>
             <% api += "/"; %>
         <% } %>
-        var bbCarouselMemos = {
+        let bbCarouselMemos = {
             api: '<%- api %>' + '<%- params %>',
             image_icon: '<i class="fa-solid fa-image"></i>',
             link_icon: '<i class="fa-solid fa-link"></i>',

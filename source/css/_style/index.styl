@@ -1,8 +1,14 @@
+// 组件样式索引：按基础 → 布局 → 标签插件 → 插件条件编译顺序导入
+
+// 基础样式（重置、排版、通用组件）
 @import '_base/*'
 
+// 页面布局（导航、侧边栏、文章容器）
 @import '_layout/*'
 
+// 标签插件样式（note、tabs、gallery 等）
 @import '_tag-plugins/*'
 
+// 插件条件编译（代码高亮、搜索、暗色模式、评论等）
 // 暗黑模式样式放到最后加载
 @import '_plugins/index'

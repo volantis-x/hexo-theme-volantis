@@ -1,3 +1,5 @@
+<%# 布局 _%>
+<%# 数据流先从 layout:xxx 模板转换成 body 变量后，填入这里 _%>
 <!DOCTYPE html>
 <html lang="<%- config.language %>">
   <%- partial('_logic/_cover_ctrl') _%>
@@ -26,7 +28,7 @@
       </div>
     </div>
     <div>
-      <%- partial('_partial/scripts/index') %>
+      <%- partial('_logic/_script') %>
     </div>
     <!-- import body_end begin-->
     <%_ if (config.import && config.import.body_end){ _%>

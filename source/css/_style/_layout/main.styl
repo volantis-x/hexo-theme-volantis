@@ -1,5 +1,9 @@
+// 主内容区布局
+
+// 页面外壳
 #safearea
   margin: $gap $gap 0
+// 页面主体
 #l_body
   position: relative
   if hexo-config('custom_css.font_smoothing') == true
@@ -11,6 +15,7 @@
     display: block
     &,p
       text-align: center
+  // 回到顶部按钮
   #s-top
     trans(0.6s)
     z-index: 50
@@ -41,7 +46,7 @@
         box-shadow: $boxshadow-card-float
         &.hl
           box-shadow: $boxshadow-card-float
-
+// 主内容区
 #l_main
   width: "calc(100% - 1 * %s)" % $sidebar
   @media screen and (max-width: $device-tablet)
@@ -68,6 +73,7 @@
     -ms-flex-order: 2;
     -webkit-order: 2;
     order: 2;
+  // 文章列表
   .post-list
     position: relative
     margin-bottom: $gap
@@ -108,7 +114,7 @@
 
 
 
-
+  // 文章卡片
   .post
     position: relative
     margin-bottom: $gap
@@ -282,7 +288,7 @@
 
 
 
-
+// 页面容器
 .body-wrapper
   position: relative
   display: flex
@@ -297,7 +303,7 @@
 
 
 
-
+// 评论区
 article#comments
   p[ct]
     margin-top: 0
@@ -324,7 +330,7 @@ article#comments
       padding-right: $gap * 3
       &:hover
         background: $color-hover
-
+// 白色容器
 .white-box
   background: var(--color-card)
 
@@ -332,6 +338,8 @@ article#comments
 //   .reveal
 //     visibility: hidden
 
+
+// 图片懒加载
 img
   max-width 100%
   &.lazyload:not(.placeholder)

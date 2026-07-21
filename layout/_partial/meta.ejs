@@ -1,25 +1,30 @@
 <%
-var topMetas = theme.article.body.top_meta || [];
-if (post.top_meta == false) {
-  topMetas = [];
-}
-var bottomMetas = theme.article.body.bottom_meta || [];
-if (post.bottom_meta == false) {
-  bottomMetas = [];
-}
+let topMetas = Array.isArray(post.top_meta)
+  ? post.top_meta
+  : (post.top_meta === false ? [] : (theme.article.body.top_meta || []));
+let bottomMetas = Array.isArray(post.bottom_meta)
+  ? post.bottom_meta
+  : (post.bottom_meta === false ? [] : (theme.article.body.bottom_meta || []));
+let articlTitle = post.title || date(post.date, theme.article.body.meta_library.date.format);
+
+// 头图显示逻辑：headimg_display 为 false 时隐藏，否则有 headimg 就显示
+const showHeadimg = post.headimg_display !== false && !!post.headimg;
+
+// 标题显示逻辑：title_display 为 true 时强制显示，为 false 时强制隐藏，未设置时按默认逻辑
+const showTitle = post.title_display === true ||
+                  (post.title_display === undefined && !post.headimg);
+
+// 元信息显示逻辑：title_display 为 false 时隐藏
+const showMeta = post.title_display !== false;
 %>
 
 <% if (position == 'top') { %>
-  <% if (post.headimg) { %>
+  <% if (showHeadimg) { %>
     <div class='headimg-div'>
-      <a class='headimg-a'>
-        <img itemprop="image" class='headimg' src='<%- post.headimg %>'/>
-      </a>
+      <div class='headimg-a'>
+        <img itemprop="image" class='headimg' alt="<%- articlTitle %>" src='<%- post.headimg %>'/>
+      </div>
     </div>
-  <% } else { %>
-    <span hidden>
-      <meta itemprop="image" content="<%- theme.structured_data.data.logo.path %>">
-    </span>
   <% } %>
   <div class="article-meta" id="top">
     <% if (post.music && post.music.enable != false) { %>
@@ -27,33 +32,35 @@ if (post.bottom_meta == false) {
     <% } %>
     <% if (post.thumbnail && post.thumbnail.length){ %>
       <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
-        <img itemprop="image" class='thumbnail' src='<%- post.thumbnail %>'>
+        <img alt="thumbnail" itemprop="image" class='thumbnail' src='<%- post.thumbnail %>'>
       </a>
     <% } %>
-    <% if (post.title) { %>
-      <h1 class="title" itemprop="name headline">
+    <% if (showTitle) { %>
+      <h1 class="title allow-select" itemprop="name headline">
         <%- post.title %>
       </h1>
-      <div class='new-meta-box'>
-        <% getList(topMetas).forEach(function(meta) { %>
-          <% if (meta in theme.article.body.meta_library){ %>
-            <%- partial('../_meta/' + meta, {post: post}) %>
-          <% } %>
-        <% }) %>
-        <!-- Custom Files topMeta begin-->
-        <%- volantis_inject('topMeta') %>
-        <!-- Custom Files topMeta end-->
-      </div>
     <% } else { %>
-      <span hidden itemprop="name headline">
+      <h1 class="hidden" itemprop="name headline">
         <%- post.title %>
-      </span>
+      </h1>
+    <% } %>
+    <% if (post.title && showMeta) { %>
+    <div class='new-meta-box'>
+      <% (topMetas).forEach(function(meta) { %>
+        <% if (meta in theme.article.body.meta_library){ %>
+          <%- partial('../_meta/' + meta, {post: post}) %>
+        <% } %>
+      <% }) %>
+      <!-- Custom Files topMeta begin-->
+      <%- volantis_inject('topMeta') %>
+      <!-- Custom Files topMeta end-->
+    </div>
     <% } %>
   </div>
 <% } else if (position == 'bottom') { %>
   <div class='article-meta' id="bottom">
     <div class='new-meta-box'>
-      <% getList(bottomMetas).forEach(function(meta){ %>
+      <% (bottomMetas).forEach(function(meta){ %>
         <% if (meta in theme.article.body.meta_library) { %>
           <%- partial('../_meta/' + meta, {post: post}) %>
         <% } %>

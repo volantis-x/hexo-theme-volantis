@@ -27,9 +27,9 @@
                 target="_blank"
                 rel="external nofollow noopener noreferrer" itemprop="url">
                 <% if (value.img) { %>
-                  <img src="<%- value.img %>"/>
+                  <img alt="img" src="<%- value.img %>"/>
                 <% } else if (value.avatar) { %>
-                  <img src="<%- value.avatar %>" style="border-radius:120px"/>
+                  <img alt="avatar" src="<%- value.avatar %>" style="border-radius:120px"/>
                 <% } %>
               </a>
             <% } %>

@@ -1,3 +1,5 @@
+// 布局常量定义
+// 设备断点
 // device defines
 $device-mobile-s = 320px
 $device-mobile-m = 375px
@@ -11,12 +13,14 @@ $device-4k = 2560px
 
 
 // site layout
+// 站点布局
 $layout-width = convert(hexo-config('custom_css.max_width')) || 1080px
 $sidebar = 240px
 $modal-threshold = 680px
 $navbar-height = convert(hexo-config('custom_css.navbar.height')) || 64px
 
 // gap
+// 间距
 $gap = convert(hexo-config('custom_css.gap.base')) || 16px // base gap
 $gap-h2 = convert(hexo-config('custom_css.gap.h2')) || 48px
 $gap-h3 = convert(hexo-config('custom_css.gap.h3')) || 32px
@@ -27,15 +31,18 @@ $gap-p = convert(hexo-config('custom_css.gap.p')) || 1em
 
 
 // border width
+// 边框宽度
 $border-line = 2px
 
 // border radius
+// 圆角
 $border-card = convert(hexo-config('custom_css.border_radius.card')) || 12px
 $border-codeblock = convert(hexo-config('custom_css.border_radius.codeblock')) || 4px
 $border-searchbar = convert(hexo-config('custom_css.border_radius.searchbar')) || 8px
 $border-button = convert(hexo-config('custom_css.border_radius.button')) || 2px
 
 // text align
+// 文本对齐
 $textalign-h1 = convert(hexo-config('custom_css.body.text_align.h1')) || left
 $textalign-h2 = convert(hexo-config('custom_css.body.text_align.h2')) || left
 $textalign-h3 = convert(hexo-config('custom_css.body.text_align.h3')) || left

@@ -1,3 +1,5 @@
+// 文本排版标签样式（字体/字号/颜色/对齐/标题级别）
+// 副标题样式
 p.p.subtitle
   font-weight: bold
   color: mix($color-theme, $color-text, 75)
@@ -5,7 +7,7 @@ p.p.subtitle
   padding-top: 1.5rem
   &:first-child
     padding-top: 1rem
-
+// 字体和对齐方式变体
 span.p,p.p
   &.logo
     font-family: $fontfamily-logo
@@ -20,7 +22,7 @@ span.p,p.p
   &.right
     display: block
     text-align: right
-
+// 字号变体：小/大/超大/巨型 + 粗体 + 标题级别 h1-h5
 span.p,p.p
   &.small
     font-size: $fontsize-meta
@@ -62,7 +64,7 @@ span.p,p.p
     font-size: $fontsize-h5
     color: var(--color-h5)
     padding-top: $gap-p * 1.5
-
+// 颜色变体：红/黄/绿/青/蓝/紫/灰
 span.p,p.p
   &.red
     color: $color-mac-red

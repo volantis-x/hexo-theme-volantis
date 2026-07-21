@@ -1,3 +1,16 @@
+/**
+ * app.js - Volantis 主题核心应用脚本
+ * 定义 VolantisApp、FancyBox 等核心功能。
+ * 依赖 global.ejs 中定义的 window.volantis 基础对象。
+ *
+ * 模块结构：
+ *   DOMContentLoaded      - 初始化 VolantisApp、FancyBox，注册 Pjax 回调
+ *   VolantisApp            - 主应用（导航栏、滚动、TOC、代码复制等）
+ *   highlightKeyWords      - 搜索关键字高亮
+ *   VolantisFancyBox       - 图片灯箱
+ */
+
+// DOMContentLoaded：初始化与 Pjax 注册
 document.addEventListener("DOMContentLoaded", function () {
   volantis.requestAnimationFrame(() => {
     VolantisApp.init();
@@ -47,7 +60,7 @@ const locationHash = () => {
 }
 Object.freeze(locationHash);
 
-/* Main */
+// Main：VolantisApp 主应用
 const VolantisApp = (() => {
   const fn = {},
     COPYHTML = '<button class="btn-copy" data-clipboard-snippet=""><i class="fa-solid fa-copy"></i><span>COPY</span></button>';
@@ -286,6 +299,7 @@ const VolantisApp = (() => {
     if (idname.length == 0) {
       idname = 'home';
     }
+    // 处理分页和索引页面
     var page = idname.match(/page\d{0,}$/g);
     if (page) {
       page = page[0];
@@ -296,8 +310,8 @@ const VolantisApp = (() => {
       index = index[0];
       idname = idname.split(index)[0];
     }
-    // 转义字符如 [, ], ~, #, @
-    idname = idname.replace(/(\[|\]|~|#|@)/g, '\\$1');
+    // 转义 CSS 选择器中的特殊字符
+    idname = CSS.escape(idname);
     if (idname && volantis.dom.headerMenu) {
       volantis.dom.headerMenu.forEach(element => {
         // idname 不能为数字开头, 加一个 action- 前缀
@@ -886,7 +900,7 @@ class VolantisFancyBox {
 }
 
 
-// highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
+// 搜索关键字高亮 highlightKeyWords 与 搜索功能搭配 https://github.com/next-theme/hexo-theme-next/blob/eb194a7258058302baf59f02d4b80b6655338b01/source/js/third-party/search/local-search.js
 const highlightKeyWords = (() => {
   let fn = {}
   fn.markNum = 0
@@ -1198,47 +1212,3 @@ const DOMController = {
   }
 }
 Object.freeze(DOMController);
-
-// const VolantisRequest = {
-//   timeoutFetch: (url, ms, requestInit) => {
-//     const controller = new AbortController()
-//     requestInit.signal?.addEventListener('abort', () => controller.abort())
-//     let promise = fetch(url, { ...requestInit, signal: controller.signal })
-//     if (ms > 0) {
-//       const timer = setTimeout(() => controller.abort(), ms)
-//       promise.finally(() => { clearTimeout(timer) })
-//     }
-//     promise = promise.catch((err) => {
-//       throw ((err || {}).name === 'AbortError') ? new Error(`Fetch timeout: ${url}`) : err
-//     })
-//     return promise
-//   },
-
-//   Fetch: async (url, requestInit, timeout = 15000) => {
-//     const resp = await VolantisRequest.timeoutFetch(url, timeout, requestInit);
-//     if (!resp.ok) throw new Error(`Fetch error: ${url} | ${resp.status}`);
-//     let json = await resp.json()
-//     if (!json.success) throw json
-//     return json
-//   },
-
-//   POST: async (url, data) => {
-//     const requestInit = {
-//       method: 'POST',
-//     }
-//     if (data) {
-//       const formData = new FormData();
-//       Object.keys(data).forEach(key => formData.append(key, String(data[key])))
-//       requestInit.body = formData;
-//     }
-//     const json = await VolantisRequest.Fetch(url, requestInit)
-//     return json.data;
-//   },
-
-//   Get: async (url, data) => {
-//     const json = await VolantisRequest.Fetch(url + (data ? (`?${new URLSearchParams(data)}`) : ''), {
-//       method: 'GET'
-//     })
-//   }
-// }
-// Object.freeze(VolantisRequest);
