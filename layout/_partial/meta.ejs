@@ -27,7 +27,14 @@ const showMeta = post.title_display !== false;
     </div>
   <% } %>
   <div class="article-meta" id="top">
-
+    <% if (post.music && post.music.enable != false) { %>
+      <%- partial('../_plugins/aplayer/layout', {post: post, where: 'meta'}) %>
+    <% } %>
+    <% if (post.thumbnail && post.thumbnail.length){ %>
+      <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
+        <img alt="thumbnail" itemprop="image" class='thumbnail' src='<%- post.thumbnail %>'>
+      </a>
+    <% } %>
     <% if (showTitle) { %>
       <h1 class="title allow-select" itemprop="name headline">
         <%- post.title %>
