@@ -1,6 +1,6 @@
 /* global hexo */
 
-'use strict';
+// 将 standalone <p><img></p> 包裹为 .img-wrap 容器
 
 const imgRegex = /<p><img src="(.*?)" alt="(.*?)"\/><\/p>/g;
 const imgReplacement = '<div class="img-wrap"><div class="img-bg"><img class="img" src="$1" alt="$2"\/><\/div><span class="image-caption">$2<\/span><\/div>';
