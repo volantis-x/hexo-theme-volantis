@@ -1,11 +1,18 @@
 // 异步加载的暗黑模式 暗黑模式 CSS 变量
 
 async_dark()
-  // tag plugin from stellar
-  --block-hover: mix($c-block-dark, $c-text-dark, 95)
-  --text-p1: $c-text-dark
-  --text-p3: mix($c-text-light, $c-site-bg-light, 60)
-  --card: $c-card-light
+  // Stellar tag plugin 基础色
+  --c-site-bg black
+  --c-block #111
+  --c-title #fff
+  --c-text #fff
+  --c-card #333
+
+  // Stellar tag plugin 派生色
+  --block-hover unquote('color-mix(in srgb, var(--c-block) 95%, var(--c-text))')
+  --text-p1 var(--c-text)
+  --text-p3 unquote('color-mix(in srgb, var(--c-text) 60%, var(--c-site-bg))')
+  --card var(--c-card)
 
   // waline Dark Color https://github.com/volantis-x/hexo-theme-volantis/issues/633
   if hexo-config('comments.service')=='waline'
