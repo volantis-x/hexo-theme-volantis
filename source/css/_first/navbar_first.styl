@@ -1,3 +1,6 @@
+// 导航栏样式
+
+// 桌面端导航栏
 .l_header
   $iconW = 36px
   $iconMargin = 4px
@@ -114,6 +117,7 @@
   .nav-sub .switcher
     display: flex
 
+  // 搜索栏
   .m_search
     display: flex
     height: $navbar-height
@@ -197,7 +201,7 @@
         width: 100%
         .input
           width: "calc(100% - %s)" % (3 * $gap + 2 * $iconW)
-
+// 导航菜单列表
 ul.m-pc
   >li>a
     color: inherit
@@ -337,7 +341,7 @@ ul.list-v
       ul
         right: "calc(100% - 0.5 * %s)" % $gap
 
-
+// 移动端导航栏
 .menu-phone
   display: none
   margin-top: $gap
