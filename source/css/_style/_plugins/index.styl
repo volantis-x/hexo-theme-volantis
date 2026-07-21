@@ -9,16 +9,16 @@
 // 代码高亮
 if hexo-config('plugins.code_highlight')
   @import '_highlight'
-
+// 通知弹窗
 if hexo-config('plugins.message.enable')
   @import 'message'
-
+// aplayer音乐
 if hexo-config('plugins.aplayer.enable')
   @import 'aplayer'
-
+// 摘要插件
 if hexo-config('plugins.tianliGPT.enable')
   @import 'tianliGPT'
-
+// gitalk
 if hexo-config('comments.service')=='gitalk'
   @import 'gitalk'
 // 鼠标指针
@@ -31,15 +31,6 @@ if hexo-config('rightmenus.enable')
 
 // 图片灯箱 fancybox
 @import 'fancybox'
-
-// 搜索服务（hexo / algolia / meilisearch 三选一）
-if hexo-config('search.enable')
-  if hexo-config('search.service')=='hexo'
-    @import '_search/hexo'
-  else if hexo-config('search.service')=='algolia'
-    @import '_search/algolia'
-  else if hexo-config('search.service')=='meilisearch'
-    @import '_search/meilisearch'
 
 // 暗色模式（需最后加载以覆盖亮色变量）
 // 暗黑模式样式放到最后加载
