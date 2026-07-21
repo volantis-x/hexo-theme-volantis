@@ -1,3 +1,6 @@
+// 首屏样式入口：变量/混入 → 组件样式 → 用户注入
+
+// 安全区域占位
 #safearea {
   display: none
 }
@@ -15,11 +18,12 @@ if hexo-config('content_visibility')
     contain-intrinsic-size: 10px 500px;
   }
 
+// 全局定义（变量、混入、动画）
 @import '_defines/*'
 
-// Project
+// 组件样式（基础、布局）
 @import '_first/*'
 
-// Custom Files
+// 用户自定义注入样式 // Custom Files
 for $injects_first in hexo-config('injects.first')
   @import $injects_first;
