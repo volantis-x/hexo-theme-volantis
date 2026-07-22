@@ -6,7 +6,7 @@
     const sections = Array.from(navItems).forEach((element) => {
       const link = element.querySelector(".toc-link");
       const target = document.getElementById(
-        link.getAttribute("href") ? decodeURI(link.getAttribute("href")).replace("#", "") : link.getAttribute("toc-action").split("toc-")[1] // 兼容 hexo-blog-encrypt
+        link.getAttribute("href") ? decodeURI(link.getAttribute("href")).replace("#", "") : link.getAttribute("toc-action")?.split("toc-")[1] // 兼容 hexo-blog-encrypt
       );
       targets.push(target)
       // 解除 a 标签 href 的 锚点定位, a 标签 href 的 锚点定位 会随机启用?? 产生错位???
