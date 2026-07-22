@@ -1,8 +1,9 @@
-<script>
+f<script>
   // 赫蹏 (Heti) - 专为中文网页内容设计的排版样式增强
   // https://github.com/sivan/heti
   // https://sivan.github.io/heti/
   // 此插件会和代码块冲突，仅适用于纯中文博主。
+  // 站点配置文件 _config.yml 设置 language 以 zh 开头
  
   volantis.css(`<%- theme.cdn.heti_css %>`);
   volantis.js(`<%- theme.cdn.heti_js %>`, { defer: true }).then(function () {
