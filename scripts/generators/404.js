@@ -11,7 +11,7 @@ hexo.extend.generator.register('404', function (locals) {
       robots: "noindex,nofollow",
       sitemap: false,
       date: "2020-1-1 1:1",
-      content: '<p class="p logo center huge">404</p><p class="p center bold">很抱歉，您访问的页面不存在</p><p class="p center small">可能是输入地址有误或该地址已被删除</p>'
+      content: `<p class="p logo center huge">404</p><p class="p center bold">${hexo.__("error.what")}</p><p class="p center small">${hexo.__("error.why")}</p>`
   }, site_tree["404"].data||{});
   return {
     path: site_tree["404"].path,
