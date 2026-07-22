@@ -34,8 +34,10 @@ footer:
   use: 本站使用
   theme: 作为主题
   total_views: 总访问量为
+  page_views: 本页总访客量为
   total_visitors: 总访客量
   times: 次
+  peoples: 人
   site_source: 本站使用 %s 作为主题，您可以在 %s 找到[本站源码](%s)。
   site_views: 总访问量约为 %s 次，访问人数约为 %s 人。
 
@@ -57,3 +59,15 @@ search:
   load_data: 数据库加载中
   hits_empty: '找不到您查询的内容：${query}'
   hits_stats: '找到 ${hits} 条结果，用时 ${time} 毫秒'
+
+error:
+  what: 很抱歉，您访问的页面不存在
+  why: 可能是输入地址有误或该地址已被删除
+
+meta:
+  all_notes: 所有笔记
+  tree: 索引
+  more: 更多
+  topic: 专栏
+
+

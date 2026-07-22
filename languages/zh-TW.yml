@@ -30,8 +30,10 @@ footer:
   use: 本站使用
   theme: 作為主題
   total_views: 總訪問量為
+  page_views: 本頁總訪客量為
   total_visitors: 總訪客量為
   times: 次
+  peoples: 人
   site_source: 本站使用 %s 作為主題，您可以在 %s 找到[本站源碼](%s)。
   site_views: 總訪問量約為 %s 次，訪問人數約為 %s 人。
 
@@ -53,3 +55,14 @@ search:
   load_data: 資料庫載入中
   hits_empty: '找不到您查詢的內容：${query}'
   hits_stats: '找到 ${hits} 條結果，用時 ${time} 毫秒'
+
+error:
+  what: 抱歉，找不到您存取的頁面
+  why: 可能是網址有誤或已經刪除
+
+meta:
+  all_notes: 所有筆記
+  tree: 目錄
+  more: 更多
+  topic: 專欄
+

@@ -1,4 +1,6 @@
 hexo.extend.generator.register('404', function (locals) {
+  const lang = hexo.config.language || 'en';
+  const i18n = hexo.theme.i18n.data[lang];
   const { site_tree } = hexo.theme.config;
   if (!site_tree["404"].enable) return;
   const data = Object.assign({
@@ -11,7 +13,7 @@ hexo.extend.generator.register('404', function (locals) {
       robots: "noindex,nofollow",
       sitemap: false,
       date: "2020-1-1 1:1",
-      content: '<p class="p logo center huge">404</p><p class="p center bold">很抱歉，您访问的页面不存在</p><p class="p center small">可能是输入地址有误或该地址已被删除</p>'
+      content: `<p class="p logo center huge">404</p><p class="p center bold">${i18n["error.what"]}</p><p class="p center small">${i18n["error.why"]}</p>`
   }, site_tree["404"].data||{});
   return {
     path: site_tree["404"].path,

@@ -34,8 +34,10 @@ footer:
   use: Use
   theme: as theme
   total_views: total visits
+  page_views: page visitors
   total_visitors: total visitors
   times: times
+  peoples: peoples
   site_source: Uses %s as theme. You can find [source](%s) in %s.
   site_views: The visits is about %s, and the visitors is about %s.
 
@@ -57,3 +59,14 @@ search:
   load_data: Loading the Database
   hits_empty: "We didn't find any results for the search: ${query}."
   hits_stats: '${hits} results found in ${time} ms'
+
+error:
+  what: Page Not Found
+  why: The address may be entered incorrectly or the address has been deleted.
+
+meta:
+  all_notes: All Notes
+  tree: On This Page
+  more: More
+  topic: Topic
+
