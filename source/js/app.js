@@ -10,6 +10,35 @@
  *   VolantisFancyBox       - 图片灯箱
  */
 
+// 图片错误降级
+document.addEventListener("error", function (e) {
+  const elem = e.target;
+  if (elem.tagName.toLowerCase() !== 'img') return;
+
+  const parentElem = elem.parentElement;
+  if (!parentElem) return;
+
+  const parentElemClass = parentElem.className;
+  const pParentElem = parentElem.parentElement;
+  if (!pParentElem) return;
+  const pParentElemClass = pParentElem.className;
+
+  elem.classList.add('fix-cursor-default', 'error');
+
+  if (parentElemClass === 'fancybox' && pParentElemClass === 'fancybox') {
+    pParentElem.classList.add('hideFancybox');
+    pParentElem.classList.remove('fancybox');
+    parentElem.classList.remove('fancybox');
+  } else if (parentElemClass === 'img-bg' && pParentElemClass === 'img-wrap') {
+    pParentElem.classList.add('hideFancybox');
+  } else if (parentElemClass === 'author') {
+    pParentElem.classList.add('fix-author-imgError');
+  } else if (parentElemClass.includes('tk-avatar')) {
+    pParentElem.classList.add('fix-avatar-imgError');
+  }
+}, true);
+
+
 // DOMContentLoaded：初始化与 Pjax 注册
 document.addEventListener("DOMContentLoaded", function () {
   volantis.requestAnimationFrame(() => {
