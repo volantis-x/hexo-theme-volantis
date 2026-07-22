@@ -1,5 +1,5 @@
 hexo.extend.generator.register('404', function (locals) {
-  const __ = hexo.i18n.__();
+  const { __, _p } = locals;
   const { site_tree } = hexo.theme.config;
   if (!site_tree["404"].enable) return;
   const data = Object.assign({
