@@ -59,3 +59,7 @@ search:
   load_data: 数据库加载中
   hits_empty: '找不到您查询的内容：${query}'
   hits_stats: '找到 ${hits} 条结果，用时 ${time} 毫秒'
+
+error:
+  what: 很抱歉，您访问的页面不存在
+  why: 可能是输入地址有误或该地址已被删除
