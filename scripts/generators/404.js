@@ -11,7 +11,7 @@ hexo.extend.generator.register('404', function (locals) {
       robots: "noindex,nofollow",
       sitemap: false,
       date: "2020-1-1 1:1",
-      content: `<p class="p logo center huge">404</p><p class="p center bold">${hexo.__("error.what")}</p><p class="p center small">${hexo.__("error.why")}</p>`
+      content: `<p class="p logo center huge">404</p><p class="p center bold">${__("error.what")}</p><p class="p center small">${__("error.why")}</p>`
   }, site_tree["404"].data||{});
   return {
     path: site_tree["404"].path,
