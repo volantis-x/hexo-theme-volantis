@@ -34,8 +34,10 @@ footer:
   use: Use
   theme: as theme
   total_views: total visits
+  page_views: page visitors
   total_visitors: total visitors
   times: times
+  peoples: peoples
   site_source: Uses %s as theme. You can find [source](%s) in %s.
   site_views: The visits is about %s, and the visitors is about %s.
 
