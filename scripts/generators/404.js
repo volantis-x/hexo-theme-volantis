@@ -4,7 +4,7 @@ hexo.extend.generator.register('404', function (locals) {
   const what = i18n.get(lang, 'error.what')
   console.log(i18n)
   console.log(what)
-  console.log(i18n.__('error.what');)
+  console.log(i18n.__('error.what'))
   const { site_tree } = hexo.theme.config;
   if (!site_tree["404"].enable) return;
   const data = Object.assign({
