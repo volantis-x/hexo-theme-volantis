@@ -13,7 +13,7 @@ function relatedPostsInTopic() {
   el += `<div class='content'>`
   el += `<widget class="widget-wrapper related post-list">`
   el += `<div class="widget-header dis-select">`
-  el += `<span class="name">${__('meta.topic') + (topic.name || topic.title)}</span>`
+  el += `<span class="name">${__('meta.topic') + __('symbol.colon') + (topic.name || topic.title)}</span>`
   el += `</div>`
   el += `<div class="widget-body">`
   for (let post of topic.pages) {
@@ -43,7 +43,7 @@ function relatedWiki() {
     el += `<div class='content'>`
     el += `<widget class="widget-wrapper post-card">`
     el += `<div class="widget-header dis-select">`
-    el += `<span class="name">${__('meta.more') + relatedItem.name}</span>`
+    el += `<span class="name">${__('meta.more') + __('symbol.colon') + relatedItem.name}</span>`
     el += `</div>`
     el += `<div class="widget-body">`
     for (let id of relatedItem.items) {
