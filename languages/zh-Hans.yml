@@ -63,3 +63,10 @@ search:
 error:
   what: 很抱歉，您访问的页面不存在
   why: 可能是输入地址有误或该地址已被删除
+
+meta:
+  all_notes: 所有笔记
+  tree: 索引
+  more: 更多
+
+  
