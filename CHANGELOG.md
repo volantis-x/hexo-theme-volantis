@@ -1,5 +1,20 @@
 # Changelog
 
+## [6.5.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.4.0...v6.5.0) (2026-07-22)
+
+
+### Features
+
+* [#902](https://github.com/volantis-x/hexo-theme-volantis/issues/902) 图片错误降级 ([#997](https://github.com/volantis-x/hexo-theme-volantis/issues/997)) ([1468605](https://github.com/volantis-x/hexo-theme-volantis/commit/1468605bbf2404429e14e1c42e97e69f73d47797))
+* 代码翻新和注释 from inkss ([#994](https://github.com/volantis-x/hexo-theme-volantis/issues/994)) ([8987eb3](https://github.com/volantis-x/hexo-theme-volantis/commit/8987eb300566335d44fc412bc62189df26d2c413))
+* 页面插件新增heti ([#996](https://github.com/volantis-x/hexo-theme-volantis/issues/996)) ([05e0ac8](https://github.com/volantis-x/hexo-theme-volantis/commit/05e0ac8d197dbcff743ebbaa1d6c8664de5989da))
+
+
+### Bug Fixes
+
+* i18n ([#998](https://github.com/volantis-x/hexo-theme-volantis/issues/998)) ([8a17445](https://github.com/volantis-x/hexo-theme-volantis/commit/8a174453dbd26075d8002601bce9ce416d3efefd))
+* 移除51_la ([2fff600](https://github.com/volantis-x/hexo-theme-volantis/commit/2fff600de606efd102efeed04e2cee2d1f4c91fa))
+
 ## [6.4.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.3.0...v6.4.0) (2026-07-20)
 
 
