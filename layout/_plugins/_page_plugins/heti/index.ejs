@@ -1,7 +1,7 @@
 <script>
   volantis.css(`<%- theme.cdn.heti_css %>`);
   volantis.js(`<%- theme.cdn.heti_js %>`, { defer: true }).then(function () {
-    const heti = new Heti('.heti');
+    const heti = new Heti('.article');
     
     // Copied from heti.autoSpacing() without DOMContentLoaded.
     // https://github.com/sivan/heti/blob/eadee6a3b748b3b7924a9e7d5b395d4bce479c9a/js/heti-addon.js
