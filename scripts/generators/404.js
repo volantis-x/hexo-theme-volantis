@@ -1,7 +1,6 @@
 hexo.extend.generator.register('404', function (locals) {
-  
-  console.log(Object.keys(hexo.theme.i18n.data['zh-Hans']))
-  
+  const lang = hexo.config.language || 'en';
+  const i18n = hexo.theme.i18n.data[lang];
   const { site_tree } = hexo.theme.config;
   if (!site_tree["404"].enable) return;
   const data = Object.assign({
@@ -14,7 +13,7 @@ hexo.extend.generator.register('404', function (locals) {
       robots: "noindex,nofollow",
       sitemap: false,
       date: "2020-1-1 1:1",
-      content: 0//`<p class="p logo center huge">404</p><p class="p center bold">${__("error.what")}</p><p class="p center small">${__("error.why")}</p>`
+      content: `<p class="p logo center huge">404</p><p class="p center bold">${i18n["error.what"]}</p><p class="p center small">${i18n["error.why"]}</p>`
   }, site_tree["404"].data||{});
   return {
     path: site_tree["404"].path,
