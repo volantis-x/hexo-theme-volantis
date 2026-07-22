@@ -1,6 +1,6 @@
 hexo.extend.generator.register('404', function (locals) {
   
-  console.log(Object.keys(hexo.theme))
+  console.log(Object.keys(hexo.theme.i18n))
   
   const { site_tree } = hexo.theme.config;
   if (!site_tree["404"].enable) return;
