@@ -59,3 +59,14 @@ search:
   load_data: Loading the Database
   hits_empty: "We didn't find any results for the search: ${query}."
   hits_stats: '${hits} results found in ${time} ms'
+
+error:
+  what: Page Not Found
+  why: The address may be entered incorrectly or the address has been deleted.
+
+meta:
+  all_notes: All Notes
+  tree: On This Page
+  more: More
+  topic: Topic
+
