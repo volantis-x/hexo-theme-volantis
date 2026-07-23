@@ -1,6 +1,6 @@
 // volantis v6 标签插件 命令解析器
 // 同时兼容 volantis v5、 stellar v1 的插件参数写法
-// volantis v4 的参数写法无法兼容
+// volantis v4 的参数写法无法兼容 注意文本区有英文逗号的情况
 
 'use strict';
 
