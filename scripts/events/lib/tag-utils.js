@@ -4,6 +4,11 @@
 
 'use strict';
 
+// 判断字符串 s 中是否包含 name: 或 age: 这样的模式（即 keys 中任意一个元素后面跟一个冒号），如果至少有一个匹配就返回 true。
+function hasKeyPrefix(keys, s) {
+    return keys.some(key => s.includes(key + ':'));
+}
+
 module.exports = hexo => {
   hexo.args = {
     // volantis v5  双冒号::分隔文本区
@@ -117,13 +122,16 @@ module.exports = hexo => {
   };
   // volantis v6
   hexo.args.map = (args, keys, others) => {
-      if (/::/g.test(args)) {
-        return [hexo.args.map_volantis_v5(args), "v5"];
-      } else if (/,/g.test(args)) {
-        return [hexo.args.map_volantis_v4(args), "v5"]; // 实现上 v4 同 v5 一样
-      } else {
-        return [hexo.args.map_stellar_v1(args, keys, others), "v6"];
-      }
+    if (hasKeyPrefix(keys, args.join(' '))){
+      return [hexo.args.map_stellar_v1(args, keys, others), "v6"];
+    }
+    if (/::/g.test(args)) {
+      return [hexo.args.map_volantis_v5(args), "v5"];
+    } else if (/,/g.test(args)) {
+      return [hexo.args.map_volantis_v4(args), "v5"]; // 实现上 v4 同 v5 一样
+    } else {
+      return [hexo.args.map_stellar_v1(args, keys, others), "v6"];
+    }
        
-    };
+  };
 };
