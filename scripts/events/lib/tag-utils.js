@@ -116,7 +116,7 @@ module.exports = hexo => {
       if (/::/g.test(args)) {
         return hexo.args.map_volantis_v5(args);
       } else {
-        return hexo.args.map_volantis_v4(args);
+        return hexo.args.map_stellar_v1(args, keys, others);
       }
        
     };
