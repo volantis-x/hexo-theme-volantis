@@ -117,7 +117,6 @@
   });
 
 })();
-volantis.debug = "<%- theme.debug %>"; // 调试模式
 // 页面DOM操作模块
 volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 /******************** volantis.getFunctionHash ********************************/
