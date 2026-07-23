@@ -6,14 +6,18 @@
 
 module.exports = hexo => {
   hexo.args = {
-    // volantis v5
+    // volantis v5  双冒号::分隔文本区
     map_volantis_v5: (args) => {
       const args = args.join(' ').split('::');
       return args;
     },
-    // volantis v4
+    // volantis v4 第一个英文逗号分隔文本区
     map_volantis_v4: (args) => {
-      const args = args.join(' ').split(',');
+      args = args.join(' ');
+      let idx = args.indexOf(',');
+      let paramPart = [args.substring(0, idx).trim()];
+      let textPart = args.substring(idx + ",".length).trim();
+      args = paramPart.concat(textPart ? [textPart] : []);
       return args;
     },
     // stellar v1
