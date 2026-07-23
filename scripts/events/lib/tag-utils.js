@@ -123,14 +123,14 @@ module.exports = hexo => {
   // volantis v6
   hexo.args.map = (args, keys, others) => {
     if (hasKeyPrefix(keys, args.join(' '))){
-      return [hexo.args.map_stellar_v1(args, keys, others), "v6"];
+      return hexo.args.map_stellar_v1(args, keys, others);
     }
     if (/::/g.test(args)) {
       return [hexo.args.map_volantis_v5(args), "v5"];
     } else if (/,/g.test(args)) {
       return [hexo.args.map_volantis_v4(args), "v5"]; // 实现上 v4 同 v5 一样
     } else {
-      return [hexo.args.map_stellar_v1(args, keys, others), "v6"];
+      return hexo.args.map_stellar_v1(args, keys, others);
     }
        
   };
