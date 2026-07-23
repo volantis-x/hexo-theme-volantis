@@ -24,17 +24,15 @@ hexo.extend.helper.register("FirstCSS", getFirstCSS);
 // 将 global.js 硬编码到页面
 
 function generateGlobalJS() {
-  let s = fs.readFileSync(
-    hexo.theme.context.theme_dir + "source/css/first.styl"
+  const s = fs.readFileSync(
+    hexo.theme.context.theme_dir + "source/js/global.js"
   );
-  hexo.renderStylus(s).then((css) => {
-    hexo.locals.set('FirstCSS', function () {
-      return css
-    });
-  })
+  hexo.locals.set('GlobalJS', function () {
+      return s
+  });
 }
-function getFirstCSS() {
-  return hexo.locals.get('FirstCSS');
+function getGlobalJS() {
+  return hexo.locals.get('GlobalJS');
 }
-hexo.extend.filter.register("before_generate", generateFirstCSS);
-hexo.extend.helper.register("FirstCSS", getFirstCSS);
+hexo.extend.filter.register("before_generate", generateGlobalJS);
+hexo.extend.helper.register("GlobalJS", getGlobalJS);
