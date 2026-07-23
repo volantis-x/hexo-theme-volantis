@@ -126,9 +126,9 @@ module.exports = hexo => {
       return hexo.args.map_stellar_v1(args, keys, others);
     }
     if (/::/g.test(args)) {
-      return [hexo.args.map_volantis_v5(args), "v5"];
+      return {"args": hexo.args.map_volantis_v5(args), "version" : "v5"};
     } else if (/,/g.test(args)) {
-      return [hexo.args.map_volantis_v4(args), "v5"]; // 实现上 v4 同 v5 一样
+      return {"args": hexo.args.map_volantis_v4(args), "version" : "v5"}; // 实现上 v4 同 v5 一样
     } else {
       return hexo.args.map_stellar_v1(args, keys, others);
     }
