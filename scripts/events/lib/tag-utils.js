@@ -114,9 +114,9 @@ module.exports = hexo => {
   // volantis v6
   hexo.args.map = (args, keys, others) => {
       if (/::/g.test(args)) {
-        return hexo.args.map_volantis_v5(args);
+        return [hexo.args.map_volantis_v5(args), "v5"];
       } else {
-        return hexo.args.map_stellar_v1(args, keys, others);
+        return [hexo.args.map_stellar_v1(args, keys, others), "v6"];
       }
        
     };
