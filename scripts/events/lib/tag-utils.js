@@ -13,7 +13,7 @@ module.exports = hexo => {
   hexo.args = {
     // volantis v5  双冒号::分隔文本区
     map_volantis_v5: (args) => {
-      const args = args.join(' ').split('::');
+      args = args.join(' ').split('::');
       return args;
     },
     // volantis v4 第一个英文逗号分隔文本区
