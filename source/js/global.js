@@ -1,4 +1,4 @@
-<script>
+// global.js 此文件硬编码到head中
 /************这个文件存放不需要重载的全局变量和全局函数*********/
 /**
  * Volantis 主题全局变量
@@ -117,7 +117,6 @@
   });
 
 })();
-volantis.debug = "<%- theme.debug %>"; // 调试模式
 // 页面DOM操作模块
 volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 /******************** volantis.getFunctionHash ********************************/
@@ -757,5 +756,3 @@ document.addEventListener('DOMContentLoaded', function () {
   volantis.dom.mPhoneList = volantis.dom.$(document.querySelectorAll('#l_header .m-phone .list-v')); //  手机端 子菜单 多个
 });
 /******************************************************************************/
-</script>
-<%- partial('./config') %>

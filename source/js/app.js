@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
       volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
       volantis.dom.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
       volantis.dom.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-      volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
+      volantis.EventListener.remove() // 移除事件监听器 see: global.js
     }, 'app.js');
   });
 });

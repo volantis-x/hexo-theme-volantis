@@ -1,9 +1,9 @@
 // 首屏样式入口：变量/混入 → 组件样式 → 用户注入
 
 // 安全区域占位
-#safearea {
+#safearea
   display: none
-}
+
 
 // content visibility
 if hexo-config('content_visibility')
@@ -14,10 +14,10 @@ if hexo-config('content_visibility')
     * Chunk rendering for all but the first article.
     * /layout/_partial/scripts/global.ejs  volantis.cleanContentVisibility
   */
-  .post-story + .post-story{
+  .post-story + .post-story
     content-visibility: auto;
     contain-intrinsic-size: 10px 500px;
-  }
+
 
 // 全局定义（变量、混入、动画）
 @import '_defines/*'
