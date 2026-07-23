@@ -1,8 +1,5 @@
-/**
- * utils.js v1 | https://github.com/xaoxuu/hexo-theme-stellar/
- */
-
-// stellar 标签插件 命令解析器
+// volantis v6 标签插件 命令解析器
+// 同时兼容 volantis v5、volantis v4、 stellar v1 的插件参数写法
 
 
 'use strict';
