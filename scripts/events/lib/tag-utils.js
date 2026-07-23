@@ -14,6 +14,7 @@ module.exports = hexo => {
       let map = { others: Array() };
       return map;
     },
+    // volantis v5
     map_volantis_v5: (args, keys, others) => {
       if (Array.isArray(args) == false) {
         return args;
@@ -21,6 +22,7 @@ module.exports = hexo => {
       let map = { others: Array() };
       return map;
     },
+    // volantis v4
     map_volantis_v4: (args, keys, others) => {
       if (Array.isArray(args) == false) {
         return args;
@@ -28,6 +30,7 @@ module.exports = hexo => {
       let map = { others: Array() };
       return map;
     },
+    // stellar v1
     // 将命令行参数数组解析为键值对映射（map），并根据预定义的键名列表（keys）和位置参数列表（others）进行归类、重组。
     // 将类似 ["name:Alice", "age:30", "https://example.com", "extra"] 且已知 keys=["name", "age"]、others=["url", "desc"] 的输入，解析为 { name: "Alice", age: "30", url: "https://example.com", desc: "extra" }。纯 URL 和多余参数会被智能分配到指定位置参数上。
     map_stellar_v1: (args, keys, others) => {
