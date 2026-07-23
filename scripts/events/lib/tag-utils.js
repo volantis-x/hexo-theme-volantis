@@ -6,29 +6,15 @@
 
 module.exports = hexo => {
   hexo.args = {
-    // volantis v6
-    map: (args, keys, others) => {
-      if (Array.isArray(args) == false) {
-        return args;
-      }
-      let map = { others: Array() };
-      return map;
-    },
     // volantis v5
-    map_volantis_v5: (args, keys, others) => {
-      if (Array.isArray(args) == false) {
-        return args;
-      }
-      let map = { others: Array() };
-      return map;
+    map_volantis_v5: (args) => {
+      const args = args.join(' ').split('::');
+      return args;
     },
     // volantis v4
-    map_volantis_v4: (args, keys, others) => {
-      if (Array.isArray(args) == false) {
-        return args;
-      }
-      let map = { others: Array() };
-      return map;
+    map_volantis_v4: (args) => {
+      const args = args.join(' ').split(',');
+      return args;
     },
     // stellar v1
     // 将命令行参数数组解析为键值对映射（map），并根据预定义的键名列表（keys）和位置参数列表（others）进行归类、重组。
@@ -125,4 +111,13 @@ module.exports = hexo => {
       }
     }
   };
+  // volantis v6
+  hexo.args.map = (args, keys, others) => {
+      if (/::/g.test(args)) {
+        return hexo.args.map_volantis_v5(args);
+      } else {
+        return hexo.args.map_volantis_v4(args);
+      }
+       
+    };
 };
