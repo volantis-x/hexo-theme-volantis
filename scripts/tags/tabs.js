@@ -3,7 +3,7 @@
  */
 // v6
 /*
-{% tabs active:2 align:center %}
+{% Tabs active:2 align:center %}
 
 <!-- tab 图片 -->
 {% image https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/001.webp %}
@@ -21,7 +21,7 @@ print("hello world")
 | a1 | b1 | c1 |
 | a2 | b2 | c2 |
 
-{% endtabs %}
+{% endTabs %}
 
 支持设置 align:center 来使内容居中
 设置默认激活的标签方式为 `active:1` 而非 `, 1`（使用默认格式降低学习成本，且显式声明可读性更强）
@@ -35,7 +35,7 @@ print("hello world")
 
 var tab_index = 0 
 
-function tabs_v6(args, content = '') {
+function Tabs_v6(args, content = '') {
   const ctx = hexo;
   var arr = content.split(/<!--\s*tab (.*?)\s*-->/g).filter(item => item.trim().length > 0)
   if (arr.length < 1) {
@@ -88,7 +88,7 @@ function tabs_v6(args, content = '') {
   return el
 }
 
-hexo.extend.tag.register('tabs6', tabs_v6, true)
+hexo.extend.tag.register('Tabs', Tabs_v6, true)
 
 
 
