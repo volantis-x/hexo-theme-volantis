@@ -6,7 +6,7 @@
       const mermaid_config = {
         startOnLoad: false,
         theme: 
-            "<%- theme.plugins.dark.enable %>" == "true" &&
+            "<%- theme.plugins.darkmode.enable %>" == "true" &&
             window.matchMedia("(prefers-color-scheme: dark)").matches
             ? "dark"
             : "<%- theme.plugins.mermaid.theme %>",
