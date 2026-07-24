@@ -139,7 +139,7 @@ module.exports = hexo => {
     }
        
   };
-    hexo.args.map_test = (args, keys) => {
+  hexo.args.map_test = (args, keys) => {
     if (hasKeyPrefix(keys, args.join(' '))){
       return "v6";
     }
