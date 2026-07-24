@@ -1178,7 +1178,6 @@ plugins:
   #   B -->|option 2| C(Section C)
   # ```
   mermaid:
-    style_optimization: false # use custom style in stellar
     # Available themes: default | dark | forest | neutral
     theme: neutral
 ############################### Plugins ############################### > end
