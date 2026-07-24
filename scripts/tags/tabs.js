@@ -1,5 +1,5 @@
 /**
- * tabs.js v2 | 基于NexT修改： https://theme-next.js.org/docs/tag-plugins/tabs
+ * tabs.js v2.1 | 基于NexT修改： https://theme-next.js.org/docs/tag-plugins/tabs
  */
 // v6
 /*
@@ -69,11 +69,11 @@ function tabs_v6(args, content = '') {
     const abbr = tabName + ' ' + ++tabId
     const href = abbr.toLowerCase().split(' ').join('-')
     const isActive = (tabActive > 0 && tabActive === tabId) || (tabActive === 0 && tabId === 1) ? ' active' : ''
-    tabNav += `<div class="tab${isActive}"><a href="#${href}">${tab.header || abbr}</a></div>`
+    tabNav += `<li class="tab${isActive}"><a class="#${href}">${tab.header || abbr}</a></li>`
     tabContent += `<div class="tab-pane${isActive}" id="${href}">${content}</div>`
   })
 
-  tabNav = `<div class="nav-tabs">${tabNav}</div>`
+  tabNav = `<ul class="nav-tabs">${tabNav}</ul>`
   tabContent = `<div class="tab-content">${tabContent}</div>`
 
   var el = ''
