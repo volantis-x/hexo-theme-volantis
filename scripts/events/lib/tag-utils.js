@@ -120,17 +120,42 @@ module.exports = hexo => {
       }
     }
   };
+  hexo.args.map = hexo.args.map_stellar_v1;
   // volantis v6
-  hexo.args.map = (args, keys, others) => {
+  hexo.args.map_fix = (args, keys, others) => {
+    // 若 args 不是数组，直接返回原值。
+    if (Array.isArray(args) == false) {
+      return args;
+    }
     if (hasKeyPrefix(keys, args.join(' '))){
-      return hexo.args.map_stellar_v1(args, keys, others);
+      const mp = hexo.args.map_stellar_v1(args, keys, others);
+      mp._version = "v6";
+      return mp;
     }
     if (/::/g.test(args)) {
       return {"args": hexo.args.map_volantis_v5(args), "_version" : "v5"};
     } else if (/,/g.test(args)) {
       return {"args": hexo.args.map_volantis_v4(args), "_version" : "v5"}; // 实现上 v4 同 v5 一样
     } else {
-      return hexo.args.map_stellar_v1(args, keys, others);
+      const mp = hexo.args.map_stellar_v1(args, keys, others);
+      mp._version = "v6";
+      return mp;
+    }
+       
+  };
+  hexo.args.map_test = (args, keys) => {
+    if (Array.isArray(args) == false) {
+      return "!";
+    }
+    if (hasKeyPrefix(keys, args.join(' '))){
+      return "v6";
+    }
+    if (/::/g.test(args)) {
+      return "v5";
+    } else if (/,/g.test(args) || /\|/g.test(args)) {
+      return "v4";
+    } else {
+      return "?"; // 无特征
     }
        
   };

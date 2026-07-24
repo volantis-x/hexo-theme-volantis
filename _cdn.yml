@@ -1,6 +1,7 @@
 # CDN 静态资源文件路径和版本管理
 # cdnjs 的 version 不能使用 latest
 # 主题模板中使用 theme.cdn.xxx 回调
+# scripts/文件夹下使用 hexo.theme.config.cdn.xxx 回调
 
 volantis_style:
   name: hexo-theme-volantis
@@ -491,6 +492,13 @@ heti_js:
   name: heti
   file: umd/heti-addon.min.js
   version: 0.9.6
+  npm: true
+  static: false
+  cdnjs: true
+mermaid_js:
+  name: mermaid
+  file: dist/mermaid.min.js
+  version: 11.12.0
   npm: true
   static: false
   cdnjs: true

@@ -1,0 +1,32 @@
+<script>
+  volantis.js("<%- theme.cdn.mermaid_js %>").then(()=>{
+    const els = document.querySelectorAll('.mermaid');
+    if (els.length > 0) {
+      const mermaid_config = {
+        startOnLoad: false,
+        theme: 
+            "<%- theme.plugins.darkmode.enable %>" == "true" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "<%- theme.plugins.mermaid.theme %>",
+        logLevel: 3,
+        themeVariables: {
+          darkMode: true
+        },
+        flowchart: {
+          useMaxWidth: false,
+          htmlLabels: true,
+          curve: "linear"
+        },
+        gantt: {
+          axisFormat: "%Y/%m/%d"
+        },
+        sequence: {
+          actorMargin: 50
+        }
+      }
+      mermaid.initialize(mermaid_config);
+      mermaid.run();
+    }
+  });
+</script>
