@@ -1167,6 +1167,20 @@ plugins:
     wordLimit: 1000 # 摘要字数限制 (⚠️危险：更改此变量损失已消耗过的key，因为你提交的内容发生了变化。)
     typewriter: true # 打字机效果
 
+  # Mermaid - markdwon to flow chart, seq chart, class chart ...
+  # https://mermaid.js.org/intro/
+  # 需要安装 npm install --save hexo-filter-mermaid-diagrams
+  # Set `plugins: ["mermaid"]` to enable in front-matter
+  # 使用示例：
+  # ```mermaid
+  # graph LR
+  #   A(Section A) -->|option 1| B(Section A)
+  #   B -->|option 2| C(Section C)
+  # ```
+  mermaid:
+    style_optimization: false # use custom style in stellar
+    # Available themes: default | dark | forest | neutral
+    theme: neutral
 ############################### Plugins ############################### > end
 
 ############################### Rightmenu ############################### > start
