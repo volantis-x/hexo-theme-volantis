@@ -495,7 +495,7 @@ heti_js:
   npm: true
   static: false
   cdnjs: true
-mermaid:
+mermaid_js:
   name: mermaid
   file: dist/mermaid.min.js
   version: 11.12.0
