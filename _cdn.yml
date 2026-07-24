@@ -1,7 +1,7 @@
 # CDN 静态资源文件路径和版本管理
 # cdnjs 的 version 不能使用 latest
 # 主题模板中使用 theme.cdn.xxx 回调
-# script/文件夹下使用 hexo.theme.config.cdn.xxx 回调
+# scripts/文件夹下使用 hexo.theme.config.cdn.xxx 回调
 
 volantis_style:
   name: hexo-theme-volantis
