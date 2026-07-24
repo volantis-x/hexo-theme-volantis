@@ -123,6 +123,10 @@ module.exports = hexo => {
   hexo.args.map = hexo.args.map_stellar_v1;
   // volantis v6
   hexo.args.map_fix = (args, keys, others) => {
+    // 若 args 不是数组，直接返回原值。
+    if (Array.isArray(args) == false) {
+      return args;
+    }
     if (hasKeyPrefix(keys, args.join(' '))){
       const mp = hexo.args.map_stellar_v1(args, keys, others);
       mp._version = "v6";
@@ -140,6 +144,9 @@ module.exports = hexo => {
        
   };
   hexo.args.map_test = (args, keys) => {
+    if (Array.isArray(args) == false) {
+      return "!";
+    }
     if (hasKeyPrefix(keys, args.join(' '))){
       return "v6";
     }
