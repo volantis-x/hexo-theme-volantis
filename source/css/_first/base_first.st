@@ -1,6 +1,7 @@
 // 全局基础样式和 CSS 变量定义
 :root
   // CSS 变量定义
+  --theme: $color-theme
   --color-site-body: $color-site-bg
   --color-site-bg: $color-site-bg
   --color-site-inner: $color-site-inner
