@@ -189,7 +189,7 @@ _dark_tags()
 
 
 
-stellar-root()
+stellar-root-first()
   :root
     // 主题色
     x-set-theme-with-color($c-theme)
@@ -208,7 +208,9 @@ stellar-root()
     dynamic-theme-light()
   :root[color-scheme="dark"]
     dynamic-theme-dark()
-      
+
+
+  stellar-root-async()
   .tag-plugin
     --theme-border: var(--block-border)
     --theme-block: var(--block)
