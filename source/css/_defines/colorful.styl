@@ -1,3 +1,6 @@
+$c-base-hue = 210deg // 背景/文本颜色的主基调（一般看不出来不需要修改）
+
+
 // 通用 hsla 函数
 x-hsla(h = var(--hue), s = var(--sat), l = var(--light), a = var(--alpha))
   return unquote('hsla(%s %s %s / %s)' % (h s l a))
