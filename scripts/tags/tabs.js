@@ -92,6 +92,8 @@ function Tabs_v6(args, content = '') {
 }
 
 hexo.extend.tag.register('Tabs', Tabs_v6, true)
+hexo.extend.tag.register('subTabs', Tabs_v6, true)
+hexo.extend.tag.register('subsubTabs', Tabs_v6, true)
 
 
 
