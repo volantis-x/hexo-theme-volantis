@@ -36,27 +36,7 @@ $fontsize-list = convert(hexo-config('custom_css.fontsize.list')) || .9375rem  /
 $fontsize-meta = convert(hexo-config('custom_css.fontsize.meta')) || .875rem   // 14px
 $fontsize-code = convert(hexo-config('custom_css.fontsize.code')) || .8125rem  // 13px
 $fontsize-footnote = convert(hexo-config('custom_css.fontsize.footnote')) || .75rem  // the smallest (12px)
-// font size
-$fs-root = $fontsize-root
-$fs-15 = .9375rem
-$fs-14 = .875rem
-$fs-13 = .8125rem
-$fs-12 = .75rem
 
-$fs-body = $fontsize-root
-$fs-code = 85%
-$fs-codeblock = $fontsize-code
-
-$fsh1 = 'calc(%s + 9px)' % $fs-body
-$fsh2 = 'calc(%s + 11px)' % $fs-body
-$fsh3 = 'calc(%s + 7px)' % $fs-body
-$fsh4 = 'calc(%s + 4px)' % $fs-body
-$fsh5 = 'calc(%s + 2px)' % $fs-body
-
-$fsp0 = 'calc(%s - 0px)' % $fs-body
-$fsp1 = 'calc(%s - 1px)' % $fs-body
-$fsp2 = 'calc(%s - 2px)' % $fs-body
-$fsp3 = 'calc(%s - 3px)' % $fs-body
 
 // line-height
 // 行高
@@ -84,3 +64,17 @@ $fs-h5   = $fs-15
 $fs-h6   = $fs-12
 $fs-p = $fs-15
 $fs-code = $fs-13
+
+// font size
+$fs-codeblock = $fontsize-code
+
+$fsh1 = 'calc(%s + 9px)' % $fs-body
+$fsh2 = 'calc(%s + 11px)' % $fs-body
+$fsh3 = 'calc(%s + 7px)' % $fs-body
+$fsh4 = 'calc(%s + 4px)' % $fs-body
+$fsh5 = 'calc(%s + 2px)' % $fs-body
+
+$fsp0 = 'calc(%s - 0px)' % $fs-body
+$fsp1 = 'calc(%s - 1px)' % $fs-body
+$fsp2 = 'calc(%s - 2px)' % $fs-body
+$fsp3 = 'calc(%s - 3px)' % $fs-body
