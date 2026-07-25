@@ -37,3 +37,18 @@
     background: mix($color-block, $color-card, 50)
     padding-left: 4px
     padding-right: 4px
+  // 高斯模糊
+  blur
+    filter: blur(4px)
+    trans1 all
+    &:hover
+      filter: blur(0)
+  // 上角标 下角标
+  sup,sub
+    color: var(--theme)
+    line-height: 1
+    font-weight: 700
+    font-family: $ff-code
+  h1,h2,h3,h4
+    sup,sub
+      font-size: .85rem

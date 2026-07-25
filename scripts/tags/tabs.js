@@ -1,4 +1,8 @@
 /**
+ * 上次修改更新：6.6.0 | https://github.com/volantis-x/hexo-theme-volantis
+ *
+ */
+/**
  * tabs.js v2.1 | 基于NexT修改： https://theme-next.js.org/docs/tag-plugins/tabs
  */
 // v6
@@ -25,10 +29,9 @@ print("hello world")
 
 支持设置 align:center 来使内容居中
 设置默认激活的标签方式为 `active:1` 而非 `, 1`（使用默认格式降低学习成本，且显式声明可读性更强）
-不需要 <!-- endtab --> 来作为结束标识（因为会自动判断）
-不需要 tabs id 来保证唯一性（因为会设置唯一标识）
-不支持 @icon 方式设置图标（因为不再内置 fontawesome 图标库）
-轮廓样式简化，可以搭配其它容器类标签嵌套使用。
+不需要 <!-- endtab --> 来作为结束标识（会自动判断）
+不需要 tabs id 来保证唯一性（会设置唯一标识）
+不支持 @icon 方式设置图标
 */
 
 'use strict'
@@ -89,6 +92,8 @@ function Tabs_v6(args, content = '') {
 }
 
 hexo.extend.tag.register('Tabs', Tabs_v6, true)
+hexo.extend.tag.register('subTabs', Tabs_v6, true)
+hexo.extend.tag.register('subsubTabs', Tabs_v6, true)
 
 
 
