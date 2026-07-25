@@ -12,6 +12,9 @@ Configurations:
 CSS: 
 - changed-files:
   - any-glob-to-any-file: source/css/**/*
+JS: 
+- changed-files:
+  - any-glob-to-any-file: source/js/**/*
 Layout: 
 - changed-files:
   - any-glob-to-any-file: layout/**/*
