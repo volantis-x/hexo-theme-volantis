@@ -1,4 +1,16 @@
 // 工具函数和混合宏
+
+// 暗黑模式
+volantis-dark(ondark)
+  if hexo-config('plugins.darkmode.enable')
+    @media (prefers-color-scheme: dark)
+      :root
+        --color-mode: 'dark'
+      :root:not([color-scheme])
+        ondark()
+    [color-scheme='dark']
+      ondark()
+
 // 为1个属性设置动画
 trans1($op, $time = 0.2s)
   transition: $op $time ease-out
