@@ -1,5 +1,9 @@
 // Stellar 配色方案
 
+@require('color')
+@require('func')
+@require('fonts')
+@require('layout')
 
 $c-red = $color-md-red
 $c-orange = #FA6400
@@ -127,25 +131,6 @@ dynamic-theme-dark()
   --text-code: x-hsla(20, 75, 60, 1)
 
 
-:root
-  // 主题色
-  x-set-theme-with-color($c-theme)
-  // 强调色
-  --accent: $c-accent
-  // 链接
-  x-set-link-with-color($c-link)
-
-  // dynamic colors
-  dynamic-theme-light()
-  @media (prefers-color-scheme: dark)
-    dynamic-theme-dark()
-
-
-:root[color-scheme="light"]
-  dynamic-theme-light()
-:root[color-scheme="dark"]
-  dynamic-theme-dark()
-
 
 
 // 多彩扩展（文字、链接、边框等都变成彩色）
@@ -180,6 +165,50 @@ x-set-theme-colorful($scheme = 'light', $color, $text = true)
       --link: x-hsla($hue, 95%, 32%, 1)
       --link-a20: x-hsla($hue, 95%, 32%, 0.2)
 
+_dark_tags()
+  .tag-plugin.tag
+    x-set-theme-colorful('dark', $c-theme)
+  .colorful[color='red']
+    x-set-theme-colorful('dark', $c-red)
+  .colorful[color='orange']
+    x-set-theme-colorful('dark', $c-orange)
+  .colorful[color='amber']
+    x-set-theme-colorful('dark', $c-amber)
+  .colorful[color='yellow']
+    x-set-theme-colorful('dark', $c-yellow)
+  .colorful[color='green']
+    x-set-theme-colorful('dark', $c-green)
+  .colorful[color='cyan']
+    x-set-theme-colorful('dark', $c-cyan)
+  .colorful[color='blue']
+    x-set-theme-colorful('dark', $c-blue)
+  .colorful[color='purple']
+    x-set-theme-colorful('dark', $c-purple)
+
+
+
+
+
+
+:root
+  // 主题色
+  x-set-theme-with-color($c-theme)
+  // 强调色
+  --accent: $c-accent
+  // 链接
+  x-set-link-with-color($c-link)
+
+  // dynamic colors
+  dynamic-theme-light()
+  @media (prefers-color-scheme: dark)
+    dynamic-theme-dark()
+
+
+:root[color-scheme="light"]
+  dynamic-theme-light()
+:root[color-scheme="dark"]
+  dynamic-theme-dark()
+      
 .tag-plugin
   --theme-border: var(--block-border)
   --theme-block: var(--block)
@@ -237,26 +266,6 @@ x-set-theme-colorful($scheme = 'light', $color, $text = true)
   --theme-border: none
   --theme-block: var(--theme)
   --text-code: var(--text-p1)
-
-_dark_tags()
-  .tag-plugin.tag
-    x-set-theme-colorful('dark', $c-theme)
-  .colorful[color='red']
-    x-set-theme-colorful('dark', $c-red)
-  .colorful[color='orange']
-    x-set-theme-colorful('dark', $c-orange)
-  .colorful[color='amber']
-    x-set-theme-colorful('dark', $c-amber)
-  .colorful[color='yellow']
-    x-set-theme-colorful('dark', $c-yellow)
-  .colorful[color='green']
-    x-set-theme-colorful('dark', $c-green)
-  .colorful[color='cyan']
-    x-set-theme-colorful('dark', $c-cyan)
-  .colorful[color='blue']
-    x-set-theme-colorful('dark', $c-blue)
-  .colorful[color='purple']
-    x-set-theme-colorful('dark', $c-purple)
 
 
 volantis-dark(_dark_tags)
