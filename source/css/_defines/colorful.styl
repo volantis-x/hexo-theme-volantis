@@ -109,8 +109,4 @@ _dark_tags()
     x-set-theme-colorful('dark', $c-purple)
 
 
-:root[data-theme="dark"]
-  _dark_tags()
-:root:not([data-theme])
-  @media (prefers-color-scheme: dark)
-    _dark_tags()
+volantis-dark(_dark_tags)
