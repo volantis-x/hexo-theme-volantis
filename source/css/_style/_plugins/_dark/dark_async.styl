@@ -2,20 +2,6 @@
 // 工具函数 volantis-dark(ondark)
 
 async_dark()
-  // Stellar tag plugin 基础色
-  --c-site-bg black
-  --c-block #111
-  --c-title #fff
-  --c-text #fff
-  --c-card #333
-
-  // Stellar tag plugin 派生色
-  --block-hover unquote('color-mix(in srgb, var(--c-block) 95%, var(--c-text))')
-  --text-p1 var(--c-text)
-  --text-p3 unquote('color-mix(in srgb, var(--c-text) 60%, var(--c-site-bg))')
-  --card var(--c-card)
-
-
 
   // Custom Files
   for $injects_darkVar in hexo-config('injects.darkVar')

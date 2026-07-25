@@ -1,0 +1,312 @@
+// Stellar 配色方案
+
+@require('color')
+@require('func')
+@require('fonts')
+@require('layout')
+
+$c-red = $color-md-red
+$c-orange = #FA6400
+$c-amber = $color-mac-yellow
+$c-yellow = #ffe659
+$c-green = $color-mac-green
+$c-cyan = $color-mac-cyan
+$c-blue = $color-md-blue
+$c-purple = $color-md-purple
+$c-base-hue = 210deg // 背景/文本颜色的主基调（一般看不出来不需要修改）
+$c-theme = $color-theme  // 主题色
+$c-accent = $color-hover  // 强调色
+$c-link = $color-link  // 链接
+$site-background-image = null
+
+// 用来进行设备适配，请勿修改
+$device-mobile-375 = $device-mobile-m
+$device-mobile-425 = $device-mobile-l
+$device-mobile-iphone-max = 450px
+$device-mobile-max = 667px
+
+// font family
+$ff-body = $fontfamily
+$ff-code = $fontfamily-code
+$ff-codeblock = $fontfamily-code
+
+// font size
+$fs-codeblock = $fontsize-code
+
+$fsh1 = 'calc(%s + 9px)' % $fs-body
+$fsh2 = 'calc(%s + 11px)' % $fs-body
+$fsh3 = 'calc(%s + 7px)' % $fs-body
+$fsh4 = 'calc(%s + 4px)' % $fs-body
+$fsh5 = 'calc(%s + 2px)' % $fs-body
+
+$fsp0 = 'calc(%s - 0px)' % $fs-body
+$fsp1 = 'calc(%s - 1px)' % $fs-body
+$fsp2 = 'calc(%s - 2px)' % $fs-body
+$fsp3 = 'calc(%s - 3px)' % $fs-body
+
+// 通用 hsla 函数
+x-hsla(h = var(--hue), s = var(--sat), l = var(--light), a = var(--alpha))
+  return unquote('hsla(%s %s %s / %s)' % (h s l a))
+
+// 设置不同透明度的主题色
+x-theme-alpha(a = 1)
+  return unquote('hsla(%s %s %s / %s)' % (var(--hue) var(--sat) var(--light) a))
+
+// 设置基础主题色
+x-set-theme-with-color($color)
+  --hue: hue($color)
+  --sat: saturation($color)
+  --light: lightness($color)
+  --alpha: alpha($color)
+  --theme: x-theme-alpha(1)
+  --theme-a10: x-theme-alpha(0.1)
+  --theme-a20: x-theme-alpha(0.2)
+  --theme-a30: x-theme-alpha(0.3)
+
+// 设置链接颜色
+x-set-link-with-color($color)
+  $hue = hue($color)
+  $sat = saturation($color)
+  $light = lightness($color)
+  --link: x-hsla($hue, $sat, $light, 1)
+  --link-a20: x-hsla($hue, $sat, $light, 0.2)
+
+// 设置背景色
+x-set-bg-colors($scheme)
+  $hue = $c-base-hue
+  $sat = 0%
+  $light = $scheme == 'dark' ? 0% : 100%
+  --bg-a20: x-hsla($hue, $sat, $light, 0.2)
+  --bg-a50: x-hsla($hue, $sat, $light, 0.5)
+  --bg-a60: x-hsla($hue, $sat, $light, 0.6)
+  --bg-a75: x-hsla($hue, $sat, $light, 0.75)
+  --bg-a100: x-hsla($hue, $sat, $light, 1)
+
+// 设置文本及相关色
+x-set-text-colors($scheme, $p0 = 1, $p1 = 0.8, $p2 = 0.7, $p3 = 0.5, $p4 = 0.4)
+  $hue = $c-base-hue
+  $sat = 0%
+  $light = $scheme == 'dark' ? 100% : 0%
+  
+  --text: x-hsla($hue, $sat, $light, $p0)
+  --text-reverse: x-hsla($hue, $sat, $scheme == 'dark' ? 0% : 100%, $p0)
+  --text-p1: x-hsla($hue, $sat, $light, $p1)
+  --text-p2: x-hsla($hue, $sat, $light, $p2)
+  --text-p3: x-hsla($hue, $sat, $light, $p3)
+  --text-p4: x-hsla($hue, $sat, $light, $p4)
+
+  --text-meta: x-hsla($hue, $sat, $light, 0.2)
+  --text-code: x-hsla($hue, $sat, $light, 0.9)
+
+  --text-a10: x-hsla($hue, $sat, $light, 0.1)
+  --text-a20: x-hsla($hue, $sat, $light, 0.2)
+
+  $sat = $scheme == 'dark' ? 24% : 50%
+  $light = $scheme == 'dark' ? 72% : 12%
+  $alpha = $scheme == 'dark' ? 0.08 : 0.04
+  --block: x-hsla($hue, $sat, $light, $alpha)
+  --block-border: x-hsla($hue, $sat, $light, $alpha * 1.5)
+
+
+// ---------------- apply theme ----------------
+// 设置浅色模式
+dynamic-theme-light()
+  $hue = $c-base-hue
+  --background: x-hsla($hue, 20%, 98%, 1)
+  --card: $site-background-image ? hsla(white, 0.5) : white
+
+  x-set-bg-colors('light')
+  x-set-text-colors('light')
+
+// 设置深色模式
+dynamic-theme-dark()
+  $hue = $c-base-hue
+  --background: x-hsla($hue, 8%, 12%, 1)
+  @media screen and (max-width: $device-mobile-max)
+    --background: black
+  --card: $site-background-image ? hsla(white, 0.25) : x-hsla($hue, 10%, 24%, 1)
+
+  x-set-bg-colors('dark')
+  x-set-text-colors('dark')
+  --text-code: x-hsla(20, 75, 60, 1)
+
+
+
+
+// 多彩扩展（文字、链接、边框等都变成彩色）
+x-set-theme-colorful($scheme = 'light', $color, $text = true)
+  $hue = hue($color)
+  x-set-theme-with-color($color)
+  x-set-link-with-color($color)
+  if $scheme == 'dark'
+    --theme-border: x-hsla($hue, 40%, 24%)
+    --theme-block: x-hsla($hue, 24%, 24%)
+    --theme-mark: x-hsla($hue, 24%, 24%)
+    --theme-codeblock: x-hsla($hue, 12%, 24%)
+    if text
+      --text: x-hsla($hue, 50%, 75%, 1)
+      --text-p1: x-hsla($hue, 80%, 80%, 1)
+      --text-p2: x-hsla($hue, 80%, 80%, 0.8)
+      --text-p3: x-hsla($hue, 80%, 80%, 0.6)
+      --text-p4: x-hsla($hue, 80%, 80%, 0.4)
+      --link: x-hsla($hue, 80%, 60%, 1)
+      --link-a20: x-hsla($hue, 80%, 60%, 0.2)
+  else
+    --theme-border: x-hsla($hue, 50%, 80%)
+    --theme-block: x-hsla($hue, 90%, 92%)
+    --theme-mark: x-hsla($hue, 95%, 80%)
+    --theme-codeblock: x-hsla($hue, 50%, 95%)
+    if text
+      --text: x-hsla($hue, 55%, 16%, 1)
+      --text-p1: x-hsla($hue, 90%, 20%, 1)
+      --text-p2: x-hsla($hue, 90%, 20%, 0.8)
+      --text-p3: x-hsla($hue, 90%, 20%, 0.6)
+      --text-p4: x-hsla($hue, 90%, 20%, 0.4)
+      --link: x-hsla($hue, 95%, 32%, 1)
+      --link-a20: x-hsla($hue, 95%, 32%, 0.2)
+
+_dark_tags()
+  .tag-plugin.tag
+    x-set-theme-colorful('dark', $c-theme)
+  .colorful[color='red']
+    x-set-theme-colorful('dark', $c-red)
+  .colorful[color='orange']
+    x-set-theme-colorful('dark', $c-orange)
+  .colorful[color='amber']
+    x-set-theme-colorful('dark', $c-amber)
+  .colorful[color='yellow']
+    x-set-theme-colorful('dark', $c-yellow)
+  .colorful[color='green']
+    x-set-theme-colorful('dark', $c-green)
+  .colorful[color='cyan']
+    x-set-theme-colorful('dark', $c-cyan)
+  .colorful[color='blue']
+    x-set-theme-colorful('dark', $c-blue)
+  .colorful[color='purple']
+    x-set-theme-colorful('dark', $c-purple)
+
+
+
+
+
+stellar-root-first()
+  :root
+    // 主题色
+    x-set-theme-with-color($c-theme)
+    // 强调色
+    --accent: $c-accent
+    // 链接
+    x-set-link-with-color($c-link)
+
+    // dynamic colors
+    dynamic-theme-light()
+    @media (prefers-color-scheme: dark)
+      dynamic-theme-dark()
+
+
+  :root[color-scheme="light"]
+    dynamic-theme-light()
+  :root[color-scheme="dark"]
+    dynamic-theme-dark()
+
+
+stellar-root-async()
+  .tag-plugin
+    --theme-border: var(--block-border)
+    --theme-block: var(--block)
+    --theme-mark: var(--block)
+    --theme-codeblock: var(--block)
+
+  .colorful[color='red']
+    x-set-theme-colorful('light', $c-red)
+  .colorful[color='orange']
+    x-set-theme-colorful('light', $c-orange)
+  .colorful[color='amber']
+    x-set-theme-colorful('light', $c-amber)
+  .colorful[color='yellow']
+    x-set-theme-colorful('light', $c-yellow)
+  .colorful[color='green']
+    x-set-theme-colorful('light', $c-green)
+  .colorful[color='cyan']
+    x-set-theme-colorful('light', $c-cyan)
+  .colorful[color='blue']
+    x-set-theme-colorful('light', $c-blue)
+  .colorful[color='purple']
+    x-set-theme-colorful('light', $c-purple)
+  .colorful[color='theme']
+    x-set-theme-colorful('light', $c-theme)
+  .colorful[color='accent']
+    x-set-theme-colorful('light', $c-accent)
+
+  .colorful[color='light']
+    --theme: white
+    --theme-block: var(--theme)
+    --theme-mark: var(--theme)
+    --theme-codeblock: var(--theme)
+    dynamic-theme-light()
+
+  .colorful[color='dark']
+    dynamic-theme-dark()
+    --theme: #111
+    --theme-border: none
+    --theme-block: var(--theme)
+    --theme-mark: var(--theme)
+    --theme-codeblock: var(--theme)
+
+  .colorful[color='warning']
+    x-set-theme-colorful('light', $c-yellow, false)
+    dynamic-theme-light()
+    x-set-link-with-color($c-red)
+    --theme-border: none
+    --theme-block: var(--theme)
+    --text-code: var(--text-p1)
+
+  .colorful[color='error']
+    x-set-theme-colorful('dark', $c-red, false)
+    dynamic-theme-dark()
+    x-set-link-with-color($c-yellow)
+    --theme-border: none
+    --theme-block: var(--theme)
+    --text-code: var(--text-p1)
+
+
+  volantis-dark(_dark_tags)
+
+
+
+
+
+  // 可以动态变化的属性
+  :root
+    --width-main: 720px
+    --fsp: $fs-body
+    --fsh2: 'calc(%s + 11px)' % var(--fsp)
+    --fsh3: 'calc(%s + 7px)' % var(--fsp)
+    --fsh4: 'calc(%s + 4px)' % var(--fsp)
+  
+    // 侧边栏文字内容宽度
+    --side-content-width: 224px
+    // 元素轮廓到容器边缘的间距
+    --gap-margin: 16px
+    // 元素文本内容到元素自身的轮廓的间距
+    --gap-padding: 16px
+  
+    --gap-p: 'calc(%s + 4px)' % $fs-body // gap for paragraph
+    --gap-p-compact: 'calc(%s * 0.75)' % $fs-body
+    // desktop 2k or larger
+    @media screen and (min-width: $device-2k)
+      --width-main: 780px
+    // desktop 4k or larger
+    @media screen and (min-width: $device-4k)
+      --width-main: 860px
+    // iPad 竖屏
+    @media screen and (max-width: $device-tablet)
+      --side-content-width: 188px
+    @media screen and (max-width: $device-mobile-max)
+      --side-content-width: 224px
+
+  // 动态计算值
+  :root
+    // 元素文本内容到容器边缘的间距
+    --gap-max: calc(var(--gap-margin) + var(--gap-padding))
+
