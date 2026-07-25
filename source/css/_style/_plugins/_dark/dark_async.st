@@ -37,12 +37,7 @@ async_dark()
   // body
   //   --color-site-body: blue !important
 
-@media (prefers-color-scheme: dark)
-  :root
-    --color-mode: 'dark'
-  :root:not([color-scheme])
-    async_dark()
-    @import 'dark_plugins'
-[color-scheme='dark']
-  async_dark()
+  // 插件
   @import 'dark_plugins'
+
+volantis-dark(async_dark)
