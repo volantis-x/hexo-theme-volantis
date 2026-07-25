@@ -85,17 +85,7 @@ blockquote p
 .btn-copy:hover
   background: var(--color-site-body)
 
-if hexo-config('comments.service')=='gitalk'
-  .gt-container .gt-header-textarea
-    background-color: var(--color-card)
-    &:hover
-      background-color: var(--color-block)
-  .gt-container .gt-comment-content
-    background-color: var(--color-card)
-    &:hover
-      box-shadow: none
-  .gt-container .gt-comment-admin .gt-comment-content
-    background-color: var(--color-card)
+
 
 if hexo-config('plugins.aplayer.enable')
   .aplayer
