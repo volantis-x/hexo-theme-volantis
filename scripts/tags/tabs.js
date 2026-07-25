@@ -1,4 +1,8 @@
 /**
+ * 上次修改更新：6.6.0 | https://github.com/volantis-x/hexo-theme-volantis
+ *
+ */
+/**
  * tabs.js v2.1 | 基于NexT修改： https://theme-next.js.org/docs/tag-plugins/tabs
  */
 // v6
