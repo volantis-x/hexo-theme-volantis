@@ -1,3 +1,111 @@
+// 通用 hsla 函数
+x-hsla(h = var(--hue), s = var(--sat), l = var(--light), a = var(--alpha))
+  return unquote('hsla(%s %s %s / %s)' % (h s l a))
+
+// 设置不同透明度的主题色
+x-theme-alpha(a = 1)
+  return unquote('hsla(%s %s %s / %s)' % (var(--hue) var(--sat) var(--light) a))
+
+// 设置基础主题色
+x-set-theme-with-color($color)
+  --hue: hue($color)
+  --sat: saturation($color)
+  --light: lightness($color)
+  --alpha: alpha($color)
+  --theme: x-theme-alpha(1)
+  --theme-a10: x-theme-alpha(0.1)
+  --theme-a20: x-theme-alpha(0.2)
+  --theme-a30: x-theme-alpha(0.3)
+
+// 设置链接颜色
+x-set-link-with-color($color)
+  $hue = hue($color)
+  $sat = saturation($color)
+  $light = lightness($color)
+  --link: x-hsla($hue, $sat, $light, 1)
+  --link-a20: x-hsla($hue, $sat, $light, 0.2)
+
+// 设置背景色
+x-set-bg-colors($scheme)
+  $hue = $c-base-hue
+  $sat = 0%
+  $light = $scheme == 'dark' ? 0% : 100%
+  --bg-a20: x-hsla($hue, $sat, $light, 0.2)
+  --bg-a50: x-hsla($hue, $sat, $light, 0.5)
+  --bg-a60: x-hsla($hue, $sat, $light, 0.6)
+  --bg-a75: x-hsla($hue, $sat, $light, 0.75)
+  --bg-a100: x-hsla($hue, $sat, $light, 1)
+
+// 设置文本及相关色
+x-set-text-colors($scheme, $p0 = 1, $p1 = 0.8, $p2 = 0.7, $p3 = 0.5, $p4 = 0.4)
+  $hue = $c-base-hue
+  $sat = 0%
+  $light = $scheme == 'dark' ? 100% : 0%
+  
+  --text: x-hsla($hue, $sat, $light, $p0)
+  --text-reverse: x-hsla($hue, $sat, $scheme == 'dark' ? 0% : 100%, $p0)
+  --text-p1: x-hsla($hue, $sat, $light, $p1)
+  --text-p2: x-hsla($hue, $sat, $light, $p2)
+  --text-p3: x-hsla($hue, $sat, $light, $p3)
+  --text-p4: x-hsla($hue, $sat, $light, $p4)
+
+  --text-meta: x-hsla($hue, $sat, $light, 0.2)
+  --text-code: x-hsla($hue, $sat, $light, 0.9)
+
+  --text-a10: x-hsla($hue, $sat, $light, 0.1)
+  --text-a20: x-hsla($hue, $sat, $light, 0.2)
+
+  $sat = $scheme == 'dark' ? 24% : 50%
+  $light = $scheme == 'dark' ? 72% : 12%
+  $alpha = $scheme == 'dark' ? 0.08 : 0.04
+  --block: x-hsla($hue, $sat, $light, $alpha)
+  --block-border: x-hsla($hue, $sat, $light, $alpha * 1.5)
+
+
+// ---------------- apply theme ----------------
+// 设置浅色模式
+dynamic-theme-light()
+  $hue = $c-base-hue
+  --background: x-hsla($hue, 20%, 98%, 1)
+  --card: $site-background-image ? hsla(white, 0.5) : white
+
+  x-set-bg-colors('light')
+  x-set-text-colors('light')
+
+// 设置深色模式
+dynamic-theme-dark()
+  $hue = $c-base-hue
+  --background: x-hsla($hue, 8%, 12%, 1)
+  @media screen and (max-width: $device-mobile-max)
+    --background: black
+  --card: $site-background-image ? hsla(white, 0.25) : x-hsla($hue, 10%, 24%, 1)
+
+  x-set-bg-colors('dark')
+  x-set-text-colors('dark')
+  --text-code: x-hsla(20, 75, 60, 1)
+
+
+:root
+  // 主题色
+  x-set-theme-with-color($c-theme)
+  // 强调色
+  --accent: $c-accent
+  // 链接
+  x-set-link-with-color($c-link)
+
+  // dynamic colors
+  dynamic-theme-light()
+  @media (prefers-color-scheme: dark)
+    dynamic-theme-dark()
+
+
+:root[data-theme="light"]
+  dynamic-theme-light()
+:root[data-theme="dark"]
+  dynamic-theme-dark()
+
+
+
 // 多彩扩展（文字、链接、边框等都变成彩色）
 x-set-theme-colorful($scheme = 'light', $color, $text = true)
   $hue = hue($color)
