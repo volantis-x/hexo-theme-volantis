@@ -189,122 +189,122 @@ _dark_tags()
 
 
 
+stellar-root()
+  :root
+    // 主题色
+    x-set-theme-with-color($c-theme)
+    // 强调色
+    --accent: $c-accent
+    // 链接
+    x-set-link-with-color($c-link)
 
-:root
-  // 主题色
-  x-set-theme-with-color($c-theme)
-  // 强调色
-  --accent: $c-accent
-  // 链接
-  x-set-link-with-color($c-link)
+    // dynamic colors
+    dynamic-theme-light()
+    @media (prefers-color-scheme: dark)
+      dynamic-theme-dark()
 
-  // dynamic colors
-  dynamic-theme-light()
-  @media (prefers-color-scheme: dark)
+
+  :root[color-scheme="light"]
+    dynamic-theme-light()
+  :root[color-scheme="dark"]
     dynamic-theme-dark()
-
-
-:root[color-scheme="light"]
-  dynamic-theme-light()
-:root[color-scheme="dark"]
-  dynamic-theme-dark()
       
-.tag-plugin
-  --theme-border: var(--block-border)
-  --theme-block: var(--block)
-  --theme-mark: var(--block)
-  --theme-codeblock: var(--block)
+  .tag-plugin
+    --theme-border: var(--block-border)
+    --theme-block: var(--block)
+    --theme-mark: var(--block)
+    --theme-codeblock: var(--block)
 
-.colorful[color='red']
-  x-set-theme-colorful('light', $c-red)
-.colorful[color='orange']
-  x-set-theme-colorful('light', $c-orange)
-.colorful[color='amber']
-  x-set-theme-colorful('light', $c-amber)
-.colorful[color='yellow']
-  x-set-theme-colorful('light', $c-yellow)
-.colorful[color='green']
-  x-set-theme-colorful('light', $c-green)
-.colorful[color='cyan']
-  x-set-theme-colorful('light', $c-cyan)
-.colorful[color='blue']
-  x-set-theme-colorful('light', $c-blue)
-.colorful[color='purple']
-  x-set-theme-colorful('light', $c-purple)
-.colorful[color='theme']
-  x-set-theme-colorful('light', $c-theme)
-.colorful[color='accent']
-  x-set-theme-colorful('light', $c-accent)
+  .colorful[color='red']
+    x-set-theme-colorful('light', $c-red)
+  .colorful[color='orange']
+    x-set-theme-colorful('light', $c-orange)
+  .colorful[color='amber']
+    x-set-theme-colorful('light', $c-amber)
+  .colorful[color='yellow']
+    x-set-theme-colorful('light', $c-yellow)
+  .colorful[color='green']
+    x-set-theme-colorful('light', $c-green)
+  .colorful[color='cyan']
+    x-set-theme-colorful('light', $c-cyan)
+  .colorful[color='blue']
+    x-set-theme-colorful('light', $c-blue)
+  .colorful[color='purple']
+    x-set-theme-colorful('light', $c-purple)
+  .colorful[color='theme']
+    x-set-theme-colorful('light', $c-theme)
+  .colorful[color='accent']
+    x-set-theme-colorful('light', $c-accent)
 
-.colorful[color='light']
-  --theme: white
-  --theme-block: var(--theme)
-  --theme-mark: var(--theme)
-  --theme-codeblock: var(--theme)
-  dynamic-theme-light()
+  .colorful[color='light']
+    --theme: white
+    --theme-block: var(--theme)
+    --theme-mark: var(--theme)
+    --theme-codeblock: var(--theme)
+    dynamic-theme-light()
 
-.colorful[color='dark']
-  dynamic-theme-dark()
-  --theme: #111
-  --theme-border: none
-  --theme-block: var(--theme)
-  --theme-mark: var(--theme)
-  --theme-codeblock: var(--theme)
+  .colorful[color='dark']
+    dynamic-theme-dark()
+    --theme: #111
+    --theme-border: none
+    --theme-block: var(--theme)
+    --theme-mark: var(--theme)
+    --theme-codeblock: var(--theme)
 
-.colorful[color='warning']
-  x-set-theme-colorful('light', $c-yellow, false)
-  dynamic-theme-light()
-  x-set-link-with-color($c-red)
-  --theme-border: none
-  --theme-block: var(--theme)
-  --text-code: var(--text-p1)
+  .colorful[color='warning']
+    x-set-theme-colorful('light', $c-yellow, false)
+    dynamic-theme-light()
+    x-set-link-with-color($c-red)
+    --theme-border: none
+    --theme-block: var(--theme)
+    --text-code: var(--text-p1)
 
-.colorful[color='error']
-  x-set-theme-colorful('dark', $c-red, false)
-  dynamic-theme-dark()
-  x-set-link-with-color($c-yellow)
-  --theme-border: none
-  --theme-block: var(--theme)
-  --text-code: var(--text-p1)
-
-
-volantis-dark(_dark_tags)
+  .colorful[color='error']
+    x-set-theme-colorful('dark', $c-red, false)
+    dynamic-theme-dark()
+    x-set-link-with-color($c-yellow)
+    --theme-border: none
+    --theme-block: var(--theme)
+    --text-code: var(--text-p1)
 
 
+  volantis-dark(_dark_tags)
 
 
 
-// 可以动态变化的属性
-:root
-  --width-main: 720px
-  --fsp: $fs-body
-  --fsh2: 'calc(%s + 11px)' % var(--fsp)
-  --fsh3: 'calc(%s + 7px)' % var(--fsp)
-  --fsh4: 'calc(%s + 4px)' % var(--fsp)
+
+
+  // 可以动态变化的属性
+  :root
+    --width-main: 720px
+    --fsp: $fs-body
+    --fsh2: 'calc(%s + 11px)' % var(--fsp)
+    --fsh3: 'calc(%s + 7px)' % var(--fsp)
+    --fsh4: 'calc(%s + 4px)' % var(--fsp)
   
-  // 侧边栏文字内容宽度
-  --side-content-width: 224px
-  // 元素轮廓到容器边缘的间距
-  --gap-margin: 16px
-  // 元素文本内容到元素自身的轮廓的间距
-  --gap-padding: 16px
-  
-  --gap-p: 'calc(%s + 4px)' % $fs-body // gap for paragraph
-  --gap-p-compact: 'calc(%s * 0.75)' % $fs-body
-  // desktop 2k or larger
-  @media screen and (min-width: $device-2k)
-    --width-main: 780px
-  // desktop 4k or larger
-  @media screen and (min-width: $device-4k)
-    --width-main: 860px
-  // iPad 竖屏
-  @media screen and (max-width: $device-tablet)
-    --side-content-width: 188px
-  @media screen and (max-width: $device-mobile-max)
+    // 侧边栏文字内容宽度
     --side-content-width: 224px
+    // 元素轮廓到容器边缘的间距
+    --gap-margin: 16px
+    // 元素文本内容到元素自身的轮廓的间距
+    --gap-padding: 16px
+  
+    --gap-p: 'calc(%s + 4px)' % $fs-body // gap for paragraph
+    --gap-p-compact: 'calc(%s * 0.75)' % $fs-body
+    // desktop 2k or larger
+    @media screen and (min-width: $device-2k)
+      --width-main: 780px
+    // desktop 4k or larger
+    @media screen and (min-width: $device-4k)
+      --width-main: 860px
+    // iPad 竖屏
+    @media screen and (max-width: $device-tablet)
+      --side-content-width: 188px
+    @media screen and (max-width: $device-mobile-max)
+      --side-content-width: 224px
 
-// 动态计算值
-:root
-  // 元素文本内容到容器边缘的间距
-  --gap-max: calc(var(--gap-margin) + var(--gap-padding))
+  // 动态计算值
+  :root
+    // 元素文本内容到容器边缘的间距
+    --gap-max: calc(var(--gap-margin) + var(--gap-padding))
 
