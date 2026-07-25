@@ -3,6 +3,7 @@
 @require('color')
 @require('func')
 @require('fonts')
+@require('layout')
 
 $c-red = $color-md-red
 $c-orange = #FA6400
@@ -17,6 +18,31 @@ $c-theme = $color-theme  // 主题色
 $c-accent = $color-hover  // 强调色
 $c-link = $color-link  // 链接
 $site-background-image = null
+
+// 用来进行设备适配，请勿修改
+$device-mobile-375 = $device-mobile-m
+$device-mobile-425 = $device-mobile-l
+$device-mobile-iphone-max = 450px
+$device-mobile-max = 667px
+
+// font family
+$ff-body = $fontfamily
+$ff-code = $fontfamily-code
+$ff-codeblock = $fontfamily-code
+
+// font size
+$fs-codeblock = $fontsize-code
+
+$fsh1 = 'calc(%s + 9px)' % $fs-body
+$fsh2 = 'calc(%s + 11px)' % $fs-body
+$fsh3 = 'calc(%s + 7px)' % $fs-body
+$fsh4 = 'calc(%s + 4px)' % $fs-body
+$fsh5 = 'calc(%s + 2px)' % $fs-body
+
+$fsp0 = 'calc(%s - 0px)' % $fs-body
+$fsp1 = 'calc(%s - 1px)' % $fs-body
+$fsp2 = 'calc(%s - 2px)' % $fs-body
+$fsp3 = 'calc(%s - 3px)' % $fs-body
 
 // 通用 hsla 函数
 x-hsla(h = var(--hue), s = var(--sat), l = var(--light), a = var(--alpha))
@@ -239,24 +265,7 @@ _dark_tags()
 
 volantis-dark(_dark_tags)
 
-// font family
-$ff-body = $fontfamily
-$ff-code = $fontfamily-code
-$ff-codeblock = $fontfamily-code
 
-// font size
-$fs-codeblock = $fontsize-code
-
-$fsh1 = 'calc(%s + 9px)' % $fs-body
-$fsh2 = 'calc(%s + 11px)' % $fs-body
-$fsh3 = 'calc(%s + 7px)' % $fs-body
-$fsh4 = 'calc(%s + 4px)' % $fs-body
-$fsh5 = 'calc(%s + 2px)' % $fs-body
-
-$fsp0 = 'calc(%s - 0px)' % $fs-body
-$fsp1 = 'calc(%s - 1px)' % $fs-body
-$fsp2 = 'calc(%s - 2px)' % $fs-body
-$fsp3 = 'calc(%s - 3px)' % $fs-body
 
 
 
