@@ -21,6 +21,12 @@ if hexo-config('plugins.tianliGPT.enable')
 // gitalk
 if hexo-config('comments.service')=='gitalk'
   @import 'gitalk'
+// waline
+if hexo-config('comments.service')=='waline'
+  @import 'waline'
+// twikoo
+if hexo-config('comments.service')=='twikoo'
+  @import 'twikoo'
 // 鼠标指针
 if hexo-config('custom_css.cursor.enable')
   @import 'cursor'

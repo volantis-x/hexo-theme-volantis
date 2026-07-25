@@ -35,3 +35,30 @@ if hexo-config('plugins.aplayer.autoHide')
     left: -66px !important
     &:hover
       left: 0px !important
+
+
+dark_aplayer()
+  .aplayer
+    background: var(--color-site-bg)
+  .aplayer .aplayer-list ol li:hover
+    background: rgba($color-theme,.2)
+  .aplayer .aplayer-list ol li.aplayer-list-light
+    background: var(--color-block)
+  .aplayer-info
+    background: var(--color-site-bg) !important
+  .aplayer .aplayer-lrc:before
+    background: linear-gradient(180deg,#282c34 0,hsla(0,0%,100%,0))
+  .aplayer .aplayer-lrc:after
+    background: linear-gradient(180deg,hsla(0,0%,0%,0) 0,hsla(0,0%,13%,.8))
+  .aplayer-pic
+    filter: brightness(convert(hexo-config('color_scheme.dark.brightness')))
+  .aplayer .aplayer-list ol li
+    border-top: 1px solid var(--color-card)
+  .aplayer.aplayer-withlist .aplayer-info
+    border-bottom: 1px solid var(--color-block)
+  .aplayer .aplayer-notice
+    background-color: var(--color-site-bg) !important
+
+    
+volantis-dark(dark_aplayer)
+    

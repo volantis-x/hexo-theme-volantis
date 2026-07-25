@@ -68,14 +68,8 @@ fitst_dark()
     @media screen and (max-width: $device-mobile)
       background: var(--color-site-bg) !important
 
-if hexo-config('plugins.darkmode.enable')
-  @media (prefers-color-scheme: dark)
-    :root
-      --color-mode: 'dark'
-    :root:not([color-scheme])
-      fitst_dark()
-  [color-scheme='dark']
-    fitst_dark()
-    .friend-card.color-bk-dark {
-      filter: brightness(0.8);
-    }
+  // friend card
+  .friend-card.color-bk-dark
+    filter: brightness(0.8)
+
+volantis-dark(fitst_dark)

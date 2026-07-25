@@ -467,3 +467,19 @@ $gt-size-avatar-mobi := em(32px)
     -webkit-transition: all .28s ease  !important
     -o-transition: all .28s ease  !important
 
+	
+dark_gitalk()
+  .gt-container .gt-header-textarea
+    background-color: var(--color-card)
+    &:hover
+      background-color: var(--color-block)
+  .gt-container .gt-comment-content
+    background-color: var(--color-card)
+    &:hover
+      box-shadow: none
+  .gt-container .gt-comment-admin .gt-comment-content
+    background-color: var(--color-card)
+
+volantis-dark(dark_gitalk)
+
+	
