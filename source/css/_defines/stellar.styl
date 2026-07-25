@@ -260,3 +260,37 @@ $fsp3 = 'calc(%s - 3px)' % $fs-body
 
 
 
+// 可以动态变化的属性
+:root
+  --width-main: 720px
+  --fsp: $fs-body
+  --fsh2: 'calc(%s + 11px)' % var(--fsp)
+  --fsh3: 'calc(%s + 7px)' % var(--fsp)
+  --fsh4: 'calc(%s + 4px)' % var(--fsp)
+  
+  // 侧边栏文字内容宽度
+  --side-content-width: 224px
+  // 元素轮廓到容器边缘的间距
+  --gap-margin: 16px
+  // 元素文本内容到元素自身的轮廓的间距
+  --gap-padding: 16px
+  
+  --gap-p: 'calc(%s + 4px)' % $fs-body // gap for paragraph
+  --gap-p-compact: 'calc(%s * 0.75)' % $fs-body
+  // desktop 2k or larger
+  @media screen and (min-width: $device-2k)
+    --width-main: 780px
+  // desktop 4k or larger
+  @media screen and (min-width: $device-4k)
+    --width-main: 860px
+  // iPad 竖屏
+  @media screen and (max-width: $device-tablet)
+    --side-content-width: 188px
+  @media screen and (max-width: $device-mobile-max)
+    --side-content-width: 224px
+
+// 动态计算值
+:root
+  // 元素文本内容到容器边缘的间距
+  --gap-max: calc(var(--gap-margin) + var(--gap-padding))
+
