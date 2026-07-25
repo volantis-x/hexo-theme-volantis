@@ -1,0 +1,116 @@
+// 多彩扩展（文字、链接、边框等都变成彩色）
+x-set-theme-colorful($scheme = 'light', $color, $text = true)
+  $hue = hue($color)
+  x-set-theme-with-color($color)
+  x-set-link-with-color($color)
+  if $scheme == 'dark'
+    --theme-border: x-hsla($hue, 40%, 24%)
+    --theme-block: x-hsla($hue, 24%, 24%)
+    --theme-mark: x-hsla($hue, 24%, 24%)
+    --theme-codeblock: x-hsla($hue, 12%, 24%)
+    if text
+      --text: x-hsla($hue, 50%, 75%, 1)
+      --text-p1: x-hsla($hue, 80%, 80%, 1)
+      --text-p2: x-hsla($hue, 80%, 80%, 0.8)
+      --text-p3: x-hsla($hue, 80%, 80%, 0.6)
+      --text-p4: x-hsla($hue, 80%, 80%, 0.4)
+      --link: x-hsla($hue, 80%, 60%, 1)
+      --link-a20: x-hsla($hue, 80%, 60%, 0.2)
+  else
+    --theme-border: x-hsla($hue, 50%, 80%)
+    --theme-block: x-hsla($hue, 90%, 92%)
+    --theme-mark: x-hsla($hue, 95%, 80%)
+    --theme-codeblock: x-hsla($hue, 50%, 95%)
+    if text
+      --text: x-hsla($hue, 55%, 16%, 1)
+      --text-p1: x-hsla($hue, 90%, 20%, 1)
+      --text-p2: x-hsla($hue, 90%, 20%, 0.8)
+      --text-p3: x-hsla($hue, 90%, 20%, 0.6)
+      --text-p4: x-hsla($hue, 90%, 20%, 0.4)
+      --link: x-hsla($hue, 95%, 32%, 1)
+      --link-a20: x-hsla($hue, 95%, 32%, 0.2)
+
+.tag-plugin
+  --theme-border: var(--block-border)
+  --theme-block: var(--block)
+  --theme-mark: var(--block)
+  --theme-codeblock: var(--block)
+
+.colorful[color='red']
+  x-set-theme-colorful('light', $c-red)
+.colorful[color='orange']
+  x-set-theme-colorful('light', $c-orange)
+.colorful[color='amber']
+  x-set-theme-colorful('light', $c-amber)
+.colorful[color='yellow']
+  x-set-theme-colorful('light', $c-yellow)
+.colorful[color='green']
+  x-set-theme-colorful('light', $c-green)
+.colorful[color='cyan']
+  x-set-theme-colorful('light', $c-cyan)
+.colorful[color='blue']
+  x-set-theme-colorful('light', $c-blue)
+.colorful[color='purple']
+  x-set-theme-colorful('light', $c-purple)
+.colorful[color='theme']
+  x-set-theme-colorful('light', $c-theme)
+.colorful[color='accent']
+  x-set-theme-colorful('light', $c-accent)
+
+.colorful[color='light']
+  --theme: white
+  --theme-block: var(--theme)
+  --theme-mark: var(--theme)
+  --theme-codeblock: var(--theme)
+  dynamic-theme-light()
+
+.colorful[color='dark']
+  dynamic-theme-dark()
+  --theme: #111
+  --theme-border: none
+  --theme-block: var(--theme)
+  --theme-mark: var(--theme)
+  --theme-codeblock: var(--theme)
+
+.colorful[color='warning']
+  x-set-theme-colorful('light', $c-yellow, false)
+  dynamic-theme-light()
+  x-set-link-with-color($c-red)
+  --theme-border: none
+  --theme-block: var(--theme)
+  --text-code: var(--text-p1)
+
+.colorful[color='error']
+  x-set-theme-colorful('dark', $c-red, false)
+  dynamic-theme-dark()
+  x-set-link-with-color($c-yellow)
+  --theme-border: none
+  --theme-block: var(--theme)
+  --text-code: var(--text-p1)
+
+_dark_tags()
+  .tag-plugin.tag
+    x-set-theme-colorful('dark', $c-theme)
+  .colorful[color='red']
+    x-set-theme-colorful('dark', $c-red)
+  .colorful[color='orange']
+    x-set-theme-colorful('dark', $c-orange)
+  .colorful[color='amber']
+    x-set-theme-colorful('dark', $c-amber)
+  .colorful[color='yellow']
+    x-set-theme-colorful('dark', $c-yellow)
+  .colorful[color='green']
+    x-set-theme-colorful('dark', $c-green)
+  .colorful[color='cyan']
+    x-set-theme-colorful('dark', $c-cyan)
+  .colorful[color='blue']
+    x-set-theme-colorful('dark', $c-blue)
+  .colorful[color='purple']
+    x-set-theme-colorful('dark', $c-purple)
+
+
+:root[data-theme="dark"]
+  _dark_tags()
+:root:not([data-theme])
+  @media (prefers-color-scheme: dark)
+    _dark_tags()
