@@ -467,7 +467,7 @@ volantis.css = (src) => {
   volantis.import = {
     jQuery: () => {
       if (typeof jQuery == "undefined") {
-        return volantis.js("<%- theme.cdn.jquery %>")
+        return volantis.js(volantis.GLOBAL_CONFIG.cdn.jquery)
       } else {
         return new Promise(resolve => {
           resolve()
@@ -612,7 +612,7 @@ volantis.scroll = {
     // 默认配置
     opt = {
       top: ele.getBoundingClientRect().top + document.documentElement.scrollTop,
-      behavior: "<%- theme.scroll_smooth ? 'smooth' : 'instant' %>"
+      behavior: volantis.GLOBAL_CONFIG.scroll_behavior
     }
     // 定义配置
     if ("top" in option) {
