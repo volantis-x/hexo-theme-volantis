@@ -31,10 +31,6 @@ document.addEventListener("error", function (e) {
     parentElem.classList.remove('fancybox');
   } else if (parentElemClass === 'img-bg' && pParentElemClass === 'img-wrap') {
     pParentElem.classList.add('hideFancybox');
-  } else if (parentElemClass === 'author') {
-    pParentElem.classList.add('fix-author-imgError');
-  } else if (parentElemClass.includes('tk-avatar')) {
-    pParentElem.classList.add('fix-avatar-imgError');
   }
 }, true);
 
