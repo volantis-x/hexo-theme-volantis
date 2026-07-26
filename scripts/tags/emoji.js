@@ -9,7 +9,50 @@
  * {% emoji [source] name [height:1.75em] %}
  *
  */
+/*
+emoji 表情包
 
+内置了可配置的表情标签 {% emoji aini %} {% emoji blobcat 0_0 %} {% emoji tieba huaji %} 使用方法如下：
+
+```
+{% emoji aini %}
+{% emoji blobcat 0_0 %}
+{% emoji tieba huaji %}
+```
+
+如果对高度有特别要求，可以指定高度，例如：
+
+{% emoji blobcat party height:1em %}{% emoji blobcat party height:2em %}{% emoji blobcat party height:3em %}{% emoji blobcat party height:2em %}{% emoji blobcat party height:1em %}
+
+
+
+语法格式
+
+```
+{% emoji [source] name [height:1.75em] %}
+```
+
+其中 `source` 可省略，默认为配置中的第一个 `source`（详见「引入表情包」部分）
+
+> 表情速查表：[Stellar内嵌blobcat小表情](https://weekdaycare.cn/posts/emoji-blob/)
+
+引入表情包
+
+```yaml blog/_config.volantis.yml
+tag_plugins:
+  ...
+  emoji:
+    default: https://gcore.jsdelivr.net/gh/cdn-x/emoticons/qq/{name}.gif
+    twemoji: https://gcore.jsdelivr.net/gh/twitter/twemoji/assets/svg/{name}.svg
+    qq: https://gcore.jsdelivr.net/gh/cdn-x/emoticons/qq/{name}.gif
+    aru: https://gcore.jsdelivr.net/gh/cdn-x/emoticons/aru-l/{name}.gif
+    tieba: https://gcore.jsdelivr.net/gh/cdn-x/emoticons/tieba/{name}.png
+```
+
+> 在配置文件中，文件名用 `{name}` 代替。
+
+
+*/
 'use strict'
 
 function emoji(args) {
