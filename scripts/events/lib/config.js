@@ -65,4 +65,12 @@ module.exports = hexo => {
     }
   }
   hexo.theme.config.info.theme_version = version;
+
+  // merge icons: 简单覆盖合并
+  var icons = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '_data/icons.yml'), engine: 'yaml' })
+  if (data.icons) {
+    icons = Object.assign({}, icons, data.icons)
+  }
+  hexo.theme.config.icons = icons
+  
 };
