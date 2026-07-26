@@ -643,6 +643,13 @@ sidebar:
   ##########################
   # 侧边栏组件库
   widget_library: # 此处配置可被 _data/widgets.yml 覆盖
+    # blogger info widget
+    blogger:
+      class: blogger
+    # ---------------------------------------
+    # toc widget (valid only in articles)
+    toc:
+      class: toc
     # ---------------------------------------
     # 所有 widgets 见 _data/widgets.yml 写在这里配置文件太长了
     # ---------------------------------------
