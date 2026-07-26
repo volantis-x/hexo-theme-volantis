@@ -1,166 +1,166 @@
 # 您可以在这里创建属于自己的侧边栏组件库，放置自己的组件
 # 这里可以覆盖配置文件中的 sidebar.widget_library
 
-  widget_library:
-    # ---------------------------------------
-    # blogger info widget
-    blogger:
-      class: blogger
-      display: [desktop, mobile] # [desktop, mobile]
-      avatar: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
-      shape: rectangle # circle, rectangle
-      url: /about/
-      title:
-      subtitle:
-      jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
-      social:
-        - icon: fa-solid fa-rss
-          url: /atom.xml
-        - icon: fa-solid fa-envelope
-          url: mailto:me@xxx.com
-        - icon: fab fa-github
-          url: https://github.com/volantis-x/
-        - icon: fa-solid fa-headphones-alt
-          url: /
-    # ---------------------------------------
-    # toc widget (valid only in articles)
-    toc:
-      class: toc
-      display: [desktop, mobile] # [desktop, mobile]
-      sticky: true
-      header:
-        icon: fa-solid fa-list
-        title: 本文目录
-      list_number: false
-      min_depth: 2
-      max_depth: 5
-    # ---------------------------------------
-    # music
-    music:
-      class: music
-      display: [desktop, mobile] # [desktop, mobile]
-      pjaxReload: false
-    # ---------------------------------------
-    # category widget
-    category:
-      class: category
-      display: [desktop] # [desktop, mobile]
-      header:
-        icon: fa-solid fa-folder-open
-        title: 文章分类
-        url: /blog/categories/
-    # ---------------------------------------
-    # tagcloud widget
-    tagcloud:
-      class: tagcloud
-      display: [desktop, mobile] # [desktop, mobile]
-      header:
-        icon: fa-solid fa-tags
-        title: 热门标签
-        url: /blog/tags/
-      min_font: 14
-      max_font: 24
-      color: true
-      start_color: '#999'
-      end_color: '#555'
-    # ---------------------------------------
-    # qrcode widget
-    qrcode:
-      class: qrcode
-      display: [desktop, mobile] # [desktop, mobile]
-      height: 64px  # Automatic height if not set
-      images:
-        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-        - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
-    # ---------------------------------------
-    # webinfo widget
-    webinfo:
-      class: webinfo
-      display: [desktop]
-      header:
-        icon: fa-solid fa-award
-        title: 站点信息
-      type:
-        article:
-          enable: true
-          text: '文章数目：'
-          unit: '篇'
-        runtime:
-          enable: false
-          data: '2020/01/01'    # 填写建站日期
-          text: '已运行时间：'
-          unit: '天'
-        wordcount:
-          enable: false
-          text: '本站总字数：'   # 需要启用 wordcount
-          unit: '字'
-        visitcounter:
-          enable: true
-          siteuv:
-            text: '本站访客数：'
-            unit: '人'
-          sitepv:
-            text: '本站总访问量：'
-            unit: '次'
-        lastupd:
-          enable: true
-          friendlyShow: true    # 更友好的时间显示
-          text: '最后活动时间：'
-          unit: '日'
-    # ---------------------------------------
-    # lastupdate widget # only for posts
-    lastupdate:
-      class: lastupdate
-      display: [desktop, mobile]
-      header:
-        icon: fa-solid fa-clock WISTERIA
-        title: 最近更新
-    # ---------------------------------------
-    # recent widget # # for posts wiki notebooks
-    recent:
-      class: recent
-      display: [desktop, mobile]
-      header:
-        icon: fa-solid fa-clock
-        title: 最近更新
-      limit: 10 # Count of posts
-    # ---------------------------------------
-    # 页面树（与当前页面强关联的上下篇文章列表） # only for wiki
-    tree:
-      class: tree
-    # 强关联的上下文章 # for 专栏 wiki(按分类)
-    related:
-      class: related
-    # 标签树 # only for notes
-    tagtree:
-      class: tagtree
-      header:
-        icon: fa-solid fa-tags
-        title: 标签
-      expand_all: false # 是否展开所有节点
-      expand_active: true # 是否展开当前节点
-      show_tagcon: true # 是否显示标签 icon
-    # Artalk widget
-    artalk:
-      class: artalk
-      stickys: true
-      display: [desktop, mobile]
-    # ---------------------------------------
-    # Memos widget
-    memos_carousel:
-      class: memos_carousel
-      display: [desktop, mobile]
-      header:
-        icon: fa-solid fa-volume-high
-        title: 说说
-        url: /blog/memos/ # 说说页面的地址
-      url: 'https://s.dusays.com/' # 替换城自己的域名，也可以用杜老师的平台托管
-      limit: '10' # 展示数量限制
-      creatorId: '1' # 替换成自己的用户的ID
-      tag: '' # 要展示的内容的标签
-      image: 'fa-solid fa-image' # 图片替换成图标
-      link: 'fa-solid fa-link' # 链接替换成图标
-      placeholder: '说说加载中...' # 占位符
+
+# ---------------------------------------
+# blogger info widget
+blogger:
+  class: blogger
+  display: [desktop, mobile] # [desktop, mobile]
+  avatar: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+  shape: rectangle # circle, rectangle
+  url: /about/
+  title:
+  subtitle:
+  jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
+  social:
+    - icon: fa-solid fa-rss
+      url: /atom.xml
+    - icon: fa-solid fa-envelope
+       url: mailto:me@xxx.com
+     - icon: fab fa-github
+       url: https://github.com/volantis-x/
+    - icon: fa-solid fa-headphones-alt
+       url: /
+# ---------------------------------------
+# toc widget (valid only in articles)
+toc:
+  class: toc
+  display: [desktop, mobile] # [desktop, mobile]
+  sticky: true
+  header:
+    icon: fa-solid fa-list
+    title: 本文目录
+  list_number: false
+  min_depth: 2
+  max_depth: 5
+# ---------------------------------------
+# music
+music:
+  class: music
+  display: [desktop, mobile] # [desktop, mobile]
+  pjaxReload: false
+# ---------------------------------------
+# category widget
+category:
+  class: category
+  display: [desktop] # [desktop, mobile]
+  header:
+    icon: fa-solid fa-folder-open
+    title: 文章分类
+    url: /blog/categories/
+# ---------------------------------------
+# tagcloud widget
+tagcloud:
+  class: tagcloud
+  display: [desktop, mobile] # [desktop, mobile]
+  header:
+    icon: fa-solid fa-tags
+    title: 热门标签
+    url: /blog/tags/
+  min_font: 14
+  max_font: 24
+  color: true
+  start_color: '#999'
+  end_color: '#555'
+# ---------------------------------------
+# qrcode widget
+qrcode:
+  class: qrcode
+  display: [desktop, mobile] # [desktop, mobile]
+  height: 64px  # Automatic height if not set
+  images:
+    - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+    - volantis-static/media/org.volantis/blog/qrcode/github@volantis.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
+# ---------------------------------------
+# webinfo widget
+webinfo:
+  class: webinfo
+  display: [desktop]
+  header:
+    icon: fa-solid fa-award
+    title: 站点信息
+  type:
+    article:
+      enable: true
+      text: '文章数目：'
+      unit: '篇'
+    runtime:
+      enable: false
+      data: '2020/01/01'    # 填写建站日期
+      text: '已运行时间：'
+      unit: '天'
+    wordcount:
+      enable: false
+      text: '本站总字数：'   # 需要启用 wordcount
+      unit: '字'
+    visitcounter:
+      enable: true
+      siteuv:
+        text: '本站访客数：'
+        unit: '人'
+      sitepv:
+        text: '本站总访问量：'
+        unit: '次'
+    lastupd:
+      enable: true
+      friendlyShow: true    # 更友好的时间显示
+      text: '最后活动时间：'
+      unit: '日'
+# ---------------------------------------
+# lastupdate widget # only for posts
+lastupdate:
+  class: lastupdate
+  display: [desktop, mobile]
+  header:
+    icon: fa-solid fa-clock WISTERIA
+    title: 最近更新
+# ---------------------------------------
+# recent widget # # for posts wiki notebooks
+recent:
+  class: recent
+  display: [desktop, mobile]
+  header:
+    icon: fa-solid fa-clock
+    title: 最近更新
+  limit: 10 # Count of posts
+# ---------------------------------------
+# 页面树（与当前页面强关联的上下篇文章列表） # only for wiki
+tree:
+  class: tree
+# 强关联的上下文章 # for 专栏 wiki(按分类)
+related:
+  class: related
+# 标签树 # only for notes
+tagtree:
+  class: tagtree
+  header:
+    icon: fa-solid fa-tags
+    title: 标签
+  expand_all: false # 是否展开所有节点
+  expand_active: true # 是否展开当前节点
+  show_tagcon: true # 是否显示标签 icon
+# Artalk widget
+artalk:
+  class: artalk
+  stickys: true
+  display: [desktop, mobile]
+# ---------------------------------------
+# Memos widget
+memos_carousel:
+  class: memos_carousel
+  display: [desktop, mobile]
+  header:
+    icon: fa-solid fa-volume-high
+    title: 说说
+    url: /blog/memos/ # 说说页面的地址
+  url: 'https://s.dusays.com/' # 替换城自己的域名，也可以用杜老师的平台托管
+  limit: '10' # 展示数量限制
+  creatorId: '1' # 替换成自己的用户的ID
+  tag: '' # 要展示的内容的标签
+  image: 'fa-solid fa-image' # 图片替换成图标
+  link: 'fa-solid fa-link' # 链接替换成图标
+  placeholder: '说说加载中...' # 占位符
 
 
 
