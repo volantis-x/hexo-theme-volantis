@@ -17,11 +17,11 @@ blogger:
     - icon: fa-solid fa-rss
       url: /atom.xml
     - icon: fa-solid fa-envelope
-       url: mailto:me@xxx.com
-     - icon: fab fa-github
-       url: https://github.com/volantis-x/
+      url: mailto:me@xxx.com
+    - icon: fab fa-github
+      url: https://github.com/volantis-x/
     - icon: fa-solid fa-headphones-alt
-       url: /
+      url: /
 # ---------------------------------------
 # toc widget (valid only in articles)
 toc:
