@@ -23,7 +23,7 @@ document.addEventListener("error", function (e) {
   if (!pParentElem) return;
   const pParentElemClass = pParentElem.className;
 
-  elem.classList.add('fix-cursor-default', 'error');
+  elem.classList.add('error');
 
   if (parentElemClass === 'fancybox' && pParentElemClass === 'fancybox') {
     pParentElem.classList.add('hideFancybox');
