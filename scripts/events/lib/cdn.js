@@ -203,4 +203,4 @@ module.exports = hexo => {
   }
   /* Collecting the CDN source for each library. */
   collect_cdn_source();
-});
+};
