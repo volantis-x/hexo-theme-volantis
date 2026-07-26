@@ -22,13 +22,11 @@ swiper 轮播容器
 ![](https://images.unsplash.com/photo-1524797905120-92940d3a18d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80)
 {% endswiper %}
 
-
 宽度 
 
 {% swiper width:min/max %}
 ...
 {% endswiper %}
-
 
 切换效果
 
@@ -38,7 +36,6 @@ swiper 轮播容器
 
 
 注意 一个页面只能设置一次，第一个 `swiper` 容器的效果全局生效。
-
 */
 
 'use strict';
