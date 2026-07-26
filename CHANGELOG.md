@@ -1,5 +1,26 @@
 # Changelog
 
+## [6.6.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.5.0...v6.6.0) (2026-07-26)
+
+
+### Features
+
+* emoji icon 标签 ([#1009](https://github.com/volantis-x/hexo-theme-volantis/issues/1009)) ([4cb4696](https://github.com/volantis-x/hexo-theme-volantis/commit/4cb4696a59fed08e15dbab994da50d5180fd71a2))
+* styl 工具函数 volantis-dark(ondark) ([#1006](https://github.com/volantis-x/hexo-theme-volantis/issues/1006)) ([8d22f3a](https://github.com/volantis-x/hexo-theme-volantis/commit/8d22f3a4f41c62de153a912ae70ce0b8b0635ef8))
+* sub sup blur 标签 ([#1004](https://github.com/volantis-x/hexo-theme-volantis/issues/1004)) ([18a419b](https://github.com/volantis-x/hexo-theme-volantis/commit/18a419be52a8245c1134a36db7c57c2e5e981d0b))
+* Tabs 标签 ([#1002](https://github.com/volantis-x/hexo-theme-volantis/issues/1002)) ([3f8d075](https://github.com/volantis-x/hexo-theme-volantis/commit/3f8d0755a3a2fdbb85f1f1a251a041b44b8942bd))
+* volantis v6 标签插件 命令解析器 同时兼容 volantis v5、volantis v4、 stellar v1 的插件参数写法 ([#999](https://github.com/volantis-x/hexo-theme-volantis/issues/999)) ([174e8e4](https://github.com/volantis-x/hexo-theme-volantis/commit/174e8e407d8d328ff5ac1ae9ff0c6dcecd1f3b50))
+* 合并stellar配色方案 ([#1007](https://github.com/volantis-x/hexo-theme-volantis/issues/1007)) ([48ecdb0](https://github.com/volantis-x/hexo-theme-volantis/commit/48ecdb0f5f99fa96fc762a216a237d0ae40e921a))
+* 配置文件变更 sidebar.widget_library 移入 _data/widgets.yml ; _cdn.yml 移入 _data/cdn.yml ([#1008](https://github.com/volantis-x/hexo-theme-volantis/issues/1008)) ([354fe3e](https://github.com/volantis-x/hexo-theme-volantis/commit/354fe3e2347160b71f1cba89645de7c5392f410d))
+* 页面插件新增 mermaid ([#1001](https://github.com/volantis-x/hexo-theme-volantis/issues/1001)) ([b586be9](https://github.com/volantis-x/hexo-theme-volantis/commit/b586be995d5dee54488d0ecc22334ce956d61a28))
+
+
+### Bug Fixes
+
+* GLOBAL CONFIG ([#1003](https://github.com/volantis-x/hexo-theme-volantis/issues/1003)) ([b0deeec](https://github.com/volantis-x/hexo-theme-volantis/commit/b0deeece0d7fbf6a519f59160b16501261897a0a))
+* img.error hight ([e5e2b66](https://github.com/volantis-x/hexo-theme-volantis/commit/e5e2b66756acd92c5d2bbc7275f60ddb2aa8ab3d))
+* pjax for sticky ([#1005](https://github.com/volantis-x/hexo-theme-volantis/issues/1005)) ([b2257b9](https://github.com/volantis-x/hexo-theme-volantis/commit/b2257b91eede1f7b1ad104656ce9f9832415cee1))
+
 ## [6.5.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.4.0...v6.5.0) (2026-07-22)
 
 
