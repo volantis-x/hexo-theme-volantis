@@ -672,6 +672,17 @@ tag_plugins:
   # {% link title, url, img %}
   link:
     placeholder:  volantis-static/media/org.volantis/logo/256/safari.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
+  # {% emoji %}
+  emoji:
+    default: https://gcore.jsdelivr.net/gh/cdn-x/emoticons@3.1/qq/{name}.gif
+    twemoji: https://gcore.jsdelivr.net/gh/twitter/twemoji/assets/svg/{name}.svg
+    qq: https://gcore.jsdelivr.net/gh/cdn-x/emoticons@3.1/qq/{name}.gif
+    aru: https://gcore.jsdelivr.net/gh/cdn-x/emoticons@3.1/aru/{name}.gif
+    tieba: https://gcore.jsdelivr.net/gh/cdn-x/emoticons@3.1/tieba/{name}.png
+    blobcat: https://gcore.jsdelivr.net/gh/cdn-x/emoticons@3.1/blobcat/{name}.gif
+  icon:
+    # 留空时，图标和文字颜色相同
+    default_color: accent # theme, accent, red, orange, yellow, green, cyan, blue, purple
 ############################### Tag Plugins ############################### > end
 
 

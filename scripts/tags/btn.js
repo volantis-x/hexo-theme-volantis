@@ -1,3 +1,29 @@
+/**
+ * 上次修改更新：5.0 | https://github.com/volantis-x/hexo-theme-volantis
+ *
+ */
+/*
+{% btn 样式参数（可选）::标题::链接::图标（可选） %}
+
+样式参数
+
+regular, large, center
+
+图标
+
+第1个或者第2个参数包含 fa- 的那个被识别为图
+
+不设置任何参数的 {% btn 按钮:: / %} 适合融入段落中。
+
+regular 按钮适合独立于段落之外：
+
+{% btn regular::示例博客::https://xaoxuu.com::fas fa-play-circle %}
+
+large 按钮更具有强调作用，建议搭配 center 使用：
+
+{% btn center large::开始使用::https://volantis.js.org/v3/getting-started/::fas fa-download %}
+
+*/
 'use strict';
 
 function postBtn(args) {

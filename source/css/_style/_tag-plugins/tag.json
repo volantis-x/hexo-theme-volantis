@@ -33,6 +33,8 @@
   "video": ["media.styl"],
   "videos": ["media.styl"],
   "frame": ["frame.styl"],
+  "emoji": ["emoji.styl"],
+  "icon": ["icon.styl"],
   "contributors": ["friends.styl"],
   "friends": ["friends.styl","fposts.styl"],
   "swiper": ["swiper.styl"]
