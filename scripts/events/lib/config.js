@@ -70,30 +70,14 @@ module.exports = hexo => {
   // merge widgets: 可覆盖删除的合并
   var widgets = hexo.render.renderSync({ path: path.join(ctx.theme_dir, '_data/widgets.yml'), engine: 'yaml' })
   if (data.widgets) {
-    for (let i of Object.keys(data.widgets)) {
-      let widget = data.widgets[i]
-      if (widget == null || widget.length == 0) {
-        // delete
-        delete widgets[i]
-      } else {
-        // create
-        if (widgets[i] == null) {
-          widgets[i] = widget
-        } else {
-          // merge
-          for (let j of Object.keys(widget)) {
-            widgets[i][j] = widget[j]
-          }
-        }
-      }
-    }
+    merge(widgets, data.widgets);
   }
-  hexo.theme.config.widgets = widgets
+  merge(hexo.theme.config.sidebar.widget_library, widgets)
 
   // merge icons: 简单覆盖合并
   var icons = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '_data/icons.yml'), engine: 'yaml' })
   if (data.icons) {
-    icons = Object.assign({}, icons, data.icons)
+    merge(icons, data.icons);
   }
   hexo.theme.config.icons = icons
   
