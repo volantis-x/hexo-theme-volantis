@@ -44,5 +44,6 @@ function emoji(args) {
   return el
 }
 
+hexo.extend.tag.register('emoji', emoji)
 
 
