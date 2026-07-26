@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path')
 const { version } = require('../../../package.json');
 
 function isObject(item) {
@@ -68,7 +69,7 @@ module.exports = hexo => {
   hexo.theme.config.info.theme_version = version;
 
   // merge widgets
-  var widgets = hexo.render.renderSync({ path: path.join(ctx.theme_dir, '_data/widgets.yml'), engine: 'yaml' })
+  var widgets = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '_data/widgets.yml'), engine: 'yaml' })
   if (data.widgets) {
     merge(widgets, data.widgets);
   }
