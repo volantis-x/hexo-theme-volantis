@@ -67,14 +67,14 @@ module.exports = hexo => {
   }
   hexo.theme.config.info.theme_version = version;
 
-  // merge widgets: 可覆盖删除的合并
+  // merge widgets
   var widgets = hexo.render.renderSync({ path: path.join(ctx.theme_dir, '_data/widgets.yml'), engine: 'yaml' })
   if (data.widgets) {
     merge(widgets, data.widgets);
   }
   merge(hexo.theme.config.sidebar.widget_library, widgets)
 
-  // merge icons: 简单覆盖合并
+  // merge icons
   var icons = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '_data/icons.yml'), engine: 'yaml' })
   if (data.icons) {
     merge(icons, data.icons);
