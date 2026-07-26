@@ -70,10 +70,14 @@ module.exports = hexo => {
 
   // merge widgets
   var widgets = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '_data/widgets.yml'), engine: 'yaml' })
+  if (typeof hexo.theme.config.sidebar.widget_library == "undefined"){
+    hexo.theme.config.sidebar.widget_library = {}
+  }
+  merge(widgets, hexo.theme.config.sidebar.widget_library)
   if (data.widgets) {
     merge(widgets, data.widgets);
   }
-  merge(hexo.theme.config.sidebar.widget_library, widgets)
+  hexo.theme.config.sidebar.widget_library = widgets;
 
   // merge icons
   var icons = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '_data/icons.yml'), engine: 'yaml' })
