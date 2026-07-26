@@ -642,7 +642,7 @@ sidebar:
 
   ##########################
   # 侧边栏组件库
-  widget_library:
+  widget_library: # 此处配置可被 _data/widgets.yml 覆盖
     # ---------------------------------------
     # blogger info widget
     blogger:
@@ -676,7 +676,7 @@ sidebar:
       min_depth: 2
       max_depth: 5
     # ---------------------------------------
-
+    # 以上是示例， 其他 widgets 见 _data/widgets.yml 写在这里配置文件太长了
 ############################### Sidebar ############################### > end
 
 
