@@ -115,6 +115,8 @@ module.exports = hexo => {
       }
       if (result.startsWith('/') || result.startsWith('https://') || result.startsWith('http://')) {
         return `<img ${args?.length > 0 ? args : ''} src="${result}" />`
+      } else if (result.startsWith('fa-')) {
+        return `<i class="fa ${result} ${args?.length > 0 ? args : ''}"></i>`
       } else {
         return result
       }
@@ -122,7 +124,7 @@ module.exports = hexo => {
   };
   hexo.args.map = hexo.args.map_stellar_v1;
   // volantis v6
-  hexo.args.map_fix = (args, keys, others) => {
+ /* hexo.args.map_fix = (args, keys, others) => {
     // 若 args 不是数组，直接返回原值。
     if (Array.isArray(args) == false) {
       return args;
@@ -158,5 +160,5 @@ module.exports = hexo => {
       return "?"; // 无特征
     }
        
-  };
+  };*/
 };
