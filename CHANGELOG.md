@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.6.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.6.0...v6.6.1) (2026-07-26)
+
+
+### Bug Fixes
+
+* merge widgets ([#1010](https://github.com/volantis-x/hexo-theme-volantis/issues/1010)) ([d713c74](https://github.com/volantis-x/hexo-theme-volantis/commit/d713c74dd1f220c4f55ea9b799d111ad4047a3a0))
+
 ## [6.6.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.5.0...v6.6.0) (2026-07-26)
 
 
