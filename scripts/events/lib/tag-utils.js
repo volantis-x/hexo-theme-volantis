@@ -116,7 +116,7 @@ module.exports = hexo => {
       if (result.startsWith('/') || result.startsWith('https://') || result.startsWith('http://')) {
         return `<img ${args?.length > 0 ? args : ''} src="${result}" />`
       } else if (result.startsWith('fa-')) {
-        return `<i class="fa ${result} ${args?.length > 0 ? args : ''}"></i>`
+        return `<i class="${result} ${args?.length > 0 ? args : ''}"></i>`
       } else {
         return result
       }
