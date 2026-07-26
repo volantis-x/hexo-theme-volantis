@@ -193,7 +193,7 @@ function collect_cdn_source() {
     console.log(hexo.theme.config.cdn);
 }
 
-hexo.on('generateBefore', () => {
+module.exports = hexo => {
   /* It's replacing the prefix of the source with the prefix you set in the configuration file. */
   volantis_cdn_system_prefix(hexo.theme.config, hexo);
   // 可以在 source/_data/cdn.yml 覆盖 theme/_data/cdn.yml
