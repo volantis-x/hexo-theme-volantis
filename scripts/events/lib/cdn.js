@@ -1,11 +1,12 @@
+module.exports = hexo => {
 /* Getting the version of the theme. */
 const { version } = require('../../../package.json');
 const theme_version = version;
 const path = require('path')
 const site_root = hexo.config.root;
-// _cdn.yml
-/* It's reading the `_cdn.yml` file in the theme directory. */
-const cdn_info = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '/_cdn.yml'), engine: 'yaml' })
+// _data/cdn.yml
+/* It's reading the `_data/cdn.yml` file in the theme directory. */
+const cdn_info = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '/_data/cdn.yml'), engine: 'yaml' })
 
 /**
  * If the item is an object and not an array, then it's an object.
@@ -193,14 +194,13 @@ function collect_cdn_source() {
     console.log(hexo.theme.config.cdn);
 }
 
-hexo.on('generateBefore', () => {
   /* It's replacing the prefix of the source with the prefix you set in the configuration file. */
   volantis_cdn_system_prefix(hexo.theme.config, hexo);
-  // 可以在 source/_data/cdn.yml 覆盖 theme/_cdn.yml
+  // 可以在 source/_data/cdn.yml 覆盖 theme/_data/cdn.yml
   const data = hexo.locals.get('data');
   if (data.cdn) {
     merge(cdn_info, data.cdn);
   }
   /* Collecting the CDN source for each library. */
   collect_cdn_source();
-});
+};

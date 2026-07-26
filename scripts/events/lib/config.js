@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path')
 const { version } = require('../../../package.json');
 
 function isObject(item) {
@@ -46,6 +47,7 @@ module.exports = hexo => {
   }
   hexo.config.meta_generator = false;
   hexo.theme.config.getStartTime = Date.now();
+  // volantis 主题不支持 highlight.hljs 配置
   hexo.config.highlight.hljs = false;
   // Custom languages support. Introduced in NexT v6.3.0.
   if (data.languages) {
@@ -65,4 +67,19 @@ module.exports = hexo => {
     }
   }
   hexo.theme.config.info.theme_version = version;
+
+  // merge widgets
+  var widgets = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '_data/widgets.yml'), engine: 'yaml' })
+  if (data.widgets) {
+    merge(widgets, data.widgets);
+  }
+  merge(hexo.theme.config.sidebar.widget_library, widgets)
+
+  // merge icons
+  var icons = hexo.render.renderSync({ path: path.join(hexo.theme_dir, '_data/icons.yml'), engine: 'yaml' })
+  if (data.icons) {
+    merge(icons, data.icons);
+  }
+  hexo.theme.config.icons = icons
+  
 };
