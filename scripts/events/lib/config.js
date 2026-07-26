@@ -67,7 +67,7 @@ module.exports = hexo => {
   }
   hexo.theme.config.info.theme_version = version;
 
-    // merge widgets: 可覆盖删除的合并
+  // merge widgets: 可覆盖删除的合并
   var widgets = hexo.render.renderSync({ path: path.join(ctx.theme_dir, '_data/widgets.yml'), engine: 'yaml' })
   if (data.widgets) {
     for (let i of Object.keys(data.widgets)) {
