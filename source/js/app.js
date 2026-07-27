@@ -15,8 +15,8 @@ document.addEventListener("error", function (e) {
   const elem = e.target;
   if (elem.tagName.toLowerCase() !== 'img') return;
   if (typeof elem.attributes.onerror !== "undefined") return;
-  if (/placeholder|default/.test(elem.getAttribute("src"))) return;
-
+  //if (/placeholder|default/.test(elem.getAttribute("src"))) return;
+  // note: 主题内置的懒加载错误会加.error
   const parentElem = elem.parentElement;
   if (!parentElem) return;
 
