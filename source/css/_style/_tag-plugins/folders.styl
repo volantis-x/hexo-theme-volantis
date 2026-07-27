@@ -1,0 +1,50 @@
+.tag-plugin.folders
+  margin: var(--gap-p) 0
+  --fsp: $fsp2
+  font-size: var(--fsp)
+  border-top: 1px solid var(--block-border)
+  overflow: hidden
+  .folder
+    border-bottom: 1px solid var(--block-border)
+    padding: 1rem
+  summary
+    cursor: pointer
+    color: var(--text-p2)
+    font-weight: 500
+    position: relative
+    line-height: 1.2
+    outline: none
+    padding: 1rem
+    margin: -1rem
+    &:last-child
+      border-bottom: none
+    >
+      span 
+        margin-left: 0.25em
+      p,h1,h2,h3,h4,h5,h6
+        display: inline
+        border-bottom: none !important
+    &:hover
+      color: var(--text)
+    &:after
+      position: absolute
+      content: '+'
+      text-align: center
+      top: 50%
+      transform: translateY(-50%)
+      right: 1rem
+
+
+.tag-plugin.folders details[open]
+  >summary
+    color: var(--text-p1)
+    font-weight: 700
+    &:after
+      content: '-'
+      
+  >div.body
+    --fsp: $fsp1
+    >:first-child
+      margin-top: 1rem
+    >:last-child
+      margin-bottom: 0

@@ -667,11 +667,13 @@ volantis.scroll = {
 // 图片错误降级
 function errorImgAvatar(img) {
   img.src = volantis.GLOBAL_CONFIG.default.avatar;
+  img.srcset = volantis.GLOBAL_CONFIG.default.avatar;
   img.onerror = null;
 }
 
 function errorImgCover(img) {
   img.src = volantis.GLOBAL_CONFIG.default.cover;
+  img.srcset = volantis.GLOBAL_CONFIG.default.cover;
   img.onerror = null;
 }
 /******************************************************************************/

@@ -190,9 +190,14 @@ details.folding[child=iframe]
     background: none
     overflow: hidden
 
+// 解决 v5 和 v6 的样式冲突
 .tag-plugin
   details >summary
     background: unset
-    
+  details[open] >summary
+    border-bottom: unset
 details.tag-plugin >summary
   background: unset
+details[open].tag-plugin >summary
+  border-bottom: unset
+
