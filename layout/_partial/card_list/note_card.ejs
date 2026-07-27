@@ -76,10 +76,10 @@ const classes = {
             <div class="text caption">
               <% if (post.excerpt) { %>
               <!-- 显示文章摘要 -->
-                <%- post.excerpt %>
+                <%- strip_html(post.excerpt) %>
               <% } else if (post.description) { %>
                 <!-- 若没有摘要则显示描述 -->
-                <%- post.description %>
+                <%- strip_html(post.description) %>
               <% } else if (post.content) { %>
                 <!-- 若既没有摘要也没有描述，则使用文章内容 -->
                 <% if (theme.article.preview.auto_excerpt) { %>
