@@ -1,5 +1,5 @@
 // 异步加载的暗黑模式 强制覆盖样式
-// 工具函数 volantis-dark(ondark)
+// 外层有工具函数 volantis-dark(ondark)
 
 fa-solid,
 fa-regular,
@@ -13,23 +13,6 @@ svg.iconfont,
 img,
 .lazyload
   filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
-
-// shadow
-.shadow
-  box-shadow: $boxshadow-card-dark
-  &.floatable
-    trans()
-    &:hover
-      box-shadow: $boxshadow-card-float-dark
-.l_header
-  box-shadow: $boxshadow-card-dark
-#l_side .toc-wrapper
-  @media screen and (max-width: $device-tablet)
-    box-shadow: $boxshadow-float-dark
-#u-search
-  .modal
-    .modal-header
-      box-shadow: $boxshadow-card-dark
 
 
 //side
