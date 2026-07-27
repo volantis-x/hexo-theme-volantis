@@ -15,6 +15,7 @@ document.addEventListener("error", function (e) {
   const elem = e.target;
   if (elem.tagName.toLowerCase() !== 'img') return;
   if (typeof elem.attributes.onerror !== "undefined") return;
+  if (/placeholder|default/.test(elem.getAttribute("src"))) return;
 
   const parentElem = elem.parentElement;
   if (!parentElem) return;
