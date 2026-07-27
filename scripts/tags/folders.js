@@ -1,4 +1,9 @@
 /**
+ * 上次修改更新：6.7.0 | https://github.com/volantis-x/hexo-theme-volantis
+ *
+ */
+
+/**
  * folders.js v1 | https://github.com/xaoxuu/hexo-theme-stellar/
  * 格式与官方标签插件一致使用空格分隔，中括号内的是可选参数（中括号不需要写出来）
  *
