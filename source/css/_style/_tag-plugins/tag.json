@@ -15,6 +15,7 @@
   "p": ["span.styl"],
   "noteblock": ["note.styl"],
   "folding": ["folding.styl"],
+  "Folding": ["folding.styl"],
   "checkbox": ["checkbox.styl"],
   "radio": ["checkbox.styl"],
   "timeline": ["timeline.styl"],
