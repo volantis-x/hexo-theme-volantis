@@ -1,3 +1,8 @@
+/**
+ * 上次修改更新：6.7.0 | https://github.com/volantis-x/hexo-theme-volantis
+ *
+ */
+
 'use strict';
 
 // v6
