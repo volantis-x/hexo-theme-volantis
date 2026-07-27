@@ -1,4 +1,7 @@
-
+/**
+ * 上次修改更新：5.0 | https://github.com/volantis-x/hexo-theme-volantis
+ *
+ */
 hexo.extend.tag.register('md', function (args) {
   const { config } = hexo;
   const md_path = args[0].trim();

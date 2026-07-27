@@ -14,6 +14,7 @@
 document.addEventListener("error", function (e) {
   const elem = e.target;
   if (elem.tagName.toLowerCase() !== 'img') return;
+  if (typeof elem.attributes.onerror !== "undefined") return;
 
   const parentElem = elem.parentElement;
   if (!parentElem) return;
