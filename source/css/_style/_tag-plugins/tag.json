@@ -16,6 +16,7 @@
   "noteblock": ["note.styl"],
   "folding": ["folding.styl"],
   "Folding": ["folding.styl"],
+  "folders": ["folders.styl"],
   "checkbox": ["checkbox.styl"],
   "radio": ["checkbox.styl"],
   "timeline": ["timeline.styl"],
