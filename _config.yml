@@ -981,7 +981,7 @@ plugins:
   # 消息提示 
   # izitoast
   message:
-    enable: true
+    enable: #true
     icon:     # 默认图标，支持对图标添加颜色，可选值：see：/source/css/_style/_plugins/fontcolor.styl
       default: fa-solid fa-info-circle light-blue
       quection: fa-solid fa-question-circle light-blue
