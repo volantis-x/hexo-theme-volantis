@@ -25,7 +25,7 @@ document.addEventListener("error", function (e) {
   if (!pParentElem) return;
   const pParentElemClass = pParentElem.className;
 
-  elem.classList.add('error');
+  elem.classList.add('fix-error');
 
   if (parentElemClass === 'fancybox' && pParentElemClass === 'fancybox') {
     pParentElem.classList.add('hideFancybox');
