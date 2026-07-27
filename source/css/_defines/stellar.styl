@@ -202,14 +202,16 @@ stellar-root-first()
 
     // dynamic colors
     dynamic-theme-light()
-    @media (prefers-color-scheme: dark)
-      dynamic-theme-dark()
+    if hexo-config('plugins.darkmode.enable')
+      @media (prefers-color-scheme: dark)
+        dynamic-theme-dark()
 
 
   :root[color-scheme="light"]
     dynamic-theme-light()
-  :root[color-scheme="dark"]
-    dynamic-theme-dark()
+  if hexo-config('plugins.darkmode.enable')
+    :root[color-scheme="dark"]
+      dynamic-theme-dark()
 
 
 stellar-root-async()
@@ -271,8 +273,8 @@ stellar-root-async()
     --theme-block: var(--theme)
     --text-code: var(--text-p1)
 
-
-  volantis-dark(_dark_tags)
+  if hexo-config('plugins.darkmode.enable')
+    volantis-dark(_dark_tags)
 
 
 
