@@ -1,4 +1,5 @@
 // 折叠区块样式（details/summary 标签）
+// v5
 details
   display: block
   padding: $gap
@@ -102,3 +103,92 @@ details[open]
           margin-top: 0
         &:last-child
           margin-bottom: 0
+
+
+// v6
+details.folding
+  display: block
+  padding: 1rem
+  margin: 1rem 0
+  border-radius: $border-card
+  corner-shape: superellipse(1.2)
+  background: var(--theme-block)
+  border: 1px solid var(--theme-border)
+  summary
+    cursor: pointer
+    padding: 1rem
+    margin: -1rem
+    color: var(--text-p2)
+    font-weight: 500
+    --fsp: $fsp2
+    font-size: var(--fsp)
+    position: relative
+    line-height: 1.2
+    outline: none
+    >
+      span 
+        margin-left: 0.25em
+      p,h1,h2,h3,h4,h5,h6
+        display: inline
+        border-bottom: none !important
+    &:hover
+      color: var(--text)
+    &:after
+      position: absolute
+      content: '+'
+      text-align: center
+      top: 50%
+      transform: translateY(-50%)
+      right: 1rem
+      line-height: 1
+
+
+details.folding[open]
+  >summary
+    color: var(--text-p1)
+    font-weight: 700
+    z-index 1
+    &:after
+      content: '-'
+  >div.body
+    padding: 0 1rem 1rem
+    margin: 0 -1rem -1rem
+    color: var(--text-p1)
+    --fsp: $fsp1
+    >:first-child
+      margin-top: 1rem
+    >:last-child
+      margin-bottom: 0
+
+details.folding[child=codeblock]>div.body
+  padding: 0
+  background: transparent
+  overflow: hidden
+  .highlight
+    border: none
+    border-radius: 0
+    background: transparent
+    margin: 0
+    figcaption
+      display: none
+      span
+        background: var(--theme-block)
+    .code:before
+      content: none
+  .highlight+.highlight
+    border-top: 1px dashed var(--theme-border)
+    border-top-left-radius: 0
+    border-top-right-radius: 0
+
+details.folding[child=iframe]
+  overflow: hidden
+  background: none
+  >summary
+    background: none
+  >div.body
+    padding: 0
+    background: none
+    overflow: hidden
+
+
+    
