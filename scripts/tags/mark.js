@@ -13,6 +13,7 @@
 'use strict'
 
 function mark(args) {
+  const ctx = hexo;
   args = ctx.args.map(args, ['color'], ['text'])
   if (args.color == null) {
     args.color = ctx.theme.config.tag_plugins.mark.default_color
