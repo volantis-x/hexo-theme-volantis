@@ -683,6 +683,10 @@ tag_plugins:
   icon:
     # 留空时，图标和文字颜色相同
     default_color: accent # theme, accent, red, orange, yellow, green, cyan, blue, purple
+  # {% mark %}
+  mark:
+    default_color: yellow # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error
+
 ############################### Tag Plugins ############################### > end
 
 
