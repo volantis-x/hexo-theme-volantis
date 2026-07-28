@@ -32,6 +32,7 @@
   "menu": ["dropmenu.styl"],
   "inlineimage": ["image.styl"],
   "image": ["image.styl"],
+  "Image": ["image.styl"],
   "gallery": ["gallery.styl"],
   "audio": ["media.styl"],
   "video": ["media.styl"],
