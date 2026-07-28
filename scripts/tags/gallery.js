@@ -43,10 +43,10 @@ function Gallery(args, content) {
   const ctx = hexo;
   args = ctx.args.map(args, ['layout', 'size', 'ratio'])
   if (args.size == null) {
-    args.size = ctx.theme.config.tag_plugins.gallery.size
+    args.size = ctx.theme.config.tag_plugins.Gallery.size
   }
   if (args.ratio == null) {
-    args.ratio = ctx.theme.config.tag_plugins.gallery.ratio
+    args.ratio = ctx.theme.config.tag_plugins.Gallery.ratio
   }
   var el = ''
   var layoutType = 'grid'
