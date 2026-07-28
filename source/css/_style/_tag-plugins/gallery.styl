@@ -1,4 +1,5 @@
 // 图库画廊样式（gallery tag plugin）
+// v5
 div.gallery
   margin: $gap-p 0
   overflow: hidden
@@ -102,3 +103,125 @@ div.fancybox
     color: var(--color-meta)
     &:empty
       display: none
+
+// v6
+.tag-plugin.gallery
+  .grid-cell,.flow-cell
+    display: block
+    overflow hidden
+    z-index 0
+    position: relative
+    &:hover
+      .image-meta
+        background: rgba(black, 0.5)
+      .image-caption
+        color: white
+  img 
+    object-fit: cover
+    max-height: 100%
+    display: block
+  .image-meta
+    position: absolute
+    z-index: 1
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    pointer-events: none
+    background: transparent
+    trans1(background)
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    .image-caption
+      display: block
+      font-size: $fs-13
+      color: transparent
+      pointer-events: none
+      line-height: 1.2
+      margin: 0.5rem
+      trans1(color)
+      text-align: left
+      &:empty
+        display: none
+
+.tag-plugin.gallery .grid-cell
+  >img
+    trans1(transform, 0.5s)
+  &:hover
+    >img
+      transform: scale(1.1)
+    
+
+// 网格布局
+.tag-plugin.gallery.grid-box
+  display: grid
+  .grid-cell
+    corner-shape: superellipse(1.2)
+  &[size='xs']
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr))
+    grid-gap: 2px
+    .grid-cell,img
+      border-radius: 2px
+    .image-caption
+      font-size: $fs-12
+  &[size='s']
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr))
+    grid-gap: 2px
+    .grid-cell,img
+      border-radius: 2px
+  &[size='m']
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
+    grid-gap: 4px
+    .grid-cell,img
+      border-radius: 4px
+  &[size='l']
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+    grid-gap: 8px
+    .grid-cell,img
+      border-radius: 8px
+  &[size='xl'] // 2列
+    grid-template-columns: repeat(2, 1fr)
+    grid-gap: 16px
+    .grid-cell,img
+      border-radius: 16px
+  &[size='mix'] // 1张大图+2张小图
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
+    grid-gap: 4px
+    .grid-cell,img
+      border-radius: 4px
+    .grid-cell
+      &:nth-child(3n+1)
+        grid-column: auto / span 2
+        grid-row: auto / span 2
+  &[ratio='square']
+    .grid-cell
+      aspect-ratio: 1
+  &[ratio='portrait']
+    .grid-cell
+      aspect-ratio: 2 / 3
+  .grid-cell
+    background: var(--block)
+    img  
+      width: 100%
+      height: 100%
+
+// 瀑布流布局
+.tag-plugin.gallery.flow-box
+  column-count: 3
+  column-gap: 8px
+  .flow-cell
+    border-radius: 8px
+    padding-bottom: 8px
+    img  
+      width: 100%
+      height: 100%
+      border-radius: 8px
+    &:has(img.loading),&:has(img.error)
+      background-color: var(--block)
+      img
+        background-color: var(--block)
+  .image-meta
+    border-radius: 8px
+    margin-bottom: 8px
+    
