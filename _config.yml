@@ -686,6 +686,9 @@ tag_plugins:
   # {% mark %}
   mark:
     default_color: yellow # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error
+  # {% hashtag %}
+  hashtag:
+    default_color: # red, orange, yellow, green, cyan, blue, purple
 
 ############################### Tag Plugins ############################### > end
 
