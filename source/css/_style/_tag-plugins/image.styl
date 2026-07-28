@@ -1,4 +1,5 @@
 // 图片标签插件样式
+// v5
 .md .img
   object-fit: contain
 // 行内图片：垂直居中对齐文字
@@ -6,3 +7,57 @@ img.inline
   display: inline !important
   vertical-align: middle
   transform: translateY(-4px)
+// v6
+.tag-plugin.image
+  margin-top: 1rem
+  margin-bottom: 1rem
+  box-sizing: border-box
+  .image-bg
+    text-align: center
+    border-radius: $border-image
+    corner-shape: superellipse(1.2)
+    position: relative
+    overflow: hidden
+    display: flex
+    box-sizing: border-box
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    margin: auto
+    max-width: 100%
+    &:has(img.lazy.loading),&:has(img.lazy.error)
+      background-color: var(--block)
+    &:hover
+      .image-download
+        opacity: 1 !important
+    img
+      display: block
+      object-fit: cover
+      border-radius: $border-image
+      corner-shape: superellipse(1.2)
+    .image-download
+      z-index: 2
+      position: absolute
+      bottom: 8px
+      right: 8px
+      font-size: 1.125rem
+      padding: 6px
+      line-height: 0
+      border-radius: 40px
+      trans3: color opacity background
+      color: var(--text-p1)
+      &:hover
+        background: var(--card) !important
+        color: var(--theme)
+  .image-meta
+    display: flex
+    justify-content: center
+    padding: 0.5rem 0
+    .image-caption
+      display: inline-block
+      font-size: $fs-13
+      color: var(--text-p2)
+      line-height: 1.5
+      text-align: justify
+      &:empty
+        display: none

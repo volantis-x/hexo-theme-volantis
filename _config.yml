@@ -689,7 +689,9 @@ tag_plugins:
   # {% hashtag %}
   hashtag:
     default_color: # red, orange, yellow, green, cyan, blue, purple
-
+  # {% Image %}
+  Image:
+    fancybox: false # true, false
 ############################### Tag Plugins ############################### > end
 
 
