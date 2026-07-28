@@ -24,10 +24,9 @@ function Image(args) {
   // fancybox
   var fancybox = false
   var fancyboxHref = null
-  if (ctx.theme.config.plugins.fancybox && ctx.theme.config.plugins.fancybox.enable) {
     // 主题配置
-    if (ctx.theme.config.tag_plugins.image && ctx.theme.config.tag_plugins.image.fancybox) {
-      fancybox = ctx.theme.config.tag_plugins.image.fancybox
+    if (ctx.theme.config.tag_plugins.Image && ctx.theme.config.tag_plugins.Image.fancybox) {
+      fancybox = ctx.theme.config.tag_plugins.Image.fancybox
     }
     // 覆盖配置
     if (args.fancybox && args.fancybox.length > 0) {
@@ -40,7 +39,7 @@ function Image(args) {
         fancyboxHref = args.fancybox
       }
     }
-  }
+  
 
   function img(src, alt, style) {
     let a = '<a data-fancybox'
