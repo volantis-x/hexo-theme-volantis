@@ -692,6 +692,11 @@ tag_plugins:
   # {% Image %}
   Image:
     fancybox: false # true, false
+  # {% Gallery %}
+  Gallery:
+    layout: grid # grid / flow
+    size: mix # s / m / l / xl / mix
+    ratio: square # origin / square
 ############################### Tag Plugins ############################### > end
 
 
