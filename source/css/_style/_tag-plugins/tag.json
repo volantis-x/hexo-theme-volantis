@@ -34,6 +34,7 @@
   "image": ["image.styl"],
   "Image": ["image.styl"],
   "gallery": ["gallery.styl"],
+  "Gallery": ["gallery.styl"],
   "audio": ["media.styl"],
   "video": ["media.styl"],
   "videos": ["media.styl"],
