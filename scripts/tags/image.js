@@ -50,7 +50,7 @@ function Image(args) {
       a += ` data-caption="${alt}"`
     }
     if (fancybox && !fancyboxHref) {
-      img += ` data-fancybox="${fancybox}"`
+      img += `fancybox data-fancybox="${fancybox}"`
     }
     if (style.length > 0 && !args.ratio) {
       img += ' style="' + style + '"'
