@@ -17,6 +17,7 @@
   "folding": ["folding.styl"],
   "Folding": ["folding.styl"],
   "folders": ["folders.styl"],
+  "mark": ["mark.styl"],
   "checkbox": ["checkbox.styl"],
   "radio": ["checkbox.styl"],
   "timeline": ["timeline.styl"],
