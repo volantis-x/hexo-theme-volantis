@@ -1,5 +1,6 @@
 {
   "audio": ["media.styl"],
+  "blockquote": ["blockquote.styl"],
   "blur": ["text.styl"],
   "box": ["note.styl"],
   "btn": ["btns.styl"],
