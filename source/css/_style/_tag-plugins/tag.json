@@ -32,6 +32,7 @@
   "Note": ["note.styl"],
   "noteblock": ["note.styl"],
   "p": ["span.styl"],
+  "paper": ["paper.styl"],
   "poetry": ["poetry.styl"],
   "psw": ["text.styl"],
   "quot": ["quot.styl"],
