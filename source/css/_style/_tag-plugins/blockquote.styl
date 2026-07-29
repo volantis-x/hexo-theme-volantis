@@ -1,0 +1,7 @@
+.tag-plugin.blockquote
+  position: relative
+  p:not([class])
+    text-indent: 0 !important
+  &[indent='true']
+    p:not([class])
+        text-indent: 'calc(%s * 2)' % var(--fsp) !important
