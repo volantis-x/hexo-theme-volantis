@@ -1,0 +1,25 @@
+.tag-plugin.grid
+  display: grid
+  grid-gap: 16px
+  &[bg]>.cell>
+    p   
+      line-height: 1.5
+    :first-child
+      margin-top: 0
+    :last-child
+      margin-bottom: 0
+    p:first-child
+      margin-top: -0.25em
+    p:last-child
+      margin-bottom: -0.25em
+
+.tag-plugin.grid
+  &[bg]>.cell
+    padding: 1rem
+    border-radius: $border-card
+    corner-shape: superellipse(1.2)
+  &[bg='box']>.cell
+    background: var(--block)
+  &[bg='card']>.cell
+    background: var(--card)
+    hoverable-card()
