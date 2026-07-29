@@ -1,0 +1,53 @@
+.md .tag-plugin.poetry
+  display: flex
+  flex-direction: column
+  align-items: center
+  text-align: left
+  --fsp: $fs-body
+  .content
+    >.title
+      font-weight: 500
+      margin-top: var(--gap-p)
+    >.meta
+      color: var(--text-p2)
+      --fsp: $fsp3
+      font-size: var(--fsp)
+      font-weight: 500
+      span+span
+        margin-left: 4px
+    >.body
+      margin: var(--gap-p) 0
+      border-top: 1px dashed var(--block-border)
+      border-bottom: 1px dashed var(--block-border)
+      line-height: 2
+    >.footer
+      font-style: italic
+      color: var(--text-p4)
+      margin: var(--gap-p) 0
+      --fsp: $fsp3
+      font-size: var(--fsp)
+
+// 描边修饰
+.md .tag-plugin.poetry .content
+  padding-left: 1rem
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    width: 4px
+    left: -4px
+    top: 4px
+    bottom: 4px
+    border-radius: 4px
+    background: var(--block)
+  >.title
+    position: relative
+    &:before
+      content: ''
+      position: absolute
+      width: 4px
+      left: calc(-1rem - 4px)
+      top: 6px
+      bottom: 6px
+      border-radius: 4px
+      background: var(--accent)
