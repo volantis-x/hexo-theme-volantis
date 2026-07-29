@@ -1,5 +1,7 @@
 {
   "note": ["note.styl"],
+  "box": ["note.styl"],
+  "Note": ["note.styl"],
   "tabs": ["tabs.styl"],
   "Tabs": ["tabs.styl"],
   "u": ["text.styl"],
