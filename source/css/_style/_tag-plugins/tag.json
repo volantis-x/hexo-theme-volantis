@@ -1,5 +1,6 @@
 {
   "audio": ["media.styl"],
+  "blockquote": ["blockquote.styl"],
   "blur": ["text.styl"],
   "box": ["note.styl"],
   "btn": ["btns.styl"],
@@ -32,6 +33,7 @@
   "noteblock": ["note.styl"],
   "p": ["span.styl"],
   "psw": ["text.styl"],
+  "quot": ["quot.styl"],
   "radio": ["checkbox.styl"],
   "sites": ["sites.styl"],
   "span": ["span.styl"],

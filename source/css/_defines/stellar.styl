@@ -46,6 +46,16 @@ $fsp1 = 'calc(%s - 1px)' % $fs-body
 $fsp2 = 'calc(%s - 2px)' % $fs-body
 $fsp3 = 'calc(%s - 3px)' % $fs-body
 
+svg-mask-icon($svg)
+  -webkit-mask-image: url($svg)
+  -webkit-mask-repeat: no-repeat
+  -webkit-mask-position: center
+  -webkit-mask-size: contain
+  mask-image: url($svg)
+  mask-repeat: no-repeat
+  mask-position: center
+  mask-size: contain
+
 // 通用 hsla 函数
 x-hsla(h = var(--hue), s = var(--sat), l = var(--light), a = var(--alpha))
   return unquote('hsla(%s %s %s / %s)' % (h s l a))
@@ -313,4 +323,14 @@ stellar-root-async()
   :root
     // 元素文本内容到容器边缘的间距
     --gap-max: calc(var(--gap-margin) + var(--gap-padding))
+
+
+// icons
+
+$iQuoteLeft = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from BoxIcons Solid by Atisa - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='currentColor' d='M3.691 6.292C5.094 4.771 7.217 4 10 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.9 2.9 0 0 0 6.925 10H10a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2H3a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789M20 20h-6a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789C16.094 4.771 18.217 4 21 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.9 2.9 0 0 0 17.925 10H21a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2'/%3E%3C/svg%3E"
+$iQuoteRight = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from BoxIcons Solid by Atisa - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='currentColor' d='M20.309 17.708C22.196 15.66 22.006 13.03 22 13V5a1 1 0 0 0-1-1h-6c-1.103 0-2 .897-2 2v7a1 1 0 0 0 1 1h3.078a2.9 2.9 0 0 1-.429 1.396c-.508.801-1.465 1.348-2.846 1.624l-.803.16V20h1c2.783 0 4.906-.771 6.309-2.292m-11.007 0C11.19 15.66 10.999 13.03 10.993 13V5a1 1 0 0 0-1-1h-6c-1.103 0-2 .897-2 2v7a1 1 0 0 0 1 1h3.078a2.9 2.9 0 0 1-.429 1.396c-.508.801-1.465 1.348-2.846 1.624l-.803.16V20h1c2.783 0 4.906-.771 6.309-2.292'/%3E%3C/svg%3E"
+
+
+//
+
 

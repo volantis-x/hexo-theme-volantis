@@ -701,6 +701,15 @@ tag_plugins:
   Note:
     default_color: '' # light, dark, red, orange, yellow, green, cyan, blue, purple, warning, error
     border: true # true / false
+  # {% quot %}
+  quot:
+    default: # 可以自行配置多种图标方案，支持icons.yml中配置的图片key，也支持直接设置svg/png等文件链接
+      prefix: bxs:quote-left
+      suffix: bxs:quote-right
+    hashtag:
+      prefix: solar:hashtag-square-bold
+    question:
+      prefix: ph:seal-question-fill
 ############################### Tag Plugins ############################### > end
 
 

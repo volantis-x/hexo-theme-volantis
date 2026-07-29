@@ -1,0 +1,73 @@
+.md .tag-plugin.quot
+  text-align: center
+  align-items: center
+  display: flex
+  flex-direction: column
+  --gap-p: 2rem
+  margin: var(--gap-p) 1rem
+  .content
+    display: flex
+    align-items: center
+    border-bottom: none
+    font-weight: 700
+    padding: 0 24px
+    @media screen and (max-width: $device-mobile)
+      padding: 0 20px
+    line-height: 1.2
+
+.md .tag-plugin.quot .content
+  position: relative
+// override
+.md.content .tag-plugin.quot
+  text-wrap: balance
+  h1,h2
+    font-size: $fsh2
+    font-weight: 900
+    padding: 4px 32px 0
+    @media screen and (max-width: $device-mobile)
+      padding: 4px 24px 0
+  h3,h4,h5,h6
+    font-size: $fsh3
+  p
+    font-size: calc(var(--fsp) + 2px)
+    color: var(--text)
+
+// type=icon
+.md .tag-plugin.quot
+  img,svg
+    height: 1.5em
+    display: inline-block
+    color: var(--accent)
+    border-radius: 0
+    flex-shrink: 0
+  span.text
+    margin: 0 .5rem
+    padding-top: 1px
+  span.empty
+    padding: 0 8px
+
+.md .tag-plugin.quot.p
+  .content
+    trans1 all
+  .content .text
+    position: relative
+  .content .text:after
+    content: ""
+    position: absolute
+    --width: 90%
+    width: var(--width)
+    height: 4px
+    left: calc(50% - var(--width) / 2)
+    bottom: -8px
+    border-radius: 100%
+    background: var(--text)
+    opacity: 0.1
+    filter: blur(2px)
+    trans1 all
+  &:hover
+    .content
+      transform: translateY(-4px) scale(1.05)
+      .text:after
+        opacity: 0.2
+        filter: blur(8px)
+        transform: translateY(4px) scale(1.2, 1.5)
