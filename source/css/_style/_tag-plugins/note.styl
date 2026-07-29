@@ -1,5 +1,5 @@
 // 提示框/注释框样式（note tag plugin）
-
+// v5
 // 提示框 边框 + 圆角 + 间距
 div.note
   // 颜色辅助函数：bg 混合背景色，border 混合边框色
@@ -166,3 +166,73 @@ div.note
     border-color: border($color-md-blue)
     &::before
       color: border($color-md-blue)
+// v6
+.md .tag-plugin.note
+  position: relative
+  padding: 0.25rem 1rem
+  border-radius: $border-card
+  corner-shape: superellipse(1.2)
+  background: var(--theme-block)
+  overflow: hidden
+  if hexo-config('tag_plugins.note.border') == true
+    border: 1px solid var(--theme-border)
+  color: var(--text-p1)
+  >.title
+    --fsp: $fsp1
+    font-size: var(--fsp)
+    line-height: 1.5
+    margin-top: var(--gap-p-compact)
+    font-weight: 500
+    color: var(--text)
+  >.body
+    &,p
+      --fsp: $fsp2
+      font-size: var(--fsp)
+      line-height: 1.5
+    margin-top: var(--gap-p-compact)
+    margin-bottom: var(--gap-p-compact)
+  >.body:only-child
+    margin: 'calc(%s - 0.25rem)' % var(--gap-p) 0
+
+
+.md .tag-plugin.note[color]
+  code
+    background: none
+.md .tag-plugin.note[child=codeblock]
+  padding: 0
+  background: var(--theme-codeblock)
+  >.title, >.body:only-child
+    margin-top: 0
+  >.body
+    margin-bottom: 0
+  .highlight
+    margin: 0
+    border: none
+    background: none
+    figcaption
+      span
+        background: var(--theme-block)
+  .highlight+.highlight
+    border-top: 1px dashed var(--theme-border)
+    border-top-left-radius: 0
+    border-top-right-radius: 0
+
+.md .tag-plugin.note[child=tabs]
+  >.body
+    margin: 0
+    >.tabs
+      margin-top: .5rem
+
+.md .tag-plugin.note[child=iframe]
+  padding: 0
+  >.body
+    margin: 0
+    iframe
+      margin: 0
+
+
+.md .tag-plugin .tag-plugin.note
+  --gap-p: 1rem
+
+//#l_body[type=story] .tag-plugin.note .title p:not([class])
+//  text-indent: 0
