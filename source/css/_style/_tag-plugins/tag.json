@@ -32,6 +32,7 @@
   "noteblock": ["note.styl"],
   "p": ["span.styl"],
   "psw": ["text.styl"],
+  "quot": ["quot.styl"],
   "radio": ["checkbox.styl"],
   "sites": ["sites.styl"],
   "span": ["span.styl"],
