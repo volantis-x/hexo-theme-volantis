@@ -710,6 +710,10 @@ tag_plugins:
       prefix: solar:hashtag-square-bold
     question:
       prefix: ph:seal-question-fill
+  # {% button 标题 链接 %}
+  button:
+    default_color: theme # theme, accent, red, orange, yellow, green, cyan, blue, purple
+
 ############################### Tag Plugins ############################### > end
 
 
