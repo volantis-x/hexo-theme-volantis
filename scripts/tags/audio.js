@@ -35,3 +35,13 @@ function Audio(args) {
 
 hexo.extend.tag.register('Audio', Audio)
 
+
+
+// v5
+function postAudio(args) {
+  const src = args[0].trim();
+  return `<div class="audio"><audio controls preload><source src='${src}' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>`;
+}
+
+
+hexo.extend.tag.register('audio', postAudio);
