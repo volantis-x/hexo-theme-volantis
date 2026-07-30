@@ -1,4 +1,8 @@
 /**
+ * 上次修改更新：6.7.0 | https://github.com/volantis-x/hexo-theme-volantis
+ *
+ */
+/**
  * chat.js v1.1 | https://github.com/HcGys/stellar/
  * 格式与官方标签插件一致使用空格分隔，中括号内的是可选参数（中括号不需要写出来）
  *
@@ -31,7 +35,8 @@
 
 var chatIndex = 0;
 
-module.exports = ctx => function(args, content) {
+function chat(args, content) {
+  const ctx = hexo;
   function isObject(item) {
     return item && typeof item === 'object' && !Array.isArray(item);
   }
@@ -516,3 +521,5 @@ module.exports = ctx => function(args, content) {
 
   return el
 }
+
+hexo.extend.tag.register('chat', chat, {ends: true})
