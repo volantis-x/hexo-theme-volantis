@@ -67,7 +67,7 @@ function layoutItem(ctx, type, index, title, note, color, label, percent) {
     </div>
     <div class="okr-center">
       <span class="title">${title}</span>
-      <div class="note">${ctx.render.renderSync({text: note, engine: 'markdown'}).split('\n').join('')}</div>
+      <div class="okr-note">${ctx.render.renderSync({text: note, engine: 'markdown'}).split('\n').join('')}</div>
     </div>
     <div class="okr-right colorful" color="${color}">
       <div class="labels">
