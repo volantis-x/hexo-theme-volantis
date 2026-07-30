@@ -1,4 +1,5 @@
 // 链接卡片标签样式（link tag plugin）
+// v5
 .md .tag.link
   margin-top: $gap-p
   margin-bottom: $gap-p
@@ -66,3 +67,99 @@
     margin: 0
   .link-card
     width: 100%
+// v6
+.md .tag-plugin.link
+  margin: 1em auto
+  display: flex
+  justify-content: center
+  text-align: left
+
+.md .tag-plugin .link-card
+  background: var(--card)
+  display: inline-flex
+  justify-content: space-between
+  align-items: center
+  cursor: pointer
+  width: 300px
+  max-width: 100%
+  border-radius: $border-card-s
+  corner-shape: superellipse(1.2)
+  hoverable-card()
+
+.md .tag-plugin .link-card.plain
+  flex-direction: row
+  align-items: center
+
+.md .tag-plugin .link-card.rich
+  flex-direction: column
+  align-items: stretch
+  width: 460px
+  text-align: justify
+
+.md .tag-plugin .link-card
+  >.left
+    overflow: hidden
+    margin: 0.75rem 0 0.75rem 0.75rem
+    .title
+      font-size: $fs-14
+    span+span 
+      margin-top: 0.25rem
+  >.right
+    width: 2.75rem
+    height: 2.75rem
+    margin: 0.75rem
+    overflow: hidden
+    flex-shrink: 0
+  >.top
+    display: flex
+    margin: 1rem 1rem 0.75rem
+    overflow: hidden
+    max-width: 'calc(100% - %s * 2)' % 1rem
+    align-items: center
+    .img
+      line-height: 0
+      height: 16px
+      width: 16px
+      border-radius: 16px
+      margin-right: 8px
+      background-repeat: no-repeat
+      background-size: contain
+      background-position: left center
+    span
+      txt-ellipsis()
+      max-width: 100%
+  >.bottom
+    margin: 0 1rem 1rem
+    .title
+      font-size: 1rem
+      margin-bottom: 0.5rem
+
+.md .tag-plugin .link-card
+  line-height: 1.2
+  .title
+    display: -webkit-box
+    -webkit-box-orient: vertical
+    overflow: hidden
+    -webkit-line-clamp: 2
+  .cap
+    flex-shrink: 0
+    color: var(--text-p3)
+  .link
+    line-height: 1.5
+    opacity: .75
+    txt-ellipsis()
+  .desc
+    display: -webkit-box
+    -webkit-box-orient: vertical
+    overflow: hidden
+    -webkit-line-clamp: 3
+  .img
+    border-radius: 4px
+
+  span
+    margin: 0
+    display: block
+  .title
+    font-weight: 500
+    color: var(--text-p1)
+
