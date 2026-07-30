@@ -5,6 +5,7 @@
   "box": ["note.styl"],
   "btn": ["btns.styl"],
   "btns": ["btns.styl"],
+  "button": ["button.styl"],
   "checkbox": ["checkbox.styl"],
   "contributors": ["friends.styl"],
   "del": ["text.styl"],
