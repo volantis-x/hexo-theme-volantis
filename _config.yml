@@ -740,7 +740,8 @@ tag_plugins:
   # {% Checkbox %}
   Checkbox:
     interactive: false # enable interactive for user
-
+  chat:
+    api: https://siteinfo.listentothewind.cn/api/v1
 ############################### Tag Plugins ############################### > end
 
 
