@@ -1,0 +1,654 @@
+chat_light()
+  --chat-bg:     #f1f2f5
+  --chat-block:  #ffffff
+  --chat-border: #f2f2f2
+  --chat-qq-right-bg: #0099FF
+  --chat-qq-right-text: #ffffff
+  --chat-wechat-news-num: #d8dadf
+  --chat-video-button: #ffffffE6
+  --chat-wechat-right-bg: #91ED61
+  --chat-quote-blink-color: #185c6d1a
+  --chat-wechat-quote-color: #808080
+  --chat-wechat-quote-bg: #8080801a
+
+chat_dark()
+  --chat-bg:     #1f2224  // #111111
+  --chat-block:  #25282a  // #191919
+  --chat-border: #303437  // #222222
+  --chat-qq-right-bg: #0099ff80
+  --chat-qq-right-text: #ffffff99
+  --chat-wechat-news-num: #25282a
+  --chat-video-button: #25282ad9  // #191919E6
+  --chat-wechat-right-bg: hsl(hue($c-green), 25, 25)
+  --chat-quote-blink-color: #185c6d26
+  --chat-wechat-quote-color: #858585
+  --chat-wechat-quote-bg: #8585851a
+
+:root[data-theme="light"]
+  chat_light()
+:root[data-theme="dark"]
+  chat_dark()
+:root:not([data-theme])
+  chat_light()
+  @media (prefers-color-scheme: dark)
+    chat_dark()
+
+
+.md .tag-plugin.chat
+    .fs12
+        font-size: $fs-12
+    .cap
+        color: var(--text-p3)
+    box-sizing: border-box
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    width: $device-mobile-375
+    margin: 1rem auto
+    border-radius: 8px
+    background: var(--chat-block)
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px
+    display: flex
+    flex-direction: column
+    height: 658px
+    width: 329px
+    overflow: hidden
+    &.iphone11
+        width: 329px
+        height: 658px
+        border-radius: 3em
+        padding: 1em
+        position: relative
+        box-shadow: unset
+        >.device-image
+            background-image: url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.14/frame/iphone11.svg)
+            width: 100%
+            height: 100%
+            position: absolute
+            top: 0
+            left: 0
+            z-index: 2
+        >.status-bar
+            display: flex
+            margin: .5em .7em
+            justify-content: space-between
+            >.left-items
+                font-size: $fs-12
+                width: 5em
+                display: flex
+                justify-content: center
+            >.right-items
+                display: flex
+                flex-direction: row
+                align-items: center
+                >svg.icon
+                    width: 1.3em
+                    height: 1.3em
+                    &.earphone,
+                    &.bluetooth
+                        display: none
+                    >path
+                        fill: var(--text-p1)
+        >.chat-navbar,
+        >.content
+            margin: 0 .4em
+        >.bottom
+            margin: 0 .4em
+            padding-bottom: .75em
+    >.chat-navbar
+        display: flex
+        padding: .3rem 0
+        justify-content: space-between
+        z-index: 4
+        .left-items
+            display: flex
+            align-items: center
+            .back-btn
+                margin-left: .2em
+                .icon.back
+                    width: 1.3em
+                    height: 1.3em
+            .news-num
+                background: var(--chat-bg)
+                border-radius: 8px
+                font-size: .75em
+                padding: 0px 4px
+                margin-right: 8px
+                color: var(--text-p2)
+        .right-items>.more-btn
+            height: 100%
+            margin-right: .5em
+        .left-items>.back-btn,
+        .right-items>.more-btn
+            display: flex
+            align-items: center
+            >svg>path
+                fill: var(--text-p1)
+    >.content
+        scrollbar-codeblock()
+        background: var(--chat-bg)
+        overflow: auto
+        position: relative
+        flex: 1
+        z-index: 3
+    >.bottom
+        z-index: 1
+        padding-bottom: .5em
+        background: var(--chat-bg)
+        box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 1px 0px inset
+        .input
+            display: flex
+            align-items: center
+            justify-content: space-between
+            margin: 0 .5em
+            margin-top: .5em
+            height: 32px
+            .input-text
+                background: var(--chat-block)
+                border-radius: 6px
+                width: calc(100% - 40px - .5em)
+                height: 100%
+            .submit-btn
+                padding: 3px 6px
+                background: var(--theme-a30)
+                border-radius: 6px
+                font-size: $fs-14
+                color: var(--theme)
+        .icons
+            margin: 0 .5em
+            display: flex
+            justify-content: space-between
+            margin-top: .5em
+            >svg.icon
+                width: 1.5em
+                height: 1.5em
+                &.voice
+                    width: 1.3em !important
+                    height: 1.3em !important
+                path
+                    fill: var(--text-p2)
+    >.content
+        >div:first-child
+            margin-top: .5em
+        >div:last-child
+            margin-bottom: .5em
+        .chattip
+            font-size: $fs-12
+            color: var(--text-p3)
+            margin: auto
+            width: fit-content
+            padding: .5em
+        .chatcell
+            padding: .5em
+            img
+                border-radius: 6px
+            .user-avatar
+                float: left
+                img
+                    width: 32px
+                    height: 32px
+                    border-radius: 50%
+            .user-main
+                padding: 0 .5em
+                display: flex
+                flex-flow: column
+                .header
+                    line-height: 1.5
+                    font-size: 13px
+                    margin-bottom: .3em
+                    overflow: hidden
+                    position: relative
+                    display: flex
+                    flex-wrap: wrap
+                    align-items: center
+                    .label
+                        padding: 0 4px
+                        color: var(--theme)
+                        background: var(--theme-a30)
+                        border-radius: 3px
+                        margin-right: 4px
+                        font-size: 'calc(%s - .1rem)' % $fs-12
+                        font-weight: 600
+                    .name
+                        color: var(--text-p3)
+                        font-size: $fs-12
+                .talk
+                    width: fit-content
+                    max-width: calc(100% - 32px)
+                    background: var(--chat-block)
+                    padding: 'calc((32px - 1.3 * %s) / 2) .5em' % $fs-14 // .2em .5em
+                    border-radius: 6px
+                    p
+                        font-size: $fs-14
+                        line-height: 1.3
+                        margin: 0
+                    >.error-img-to-show
+                        min-width: 100px
+                        min-height: 100px
+                    >.quote
+                        color: var(--text-p3)
+                        background: var(--text-a20)
+                        padding: .3rem
+                        border-radius: 6px
+                        cursor: pointer
+                        margin-bottom: .3em
+                        trans2 color background .5s
+                        &:hover
+                            color: var(--theme)
+                            background: var(--theme-a30)
+                            .quote-user>svg>path
+                                fill: var(--theme)
+                        .quote-user
+                            display: flex
+                            justify-content: space-between
+                            align-items: center
+                            column-gap: 1em
+                            >span
+                                font-size: $fs-12
+                                height: 16px
+                                line-height: 16px
+                            >svg
+                                width: .75em
+                                height: .75em
+                                path
+                                    fill: var(--text-p3)
+                                    trans2 color .5s
+                        .quote-content
+                            margin-top: .3em
+                            font-size: $fs-12
+                            line-height: 1
+                            span
+                                display: inline-block
+                                white-space: nowrap
+                                width: 100%
+                                overflow: hidden
+                                text-overflow:ellipsis
+                                p,span
+                                    font-size: $fs-12
+                    &.md
+                        .tag-plugin
+                                margin-bottom: 0
+                                margin: .2rem 0
+                    &.image,
+                    &.emoji,
+                    &.link,
+                    &.video,
+                    &.chat-file
+                        background: unset !important
+                        padding: 0 !important
+                    &.link
+                        .link-card
+                            background: var(--chat-block)
+                            box-shadow: unset
+                            transition: unset
+                            -webkit-transition: unset
+                            -moz-transition: unset
+                            -o-transition: unset
+                            border-radius: 6px
+                            &:hover
+                                transform: none
+                                color: var(--text-p3)
+                            .top
+                                margin: .5em
+                                max-width: unset
+                                span
+                                    white-space: unset
+                                    font-size: $fs-14
+                            .center
+                                margin: 0 .5em
+                                column-gap: .5em
+                                display: flex
+                                align-self: unset
+                                .left
+                                    width: calc(100% - 32px - .5em)
+                                    height: 32px
+                                    .desc
+                                        -webkit-line-clamp: 2
+                                .right
+                                    flex: 1
+                            .bottom
+                                margin: .5em .5em .3em .5em
+                                padding-top: .3em
+                                border-top: 1px solid var(--chat-border)
+                                display: flex
+                                align-items: center
+                                >svg,
+                                >span
+                                    height: $fs-12 + .05rem
+                        
+                    &.voice
+                        display: flex
+                        align-items: center
+                        justify-content: left
+                        padding: 4.5px .5em //4.5px = (32px - 23px) / 2    .3em .5em
+                        cursor: pointer
+                        .voice-btns
+                            flex-shrink: 0
+                            svg.icon
+                                width: 1.3em
+                                height: 1.3em
+                                >path
+                                    fill: var(--text-p1)
+                        canvas.voice-wave
+                            // 使用 canvas 动画来做的 voice-wave
+                            margin: 0 .5em
+                            height: 23px
+                            width: 36px
+                        div.voice-wave
+                            // 使用 css 动画来做的 voice-wave
+                            height: 1.2em
+                            margin: 0 .5em
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            position: relative
+                            // overflow: hidden
+                            .play-line
+                                position: absolute
+                                top: -20%
+                                left: 0
+                                height: 140%
+                                width: 1px
+                                background: var(--text-p2)
+                                content: ""
+                                opacity: 0
+                                &.active
+                                    opacity: 1
+                                &.back
+                                    transition: transform 0.3s linear !important
+                                    -moz-transition: transform 0.3s linear !important
+                                    -webkit-transition: transform 0.3s linear !important
+                                    -o-transition: transform 0.3s linear !important
+                            span.voice-wave-item
+                                background: var(--text-p2)
+                                width: 2px
+                                border-radius: 2px
+                                flex-shrink: 0
+                        .voice-metas
+                            font-size: $fs-14
+                            display: flex
+                            flex-shrink: 0
+                            span
+                                line-height: 1
+                    &.video
+                        position: relative
+                        line-height: 0
+                        .video-btns
+                            position: absolute
+                            top: 0
+                            left: 0
+                            width: 100%
+                            height: 100%
+                            .play-btn,
+                            .pause-btn
+                                align-items: center
+                                justify-content: center
+                                width: 100%
+                                height: 100%
+                            svg.icon
+                                width: 3em
+                                height: 3em
+                                >path
+                                    fill: var(--chat-video-button)
+                        video
+                            width: 100%
+                            border-radius: 6px
+                    &.chat-file
+                        background: transparent !important
+                        display: flex
+                        padding: unset !important
+                        column-gap: .3rem
+                        width: calc(100% - 32px)
+                        cursor: pointer
+                        >.content
+                            background: var(--chat-block)
+                            padding: .5em
+                            border-radius: 6px
+                            flex-grow: 1
+                            >.top
+                                display: flex
+                                align-items: center
+                                column-gap: .5rem
+                                >.left
+                                    height: 2.5rem
+                                    flex-grow: 1
+                                    >span
+                                        white-space: unset
+                                        font-size: $fs-14
+                                        font-weight: 500
+                                        color: var(--text-p1)
+                                        overflow: hidden
+                                        text-overflow: ellipsis
+                                        max-width: 100%
+                                        display: -webkit-box
+                                        -webkit-box-orient: vertical
+                                        -webkit-line-clamp: 2
+                                        line-height: calc(2.5rem / 2)
+                                >.right
+                                    height: fit-content
+                                    >svg.icon
+                                        height: 2.5rem
+                                        width: unset
+                            >.bottom
+                                margin-top: .5em
+                                display: flex
+                                >span
+                                    line-height: $fs-12
+                        >.download-btn
+                            display: flex
+                            align-items: flex-end
+                            >svg.icon
+                                height: 1rem
+                                width: 1rem
+                                padding: .2em
+                                border-radius: 50%
+                                background: var(--chat-block)
+                                >path
+                                    fill: var(--text-p1)
+
+
+            &.right
+                .user-avatar
+                    float: right
+                .user-main
+                    flex-flow: row-reverse
+                    flex-wrap: wrap
+                    .header
+                        flex-basis: 100%
+                        justify-content: flex-end
+                    .talk
+                        &.chat-file
+                            flex-direction: row-reverse
+                        &.voice
+                            .voice-btns
+                                svg.icon>path
+                                    fill: var(--chat-qq-right-text)
+                        &.md,
+                        &.voice
+                            background: var(--chat-qq-right-bg)
+                            color: var(--chat-qq-right-text)
+            &.quote-blink
+                animation: chatQuoteblinking 1s
+    &.person
+        >.content
+            >.chatcell
+                >.user-main
+                    min-height: 32px
+                    justify-content: center
+                    align-content: unset
+                    >.header
+                        display: none
+                &.right>.user-main
+                    justify-content: unset
+                    align-content: center
+    &.wechat
+        &.iphone11
+            background: var(--chat-bg)
+            >.bottom
+                padding-bottom: .75rem
+        >.chat-navbar
+            background: var(--chat-bg)
+            box-shadow: rgba(27, 31, 35, 0.02) 0px 1px 0px
+            >.left-items
+                >.news-num
+                    background: var(--chat-wechat-news-num)
+        >.content
+            >.chatcell
+                img
+                    border-radius: 4px
+                >.user-avatar>img
+                    border-radius: 4px
+                >.user-main
+                    >.header
+                        line-height: 1
+                        margin-bottom: .2em
+                        >.label
+                            display: none
+                    >.talk
+                        position: relative
+                        border-radius: 4px
+                        &:before
+                            content: ""
+                            position: absolute
+                            left: -2.5px
+                            top: 11px
+                            width: 10px
+                            height: 10px
+                            border-radius: 1.5px
+                            transform: rotate3d(0, 0, 1, -45deg)
+                            background: var(--chat-block)
+                        &.emoji:before,
+                        &.video:before,
+                        &.image:before
+                            display: none
+                        &.link>.link-card,
+                        &.video>video,
+                        &.chat-file>.content,
+                        &.image>img,
+                        &.emoji>img
+                            border-radius: 4px
+                        &.chat-file .download-btn
+                            display: none
+                        &.voice
+                            padding: 8px .5em
+                            >.wechat-voice
+                                width: 16px
+                                height: 16px
+                                box-sizing: border-box
+                                overflow: hidden
+                                position: relative  // 解决safari浏览器无法hidden
+                                transform: rotate3d(0, 0, 1, 135deg)
+                                margin-left: .2rem
+                                margin-right: 0
+                                >.voice-circle
+                                    border: 2px solid var(--text-p1)
+                                    border-radius: 50%
+                                    position: absolute
+                                    &.first
+                                        width: 5px
+                                        height: 5px
+                                        background: var(--text-p1)
+                                        top: 12px
+                                        left: 12px
+                                    &.second
+                                        width: 13px
+                                        height: 13px
+                                        top: 8px
+                                        left: 8px
+                                    &.third
+                                        width: 21px
+                                        height: 21px
+                                        top: 4px
+                                        left: 4px
+                                &.play
+                                    >.second
+                                        animation: wehcatVoicefadeInOut 1s infinite 0.2s
+                                    >.third
+                                        animation: wehcatVoicefadeInOut 1s infinite 0.4s
+                    >.quote
+                        width: fit-content
+                        max-width: calc(100% - 32px)
+                        background: var(--chat-wechat-quote-bg)
+                        padding: .2em .5em
+                        border-radius: 4px
+                        margin-top: .2em
+                        font-size: $fs-12
+                        color: var(--chat-wechat-quote-color)
+                        display: flex
+                        column-gap: 4px
+                        &.image-chat
+                            display: flex
+                            column-gap: .4em
+                            padding: .5em
+                        img
+                            border-radius: 4px
+                            display: inline
+                            width: 64px
+                        .tag-plugin
+                            margin-bottom: 0
+                            margin: .2rem 0
+                            &.image img
+                                display: block
+                                width: unset
+                        p,span
+                            font-size: $fs-12
+                            margin: 0
+                            padding: 0
+
+                &.right>.user-main
+                    >.header
+                        display: none
+                    >.talk
+                        &:before
+                            right: -2px
+                            left: unset
+                        &.md,
+                        &.md:before,
+                        &.voice,
+                        &.voice:before
+                            background: var(--chat-wechat-right-bg)
+                            color: var(--text-p1)
+                        &.voice
+                            flex-direction: row-reverse
+                            >.wechat-voice
+                                transform: rotate3d(0, 0, 1, -45deg)
+                                margin-left: 0
+                                margin-right: .2rem
+
+        >.bottom
+            display: flex
+            align-items: center
+            justify-content: space-between
+            padding: .5em
+            column-gap: .5em
+            .input-text
+                border-radius: 4px
+                flex-grow: 1
+                height: 2rem
+                background: var(--chat-block)
+            .icon
+                height: 1.5rem
+                width: 1.5rem
+                >path
+                    fill: var(--text-p2)
+
+
+@keyframes wehcatVoicefadeInOut {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+
+@keyframes chatQuoteblinking {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--chat-quote-blink-color);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
