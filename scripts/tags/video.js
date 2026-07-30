@@ -1,9 +1,6 @@
 'use strict';
 
-function postAudio(args) {
-  const src = args[0].trim();
-  return `<div class="audio"><audio controls preload><source src='${src}' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>`;
-}
+
 
 function postVideo(args) {
   const { config } = hexo;
@@ -48,6 +45,5 @@ function postVideos(args, content) {
 
 }
 
-hexo.extend.tag.register('audio', postAudio);
 hexo.extend.tag.register('video', postVideo);
 hexo.extend.tag.register('videos', postVideos, { ends: true });
