@@ -26,6 +26,7 @@
   "inlineimage": ["image.styl"],
   "kbd": ["text.styl"],
   "link": ["link.styl"],
+  "Link": ["link.styl"],
   "mark": ["mark.styl"],
   "menu": ["dropmenu.styl"],
   "note": ["note.styl"],
