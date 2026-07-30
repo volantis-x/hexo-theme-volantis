@@ -33,6 +33,7 @@
   "note": ["note.styl"],
   "Note": ["note.styl"],
   "noteblock": ["note.styl"],
+  "okr": ["okr.styl"],
   "p": ["span.styl"],
   "paper": ["paper.styl"],
   "poetry": ["poetry.styl"],
