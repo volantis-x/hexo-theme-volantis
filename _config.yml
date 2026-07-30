@@ -737,6 +737,10 @@ tag_plugins:
   # {% copy xxx %}
   copy:
     toast: 复制成功
+  # {% Checkbox %}
+  Checkbox:
+    interactive: false # enable interactive for user
+
 ############################### Tag Plugins ############################### > end
 
 
