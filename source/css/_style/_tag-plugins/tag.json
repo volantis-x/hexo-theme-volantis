@@ -8,6 +8,7 @@
   "button": ["button.styl"],
   "checkbox": ["checkbox.styl"],
   "contributors": ["friends.styl"],
+  "copy": ["copy.styl"],
   "del": ["text.styl"],
   "emoji": ["emoji.styl"],
   "emp": ["text.styl"],
