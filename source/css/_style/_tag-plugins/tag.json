@@ -6,6 +6,7 @@
   "btn": ["btns.styl"],
   "btns": ["btns.styl"],
   "button": ["button.styl"],
+  "chat": ["chat.styl"],
   "checkbox": ["checkbox.styl"],
   "Checkbox": ["checkbox.styl"],
   "contributors": ["friends.styl"],
