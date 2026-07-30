@@ -24,15 +24,13 @@ chat_dark()
   --chat-wechat-quote-color: #858585
   --chat-wechat-quote-bg: #8585851a
 
-:root[data-theme="light"]
+:root
   chat_light()
-:root[data-theme="dark"]
-  chat_dark()
-:root:not([data-theme])
+  
+:root[color-scheme="light"]
   chat_light()
-  @media (prefers-color-scheme: dark)
-    chat_dark()
 
+volantis-dark(chat_dark)
 
 .md .tag-plugin.chat
     .fs12
