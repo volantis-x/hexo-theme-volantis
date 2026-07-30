@@ -713,7 +713,27 @@ tag_plugins:
   # {% button 标题 链接 %}
   button:
     default_color: theme # theme, accent, red, orange, yellow, green, cyan, blue, purple
-
+  # {% okr o1 percent:50 status:in_track/at_risk/off_track/finished/unfinished %}
+  okr:
+    border: true # 是否显示边框
+    status: # 可以自行增加
+      # 进行中状态
+      in_track:
+        color: blue # red, orange, yellow, green, cyan, blue, purple
+        label: 正常
+      at_risk: 
+        color: yellow
+        label: 风险
+      off_track:
+        color: orange
+        label: 延期
+      # 结果状态
+      finished:
+        color: green
+        label: 已完成
+      unfinished:
+        color: red
+        label: 未完成
 ############################### Tag Plugins ############################### > end
 
 
