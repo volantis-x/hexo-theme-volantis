@@ -1,5 +1,21 @@
 # Changelog
 
+## [6.7.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.6.1...v6.7.0) (2026-07-30)
+
+
+### Features
+
+* Checkbox Radio button Audio chat Frame Link okr Video ([#1022](https://github.com/volantis-x/hexo-theme-volantis/issues/1022)) ([6435a00](https://github.com/volantis-x/hexo-theme-volantis/commit/6435a001462aeec6a45e125a8672b62e1bb54b29))
+* folders 标签 ([#1014](https://github.com/volantis-x/hexo-theme-volantis/issues/1014)) ([69b1252](https://github.com/volantis-x/hexo-theme-volantis/commit/69b1252b0fddb5fbe780989972cb5051820736fa))
+* Folding 标签 ([#1012](https://github.com/volantis-x/hexo-theme-volantis/issues/1012)) ([cb53d53](https://github.com/volantis-x/hexo-theme-volantis/commit/cb53d53f9878b9e096a8c27742e26d9d16538934))
+* Gallery 标签 ([#1017](https://github.com/volantis-x/hexo-theme-volantis/issues/1017)) ([c161f50](https://github.com/volantis-x/hexo-theme-volantis/commit/c161f50307323714441931338e8d52d83ccbc56d))
+* grid 标签 ([#1019](https://github.com/volantis-x/hexo-theme-volantis/issues/1019)) ([00236e9](https://github.com/volantis-x/hexo-theme-volantis/commit/00236e9c41c0ac38badbe2e5a54a8416bf436987))
+* Image 标签 ([#1016](https://github.com/volantis-x/hexo-theme-volantis/issues/1016)) ([08453b6](https://github.com/volantis-x/hexo-theme-volantis/commit/08453b6b8d5454c4abbc34d94d27517212920431))
+* mark hashtag 标签 ([#1015](https://github.com/volantis-x/hexo-theme-volantis/issues/1015)) ([25745df](https://github.com/volantis-x/hexo-theme-volantis/commit/25745dff0707c970ebddd2be81d55ddec4796b5e))
+* Note box ([#1018](https://github.com/volantis-x/hexo-theme-volantis/issues/1018)) ([bab871f](https://github.com/volantis-x/hexo-theme-volantis/commit/bab871f0a5fd1152a08fc6eef959a52e8e92efc7))
+* poetry reel paper ([#1021](https://github.com/volantis-x/hexo-theme-volantis/issues/1021)) ([170216a](https://github.com/volantis-x/hexo-theme-volantis/commit/170216a9d4557e0e300c2ef112b79ca6082dfff2))
+* quot blockquote ([#1020](https://github.com/volantis-x/hexo-theme-volantis/issues/1020)) ([00b0617](https://github.com/volantis-x/hexo-theme-volantis/commit/00b061709a473982dbd273336f8366513275750a))
+
 ## [6.6.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.6.0...v6.6.1) (2026-07-26)
 
 
