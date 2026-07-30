@@ -1,4 +1,5 @@
 // 自定义复选框和单选按钮样式（checkbox / radio tag plugin）
+// v5
 .md .checkbox
   display: flex
   align-items: center
@@ -202,3 +203,165 @@ article .checkbox
     display: inline-block
     margin-top: 0 !important
     margin-bottom: 0 !important
+
+
+// v6
+.md-text .tag-plugin.checkbox
+  display: flex
+  align-items: center
+  font-size: $fs-15
+  line-height: 1.2
+  --gap-p: 'calc(%s / 2)' % var(--gap-p-compact)
+  input
+    -webkit-appearance: none
+    -moz-appearance: none
+    -ms-appearance: none
+    -o-appearance: none
+    appearance: none
+    position: relative
+    height: 16px
+    width: 16px
+    cursor: pointer
+    display: inline-block
+    outline: none
+    border-radius: 2px
+    flex-shrink: 0
+    margin-right: 8px
+    if hexo-config('tag_plugins.checkbox.interactive') != true
+      pointer-events: none
+  /* Checkbox */
+  input[type=checkbox]
+    &:before, &:after
+      position: absolute
+      content: ""
+      background: var(--background)
+    &:before
+      left: 1px
+      top: 5px
+      width: 0px
+      height: 2px
+      transform: rotate(45deg)
+      -webkit-transform: rotate(45deg)
+      -moz-transform: rotate(45deg)
+      -ms-transform: rotate(45deg)
+      -o-transform: rotate(45deg)
+    &:after
+      right: 7px
+      bottom: 3px
+      width: 2px
+      height: 0px
+      transform: rotate(40deg)
+      -webkit-transform: rotate(40deg)
+      -moz-transform: rotate(40deg)
+      -ms-transform: rotate(40deg)
+      -o-transform: rotate(40deg)
+    &:checked
+      &:before
+        left: 0px
+        top: 7px
+        width: 6px
+        height: 2px
+      &:after
+        right: 3px
+        bottom: 1px
+        width: 2px
+        height: 10px
+  &[symbol=minus] input[type=checkbox]
+    &:before
+      transform: rotate(0)
+      left: 1px
+      top: 5px
+      width: 0px
+      height: 2px
+    &:after
+      transform: rotate(0)
+      left: 1px
+      top: 5px
+      width: 0px
+      height: 2px
+    &:checked
+      &:before
+        left: 1px
+        top: 5px
+        width: 10px
+        height: 2px
+      &:after
+        left: 1px
+        top: 5px
+        width: 10px
+        height: 2px
+  &[symbol=plus] input[type=checkbox]
+    &:before
+      transform: rotate(0)
+      left: 1px
+      top: 5px
+      width: 0px
+      height: 2px
+    &:after
+      transform: rotate(0)
+      left: 5px
+      top: 1px
+      width: 2px
+      height: 0px
+    &:checked
+      &:before
+        left: 1px
+        top: 5px
+        width: 10px
+        height: 2px
+      &:after
+        left: 5px
+        top: 1px
+        width: 2px
+        height: 10px
+  &[symbol=times] input[type=checkbox]
+    &:before
+      transform: rotate(45deg)
+      left: 3px
+      top: 1px
+      width: 0px
+      height: 2px
+    &:after
+      transform: rotate(135deg)
+      right: 3px
+      top: 1px
+      width: 0px
+      height: 2px
+    &:checked
+      &:before
+        left: 1px
+        top: 5px
+        width: 10px
+        height: 2px
+      &:after
+        right: 1px
+        top: 5px
+        width: 10px
+        height: 2px
+  /* Radio */
+  input[type=radio]
+    border-radius: 50%
+    transform: translateY(-1px)
+    &:before
+      content: ""
+      display: block
+      width: 8px
+      height: 8px
+      border-radius: 50%
+      margin: 2px
+      transform: scale(0)
+    &:checked:before
+      transform: scale(1)
+  /* Colors */
+  input
+    border: 2px solid var(--theme)
+    &[type=checkbox]:checked
+      background: var(--theme)
+    &[type=radio]:checked:before
+      background: var(--theme)
+
+
+
+.tag-plugin.checkbox:not([color])
+  --theme:$c-blue
+    
