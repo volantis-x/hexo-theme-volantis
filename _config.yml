@@ -734,6 +734,9 @@ tag_plugins:
       unfinished:
         color: red
         label: 未完成
+  # {% copy xxx %}
+  copy:
+    toast: 复制成功
 ############################### Tag Plugins ############################### > end
 
 
