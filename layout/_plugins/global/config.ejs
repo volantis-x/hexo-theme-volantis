@@ -1,18 +1,18 @@
 <%# GLOBAL_CONFIG _%>
 <script>
   volantis.debug = <%- JSON.stringify(theme.debug) %>; // 调试模式
-  volantis.GLOBAL_CONFIG ={
-    root: '<%- config.root %>',
+  volantis.GLOBAL_CONFIG = {
+    root: <%- JSON.stringify(config.root || '') %>,
     debug: <%- JSON.stringify(theme.debug) %>,
     default: <%- JSON.stringify(theme.default) %>,
-    lastupdate: new Date(<%- theme.getStartTime %>),
-    scroll_behavior: "<%- theme.scroll_smooth ? 'smooth' : 'instant' %>",
+    lastupdate: new Date(<%- theme.getStartTime || 0 %>),
+    scroll_behavior: <%- JSON.stringify(theme.scroll_smooth ? 'smooth' : 'instant') %>,
     cdn: {
-      jquery: '<%- theme.cdn.jquery %>',
-      izitoast_css: '<%- theme.cdn.izitoast_css %>',
-      izitoast_js: '<%- theme.cdn.izitoast_js %>',
-      fancybox_css: '<%- theme.cdn.fancybox_css %>',
-      fancybox_js: '<%- theme.cdn.fancybox_js %>'
+      jquery: <%- JSON.stringify(theme.cdn.jquery || '') %>,
+      izitoast_css: <%- JSON.stringify(theme.cdn.izitoast_css || '') %>,
+      izitoast_js: <%- JSON.stringify(theme.cdn.izitoast_js || '') %>,
+      fancybox_css: <%- JSON.stringify(theme.cdn.fancybox_css || '') %>,
+      fancybox_js: <%- JSON.stringify(theme.cdn.fancybox_js || '') %>
     },
     sidebar: {
       webinfo: {
@@ -21,8 +21,8 @@
           friendlyShow: <%- JSON.stringify(theme.sidebar.widget_library.webinfo.type.lastupd.friendlyShow) %>
         },
         runtime: {
-          data: <%- JSON.stringify(theme.sidebar.widget_library.webinfo.type.runtime.data) %>,
-          unit: <%- JSON.stringify(theme.sidebar.widget_library.webinfo.type.runtime.unit) %>
+          data: <%- JSON.stringify(theme.sidebar.widget_library.webinfo.type.runtime.data || '') %>,
+          unit: <%- JSON.stringify(theme.sidebar.widget_library.webinfo.type.runtime.unit || '') %>
         }
       }
     },
@@ -30,8 +30,8 @@
       message: <%- JSON.stringify(theme.plugins.message) %>,
       <% if(theme.plugins.aplayer.enable) { %>
       aplayer: {
-        id: <%- JSON.stringify(theme.plugins.aplayer.id) %>,
-        enable:<%- JSON.stringify(theme.plugins.aplayer.enable) %>
+        id: <%- JSON.stringify(theme.plugins.aplayer.id || '') %>,
+        enable: <%- JSON.stringify(theme.plugins.aplayer.enable) %>
       },
       <% } %>
       <% if(theme.rightmenus.enable) { %>
@@ -40,30 +40,30 @@
     },
     search: {
       <% if(theme.search.service === 'algolia') { %>
-        appId: '<%- env.ALGOLIA_APP_ID || config.algolia.appId || config.algolia.applicationID %>',
-        indexName: '<%- env.ALGOLIA_APP_ID || config.algolia.indexName %>',
-        apiKey: '<%- env.ALGOLIA_API_KEY || config.algolia.apiKey %>',
-        hitsPerPage: '<%- theme.search.algolia.hitsPerPage %>',
-        placeholder: '<%- theme.search.algolia.placeholder %>',
-        searchAsYouType: <%- theme.search.algolia.searchAsYouType %>,
+        appId: <%- JSON.stringify(env.ALGOLIA_APP_ID || config.algolia.appId || config.algolia.applicationID || '') %>,
+        indexName: <%- JSON.stringify(env.ALGOLIA_INDEX_NAME || config.algolia.indexName || '') %>,
+        apiKey: <%- JSON.stringify(env.ALGOLIA_API_KEY || config.algolia.apiKey || '') %>,
+        hitsPerPage: <%- JSON.stringify(theme.search.algolia.hitsPerPage || '') %>,
+        placeholder: <%- JSON.stringify(theme.search.algolia.placeholder || '') %>,
+        searchAsYouType: <%- JSON.stringify(theme.search.algolia.searchAsYouType) %>
       <% } %>
 
       <% if(theme.search.service === 'hexo') { %>
-        dataPath: (("<%- config.root %>" || "/").endsWith("/") ? "<%- config.root %>" || "/" : "<%- config.root %>/" || "/") + "<%- config?.jsonContent?.file || "content.json" %>",
+        dataPath: <%- JSON.stringify((config.root || '/') + (config.root.endsWith('/') ? '' : '/') + (config?.jsonContent?.file || 'content.json')) %>,
       <% } %>
 
       <% if(theme.search.service === 'meilisearch') { %>
-        placeholder: '<%- theme.search.meilisearch.placeholder %>',
-        apiKey: '<%- theme.search.meilisearch.searchKey %>',
-        indexName: '<%- theme.search.meilisearch.indexName %>',
-        appId: '<%- theme.search.meilisearch.hostUrl %>',
+        placeholder: <%- JSON.stringify(theme.search.meilisearch.placeholder || '') %>,
+        apiKey: <%- JSON.stringify(theme.search.meilisearch.searchKey || '') %>,
+        indexName: <%- JSON.stringify(theme.search.meilisearch.indexName || '') %>,
+        appId: <%- JSON.stringify(theme.search.meilisearch.hostUrl || '') %>
       <% } %>
     },
     languages: {
       <% if(theme.search.enable) { %>
         search: {
-          hits_empty: "<%- __('search.hits_empty') %>",
-          hits_stats: "<%- __('search.hits_stats') %>",
+          hits_empty: <%- JSON.stringify(__('search.hits_empty') || '') %>,
+          hits_stats: <%- JSON.stringify(__('search.hits_stats') || '') %>
         }
       <% } %>
     }
