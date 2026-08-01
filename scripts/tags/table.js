@@ -1,4 +1,8 @@
 /**
+ * 上次修改更新：5.0 | https://github.com/volantis-x/hexo-theme-volantis
+ *
+ */
+/**
  * table.js | https://github.com/volantis-x/hexo-theme-volantis
  */
 
