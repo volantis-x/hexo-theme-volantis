@@ -63,9 +63,27 @@
       <% if(theme.search.enable) { %>
         search: {
           hits_empty: <%- JSON.stringify(__('search.hits_empty') || '') %>,
-          hits_stats: <%- JSON.stringify(__('search.hits_stats') || '') %>
-        }
+          hits_stats: <%- JSON.stringify(__('search.hits_stats') || '') %>,
+          normal: <%- JSON.stringify(__('search.normal') || '') %>,
+          hits_found: <%- JSON.stringify(__('search.hits_found') || '') %>,
+          history: <%- JSON.stringify(__('search.history') || '') %>,
+          no_history: <%- JSON.stringify(__('search.no_history') || '') %>,
+          clear_history: <%- JSON.stringify(__('search.clear_history') || '') %>,
+          filter_all: <%- JSON.stringify(__('search.filter_all') || '') %>,
+          filter_posts: <%- JSON.stringify(__('search.filter_posts') || '') %>,
+          filter_pages: <%- JSON.stringify(__('search.filter_pages') || '') %>,
+          filter_tags: <%- JSON.stringify(__('search.filter_tags') || '') %>,
+          searching: <%- JSON.stringify(__('search.searching') || '') %>,
+          placeholder: <%- JSON.stringify(__('search.placeholder_search') || '') %>,
+          label_posts: <%- JSON.stringify(__('search.label_posts') || '') %>,
+          label_pages: <%- JSON.stringify(__('search.label_pages') || '') %>,
+          label_tags: <%- JSON.stringify(__('search.label_tags') || '') %>
+        },
       <% } %>
+      search: {
+        no_title: <%- JSON.stringify(__('search.no_title') || '') %>,
+        config_invalid: <%- JSON.stringify(__('search.config_invalid') || '') %>
+      }
     }
   }
 </script>
