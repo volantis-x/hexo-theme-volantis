@@ -1,3 +1,7 @@
+/**
+ * 上次修改更新：5.0 | https://github.com/volantis-x/hexo-theme-volantis
+ *
+ */
 'use strict';
 
 function postP(args) {
