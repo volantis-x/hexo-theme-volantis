@@ -1,0 +1,316 @@
+// Algolia 搜索弹窗样式
+
+// 搜索关键字高亮
+.highlightKey
+  color: #ff2a2a
+  text-indent: 0
+  font-weight: bold
+  border-bottom: 1px dashed #ff2a2a
+  animation fade-in 0.3s
+
+.highlighted
+  background: bisque;
+
+#u-search
+  $border-card = 4px
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  padding: 60px 20px
+  z-index: 1001
+  @media screen and (max-width: $modal-threshold)
+    padding: 0px 
+
+#u-search
+  // 遮罩层
+  .modal-overlay
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0000004d;
+    z-index: 99998;
+    backdrop-filter: blur(0);
+    transition: all .2s ease-out;
+    animation: fade-in both .3s;
+  // 模态框主体
+  .modal
+    position: fixed;
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    height: 80%;
+    background: var(--color-card);
+    z-index: 99999;
+    border-radius: 12px;
+    transition: transform .45s cubic-bezier(.23,1,.32,1) 0ms
+    transform: translateY(120%)
+    .search-icon,
+    #resule-hits-empty
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      i
+        font-size: 8em;
+        color: #e8e8e8
+        margin-bottom 10px
+    @media screen and (max-width: $modal-threshold)
+      box-shadow: none
+      max-width: none
+      top: 0
+      left: 0
+      margin: 0
+      height: 100%
+      border-radius: 0
+    // 模态框头部
+    .modal-header
+      position: relative
+      width: 100%
+      height: 64px
+      z-index: 3
+      border-top-left-radius: $border-card
+      border-top-right-radius: $border-card
+      font-size: $fontsize
+      box-shadow: $boxshadow-card
+      background: lighten($color-card, 5)
+      @media screen and (max-width: $modal-threshold)
+        border-radius: 0
+        padding: 0px
+      trans()
+      .btn-close
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute
+        width: 50px + 5px
+        height: 64px
+        top: 0
+        right: 0
+        color: $color-theme
+        cursor: $pointer
+        text-align: center
+        line-height: 64px
+        vertical-align: middle
+        trans()
+        z-index: 2
+
+        &:hover
+          transform: rotate(90deg)
+
+      #u-search-modal-form
+        position: relative
+        width: 100%
+        height: 100%
+        z-index: 2
+        input
+          color: var(--color-text)
+        #u-search-modal-input
+          margin: $gap 50px
+          padding: 0 $gap * 0.5
+          width: "calc(100% - 100px - %s)" % $gap
+          @media screen and (max-width: $modal-threshold)
+            padding: 0
+          line-height: 2rem
+          border-radius: $border-card
+          vertical-align: middle
+          border: none
+          appearance: none
+          box-shadow: none
+          background: transparent
+          trans()
+          &:focus
+            border-top-left-radius: $border-card
+            border-top-right-radius: $border-card
+
+      #u-search-modal-btn-submit
+        position: absolute
+        top: 0
+        left: 0
+        padding-left: 5px
+        padding-top: 2px
+        background: transparent
+        border: none
+        width: 50px
+        height: 64px
+        vertical-align: middle
+        color: $color-theme
+        z-index: 2
+
+    // 模态框内容区
+    .modal-body
+      position: absolute
+      padding: $gap
+      width: 100%
+      height: "calc(100% - %s)" % 64px
+      top: 64px
+      left: 0
+      overflow-y: scroll
+      -webkit-overflow-scrolling: touch
+      background: var(--color-card)
+      border-radius: $border-card
+      scrollbar()
+      // 搜索结果列表
+      .modal-results
+        list-style: none
+        .result
+          position: relative
+          display: block
+          padding: $gap
+          border-radius: $border-card
+          b[mark]
+            color: darken($color-theme, 10)
+            text-decoration: underline
+            font-size 120%
+            background-color #ffe600
+          &:hover
+            background: var(--color-site-bg)
+            .title
+              color: var(--color-list-hl)
+          .title
+            display: inline-block
+            max-width: 100%
+            color: var(--color-list)
+            font-weight: bold
+            padding: 1px
+            margin-bottom: 2px
+            white-space: normal
+            overflow: hidden
+            text-overflow: ellipsis
+            font-size: $fontsize-h4
+          .digest
+            display: block
+            white-space: inherit
+            overflow: hidden
+            word-break: break-all
+            text-overflow: ellipsis
+            font-size: $fontsize-code
+            color: var(--color-meta)
+          .tags
+            white-space: inherit
+            overflow: hidden
+            word-break: break-all
+            text-overflow: ellipsis
+            font-size: $fontsize-code
+            color: var(--color-meta)
+            .dot
+              content: '/'
+          .icon
+            position: absolute
+            top: 50%
+            right: 0
+            margin-top: -4px
+            font-size: 0.6875rem
+            color: var(--color-meta)
+
+
+
+#u-search
+  .modal-header
+    .ais-SearchBox-input
+      margin: $gap 50px
+      padding: 0 $gap * 0.5
+      width: "calc(100% - 100px - %s)" % $gap
+      @media screen and (max-width: $modal-threshold)
+        padding: 0
+      line-height: 2rem
+      border-radius: $border-card
+      vertical-align: middle
+      border: none
+      appearance: none
+      box-shadow: none
+      background: transparent
+      trans()
+      &:focus
+        border-top-left-radius: $border-card
+        border-top-right-radius: $border-card
+  .modal .modal-body
+    height: "calc(100% - %s)" % 155px
+    .ais-Hits-list
+      list-style: none
+      .result
+        position: relative
+        display: block
+        padding: $gap
+        border-radius: $border-card
+        b[mark]
+          color: darken($color-theme, 10)
+          text-decoration: underline
+          font-size 120%
+          background-color #ffe600
+        &:hover
+          background: var(--color-site-bg)
+          .title
+            color: var(--color-list-hl)
+        .title
+          display: inline-block
+          max-width: 100%
+          color: var(--color-list)
+          font-weight: bold
+          padding: 1px
+          margin-bottom: 2px
+          white-space: normal
+          overflow: hidden
+          text-overflow: ellipsis
+          font-size: $fontsize-h4
+        .digest
+          display: block
+          white-space: inherit
+          overflow: hidden
+          word-break: break-all
+          text-overflow: ellipsis
+          font-size: $fontsize-code
+          color: var(--color-meta)
+        .icon
+          position: absolute
+          top: 50%
+          right: 0
+          margin-top: -4px
+          font-size: 0.6875rem
+          color: var(--color-meta)
+  // 底部信息和分页
+  footer
+    position: absolute;
+    bottom: 0;
+    padding: 0 16px;
+    width: 100%;
+    height: 91px;
+    hr
+      margin 5px 0
+    #algolia-info
+      height 40px
+      line-height 40px
+      font-size 14px
+      div
+        display: inline
+      .algolia-poweredBy
+        float: right
+    #algolia-pagination
+      height 40px
+      line-height 40px
+      .ais-Pagination
+        text-align: center
+        padding-top: 5px;
+      .ais-Pagination-item
+        display: inline
+        margin: 0 4px
+        padding: 0
+        .ais-Pagination-link
+          display: inline-block
+          min-width: 24px
+          height: 24px
+          text-align: center
+          line-height: 24px
+      .ais-Pagination-item--selected
+        a
+          background: darken($color-theme, 10)
+          color: #eee
+          cursor: $default
+      .ais-Pagination-item--disabled
+        visibility: hidden
