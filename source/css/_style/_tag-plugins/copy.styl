@@ -20,14 +20,23 @@
     font-weight: 700
     flex-shrink: 0
   input.copy-area
+    font-family: $ff-code
     display: inline-block
     padding: 0
     width: 100%
     color: var(--text-p2)
     line-height: 3
     text-indent: 1rem
+  input
+    background: none
+    border: none
   span+input.copy-area
     text-indent: 0
+  button
+    border: none
+    font-weight: 500
+    outline: none
+    user-select: none
   button.copy-btn
     margin: 2px 2px 2px 0
     border-radius: 'calc(%s - 2px)' % $border-bar
