@@ -1,15 +1,18 @@
+// MeiliSearch 搜索服务：基于 instantsearch.js + meilisearch 的搜索界面
 let SearchService = (() => {
   const fn = {};
   let search, meilisearch, timerId;
   fn.queryText = null;
+
+  // 搜索弹窗模板
   fn.template = `<div id="u-search">
   <div class="modal">
     <header class="modal-header" class="clearfix">
       <button type="submit" id="u-search-modal-btn-submit" class="u-search-btn-submit">
-        <span class="fa-solid fa-search"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </button>
       <div id="meilisearch-search-input"></div>
-      <a id="u-search-btn-close" class="btn-close"> <span class="fa-solid fa-times"></span> </a>
+      <a id="u-search-btn-close" class="btn-close"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> </a>
     </header>
     <main class="modal-body">
       <div id="meilisearch-search-results">
@@ -34,6 +37,7 @@ let SearchService = (() => {
   </div>
   `;
 
+  // 初始化搜索界面
   fn.init = () => {
     let div = document.createElement("div");
     div.innerHTML += fn.template;
@@ -44,12 +48,13 @@ let SearchService = (() => {
       fn.event();
       fn.setAlgolia();
     } else {
-      document.querySelector('#u-search main.modal-body').innerHTML = 'Algolia setting is invalid!';
+      document.querySelector('#u-search main.modal-body').innerHTML = volantis.GLOBAL_CONFIG.languages.search.config_invalid;
       document.querySelector('#u-search main.modal-body').style.textAlign = 'center';
       document.querySelector('#u-search .modal').style.maxHeight = '128px';
     }
   }
 
+  // 事件绑定
   fn.event = () => {
     document
       .querySelector("#u-search-btn-close")
@@ -70,6 +75,7 @@ let SearchService = (() => {
     })
   }
 
+  // 配置 MeiliSearch 搜索实例和组件
   fn.setAlgolia = () => {
     search = instantsearch({
       indexName: meilisearch.indexName,
@@ -110,7 +116,7 @@ let SearchService = (() => {
           const content = fn.cutContent(result.text.value)
           return `
             <a href="${link}${keyword}" class="result">
-            <span class="title">${result.title.value || 'no-title'}</span>
+            <span class="title">${result.title.value || volantis.GLOBAL_CONFIG.languages.search.no_title}</span>
             <span class="digest">${content}</span>
             </a>`
         },
@@ -145,6 +151,7 @@ let SearchService = (() => {
     })
   }
 
+  // 设置查询关键词
   fn.setQueryText = queryText => {
     fn.queryText = queryText;
     if (!search) {
@@ -157,6 +164,7 @@ let SearchService = (() => {
     })
   }
 
+  // 显示搜索弹窗
   fn.search = () => {
     document.querySelector("#u-search").style.display = "block";
     document.addEventListener("keydown", event => {
@@ -166,6 +174,7 @@ let SearchService = (() => {
     }, { once: true })
   }
 
+  // 表单提交处理
   fn.onSubmit = (event) => {
     event.preventDefault();
     let input = event.target.querySelector(".u-search-input");
@@ -173,6 +182,7 @@ let SearchService = (() => {
     fn.search();
   };
 
+  // 截取搜索结果摘要
   fn.cutContent = content => {
     if (content === '') return ''
 
@@ -200,6 +210,7 @@ let SearchService = (() => {
     return matchContent
   }
 
+  // 关闭搜索弹窗
   fn.close = () => {
     document.querySelector("#u-search").style.display = "none";
   };

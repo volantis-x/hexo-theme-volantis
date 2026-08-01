@@ -1,4 +1,8 @@
 /**
+ * 上次修改更新：5.0 | https://github.com/volantis-x/hexo-theme-volantis
+ *
+ */
+/**
  * timeline.js | https://volantis.js.org/v3/tag-plugins/#Timeline
  */
 

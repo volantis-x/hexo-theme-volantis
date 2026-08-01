@@ -1,0 +1,492 @@
+// Hexo 本地搜索弹窗样式
+
+// 全局搜索容器
+#u-search
+  // 接入全局 CSS 变量（深色模式自动切换）
+  --global-color: var(--color-card)
+  --text-normal: var(--color-text)
+  --bg-light: var(--color-block)
+  --input-bg-color: var(--color-card)
+  // 搜索专用颜色（浅色默认）
+  --primary-color: #4285f4
+  --border-color: #dddddd
+  --highlight-bg: #fff3cd
+  --highlight-color: #b88600
+  --text-secondary: #2abed9
+  --bg-hover: #e8e8e8
+  --shadow-color: rgba(0, 0, 0, 0.1)
+
+  display none
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  padding 60px 20px
+  z-index 1000
+
+  // 内部元素统一绝对定位
+  > *
+    position absolute
+
+  // 遮罩层
+  #modal-overlay
+    z-index 1
+    top 0
+    left 0
+    width 100%
+    height 100%
+    background rgba(0, 0, 0, 0.5)
+    backdrop-filter blur(8px)
+
+  // 模态框主体
+  .modal
+    z-index 2
+    width 60%
+    height 80%
+    background var(--global-color)
+    border-radius 8px
+    box-shadow 0 10px 25px -5px var(--shadow-color)
+    overflow hidden
+    transition transform 0.3s ease, opacity 0.3s ease
+    top 10%
+    left 20%
+    transform translate(0, 120%)
+    opacity 1
+    display flex
+    flex-direction column
+    align-items stretch
+
+    // 模态框头部
+    .modal-header
+      padding 16px
+      border-bottom 1px solid var(--border-color)
+      display flex
+      align-items center
+      justify-content space-between
+
+      .u-search-form
+        flex 1
+        display flex
+        align-items center
+        position relative
+
+        .u-search-input
+          width 100%
+          padding 12px 16px 12px 45px
+          border 1px solid var(--border-color)
+          border-radius 8px
+          background var(--input-bg-color)
+          font-size 14px
+          outline none
+          transition all 0.3s ease
+          &:focus
+            border-color var(--primary-color)
+            box-shadow 0 0 0 2px rgba(66, 133, 244, 0.2)
+
+        .u-search-btn-submit
+          display flex
+          position absolute
+          left 16px
+          top 50%
+          transform translateY(-50%)
+          background none
+          border none
+          cursor pointer
+          color var(--text-secondary)
+          svg
+            width 20px
+            height 20px
+
+      .btn-close
+        display flex
+        background none
+        border none
+        cursor pointer
+        color var(--text-secondary)
+        margin-left 16px
+        transition all 0.3s ease
+        &:hover
+          color var(--primary-color)
+          transform rotate(90deg)
+        svg
+          width 24px
+          height 24px
+
+    // 筛选按钮区域
+    .search-filters
+      padding 16px
+      border-bottom 1px solid var(--border-color)
+      display flex
+      gap 8px
+
+      .filter-btn
+        padding 6px 12px
+        border none
+        border-radius 8px
+        background var(--bg-light)
+        cursor pointer
+        transition all 0.3s ease
+        &.active
+          background var(--primary-color)
+          color white
+        &:not(.active):hover
+          background var(--bg-hover)
+
+    // 模态框主体内容
+    .modal-body
+      position relative
+      flex 1
+      overflow-y auto
+      padding 16px
+      display flex
+      flex-direction column
+      // 自定义滚动条
+      &::-webkit-scrollbar
+        width 6px
+      &::-webkit-scrollbar-track
+        background var(--bg-light)
+      &::-webkit-scrollbar-thumb
+        background var(--border-color)
+        border-radius 3px
+        &:hover
+          background #bbb
+
+    // 搜索结果统计
+    .search-stats
+      margin-bottom 16px
+      color var(--text-normal)
+      font-size 14px
+
+    // 结果列表容器
+    .modal-results
+      list-style none
+      padding 0
+      margin 0
+      display flex
+      justify-content center
+      align-items center
+      flex-wrap wrap
+      .no-results
+        position static
+        transform none
+        margin auto
+
+    // 结果分组标题
+    .result-group
+      margin-bottom 8px
+      flex 100%
+      h3
+        font-size 16px
+        font-weight 600
+        margin-bottom 8px
+        display flex
+        align-items center
+        &::before
+          content ''
+          display inline-block
+          width 4px
+          height 18px
+          background var(--primary-color)
+          border-radius 2px
+          margin-right 8px
+
+    // 单个结果项
+    .result-item
+      flex 100%
+      margin-bottom 16px
+      padding-bottom 16px
+      border-bottom 1px solid var(--border-color)
+      &:last-child
+        border-bottom none
+        margin-bottom 0
+        padding-bottom 0
+
+      .result-link
+        text-decoration none
+        color var(--text-normal)
+        display flex
+
+      // 文章缩略图
+      .result-image
+        width 100%
+        height auto
+        border-radius 8px
+        overflow hidden
+        flex-shrink 0
+        padding-top 34.74%  // 预设定宽高比，避免 CLS
+        position relative
+        img
+          width 100%
+          height 100%
+          object-fit cover
+          transition transform 0.8s ease
+          position absolute
+          top 0
+          left 0
+
+      // 结果内容区
+      .result-content
+        margin-top 8px
+        flex 1
+
+        .title
+          font-size 16px
+          font-weight 600
+          margin-bottom 8px
+          transition color 0.3s ease
+          &:hover
+            color var(--primary-color)
+          mark
+            background var(--highlight-bg)
+            color var(--highlight-color)
+            padding 0 2px
+            border-radius 2px
+
+        // 元数据
+        .meta
+          display flex
+          align-items center
+          color var(--text-normal)
+          font-size 12px
+          margin-bottom 8px
+
+          .date
+            margin-right 16px
+
+          .category
+            display flex
+            align-items center
+            svg
+              width 14px
+              height 14px
+              margin-right 4px
+            a
+              color var(--text-normal)
+              text-decoration none
+              &:hover
+                color var(--primary-color)
+
+        // 标签组
+        .tags
+          display flex
+          flex-wrap wrap
+          gap 4px
+          margin-bottom 8px
+
+          .tag
+            padding 2px 8px
+            background var(--bg-light)
+            border-radius 4px
+            font-size 12px
+            color var(--text-normal)
+            text-decoration none
+            transition all 0.3s ease
+            display flex
+            align-items center
+            &:hover
+              background var(--primary-color)
+              color white
+            &:has(mark)
+              background var(--highlight-bg)
+            mark
+              color var(--highlight-color)
+              font-weight 600
+              background inherit
+
+        // 文章摘要
+        .digest
+          font-size 14px
+          color var(--text-normal)
+          line-height 1.5
+          display -webkit-box
+          -webkit-line-clamp 2
+          -webkit-box-orient vertical
+          overflow hidden
+          mark
+            background var(--highlight-bg)
+            color var(--highlight-color)
+            padding 0 2px
+            border-radius 2px
+
+    // 标签结果项
+    .result-tags-list
+      display flex
+      flex-wrap wrap
+      justify-content flex-start
+      flex 100%
+      gap 8px
+      .tag-result
+        a
+          display flex
+          align-items center
+          text-decoration none
+          color var(--text-normal)
+          transition all 0.3s ease
+          background var(--bg-light)
+          padding 6px 12px
+          border none
+          border-radius: 8px
+          &:hover
+            background var(--bg-hover)
+            color var(--primary-color)
+            svg
+              color var(--primary-color)
+        .tag-icon
+          color var(--text-normal)
+          margin-right 4px
+          display flex
+          svg
+            color var(--text-normal)
+        .tag-name
+          mark
+            background var(--highlight-bg)
+            color var(--highlight-color)
+            padding 0 2px
+            border-radius 2px
+
+    // 搜索历史区域
+    .search-history
+      position relative
+      bottom 0
+      right 0
+      width 100%
+      padding-top 16px
+      border-top 1px solid var(--border-color)
+      display flex
+      flex-wrap wrap
+      align-items baseline
+      gap 8px
+
+      &.hidden
+        display none
+
+      h3
+        font-size 16px
+        font-weight 600
+        margin-bottom 8px
+
+      .clear-history
+        padding 6px 12px
+        border 1px solid var(--border-color)
+        border-radius 8px
+        background none
+        cursor pointer
+        transition all 0.3s ease
+        margin-left auto
+        &:hover
+          background var(--bg-light)
+
+      .history-list
+        width 100%
+        list-style none
+        padding 0
+
+
+        li
+          padding 8px 12px
+          background var(--bg-light)
+          border-radius 8px
+          margin-bottom 8px
+          cursor pointer
+          transition all 0.3s ease
+          display flex
+          justify-content space-between
+          align-items center
+          &:hover
+            background var(--bg-hover)
+          &:last-child
+            padding-bottom 0
+
+        .remove-history
+          background none
+          border none
+          cursor pointer
+          color var(--text-secondary)
+          transition all 0.3s ease
+          &:hover
+            color #ff4d4f
+          svg
+            width 14px
+            height 14px
+
+      .no-history
+        text-align center
+        cursor default
+
+
+    // 搜索加载状态
+    .search-loading
+      position absolute
+      top 50%
+      left 50%
+      transform translate(-50%, -50%)
+      text-align center
+      z-index 3
+      display none
+      &:not(.hidden)
+        display block
+
+      .spinner
+        width 40px
+        height 40px
+        margin 0 auto 12px
+        border 4px solid var(--bg-light)
+        border-top-color var(--primary-color)
+        border-radius 50%
+        animation spin 1s linear infinite
+
+      p
+        color var(--text-normal)
+        font-size 14px
+
+// 响应式适配：移动端
+@media (max-width: 768px)
+  #u-search
+    .modal
+      top 0
+      left 0
+      width 100%
+      height 100%
+      max-width none
+      max-height none
+      border-radius 0
+
+    .result-image
+      display none
+
+    .search-filters
+      overflow-x auto
+      padding-bottom 8px
+
+      .filter-btn
+        flex-shrink 0
+
+        
+dark_search()
+  // 搜索弹窗
+  #u-search .modal,
+  #u-search .modal-header,
+  #u-search .modal-body
+    background var(--color-card) !important
+  #u-search .modal-body .modal-results .result:hover
+    background var(--color-block) !important
+  .u-search-input:hover
+    background var(--color-block) !important
+  .u-search-input:focus
+    background var(--color-site-body) !important
+  .l_header .m_search
+    @media screen and (max-width: $device-mobile)
+      background var(--color-site-bg) !important
+
+  // 搜索弹窗深色专用变量
+  #u-search
+    --primary-color unquote('color-mix(in srgb, #4285f4 85%, #fff)')
+    --border-color #383838
+    --highlight-bg #3d2f08
+    --highlight-color #f0b922
+    --shadow-color rgba(0, 0, 0, 0.3)
+    --text-secondary #2dc79e
+    --bg-hover #1e1e1e
+
+volantis-dark(dark_search)

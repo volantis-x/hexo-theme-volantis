@@ -35,6 +35,16 @@ if hexo-config('custom_css.cursor.enable')
 if hexo-config('rightmenus.enable')
   @import '_rightmenu/*'
 
+// 搜索服务（hexo / algolia / meilisearch 三选一）
+if hexo-config('search.enable')
+  if hexo-config('search.service')=='hexo'
+    @import '_search/hexo'
+  else if hexo-config('search.service')=='algolia'
+    @import '_search/algolia'
+  else if hexo-config('search.service')=='meilisearch'
+    @import '_search/meilisearch'
+
+
 // 图片灯箱 fancybox
 @import 'fancybox'
 
