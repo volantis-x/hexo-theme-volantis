@@ -525,12 +525,9 @@ class SearchService {
     // 构建头图HTML（若有头图，仅文章可能有）
     let headimgHtml = '';
     if (item.headimg) {
-      const imgWithoutExt = item.headimg.substring(0, item.headimg.lastIndexOf('.'));
       headimgHtml = `<div class="result-image">
-        <picture class="lazy">
-          <source data-srcset="${imgWithoutExt}.avif" type="image/avif">
-          <source data-srcset="${imgWithoutExt}.webp" type="image/webp">
-          <img loading="lazy" src="/img/default/transparent-placeholder-1x1.svg" data-src="${item.headimg}" alt="${item.title}">
+        <picture>
+          <img src="${item.headimg}" alt="${item.title}">
         </picture>
       </div>`;
     }
