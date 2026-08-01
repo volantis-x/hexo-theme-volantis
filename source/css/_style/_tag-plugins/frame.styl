@@ -55,38 +55,11 @@
         width: 238px
         height: 476px
 // v6
-.md .frame-wrap
-  position: relative
-  overflow: hidden
-  margin: 0 auto
-  max-width: 100%
-  display: flex
-  flex-direction: column
-  align-items: center
-  img,video
-    border-radius: 0
-.md .frame-wrap .frame
-  z-index: 1
-  display: block
-  position: absolute;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  overflow: hidden;
-
 .md .tag-plugin.img-wrap .frame-wrap
   &[focus]
     height: auto
 
 .md .frame-wrap
-  &#iphone11
-    img,video
-      width: 287px
-      margin-top: 19px
-      margin-bottom: 20px
-    .frame
-      background-image: url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/frame/iphone11.svg);
-      width: 329px
-      height: 658px
   &[focus='top']
     img,video
       margin-bottom: 0 !important
@@ -100,13 +73,3 @@
     .frame
       bottom: 0
 
-@media screen and (max-width: $device-mobile)
-  .md .frame-wrap
-    &#iphone11
-      img,video
-        width: 208px
-        margin-top: 13px
-        margin-bottom: 14px
-      .frame
-        width: 238px
-        height: 476px
