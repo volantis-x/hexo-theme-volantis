@@ -59,6 +59,22 @@ search:
   load_data: Loading the Database
   hits_empty: "We didn't find any results for the search: ${query}."
   hits_stats: '${hits} results found in ${time} ms'
+  normal: 'Enter keywords to search'
+  hits_found: '${totalResults} results found'
+  history: Search History
+  no_history: No search history
+  clear_history: Clear History
+  filter_all: All
+  filter_posts: Posts
+  filter_pages: Pages
+  filter_tags: Tags
+  searching: Searching...
+  placeholder_search: 'Search posts, tags or categories...'
+  label_posts: Posts
+  label_pages: Pages
+  label_tags: Tags
+  no_title: Untitled
+  config_invalid: 'Search configuration is invalid, please check your settings.'
 
 error:
   what: Page Not Found
