@@ -55,6 +55,22 @@ search:
   load_data: 資料庫載入中
   hits_empty: '找不到您查詢的內容：${query}'
   hits_stats: '找到 ${hits} 條結果，用時 ${time} 毫秒'
+  normal: '輸入關鍵字搜尋'
+  hits_found: '找到 ${totalResults} 個相關結果'
+  history: 搜尋歷史
+  no_history: 暫無搜尋歷史
+  clear_history: 清除歷史
+  filter_all: 全部
+  filter_posts: 文章
+  filter_pages: 頁面
+  filter_tags: 標籤
+  searching: 搜尋中...
+  placeholder_search: '搜尋文章、標籤或分類...'
+  label_posts: 文章
+  label_pages: 頁面
+  label_tags: 標籤
+  no_title: 無標題
+  config_invalid: '搜尋設定無效，請檢查設定。'
 
 error:
   what: 抱歉，找不到您存取的頁面
