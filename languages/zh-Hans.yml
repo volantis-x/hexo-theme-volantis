@@ -59,6 +59,22 @@ search:
   load_data: 数据库加载中
   hits_empty: '找不到您查询的内容：${query}'
   hits_stats: '找到 ${hits} 条结果，用时 ${time} 毫秒'
+  normal: '输入关键词搜索'
+  hits_found: '找到 ${totalResults} 个相关结果'
+  history: 搜索历史
+  no_history: 暂无搜索历史
+  clear_history: 清除历史
+  filter_all: 全部
+  filter_posts: 文章
+  filter_pages: 页面
+  filter_tags: 标签
+  searching: 搜索中...
+  placeholder_search: '搜索文章、标签或分类...'
+  label_posts: 文章
+  label_pages: 页面
+  label_tags: 标签
+  no_title: 无标题
+  config_invalid: '搜索配置无效，请检查设置。'
 
 error:
   what: 很抱歉，您访问的页面不存在
