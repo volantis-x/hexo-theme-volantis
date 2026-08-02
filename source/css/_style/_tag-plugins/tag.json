@@ -58,5 +58,6 @@
   "u": ["text.styl"],
   "video": ["media.styl"],
   "videos": ["media.styl"],
-  "wavy": ["text.styl"]
+  "wavy": ["text.styl"],
+  "xlink": ["link.styl"],
 }
