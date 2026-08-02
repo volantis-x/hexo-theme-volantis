@@ -1461,7 +1461,7 @@ data_services:
   siteinfo:
     # 设置 api 可以自动提取网页标题、图标，服务部署方法：https://github.com/xaoxuu/site-info-api/
     # 接口测试通过后，把按钮的 href 部分替换成 {href} 之后填写到下方，例如：https://api.xaox.cc/site_info/v1?url={href}
-    api: https://site-info-api.vercel.app/api/v1?url=${href}
+    api: https://site-info-api.vercel.app/api/v1?url={href}
 
 api_host:
   ghapi: https://api.github.com
