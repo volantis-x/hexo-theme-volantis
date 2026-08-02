@@ -103,6 +103,7 @@ hexo.extend.tag.register('Link', function (args) {
   if (args.title == null) {
     return '';
   }
+  const full_url_for = require('hexo-util').full_url_for.bind(hexo)
   const url = full_url_for(args.url)
   const title = args.title;
   const icon = args.icon;
