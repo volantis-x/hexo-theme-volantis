@@ -6,12 +6,12 @@
  * link.js v1.1 | https://github.com/xaoxuu/hexo-theme-stellar/
  * 格式与官方标签插件一致使用空格分隔，中括号内的是可选参数（中括号不需要写出来）
  *
- * {% Link url [title] [desc:true/false] [icon:src] %}
+ * {% xlink url [title] [desc:true/false] [icon:src] %}
  */
 
 'use strict'
 
-function Link(args) {
+function xlink(args) {
   const ctx = hexo;
   const full_url_for = require('hexo-util').full_url_for.bind(ctx)
   args = ctx.args.map(args, ['icon', 'desc'], ['url', 'title'])
@@ -90,7 +90,41 @@ function Link(args) {
 }
 
 
-hexo.extend.tag.register('Link', Link)
+hexo.extend.tag.register('xlink', xlink)
+
+
+
+// {% Link url title [icon:src] %}
+hexo.extend.tag.register('Link', function (args) {
+  args = hexo.args.map(args, ['icon'], ['url', 'title'])
+  if (args.url == null) {
+    return '';
+  }
+  if (args.title == null) {
+    return '';
+  }
+  const url = full_url_for(args.url)
+  const title = args.title;
+  const icon = args.icon;
+
+  let result = '';
+  // 发现如果不套一层 div 在其它可渲染 md 的容器中容易被分解
+  result += '<div class="tag link"><a class="link-card" title="' + title + '" href="' + url + '">';
+  // left
+  result += '<div class="left">';
+  result += '<img src="' + (icon || hexo.theme.config.tag_plugins.link.placeholder) + '"/>';
+  result += '</div>';
+  // right
+  result += '<div class="right"><p class="text">' + title + '</p><p class="url">' + url + '</p></div>';
+  result += '</a></div>';
+
+  return result;
+});
+
+
+
+
+
 
 
 
