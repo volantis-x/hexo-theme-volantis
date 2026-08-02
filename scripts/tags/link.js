@@ -63,7 +63,7 @@ function xlink(args) {
     return '<span class="cap link footnote">' + full_url_for(args.url) + '</span>'
   }
 
-  if (args.desc) {
+  if (args.desc && args.desc !== "false") {
     // top
     el += '<div class="top">'
     el += loadIcon() + loadLink()
