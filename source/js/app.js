@@ -1238,3 +1238,14 @@ const DOMController = {
   }
 }
 Object.freeze(DOMController);
+
+const oneLineCopy = (id, msg) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.select();
+      document.execCommand("Copy");
+      if (msg && msg.length > 0) {
+        // 弹窗提示
+      }
+    }
+}

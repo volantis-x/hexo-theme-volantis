@@ -447,8 +447,8 @@ class SearchService {
     const keywords = this.queryText.toLowerCase().split(/[-\s]+/);
     // 提取文章/页面的关键字段（转为小写，无则为空字符串）
     const postTitle = post?.title?.toLowerCase() || '';
-    const postContent = post?.text?.toLowerCase() || '';
-    const postDescription = post?.excerpt?.toLowerCase() || '';
+    const postContent = (post?.content || post?.text)?.toLowerCase() || '';
+    const postDescription = (post?.description || post?.excerpt)?.toLowerCase() || '';
     const postTags = post?.tags?.map(t => t.name.toLowerCase()).join(' ') || '';
 
     // 检查是否包含任一关键词（标题/内容/描述/标签中任一匹配即可）
@@ -525,12 +525,9 @@ class SearchService {
     // 构建头图HTML（若有头图，仅文章可能有）
     let headimgHtml = '';
     if (item.headimg) {
-      const imgWithoutExt = item.headimg.substring(0, item.headimg.lastIndexOf('.'));
       headimgHtml = `<div class="result-image">
-        <picture class="lazy">
-          <source data-srcset="${imgWithoutExt}.avif" type="image/avif">
-          <source data-srcset="${imgWithoutExt}.webp" type="image/webp">
-          <img loading="lazy" src="/img/default/transparent-placeholder-1x1.svg" data-src="${item.headimg}" alt="${item.title}">
+        <picture>
+          <img src="${item.headimg}" alt="${item.title}">
         </picture>
       </div>`;
     }
