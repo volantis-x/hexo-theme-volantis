@@ -30,7 +30,7 @@ function xlink(args) {
   if (!args.icon) {
     autofill.push('icon')
   }
-  if (args.desc !== 'true' && args.desc !== true && !args.desc) {
+  if (args.desc === "true") {
     autofill.push('desc')
   }
   var el = ''
