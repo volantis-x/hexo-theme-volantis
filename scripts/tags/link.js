@@ -94,9 +94,9 @@ hexo.extend.tag.register('xlink', xlink)
 
 
 // v6
-// {% Link url title [icon:src] %}
+// {% Link title url [icon:src] %}
 hexo.extend.tag.register('Link', function (args) {
-  args = hexo.args.map(args, ['icon'], ['url', 'title'])
+  args = hexo.args.map(args, ['icon'], ['title', 'url'])
   if (args.url == null) {
     return '';
   }
