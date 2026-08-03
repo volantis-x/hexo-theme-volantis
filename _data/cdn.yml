@@ -33,7 +33,7 @@ volantis_parallax:
   cdnjs: false
 volantis_rightMenus:
   name: hexo-theme-volantis
-  file: source/js/plugins/rightMenus.js
+  file: source/js/plugins/right-menus.js
   local: true
   npm: true
   static: false
@@ -76,6 +76,27 @@ volantis_tags_siteinfo:
 volantis_tags_timeline:
   name: hexo-theme-volantis
   file: source/js/plugins/tags/timeline.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_tags_chat_download_file:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/chat/download-file.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_tags_chat_video:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/chat/video.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_tags_chat_voice:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/chat/voice.js
   local: true
   npm: true
   static: false

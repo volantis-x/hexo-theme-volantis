@@ -1,5 +1,6 @@
 {
   "audio": ["media.styl"],
+  "banner": ["banner.styl"],
   "blockquote": ["blockquote.styl"],
   "blur": ["text.styl"],
   "box": ["note.styl"],
@@ -33,6 +34,7 @@
   "Link": ["link.styl"],
   "mark": ["mark.styl"],
   "menu": ["dropmenu.styl"],
+  "navbar": ["navbar.styl"],
   "note": ["note.styl"],
   "Note": ["note.styl"],
   "noteblock": ["note.styl"],
