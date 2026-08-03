@@ -67,7 +67,7 @@ function Timeline(rawArgs, content = '') {
         args[key] !== ''
     )
 
-    classBuffer += ` data-service ds-${type}"`
+    classBuffer += ` data-service ds-${type}`
 
     if (attrKeys.length) {
       attrBuffer += ' ' + ctx.args.joinTags(args, attrKeys).join(' ')
