@@ -1,4 +1,4 @@
-utils.jq(() => {
+volantis.import.jQuery().then(()=>{
   $(function () {
     const reactions = {
       '+1': '👍',
