@@ -1,5 +1,4 @@
-volantis.import.jQuery().then(()=>{
-  $(function () {
+document.addEventListener('DOMContentLoaded', function() {
     const reactions = {
       '+1': '👍',
       '-1': '👎', 
@@ -99,11 +98,11 @@ volantis.import.jQuery().then(()=>{
           
           cell += '</div>';
           cell += '</div>';
-          $(el).append(cell);
+          el.append(cell);
         });
         //window.wrapLazyloadImages(el);
       });
       
     }
-  });
+
 });
