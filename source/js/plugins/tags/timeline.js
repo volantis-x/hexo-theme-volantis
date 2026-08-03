@@ -101,8 +101,9 @@ volantis.import.jQuery().then(()=>{
           cell += '</div>';
           $(el).append(cell);
         });
-        window.wrapLazyloadImages(el);
+        //window.wrapLazyloadImages(el);
       });
+      
     }
   });
 });
