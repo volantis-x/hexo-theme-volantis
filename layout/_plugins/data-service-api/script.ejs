@@ -1,10 +1,24 @@
 <script>
-const cardlinks = document.querySelectorAll('a.link-card[cardlink]');
-if (cardlinks?.length > 0) {
-  volantis.js("<%- theme.cdn.volantis_tags_siteinfo %>", { defer: true }).then(function () {
-    setCardLink(cardlinks);
-  });
-}
+function loadDataService(){
+  const cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+  if (cardlinks?.length > 0) {
+    volantis.js("<%- theme.cdn.volantis_tags_siteinfo %>", { defer: true }).then(function () {
+      setCardLink(cardlinks);
+    });
+  }
+  const timelinecard = document.querySelector(".tag-plugin.timeline.ds-timeline");
+  if (timelinecard){
+    volantis.js("<%- theme.cdn.marked %>").then(function () {
+      volantis.js("<%- theme.cdn.volantis_tags_timeline %>", { defer: true });
+    });
+  }
 
 
+
+
+};
+loadDataService();
+volantis.pjax.push(()=>{
+    loadDataService();
+},"loadDataService");
 </script>

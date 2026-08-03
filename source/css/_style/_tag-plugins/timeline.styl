@@ -1,10 +1,9 @@
-// 时间线组件样式（timenode + timelines-common 两套实现）
+// 时间线组件样式
 // ============================================
 // 竖线节点式时间线（timeline / timenode 标签）
 // ============================================
-
-
-div.timenode
+// v5
+div.timenode-v5
   position: relative
   &:before, &:after
     content: ''
@@ -55,6 +54,7 @@ div.timenode
     p
       font-weight: bold
       margin: 0 0 0 16px + 8px
+      white-space: nowrap
   .body
     margin: 4px 0 $gap 16px + 8px
     padding: $gap
@@ -72,7 +72,7 @@ div.timenode
       border: 1px solid mix($color-block, $color-text, 90)
 
 
-div.timenode:hover
+div.timenode-v5:hover
   .meta
     color: var(--color-text)
     &:before
@@ -80,3 +80,245 @@ div.timenode:hover
     &:after
       background: $color-hover
       transform: scale(1)
+
+// v6
+.tag-plugin.timeline
+  position: relative
+  padding-left: 16px
+  p>img
+    border-radius: $border-image-s
+    corner-shape: superellipse(1.2)
+  &:before
+    content: ''
+    position: absolute
+    z-index: 0
+    background: var(--block)
+    width: 4px
+    left: 0px
+    border-radius: 8px
+    top: .5rem
+    bottom: 0
+  &:has(.loading-wrap)
+    padding-left: 0
+    &:before
+      display: none
+
+
+.tag-plugin.timeline .timenode
+  position: relative
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  box-sizing: border-box
+  max-width: 100%
+  >.header, >.body
+    box-sizing: border-box
+    max-width: @max-width
+  &[highlight] .header:before
+    background: var(--theme)
+  &+.timenode
+    margin-top: 1rem
+  &:hover .header
+    span
+      color: var(--text-p1)
+    &:before
+      background: var(--theme)
+      height: 16px
+      top: 'calc(50% - 0.5 * %s)' % @height
+      transform: scale(1)
+
+.tag-plugin.timeline .timenode .header
+  display: flex
+  align-items: center
+  position: relative
+  margin: 0.25rem 0
+  font-size: $fs-13
+  a.user-info span
+    font-weight: 600
+  .user-info 
+    display: flex
+    align-items: center
+    font-size: $fs-13
+    font-weight: 500
+    color: var(--text-p1)
+    margin-right: 8px
+    line-height: 1
+    border-radius: 16px
+    img 
+      background: white
+      height: 16px
+      border-radius: 16px
+      display: inline
+      margin: 0 4px 0 0
+      object-fit: contain
+  &,span
+    font-weight: 500
+    color: var(--text-p3)
+    line-height: 1
+  &:before
+    content: ''
+    position: absolute
+    left: -16px
+    width: 4px
+    border-radius: 12px
+    height: 4px
+    top: 'calc(50% - 0.5 * %s)' % @height
+    background: var(--text-meta)
+    trans4 background height top transform
+    transform: scale(2)
+
+
+.tag-plugin.timeline .body
+  background: var(--card)
+  border-radius: 16px
+  corner-shape: superellipse(1.2)
+  border-top-left-radius: 2px
+  padding: 0.5rem 1rem
+  margin-top: 4px
+  box-shadow: $boxshadow-block
+  p
+    --fsp: $fsp1
+    img  
+      display: block
+  &:empty
+    display: none
+  p,.highlight,ol,ul,.tag-plugin
+    margin: .5rem 0
+  .tag-plugin.copy
+    width: 240px
+
+.tag-plugin.timeline[data-api]
+  a.body
+    display: block
+    color: var(--text-p1)
+    line-height: 1.25
+    padding: 0.75rem 1rem
+    --fsp: $fsp1
+    font-size: var(--fsp)
+
+
+.tag-plugin.timeline[data-api] .body
+  p.title
+    font-weight: 700
+    margin: 0.5rem 0 0.75rem
+    line-height: 1.25
+    border-bottom: 1px solid var(--block-border)
+    &:only-child 
+      margin-bottom: 0.5rem
+      font-weight: 500
+    a 
+      color: inherit
+      text-decoration: none
+      padding-bottom: 0.75rem
+      display: inline-block
+      trans1 all
+      &:hover
+        color: var(--accent)
+  >p:first-child:not([class])
+    font-size: 1rem
+    margin: .25rem 0 .5rem
+  
+  a
+    &:has(img):after
+      display: none
+    img  
+      margin: 0 auto
+  img
+    margin: 0.5rem auto
+  .lazy-box
+    margin: .5rem 0
+    border-radius: $border-image
+    corner-shape: superellipse(1.2)
+    >img
+      margin: 0 auto
+
+  pre code 
+    font-size: $fs-13
+
+.tag-plugin.timeline[data-api] .body .lazy-box
+  border-radius: $border-image-s
+  corner-shape: superellipse(1.2)
+
+.tag-plugin.timeline[data-api] .body .footer
+  margin: 0 0 -0.5rem
+  padding: 0.5rem 0 1rem
+  user-select: none
+  font-weight: 500
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: stretch
+  span
+    line-height: 1.8
+  &:empty
+    display: none
+  .flex
+    display: flex
+    flex-wrap: wrap
+    font-size: $fs-13
+    align-items: stretch
+  .left+.right
+    margin-left: 4px
+
+.tag-plugin.timeline[data-api] .body .footer
+  .item
+    border-width: 1px
+    border-style: solid
+    margin: 2px
+    border-radius: 4px
+    padding: 0 0.5rem
+    display: flex 
+    align-items: center
+    border-color: var(--link)
+    &:first-child 
+      margin-left: 0
+    &:last-child 
+      margin-right: 0
+  a.item
+    background: var(--block)
+    border-color: var(--block-border)
+    color: inherit
+    &:hover
+      background: var(--block-border)
+      
+  .reaction 
+    border-color: var(--block)
+
+.tag-plugin.timeline .body blockquote
+  background: none
+  border-radius: 0
+  padding: 0 0.5rem
+  margin: 0.75rem 0
+  p
+    --fsp: $fsp2
+    margin: 0.25rem
+
+.tag-plugin.timeline .body
+  line-height: 1.5
+  h1,h2
+    font-size: 1.25rem
+    margin: 1rem 0
+    line-height: 1.2
+  h3,h4
+    font-size: 1rem
+    margin: 0.75rem 0
+    line-height: 1.2
+  h5,h6
+    font-size: $fs-15
+    margin: 0.5rem 0
+    line-height: 1.2
+
+.tag-plugin.timeline.ds-memos .body
+  p:first-child 
+    margin-top: 2px
+  p:last-child
+    margin-bottom: 2px
+  img  
+    margin: .5rem 0
+    max-height: 128px
+    cursor: zoom-in
+  .tag-plugin.image
+    display: flex
+    .image-bg+.image-bg
+      margin-left: 4px
+    

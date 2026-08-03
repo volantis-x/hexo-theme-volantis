@@ -73,6 +73,13 @@ volantis_tags_siteinfo:
   npm: true
   static: false
   cdnjs: false
+volantis_tags_timeline:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/timeline.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
 volantis_search_hexo:
   name: hexo-theme-volantis
   file: source/js/search/hexo.js

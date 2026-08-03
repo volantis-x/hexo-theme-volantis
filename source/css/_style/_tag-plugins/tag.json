@@ -54,6 +54,7 @@
   "tabs": ["tabs.styl"],
   "Tabs": ["tabs.styl"],
   "timeline": ["timeline.styl"],
+  "Timeline": ["timeline.styl"],
   "timenode": ["timeline.styl"],
   "u": ["text.styl"],
   "video": ["media.styl"],
