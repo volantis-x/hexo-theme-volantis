@@ -1,0 +1,132 @@
+.banner
+  border-radius: $border-image
+  &.top
+    border-radius: $border-card-l
+  position: relative
+  overflow: hidden
+  display: flex 
+  flex-direction: column
+  justify-content: flex-end
+  align-items: flex-start
+  height: 220px
+  @media screen and (max-width: $device-mobile-max)
+    height: 180px
+  .bg
+    z-index: 0
+  .content 
+    z-index: 1
+    width: 100%
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    .top
+      display: flex
+      justify-content: space-between
+      align-items: center
+      line-height: 1
+      margin: 1rem
+      .tag-plugin.navbar
+        margin: 0
+        border-radius: 6px
+        padding: 2px
+        background: rgba(black, 0.2)
+        overflow: hidden
+        &:after
+          content: none
+        .link
+          margin: 0
+          border-radius: 4px
+          color: rgba(white, 0.8)
+          padding: 2px 6px
+          background: none
+          line-height: 1.5
+          font-size: $fs-15
+          text-shadow: 0 0 1px rgba(0,0,0,0.12)
+          &+.link
+            margin-left: 2px
+          &:after
+            content: none
+          &:hover
+            color: white
+            background: rgba(white, 0.25)
+          &.active
+            color: white
+            background: rgba(white, 0.25)
+        
+      .back
+        background: none
+        padding: 0
+        line-height: 0
+        visibility: hidden
+        @media screen and (max-width: $device-mobile-max)
+          visibility: visible
+        svg
+          width: 20px
+          height: 20px
+          fill: white
+  .banner-link
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    opacity: 0
+    z-index: 2
+  img
+    object-fit: cover
+    disable-select()
+    margin: 0
+    height: 100%
+    width: 100%
+  img.bg
+    position absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+  img.avatar
+    border-radius: 50%
+    width: 48px
+    height: 48px
+  .bottom
+    display: flex
+    padding: 1rem
+    width: 100%
+    box-sizing: border-box
+  .title
+    font-size: 1.5rem
+    font-weight: 600
+  .avatar+.text-area
+    margin-left: 0.75rem
+  .text-area .text
+    line-height: 1.2
+    margin-top: 0.25rem
+    margin-bottom: 0.25rem
+  .avatar+.text-area .title
+    font-size: 1.2rem
+  .subtitle
+    font-size: $fs-14
+  .content:only-child
+    color: var(--text-p1)
+  .bg+.content 
+    color: white
+    .avatar
+      border: 2px solid white
+      margin: 0
+    .bottom
+      background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.2))
+      text-shadow: 0 0 1px rgba(0,0,0,0.12)
+
+.tag-plugin.banner
+  trans1(transform, 2s)
+  &:hover
+    img.bg
+     transform: scale(1.01)
+
+.tag-plugin.banner .navbar a.active
+  blur-effect()
+
+@media screen and (max-width: $device-mobile-max)
+  .banner.top
+    border-radius: 0
