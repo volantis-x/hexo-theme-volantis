@@ -669,7 +669,7 @@ tag_plugins:
   checkbox:
     interactive: false # enable interactive for user
     color: '' # color for default checkbox
-  # {% link title, url, img %}
+  # {% link title, url, img %} {% Link url title [icon:src] %}
   link:
     placeholder:  volantis-static/media/org.volantis/logo/256/safari.png # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/256/safari.png
   # {% emoji %}
@@ -1459,10 +1459,9 @@ default:
 data_services:
   # 数据填充类
   siteinfo:
-    js: /js/services/siteinfo.js
     # 设置 api 可以自动提取网页标题、图标，服务部署方法：https://github.com/xaoxuu/site-info-api/
     # 接口测试通过后，把按钮的 href 部分替换成 {href} 之后填写到下方，例如：https://api.xaox.cc/site_info/v1?url={href}
-    api: https://site-info-api.vercel.app/api/v1?url=${href}
+    api: https://site-info-api.vercel.app/api/v1?url={href}
 
 api_host:
   ghapi: https://api.github.com

@@ -1,17 +1,17 @@
 /**
- * 上次修改更新：6.7.0 | https://github.com/volantis-x/hexo-theme-volantis
+ * 上次修改更新：6.8.0 | https://github.com/volantis-x/hexo-theme-volantis
  *
  */
 /**
  * link.js v1.1 | https://github.com/xaoxuu/hexo-theme-stellar/
  * 格式与官方标签插件一致使用空格分隔，中括号内的是可选参数（中括号不需要写出来）
  *
- * {% Link url [title] [desc:true/false] [icon:src] %}
+ * {% xlink url [title] [desc:true/false] [icon:src] %}
  */
 
 'use strict'
 
-function Link(args) {
+function xlink(args) {
   const ctx = hexo;
   const full_url_for = require('hexo-util').full_url_for.bind(ctx)
   args = ctx.args.map(args, ['icon', 'desc'], ['url', 'title'])
@@ -30,7 +30,7 @@ function Link(args) {
   if (!args.icon) {
     autofill.push('icon')
   }
-  if (args.desc !== 'true' && args.desc !== true && !args.desc) {
+  if (args.desc === "true") {
     autofill.push('desc')
   }
   var el = ''
@@ -63,7 +63,7 @@ function Link(args) {
     return '<span class="cap link footnote">' + full_url_for(args.url) + '</span>'
   }
 
-  if (args.desc) {
+  if (args.desc && args.desc !== "false") {
     // top
     el += '<div class="top">'
     el += loadIcon() + loadLink()
@@ -90,7 +90,42 @@ function Link(args) {
 }
 
 
-hexo.extend.tag.register('Link', Link)
+hexo.extend.tag.register('xlink', xlink)
+
+
+// v6
+// {% Link title url [icon:src] %}
+hexo.extend.tag.register('Link', function (args) {
+  args = hexo.args.map(args, ['icon'], ['title', 'url'])
+  if (args.url == null) {
+    return '';
+  }
+  if (args.title == null) {
+    return '';
+  }
+  const full_url_for = require('hexo-util').full_url_for.bind(hexo)
+  const url = full_url_for(args.url)
+  const title = args.title;
+  const icon = args.icon;
+
+  let result = '';
+  // 发现如果不套一层 div 在其它可渲染 md 的容器中容易被分解
+  result += '<div class="tag link"><a class="link-card" title="' + title + '" href="' + url + '">';
+  // left
+  result += '<div class="left">';
+  result += '<img src="' + (icon || hexo.theme.config.tag_plugins.link.placeholder) + '"/>';
+  result += '</div>';
+  // right
+  result += '<div class="right"><p class="text">' + title + '</p><p class="url">' + url + '</p></div>';
+  result += '</a></div>';
+
+  return result;
+});
+
+
+
+
+
 
 
 

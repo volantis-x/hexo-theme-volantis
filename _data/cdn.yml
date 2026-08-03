@@ -66,6 +66,13 @@ volantis_tags_contributors:
   npm: true
   static: false
   cdnjs: false
+volantis_tags_siteinfo:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/siteinfo.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
 volantis_search_hexo:
   name: hexo-theme-volantis
   file: source/js/search/hexo.js

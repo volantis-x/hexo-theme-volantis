@@ -1,5 +1,5 @@
 /**
- * 上次修改更新：6.7.0 | https://github.com/volantis-x/hexo-theme-volantis
+ * 上次修改更新：6.8.0 | https://github.com/volantis-x/hexo-theme-volantis
  *
  */
 /**
@@ -57,11 +57,12 @@ function chat(args, content) {
   // users
   var arr = content.split(/<!--\s*([\s\S]*?)\s*-->/g).filter(item => item.trim().length > 0)
   if (arr.length > 0) {
+    var users = ctx.render.renderSync({ text: (arr[0] || ''), engine: 'yaml' });
     // 避免用户在没有配置chat_users.yaml时出错
     if (ctx.theme.config.chat_users){
-      var users = merge(ctx.theme.config.chat_users, ctx.render.renderSync({ text: (arr[0] || ''), engine: 'yaml' }));
+      merge(ctx.theme.config.chat_users, ctx.render.renderSync({ text: (arr[0] || ''), engine: 'yaml' }));
+      users = ctx.theme.config.chat_users
     }
-    var users = ctx.render.renderSync({ text: (arr[0] || ''), engine: 'yaml' });
   }
 
 

@@ -1,0 +1,10 @@
+<script>
+const cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+if (cardlinks?.length > 0) {
+  volantis.js("<%- theme.cdn.volantis_tags_siteinfo %>", { defer: true }).then(function () {
+    setCardLink(cardlinks);
+  });
+}
+
+
+</script>

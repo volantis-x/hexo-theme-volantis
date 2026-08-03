@@ -67,6 +67,7 @@
     margin: 0
   .link-card
     width: 100%
+
 // v6
 .md .tag-plugin.link
   margin: 1em auto
@@ -75,13 +76,14 @@
   text-align: left
 
 .md .tag-plugin .link-card
+  margin-right: unset
   background: var(--card)
   display: inline-flex
   justify-content: space-between
   align-items: center
   cursor: pointer
   width: 300px
-  max-width: 100%
+  max-width: unset
   border-radius: $border-card-s
   corner-shape: superellipse(1.2)
   hoverable-card()
@@ -98,6 +100,8 @@
 
 .md .tag-plugin .link-card
   >.left
+    width: unset
+    height: unset
     overflow: hidden
     margin: 0.75rem 0 0.75rem 0.75rem
     .title
@@ -110,6 +114,14 @@
     margin: 0.75rem
     overflow: hidden
     flex-shrink: 0
+    .img
+      line-height: 0
+      height: 100%
+      width: 100%
+      border-radius: 16px
+      background-repeat: no-repeat
+      background-size: contain
+      background-position: left center
   >.top
     display: flex
     margin: 1rem 1rem 0.75rem

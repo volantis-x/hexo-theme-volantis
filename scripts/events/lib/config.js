@@ -85,5 +85,6 @@ module.exports = hexo => {
     merge(icons, data.icons);
   }
   hexo.theme.config.icons = icons
-  
+  // chat users
+  hexo.theme.config.chat_users = data.chat_users;
 };
