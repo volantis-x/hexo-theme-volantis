@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
+  function getTimelineRequest(url, callback) => {
+      return new Promise((resolve, reject) => {
+          fetch(url).then(resp => {
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            console.warn('[request] 错误:', err);
+          });
+      });
+    }
+    
     const reactions = {
       '+1': '👍',
       '-1': '👎', 
@@ -17,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         continue;
       }
       // layout
-      utils.request(el, api, async resp => {
+      getTimelineRequest(api, async resp => {
         const data = await resp.json();
         const query = new URL(api).search;
         const arr = data.content || data;
