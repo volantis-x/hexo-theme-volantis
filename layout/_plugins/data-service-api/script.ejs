@@ -40,7 +40,7 @@ function loadDataService(){
       const date = new Date();
       const sec = date.getSeconds();
       firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
-      timers.push(firstAdjustInterval);
+      
 
       function firstAdjustTime() {
         NowTime();
@@ -49,7 +49,7 @@ function loadDataService(){
           firstAdjustInterval = null;
         }
         mainInterval = setInterval(NowTime, 1000 * 60);
-        timers.push(mainInterval);
+        
       }
 
       function NowTime() {
