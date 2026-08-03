@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
   function getTimelineRequest(url, callback){
       return new Promise((resolve, reject) => {
           fetch(url).then(resp => {
@@ -119,4 +118,4 @@ document.addEventListener('DOMContentLoaded', function() {
       
     }
 
-});
+
