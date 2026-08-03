@@ -80,6 +80,9 @@
           label_tags: <%- JSON.stringify(__('search.label_tags') || '') %>
         },
       <% } %>
+      tag_plugins: {
+        chat: <%- JSON.stringify(theme.tag_plugins.chat) || '') %>,
+      },
       search: {
         no_title: <%- JSON.stringify(__('search.no_title') || '') %>,
         config_invalid: <%- JSON.stringify(__('search.config_invalid') || '') %>
