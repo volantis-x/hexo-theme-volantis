@@ -74,7 +74,7 @@ function Timeline(rawArgs, content = '') {
     }
   }
 
-  let el = `<div class="tag-plugin timeline-v6${classBuffer}"${attrBuffer}>`
+  let el = `<div class="tag-plugin timeline${classBuffer}"${attrBuffer}>`
 
   var arr = content.split(/<!--\s*node (.*?)\s*-->/g).filter(item => item.trim().length > 0)
   if (arr.length > 0) {
@@ -94,7 +94,7 @@ function Timeline(rawArgs, content = '') {
       }
     })
     nodes.forEach((node, i) => {
-      el += '<div class="timenode-v6" index="' + (i) + '">'
+      el += '<div class="timenode" index="' + (i) + '">'
       el += layoutNodeTitle(ctx, node.header)
       el += layoutNodeContent(ctx, node.body)
       el += '</div>'
@@ -124,9 +124,9 @@ hexo.extend.tag.register('Timeline', Timeline, {ends: true})
 
 function postTimeline(args, content) {
   if (args.length > 0) {
-    return `<div class="timeline"><p class='p h2'>${args}</p>${content}</div>`;
+    return `<div class="timeline-v5"><p class='p h2'>${args}</p>${content}</div>`;
   }
-  return `<div class="timeline">${content}</div>`;
+  return `<div class="timeline-v5">${content}</div>`;
 
 }
 
@@ -138,7 +138,7 @@ function postTimenode(args, content) {
     args = args.join(' ').split(',');
   }
   var time = args[0];
-  return `<div class="timenode"><div class="meta"><p>${hexo.render.renderSync({ text: time, engine: 'markdown' })}</p></div><div class="body">${hexo.render.renderSync({ text: content, engine: 'markdown' }).split('\n').join('')}</div></div>`;
+  return `<div class="timenode-v5"><div class="meta"><p>${hexo.render.renderSync({ text: time, engine: 'markdown' })}</p></div><div class="body">${hexo.render.renderSync({ text: content, engine: 'markdown' }).split('\n').join('')}</div></div>`;
 }
 
 
