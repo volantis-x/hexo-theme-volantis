@@ -167,7 +167,7 @@ function extToMimes(ext) {
   function downloadFileEvent(fileDoms) {
     for (let i = 0; i < fileDoms.length; ++i) {
       let fileDom = fileDoms[i];
-      const api = ctx.tag_plugins.chat.api + '?type=file&url=';
+      const api = volantis.GLOBAL_CONFIG.tag_plugins.chat.api + '?type=file&url=';
       const obverser = new IntersectionObserver((entries, observer) => {
         volantis.requestAnimationFrame(()=>{
           entries.filter((entry)=>{return entry.isIntersecting}).sort((a,b)=>a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
