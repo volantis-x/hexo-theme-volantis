@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  function getTimelineRequest(url, callback) => {
+  function getTimelineRequest(url, callback){
       return new Promise((resolve, reject) => {
           fetch(url).then(resp => {
             if (!resp.ok) throw new Error('响应失败');
