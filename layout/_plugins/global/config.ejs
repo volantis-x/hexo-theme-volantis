@@ -81,7 +81,7 @@
         },
       <% } %>
       tag_plugins: {
-        chat: <%- JSON.stringify(theme.tag_plugins.chat) || '') %>,
+        chat: <%- JSON.stringify(theme.tag_plugins.chat || '') %>,
       },
       search: {
         no_title: <%- JSON.stringify(__('search.no_title') || '') %>,
