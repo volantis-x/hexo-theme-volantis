@@ -221,7 +221,7 @@ function createWaveDom(audio) {
             inactiveWaveColor = '#1373b3';
         }
 
-        if (utils.dark.mode === "dark") {
+        if (volantis.dark?.mode === "dark") {
             activeWaveColor = '#ccc';
             inactiveWaveColor = '#707070';
             if (audioCanvas.classList.contains('right')) {
@@ -237,7 +237,7 @@ function createWaveDom(audio) {
 
         audio.addEventListener('timeupdate', ()=>{
             if (audio.currentTime > 0) {
-                if (utils.dark.mode === "dark") {
+                if (volantis.dark?.mode === "dark") {
                     activeWaveColor = '#ccc';
                     inactiveWaveColor = '#707070';
                     if (audioCanvas.classList.contains('right')) {
@@ -252,7 +252,7 @@ function createWaveDom(audio) {
                         inactiveWaveColor = '#1373b3';
                     }
                 }
-                utils.requestAnimationFrame(()=>{
+                volantis.requestAnimationFrame(()=>{
                     context.clearRect(0, 0, audioCanvas.width, audioCanvas.height);
                     drawWaveWhenPlaying(context,audioCanvas.height,(audio.currentTime / audio.duration) * audioCanvas.width / dpr,waveHeightArr,1,activeWaveColor,inactiveWaveColor);
                     drawPlayLine(context,audioCanvas.height,(audio.currentTime / audio.duration / dpr) * audioCanvas.width,activeWaveColor);
@@ -285,7 +285,7 @@ function createWaveDom(audio) {
             }
         });
 
-        utils.dark.push(function () {
+        volantis.dark.push(function () {
             if (!playFlag) {
                 if (utils.dark.mode === "dark") {
                     activeWaveColor = '#ccc';
@@ -315,7 +315,7 @@ function createWaveDom(audio) {
                     });
                 }
             }
-        });
+        },"chat-voice");
         
     } else {
         console.log("浏览器不支持canvas");
