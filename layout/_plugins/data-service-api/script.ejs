@@ -6,9 +6,12 @@ function loadDataService(){
       setCardLink(cardlinks);
     });
   }
-  volantis.js("<%- theme.cdn.marked %>").then(function () {
+  const timelinecard = document.querySelector(".tag-plugin.timeline.ds-timeline");
+  if (timelinecard){
+    volantis.js("<%- theme.cdn.marked %>").then(function () {
       volantis.js("<%- theme.cdn.volantis_tags_timeline %>", { defer: true });
-  });
+    });
+  }
 
 
 
