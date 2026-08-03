@@ -8,6 +8,7 @@ hexo.on('generateBefore', () => {
   // Merge config.
   require('./lib/config')(hexo);
   require('./lib/cdn')(hexo);
+  require('./lib/links')(hexo);
   require('./lib/tree-doc')(hexo);
   require('./lib/tree-topic')(hexo);
   require('./lib/tree-notebooks')(hexo);
