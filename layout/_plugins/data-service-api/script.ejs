@@ -110,7 +110,18 @@ function loadDataService(){
       quoteClickHandlers.set(quote, handler); // 保存处理器引用
     });
 
-
+volantis.pjax.send(()=>{
+      // 断开观察器
+      if (chat_quote_obverser) {
+        chat_quote_obverser.disconnect();
+      }
+      
+      // 移除所有 click 事件监听器
+      quoteClickHandlers.forEach((handler, quote) => {
+        quote.removeEventListener('click', handler);
+      });
+      quoteClickHandlers.clear();
+},"chatQuotes");
 
 
 
