@@ -74,7 +74,7 @@ function Timeline(rawArgs, content = '') {
     }
   }
 
-  let el = `<div class="tag-plugin timeline${classBuffer}"${attrBuffer}>`
+  let el = `<div class="tag-plugin timeline-v6${classBuffer}"${attrBuffer}>`
 
   var arr = content.split(/<!--\s*node (.*?)\s*-->/g).filter(item => item.trim().length > 0)
   if (arr.length > 0) {
@@ -94,7 +94,7 @@ function Timeline(rawArgs, content = '') {
       }
     })
     nodes.forEach((node, i) => {
-      el += '<div class="timenode" index="' + (i) + '">'
+      el += '<div class="timenode-v6" index="' + (i) + '">'
       el += layoutNodeTitle(ctx, node.header)
       el += layoutNodeContent(ctx, node.body)
       el += '</div>'
