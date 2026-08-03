@@ -80,6 +80,27 @@ volantis_tags_timeline:
   npm: true
   static: false
   cdnjs: false
+volantis_tags_chat_download_file:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/chat/download-file.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_tags_chat_video:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/chat/video.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
+volantis_tags_chat_voice:
+  name: hexo-theme-volantis
+  file: source/js/plugins/tags/chat/voice.js
+  local: true
+  npm: true
+  static: false
+  cdnjs: false
 volantis_search_hexo:
   name: hexo-theme-volantis
   file: source/js/search/hexo.js
