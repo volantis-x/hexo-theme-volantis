@@ -111,9 +111,8 @@
           
           cell += '</div>';
           cell += '</div>';
-          el.append(cell);
+          el.innerHTML+=cell;
         });
-        //window.wrapLazyloadImages(el);
       });
       
     }
