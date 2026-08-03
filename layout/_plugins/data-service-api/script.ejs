@@ -5,6 +5,8 @@ if (cardlinks?.length > 0) {
     setCardLink(cardlinks);
   });
 }
-
+volantis.js("<%- theme.cdn.marked %>").then(function () {
+    volantis.js("<%- theme.cdn.volantis_tags_timeline %>", { defer: true });
+});
 
 </script>
