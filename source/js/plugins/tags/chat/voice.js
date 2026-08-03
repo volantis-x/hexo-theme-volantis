@@ -265,7 +265,7 @@ function createWaveDom(audio) {
             pauseBtn.style.display = "none";
             playBtn.style.display = "flex";
             audio.currentTime = 0;
-            utils.requestAnimationFrame(()=>{
+            volantis.requestAnimationFrame(()=>{
                 context.clearRect(0, 0, audioCanvas.width, audioCanvas.height);
                 drawWave(context,audioCanvas.height,waveHeightArr,1,activeWaveColor);
             });
@@ -287,7 +287,7 @@ function createWaveDom(audio) {
 
         volantis.dark.push(function () {
             if (!playFlag) {
-                if (utils.dark.mode === "dark") {
+                if (volantis.dark?.mode === "dark") {
                     activeWaveColor = '#ccc';
                     inactiveWaveColor = '#707070';
                     if (audioCanvas.classList.contains('right')) {
@@ -303,13 +303,13 @@ function createWaveDom(audio) {
                     }
                 }
                 if (audio.currentTime > 0) {
-                    utils.requestAnimationFrame(()=>{
+                    volantis.requestAnimationFrame(()=>{
                         context.clearRect(0, 0, audioCanvas.width, audioCanvas.height);
                         drawWaveWhenPlaying(context,audioCanvas.height,(audio.currentTime / audio.duration) * audioCanvas.width / dpr,waveHeightArr,1,activeWaveColor,inactiveWaveColor);
                         drawPlayLine(context,audioCanvas.height,(audio.currentTime / audio.duration / dpr) * audioCanvas.width,activeWaveColor);
                     });
                 } else {
-                    utils.requestAnimationFrame(()=>{
+                    volantis.requestAnimationFrame(()=>{
                         context.clearRect(0, 0, audioCanvas.width, audioCanvas.height);
                         drawWave(context,audioCanvas.height,waveHeightArr,1,activeWaveColor);
                     });
