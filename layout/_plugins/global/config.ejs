@@ -38,6 +38,9 @@
       rightmenus: <%- JSON.stringify(theme.rightmenus) %>
       <% } %>
     },
+    tag_plugins: {
+      chat: <%- JSON.stringify(theme.tag_plugins.chat || '') %>,
+    },
     search: {
       <% if(theme.search.service === 'algolia') { %>
         appId: <%- JSON.stringify(env.ALGOLIA_APP_ID || config.algolia.appId || config.algolia.applicationID || '') %>,
@@ -80,9 +83,6 @@
           label_tags: <%- JSON.stringify(__('search.label_tags') || '') %>
         },
       <% } %>
-      tag_plugins: {
-        chat: <%- JSON.stringify(theme.tag_plugins.chat || '') %>,
-      },
       search: {
         no_title: <%- JSON.stringify(__('search.no_title') || '') %>,
         config_invalid: <%- JSON.stringify(__('search.config_invalid') || '') %>
