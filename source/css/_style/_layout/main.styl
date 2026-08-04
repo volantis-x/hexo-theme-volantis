@@ -34,14 +34,14 @@
     &.show
       transform: translateY(0) scale(1)
       &.hl
-        background: $color-theme
+        background: var(--theme)
         color: $color-inner
         box-shadow: $boxshadow-card
     @media screen and (min-width: $device-tablet)
       &:hover
         transform: scale(1.2)
         border-radius: 25%
-        background: $color-theme
+        background: var(--theme)
         color: white
         box-shadow: $boxshadow-card-float
         &.hl
@@ -213,9 +213,9 @@
               font-weight: normal
               trans()
             &:hover
-              color: $color-hover
+              color: var(--accent)
               p
-                color: $color-hover
+                color: var(--accent)
 
         .author
           img,i
@@ -329,7 +329,7 @@ article#comments
       padding-left: $gap * 3
       padding-right: $gap * 3
       &:hover
-        background: $color-hover
+        background: var(--accent)
 // 白色容器
 .white-box
   background: var(--color-card)
