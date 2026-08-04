@@ -27,7 +27,7 @@ stellar-root-first()
   --link-color: #00323c
   // 派生色
   --color-text-a50: alpha($color-text, .5)
-  
+  --color-card-a90: alpha($color-card, .9)
 
 
 // 基础 reset
@@ -65,12 +65,12 @@ body
       left: 0
 
 a
-  color: $color-link
+  color: var(--link)
   cursor: pointer
   text-decoration: none
   trans()
   &:hover
-    color: $color-hover
+    color: var(--accent)
   &:active,&:hover
     outline: 0
 
@@ -102,6 +102,8 @@ button,input
   color: inherit
   font: inherit
   margin: 0
+  background: none
+  border: none
 
 button
   overflow: visible
@@ -112,7 +114,7 @@ button
 
 .blur
   @supports (backdrop-filter: blur(20px))
-    background: alpha($color-card, .9) !important
+    background: var(--color-card-a90) !important
     backdrop-filter: saturate(200%) blur(20px)
 
 if hexo-config('comments.service')=='discuss' || hexo-config('comments.service')=='twikoo' || hexo-config('comments.service')=='waline' || hexo-config('comments.service')=='artalk'
