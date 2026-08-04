@@ -153,13 +153,13 @@ function postFolding(args, content) {
     title = args[0].trim();
   }
   if (style != undefined) {
-    return `<details ${style}><summary> ${title} </summary>
+    return `<details v5 ${style}><summary> ${title} </summary>
               <div class='content'>
               ${hexo.render.renderSync({ text: content, engine: 'markdown' }).split('\n').join('')}
               </div>
             </details>`;
   }
-  return `<details><summary> ${title} </summary>
+  return `<details v5><summary> ${title} </summary>
               <div class='content'>
               ${hexo.render.renderSync({ text: content, engine: 'markdown' }).split('\n').join('')}
               </div>
