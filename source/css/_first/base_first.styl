@@ -25,8 +25,35 @@ stellar-root-first()
   --color-read-post: $color-read-post
   --color-copyright-bkg: $color-copyright-bkg
   --link-color: #00323c
+  // 派生色
+  --color-text-a10: alpha($color-text, .1)
+  --color-text-a50: alpha($color-text, .5)
+  --color-text-a60: alpha($color-text, .6)
+  --color-text-a70: alpha($color-text, .7)
+  --color-text-a80: alpha($color-text, .8)
+  --color-text-a85: alpha($color-text, .85)
+  --color-text-a90: alpha($color-text, .9)
+  --color-card-a50: alpha($color-card, .5)
+  --color-card-a60: alpha($color-card, .6)
+  --color-card-a70: alpha($color-card, .7)
+  --color-card-a80: alpha($color-card, .8)
+  --color-card-a90: alpha($color-card, .9)
+  --color-card-darken2: darken($color-card, 2)
+  --color-card-lighten5: lighten($color-card, 5)
+  --color-p-a20: alpha($color-p, .2)
+  --color-p-a70: alpha($color-p, .7)
+  --color-p-a75: alpha($color-p, .75)
+  --color-block-lighten3: lighten($color-block, 3)
+  --color-block-darken2: darken($color-block, 2)
+  --color-mix60-p-card: mix($color-p, $color-card, 60)
+  --color-codeblock-darken6: darken($color-codeblock, 6)
+  --color-mix75-theme-text: mix($color-theme, $color-text, 75)
+  --color-mix90-block-text: mix($color-block, $color-text, 90)
 
 
+
+
+  
 // 基础 reset
 *
   box-sizing: border-box
@@ -62,12 +89,12 @@ body
       left: 0
 
 a
-  color: $color-link
+  color: var(--link)
   cursor: pointer
   text-decoration: none
   trans()
   &:hover
-    color: $color-hover
+    color: var(--accent)
   &:active,&:hover
     outline: 0
 
@@ -99,6 +126,8 @@ button,input
   color: inherit
   font: inherit
   margin: 0
+  background: none
+  border: none
 
 button
   overflow: visible
@@ -109,7 +138,7 @@ button
 
 .blur
   @supports (backdrop-filter: blur(20px))
-    background: alpha($color-card, .9) !important
+    background: var(--color-card-a90) !important
     backdrop-filter: saturate(200%) blur(20px)
 
 if hexo-config('comments.service')=='discuss' || hexo-config('comments.service')=='twikoo' || hexo-config('comments.service')=='waline' || hexo-config('comments.service')=='artalk'

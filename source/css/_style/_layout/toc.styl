@@ -18,10 +18,10 @@
       border-left: $border-line solid transparent
       &.active
         list_active()
-        border-left: $border-line solid $color-theme
+        border-left: $border-line solid var(--theme)
       &:hover
         list_hover()
-        border-left: $border-line solid $color-theme
+        border-left: $border-line solid var(--theme)
 
   // 移动端目录
   trans()
@@ -93,6 +93,6 @@
     &.active
       &>.toc-link
         list_active()
-        border-left: $border-line solid $color-theme
+        border-left: $border-line solid var(--theme)
       &>.toc-child
         max-height: 1000px

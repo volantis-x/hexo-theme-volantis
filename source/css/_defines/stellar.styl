@@ -78,6 +78,8 @@ x-set-theme-with-color($color)
   --theme-a10: x-theme-alpha(0.1)
   --theme-a20: x-theme-alpha(0.2)
   --theme-a30: x-theme-alpha(0.3)
+  --theme-a50: x-theme-alpha(0.5)
+  --theme-a90: x-theme-alpha(0.9)
 
 // 设置链接颜色
 x-set-link-with-color($color)
@@ -335,6 +337,17 @@ $iQuoteLeft = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' widt
 $iQuoteRight = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from BoxIcons Solid by Atisa - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='currentColor' d='M20.309 17.708C22.196 15.66 22.006 13.03 22 13V5a1 1 0 0 0-1-1h-6c-1.103 0-2 .897-2 2v7a1 1 0 0 0 1 1h3.078a2.9 2.9 0 0 1-.429 1.396c-.508.801-1.465 1.348-2.846 1.624l-.803.16V20h1c2.783 0 4.906-.771 6.309-2.292m-11.007 0C11.19 15.66 10.999 13.03 10.993 13V5a1 1 0 0 0-1-1h-6c-1.103 0-2 .897-2 2v7a1 1 0 0 0 1 1h3.078a2.9 2.9 0 0 1-.429 1.396c-.508.801-1.465 1.348-2.846 1.624l-.803.16V20h1c2.783 0 4.906-.771 6.309-2.292'/%3E%3C/svg%3E"
 
 
-//
+// blur
 
-
+:root
+  --blur-px: 12px
+  --blur-bg: var(--bg-a50)
+  --blur-sat: 300%
+blur-effect()
+  background-color: var(--blur-bg)
+  @supports ((-webkit-backdrop-filter:blur(var(--blur-px))) or (backdrop-filter:blur(var(--blur-px))))
+    background-color: var(--blur-bg) !important
+    backdrop-filter: saturate(var(--blur-sat)) blur(var(--blur-px))
+    -webkit-backdrop-filter: saturate(var(--blur-sat)) blur(var(--blur-px))
+  &:hover
+    background-color: var(--card)

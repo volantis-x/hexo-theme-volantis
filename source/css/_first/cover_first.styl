@@ -134,7 +134,7 @@
       width: $iconW
       top: 0
       left: $iconMargin+1px
-      color: alpha($color-p, .75)
+      color: var(--color-p-a75)
     .input
       display: block
       height: 2.5rem
@@ -147,14 +147,14 @@
       @media screen and (max-width: $device-mobile)
         padding-left: $iconW + $iconMargin
       border-radius: 1.4rem
-      background: alpha($color-card, .6)
+      background: var(--color-card-a60)
       backdrop-filter: blur(10px)
       border: none
       color: var(--color-text)
       &:hover
-        background: alpha($color-card, .8)
+        background: var(--color-card-a80)
       &:focus
-        background: alpha($color-card, 1)
+        background: var(--color-card)
 
 
 .cover-wrapper .list-h
@@ -221,7 +221,7 @@
         border-bottom: none
         text-align: center
         align-content: flex-end
-        color: alpha($color-text, .7)
+        color: var(--color-text-a70)
         font-size: 1.5rem
         i
           margin: $gap * 0.5
@@ -229,7 +229,7 @@
           font-size: $fontsize-meta
         &.active
           i, i+p
-            color: $color-theme
+            color: var(--theme)
           img+p
             color: var(--color-text)
           background: var(--color-card)
@@ -241,7 +241,7 @@ if hexo-config('cover.layout_scheme') == 'dock'
   .cover-wrapper.dock .top
     margin-bottom: $gap * 3
   .cover-wrapper.dock .menu
-    background: alpha($color-card, .5)
+    background: var(--color-card-a50)
     position: absolute
     bottom: 0
     max-width: 100%
@@ -254,7 +254,7 @@ if hexo-config('cover.layout_scheme') == 'dock'
         overflow-x: scroll
         scrollbar(0, 0)
     @supports (backdrop-filter: blur(20px))
-      background: alpha($color-card, .5)
+      background: var(--color-card-a50)
       backdrop-filter: saturate(200%) blur(20px)
 
 if hexo-config('cover.layout_scheme') == 'featured'
@@ -263,9 +263,9 @@ if hexo-config('cover.layout_scheme') == 'featured'
       margin: -2px
     .list-h a
       margin: 2px
-      background: alpha($color-card, .5)
+      background: var(--color-card-a50)
       @supports (backdrop-filter: blur(20px))
-        background: alpha($color-card, .5)
+        background: var(--color-card-a50)
         backdrop-filter: saturate(200%) blur(20px)
 
 if hexo-config('cover.layout_scheme') == 'focus'
@@ -274,9 +274,9 @@ if hexo-config('cover.layout_scheme') == 'focus'
       margin: 2px
     trans()
     &:hover
-      background: alpha($color-card, .5)
+      background: var(--color-card-a50)
       @supports (backdrop-filter: blur(20px))
-        background: alpha($color-card, .5)
+        background: var(--color-card-a50)
         backdrop-filter: saturate(200%) blur(20px)
     .list-h a
       margin: 2px

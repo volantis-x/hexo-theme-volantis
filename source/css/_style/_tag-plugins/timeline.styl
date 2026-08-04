@@ -9,7 +9,7 @@ div.timenode-v5
     content: ''
     z-index: 1
     position: absolute
-    background: alpha($color-theme, .5)
+    background: var(--theme-a50)
     width: 2px
     left: 7px
   &:before
@@ -38,12 +38,12 @@ div.timenode-v5
       top: 8px
       z-index: 2
     &:before
-      background: alpha($color-theme, .5)
+      background: var(--theme-a50)
       width: 16px
       height: 16px
       border-radius: 8px
     &:after
-      background: $color-theme
+      background: var(--theme)
       margin-left: 2px
       margin-top: 2px
       width: 12px
@@ -69,7 +69,7 @@ div.timenode-v5
       &:last-child
         margin-bottom: $gap-p * 0.25
     .highlight
-      border: 1px solid mix($color-block, $color-text, 90)
+      border: 1px solid var(--color-mix90-block-text)
 
 
 div.timenode-v5:hover
@@ -78,7 +78,7 @@ div.timenode-v5:hover
     &:before
       background: alpha($color-hover, .5)
     &:after
-      background: $color-hover
+      background: var(--accent)
       transform: scale(1)
 
 // v6

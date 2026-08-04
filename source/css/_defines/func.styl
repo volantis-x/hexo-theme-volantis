@@ -51,7 +51,7 @@ placeholder(rules)
 disable-user-select()
   user-select: none
 // 自定义滚动条
-scrollbar($w = 4px, $b = 2px, $c = $color-theme, $h = $color-hover)
+scrollbar($w = 4px, $b = 2px, $c = var(--theme), $h = var(--accent))
   &::-webkit-scrollbar
     height: $w
     width: $w
@@ -77,6 +77,6 @@ scrollbar-codeblock()
     border-radius: $border-codeblock
   &:hover
     &::-webkit-scrollbar-thumb
-      background: alpha($color-text, .5)
+      background: var(--color-text-a50)
       &:hover
-        background: $color-hover
+        background: var(--accent)

@@ -9,7 +9,6 @@ fitst_dark()
   --color-site-footer: $color-dark-site-footer
   --color-card: $color-dark-card
   --color-text: $color-dark-text
-
   --color-block: $color-dark-block
   --color-codeblock: $color-dark-codeblock
   --color-inlinecode: $color-dark-inlinecode
@@ -26,7 +25,37 @@ fitst_dark()
   --color-link: $color-dark-link
   --color-copyright-bkg: $color-dark-copyright-bkg
   --link-color:rgb(228, 228, 228)
+  // 派生色
+  --color-text-a10: alpha($color-dark-text, .1)
+  --color-text-a50: alpha($color-dark-text, .5)
+  --color-text-a60: alpha($color-dark-text, .6)
+  --color-text-a70: alpha($color-dark-text, .7)
+  --color-text-a80: alpha($color-dark-text, .8)
+  --color-text-a85: alpha($color-dark-text, .85)
+  --color-text-a90: alpha($color-dark-text, .9)
+  --color-card-a50: alpha($color-dark-card, .5)
+  --color-card-a60: alpha($color-dark-card, .6)
+  --color-card-a70: alpha($color-dark-card, .7)
+  --color-card-a80: alpha($color-dark-card, .8)
+  --color-card-a90: alpha($color-dark-card, .9)
+  --color-card-darken2: darken($color-dark-card, 2)
+  --color-card-lighten5: lighten($color-dark-card, 5)
+  --color-p-a20: alpha($color-dark-p, .2)
+  --color-p-a70: alpha($color-dark-p, .7)
+  --color-p-a75: alpha($color-dark-p, .75)
+  --color-block-lighten3: lighten($color-dark-block, 3)
+  --color-block-darken2: darken($color-dark-block, 2)
+  --color-mix60-p-card: mix($color-dark-p, $color-dark-card, 60)
+  --color-codeblock-darken6: darken($color-dark-codeblock, 6)
+  --color-mix75-theme-text: mix($color-theme, $color-dark-text, 75)
+  --color-mix90-block-text: mix($color-dark-block, $color-dark-text, 90)
 
+
+
+
+
+
+  
   img
     filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
   //header
@@ -68,8 +97,7 @@ fitst_dark()
     @media screen and (max-width: $device-mobile)
       background: var(--color-site-bg) !important
 
-  // friend card
-  .friend-card.color-bk-dark
-    filter: brightness(0.8)
+
+
 
 volantis-dark(fitst_dark)

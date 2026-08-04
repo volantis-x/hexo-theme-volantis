@@ -1,4 +1,3 @@
-$border-color = alpha($color-p, .2)
 $tbr = 4px
 
 div.tabs
@@ -8,7 +7,7 @@ div.tabs
   margin-bottom: $gap-p
   border-radius: $tbr
   background: var(--color-card)
-  border: 1px solid $border-color
+  border: 1px solid var(--color-p-a20)
   font-size: $fontsize-list
   .highlight,p,ul,ol,div.note,details
     margin-top: $gap-p
@@ -49,12 +48,12 @@ div.tabs
       &.active a
         cursor: default
         color: var(--color-p)
-        background: $color-card
-        border: 1px solid $border-color
+        background: var(--color-card)
+        border: 1px solid var(--color-p-a20)
         border-bottom: 1px solid var(--color-card)
 
   .tab-content
-    border-top: 1px solid $border-color
+    border-top: 1px solid var(--color-p-a20)
     margin-top: -1px
     .tab-pane
       padding: $gap

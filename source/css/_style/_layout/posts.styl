@@ -8,7 +8,7 @@
   a
     color: var(--color-h1)
     &:hover
-      color: $color-hover
+      color: var(--accent)
   &[pin]
     margin-right: 36px
 .article-desc
@@ -45,11 +45,11 @@
       display: block
 // 文章卡片元信息
 .meta-v3[line_style='solid']
-  border-top: 1px solid alpha($color-text, 0.1)
+  border-top: 1px solid var(--color-text-a10)
 .meta-v3[line_style='dashed']
-  border-top: 2px dashed alpha($color-text, 0.1)
+  border-top: 2px dashed var(--color-text-a10)
 .meta-v3[line_style='dotted']
-  border-top: 4px dotted alpha($color-text, 0.1)
+  border-top: 4px dotted var(--color-text-a10)
 
 .meta-v3
   margin-top: $gap
@@ -71,7 +71,7 @@
     -webkit-font-smoothing: auto
     -moz-osx-font-smoothing: auto
     &:hover
-      color: $color-hover
+      color: var(--accent)
   .readmore
     font-weight: bold
   .avatar

@@ -180,18 +180,18 @@ table:not([class])
   max-width: 100%
   vertical-align: text-top
   th
-    background-color: darken($color-block, 2)
+    background-color: var(--color-block-darken2)
   td,th
     padding: 8px 16px
-    border: 2px solid darken($color-block, 2)
+    border: 2px solid var(--color-block-darken2)
     line-height: 1.5
     font-size: 90%
   tr
     word-break: keep-all
-    background-color: lighten($color-block, 3)
+    background-color: var(--color-block-lighten3)
     trans()
     &:hover
-      background-color: darken($color-block, 2)
+      background-color: var(--color-block-darken2)
 
 
 td,th

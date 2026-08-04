@@ -61,7 +61,7 @@
     &,a
       color: var(--color-meta)
     >a:hover
-      color: $color-hover
+      color: var(--accent)
 
     span.name
       margin-left: $gap * 0.5
@@ -95,16 +95,16 @@
           flex:none
           font-weight: normal
           font-size: $fontsize-meta
-          color: alpha($color-text, .7)
+          color: var(--color-text-a70)
         &.active
-          border-left: $border-line solid $color-theme
+          border-left: $border-line solid var(--theme)
           list_active()
           .badge
-            color: alpha($color-theme, .9)
+            color: var(--theme-a90)
         &.child
           padding-left: $gap * 2
         &:hover
-          border-left: $border-line solid $color-theme
+          border-left: $border-line solid var(--theme)
           list_hover()
 
 
@@ -170,7 +170,7 @@
           padding: 0
           trans()
           &:hover
-            color: $color-hover
+            color: var(--accent)
           &.social
             display: flex
             justify-content: center
@@ -181,7 +181,7 @@
             border-radius: 100px
             &:hover
               background: bgcolor($color-theme)
-              color: $color-theme
+              color: var(--theme)
 
         @media screen and (max-width: $device-tablet)
           justify-content: center
@@ -203,10 +203,10 @@
         word-break: break-all
       padding: $gap * 0.25 $gap
       a
-        color: $color-link
+        color: var(--link)
         trans()
         &:hover
-          color: $color-hover
+          color: var(--accent)
         &:active
           color: darken($color-hover, 25%)
 
@@ -251,7 +251,7 @@
           align-items: center
           font-size: $fontsize-footnote
           font-weight: bold
-          color: alpha($color-text, 70%)
+          color: var(--color-text-a70)
           line-height: 1.5
           word-wrap: break-word
           i
@@ -296,8 +296,8 @@
         margin: 4px 0
         border-bottom: 1px solid transparent
         &:hover
-          color: $color-hover !important //to cover inline style.
-          border-bottom: 1px solid $color-hover
+          color: var(--accent) !important //to cover inline style.
+          border-bottom: 1px solid var(--accent)
 
 
   // 相关文章组件
@@ -406,11 +406,11 @@
   padding: 6px 16px
   color: var(--color-list)
   &:hover
-    border-left: $border-line solid $color-theme
+    border-left: $border-line solid var(--theme)
     list_hover()
 
 .widget-body a.active
-  border-left: $border-line solid $color-theme
+  border-left: $border-line solid var(--theme)
   list_active()
 
 .widget-wrapper
@@ -424,7 +424,7 @@
     &,a
       color: var(--color-list)
     >a:hover
-      color: $color-hover
+      color: var(--accent)
     span.name
       margin-left: $gap * 0.5
     .item 

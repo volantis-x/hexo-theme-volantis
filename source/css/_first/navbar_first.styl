@@ -104,7 +104,7 @@
         border-radius: 100px
         border: none
         trans()
-        color: $color-theme
+        color: var(--theme)
         &:hover
           border: none
         &.active,&:active
@@ -165,7 +165,7 @@
       line-height: 1.3
       width: 100%
       color: var(--color-text)
-      background: darken($color-card, 2)
+      background: var(--color-card-darken2)
       box-shadow: none
       box-sizing: border-box
       padding-left: $iconW + $iconMargin
@@ -190,7 +190,7 @@
       width: 0
       overflow: hidden
       position: absolute
-      background: lighten($color-card, 5)
+      background: var(--color-card-lighten5)
       trans()
       .input
         border-radius: $navbar-height * 0.5
@@ -207,7 +207,7 @@ ul.m-pc
     color: inherit
     border-bottom: 2px solid transparent
     &:active,&.active
-      border-bottom: 2px solid $color-theme
+      border-bottom: 2px solid var(--theme)
 ul.m-pc,ul.list-v
   li:hover
     >ul.list-v
@@ -296,7 +296,7 @@ ul.list-v
     overflow: hidden
     color: inherit
     &:active,&.active
-      color: $color-theme
+      color: var(--theme)
   &:hover>a
     color: var(--color-list-hl)
   i.music
