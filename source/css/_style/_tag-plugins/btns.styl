@@ -23,8 +23,8 @@
     color: $color-button
     border: 1px solid @color
     &:hover
-      color: $color-hover
-      border-color: $color-hover
+      color: var(--accent)
+      border-color: var(--accent)
     i
       margin-right: 4px
   // 常规和实心按钮加大内边距
@@ -37,7 +37,7 @@
     color: $color-inner
     &:hover
       color: $color-inner
-      background: $color-hover
+      background: var(--accent)
   // 大号按钮
   &.large a
     font-size: 1rem
@@ -141,7 +141,7 @@
       font-size: 28px
     &>i:first-child
       color: $color-inner
-      background: $color-theme
+      background: var(--theme)
     background: var(--color-block)
     border-radius: 4px
     p,b
@@ -161,12 +161,12 @@
     &[href]:hover
       background: alpha($color-hover, 15%)
       &,b
-        color: $color-hover
+        color: var(--accent)
       &>img:first-child, &>i:first-child
         transform: scale(1.1) translateY(-8px)
         box-shadow: $boxshadow-float
       &>i:first-child
-        background: $color-hover
+        background: var(--accent)
   // 圆形图标变体
   &.circle a
     &>img:first-child, &>i:first-child
