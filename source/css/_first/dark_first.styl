@@ -26,7 +26,12 @@ fitst_dark()
   --color-link: $color-dark-link
   --color-copyright-bkg: $color-dark-copyright-bkg
   --link-color:rgb(228, 228, 228)
+  // 派生色
+  --color-text-a50: alpha($color-dark-text, .5)
 
+
+
+  
   img
     filter: brightness(convert(hexo-config('color_scheme.dark.brightness'))) !important
   //header
