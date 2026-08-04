@@ -1,5 +1,25 @@
 # Changelog
 
+## [6.8.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.7.0...v6.8.0) (2026-08-04)
+
+
+### Features
+
+* banner navbar ([#1030](https://github.com/volantis-x/hexo-theme-volantis/issues/1030)) ([991492b](https://github.com/volantis-x/hexo-theme-volantis/commit/991492b6366054f441ec327199f852906d3aed0f))
+* copy tag ([#1026](https://github.com/volantis-x/hexo-theme-volantis/issues/1026)) ([8a8e21e](https://github.com/volantis-x/hexo-theme-volantis/commit/8a8e21ecb5551f8582bb2096bcec2a561a225776))
+* Link xlink ([#1027](https://github.com/volantis-x/hexo-theme-volantis/issues/1027)) ([caaf1bb](https://github.com/volantis-x/hexo-theme-volantis/commit/caaf1bb5e882f59977065bdc222988a5a20cf47c))
+* posters albums ([#1028](https://github.com/volantis-x/hexo-theme-volantis/issues/1028)) ([54d3689](https://github.com/volantis-x/hexo-theme-volantis/commit/54d368921ccaef123482f1a5609553ff77c04b04))
+* search from inkss ([#1025](https://github.com/volantis-x/hexo-theme-volantis/issues/1025)) ([a97c11c](https://github.com/volantis-x/hexo-theme-volantis/commit/a97c11c422ef5ba55a50a2f83d96daacdad282b5))
+* Timeline ([#1029](https://github.com/volantis-x/hexo-theme-volantis/issues/1029)) ([e0c9ccb](https://github.com/volantis-x/hexo-theme-volantis/commit/e0c9ccb4451ec0f8e4394b2ee5b43304c2037c28))
+* 代码翻新和注释 from inkss ([#994](https://github.com/volantis-x/hexo-theme-volantis/issues/994)) 导致 fix: 修复waline v3的引入问题- [#926](https://github.com/volantis-x/hexo-theme-volantis/issues/926) 丢失 ([c9ac6f2](https://github.com/volantis-x/hexo-theme-volantis/commit/c9ac6f2ed007b0078ccb949fc2efa8340312ce12))
+
+
+### Bug Fixes
+
+* harden config.ejs against unsafe string interpolation ([#1023](https://github.com/volantis-x/hexo-theme-volantis/issues/1023)) ([4cb365f](https://github.com/volantis-x/hexo-theme-volantis/commit/4cb365f448f7eb0ec4990b99e0092d22c9157571))
+* 一些颜色变量 ([#1032](https://github.com/volantis-x/hexo-theme-volantis/issues/1032)) ([20ad265](https://github.com/volantis-x/hexo-theme-volantis/commit/20ad265ed4153a63ba7980ace01c5f445bd454ee))
+* 修复waline v3的引入问题 ([#1031](https://github.com/volantis-x/hexo-theme-volantis/issues/1031)) ([c9ac6f2](https://github.com/volantis-x/hexo-theme-volantis/commit/c9ac6f2ed007b0078ccb949fc2efa8340312ce12))
+
 ## [6.7.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.6.1...v6.7.0) (2026-07-30)
 
 
