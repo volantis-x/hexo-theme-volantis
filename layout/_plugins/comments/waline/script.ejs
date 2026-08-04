@@ -1,4 +1,6 @@
-<script>
+<script type="module">
+  import { init } from '<%- theme.cdn.waline_js %>';
+
   volantis.layoutHelper("comments",`<div id="waline"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`)
   
   function pjax_waline() {
