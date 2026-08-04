@@ -25,7 +25,7 @@ img,
   color: var(--color-p) !important
   &:hover
     color: var(--color-list-hl) !important
-.note
+.note.v5
   background: var(--color-block) !important
 div.tabs ul.nav-tabs li.tab.active a
   color: var(--color-p)
@@ -35,6 +35,12 @@ kbd
 .cover-wrapper.dock .menu .list-h a:hover, .cover-wrapper.featured .menu .list-h a:hover, .cover-wrapper.focus .menu .list-h a:hover
   color: var(--color-text) !important
 
+details[v5]>summary
+  color: var(--color-p) !important
+  background: var(--color-site-bg) !important
+details[v5]
+  border: 1px solid var(--color-site-bg) !important
+  background: var(--color-site-bg) !important
 
 //table
 *:not(.highlight) >table tr
