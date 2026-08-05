@@ -1,6 +1,6 @@
 <% if (site.tags.length){ %>
   <%- partial('_pre') %>
-  <section class="widget <%- widget_style %>">
+  <section class="widget <%- page.widget_style %>">
     <%- partial('header', {item: item}) %>
     <div class='content'>
       <%- tagcloud(site.tags, {
@@ -13,7 +13,7 @@
     </div>
   </section>
 <% }else{ %>
-  <div class="<%- widget_pjax %>">
+  <div class="<%- page.widget_pjax %>">
     <!-- pjax占位 tagcloud-->
   </div>
 <% } %>
