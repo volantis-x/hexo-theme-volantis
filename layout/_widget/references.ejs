@@ -16,7 +16,7 @@ if (item.rows == undefined) {
 <% if (item.rows && item.rows.length > 0) { %>
   <%- partial('list', {item: item, where: where}) %>
 <% }else{ %>
-  <div class="<%- page.widget_pjax %>">
+  <div class="<%- widget_pjax %>">
     <!-- pjax占位 references-->
   </div>
 <% } %>
