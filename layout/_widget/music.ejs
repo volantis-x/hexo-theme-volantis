@@ -1,13 +1,13 @@
 <%- partial('_pre') %>
 <% if (theme.plugins.aplayer.enable == true) { %>
-  <section class='widget <%- page.widget_platform %> <%- page.widget_style %> <%- page.widget_pjax %> <%- item.class %>'>
+  <section class='widget <%- widget_style %>'>
     <%- partial('header', {item: item}) %>
     <div class='content'>
       <%- partial('../_plugins/aplayer/layout', {post: null, where: 'widget'}) %>
     </div>
   </section>
 <% }else{ %>
-  <div class="<%- page.widget_pjax %>">
+  <div class="<%- widget_pjax %>">
     <!-- pjax占位 music-->
   </div>
 <% } %>
