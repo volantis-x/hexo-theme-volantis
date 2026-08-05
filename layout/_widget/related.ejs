@@ -9,7 +9,7 @@ function relatedPostsInTopic() {
     return ''
   }
   var el = ''
-  el += `<section class="widget ${widget_style}">`
+  el += `<section class="widget ${page.widget_style}">`
   el += `<div class='content'>`
   el += `<widget class="widget-wrapper related post-list">`
   el += `<div class="widget-header dis-select">`
@@ -39,7 +39,7 @@ function relatedWiki() {
   const relatedItems = thisItemObject.relatedItems || []
   var el = ''
   for (let relatedItem of relatedItems) {
-    el += `<section class="widget ${widget_style}">`
+    el += `<section class="widget ${page.widget_style}">`
     el += `<div class='content'>`
     el += `<widget class="widget-wrapper post-card">`
     el += `<div class="widget-header dis-select">`
@@ -75,7 +75,7 @@ function pjax_layoutDiv() {
   if (s && s.length > 0) {
     return s;
   } else {
-    return `<div class="${widget_pjax}"><!-- pjax占位 related--></div>`
+    return `<div class="${page.widget_pjax}"><!-- pjax占位 related--></div>`
   }
 }
 %>
