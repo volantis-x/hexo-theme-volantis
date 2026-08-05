@@ -25,7 +25,7 @@ if (page.layout == 'page' || page.layout == 'docs' || page.layout == 'post') {
 <% if (item.rows && item.rows.length > 0) { %>
   <%- partial('list', {item: item, where: where}) %>
 <% }else{ %>
-  <div class="<%- widget_pjax %>">
+  <div class="<%- page.widget_pjax %>">
     <!-- pjax占位 group -->
   </div>
 <% } %>
