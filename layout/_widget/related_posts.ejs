@@ -1,13 +1,13 @@
 <% if(page.layout == 'post' && page.content && page.path != undefined){ %>
   <%- partial('_pre') %>
-  <section class="widget <%- widget_style %>">
+  <section class="widget <%- page.widget_style %>">
     <%- partial('header', {item: item}) %>
     <div class="content">
       <%- popular_posts( { maxCount: item.max_count , ulClass: 'popular-posts' , PPMixingRate: 0.2 } , page ) %>
     </div>
   </section>
 <% }else{ %>
-  <div class="<%- widget_pjax %>">
+  <div class="<%- page.widget_pjax %>">
     <!-- pjax占位 related_posts-->
   </div>
 <% } %>
