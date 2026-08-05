@@ -2,6 +2,7 @@
 <%_
 // 侧边栏所有样式列表
 let widget_style_list = [];
+let widget_style = "";
 // class
 if (item.class){
   widget_style_list.push(item.class);
@@ -16,24 +17,22 @@ if (item.display) {
   pf = ['desktop', 'mobile'];
 }
 widget_style_list.push(...pf);
-page.widget_platform = pf.join(' ');
 // effect
-let widget_style = [];
+let widget_effect = [];
 if (where == 'sidebar') {
-  widget_style = theme.custom_css.sidebar.effect;
+  widget_effect = theme.custom_css.sidebar.effect;
 } else if (where == 'body') {
-  widget_style = theme.custom_css.body.effect;
+  widget_effect = theme.custom_css.body.effect;
 }
-widget_style_list.push(...widget_style);
-page.widget_style = widget_style.join(' ');
+widget_style_list.push(...widget_effect);
 // pjax
 if (item.sticky === true  || item.pjaxReload === false){
-  page.widget_pjax = "";
+  widget_pjax = "";
 } else {
-  page.widget_pjax = "pjax";
+  widget_pjax = "pjax";
   widget_style_list.push("pjax");
 }
 
 // 汇总
-page.widget_style_list = widget_style_list.join(' ');
+widget_style = widget_style_list.join(' ');
 _%>
