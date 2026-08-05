@@ -1,5 +1,7 @@
 <%# 侧边栏组件控制 _%>
 <%_
+let widget_style_list = [];
+
 let pf = [];
 if (item.display) {
   getList(item.display).forEach(function(p){
@@ -8,15 +10,25 @@ if (item.display) {
 } else {
   pf = ['desktop', 'mobile'];
 }
-if (where == 'sidebar') {
-  page.widget_style = theme.custom_css.sidebar.effect.join(' ');
-} else if (where == 'body') {
-  page.widget_style = theme.custom_css.body.effect.join(' ');
-}
+widget_style_list.push(...pf);
 page.widget_platform = pf.join(' ');
+
+let widget_style = [];
+if (where == 'sidebar') {
+  widget_style = theme.custom_css.sidebar.effect;
+} else if (where == 'body') {
+  widget_style = theme.custom_css.body.effect;
+}
+widget_style_list.push(...widget_style);
+page.widget_style = widget_style.join(' ');
+
 if (item.sticky === true  || item.pjaxReload === false){
   page.widget_pjax = "";
 } else {
-  page.widget_pjax = "pjax"
+  page.widget_pjax = "pjax";
+  widget_style_list.push("pjax");
 }
+
+
+page.widget_style_list = widget_style_list.join(' ');
 _%>
