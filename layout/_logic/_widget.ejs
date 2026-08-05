@@ -1,11 +1,12 @@
 <%# 侧边栏组件控制 _%>
 <%_
+// 侧边栏所有样式列表
 let widget_style_list = [];
-
+// class
 if (item.class){
   widget_style_list.push(item.class);
 }
-
+// platform
 let pf = [];
 if (item.display) {
   getList(item.display).forEach(function(p){
@@ -16,7 +17,7 @@ if (item.display) {
 }
 widget_style_list.push(...pf);
 page.widget_platform = pf.join(' ');
-
+// effect
 let widget_style = [];
 if (where == 'sidebar') {
   widget_style = theme.custom_css.sidebar.effect;
@@ -25,7 +26,7 @@ if (where == 'sidebar') {
 }
 widget_style_list.push(...widget_style);
 page.widget_style = widget_style.join(' ');
-
+// pjax
 if (item.sticky === true  || item.pjaxReload === false){
   page.widget_pjax = "";
 } else {
@@ -33,6 +34,6 @@ if (item.sticky === true  || item.pjaxReload === false){
   widget_style_list.push("pjax");
 }
 
-
+// 汇总
 page.widget_style_list = widget_style_list.join(' ');
 _%>
