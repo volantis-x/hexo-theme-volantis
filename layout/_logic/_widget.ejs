@@ -2,7 +2,6 @@
 <%_
 // 侧边栏所有样式列表
 let widget_style_list = [];
-let widget_style = "";
 // class
 if (item.class){
   widget_style_list.push(item.class);
@@ -26,14 +25,13 @@ if (where == 'sidebar') {
 }
 widget_style_list.push(...widget_effect);
 // pjax
-let widget_pjax = "";
 if (item.sticky === true  || item.pjaxReload === false){
-  widget_pjax = "";
+  page.widget_pjax = "";
 } else {
-  widget_pjax = "pjax";
+  page.widget_pjax = "pjax";
   widget_style_list.push("pjax");
 }
 
 // 汇总
-widget_style = widget_style_list.join(' ');
+page.widget_style = widget_style_list.join(' ');
 _%>
