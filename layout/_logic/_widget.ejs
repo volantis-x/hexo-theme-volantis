@@ -2,6 +2,10 @@
 <%_
 let widget_style_list = [];
 
+if (item.class){
+  widget_style_list.push(item.class);
+}
+
 let pf = [];
 if (item.display) {
   getList(item.display).forEach(function(p){
