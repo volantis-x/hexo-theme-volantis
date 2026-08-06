@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.8.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.8.0...v6.8.1) (2026-08-05)
+
+
+### Bug Fixes
+
+* dark color for details note ([#1033](https://github.com/volantis-x/hexo-theme-volantis/issues/1033)) ([8d7185d](https://github.com/volantis-x/hexo-theme-volantis/commit/8d7185d6032ea4c90aa7a15c886bd7582289c820))
+
 ## [6.8.0](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.7.0...v6.8.0) (2026-08-04)
 
 
