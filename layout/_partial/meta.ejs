@@ -5,7 +5,7 @@ let topMetas = Array.isArray(post.top_meta)
 let bottomMetas = Array.isArray(post.bottom_meta)
   ? post.bottom_meta
   : (post.bottom_meta === false ? [] : (theme.article.body.bottom_meta || []));
-let articlTitle = post.title || date(post.date, theme.article.body.meta_library.date.format);
+let articlTitle = post.title || post.seo_title || date(post.date, theme.article.body.meta_library.date.format);
 
 // 头图显示逻辑：headimg_display 为 false 时隐藏，否则有 headimg 就显示
 const showHeadimg = post.headimg_display !== false && !!post.headimg;
