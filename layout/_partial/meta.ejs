@@ -41,7 +41,7 @@ const showMeta = post.title_display !== false;
       </h1>
     <% } else { %>
       <h1 class="hidden" itemprop="name headline">
-        <%- post.title %>
+        <%- post.title || post.seo_title %>
       </h1>
     <% } %>
     <% if (post.title && showMeta) { %>
