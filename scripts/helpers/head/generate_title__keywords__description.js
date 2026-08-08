@@ -115,7 +115,7 @@ hexo.extend.helper.register("generate_description", function (config, theme, pag
 });
 // open_graph() 函数会生成一个 description 标签???  https://github.com/hexojs/hexo/blob/92b979f4a3fa8714aebd3d11c3295d466b870905/lib/plugins/helper/open_graph.js#L98
 // 移除 open_graph() 函数会生成的 description
-hexo.extend.filter.register('after_render:html', function(html, data) {
+hexo.extend.filter.register('after_render:html', function(html) {
   // 移除重复的 description 标签，只保留第一个
   html = html.replace(/<meta name="description".*>/g, "");
   return html;
