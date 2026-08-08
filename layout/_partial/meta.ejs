@@ -10,9 +10,9 @@ let articlTitle = post.title || date(post.date, theme.article.body.meta_library.
 // 头图显示逻辑：headimg_display 为 false 时隐藏，否则有 headimg 就显示
 const showHeadimg = post.headimg_display !== false && !!post.headimg;
 
-// 标题显示逻辑：title_display 为 true 时强制显示，为 false 时强制隐藏，未设置时按默认逻辑
+// 标题显示逻辑：title_display 为 true 时强制显示，未设置时按默认逻辑
 const showTitle = post.title_display === true ||
-                  (post.title_display === undefined && !post.headimg);
+                  (post.title_display === undefined && post.title);
 
 // 元信息显示逻辑：title_display 为 false 时隐藏
 const showMeta = post.title_display !== false;
@@ -41,7 +41,7 @@ const showMeta = post.title_display !== false;
       </h1>
     <% } else { %>
       <h1 class="hidden" itemprop="name headline">
-        <%- post.title || post.seo_title %>
+        <%- post.seo_title %>
       </h1>
     <% } %>
     <% if (post.title && showMeta) { %>
