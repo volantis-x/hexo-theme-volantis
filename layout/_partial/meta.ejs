@@ -31,7 +31,7 @@ const showMeta = post.title_display !== false;
       <%- partial('../_plugins/aplayer/layout', {post: post, where: 'meta'}) %>
     <% } %>
     <% if (post.thumbnail && post.thumbnail.length){ %>
-      <a title='<%- post.title %>' href='<%- url_for(post.link || post.path) %>'>
+      <a title='<%- articlTitle %>' href='<%- url_for(post.link || post.path) %>'>
         <img alt="thumbnail" itemprop="image" class='thumbnail' src='<%- post.thumbnail %>'>
       </a>
     <% } %>
