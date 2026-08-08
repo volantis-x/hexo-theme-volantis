@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.8.2](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.8.1...v6.8.2) (2026-08-08)
+
+
+### Bug Fixes
+
+* text autospace ([#1036](https://github.com/volantis-x/hexo-theme-volantis/issues/1036)) ([641cac4](https://github.com/volantis-x/hexo-theme-volantis/commit/641cac451b27bad6aeaa88f09711f5fca9dfeb23))
+* 修复标题显示逻辑，回滚移除重复description标签 ([#1038](https://github.com/volantis-x/hexo-theme-volantis/issues/1038)) ([1b5eeb8](https://github.com/volantis-x/hexo-theme-volantis/commit/1b5eeb8f7f87ce49f3cf9f9b44d1c45978bb405a))
+
 ## [6.8.1](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.8.0...v6.8.1) (2026-08-05)
 
 
