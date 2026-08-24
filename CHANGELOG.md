@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.8.3](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.8.2...v6.8.3) (2026-08-24)
+
+
+### Bug Fixes
+
+* 安全加固csp的frame设置白名单。pace默认关闭。 ([e4c77c7](https://github.com/volantis-x/hexo-theme-volantis/commit/e4c77c7d3e65d9d66eb0d039f72ca880af66056e))
+
 ## [6.8.2](https://github.com/volantis-x/hexo-theme-volantis/compare/v6.8.1...v6.8.2) (2026-08-08)
 
 
