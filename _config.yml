@@ -144,6 +144,7 @@ cdn_system:
 # https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
 # https://content-security-policy.com/
 # 也可以设为 false 在 HTTP 标头中设置 https://volantis.js.org/v5/advanced-settings/#设置-HTTP-响应标头
+# 网站如果被注入恶意脚本，通常会在iframe和worker处下手，这里在frame处配置域名白名单(含标签插件)，worker仅允许本站域名self
 csp:
   enable: true
   content: "
@@ -156,7 +157,7 @@ csp:
     img-src 'self' data: https: *;
     media-src 'self' https: *;
     font-src 'self' data: https: *;
-    frame-src 'self' https: *;
+    frame-src 'self' https://giscus.app https://*.bilibili.com https://*.youtube.com https://*.163.com;
     manifest-src 'self' https: *;
     child-src https:;
     script-src 'self' https: 'unsafe-inline' *;
@@ -942,7 +943,7 @@ plugins:
   # An automatic web page progress bar.
   # https://github.com/CodeByZach/pace
   pace:
-    enable: true
+    enable: #true
     read_progress: true # 页面阅读进度
     color: blue # black, blue, green, orange, pink, purple, red, silver, white, yellow
     theme: minimal # big-counter, bounce, barber-shop, center-atom, center-circle, center-radar, center-simple, corner-indicator, fill-left, flat-top, flash, loading-bar, mac-osx, material, minimal
@@ -1055,12 +1056,12 @@ plugins:
     backgroundColor: 'var(--color-card)' # 默认背景色
     zindex: 2147483647                   # 层级
     copyright:                           # 是否在复制时弹出版权提示，影响范围：ctrl+c、代码块复制按钮、右键复制选项
-      enable: true
+      enable: #true
       title: '知识共享许可协议'
       message: '请遵守 CC BY-NC-SA 4.0 协议。'
       icon: 'far fa-copyright light-blue'
     aplayer:                              # 是否开启音乐通知；播放、暂停、失败 时的图标
-      enable: true
+      enable: #true
       play: fa-solid fa-play
       pause: fa-solid fa-pause
     rightmenu:
